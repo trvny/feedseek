@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-01T16:31:03.947857+00:00</updated>
+  <updated>2026-07-01T19:59:56.369710+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -10,6 +10,409 @@
   <link href="https://blog.google/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/databases/socradar-powers-rapid-threat-detection-with-alloydb-and-gemini-enterprise</id>
+    <title>SOCRadar powers rapid threat detection with AlloyDB and Gemini Enterprise</title>
+    <updated>2026-07-01T19:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Editor’s note:&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; SOCRadar is a leading cybersecurity company that provides threat intelligence to businesses worldwide. As the volume of cyber threats continued to grow, SOCRadar needed to modernize its data infrastructure to deliver faster insights to its customers. By migrating from PostgreSQL to AlloyDB, SOCRadar achieved a 20x performance boost, reduced operational overhead, and is now better positioned to innovate and grow.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;How SOCRadar supercharges rapid threat detection with AlloyDB &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://socradar.io/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;SOCRadar&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides external threat intelligence to help organizations across 30+ countries defend against cyberattacks. On the front lines of cybersecurity, timely intelligence is everything and a delay of a few minutes can mean the difference between a blocked exploit and a full-scale breach.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As SOCRadar’s business scaled and cyber threat volumes exploded, their on-premises, self-managed PostgreSQL database hit a wall. The database simply couldn't keep pace with the simultaneous demands of high-velocity data ingestion and heavy, real-time analytical queries. This created a severe data bottleneck, slowing down the delivery of critical insights to customers and pulling engineers away from innovation to focus on constant manual database tuning.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Evaluating database alternatives: The hunt for scalability&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The engineering team realized their traditional PostgreSQL environment had reached its absolute performance limits. To scale, SOCRadar needed a high-performance fully managed database that could dramatically slash operational overhead while elegantly handling a complex, hybrid workload.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;They evaluated alternatives and selected Google Cloud's &lt;/span&gt;&lt;a href="https://cloud.google.com/alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB for PostgreSQL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Because AlloyDB is fully PostgreSQL-compatible, it offered a low-risk migration path while promising a specialized architecture built to handle both high-volume transactions and real-time analytics simultaneously. To accelerate the transition, SOCRadar partnered with NGC, a Premier Business Partner, who meticulously validated the architecture before executing a precision cutover with minimal downtime.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Taming a "triple-threat" workload&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Migrating to AlloyDB transformed how SOCRadar processes massive, diverse cyber telemetry. Today, AlloyDB effortlessly manages what SOCRadar’s engineering team calls a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;"triple-threat" query environment&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, maintaining sub-second lookup latency even as processing volumes scale.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To understand the performance leaps, it helps to separate the system’s velocity (handling live data streams) from its depth (analyzing historical data):&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;High-Velocity Transactional Ingestion (OLTP):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The platform constantly ingests real-time telemetry from thousands of disparate, fast-moving sources—including Dark Web forums, botnet logs, and social media feeds. AlloyDB handles these continuous INSERT and UPSERT operations with a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;3.2x boost in live ingestion velocity&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, ensuring that the newest threat indicators are immediately recorded and available for detection.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Real-Time Operational Point-Reads:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; When a security analyst is actively investigating a live incident, speed is everything. Baseline performance testing under zero-load conditions for random ID lookups on indexed fields (e.g., querying a specific Indicator of Compromise by ID) showed that standard queries requiring 3 to 3.5 seconds were completed in just 1 second on AlloyDB.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Deep Analytical Aggregations (OLAP):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; When a client requests a complex sectoral report such as correlating the most prevalent attack vectors in the finance sector over an entire year, the database must execute deep scans across vast historical datasets. Leveraging AlloyDB’s built-in &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/columnar-engine/about"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;In-Memory Columnar Engine&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, these analytical queries run &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;up to 20x faster&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; than standard PostgreSQL.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;More than just speed: Reclaiming 45 TB and 75% of DBA time&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While the raw performance gains were massive, the operational and financial impact completely changed how SOCRadar's engineering team works day-to-day.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Thanks to AlloyDB's advanced automation, including intelligent memory management and write-ahead log (WAL) optimization, the need for constant, manual database tuning evaporated. The database administrator's (DBA) workload dropped significantly, requiring a system health check just “about once every two or three days." This freed up &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;75% of SOCRadar’s DBA resources&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, allowing them to pivot away from maintenance and focus entirely on core platform innovation.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Financially, AlloyDB’s dynamic storage management solved a massive cost efficiency issue. Unlike traditional database environments that lock you into paying for fixed, provisioned storage even after data is purged, AlloyDB automatically scales storage down to match actual data footprints. By clearing out legacy, unnecessary logs, SOCRadar was able to instantly &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;reclaim over 45 TB of storage&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, achieving massive, automated cost optimization.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Fighting alert fatigue with integrated Gemini Enterprise Agent Platform&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Beyond scaling infrastructure, AlloyDB has allowed SOCRadar to redefine the core architecture of their threat response using artificial intelligence.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Security operations centers (SOCs) globally are plagued by "alert fatigue"—the sheer volume of security alarms makes it easy to miss a critical attack. To solve this, SOCRadar integrated Gemini Enterprise Agent Platform&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;as a core component of their solution architecture, linking it directly to their Alarm Management framework running on AlloyDB.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By running Gemini AI-native filtering directly on their active data workloads, SOCRadar can automatically distinguish between true positives and benign false alarms. The AI categorizes, filters, and routes alerts before they ever reach the end-user. This ensures security analysts are insulated from noise and receive only the most critical, validated, and actionable intelligence.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By running Gemini AI-native filtering directly on their active data workloads, SOCRadar can automatically distinguish between true positives and benign false alarms. The AI categorizes, filters, and routes alerts before they ever reach the end-user. This ensures security analysts are insulated from noise and receive only the most critical, validated, and actionable intelligence, laying the groundwork for fully autonomous security operations.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Expanding capabilities: The future of agentic threat hunting&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With a high-performance foundation firmly established, SOCRadar’s dedicated AI team is transitioning from passive analytics to active automation. The company is currently testing &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Agentic AI workloads&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, with plans to roll them into production in subsequent phases.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By integrating &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Real-time Data Agents with Gemini Enterprise and AlloyDB&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, SOCRadar is transforming with autonomous agents that don't just store data, but actively hunt threats, reason over context, and take action. Their upcoming production roadmap includes:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Natural Language Querying (NLQ):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Allowing analysts to conduct rapid threat hunting using conversational language, lowering the technical barrier to querying massive database sets.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Intelligent Semantic Similarity Search:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Leveraging native vector embeddings and Gemini Enterprise to allow Data Agents to independently surface hidden patterns across historical logs that traditional keyword searches would miss.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Automated Incident Summarization:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Instantly transforming hundreds of lines of complex, deeply technical logs into concise, plain-language executive summaries for security analysts during critical incidents.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By consolidating transactional velocity, historical depth, and built-in AI intelligence into a unified platform, SOCRadar has eliminated its data bottlenecks and built a highly automated, future-proof framework for global cybersecurity defense.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Ready to modernize your database infrastructure? &lt;/span&gt;&lt;a href="https://cloud.google.com/alloydb"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; provides a fully managed, PostgreSQL-compatible database with high performance for transactional, analytical, and AI workloads. &lt;/span&gt;&lt;a href="https://cloud.google.com/alloydb"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;Learn how&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; you can reduce costs, eliminate management overhead, and build intelligent applications.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/databases/socradar-powers-rapid-threat-detection-with-alloydb-and-gemini-enterprise"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-01T19:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.google/products-and-platforms/products/android-enterprise/b3-android-enterprise</id>
+    <title>Why B3 chose Android for secure AI-enabled productivity</title>
+    <updated>2026-07-01T19:00:00+00:00</updated>
+    <content type="html">Collage of: 3 people looking at an Android phone, Android icons, two Android phones, and the text "Device enrolled"</content>
+    <link href="https://blog.google/products-and-platforms/products/android-enterprise/b3-android-enterprise"/>
+    <category term="The Keyword"/>
+    <published>2026-07-01T19:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026</id>
+    <title>The latest AI news we announced in June 2026</title>
+    <updated>2026-07-01T18:15:00+00:00</updated>
+    <content type="html">June Pixel Drop hero</content>
+    <link href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026"/>
+    <category term="The Keyword"/>
+    <published>2026-07-01T18:15:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/databases/boost-performance-and-lower-costs-with-alloydb-ai-functions</id>
+    <title>AlloyDB AI Functions - now with revolutionary performance boosts and cost savings</title>
+    <updated>2026-07-01T18:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;a href="https://cloud.google.com/products/alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is an AI-native database—it isn’t just a passive data store, it intelligently understands and processes your data. With AlloyDB, you get industry-leading vector and hybrid search, near 100% accurate &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/databases/introducing-querydata-for-near-100-percent-accurate-data-agents?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;natural language-to-SQL capabilities&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to build conversational agents, tools to enable you to &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/databases/managed-mcp-servers-for-google-cloud-databases?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;build with your agentic IDEs of choice&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and the ability to bring the intelligence of foundation models like Gemini directly to your data through &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/evaluate-semantic-queries-ai-operators"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AI functions&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this blog post, we discuss the massive breakthroughs in AI function processing alongside a suite of brand-new AI functions.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;But first: what exactly are AI functions? They bring Gemini’s world knowledge to your AlloyDB data. Consider the challenge of managing raw user feedback: it’s unstructured, and difficult to parse through. Before this data can be leveraged for search, it may require pre-processing and entity extraction. Rather than maintaining complex custom pipelines for knowledge extraction, you can use Gemini’s generation capabilities directly within AlloyDB to transform raw text into structured, searchable insights. For example, here is how you can use &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.generate&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; to instantly turn raw feedback into clean, structured JSON (see more examples &lt;/span&gt;&lt;a href="https://medium.com/google-cloud/sql-in-the-gemini-era-bringing-gemini-3-0-to-your-data-with-alloydb-ai-3c5ab775ab31" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;SELECT\r\n  log_id,\r\n  raw_content,\r\n  -- Use Gemini 3.0 to reason through the raw user feedback and extract structure\r\n  ai.generate(\r\n    model_id =&amp;gt; &amp;#x27;gemini-3.1-pro-preview&amp;#x27;,\r\n    prompt =&amp;gt;\r\n      &amp;#x27;Analyze this raw customer feedback entry. Extract the country, service name, and a 1-sentence summary of the feedback. Return as JSON.&amp;#x27;\r\n      || raw_content) AS structured_feedback\r\nFROM raw_feedback_logs\r\nWHERE user_type &amp;lt;&amp;gt; &amp;#x27;internal&amp;#x27;;&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f843a7550a0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Here is a sample result:&lt;/span&gt;&lt;/h3&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;log_id&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;raw_content&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;structured_analysis&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1001&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2025-12-16 08:00:01 [ERROR] Service: OrderSvc | DbConnectionTimeout: Failed to acquire connection from pool "primary-shard-04" after 5000ms.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;{"errorCode": "DbConnectionTimeout", "serviceName": "OrderSvc", "rootCause": "The service failed to acquire a database connection from the primary shard pool within the 5000ms timeout limit."}&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1002&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2025-12-16 08:05:12 [WARN] Service: IdentityProvider | 401 Unauthorized: Bearer token validation failed for user_id=9942. Signature mismatch.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;{ "error_code": "401", "service_name": "IdentityProvider", "root_cause": "The bearer token validation failed due to a signature mismatch." }&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1003&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2025-12-16 08:12:45 [CRITICAL] Service: AnalyticsEngine | OutOfMemoryError: Java heap space. Allocation of 1.2GB array failed. Heap usage 99%.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;{ "error_code": "OutOfMemoryError", "service_name": "AnalyticsEngine", "root_cause": "The service exhausted available Java heap memory attempting to allocate a 1.2GB array." }&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1004&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2025-12-16 08:25:33 [ERROR] Service: WebFrontEnd | 404 NotFound: Resource /api/v3/users/profile/settings not found. Upstream returned 404.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;{ "error_code": "404", "service_name": "WebFrontEnd", "root_cause": "The requested API resource for user profile settings was not found by the upstream service." }&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1005&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2025-12-16 08:35:50 [WARN] Service: NotificationGateway | GatewayTimeout: External provider "SendGrid" failed to respond within 30s. Retry scheduled.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;{"error_code": "GatewayTimeout", "service_name": "NotificationGateway", "root_cause": "The external provider SendGrid failed to respond within the 30-second timeout limit."}&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;More functions to summarize and analyze sentiment&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our core AI functions —&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.generate&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.rank&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.if&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.forecast&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;—are now Generally Available. To learn more about use cases for the first three, refer to this &lt;/span&gt;&lt;a href="https://medium.com/google-cloud/sql-in-the-gemini-era-bringing-gemini-3-0-to-your-data-with-alloydb-ai-3c5ab775ab31" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; blog post&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. To explore the forecast function in action, check out this &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/timesfm-models-in-bigquery-and-alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;deep dive&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Building on this momentum, we have introduced three brand new functions: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.summarize&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.agg_summarize&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.analyze_sentiment&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;ai.analyze_sentiment&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: Automatically classifies the emotional tone of text as positive, negative, or neutral.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;ai.summarize&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: Condenses lengthy text into its most essential information while preserving the original tone and nuance.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;ai.agg_summarize&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: An aggregate tool that processes multiple rows within a column to generate a single, unified summary for an entire group (e.g., via a &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;GROUP BY&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; clause).&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s an example of how to use &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.agg_summarize&lt;/code&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;to consolidate a product reviews for  products on a retail website:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;SELECT productname, ai.agg_summarize(review) as reviews_summary\r\nGROUP BY productname;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f843a755a90&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here is a sample result of summarized reviews for two gaming console products: &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;productname&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;reviews_summary&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AlphaCore Console &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Users praise the stunning 4K graphics, smooth 120Hz frame rates, and the highly ergonomic controller design.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;However, several reviews express frustration over the loud cooling fan noise during extended gaming sessions.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Overall, it is considered a top-tier console despite minor thermal and noise complaints.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;NeoCore Console &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Customers love the exceptional battery life and vibrant OLED display for handheld gaming on the go.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A significant number of users noted that the UI can feel sluggish and the game library is currently limited.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It represents great value for casual gamers but power users may find the performance lacking.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;The power of LLMs on your data: now significantly faster and cheaper&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We now have achieved unprecedented performance and cost breakthroughs in AI function processing. Previously, running a foundation model call for every single row in a massive database introduced cost and latency constraints. We have shattered these barriers by introducing two breakthrough capabilities:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-ai-queries"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Smart Batching for AI Functions&lt;/span&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; This AI Function Acceleration capability provides intelligent batching of AI function calls for optimal performance and quality. This efficiency is achieved by deduplicating prompt overhead; the LLM's boilerplate instructions are transmitted once per batch rather than repeated across every individual row. A question you may have is - “Why not do this in my own application layer?”. That’s because, AlloyDB intelligently determines the right batch size for optimal results - if you underestimate the batch size, you won’t reap gains for cost and latency, and if you overestimate the batch size, the prompt to the LLM could get bloated and lead to hallucinations, or you could exceed the model's token limits. In addition to calculating the perfect batch size for every request, AlloyDB also handles retries automatically out of the box, ensuring your pipeline stays resilient. We did some testing internally and saw massive gains; for example, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;an up to  2,400x performance boost (processing 10,000 rows/sec) over traditional row-at-a-time LLM calls. This is currently available &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;for the &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.rank&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; functions, with support for additional functions coming in the future.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let’s look at an example of using Smart Batching / Acceleration with &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;to solve this use case: Imagine a customer on a gadget retail site searching for a camera that can handle an underwater depth of '60 meters or deeper.' Traditional hybrid search will pull the closest semantic and full-text matches, but it misses the hard constraints of numerical data—meaning it might serve up a camera that works only at 20 meters depth. By using AlloyDB’s &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;-based intelligent filtering, the database actually understands the nuance of depth and makes the query return products that meet or exceed that 60-meter depth criteria.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Notice how, in the example below, you don’t need to specify the batch size - AlloyDB handles all the optimizations under the hood when using &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;-- Smart Batching / AI Function Acceleration \r\nSET google_ml_integration.enable_ai_function_acceleration = on;\r\nSELECT productid, productname, category,description\r\nFROM products AS p\r\nWHERE\r\n  ai.if(\r\n    &amp;#x27;Evaluate if the product description indicates that the product is waterproof at depth 60m or deeper. Description:&amp;#x27;\r\n      || description);&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f843a755340&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here is a sample result on a hypothetical gadgets site. Notice how the expanded descriptions of products really match the criteria of working at a depth of 60 meters:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_7d1Ppqp.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-queries-optimized-functions"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Optimized AI Functions&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: For even greater efficiency, we’ve introduced an optimized mode, starting with &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. By deploying a small, proxy model that utilizes your embeddings and is trained on your specific LLM outputs, we can process decisions natively within the database. This drastically reduces the need to call the external LLM - and based on some of our internal tests, we saw  staggering gains; for example, up to 100,000 rows processed per second (a 23,000x improvement) and costs slashed by 6,000x (down to 1/10th of a cent). For technical insights on this technique, including when it works best and when not, refer to this &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/more-than-100x-faster-and-cheaper-llm-powered-sql-queries-with-proxy-models?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog post&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. AlloyDB does the following when using optimized &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Trains a proxy model&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: AlloyDB trains a lightweight proxy model on a sample of your data. This happens in the background when you use the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;PREPARE&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; statement with &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; function to train the model for optimized queries.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Executes the query&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: When you use the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;EXECUTE&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; statement, AlloyDB uses the trained proxy model to process the query locally.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Falls back to the LLM:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; If the accuracy of the model is low, or if AlloyDB can't find a model, AlloyDB automatically falls back to using the LLM.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let’s look at the same example of searching for a camera that can handle an underwater depth of 60 meters or deeper using optimized &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. Here we train a proxy model using the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;PREPARE&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; statement and then &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;EXECUTE&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; the statement thereafter.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;-- Prepare the Optimized Function / Proxy Model\r\nPREPARE waterproof_camera_60m AS\r\nSELECT productid, productname, category, description\r\nFROM products AS p\r\nWHERE\r\n  ai.if(\r\n    &amp;#x27;Evaluate if the product description indicates that the product is waterproof at depth 60m or deeper. Description:&amp;#x27;\r\n      || description,\r\n    description_embedding);\r\n\r\n-- Run the Proxy Model\r\nEXECUTE waterproof_camera_60m;&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f843a755760&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You see the same products that truly match the criteria of working at a depth of 60 meters - as shown in the screenshot above. Here’s a tabulated version for the first three products, so you can look at the descriptions more closely: &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;productname&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;description&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pulsetron Action Camera MZ314 &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Conquer your next adventure with this camera. Don't let the elements hold you back; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;dive up to 60 meters deep&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; or withstand rugged trails with its shock-resistant, adventure-ready chassis. Every jump, every turn, every splash is rendered flawlessly smooth with advanced Horizon Lock stabilization, ensuring your footage tells the story with unparalleled fluidity.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Hyperbyte Action Camera LG688&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Capture the world in breathtaking detail, even when the action is at its most intense. This camera packs a formidable 1-inch sensor into a remarkably tough, pocket-sized frame. Shoot stunning 5K video and crystal-clear 20MP stills that rival professional equipment. Dive deeper than ever before with robust &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;waterproofing at 60 meters&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Alphasync Action Camera WW897&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This formidable, compact camera shrugs off the elements, while the massive 1-inch sensor translates every breathtaking moment into stunning 5K video and crystal-clear 20MP stills. Conquer any environment – from the deepest dive to the highest peak – thanks to its &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;60 meter waterproofing&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and revolutionary Horizon Lock, ensuring your footage remains impossibly steady. &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;See it in action!&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Watch how this all comes together in this &lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=PxbLWePxt40&amp;amp;feature=youtu.be" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;demo video&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=PxbLWePxt40"&gt;
+
+      
+        
+
+        &lt;div class="article-video__aspect-image"&gt;
+          &lt;span class="h-u-visually-hidden"&gt;Bring Gemini’s intelligence to AlloyDB using AI functions&lt;/span&gt;
+        &lt;/div&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=PxbLWePxt40"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Getting started is easy&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to bring unprecedented speed and cost-efficiency to your AI workloads?&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New to AlloyDB?&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Discover AlloyDB with a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/free-trial-cluster"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;30-day free trial&lt;/span&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;AI functions quickstart:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Enable a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/evaluate-semantic-queries-ai-operators"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;few quick prerequisites&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and start calling functions like &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.generate&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, or &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.analyze_sentiment&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; directly within your SQL queries. Check out these &lt;/span&gt;&lt;a href="https://medium.com/google-cloud/sql-in-the-gemini-era-bringing-gemini-3-0-to-your-data-with-alloydb-ai-3c5ab775ab31" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;practical examples&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to begin.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Boost performance and optimize costs:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; To unlock the biggest performance and cost gains, follow our guide on &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-queries-optimized-functions"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;optimized functions&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. This is available in preview for &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, and will be expanding to more functions soon. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;For technical insights on this technique, including when it works best and when not, refer to this &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/more-than-100x-faster-and-cheaper-llm-powered-sql-queries-with-proxy-models?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog post&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Scale your throughput:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Use &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-ai-queries"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;smart batching&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to accelerate AI functions (available in preview for &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.if&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ai.rank&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;) or &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/evaluate-semantic-queries-ai-operators#filter-batch-arrays"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;array-based functions&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (generally available for all LLM-based AI functions) to handle bulk prompting smoothly.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/databases/boost-performance-and-lower-costs-with-alloydb-ai-functions"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-01T18:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://workspaceupdates.googleblog.com/2026/06/import-3d-bar-charts-into-google-sheets.html</id>
+    <title>Import 3D bar charts into Google Sheets</title>
+    <updated>2026-07-01T17:37:58+00:00</updated>
+    <content type="html">&lt;p&gt;Google Sheets now fully supports the import of 3D bar charts. Previously, when users imported files containing 3D bar charts into Sheets, they would be displayed as 2D bar charts. With this update, importing these types of files, including from Microsoft Excel, will yield a more seamless experience.&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqRNyoM6VVKVmutPtyGFLvuW_86GeNOapKNwgHWUXzvhQcBASRnIKTKA6kMgsjkhmE_r1R3wjo-6lBj6csNS-PH2HrmqZGvQ80njz0toQqCiZhJ0idLw8IsK-HQYbUhjLsoEiEosEM5W7YKbIIGPpyeULG0iVUVFx6KGnxUltpxmzttXgoJcrHzhACZso/s2048/Import%203D%20bar%20charts%20into%20Google%20Sheets%20-%206843.png" style="margin-left: auto; margin-right: auto;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqRNyoM6VVKVmutPtyGFLvuW_86GeNOapKNwgHWUXzvhQcBASRnIKTKA6kMgsjkhmE_r1R3wjo-6lBj6csNS-PH2HrmqZGvQ80njz0toQqCiZhJ0idLw8IsK-HQYbUhjLsoEiEosEM5W7YKbIIGPpyeULG0iVUVFx6KGnxUltpxmzttXgoJcrHzhACZso/s1600/Import%203D%20bar%20charts%20into%20Google%20Sheets%20-%206843.png" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;3D bar chart imported into Google Sheets&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;There is no admin control for this feature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users: &lt;/b&gt;Visit the Help Center to &lt;a href="https://support.google.com/docs/answer/63824" target="_blank"&gt;learn more about adding and editing a chart in Google Sheets&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release domains:&lt;/a&gt; Available now&lt;/li&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on July 13, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Available to all Google Workspace customers and users with personal Google accounts&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Docs Editors Help: &lt;a href="https://support.google.com/docs/answer/63824" target="_blank"&gt;Add &amp;amp; edit a chart or graph&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
+    <link href="https://workspaceupdates.googleblog.com/2026/06/import-3d-bar-charts-into-google-sheets.html"/>
+    <category term="Workspace Updates"/>
+    <published>2026-07-01T17:37:58+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.google/products-and-platforms/products/maps/te-reo-maori</id>
+    <title>Maps has an authentic new voice in New Zealand</title>
+    <updated>2026-07-01T17:00:00+00:00</updated>
+    <content type="html">The image shows the new Maps New Zealand feature</content>
+    <link href="https://blog.google/products-and-platforms/products/maps/te-reo-maori"/>
+    <category term="The Keyword"/>
+    <published>2026-07-01T17:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://cloud.google.com/blog/products/business-intelligence/looker-in-2026-gartner-analytics-and-bi-platforms-mq</id>
     <title>Google named a Leader in 2026 Gartner® Magic Quadrant™ for Analytics and Business Intelligence Platforms for third year in a row</title>
@@ -37917,60 +38320,6 @@ GKE&lt;/a&gt;.&lt;/p&gt;</content>
     <updated>2026-05-20T16:00:00+00:00</updated>
     <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GML_Measurement_social.max-600x600.format-webp.webp" /&gt;Wprowadzamy Meridian – nasze rozwiązanie MMM typu open source – do Google Analytics i uruchamiamy funkcję Future Long-Term Conversions.</content>
     <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/meridian-google-analytics-360"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/youtube-demand-gen-updates</id>
-    <title>Zwiększ swój zasięg na YouTube dzięki kampaniom generującym popyt</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Logo Google Marketing Live obok ikon YouTube i Google G</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/youtube-demand-gen-updates"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/ask-advisor</id>
-    <title>Poznaj Ask Advisor – Twojego nowego współpracownika wspieranego przez AI</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Napis „Google Marketing Live” wraz z logo YouTube i literą G (symbolem Google), umieszczone nad tęczowym gradientem.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/ask-advisor"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/products/marketingplatform/analytics/meridian-google-analytics-360/</id>
-    <title>Turn data into decisions with unified measurement.</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GML_Measurement_social.max-600x600.format-webp.webp" /&gt;We’re bringing Meridian, our open-source MMM to Google Analytics and introducing Future Long-Term Conversions.</content>
-    <link href="https://blog.google/products/marketingplatform/analytics/meridian-google-analytics-360/"/>
-    <category term="Google Analytics"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-search-ads/</id>
-    <title>Nowa generacja reklam w erze wyszukiwania opartego na sztucznej inteligencji</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Napis „Google Marketing Live” z logo YouTube, literą G (symbolem Google) oraz trójwymiarową iskierką</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-search-ads/"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/asset-studio-updates/</id>
-    <title>Studio kreacji wkracza w nową erę kreatywności opartej na AI</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/creative_social.max-600x600.format-webp.webp" /&gt;Wprowadzamy nowe możliwości multimodalne do Asset Studio w Google Ads – miejsca, w którym możesz tworzyć, budować i testować swoje zasoby reklamowe.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/asset-studio-updates/"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live/</id>
-    <title>Jak pomagamy sprzedawcom rozwijać się dzięki nowym funkcjom protokołu UCP i narzędziom AI w Google</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Napis „Google Marketing Live” otoczony logo YouTube, literą „G” (symbolem Google) oraz trójwymiarową iskierką.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live/"/>
     <category term="Google Poland"/>
     <published>2026-05-20T16:00:00+00:00</published>
   </entry>
