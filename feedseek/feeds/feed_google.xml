@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-01T19:59:56.369710+00:00</updated>
+  <updated>2026-07-01T21:46:11.493519+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -793,6 +793,86 @@
     <link href="https://googlecloudpresscorner.com/2026-07-01-Google-Cloud-Summit-in-Africa-Highlights-the-Continents-Digital-Transformation-and-Unveils-New-Agentic-AI-and-Infrastructure-Investments"/>
     <category term="Google Cloud Press"/>
     <published>2026-07-01T12:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#July_01_2026</id>
+    <title>Cloud Release Notes — July 01, 2026</title>
+    <updated>2026-07-01T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;BigQuery&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;You can now use pre-trained TimesFM models in BigQuery ML
+directly from
+&lt;a href="https://docs.cloud.google.com/bigquery/docs/connected-sheets"&gt;Connected Sheets&lt;/a&gt;.
+These models let you create
+forecasts and detect anomalies in your data by using the
+&lt;a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-forecast"&gt;&lt;code&gt;AI.FORECAST&lt;/code&gt;&lt;/a&gt;
+and
+&lt;a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-detect-anomalies"&gt;&lt;code&gt;AI.DETECT_ANOMALIES&lt;/code&gt;&lt;/a&gt;
+functions. This feature is
+&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;generally available&lt;/a&gt;
+(GA).&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Gemini Enterprise Agent Platform&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;h3 id="provisioned_throughput_multiple_pending_new_orders_ga"&gt;Provisioned Throughput: Multiple pending new orders GA&lt;/h3&gt;
+&lt;p&gt;The ability to submit multiple pending orders is generally available. you can
+submit up to seven Google model orders for the same model and region.
+See &lt;a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput#multiple"&gt;Multiple pending
+orders&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google SecOps&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;[Spotlight Feature] Enhanced security and compliance for the Advanced BigQuery Export feature&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://docs.cloud.google.com/chronicle/docs/reports/bigquery-export"&gt;Advanced BigQuery Export feature&lt;/a&gt; is in Preview and is available for Google SecOps Enterprise Plus customers only. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Here's what's new:&lt;/strong&gt; We're excited to announce significant performance and coverage enhancements to Advanced BigQuery Export for Google SecOps Enterprise Plus customers.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Expanded dataset support&lt;/strong&gt;: In addition to UDM events, rule detections, and IoC matches, we now support the export of Entity Graph and Ingestion Metrics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enhanced security &amp;amp; compliance&lt;/strong&gt;: The offering natively supports &lt;a href="https://docs.cloud.google.com/chronicle/docs/secops/vpcsc-for-secops"&gt;VPC Service Controls (VPC-SC)&lt;/a&gt;, &lt;a href="https://docs.cloud.google.com/chronicle/docs/secops/cmek_for_secops"&gt;Customer-Managed Encryption Keys (CMEK)&lt;/a&gt;, and Data Residency (DRZ). Furthermore, customer-facing audit logs (Access Transparency) are delivered directly to your Cloud Logging workspace using the Federated Resource Identification Service.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data integrity and deduplication&lt;/strong&gt;: The system now uses Fine-Grained DML merges to update records in place behind the scenes. This ensures that you receive clean, deduplicated data without needing to write complex SQL routines.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seamless MSSP support (hub and spoke)&lt;/strong&gt;: Managed Security Service Providers (MSSPs) can now efficiently manage analytics across multiple customer tenants. This is achieved by programmatically subscribing to customers' linked datasets from a single centralized "Hub" project.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enum mapping tables&lt;/strong&gt;: Advanced BigQuery Export now includes &lt;code&gt;entity_enum_value_to_name_mapping&lt;/code&gt; and &lt;code&gt;udm_enum_value_to_name_mapping&lt;/code&gt; tables. These allow you to easily join against your events to translate numerical enum values into human-readable strings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Key reminders&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Public preview &amp;amp; feature activation&lt;/strong&gt;: This feature is currently in Public Preview, is enabled only upon request, and may require initial configuration in your organization's Google SecOps instance. Contact your Google SecOps representative to confirm feature enablement.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Plus only&lt;/strong&gt;: This feature is exclusive to the Enterprise Plus tier.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zero-maintenance&lt;/strong&gt;: Your security data remains in a Google-managed project, appearing as a read-only linked dataset directly in your own Google Cloud project. This lets you query the data locally without the overhead of managing the pipeline or paying for storage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Migration and dual operation&lt;/strong&gt;: To support a smooth transition without disruption during the Public Preview, your data will be exported to the new BigQuery tenant project in addition to your existing Google-managed BigQuery project. You'll be notified before the old export pipeline is disabled for your account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="release-note-product-title"&gt;Google SecOps Marketplace&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proofpoint Email Protection&lt;/strong&gt;: Version 8.0&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The following new actions have been added to support searching and 
+programmatically managing quarantined emails:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Search Quarantined Emails&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Delete Quarantined Email&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Resubmit Quarantined Email&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Move Quarantined Email&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Change&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proofpoint Email Protection&lt;/strong&gt;: Version 8.0&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Updated backend script implementation to support the new framework for the 
+following actions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Enrich Entities&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Ping&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="release-note-product-title"&gt;Looker&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;The latest versions in the Looker (Google Cloud core) &lt;a href="https://docs.cloud.google.com/looker/docs/looker-core-release-process#release_channels"&gt;release channels&lt;/a&gt; are beginning deployment as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Latest version in the Rapid channel: &lt;strong&gt;26.10&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Latest version in the Regular channel: &lt;strong&gt;26.10&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Latest version in the No Channel channel: &lt;strong&gt;26.10&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;Looker (Google Cloud core) has introduced &lt;a href="https://docs.cloud.google.com/looker/docs/looker-core-release-process#release_channels"&gt;release channels&lt;/a&gt; in preview, allowing users to choose between Rapid, Regular, and "No channel" options to manage the cadence of version updates. The Rapid channel provides early access to new capabilities but is excluded from the Service Level Agreement (SLA), while the Regular channel offers balanced stability with an optional Accelerated Security Patching flag.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#July_01_2026"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-07-01T07:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://cloud.google.com/blog/topics/developers-practitioners/scaling-llm-inference-multi-node-kv-cache-offloading-with-gke-managed-lustre</id>
@@ -38271,6 +38351,24 @@ GKE&lt;/a&gt;.&lt;/p&gt;</content>
     <published>2026-05-21T07:00:00+00:00</published>
   </entry>
   <entry>
+    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/youtube-demand-gen-updates</id>
+    <title>Zwiększ swój zasięg na YouTube dzięki kampaniom generującym popyt</title>
+    <updated>2026-05-20T16:00:00+00:00</updated>
+    <content type="html">Logo Google Marketing Live obok ikon YouTube i Google G</content>
+    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/youtube-demand-gen-updates"/>
+    <category term="Google Poland"/>
+    <published>2026-05-20T16:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/ask-advisor</id>
+    <title>Poznaj Ask Advisor – Twojego nowego współpracownika wspieranego przez AI</title>
+    <updated>2026-05-20T16:00:00+00:00</updated>
+    <content type="html">Napis „Google Marketing Live” wraz z logo YouTube i literą G (symbolem Google), umieszczone nad tęczowym gradientem.</content>
+    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/ask-advisor"/>
+    <category term="Google Poland"/>
+    <published>2026-05-20T16:00:00+00:00</published>
+  </entry>
+  <entry>
     <id>https://blog.google/products/marketingplatform/analytics/meridian-google-analytics-360</id>
     <title>Turn data into decisions with unified measurement.</title>
     <updated>2026-05-20T16:00:00+00:00</updated>
@@ -38294,32 +38392,6 @@ GKE&lt;/a&gt;.&lt;/p&gt;</content>
     <updated>2026-05-20T16:00:00+00:00</updated>
     <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/creative_social.max-600x600.format-webp.webp" /&gt;Wprowadzamy nowe możliwości multimodalne do Asset Studio w Google Ads – miejsca, w którym możesz tworzyć, budować i testować swoje zasoby reklamowe.</content>
     <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/asset-studio-updates"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live</id>
-    <title>Jak pomagamy sprzedawcom rozwijać się dzięki nowym funkcjom protokołu UCP i narzędziom AI w Google</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Napis „Google Marketing Live” otoczony logo YouTube, literą „G” (symbolem Google) oraz trójwymiarową iskierką.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-2026</id>
-    <title>Google Marketing Live 2026</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-2026"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/meridian-google-analytics-360</id>
-    <title>Zamień dane w decyzje dzięki ujednoliconym pomiarom</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GML_Measurement_social.max-600x600.format-webp.webp" /&gt;Wprowadzamy Meridian – nasze rozwiązanie MMM typu open source – do Google Analytics i uruchamiamy funkcję Future Long-Term Conversions.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/meridian-google-analytics-360"/>
     <category term="Google Poland"/>
     <published>2026-05-20T16:00:00+00:00</published>
   </entry>
