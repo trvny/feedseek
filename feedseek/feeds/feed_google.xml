@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-02T14:06:57.312626+00:00</updated>
+  <updated>2026-07-02T17:51:22.886041+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -10,6 +10,39 @@
   <link href="https://blog.google/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/threat-intelligence/google-continued-disruption-residential-proxy-networks</id>
+    <title>Google’s Continued Disruption of Malicious Residential Proxy Networks</title>
+    <updated>2026-07-02T14:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Background&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, in coordination with the FBI, Lumen, and others, Google took action against the NetNut residential proxy network, also known as Popa. This action builds on our &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/disrupting-largest-residential-proxy-network"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;disruption of the IPIDEA proxy network&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that took place in January 2026, and is a continuation of Google’s objective to dismantle malicious residential proxy networks.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Actions Taken&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As a part of this disruption we took the following actions:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Disabled Google accounts and associated Google services used by NetNut for malware command and control (C2), which directly violates Google’s Terms of Service and Acceptable Use Policy. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Shared technical intelligence on NetNut software development kits (SDKs) and backend C2 infrastructure with platform providers, law enforcement, and research firms to help drive ecosystem-wide awareness and enforcement.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We ensured &lt;/span&gt;&lt;a href="https://support.google.com/googleplay/answer/2812853?hl=en" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Play Protect&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Android’s built-in security protection, automatically warned users and disabled applications known to incorporate NetNut SDKs, and the system will continue to protect users against future install attempts. These efforts to help keep the broader digital ecosystem safe supplement the protections we have to safeguard Android users on certified devices.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We believe our coordinated actions have caused significant degradation to NetNut’s proxy network and its business operations,&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; reducing the available pool of devices for the proxy operator by millions&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. In addition to selling access to the network under the NetNut brand, NetNut has a robust reseller program that allows whitelabeling of its network. Google has high confidence that many popular residential proxy brands are in fact whitelabeling the NetNut botnet. While we expect this disruption to have a larger ripple effect across the residential proxy ecosystem, observations after the disruption of IPIDEA proved that individual networks can appear resilient. What we have observed is that when faced with the degradation of their own botnet, proxy operators begin buying capacity from their competitors, effectively becoming a reseller. We recognize that creating a lasting disruption in this fluid ecosystem means we must scale our efforts to target the infrastructure of several interconnected providers. We will continue to observe the composition of the NetNut network and map out how its peers adapt to this action.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Why it Matters&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;NetNut is among the largest and most popular residential proxy networks. Estimating the size of residential proxy networks is extremely challenging, but Google Threat Intelligence Group (GTIG) estimates the size of the NetNut network to be at least 2 million devices, distributed across the world. Public reporting by &lt;/span&gt;&lt;a href="https://krebsonsecurity.com/2026/06/popa-botnet-linked-to-publicly-traded-israeli-firm/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;KrebsOnSecurity&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and others, confirmed by Google, illustrates that NetNut populates its botnet by distributing SDKs for devices commonly found in homes, such as smart TVs and streaming boxes. GTIG has also identified NetNut botnet plugin components for large-scale botnets such as Badbox 2.0.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Residential proxy networks sell the ability to route traffic through IP addresses owned by internet service providers (ISPs), allowing attackers to mask malicious activity by hijacking these IP addresses. A robust residential proxy network requires controlling millions of residential IP addresses to sell to customers for use. To accomplish this, operators need code running on home devices to enroll them into the malicious network as &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;exit nodes.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; Home devices become part of proxy networks either because they are pre-installed with malware before purchase or because users unknowingly download applications containing hidden proxy code. This creates serious risks for unsuspecting device owners, as their home IP addresses can be used by attackers as a launchpad for hacking and other unauthorized activities. Consequently, users can have their legitimate traffic flagged as suspicious, or blocked by their service providers.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In a single week during June 2026, GTIG observed 316 distinct threat clusters using suspected NetNut exit nodes, including cybercriminal and espionage groups. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;These bad actors can use NetNut to mask their origin IP address when accessing victim environments, accessing their own infrastructure, and conducting password spray attacks. Furthermore, when a consumer device becomes an exit node, unauthorized network traffic passes through it. This means bad actors can access other private devices on the same home network, effectively exposing them to Internet threats. Public reports by &lt;/span&gt;&lt;a href="https://synthient.com/blog/who-are-the-victims-of-residential-proxies" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Synthient&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://spur.us/blog/residential-proxy-lateral-movement-risk" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Spur&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://github.com/deepfield/public-research/blob/main/reports/2026-06-18-robovpn-neunative.md" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Nokia Deepfield&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and others have documented the use of NetNut to infect devices with variants of Mirai DDoS botnets.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Empowering and Protecting Consumers&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Consumers should be extremely wary of applications that offer payment in exchange for "unused bandwidth" or "sharing your internet." These applications are primary ways for malicious proxy networks to grow, and could open security vulnerabilities on the device’s home network. We urge users to stick to official app stores, review permissions for third-party VPNs and proxies, and ensure built-in security protections like &lt;/span&gt;&lt;a href="https://support.google.com/googleplay/answer/2812853?hl=en" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Play Protect&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; are active.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Consumers should be careful when purchasing connected devices, such as set top boxes, to make sure they are from reputable manufacturers. For example, to help you confirm whether or not a device is built with the official Android TV OS and Play Protect certified, our &lt;/span&gt;&lt;a href="https://www.android.com/tv/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Android TV website&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;provides the most up-to-date list of partners. You can also take&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://support.google.com/googleplay/answer/7165974" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;these steps&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;to check if your Android device is Play Protect certified.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Future Work&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As we noted earlier this year, the residential proxy industry appears to be rapidly expanding, and this coordinated disruption is not the end of our work combating malicious residential proxy networks. This industry is deeply connected and operators depend on overlapping botnet networks that are constantly resold. While point-in-time disruptions are a critical tool to protect our users, continued and coordinated effort is needed to reduce malicious proxy networks in the long run. We encourage mobile platforms, ISPs, and other tech platforms to continue sharing intelligence and to take direct action to block malicious C2 infrastructure.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/threat-intelligence/google-continued-disruption-residential-proxy-networks"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-02T14:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://googlecloudpresscorner.com/2026-07-02-Intesa-Sanpaolo-Brings-its-Digital-Infrastructure-to-Google-Cloud-Regions-in-Italy-Hosted-in-TIMs-Data-Centers</id>
     <title>Intesa Sanpaolo Brings its Digital Infrastructure to Google Cloud Regions in Italy Hosted in TIM's Data Centers</title>
@@ -1242,6 +1275,23 @@ following actions:&lt;/p&gt;
     <link href="https://cloud.google.com/blog/topics/developers-practitioners/scaling-llm-inference-multi-node-kv-cache-offloading-with-gke-managed-lustre"/>
     <category term="Google Cloud"/>
     <published>2026-07-01T07:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/search/updates#july-2026</id>
+    <title>Updating our AMP documentation</title>
+    <updated>2026-07-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;
+          &lt;b&gt;What&lt;/b&gt;: Simplified our &lt;a href="https://developers.google.com/search/docs/crawling-indexing/amp"&gt;AMP documentation&lt;/a&gt; by removing outdated references to the AMP viewer, AMP Cache, and signed exchange.
+        &lt;/p&gt;&lt;p&gt;
+          &lt;b&gt;Why&lt;/b&gt;: Starting today, Google Search is updating how it connects users to AMP pages,
+          and will now take users directly to the publisher's AMP host pages. This change simplifies
+          and reduces maintenance efforts for publishers who are creating AMP content, as they no
+          longer need to update the AMP cache or configure signed exchanges. AMP content will
+          continue to rank just like any other web page.
+        &lt;/p&gt;</content>
+    <link href="https://developers.google.com/search/updates#july-2026"/>
+    <category term="Search Central Docs"/>
+    <published>2026-07-01T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026</id>
@@ -38516,22 +38566,5 @@ GKE&lt;/a&gt;.&lt;/p&gt;</content>
     <link href="https://developer.chrome.com/blog/new-in-chrome-io26?hl=en"/>
     <category term="Chrome for Developers"/>
     <published>2026-05-21T07:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live</id>
-    <title>Jak pomagamy sprzedawcom rozwijać się dzięki nowym funkcjom protokołu UCP i narzędziom AI w Google</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <content type="html">Napis „Google Marketing Live” otoczony logo YouTube, literą „G” (symbolem Google) oraz trójwymiarową iskierką.</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/shopping-updates-google-marketing-live"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-2026</id>
-    <title>Google Marketing Live 2026</title>
-    <updated>2026-05-20T16:00:00+00:00</updated>
-    <link href="https://blog.google/intl/pl-pl/nowosci-produktowe/google-marketing-live-2026"/>
-    <category term="Google Poland"/>
-    <published>2026-05-20T16:00:00+00:00</published>
   </entry>
 </feed>
