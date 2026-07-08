@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-08T19:28:25.775725+00:00</updated>
+  <updated>2026-07-08T21:12:25.102140+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -10,6 +10,458 @@
   <link href="https://blog.google/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/compute/c4n-network-and-storage-optimized-vms</id>
+    <title>C4N, now GA: Delivering cloud’s highest per vCPU network and block storage I/O for x86 workloads</title>
+    <updated>2026-07-08T20:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;As organizations scale modern workloads — from high-throughput databases and network/security appliances to real-time analytics and AI/ML inference — network and block storage performance can quickly become a bottleneck. Standard virtual machines often struggle to balance compute efficiency with the high-volume data-transfer demands of these applications.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;At Google Cloud Next ‘26, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/whats-new-in-compute-at-next26?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;we announced C4N in preview&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, our first network- and block-storage-optimized Google Compute Engine instance that’s purpose-built to eliminate I/O bottlenecks for demanding enterprise applications, and today, it is &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;generally available&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Built on Google's custom-designed &lt;/span&gt;&lt;a href="https://cloud.google.com/titanium?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Titanium&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; offload architecture, C4N instances offload network and storage tasks to dedicated hardware to unlock incredible performance and compute efficiency. C4N offers up to 400 Gbps of network bandwidth and a market-leading 95 million packets per second (MPPS) — &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;nearly 33% higher network bandwidth per vCPU and 224% faster packet processing performance than comparable Intel-based offerings at other hyperscalers&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. This performance makes C4N a great fit for network-intensive applications such as virtual appliances (e.g., next-gen firewalls, virtual routers, load balancers, DDoS mitigation), large-scale data analytics, telco applications (5G UPF), distributed compute and CPU-based AI/ML workloads. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Paired with &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/disks/hd-types/hyperdisk-extreme"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk Extreme&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, our high-performance block storage, C4N also delivers Compute Engine’s highest block storage performance, scaling up to 25 GiB/s of storage bandwidth and 1M IOPS &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;— nearly 33% higher storage bandwidth and 39% more IOPS per vCPU versus comparable Intel-based offerings, &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;making them a strong choice for large-scale databases, high-performance file systems, in-memory databases, and other workloads that benefit from high block storage performance&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Engineered specifically to deliver predictable, high-throughput I/O performance for networking, packets-per-second-bound and storage-optimized applications, C4N allows customers to scale network, storage, and compute resources more precisely to meet specific workload requirements, delivering significant TCO benefits by eliminating the need to over-provision resources just to meet I/O demands. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;C4N is powered by 5th Gen Intel® Xeon® Scalable processors (code-named Emerald Rapids).&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Google Cloud’s introduction of C4N highlights how infrastructure innovation and a strong silicon foundation can help customers address increasingly data-intensive workloads. With Intel Xeon and Custom Infrastructure Processing Unit (IPU), C4N delivers the performance and efficiency needed for demanding network optimized environments.” &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;– Srini Krishna, Intel Fellow, Data Center products, Intel&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;What’s new: Scaling massive data layers with C4N &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our network-optimized C4N instances are designed to deliver predictable, high-performance I/O at scale. By providing consistent bandwidth, packet-processing performance (PPS), and IOPS scaling across all VM shapes and sizes, C4N helps ensure your most demanding data workloads run reliably. To achieve this, we have built deep resiliency into every layer of our infrastructure — from the host and fabric layers to redundant top-of-rack (ToR) switches — delivering continuous performance for your applications.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Compared to general-purpose C4 VMs, the network-optimized C4N delivers significant performance gains across both network and block storage vectors.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Next-generation network performance&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Superior VM-to-VM network bandwidth&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Achieves up to 400 Gbps of VM-to-VM network bandwidth (an almost 4x increase in BW-per-vCPU over standard C4) and supports up to 50 Gbps single-flow bandwidth between C4N instances routed within the same VPC network. This provides non-blocking data delivery for high-throughput single-stream and multi-stream applications.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced VM-to-internet performance: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Benefits from an 8x increase in internet egress network bandwidth, reaching up to 200 Gbps. It also features a nearly 32x increase in internet egress packet processing performance, scaling up to 48 MPPS.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Optimized I/O for smaller shapes: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Keeps your cloud bill lean by delivering up to 25–50 Gbps of network bandwidth specifically for 2–16 vCPU shapes, great for accelerating I/O-bound tasks without needing to over-provision compute. Furthermore, these smaller shapes introduce predictable, steady-state baseline bandwidth limits to provide consistent performance at a lower cost.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced out-of-the-box networking&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: gVNIC interfaces on C4N now start with more Tx/Rx queues by default, scaling with vCPUs up to a maximum of 64 (in comparison to 16 queues on C4/C4D).&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Shorter Google Cloud Storage transfer times: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;C4N VMs now offer up to a 2x increase in bandwidth to retrieve and store large volumes of data from Cloud Storage, boosting performance for analytics, AI/ML, and backup workloads. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Better yet, this &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;performance is available out of the box, with no add-ons. Designed for high performance from the get-go, C4N offers maximum performance without needing to purchase or configure premium add-ons like &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Tier_1 networking&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Dynamic storage performance with Hyperdisk&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The C4N instance family, when combined with Hyperdisk, can help dynamically tune storage performance, latency, and throughput independently of your compute instance sizing to deliver high block storage performance for your applications. C4N supports the complete Hyperdisk portfolio, including Hyperdisk Balanced, Balanced High Availability, Extreme, Throughput, and ML block storage options.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Hyperdisk Extreme:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; C4N with Hyperdisk Extreme provides low-latency, high-speed data access for modern databases and enterprise AI applications, with up to 25 GiB/s of block storage throughput and nearly 1M IOPS, a 2x increase in storage performance over C4. Also, exclusive to network optimized machine series such as C4N, we now offer Hyperdisk Extreme across all machine sizes — even down to the smallest 2 vCPU sizes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Hyperdisk Balanced&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Delivering the highest throughput and IOPS for general-purpose block storage in the Compute Engine portfolio, Hyperdisk Balanced on C4N scales up to 20 GiB/s of block storage throughput and nearly 640K IOPS. This makes it a highly cost-effective option for running storage-intensive applications at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Together, C4N’s network and storage optimizations combine for tremendous impact in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;real-world applications:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Web serving:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Up to 1.5x additional Nginx requests per second compared to C4 for typical web request sizes (100–300Kb), significantly boosting capacity for network-bound web applications&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Databases&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Up to 45% better queries per second (QPS) for MySQL when data resides primarily on disk than equivalent C4 VMs&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;What customers are saying&lt;/span&gt;&lt;/h3&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Industry leaders are already proving that workload-optimized infrastructure is the engine for transformation. Here is how our customers are leveraging the network-optimized power of C4N:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="ericsson" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/ericsson_run6NFp.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;“5G Core workloads are inherently network-heavy, demanding high-throughput packet processing and deterministic latency that standard public cloud instances often struggle to maintain at scale. By leveraging the Google Cloud C4N compute family, we’ve found the ideal engine for Ericsson On-Demand. The C4N’s architectural focus on network-optimized compute allows our 5G Core-as-a-Service to reach unprecedented throughput levels — like our recent 1 Tbps milestone — while maintaining the carrier-grade reliability our customers expect. It’s no longer just about cloud-native; with C4N, we are delivering network-native performance in a public cloud environment.” -&lt;/i&gt; Eric Parsons, VP, Head of Ericsson On-Demand, Ericsson&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="teradata" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/teradata.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;“Teradata's Autonomous Knowledge Platform unifies production-grade AI, analytics, and data into a single integrated system — providing the context, governance, and performance backbone autonomous AI demands at scale. Customers rely on Teradata to run mission-critical, highly I/O-intensive workloads where performance and cost control directly determine value.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Google Cloud C4N instances are well suited for these demanding workloads, delivering strong price-performance and supporting more efficient, optimized deployments. By leveraging C4N on Google Cloud, Teradata Cloud can help customers accelerate from insight to action — scaling enterprise intelligence with confidence and driving greater impact from their data and AI investments”&lt;/i&gt; - Kevin Dougherty, Senior Director of Product Management, Core Platform, Teradata&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="netapp" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/netapp.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;“With the next-generation network and storage bandwidth of C4N VMs, Google Cloud NetApp Volumes will unlock new levels of performance to support our customers’ most demanding AI workloads. By collaborating to extend Google Cloud NetApp Volumes support for the C4N VM family, Google and NetApp are deepening our partnership to address real customer challenges. Together, we’re delivering data-in-place AI and analytics solutions that simplify architectures, maximize performance, and turn data into impact.” -&lt;/i&gt; Pravjit Tiwana, Senior Vice President and General Manager of Cloud Storage and Services, NetApp&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="sycomp" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/sycomp.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;"Most Compute Engine instances ship with a single high-speed network interface. The new C4N doubles the bandwidth potential with two 200 GbE interfaces. That architectural shift is significant. It means we can dedicate both networks entirely to storage traffic, doubling the available bandwidth for data-intensive workloads, and achieving 2x storage performance over the previous generation. The C4N was announced just weeks ago and is already active in Sycomp's test environment, ensuring our customers can evaluate the latest GCP capabilities without delay. Google Cloud’s published maximum hyperdisk balanced performance for the C4N is 20 GiB/s. In our tests, with three storage servers Sycomp achieved 58.5 GiB/s on read and 58.6 GiB/s on write, with ten C4N storage servers we achieved 195 GiB/s read and write — 97% of the theoretical ceiling with zero platform-specific tuning. That's a strong starting point, and there's measurable room to close the remaining gap through configuration work we can finetune.&lt;/i&gt; &lt;b&gt;&lt;i&gt;The C4N isn't just faster — it changes the price-performance equation for storage workloads on Google Cloud.&lt;/i&gt;&lt;/b&gt;" - Scott Fadden, Senior HPC Solutions Architect, Sycomp&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="clipper db" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/clipper_db.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;“At ClipperDB Technologies, our mission is to drive down the cost and drive up the performance of large-scale Spark analytics. Google Cloud’s C4N instances are the perfect compute engine for our fully native architecture. C4N’s substantial increase in network bandwidth per vCPU combined with large memory configurations and 5th Generation Intel Xeon processors align with ClipperDB’s precise parallel cloud-store prefetching and caching, concurrent dataflow native batch pipelines, streaming no-copy exchange, and cloud store checkpoint fault tolerance to radically accelerate and cost reduce Spark workloads with disaggregated Cloud Storage datalakes.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;The results speak for themselves: across industry-standard TPC-DS benchmarks, ClipperDB+C4N delivered&lt;/i&gt; &lt;b&gt;&lt;i&gt;over 3x lower cost per query and up to 11x faster analytics&lt;/i&gt;&lt;/b&gt;&lt;i&gt;, all while maintaining 100% Spark compatibility. We can’t wait to see customers dramatically improve their Spark workload price-performance with C4N coupled with Clipper DB Accelerator." -&lt;/i&gt; John Busch, CEO, ClipperDB Technologies&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;A deeper look at C4N shapes and specs&lt;/strong&gt;&lt;/h3&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;C4N instances are available in nine different sizes ranging from 2-192 vCPUs and up to 1.5 TB of DDR5 memory, offering predefined shapes in high-cpu, standard, and high-mem configurations. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;For applications that benefit from caching and high-speed, low-latency local storage, C4N VM instances are equipped with up to 12 TiB of latest Titanium SSDs (coming soon, Sign-up&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://forms.gle/ehRSqssSEavKt1Fh7" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;to request C4N Local-SSD preview access). For workloads that require direct access to the machine's resources (e.g., hypervisors, container platforms), &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;where nested virtualization does not meet the workload’s performance requirements&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, or have special performance monitoring or licensing needs, we are introducing C4N bare metal shapes. Coming soon, these native bare metal shapes will offer the same network and storage I/O performance as their virtual machine counterparts. Google Cloud customers can use C4N instances with Compute Engine and Google Kubernetes Engine (GKE), with support for other services coming soon.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Name&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;vCPUs&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Memory&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(GB)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Local Storage&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(GiB)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td colspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Network Bandwidth&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Hyperdisk Extreme Bandwidth&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(MiB/s)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td rowspan="2" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Hyperdisk&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Extreme &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt; IOPS&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;VM-VM&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(Gbps)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;VM-Internet&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(Gbps)&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C4n-highcpu&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2 - 192&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;4 - 384&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;N/A&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;25 - 400&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 200&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.000 - 25,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;80,000 - 1M&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C4n-standard&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2 - 192&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 720&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;N/A&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;25 - 400&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 200&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.000 - 25,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;80,000 - 1M&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C4n-standard-lssd&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;4 - 192&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;15 - 720&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;375 - 12,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;30 - 400&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 200&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.000 - 25,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;100,000 - 1M &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C4n-highmem&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2 - 192&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;15 - 1,488&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;N/A&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;25 - 400&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 200&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.000 - 25,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;80,000 - 1M &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C4n-highmem-lssd&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;4 - 192&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;31 - 1,488&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;375 - 12,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;30 - 400&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;7 - 200&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.000 - 25,000&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;100,000 - 1M &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;C4N machine series performance and specifications&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;How to get started&lt;/strong&gt;&lt;/h3&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Whether you’re hosting heavy-duty distributed databases, running network virtualization appliances, or orchestrating large-scale data pipelines for AI, C4N is engineered to provide the throughput, scale, and efficiency your business demands. C4N instances are now generally available via on-demand, as Spot VMs, and via reservations. You can also take advantage of further cost savings by purchasing Committed Use Discounts (CUDs) or FlexCUDs in one- and three-year terms in the us-central1 (Iowa), us-east1 (South Carolina), us-east5 (Ohio), us-west1 (Oregon) and europe-west2 (London). For more information visit&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/network-optimized-machines"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Network Optimized Machine Type&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to establish a high-performance launchpad for innovation? Head straight to the &lt;/span&gt;&lt;a href="https://console.cloud.google.com/"&gt;&lt;span style="vertical-align: baseline;"&gt;Google Cloud console&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to &lt;/span&gt;&lt;a href="https://console.cloud.google.com/compute/instancesAdd" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;spin up a C4N VM&lt;/span&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;under the “Network Optimized” machine family. Stay up-to-date on regional availability by visiting our&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/regions-zones"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;regions and zones page&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; or contact your Google Cloud sales representative for more information.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/compute/c4n-network-and-storage-optimized-vms"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-08T20:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/07/convert-your-google-slides-to-videos-in-7-additional-languages.html</id>
     <title>Convert your Google Slides to videos in 7 additional languages</title>
@@ -444,6 +896,14 @@ Along with this change to our evaluation, in this July release we’re adding 8 
     <link href="https://docs.cloud.google.com/release-notes#July_08_2026"/>
     <category term="Cloud Release Notes"/>
     <published>2026-07-08T07:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://geminicli.com/docs/changelogs/#announcements-v0500---2026-07-08</id>
+    <title>Gemini CLI v0.50.0</title>
+    <updated>2026-07-08T00:00:00+00:00</updated>
+    <link href="https://geminicli.com/docs/changelogs/#announcements-v0500---2026-07-08"/>
+    <category term="Gemini CLI"/>
+    <published>2026-07-08T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/07/new-calendar-sharing-permission-level-and-changes-to-recurring-event-visibility.html</id>
@@ -38516,61 +38976,5 @@ building projects using Android Gradle Plugin version 9.0 or higher.&lt;/p&gt;</
     <link href="https://cloud.google.com/blog/products/data-analytics/using-connected-sheets-to-analyze-bigquery-data/"/>
     <category term="Google Cloud"/>
     <published>2026-05-29T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up/</id>
-    <title>Cool stuff Google Cloud customers built, May edition: Agentic algorithms for supply chains; virtual try-on APIs; robotic camera operators &amp; more</title>
-    <updated>2026-05-29T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;AI and cloud technology are reshaping every corner of every industry around the world. Without our customers, who are building the future on our platform, there would be no Google &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Cloud. In this &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up-april-2026"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;regular round-up&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, we dive into some of the exciting projects redefining businesses, shaping industries, and creating new categories. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;For our latest edition, we learn how &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Urban Outfitters&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; sped up its order management; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;BASF&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; uses AlphaEvolve algorithms to map global supply chains; the unification strategy for &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;UKG&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;’s workforce intelligence; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;WPP&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;’s secrets to training humanoid robot camera operators; how &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Breuninger&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; piloted Virtual Try-On APIs; creating automated video clips with &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Glance&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;; and &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Movix&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; improves the production of dental aligners.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Be sure to check back next month to see how more industry leaders and exciting startups are putting Google Cloud technologies to use. And if you haven’t already, please peruse our list of &lt;/span&gt;&lt;a href="https://workspace.google.com/blog/ai-and-machine-learning/how-our-customers-are-using-ai-for-business" rel="noopener" target="_blank"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;1,302 real-world gen AI use cases&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; from our customers.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Urban Outfitters saves big by migrating order management&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Urban Outfitters, Inc. (URBN), the popular clothing and home goods retailer, relies on IBM Sterling OMS as the nerve center of its global ecommerce operations. However, the foundation of this critical system — a massive 11TB Oracle database — was increasingly becoming a bottleneck.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/databases/urban-outfitters-moves-sterling-oms-to-alloydb-for-postgresql"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; URBN completed a major infrastructure upgrade, migrating its IBM Sterling OMS from an Oracle database to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud's AlloyDB for PostgreSQL&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. To enhance performance and provide high availability and scalability, the AlloyDB deployment architecture includes two read replicas, providing low-latency access to data for reporting and analytics. Google Cloud and IBM teams also assisted URBN in a rigorous, iterative switchover testing strategy.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The migration to AlloyDB has fundamentally reshaped URBN’s data strategy, delivering a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;more favorable total cost of ownership&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; through an optimized storage and compute architecture, without sacrificing performance or reliability. Furthermore, the shift to a PostgreSQL-compatible database gave URBN the flexibility of an open-source ecosystem, providing &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;freedom from vendor lock-in&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, as well as &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;significant speed improvements &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;that enhanced responsiveness.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; "URBN’s successful migration serves as a blueprint for organizations looking to modernize their mission-critical infrastructure and future-proof their environment for AI expansion. This journey proves that even the most complex, mission-critical migrations can be achieved through deep cross-organizational partnership and a phased, risk-mitigated approach." – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Rob Frieman&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, CIO, Urban Outfitters &amp;amp;&lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt; Raj Pai&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, VP, Product Management, Databases, Google Cloud&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;BASF manages supply chain decisions with AlphaEvolve&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; BASF Agricultural Solutions manages a complex network of 180 production sites with more than 5,000 distinct value chains. Currently, human planners make thousands of local decisions every day on what to produce, when to produce it, and how much safety stock to hold.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/how-basf-manages-thousands-of-supply-chain-decisions-with-alphaevolve"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; To understand how local decisions ripple across their entire global network, BASF turned to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;AlphaEvolve on Google Cloud&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; to build a digital twin of their supply chain. In collaboration with Google Cloud and prognostica GmbH, BASF fed the model three years of historical data and then generated variations of the code, mutating the logic to see if it could simulate a supply chain that matched the real-world historical data.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; By running thousands of experiments, AlphaEvolve developed a clear, human-readable algorithm that explains how the BASF network truly operates. The final algorithm successfully mirrored the actual historical performance of the supply chain, significantly &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;reducing the error rates&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; compared to the initial seed model. It automatically discovered factually correct, domain-specific supply chain rules, providing a clear foundation for &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;optimizing asset utilization globally&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; “We had several attempts to build a digital twin. … By using AlphaEvolve, we cannot only map the complex network based on system data, but at the same time understand and copy the human decisions that drive our daily operations.” – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Dr. Goetz Krabbe&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;vice president for global supply chain at BASF&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;UKG unlocks real-time workforce intelligence at scale&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; UKG is one of the leading providers of human capital management (HCM) and workforce management (WFM) solutions, but years of growth led to backend sprawl. They have 126 application teams, dozens of tech stacks, and more than 12,000 database instances.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/databases/how-ukg-taps-workforce-intelligence-with-the-agentic-data-cloud"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; To bring the full UKG suite onto one real-time foundation, the company built People Fabric, a new data and intelligence platform powered by &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;AlloyDB for PostgreSQL&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and the just-announced &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Agentic Data Cloud&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. They created a custom change data capture (CDC) framework to extract changes from existing operational databases, and for larger analytical workloads, the same data flows into &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, while &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud SQL&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; holds the metadata and tenancy context.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; People Fabric gives UKG a complete and consistent view of people, work, pay, and culture data that’s updated continuously and ready for AI to use in real time. For engineering teams, People Fabric acts as a database-as-a-service that &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;accelerates development and supports modernization&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; without customer disruption. Additionally, migrating core person and employment data off their on-prem monolith has generated &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;cost savings significant enough to fund half of People Fabric&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us: “&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;As we continue expanding People Fabric, we’re laying the groundwork for deeper agentic automation, more responsive analytics, and a growing set of AI-driven capabilities — all on a trusted, scalable foundation built for what’s next.” – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Radhi Chagarlamudi&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, Group Vice President, Product Engineering, UKG &amp;amp; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Heather White&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, Cloud Data Architect, Google Cloud&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;WPP accelerates humanoid robot training 10x with G4 VMs&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; WPP is one of the world’s largest marketing organizations, handling $70 billion of media for enterprise clients. They work on some of the most complex commercial film shoots and were eager to test the viability of robotic cameras to capture more footage, but this required complex training of physical models AI.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/infrastructure/wpp-humanoid-robots-ai-training"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; WPP used the new &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;G4 VM instance&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; powered by NVIDIA RTX PRO 6000 Blackwell on Google Cloud to tackle the unique challenges of training physical AI for robotics in videography settings. After capturing human motion with the OptiTrack mocap system, they undertook reinforcement learning using the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;AI Hypercomputer&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; together with the NVIDIA Isaac Sim image. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;MuJoCo&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, an open source physics engine by Google DeepMind, was a critical piece of simulation software that validated accuracy continuously, in real-time.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; WPP was able to utilize a P2P topology that moves data directly between GPUs without the bottleneck of central processing. They saw &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;speed increases in excess of 10x&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, taking training times down to less than one hour. Through high-volume simulation, the humanoid robots learned how to respond to small changes and bridge the tough "sim-to-real" gap, helping ensure the robot's simulated adaptability translated to safety and stability in the real world.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; "Our process for mastering complex, natural movement on a film set can be replicated across industries to overcome the massive computational complexity of training robots." – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Perry Nightingale&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;SVP of Creative AI, WPP&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Breuninger boosted sales with its "be your own model" AI&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Breuninger, a fashion and lifestyle company based in Germany, thought emerging generative media models could be a good fit to answer the question every online fashion shopper asks: "How will this look on me?"&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/retail/how-breuninger-boosted-sales-with-its-be-your-own-model-ai"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Working with Google Cloud, they built a virtual try-on experience that lets shoppers see high-end fashion on their own bodies using a simple selfie. Using the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Virtual Try-On (VTO) API&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, Breuninger’s data team worked directly with Google’s engineers to test and refine the technology in three stages, ultimately moving from pre-selected models to a user-first, selfie-based approach. The project was also part of Breuninger’s move to a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Flutter&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;-based platform, which helped the team move from its vision to a live launch in only three months.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; During a six-week A/B test over Black Week and the holiday season, the team found that shoppers who used the virtual try-on &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;converted purchases at a higher rate &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;than those who didn't. Customer surveys reinforced the numbers: shoppers responded well to the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;high image quality&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;personalized experience&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us: &lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Breuninger continues to refine the experience based on how customers actually use virtual try-on in everyday shopping — the same user-first approach that shaped the project from the start.” – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Daniel Rascher&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, Senior Product Owner, Breuninger &amp;amp; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Dr. Michael Menzel&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, Customer AI Specialist, Google Cloud&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Glance turns hours of video into mobile-ready clips&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Glance, a mobile-first content platform, processes 1-2 hour videos from sources like podcasts, news reports, movies, and web series, and transforms them into 30 to 180-second vertical clips optimized for mobile lock screens.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/media-entertainment/how-glance-turns-hours-of-video-into-mobile-ready-clips-with-ai"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; The goal was to create a complete pipeline that takes a long-form landscape video (16:9) and outputs multiple ready-to-publish short-form portrait videos (9:16). The final technical solution uses &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud Speech-to-Text v2&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, and the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Vision API&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, combined with custom video manipulation using Samurai (an open-source object tracking tool), OpenCV and MoviePy. The process involves audio extraction, speech-to-text transcription, and using &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini 2.5 Flash&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; to analyze transcript text and identify optimal start and end timestamps for short video clips.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; With daily volume projected to grow from 3,500 to over 10,000 videos per day, manual editing wasn’t a realistic path forward. Glance’s video pipeline demonstrates what becomes possible when AI handles the repetitive, judgement-intensive work of video editing. The system transforms thousands of long-form videos into mobile-ready clips each day, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;preserving narrative context while optimizing for vertical viewing&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Rather than choosing between scale and quality, automated pipelines can &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;deliver both&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Glance’s video pipeline demonstrates what becomes possible when AI handles the repetitive, judgement-intensive work of video editing. … The approach offers a template for any organization sitting on long-form video archives. Rather than choosing between scale and quality, automated pipelines can deliver both.” – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Himanshu Aggarwal&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;,&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Machine Learning Engineer, Glance &amp;amp; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Sharmila Devi&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, AI Consulting Lead, Google Cloud&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Movix fills a gap in dental skills with specialized agentic AI&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Who:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Movix is building one of the first agentic AI solutions for dental appliance manufacturers and dental labs, to help solve a serious shortage of skilled dental technicians in aligner manufacturing.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/startups/filling-the-gaps-in-dental-skills-with-specialized-agentic-ai"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;What they did:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Movix developed custom models for deep learning, computer vision, and 3D mesh analysis over a five-month period, using Google Cloud infrastructure. Once defects are detected, they use the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini Enterprise Agent Platform&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; to generate client-facing feedback that reads as if it came directly from a human technician. Their 3D models use &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Run with L4 GPUs&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; for the massive compute power required, and they use &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Compute Engine VMs&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; to run experiments and train models.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it matters:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Movix’s agentic solutions automate data entry and quality control, which are traditionally manual, time-consuming, and error-prone tasks. The automation and higher level of accuracy the QC agent delivers can &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;save $300 per remake&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; for an aligner manufacturer, and speed up the appliance manufacturing process with quicker turnaround times.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Learn from us:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; “&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;We plan to build hybrid solutions … designing an architecture that connects our cloud-based AI agents with older, on-premises software that many conservative labs still use — through lightweight local connectors and standardized APIs. This will allow us to access a large market segment that has not yet migrated to the cloud.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;” – &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Marina Domracheva&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;,&lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;CEO, Movix &amp;amp; &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Bakit Dzhumagulov, &lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;CTO, Movix&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up/"/>
-    <category term="Google Cloud"/>
-    <published>2026-05-29T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>http://workspaceupdates.googleblog.com/2026/05/available-in-beta-convert-your-client-side-encrypted-Slides-after-a-Vault-or-Takeout-export.html</id>
-    <title>Available in beta: Convert your client-side encrypted Slides after a Vault or Takeout export</title>
-    <updated>2026-05-29T15:45:35+00:00</updated>
-    <content type="html">Admins can now bulk export client-side encrypted (CSE) Slides using Vault or Data Export (&lt;a href="https://support.google.com/a/answer/14339894" target="_blank"&gt;takeout&lt;/a&gt;), and then convert those exports into PowerPoint files. This allows your organization to retain complete ownership, access, and control of sensitive data in a highly portable format.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Eligible Google Workspace admins can &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;sign up for the CSE Office Interop beta&lt;/a&gt; program, which provides immediate access to CSE compatible export, import, takeout and office editing features. Organizations who’ve previously signed up for the beta program should see this feature in their domains now.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhS1QV53rXAQyAdifFkvaHvZCEr3lkvXFO-vyR9i9spKw8_wlDx-AcrY3HzMPQIK7_gxmM4YeRo9x4PU2u3EWZIzbaAPoaHf9GPYu_ieGNV6RfEBJkPcvk2_8NoKXjrtT7xjG2RrgUt7BrARMT4hMZo04DBvQkZ2OZontShAJOAPoyyCmSHe4o9lpyupbw/s2048/Available%20in%20beta%20-%20Convert%20your%20client-side%20encrypted%20Slides%20after%20a%20Vault%20or%20Takeout%20export%20-%206767.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhS1QV53rXAQyAdifFkvaHvZCEr3lkvXFO-vyR9i9spKw8_wlDx-AcrY3HzMPQIK7_gxmM4YeRo9x4PU2u3EWZIzbaAPoaHf9GPYu_ieGNV6RfEBJkPcvk2_8NoKXjrtT7xjG2RrgUt7BrARMT4hMZo04DBvQkZ2OZontShAJOAPoyyCmSHe4o9lpyupbw/s16000/Available%20in%20beta%20-%20Convert%20your%20client-side%20encrypted%20Slides%20after%20a%20Vault%20or%20Takeout%20export%20-%206767.png" style="border: 1px solid rgb(0, 0, 0);" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;div&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;Admins with eligible Workspace licenses can &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;sign up for the CSE Office Interop beta&lt;/a&gt;. We’ll provide more information on how to get started if you’re accepted.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users: &lt;/b&gt;This launch has no impact on end users.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;div&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt;&amp;nbsp;Available now for customers previously accepted into the CSE Office Interop beta program and upon acceptance into the beta for those who sign up in the future&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;div&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Enterprise: &lt;/b&gt;Enterprise Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Education: &lt;/b&gt;Education Standard and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Other Editions: &lt;/b&gt;Frontline Plus, Assured Controls, Assured Controls Plus&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;div&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://support.google.com/a/answer/10741897?hl=en&amp;amp;ref_topic=10742486" target="_blank"&gt;About client-side encryption&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Updates Blog: &lt;a href="https://workspaceupdates.googleblog.com/2025/03/beta-convert-client-side-encrypted-documents-after-vault-or-takeout-export.html" target="_blank"&gt;Available in beta: Convert your client-side encrypted documents after a Vault or Takeout export&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Updates Blog: &lt;a href="https://workspaceupdates.googleblog.com/2025/09/client-side-encryption-full-sheets-support.html" target="_blank"&gt;Now generally available: Convert your Client-side encrypted Google Sheets after a Vault or Takeout export&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Beta Application: &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;Registration form&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="http://workspaceupdates.googleblog.com/2026/05/available-in-beta-convert-your-client-side-encrypted-Slides-after-a-Vault-or-Takeout-export.html"/>
-    <category term="Workspace Updates"/>
-    <published>2026-05-29T15:45:35+00:00</published>
   </entry>
 </feed>
