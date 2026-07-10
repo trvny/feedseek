@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-10T17:49:58.924753+00:00</updated>
+  <updated>2026-07-10T19:31:00.611280+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -173,6 +173,40 @@
     <link href="https://cloud.google.com/blog/products/data-analytics/evaluate-agent-performance"/>
     <category term="Google Cloud"/>
     <published>2026-07-10T16:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#July_10_2026</id>
+    <title>Cloud Release Notes — July 10, 2026</title>
+    <updated>2026-07-10T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google Distributed Cloud (software only) for bare metal&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;Google Distributed Cloud (software only) for bare metal 1.33.1000-gke.59 is now available for
+download. To upgrade, see &lt;a href="how-to/upgrade"&gt;Upgrade clusters&lt;/a&gt;.
+Google Distributed Cloud for bare metal
+1.33.1000-gke.59 runs on Kubernetes v1.33.11-gke.100.&lt;/p&gt;
+&lt;p&gt;After a release, it takes approximately 7 to 14 days for the version to become
+available for installations or upgrades with the GKE On-Prem API clients: the
+Google Cloud console, the gcloud CLI, and Terraform.&lt;/p&gt;
+&lt;p&gt;If you use a third-party storage vendor, check the listing of our
+previously-qualified &lt;a href="https://docs.cloud.google.com/kubernetes-engine/enterprise/docs/resources/partner-storage"&gt;storage partners&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;p&gt;The following issues were fixed in 1.33.1000-gke.59:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed vulnerabilities listed in &lt;a href="https://docs.cloud.google.com/kubernetes-engine/distributed-cloud/bare-metal/docs/vulnerabilities"&gt;Vulnerability fixes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed an issue where Certificate Authority (CA) rotation failed for
+self-managing clusters (admin, hybrid, and standalone). The failure occurs
+during the final phase of the rotation when attempting to move management
+resources back from the temporary bootstrap cluster to the self-managing
+cluster, which can leave the cluster in an unmanageable state. You must
+upgrade your clusters to version 1.33.1000-gke.59 before you rotate your CAs.
+Running a CA rotation on self-managing clusters in versions prior to
+1.33.1000-gke.59 triggers this issue and can disrupt your ability to manage
+the cluster.
+&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#July_10_2026"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-07-10T07:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/07/streamline-identity-lifecycle-management-in-Google-Workspace-with-new-inbound-SCIM-support.html</id>
@@ -37584,284 +37618,6 @@ limited performance in the following region:&lt;/p&gt;
 &lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By enabling agents to interact securely with transactional data, we are embracing an architecture where AI agents can reliably access and act upon your enterprise’s single source of truth. &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to build? Discover AlloyDB with a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/free-trial-cluster"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;30-day free trial&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and dive into the &lt;/span&gt;&lt;a href="https://codelabs.developers.google.com/alloydb-ai-mcp" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Remote MCP for AlloyDB Codelab&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to start powering your enterprise agentic applications today.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
     <link href="https://cloud.google.com/blog/products/data-analytics/alloydb-remote-mcp-server-ga-secure-ai-agent-access-to-your-data/"/>
-    <category term="Google Cloud"/>
-    <published>2026-06-01T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/containers-kubernetes/gke-standby-buffers-speed-up-autoscaling-for-less-spend/</id>
-    <title>Introducing the GKE standby buffer: Improve node startup times without blowing your budget</title>
-    <updated>2026-06-01T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Application owners and platform engineers have long faced a difficult choice: spend excessively by over-provisioning to guarantee quick startups, or minimize costs but endure slow cold starts.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We are excited to announce a solution to this compromise: &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Kubernetes Engine standby buffers. &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;This&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;builds on the launch of &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/new-gke-active-buffer-minimizes-scale-out-latency"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE active buffers&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; earlier this year,&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; a native version of the Kubernetes &lt;/span&gt;&lt;a href="https://github.com/kubernetes/autoscaler/pull/8151/commits/0ffe04d1136f50eed0be6cd7910701bf3bacedcb" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;CapacityBuffers API&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that makes it easy to provision readily available capacity to handle traffic spikes, delivering near-zero startup latency for new pods. However, active buffers still impose a trade-off between performance and cost. New GKE standby buffers help by maintaining a low-cost, suspended capacity buffer for your GKE clusters. With a cost overhead in the low single-digit percent, GKE standby buffers help you achieve near-immediate scheduling for your workloads &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;with negligible cost overhead. This is useful for all kinds of workloads — general-purpose, agentic, and everything in between.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_cMBIfl7.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Under identical traffic loads, the cluster without standby buffers suffered severe latency spikes, with P50, P95, and P99 metrics trapped between 4 and 6 minutes. Conversely, the cluster with standby buffers maintained a P50 latency of just single-digit seconds, while its P95 and P99 metrics briefly peaked at one minute before quickly normalizing to single-digit seconds. Both setups exhibited a similar allocatable core cost, making the buffered approach far more efficient.&lt;/p&gt;&lt;/figcaption&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;The problem: High costs and latency&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Traditionally, autoscaling with standard Kubernetes has been effective but slow. Traffic surges or batch jobs require cluster autoscalers to provision fresh nodes, leaving Pods in a pending state. To circumvent delays, you have to resort to clunky workarounds like lowering your Horizontal Pod Autoscaler (HPA) thresholds or managing so-called balloon pods. These workarounds are expensive: &lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Managing balloon pods is operationally complex, requiring manual configuration and ongoing maintenance of priority classes and resource requests to ensure they function correctly.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Lowering the HPA threshold adds empty (wasted) space that linearly scales with the size of the node pool.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Both GKE active and standby buffers allow capacity to be defined declaratively, removing the need for clunky and operationally heavy workarounds.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In addition, GKE standby buffers lower infrastructure costs by storing the node’s state to disk, releasing compute and memory costs and keeping only persistent disk and IP address costs. Then, combined with an active buffer, you can achieve near-instant pod scheduling that has similar performance to over-provisioning, but at a very affordable price.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-video"&gt;
-
-
-
-&lt;div class="article-module article-video "&gt;
-  &lt;figure&gt;
-    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=wxsXoBbBHCI"&gt;
-
-      
-        
-
-        &lt;div class="article-video__aspect-image"&gt;
-          &lt;span class="h-u-visually-hidden"&gt;Introducing GKE Capacity Buffers - the native Kubernetes way to achieve low latency pod scheduling&lt;/span&gt;
-        &lt;/div&gt;
-      
-      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
-        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
-      &lt;/svg&gt;
-    &lt;/a&gt;
-
-    
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;div class="h-c-modal--video"&gt;
-   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=wxsXoBbBHCI"&gt;
-   &lt;/a&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Active and standby buffers working together&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;All GKE capacity buffers operate on a principle similar to video streaming on platforms like YouTube. By proactively attempting to provision and manage available capacity ahead of &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;impending&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; demand (much like pre-downloading video content) GKE helps to ensure that resources are readily available when they’re needed.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With today’s launch, the two types of capacity buffers can work in harmony:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Active buffer:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Cluster Autoscaler works to reserve enough capacity for a predefined amount of pods on existing cluster nodes, and, if needed, provisions extra nodes. Select this ready-to-use buffer to provide capacity to your most latency-sensitive workloads. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Standby buffers:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Nodes are pre-provisioned and fully initialized with necessary components like Kubernetes DaemonSets, and given time to &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/configure-capacity-buffer#preload-images"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;preload images&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, but are then suspended, while the underlying compute capacity is released to save costs. When demand spikes, these nodes resume 2-3x faster than creating a fresh node, bridging the gap between cold starts and always-on capacity.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The active buffer covers the initial spike until standby buffers resume. The system prioritizes refilling the active buffer from the standby buffer. The standby buffer handles an extended load and protects against slower node cold starts. As standby buffers refill, they initially kick into an active state for a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/configure-capacity-buffer#customize-standby-behavior"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;configurable amount of time&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; before they are suspended, providing a boost of active capacity during sustained traffic loads.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Early benchmarks&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In our tests, using standby buffers enabled us to deliver sub-second &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/machine-learning/agent-sandbox"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Sandbox&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; scheduling latency for up to 90% lower cost compared to complete overprovisioning.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="2 GKE Buffers Cloud Metrics" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_GKE_Buffers_Cloud_Metrics.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Optimized for business needs&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Businesses are under constant pressure to optimize resource consumption while streamlining operations. Recognizing that organizations need smarter tools to manage sporadic and spikey workloads, we worked hard to deliver standby buffers quickly. Now, whether you’re running agents, batch jobs, CI/CD pipelines, game servers, or spiky workloads, GKE capacity buffers allow you to dynamically balance performance and cost. You can finally define your "insurance policy" against traffic spikes without paying a high premium for it. With GKE standby buffers you can:&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Circumvent cold starts:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Nodes suspended by standby buffers resume 2-3x faster than provisioning fresh nodes, reducing pod scheduling latency during traffic spikes and sustained traffic load.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enjoy lower costs:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A standby buffer incurs a fraction of the cost of active capacity because the underlying VM is suspended. You pay for storage and an IP address, rather than for full compute-hours.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Gain declarative control:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Replace complex balloon pod workarounds with the simple, native declarative CapacityBuffers API, explicitly stating how much headroom you need, and letting GKE handle the rest.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
-  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
-    &lt;div class="uni-paragraph
-      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
-      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
-
-      
-
-
-
-
-
-
-  
-
-    &lt;figure class="article-image--wrap-small
-      
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="unico" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/unico.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-
-
-
-
-
-      &lt;p&gt;&lt;i&gt;“Using GKE standby capacity buffers has lowered our time-to-ready from several minutes to 30 seconds at a very affordable price.”&lt;/i&gt;&lt;br /&gt; &lt;i&gt;- Pedro Spagiari, Chief Architect at Unico&lt;/i&gt;&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Get started&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to improve your performance and save on costs?&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Start by defining a &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;CapacityBuffer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; resource in your cluster to specify your target buffer size.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Try balancing between standby buffers to reduce pod scheduling latency for sustained loads, and active buffers to address immediate unpredictable capacity needs.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let’s look at an example of how to configure buffers for a Deployment while also using custom ComputeClasses.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Basic setup&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Beginning with some basic setup, create a namespace:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;apiVersion: v1\r\nkind: Namespace\r\nmetadata:\r\n  name: my-namespace&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f1379b9c0d0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Then, create a custom ComputeClass (optional):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;apiVersion: cloud.google.com/v1\r\nkind: ComputeClass\r\nmetadata:\r\n  name: my-ccc\r\n  namespace: my-namespace\r\nspec:\r\n  # Buffers will also be created according to these priorities \r\n  priorities:\r\n  - machineFamily: n4\r\n  - machineFamily: n4d\r\n  - machineFamily: c4\r\n  - machineFamily: c4d\r\n  nodePoolAutoCreation:\r\n    enabled: true&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f1379b9ca60&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Define the buffer unit size&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You can use a &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PodTemplate&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;a&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;s a reference for the buffer unit size. You can also create a buffer for a  specific deployment or any object that defines &lt;/span&gt;&lt;a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#scale-subresource" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;scale subResource&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;# Defines the resource requirements for one unit of buffer.\r\napiVersion: v1\r\nkind: PodTemplate\r\nmetadata:\r\n  name: my-buffer-unit-template\r\n  namespace: my-namespace\r\ntemplate:\r\n  spec:\r\n    terminationGracePeriodSeconds: 0\r\n    tolerations:\r\n      # Optional: Ensures buffer pods can land on any node.\r\n      - key: &amp;quot;node-role.kubernetes.io/master&amp;quot;\r\n        operator: &amp;quot;Exists&amp;quot;\r\n        effect: &amp;quot;NoSchedule&amp;quot;\r\n    containers:\r\n    - name: buffer-container\r\n      image: registry.k8s.io/pause:3.9\r\n      resources:\r\n        requests:\r\n          cpu: &amp;quot;1&amp;quot;\r\n          memory: &amp;quot;1Gi&amp;quot;\r\n        limits:\r\n          cpu: &amp;quot;1&amp;quot;\r\n          memory: &amp;quot;1Gi&amp;quot;\r\n    # Optional: Using buffers with a custom ComputeClass / \r\n    # controls the properties of the nodes GKE provisions. \r\n    nodeSelector:\r\n      cloud.google.com/compute-class: my-ccc&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa22a90&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Create buffers&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Lastly, create a&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt; CapacityBuffer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; object by referring to our &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PodTemplate&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;. Here, you create a standby buffer of 50 CPUs and 50 GB of RAM:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;apiVersion: autoscaling.x-k8s.io/v1beta1\r\nkind: CapacityBuffer\r\nmetadata:\r\n  name: my-standby-buffer-resource-limits\r\n  namespace: my-namespace\r\n  annotations:\r\n    # Optional: Time after which buffer nodes are suspended.\r\n    # Default is 5 minutes. \r\n    buffer.gke.io/standby-capacity-init-time: &amp;quot;5m&amp;quot;\r\n    # Optional: Time after which standby buffers are recreated.\r\n    # Default is 1 day, &amp;quot;never&amp;quot; avoids refreshing. \r\n    buffer.gke.io/standby-capacity-refresh-frequency: &amp;quot;1d&amp;quot;\r\nspec:\r\n  podTemplateRef:\r\n    name: my-buffer-unit-template\r\n  # The desired state is 20 standby buffer units.\r\n  # When a standby buffer gets used, a new one gets created.\r\n  limits:\r\n    cpu: &amp;quot;50&amp;quot;\r\n    memory: &amp;quot;50Gi&amp;quot;\r\n  provisioningStrategy: &amp;quot;buffer.gke.io/standby-capacity&amp;quot;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa227c0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;And an active buffer of seven 5 CPUs and 5 GB of RAM (optional):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;apiVersion: autoscaling.x-k8s.io/v1beta1\r\nkind: CapacityBuffer\r\nmetadata:\r\n  name: my-active-buffer-resource-limits\r\n  namespace: my-namespace\r\nspec:\r\n  podTemplateRef:\r\n    name: my-buffer-unit-template\r\n  # The desired state is 2 active buffer units.\r\n  # When an active buffer gets used, a new one gets created. \r\n  limits:\r\n    cpu: &amp;quot;5&amp;quot;\r\n    memory: &amp;quot;5Gi&amp;quot;\r\n  provisioningStrategy: &amp;quot;buffer.x-k8s.io/active-capacity&amp;quot;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa22250&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Finally, apply the above objects to your cluster. That’s it!&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Now, any existing and future deployments that can schedule on the space reserved by the buffers will benefit from faster pod scheduling latencies.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Test the buffers&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;can check on the status of your buffers. In Kubernetes, suspended nodes can be identified by condition&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt; Suspended&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;kubectl get nodes -o custom-columns=\&amp;#x27;NAME:.metadata.name,SUSPENDED:.status.conditions[?(@.type==&amp;quot;Suspended&amp;quot;)].status\&amp;#x27;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa223a0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Expect the following kind of output, and w&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ait for the standby buffers to get suspended.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;NAME                                                  SUSPENDED\r\ngke-my-cluster-nap-n4-standard-8-k960-...-ffbx   False  # Node has been resumed.\r\ngke-my-cluster-nap-n4-standard-4-k960-...-h2x4   &amp;lt;none&amp;gt; # Node was never suspended.\r\ngke-my-cluster-nap-n4d-standard-8-1cip-...-74jf  True   # Node is suspended.&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa221f0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To test the buffers, create a deployment and scale it.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;apiVersion: apps/v1\r\nkind: Deployment\r\nmetadata:\r\n  name: my-deployment\r\n  namespace: my-namespace\r\nspec:\r\n  replicas: 1\r\n  selector:\r\n    matchLabels:\r\n      app: my-deployment\r\n  template:\r\n    metadata:\r\n      labels:\r\n        app: my-deployment\r\n    spec:\r\n      containers:\r\n      - name: busybox\r\n        image: busybox\r\n        command: [&amp;quot;sleep&amp;quot;, &amp;quot;inf&amp;quot;]\r\n        resources:\r\n          requests:\r\n            cpu: &amp;quot;500m&amp;quot;\r\n            memory: &amp;quot;500Mi&amp;quot;\r\n      # Optional: Using buffers with a custom ComputeClass /\r\n      # controls the properties of the nodes GKE provisions. \r\n      nodeSelector:\r\n        cloud.google.com/compute-class: my-ccc&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f137aa22700&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scaling this deployment to two replicas allows them to be assigned to the active buffer for immediate scheduling. The active buffer is then immediately refilled from the standby buffer. Simultaneously, the standby buffer initiates the provisioning of new nodes.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you further scale the deployment to 50 replicas, scheduling all of them on the standby buffer occurs once the nodes resume. New nodes provisioned to refill the standby buffer briefly function as active buffers providing a temporary active standby boost. Therefore, when further scaling the deployment to 100 replicas during this time, you may notice that new replicas benefit from immediate scheduling.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE standby buffer best practices&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When working with GKE standby buffers, here are a few things to consider:&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Define standby buffers that are sufficient to cover the extended load you expect to encounter, so that buffers can refill in the background from a cold start. A sufficiently sized standby buffer can drop your max pod scheduling latency to the time it takes to resume a node — around 30 seconds.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When the buffer starts to get used and is refilled, new buffer nodes initially swing into an active state prior to suspending. This helps to boost active capacity during a prolonged load.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If your application requires the lowest possible pod scheduling latency, define an active buffer size that is sufficient to cover any initial spikes you expect to encounter until standby buffer nodes are able to resume. The system prioritizes refilling the active buffer by consuming the standby buffer. A sufficiently sized active buffer and a sufficiently sized standby buffer can help you achieve one-second pod scheduling latency for a fraction of the cost of overprovisioning.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Experiment with different buffer sizes to get the best result for your workload.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To help, we created a simulator to help with sizing the buffers to achieve your performance targets, available at &lt;/span&gt;&lt;a href="https://github.com/gke-labs/buffers-simulator" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;https://github.com/gke-labs/buffers-simulator&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Try it yourself!&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Active and standby buffers in GKE provide a native solution for low-latency and cost-effective workload scaling by maintaining warm and standby capacity buffers. By circumventing slow node cold starts, buffers help performance-critical applications handle sudden traffic spikes. This feature replaces complex manual workarounds like balloon pods with a simple, declarative API, and allows for fixed, percentage-based, or resource-limited buffering strategies to help maintain strict service-level objectives cost-effectively and without over-provisioning for peak.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Standby buffers are available for GKE clusters running version 1.36.0-gke.2253000 or later. To get started with buffers, check out the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/capacity-buffer"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/containers-kubernetes/gke-standby-buffers-speed-up-autoscaling-for-less-spend/"/>
     <category term="Google Cloud"/>
     <published>2026-06-01T16:00:00+00:00</published>
   </entry>
