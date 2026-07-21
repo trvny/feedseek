@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-21T15:47:18.904143+00:00</updated>
+  <updated>2026-07-21T17:24:59.251011+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -11,6 +11,119 @@
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
   <icon>https://blog.google/favicon.ico</icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/databases/supercharge-pgvector-4x-faster-hnsw-with-alloydb</id>
+    <title>Supercharging pgvector: 4x faster HNSW vector search with AlloyDB</title>
+    <updated>2026-07-21T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;a href="https://cloud.google.com/alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is a fully managed, PostgreSQL-compatible database service built for your most demanding enterprise workloads. It combines the best of open source PostgreSQL with Google’s advanced technology, offering massive scalability, high availability, and native AI capabilities. It serves as a performant relational store, a unified backend for vector and full text search, and an analytics engine that is up to 100x faster than standard PostgreSQL. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Vector search is the foundation of modern AI and Retrieval Augmented Generation (RAG) applications. For developers using AlloyDB and other PostgreSQL databases, &lt;/span&gt;&lt;a href="https://github.com/pgvector/pgvector" rel="noopener" target="_blank"&gt;&lt;code style="text-decoration: underline; vertical-align: baseline;"&gt;pgvector&lt;/code&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is a widely adopted extension for storing, indexing, and querying vector embeddings, and HNSW (Hierarchical Navigable Small World) is a highly efficient graph-based algorithm designed for approximate nearest neighbor search across multi-layered structures. With &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-with-ce"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;columnar engine accelerated HNSW&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in AlloyDB (now in preview), you can achieve up to 4x higher queries per second (QPS) for vector search compared to standard PostgreSQL HNSW.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Enterprise AI applications face a constant trade-off between speed and accuracy. When searching through millions or billions of vectors, maximizing Queries per Second (QPS) without sacrificing search quality (recall) is critical for scaling production workloads. The PostgreSQL &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pgvector&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; extension offers HNSW as one of the indexes that can speed up Approximate Nearest Neighbor (ANN) searches. Let’s dive deep into how AlloyDB solves the speed vs. accuracy trade-off.  &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Note: While this post focuses on HNSW performance, it’s worth noting that HNSW is just one part of AlloyDB’s advanced vector toolkit. AlloyDB also features &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/create-scann-index"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;ScaNN&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;—a cutting-edge index backed by over 14 years of Google Research—giving you the flexibility to choose the perfect index for your workload. Additionally, for use cases demanding absolute precision, standard k-nearest neighbor (KNN) search is always available for 100% recall. Check out our &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/choose-index-strategy"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Choose a Vector Index Guide&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to see how they stack up.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Get started with a 30-day AlloyDB free trial instance&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fd949d92cd0&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Start building for free&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;http://goo.gle/try_alloydb&amp;#x27;), (&amp;#x27;image&amp;#x27;, None)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;First, what is the AlloyDB columnar engine? &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/columnar-engine/about"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB columnar engine&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is a built-in, in-memory cache that automatically stores frequently queried data in a specialized, scan-optimized columnar format. It allows AlloyDB to handle heavy analytical queries up to 100x faster than standard PostgreSQL. Additionally, it accelerates ANN searches by storing the index in memory, using a vectorized memory layout for fast traversals, and bypassing standard PostgreSQL buffer manager overhead. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Performance visualization&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To understand the real-world performance characteristics of columnar engine Accelerated HNSW, we plotted standard QPS vs Recall curves for the GloVe 100 Angular dataset by searching more than 1M records with a limit of 100.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Running this &lt;/span&gt;&lt;a href="https://colab.research.google.com/github/GoogleCloudPlatform/python-docs-samples/blob/main/alloydb/notebooks/columnar_engine_accelerated_hnsw_vector_search_benchmark.ipynb" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;benchmark script&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; yields the following visualization:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_r57mjyN.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Note: These measurements were taken on an AlloyDB C4A 16vCPU machine. Due to the inherent randomness in HNSW graph building, results may slightly vary across runs.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The data reveals two transformative benefits:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Massive performance throughput gains: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;For any given target recall (e.g. 0.95), QPS is increased by approximately &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;4.2x to 4.9x&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. This allows you to handle significantly more concurrent vector searches on the same hardware.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Significant recall (accuracy) improvement: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Conversely, at a fixed QPS level, columnar engine accelerated HNSW provides a substantial boost in recall. For example, we saw that at ~350 QPS (in the above chart), enabling the columnar engine improves recall from roughly &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;0.78 to over 0.94 &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;– a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;0.163 recall gain&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. This means your AI applications get much more accurate results without any latency impact.&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It is important to note that the baseline (blue line) already represents the index being fully cached in the PostgreSQL shared buffer cache. The performance gains shown here are not the result of moving data from disk to RAM, but rather the result of a more efficient memory architecture.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;How it works: Columnar engine Accelerated HNSW&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In standard PostgreSQL architectures, index operations utilize the shared buffer cache. Even when data is fully in-memory, the database still incurs significant overhead from the buffer manager, which must handle operations such as page pinning and unpinning, lock acquisition, buffer table lookups, and Least Recently Used (LRU) management.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AlloyDB's &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;columnar engine &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;is a built-in, in-memory cache that stores data in a specialized, scan-optimized format.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With this release, AlloyDB can use &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;columnar engine accelerated HNSW &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;to:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Pin the index: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;The &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pgvector&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; HNSW index is pinned (kept persistently in-memory to ensure fast access) directly into the columnar engine’s memory.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Vectorized access: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;It utilizes a memory layout specifically designed for the high-concurrency, pointer-heavy traversals required by HNSW graphs.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Bypass buffer overhead: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;By navigating the graph in a specialized memory space, AlloyDB avoids the standard buffer manager bottlenecks. This architectural shift is what enables the dramatic QPS and recall improvements shown above, even when comparing against a fully-cached standard index.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Why it Matters&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For enterprise-scale applications, this isn't just about a faster database—it's about cost and quality:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Reduced infrastructure costs:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Achieve the same performance with significantly lower compute resources.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Better AI accuracy:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Reach higher recall and quality at speeds that were previously only possible for "draft" (high-speed, lower-accuracy results) quality search.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;No application changes required:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Because this is built into AlloyDB, you get these gains using the same standard &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pgvector&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; SQL syntax.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Note that the columnar engine does utilize memory, but it is highly compressed and meticulously managed. Because the engine stores vector data in an efficient columnar format, the memory footprint is minimal compared to the massive performance gains—making it a highly favorable trade-off for enterprise workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Quick Start Guide&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To try out &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-with-ce"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;columnar engine accelerated HNSW&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in AlloyDB, follow these steps:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1. &lt;/span&gt;&lt;strong&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/accelerate-with-ce"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Enable the columnar engine&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and index caching&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ensure that both &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google_columnar_engine.enabled&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google_columnar_engine.enable_index_caching&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; flags are set to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;on&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for your AlloyDB instance.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2. &lt;strong&gt;Add the HNSW Index to columnar engine&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Once your HNSW index is created via &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pgvector&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, execute the following SQL command to cache it in the columnar engine:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;SELECT google_columnar_engine_add_index(&amp;#x27;&amp;lt;hnsw_index_name&amp;gt;&amp;#x27;);&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fd949d92dc0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;3. &lt;strong&gt;Additional Resources&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;New to AlloyDB? Discover AlloyDB with a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/free-trial-cluster"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;30-day free trial&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://colab.research.google.com/github/GoogleCloudPlatform/python-docs-samples/blob/main/alloydb/notebooks/columnar_engine_accelerated_hnsw_vector_search_benchmark.ipynb" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Colab Notebook&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: An end-to-end Python script to ingest the GloVe dataset, create indexes, and plot Recall vs QPS curves.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Is HNSW the right vector index choice for your use case? Check our ‘&lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/choose-index-strategy"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Choose a vector index in AlloyDB AI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;’ guide.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/databases/supercharge-pgvector-4x-faster-hnsw-with-alloydb" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-21T16:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://cloud.google.com/blog/products/identity-security/find-and-fix-software-vulnerabilities-with-codemender</id>
     <title>Now in preview: Find and fix software vulnerabilities with CodeMender</title>
@@ -296,6 +409,649 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Skilled_Trades_Alliance_social.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Skilled_Trades_Alliance_social.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://android-developers.googleblog.com/2026/07/android-on-device-inference.html</id>
+    <title>Build intelligent Android apps: On-device inference</title>
+    <updated>2026-07-21T13:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd7g4aJ0ZhzVcuPr3SzBJIVQ_MZT3hIXb1Ff8SVjjrvRjYzZwhgoE7IbHryS6Ds7u7if1_tmVmMdkFNAtPADXoeuRQ_64Pxfnp3oq2aHR8hbS3fDExGxE0nSiOvXPw7SonhNdjFNI2eDJfasEEMs0xjh2gZlyPq6ToimvFlaMv2-nVDz_XLnSXK1iCn4U/s2469/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Meta%20v02.png" style="display: none;" /&gt;&lt;div&gt;&lt;i&gt;Posted by Caren Chang, Developer Relations Engineer, Android Developer Relations&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIU-6haqWEXnugbhG5is8t1TU0tN3EkfSc7GwvHMRsMSU14k-P7q4il_nJlGk-qNP_PG3aKs1LDWNgWKqhFsG6Q16v2zeoHMvqY_PesC5ddxHRjTGgtiQ33uvOrUIPkSdUgFfBIYSkqBhcuZJTY8jbW0mOjKs8XF8DLxfyD7CjJ1Sd4FM7AUrufTnSEVw/s8582/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Blog%20v02.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIU-6haqWEXnugbhG5is8t1TU0tN3EkfSc7GwvHMRsMSU14k-P7q4il_nJlGk-qNP_PG3aKs1LDWNgWKqhFsG6Q16v2zeoHMvqY_PesC5ddxHRjTGgtiQ33uvOrUIPkSdUgFfBIYSkqBhcuZJTY8jbW0mOjKs8XF8DLxfyD7CjJ1Sd4FM7AUrufTnSEVw/s1600/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Blog%20v02.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;div&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;p&gt;Welcome back to the blog post series "&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html" target="_blank"&gt;Build intelligent Android apps&lt;/a&gt;" where we take a basic Android app and transform it into a &lt;b&gt;personalized, intelligent, &lt;/b&gt;and &lt;b&gt;agentic &lt;/b&gt;experience. In our &lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html" target="_blank"&gt;previous post we introduced Jetpacker&lt;/a&gt;, the demo app we'll use throughout this series.&lt;/p&gt;
+
+&lt;p&gt;In this blog post, we will share how you can use Gemini Nano through &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android"&gt;ML Kit’s Prompt API&lt;/a&gt; to build intelligent on-device features.&lt;/p&gt;
+&lt;div style="height: 0px; margin: 0px auto; overflow: hidden; padding-bottom: 56.25%;"&gt;
+  
+  
+&lt;/div&gt;
+
+&lt;p&gt;Building intelligent on-device features refers to the ability to process prompts and data directly on a device without sending data to a server. This offers a few advantages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;User data can be processed &lt;b&gt;locally&lt;/b&gt; on the device, preserving user privacy&lt;/li&gt;
+  &lt;li&gt;Functionality of the model is &lt;b&gt;reliable&lt;/b&gt; even with spotty or no internet connection&lt;/li&gt;
+  &lt;li&gt;No additional cloud inference &lt;b&gt;cost&lt;/b&gt;, since everything runs on the user’s hardware&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With the benefits of on-device in mind, we identified three features to add in Jetpacker that can improve the user experience: summarizing trip itineraries, managing expenses, and capturing voice notes.&lt;/p&gt;
+
+&lt;h2&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3FDrGSpGJqSapXXQ7052s1NR8rzvmmW-xbyOaAcg8bdTA6ZH7p6ZWE664FjlaoDLfREd-RlQil7gV-VjnCoq76o06haLoSxBzlIDAvM-dKvm_TCgPvqHU3ZlzBTXZ9XtAyMk26QWB8PvU5aUmzO0RBuMxqxJdC1wk7xl_1PXd1KHvuMCeHeAP9zhgSjg/s1848/Screenshot%202026-07-02%20at%2012.57.08%E2%80%AFPM.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="434" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3FDrGSpGJqSapXXQ7052s1NR8rzvmmW-xbyOaAcg8bdTA6ZH7p6ZWE664FjlaoDLfREd-RlQil7gV-VjnCoq76o06haLoSxBzlIDAvM-dKvm_TCgPvqHU3ZlzBTXZ9XtAyMk26QWB8PvU5aUmzO0RBuMxqxJdC1wk7xl_1PXd1KHvuMCeHeAP9zhgSjg/w640-h434/Screenshot%202026-07-02%20at%2012.57.08%E2%80%AFPM.png" width="640" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style="text-align: center;"&gt;&lt;span style="font-weight: normal;"&gt;&lt;span style="font-size: small;"&gt;&lt;i&gt;On-device features in Jetpacker: Summarizing trip itineraries, managing expenses, and voice notes&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;br /&gt;&lt;/div&gt;High quality tailored summarization of short texts&lt;/h2&gt;
+
+&lt;p&gt;The itinerary screen gives users a quick overview of all activities for a given trip. Since this screen contains a lot of information, it can quickly become overwhelming. To help users prepare without feeling overwhelmed, we can add a ‘&lt;b&gt;Get ready for your trip&lt;/b&gt;’ section at the top.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtWrJplvxl7ymB4kMN_Tg4tYYkL7G1Ory0hSptzqsbw_xCu4I9l_4SQPQ9CUXs_Jc7qtT1KcpltBds0aYgIvXiK_-qp6fnoX3QmYnGyqGgr2d5f2uzQkyMK-_Iebwp9Ap0aJA4c8Pz4Zy01O5AM6kk_qZ4Blx_bY-_2xIxSA8DMva2LWBbCN_Hb_c37KE/s2499/Screenshot_20260702_111934.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtWrJplvxl7ymB4kMN_Tg4tYYkL7G1Ory0hSptzqsbw_xCu4I9l_4SQPQ9CUXs_Jc7qtT1KcpltBds0aYgIvXiK_-qp6fnoX3QmYnGyqGgr2d5f2uzQkyMK-_Iebwp9Ap0aJA4c8Pz4Zy01O5AM6kk_qZ4Blx_bY-_2xIxSA8DMva2LWBbCN_Hb_c37KE/w189-h400/Screenshot_20260702_111934.png" width="189" /&gt;&lt;/a&gt;&lt;/em&gt;&lt;/div&gt;
+&lt;div style="text-align: center;"&gt;&lt;span style="font-weight: normal;"&gt;&lt;span style="font-size: small;"&gt;&lt;i&gt;The romantic Paris trip is summarized as a classic Parisian adventure blending art, sights, and delicious food. A tip and some useful phrases are also added.&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;By inputting a trip itinerary and asking an LLM to summarize it, we can generate a quick summary of the trip along with packing tips and useful local phrases. This is a great use case for an on-device model for several reasons:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Performance and quality&lt;/b&gt;: Both the input and output text are relatively short. With that, we can expect the performance and quality of an on-device solution to be on par with more powerful cloud models.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Scalability&lt;/b&gt;: Shifting inference on-device allows us to scale this feature from a few users to millions without worrying about managing increasing cloud inference costs.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Low latency and reliability&lt;/b&gt;: On-device inference guarantees low latency, providing a reliable experience even when users are offline.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To build with on-device, we use &lt;b&gt;Gemini Nano&lt;/b&gt;, Google’s most efficient model optimized for mobile devices. Gemini Nano was first introduced a few years ago, and is now running on over 140 million devices. The latest version of the model, &lt;a href="https://android-developers.googleblog.com/2026/04/AI-Core-Developer-Preview.html"&gt;Gemini Nano 4, is built on the architecture foundation of the recently released Gemma 4 model&lt;/a&gt;, and is further optimized for maximum battery and performance efficiency.&lt;/p&gt;
+
+&lt;p&gt;Using ML Kit’s &lt;b&gt;Prompt API&lt;/b&gt;, we can take advantage of Gemini Nano 4’s new model capabilities to prototype our on-device features. We’ll create a prompt that includes the itinerary of a trip and ask the model to generate a summary along with any preparation tips.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.mlkit:genai-prompt:1.0.0-beta3") 
+
+// Define the configuration for Gemini Nano 4 E2B preview model
+val previewFastConfig = generationConfig {
+    modelConfig = modelConfig {
+        releaseStage = ModelReleaseStage.PREVIEW
+        preference = ModelPreference.FAST
+    }
+}
+
+val geminiNano2BPreviewModel = Generation.getClient(previewFastConfig)
+
+val tripItinerary = ...
+
+val getReadyForYourTripSummary = geminiNano2BPreviewModel
+ .generateContent("Given this trip itinerary: $tripItinerary, 
+     generate the following: overall vibe, tips on how to prepare for this
+     trip, and common short phrases to learn for the trip.")&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finding the optimal prompt usually requires some iteration, and the AICore app is perfect for this step in the process. After opting into the &lt;a href="https://developers.google.com/ml-kit/genai/aicore-dev-preview"&gt;developer preview option for AICore&lt;/a&gt;, we can download preview models such as Gemini Nano 4 to test prompts and see the model’s expected outputs. With a few iterations on the prompt, we were able to improve the speed of the response from 13 seconds to under 2 seconds! Check out the final code implementation and prompt &lt;a href="https://github.com/android/ai-samples/blob/40b999ef0e85693eac4de06e58335f0f5f125fa6/jetpacker/android/feature/trip/itinerary/enrichment/src/main/kotlin/com/example/jetpacker/feature/itinerary_enrichment/TripSummaryAndTipsProviderImpl.kt#L100" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaY2Q7rzlrAj2i410lc3qqtKwI3m6ufAi27R5S94LVFJKEJPnxmvShIcAWdD_Cx9lhTz9tmKW_DVcmNg0rZFBKpqYj0M9niFJwa-AurlyV2SHuErI7Z9H59Q9S936I4ErUQ_NFRNSJpUBXwDVmw6vKNVpIkBrYPJNUpCIyNXl5Z17x7jEl5Kn9BGgFuLg/s553/Screen%20Recording%202026-07-02%20at%2012.28.51%E2%80%AFPM.gif" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaY2Q7rzlrAj2i410lc3qqtKwI3m6ufAi27R5S94LVFJKEJPnxmvShIcAWdD_Cx9lhTz9tmKW_DVcmNg0rZFBKpqYj0M9niFJwa-AurlyV2SHuErI7Z9H59Q9S936I4ErUQ_NFRNSJpUBXwDVmw6vKNVpIkBrYPJNUpCIyNXl5Z17x7jEl5Kn9BGgFuLg/w359-h400/Screen%20Recording%202026-07-02%20at%2012.28.51%E2%80%AFPM.gif" width="359" /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;div style="text-align: center;"&gt;&lt;span style="font-weight: normal;"&gt;&lt;span style="font-size: small;"&gt;&lt;i&gt;The first iteration of our prompt generated way too many tokens, and optimizing it helped keep responses quick and to the point.&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;h2&gt;Local processing for sensitive user input&lt;/h2&gt;
+
+&lt;p&gt;Next, to help users enjoy their trip even more, we’ll build a simple expense manager that takes the manual work out of sorting through receipts and calculating budgets.&lt;/p&gt;
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsHCjYJhDefKk1_FHnyB8mXO6XGrVWPrWkkxUikHNrWly2YqLjD8GyN-qGXOBlZCJPug-VbVgBr8awg8I-TEl6d9udKhq_zKem9Xcdb7FzFlA4B77Iko2Rbf8R0XIPB30owcMoh-7KJ1paQnzDrNHSdvwYotNxt166QqJdNAf1d8wEwIFkL9qIEYUKmoQ/s1282/7.13_BlogGif_Transparent.gif" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsHCjYJhDefKk1_FHnyB8mXO6XGrVWPrWkkxUikHNrWly2YqLjD8GyN-qGXOBlZCJPug-VbVgBr8awg8I-TEl6d9udKhq_zKem9Xcdb7FzFlA4B77Iko2Rbf8R0XIPB30owcMoh-7KJ1paQnzDrNHSdvwYotNxt166QqJdNAf1d8wEwIFkL9qIEYUKmoQ/w191-h400/7.13_BlogGif_Transparent.gif" width="191" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;br /&gt;
+  
+&lt;div style="text-align: center;"&gt;&lt;span style="font-weight: normal;"&gt;&lt;span style="font-size: small;"&gt;&lt;i&gt;Taking a photo of a restaurant bill, data is parsed and shown in the expense overview screen of the app.&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;p&gt;Since receipts might contain sensitive information like credit card number and addresses, this is another great use case for an on-device solution. With on-device, users can be confident that private information will be processed locally on the device without any of their data being sent to the cloud.&lt;/p&gt;
+
+&lt;p&gt;In addition, Gemini Nano 4 has improved model capabilities for multimodality, especially for image understanding tasks like OCR and visual data extraction, making it a great solution for tasks like extracting information from receipts.&lt;/p&gt;
+
+&lt;p&gt;For this use case, the prompt will analyze an image of the receipt, and output information such as: a generated title, amount spent and category of the expense. To ensure the model outputs the information in the preferred format, we can use &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android/structured-output"&gt;ML Kit’s Structured Output API&lt;/a&gt; to seamlessly output a Kotlin data object that we define.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.mlkit:genai-prompt:1.0.0-beta3")
+// ksp("com.google.mlkit:genai-schema-compiler:1.0.0-alpha1")
+
+@Generable("Information extracted from an expense receipt")
+data class ParsedReceipt(
+  @Guide("Generated title for the expense less than 6 words. Based on restaurant or activity name.")
+  val title: String,
+  @Guide("Total amount of the expense. Look for values at the bottom and words like total or balance due.")
+  val amount: Double,
+  @Guide("Type of expense", enumValues = ["travel", "food", "shopping", "entertainment", "other"])
+  val category: String,
+)
+
+val prompt = "Determine if the image is a receipt or expense. 
+    If it is NOT a receipt or expense, output the text 'NOT_A_RECEIPT'.
+    Otherwise, parse the receipt information."
+
+val request = generateContentRequest(ImagePart(bitmap), TextPart(prompt)) {}
+val requestWithStructuredOutput = generateTypedContentRequest(request, ParsedReceipt::class)
+
+// Define the configuration for Gemini Nano 4 E4B preview model  
+// When selecting models, you can specify which performance charactertists are most important
+//  for your use case. Use ModelPreference.FULL when you want to prioritize reasoning power over speed. 
+//  Use ModelPreference.FAST when complex logic is not required and latency is a priority.
+val previewFullConfig = generationConfig {
+    modelConfig = modelConfig {
+        releaseStage = ModelReleaseStage.PREVIEW
+        preference = ModelPreference.FULL
+    }
+}
+
+val geminiNano4BPreviewModel = Generation.getClient(previewFullConfig)
+val response = geminiNano4BPreviewModel.generateContent(requestWithStructuredOutput)
+val parsedReceipt: ParsedReceipt? = response.candidates.firstOrNull()?.response&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Multimodal input&lt;/h2&gt;
+
+&lt;p&gt;Lastly, to help users record audio memos during the trip, let’s build a fully on-device voice notes feature. Using &lt;a href="https://developers.google.com/ml-kit/genai/speech-recognition/android"&gt;ML Kit’s Speech Recognition API&lt;/a&gt;, we’ll enable users to record short voice notes that are automatically transcribed to text. With the transcribed text, we’ll use ML Kit’s Prompt API to identify which trip activity is associated with the recorded voice note, letting users easily recap their trip as they scroll through the trip’s itinerary.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnAm4XPVEJkfPmRFKJWh2sS-4rVz_eFollYxU5DWb7kAkSQdP4xhAEosziS_vpxv6yoAkvHiSp6SGYOp2_qp_cJWgfbJGnDOadaMP6Bc30a6rYnSP34sEubNAWXqsmd3cpYOoL8rCUhQn0_4GT3165aSFinlnHZjVnXYNYBAw8AdVtJpuRG2gDbi-uRII/s2499/Screenshot_20260702_115529.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnAm4XPVEJkfPmRFKJWh2sS-4rVz_eFollYxU5DWb7kAkSQdP4xhAEosziS_vpxv6yoAkvHiSp6SGYOp2_qp_cJWgfbJGnDOadaMP6Bc30a6rYnSP34sEubNAWXqsmd3cpYOoL8rCUhQn0_4GT3165aSFinlnHZjVnXYNYBAw8AdVtJpuRG2gDbi-uRII/w189-h400/Screenshot_20260702_115529.png" width="189" /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;em&gt;The Roman holiday itinerary shows voice note extracts.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://developers.google.com/ml-kit/genai/speech-recognition/android"&gt;ML Kit GenAI Speech Recognition API &lt;/a&gt;allows you to transcribe audio content to text fully on-device using two distinct modes. &lt;b&gt;Basic mode&lt;/b&gt; uses a traditional on-device speech recognition model and is available on most Android devices with API level 31 and higher. &lt;b&gt;Advanced mode&lt;/b&gt; uses Gemini Nano to offer broader language coverage and better quality, and is currently supported on Pixel 10 devices.&lt;/p&gt;
+
+&lt;p&gt;For our feature we combine the Speech Recognition API with the ML Kit GenAI Prompt API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.mlkit:genai-prompt:1.0.0-beta3")
+// implementation("com.google.mlkit:genai-speech-recognition:1.0.0-alpha1")
+
+val tripEvents = ... 
+
+// Set up speech recognition
+val speechRecognizerOptions =
+    speechRecognizerOptions {
+        locale = Locale.US
+        preferredMode = SpeechRecognizerOptions.Mode.MODE_ADVANCED
+    }
+val speechRecognizer: SpeechRecognizer = SpeechRecognition.getClient(speechRecognizerOptions)
+
+suspend fun transcribeVoiceNote(recognizer: SpeechRecognizer) {
+    // Display partial text as the user is recording audio
+    var partialTextResponse = ""
+
+    // Display the full text once user is finished recording audio
+    var transcription = ""
+
+    val request: SpeechRecognizerRequest
+        = speechRecognizerRequest { audioSource = AudioSource.fromMic() }
+    recognizer.startRecognition(request).collect { response -&amp;gt;
+        when (response) {
+            is SpeechRecognizerResponse.PartialTextResponse -&amp;gt; {
+                partialTextResponse = response.text
+            }
+            is SpeechRecognizerResponse.FinalTextResponse -&amp;gt; {
+                transcription = response.text
+                processAndCategorizeVoiceNote(transcription, tripEvents)
+            }
+        }
+    }
+}
+
+fun processAndCategorizeVoiceNote(transcribedVoiceNote: String, events: List) {
+    val prompt = "Given the voice note $transcribedVoiceNote
+     and the following events for this trip: $events, rewrite this transcription
+     to remove filler words. Then, identify which events from the
+     list this rewritten transcription matches to."
+
+     // Utilize ML Kit's Prompt API to process voice note and tag it with the relevant trip activities
+     Generation.getClient().generateContent(prompt)
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Using ML Kit’s GenAI APIs, we were able to take advantage of Gemini Nano to develop fully on-device intelligent features for the JetPacker app, and provide an improved user experience without any additional cloud costs.&lt;/p&gt;
+
+&lt;p&gt;Check out the full source code for &lt;a href="https://github.com/android/ai-samples/tree/main/jetpacker" target="_blank"&gt;Jetpacker on Github&lt;/a&gt;, and watch the video &lt;a href="https://www.youtube.com/watch?v=_iuXykdlTkk"&gt;Build Intelligent Android apps with Google’s AI&lt;/a&gt; to learn more about how to integrate intelligent features directly into your app using on-device models, cloud-powered reasoning, and the latest agentic frameworks.&lt;/p&gt;&lt;h2&gt;Learn more&lt;/h2&gt;
+
+&lt;p&gt;Check out the other parts of this blog post series:&lt;/p&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html"&gt;&lt;b&gt;Part 1:&lt;/b&gt;&lt;/a&gt; Introduction of the app and a high-level overview.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;&lt;b&gt;Part 2 (this post!):&lt;/b&gt;&lt;/a&gt;&amp;nbsp;On-device intelligence. Deep-dive into ML Kit’s GenAI APIs and Gemini Nano to build privacy-first features like itinerary summarization, receipt parsing, and local audio processing.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html"&gt;&lt;b&gt;Part 3:&lt;/b&gt; &lt;/a&gt;Hybrid and cloud reasoning. Explore how to use Firebase AI Logic to ground LLM answers in real-world data like Google Maps and web context.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html"&gt;&lt;b&gt;Part 4:&lt;/b&gt;&lt;/a&gt; System integration. Integrating with the Android intelligence system using AppFunctions.&lt;br /&gt;Part 5 (coming soon): In-app agentic workflows. Extend the app with an end-to-end booking assistant powered by A2UI and ADK.
+
+&lt;p&gt;Interested in more on Android Development? Follow Android Developers on &lt;a href="https://www.youtube.com/@AndroidDevelopers"&gt;YouTube&lt;/a&gt; or &lt;a href="https://www.linkedin.com/showcase/androiddev/"&gt;LinkedIn&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;All code snippets in this blog post follow the following copyright notice:&lt;br /&gt;
+&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Copyright 2026 Google LLC.
+SPDX-License-Identifier: Apache-2.0&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</content>
+    <link href="https://android-developers.googleblog.com/2026/07/android-on-device-inference.html" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-07-21T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd7g4aJ0ZhzVcuPr3SzBJIVQ_MZT3hIXb1Ff8SVjjrvRjYzZwhgoE7IbHryS6Ds7u7if1_tmVmMdkFNAtPADXoeuRQ_64Pxfnp3oq2aHR8hbS3fDExGxE0nSiOvXPw7SonhNdjFNI2eDJfasEEMs0xjh2gZlyPq6ToimvFlaMv2-nVDz_XLnSXK1iCn4U/s72-c/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Meta%20v02.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd7g4aJ0ZhzVcuPr3SzBJIVQ_MZT3hIXb1Ff8SVjjrvRjYzZwhgoE7IbHryS6Ds7u7if1_tmVmMdkFNAtPADXoeuRQ_64Pxfnp3oq2aHR8hbS3fDExGxE0nSiOvXPw7SonhNdjFNI2eDJfasEEMs0xjh2gZlyPq6ToimvFlaMv2-nVDz_XLnSXK1iCn4U/s72-c/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Meta%20v02.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd7g4aJ0ZhzVcuPr3SzBJIVQ_MZT3hIXb1Ff8SVjjrvRjYzZwhgoE7IbHryS6Ds7u7if1_tmVmMdkFNAtPADXoeuRQ_64Pxfnp3oq2aHR8hbS3fDExGxE0nSiOvXPw7SonhNdjFNI2eDJfasEEMs0xjh2gZlyPq6ToimvFlaMv2-nVDz_XLnSXK1iCn4U/s72-c/0625%20Building%20JetPacker%20with%20Intelligent%20On-Device%20features_Meta%20v02.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html</id>
+    <title>Build intelligent Android apps: Introduction to Jetpacker</title>
+    <updated>2026-07-21T13:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigBFwd7rJO49I_puODKBWFqPbpHaGyL3CTFuZBbr0HTQConFnc3JP0dL9Rr_i6wmyW0o4Ku2bvv3SEacwpC3Vc6b7cYy0aRbZKdUDudFcraYO8zcBVkrMfbrfMP9How0J1xSi91xLnR4s5Z3s-Lp6RF2SA0gU56B9nXD0NkD_CU8MT6wbgBw1tRaMWcMo/s2469/0713%20Jetpacker%20Meta.png" style="display: none;" /&gt;
+&lt;div&gt;&lt;i&gt;Posted by Jolanda Verhoef, Senior Developer Relations Engineer,&amp;nbsp;&lt;/i&gt;&lt;i&gt;Android Developer Relations&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFlbIY8mjuSzlWuS8mnGJ3v8Je-yrtFFaBHNXumMqS0rbaS32wv5HUhI4mv5pHT8ro0Rfb-duyMhK8_OeKnMyocY9s6GmC9_pgTEv6sgZoiaZpD00sODTTctYV8I4RHddKWcXAMUyTASk97cS1ysx4A2PFYB6PEeiHeN93BFgDiOTKH62ZJMig3kGP66E/s8583/0713%20Jetpacker%20Blog.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFlbIY8mjuSzlWuS8mnGJ3v8Je-yrtFFaBHNXumMqS0rbaS32wv5HUhI4mv5pHT8ro0Rfb-duyMhK8_OeKnMyocY9s6GmC9_pgTEv6sgZoiaZpD00sODTTctYV8I4RHddKWcXAMUyTASk97cS1ysx4A2PFYB6PEeiHeN93BFgDiOTKH62ZJMig3kGP66E/s1600/0713%20Jetpacker%20Blog.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;p&gt;Building GenAI features in your app usually means navigating through various models, APIs and architecture choices:&amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Execution location:&lt;/strong&gt; Where does your model run? On device, in the cloud, or both?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; How complex is your setup? Are you doing a single inference call or do you need a more agentic flow?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;In-app or Android System:&lt;/strong&gt; Should your feature be built into your Android app or does it fit better as an Android system integration?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this blog post series we'll navigate these choices with you. We will take you along on a journey, starting with a basic mobile app and transforming it into a &lt;b&gt;personalized&lt;/b&gt;, &lt;b&gt;intelligent&lt;/b&gt;, and &lt;b&gt;agentic&lt;/b&gt; experience.&lt;/p&gt;
+
+&lt;h2&gt;Jetpacker: a demo travel app&lt;/h2&gt;
+&lt;p&gt;Jetpacker is a &lt;b&gt;technical showcase app&lt;/b&gt; that our team built from the ground up for this year's Google I/O (built using Antigravity). At its core, Jetpacker helps users plan, explore, and enjoy their next big adventure. It shows an overview of your trips, the itinerary of each trip, and details of each event on that trip. Of course following all best practices of Android development, including a beautifully expressive Material UI design.&lt;/p&gt;&lt;div style="height: 0px; overflow: hidden; padding-bottom: 56.25%;"&gt;
+  
+  
+&lt;/div&gt;
+
+&lt;p&gt;And best of all? It's fully &lt;a href="https://github.com/android/ai-samples/tree/main/jetpacker" target="_blank"&gt;open source&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Today we are publishing a series of&lt;b&gt; technical blog posts&lt;/b&gt; diving deep into each of these features. We’ll provide detailed implementation steps, code snippets, and architectural insights to help you build your own intelligent Android applications.&lt;/p&gt;
+
+&lt;h2&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;On-device intelligence&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7d4EqOTEFypjsqmFoZ8h-zPw3QqQkNY1F_vdbJ98vv1QJCqIE8P-reC0fttcMfNk05g3kGSLhGXVaeiOQDqARK6ptNhFe43miZgTNSmdF7V5hh6u4PhjQleWXmxDqkAf5YKPPyBU14V9z_wFfkiwVDCHN0rkLDtbZCGnb6Jq8d7Iu3YRVgDd9fcMeTiA/s1848/on-device-features.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7d4EqOTEFypjsqmFoZ8h-zPw3QqQkNY1F_vdbJ98vv1QJCqIE8P-reC0fttcMfNk05g3kGSLhGXVaeiOQDqARK6ptNhFe43miZgTNSmdF7V5hh6u4PhjQleWXmxDqkAf5YKPPyBU14V9z_wFfkiwVDCHN0rkLDtbZCGnb6Jq8d7Iu3YRVgDd9fcMeTiA/s1600/on-device-features.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;On-device features in Jetpacker: Summarizing trip itineraries, managing expenses, and voice notes&lt;/i&gt;&lt;/div&gt;&lt;p&gt;Using an on-device model comes with &lt;b&gt;no additional cloud inference&lt;/b&gt; costs, means you don't have to worry about &lt;b&gt;internet connectivity&lt;/b&gt;, and lets users be confident that private information will be &lt;b&gt;processed locally&lt;/b&gt;, on the device, without any of their data being sent to the cloud.&lt;/p&gt;
+
+&lt;p&gt;In Jetpacker, we chose on-device inference for three of our features:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;b&gt;trip overview&lt;/b&gt; feature transforms a messy, multi-day itinerary into a concise, actionable summary. It leverages Gemini Nano through the &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android"&gt;ML Kit GenAI APIs&lt;/a&gt; to process data locally on the device. We consider this a nice-to-have feature where we don't want to incur extra cloud costs, making on-device inference the right choice.&lt;/li&gt;
+  &lt;li&gt;The &lt;b&gt;expense tracker&lt;/b&gt; automatically extracts structured data from receipt images to help users track their travel spending. It uses the &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android/get-started#provide-multimodal"&gt;multimodal capabilities&lt;/a&gt; of Gemini Nano 4 through the ML Kit GenAI APIs. We choose an on-device solution so that any privacy-sensitive information on the receipt images never leaves the user's device.&lt;/li&gt;
+  &lt;li&gt;The &lt;b&gt;audio diary &lt;/b&gt;records, transcribes, and categorizes voice notes into relevant trip activities. It is powered by the &lt;a href="https://developers.google.com/ml-kit/genai/speech-recognition/android"&gt;ML Kit Speech Recognition&lt;/a&gt; and &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android/get-started"&gt;GenAI Prompt APIs&lt;/a&gt;. We chose an on-device solution for privacy and connectivity reasons.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html" target="_blank"&gt;Cloud &amp;amp; hybrid inference&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFPZiA1Obbj1gQKJ6S-U4UCR-jiUjasFY3jGQPeBRS27JJD5DzDIpGseazaNR3qcXR6xtYck8RYqKd0jgHGXVnfqQiPkW7jWVgTB_Hkds5EZcQDjosBZc7Ma9A-JaRaLeVxzEpTXYwSkalIyOIt-WQ_kqdlAvpDH1nB0Ajv7FdFJJ50aBOhP7a0p_RvN4/s2722/cloud-hybrid-features.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFPZiA1Obbj1gQKJ6S-U4UCR-jiUjasFY3jGQPeBRS27JJD5DzDIpGseazaNR3qcXR6xtYck8RYqKd0jgHGXVnfqQiPkW7jWVgTB_Hkds5EZcQDjosBZc7Ma9A-JaRaLeVxzEpTXYwSkalIyOIt-WQ_kqdlAvpDH1nB0Ajv7FdFJJ50aBOhP7a0p_RvN4/s1600/cloud-hybrid-features.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;i&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;Cloud and hybrid features in Jetpacker: Museum assistant with web grounding, hybrid restaurant review drafting, and hotel support chat featuring custom-routed live translation.&lt;/i&gt;&lt;/div&gt;&lt;/i&gt;&lt;p&gt;Sometimes your use-case requires AI models with &lt;b&gt;greater world knowledge&lt;/b&gt; or a much &lt;b&gt;larger context window&lt;/b&gt; and with greater ability in &lt;b&gt;handling complex tasks&lt;/b&gt;. In that case, we can switch from running an on-device model to using a cloud model instead.&lt;/p&gt;
+
+&lt;p&gt;Or, if you want to get the best of both worlds, you can use hybrid inference to &lt;b&gt;dynamically choose&lt;/b&gt; either a cloud or on-device model at runtime. This allows us to &lt;b&gt;lower costs&lt;/b&gt; by moving inference to the device when it is available, but at the same time &lt;b&gt;support all Android devices&lt;/b&gt; running the app.&lt;/p&gt;
+
+&lt;p&gt;In Jetpacker, we implemented several features using cloud or hybrid inference:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;b&gt;place Q&amp;amp;A&lt;/b&gt; feature answers user questions about specific locations by grounding responses in real-world data. It uses &lt;a href="https://firebase.google.com/docs/ai-logic"&gt;Firebase AI Logic&lt;/a&gt; integrated with &lt;a href="https://firebase.google.com/docs/ai-logic/grounding-google-maps"&gt;Google Maps&lt;/a&gt; and &lt;a href="https://firebase.google.com/docs/ai-logic/grounding-google-search"&gt;web context&lt;/a&gt;. Using a cloud model is necessary here for its greater world knowledge.&lt;/li&gt;
+  &lt;li&gt;The &lt;b&gt;review drafting&lt;/b&gt; feature helps users compose detailed reviews for the places they have visited. It leverages both on-device and cloud models through Firebase AI Logic's new &lt;a href="https://firebase.google.com/docs/ai-logic/hybrid/android/get-started"&gt;Hybrid inference API&lt;/a&gt;. This is a feature we wanted to make available to all app users, so we're using a cloud model as a fallback when an on-device model is unavailable.&lt;/li&gt;
+  &lt;li&gt;The &lt;b&gt;automatic chat translation&lt;/b&gt; dynamically translates chat messages in real time to facilitate seamless communication, demonstrating custom hybrid inference logic. Again, we want this feature to be available to all app users, but at the same time have some specific considerations on when to choose on-device versus cloud.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html"&gt;System integration&lt;/a&gt;&lt;/h2&gt;&lt;div style="height: 0px; overflow: hidden; padding-bottom: 56.25%;"&gt;
+  
+  
+&lt;/div&gt;
+&lt;p&gt;While not a feature you see in the app itself, the Android system integration opens up the app's core capabilities directly to the Android operating system. It uses the &lt;a href="https://developer.android.com/ai/appfunctions"&gt;AppFunctions API&lt;/a&gt; to integrate with system-level intelligence.&lt;/p&gt;
+
+&lt;h2&gt;In-app agentic workflows (coming soon!)&lt;/h2&gt;
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3YAW_TWepCinuAvHQ7i9JKfhWtf-GSggI6CtD0Qp7-nfPA7UTmmYHTAtsEybWlmiPgxZqo_fUlqc44dmF_5WWH4tlTRze8qdsm9Jc5ARwL5k_PJjU1VTcAHRE3EdxL4JHSnsCt4VCzwPaR41LM34048icLNZLE1kUhpLTeiGpDH87Bh7utPJmXS4kn_8/s1618/agentic-feature-booking-assistant%20(1).png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3YAW_TWepCinuAvHQ7i9JKfhWtf-GSggI6CtD0Qp7-nfPA7UTmmYHTAtsEybWlmiPgxZqo_fUlqc44dmF_5WWH4tlTRze8qdsm9Jc5ARwL5k_PJjU1VTcAHRE3EdxL4JHSnsCt4VCzwPaR41LM34048icLNZLE1kUhpLTeiGpDH87Bh7utPJmXS4kn_8/w209-h400/agentic-feature-booking-assistant%20(1).png" width="209" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;i&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;The booking assistant shows several in-progress flight bookings, asking the user for input before making a final booking.&lt;/i&gt;&lt;/div&gt;&lt;/i&gt;&lt;p&gt;Agenticness introduces a higher level of&lt;b&gt; autonomy&lt;/b&gt;, enabling models to act as agents. Instead of a single inference call, an agent works towards a specific goal via an orchestration loop that allows it to &lt;b&gt;reason&lt;/b&gt;, use &lt;b&gt;tools&lt;/b&gt;, and &lt;b&gt;adapt &lt;/b&gt;its path. Depending on your requirements, these intelligent agents can run either in the cloud, directly on-device, or in a hybrid setup.&lt;/p&gt;
+
+&lt;p&gt;For Jetpacker we added a &lt;b&gt;booking assistant&lt;/b&gt; that automates end-to-end booking workflows directly within the application to streamline reservations. It is built using &lt;a href="https://a2ui.org/"&gt;A2UI&lt;/a&gt; and &lt;a href="https://adk.dev/"&gt;ADK&lt;/a&gt; running in the cloud. The Android app functions as a front-end to the multi-agentic system running in the cloud.&lt;/p&gt;
+
+&lt;h2&gt;Learn more&lt;/h2&gt;
+&lt;p&gt;Check out the other parts of this blog post series:&lt;/p&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html"&gt;&lt;b&gt;Part 1 (this post!):&lt;/b&gt;&lt;/a&gt; Introduction of the app and a high-level overview.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;&lt;b&gt;Part 2:&lt;/b&gt;&lt;/a&gt; On-device intelligence. Deep-dive into ML Kit’s GenAI APIs and Gemini Nano to build privacy-first features like itinerary summarization, receipt parsing, and local audio processing.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html"&gt;&lt;b&gt;Part 3:&lt;/b&gt;&lt;/a&gt; Hybrid and cloud reasoning. Explore how to use Firebase AI Logic to ground LLM answers in real-world data like Google Maps and web context.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html"&gt;&lt;b&gt;Part 4:&lt;/b&gt;&lt;/a&gt; System integration. Integrating with the Android intelligence system using AppFunctions.&lt;br /&gt;Part 5 (coming soon): In-app agentic workflows. Extend the app with an end-to-end booking assistant powered by A2UI and ADK.&lt;p&gt;Interested in more on Android Development? Follow Android Developers on &lt;a href="https://www.youtube.com/@AndroidDevelopers"&gt;YouTube&lt;/a&gt; or &lt;a href="https://www.linkedin.com/showcase/androiddev/"&gt;LinkedIn&lt;/a&gt;!&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-07-21T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigBFwd7rJO49I_puODKBWFqPbpHaGyL3CTFuZBbr0HTQConFnc3JP0dL9Rr_i6wmyW0o4Ku2bvv3SEacwpC3Vc6b7cYy0aRbZKdUDudFcraYO8zcBVkrMfbrfMP9How0J1xSi91xLnR4s5Z3s-Lp6RF2SA0gU56B9nXD0NkD_CU8MT6wbgBw1tRaMWcMo/s72-c/0713%20Jetpacker%20Meta.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigBFwd7rJO49I_puODKBWFqPbpHaGyL3CTFuZBbr0HTQConFnc3JP0dL9Rr_i6wmyW0o4Ku2bvv3SEacwpC3Vc6b7cYy0aRbZKdUDudFcraYO8zcBVkrMfbrfMP9How0J1xSi91xLnR4s5Z3s-Lp6RF2SA0gU56B9nXD0NkD_CU8MT6wbgBw1tRaMWcMo/s72-c/0713%20Jetpacker%20Meta.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigBFwd7rJO49I_puODKBWFqPbpHaGyL3CTFuZBbr0HTQConFnc3JP0dL9Rr_i6wmyW0o4Ku2bvv3SEacwpC3Vc6b7cYy0aRbZKdUDudFcraYO8zcBVkrMfbrfMP9How0J1xSi91xLnR4s5Z3s-Lp6RF2SA0gU56B9nXD0NkD_CU8MT6wbgBw1tRaMWcMo/s72-c/0713%20Jetpacker%20Meta.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html</id>
+    <title>Build intelligent Android apps: Integrate into Android's intelligence system using AppFunctions</title>
+    <updated>2026-07-21T13:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi961epgT3N_Za_k2-pCJ30tegn7DM-Umh1LWh7Q4NxhryR5H57JB00zKQcek56ccAvEM95i6wyXWWCZZ7486_Gq1ewxPHtsMY13UVsVTmndAvkOJtHPjUXuZ3XW_yBEFtlOr2ocBFIKr0PCRZhIRs67h6bX6zDKihwcxQs8bGbYTqIp5azuBKcX4PNMMY/s2469/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Meta.png" style="display: none;" /&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Posted by Ben Weiss, Senior Developer Relations Engineer,&amp;nbsp;Android Developer Relations&lt;/i&gt;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi92OFxAOxVMpResmBcBoUfxzgcMmVOMn3mXQabB9O-xkC7pjYxrvXS7YLTEWLIBstwuDLc0ePCC-Tf7AKq62mgAXjSYg9-VUIjKvokK6BhGHqPDSXCTQowbpj40plsP3V3Ju3ck4gzNdJmGQ6C1-twuob2UnPu7oY9B_oSwnYSkaif7lSEMwFnStzWknM/s8583/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Blog.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi92OFxAOxVMpResmBcBoUfxzgcMmVOMn3mXQabB9O-xkC7pjYxrvXS7YLTEWLIBstwuDLc0ePCC-Tf7AKq62mgAXjSYg9-VUIjKvokK6BhGHqPDSXCTQowbpj40plsP3V3Ju3ck4gzNdJmGQ6C1-twuob2UnPu7oY9B_oSwnYSkaif7lSEMwFnStzWknM/s1600/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Blog.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;Welcome back to the blog post series "&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html" target="_blank"&gt;Build intelligent Android apps&lt;/a&gt;" where we take a basic Android app and transform it into a personalized, intelligent, and agentic experience. In our &lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html"&gt;previous post&lt;/a&gt;,&amp;nbsp;we explored how to leverage Firebase AI Logic to build cloud-hosted and hybrid AI features.&lt;/p&gt;Traditional mobile UIs excel at focused, hands-on tasks, and the Android intelligence system is introducing complementary features to make complex, multi-step actions even easier. By supplementing traditional user interfaces, AppFunctions provide a powerful new entry point: A privileged agent on the device can access app features in the background. This can be particularly helpful when users are driving, walking or otherwise multitasking. 
+
+&lt;p&gt;In this article, we'll show you how we designed and integrated these capabilities into our travel planning app, &lt;a href="https://github.com/android/jetpacker"&gt;JetPacker&lt;/a&gt;, using Android AppFunctions. We'll explore the rationale behind our feature choices, discuss the specialized tooling we used to accelerate development, and dive into the code that makes it all work.&lt;/p&gt;
+
+&lt;h2&gt;Designing AI-ready features: making choices that matter for your users&lt;/h2&gt;
+
+&lt;p&gt;To select which features to provide to the intelligence system, we looked for tasks where a voice or text command is objectively faster than tapping through screens. In this side-by-side screen recording you can see this contrast perfectly: on the left, a user tapping through multiple screens to log an expense; on the right, the same task completed instantly in the background via a privileged agent.&lt;/p&gt;
+
+&lt;div class="vertical-video-grid"&gt;
+  &lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIr2ssY2GiOlBmFzcP-91j91VjH9QX_sOP8FcmtirYPyXZmYRzNJmfqI_GT6aXYXye8-ntylv-gTNu1Qlnbx5gHiFn9naHqt7tJOQBA3HpQ5uz8XRdavXh7b3IP3FzJb4SsbC4mClGLUHupDwIeE9Du3PNRQr0SGs2lgHZTdHXnv8TagNBRtoJsbpeE6c/s960/Comp%201.gif" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIr2ssY2GiOlBmFzcP-91j91VjH9QX_sOP8FcmtirYPyXZmYRzNJmfqI_GT6aXYXye8-ntylv-gTNu1Qlnbx5gHiFn9naHqt7tJOQBA3HpQ5uz8XRdavXh7b3IP3FzJb4SsbC4mClGLUHupDwIeE9Du3PNRQr0SGs2lgHZTdHXnv8TagNBRtoJsbpeE6c/s1600/Comp%201.gif" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;div class="vertical-video-wrapper"&gt;&lt;br /&gt;&lt;/div&gt;
+
+&lt;p&gt;Our first choice was expense tracking. Logging a coffee expense during a trip usually takes quite a few taps—unlocking the phone, opening the app, finding the active trip, navigating to the expenses tab, tapping the add button, taking a picture of the receipt, and checking the result. By providing the &lt;code&gt;addExpense&lt;/code&gt; and &lt;code&gt;getExpenses&lt;/code&gt; features as AppFunctions, the system agent handles the heavy lifting. When the user says, "Add a five-dollar coffee expense to my Paris trip," the agent automatically searches for the correct trip ID in the background and inserts the expense, skipping the manual UI flow entirely.&lt;/p&gt;
+
+&lt;p&gt;We also prioritized itinerary management. Finding what activity is next on a busy trip itinerary usually requires scrolling through a dense timeline view. By providing &lt;code&gt;getItinerary&lt;/code&gt; and &lt;code&gt;addItineraryEvent&lt;/code&gt; to the system, the user can simply ask, "What am I doing next in Paris?" and get an immediate answer.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRduisOXPFs0o2m-JwtESU1fUEanqH-A0eGt58MUuXs-vgN1af77M-j3ETdegzulBq-3TClrDvhO2K_8q4ep8xAlnW1y5T09ZxxHyZmTRtftA9DOmIk7ykfM_JihQ2c2fcUbEA-jCO1sgW2JnxN9qtB8IS58lbQoaIk4cPJPuPQavZNUoW2rNKo9r8g9M/s960/Comp%202.gif" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRduisOXPFs0o2m-JwtESU1fUEanqH-A0eGt58MUuXs-vgN1af77M-j3ETdegzulBq-3TClrDvhO2K_8q4ep8xAlnW1y5T09ZxxHyZmTRtftA9DOmIk7ykfM_JihQ2c2fcUbEA-jCO1sgW2JnxN9qtB8IS58lbQoaIk4cPJPuPQavZNUoW2rNKo9r8g9M/s1600/Comp%202.gif" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  
+
+&lt;p&gt;Finally, we focused on hands-free note capturing. Typing out reminders or notes while walking down a busy street is difficult and unsafe. Exposing a voice note capability allows the user to say, "The flight was amazing, I saw a beautiful sunset and managed to sleep well," and the privileged agent automatically transcribes and saves it directly into the travel database&amp;nbsp;&lt;span face="Roboto, sans-serif" style="color: #073042; font-size: 11pt; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"&gt;&amp;nbsp;using the &lt;/span&gt;&lt;span&gt;addVoiceNote&lt;/span&gt;&lt;span face="Roboto, sans-serif" style="color: #073042; font-size: 11pt; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"&gt; AppFunction.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2&gt;Android MCP powered by AppFunctions&lt;/h2&gt;This entire experience is built on Android MCP. Under this design, the app acts as a local MCP server. Rather than remote APIs, you provide your app features directly to the on-device intelligence system.&lt;br /&gt;&lt;br /&gt;&lt;a href="https://d.android.com/ai/appfunctions"&gt;Android AppFunctions&lt;/a&gt; is the API that brings this concept to life. It reads annotated Kotlin functions and compiles them into type-safe, sandboxed tool definitions that the privileged agent can discover and invoke locally on the device.&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjypEvh8lAK1myAWpnG4A0TtdIaTxP69t7g9croAJSUZ2Od6AEkhwMusN3CvdGohdvYzoh1UaCxCHb22oJzCD_4B2K8vfQzcyAIaTl8lk3TCR9T0SoMHjjaDk4GMxxPazeCfT0aF7rifm7-LAvcMhyphenhyphenryDJpOPYon7jiISKB2sMLzAwHDuKFxIv16sDXjrM/s2500/Android%20MCP%20diagram.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjypEvh8lAK1myAWpnG4A0TtdIaTxP69t7g9croAJSUZ2Od6AEkhwMusN3CvdGohdvYzoh1UaCxCHb22oJzCD_4B2K8vfQzcyAIaTl8lk3TCR9T0SoMHjjaDk4GMxxPazeCfT0aF7rifm7-LAvcMhyphenhyphenryDJpOPYon7jiISKB2sMLzAwHDuKFxIv16sDXjrM/s1600/Android%20MCP%20diagram.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;i&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;Diagram highlighting our apps, the android platform, and system agents coordinate AppFunctions.&lt;/i&gt;&lt;/div&gt;&lt;/i&gt;&lt;p&gt;Under the Android MCP model, your app acts as a local MCP server that exposes structured tools, while the Android platform serves as the central tool registry. On the MCP client side, agent apps are registered with the intelligence system after being granted system-privileged permissions to access the registry.&lt;/p&gt;
+
+&lt;p&gt;When a user interacts with a registered agent, its LLM determines if the request can be handled by an AppFunction, queries the platform's metadata, and executes the appropriate registered functions in the background. This local MCP client-server design gives you full control: you choose exactly which features are accessible to the agent, keeping the rest of your app's data private.&lt;/p&gt;
+
+&lt;h2&gt;How we accelerated development with Android skills&lt;/h2&gt;
+
+To streamline the integration process, we leveraged the &lt;a href="https://github.com/android/skills/tree/main/device-ai/appfunctions"&gt;AppFunctions development skill&lt;/a&gt;. The AppFunctions development skill is a complete development companion. It guided us through the entire lifecycle: mapping Kotlin data classes to serialize parameters, generating the necessary &lt;code&gt;Service&lt;/code&gt; entry points, refining our &lt;code&gt;KDoc&lt;/code&gt; documentation to ensure the LLM understands parameter boundaries, and setting up automated testing using ADB.
+
+&lt;h2&gt;Providing app features to the intelligence system&lt;/h2&gt;
+
+&lt;p&gt;Enough with the theory, let's dive into the implementation.&lt;/p&gt;
+
+&lt;h4&gt;Configuration and dependency setup&lt;/h4&gt;
+
+&lt;p&gt;We begin by adding the AppFunctions dependencies. One for the API and one for the Kotlin Symbol Processing compiler.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;implementation("androidx.appfunctions:appfunctions:1.0.0-alpha10")
+ksp("androidx.appfunctions:appfunctions-compiler:1.0.0-alpha10")&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Modeling custom data types&lt;/h4&gt;
+
+&lt;p&gt;Any custom object exchanged with the agent must be annotated with &lt;code&gt;@AppFunctionSerializable&lt;/code&gt;. In our &lt;a href="https://github.com/android/ai-samples/tree/main/jetpacker/android/feature/appfunctions/src/main/java/com/example/jetpacker/feature/appfunctions/TripSerializable.kt"&gt;TripSerializable.kt&lt;/a&gt; file, we define our trip data model:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@AppFunctionSerializable(isDescribedByKDoc = true)
+data class TripSerializable(
+    /** The trip's unique identifier. */
+    val id: String,
+    /** The trip's title. */
+    val title: String,
+    /** The trip's destination location. */
+    val location: String,
+    /** The trip's start date in milliseconds. */
+    val startDate: Long,
+    /** The trip's end date in milliseconds. */
+    val endDate: Long,
+    /** A list of participants. */
+    val participants: List&amp;lt;String&amp;gt;,
+)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Providing features using the @AppFunction annotation&lt;/h4&gt;
+
+&lt;p&gt;Next, the skill wrote the Kotlin functions that perform the database queries and annotate them with &lt;code&gt;@AppFunction&lt;/code&gt;. We can view this in searchTrip:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * Looks for trips based on optional filters like id, title (name), location, and dates.
+ *
+ * @param id The unique identifier of the trip.
+ * @param title The title or name of the trip.
+ * @param location The destination location.
+ * @param startDate The minimum start date in milliseconds.
+ * @param endDate The maximum end date in milliseconds.
+ * @return A list of trips matching the filters.
+ */
+@AppFunction(isDescribedByKDoc = true)
+suspend fun searchTrip(
+    id: String? = null,
+    title: String? = null,
+    location: String? = null,
+    startDate: Long? = null,
+    endDate: Long? = null
+): List&amp;lt;TripSerializable&amp;gt; {
+    return withContext(Dispatchers.IO) {
+    // implementation
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since AppFunctions run on the UI thread by default, we use &lt;code&gt;withContext(Dispatchers.IO)&lt;/code&gt; to switch to a background dispatcher. Additionally, we refine our KDoc to use clear, imperative verbs and specify parameter constraints. This documentation compiles directly into the tool's schema, which the privileged agent uses to resolve parameters and handle runtime errors.&lt;/p&gt;
+
+&lt;h4&gt;The service entry point and Hilt integration&lt;/h4&gt;
+
+&lt;p&gt;To register these features with the intelligence system, we create an abstract base class that extends &lt;code&gt;AppFunctionService&lt;/code&gt;. We annotate it with &lt;code&gt;@AppFunctionServiceEntryPoint&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@RequiresApi(36)
+@AndroidEntryPoint
+@AppFunctionServiceEntryPoint(
+    serviceName = "JetPackerAppFunctionService",
+    appFunctionXmlFileName = "jetpacker_app_function_service"
+)
+abstract class BaseJetPackerAppFunctionService : AppFunctionService() {
+    @Inject internal lateinit var tripDao: TripDao
+    // DAOs and database references are injected here...
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;During compilation, KSP generates the final concrete service subclass, &lt;code&gt;JetPackerAppFunctionService&lt;/code&gt;, as declared with the &lt;code&gt;serviceName&lt;/code&gt; parameter. We also register &lt;code&gt;app_metadata.xml&lt;/code&gt; in the app's manifest. This file provides global operational rules for JetPacker's declared AppFunctions.&lt;/p&gt;
+
+&lt;h2&gt;Testing and verifying your AppFunctions&lt;/h2&gt;
+
+&lt;p&gt;Once implemented, you should verify that your AppFunctions are registered and working correctly.&lt;/p&gt;
+
+&lt;p&gt;Running devices or emulators with Android 17 or newer, you can use ADB commands from your terminal to list and invoke your functions. Running &lt;code&gt;adb shell cmd app_function list-app-functions&lt;/code&gt; displays all registered functions for your package. You can then execute a specific function and test its database integration by running &lt;code&gt;adb shell cmd app_function execute-app-function&lt;/code&gt; while passing a raw JSON parameters string.&lt;/p&gt;
+
+&lt;p&gt;Instead of these ADB commands, you can also use the &lt;a href="https://github.com/android/appfunctions"&gt;AppFunctions Testing Agent&lt;/a&gt; to inspect your configuration, list and execute AppFunctions, and even see how your AppFunctions behave in a real conversational flow.&lt;/p&gt;
+
+&lt;h2&gt;Wrapping it up&lt;/h2&gt;
+
+&lt;p&gt;When thinking about app features that can be contributed to the intelligence system using AppFunctions requires a slight shift in how we think about code and documentation. AppFunctions enable you to use this new interaction model for apps, which allows using an agent to access app features..&lt;/p&gt;
+
+&lt;p&gt;First, the &lt;a href="https://github.com/android/skills/tree/main/device-ai/appfunctions"&gt;AppFunctions development skill&lt;/a&gt; is an essential lifecycle tool, helping you discover features, implement and refine AppFunctions for your apps. Second, KDoc comments are a compiled API asset; clear parameter descriptions directly impact the execution accuracy of the system agent. Finally, Android MCP provides local-first execution allowing apps to safely collaborate with AI agents.&lt;/p&gt;
+
+&lt;p&gt;Contributing app features through AppFunctions makes your application ready for the intelligence system. Let us know how you are adapting your apps for the agentic era!&lt;/p&gt;
+
+&lt;h2&gt;Learn more&lt;/h2&gt;
+
+&lt;p&gt;Check out the other parts of this blog post series:&lt;br /&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html"&gt;Part 1:&lt;/a&gt;&lt;/b&gt; Introduction of the app and a high-level overview.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;&lt;b&gt;Part 2:&lt;/b&gt;&lt;/a&gt; On-device intelligence. Deep-dive into ML Kit’s GenAI APIs and Gemini Nano to build privacy-first features like itinerary summarization, receipt parsing, and local audio processing.&lt;br /&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html"&gt;Part 3:&lt;/a&gt;&lt;/b&gt; Hybrid and cloud reasoning. Explore how to use Firebase AI Logic to ground LLM answers in real-world data like Google Maps and web context.&lt;br /&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html"&gt;&lt;b&gt;Part 4 (this post!):&lt;/b&gt;&lt;/a&gt; System integration. Integrating with the Android intelligence system using AppFunctions. &lt;br /&gt;Part 5 (coming soon):&amp;nbsp;In-app agentic workflows. Extend the app with an end-to-end booking assistant powered by A2UI and ADK.&lt;/p&gt;
+
+&lt;p&gt;Interested in more on Android Development? Follow Android Developers on &lt;a href="https://www.youtube.com/@AndroidDevelopers"&gt;YouTube&lt;/a&gt; or &lt;a href="https://www.linkedin.com/showcase/androiddev/"&gt;LinkedIn&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;
+  All code snippets in this blog post follow the following copyright notice:
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Copyright 2026 Google LLC.
+SPDX-License-Identifier: Apache-2.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    <link href="https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-07-21T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi961epgT3N_Za_k2-pCJ30tegn7DM-Umh1LWh7Q4NxhryR5H57JB00zKQcek56ccAvEM95i6wyXWWCZZ7486_Gq1ewxPHtsMY13UVsVTmndAvkOJtHPjUXuZ3XW_yBEFtlOr2ocBFIKr0PCRZhIRs67h6bX6zDKihwcxQs8bGbYTqIp5azuBKcX4PNMMY/s72-c/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Meta.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi961epgT3N_Za_k2-pCJ30tegn7DM-Umh1LWh7Q4NxhryR5H57JB00zKQcek56ccAvEM95i6wyXWWCZZ7486_Gq1ewxPHtsMY13UVsVTmndAvkOJtHPjUXuZ3XW_yBEFtlOr2ocBFIKr0PCRZhIRs67h6bX6zDKihwcxQs8bGbYTqIp5azuBKcX4PNMMY/s72-c/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Meta.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi961epgT3N_Za_k2-pCJ30tegn7DM-Umh1LWh7Q4NxhryR5H57JB00zKQcek56ccAvEM95i6wyXWWCZZ7486_Gq1ewxPHtsMY13UVsVTmndAvkOJtHPjUXuZ3XW_yBEFtlOr2ocBFIKr0PCRZhIRs67h6bX6zDKihwcxQs8bGbYTqIp5azuBKcX4PNMMY/s72-c/AFD%20-%20%5BABL_104%5D%20JetPacker%20AppFunctions_Meta.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html</id>
+    <title>Build intelligent Android apps: Cloud and hybrid inference</title>
+    <updated>2026-07-21T13:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBHTpa22SxEltoebLZYO_34iRtahN8z5tA3tnIryIii0s4_conN5qFYfmNro6nmZBfsgiZeRLtru-gE4XO2mf-RBDyIo00kf3QunWwUO-SICHkVSv0exAQQ4qA0KzjMGRpA8qj1TSMP0Ffe0FzrEc_S1zBaakKzCZFpqYLXqds9Zqmqr8yyeSgyNl9U0s/s2469/features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Meta.png" style="display: none;" /&gt;&lt;div&gt;&lt;i&gt;Posted by Thomas Ezan, Jolanda Verhoef, Caren Chang, Senior Developer Relations Engineers, Android Developer Relations&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn2fO3T2xckksQ9pk3RUNPxZqqq2CyaifXnju0lCCpbfwJ4gZyq-df0kM_mK1TMV0F9YCMo19Ba9NvFAiUpzDH6Wlk_RyonRCK5Ono25CYyQ7xGC3q70mUhyphenhyphenOOYJ-5JX2KlFP1lIA3ULIhH86_hP2ptO0AllUIf6ZVh-SqoXVWcXrM8m3hHCkhGwZYfP4/s8583/AFD%20-%20%5BABL_101%5D%20Building%20AI%20features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Blog.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn2fO3T2xckksQ9pk3RUNPxZqqq2CyaifXnju0lCCpbfwJ4gZyq-df0kM_mK1TMV0F9YCMo19Ba9NvFAiUpzDH6Wlk_RyonRCK5Ono25CYyQ7xGC3q70mUhyphenhyphenOOYJ-5JX2KlFP1lIA3ULIhH86_hP2ptO0AllUIf6ZVh-SqoXVWcXrM8m3hHCkhGwZYfP4/s1600/AFD%20-%20%5BABL_101%5D%20Building%20AI%20features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Blog.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;Welcome back to the blog post series "&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html" target="_blank"&gt;Build intelligent Android apps&lt;/a&gt;" where we take a basic Android app and transform it into a &lt;b&gt;personalized&lt;/b&gt;, &lt;b&gt;intelligent&lt;/b&gt;, and &lt;b&gt;agentic&lt;/b&gt; experience. In our &lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;previous post&lt;/a&gt; we explored how to build intelligent on-device features using Gemini Nano through ML Kit's Prompt API.&lt;/p&gt;
+
+&lt;p&gt;In this post, we will look at how you can leverage &lt;b&gt;&lt;a href="https://firebase.google.com/docs/ai-logic"&gt;Firebase AI Logic&lt;/a&gt; &lt;/b&gt;to build cloud-hosted and hybrid AI features:&amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Grounding answers in real-world context&lt;/li&gt;
+  &lt;li&gt;Routing requests dynamically between cloud and local execution using hybrid inference&lt;/li&gt;
+  &lt;li&gt;Translating content with custom routing systems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style="margin: 0px auto; width: 100%;"&gt;
+  
+  
+&lt;/div&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;Sometimes a use case requires AI models with greater world knowledge, a much larger context window, or the ability to handle complex queries. In those scenarios, we can leverage cloud models.&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Other times, you want the best of both worlds: using hybrid inference to run on-device when available to lower costs, while falling back to the cloud to ensure compatibility for all devices.&lt;/p&gt;&lt;br /&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwlTUF1Kzkbrf2w64KO3jZJZZ_wLEu34vq6Cb7PX2alVUhFVdbkiWuXCkzUS-bPJkHMbmuNJ_Ov0HYZzujr69jCU9gPvmKaKMZt2q4-TolSDFCLABBIY1IBRY9Zn7D5S10hFcJD2kuVCm3N2glpqDJoHiqAZat4z6oyXxxwH4ZCGVBgfPObMevoJrgNPg/s8000/features_upscaled.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwlTUF1Kzkbrf2w64KO3jZJZZ_wLEu34vq6Cb7PX2alVUhFVdbkiWuXCkzUS-bPJkHMbmuNJ_Ov0HYZzujr69jCU9gPvmKaKMZt2q4-TolSDFCLABBIY1IBRY9Zn7D5S10hFcJD2kuVCm3N2glpqDJoHiqAZat4z6oyXxxwH4ZCGVBgfPObMevoJrgNPg/s1600/features_upscaled.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;em style="text-align: left;"&gt;Cloud and hybrid features in Jetpacker: Museum assistant with web grounding, hybrid restaurant review drafting, and&amp;nbsp;
+  support chat featuring custom-routed live translation.&lt;/em&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s look at how we implemented three cloud and hybrid features in &lt;a href="https://github.com/android/ai-samples/tree/main/jetpacker" target="_blank"&gt;Jetpacker&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a museum assistant with web grounding&lt;/li&gt;
+  &lt;li&gt;hybrid restaurant review drafting&lt;/li&gt;
+  &lt;li&gt;hotel support chat featuring custom-routed live translation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Use LLM grounding for up-to-date informationMuseum assistant chatbot with LLM grounding&lt;/h2&gt;
+&lt;p&gt;The &lt;b&gt;Museum assistant &lt;/b&gt;is an interactive chatbot designed to help users plan their museum visits. It provides visitors with up-to-date details regarding specific exhibits, current opening hours, ticket pricing, and more.&lt;/p&gt;&lt;br /&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em style="text-align: left;"&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3pxeCVJfOo5G7McNB4RCIhoCUch8CHSAWI7gHijJJcE95b0gbu3lyAO1xIWc6mKllkpylSPBnVfU6RYnwfay4z6dH7TlufPuNw3Lw7s-bEuR4Ajx8IHK8k6zJcOHitqMRdDv8EVL-fCN6uuDo1QTnOgk_RW-AEM1_hZaJWbCGezMQF_D9Hia-Rm2T4-c/s4880/museum_assistant_upscaled.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3pxeCVJfOo5G7McNB4RCIhoCUch8CHSAWI7gHijJJcE95b0gbu3lyAO1xIWc6mKllkpylSPBnVfU6RYnwfay4z6dH7TlufPuNw3Lw7s-bEuR4Ajx8IHK8k6zJcOHitqMRdDv8EVL-fCN6uuDo1QTnOgk_RW-AEM1_hZaJWbCGezMQF_D9Hia-Rm2T4-c/w314-h640/museum_assistant_upscaled.png" width="314" /&gt;&lt;/a&gt;&lt;/div&gt;Museum assistant is a chatbot that answers questions, such as&amp;nbsp;&lt;/em&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em style="text-align: left;"&gt;‘How can I get a ticket discount for Le Louvre?’&lt;/em&gt;&lt;/div&gt;
+
+&lt;p&gt;When building AI features, getting the model to answer with fresh, accurate, and specific real-world information is a common challenge. While cloud models possess massive amounts of world knowledge, they might not know about seasonal exhibits or the current day’s opening hours.&amp;nbsp;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8He5M2JC5EwXZwa-M52UAXHSO4dWy4gx3aZoY2ZXM-x25pV4kc6BsICe_fG4Zn6-R37_UgTQ8LBSsrNcP50e3aQLgxNbHOfWLBqzaSqQ78ZDmNEJadZNc-I5bduHr0UtWOxYMTFAHgffxcuzaETHPe3lvfRod2rkeOUXnRaLJ_vIiAfO_xRKpESbX3L8/s8000/grounding_upscaled.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8He5M2JC5EwXZwa-M52UAXHSO4dWy4gx3aZoY2ZXM-x25pV4kc6BsICe_fG4Zn6-R37_UgTQ8LBSsrNcP50e3aQLgxNbHOfWLBqzaSqQ78ZDmNEJadZNc-I5bduHr0UtWOxYMTFAHgffxcuzaETHPe3lvfRod2rkeOUXnRaLJ_vIiAfO_xRKpESbX3L8/s1600/grounding_upscaled.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;em style="text-align: left;"&gt;&lt;br /&gt;Grounding data is added to the context window to enable the model&lt;/em&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em style="text-align: left;"&gt;&amp;nbsp;to answer questions correctly and accurately.&lt;/em&gt;&lt;/div&gt;
+
+&lt;p&gt;To bridge this gap, we can use grounding techniques to add extra context to the model’s context window. The &lt;a href="https://firebase.google.com/products/firebase-ai-logic" target="_blank"&gt;Firebase AI Logic SDK&lt;/a&gt; supports three types of grounding:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href="https://firebase.google.com/docs/ai-logic/url-context"&gt;URL grounding&lt;/a&gt;:&lt;/strong&gt; Grounding responses using content from a specific webpage (e.g. current ticket prices or museum rules).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href="https://firebase.google.com/docs/ai-logic/grounding-google-search"&gt;Google Search grounding&lt;/a&gt;:&lt;/strong&gt; Letting the model query the real-time Google search index for up-to-date details.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href="https://firebase.google.com/docs/ai-logic/grounding-google-maps"&gt;Maps grounding&lt;/a&gt;:&lt;/strong&gt; Using Google Maps location data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In Jetpacker, we dynamically construct the available tools based on enabled feature flags and initialize the generative model using the Firebase AI SDK:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.firebase:firebase-ai-logic")
+
+private var toolList = mutableListOf&amp;lt;Tool&amp;gt;()
+
+init {
+    if (ENABLE_SEARCH_GROUNDING) {
+        toolList.add(Tool.googleSearch())
+    }
+    if (ENABLE_URL_GROUNDING) {
+        toolList.add(Tool.urlContext())
+    }
+}
+
+private val generativeModel = Firebase.ai(backend = GenerativeBackend.googleAI())
+    .generativeModel(
+        modelName = "gemini-3-flash",
+        systemInstruction = content {
+            text("You are a helpful museum assistant answering questions about a museum. Use plain text.")
+        },
+        tools = toolList
+    )&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the user queries the assistant, if URL grounding is enabled, we append the specific museum resource URLs directly into the prompt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;val groundingText = if (FeatureFlags.ENABLE_URL_GROUNDING) {
+    "\n If the following message above is about the rules and terms to visit Le Louvre, " +
+    "if needed answer this urls ${urlList.joinToString()}"
+} else {
+    ""
+}
+
+val prompt = "$text $groundingText"
+
+var response = chat.sendMessage(prompt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Hybrid inference: On-device review generation with Maps deep link&lt;/h2&gt;
+&lt;p&gt;Not every AI task requires a cloud-based model, and not every device is online. To help developers balance latency, cost, and offline availability, we recently introduced the &lt;a href="https://firebase.google.com/docs/ai-logic/hybrid/android/get-started?api=dev"&gt;Firebase API for Hybrid Inference&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In Jetpacker, the &lt;b&gt;restaurant review&lt;/b&gt; feature lets users review select topics and automatically drafts a review. To enable this for all users, we prioritize local execution with Gemini Nano, and fall back to cloud models on devices that don’t support Gemini Nano.&amp;nbsp;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVa1o2Zh3v3Babi7gGmzOFYAKPEgS0HWmvisiKgK-QsSRh_ZhjTjuUYSS_QIH0JQw9NsqrkYe4Quud6cfCGwVc61_7HKcACj6c9yywWySn5xyHGgemBR5tYPP8q3bmLadaN6uLXspE9LqrcZkVdckEGHWDhdfYVa-xo8QomDaRn03mau2fHVyK0Fr1FaU/s4680/review_upscaled.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVa1o2Zh3v3Babi7gGmzOFYAKPEgS0HWmvisiKgK-QsSRh_ZhjTjuUYSS_QIH0JQw9NsqrkYe4Quud6cfCGwVc61_7HKcACj6c9yywWySn5xyHGgemBR5tYPP8q3bmLadaN6uLXspE9LqrcZkVdckEGHWDhdfYVa-xo8QomDaRn03mau2fHVyK0Fr1FaU/w327-h640/review_upscaled.png" width="327" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em&gt;The restaurant review feature uses hybrid inference to draft a review based on topics&lt;/em&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em&gt;&lt;br /&gt;&lt;/em&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.firebase:firebase-ai-logic")
+// implementation("com.google.firebase:firebase-ai-ondevice:16.0.0-beta03")
+
+
+// Initialize the model with hybrid routing configuration
+val reviewModel = Firebase.ai.generativeModel(
+    modelName = "gemini-3.1-flash-lite",
+    onDeviceConfig = OnDeviceConfig(
+        inferenceMode = InferenceMode.PREFER_ON_DEVICE
+    )
+)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Hybrid Inference API supports four distinct routing modes:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;PREFER_ON_DEVICE:&lt;/strong&gt; Prioritizes local execution and falls back to cloud if Gemini Nano is unavailable.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PREFER_IN_CLOUD:&lt;/strong&gt; Prioritizes cloud execution and falls back to on-device if the device goes offline.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ONLY_ON_DEVICE:&lt;/strong&gt; Restricts execution strictly to the device.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ONLY_IN_CLOUD:&lt;/strong&gt; Restricts execution strictly to the cloud.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once the review is generated, we copy it to the clipboard and use an intent to open Google Maps directly to the restaurant's review page, providing a seamless user experience:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private fun copyAndOpenMapsReview(context: Context, reviewText: String, placeId: String) {
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clip = ClipData.newPlainText("User Review", reviewText)
+    clipboard.setPrimaryClip(clip)
+
+    val uri = Uri.parse("https://search.google.com/local/writereview/mobile?placeid=$placeId")
+    val intent = Intent(Intent.ACTION_VIEW, uri).apply {
+        setPackage("com.google.android.apps.maps")
+    }
+    context.startActivity(intent)
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Custom hybrid routing: Hotel support chat translation with simulated personas&lt;/h2&gt;
+&lt;p&gt;The &lt;b&gt;hotel support chat&lt;/b&gt; was built to let users finalize logistics and check on hotel details. This feature uses system instructions to configure a localized receptionist assistant. By passing specific information—such as the preferred language and hotel information—in the instructions, we can set up a conversational persona representing a specific hotel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private val generativeModel = Firebase.ai(backend = GenerativeBackend.googleAI())
+    .generativeModel(
+        systemInstruction = content {
+            text("""
+              You are a helpful hotel receptionist at $hotelName only speaking $language. 
+              Answer politely in $language. The bar closes at 10pm and breakfast is from 7am to 10am.
+              There's someone at the desk 24/7. You can retrieve your luggage from the storage room 
+              at the back of the lobby at any time.
+              """)
+        },
+        modelName = "gemini-3-flash-preview"
+    )&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because receptionist responses are in the hotel's local language (for example, French for Hotel Le Meurice in Paris), we need to translate messages to the user’s preferred language.&amp;nbsp;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em&gt;&lt;br /&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikIB_NnUYK8GnEpI3foNLO2_AQ2lNZhoc9gFB-CjERDjMwrdQ2T45y6jzrJAafi4Jz7eF_SBkXG7csDwpajKctp5yo1hsBjIacIfK3aHvvQjCUu22qZBj7dLl5Q4aGFJRD4hwTlMMNgZD8sIuYpCrRjMmpa5ybXDzi9nkTMZoiJOEn8jLmqBsgTXcVTDY/s4112/translation_upscaled.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikIB_NnUYK8GnEpI3foNLO2_AQ2lNZhoc9gFB-CjERDjMwrdQ2T45y6jzrJAafi4Jz7eF_SBkXG7csDwpajKctp5yo1hsBjIacIfK3aHvvQjCUu22qZBj7dLl5Q4aGFJRD4hwTlMMNgZD8sIuYpCrRjMmpa5ybXDzi9nkTMZoiJOEn8jLmqBsgTXcVTDY/s1600/translation_upscaled.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;em&gt;Hotel support chat messages are automatically translated to the user’s preferred language&amp;nbsp;&lt;/em&gt;&lt;/div&gt;&lt;/em&gt;&lt;/div&gt;
+
+&lt;p&gt;While hybrid models can configure simple routing preferences, complex scenarios require custom routing logic. In Jetpacker, we implement a custom routing stack that takes into account:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Language identification:&lt;/strong&gt; Using the on-device &lt;a href="https://developers.google.com/ml-kit/language/identification/android"&gt;ML Kit Language Identification API&lt;/a&gt;, we can detect the incoming message language.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;On-device translation (Gemini Nano):&lt;/strong&gt; &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android"&gt;ML Kit’s Prompt API&lt;/a&gt; lets us translate common language pairs directly on the device, saving bandwidth and cloud cost.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cloud translation (Gemini 3 Flash):&lt;/strong&gt; For more complex languages, we use Gemini Flash 3 to get a higher quality translation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;// implementation("com.google.android.gms:play-services-mlkit-language-id:17.0.0")&amp;nbsp;
+
+// ML Kit for Language Identification (powered by Google Play Services)
+private val languageIdentifier = LanguageIdentification.getClient()
+
+// On-device translator model (prefer Gemini Nano) for translating common language pairs
+private val hybridTranslationModel = Firebase.ai(backend = GenerativeBackend.googleAI())
+    .generativeModel(
+        modelName = "gemini-3-flash",
+        onDeviceConfig = OnDeviceConfig(mode = InferenceMode.PREFER_ON_DEVICE)
+    )
+
+// Cloud translator model for more complex language pairs
+private val cloudTranslationModel = Firebase.ai(backend = GenerativeBackend.googleAI())
+    .generativeModel(
+        modelName = "gemini-3-flash"
+    )&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When a message needs to be translated, we identify the source language and apply our custom routing logic, executing either on-device or cloud translation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fun translateMessage(message: SupportChatMessage) {
+    viewModelScope.launch {
+        // 1. Detect language using ML Kit Language Identification
+        val sourceLang = try {
+            Tasks.await(languageIdentifier.identifyLanguage(message.text))
+        } catch (e: Exception) {
+            "Undefined"
+        }
+
+        // 2. Custom routing: we've verified the translation quality for English and Korean with Gemini Nano, and will translate message on-device for those two languages
+        val routeToCloud = sourceLang != "en" &amp;amp;&amp;amp; sourceLang != "kr"
+
+        val prompt = "Translate the following text to $selectedLanguage. Just return the translated sentence: ${message.text}."
+
+        val (translatedText, routePrefix) = if (routeToCloud) {
+            val result = cloudTranslationModel.generateContent(prompt)
+            result.text to "[Cloud]"
+        } else {
+            val result = hybridTranslationModel.generateContent(prompt)
+            result.text to "[On-Device]"
+        }
+
+        if (translatedText != null) {
+            _translations.update { current -&amp;gt;
+                current + (message.id to "$routePrefix: $translatedText")
+            }
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example, the custom routing logic only takes into consideration the translation’s source and target language. However, based on your app’s use case, you can expand the routing logic to include other factors such as the on-device model version, network connectivity, battery status, and more.&lt;/p&gt;
+
+&lt;h2&gt;Securing the AI Pipelines: Firebase App Check&lt;/h2&gt;
+&lt;p&gt;Lastly, using AI in the cloud opens up possibilities of API key abuse or unauthorized billing. To secure API calls, we integrated &lt;a href="https://firebase.google.com/docs/app-check"&gt;&lt;b&gt;Firebase App Check&lt;/b&gt;&lt;/a&gt; using both Play Integrity (production) and the local Debug Provider (for local development or emulators).&lt;/p&gt;
+
+&lt;p&gt;In the &lt;a href="https://github.com/android/ai-samples/blob/main/jetpacker/android/app/src/main/kotlin/com/example/jetpacker/JetPackerApplication.kt"&gt;JetPackerApplication.kt&lt;/a&gt; file, we install the debug provider at startup and trigger anonymous authentication to establish a secure user session:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//  implementation("com.google.firebase:firebase-appcheck-playintegrity")&amp;nbsp;
+//  implementation("com.google.firebase:firebase-appcheck-debug")&amp;nbsp;&amp;nbsp;
+//  implementation("com.google.firebase:firebase-auth")&amp;nbsp;
+
+override fun onCreate() {
+    super.onCreate()
+    Firebase.initialize(context = this)
+    Firebase.appCheck.installAppCheckProviderFactory(
+        DebugAppCheckProviderFactory.getInstance()
+    )
+    Firebase.auth.signInAnonymously()
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When building locally on an emulator, App Check prints a local token secret to logcat:&lt;/p&gt;
+
+&lt;p&gt;Enter this debug secret into the allow list in the Firebase Console: a8c2dd4c-xxxx-xxxx-xxxx-ef6c114ba27e&lt;/p&gt;
+
+&lt;p&gt;Once registered in the Firebase console, local requests are fully verified and authenticated by App Check, protecting our backend while letting us test the app locally.&lt;/p&gt;
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;By combining cloud model capabilities (grounding, system instructions) with on-device capabilities (hybrid routing, translation, security app checks), we created a travel app that is smart, secure, and available offline.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href="https://github.com/android/ai-samples/tree/main/jetpacker" target="_blank"&gt;full source code for Jetpacker on GitHub&lt;/a&gt;, and explore the Firebase documentation to get started:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://firebase.google.com/docs/ai-logic/get-started"&gt;Firebase AI Logic Documentation&lt;/a&gt;&lt;br /&gt;&lt;a href="https://firebase.google.com/docs/ai-logic/hybrid/android/get-started"&gt;Firebase Hybrid Inference API&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Learn more&lt;/h2&gt;
+&lt;p&gt;Check out the other parts of this blog post series:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-introduction-jetpack.html"&gt;Part 1&lt;/a&gt;:&lt;/b&gt; Introduction of the app and a high-level overview.&lt;br /&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/android-on-device-inference.html"&gt;Part 2&lt;/a&gt;: &lt;/b&gt;On-device intelligence. Deep-dive into ML Kit’s GenAI APIs and Gemini Nano to build privacy-first features like itinerary summarization, receipt parsing, and local audio processing.&lt;br /&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html"&gt;Part 3 (this post!):&lt;/a&gt;&lt;/b&gt; Hybrid and cloud reasoning. Explore how to use Firebase AI Logic to ground LLM answers in real-world data like Google Maps and web context.&lt;br /&gt;&lt;b&gt;&lt;a href="http://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-appfunctions.html"&gt;Part 4:&lt;/a&gt; &lt;/b&gt;System integration. Integrating with the Android intelligence system using AppFunctions.&amp;nbsp;&lt;br /&gt;&lt;b&gt;Part 5 (coming soon):&lt;/b&gt; In-app agentic workflows. Extend the app with an end-to-end booking assistant powered by A2UI and ADK.&lt;/p&gt;
+
+&lt;p&gt;Interested in more on Android Development? Follow Android Developers on &lt;a href="https://www.youtube.com/@AndroidDevelopers"&gt;YouTube&lt;/a&gt; or &lt;a href="https://www.linkedin.com/showcase/androiddev/"&gt;LinkedIn&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;All code snippets in this blog post follow the following copyright notice:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Copyright 2026 Google LLC.
+SPDX-License-Identifier: Apache-2.0&lt;/code&gt;&lt;/pre&gt;</content>
+    <link href="https://android-developers.googleblog.com/2026/07/build-intelligent-android-apps-cloud-hybrid-inference.html" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-07-21T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBHTpa22SxEltoebLZYO_34iRtahN8z5tA3tnIryIii0s4_conN5qFYfmNro6nmZBfsgiZeRLtru-gE4XO2mf-RBDyIo00kf3QunWwUO-SICHkVSv0exAQQ4qA0KzjMGRpA8qj1TSMP0Ffe0FzrEc_S1zBaakKzCZFpqYLXqds9Zqmqr8yyeSgyNl9U0s/s72-c/features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Meta.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBHTpa22SxEltoebLZYO_34iRtahN8z5tA3tnIryIii0s4_conN5qFYfmNro6nmZBfsgiZeRLtru-gE4XO2mf-RBDyIo00kf3QunWwUO-SICHkVSv0exAQQ4qA0KzjMGRpA8qj1TSMP0Ffe0FzrEc_S1zBaakKzCZFpqYLXqds9Zqmqr8yyeSgyNl9U0s/s72-c/features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Meta.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBHTpa22SxEltoebLZYO_34iRtahN8z5tA3tnIryIii0s4_conN5qFYfmNro6nmZBfsgiZeRLtru-gE4XO2mf-RBDyIo00kf3QunWwUO-SICHkVSv0exAQQ4qA0KzjMGRpA8qj1TSMP0Ffe0FzrEc_S1zBaakKzCZFpqYLXqds9Zqmqr8yyeSgyNl9U0s/s72-c/features%20in%20Jetpacker%20Features%20with%20Firebase%20AI%20Logic%20_Meta.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://googlecloudpresscorner.com/2026-07-20-Michaels-Unveils-Ask-Mike-AI-Assistant-Built-With-Google-Clouds-Gemini-Enterprise-for-Customer-Experience</id>
@@ -34525,47 +35281,5 @@ hostname matching in the following actions:&lt;/p&gt;
     <link href="https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate" rel="alternate"/>
     <category term="Google DeepMind"/>
     <published>2026-06-09T15:16:25+00:00</published>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/</id>
-    <title>Fluid, natural voice translation with Gemini 3.5 Live Translate</title>
-    <updated>2026-06-09T15:16:25+00:00</updated>
-    <content type="html">Gemini 3.5 Live Translate brings near real-time, natural speech translation to Google AI Studio, Google Translate and Google Meet.</content>
-    <link href="https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-06-09T15:16:25+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/</id>
-    <title>Fluid, natural voice translation with Gemini 3.5 Live Translate</title>
-    <updated>2026-06-09T15:00:00+00:00</updated>
-    <content type="html">Sparkle next to text "Gemini 3.5 Live Translate"</content>
-    <link href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-06-09T15:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model</id>
-    <title>Introducing Gemma 4 12B: a unified, encoder-free multimodal model</title>
-    <updated>2026-06-09T14:10:19+00:00</updated>
-    <link href="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-06-09T14:10:19+00:00</published>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/</id>
-    <title>Introducing Gemma 4 12B: a unified, encoder-free multimodal model</title>
-    <updated>2026-06-09T14:10:19+00:00</updated>
-    <link href="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-06-09T14:10:19+00:00</published>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/powering-the-future-of-robotics-in-europe</id>
-    <title>Powering the future of robotics in Europe</title>
-    <updated>2026-06-09T14:02:33+00:00</updated>
-    <link href="https://deepmind.google/blog/powering-the-future-of-robotics-in-europe" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-06-09T14:02:33+00:00</published>
   </entry>
 </feed>
