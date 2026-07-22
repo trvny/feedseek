@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-22T17:23:39.534247+00:00</updated>
+  <updated>2026-07-22T19:24:38.627995+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -11,6 +11,78 @@
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
   <icon>https://blog.google/favicon.ico</icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://android-developers.googleblog.com/2026/07/optimize-galaxy-screen-sizes.html</id>
+    <title>Optimize your apps for the next generation of Samsung Galaxy devices</title>
+    <updated>2026-07-22T19:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiV-c747avSj9Z8JO4DTK4kSfO3SjSpd5aTuVvR_TBeD3bXV6cc8lzNLGrWCngNXdyZBeiNjQqwQZCcU4QCrovwL99gu0t5bQrlTXa0PIBGIivwyS8y226MgeraphZr4VITWYe0x7ckFto0dsD8rBLM1J_P3dV0CBj5Ctlwm8jsgAPZA7W2XnKnRz59H9I/s2049/MM_Adaptive_and_device_Meta%20(1).png" style="display: none;" /&gt;&lt;div&gt;
+
+
+
+&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: left;"&gt;&lt;i&gt;Posted by Fahd Imtiaz, Senior Product Manager and Miguel Montemayor, Developer Relations Engineer, Android Developer Experience&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGrEplk_My1fOfyw851kt92Jc2wyODN6bwWJaL5EGFV6_5grP3-pS7jrMzI4MOXgo1W1yVHcwj8J7AIO3olxlHDoNWxzTTlQLc9_D6CWB6bUtWLyvxmXN-JQQ92_HWYErsdMVuNkynTjXpZSKoaUTFiY_4aiffEDsfdCrl9om05MRVqqMac0YGExE4XLQ/s4210/MM_Adaptive_and_device_Blog.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGrEplk_My1fOfyw851kt92Jc2wyODN6bwWJaL5EGFV6_5grP3-pS7jrMzI4MOXgo1W1yVHcwj8J7AIO3olxlHDoNWxzTTlQLc9_D6CWB6bUtWLyvxmXN-JQQ92_HWYErsdMVuNkynTjXpZSKoaUTFiY_4aiffEDsfdCrl9om05MRVqqMac0YGExE4XLQ/s1600/MM_Adaptive_and_device_Blog.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;p&gt;Today at Galaxy Unpacked, Samsung &lt;a href="https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026" target="_blank"&gt;unveiled&lt;/a&gt; its latest lineup of foldable and wearable devices. For developers, this means that the variety of form factors, screen sizes, and device postures your app needs to support is expanding once again.&lt;/p&gt;
+
+&lt;p&gt;With devices like the Galaxy Z Fold8, the ecosystem is expanding to include hardware with a landscape-first natural orientation and a wider aspect ratio in its main display state. Whether a user is unfolding a large display, flipping open a cover screen, or glancing at their wrist, users expect a flawless experience. To help you meet this moment, we’re sharing actionable guidance and new tooling updates to enable you to build adaptively proactively.&lt;/p&gt;
+
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;
+  &lt;/div&gt;
+
+&lt;h2&gt;Rethink layout architecture for dynamic displays, including ultra-wide foldables&lt;/h2&gt;
+
+&lt;p&gt;Building for the latest foldables means dropping assumptions about display orientation and size. This is especially true for the Galaxy Z Fold8, which adopts an ultra-wide display, adding to the variety of aspect ratios to account for.&amp;nbsp; Devices with this landscape-first natural orientation show the limitations of hardcoded layout rules when users unfold the device. That’s why we’ve introduced &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/foldables/trifolds-and-landscape-foldables" target="_blank"&gt;dedicated guidance for building for landscape foldables and trifolds.&lt;/a&gt;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrdDMq9mmhR2NzEVD5cgQgT3Y5DgMZOV5FrjsJb-wSiZVvJjIiDQuUkfv0cjBHQMREjOKPqz9n6wPf-x5Hn6H7uT2_JiXA3Nykcr1UwnwDRK9jGFurhTRKR-5t1BN62ISXFznXhQ_e-03Mo6uIh5-BDVmNbA1Q4RY9rSg4VxBO0K6E6Dc4kViNpvuYefY/s1302/Samsung%20fold8%20phones.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrdDMq9mmhR2NzEVD5cgQgT3Y5DgMZOV5FrjsJb-wSiZVvJjIiDQuUkfv0cjBHQMREjOKPqz9n6wPf-x5Hn6H7uT2_JiXA3Nykcr1UwnwDRK9jGFurhTRKR-5t1BN62ISXFznXhQ_e-03Mo6uIh5-BDVmNbA1Q4RY9rSg4VxBO0K6E6Dc4kViNpvuYefY/s1600/Samsung%20fold8%20phones.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;To build a responsive UI that handles these physics seamlessly, focus on the following core pillars:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Build fluid, adaptive layouts: &lt;/b&gt;Wide aspect ratios and compact vertical heights require fluid UIs that scale responsively. Our updated &lt;a href="https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout" target="_blank"&gt;adaptive design guidance&lt;/a&gt; advises considering the window class width first to determine layout changes, then adjusting for height. To let individual components fluidly adapt to the grid, structure your layout using flexible containers that allow your content to automatically wrap, span, and reflow. For design inspiration browse our &lt;a href="https://developer.android.com/design/ui/gallery/social/pawparazzi" target="_blank"&gt;adaptive sample app&lt;/a&gt; and &lt;a href="https://developer.android.com/design/ui/gallery/social/dual-screen?hl=en" target="_blank"&gt;dual-screen&lt;/a&gt; design galleries.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Track actual app space:&lt;/b&gt; Your app's display space rarely matches the physical device size, especially on an ultra-wide screen during multi-window, split-screen, or multitasking states. Sometimes even the orientations differ. Leverage &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/use-window-size-classes?hl=en" target="_blank"&gt;Window Size Classes&lt;/a&gt; using the &lt;a href="https://developer.android.com/blog/posts/jetpack-window-manager-1-5-is-stable" target="_blank"&gt;Jetpack Window Manager library&lt;/a&gt; to calculate the exact space your app occupies.&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;
+  
+&lt;div class="separator" style="clear: both; text-align: center;"&gt;
+  &lt;/div&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: left;"&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: left;"&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Leverage the latest Jetpack Compose Update: &lt;/b&gt;Start by adopting the stable &lt;a href="https://android-developers.googleblog.com/2026/04/jetpack-compose-april-2026-updates.html" target="_blank"&gt;Jetpack Compose April '26 release&lt;/a&gt; (&lt;a href="https://developer.android.com/develop/ui/compose/bom" target="_blank"&gt;Compose BOM&lt;/a&gt; version &lt;code&gt;2026.04.01&lt;/code&gt;).Take advantage of the new structural layout tools to manage complex architectures. The new &lt;a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/grid" target="_blank"&gt;Grid&lt;/a&gt; API allows you to define dynamic tracks and column spans without the performance overhead of a lazy list. Pair Grid with the new &lt;a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/flexbox" target="_blank"&gt;FlexBox&lt;/a&gt; layout API to easily handle multi-axis alignment and dynamic item wrapping. You can also use the new &lt;a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/mediaquery" target="_blank"&gt;MediaQuery&lt;/a&gt; API to adapt your UI to its environment, using conditions to detect signals like device posture, window size, and keyboard types.&amp;nbsp;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Make your app fold aware: &lt;/b&gt;Use the Jetpack WindowManager library, which provides an API surface for foldable device window features such as folds and hinges. When your app is&lt;a href="https://developer.android.com/develop/adaptive-apps/guides/foldables/make-your-app-fold-aware" target="_blank"&gt; fold aware&lt;/a&gt;, it can adapt its layout to avoid placing important content in the area of folds or hinges and use folds and hinges as natural separators.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Maintain app continuity:&lt;/b&gt; Avoid breaking the user journey when the device configuration shifts. Retain your UI state using &lt;a href="https://developer.android.com/topic/libraries/architecture/viewmodel?hl=en" target="_blank"&gt;ViewModel&lt;/a&gt; to ensure smooth transitions when a user folds or unfolds their device.&lt;/li&gt;&lt;/ul&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdxp09YbiUc9EzTGhIJ2fcoV67rLKb6Sm9UOVCISO4Xa0VVVnFUJG9PXSAYCq7gnHILLx8xoIx-L2C0blhugbADUa3nM0AOx8UQzGImu194B94Kt-CKAuK1CrGHUz10fBFs02Lmly-HO-fmBHFuZ9knuYRb6EP9v4-SpR7Ja-oeJZErJDUVEgEje0d7J8/s1920/7.22_MorphToTablet_Gif.gif" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="360" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdxp09YbiUc9EzTGhIJ2fcoV67rLKb6Sm9UOVCISO4Xa0VVVnFUJG9PXSAYCq7gnHILLx8xoIx-L2C0blhugbADUa3nM0AOx8UQzGImu194B94Kt-CKAuK1CrGHUz10fBFs02Lmly-HO-fmBHFuZ9knuYRb6EP9v4-SpR7Ja-oeJZErJDUVEgEje0d7J8/w640-h360/7.22_MorphToTablet_Gif.gif" width="640" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;h2 style="text-align: left;"&gt;Ensure seamless camera capture on foldable devices&lt;/h2&gt;&lt;div&gt;Camera implementation on foldables brings unique hardware quirks. Moving from a compact outer display to an expanded inner display introduces distinct layout aspect ratios while device rotation remains unchanged. If an app assumes a fixed portrait relationship between the camera sensor and the device layout, the app will likely suffer from sideways, stretched, or cropped previews during these folding transitions.&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;When optimizing your app's media pipeline, migrate your capture experiences to &lt;a href="https://developer.android.com/media/camera/camerax" target="_blank"&gt;CameraX&lt;/a&gt; using the CameraX migration &lt;a href="https://github.com/android/skills/blob/main/camera/camerax/SKILL.md"&gt;skill&lt;/a&gt;. The library’s &lt;a href="https://developer.android.com/reference/kotlin/androidx/camera/view/PreviewView" target="_blank"&gt;PreviewView&lt;/a&gt; automatically handles sensor orientation, device rotation, and scaling behind the scenes. This guarantees a clean, stable preview regardless of how the user holds or positions the device. If you are maintaining an existing Camera2 codebase, integrate the &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/foldables/trifolds-and-landscape-foldables#solution_2_cameraviewfinder" target="_blank"&gt;CameraViewfinder&lt;/a&gt; library to apply these complex aspect ratio and rotation transformations automatically without needing a total architecture overhaul.&lt;/div&gt;&lt;/div&gt;&lt;h2 style="text-align: left;"&gt;Extend glanceable interactions to Wear OS 7&lt;/h2&gt;&lt;div&gt;The opportunity to build for this new generation of devices extends right to the wrist. Launching with Wear OS 7, Wear Widgets give you a fresh surface to provide users with instant, glanceable access to their essential updates. You can build these highly expressive experiences using &lt;a href="https://developer.android.com/jetpack/androidx/releases/glance-wear" target="_blank"&gt;Jetpack Glance&lt;/a&gt; and &lt;a href="https://developer.android.com/jetpack/androidx/releases/compose-remote" target="_blank"&gt;RemoteCompose&lt;/a&gt;. Crucially, Widgets built with this framework can now populate multi-widget tiles that were previously reserved for first-party widgets.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;
+    
+ &lt;div class="separator" style="clear: both; text-align: center;"&gt;
+  &lt;/div&gt;&lt;div class="separator" style="clear: both; text-align: left;"&gt;&lt;h2 style="clear: both; text-align: left;"&gt;Build intelligent features&amp;nbsp;&lt;/h2&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blog.google/products-and-platforms/platforms/android/gemini-intelligence/" target="_blank"&gt;Gemini intelligence &lt;/a&gt;already completes tasks on users’ behalf, and you can &lt;a href="https://developer.android.com/ai/appfunctions?_gl=1*1jms098*_up*MQ..*_ga*MjY0OTY0MDI3LjE3ODQzMzI1NDk.*_ga_6HH9YJMN9M*czE3ODQzMzI1NDkkbzEkZzAkdDE3ODQzMzI1NDkkajYwJGwwJGgxNjE0MTMzNjEz" target="_blank"&gt;experiment&lt;/a&gt; with the intelligence system by sharing your apps capabilities.&amp;nbsp;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;Samsung’s new foldable devices come with Gemini Nano 4, our latest on-device model. Nano 4 provides support for over 140 languages, better multimodal understanding, and &lt;a href="https://developers.google.com/ml-kit/release-notes#july_14_2026" target="_blank"&gt;much more&lt;/a&gt;. Use &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android" target="_blank"&gt;ML Kit’s Prompt API&lt;/a&gt; with advanced features like s&lt;a href="https://developers.google.com/ml-kit/genai/prompt/android/structured-output" target="_blank"&gt;tructured output&lt;/a&gt; and &lt;a href="https://developers.google.com/ml-kit/genai/prompt/android/thinking-mode" target="_blank"&gt;thinking mode&lt;/a&gt; to build intelligent features on-device.&amp;nbsp;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;h2 style="clear: both; text-align: left;"&gt;Start optimizing today&lt;/h2&gt;&lt;div class="separator" style="clear: both;"&gt;The tools and frameworks are ready to help you optimize your app for all screen sizes. Begin by exploring our guidance for &lt;a href="https://developer.android.com/develop/adaptive-apps" target="_blank"&gt;building adaptive apps &lt;/a&gt;to learn more about core adaptive design principles.&amp;nbsp;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;To dive deeper, check out our comprehensive &lt;a href="https://www.youtube.com/playlist?list=PLD2U7gd1-ieo" target="_blank"&gt;YouTube playlist&lt;/a&gt;. Finally, ensure your app delivers a flawless, premium experience on the newest form factors by reviewing our dedicated quality guidelines for &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/foldables/trifolds-and-landscape-foldables" target="_blank"&gt;trifolds and landscape foldables&lt;/a&gt; and &lt;a href="https://developer.android.com/design/ui/wear/guides/get-started?hl=en" target="_blank"&gt;WearOS&lt;/a&gt;.&amp;nbsp;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class="separator" style="clear: both;"&gt;Unfold the future today!&amp;nbsp;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</content>
+    <link href="https://android-developers.googleblog.com/2026/07/optimize-galaxy-screen-sizes.html" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-07-22T19:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiV-c747avSj9Z8JO4DTK4kSfO3SjSpd5aTuVvR_TBeD3bXV6cc8lzNLGrWCngNXdyZBeiNjQqwQZCcU4QCrovwL99gu0t5bQrlTXa0PIBGIivwyS8y226MgeraphZr4VITWYe0x7ckFto0dsD8rBLM1J_P3dV0CBj5Ctlwm8jsgAPZA7W2XnKnRz59H9I/s72-c/MM_Adaptive_and_device_Meta%20(1).png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiV-c747avSj9Z8JO4DTK4kSfO3SjSpd5aTuVvR_TBeD3bXV6cc8lzNLGrWCngNXdyZBeiNjQqwQZCcU4QCrovwL99gu0t5bQrlTXa0PIBGIivwyS8y226MgeraphZr4VITWYe0x7ckFto0dsD8rBLM1J_P3dV0CBj5Ctlwm8jsgAPZA7W2XnKnRz59H9I/s72-c/MM_Adaptive_and_device_Meta%20(1).png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiV-c747avSj9Z8JO4DTK4kSfO3SjSpd5aTuVvR_TBeD3bXV6cc8lzNLGrWCngNXdyZBeiNjQqwQZCcU4QCrovwL99gu0t5bQrlTXa0PIBGIivwyS8y226MgeraphZr4VITWYe0x7ckFto0dsD8rBLM1J_P3dV0CBj5Ctlwm8jsgAPZA7W2XnKnRz59H9I/s72-c/MM_Adaptive_and_device_Meta%20(1).png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://research.google/blog/towards-a-quantum-computer-that-learns-from-its-errors</id>
+    <title>Towards a quantum computer that learns from its errors</title>
+    <updated>2026-07-22T18:40:21+00:00</updated>
+    <content type="html">Machine Intelligence</content>
+    <link href="https://research.google/blog/towards-a-quantum-computer-that-learns-from-its-errors" rel="alternate"/>
+    <category term="Google Research"/>
+    <published>2026-07-22T18:40:21+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-research2023-media/original_images/RL_for__QEC-2.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-research2023-media/original_images/RL_for__QEC-2.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-research2023-media/original_images/RL_for__QEC-2.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workspaceupdates.googleblog.com/2026/07/google-meet-now-organizes-your-meeting-notes-transcripts-and-recordings-in-your-Google-Drive.html</id>
+    <title>Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive</title>
+    <updated>2026-07-22T16:48:25+00:00</updated>
+    <content type="html">&lt;p&gt;We’re making it easier for users to find &lt;a href="https://support.google.com/meet/answer/14754931?hl=en&amp;amp;ref_topic=14073938&amp;amp;sjid=8385333923985479419-NA" target="_blank"&gt;meeting notes&lt;/a&gt;, &lt;a href="https://support.google.com/meet/answer/12849897?hl=en&amp;amp;ref_topic=14074639&amp;amp;sjid=8385333923985479419-NA" target="_blank"&gt;transcripts&lt;/a&gt; and &lt;a href="https://support.google.com/meet/answer/9308681?sjid=8385333923985479419-NA" target="_blank"&gt;recordings&lt;/a&gt; in Google Drive with the following improvements:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;After a meeting, we’ll automatically upload these files to a new folder in the host’s My Drive called “Google Meet.”&lt;/li&gt;&lt;li&gt;Within that “Google Meet” folder, these files will be automatically organized into subfolders for each meeting. Files from different instances of a recurring meeting will share one folder.&lt;/li&gt;&lt;li&gt;Any meeting attendees with access to the meeting files will see shortcuts to these source files in their “Google Meet” Drive folders too..&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Previously, these files were only uploaded to the host’s My Drive, not the attendees’, and the files weren’t organized by meeting.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note: &lt;/b&gt;Shortly after we roll out this change, we’ll automatically move the existing “Meet Recordings” folder into the new “Google Meet” folder and rename it “Legacy Meet Recordings.” Users may see both “Meet Recordings” and “Google Meet” in their Google Drive for a brief period during this transition.&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif_xiHfQODyvVZEK_IgvjWOBfXcMxvi-TjSnhY1uHzaxm4DVMj8KHMqT6EjNwfTtL0a3H6kGjHZURCwJAeMRA3nHUIRb1qjsuogkjDz2k_JMPHhVvdoR6KAHrmpFslOzpnBP1UMaQOaylbUiBRVUSfzEx58SgmgTNK_XEeclBatwlU3nJVDBCAWaCk3c/s2048/Google%20Meet%20now%20organizes%20your%20meeting%20notes,%20transcripts,%20and%20recordings%20in%20your%20Google%20Drive%20-%207148.jpeg" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif_xiHfQODyvVZEK_IgvjWOBfXcMxvi-TjSnhY1uHzaxm4DVMj8KHMqT6EjNwfTtL0a3H6kGjHZURCwJAeMRA3nHUIRb1qjsuogkjDz2k_JMPHhVvdoR6KAHrmpFslOzpnBP1UMaQOaylbUiBRVUSfzEx58SgmgTNK_XEeclBatwlU3nJVDBCAWaCk3c/s1600/Google%20Meet%20now%20organizes%20your%20meeting%20notes,%20transcripts,%20and%20recordings%20in%20your%20Google%20Drive%20-%207148.jpeg" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;Existing "Meet Recordings" folders will be renamed to "Legacy Meet Recordings" and moved under the new "Google Meet" folder topology. Admins should audit any API scripts or automated workflows that rely on specific folder names or IDs.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users: &lt;/b&gt;Users will see their meeting artifacts automatically organized into meeting-specific sub-folders within the "Google Meet" folder, with shortcuts for easier findability.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release domains:&lt;/a&gt; Full rollout (1–3 days for feature visibility) starting on July 22, 2026&lt;/li&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Scheduled Release domains:&lt;/a&gt; Full rollout (1–3 days for feature visibility) starting on July 30, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Available to all Google Workspace customers&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Meet Help: &lt;a href="https://support.google.com/meet/answer/9308681" target="_blank"&gt;Record a video meeting&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Meet Help: &lt;a href="https://support.google.com/meet/answer/14754931?hl=en&amp;amp;ref_topic=14073938&amp;amp;sjid=8385333923985479419-NA" target="_blank"&gt;Take notes for me in Google Meet&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
+    <link href="https://workspaceupdates.googleblog.com/2026/07/google-meet-now-organizes-your-meeting-notes-transcripts-and-recordings-in-your-Google-Drive.html" rel="alternate"/>
+    <category term="Workspace Updates"/>
+    <published>2026-07-22T16:48:25+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif_xiHfQODyvVZEK_IgvjWOBfXcMxvi-TjSnhY1uHzaxm4DVMj8KHMqT6EjNwfTtL0a3H6kGjHZURCwJAeMRA3nHUIRb1qjsuogkjDz2k_JMPHhVvdoR6KAHrmpFslOzpnBP1UMaQOaylbUiBRVUSfzEx58SgmgTNK_XEeclBatwlU3nJVDBCAWaCk3c/s72-c/Google%20Meet%20now%20organizes%20your%20meeting%20notes,%20transcripts,%20and%20recordings%20in%20your%20Google%20Drive%20-%207148.jpeg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif_xiHfQODyvVZEK_IgvjWOBfXcMxvi-TjSnhY1uHzaxm4DVMj8KHMqT6EjNwfTtL0a3H6kGjHZURCwJAeMRA3nHUIRb1qjsuogkjDz2k_JMPHhVvdoR6KAHrmpFslOzpnBP1UMaQOaylbUiBRVUSfzEx58SgmgTNK_XEeclBatwlU3nJVDBCAWaCk3c/s72-c/Google%20Meet%20now%20organizes%20your%20meeting%20notes,%20transcripts,%20and%20recordings%20in%20your%20Google%20Drive%20-%207148.jpeg"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif_xiHfQODyvVZEK_IgvjWOBfXcMxvi-TjSnhY1uHzaxm4DVMj8KHMqT6EjNwfTtL0a3H6kGjHZURCwJAeMRA3nHUIRb1qjsuogkjDz2k_JMPHhVvdoR6KAHrmpFslOzpnBP1UMaQOaylbUiBRVUSfzEx58SgmgTNK_XEeclBatwlU3nJVDBCAWaCk3c/s72-c/Google%20Meet%20now%20organizes%20your%20meeting%20notes,%20transcripts,%20and%20recordings%20in%20your%20Google%20Drive%20-%207148.jpeg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workspaceupdates.googleblog.com/2026/07/gemini-alpha-is-now-gemini-beta.html</id>
+    <title>Gemini Alpha is now Gemini Beta</title>
+    <updated>2026-07-22T16:39:21+00:00</updated>
+    <content type="html">&lt;p&gt;We’re updating the name of the Gemini Alpha program to "Gemini Beta." This new name more accurately reflects both the scale and the quality of the features that enter this launch stage. Please note that this is solely a branding change. This update does not alter any customer configurations, data privacy constraints, or pricing tiers. All existing admin controls and customer opt-ins are fully preserved. Your current Terms of Service continue to apply, and customers do not need to re-sign any agreements.&lt;/p&gt;&lt;p&gt;As a reminder, we’ll continue to announce new Gemini Beta features in the &lt;a href="https://discuss.google.dev/c/workspace-releases/22" target="_blank"&gt;Google Developer Program (GDP)&lt;/a&gt; forum and the &lt;a href="https://knowledge.workspace.google.com/p/gemini-beta" target="_blank"&gt;Gemini Beta Help Center&lt;/a&gt;. You must be an active Workspace customer and register to access GDP content; follow these &lt;a href="https://docs.google.com/document/d/16_AW7LIHrI7de_7jTZIWQIFS3us1Cm8sAmASSFQP56c/edit?usp=sharing" target="_blank"&gt;instructions to sign up&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;There is no change to &lt;a href="https://knowledge.workspace.google.com/p/gemini-beta" target="_blank"&gt;existing admin controls&lt;/a&gt;. You will begin to see the "Gemini Beta" label replace "Gemini Alpha" in the Admin console and Help Center articles over the next several weeks.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users:&lt;/b&gt; There is no end user setting for this change.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on July 22, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Business: &lt;/b&gt;Business Starter, Standard, and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Enterprise: &lt;/b&gt;Enterprise Starter, Standard, and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Education Add-ons:&lt;/b&gt; Google AI Pro for Education&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/turn-access-to-google-workspace-with-gemini-alpha-on-or-off" target="_blank"&gt;Turn access to Google Workspace with Gemini Beta on or off&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Developer Program: &lt;a href="https://discuss.google.dev/c/workspace-releases/workspace-alpha/workspace-alpha-forum/222" target="_blank"&gt;Workspace Alpha Forum&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
+    <link href="https://workspaceupdates.googleblog.com/2026/07/gemini-alpha-is-now-gemini-beta.html" rel="alternate"/>
+    <category term="Workspace Updates"/>
+    <published>2026-07-22T16:39:21+00:00</published>
+  </entry>
   <entry>
     <id>https://blog.google/products-and-platforms/products/gemini/gemini-live-camera-how-to</id>
     <title>Here’s how to ask Gemini Live for help with anything you see.</title>
@@ -177,6 +249,50 @@
     <link href="https://googlecloudpresscorner.com/2026-07-22-Microagi-to-Build-Future-of-AI-Robotics-on-Google-Cloud" rel="alternate"/>
     <category term="Google Cloud Press"/>
     <published>2026-07-22T08:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#July_22_2026</id>
+    <title>Cloud Release Notes — July 22, 2026</title>
+    <updated>2026-07-22T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google Distributed Cloud (software only) for VMware&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;Google Distributed Cloud (software only) for VMware 1.35.300-gke.87 is now available
+for download. To upgrade, see &lt;a href="https://docs.cloud.google.com/kubernetes-engine/distributed-cloud/vmware/docs/how-to/upgrading.md"&gt;Upgrade clusters&lt;/a&gt;.
+Google Distributed Cloud 1.35.300-gke.87 runs on Kubernetes v1.35.3-gke.400.&lt;/p&gt;
+&lt;p&gt;If you are using a third-party storage vendor, check the Google Distributed Cloud-ready
+storage partners document to make sure the storage vendor has already passed the
+qualification for this release.&lt;/p&gt;
+&lt;p&gt;After a release, it takes approximately 7 to 14 days for the version to become
+available for use with GKE On-Prem API clients: the Google Cloud console, the
+gcloud CLI, and Terraform.&lt;/p&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;p&gt;The following issues were fixed in 1.35.300-gke.87:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed an issue where upgrading a user cluster with Anthos Network Gateway (ANG) enabled to an Advanced Cluster would stall or fail. Previously, the upgrade process attempted to modify immutable &lt;code&gt;spec.selector&lt;/code&gt; fields on existing ANG resources. The upgrade operator now preserves existing label selectors during reconciliation so that V1 to V2 cluster migrations complete successfully.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="release-note-product-title"&gt;Looker&lt;/h2&gt;
+&lt;h3&gt;Security&lt;/h3&gt;
+&lt;p&gt;A Cross-Site Scripting (XSS) vulnerability was discovered in Looker. An attacker could craft a malicious URL that, when opened by a Looker administrator, would allow the attacker to execute arbitrary scripts on their behalf and potentially compromise the administrator account.&lt;/p&gt;
+&lt;p&gt;Both Looker-hosted and self-hosted instances were found to be vulnerable.&lt;/p&gt;
+&lt;p&gt;This issue has already been mitigated for Looker-hosted instances.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What should I do?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For Looker-hosted instances, no action is required.&lt;/p&gt;
+&lt;p&gt;For self-hosted Looker instances, update your Looker instances as soon as possible. This vulnerability has been patched in all supported versions of Looker for self-hosted instances. The following versions have all been updated to fix this vulnerability:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Looker 26.8.7 and all later versions&lt;/li&gt;
+&lt;li&gt;Looker 26.6.28+&lt;/li&gt;
+&lt;li&gt;Looker 26.4.36+&lt;/li&gt;
+&lt;li&gt;Looker 26.2.47+&lt;/li&gt;
+&lt;li&gt;Looker 26.0.66+&lt;/li&gt;
+&lt;li&gt;Looker 25.18.68+&lt;/li&gt;
+&lt;li&gt;Looker 25.12.65+&lt;/li&gt;
+&lt;li&gt;Looker 25.6.103+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href="http://cve.org/CVERecord?id=CVE-2026-15810"&gt;CVE-2026-15810&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#July_22_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-07-22T07:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://blog.google/products-and-platforms/products/education/summer-productivity-tips-google-ai-tools</id>
@@ -34440,375 +34556,5 @@ and &lt;a href="https://docs.cloud.google.com/dataplex/docs/use-data-profile-uns
     <link href="https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/future-report-why-young-people-must-help-shape-the-future-of-ai/" rel="alternate"/>
     <category term="The Keyword"/>
     <published>2026-06-10T10:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/company-news/inside-google/around-the-globe/google-latin-america/google-for-brazil-2026/</id>
-    <title>Google for Brazil 2026: Helping people make the most of AI</title>
-    <updated>2026-06-10T09:00:00+00:00</updated>
-    <content type="html">Google for Brazil stage</content>
-    <link href="https://blog.google/company-news/inside-google/around-the-globe/google-latin-america/google-for-brazil-2026/" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-06-10T09:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/education/helping-students-and-parents-prepare-for-the-final-exams-period/</id>
-    <title>Helping students and parents prepare for the final exams period</title>
-    <updated>2026-06-10T08:45:00+00:00</updated>
-    <content type="html">Image of a young person wearing headphones at their desk studying</content>
-    <link href="https://blog.google/products-and-platforms/products/education/helping-students-and-parents-prepare-for-the-final-exams-period/" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-06-10T08:45:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#June_10_2026</id>
-    <title>Cloud Release Notes — June 10, 2026</title>
-    <updated>2026-06-10T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Agent Assist&lt;/h2&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Agent Assist offers &lt;a href="https://docs.cloud.google.com/agent-assist/docs/pgka"&gt;Proactive generative knowledge assist&lt;/a&gt; V2 in GA. This version supports rich search context, multiple suggested queries, and granular control over triggering events.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;BigQuery&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;BigQuery continuous queries now support the following aggregation functions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#array_agg"&gt;&lt;code&gt;ARRAY_AGG&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#string_agg"&gt;&lt;code&gt;STRING_AGG&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Support for these functions is in &lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;Preview&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Cloud Billing&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Multi-project access to Cloud Billing cost views available in
-Preview&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;In Cloud Billing accounts, multi-project access to usage costs lets
-project owners, solution owners, developers, and other non-billing admins
-see cost data for all of their authorized projects in a single view in the
-Cloud Billing console.&lt;/p&gt;
-&lt;p&gt;The multi-project view uses a combination of Cloud Billing account
-permissions and Google Cloud project permissions that let Cloud Billing
-administrators and organization administrators jointly control access to
-project-level cost data.&lt;/p&gt;
-&lt;p&gt;Using project-scoped Cloud Billing account permissions,
-Cloud Billing administrators can control which solution owners can
-view aggregated cost data in the Cloud Billing console.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Learn more about &lt;a href="https://docs.cloud.google.com/billing/docs/how-to/project-owners/overview"&gt;cost management for project owners&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Learn how to &lt;a href="https://docs.cloud.google.com/billing/docs/how-to/project-owners/setup-multi-project-access"&gt;set up multi-project access to costs views&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
-&lt;h2 class="release-note-product-title"&gt;Google Kubernetes Engine&lt;/h2&gt;
-&lt;h3&gt;Deprecated&lt;/h3&gt;
-&lt;p&gt;The configuration option to not enroll your cluster in a release channel (known
-as &lt;em&gt;No channel&lt;/em&gt;, formerly as &lt;em&gt;Static&lt;/em&gt;) is now deprecated, and will be removed
-on June 14, 2027. For any clusters not enrolled in a release channel, we
-recommend that you &lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/release-channels#existing-cluster"&gt;enroll the cluster&lt;/a&gt;
-before this date. After the removal date, GKE will enroll all remaining clusters
-in the Stable channel. For more information about this deprecation and how you
-can achieve the same functionality with release channels, see &lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/release-channels#no_channel"&gt;Clusters not
-enrolled in a release channel&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Google SecOps Marketplace&lt;/h2&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Azure Security Center&lt;/strong&gt;: Version 17.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Announced deprecation notice. Connector will be deprecated on 30th March 2027. 
-Only critical bug fixes will be considered. For more information refer to the 
-documentation of individual connectors in the following connector:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Azure Security Center - Security Alerts Connector&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Google Chronicle&lt;/strong&gt;: Version 85.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Updated partial batch handling and added dynamic batch sizing to prevent 
-timeout loops, refactored logging and added monitoring signals for process 
-health, and pipeline states, and improved detections batch parsing and 
-processing efficiency in the following connector:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Chronicle Alerts Connector&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Integration&lt;/strong&gt;: Updated authentication flow mechanism.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Google Cloud IAM&lt;/strong&gt;: Version 20.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Updated Predefined Widgets in the following widgets:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;List Roles&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;List Service Accounts&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft Azure Sentinel&lt;/strong&gt;: Version 64.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Announced deprecation notice. Connector will be deprecated on 30th March 2027. 
-Only critical bug fixes will be considered. For more information refer to the 
-documentation of individual connectors in the following connectors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Azure Sentinel Incident Connector v2&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Sentinel Incident Tracking Connector&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft Defender ATP&lt;/strong&gt;: Version 32.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Announced deprecation notice. Connector will be deprecated on 30th March 2027. 
-Only critical bug fixes will be considered. For more information refer to the 
-documentation of individual connectors in the following connectors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Defender ATP Connector&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Defender ATP Connector V2&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft Graph Mail&lt;/strong&gt;: Version 42.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Updated the logic for robust handling of transient upstream API errors and 
-connection issues in the following connector:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Microsoft Graph Mail Connector&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft Graph Mail Delegated&lt;/strong&gt;: Version 19.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Updated the logic for robust handling of transient upstream API errors and 
-connection issues in the following connector:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Microsoft Graph Mail Delegated Connector&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft Graph Security&lt;/strong&gt;: Version 27.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Announced deprecation notice. Connector will be deprecated on 30th March 2027. 
-Only critical bug fixes will be considered. For more information refer to the 
-documentation of individual connectors in the following connectors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Graph Office 365 Security and Compliance Connector&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Microsoft Graph Security Connector&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Protectwise&lt;/strong&gt;: Version 7.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Refactored the code in the following action:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Get Pcap&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Qualys VM&lt;/strong&gt;: Version 28.0&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Fixed AttributeError during parsing of multiple host lists and added fallback 
-hostname matching in the following actions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;List Endpoint Detections&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Enrich Host&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#June_10_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-06-10T07:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk/</id>
-    <title>Choosing your surface: Antigravity 2.0, Antigravity CLI, Antigravity IDE, or Antigravity SDK</title>
-    <updated>2026-06-10T07:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity 2.0:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A desktop app to orchestrate multiple autonomous agents working in parallel across independent projects.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity CLI:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A terminal interface designed for command-line workflows and headless execution.&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity IDE:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; An editor for developers who want to write code directly alongside an agent.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity SDK:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A Python library for building and deploying your own custom agents that use the Antigravity Harness.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;Quick Comparison&lt;/h4&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table border="1" style="border-collapse: collapse; width: 100%; height: 67.1952px;"&gt;
-&lt;tbody&gt;
-&lt;tr style="height: 22.3984px;"&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Feature&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity 2.0&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity CLI&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity IDE&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Antigravity SDK&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="height: 22.3984px;"&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Interface&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Desktop App&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Terminal (TUI)&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Desktop App&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Python Code&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr style="height: 22.3984px;"&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Best For&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Multiple simultaneous tasks&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Command-line / Headless&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Directly editing code&lt;/span&gt;&lt;/td&gt;
-&lt;td style="width: 18.1727%; height: 22.3984px;"&gt;&lt;span style="vertical-align: baseline;"&gt;Building custom agents&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;The Four Surfaces of Antigravity&lt;/h2&gt;
-&lt;h3&gt;1. Antigravity 2.0&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The default recommendation. Manages tasks across multiple projects at the same time.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="antigravity-new-chat" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/antigravity-new-chat.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;Antigravity 2.0 is a standalone desktop application. It is designed to let you run multiple tasks without blocking your main workspace. You can easily switch between and monitor different projects from one screen. You can also schedule tasks to run on a regular schedule to check code quality or find outdated packages.&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;2. Antigravity CLI&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For terminal workflows and headless execution.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="antigravity-cli" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/antigravity-cli.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;Built in Go for speed, the Antigravity CLI is for those who prefer to work in the terminal with fast, keyboard-driven navigation and simple shortcuts. You can start background agents using terminal commands without locking up your active command-line window. Choose the CLI if you need headless execution (such as working over SSH or inside remote containers).&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;3. Antigravity IDE&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For developers who want to see and edit the code directly.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="antigravity-ide" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/antigravity-ide.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;The IDE surface puts agents directly inside your current workspace. This is the best choice if you want to see exactly what code the agent is editing and accept or reject changes line-by-line. With built-in debugging, the agent can see runtime errors and offer a one-click fix right in your editor.&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;4. Antigravity SDK (Python)&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Best for: Writing custom agent logic and automated pipelines.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;import asyncio\r\nfrom google.antigravity import Agent, LocalAgentConfig\r\n\r\nasync def main():\r\n    config = LocalAgentConfig(\r\n        system_instructions=&amp;quot;You are an expert assistant for codebase navigation.&amp;quot;,\r\n        # api_key=&amp;quot;your_api_key_here&amp;quot;,\r\n    )\r\n    async with Agent(config) as agent:\r\n        response = await agent.chat(&amp;quot;What files are in the current directory?&amp;quot;)\r\n        print(await response.text())\r\n\r\nasync def run():\r\n    await main()\r\n\r\nif __name__ == &amp;quot;__main__&amp;quot;:\r\n    asyncio.run(run())&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;lang-py&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f2f546b2610&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The &lt;/span&gt;&lt;a href="https://antigravity.google/docs/sdk-overview" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Antigravity SDK&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is a Python library that lets you build your own custom agents from scratch. Because it runs on the same shared harness, you get direct access to the exact same tools and rules that power Google’s official Antigravity tools. You can write an agent locally and deploy it to Google Cloud with zero code changes.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While each interface looks different, they all run on the same underlying agent harness. No matter which of the Antigravity surfaces you choose, you get support for &lt;/span&gt;&lt;a href="https://antigravity.google/docs/plugins" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;plugins&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://antigravity.google/docs/skills" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and more. Your agents have access to the same core logic, so pick the one that works best for your project.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;For guides and documentation, visit &lt;/span&gt;&lt;a href="https://antigravity.google" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;antigravity.google&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and when you’re ready to get started, visit the &lt;/span&gt;&lt;a href="https://antigravity.google/download" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Antigravity Download Page&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/developers-practitioners/choosing-your-surface-antigravity-20-antigravity-cli-antigravity-ide-or-antigravity-sdk/" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-06-10T07:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/ai-machine-learning/cloud-fable-5-on-google-cloud/</id>
-    <title>Claude Fable 5: Available on Google Cloud</title>
-    <updated>2026-06-09T18:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Claude Fable 5&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, Anthropic’s latest frontier model, is now generally available on Google Cloud.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; This launch is the latest proof point of our ongoing commitment to bring the industry's latest models straight to our Agent Platform. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Claude Fable 5 brings the best of Anthropic model capabilities to all customers, with strong safeguards designed to make it safe for general use. Designed for complex, multi-step reasoning, Claude Fable 5 is good for demanding tasks like advanced software development, long-horizon agents, and deep multimodal document analysis. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;For more information about this release, visit Anthropic’s &lt;/span&gt;&lt;a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Build with&lt;/span&gt;&lt;a href="https://console.cloud.google.com/agent-platform/publishers/anthropic/model-garden/claude-fable-5"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; Claude Fable 5&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and other models from Anthropic — including Claude Opus 4.8 and Claude Sonnet 4.6 — today on &lt;/span&gt;&lt;a href="https://cloud.google.com/model-garden?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Platform&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/ai-machine-learning/cloud-fable-5-on-google-cloud/" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-06-09T18:00:00+00:00</published>
   </entry>
 </feed>
