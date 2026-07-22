@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-07-22T14:00:16.476029+00:00</updated>
+  <updated>2026-07-22T15:48:28.922938+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -11,6 +11,114 @@
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
   <icon>https://blog.google/favicon.ico</icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/data-analytics/how-checkout-com-tallies-data-with-cloud-composer-3</id>
+    <title>From maintenance to innovation: Checking in on Checkout.com’s Cloud Composer 3 migration</title>
+    <updated>2026-07-22T14:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data engineering teams often face a “Day 2” operational reality after building a data platform: the ongoing work of maintaining the orchestrator itself.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For the Data Platform team at &lt;/span&gt;&lt;a href="https://www.checkout.com/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Checkout.com&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, managing a self-hosted Apache Airflow environment on another hyperscaler was consuming time the team wanted to spend elsewhere as server management, patching, and incident response were pulling focus from building pipelines.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By migrating to &lt;/span&gt;&lt;a href="https://cloud.google.com/composer"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Managed Service for Apache Airflow (Gen 3)&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Google Cloud’s fully managed Airflow service, Checkout.com transformed its reliability and cost structure. Here’s how they built a more scalable, cost-efficient, and robust data foundation.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;The starting point: self-managed Airflow&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Before the migration, Checkout.com ran Airflow on self-managed infrastructure. While functional, maintaining the underlying resources required significant attention. Patching, upgrades, and server management created regular interruptions.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Operational data from the past year illustrates some of the challenges the company was navigating:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Reducing operational friction:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; In its self-managed environment, Checkout.com faced stability challenges, particularly during high-load periods. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Complex dependency management:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Upgrading packages and ensuring compatibility was a constant, manual struggle. With Managed Airflow (Gen 3), the company was able to simplify this by handling dependencies at the image level, ensuring seamless compatibility out-of-the-box during routine environment upgrades.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;DAG sync time:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Syncing DAGs to the scheduler took approximately six minutes after deployment to S3, which affected iteration speed.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Manual processes:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Scaling required manual intervention, and onboarding new teams meant manually creating secrets and variables for dbt.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;The solution: Managed Service for Apache Airflow (Gen 3)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Checkout.com’s team migrated to Managed Airflow to offload infrastructure responsibility and take advantage of Google Cloud's managed scalability. The results were immediate and measurable across three areas: reliability, cost, and developer velocity.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="checkout-managed-airflow-chart" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/checkout-managed-airflow-chart.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Dynamic scaling in action&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In the previous elastic container service setup, the team allocated the maximum number of workers required for peak loads. This meant paying for peak capacity around the clock, regardless of actual usage.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Managed Airflow provides built-in dynamic scaling, eliminating the need for manual resource management. The environment automatically adjusts the number of workers based specifically on the workload demands. When tasks spike, the system scales up; when they drop, it scales down to save resources. Similarly, moving from fixed provisioning to dynamic scaling reduced monthly costs by an estimated 30%.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Reliability and DAG isolation&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Achieving increased stability was a primary driver for Checkout.com’s migration since in the past, a single problematic DAG could affect its entire environment. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Managed Airflow introduced a number of critical architecture improvements:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;DAG isolation:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Each DAG runs in its own execution environment. If one DAG fails or consumes excessive resources, it doesn’t affect the entire environment.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Managed operations:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Google Cloud handles patching and upgrades during scheduled windows, removing the need for manual upgrade management.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Improved visibility:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Integration with &lt;/span&gt;&lt;a href="https://cloud.google.com/monitoring"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Monitoring&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://cloud.google.com/logging"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud Logging&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides clear visibility into task execution. Engineers can now debug issues independently without escalating to the platform team.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Faster developer workflows&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The migration also improved day-to-day workflows for &lt;/span&gt;&lt;a href="http://checkout.com" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Checkout.com&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;’s data engineers.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Faster deployments:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Using &lt;/span&gt;&lt;a href="https://cloud.google.com/storage"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud Storage&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for DAGs enabled near-instant syncing.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Simpler onboarding:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Teams no longer needed platform support to create variables before onboarding.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Modernizing dbt execution:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; One of the company’s most significant wins was changing how it runs dbt. Previously, its engineers had to manually install and manage complex virtual environments for every supported dbt version. By leveraging containerized dbt runs, Managed Airflow (Gen 3) eliminates dependency bottlenecks. This ensures complete dependency isolation, allowing teams to run any required dbt model with minimal setup and no manual infrastructure overhead.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Environment updates:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The company no longer needs to redeploy the entire Airflow environment to add new roles or update Python packages.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;AI-powered troubleshooting with &lt;/strong&gt;&lt;a href="https://docs.cloud.google.com/composer/docs/composer-3/troubleshooting-dags#investigations"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Cloud Assist&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;In a self-managed environment, a failed task often triggered a frantic hunt through fragmented logs and metrics. With Managed Airflow, Checkout.com can initiate a Gemini investigation directly from its Airflow DAG UI in the Google Cloud console.&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Gemini doesn't just provide generic error messages; it generates a scorecard that evaluates different hypotheses with both supporting and contradictory evidence, which can drastically reduce mean time to recovery.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Conclusion&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For Checkout.com, the move to Managed Airflow (Gen 3) marked a strategic shift, one that freed its engineers to focus on delivering value.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"With Managed Service for Apache Airflow, we’ve achieved significant improvements in efficiency, scalability, and reliability. Managed infrastructure, automated scaling, faster deployments, and isolated execution environments have transformed how we operate." &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;— &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Keisi Mancellari, Data Platform Engineer, Checkout.com&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With a stable, scalable, and cost-efficient platform in place, Checkout.com is now able to  focus on the future of its data pipelines, confident that its orchestration layer is ready for whatever comes next.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Learn more about&lt;/span&gt; &lt;a href="https://cloud.google.com/composer"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Managed Service for Apache Airflow&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and how it can support your data platform.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;sub&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Special thanks to the following contributors to this post: Serge Bouschet and&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="mailto:keisi.mancellari@checkout.com"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;Keisi Mancellari&lt;/span&gt;&lt;/a&gt;&lt;/sub&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/data-analytics/how-checkout-com-tallies-data-with-cloud-composer-3" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-07-22T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/checkout-airflow-migration-google-cloud-2.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/checkout-airflow-migration-google-cloud-2.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/checkout-airflow-migration-google-cloud-2.max-600x600.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission</id>
     <title>Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission</title>
@@ -34737,14 +34845,5 @@ hostname matching in the following actions:&lt;/p&gt;
     <link href="https://cloud.google.com/blog/topics/public-sector/gemini-for-government-your-blueprint-for-mission-impact/" rel="alternate"/>
     <category term="Google Cloud"/>
     <published>2026-06-09T17:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/google-fi-wireless/international-travel-features-5g-coverage/</id>
-    <title>Get travel-ready with Google Fi Wireless</title>
-    <updated>2026-06-09T16:15:00+00:00</updated>
-    <content type="html">Text "Great travel plans need a great phone plan" surrounded by photos of people on their phones and wifi symbols</content>
-    <link href="https://blog.google/products-and-platforms/products/google-fi-wireless/international-travel-features-5g-coverage/" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-06-09T16:15:00+00:00</published>
   </entry>
 </feed>
