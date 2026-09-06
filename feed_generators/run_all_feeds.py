@@ -31,10 +31,27 @@ logger = logging.getLogger(__name__)
 # native client ignoring its own socket timeout costs that feed rather than the
 # whole batch. Eight minutes is intentionally generous for one source.
 GENERATOR_TIMEOUT = float(os.environ.get("FEEDSEEK_GENERATOR_TIMEOUT", "480"))
+DEFAULT_GENERATOR_WORKERS = 4
+
+
+def _configured_generator_workers() -> int:
+    """Return a bounded worker count, falling back safely on invalid input."""
+    raw = os.environ.get("FEEDSEEK_GENERATOR_WORKERS", str(DEFAULT_GENERATOR_WORKERS))
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        logger.warning(
+            "Invalid FEEDSEEK_GENERATOR_WORKERS=%r; using default of %d",
+            raw,
+            DEFAULT_GENERATOR_WORKERS,
+        )
+        return DEFAULT_GENERATOR_WORKERS
+
+
 # Feed generation is overwhelmingly network-bound. Four workers keeps enough
 # requests in flight to hide source latency without turning the scheduled job
 # into a thundering herd; override locally/temporarily when profiling.
-GENERATOR_WORKERS = max(1, int(os.environ.get("FEEDSEEK_GENERATOR_WORKERS", "4")))
+GENERATOR_WORKERS = _configured_generator_workers()
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
 
