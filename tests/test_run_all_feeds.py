@@ -97,8 +97,10 @@ class GeneratorTimeoutTests(unittest.TestCase):
 
 class GeneratorBatchTests(unittest.TestCase):
     @staticmethod
-    def config(script: str) -> FeedConfig:
-        return FeedConfig(script=script, blog_url="https://example.test/")
+    def config() -> FeedConfig:
+        # FeedConfig validates that the referenced script exists; the actual
+        # subprocess is mocked in these scheduler-only tests.
+        return FeedConfig(script="reuters.py", blog_url="https://example.test/")
 
     def test_enabled_generators_overlap_when_workers_are_available(self):
         barrier = threading.Barrier(2)
@@ -120,8 +122,8 @@ class GeneratorBatchTests(unittest.TestCase):
             return True
 
         registry = {
-            "alpha": self.config("alpha.py"),
-            "beta": self.config("beta.py"),
+            "alpha": self.config(),
+            "beta": self.config(),
         }
         with (
             mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 2),
@@ -142,8 +144,8 @@ class GeneratorBatchTests(unittest.TestCase):
             return True
 
         registry = {
-            "beta": self.config("beta.py"),
-            "alpha": self.config("alpha.py"),
+            "beta": self.config(),
+            "alpha": self.config(),
         }
         with (
             mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 1),
