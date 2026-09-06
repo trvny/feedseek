@@ -1,12 +1,8 @@
-"""A hung generator must cost its own feed, not the whole run.
-
-Generators run one after another inside a single job, so a child that never
-returns takes every feed queued behind it down with it. The only backstop used
-to be the workflow's own timeout, which kills the run wholesale.
-"""
+"""Runner isolation, timeout rollback, and bounded batch concurrency tests."""
 
 import subprocess
 import sys
+import threading
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -97,6 +93,67 @@ class GeneratorTimeoutTests(unittest.TestCase):
 
             self.assertEqual(xml.read_text(encoding="utf-8"), "old xml")
             self.assertEqual(sidecar.read_text(encoding="utf-8"), "old json")
+
+
+class GeneratorBatchTests(unittest.TestCase):
+    @staticmethod
+    def config(script: str) -> FeedConfig:
+        return FeedConfig(script=script, blog_url="https://example.test/")
+
+    def test_enabled_generators_overlap_when_workers_are_available(self):
+        barrier = threading.Barrier(2)
+        lock = threading.Lock()
+        active = 0
+        peak = 0
+
+        def fake_run_feed(name, config, full=False):
+            del name, config, full
+            nonlocal active, peak
+            with lock:
+                active += 1
+                peak = max(peak, active)
+            try:
+                barrier.wait(timeout=2)
+            finally:
+                with lock:
+                    active -= 1
+            return True
+
+        registry = {
+            "alpha": self.config("alpha.py"),
+            "beta": self.config("beta.py"),
+        }
+        with (
+            mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 2),
+            mock.patch.object(run_all_feeds, "run_feed", new=fake_run_feed),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+        ):
+            status = run_all_feeds._run_registry(registry, [], full=False)
+
+        self.assertEqual(status, 0)
+        self.assertEqual(peak, 2)
+
+    def test_single_worker_preserves_serial_execution(self):
+        order = []
+
+        def fake_run_feed(name, config, full=False):
+            del config, full
+            order.append(name)
+            return True
+
+        registry = {
+            "beta": self.config("beta.py"),
+            "alpha": self.config("alpha.py"),
+        }
+        with (
+            mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 1),
+            mock.patch.object(run_all_feeds, "run_feed", new=fake_run_feed),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+        ):
+            status = run_all_feeds._run_registry(registry, [], full=False)
+
+        self.assertEqual(status, 0)
+        self.assertEqual(order, ["alpha", "beta"])
 
 
 if __name__ == "__main__":
