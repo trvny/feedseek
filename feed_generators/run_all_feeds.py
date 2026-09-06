@@ -1,9 +1,11 @@
 """Run feed generators listed in ``feeds.yaml``.
 
 Generators run in isolated subprocesses so one failure never prevents the
-remaining feeds from being attempted. The command exits non-zero when any
-enabled generator fails or a registry entry is invalid; the workflow publishes
-successful partial results before applying that final failure gate.
+remaining feeds from being attempted. Batch runs use bounded concurrency because
+most generator time is spent waiting on independent network sources. The command
+exits non-zero when any enabled generator fails or a registry entry is invalid;
+the workflow publishes successful partial results before applying that final
+failure gate.
 """
 
 from __future__ import annotations
@@ -13,6 +15,8 @@ import logging
 import os
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from pathlib import Path
 
 from models import FeedConfig, load_feed_registry
@@ -23,14 +27,31 @@ from validate_feeds import validate_feed, validate_json_sidecar
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-# Per-generator wall clock. Generators run one after another against a 69 minute
-# job timeout, so a single child that hangs - a stalled DNS lookup, a native
-# client ignoring its own socket timeout - costs every feed queued behind it,
-# not just its own. A normal full pass over all 95 feeds takes ~12 minutes, so
-# eight minutes for one generator is generous and still leaves the run able to
-# finish. Losing one feed is fine: a generator that writes nothing leaves the
-# last good file in place.
+# Per-generator wall clock. Each child is isolated, so a stalled DNS lookup or a
+# native client ignoring its own socket timeout costs that feed rather than the
+# whole batch. Eight minutes is intentionally generous for one source.
 GENERATOR_TIMEOUT = float(os.environ.get("FEEDSEEK_GENERATOR_TIMEOUT", "480"))
+DEFAULT_GENERATOR_WORKERS = 4
+
+
+def _configured_generator_workers() -> int:
+    """Return a bounded worker count, falling back safely on invalid input."""
+    raw = os.environ.get("FEEDSEEK_GENERATOR_WORKERS", str(DEFAULT_GENERATOR_WORKERS))
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        logger.warning(
+            "Invalid FEEDSEEK_GENERATOR_WORKERS=%r; using default of %d",
+            raw,
+            DEFAULT_GENERATOR_WORKERS,
+        )
+        return DEFAULT_GENERATOR_WORKERS
+
+
+# Feed generation is overwhelmingly network-bound. Four workers keeps enough
+# requests in flight to hide source latency without turning the scheduled job
+# into a thundering herd; override locally/temporarily when profiling.
+GENERATOR_WORKERS = _configured_generator_workers()
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
 
@@ -209,6 +230,14 @@ def _log_generation_summary(
     logger.info("%s\n", "=" * 60)
 
 
+def _run_enabled_feed(
+    item: tuple[str, FeedConfig], *, full: bool
+) -> tuple[str, bool]:
+    """Run one enabled registry entry for the bounded worker pool."""
+    name, config = item
+    return name, run_feed(name, config, full=full)
+
+
 def _run_registry(
     registry: dict[str, FeedConfig],
     skipped_configs: list[str],
@@ -219,14 +248,36 @@ def _run_registry(
     failed_scripts: list[str] = []
     successful_scripts: list[str] = []
     skipped_scripts: list[str] = []
+    enabled_feeds: list[tuple[str, FeedConfig]] = []
 
     for name, config in sorted(registry.items()):
         if not config.enabled:
             logger.info("Skipping disabled feed: %s", name)
             skipped_scripts.append(name)
             continue
-        target = successful_scripts if run_feed(name, config, full=full) else failed_scripts
-        target.append(name)
+        enabled_feeds.append((name, config))
+
+    if enabled_feeds:
+        worker_count = min(GENERATOR_WORKERS, len(enabled_feeds))
+        logger.info(
+            "Running %d enabled feeds with %d worker%s",
+            len(enabled_feeds),
+            worker_count,
+            "" if worker_count == 1 else "s",
+        )
+        runner = partial(_run_enabled_feed, full=full)
+        if worker_count == 1:
+            outcomes = map(runner, enabled_feeds)
+            for name, ok in outcomes:
+                target = successful_scripts if ok else failed_scripts
+                target.append(name)
+        else:
+            with ThreadPoolExecutor(
+                max_workers=worker_count, thread_name_prefix="feedseek"
+            ) as pool:
+                for name, ok in pool.map(runner, enabled_feeds):
+                    target = successful_scripts if ok else failed_scripts
+                    target.append(name)
 
     normalization_ok = normalize_generated_feeds()
     _log_generation_summary(
