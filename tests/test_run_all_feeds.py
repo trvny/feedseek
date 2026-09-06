@@ -1,5 +1,6 @@
 """Runner isolation, timeout rollback, and bounded batch concurrency tests."""
 
+import os
 import subprocess
 import sys
 import threading
@@ -101,6 +102,15 @@ class GeneratorBatchTests(unittest.TestCase):
         # FeedConfig validates that the referenced script exists; the actual
         # subprocess is mocked in these scheduler-only tests.
         return FeedConfig(script="reuters.py", blog_url="https://example.test/")
+
+    def test_invalid_worker_configuration_falls_back_to_default(self):
+        with (
+            mock.patch.dict(os.environ, {"FEEDSEEK_GENERATOR_WORKERS": "potato"}),
+            self.assertLogs(run_all_feeds.logger, level="WARNING"),
+        ):
+            workers = run_all_feeds._configured_generator_workers()
+
+        self.assertEqual(workers, run_all_feeds.DEFAULT_GENERATOR_WORKERS)
 
     def test_enabled_generators_overlap_when_workers_are_available(self):
         barrier = threading.Barrier(2)
