@@ -8,6 +8,29 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/2250069f1157fa18",
+      "url": "https://blog.cloudflare.com/casb-policies/",
+      "title": "Introducing automatic remediation policies with Cloudflare CASB",
+      "content_text": "Cloudflare CASB policies introduce a native automation engine built directly on the Cloudflare developer platform to remediate SaaS risks automatically. Security teams can now design event-driven logic to revoke risky file shares and send webhooks without manual intervention.",
+      "date_published": "2026-09-11T13:00:00Z",
+      "date_modified": "2026-09-11T13:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Blog"
+        }
+      ],
+      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01M2842WCZ10Q81ZNG6FHF2FAJ.01M2842X2Z3B513P6VHC1SXMTC.png",
+      "tags": [
+        "Cloudflare Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M2842WCZ10Q81ZNG6FHF2FAJ.01M2842X2Z3B513P6VHC1SXMTC.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/56aac0aa8e898b5a",
       "url": "https://www.cloudflarestatus.com/incidents/9mcdtk1lphgl",
       "title": "Issues with Workers VPC hostname route resolution on 2026-09-11",
@@ -37,6 +60,52 @@
       ],
       "tags": [
         "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/80b8caf47f7f504a",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics/",
+      "title": "Agents - Inspect Voice Agent turn latency and outcomes",
+      "content_text": "@cloudflare/voice v0.4.0 now lets you inspect where each Voice Agent turn spends time and how it ends. client. addEventListener ( \"turnmetrics\" , ( turn ) => { console. log (turn.outcome, turn.turnTotalMs); }); About the Voice package The @cloudflare/voice package lets you build real-time voice agents with Cloudflare Agents. It streams microphone audio to an Agent over WebSocket, transcribes speech, runs your model through onTurn() , converts the response to speech, and streams audio back to the",
+      "date_published": "2026-09-11T00:00:00Z",
+      "date_modified": "2026-09-11T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/c57e04651d1292ee",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-11-extensionless-r2-content-type/",
+      "title": "AI Search - AI Search supports extensionless R2 objects with Content-Type metadata",
+      "content_text": "AI Search can index R2 objects without filename extensions when they include supported Content-Type metadata. This supports object keys that do not include file extensions while preserving file-type validation during indexing. For supported file types and Content-Type requirements, refer to R2 data sources .",
+      "date_published": "2026-09-11T00:00:00Z",
+      "date_modified": "2026-09-11T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
       ]
     },
     {
@@ -1878,52 +1947,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4bb58f51747d5ab2",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-mcp-portals-mcp-2026-07-28/",
-      "title": "Cloudflare One, Access - MCP server portals support MCP 2026-07-28 specification",
-      "content_text": "MCP server portals support the stateless MCP 2026-07-28 specification for client and upstream server connections. The portal's /mcp endpoint automatically accepts stateless MCP 2026-07-28 requests and earlier 2025 Streamable HTTP clients. When the portal connects to an upstream Streamable HTTP server, it checks for MCP 2026-07-28 support and falls back to the 2025 handshake when needed. Client and upstream protocol selection are independent, so clients and servers can upgrade separately without",
-      "date_published": "2026-08-25T00:00:00Z",
-      "date_modified": "2026-08-25T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ce58029b706cc648",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-service-token-rotation-grace-periods/",
-      "title": "Access - Grace periods for service token rotation",
-      "content_text": "Cloudflare Access administrators can now choose a grace period when rotating a service token secret. Both secrets remain valid during the grace period, giving administrators time to update services without interrupting authentication. The dashboard offers grace periods from one hour to 30 days. Administrators can also revoke the previous secret immediately. The API accepts an RFC 3339 expiration time for custom rotation schedules. For configuration instructions, refer to Rotate service token sec",
-      "date_published": "2026-08-25T00:00:00Z",
-      "date_modified": "2026-08-25T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/b83bef0a699eceb4",
       "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-service-token-status-controls/",
       "title": "Access - Temporarily turn off Access service tokens",
@@ -3041,29 +3064,6 @@
       "attachments": [
         {
           "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KYZDT3S6ATPE291NTTTYKKMV.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/694406d65e1c7664",
-      "url": "https://blog.cloudflare.com/moq-relays/",
-      "title": "An API for MoQ: provision your own isolated relays",
-      "content_text": "Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the new provisioning API lets you create your own isolated relay and control who can publish and who can only watch.",
-      "date_published": "2026-07-31T13:00:00Z",
-      "date_modified": "2026-07-31T13:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Blog"
-        }
-      ],
-      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01KYVQED96MX6SJKQ6GBNXZ7BS.png",
-      "tags": [
-        "Cloudflare Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KYVQED96MX6SJKQ6GBNXZ7BS.png",
           "mime_type": "image/png"
         }
       ]
