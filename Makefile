@@ -173,7 +173,7 @@ feeds_gitlab: ## Generate only the GitLab feed (blog/releases/patch-releases/pre
 	$(PY) feed_generators/gitlab.py
 
 .PHONY: feeds_opensource
-feeds_opensource: ## Generate only the Open Source feed (CC/OSI/LF/SPDX/OGC/RFC Editor/IETF status)
+feeds_opensource: ## Generate only the Open Source feed (CC/OSI/LF/SPDX/OGC/RFC Editor/IETF/Posit)
 	$(PY) feed_generators/opensource.py
 
 .PHONY: feeds_hackerone
