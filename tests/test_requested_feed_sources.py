@@ -13,6 +13,7 @@ import google  # noqa: E402
 import huggingface  # noqa: E402
 import microsoft  # noqa: E402
 import netflix  # noqa: E402
+import opensource  # noqa: E402
 import pap  # noqa: E402
 import python  # noqa: E402
 import rutracker  # noqa: E402
@@ -111,6 +112,10 @@ class RequestedFeedSourcesTests(unittest.TestCase):
                 "https://www.whats-on-netflix.com/feed/",
             },
         )
+    def test_opensource_includes_posit_blog(self):
+        urls = {source[1] for source in opensource.SOURCES}
+        self.assertIn("https://opensource.posit.co/blog/index.xml", urls)
+
     def test_saas_includes_netlify_sources(self):
         urls = {source[1] for source in saas.NATIVE_FEEDS}
         self.assertIn("https://www.netlify.com/feed.xml", urls)

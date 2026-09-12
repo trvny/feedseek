@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-104 feedów · 808 źródeł
+104 feedów · 809 źródeł
 
 ## Spis grup
 
@@ -1067,6 +1067,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.ogc.org&sz=16) OGC — <https://www.ogc.org/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.rfc-editor.org&sz=16) RFC Editor — <https://www.rfc-editor.org/rfcatom.xml>
 - ![](https://www.google.com/s2/favicons?domain=status.ietf.org&sz=16) IETF Status — <https://status.ietf.org/history.atom>
+- ![](https://www.google.com/s2/favicons?domain=opensource.posit.co&sz=16) Posit Open Source — <https://opensource.posit.co/blog/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) Open Graph protocol — <https://github.com/facebook/open-graph-protocol/commits/master.atom>
 
 ### ![](https://www.google.com/s2/favicons?domain=blogs.oracle.com&sz=16) Oracle
