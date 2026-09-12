@@ -12,6 +12,7 @@ import github  # noqa: E402
 import google  # noqa: E402
 import huggingface  # noqa: E402
 import microsoft  # noqa: E402
+import netflix  # noqa: E402
 import pap  # noqa: E402
 import python  # noqa: E402
 import rutracker  # noqa: E402
@@ -96,6 +97,20 @@ class RequestedFeedSourcesTests(unittest.TestCase):
             saas_urls,
         )
 
+    def test_netflix_includes_requested_feeds(self):
+        urls = {source[1] for source in netflix.SOURCES}
+        self.assertEqual(
+            urls,
+            {
+                "https://about.netflix.com/feed.xml",
+                "https://about.netflix.com/pl/feed.xml",
+                "https://netflixlife.com/feed/",
+                "https://news.newonnetflix.info/feed/",
+                "https://usa.newonnetflix.info/feed/",
+                "https://uk.newonnetflix.info/feed/",
+                "https://www.whats-on-netflix.com/feed/",
+            },
+        )
     def test_saas_includes_netlify_sources(self):
         urls = {source[1] for source in saas.NATIVE_FEEDS}
         self.assertIn("https://www.netlify.com/feed.xml", urls)
