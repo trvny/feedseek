@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-12T11:15:26.776820+00:00",
+  "last_updated": "2026-09-12T15:50:02.003735+00:00",
   "entries": [
     {
       "title": "reddit 被墙了吗，在手机上用 Apollo 客户端无法显示内容，浏览器无法打开？",
@@ -4026,15 +4026,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/6a77cfad4477b077"
     },
     {
-      "title": "在 Canvas 上绘制完整富文本",
-      "link": "https://www.v2ex.com/t/1234687#reply0",
-      "date": "2026-08-15T15:41:01+00:00",
-      "description": "FlexNote 的白板基于 Canvas 。 卡片、连线、图形之外，卡片内的内容同样由 Canvas 绘制，而不是为每张卡片挂载一块 HTML 。 这一选择主要出于性能。白板上往往同时存在大量卡片，再叠加平移与缩放。若每张卡片都走 DOM 排版，开销会随内容复杂度迅速放大。将内容纳入同一套 Canvas 渲染，才能把整张白板当作一个可缩放的场景来处理。 真正难的是：画布上要画的不只是一段字。 同一套渲染需要覆盖常见笔记结构：标题、加粗斜体、高亮、列表、表格、代码块、引用、mention 。还要兼容公式、图片、思维导图，以及 Mermaid / Markmap 这类图示。 卡片里可以再嵌卡片，PDF 高亮、音视频、网站剪藏也会出现在同一块画布上。它们的尺寸、对齐、层级各不相同，却要在缩放、拖拽时保持同一套视觉比例。 这些在 DOM 里大多有现成方案。Canvas 没有浏览器的排版和组件树，断行、占位、混排都要自己处理。公式和图片是异步到达的，未就绪时高度未知，到位后卡片会被撑开，周围的思维导图、连线、嵌套内容都要跟着走。多种格式挤在同一张卡片里时，任何一种算错，整张卡的高度和对齐都会偏",
-      "source": "V2EX Creative",
-      "image": "https://picui.ogmua.cn/s1/2026/08/15/6a8087a06cbd9.webp",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/0537c0bb0529e709"
-    },
-    {
       "title": "备胎 Android 手机刚发现今天静默安装了“Android 开发者身份验证工具”",
       "link": "https://www.v2ex.com/t/1234690#reply3",
       "date": "2026-08-15T16:05:17+00:00",
@@ -4044,33 +4035,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/62aa5a24dd70b730"
     },
     {
-      "title": "DeepSeek 今晚零点涨价：缓存命中率越高，账单涨得越狠（650 次请求实测，已与官方账单对账）",
-      "link": "https://www.v2ex.com/t/1234691#reply1",
-      "date": "2026-08-15T16:16:01+00:00",
-      "description": "把自己 ~/.dsh/sessions 里的日志全算了一遍：650 次请求、16 个会话，v4-pro\n缓存命中率 98.09%（ agent 负载的正常水平）。按今晚生效的新价重算这批 token： 账单变成 2.7 倍 。同样的量如果零命中，反而只涨 1.5 倍。 原因是三档价没有一起涨（ v4-pro ，旧全天价 → 新空闲价，元/百万 token ）： 档位 旧价 新空闲价 涨幅 输入·缓存命中 0.025 0.15 6.0× 输入·缓存未命中 3.00 4.50 1.5× 输出 6.00 13.50 2.3× 都在说输出涨 2.3 倍，其实涨最狠的是最便宜那档。旧价目表对高命中率用户最友好，\n所以这次也是他们最吃亏。（缓存本身还是值得的：这份负载下它把 ¥711 的账单压到\n¥46 ，只是折扣没从前陡了。） 另一个对国内特别不友好的点：新价按 UTC 分峰谷，空闲半价。换成北京时间，\n高峰是 09:00–12:00 和 14:00–18:00 ，正好卡满工作日 ；半价只剩午休和晚上。\n能挪的批量任务挪到晚上跑，不改代码省一半。 这些数字跟 DeepSeek 控制台账单对过账：",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/bd3c9ebd2fd25b4f73e06ff694418e11?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/0d39e03ba93b480b"
-    },
-    {
-      "title": "[分享] 做了个开源终端 TUI 工具： dsh-tui (DeepSeek Harness)",
-      "link": "https://www.v2ex.com/t/1234696#reply0",
-      "date": "2026-08-15T17:27:16+00:00",
-      "description": "最近在尝试 DeepSeek 官方的 agent harness （ dsh ），官方自带的是 web-app 和 headless 两种前端，平时用终端用的比较多，正好学习写了个 TUI —— dsh-tui 。 项目地址： https://github.com/tomowang/dsh-tui npm： https://www.npmjs.com/package/@tomowang/dsh-tui 快速安装: dsh plugin --profile tui add @tomowang/dsh-tui\n\ndsh --profile tui\ndsh --profile tui --resume <sessionId>           # reopen a persisted session\ndsh --profile tui --agent-preset <presetId>      # start a fresh session on a given preset\ndsh --profile tui --dump-config                  # inspe",
-      "source": "V2EX Creative",
-      "image": "https://github.com/tomowang/dsh-tui/raw/main/assets/screenshot.png",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/56a421e5b7eeeb9b"
-    },
-    {
-      "title": "开源 音频串流 app，从局域网电脑收发音频；通过 AirPlay 连接你的音响。 macOS / Windows",
-      "link": "https://www.v2ex.com/t/1234700#reply0",
-      "date": "2026-08-15T18:21:13+00:00",
-      "description": "https://github.com/Tularity/AudioHub 1. 每台电脑都可以像使用自己的设备一样使用另一台电脑的默认麦克风和默认扬声器。 场景一 ：在同一张桌子上放了两台电脑。一台电脑上连接着性能良好的 麦克风 ，另一台电脑上连接着 扬声器 ，而会议则在第三台电脑上进行。过去的普遍做法是转移线缆到第三台电脑，如果只是临时使用，然而这么做显得十分笨重。 场景二 ：同时持有 MacBook 和 Windows 台式。台式连接着专业音响，你的工作重心在 MacBook 。过去，如果你希望播放高质量音乐，通常需要专门到台式进行播放。 AudioHub 能够很好的保证尽可能低的延迟和音质（取决设备性能和网络性能），达成远程调用音频设备。 图 1 和图 3 展现为 B 模式（虚拟设备）。 2. AirPlay ，让你的电脑能够接收来自 macOS / iOS 的音频。 作为 共享端 ，你可以在 共享协议 页面启用 AirPlay ，内网其它 Apple 终端将出现你的电脑。并且终端可以直接控制你电脑的系统音量，而不需要额外调整。 3. 局限性 由于定位为免费开源 app ，编译产",
-      "source": "V2EX Creative",
-      "image": "https://api.foacraft.com/i/2026/08/1-1.png",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/e575dc49fa81447b"
-    },
-    {
       "title": "感叹 AI 让 Bukkit 系服务端也是吃上社交类 Fabric Mod",
       "link": "https://www.v2ex.com/t/1234702#reply0",
       "date": "2026-08-15T19:33:38+00:00",
@@ -4078,69 +4042,6 @@
       "source": "V2EX Play",
       "image": "https://i.imgur.com/qQITb1P.jpeg",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/71201a372087653f"
-    },
-    {
-      "title": "pi-usage 一个 Pi Coding Agent 扩展，在 Pi 内部显示 AI 供应商用量与配额",
-      "link": "https://www.v2ex.com/t/1234709#reply0",
-      "date": "2026-08-16T00:52:06+00:00",
-      "description": "Hello, 从 OC 转到 Pi ，搞了个 pi-usage , 支持 Z.ai / GLM Coding Plan 、 DeepSeek 和 OpenRouter 。注意：必须在 Pi 中配置了对应供应商时才会出现。 安装 pi install npm:@imdlan/pi-usage 用 pi update --extensions 更新；用 pi remove npm:@imdlan/pi-usage 卸载。 仓库 https://github.com/imdlan/pi-usage 命令 命令 行为 自动刷新？ /usage 所有供应商的用量摘要，含配额重置时间（本地时间）。 ❌ 一次性快照 /usage zai Z.ai 详细用量表：5 小时配额、MCP 月度配额（含分工具明细）、分模型用量。 ❌ /usage deepseek DeepSeek 按币种余额（ CNY/USD ），含赠送/充值明细。 ❌ /usage openrouter OpenRouter key 消费上限（已用/剩余/重置）+ 日/周/月花费 + 账户积分余额（ USD ）。 ❌ /usage ref",
-      "source": "V2EX Creative",
-      "image": "https://i.imgur.com/6HLS8xm.gif",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/174c3d2382ffd57f"
-    },
-    {
-      "title": "借助 Coding 加持，对 EOL 软件提供支持，类似 HeroDevs、TuxCare",
-      "link": "https://www.v2ex.com/t/1234723#reply0",
-      "date": "2026-08-16T02:42:38+00:00",
-      "description": "对 EOL 的软件/包提供持续的 CVE 补丁，如 Vue2 、PgSQL12 、.NET6 具体报价不清楚，有搜到一年的支持报价 4 万刀 https://www.reddit.com/r/vuejs/comments/189ti59/comment/kbubcxe/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button 分析：可持续、产品化、借助 Coding 加持， 门槛：技术过硬（底层、跨平台）、知识面广(或专人分领域负责) 个人、团队、公司都能入局，欢迎交流",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/9bfd/9fda/426497_xlarge.png?m=1782275694",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/d813d9fc7faf414c"
-    },
-    {
-      "title": "给「拍照学拼音」加了个识字涂色小游戏，继续折腾儿童启蒙",
-      "link": "https://www.v2ex.com/t/1234729#reply5",
-      "date": "2026-08-16T03:19:15+00:00",
-      "description": "上次在 V2EX 分享了我做的「启蒙小超市」，很多朋友喜欢，\n这次继续折腾儿童启蒙，给「拍照学拼音」加了个新玩法： 识字涂色 。 做这个功能的想法很简单： 认字不一定非要坐下来读、抄、背，也可以玩着认。 比如页面出现： 人、入、从、认…… 语音提示： 找出“人”字，并涂上颜色。 孩子找到后，汉字会被涂上颜色，同时播放： “人，rén 。” 一轮下来，其实已经完成了： 看字形 → 找汉字 → 听发音 → 加深记忆 还做了多字涂色 比如： 对、歌、风、雨、云 每个字对应一种颜色，在一堆汉字里找出来并涂色。 后面还可以继续扩展： 听音找字 形近字辨认 汉字捉迷藏 汉字连线 汉字拼图 我的想法是，把识字拆成一个个几分钟就能玩完的小游戏。 为什么不直接做成刷题？ 低龄孩子对“学习”这件事本身就比较敏感。 所以这次刻意没有做答题失败机制： 点错了 → “再找找看” 找到了 → “太棒啦！” 尽量让孩子觉得自己是在玩，而不是又开始做题。 内容也会跟现有的高频汉字学习内容结合，从简单字逐渐过渡到形近字、多字辨认。 目前已经上线，微信搜索： 「拍照学拼音」 最近越来越觉得，儿童启蒙其实挺适合 游戏化 。",
-      "source": "V2EX Creative",
-      "image": "https://pinyin.qibanai.cn/uploads/cards/nav/shizi00.png",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/0897deda07e564f8"
-    },
-    {
-      "title": "独立开发了一个 AI 穿搭测评小程序，顺便聊聊 DeepSeek V4 Flash 和 Reasonix 遇到的一些问题",
-      "link": "https://www.v2ex.com/t/1234731#reply0",
-      "date": "2026-08-16T03:50:38+00:00",
-      "description": "前段时间做了个微信小程序「穿啥」，核心功能是： 拍一张全身照，AI 从五个维度给穿搭打分，生成一张 Q 版穿搭海报，可以分享 AI 换装：上传自己的全身照，再选一件衣服，AI 生成你穿着这件衣服的效果图 单品搭配：拍一件衣服或鞋子，AI 给出搭配方向建议 衣橱管理：录入单品后，可以基于衣橱做搭配推荐 开发过程中主要用 DeepSeek V4 Flash 来写前端和后端，遇到几个有意思的事，发出来跟大家交流下。 DeepSeek V4 Flash 配合本地 Vision API 的多模态曲线方案 DeepSeek V4 Flash 便宜是真的便宜，但它不支持多模态。我的解决办法是：让它调用我本地的 Apple Vision API 做 OCR ，间接实现“看图”的能力。 具体场景是我给它一张设计稿截图，里面有很多小图标，要求它对着设计稿写代码，需要用到的图标自己抠出来。我以为 OCR 最多只能识别文字，结果它通过 Vision API 把每个小图标的位置、大小、形状都识别得相当精准，抠出来的图标直接能用。 这点真的出乎我意料。之前在 Trae 里用内置的多模态模型搞这个，折腾很久都没搞定",
-      "source": "V2EX Creative",
-      "image": "https://streelens-dev-1306038444.cos.ap-guangzhou.myqcloud.com/%E5%9B%BE%E5%BA%8A/3c67c1018e43c54cdf82247252905c60.jpg",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/832efefb4c482097"
-    },
-    {
-      "title": "新站上线几天， GSC 有 195 次曝光但 0 点击，分享一下我的排查过程",
-      "link": "https://www.v2ex.com/t/1234736#reply2",
-      "date": "2026-08-16T04:15:16+00:00",
-      "description": "最近做了一个关于 DeepSeek Harness 的英文站： DeepSeek Harness Guide 站点上线后很快被 Google 收录了，GSC 也开始出现搜索词。截至目前有 195 次曝光，但点击数还是 0 。 一开始看到“有曝光、没点击”，我有点怀疑是不是页面、TDK 或收录出了问题，于是把 GSC 数据和实际 SERP 排名一起看了一遍。最后发现，对于一个刚上线的新站，这个结果其实很正常。 简单分享一下排查过程，也想听听大家做新站时的数据表现。 一、先看 GSC 数据 目前的数据大致是： 总曝光：195 总点击：0 覆盖国家：19 个 美国曝光：89 次，占 46% 桌面端曝光：166 移动端曝光：29 deepseek harness github 平均排名 8.5 deepseek harness 平均排名 29.5 这个站面向开发者，所以桌面端曝光明显高于移动端比较合理。美国占比接近一半，也说明 Google 初步识别到了目标市场。 比较容易让人误判的是“平均排名 8.5”。 我实际搜索时，并没有在稳定的前十名里看到自己的站。新站的排名会受到地区、时间、个性化结",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/b7aa/baa7/665383_xlarge.png?m=1786853593",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/5fcd641cd2400405"
-    },
-    {
-      "title": "这是我第一次纯 vibe 的网站，给 VPS 商家打分的，专防 aff 上当",
-      "link": "https://www.v2ex.com/t/1234737#reply1",
-      "date": "2026-08-16T04:29:32+00:00",
-      "description": "去年的时候，AI 生成的代码我还是每行都要看的，后来是在看不过来了，打不过就加入 只能说 vibe 一时爽，一直 vibe 一直爽，现在的模型能力会让我觉得自己是天才程序员，导致我开了很多坑 其实这个站 1 月份就做好了，但每月都在开新坑，都快忘了，看到热帖出现个给论坛评分的站，才想起来自己做了个给 vps 评分的 请指正： 吾爱主机测评 https://52zhuce.com",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/d932/3d1d/562410_xlarge.png?m=1786854550",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/64d54bb238c94565"
-    },
-    {
-      "title": "让 ChatGPT 聊天具备一些 Codex 的能力",
-      "link": "https://www.v2ex.com/t/1234741#reply1",
-      "date": "2026-08-16T05:47:57+00:00",
-      "description": "新做了一个项目，让自己的电脑通过 MCP 跟 ChatGPT 的聊天模式交互，可以在没有额度的时候当个盗版 Codex 用。Claude 其实也可以用，不过额度原本就是共享的，我这个功能简陋，还不如直接用 CC 。 目前可以执行命令，读写文件，还在开发 ComputerUse 插件。 欢迎大家提一些意见。 GitHub： https://github.com/dayearnew/ChatRoom/",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/0f43/8d67/631098_xlarge.png?m=1699438635",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/27f465747d9b796f"
     },
     {
       "title": "一个类 overleaf 的 latex 写作平台",
@@ -4566,15 +4467,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/845f675437e6e7a1"
     },
     {
-      "title": "如何最大化 Claude Code Session 的价值",
-      "link": "https://www.v2ex.com/t/1234919#reply0",
-      "date": "2026-08-17T03:07:19+00:00",
-      "description": "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践： 《 Maximizing the value of your Claude Code sessions 》 。 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。 我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills ），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token 。 二、tok",
-      "source": "V2EX Play",
-      "image": "https://cdn.v2ex.com/gravatar/c01a9990e9f1bcbea1b8b6e4b0ed12f6?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/9a7c50f62432d0cf"
-    },
-    {
       "title": "Motrix 时隔三年终于更新了？作者刚开了 openai 的会员？",
       "link": "https://www.v2ex.com/t/1234920#reply1",
       "date": "2026-08-17T03:07:19+00:00",
@@ -4582,6 +4474,15 @@
       "source": "V2EX Play",
       "image": "https://cdn.v2ex.com/avatar/a5c4/cedb/764031_xlarge.png?m=1773103759",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/a0fb6b3f396db430"
+    },
+    {
+      "title": "如何最大化 Claude Code Session 的价值",
+      "link": "https://www.v2ex.com/t/1234919#reply0",
+      "date": "2026-08-17T03:07:19+00:00",
+      "description": "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践： 《 Maximizing the value of your Claude Code sessions 》 。 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。 我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills ），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token 。 二、tok",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/gravatar/c01a9990e9f1bcbea1b8b6e4b0ed12f6?s=73&d=retro",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/9a7c50f62432d0cf"
     },
     {
       "title": "深港两地用 codex(chatgpt)用什么网络方案？",
@@ -18002,6 +17903,105 @@
       "source": "V2EX Creative",
       "image": "https://i.imgur.com/67xl2ck.png",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/fe2d5c4c36e13fed"
+    },
+    {
+      "title": "[抽奖] DropToDo 更新了，来个福利抽奖活动！",
+      "link": "https://www.v2ex.com/t/1241582#reply13",
+      "date": "2026-09-12T12:18:48+00:00",
+      "description": "各位 V 友，大家好！ 最近给 DropToDo 加了个新功能。本期为大家带来一波 App Store 兑换码 抽奖福利！ 更新内容 现在输入任务后，可以直接点击旁边的时间： 日历选择日期 精确设置时间 快速选择预设时间 最远支持 90 天后的提醒 另外也做了一些性能和稳定性优化。 整体还是保持简单：拖下来，输入，完成。 https://droptodo.app App Store 下载地址 欢迎大家体验，有什么建议也可以直接说 抽奖福利 [App Store 兑换码 10 个 · 送福利] 各位 V 友快来当分母！ 🎁 奖品介绍 奖品 ：App Store 兑换码 数量 ：10 个（中奖者每人 1 个） 📅 参与方式 在本帖下方任意回复即可参与（重复回复仅计算第一楼，谢谢配合）。 请留下您的 Base64 编码邮箱（为了防止垃圾邮件爬虫）。\n不会转 Base64？ 很简单！例如你的邮箱是 yourname@gmail.com，请先前往 在线 Base64 转换工具 转换为 eW91cm5hbWVAZ21haWwuY29t，再把这个字符串粘贴进回复即可。 ⏰ 截止与开奖时间 截止时间 ",
+      "source": "V2EX Creative",
+      "image": "https://i.imgur.com/p6YrD7r.gif",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/4ec889b9d428c499"
+    },
+    {
+      "title": "vb 了两个摸鱼小游戏，朋友玩了说很上头，分享一下",
+      "link": "https://www.v2ex.com/t/1241588#reply1",
+      "date": "2026-09-12T13:08:04+00:00",
+      "description": "都是像素风格的网页小游戏，存档在本地，支持导入导出。 一个是用 ds-flash 生成的，一个是用 glm-flash 生成的。开发速度非常快，主要时间花在了设计美术资源和经济系统上面。游戏玩法捋清楚 AI 一轮基本就生成了。 《像素小集市》你是个跑单帮的小货郎，开着货车往返各地，低买高卖盯着实时行情，还得提防查私扣货。 https://zishu.me/p/pixel-bazaar/ 《暖阳农场》种植作物、浇水施肥、收获售卖，在宁静的像素农场里体验田园生活，升级你的农场。",
+      "source": "V2EX Creative",
+      "image": "https://i.imgur.com/Fh2ylcT.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/b8aac05be273f245"
+    },
+    {
+      "title": "做了一个中小学生作文点评工具，想听听大家的意见",
+      "link": "https://www.v2ex.com/t/1241591#reply0",
+      "date": "2026-09-12T13:39:56+00:00",
+      "description": "大家好，过去一段时间，我做了一个面向中小学生的中文作文点评网站，叫「红笔作文」。 地址： https://getredpen.cn 1. 为什么做 我发现作文批改有一个很实际的问题： 老师需要面对一个班几十篇作文，很难在每一篇里都写下完整的修改过程。家长想辅导，也常常知道“这里不太好”，却不知道怎样给出具体建议。 另外，老师写的“内容不具体”“结构需要调整”“语言不够生动”通常没有错，但孩子回家后，还是不知道具体是哪一句、为什么有问题、应该怎么改。 所以我想做的不是一个帮孩子生成作文的工具，而是把作文中的问题落到具体段落和句子上，再给出孩子能够理解的修改方向和局部示范。 2. 目前能做什么 用户可以直接拍照上传手写作文，系统会识别正文并生成一份点评报告，包括： - 综合评分和总评 - 内容、结构、语言、规范等维度评价 - 对应原文的逐段批注 - 文章亮点和主要问题 - 可以实际练习的写作技巧 - 局部修改建议和改写示范 目前支持小学三年级到高中三年级。评分时会结合学段、年级、地区和作文类型选择相应参考，并在报告里说明使用的是地区标准、卷种标准、学段通用标准还是通用兜底，不把整理资料包装",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/cc9c/cdf5/86882_xlarge.png?m=1789220932",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/879e8f47cc138950"
+    },
+    {
+      "title": "整理了一个 GPT Image 2.5 开源提示词合集， 30 个图文案例，聊聊怎么做的",
+      "link": "https://www.v2ex.com/t/1241594#reply0",
+      "date": "2026-09-12T13:52:52+00:00",
+      "description": "最近做了一个 GPT Image 2.5 的开源提示词合集，第一版刚整理完： 30 个图文案例，覆盖摄影、产品图、时装广告、平面设计、连续分镜等。 20 条配套修改指令，比如修标签、去掉多余文字、保持人物一致性。 提示词和 README 都有中英文版本。 原创提示词、文档和脚本采用 MIT 。 GitHub 地址： https://github.com/VulcanEon/insane-gpt-image-2.5-prompts 先交代一下关系：我自己在做 gptimage25.ai ，这个仓库也是由这个项目维护的。网站是商业服务，仓库公开可读，复制提示词不需要注册网站。 起因是看到朋友做了一个类似的合集，觉得“先看图片，感兴趣再展开提示词”的阅读方式挺好。尤其是对不熟悉摄影、设计术语的人来说，看图选方向，比面对一个空输入框容易很多。 于是参考了这种呈现方式，自己重新找案例、分析画面、写提示词。这次也让 GPT-6 帮忙完成了资料整理、双语改写和仓库搭建。 实际做下来，找图只是第一步 最初的思路很直接：去 X 搜 Image 2.5 ，找到有意思的案例，再分析它可能是怎么生成的。 实际",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/7b24187e381dea65"
+    },
+    {
+      "title": "电子名片网站",
+      "link": "https://www.v2ex.com/t/1241599#reply3",
+      "date": "2026-09-12T14:14:28+00:00",
+      "description": "简介：一个二维码就是一个个人主页，方便分享，欢迎使用鸭，哈哈哈 网站地址： https://1ef1509e.pinit.eth.limo/#/",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/280177ca27f0e533"
+    },
+    {
+      "title": "关闭电脑和电视后，再次开机后电脑通过“dp 转 HDMI”接口无法投屏到电视",
+      "link": "https://www.v2ex.com/t/1241601#reply0",
+      "date": "2026-09-12T14:34:15+00:00",
+      "description": "我在奥创中 GPU 设置成集显模式，操作模式设置成“安静”。电脑 type-c 接口外接 USB-hub ，USB-hub 中的 HDMI 接口输出视频信号到电视上投屏。 以上投屏方式第一次连接到 TCL 电视上进行投屏(用其他品牌电视做过 AB 测试，也存在同样的问题)，连接是成功的。可将输出到电视的画面设置成 60Hz 3840*2160 的画面。但是当关闭电脑和电视后，把两台设备的电源插销都拔掉。再次启动电脑和电视后。电视就显示没有 HDMI 信号输入。按 Win + P 键后电视画面也没有任何变化。我找到的规律是将 usb-hub 从电脑上拔掉再重新插上就可以正常投屏到电视了。在这种状况下重启(是软重启，不是关机后再启动电脑)电脑后一样可以正常投屏。且分辨率和画面正常。 我曾经将以上物理连接结构保持不变，将外接显示器换成普通电脑显示器。一切正常。即使电脑和显示器都彻底关闭，关机后把两台设备的电源插销都拔掉。第二天打开显示器和电脑，就会自动投屏。且原有的分辨率和刷新率都正常。 补充一个细节。我的笔记本电脑和电视使用一个电源插线板。我关闭电脑和电视后。会关闭电源插线板上的开关。此时",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/avatar/1869/a390/522912_large.png?m=1752498684",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/a4369735fe27cfb1"
+    },
+    {
+      "title": "9 月去威海看海玩沙吃海鲜，写了篇万字游记",
+      "link": "https://www.v2ex.com/t/1241603#reply1",
+      "date": "2026-09-12T14:41:50+00:00",
+      "description": "9 月刚开渔，避开暑假带家人去威海待了 6 天 5 夜。 这季节海水温暖，国际海水浴场沙质偏粗不易扬尘，海水清澈有果冻感；虽然遇到台风刘公岛停航，临时包车走沿海公路（猫头山、火炬八街），看了大连号驱逐舰，吃到了肥美海鲜。 按日整理了老城街巷、海滩风光、餐饮探店与详细开销，分享给想去海边度假的朋友。 完整游记请看： https://victor42.eth.limo/post/trip-to-weihai/",
+      "source": "V2EX Play",
+      "image": "https://cdn.victor42.work/posts/2026-09/7e4a57d0523b113ca59de811082717da.webp",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/a552058af2c20489"
+    },
+    {
+      "title": "Claude Code 操作审计工具： CC-Monitor",
+      "link": "https://www.v2ex.com/t/1241604#reply0",
+      "date": "2026-09-12T14:43:15+00:00",
+      "description": "CC-Monitor 写这个工具的目的 使用 CC 进行开发的时候经常不知道 Agent 对电脑操作的细节，很多时候配置被修改，也不知道是什么时候操作的。 CC-Monitor 提供了 Agent 操作审计功能，让 AI 对你电脑的操作一目了然，目前提供 Shell Log 和 Web UI 两种界面。 首页 ：概览统计——进行中的终端会话数、监测到的 Claude Code 会话总数、审计事件总数、拦截/疑似绕过次数、文件读/写/编辑/删除次数、日志类型与风险等级分布。\"会话总数\"、\"审计事件总数\"、\"已拦截的高危操作\"三张卡片可以点开查看下钻详情（分别是会话列表、按事件类型 + 所属 Session 的明细、被拦截操作的完整列表）。 Log 审计 ：全宽的实时审计日志查看（按会话过滤，会话下拉框显示\"文件夹 · 模型 · 短 ID\"，而不是一串看不出区别的 ID ），复用 CLI 那套人类可读的事件翻译逻辑。 终端会话 ：直接在浏览器里开启一个 Claude Code 终端对话（ node-pty 起 PTY ），不用再切到本地终端软件；使用 xterm.js + WebGL 插件",
+      "source": "V2EX Creative",
+      "image": "https://raw.githubusercontent.com/cn0xroot/CC-Monitor/refs/heads/master/pic/home-zh.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/85d11e38e58aea6c"
+    },
+    {
+      "title": "做了个 iPhone 各个销售地区的版本对比工具-哪版",
+      "link": "https://www.v2ex.com/t/1241605#reply2",
+      "date": "2026-09-12T14:52:01+00:00",
+      "description": "如果你最近也在考虑买 iPhone ，不过还在纠结国行、港版或其他地区版本明，可以试试我的这个工具。 叫「哪版」： https://naban.barrybarrywu.com/ 可以在同一个页面里对比同一款 iPhone 、在不同销售地区的差异。 目前整理了 11 款 iPhone ，以及中国大陆、香港、澳门、美国、日本、加拿大、澳大利亚、新加坡、马来西亚和台湾 10 个销售地区。 现在主要能比较： - 实体 SIM 卡位、eSIM 和双卡组合 - Apple Intelligence 、FaceTime 等地区功能差异 - 蜂窝频段、Wi-Fi 、卫星功能 - MagSafe 、Qi2 和有线充电规格 - 同容量的官方价格与参考换算 - 保修及服务条件 每项资料都附上 Apple 官方来源；官网没有明确说明、尚未核验或只有社区使用反馈的内容，也会分开标注。",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/e40d/6533/153667_xlarge.png?m=1789224603",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/b1725f99f723e0d5"
+    },
+    {
+      "title": "开源 RED：让 AI 持续理解项目，和你一起把想法做成产品",
+      "link": "https://www.v2ex.com/t/1241608#reply0",
+      "date": "2026-09-12T15:10:01+00:00",
+      "description": "我们从 GPT-4o 发布后开始，持续把 AI 用在软件开发里。一个项目从最初的想法走到可用的产品，需求要边做边聊才能讲清楚，方案会随着调查和反馈调整，实现之后还要维护。我们希望 AI 能持续理解项目，参与这个完整过程，并把过程中形成的认识和决定积累下来，支持后续工作。 所以整理了 RED （ Research 、Evolve 、Document ），并做成了开源 Skill 和配套 CLI： Research：问题、调查发现和建议，保留判断所需的上下文。 Evolve：当前获准推进的改动、方案、进展和验收要求，随反馈更新。 Document：已经接受的结论，整理进项目原有的使用、开发或维护说明。 举个从想法到后续迭代的示意例子：你想给团队做一个回款看板，一开始只说了「我想知道这个月收了多少钱，还有哪些客户没付」。 先把问题研究清楚。 AI 查看现有订单、付款记录和项目说明，带着发现和你讨论：一张订单可能分几次付款；签单日期和到账日期不同；「还没付」也可能包含尚未到期的款项。你补充，这个看板主要给负责人安排跟进，希望按实际到账日期看本月回款。AI 把数据来源、已查明的情况、候选统计方式",
+      "source": "V2EX Creative",
+      "image": "https://blog.e10t.net/red/assets/red-states.zh.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/871aa623636f1213"
+    },
+    {
+      "title": "Brosis-把整个 Mac 变成你 Agent 的上下文",
+      "link": "https://www.v2ex.com/t/1241609#reply0",
+      "date": "2026-09-12T15:13:28+00:00",
+      "description": "我自己有个需求，就是在使用 mac 的时候，想要无感的收集我所有 mac 里的内容作为上下文，让我的 agent 可以调用，于是我搓了了软件，名字叫 Brosis 。 Brosis （ macOS 26+ / Apple Silicon ）是一枚住在菜单栏里的本地活动记录器：它把你在 Mac 上看过、写过、用过的屏幕内容，整理成一条可检索的时间线，通过 MCP 交给你的 AI Agent 。数据不出本机，理解层不靠大模型。 github 地址： https://github.com/AllenBall/brosis 微信图文地址： https://mp.weixin.qq.com/s/xLXXe2NIgIHvEMpZGpfW_Q 目前还在快速迭代中，欢迎大家 试用和 star ～",
+      "source": "V2EX Creative",
+      "image": "https://i.v2ex.co/aI126xD0l.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/63bfe39574b2d5fd"
     }
   ]
 }
