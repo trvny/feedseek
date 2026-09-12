@@ -1,6 +1,6 @@
 """Open Source / open-standards feed: combined Atom from Creative Commons,
 the Open Source Initiative, the Linux Foundation, SPDX, the Open Geospatial
-Consortium, the RFC Editor, and IETF status. Renamed from creativecommons.py — this feed now
+Consortium, the RFC Editor, IETF status, and Posit Open Source. Renamed from creativecommons.py — this feed now
 covers open-licensing and open-standards bodies generally, not just CC.
 
 All sources are native RSS/Atom feeds (multi_rss SOURCES) — no scraping:
@@ -19,6 +19,7 @@ All sources are native RSS/Atom feeds (multi_rss SOURCES) — no scraping:
   * RFC Editor        https://www.rfc-editor.org/rfcatom.xml
   * IETF Status       https://status.ietf.org/history.atom (incident log,
                       capped low like the other status feeds elsewhere)
+  * Posit Open Source https://opensource.posit.co/blog/index.xml
 
 Note: renaming from creativecommons.py changes the cache key (feed_name
 "creativecommons" -> "opensource"), so the first run starts from an empty
@@ -47,6 +48,7 @@ SOURCES = [
     ("OGC", "https://www.ogc.org/feed/", 20),
     ("RFC Editor", "https://www.rfc-editor.org/rfcatom.xml", 30),
     ("IETF Status", "https://status.ietf.org/history.atom", 10),
+    ("Posit Open Source", "https://opensource.posit.co/blog/index.xml", 30),
     # ogp.me itself has no feed (the .rdf is the frozen OGP vocabulary, not a
     # changelog); the spec's hosting repo commit feed is the real change stream.
     ("Open Graph protocol", "https://github.com/facebook/open-graph-protocol/commits/master.atom", 15),
