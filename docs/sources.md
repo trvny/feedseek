@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-103 feedów · 801 źródeł
+104 feedów · 808 źródeł
 
 ## Spis grup
 
@@ -18,7 +18,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - 🏦 Bank
 - 🚀 Kosmos / nauka / rząd USA
 - 🎵 Radio / muzyka
-- 😂 Rozrywka / memy
+- 🎬 Rozrywka / streaming / memy
 - 🛒 Ogłoszenia
 - 🧩 Userscripts
 - 📅 Codzienne
@@ -759,7 +759,18 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=electroswing-radio.com&sz=16) Electro Swing Radio — <https://electroswing-radio.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=electroswingthing.com&sz=16) Electro Swing Thing — <https://electroswingthing.com/feed/>
 
-## 😂 Rozrywka / memy
+## 🎬 Rozrywka / streaming / memy
+
+### ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix
+`netflix` · [feed_netflix.xml](../feeds/feed_netflix.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix Newsroom — <https://about.netflix.com/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix Newsroom PL — <https://about.netflix.com/pl/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=netflixlife.com&sz=16) Netflix Life — <https://netflixlife.com/feed/>
+- ![](https://www.google.com/s2/favicons?domain=news.newonnetflix.info&sz=16) New on Netflix — <https://news.newonnetflix.info/feed/>
+- ![](https://www.google.com/s2/favicons?domain=usa.newonnetflix.info&sz=16) New on Netflix US — <https://usa.newonnetflix.info/feed/>
+- ![](https://www.google.com/s2/favicons?domain=uk.newonnetflix.info&sz=16) New on Netflix UK — <https://uk.newonnetflix.info/feed/>
+- ![](https://www.google.com/s2/favicons?domain=www.whats-on-netflix.com&sz=16) What's on Netflix — <https://www.whats-on-netflix.com/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.cheezburger.com&sz=16) Cheezburger Network
 `cheezburger` · [feed_cheezburger.xml](../feeds/feed_cheezburger.xml)

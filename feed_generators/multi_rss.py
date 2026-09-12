@@ -9,6 +9,7 @@ their sources and call :func:`run`.
 
 from __future__ import annotations
 
+import re
 import time
 from datetime import datetime, timezone
 
@@ -107,10 +108,34 @@ def get_html(url, *, retry_delay=4):
     return None
 
 
+_POLISH_MONTHS = {
+    "stycznia": "January",
+    "lutego": "February",
+    "marca": "March",
+    "kwietnia": "April",
+    "maja": "May",
+    "czerwca": "June",
+    "lipca": "July",
+    "sierpnia": "August",
+    "września": "September",
+    "października": "October",
+    "listopada": "November",
+    "grudnia": "December",
+}
+
+
+def _normalize_localized_date(date_str):
+    if not isinstance(date_str, str):
+        return date_str
+    for localized, english in _POLISH_MONTHS.items():
+        date_str = re.sub(rf"\b{localized}\b", english, date_str, flags=re.IGNORECASE)
+    return date_str
+
+
 def parse_date(date_str):
-    """Parse a date string into a UTC datetime, or None on failure."""
+    """Parse a date string into a UTC datetime, including Polish month names."""
     try:
-        dt = date_parser.parse(date_str)
+        dt = date_parser.parse(_normalize_localized_date(date_str))
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=pytz.UTC)
         return dt.astimezone(pytz.UTC)
