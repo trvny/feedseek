@@ -59,10 +59,10 @@ def main(full=False):
     return run(
         feed_name=FEED_NAME,
         title="Open Source",
-        subtitle="Open-licensing and open-standards bodies: Creative Commons, "
-                 "the Open Source Initiative, the Linux Foundation, SPDX, the "
-                 "Open Geospatial Consortium, the RFC Editor, IETF status, and "
-                 "the Open Graph protocol.",
+        subtitle="Open-source, open-licensing, and open-standards updates from "
+                 "Creative Commons, the Open Source Initiative, the Linux Foundation, "
+                 "SPDX, the Open Geospatial Consortium, the RFC Editor, IETF status, "
+                 "Posit Open Source, and the Open Graph protocol.",
         blog_url="https://creativecommons.org/blog/",
         author="various",
         sources=SOURCES,
