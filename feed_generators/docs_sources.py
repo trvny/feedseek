@@ -66,7 +66,7 @@ GROUPS = [
     ("🏦 Bank", ["pekao"]),
     ("🚀 Kosmos / nauka / rząd USA", ["nasa", "esa", "usgov", "wikipedia_pl"]),
     ("🎵 Radio / muzyka", ["trojka", "czworka", "foobar2000_news", "ra", "beatport_top100", "audio", "audacity", "radios"]),
-    ("😂 Rozrywka / memy", ["cheezburger", "memedroid", "9gag", "jbzd", "4chan"]),
+    ("🎬 Rozrywka / streaming / memy", ["netflix", "cheezburger", "memedroid", "9gag", "jbzd", "4chan"]),
     ("🛒 Ogłoszenia", ["olx"]),
     ("🧩 Userscripts", ["userscripts"]),
     ("📅 Codzienne", ["daily_digest", "daily_quote", "wotd", "datime"]),
