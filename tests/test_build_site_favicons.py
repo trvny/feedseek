@@ -99,6 +99,38 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn("https://example.com/favicon.ico", fallbacks)
         self.assertEqual(fallbacks[-1], build_site.FAVICON_SVG)
 
+    def test_rendered_card_has_expandable_description_viewport(self):
+        card = build_site.render_card(
+            {
+                "filename": "feed_long_test.xml",
+                "title": "Long Test",
+                "subtitle": "A deliberately long description " * 20,
+                "source": "https://example.com/",
+                "icon": "",
+                "logo": "",
+                "entries": 1,
+                "updated": None,
+            },
+            "https://feeds.example/",
+        )
+
+        self.assertIn('class="card__desc"', card)
+        self.assertIn('id="desc-feed_long_test.xml"', card)
+        self.assertIn('data-expand-desc', card)
+        self.assertIn('aria-controls="desc-feed_long_test.xml"', card)
+        self.assertIn('tabindex="-1"', card)
+
+    def test_index_expands_long_descriptions_without_unbounded_card_growth(self):
+        rendered = build_site.build_index([], "https://feeds.example/")
+        self.assertIn("max-height: 4.35em", rendered)
+        self.assertIn("max-height: 8.7em", rendered)
+        self.assertIn("overflow-y: auto", rendered)
+        self.assertIn("text.scrollHeight > text.clientHeight + 1", rendered)
+        self.assertIn("expand.textContent = expanded ? 'less' : 'more…'", rendered)
+        self.assertIn("requestAnimationFrame(refreshDescriptionToggles)", rendered)
+        self.assertIn("text.tabIndex = expanded ? 0 : -1", rendered)
+        self.assertIn("text.focus({ preventScroll: true })", rendered)
+
     def test_autodiscovery_advertises_xml_and_json_feed(self):
         links = build_site.render_autodiscovery(
             [{"filename": "feed_test.xml", "title": "Test", "format": "atom"}],

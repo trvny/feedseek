@@ -335,6 +335,7 @@ def render_card(feed: dict, base: str) -> str:
     dom = domain_of(feed["source"])
     title = html.escape(feed["title"])
     subtitle = html.escape(feed["subtitle"]) or "&nbsp;"
+    desc_id = "desc-" + str(feed["filename"])
     source_attr = html.escape(feed["source"], quote=True)
     candidates = favicon_candidates(feed)
     favicon = html.escape(candidates[0], quote=True)
@@ -358,7 +359,10 @@ def render_card(feed: dict, base: str) -> str:
             {source_link}
           </div>
         </header>
-        <p class="card__sub">{subtitle}</p>
+        <div class="card__desc">
+          <p class="card__sub" id="{desc_id}" tabindex="-1">{subtitle}</p>
+          <button class="card__more" type="button" data-expand-desc aria-expanded="false" aria-controls="{desc_id}" aria-label="Expand description" hidden>more…</button>
+        </div>
         <footer class="card__foot">
           <span class="card__meta">{meta}</span>
           <span class="card__actions">
@@ -496,15 +500,16 @@ def build_index(feeds: list[dict], base: str) -> str:
     .search:focus {{ border-color: var(--accent); }}
     .search::placeholder {{ color: #a59a8c; }}
 
-    .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; align-items: stretch; }}
 
     .card {{
+      min-height: 270px;
       background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
       padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 12px;
       position: relative; transition: transform .14s ease, box-shadow .14s ease, border-color .14s;
     }}
     .card:hover {{ transform: translateY(-2px); box-shadow: 6px 6px 0 rgba(29,25,22,.08); border-color: var(--ink); }}
-    .card__head {{ display: flex; gap: 12px; align-items: flex-start; }}
+    .card__head {{ display: flex; gap: 12px; align-items: flex-start; min-height: 50px; }}
     .fav {{ width: 20px; height: 20px; object-fit: contain; border-radius: 4px; flex: none; margin-top: 4px; background: var(--paper-2); }}
     .card__titles {{ min-width: 0; }}
     .card__title {{ font-size: 21px; font-weight: 600; line-height: 1.12; margin: 0; letter-spacing: -.01em; }}
@@ -513,7 +518,25 @@ def build_index(feeds: list[dict], base: str) -> str:
       color: var(--ink-soft); text-decoration: none; word-break: break-all;
     }}
     .src:hover {{ color: var(--accent); }}
-    .card__sub {{ margin: 0; font-size: 15px; color: var(--ink-soft); flex: 1; }}
+    .card__desc {{
+      position: relative; flex: 1 0 4.35em; min-height: 4.35em; max-height: 4.35em;
+      transition: min-height .16s ease, max-height .16s ease;
+    }}
+    .card__desc.is-expanded {{ min-height: 8.7em; max-height: 8.7em; }}
+    .card__sub {{
+      height: 100%; margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink-soft);
+      overflow: hidden;
+    }}
+    .card__desc.is-expandable:not(.is-expanded) .card__sub {{ padding-right: 52px; }}
+    .card__desc.is-expanded .card__sub {{ overflow-y: auto; padding-right: 6px; padding-bottom: 1.5em; scrollbar-width: thin; }}
+    .card__more {{
+      position: absolute; right: 0; bottom: 0; border: 0; padding: 1px 0 1px 24px;
+      background: linear-gradient(90deg, transparent, var(--card) 28%);
+      color: var(--accent-deep); font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+      cursor: pointer;
+    }}
+    .card__more[hidden] {{ display: none; }}
+    .card__more:hover {{ color: var(--accent); text-decoration: underline; }}
     .card__foot {{
       display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
       margin-top: 2px; padding-top: 13px; border-top: 1px dashed var(--line);
@@ -576,6 +599,21 @@ def build_index(feeds: list[dict], base: str) -> str:
     const cards = Array.from(document.querySelectorAll('.card'));
     const shown = document.getElementById('shown');
     const empty = document.getElementById('empty');
+    const descriptions = Array.from(document.querySelectorAll('.card__desc'));
+    const refreshDescriptionToggles = () => {{
+      descriptions.forEach(container => {{
+        const card = container.closest('.card');
+        if (card?.hidden || container.classList.contains('is-expanded')) return;
+        const text = container.querySelector('.card__sub');
+        const toggle = container.querySelector('[data-expand-desc]');
+        if (!text || !toggle) return;
+        const overflow = text.scrollHeight > text.clientHeight + 1;
+        container.classList.toggle('is-expandable', overflow);
+        toggle.hidden = !overflow;
+      }});
+    }};
+    requestAnimationFrame(refreshDescriptionToggles);
+    window.addEventListener('resize', () => requestAnimationFrame(refreshDescriptionToggles));
     search.addEventListener('input', () => {{
       const q = search.value.trim().toLowerCase();
       let n = 0;
@@ -586,6 +624,7 @@ def build_index(feeds: list[dict], base: str) -> str:
       }});
       shown.textContent = n;
       empty.hidden = n !== 0;
+      requestAnimationFrame(refreshDescriptionToggles);
     }});
     document.addEventListener('error', (event) => {{
       const image = event.target;
@@ -597,6 +636,26 @@ def build_index(feeds: list[dict], base: str) -> str:
       if (next) image.src = next;
     }}, true);
     document.addEventListener('click', async (e) => {{
+      const expand = e.target.closest('[data-expand-desc]');
+      if (expand) {{
+        const container = expand.closest('.card__desc');
+        const text = container?.querySelector('.card__sub');
+        if (!container || !text) return;
+        const expanded = !container.classList.contains('is-expanded');
+        container.classList.toggle('is-expanded', expanded);
+        expand.setAttribute('aria-expanded', String(expanded));
+        expand.setAttribute('aria-label', expanded ? 'Collapse description' : 'Expand description');
+        expand.textContent = expanded ? 'less' : 'more…';
+        text.tabIndex = expanded ? 0 : -1;
+        if (expanded) {{
+          text.focus({{ preventScroll: true }});
+        }} else {{
+          text.scrollTop = 0;
+          expand.focus({{ preventScroll: true }});
+          requestAnimationFrame(refreshDescriptionToggles);
+        }}
+        return;
+      }}
       const btn = e.target.closest('[data-copy]');
       if (!btn) return;
       try {{
