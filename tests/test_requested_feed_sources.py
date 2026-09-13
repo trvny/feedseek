@@ -19,6 +19,7 @@ import python  # noqa: E402
 import rutracker  # noqa: E402
 import saas  # noqa: E402
 import skillsllm  # noqa: E402
+import spotify  # noqa: E402
 
 
 class RequestedFeedSourcesTests(unittest.TestCase):
@@ -176,6 +177,12 @@ class RequestedFeedSourcesTests(unittest.TestCase):
                 "https://feed.rutracker.cc/atom/f/1631.atom",
                 "https://feed.rutracker.cc/atom/f/2331.atom",
             },
+        )
+
+    def test_spotify_includes_distrokid_blog(self):
+        self.assertIn(
+            (spotify.DISTROKID_LABEL, spotify.DISTROKID_BLOG_URL),
+            spotify.doc_sources(),
         )
 
     def test_github_includes_beeware_news(self):
