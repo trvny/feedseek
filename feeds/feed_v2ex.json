@@ -8,6 +8,374 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d7c3ff33d1b703a0",
+      "url": "https://www.v2ex.com/t/1241694#reply1",
+      "title": "关于注册 gmail 的方法",
+      "content_text": "(本次分享无论是准备阶段、网络阶段、注册阶段都缺一不可，若有需求需仔细观看) 由于谷歌加强风控，现在注册困难，比如需要扫描二维码发信注册，侥幸跳过二维码用短期号码注册要养号 10 不存 1 ，也不能完全避免登陆时需要向原始注册时的手机号接码。包括购买的账户用一段时间后都有可能登陆时需要向原始注册时的手机号发送验证码登录。包括好不容易注册出账户在短时间内封禁，申诉通过登陆时需要向原始注册时的手机号发送验证码登录。这就是困住大多数人的主要问题。 1.准备 设备：电脑，模拟器（ BlueStacks 国际版或者 android studio 及其任何带有谷歌框架的模拟器)，以及独享 ip 和长期号码 (自用长期号码:可使用 longsms.net ) 注：以上适用于需要注册多个的用户 设备：iphone 系列移动设备（ ip 系列及 ipad ）或者 Android 系列移动设备及平板，正常的机场 ip （如果条件允许优先使用独享 ip ）和长期号码\n注：以上适用于注册单个的用户 2.网络 windows 用户本地需要机场打开虚拟网卡模式或者 tun 模式，独享 ip 须在模拟器内使用\n移动",
+      "date_published": "2026-09-13T11:32:54Z",
+      "date_modified": "2026-09-13T11:32:54Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://img.cdn1.vip/i/6aa67f121007c_1789296402.webp",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://img.cdn1.vip/i/6aa67f121007c_1789296402.webp",
+          "mime_type": "image/webp"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/9efb4f109b753525",
+      "url": "https://www.v2ex.com/t/1241693#reply0",
+      "title": "做了个小工具：丢个 HuggingFace 链接进去，自动打出免装环境的本地模型懒人包",
+      "content_text": "起因是我自己被配环境搞烦了。想跑个 whisper ，CUDA 版本对不上，cudnn 缺文件，折腾一晚上没跑起来。后来发现网上其实不缺懒人包，缺的是能随时出新包的办法——别人分享的包永远是固定那几个模型，你想跑个新的，还是得自己从头配环境。 所以我把方向反过来：不做固定的包，做一条打包流水线。丢一个 HuggingFace 链接进去，自动产出整合包。谁想跑新模型新框架，把链接发我就行，很快打包上架。 包里不放 Python ，只有编译好的 C++ 内核（ llama.cpp 、whisper.cpp 这类）加权重，运行时由客户端提供。所以体积小很多：最小的 whisper 包 59MB ，qwen3-0.6b 的包 602MB 。对比那些内嵌 Python 的整合包，光解释器就 4 个多 G 。 每台机器情况不一样，同一个模型我出了 CPU 版和显卡加速版分开上架，客户端按本机硬件默认选，没独显的话跑不动的包直接不展示。 上架前每个包都会真跑一遍：起服务、发真实请求、断言输出、再关停，用的就是客户端跑模型的同一套代码。免得有人下载下来发现根本起不来。 实测数据，i9-14900KF",
+      "date_published": "2026-09-13T11:31:21Z",
+      "date_modified": "2026-09-13T11:31:21Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/b16c/fa37/589358_xlarge.png?m=1772967663",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/b16c/fa37/589358_xlarge.png?m=1772967663",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/6590b22a5aaa963a",
+      "url": "https://www.v2ex.com/t/1241692#reply0",
+      "title": "做了一个基于 Agent + Skill + Toolkit + Workflow 的 AI 客服工作台，单店铺永久免费，想听听大家的意见",
+      "content_text": "大家好，最近做了一个自己的 AI 客服产品 JuDesk ，想在 V2EX 和大家分享一下，也希望听听大家的意见。 产品地址： http://38.55.194.196:3000/ 先说一下我为什么做这个。 现在很多 AI 客服产品，本质上还是： 客户提问 → 匹配知识库 → 生成一段回复。 这种方式处理简单问题还可以，但一旦涉及订单、物流、售后、库存、跨平台业务，就容易变成“会聊天，但不会干活”。 所以我想做的不是一个简单的 AI 回复框，而是一个真正基于 Agent 的客服工作台。 目前产品主要围绕四个能力： 1. Agent AI 负责理解客户意图、判断下一步应该做什么，并决定是否需要调用工具或执行流程。 2. Skill 把商品咨询、订单查询、物流查询、售后处理等业务能力封装成可复用的技能。 3. Toolkit 让 Agent 可以调用真实工具，而不是只生成文字。 例如查询商品信息、订单状态、物流信息等。 4. Workflow 把多个步骤串成完整业务流程。 例如客户咨询 → 判断问题 → 查询数据 → 执行处理 → 回复客户 → 必要时转人工。 我希望最终做成的是： 一个工",
+      "date_published": "2026-09-13T11:17:11Z",
+      "date_modified": "2026-09-13T11:17:11Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/d2ed/e318/641223_xlarge.png?m=1701489546",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/d2ed/e318/641223_xlarge.png?m=1701489546",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/208ca6d3c2340430",
+      "url": "https://www.v2ex.com/t/1241687#reply0",
+      "title": "AI 赛博算命，六爻与紫微斗数，测一下准不准 http://aitjg.com/",
+      "content_text": "http://aitjg.com/ 问一件事， 起一卦，看清眼前。 三枚铜钱、六度投掷，定出本卦与变卦。八宫世应、纳甲干支、六亲六神、 旬空一次排全 —— 排盘由确定性算法推得，AI 只负责依卦而解，不凭玄谈。",
+      "date_published": "2026-09-13T10:08:18Z",
+      "date_modified": "2026-09-13T10:08:18Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/84cc8c36ad478d46134cb7d54f8510a5?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/84cc8c36ad478d46134cb7d54f8510a5?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/cf0e18de3f86af4a",
+      "url": "https://www.v2ex.com/t/1241682#reply0",
+      "title": "OpenAI 更新了图像提示词指南，我把示例和使用要点整理进了开源仓库",
+      "content_text": "最近看了 OpenAI 更新后的图像提示词指南，里面有 Flare / Sunburst 的示例对照，也补充了选模型、连续编辑和结果检查的说明。我顺手把这些内容整理进了之前做的开源 Prompt 合集，单独开了一个官方教程板块。 先交代一下：我是 gptimage25.ai 的维护者，这个仓库也是我们维护的。网站是商业项目，GitHub 合集可以独立使用，不需要注册网站，也没有限定必须在哪个平台运行。 仓库： insane-gpt-image-2.5-prompts 原文： OpenAI 图像提示词指南 我觉得这版指南最值得看的，是它把“想生成什么”和“怎么判断生成对了”放到了一起。 比如写人像，要交代取景、动作、光线和皮肤质感；做广告，要明确文字内容、位置和出现次数；做图表，要给出真实数据和关系；改图时，要同时说明修改项和保留项。这些要求更容易对应到具体的检查动作。 其中几个点，对实际使用挺有帮助。 第一，选模型可以从自己的合格标准出发。 指南把 Flare 定位为速度优先，Sunburst 定位为质量优先。已有 GPT Image 2 工作流如果质量够用，可以先用相同输入测试 Fl",
+      "date_published": "2026-09-13T09:47:21Z",
+      "date_modified": "2026-09-13T09:47:21Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/52e2e00c3830935d",
+      "url": "https://www.v2ex.com/t/1241679#reply0",
+      "title": "雷达·鹈鹕骑自行车大赛 正式开赛",
+      "content_text": "度完假回来了！ 最近大家是不是为了测是否降智花了一推的鹈鹕，咱们废物利用起来。 本次鹈鹕杯正式上线接受投稿了！ 这次开放两个赛道.\n一个是 classic ，用来评选正经好看的鹈鹕.\n一个是 open ，用来投稿奇思妙想和各种奇奇怪怪的鹈鹕.\n申明： 本次站点为了吸引更多的小伙伴投稿，不设任何注册、加群等信息，请大胆投稿，但投稿后请留好每个作品的上传凭证，万一中了呢.\n两个赛道冠军各提供一个电子工牌作为奖品。话不多说，快来玩吧！ 投稿、投票地址",
+      "date_published": "2026-09-13T09:37:18Z",
+      "date_modified": "2026-09-13T09:37:18Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://i.imgur.com/dy6QMhl.png",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.imgur.com/dy6QMhl.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d6d34fa897b5989f",
+      "url": "https://www.v2ex.com/t/1241678#reply0",
+      "title": "做了个给独立 App 用的支持页、隐私政策页和使用条款页平台 StorePal",
+      "content_text": "我想找正在做或已经发布 App 的独立开发者试试我做的这个平台 StorePal 。 解决的问题很简单： 一键为你的新 app 生成固定专属的 Support, 隐私政策和使用条款页面链接，让你在提交到 App Store 的时候无需为此分神 而且，Support 页本身有完整的提交问题、回复用户的功能，会给用户发送邮件，你可以在后台回复，也可以直接回复反馈邮件。 除此外还有 Release notes 页面等可选功能。 也提供 CLI 和 skill 方便集成到 Agent flow 里。 目前免费版支持 3 个 App 、每月 30 条反馈，包含网页支持页、收件箱和对话。Pro 是 $9.90 ／年，也可 $4.99 ／月，面向需要更多应用、反馈或原生 API 接入的人。 如果你在做出海的应用，应该可以解决你起步时的一些麻烦。 也欢迎试完直接告诉我哪里不好用，哪里你觉得可以。我直接给你 Pro 。",
+      "date_published": "2026-09-13T09:23:34Z",
+      "date_modified": "2026-09-13T09:23:34Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/98fb/2022/5618_xlarge.png?m=1789291340",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/98fb/2022/5618_xlarge.png?m=1789291340",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/db55dcbf1bbe7a61",
+      "url": "https://www.v2ex.com/t/1241673#reply10",
+      "title": "如果抄作业就能得高分进好大学，且老师及学校都不管，那该多好呀",
+      "content_text": "如果抄作业就能得高分进好大学，且老师及学校都不管，那该多好呀？ 试问谁还愿意努力学习，等着抄就好啦。 试问谁还愿意花钱训练，等着蒸馏就好啦。 试问谁还愿意花精力创新，等着抄过来拼价格就好啦。 最终就是卷卷卷，卷死你",
+      "date_published": "2026-09-13T08:32:25Z",
+      "date_modified": "2026-09-13T08:32:25Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/18fa04f8814c3296209b2c2857c07463?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/18fa04f8814c3296209b2c2857c07463?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4f1614012d81d5bc",
+      "url": "https://www.v2ex.com/t/1241671#reply1",
+      "title": "搭建你的 Homelab，用来学习和研究技术",
+      "content_text": "大家好，我是大庆开荒。 最近我在家里，搭建了一个 Homelab ，家庭实验室，用来学习和研究技术。 以下视频分享了我的经验，欢迎观看： https://www.bilibili.com/video/BV1gBYY6wEH5/?vd_source=eac57d23025c06a23af985f3ce0640d3",
+      "date_published": "2026-09-13T08:17:19Z",
+      "date_modified": "2026-09-13T08:17:19Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/2838/023a/51_xlarge.png?m=1788397306",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/2838/023a/51_xlarge.png?m=1788397306",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a4e9d45fcafa155a",
+      "url": "https://sspai.com/post/113880",
+      "title": "搭建自己的 HomeLab（一）：聊聊我的硬件清单",
+      "content_text": "作为系列的第一篇，这里想把三件事讲清楚：什么是 HomeLab、我为什么愿意折腾它、以及这套东西需要哪些硬件、它们大概又要花多少钱。系列其他文章的目录放在文末。 查看全文",
+      "date_published": "2026-09-13T07:51:55Z",
+      "date_modified": "2026-09-13T07:51:55Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/09/11/75052a92dbcbdd64b15bd08886fed6ce.jpeg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/09/11/75052a92dbcbdd64b15bd08886fed6ce.jpeg?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3c612276c39af5b0",
+      "url": "https://www.v2ex.com/t/1241667",
+      "title": "分享下轻量好用的模型网关 GT AI Gateway 新版本，增加了多上游负载均衡和自动故障切换",
+      "content_text": "<p>大家好，分享一个我自己维护的开源项目：GT AI Gateway 。它解决的问题很朴素——当你手里有一个或多个上游 API Key ，想分给团队里多个人用的时候，直接发 Key 既控制不了用量，也防不住泄漏。这个网关就是插在中间的那一层。</p>\n<p>项目地址： <a href=\"https://github.com/alexazhou/gt_ai_gateway\" rel=\"nofollow\">https://github.com/alexazhou/gt_ai_gateway</a></p>\n<h2>多上游负载均衡与故障切换</h2>\n<p>一个模型可以同时挂多个上游渠道（比如官方 + 代理 + 备用）。请求会自动分摊到各个渠道上，某个渠道挂了会自动切到还活着的那个，用的人基本无感。</p>\n<p>选渠道的方式可以自己定：让同一个用户固定走同一个渠道（上游那边的缓存命中率更高，更省钱），或者每次请求都随机分配。失败后要不要自动切换，是个独立开关。</p>\n<h2>限流与访问控制（本版新增）</h2>\n<p>举个常见的例子：上游 API 被单个用户占满了怎么办？</p>\n<p>有人跑了批任务，或者不小心写出个死循环，把上游额度刷满，其他人就跟着一起干等。这个版本加了限流和访问控制，可以在网关这一层把问题挡掉：</p>\n<ul>\n<li><strong>按用户限速</strong>：给每个人配一个每分钟请求上限。避免出现单个用户把整个上游占满的情况。</li>\n<li><strong>按模型、按渠道限速</strong>：也可以给某个模型或某个上游渠道设总量上限，防止被集中打满。</li>\n<li><strong>被拦下时给出明确反馈</strong>：网关会告诉客户端等多久再试，客户端据此退避就行，不用盲目猛冲。</li>\n<li><strong>访问控制</strong>：也可以按用户控制可以访问的模型。</li>\n</ul>\n<h2>什么是 GT AI Gateway ？（写给还没用过的朋友）</h2>\n<p>如果你是第一次看到这个项目，简单来说，GT AI Gateway 是一个轻量级、开箱即用的 AI API 网关。</p>\n<p>它的核心作用是帮你聚合和管理各种大模型 API 。当你手头有多个大模型接口（ OpenAI, Anthropic, Gemini 等）时，可以通过它实现：</p>\n<p>🔍 请求分析与改写: 深入解析请求上下文，支持在网关层对请求体和提示词进行拦截、分析及智能改写。\n🔄 协议转换与兼容: 统一 API 入口，支持主流大模型协议（ OpenAI 、Anthropic 等）的自动适配与双向转换。\n🔐 用户管理与鉴权: 支持把单个上游 API 分发给多用户使用，精准控制各自用量，有效防止上游 Key 泄漏。\n📝 完整请求记录: 全量记录所有 AI 请求、响应日志以及耗时数据，方便进行排查、对账和二次分析。\n⚡ 极轻量与高性能: 低资源占用，无额外的独立数据库依赖。Serverless 模式下使用 Cloudflare 原生的 D1 数据库，其他环境下默认使用轻量级内嵌的 SQLite 。\n🚀 多运行模式：支持 Serverless 部署、Docker 部署、本地源码运行以及跨平台桌面端应用 (App) 运行。</p>\n<p>如果你在寻找一个好用的工具来统一接管你的 AI 开发流，或者想在团队内更优雅地分发大模型接口，非常推荐试一试！</p>\n<p>项目地址： <a href=\"https://github.com/alexazhou/gt_ai_gateway\" rel=\"nofollow\">https://github.com/alexazhou/gt_ai_gateway</a></p>\n<p>欢迎大家来体验，有任何建议都可以回帖，或者提 Issue ；</p>\n<p>如果觉得有用，求个 Star 支持一下～🙏</p>",
+      "date_published": "2026-09-13T07:31:08Z",
+      "date_modified": "2026-09-13T07:31:08Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (AlexaZhou)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/40d7/16ee/78254_large.png?m=1783849374",
+      "tags": [
+        "V2EX Claude (AlexaZhou)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/40d7/16ee/78254_large.png?m=1783849374",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b6cc5cc21fe1e538",
+      "url": "https://www.v2ex.com/t/1241660#reply31",
+      "title": "用 Astra 把家乡的竹林老屋做成一个可以游览的网页",
+      "content_text": "用前几年拍过的照片，加上最近发布的 Astra 还原出了一个 3D 的外婆家。 龙岩的一个小镇，不过因为水库的缘故，已经不方便主人了。 有点吃性能，之后再看看能否让 AI 在不影响画质的情况下优化性能 == http://yuuki.fans/ 项目已开源到，感觉这片白噪声还挺棒（就是性能太糟糕了--）。 https://github.com/yuukiLike/bamboo-old-house",
+      "date_published": "2026-09-13T06:38:29Z",
+      "date_modified": "2026-09-13T06:38:29Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/516f/d93f/417579_xlarge.png?m=1789281211",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/516f/d93f/417579_xlarge.png?m=1789281211",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b08bdb03b20006d6",
+      "url": "https://www.v2ex.com/t/1241657#reply0",
+      "title": "做了一个不用看屏幕的久坐腰痛居家健身 PWA：语音引导 + 隔天抗阻自动排",
+      "content_text": "写代码二十年，久坐腰痛的坑基本踩遍了。试过腰靠、站立办公，该酸还是酸——因为忙起来就忘了站。后来自己做了个小 PWA ，每天早晚跟着练，小半年下来腰舒服多了，分享给大家。 它解决什么问题： 先说清楚，这不是教学工具——动作怎么练，零基础请先跟着 B 站视频学会（死虫式、臀桥、深蹲、鸟狗式这些，视频一搜一大把），工具只在每个动作开始时简单强调下要点。 它解决的是更难的问题： 坚持 。知道该练什么，但每天到点要纠结练哪个、几组、要点是啥，一纠结就烦，一烦就不练了。所以我把动作排成固定流程，晨一套晚一套，全程语音播报动作名和要点，戴上耳机闭眼跟着做就行，不用看屏幕、不用想。 晨练和晚练各一套，动作清单长这样（纯前端 JSON 配置，见下）： 核心设计： 隔天抗阻自动判断（肌肉 48h 恢复），拉伸每天做，今天累就自动切放松模式 目标是\"坚持\"不是\"力竭\"——轻松、不留余力，重点是不中断 每周抗阻约 60 分钟，落在柳叶刀 90-120 分钟每周运动总目标的合理区间 动作清单不满意？直接 fork 改： 默认的晨晚两套动作是我按久坐护腰选的，但每个人情况不一样——想换动作、调组数、改节奏，源码",
+      "date_published": "2026-09-13T06:26:34Z",
+      "date_modified": "2026-09-13T06:26:34Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://exercise.touchren.pub/shots/v2ex-shot-home.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://exercise.touchren.pub/shots/v2ex-shot-home.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/bdd4baf2c9048f6b",
+      "url": "https://www.v2ex.com/t/1241656#reply0",
+      "title": "Runner 0.8.8 发布：让 Claude Code 和 Codex 组队干活的原生桌面端，一周四个版本更新汇总",
+      "content_text": "由于上一篇分享自己 agent 工作流的帖子收到了比较好的反响: https://www.v2ex.com/t/1240659 本周多花了些时间优化了些用户体验，希望大家能够帮忙尝试看看，给一些好的产品意见，感谢感谢。 在多段大厂经历后，感觉身心憔悴，离开后希望自己能多做一些自己感兴趣的事情并同时帮助到其他的程序员朋友们。最近日常的主要工作是带娃，娃也比较大了所以自由时间多一些，如果有好的想法欢迎随时交流。 Runner 作为一个 local-first 的 Agent 管理工具，本周主要做了以下几个改动: 1. Skill & MCP 管理功能 新增了 Mcp 和 Skill 的管理页面，这里目前主要就是做了一个 toggle 开关和 Edit 的功能，新建一个 skill 和 mcp 没有做的主要原因是，我觉得用户目前不会手动来创建，主要还是用 agent 自己来创建 mcp 或者 skill Runner 自身的 mcp 控制也放在了 mcp 的管理中并置顶了，这样看上去会比较直观一些 2. 更好的 Mission Session 管理 支持了队伍中单个 Session 的 st",
+      "date_published": "2026-09-13T06:23:53Z",
+      "date_modified": "2026-09-13T06:23:53Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://raw.githubusercontent.com/yicheng47/runner/main/assets/skills.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://raw.githubusercontent.com/yicheng47/runner/main/assets/skills.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f8205882927042e1",
+      "url": "https://www.v2ex.com/t/1241653#reply0",
+      "title": "用原生 TypeScript 写了 8 个经典小游戏，零运行时依赖，开源了",
+      "content_text": "在线试玩： https://minjia-hu.github.io/retro-arcade/ 源码： https://github.com/Minjia-Hu/retro-arcade 一个复古风格的浏览器小游戏合集，打开就能玩，不用安装和注册。包含贪吃蛇、俄方块、打砖块、Flappy 、2048 、扫雷、数独和五子棋，统一做成了一套街机界面，支持电脑端和手机触屏操作。 除了基本玩法，也补了一些方便操作和继续游玩的功能： 俄方块：暂存、硬降、屏幕按键。 2048：单步撤销。 数独：笔记模式，自动存档。 五子棋：双人对弈，三档 AI 难度。 实现上是原生 TypeScript 加 Canvas ，没有运行时依赖，构建产物 gzip 后约 35 kB ，不含字体。游戏规则和渲染分离，规则逻辑不依赖 DOM 或 Canvas ； 269 条单测覆盖游戏规则、公共模块和界面逻辑，另有 28 条 Playwright 端到端测试。五子棋 AI 在 Web Worker 中运行 α-β 搜索。MIT 许可。 架构和大部分代码是我和 Claude Code 一起写的，设计决策和踩过的坑都记在仓库的",
+      "date_published": "2026-09-13T05:54:15Z",
+      "date_modified": "2026-09-13T05:54:15Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://raw.githubusercontent.com/Minjia-Hu/retro-arcade/main/docs/screenshots/social.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://raw.githubusercontent.com/Minjia-Hu/retro-arcade/main/docs/screenshots/social.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/db7c28a2f0400b7b",
+      "url": "https://www.v2ex.com/t/1241651#reply5",
+      "title": "整理了 30 个 MiniMax H3 Max 视频案例，做成了开源 Prompt 合集，聊聊怎么整理的",
+      "content_text": "最近在做 H3Max ，顺手开源了一个 MiniMax H3 Max 的提示词合集，目前收录了 30 个案例，来自 15 个公开账号，分成 7 类。 先交代一下关系：网站是我们自己的项目，也负责维护这个仓库。合集可以直接在 GitHub 看和下载，不需要注册网站。 仓库地址： github.com/VulcanEon/insane-minimax-h3-max-prompts 起因很简单：刷 Twitter 经常看到效果不错的 AI 视频，但收藏完再回头看，只有视频，没有输入素材、参数和制作过程。知道它好看，真到自己动手时，还是不知道该怎么描述。 朋友之前做了一个 GPT Image 提示词仓库，我觉得“先看效果，再展开提示词”的组织方式很方便，就借鉴了这个结构，重新找了一批 H3 Max 的案例。 这次主要做了几件事： 搜索公开帖子，保留作者、原帖和视频出处。 查看作者有没有补充 prompt 、参考图或工作流。 结合视频画面，把主体动作、运镜、时间顺序和连续性要求拆出来。 整理成可复制的提示词，同时标清哪些信息来自作者，哪些是整理时推导的。 这里最需要讲清楚的是： 从成片里看不出唯",
+      "date_published": "2026-09-13T05:28:02Z",
+      "date_modified": "2026-09-13T05:28:02Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/c38ddf11d25b9bef",
       "url": "https://www.v2ex.com/t/1241637#reply21",
       "title": "陶哲轩等数学家反对 AI，论失败的意义",
@@ -77,29 +445,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e77fd7c4447bb0d9",
-      "url": "https://www.v2ex.com/t/1241622#reply0",
-      "title": "开源自荐：做了个开发用的中枢，一台机器把公网访问、科学上网、AI 代理、多机器服务发现包了一下",
-      "content_text": "我想解决我自己作为程序员的几个老痛点：1 ）跨公网访问自己的机器 2 ）要科学访问 3 ）要 AI 代理 4 ）多个机器找起来很麻烦。 每个单拎出来都有轮子，但凑一起就是一坨配置，换台机器再来一遍。所以我做了个方便开发用的中枢，一台常开的 Linux 盒子（ N100 就行）跑 hub ，要控制的 linux 服务器装 agent （可以面板上 SSH 安装），其他要用服务的电脑装 client 就行。然后这个 hub 配上 client 解决了这些问题： 多个网络出口。 一个断了另一个可以顶上。同时 hub 可以直接配成 WiFi 提供点、旁路网关、单臂路由，或者双网口的机器如 N100 可以配成透明路由模式。 多代理模式。 暂时不支持 Clash 那样 chain ，因为很麻烦而且我追求低延时。 overlay 和本地路由的兼容。 上面这两个叠加在一起会让远程访问的网络路由变得很麻烦，所以我处理好了本地网络路由和这些 overlay 网络的兼容问题，公网上的比如带了个笔记本旅游可以直接访问一样的资源。 本地 AI 一体化。 我在 hub 上做了个 cliproxyapi （规避 t",
-      "date_published": "2026-09-12T23:53:09Z",
-      "date_modified": "2026-09-12T23:53:09Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://raw.githubusercontent.com/iffiX/neutrino/main/images/screenshots/proxy.webp",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://raw.githubusercontent.com/iffiX/neutrino/main/images/screenshots/proxy.webp",
-          "mime_type": "image/webp"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/e7b76dee9db4263c",
       "url": "https://www.v2ex.com/t/1241618#reply0",
       "title": "半夜寂寞,买了个飞机杯,到手感觉亏大了，我日！拍断大腿！",
@@ -123,75 +468,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d6a0a48e400a2105",
-      "url": "https://www.v2ex.com/t/1241614#reply0",
-      "title": "Minimax h3 开源太强了，现在有很多特别实用的 lora，搞了个在线的 h3 lora 集合",
-      "content_text": "我感觉 minimax h3 也算是下半年一个现象级的模型了，主要是开源，现在除了 fal 推出了超级快速的 h3 max ，开源社区还有很多 lora 因为我自己没机器，没办法本地部署，所以就整了个在线的 lora 测试网站，集合了很多现在比较不错的 lora ，比如自然人物肖像 Realism People ，运镜 Camera Motion ，趣味变形 Claymation Transformation ，复古录像质感的 VHS Tape 大家感兴趣也可以来看看，现在注册送积分，应该够体验一次，如果有好的建议让我们改进或者想继续体验，可以发邮箱沟通，可以多送点积分哈~ 首页可以用 h3 max ， https://www.maxh3.com/ lora 页面就可以选择不同的 lora 模版进行测试，也可以点击 lora 看每个 lora 的具体介绍啥的： https://www.maxh3.com/minimax-h3-loras",
-      "date_published": "2026-09-12T17:20:49Z",
-      "date_modified": "2026-09-12T17:20:49Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/e2c8cf1b62c494b4c7ccd01adc53c351?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/e2c8cf1b62c494b4c7ccd01adc53c351?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/63bfe39574b2d5fd",
-      "url": "https://www.v2ex.com/t/1241609#reply0",
-      "title": "Brosis-把整个 Mac 变成你 Agent 的上下文",
-      "content_text": "我自己有个需求，就是在使用 mac 的时候，想要无感的收集我所有 mac 里的内容作为上下文，让我的 agent 可以调用，于是我搓了了软件，名字叫 Brosis 。 Brosis （ macOS 26+ / Apple Silicon ）是一枚住在菜单栏里的本地活动记录器：它把你在 Mac 上看过、写过、用过的屏幕内容，整理成一条可检索的时间线，通过 MCP 交给你的 AI Agent 。数据不出本机，理解层不靠大模型。 github 地址： https://github.com/AllenBall/brosis 微信图文地址： https://mp.weixin.qq.com/s/xLXXe2NIgIHvEMpZGpfW_Q 目前还在快速迭代中，欢迎大家 试用和 star ～",
-      "date_published": "2026-09-12T15:13:28Z",
-      "date_modified": "2026-09-12T15:13:28Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.v2ex.co/aI126xD0l.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.v2ex.co/aI126xD0l.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/871aa623636f1213",
-      "url": "https://www.v2ex.com/t/1241608#reply0",
-      "title": "开源 RED：让 AI 持续理解项目，和你一起把想法做成产品",
-      "content_text": "我们从 GPT-4o 发布后开始，持续把 AI 用在软件开发里。一个项目从最初的想法走到可用的产品，需求要边做边聊才能讲清楚，方案会随着调查和反馈调整，实现之后还要维护。我们希望 AI 能持续理解项目，参与这个完整过程，并把过程中形成的认识和决定积累下来，支持后续工作。 所以整理了 RED （ Research 、Evolve 、Document ），并做成了开源 Skill 和配套 CLI： Research：问题、调查发现和建议，保留判断所需的上下文。 Evolve：当前获准推进的改动、方案、进展和验收要求，随反馈更新。 Document：已经接受的结论，整理进项目原有的使用、开发或维护说明。 举个从想法到后续迭代的示意例子：你想给团队做一个回款看板，一开始只说了「我想知道这个月收了多少钱，还有哪些客户没付」。 先把问题研究清楚。 AI 查看现有订单、付款记录和项目说明，带着发现和你讨论：一张订单可能分几次付款；签单日期和到账日期不同；「还没付」也可能包含尚未到期的款项。你补充，这个看板主要给负责人安排跟进，希望按实际到账日期看本月回款。AI 把数据来源、已查明的情况、候选统计方式",
-      "date_published": "2026-09-12T15:10:01Z",
-      "date_modified": "2026-09-12T15:10:01Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://blog.e10t.net/red/assets/red-states.zh.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://blog.e10t.net/red/assets/red-states.zh.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/02ca07bd38d48302",
       "url": "https://www.v2ex.com/t/1241607",
       "title": "claude 被封 5 天，苹果不退款。",
@@ -211,52 +487,6 @@
         {
           "url": "https://cdn.v2ex.com/gravatar/0d94cd542d74049c5611f6675d65888c?s=73&d=retro",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b1725f99f723e0d5",
-      "url": "https://www.v2ex.com/t/1241605#reply2",
-      "title": "做了个 iPhone 各个销售地区的版本对比工具-哪版",
-      "content_text": "如果你最近也在考虑买 iPhone ，不过还在纠结国行、港版或其他地区版本明，可以试试我的这个工具。 叫「哪版」： https://naban.barrybarrywu.com/ 可以在同一个页面里对比同一款 iPhone 、在不同销售地区的差异。 目前整理了 11 款 iPhone ，以及中国大陆、香港、澳门、美国、日本、加拿大、澳大利亚、新加坡、马来西亚和台湾 10 个销售地区。 现在主要能比较： - 实体 SIM 卡位、eSIM 和双卡组合 - Apple Intelligence 、FaceTime 等地区功能差异 - 蜂窝频段、Wi-Fi 、卫星功能 - MagSafe 、Qi2 和有线充电规格 - 同容量的官方价格与参考换算 - 保修及服务条件 每项资料都附上 Apple 官方来源；官网没有明确说明、尚未核验或只有社区使用反馈的内容，也会分开标注。",
-      "date_published": "2026-09-12T14:52:01Z",
-      "date_modified": "2026-09-12T14:52:01Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/e40d/6533/153667_xlarge.png?m=1789224603",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/e40d/6533/153667_xlarge.png?m=1789224603",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/85d11e38e58aea6c",
-      "url": "https://www.v2ex.com/t/1241604#reply0",
-      "title": "Claude Code 操作审计工具： CC-Monitor",
-      "content_text": "CC-Monitor 写这个工具的目的 使用 CC 进行开发的时候经常不知道 Agent 对电脑操作的细节，很多时候配置被修改，也不知道是什么时候操作的。 CC-Monitor 提供了 Agent 操作审计功能，让 AI 对你电脑的操作一目了然，目前提供 Shell Log 和 Web UI 两种界面。 首页 ：概览统计——进行中的终端会话数、监测到的 Claude Code 会话总数、审计事件总数、拦截/疑似绕过次数、文件读/写/编辑/删除次数、日志类型与风险等级分布。\"会话总数\"、\"审计事件总数\"、\"已拦截的高危操作\"三张卡片可以点开查看下钻详情（分别是会话列表、按事件类型 + 所属 Session 的明细、被拦截操作的完整列表）。 Log 审计 ：全宽的实时审计日志查看（按会话过滤，会话下拉框显示\"文件夹 · 模型 · 短 ID\"，而不是一串看不出区别的 ID ），复用 CLI 那套人类可读的事件翻译逻辑。 终端会话 ：直接在浏览器里开启一个 Claude Code 终端对话（ node-pty 起 PTY ），不用再切到本地终端软件；使用 xterm.js + WebGL 插件",
-      "date_published": "2026-09-12T14:43:15Z",
-      "date_modified": "2026-09-12T14:43:15Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://raw.githubusercontent.com/cn0xroot/CC-Monitor/refs/heads/master/pic/home-zh.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://raw.githubusercontent.com/cn0xroot/CC-Monitor/refs/heads/master/pic/home-zh.png",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -307,121 +537,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/280177ca27f0e533",
-      "url": "https://www.v2ex.com/t/1241599#reply3",
-      "title": "电子名片网站",
-      "content_text": "简介：一个二维码就是一个个人主页，方便分享，欢迎使用鸭，哈哈哈 网站地址： https://1ef1509e.pinit.eth.limo/#/",
-      "date_published": "2026-09-12T14:14:28Z",
-      "date_modified": "2026-09-12T14:14:28Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7b24187e381dea65",
-      "url": "https://www.v2ex.com/t/1241594#reply0",
-      "title": "整理了一个 GPT Image 2.5 开源提示词合集， 30 个图文案例，聊聊怎么做的",
-      "content_text": "最近做了一个 GPT Image 2.5 的开源提示词合集，第一版刚整理完： 30 个图文案例，覆盖摄影、产品图、时装广告、平面设计、连续分镜等。 20 条配套修改指令，比如修标签、去掉多余文字、保持人物一致性。 提示词和 README 都有中英文版本。 原创提示词、文档和脚本采用 MIT 。 GitHub 地址： https://github.com/VulcanEon/insane-gpt-image-2.5-prompts 先交代一下关系：我自己在做 gptimage25.ai ，这个仓库也是由这个项目维护的。网站是商业服务，仓库公开可读，复制提示词不需要注册网站。 起因是看到朋友做了一个类似的合集，觉得“先看图片，感兴趣再展开提示词”的阅读方式挺好。尤其是对不熟悉摄影、设计术语的人来说，看图选方向，比面对一个空输入框容易很多。 于是参考了这种呈现方式，自己重新找案例、分析画面、写提示词。这次也让 GPT-6 帮忙完成了资料整理、双语改写和仓库搭建。 实际做下来，找图只是第一步 最初的思路很直接：去 X 搜 Image 2.5 ，找到有意思的案例，再分析它可能是怎么生成的。 实际",
-      "date_published": "2026-09-12T13:52:52Z",
-      "date_modified": "2026-09-12T13:52:52Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/404d041b15f9b32156cae06e89f75403?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/879e8f47cc138950",
-      "url": "https://www.v2ex.com/t/1241591#reply0",
-      "title": "做了一个中小学生作文点评工具，想听听大家的意见",
-      "content_text": "大家好，过去一段时间，我做了一个面向中小学生的中文作文点评网站，叫「红笔作文」。 地址： https://getredpen.cn 1. 为什么做 我发现作文批改有一个很实际的问题： 老师需要面对一个班几十篇作文，很难在每一篇里都写下完整的修改过程。家长想辅导，也常常知道“这里不太好”，却不知道怎样给出具体建议。 另外，老师写的“内容不具体”“结构需要调整”“语言不够生动”通常没有错，但孩子回家后，还是不知道具体是哪一句、为什么有问题、应该怎么改。 所以我想做的不是一个帮孩子生成作文的工具，而是把作文中的问题落到具体段落和句子上，再给出孩子能够理解的修改方向和局部示范。 2. 目前能做什么 用户可以直接拍照上传手写作文，系统会识别正文并生成一份点评报告，包括： - 综合评分和总评 - 内容、结构、语言、规范等维度评价 - 对应原文的逐段批注 - 文章亮点和主要问题 - 可以实际练习的写作技巧 - 局部修改建议和改写示范 目前支持小学三年级到高中三年级。评分时会结合学段、年级、地区和作文类型选择相应参考，并在报告里说明使用的是地区标准、卷种标准、学段通用标准还是通用兜底，不把整理资料包装",
-      "date_published": "2026-09-12T13:39:56Z",
-      "date_modified": "2026-09-12T13:39:56Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/cc9c/cdf5/86882_xlarge.png?m=1789220932",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/cc9c/cdf5/86882_xlarge.png?m=1789220932",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b8aac05be273f245",
-      "url": "https://www.v2ex.com/t/1241588#reply1",
-      "title": "vb 了两个摸鱼小游戏，朋友玩了说很上头，分享一下",
-      "content_text": "都是像素风格的网页小游戏，存档在本地，支持导入导出。 一个是用 ds-flash 生成的，一个是用 glm-flash 生成的。开发速度非常快，主要时间花在了设计美术资源和经济系统上面。游戏玩法捋清楚 AI 一轮基本就生成了。 《像素小集市》你是个跑单帮的小货郎，开着货车往返各地，低买高卖盯着实时行情，还得提防查私扣货。 https://zishu.me/p/pixel-bazaar/ 《暖阳农场》种植作物、浇水施肥、收获售卖，在宁静的像素农场里体验田园生活，升级你的农场。",
-      "date_published": "2026-09-12T13:08:04Z",
-      "date_modified": "2026-09-12T13:08:04Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.imgur.com/Fh2ylcT.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/Fh2ylcT.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4ec889b9d428c499",
-      "url": "https://www.v2ex.com/t/1241582#reply13",
-      "title": "[抽奖] DropToDo 更新了，来个福利抽奖活动！",
-      "content_text": "各位 V 友，大家好！ 最近给 DropToDo 加了个新功能。本期为大家带来一波 App Store 兑换码 抽奖福利！ 更新内容 现在输入任务后，可以直接点击旁边的时间： 日历选择日期 精确设置时间 快速选择预设时间 最远支持 90 天后的提醒 另外也做了一些性能和稳定性优化。 整体还是保持简单：拖下来，输入，完成。 https://droptodo.app App Store 下载地址 欢迎大家体验，有什么建议也可以直接说 抽奖福利 [App Store 兑换码 10 个 · 送福利] 各位 V 友快来当分母！ 🎁 奖品介绍 奖品 ：App Store 兑换码 数量 ：10 个（中奖者每人 1 个） 📅 参与方式 在本帖下方任意回复即可参与（重复回复仅计算第一楼，谢谢配合）。 请留下您的 Base64 编码邮箱（为了防止垃圾邮件爬虫）。\n不会转 Base64？ 很简单！例如你的邮箱是 yourname@gmail.com，请先前往 在线 Base64 转换工具 转换为 eW91cm5hbWVAZ21haWwuY29t，再把这个字符串粘贴进回复即可。 ⏰ 截止与开奖时间 截止时间",
-      "date_published": "2026-09-12T12:18:48Z",
-      "date_modified": "2026-09-12T12:18:48Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.imgur.com/p6YrD7r.gif",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/p6YrD7r.gif",
-          "mime_type": "image/gif"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/7a43b037a5207412",
       "url": "https://www.v2ex.com/t/1241566#reply12",
       "title": "再折腾了下旁路由，用 debian+mihomo 做透明网关",
@@ -468,75 +583,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4e752df6a59083a9",
-      "url": "https://www.v2ex.com/t/1241558#reply0",
-      "title": "英伟达 30/20 系显卡开启原生帧生成补丁",
-      "content_text": "https://github.com/sdli1995/dlssg_for_sm86",
-      "date_published": "2026-09-12T09:21:36Z",
-      "date_modified": "2026-09-12T09:21:36Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/96b1/c608/58119_large.png?m=1787818896",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/96b1/c608/58119_large.png?m=1787818896",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/fa4495366da59e84",
-      "url": "https://www.v2ex.com/t/1241552#reply2",
-      "title": "我的宽带 IP 变成 14.104 开头了",
-      "content_text": "有大佬吗？我的宽带 IP 变成 14.104 开头了 请问这个 IP 有啥坏处吗？以前是 222 开头的。",
-      "date_published": "2026-09-12T08:10:00Z",
-      "date_modified": "2026-09-12T08:10:00Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/78cec28716b9e3a97c81a7a8e2eff670?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/78cec28716b9e3a97c81a7a8e2eff670?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/80da81dc858afff6",
-      "url": "https://www.v2ex.com/t/1241549#reply2",
-      "title": "nix 真的 agent 时代的天选之子。",
-      "content_text": "现在 vibe 全要经由 nix + flake ，甚至 nix profile 都不用。\n单体项目，需要 vibe ，就起一个 flake.nix ，一顿乱搞，坏了不心疼，因为 nix 是声明式的，可以 diff ，避免 apt 这种黑箱。\n同一个项目，flake 也可以有不同的 outputs ，不用分场景。这带来的便利谁知道啊。\ndevShells + packages + packages.image ，直接用 profile default 即可，也就是不用 npm -g 呢。\n不同项目，多个场景，就 one folder one flake 。\n像 oci 的 build ，直接用完即焚。我之前的做法是 incus 开一个 container 跑。也可以退休了。 已经离不开 nix 了，mac 也是用 nix 管理配置文件。 但 nixos 说实在的，真的不会用。复杂了。还是 debian 顺手。有点那个啥，类似浏览器开个隐私窗口一样。",
-      "date_published": "2026-09-12T07:51:08Z",
-      "date_modified": "2026-09-12T07:51:08Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/2007/1315/77893_large.png?m=1752823163",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/2007/1315/77893_large.png?m=1752823163",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/4c9f03633dd6a5ea",
       "url": "https://sspai.com/post/114461",
       "title": "与 AI 搏斗失败后重新开始找工作：经验分享与半可靠避雷指南",
@@ -556,29 +602,6 @@
         {
           "url": "https://rssfile.sspai.com/2026/9/12/article/5ac8d8d0-943b-9191-3f5c-42900e814b4d.jpeg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ea93f6c7d7e97fd8",
-      "url": "https://www.v2ex.com/t/1241505#reply4",
-      "title": "掌管 Codex 重置的 Tibo 要发力了",
-      "content_text": "如图 开启 ultra 发力吧",
-      "date_published": "2026-09-12T03:31:21Z",
-      "date_modified": "2026-09-12T03:31:21Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://i.imgur.com/RVSEXnc.png",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/RVSEXnc.png",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -946,29 +969,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/558871cd335f4880",
-      "url": "https://sspai.com/post/114366",
-      "title": "我一定会回来……吗？小手用户与 iPhone 17 Pro Max 的一年",
-      "content_text": "为啥那么多人喜欢大手机呢？既然上了 70 mm 我都握不住，要不买个 Pro Max 试试？ 查看全文",
-      "date_published": "2026-09-09T09:30:00Z",
-      "date_modified": "2026-09-09T09:30:00Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/9/9/article/6902d14d-5c65-ecd8-21c0-72b506a3e35f.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/9/9/article/6902d14d-5c65-ecd8-21c0-72b506a3e35f.jpeg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
         }
       ]
