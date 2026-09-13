@@ -149,7 +149,7 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 - [Cache behavior and maintenance](docs/cache.md)
 - [Generated source inventory](docs/sources.md)
 
-The Android reader/player for these feeds lives in **[twojstar/kanarek](https://github.com/twojstar/kanarek)**.
+The Android reader/player for these feeds lives in **[2137x/kanarek](https://github.com/2137x/kanarek)**.
 
 ## [License](LICENSE)
 
@@ -176,4 +176,4 @@ The Android reader/player for these feeds lives in **[twojstar/kanarek](https://
 
 ## Other stuff
 
-[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/twojstar/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)
+[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/2137x/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)

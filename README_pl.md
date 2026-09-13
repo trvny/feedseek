@@ -42,7 +42,7 @@ Pełna tabela źródeł i bezpośrednich plików feedów znajduje się w [angiel
 - [Działanie i utrzymanie cache](docs/cache.md)
 - [Wygenerowany indeks źródeł](docs/sources.md)
 
-Androidowy czytnik/player tych feedów to osobny projekt: **[twojstar/kanarek](https://github.com/twojstar/kanarek)**.
+Androidowy czytnik/player tych feedów to osobny projekt: **[2137x/kanarek](https://github.com/2137x/kanarek)**.
 
 ## [Licencja](LICENSE)
 
@@ -69,4 +69,4 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[twojstar/kanarek](h
 
 ## Other stuff
 
-[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/twojstar/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)
+[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/2137x/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)
