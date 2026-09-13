@@ -56,12 +56,11 @@ class RegistryDocsTests(unittest.TestCase):
         self.assertEqual(counts, [expected] * len(counts))
 
     def test_public_feed_list_only_references_registered_feeds(self):
-        registry = set(load_registry())
-        lines = (FEEDSEEK / "site" / "published_feeds.txt").read_text(encoding="utf-8").splitlines()
+        data = yaml.safe_load((FEEDSEEK / "feeds.yaml").read_text(encoding="utf-8"))
+        registry = set(data["feeds"])
         published = [
-            line.split("|", 1)[0].strip()
-            for line in lines
-            if line.strip() and not line.lstrip().startswith("#")
+            item if isinstance(item, str) else item["name"]
+            for item in data["published_feeds"]
         ]
 
         self.assertEqual(len(published), len(set(published)))
