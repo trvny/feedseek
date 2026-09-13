@@ -10,7 +10,7 @@
 | `feeds.yaml` | Maintained registry selecting generator script, source URL, type and enabled state | `feed_generators/models.py` |
 | `feeds/` | Generated public XML and JSON Feed artifacts | `feed_generators/utils.py`, `feed_generators/jsonfeed.py` |
 | `cache/` | Generated incremental/last-known state used across scheduled runs | `feed_generators/utils.py`, `docs/cache.md` |
-| `site/` | Static Pages builder, browser reader, feed allowlist and OPML assets | `site/build_site.py`, `site/reader.js`, `site/published_feeds.txt` |
+| `site/` | Static Pages builder, browser reader, public feed selection and OPML assets | `site/build_site.py`, `site/reader.js`, `feeds.yaml` → `published_feeds` |
 | `feeds-proxy/` | Independent Cloudflare Worker used as the reader's optional CORS proxy | `feeds-proxy/README.md`, `feeds-proxy/src/index.js` |
 | `tests/` | Python repository and feed-pipeline tests | `tests/test_run_all_feeds.py`, `tests/test_registry_docs.py` |
 | `.github/` | Feed scheduling, Pages deploy, reader/Worker CI, linting, dependency and security automation | `.github/workflows/` |

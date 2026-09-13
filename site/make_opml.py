@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Generate subscriptions.opml from the published feed set.
 
-Reuses build_site's feed discovery (published_feeds.txt selection + live
+Reuses build_site's feed discovery (feeds.yaml publication selection + live
 titles parsed from each feed_*.xml) so the OPML always lists exactly what the
 site publishes — no dead xmlUrls, custom title overrides carried through.
 
 Writes site/subscriptions.opml (committed convenience copy for the local
 reader) and, when public/ exists, public/subscriptions.opml (the deployed
-copy). Pure stdlib, but run as ``uv run --locked site/make_opml.py`` so it
-gets the pinned interpreter rather than whatever ``python3`` resolves to.
+copy). Run as ``uv run --locked site/make_opml.py`` so it uses the pinned
+registry dependencies and interpreter.
 """
 from __future__ import annotations
 

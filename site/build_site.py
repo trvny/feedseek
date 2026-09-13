@@ -13,9 +13,8 @@ self-contained ``public/`` directory containing:
   * ``webmcp.js``    - host-agnostic WebMCP tools for the registry and reader
   * ``.nojekyll``    - stop GitHub Pages running the files through Jekyll
 
-Pure standard library, so nothing here constrains the dependency set. Run it
-as ``uv run --locked site/build_site.py`` anyway: that is the one interpreter
-the repository pins, and the deploy job uses the same command.
+Run it as ``uv run --locked site/build_site.py``: public feed selection is
+loaded from the canonical ``feeds.yaml`` registry through the shared model loader.
 
 The site base URL is taken from ``$SITE_URL`` (set by actions/configure-pages),
 falling back to ``$GITHUB_REPOSITORY`` (``owner/repo`` -> Pages URL), and
@@ -28,6 +27,7 @@ import html
 import json
 import os
 import shutil
+import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -38,10 +38,13 @@ ATOM = "{http://www.w3.org/2005/Atom}"
 # Repo root (this script lives in site/).
 ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / "feed_generators"))
+
+from models import load_published_feeds  # noqa: E402
+
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
 OUT_DIR = ROOT / "public"
-SELECTION_FILE = SITE_DIR / "published_feeds.txt"
 
 # Shared favicon mark used inline in reader.html's RSS_FALLBACK icon (kept as
 # an inline data: URI fallback only). The primary <link> tags now point at
@@ -268,32 +271,14 @@ def relative_time(dt: datetime | None) -> str:
 
 
 def short_name(path: Path) -> str:
-    """feeds/feed_reuters.xml -> 'reuters' (the editable key in the allowlist)."""
+    """feeds/feed_reuters.xml -> 'reuters' (the editable registry key)."""
     stem = path.stem
     return stem[len("feed_"):] if stem.startswith("feed_") else stem
 
 
 def load_selection() -> list[tuple[str, str]] | None:
-    """Read published_feeds.txt -> ordered [(name, title_override)].
-
-    Returns None when the file is absent, meaning "publish every feed".
-    Each line is a feed short name, optionally with a custom title after a '|':
-
-        reuters
-        beatport_top100 | Beatport — Top 100
-
-    Blank lines and lines starting with '#' are ignored.
-    """
-    if not SELECTION_FILE.exists():
-        return None
-    selection: list[tuple[str, str]] = []
-    for raw in SELECTION_FILE.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if not line or line.startswith("#"):
-            continue
-        name, _, override = line.partition("|")
-        selection.append((name.strip(), override.strip()))
-    return selection
+    """Read the ordered public feed selection from ``feeds.yaml``."""
+    return load_published_feeds()
 
 
 def collect_feeds() -> list[dict]:
@@ -309,7 +294,7 @@ def collect_feeds() -> list[dict]:
     for name, override in selection:
         path = available.get(name)
         if path is None:
-            print(f"  ! published_feeds.txt lists '{name}' but feeds/feed_{name}.xml is missing — skipping")
+            print(f"  ! feeds.yaml published_feeds lists '{name}' but feeds/feed_{name}.xml is missing — skipping")
             continue
         info = parse_feed(path)
         if override:

@@ -8,6 +8,8 @@ from pydantic import BaseModel, ValidationError, field_validator
 
 logger = logging.getLogger(__name__)
 
+REGISTRY_PATH = Path(__file__).parent.parent / "feeds.yaml"
+
 
 class FeedConfig(BaseModel):
     """Configuration for a single feed generator."""
@@ -43,12 +45,11 @@ def load_feed_registry(return_skipped: bool = False):
     Raises:
         FileNotFoundError: If feeds.yaml is missing.
     """
-    registry_path = Path(__file__).parent.parent / "feeds.yaml"
-    if not registry_path.exists():
-        msg = f"Feed registry not found: {registry_path}"
+    if not REGISTRY_PATH.exists():
+        msg = f"Feed registry not found: {REGISTRY_PATH}"
         raise FileNotFoundError(msg)
 
-    with open(registry_path, encoding="utf-8") as f:
+    with open(REGISTRY_PATH, encoding="utf-8") as f:
         data = yaml.safe_load(f) or {}
 
     feeds: dict[str, FeedConfig] = {}
@@ -83,3 +84,51 @@ def load_feed_registry(return_skipped: bool = False):
     if return_skipped:
         return feeds, skipped
     return feeds
+
+
+def load_published_feeds() -> list[tuple[str, str]] | None:
+    """Load the ordered public feed selection from the canonical registry.
+
+    A string entry publishes that feed with its generated title. A mapping may
+    additionally provide ``title`` as a public-site override. Missing selection
+    keeps the historical fallback of publishing every generated feed.
+    """
+    if not REGISTRY_PATH.exists():
+        msg = f"Feed registry not found: {REGISTRY_PATH}"
+        raise FileNotFoundError(msg)
+
+    with open(REGISTRY_PATH, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    raw_selection = data.get("published_feeds")
+    if raw_selection is None:
+        return None
+    if not isinstance(raw_selection, list):
+        raise ValueError("published_feeds must be a list")
+
+    known_feeds = set(data.get("feeds", {}))
+    selection: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for index, item in enumerate(raw_selection, start=1):
+        if isinstance(item, str):
+            name, title = item.strip(), ""
+        elif isinstance(item, dict):
+            unknown = set(item) - {"name", "title"}
+            if unknown:
+                raise ValueError(f"published_feeds entry {index} has unknown fields: {sorted(unknown)}")
+            name = item.get("name")
+            title = item.get("title", "")
+            if not isinstance(name, str) or not isinstance(title, str):
+                raise ValueError(f"published_feeds entry {index} must use string name/title values")
+            name, title = name.strip(), title.strip()
+        else:
+            raise ValueError(f"published_feeds entry {index} must be a string or mapping")
+
+        if not name:
+            raise ValueError(f"published_feeds entry {index} has an empty name")
+        if name not in known_feeds:
+            raise ValueError(f"published_feeds references unknown feed: {name}")
+        if name in seen:
+            raise ValueError(f"published_feeds contains duplicate feed: {name}")
+        seen.add(name)
+        selection.append((name, title))
+    return selection

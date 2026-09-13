@@ -6,6 +6,7 @@ on:
     paths:
       - "site/**"
       - "assets/**"
+      - "feeds.yaml"
       - ".github/workflows/deploy-pages.yml"
   # zizmor: ignore[dangerous-triggers] deploy-after-build on our own workflow; checks out default ref, no untrusted PR code
   workflow_run:
