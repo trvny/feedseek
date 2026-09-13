@@ -44,7 +44,7 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 - [缓存行为与维护](docs/cache.md)
 - [自动生成的来源清单](docs/sources.md)
 
-这些 feed 对应的 Android 阅读器/播放器位于 **[2137x/kanarek](https://github.com/2137x/kanarek)**。
+这些 feed 对应的 Android 阅读器/播放器位于 **[enclaro/kanarek](https://github.com/enclaro/kanarek)**。
 
 ## [许可证](LICENSE)
 
@@ -71,4 +71,4 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 
 ## 其他项目
 
-[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/2137x/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)
+[![kanarek](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-kanarek.svg)](https://github.com/enclaro/kanarek) [![tvpi](https://raw.githubusercontent.com/trvny/.github/main/assets/profile/pin-tvpi.svg)](https://github.com/trvny/tvpi)
