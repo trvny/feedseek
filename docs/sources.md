@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-104 feedów · 809 źródeł
+104 feedów · 810 źródeł
 
 ## Spis grup
 
@@ -1161,6 +1161,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 `spotify` · [feed_spotify.xml](../feeds/feed_spotify.xml)
 
 - ![](https://www.google.com/s2/favicons?domain=newsroom.spotify.com&sz=16) Spotify Newsroom — <https://newsroom.spotify.com/feed/>
+- ![](https://www.google.com/s2/favicons?domain=distrokid.com&sz=16) DistroKid Blog — <https://distrokid.com/resources/blog>
 - ![](https://www.google.com/s2/favicons?domain=developer.spotify.com&sz=16) Spotify for Developers — <https://developer.spotify.com/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.tencent.com&sz=16) Tencent
