@@ -52,18 +52,18 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](ht
 
 <!--README_FEED:START-->
 - [RUSI Reflects: The Mecca Agreement: From US Primacy to Regional Agency](https://www.rusi.org/news-and-comment/rusi-reflects/rusi-reflects-mecca-agreement-us-primacy-regional-agency)
-- [Libiążanin w „Szansie na sukces” - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMigwFBVV95cUxPbjMxVUtESjNJd0YxaldtTHJQU0x1RU00clQ2YS1qNW1YcjQ1d0NqSXhNYnlIaHpRSndha3VHUE5YbkxNT1VSbTRtRVQ3V0ZnVjdPV2cySFZxMzZIYlhoTmZsdF9GT2x1NXVYXzFBdFhxaUlsTmlVVkxZeWExMzEzTno5TQ?oc=5)
-- [Nie będzie wody, możliwe też zmętnienie. Wodociągi podają termin prac - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMitAFBVV95cUxORm4zX25MdWdPaFNMMjNIU1ZnMXJQb1RsTWZaWTBkaTdpVHJYZV9GcW9Ya05kYWxUT1pLcHNlVnFjZlozSmxLOU1rTDZkMGQ4RnBUYmJlam1Pakdqd0JIejRmRjVHXzFqV2dzVExyblVobGhmSE5oV0FYbmNCLW9sbXA2TFZDS196LVRVNUVOS0UtQUg0SENWTUh2X1VwTm5fbmhtTHdiRnNuTHRTT1kxemx6TEE?oc=5)
-- [Brak koncentracji i za duża prędkość. Pięć wypadków w powiecie oświęcimskim w jeden dzień - oswiecimonline.pl](https://news.google.com/atom/articles/CBMiuwFBVV95cUxNUmJKVEotNDZYN1VHNFVEMWVLbGpVOUlZcFZfcTZmSXdLNjl0YWNLamRaRnFLVGVaR0dPUC1ldnkwbHIyM1ZLR1AyTGZXWGd0QTh3T0Q5MzVSYnpOVUFuYVVjTmtPYTh4aWFCWkNtQ2U3YVNTZFBPSHJ1cm4yakZ0dTRMRFpyZV9oTHRxUEk2X0pLaUxzc3lTNG1nSDd3bjFWTEZsVFI5Uk1GNEhFRjNpTVNfWUtMWWpLT0Rj?oc=5)
-- [Nie żyje były radny i sołtys - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMihAFBVV95cUxQS0ZBd0dkN0pKM3d0OThoNE1VZURsUno0VjcxRmlWMDBDdml2ZW54UWw5U1pjTXZTZUhZRF9jclpvUm9DLVlQb3h5eWFtM0tCV1VQUDgwZURzWmpRd1hjblFYV05KTXhrRXZlc2FLbVllX19YRW5hdk5iTXZfU3JrWEEzSlE?oc=5)
-- [Nie pijcie tej wody. Arsen, ołów i nikiel w wodach podziemnych w Bolesławiu - Radio Kraków](https://news.google.com/atom/articles/CBMizgFBVV95cUxON3hhdXRpNFVUdEpOY0pBckhiQUFXbmZCdDM1TXdfeU9kMnBxTXRHT25sNnBBYW15SkZHMHJIVF9fWHRuRV81RFRKY0o4Wm9rbnBkNFZKekNkTUVpdFpWdzY0bnZqNXRoVWtRY1pYTFFNdkNUcW1ieHB5dmNPSGJWTDJUVG1SSDJ2bWM4MFJjOGdtTmE2cnVQTzRhV3BvYm02V2lGcWMydkFXV1pWVFFjT0FLNHRzRHBWazNNTXdKai1zLWJ2eXBRNFQzazZoUQ?oc=5)
+- [W Płokach znów tłumy pielgrzymów. Wieczorem niebo rozświetlą fajerwerki \(WIDEO,ZDJĘCIA\) - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMixAFBVV95cUxQaC1GaFhPX2pHZFJfamMxZzF2YmhfQm80Skc0dXpKUjhacjhsVG1zTVJIVlVsZTBCeURHbHVpb1hxcFZQUnp5UFVsRjkzWUNrUnZad19lR25McVM3aUFOejdxR3FyYVhUaFlFZXJBdjFvUXhkQ3RXZVJNVEZabFhNMm1xbE04QnpfeHhVa29ibGFOeS1vaFRTc0hDV2MyM2tYTHFDcDRkbEFOZVAzVy1paHU4OW8tRmJOd0ZJV3lPSHgtMXRt?oc=5)
+- [Dokąd trafia drewno z lokalnych lasów? Znamy największego odbiorcę - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiywFBVV95cUxONzNnUVJJRFJGLUVFWDZZejZTRzM0LV9faTRmSm5sV3hqQWM0OFExRjZwMXk0VW9LUlVreUVjMTFmUTdGQmdKUWNIdDVXTDA2WE82YjhtY2dSWFMtNGhoU1hYNTQtVV9PdEJONTctTno5bHdjN09JTHpVQWl2b21DQm8yclA0U0lET3R3OUhYeUZnXzhUR0VycW5TR3dWMFBySXFvaGF6Ukprb2xZckd4OE1NOE5oRnBGNXg4dXAtZVJaVW8wMzZ1Z2ZfOA?oc=5)
+- [Trump says he is removing U.S. tariffs on Irish whiskey](https://www.reuters.com/world/us/trump-says-he-is-lifting-tariffs-irish-whiskey-2026-09-13/)
+- [Ahead of Fed meeting, Trump says US should have world's lowest interest rate](https://www.reuters.com/business/ahead-fed-meeting-trump-says-us-should-have-worlds-lowest-interest-rate-2026-09-13/)
+- [Trump says he will consider request to release more 9/11 records](https://www.reuters.com/world/us/trump-says-hell-consider-whether-release-more-911-records-2026-09-13/)
 <!--README_FEED:END-->
 
 ## 💬 Cytat z szuflady
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝Work out your own salvation. Do not depend on others. — Buddha❞</i>
+<i>❝When you don't know what you believe, everything becomes an argument. Everything is debatable. But when you stand for something, decisions are obvious. — Anonymous❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
