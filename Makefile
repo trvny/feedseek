@@ -5,6 +5,7 @@
 # Deliberately not a $(error) guard: that is evaluated at parse time and would
 # take `help` and `clean` down with it, and they need no interpreter.
 PY := uv run --locked
+RUN_FEED := $(PY) feed_generators/run_all_feeds.py --feed
 
 .DEFAULT_GOAL := help
 
@@ -32,33 +33,43 @@ feeds: ## Generate all feeds (incremental)
 feeds-full: ## Regenerate all feeds from scratch (ignore cache)
 	$(PY) feed_generators/run_all_feeds.py --full
 
+.PHONY: feed
+feed: ## Generate one feed: make feed NAME=<feeds.yaml name>
+	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
+	$(RUN_FEED) "$(NAME)"
+
+.PHONY: feed-full
+feed-full: ## Regenerate one feed from scratch: make feed-full NAME=<feeds.yaml name>
+	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
+	$(RUN_FEED) "$(NAME)" --full
+
+# Compatibility for the historical `make feeds_<name>` shortcuts. Registry
+# names now come from feeds.yaml instead of being duplicated as recipes here.
+.PHONY: FORCE
+FORCE:
+
+feeds_%: FORCE
+	$(RUN_FEED) "$*"
+
+FULL_FEEDS := trojka czworka nexusmods_news jbzd foobar2000
+FULL_TARGETS := $(addprefix feeds_,$(addsuffix _full,$(FULL_FEEDS)))
+.PHONY: $(FULL_TARGETS)
+$(FULL_TARGETS): feeds_%_full:
+	$(RUN_FEED) "$*" --full
+
 .PHONY: feeds_beatport
-feeds_beatport: ## Generate only the Beatport Top 100 feed
-	$(PY) feed_generators/beatport_top100.py
-
-.PHONY: feeds_daily_digest
-feeds_daily_digest: ## Generate only the Daily Digest feed
-	$(PY) feed_generators/daily_digest.py
-
-.PHONY: feeds_daily_quote
-feeds_daily_quote: ## Generate only the Daily Quote feed
-	$(PY) feed_generators/daily_quote.py
-
-.PHONY: feeds_reuters
-feeds_reuters: ## Generate only the Reuters feed
-	$(PY) feed_generators/reuters.py
-
-.PHONY: feeds_wsj
-feeds_wsj: ## Generate only the WSJ feed
-	$(PY) feed_generators/wsj.py
+feeds_beatport: ## Compatibility alias for the Beatport Top 100 feed
+	$(RUN_FEED) beatport_top100
 
 .PHONY: feeds_windows11_release_notes
-feeds_windows11_release_notes: ## Generate only the Windows 11 Release notes feed
-	$(PY) feed_generators/windows11_release_notes.py
+feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows updates
+	$(RUN_FEED) microsoft_updates
 
-.PHONY: feeds_userscripts
-feeds_userscripts: ## Generate only the UserScripts feed
-	$(PY) feed_generators/userscripts.py
+# Common Ninja is also consumed by the consolidated SaaS generator, but this
+# standalone helper remains useful and is not a feeds.yaml entry.
+.PHONY: feeds_commoninja
+feeds_commoninja: ## Generate only the standalone Common Ninja blog feed
+	$(PY) feed_generators/commoninja.py
 
 .PHONY: validate
 validate: ## Validate all generated feeds
@@ -67,183 +78,3 @@ validate: ## Validate all generated feeds
 .PHONY: clean
 clean: ## Remove generated feeds and cache
 	rm -f feeds/feed_*.xml feeds/feed_*.json cache/*_posts.json
-
-.PHONY: feeds_trojka
-feeds_trojka: ## Generate RSS feed for Trojka (incremental)
-	$(PY) feed_generators/trojka.py
-
-.PHONY: feeds_trojka_full
-feeds_trojka_full: ## Generate RSS feed for Trojka (full reset)
-	$(PY) feed_generators/trojka.py --full
-
-.PHONY: feeds_czworka
-feeds_czworka: ## Generate RSS feed for Czworka (incremental)
-	$(PY) feed_generators/czworka.py
-
-.PHONY: feeds_czworka_full
-feeds_czworka_full: ## Generate RSS feed for Czworka (full reset)
-	$(PY) feed_generators/czworka.py --full
-
-.PHONY: feeds_nexusmods_news
-feeds_nexusmods_news: ## Generate RSS feed for Nexus Mods News (incremental)
-	$(PY) feed_generators/nexusmods_news.py
-
-.PHONY: feeds_nexusmods_news_full
-feeds_nexusmods_news_full: ## Generate RSS feed for Nexus Mods News (full reset)
-	$(PY) feed_generators/nexusmods_news.py --full
-
-.PHONY: feeds_jbzd
-feeds_jbzd: ## Generate Atom feed for jbzd.com.pl (incremental)
-	$(PY) feed_generators/jbzd.py
-
-.PHONY: feeds_jbzd_full
-feeds_jbzd_full: ## Generate Atom feed for jbzd.com.pl (full reset)
-	$(PY) feed_generators/jbzd.py --full
-
-.PHONY: feeds_foobar2000
-feeds_foobar2000: ## Generate combined Atom feed for foobar2000 (News + change logs, incremental)
-	$(PY) feed_generators/foobar2000.py
-
-.PHONY: feeds_foobar2000_full
-feeds_foobar2000_full: ## Generate combined Atom feed for foobar2000 (full reset)
-	$(PY) feed_generators/foobar2000.py --full
-
-.PHONY: feeds_anthropic
-feeds_anthropic: ## Generate only the Anthropic feed (news/research/engineering/red/alignment)
-	$(PY) feed_generators/anthropic.py
-
-.PHONY: feeds_cloudflare
-feeds_cloudflare: ## Generate only the Cloudflare feed (blog/changelog/community/research)
-	$(PY) feed_generators/cloudflare.py
-
-.PHONY: feeds_docker
-feeds_docker: ## Generate only the Docker feed (blog + Desktop/Engine/Hub/Platform/DHI release notes)
-	$(PY) feed_generators/docker.py
-
-.PHONY: feeds_claude
-feeds_claude: ## Generate only the Claude feed (blog/changelog/release notes)
-	$(PY) feed_generators/claude.py
-
-.PHONY: feeds_openai
-feeds_openai: ## Generate only the OpenAI feed (news/release notes/changelogs)
-	$(PY) feed_generators/openai.py
-
-.PHONY: feeds_lexus_newsroom
-feeds_lexus_newsroom: ## Generate only the Lexus Newsroom feed (USA/Europe/Poland/Discover Lexus)
-	$(PY) feed_generators/lexus.py
-
-.PHONY: feeds_toyota_global
-feeds_toyota_global: ## Generate only the Toyota Global feed (USA/Europe/Global/Connected/TRI)
-	$(PY) feed_generators/toyota.py
-
-.PHONY: feeds_ra
-feeds_ra: ## Generate only the RA feed (magazine/features/music, deduped)
-	$(PY) feed_generators/ra_magazine.py
-
-.PHONY: feeds_meta_newsroom
-feeds_meta_newsroom: ## Generate only the Meta Newsroom feed (Meta.com/About/Engineering/AI)
-	$(PY) feed_generators/meta.py
-
-.PHONY: feeds_govpl_news
-feeds_govpl_news: ## Generate only the Gov.pl feed (KPRM/Cyfryzacja/Zdrowie/MON/MSZ/RCB/PZ/Baza wiedzy)
-	$(PY) feed_generators/govpl.py
-
-.PHONY: feeds_commoninja
-feeds_commoninja: ## Generate only the Common Ninja blog feed
-	$(PY) feed_generators/commoninja.py
-
-.PHONY: feeds_canva
-feeds_canva: ## Generate only the Canva feed (Newsroom + Learn, combined)
-	$(PY) feed_generators/canva.py
-
-.PHONY: feeds_esa
-feeds_esa: ## Generate only the ESA feed
-	$(PY) feed_generators/esa.py
-
-.PHONY: feeds_tvp
-feeds_tvp: ## Generate only the TVP feed (Info/Sport/portal sections)
-	$(PY) feed_generators/tvp.py
-
-.PHONY: feeds_pekao
-feeds_pekao: ## Generate only the Pekao feed (aktualnosci/prasowe/peoview/private-banking)
-	$(PY) feed_generators/pekao.py
-
-.PHONY: feeds_gitlab
-feeds_gitlab: ## Generate only the GitLab feed (blog/releases/patch-releases/press/whats-new)
-	$(PY) feed_generators/gitlab.py
-
-.PHONY: feeds_opensource
-feeds_opensource: ## Generate only the Open Source feed (CC/OSI/LF/SPDX/OGC/RFC Editor/IETF/Posit)
-	$(PY) feed_generators/opensource.py
-
-.PHONY: feeds_hackerone
-feeds_hackerone: ## Generate only the HackerOne feed
-	$(PY) feed_generators/hackerone.py
-
-.PHONY: feeds_hp
-feeds_hp: ## Generate only the HP feed (Support/HPE Newsroom/HP Newsroom/hppartner.pl)
-	$(PY) feed_generators/hp.py
-
-.PHONY: feeds_xiaomi
-feeds_xiaomi: ## Generate only the Xiaomi feed (xiaomi.eu/Advices/Today/Investor/Global/India/MIUIPolska)
-	$(PY) feed_generators/xiaomi.py
-
-.PHONY: feeds_geopolitics
-feeds_geopolitics: ## Generate only the geopolitics feed (ISW/RUSI/CSIS/Carnegie)
-	$(PY) feed_generators/geopolitics.py
-
-.PHONY: feeds_wotd
-feeds_wotd: ## Generate only the Word of the Day feed (MW/Dictionary.com/AWAD/TFD/Wiktionary)
-	$(PY) feed_generators/wotd.py
-
-.PHONY: feeds_medium
-feeds_medium: ## Generate only the Medium feed (combined publications + authors)
-	$(PY) feed_generators/medium.py
-
-.PHONY: feeds_gog
-feeds_gog: ## Generate only the GOG feed (blog/pressroom/news PL+EN)
-	$(PY) feed_generators/gog.py
-
-.PHONY: feeds_samsung
-feeds_samsung: ## Generate only the Samsung Newsroom feed (global/PL/mobile press/dev/NEXT/SmartThings/community PL)
-	$(PY) feed_generators/samsung.py
-
-.PHONY: feeds_audio
-feeds_audio: ## Generate only the Audio.com.pl feed (RSS sections + /testy)
-	$(PY) feed_generators/audio.py
-
-.PHONY: feeds_github
-feeds_github: ## Generate only the GitHub feed (blog channels + status + Komi Store + Git tooling + trending)
-	$(PY) feed_generators/github.py
-
-.PHONY: feeds_europa
-feeds_europa: ## Generate only the Europa feed (EP/EC/ECB, EU agencies, EU-affairs commentary)
-	$(PY) feed_generators/europa.py
-
-.PHONY: feeds_visualcrossing_blog
-feeds_visualcrossing_blog: ## Generate only the Visual Crossing resources feed
-	$(PY) feed_generators/visualcrossing_blog.py
-
-.PHONY: feeds_spotify
-feeds_spotify: ## Generate only the Spotify feed (newsroom + developer changelog)
-	$(PY) feed_generators/spotify.py
-
-.PHONY: feeds_paintnet
-feeds_paintnet: ## Generate only the Paint.NET feed (blog + forum boards)
-	$(PY) feed_generators/paintnet.py
-
-.PHONY: feeds_lichess
-feeds_lichess: ## Generate only the Lichess feed (updates + community blogs PL/EN)
-	$(PY) feed_generators/lichess.py
-
-.PHONY: feeds_radios
-feeds_radios: ## Generate only the Radios feed (TuneIn, Maxi Italo, Electro Swing)
-	$(PY) feed_generators/radios.py
-
-.PHONY: feeds_datime
-feeds_datime: ## Generate only the DaTime feed (timeanddate + holidays)
-	$(PY) feed_generators/datime.py
-
-.PHONY: feeds_wykop
-feeds_wykop: ## Generate only the Wykop feed (rss/comments/upcoming)
-	$(PY) feed_generators/wykop.py
