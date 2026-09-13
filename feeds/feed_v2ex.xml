@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-09-12T22:33:49.339046+00:00</updated>
+  <updated>2026-09-13T00:16:42.087429+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.v2ex.com/favicon.ico</icon>
   <logo>https://www.v2ex.com/favicon.ico</logo>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/e77fd7c4447bb0d9</id>
+    <title>开源自荐：做了个开发用的中枢，一台机器把公网访问、科学上网、AI 代理、多机器服务发现包了一下</title>
+    <updated>2026-09-12T23:53:09+00:00</updated>
+    <content>我想解决我自己作为程序员的几个老痛点：1 ）跨公网访问自己的机器 2 ）要科学访问 3 ）要 AI 代理 4 ）多个机器找起来很麻烦。 每个单拎出来都有轮子，但凑一起就是一坨配置，换台机器再来一遍。所以我做了个方便开发用的中枢，一台常开的 Linux 盒子（ N100 就行）跑 hub ，要控制的 linux 服务器装 agent （可以面板上 SSH 安装），其他要用服务的电脑装 client 就行。然后这个 hub 配上 client 解决了这些问题： 多个网络出口。 一个断了另一个可以顶上。同时 hub 可以直接配成 WiFi 提供点、旁路网关、单臂路由，或者双网口的机器如 N100 可以配成透明路由模式。 多代理模式。 暂时不支持 Clash 那样 chain ，因为很麻烦而且我追求低延时。 overlay 和本地路由的兼容。 上面这两个叠加在一起会让远程访问的网络路由变得很麻烦，所以我处理好了本地网络路由和这些 overlay 网络的兼容问题，公网上的比如带了个笔记本旅游可以直接访问一样的资源。 本地 AI 一体化。 我在 hub 上做了个 cliproxyapi （规避 t</content>
+    <link href="https://www.v2ex.com/t/1241622#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-12T23:53:09+00:00</published>
+    <media:group>
+      <media:content url="https://raw.githubusercontent.com/iffiX/neutrino/main/images/screenshots/proxy.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://raw.githubusercontent.com/iffiX/neutrino/main/images/screenshots/proxy.webp"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://raw.githubusercontent.com/iffiX/neutrino/main/images/screenshots/proxy.webp" type="image/webp" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/e7b76dee9db4263c</id>
     <title>半夜寂寞,买了个飞机杯,到手感觉亏大了，我日！拍断大腿！</title>
@@ -222,32 +237,6 @@
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
     <link rel="enclosure" href="https://i.imgur.com/67xl2ck.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/e8365f0318388b52</id>
-    <title>待办清单 App，纯本地运行，功能比较全</title>
-    <updated>2026-09-12T10:34:51+00:00</updated>
-    <content>产品特点： 纯本地运行，所有数据存在手机上，不联网、不上传、不需要注册
-​ 任务管理：增删改查、四级优先级、截止日期、提醒通知、重复规则
-​ 子任务 checklist ，带进度条
-​ 多清单分类（工作/个人/购物等），自定义颜色和图标
-​ 多标签系统
-​ 智能视图：今天、明天、本周、已过期、收集箱
-​ 月历视图，中文界面
-​ 数据统计：完成率环形图、7 天趋势柱状图、优先级分布、清单分布
-​ 番茄钟专注模式
-​ 深色/浅色/跟随系统，6 种主题色
-​ 回收站，误删可恢复，24 小时自动清理
-​ 数据导入导出备份 提醒功能支持 10 种时间（准时、提前 5 分钟到 1 周），用的系统本地通知，重启后自动恢复。 界面预览和详细介绍在这里： http://114.55.135.10/todo/#showcase 下载地址（蒲公英）： https://www.pgyer.com/daibanqingdan 隐私方面可以放心，不申请网络权限，不集成任何第三方 SDK ，所有数据只在你自己手机上。隐私政策在产品页底部有链接。 有什么建议或者发现 bug 欢迎反馈，我会持续更新。</content>
-    <link href="https://www.v2ex.com/t/1241568#reply1" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-12T10:34:51+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/7a43b037a5207412</id>
