@@ -32,9 +32,9 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
-
 from utils import (
     add_entry_media,
+    require_fresh_cache_restore,
     save_atom_feed,
     setup_feed_extensions,
     setup_feed_links,
@@ -107,6 +107,7 @@ def parse_date(date_text: str) -> datetime:
 # --------------------------------------------------------------------------- #
 def load_cache() -> list[dict]:
     """Load previously seen entries. Returns [] if no cache yet."""
+    require_fresh_cache_restore()
     if not CACHE_FILE.exists():
         return []
     try:

@@ -124,6 +124,21 @@ class GeneratorTimeoutTests(unittest.TestCase):
             self.assertEqual(xml.read_text(encoding="utf-8"), "old xml")
             self.assertEqual(sidecar.read_text(encoding="utf-8"), "old json")
 
+    def test_incremental_child_receives_cache_restore_authorization(self):
+        done = subprocess.CompletedProcess(
+            args=["python"], returncode=0, stdout="", stderr=""
+        )
+        with (
+            mock.patch.object(run_all_feeds.subprocess, "run", return_value=done) as run,
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True),
+        ):
+            self.assertTrue(run_all_feeds.run_feed("reuters", self.config()))
+
+        self.assertEqual(
+            run.call_args.kwargs["env"][run_all_feeds.CACHE_RESTORE_ENV], "1"
+        )
+
+
 
 class GeneratorBatchTests(unittest.TestCase):
     @staticmethod

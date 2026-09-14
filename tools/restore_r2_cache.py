@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-from restore_cache_archive import merge_restored_cache, restore_cache_archive
+from restore_cache_archive import restore_cache_archive
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BUCKET = "feedseek-cache"
@@ -68,6 +69,24 @@ def _fetch_archive(bucket: str, key: str, archive: Path) -> bool:
     raise RuntimeError(detail or f"Wrangler exited with status {result.returncode}")
 
 
+def replace_cache_tree(restored: Path, target: Path) -> None:
+    """Replace local cache state with the validated R2 snapshot."""
+    stage = target.with_name(target.name + ".r2-stage")
+    backup = target.with_name(target.name + ".r2-backup")
+    shutil.rmtree(stage, ignore_errors=True)
+    shutil.rmtree(backup, ignore_errors=True)
+    shutil.copytree(restored, stage)
+    if target.exists():
+        target.rename(backup)
+    try:
+        stage.rename(target)
+    except Exception:
+        if backup.exists() and not target.exists():
+            backup.rename(target)
+        raise
+    shutil.rmtree(backup, ignore_errors=True)
+
+
 def restore_from_r2(bucket: str, key: str, target: Path) -> bool:
     target.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
@@ -76,14 +95,10 @@ def restore_from_r2(bucket: str, key: str, target: Path) -> bool:
         if not _fetch_archive(bucket, key, archive):
             return False
         restored = restore_cache_archive(archive, tmp_path / "restored")
-        restored_used, current_kept, added = merge_restored_cache(restored, target)
+        replace_cache_tree(restored, target)
 
     (target / CACHE_MARKER).write_text("restored\n", encoding="utf-8")
-    print(
-        "Merged R2 cache snapshot: "
-        f"{restored_used} newer restored, {current_kept} current kept, "
-        f"{added} restored-only added"
-    )
+    print("Replaced local cache with the authoritative R2 snapshot.")
     return True
 
 

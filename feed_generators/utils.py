@@ -12,6 +12,7 @@ import json
 import logging
 import os
 import re
+import sys
 import unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -127,9 +128,41 @@ def stable_fallback_date(identifier: str) -> datetime:
 # Cache management
 # ---------------------------------------------------------------------------
 
+CACHE_RESTORE_ENV = "FEEDSEEK_CACHE_RESTORED"
+CACHE_RESTORE_MARKER = ".r2-restored"
+
+
+def _running_generator_cli() -> bool:
+    try:
+        script = Path(sys.argv[0]).resolve()
+    except (OSError, RuntimeError):
+        return False
+    return script.parent == Path(__file__).resolve().parent and script.name not in {
+        "invoke_generator.py",
+        "run_all_feeds.py",
+    }
+
+
+def require_fresh_cache_restore() -> None:
+    """Require a one-shot R2 restore for direct incremental generator runs."""
+    if "--full" in sys.argv or os.environ.get(CACHE_RESTORE_ENV) == "1":
+        return
+    if not _running_generator_cli():
+        return
+    marker = get_cache_dir() / CACHE_RESTORE_MARKER
+    try:
+        marker.unlink()
+    except FileNotFoundError as exc:
+        raise RuntimeError(
+            "Incremental generator execution requires a fresh R2 cache restore; "
+            "run `make cache-restore` immediately before this command, or use --full."
+        ) from exc
+    os.environ[CACHE_RESTORE_ENV] = "1"
+
 
 def load_cache(feed_name: str, entries_key: str = "entries") -> dict:
     """Load existing cache or return an empty structure."""
+    require_fresh_cache_restore()
     cache_file = get_cache_file(feed_name)
     if cache_file.exists():
         try:
@@ -915,7 +948,13 @@ def _write_json_sidecar(xml_path: Path, feed_name: str) -> None:
 # URL / title normalization + cross-source dedupe
 # ---------------------------------------------------------------------------
 
-from urllib.parse import urlsplit, urlunsplit, urljoin, parse_qsl, urlencode  # noqa: E402
+from urllib.parse import (  # noqa: E402
+    parse_qsl,
+    urlencode,
+    urljoin,
+    urlsplit,
+    urlunsplit,
+)
 
 # Tracking/click-id query params dropped during canonicalization. utm_* is
 # matched by prefix separately.

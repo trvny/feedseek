@@ -28,6 +28,6 @@
 ## Cloudflare
 
 - `feeds-proxy` is deployed by Cloudflare Workers Builds from `feeds-proxy/`; GitHub Actions only checks it.
-- Feedseek's durable generation cache lives in the private R2 bucket `feedseek-cache`, object `snapshots/cache.tar.gz`; keep that storage contract stable.
+- Feedseek's durable generation cache lives in the private R2 bucket `feedseek-cache`, object `snapshots/cache.tar.gz`; keep that storage contract stable. Missing or unreadable durable state must fail closed; never rebuild accumulator history automatically from a partial live-source refresh.
 - `.github/workflows/deploy-cloudflare-pages.yml` is dormant direct-upload fallback infrastructure and uses the `feedseek` Pages project name.
 - A GitHub rename or transfer is not by itself a reason to recreate KV/R2/D1 resources. Verify the Workers Builds Git connection after repository identity changes instead of assuming either that it survived or broke from the displayed slug alone.

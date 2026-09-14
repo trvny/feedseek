@@ -3,82 +3,52 @@ from pathlib import Path
 
 
 class UpdateFeedsWorkflowTests(unittest.TestCase):
-    def test_commit_requires_final_validation_and_non_cancelled_job(self):
-        workflow = (
+    @staticmethod
+    def workflow() -> str:
+        return (
             Path(__file__).resolve().parents[1]
             / ".github"
             / "workflows"
             / "update-feeds.yml"
         ).read_text(encoding="utf-8")
+
+    def test_commit_requires_final_validation_and_non_cancelled_job(self):
+        workflow = self.workflow()
         block = workflow.split("- name: Commit and push successful updates", 1)[1]
         block = block.split("- name: Apply feed health gate", 1)[0]
-
         self.assertIn("steps.validate.outcome == 'success'", block)
         self.assertIn("!cancelled()", block)
 
-    def test_r2_is_required_before_generation(self):
-        workflow = (
-            Path(__file__).resolve().parents[1]
-            / ".github"
-            / "workflows"
-            / "update-feeds.yml"
-        ).read_text(encoding="utf-8")
-        prepare = workflow.split("- name: Prepare R2 cache bucket", 1)[1]
-        prepare = prepare.split("- name: Restore Feedseek cache from R2", 1)[0]
+    def test_r2_restore_is_required_before_generation(self):
+        workflow = self.workflow()
         restore = workflow.split("- name: Restore Feedseek cache from R2", 1)[1]
         restore = restore.split("- name: Run feed tests", 1)[0]
+        self.assertIn("tools/restore_r2_cache.py", restore)
+        self.assertNotIn("continue-on-error: true", restore)
+        self.assertLess(
+            workflow.index("- name: Restore Feedseek cache from R2"),
+            workflow.index("- name: Generate feeds"),
+        )
 
-        self.assertNotIn("continue-on-error: true", prepare)
-        self.assertNotIn("repository cache seed", prepare)
-        self.assertNotIn("if: steps.r2.outputs.ready", restore)
-        self.assertNotIn("repository cache seed", restore)
-
-    def test_missing_r2_snapshot_bootstraps_only_with_full_success(self):
-        workflow = (
-            Path(__file__).resolve().parents[1]
-            / ".github"
-            / "workflows"
-            / "update-feeds.yml"
-        ).read_text(encoding="utf-8")
-        prepare = workflow.split("- name: Prepare R2 cache bucket", 1)[1]
-        prepare = prepare.split("- name: Restore Feedseek cache from R2", 1)[0]
+    def test_missing_r2_snapshot_fails_closed_instead_of_full_bootstrap(self):
+        workflow = self.workflow()
         restore = workflow.split("- name: Restore Feedseek cache from R2", 1)[1]
         restore = restore.split("- name: Run feed tests", 1)[0]
         generate = workflow.split("- name: Generate feeds", 1)[1]
         generate = generate.split("- name: Validate feeds", 1)[0]
-        backup = workflow.split("- name: Back up Feedseek cache to R2", 1)[1]
-        backup = backup.split("- name: Commit and push successful updates", 1)[0]
-
-        self.assertIn("id: r2", prepare)
-        self.assertIn("created=true", prepare)
-        self.assertIn("id: restore", restore)
-        self.assertIn("bootstrap=true", restore)
-        self.assertIn("tools/restore_r2_cache.py", restore)
-        self.assertIn("restore_status", restore)
-        self.assertIn("--full", generate)
-        self.assertIn("steps.restore.outputs.bootstrap != 'true'", backup)
-        self.assertIn("steps.generate.outcome == 'success'", backup)
+        self.assertNotIn("bootstrap", restore.casefold())
+        self.assertNotIn("CACHE_BOOTSTRAP", generate)
+        self.assertNotIn("--full", generate)
 
     def test_cache_snapshot_is_saved_only_after_a_healthy_run(self):
-        workflow = (
-            Path(__file__).resolve().parents[1]
-            / ".github"
-            / "workflows"
-            / "update-feeds.yml"
-        ).read_text(encoding="utf-8")
+        workflow = self.workflow()
         backup = workflow.split("- name: Back up Feedseek cache to R2", 1)[1]
         backup = backup.split("- name: Commit and push successful updates", 1)[0]
         commit = workflow.split("- name: Commit and push successful updates", 1)[1]
         commit = commit.split("- name: Apply feed health gate", 1)[0]
-
-        self.assertIn("id: backup", backup)
-        self.assertIn(
-            "steps.restore.outputs.bootstrap != 'true' || steps.generate.outcome == 'success'",
-            backup,
-        )
         self.assertIn("steps.validate.outcome == 'success'", backup)
+        self.assertNotIn("bootstrap", backup.casefold())
         self.assertNotIn("continue-on-error: true", backup)
-        self.assertNotIn("keeping the existing R2 snapshot", backup)
         self.assertIn("exit 1", backup)
         self.assertNotIn("git add feeds cache", commit)
         self.assertIn("git add feeds docs/sources.md", commit)

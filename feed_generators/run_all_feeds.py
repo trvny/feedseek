@@ -22,7 +22,7 @@ from pathlib import Path
 
 from models import FeedConfig, load_feed_registry
 from normalize_feed_self_links import normalize_feed_self_links
-from utils import write_atomically
+from utils import CACHE_RESTORE_ENV, write_atomically
 from validate_feeds import validate_feed, validate_json_sidecar
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -137,8 +137,16 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
     cache_snapshot = _snapshot_cache(feed_name)
     logger.info("Running %s: %s", feed_name, script_path)
     try:
+        child_env = os.environ.copy()
+        if not full:
+            child_env[CACHE_RESTORE_ENV] = "1"
         result = subprocess.run(
-            cmd, capture_output=True, text=True, check=False, timeout=GENERATOR_TIMEOUT
+            cmd,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=GENERATOR_TIMEOUT,
+            env=child_env,
         )
     except subprocess.TimeoutExpired as exc:
         # subprocess.run has already killed the child by this point.
