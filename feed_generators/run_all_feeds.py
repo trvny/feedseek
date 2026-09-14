@@ -55,6 +55,7 @@ def _configured_generator_workers() -> int:
 # into a thundering herd; override locally/temporarily when profiling.
 GENERATOR_WORKERS = _configured_generator_workers()
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
+CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 
 
 def _pair_paths(feed_name: str) -> tuple[Path, Path]:
@@ -68,6 +69,16 @@ def _snapshot_feed_pair(feed_name: str) -> dict[Path, bytes | None]:
         path: path.read_bytes() if path.exists() else None
         for path in _pair_paths(feed_name)
     }
+
+
+def _cache_path(feed_name: str) -> Path:
+    return CACHE_DIR / f"{feed_name}_posts.json"
+
+
+def _snapshot_cache(feed_name: str) -> dict[Path, bytes | None]:
+    """Keep one generator's cache state so failed children cannot advance it."""
+    path = _cache_path(feed_name)
+    return {path: path.read_bytes() if path.exists() else None}
 
 
 def _restore_feed_pair(snapshot: dict[Path, bytes | None]) -> None:
@@ -99,11 +110,16 @@ def _feed_pair_is_valid(feed_name: str) -> bool:
 
 
 def _reject_feed_update(
-    feed_name: str, snapshot: dict[Path, bytes | None], message: str, *args
+    feed_name: str,
+    feed_snapshot: dict[Path, bytes | None],
+    cache_snapshot: dict[Path, bytes | None],
+    message: str,
+    *args,
 ) -> bool:
     logger.error(message, *args)
-    _restore_feed_pair(snapshot)
-    logger.info("Restored last-known-good XML + JSON pair for %s", feed_name)
+    _restore_feed_pair(feed_snapshot)
+    _restore_feed_pair(cache_snapshot)
+    logger.info("Restored last-known-good feed pair and cache for %s", feed_name)
     return False
 
 
@@ -116,7 +132,8 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
     if full:
         cmd.append("--full")
 
-    snapshot = _snapshot_feed_pair(feed_name)
+    feed_snapshot = _snapshot_feed_pair(feed_name)
+    cache_snapshot = _snapshot_cache(feed_name)
     logger.info("Running %s: %s", feed_name, script_path)
     try:
         result = subprocess.run(
@@ -129,7 +146,8 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
                 logger.warning("[%s %s before timeout]\n%s", feed_name, label, stream.rstrip())
         return _reject_feed_update(
             feed_name,
-            snapshot,
+            feed_snapshot,
+            cache_snapshot,
             "Generator %s exceeded %.0fs and was killed",
             feed_name,
             GENERATOR_TIMEOUT,
@@ -144,14 +162,19 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
     if result.returncode != 0:
         return _reject_feed_update(
             feed_name,
-            snapshot,
+            feed_snapshot,
+            cache_snapshot,
             "Generator %s exited with status %d",
             feed_name,
             result.returncode,
         )
     if not _feed_pair_is_valid(feed_name):
         return _reject_feed_update(
-            feed_name, snapshot, "Generator %s failed the XML + JSON pair check", feed_name
+            feed_name,
+            feed_snapshot,
+            cache_snapshot,
+            "Generator %s failed the XML + JSON pair check",
+            feed_name,
         )
 
     logger.info("Successfully ran: %s", feed_name)

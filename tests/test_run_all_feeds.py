@@ -68,6 +68,35 @@ class GeneratorTimeoutTests(unittest.TestCase):
             self.assertEqual(xml.read_text(encoding="utf-8"), "old xml")
             self.assertEqual(sidecar.read_text(encoding="utf-8"), "old json")
 
+    def test_timeout_restores_generator_cache_after_partial_child_write(self):
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            feeds = root / "feeds"
+            cache = root / "cache"
+            feeds.mkdir()
+            cache.mkdir()
+            xml = feeds / "feed_reuters.xml"
+            sidecar = feeds / "feed_reuters.json"
+            cache_file = cache / "reuters_posts.json"
+            xml.write_text("old xml", encoding="utf-8")
+            sidecar.write_text("old json", encoding="utf-8")
+            cache_file.write_text("old cache", encoding="utf-8")
+
+            def partial_then_timeout(*args, **kwargs):
+                cache_file.write_text("new cache", encoding="utf-8")
+                raise subprocess.TimeoutExpired(cmd=["python"], timeout=1)
+
+            with (
+                mock.patch.object(run_all_feeds, "FEEDS_DIR", feeds),
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache),
+                mock.patch.object(
+                    run_all_feeds.subprocess, "run", side_effect=partial_then_timeout
+                ),
+            ):
+                self.assertFalse(run_all_feeds.run_feed("reuters", self.config()))
+
+            self.assertEqual(cache_file.read_text(encoding="utf-8"), "old cache")
+
     def test_success_with_invalid_pair_is_rolled_back(self):
         with TemporaryDirectory() as tmp:
             directory = Path(tmp)

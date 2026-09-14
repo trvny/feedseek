@@ -45,13 +45,15 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = workflow.split("- name: Commit and push successful updates", 1)[1]
         commit = commit.split("- name: Apply feed health gate", 1)[0]
 
-        self.assertIn("steps.generate.outcome == 'success'", backup)
+        self.assertIn("id: backup", backup)
+        self.assertNotIn("steps.generate.outcome == 'success'", backup)
         self.assertIn("steps.validate.outcome == 'success'", backup)
         self.assertNotIn("continue-on-error: true", backup)
         self.assertNotIn("keeping the existing R2 snapshot", backup)
         self.assertIn("exit 1", backup)
         self.assertNotIn("git add feeds cache", commit)
         self.assertIn("git add feeds docs/sources.md", commit)
+        self.assertIn("steps.backup.outcome == 'success'", commit)
 
 
 if __name__ == "__main__":

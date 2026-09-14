@@ -154,10 +154,10 @@ jobs:
         run: uv run --locked feed_generators/docs_sources.py
 
       - name: Back up Feedseek cache to R2
+        id: backup
         if: >-
           always() &&
           github.ref == 'refs/heads/main' &&
-          steps.generate.outcome == 'success' &&
           steps.validate.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -190,7 +190,8 @@ jobs:
           always() &&
           !cancelled() &&
           github.ref == 'refs/heads/main' &&
-          steps.validate.outcome == 'success'
+          steps.validate.outcome == 'success' &&
+          steps.backup.outcome == 'success'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
