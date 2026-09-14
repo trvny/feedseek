@@ -20,6 +20,8 @@ const CACHE_TTL_MS = 300000;
  * @property {string[]} tags
  */
 
+// This endpoint is deliberately public and read-only, so wildcard CORS is intentional.
+// Revisit this before adding authenticated state or mutating MCP tools.
 const MCP_HEADERS = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "POST, OPTIONS",
