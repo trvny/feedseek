@@ -31,6 +31,52 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/d37d3a2285a13653",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-14-saml-force-authentication/",
+      "title": "Access - Require fresh authentication for SAML identity providers",
+      "content_text": "Cloudflare Access can now request fresh authentication from a SAML identity provider for every login. Turn on Require reauthentication in the Cloudflare dashboard, or set force_authn to true through the API. Access will then set ForceAuthn to true in signed and unsigned SAML authentication requests. This option is useful when an application requires users to reauthenticate at the identity provider instead of relying on an existing identity provider session. The default value is false . For confi",
+      "date_published": "2026-09-14T00:00:00Z",
+      "date_modified": "2026-09-14T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/01d7241da1d3c146",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-14-guardrails/",
+      "title": "Browser Run - Control which hostnames Browser Run sessions can access",
+      "content_text": "Browser Run now supports guardrails , which limit a browser session's HTTP and HTTPS requests to permitted hostnames. Use guardrails when you need to: Keep a browser workflow limited to a specific website and its subdomains. Load only known third-party APIs, scripts, images, and fonts. Generate a screenshot or PDF from HTML you provide while preventing it from loading external content. Set guardrails when starting a session with Puppeteer, Playwright, or the REST API. With a browser binding name",
+      "date_published": "2026-09-14T00:00:00Z",
+      "date_modified": "2026-09-14T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/b222deae356c964c",
       "url": "https://www.cloudflarestatus.com/incidents/t4gby3dqzbg1",
       "title": "Issues creating and updating Cloud Connector Rules",
@@ -1210,6 +1256,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/220e6d264f21e160",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-02-origin-range-requests-rulesets-api/",
+      "title": "Cache - Configure Origin Range Requests with the Rulesets API",
+      "content_text": "The Rulesets API now supports Origin Range Requests in Cache Rules. This setting lets Cloudflare fetch large files from your origin in cache-aligned byte ranges. Cloudflare may expand a client range and issue several single-range origin requests. Set origin_range_requests.mode to on , off , or default for any traffic matched by a Cache Rule. To override Cloudflare's default Origin Range Requests behavior, set the mode to off . The following rule turns off generated origin range requests for all",
+      "date_published": "2026-09-02T00:00:00Z",
+      "date_modified": "2026-09-02T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/cdd61004d0d1af53",
       "url": "https://www.cloudflarestatus.com/incidents/1w42pbthkqjf",
       "title": "Network Route Leak in Palmas, Brazil",
@@ -1999,75 +2068,6 @@
       ],
       "tags": [
         "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/22c5931f5c3d4300",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-waf-release/",
-      "title": "WAF - WAF Release - 2026-08-25",
-      "content_text": "This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode. Key Findings Four new detections move from Log to Block: HTTP/2 Request Smuggling - Request Body Anomaly and XSS - JavaScript Event Handler Coercion across Headers, Body, and URI. The XSS, HTML Injection - Script Tag - Beta rule is merged into the original rule. A Generic Rules - Remote Code",
-      "date_published": "2026-08-25T00:00:00Z",
-      "date_modified": "2026-08-25T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/233ee38b4ca609d1",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-larger-custom-metadata-values/",
-      "title": "AI Search - Store larger custom metadata values in AI Search",
-      "content_text": "AI Search supports larger custom metadata values within a shared 10 KiB metadata envelope for each vector. The envelope includes AI Search system metadata and JSON overhead, so it is not a per-field limit. The first 64 UTF-8 bytes of each indexed string remain filterable. For details, refer to Metadata attributes .",
-      "date_published": "2026-08-25T00:00:00Z",
-      "date_modified": "2026-08-25T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/d699ccc469bb1773",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-25-durable-object-alarm-abort-no-retry/",
-      "title": "Durable Objects - Prevent Durable Object alarm retries when using `ctx.abort()`",
-      "content_text": "By default, an alarm interrupted by ctx.abort() retries after the Durable Object resets. Pass { retryAlarm: false } when the alarm should stop instead: src/index.js js import { DurableObject } from \"cloudflare:workers\" ; export class CleanupTask extends DurableObject { async alarm () { await this .ctx.storage. deleteAll (); this .ctx. abort ( \"Cleanup complete\" , { retryAlarm: false }); } } src/index.ts ts import { DurableObject } from \"cloudflare:workers\" ; export class CleanupTask extends Dura",
-      "date_published": "2026-08-25T00:00:00Z",
-      "date_modified": "2026-08-25T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
       ]
     },
     {
