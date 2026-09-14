@@ -71,11 +71,13 @@ jobs:
 
           url = checked_url(os.environ.get("FEED_URL"), "feed_url")
           source = checked_url(os.environ.get("FEED_SOURCE"), "source", optional=True)
-          title = " ".join((os.environ.get("FEED_TITLE") or url).split())
-          if not title:
-              title = url
-          if len(title) > MAX_TITLE_LEN:
-              raise SystemExit(f"title exceeds {MAX_TITLE_LEN} characters")
+          supplied_title = (os.environ.get("FEED_TITLE") or "").strip()
+          if supplied_title:
+              title = " ".join(supplied_title.split())
+              if len(title) > MAX_TITLE_LEN:
+                  raise SystemExit(f"title exceeds {MAX_TITLE_LEN} characters")
+          else:
+              title = urlsplit(url).hostname or url
           if any(ord(ch) < 0x20 for ch in title):
               raise SystemExit("title contains control characters")
 
