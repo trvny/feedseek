@@ -119,10 +119,6 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          archive="$RUNNER_TEMP/feedseek-cache.tar.gz"
-          restore_dir="$(mktemp -d)"
-          error_log="$RUNNER_TEMP/feedseek-cache-restore.err"
-          trap 'rm -rf "$restore_dir"' EXIT
 
           bootstrap() {
             mkdir -p cache
@@ -135,21 +131,22 @@ jobs:
             exit 0
           fi
 
-          if feeds-proxy/node_modules/.bin/wrangler r2 object get \
-            "$FEEDSEEK_CACHE_BUCKET/$FEEDSEEK_CACHE_KEY" \
-            --file "$archive" \
-            --remote 2>"$error_log"; then
-            uv run --locked tools/restore_cache_archive.py \
-              "$archive" "$restore_dir" --merge-into cache
-            echo "bootstrap=false" >> "$GITHUB_OUTPUT"
-            echo "Restored Feedseek cache from the required R2 snapshot."
-          elif grep -Eqi "NoSuchKey|specified key does not exist|object.*not found" "$error_log"; then
-            cat "$error_log" >&2
-            bootstrap
-          else
-            cat "$error_log" >&2
-            exit 1
-          fi
+          set +e
+          uv run --locked tools/restore_r2_cache.py
+          restore_status=$?
+          set -e
+
+          case "$restore_status" in
+            0)
+              echo "bootstrap=false" >> "$GITHUB_OUTPUT"
+              ;;
+            2)
+              bootstrap
+              ;;
+            *)
+              exit "$restore_status"
+              ;;
+          esac
 
       - name: Run feed tests
         working-directory: .
@@ -209,6 +206,7 @@ jobs:
             --owner=0 \
             --group=0 \
             --numeric-owner \
+            --exclude='cache/.r2-restored' \
             -czf "$archive" \
             -C . cache
           feeds-proxy/node_modules/.bin/wrangler r2 object put \

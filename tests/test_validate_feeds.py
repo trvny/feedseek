@@ -5,10 +5,17 @@ import unittest
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from validate_feeds import JSON_FEED_VERSION, _entry_date, validate_json_sidecar  # noqa: E402
+import validate_feeds
+from models import FeedConfig
+from validate_feeds import (
+    JSON_FEED_VERSION,
+    _entry_date,
+    validate_json_sidecar,
+)
 
 
 class EntryDateTests(unittest.TestCase):
@@ -21,7 +28,9 @@ class EntryDateTests(unittest.TestCase):
             </entry>
             """
         )
-        self.assertEqual(_entry_date(entry), datetime.fromisoformat("2025-01-02T03:04:05+00:00"))
+        self.assertEqual(
+            _entry_date(entry), datetime.fromisoformat("2025-01-02T03:04:05+00:00")
+        )
 
     def test_atom_updated_is_used_when_published_is_absent(self):
         entry = ET.fromstring(
@@ -31,7 +40,32 @@ class EntryDateTests(unittest.TestCase):
             </entry>
             """
         )
-        self.assertEqual(_entry_date(entry), datetime.fromisoformat("2026-07-22T10:32:09+00:00"))
+        self.assertEqual(
+            _entry_date(entry), datetime.fromisoformat("2026-07-22T10:32:09+00:00")
+        )
+
+
+class RegistryCoverageTests(unittest.TestCase):
+    def test_missing_enabled_feed_is_fatal_without_cache_seed(self):
+        with (
+            tempfile.TemporaryDirectory() as feeds_tmp,
+        ):
+            registry = {
+                "reuters": FeedConfig(
+                    script="reuters.py", blog_url="https://example.test/"
+                )
+            }
+            with (
+                mock.patch.object(validate_feeds, "FEEDS_DIR", Path(feeds_tmp)),
+                mock.patch.object(
+                    validate_feeds,
+                    "load_feed_registry",
+                    return_value=(registry, []),
+                ),
+            ):
+                results, _ = validate_feeds._registry_coverage()
+
+        self.assertEqual(results[0]["status"], "MISSING")
 
 
 class JsonFeedContractTests(unittest.TestCase):
@@ -54,7 +88,9 @@ class JsonFeedContractTests(unittest.TestCase):
         }
 
     def test_valid_json_feed_matches_xml_count(self):
-        result = validate_json_sidecar(self.write_feed(self.valid_doc()), expected_count=2)
+        result = validate_json_sidecar(
+            self.write_feed(self.valid_doc()), expected_count=2
+        )
         self.assertEqual(result["status"], "OK")
 
     def test_wrong_version_is_fatal_quality_error(self):
@@ -64,7 +100,9 @@ class JsonFeedContractTests(unittest.TestCase):
         self.assertEqual(result["status"], "JSON_ERROR")
 
     def test_json_item_count_must_match_xml(self):
-        result = validate_json_sidecar(self.write_feed(self.valid_doc()), expected_count=3)
+        result = validate_json_sidecar(
+            self.write_feed(self.valid_doc()), expected_count=3
+        )
         self.assertEqual(result["status"], "JSON_ERROR")
         self.assertIn("differs from XML", result["message"])
 

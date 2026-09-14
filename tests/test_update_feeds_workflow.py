@@ -53,7 +53,8 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("created=true", prepare)
         self.assertIn("id: restore", restore)
         self.assertIn("bootstrap=true", restore)
-        self.assertIn("NoSuchKey", restore)
+        self.assertIn("tools/restore_r2_cache.py", restore)
+        self.assertIn("restore_status", restore)
         self.assertIn("--full", generate)
         self.assertIn("steps.restore.outputs.bootstrap != 'true'", backup)
         self.assertIn("steps.generate.outcome == 'success'", backup)
@@ -71,7 +72,10 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = commit.split("- name: Apply feed health gate", 1)[0]
 
         self.assertIn("id: backup", backup)
-        self.assertIn("steps.restore.outputs.bootstrap != 'true' || steps.generate.outcome == 'success'", backup)
+        self.assertIn(
+            "steps.restore.outputs.bootstrap != 'true' || steps.generate.outcome == 'success'",
+            backup,
+        )
         self.assertIn("steps.validate.outcome == 'success'", backup)
         self.assertNotIn("continue-on-error: true", backup)
         self.assertNotIn("keeping the existing R2 snapshot", backup)

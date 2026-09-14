@@ -31,7 +31,6 @@ JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 
 ROOT = Path(__file__).parent.parent
 FEEDS_DIR = ROOT / "feeds"
-CACHE_DIR = ROOT / "cache"
 
 
 def _local(tag: str) -> str:
@@ -47,13 +46,13 @@ def _find_entries(root: ET.Element) -> list[ET.Element]:
 def _parse_rss_date(text: str) -> datetime | None:
     try:
         return parsedate_to_datetime(text)
-    except (ValueError, TypeError):
+    except ValueError, TypeError:
         return None
 
 
 def _parse_atom_date(text: str) -> datetime | None:
     try:
-        return datetime.fromisoformat(text.replace("Z", "+00:00"))
+        return datetime.fromisoformat(text)
     except ValueError:
         return None
 
@@ -97,14 +96,19 @@ def _stale_threshold_days(dates: list[datetime]) -> tuple[float, float | None]:
     if len(dates) < MIN_HISTORY:
         return float(STALE_FLOOR_DAYS), None
     ordered = sorted(dates)
-    gaps = [(ordered[i] - ordered[i - 1]).total_seconds() / 86400.0 for i in range(1, len(ordered))]
+    gaps = [
+        (ordered[i] - ordered[i - 1]).total_seconds() / 86400.0
+        for i in range(1, len(ordered))
+    ]
     p90 = _percentile(gaps, 0.9)
     if p90 is None:
         return float(STALE_FLOOR_DAYS), None
     return max(float(STALE_FLOOR_DAYS), STALE_GAP_MULTIPLIER * p90), p90
 
 
-def _result(name: str, status: str, message: str, *, count: int = 0, newest=None) -> dict:
+def _result(
+    name: str, status: str, message: str, *, count: int = 0, newest=None
+) -> dict:
     return {
         "name": name,
         "item_count": count,
@@ -134,13 +138,17 @@ def validate_feed(feed_path: Path) -> dict:
             dates.append(dt if dt.tzinfo is not None else dt.replace(tzinfo=UTC))
 
     if not dates:
-        return _result(name, "OK", f"{item_count} items, no parseable dates", count=item_count)
+        return _result(
+            name, "OK", f"{item_count} items, no parseable dates", count=item_count
+        )
 
     newest = max(dates)
     days_ago = (datetime.now(UTC) - newest).days
     threshold, p90 = _stale_threshold_days(dates)
     if days_ago > threshold:
-        cadence = f"p90 gap {p90:.0f}d" if p90 is not None else f"floor {STALE_FLOOR_DAYS}d"
+        cadence = (
+            f"p90 gap {p90:.0f}d" if p90 is not None else f"floor {STALE_FLOOR_DAYS}d"
+        )
         return _result(
             name,
             "STALE",
@@ -176,7 +184,9 @@ def _validate_json_items(path: Path, items: list) -> dict | None:
             return _json_error(path, f"duplicate item id: {item_id}")
         seen_ids.add(item_id)
         content_fields = ("content_html", "content_text")
-        if not any(isinstance(item.get(key), str) for key in content_fields if key in item):
+        if not any(
+            isinstance(item.get(key), str) for key in content_fields if key in item
+        ):
             return _json_error(path, f"item {index} has no content_html/content_text")
     return None
 
@@ -230,23 +240,21 @@ def _registry_coverage() -> tuple[list[dict], set[Path]]:
         xml_path = FEEDS_DIR / f"feed_{name}.xml"
         expected_xml.add(xml_path)
         if not xml_path.exists():
-            # A feed registered but never run yet has no cache either: that is a
-            # brand-new registration waiting for the next scheduled run, not a
-            # lost artifact. Report it, but don't fail the build over it.
-            never_ran = not (CACHE_DIR / f"{name}_posts.json").exists()
-            status = "PENDING" if never_ran else "MISSING"
-            message = (
-                f"new feed '{name}' has not been generated yet"
-                if never_ran
-                else f"enabled feed '{name}' has no XML artifact"
+            results.append(
+                _result(
+                    xml_path.name,
+                    "MISSING",
+                    f"enabled feed '{name}' has no XML artifact",
+                )
             )
-            results.append(_result(xml_path.name, status, message))
             continue
         xml_result = validate_feed(xml_path)
         results.append(xml_result)
         expected_count = xml_result["item_count"] if xml_result["item_count"] else None
         results.append(
-            validate_json_sidecar(xml_path.with_suffix(".json"), expected_count=expected_count)
+            validate_json_sidecar(
+                xml_path.with_suffix(".json"), expected_count=expected_count
+            )
         )
 
     for name in skipped:
@@ -260,9 +268,15 @@ def _write_step_summary(results: list[dict]) -> None:
     if not path:
         return
     try:
-        rows = [f"| {r['name']} | {r['status']} | {r['message']} |" for r in results if r["status"] != "OK"]
+        rows = [
+            f"| {r['name']} | {r['status']} | {r['message']} |"
+            for r in results
+            if r["status"] != "OK"
+        ]
         lines = ["## Feed health", "", "| Feed | Status | Detail |", "|---|---|---|"]
-        lines += rows or ["| _all feeds_ | OK | nothing empty, stale, missing, or broken |"]
+        lines += rows or [
+            "| _all feeds_ | OK | nothing empty, stale, missing, or broken |"
+        ]
         with open(path, "a", encoding="utf-8") as fh:
             fh.write("\n".join(lines) + "\n")
     except OSError:
@@ -283,13 +297,16 @@ def main() -> int:
         print(f"  {result['name']:50s} {result['status']:12s} {result['message']}")
     print("=" * 90)
 
-    fatal_statuses = {"ERROR", "EMPTY", "MISSING", "CONFIG_ERROR", "JSON_MISSING", "JSON_ERROR"}
+    fatal_statuses = {
+        "ERROR",
+        "EMPTY",
+        "MISSING",
+        "CONFIG_ERROR",
+        "JSON_MISSING",
+        "JSON_ERROR",
+    }
     fatal = [r for r in results if r["status"] in fatal_statuses]
     stale = [r for r in results if r["status"] == "STALE"]
-    pending = [r for r in results if r["status"] == "PENDING"]
-
-    if pending:
-        print(f"\nWARNINGS: {len(pending)} newly registered feed(s) awaiting their first run")
     if stale:
         print(f"\nWARNINGS: {len(stale)} stale feed(s)")
     if not fatal:

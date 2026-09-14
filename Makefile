@@ -6,6 +6,7 @@
 # take `help` and `clean` down with it, and they need no interpreter.
 PY := uv run --locked
 RUN_FEED := $(PY) feed_generators/run_all_feeds.py --feed
+CACHE_MARKER := cache/.r2-restored
 
 .DEFAULT_GOAL := help
 
@@ -25,8 +26,17 @@ install: ## Install the locked dependencies (fails if uv.lock is stale — run `
 lock: ## Refresh uv.lock after editing pyproject.toml
 	uv lock
 
+.PHONY: cache-restore
+cache-restore: ## Restore the durable generation cache from R2
+	@if [ ! -x feeds-proxy/node_modules/.bin/wrangler ] && [ ! -f feeds-proxy/node_modules/.bin/wrangler.cmd ]; then npm --prefix feeds-proxy ci; fi
+	$(PY) tools/restore_r2_cache.py
+
+.PHONY: cache-ready
+cache-ready:
+	@if [ ! -f "$(CACHE_MARKER)" ] || ! find cache -maxdepth 1 -name "*_posts.json" -print -quit 2>/dev/null | grep -q .; then echo "Restoring Feedseek cache from R2 before incremental generation..."; $(MAKE) cache-restore; fi
+
 .PHONY: feeds
-feeds: ## Generate all feeds (incremental)
+feeds: cache-ready ## Generate all feeds (incremental)
 	$(PY) feed_generators/run_all_feeds.py
 
 .PHONY: feeds-full
@@ -34,7 +44,7 @@ feeds-full: ## Regenerate all feeds from scratch (ignore cache)
 	$(PY) feed_generators/run_all_feeds.py --full
 
 .PHONY: feed
-feed: ## Generate one feed: make feed NAME=<feeds.yaml name>
+feed: cache-ready ## Generate one feed: make feed NAME=<feeds.yaml name>
 	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
 	$(RUN_FEED) "$(NAME)"
 
@@ -48,7 +58,7 @@ feed-full: ## Regenerate one feed from scratch: make feed-full NAME=<feeds.yaml 
 .PHONY: FORCE
 FORCE:
 
-feeds_%: FORCE
+feeds_%: cache-ready FORCE
 	$(RUN_FEED) "$*"
 
 FULL_FEEDS := trojka czworka nexusmods_news jbzd foobar2000
@@ -58,17 +68,17 @@ $(FULL_TARGETS): feeds_%_full:
 	$(RUN_FEED) "$*" --full
 
 .PHONY: feeds_beatport
-feeds_beatport: ## Compatibility alias for the Beatport Top 100 feed
+feeds_beatport: cache-ready ## Compatibility alias for the Beatport Top 100 feed
 	$(RUN_FEED) beatport_top100
 
 .PHONY: feeds_windows11_release_notes
-feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows updates
+feeds_windows11_release_notes: cache-ready ## Compatibility alias for Microsoft/Windows updates
 	$(RUN_FEED) microsoft_updates
 
 # Common Ninja is also consumed by the consolidated SaaS generator, but this
 # standalone helper remains useful and is not a feeds.yaml entry.
 .PHONY: feeds_commoninja
-feeds_commoninja: ## Generate only the standalone Common Ninja blog feed
+feeds_commoninja: cache-ready ## Generate only the standalone Common Ninja blog feed
 	$(PY) feed_generators/commoninja.py
 
 .PHONY: validate
@@ -77,4 +87,4 @@ validate: ## Validate all generated feeds
 
 .PHONY: clean
 clean: ## Remove generated feeds and cache
-	rm -f feeds/feed_*.xml feeds/feed_*.json cache/*_posts.json
+	rm -f feeds/feed_*.xml feeds/feed_*.json cache/*_posts.json $(CACHE_MARKER)
