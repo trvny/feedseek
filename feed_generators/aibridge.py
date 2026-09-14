@@ -1,8 +1,8 @@
 """AI-bridge feed: one combined Atom stream of AI labs and newsletters.
 
 Native RSS sources: Thinking Machines, Ollama, Mistral, Interconnected
-(Matt Webb), AI Clock (Substack), the Polish AI blogs Bielik, Promptowy and
-Maistry, and Stability AI (news-updates, via the
+(Matt Webb), AI Clock (Substack), the Polish AI blogs Bielik, SpeakLeash,
+Promptowy and Maistry, and Stability AI (news-updates, via the
 Squarespace ?format=rss trick — see note below). On top of those it reuses
 the existing scrapers for Perplexity's Framer sites (Blog/Changelog/Research
 + API docs changelog RSS) and The Batch / DeepLearning.AI (__NEXT_DATA__) —
@@ -62,6 +62,7 @@ SOURCES = [
     ("AI Clock", "https://aiclock.substack.com/feed", 40),
     ("Stability AI", "https://stability.ai/news-updates?format=rss", 30),
     ("Bielik", "https://bielik.ai/feed/", 40),
+    ("SpeakLeash", "https://speakleash.org/feed/", 40),
     ("Promptowy", "https://promptowy.com/feed/", 40),
     ("Maistry", "https://maistry.pl/rss/", 40),
     ("Karpathy", "https://karpathy.bearblog.dev/feed/", 40),
@@ -403,7 +404,7 @@ def main(full=False):
         feed_name=FEED_NAME,
         title="AI-bridge",
         subtitle="Combined AI feed: Thinking Machines, Ollama, Mistral, "
-        "Interconnected, AI Clock, Stability AI, Bielik, Promptowy, Maistry, "
+        "Interconnected, AI Clock, Stability AI, Bielik, SpeakLeash, Promptowy, Maistry, "
         "Karpathy (bearblog + old blog), Transformer, MiniMax News/Blog, PLLuM, "
         "Perplexity (blog/changelog/research/API changelog), "
         "The Batch / DeepLearning.AI, and Groq (blog/newsroom/changelog).",

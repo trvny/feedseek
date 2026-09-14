@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 813 źródeł
+105 feedów · 814 źródeł
 
 ## Spis grup
 
@@ -188,6 +188,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=aiclock.substack.com&sz=16) AI Clock — <https://aiclock.substack.com/feed>
 - ![](https://www.google.com/s2/favicons?domain=stability.ai&sz=16) Stability AI — <https://stability.ai/news-updates?format=rss>
 - ![](https://www.google.com/s2/favicons?domain=bielik.ai&sz=16) Bielik — <https://bielik.ai/feed/>
+- ![](https://www.google.com/s2/favicons?domain=speakleash.org&sz=16) SpeakLeash — <https://speakleash.org/feed/>
 - ![](https://www.google.com/s2/favicons?domain=promptowy.com&sz=16) Promptowy — <https://promptowy.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=maistry.pl&sz=16) Maistry — <https://maistry.pl/rss/>
 - ![](https://www.google.com/s2/favicons?domain=karpathy.bearblog.dev&sz=16) Karpathy — <https://karpathy.bearblog.dev/feed/>
