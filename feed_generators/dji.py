@@ -58,9 +58,12 @@ def _entries_from_listing(html, *, base_url, source, href_test, date_pattern, ca
         if not title or title.casefold() in {"read more", "more", "next", "previous"}:
             continue
 
+        # All three listings publish dates next to real entries. Requiring one
+        # keeps navigation/category links from masquerading as articles.
         date_text = _nearest_date(anchor, date_pattern)
-        if date_text:
-            title = re.sub(re.escape(date_text), "", title, flags=re.IGNORECASE).strip(" -–—|·")
+        if not date_text:
+            continue
+        title = re.sub(re.escape(date_text), "", title, flags=re.IGNORECASE).strip(" -–—|·")
         if source == "DJI Announcements":
             title = re.sub(r"^(?:News|Product Releases?)\s+", "", title, flags=re.IGNORECASE)
         title = re.sub(r"\s+", " ", title).strip()
@@ -71,7 +74,7 @@ def _entries_from_listing(html, *, base_url, source, href_test, date_pattern, ca
             {
                 "title": title,
                 "link": link,
-                "date": parse_date(date_text) if date_text else None,
+                "date": parse_date(date_text),
                 "description": title,
                 "source": source,
             }
@@ -101,7 +104,7 @@ def scrape_viewpoints(known_links):
         html,
         base_url=VIEWPOINTS_URL,
         source="DJI ViewPoints",
-        href_test=lambda href: "/blog/" in href and href.rstrip("/") != "/blog",
+        href_test=lambda href: "/blog/" in href,
         date_pattern=MONTH_DATE_RE,
     )
     return [entry for entry in entries if entry["link"] not in known_links]
