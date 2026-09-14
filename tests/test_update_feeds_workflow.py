@@ -33,6 +33,31 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertNotIn("if: steps.r2.outputs.ready", restore)
         self.assertNotIn("repository cache seed", restore)
 
+    def test_missing_r2_snapshot_bootstraps_only_with_full_success(self):
+        workflow = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "update-feeds.yml"
+        ).read_text(encoding="utf-8")
+        prepare = workflow.split("- name: Prepare R2 cache bucket", 1)[1]
+        prepare = prepare.split("- name: Restore Feedseek cache from R2", 1)[0]
+        restore = workflow.split("- name: Restore Feedseek cache from R2", 1)[1]
+        restore = restore.split("- name: Run feed tests", 1)[0]
+        generate = workflow.split("- name: Generate feeds", 1)[1]
+        generate = generate.split("- name: Validate feeds", 1)[0]
+        backup = workflow.split("- name: Back up Feedseek cache to R2", 1)[1]
+        backup = backup.split("- name: Commit and push successful updates", 1)[0]
+
+        self.assertIn("id: r2", prepare)
+        self.assertIn("created=true", prepare)
+        self.assertIn("id: restore", restore)
+        self.assertIn("bootstrap=true", restore)
+        self.assertIn("NoSuchKey", restore)
+        self.assertIn("--full", generate)
+        self.assertIn("steps.restore.outputs.bootstrap != 'true'", backup)
+        self.assertIn("steps.generate.outcome == 'success'", backup)
+
     def test_cache_snapshot_is_saved_only_after_a_healthy_run(self):
         workflow = (
             Path(__file__).resolve().parents[1]
@@ -46,7 +71,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = commit.split("- name: Apply feed health gate", 1)[0]
 
         self.assertIn("id: backup", backup)
-        self.assertNotIn("steps.generate.outcome == 'success'", backup)
+        self.assertIn("steps.restore.outputs.bootstrap != 'true' || steps.generate.outcome == 'success'", backup)
         self.assertIn("steps.validate.outcome == 'success'", backup)
         self.assertNotIn("continue-on-error: true", backup)
         self.assertNotIn("keeping the existing R2 snapshot", backup)
