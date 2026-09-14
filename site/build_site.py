@@ -408,6 +408,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta name="description" content="{html.escape(desc, quote=True)}">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="google-site-verification" content="xbXKq1w3ClpoMlxws6qobmZjpSmGVhi2xbrf7kwJV0s" />
+  <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />
   <link rel="canonical" href="{html.escape(base, quote=True)}">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="describedby" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
