@@ -17,6 +17,7 @@ class FeedConfig(BaseModel):
     script: str
     blog_url: str
     enabled: bool = True
+    cache_required: bool = True
 
     @field_validator("script")
     @classmethod

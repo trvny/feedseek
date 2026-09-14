@@ -1,24 +1,27 @@
 # Feedseek cache
 
-Feedseek keeps per-source JSON state in `cache`. The scheduled workflow
-mirrors that directory to the private Cloudflare R2 bucket `feedseek-cache` as
-`snapshots/cache.tar.gz`.
+Feedseek keeps per-source JSON state in local `cache/`. The directory is
+intentionally untracked; the durable source of truth is the private Cloudflare
+R2 object `feedseek-cache/snapshots/cache.tar.gz`.
 
-The migration is intentionally staged:
+Incremental generation is fail-closed:
 
-1. The workflow restores a valid R2 snapshot when available.
-2. The tracked cache remains the seed and fallback if Cloudflare credentials,
-   the bucket, or the snapshot are unavailable.
-3. Each run uploads a fresh deterministic archive after generation.
-4. Cache files should stop being committed only after a real scheduled run has
-   created and restored a valid R2 snapshot.
+1. Restore the R2 snapshot immediately before each incremental run.
+2. Validate archive safety, required per-feed cache files, and JSON structure.
+3. Replace the local cache tree with that validated snapshot rather than merging
+   it with possibly stale local state.
+4. Generate and validate feeds, then upload the resulting cache snapshot.
+5. Publish tracked feed updates only after the R2 upload succeeds.
 
-The existing `CLOUDFLARE_API_TOKEN` must include Workers R2 Storage read/write
-access for the account in `CLOUDFLARE_ACCOUNT_ID`. The workflow creates the
-bucket on first use when the token permits it.
+`CLOUDFLARE_API_TOKEN` needs Workers R2 Storage read/write access for the account
+in `CLOUDFLARE_ACCOUNT_ID`. The bucket and snapshot must already exist. Missing
+credentials, bucket/object, malformed JSON, an incomplete snapshot, or a failed
+backup stop the run without publishing feed changes.
 
-R2 failures are non-fatal during this first phase. Feed generation and the
-repository-backed last-known-good state continue to work unchanged.
+`make feeds`, `make feed NAME=...`, and the compatibility Make targets restore
+R2 automatically. Direct incremental generator execution is guarded by the
+same one-shot restore marker. Explicit full rebuilds are cache-independent, but
+the scheduled production workflow intentionally uses the durable R2 state.
 
 ## Size is bounded by an entry limit
 
@@ -57,30 +60,30 @@ largest, `beatport_top100`, holds 200), so none of them lose published history.
 It trims 7 of 91 caches. Pass `limit=` to `save_cache` for a feed that needs a
 deeper dedup window, or `limit=None` to opt out entirely.
 
-This also protects the backup: the upload step keeps the *previous* snapshot and
-only warns once the cache exceeds `FEEDSEEK_CACHE_MAX_BYTES` (128 MB). Unbounded
-growth was on course to disable the R2 backup without failing any run.
+This also protects the backup. If the cache exceeds
+`FEEDSEEK_CACHE_MAX_BYTES` (128 MB), the upload step now fails and feed changes
+are not published. The durable snapshot and tracked feeds therefore cannot drift
+apart silently.
 
-## Why the cache is not simply untracked
+## Why untracking is now safe
 
-Removing `cache` from git looks obvious — R2 already holds it and the
-restore step overwrites the working copy at the start of every run. It was
-attempted and abandoned, because the directory turns out to be load-bearing in
-three unrelated ways:
+`cache/` used to be committed because several generators accumulate history that
+cannot be reconstructed from the current upstream page. Removing it without a
+replacement could collapse a multi-entry feed to only the currently visible
+items.
 
-1. **Eight generators accumulate history rather than refetching it.**
-   `daily_quote` merges today's quote into the cached entries; against an empty
-   cache it republishes its 43-entry feed with one entry. The same holds for
-   `daily_digest`, `openweather`, `visualcrossing`, `open_meteo`,
-   `nexusmods_news` and friends. These are daily snapshots of sources that no
-   longer serve the old values, so the truncation is permanent — and it would be
-   committed, because `feeds/` is tracked.
-2. **Local runs have no R2 restore.** `make feeds` and direct generator
-   invocations in a fresh clone would hit exactly the case above, and a workflow
-   guard cannot protect them.
-3. **`validate_feeds._registry_coverage` uses cache presence** to tell a
-   brand-new feed (`PENDING`) from a lost artifact (`MISSING`). With no cache
-   anywhere, deleting an established feed's XML passes validation.
+The R2 migration addresses the old blockers directly:
 
-Any future attempt needs all three addressed first. Capping entry counts, above,
-solves the size problem without touching any of them.
+1. Incremental runs restore authoritative durable state before generators read
+   cache files. Missing or invalid state fails closed.
+2. The common cache loader and the two legacy list-cache loaders reject direct
+   incremental execution without a fresh one-shot restore marker.
+3. Feed artifact validation no longer uses repository cache presence to decide
+   whether an enabled feed is established.
+4. The restore contract derives required cache files from `feeds.yaml`. Stateful
+   feeds are required by default; genuinely stateless entries declare
+   `cache_required: false`.
+
+The repository therefore keeps the publishable `feeds/` artifacts in Git while
+R2 owns mutable generation state. Reintroducing a repository cache seed would
+create two competing sources of truth and should be avoided.

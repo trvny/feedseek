@@ -41,5 +41,33 @@ class AuthoritativeRestoreTests(unittest.TestCase):
             self.assertFalse((target / "stale_only.json").exists())
 
 
+class RegistryCacheContractTests(unittest.TestCase):
+    def test_weather_is_the_only_active_stateless_feed(self):
+        required = restore_r2_cache.required_cache_files()
+        self.assertIn("daily_quote_posts.json", required)
+        self.assertNotIn("weather_posts.json", required)
+
+
+class SnapshotValidationTests(unittest.TestCase):
+    def test_required_cache_file_must_exist(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            with self.assertRaisesRegex(ValueError, "missing required cache"):
+                restore_r2_cache.validate_cache_snapshot(
+                    cache, {"daily_quote_posts.json"}
+                )
+
+    def test_every_json_cache_must_be_parseable_and_usable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "daily_quote_posts.json").write_text(
+                "{not json", encoding="utf-8"
+            )
+            with self.assertRaisesRegex(ValueError, "invalid cache JSON"):
+                restore_r2_cache.validate_cache_snapshot(
+                    cache, {"daily_quote_posts.json"}
+                )
+
+
 if __name__ == "__main__":
     unittest.main()

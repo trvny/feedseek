@@ -10,7 +10,9 @@ import sys
 import tempfile
 from pathlib import Path
 
-from restore_cache_archive import restore_cache_archive
+import yaml
+
+from restore_cache_archive import _cache_state, restore_cache_archive
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BUCKET = "feedseek-cache"
@@ -69,6 +71,33 @@ def _fetch_archive(bucket: str, key: str, archive: Path) -> bool:
     raise RuntimeError(detail or f"Wrangler exited with status {result.returncode}")
 
 
+def required_cache_files(registry_path: Path = ROOT / "feeds.yaml") -> set[str]:
+    """Return cache files required by enabled registry entries."""
+    data = yaml.safe_load(registry_path.read_text(encoding="utf-8")) or {}
+    required: set[str] = set()
+    for name, config in data.get("feeds", {}).items():
+        if not isinstance(config, dict) or not config.get("enabled", True):
+            continue
+        if config.get("cache_required", True):
+            required.add(f"{name}_posts.json")
+    return required
+
+
+def validate_cache_snapshot(cache_dir: Path, required: set[str]) -> None:
+    """Reject incomplete or malformed durable cache snapshots."""
+    missing = sorted(name for name in required if not (cache_dir / name).is_file())
+    if missing:
+        raise ValueError("missing required cache file(s): " + ", ".join(missing))
+
+    invalid = sorted(
+        path.name
+        for path in cache_dir.glob("*_posts.json")
+        if not _cache_state(path)[0]
+    )
+    if invalid:
+        raise ValueError("invalid cache JSON file(s): " + ", ".join(invalid))
+
+
 def replace_cache_tree(restored: Path, target: Path) -> None:
     """Replace local cache state with the validated R2 snapshot."""
     stage = target.with_name(target.name + ".r2-stage")
@@ -95,6 +124,7 @@ def restore_from_r2(bucket: str, key: str, target: Path) -> bool:
         if not _fetch_archive(bucket, key, archive):
             return False
         restored = restore_cache_archive(archive, tmp_path / "restored")
+        validate_cache_snapshot(restored, required_cache_files())
         replace_cache_tree(restored, target)
 
     (target / CACHE_MARKER).write_text("restored\n", encoding="utf-8")
