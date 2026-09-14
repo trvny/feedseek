@@ -158,6 +158,21 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn("https://feedseek.pages.dev/reader/", rendered)
         self.assertNotIn("https://trvny.github.io/feedseek/reader/", rendered)
 
+    def test_index_advertises_llms_alternate(self):
+        rendered = build_site.build_index([], "https://feeds.example/")
+        self.assertIn(
+            'rel="alternate" type="text/plain" href="https://feeds.example/llms.txt"',
+            rendered,
+        )
+
+    def test_robots_publish_content_signal(self):
+        rendered = build_site.build_robots("https://feeds.example/")
+        self.assertIn(
+            "Content-Signal: ai-train=yes, search=yes, ai-input=yes",
+            rendered,
+        )
+        self.assertIn("Sitemap: https://feeds.example/sitemap.xml", rendered)
+
     def test_publication_requires_json_sidecar(self):
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
