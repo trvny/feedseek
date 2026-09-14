@@ -411,6 +411,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />
   <link rel="canonical" href="{html.escape(base, quote=True)}">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
+  <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
   <link rel="describedby" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
 {ICON_LINKS}
   <meta property="og:type" content="website">
@@ -678,7 +679,12 @@ def build_sitemap(feeds: list[dict], base: str) -> str:
 
 
 def build_robots(base: str) -> str:
-    return f"User-agent: *\nAllow: /\nSitemap: {base}sitemap.xml\n"
+    return (
+        "User-agent: *\n"
+        "Content-Signal: ai-train=yes, search=yes, ai-input=yes\n"
+        "Allow: /\n"
+        f"Sitemap: {base}sitemap.xml\n"
+    )
 
 
 def build_opml(feeds: list[dict], base: str) -> str:
