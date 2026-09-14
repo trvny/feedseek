@@ -60,7 +60,6 @@ jobs:
           uv run --locked site/build_site.py
           uv run --locked site/build_search_index.py
           uv run --locked site/make_favicon.py
-          sed -i '/google-site-verification/a\  <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />' public/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
