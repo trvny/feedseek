@@ -18,6 +18,11 @@ in `CLOUDFLARE_ACCOUNT_ID`. The bucket and snapshot must already exist. Missing
 credentials, bucket/object, malformed JSON, an incomplete snapshot, or a failed
 backup stop the run without publishing feed changes.
 
+Each successful backup also writes `cache/.snapshot-manifest.json`. The manifest
+records the complete durable cache set from that run. Restore validates that set
+before replacement, so a newly added feed can create its first cache while a
+previously established cache cannot silently disappear from R2.
+
 `make feeds`, `make feed NAME=...`, and the compatibility Make targets restore
 R2 automatically. Direct incremental generator execution is guarded by the
 same one-shot restore marker. Explicit full rebuilds are cache-independent, but

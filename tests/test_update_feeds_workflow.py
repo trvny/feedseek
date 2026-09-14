@@ -47,6 +47,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = workflow.split("- name: Commit and push successful updates", 1)[1]
         commit = commit.split("- name: Apply feed health gate", 1)[0]
         self.assertIn("steps.validate.outcome == 'success'", backup)
+        self.assertIn("tools/restore_r2_cache.py --write-manifest", backup)
         self.assertNotIn("bootstrap", backup.casefold())
         self.assertNotIn("continue-on-error: true", backup)
         self.assertIn("exit 1", backup)

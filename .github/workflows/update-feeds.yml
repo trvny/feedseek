@@ -106,6 +106,7 @@ jobs:
         run: |
           set -euo pipefail
           archive="$RUNNER_TEMP/feedseek-cache.tar.gz"
+          uv run --locked tools/restore_r2_cache.py --write-manifest
           cache_bytes="$(find cache -type f -printf '%s\n' | awk '{total += $1} END {print total + 0}')"
           if [ "$cache_bytes" -gt "$FEEDSEEK_CACHE_MAX_BYTES" ]; then
             echo "::error::Feedseek cache is $cache_bytes bytes; refusing to publish without a durable R2 snapshot (limit: $FEEDSEEK_CACHE_MAX_BYTES)."

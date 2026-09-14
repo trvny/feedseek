@@ -47,6 +47,28 @@ class RegistryCacheContractTests(unittest.TestCase):
         self.assertIn("daily_quote_posts.json", required)
         self.assertNotIn("weather_posts.json", required)
 
+    def test_previous_manifest_allows_a_new_stateful_feed_to_bootstrap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            (cache / "old_posts.json").write_text(
+                '{"entries": [{"id": "old"}]}', encoding="utf-8"
+            )
+            (cache / restore_r2_cache.SNAPSHOT_MANIFEST).write_text(
+                '{"version": 1, "files": ["old_posts.json"]}', encoding="utf-8"
+            )
+            restore_r2_cache.validate_cache_snapshot(
+                cache, {"old_posts.json", "new_posts.json"}
+            )
+
+    def test_manifest_writer_requires_current_stateful_caches(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            with self.assertRaisesRegex(ValueError, "missing required cache"):
+                restore_r2_cache.write_cache_manifest(
+                    cache, {"new_posts.json"}
+                )
+
+
 
 class SnapshotValidationTests(unittest.TestCase):
     def test_required_cache_file_must_exist(self):

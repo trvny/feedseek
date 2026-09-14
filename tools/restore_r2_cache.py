@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -18,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BUCKET = "feedseek-cache"
 DEFAULT_KEY = "snapshots/cache.tar.gz"
 CACHE_MARKER = ".r2-restored"
+SNAPSHOT_MANIFEST = ".snapshot-manifest.json"
 _MISSING_PATTERNS = (
     "nosuchkey",
     "specified key does not exist",
@@ -83,19 +85,56 @@ def required_cache_files(registry_path: Path = ROOT / "feeds.yaml") -> set[str]:
     return required
 
 
-def validate_cache_snapshot(cache_dir: Path, required: set[str]) -> None:
-    """Reject incomplete or malformed durable cache snapshots."""
-    missing = sorted(name for name in required if not (cache_dir / name).is_file())
+def _validate_cache_files(cache_dir: Path, required: set[str]) -> set[str]:
+    actual = {path.name for path in cache_dir.glob("*_posts.json")}
+    missing = sorted(required - actual)
     if missing:
         raise ValueError("missing required cache file(s): " + ", ".join(missing))
 
     invalid = sorted(
-        path.name
-        for path in cache_dir.glob("*_posts.json")
-        if not _cache_state(path)[0]
+        name for name in actual if not _cache_state(cache_dir / name)[0]
     )
     if invalid:
         raise ValueError("invalid cache JSON file(s): " + ", ".join(invalid))
+    return actual
+
+
+def _read_snapshot_manifest(cache_dir: Path) -> set[str] | None:
+    path = cache_dir / SNAPSHOT_MANIFEST
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError("invalid cache snapshot manifest") from exc
+    files = data.get("files") if isinstance(data, dict) and data.get("version") == 1 else None
+    if not isinstance(files, list) or not all(isinstance(name, str) for name in files):
+        raise ValueError("invalid cache snapshot manifest")
+    if len(files) != len(set(files)):
+        raise ValueError("cache snapshot manifest contains duplicate files")
+    if any(Path(name).name != name or not name.endswith("_posts.json") for name in files):
+        raise ValueError("cache snapshot manifest contains invalid file names")
+    return set(files)
+
+
+def validate_cache_snapshot(cache_dir: Path, required: set[str]) -> None:
+    """Reject incomplete or malformed durable cache snapshots."""
+    manifest_files = _read_snapshot_manifest(cache_dir)
+    expected = required if manifest_files is None else manifest_files
+    actual = _validate_cache_files(cache_dir, expected)
+    if manifest_files is not None and actual != manifest_files:
+        raise ValueError("cache snapshot files do not match the manifest")
+
+
+def write_cache_manifest(cache_dir: Path, required: set[str]) -> Path:
+    """Record the complete validated cache set for the next restore."""
+    files = sorted(_validate_cache_files(cache_dir, required))
+    path = cache_dir / SNAPSHOT_MANIFEST
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    payload = json.dumps({"version": 1, "files": files}, indent=2) + "\n"
+    temporary.write_text(payload, encoding="utf-8")
+    os.replace(temporary, path)
+    return path
 
 
 def replace_cache_tree(restored: Path, target: Path) -> None:
@@ -137,7 +176,17 @@ def main() -> int:
     parser.add_argument("--bucket", default=DEFAULT_BUCKET)
     parser.add_argument("--key", default=DEFAULT_KEY)
     parser.add_argument("--merge-into", type=Path, default=ROOT / "cache")
+    parser.add_argument("--write-manifest", action="store_true")
     args = parser.parse_args()
+
+    if args.write_manifest:
+        try:
+            manifest = write_cache_manifest(args.merge_into, required_cache_files())
+        except (OSError, ValueError) as exc:
+            print(f"Cache manifest write failed: {exc}", file=sys.stderr)
+            return 1
+        print(f"Wrote cache snapshot manifest to {manifest}")
+        return 0
 
     try:
         restored = restore_from_r2(args.bucket, args.key, args.merge_into)
