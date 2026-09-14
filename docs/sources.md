@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-104 feedów · 810 źródeł
+105 feedów · 813 źródeł
 
 ## Spis grup
 
@@ -913,6 +913,13 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=baike.baidu.com&sz=16) Blog — <https://baike.baidu.com/>
 - ![](https://www.google.com/s2/favicons?domain=wapbaike.baidu.com&sz=16) Source — <https://wapbaike.baidu.com/>
+
+### ![](https://www.google.com/s2/favicons?domain=www.dji.com&sz=16) DJI
+`dji` · [feed_dji.xml](../feeds/feed_dji.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=www.dji.com&sz=16) DJI Announcements — <https://www.dji.com/pl/mobile/media-center/announcements>
+- ![](https://www.google.com/s2/favicons?domain=viewpoints.dji.com&sz=16) DJI ViewPoints — <https://viewpoints.dji.com/blog?site=brandsite>
+- ![](https://www.google.com/s2/favicons?domain=forum.dji.com&sz=16) DJI Forum — <https://forum.dji.com/?site=brandsite&from=nav>
 
 ### ![](https://www.google.com/s2/favicons?domain=download-soundtracks.com&sz=16) Download Soundtracks
 `download-soundtracks` · [feed_download-soundtracks.xml](../feeds/feed_download-soundtracks.xml)
