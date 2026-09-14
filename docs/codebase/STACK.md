@@ -43,7 +43,7 @@ The Worker has no runtime npm dependency. Its development toolchain locks TypeSc
 ```bash
 uv sync --locked
 uv run --locked python -m unittest discover -s tests
-uv run --locked feed_generators/run_all_feeds.py
+make feeds
 uv run --locked feed_generators/validate_feeds.py
 node --test site/test/*.test.js
 cd feeds-proxy && npm ci && npm run check

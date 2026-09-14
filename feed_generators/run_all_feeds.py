@@ -56,6 +56,7 @@ def _configured_generator_workers() -> int:
 GENERATOR_WORKERS = _configured_generator_workers()
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
+CACHE_RESTORE_MARKER = ".r2-restored"
 
 
 def _pair_paths(feed_name: str) -> tuple[Path, Path]:
@@ -330,11 +331,32 @@ def _run_registry(
     return 1 if failed_scripts or skipped_configs or not normalization_ok else 0
 
 
+def _consume_cache_restore_marker() -> bool:
+    """Require one successful R2 restore for exactly one incremental invocation."""
+    marker = CACHE_DIR / CACHE_RESTORE_MARKER
+    try:
+        marker.unlink()
+    except FileNotFoundError:
+        return False
+    except OSError as exc:
+        logger.error("Could not consume R2 cache restore marker: %s", exc)
+        return False
+    return True
+
+
+
 def run_all_feeds(
     feed: str | None = None,
     full: bool = False,
 ) -> int:
     """Run generators from the registry and return a truthful process status."""
+    if not full and not _consume_cache_restore_marker():
+        logger.error(
+            "Incremental generation requires a fresh R2 cache restore. "
+            "Use `make feeds`, `make feed NAME=...`, or run `make cache-restore` "
+            "immediately before invoking this runner directly."
+        )
+        return 2
     registry, skipped_configs = load_feed_registry(return_skipped=True)
     if feed:
         return _run_named_feed(feed, registry, skipped_configs, full=full)

@@ -19,7 +19,7 @@
 - Check `main`, open pull requests and recent changes before overlapping work.
 - Prefer consuming a reliable native feed over scraping its HTML, but do not pass it through unchanged when shared normalization or enrichment can improve the published feed.
 - Keep one maintained source of truth per concern and use shared normalization/deduplication helpers instead of local copies.
-- Fix maintained sources and regenerate `feeds/` / `cache/` rather than hand-editing generated output. Incremental local generation must restore the durable R2 cache first.
+- Fix maintained sources and regenerate `feeds/` / `cache/` rather than hand-editing generated output. Incremental local generation must restore the durable R2 cache immediately before each run.
 - One broken source must not prevent unrelated feeds from updating.
 - A failed or empty fetch must not replace the last good feed with empty output.
 - Keep secrets in provider/GitHub secret storage, never in feeds, caches, logs or examples.
