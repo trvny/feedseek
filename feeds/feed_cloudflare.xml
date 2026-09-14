@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-14T13:16:42.147091+00:00</updated>
+  <updated>2026-09-14T19:34:16.269677+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -26,6 +26,36 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=593,format=webp/_astro/passive-detection.B_-_POtg.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d37d3a2285a13653</id>
+    <title>Access - Require fresh authentication for SAML identity providers</title>
+    <updated>2026-09-14T00:00:00+00:00</updated>
+    <content>Cloudflare Access can now request fresh authentication from a SAML identity provider for every login. Turn on Require reauthentication in the Cloudflare dashboard, or set force_authn to true through the API. Access will then set ForceAuthn to true in signed and unsigned SAML authentication requests. This option is useful when an application requires users to reauthenticate at the identity provider instead of relying on an existing identity provider session. The default value is false . For confi</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-14-saml-force-authentication/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/01d7241da1d3c146</id>
+    <title>Browser Run - Control which hostnames Browser Run sessions can access</title>
+    <updated>2026-09-14T00:00:00+00:00</updated>
+    <content>Browser Run now supports guardrails , which limit a browser session's HTTP and HTTPS requests to permitted hostnames. Use guardrails when you need to: Keep a browser workflow limited to a specific website and its subdomains. Load only known third-party APIs, scripts, images, and fonts. Generate a screenshot or PDF from HTML you provide while preventing it from loading external content. Set guardrails when starting a session with Puppeteer, Playwright, or the REST API. With a browser binding name</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-14-guardrails/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/b222deae356c964c</id>
@@ -808,6 +838,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/220e6d264f21e160</id>
+    <title>Cache - Configure Origin Range Requests with the Rulesets API</title>
+    <updated>2026-09-02T00:00:00+00:00</updated>
+    <content>The Rulesets API now supports Origin Range Requests in Cache Rules. This setting lets Cloudflare fetch large files from your origin in cache-aligned byte ranges. Cloudflare may expand a client range and issue several single-range origin requests. Set origin_range_requests.mode to on , off , or default for any traffic matched by a Cache Rule. To override Cloudflare's default Origin Range Requests behavior, set the mode to off . The following rule turns off generated origin range requests for all </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-02-origin-range-requests-rulesets-api/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-02T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/cdd61004d0d1af53</id>
     <title>Network Route Leak in Palmas, Brazil</title>
     <updated>2026-09-01T22:05:44+00:00</updated>
@@ -1318,51 +1363,6 @@ The issue is currently resolved.</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-08-25T14:52:41+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/22c5931f5c3d4300</id>
-    <title>WAF - WAF Release - 2026-08-25</title>
-    <updated>2026-08-25T00:00:00+00:00</updated>
-    <content>This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode. Key Findings Four new detections move from Log to Block: HTTP/2 Request Smuggling - Request Body Anomaly and XSS - JavaScript Event Handler Coercion across Headers, Body, and URI. The XSS, HTML Injection - Script Tag - Beta rule is merged into the original rule. A Generic Rules - Remote Code </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-08-25-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-08-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/233ee38b4ca609d1</id>
-    <title>AI Search - Store larger custom metadata values in AI Search</title>
-    <updated>2026-08-25T00:00:00+00:00</updated>
-    <content>AI Search supports larger custom metadata values within a shared 10 KiB metadata envelope for each vector. The envelope includes AI Search system metadata and JSON overhead, so it is not a per-field limit. The first 64 UTF-8 bytes of each indexed string remain filterable. For details, refer to Metadata attributes .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-08-25-larger-custom-metadata-values/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-08-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d699ccc469bb1773</id>
-    <title>Durable Objects - Prevent Durable Object alarm retries when using `ctx.abort()`</title>
-    <updated>2026-08-25T00:00:00+00:00</updated>
-    <content>By default, an alarm interrupted by ctx.abort() retries after the Durable Object resets. Pass { retryAlarm: false } when the alarm should stop instead: src/index.js js import { DurableObject } from "cloudflare:workers" ; export class CleanupTask extends DurableObject { async alarm () { await this .ctx.storage. deleteAll (); this .ctx. abort ( "Cleanup complete" , { retryAlarm: false }); } } src/index.ts ts import { DurableObject } from "cloudflare:workers" ; export class CleanupTask extends Dura</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-08-25-durable-object-alarm-abort-no-retry/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-08-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/43318d4e2986d300</id>
