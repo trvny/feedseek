@@ -1,4 +1,3 @@
-import re
 import sys
 import unittest
 from pathlib import Path
@@ -17,9 +16,10 @@ from dji import (  # noqa: E402
 class DjiFeedTests(unittest.TestCase):
     def test_doc_sources_lists_requested_surfaces(self):
         sources = doc_sources()
-        self.assertEqual([label for label, _url in sources], [
-            "DJI Announcements", "DJI ViewPoints", "DJI Forum"
-        ])
+        self.assertEqual(
+            [label for label, _url in sources],
+            ["DJI Announcements", "DJI ViewPoints", "DJI Forum"],
+        )
         self.assertEqual(len(sources), 3)
 
     def test_announcements_strip_kind_and_date(self):
@@ -56,9 +56,10 @@ class DjiFeedTests(unittest.TestCase):
             href_test=lambda href: "/blog/" in href,
             date_pattern=MONTH_DATE_RE,
         )
-        self.assertEqual([entry["title"] for entry in entries], [
-            "Security and Continuous Improvement"
-        ])
+        self.assertEqual(
+            [entry["title"] for entry in entries],
+            ["Security and Continuous Improvement"],
+        )
         self.assertEqual(entries[0]["date"].isoformat(), "2026-03-06T00:00:00+00:00")
 
     def test_forum_recognizes_thread_links(self):
@@ -78,6 +79,17 @@ class DjiFeedTests(unittest.TestCase):
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0]["source"], "DJI Forum")
         self.assertEqual(entries[0]["date"].isoformat(), "2026-08-23T00:00:00+00:00")
+
+    def test_listing_skips_undated_navigation_links(self):
+        html = '<a href="/blog/category/drones">Drone guides and tutorials</a>'
+        entries = _entries_from_listing(
+            html,
+            base_url="https://viewpoints.dji.com/blog",
+            source="DJI ViewPoints",
+            href_test=lambda href: "/blog/" in href,
+            date_pattern=MONTH_DATE_RE,
+        )
+        self.assertEqual(entries, [])
 
 
 if __name__ == "__main__":
