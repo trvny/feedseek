@@ -10,6 +10,10 @@ import aibridge  # noqa: E402
 
 
 class AiBridgeTests(unittest.TestCase):
+    def test_speakleash_source_is_registered(self):
+        urls = {label: url for label, url, _ in aibridge.SOURCES}
+        self.assertEqual(urls["SpeakLeash"], "https://speakleash.org/feed/")
+
     def test_repairs_answer_ai_toolcalling_entry(self):
         original = {
             "title": "The unauthorized tool call problem",
