@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-14T00:26:13.594092+00:00",
+  "last_updated": "2026-09-14T05:24:59.029072+00:00",
   "entries": [
     {
       "title": "reddit 被墙了吗，在手机上用 Apollo 客户端无法显示内容，浏览器无法打开？",
@@ -4197,15 +4197,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/845f675437e6e7a1"
     },
     {
-      "title": "如何最大化 Claude Code Session 的价值",
-      "link": "https://www.v2ex.com/t/1234919#reply0",
-      "date": "2026-08-17T03:07:19+00:00",
-      "description": "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践： 《 Maximizing the value of your Claude Code sessions 》 。 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。 我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills ），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token 。 二、tok",
-      "source": "V2EX Play",
-      "image": "https://cdn.v2ex.com/gravatar/c01a9990e9f1bcbea1b8b6e4b0ed12f6?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/9a7c50f62432d0cf"
-    },
-    {
       "title": "Motrix 时隔三年终于更新了？作者刚开了 openai 的会员？",
       "link": "https://www.v2ex.com/t/1234920#reply1",
       "date": "2026-08-17T03:07:19+00:00",
@@ -4213,6 +4204,15 @@
       "source": "V2EX Play",
       "image": "https://cdn.v2ex.com/avatar/a5c4/cedb/764031_xlarge.png?m=1773103759",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/a0fb6b3f396db430"
+    },
+    {
+      "title": "如何最大化 Claude Code Session 的价值",
+      "link": "https://www.v2ex.com/t/1234919#reply0",
+      "date": "2026-08-17T03:07:19+00:00",
+      "description": "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践： 《 Maximizing the value of your Claude Code sessions 》 。 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。 我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills ），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token 。 二、tok",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/gravatar/c01a9990e9f1bcbea1b8b6e4b0ed12f6?s=73&d=retro",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/9a7c50f62432d0cf"
     },
     {
       "title": "深港两地用 codex(chatgpt)用什么网络方案？",
@@ -4323,15 +4323,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/1455768f768c5a17"
     },
     {
-      "title": "让 DeepSeek Harness 开口说话——dsh-speak 语音播报插件（Windows/macOS）",
-      "link": "https://www.v2ex.com/t/1235008#reply0",
-      "date": "2026-08-17T07:16:20+00:00",
-      "description": "最近给 DeepSeek Harness 写了个语音播报插件 dsh-speak ，分享给有同样需求的人。 解决什么问题 Agent 跑长任务（构建、测试、批量改代码）的时候，你没法一直盯着屏幕。dsh-speak 让 Agent 回复完成后 直接语音播报最终回复 ，干完活电脑会开口告诉你结果，不用回头翻聊天记录。 特点 事件驱动 ：监听 DSH 会话事件流，只播报最终回复，自动跳过 reasoning 和工具调用 三类播报 ：最终回复、审批请求（\"需要你的审批\"）、提问（念出问题和选项） 零依赖 ：Windows 用系统 SAPI5 + 自然语音（ Win11 内置，Win10 装 NaturalVoiceSAPIAdapter ）； macOS 用系统 say （可跟随 Siri 音色） 已发布 npm ： dsh plugin --profile web add dsh-speak 一行安装 配置（ cordis.patch.yml 里配，无环境变量） - insert:\n    - id: speech-hook\n      name: 'dsh-speak'\n      co",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/88055cd531719f313269b756c6d39347?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/2c0d8c4dda11de4c"
-    },
-    {
       "title": "个人程序开发运营过程分享",
       "link": "https://www.v2ex.com/t/1235009#reply17",
       "date": "2026-08-17T07:25:15+00:00",
@@ -4341,42 +4332,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/42116d38fc8f85ca"
     },
     {
-      "title": "完全隐蔽，终端里打德州扑克",
-      "link": "https://www.v2ex.com/t/1235023#reply34",
-      "date": "2026-08-17T07:43:00+00:00",
-      "description": "使用命令行界面打无限注德州，摸鱼首选。连上就进当前没满的桌，空桌则等真人，大于等于两人即开桌。 本机如果没用过 SSH ，先执行一次（一路回车）： ssh-keygen -t ed25519 然后把「昵称」换成你想显示的名字： ssh -p 2222 昵称 @riverjam.club 账号认本机 SSH 。 说明（规则 + 界面） 这是一个跑在 SSH 里的文字桌。界面像日志，没有牌桌图，也没有 fold / 黑桃 这类词。规则还是无限注德州。 进入 ssh -p 2222 昵称 @riverjam.club （字母数字、下划线、短横，最多 16 个字符）。 你会看到 journal 0.3\nattached\nid 你的昵称 bal=20000\nseated t=1 n=1/9\nstk=2000 bal=18000\nwait n=1/9 0m bal 账户余额， stk 这桌带进来的筹码 wait n=1/9 3m ：人数，以及已等了几分钟 少于 2 人不开始；第一手开始打前再等 20 秒 当前进行中进来会看到 watch / wait next ：能看公共牌和别人怎么动，看不到任何",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/a84ded6fc1c12909aea244168efefcbf?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/20bffe6bc2d5b0b2"
-    },
-    {
-      "title": "code-deep：给 Coding Agent 的两个 MCP 工具 —— 改代码前 explore，改完 review",
-      "link": "https://www.v2ex.com/t/1235024#reply0",
-      "date": "2026-08-17T07:44:13+00:00",
-      "description": "用 Coding Agent 改代码时的一个常见浪费：上来 grep 关键字 → 读五个文件 → 发现方向不对 → 再 grep ，token 烧完了还没定位准，改完也说不清影响面有多大。 做了个 MCP server 解决这个，MIT ，已发 npm 。 https://github.com/team-harness/code-deep npm i -g @team-harness/code-deep\ncode-deep install --target codex,claude install 会自动给 Codex 和 Claude Code 注册全局 MCP server 、往 ~/.codex/ AGENTS.md 和 ~/.claude/ CLAUDE.md 写一段带标记的指引、给 Claude 加上对应权限。它保留无关配置、每个改动的文件备份成 <file>.code-deep.bak 、可重复执行。装完重启一下 host 。 暴露给 Agent 的接口刻意做得很小， 只有两个 。 explore：改之前先搞清楚在动什么 code-deep explore \\\n  \"追踪 ",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/7a00/6957/2891_large.png?m=1448350059",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/32125b7d24ec6ddc"
-    },
-    {
-      "title": "因为公司在做 Workbuddy Agent，总要做产品分析，所以做了一个 AI 产品分析站，分享给大家。",
-      "link": "https://www.v2ex.com/t/1235025#reply8",
-      "date": "2026-08-17T07:44:42+00:00",
-      "description": "因为工作关系，我平时会看很多刚发布的 AI 产品。\n看多了以后发现，很多产品光看官网根本不知道它到底能干嘛，适不适合自己用，和别的产品差别在哪。于是我就把平时整理的一些分析模板、资料，做成了一个网站。\n里面会尽量用比较简单的话，把一个产品是做什么的、主要功能、适合什么人、竞品大概有哪些这些整理出来。\n现在还在慢慢更新，产品也没收全，很多地方肯定还比较粗糙。\n而且，都是用最好的大模型总结的，值得分享出来。\n发出来主要是想听听大家意见：你们平时会想看哪些 AI 产品？或者觉得分析一个产品，最有用的信息是什么？",
-      "source": "V2EX Creative",
-      "image": "https://i.imgur.com/MrxZArn_d.webp?maxwidth=1520&fidelity=grand",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/9b83542636870df9"
-    },
-    {
-      "title": "又一个周末，我把番茄钟 Demo 大改版了一遍",
-      "link": "https://www.v2ex.com/t/1235027#reply0",
-      "date": "2026-08-17T07:46:25+00:00",
-      "description": "原本只是想优化几个细节，结果改着改着，变成了一次不小的改版。 我重新梳理了从「开始一个番茄钟」到「完成一次专注」的整个流程，也推翻了一些原来的交互逻辑。 有些地方做了优化，进入专注更快、更自然； 有些地方则做了减法，删掉不必要的功能、步骤。 因为对专注工具来说，不应该让你花很多时间设置计划、研究功能，而是让你更快进入状态，我希望它不只是一个倒计时工具。 新版目前已经接近收尾，本周会发布第一个 Beta 公测版本。如果你想第一时间体验它，欢迎评论或私信我，发布后会第一时间通知到你。",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/ec45/0afa/643943_xlarge.png?m=1786952676",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/6091889b7db4f272"
-    },
-    {
       "title": "手里有一条 48g 内存和一张 b580 显卡，请求大家帮忙分析我的办公折腾方案",
       "link": "https://www.v2ex.com/t/1235031#reply0",
       "date": "2026-08-17T07:55:36+00:00",
@@ -4384,24 +4339,6 @@
       "source": "V2EX Play",
       "image": "https://cdn.v2ex.com/gravatar/9522fed932893cd91616aa9fdf3da807?s=73&d=retro",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/ac0c8af4b023ed7a"
-    },
-    {
-      "title": "[自荐] USB File 在 iOS/iPadOS 和 macOS 之间通过数据线传文件",
-      "link": "https://www.v2ex.com/t/1235032#reply0",
-      "date": "2026-08-17T07:57:18+00:00",
-      "description": "tl;dr USB File 主页 https://apps.ihave.website/usbfile USB File 因为工作原因，有时我需要往 iPhone 发送一些文件再分享给手机上别的软件，我所在的网络环境比较复杂 AirDrop 常常搜索不到我的设备，当时我就想开发一个工具能直接使用数据线把文件传输到 iPhone 。 忍无可忍后我开发了 USB File 用于 iOS/iPadOS 和 macOS 文件的双向传输 。 软件我经常在用，每当我用到的时候我都会想软件真的帮我了大忙解决了我问题，所以我想分享出来用来解决类似的问题。 使用者 需要在 macOS 和 iOS 上各安装 USB File 客户端 ，之后就可以在电脑和手机之间通过 USB 线传输文件（有点儿类似 Android File Transfer ）。 USB File 机制上十分干净，没有网络请求权限、没有后台权限用完即走。 USB File 主页在: https://apps.ihave.website/usbfile iOS 客户端 AppStore 链接在: https://apps.apple.co",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/7048/3e91/74146_large.png?m=1786952728",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/c5cfda7fb9b5e760"
-    },
-    {
-      "title": "开发了一套 AI 记忆系统： OwnMem，服帖的治理了百万行代码的项目，彦祖们可以一键三连吗？",
-      "link": "https://www.v2ex.com/t/1235040#reply2",
-      "date": "2026-08-17T08:19:04+00:00",
-      "description": "仓库地址 https://github.com/grpcer/ownmem 👍彦祖们走过路过可以点个 Star 吗 背景 起因是手头有个百万行代码的项目，每天从家里和公司的电脑轮换开发 📢 经常要重复跟 AI 说： “服了你了，说了多少次，这个 bug 不要再犯了” “每次开发完，记得补充单元测试” “每次写完 SQL ，帮我检查索引” 🤔 于是我在想，有没有一套记忆系统，可以跨电脑记忆，随着 Git 可以提交，并且还有以下优势呢 1. 记忆跟随 Git 仓库流转 git pull\n→ 得到代码\n→ 同时得到这个项目积累的工程经验和记忆 2. 不依赖某个 AI ，同时支持 claude code codex Agv Grok Cursor 3. 语义召回不调用模型，不烧 token 在本地通过 Exact 、 Unicode-aware BM25F 、多查询 RRF 等方式检索。 不调用额外模型 不请求网络 完整编译层还支持 n-gram 、 fuzzy 、 graph 和 embedding ，你还可以在控制台接入 siliconflow 或 Cloudflare 的 bge-m3 ",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/f653/4fa3/67476_xlarge.png?m=1740554545",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/b9bc20184e64787e"
     },
     {
       "title": "电商把商品的多样性都给打击无了",
@@ -4440,15 +4377,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/bcce66d4d69ef171"
     },
     {
-      "title": "大概五年前在这里发过一个 kindle 时钟，不知道还有没有人在用",
-      "link": "https://www.v2ex.com/t/1235054#reply3",
-      "date": "2026-08-17T09:04:02+00:00",
-      "description": "如果还有人在用，额，它的域名更新了，就是在这里重新发一下供还有需要的小伙伴使用。 虽然现在 AI 时代大概搓一个这玩意儿只需要 10 秒钟+几千 token 的事儿。。。 原文： 最近想把家里闲置的 kindle 利用起来，每天早上刷牙洗脸的时候可以顺便看一眼天气什么的。搜了一下市面上的 kindle 时钟，似乎大部分都不带天气功能。于是自己撸了一个～ 想试试的小伙伴可以参照以下步骤搞一搞～ 在搜索栏输入 ~ds 禁用锁屏 在体验版浏览器地址栏中输入 https://clock.thestral.cc/ 欢迎拍砖。",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/f114/67d5/63223_large.png?m=1704941344",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/5ce22af2a48d4aec"
-    },
-    {
       "title": "感觉《奥德赛》大失所望",
       "link": "https://www.v2ex.com/t/1235055#reply36",
       "date": "2026-08-17T09:06:49+00:00",
@@ -4467,15 +4395,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/17e28528706f13cf"
     },
     {
-      "title": "[分享创造] 我把我的一人公司跑成了一块 kanban board —— 1 个人 + 8 个 AI 的协作形态",
-      "link": "https://www.v2ex.com/t/1235072#reply3",
-      "date": "2026-08-17T09:57:06+00:00",
-      "description": "先说结论：我这家公司没有办公室、没有会议、没有群聊，唯一的管理工具是一块 kanban board 。公司只有我一个创始人，另外 8 个\"员工\"全是 AI agent ，各管一摊，靠 board 协作，已经跑通了。 公司官网： https://www.hermes.cc.cd/?utm_source=v2ex 透明办公室（实时 30 秒刷新，看得到谁在干活）： https://www.hermes.cc.cd/opc/?utm_source=v2ex 8 个 AI 成员： CEO 庄子：拆目标、派任务、拍板所有「事」 开发马克：写代码、修 bug 、发版 运维安然：监控、健康检查、备份 营销林静：写文、发渠道、复盘 客服温雯：回客户、升级付费意向 财务钱莉：记账、月报 情报潘明：盯竞品 测试蔡婉：验收、回归测试 治理规则就一条：人/钱/法务 → 我拍板；其他所有事 → CEO 拍板。没有审批链，没有周会。 协作流程（ 4 步，全在 board 上）： CEO 把目标拆成具体任务，派给对应成员 每个成员在独立工作区里干，只看得到自己需要的上下文 干完交「结构化交接」：摘要 + 元数据，全",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/a8359de0b900697de6df2a1dc3d60312?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/b49c64ccf8a3a342"
-    },
-    {
       "title": "记一次粤 B 的电信家宽报障流水账（有点震惊的结局）",
       "link": "https://www.v2ex.com/t/1235073#reply1",
       "date": "2026-08-17T10:07:05+00:00",
@@ -4483,15 +4402,6 @@
       "source": "V2EX Play",
       "image": "https://cdn.v2ex.com/gravatar/890962fbabea023c2bf48b7b244abdec?s=73&d=retro",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/eeb588ff9cf5794b"
-    },
-    {
-      "title": "终于优化废了",
-      "link": "https://www.v2ex.com/t/1235074#reply0",
-      "date": "2026-08-17T10:11:37+00:00",
-      "description": "CF 部署 bataitools.com 基于 react ，前端动态 ssr 优化一周最终还是卡在 10ms 了，直接走付费了，一了百了。 有做海外 AI 产品的，评论区发布一下网址，免费收录，这个月 TOKEN 用不完，随便发，多少网站都收录。 也可以直接访问 bataitools.com/submit 自己提交收录。",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/aa26184bba6de19f4024f0d8b41211aa?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/f1b32fdeea31ecc2"
     },
     {
       "title": "继续跪求大佬蹭我们的桌面工作台，高速 GPT5.5、5.6， V 站注册用户已过百，现在充值返回加码",
@@ -4512,15 +4422,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/12af5a0066d9000f"
     },
     {
-      "title": "deepseek 涨价后，我给 dsh 开发了一个计算会话实时花费的插件，避免蹬过头了😂",
-      "link": "https://www.v2ex.com/t/1235078#reply2",
-      "date": "2026-08-17T10:28:21+00:00",
-      "description": "项目地址： https://github.com/lyfZhixing/dsh-cost-tracker",
-      "source": "V2EX Creative",
-      "image": "https://i.imgur.com/l1lRGqJ.png",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/2641d5cae97910f3"
-    },
-    {
       "title": "电脑版迅雷影音 强制更新解决办法",
       "link": "https://www.v2ex.com/t/1235094#reply0",
       "date": "2026-08-17T12:09:56+00:00",
@@ -4537,24 +4438,6 @@
       "source": "V2EX Claude (badgate)",
       "image": "https://cdn.v2ex.com/gravatar/5538362d4ea1da97611b7d0f29ff4c08?s=73&d=retro",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/15ebec9d1660df89"
-    },
-    {
-      "title": "为 AI coding 准备的 React 组件库",
-      "link": "https://www.v2ex.com/t/1235110#reply2",
-      "date": "2026-08-17T13:10:56+00:00",
-      "description": "近段时间在实现的 React 组件库，样式风格参考 Github Primer ，用于统一 side-project 或是多平台项目的 UI/UX 设计. （给大家写玩具时提供一个新的模板选择） 当前组件实现包含 Button, Form, Card 等基础组件，也有 Data Table, Rich Text Editor, Map 这些相对复杂的组件，基本覆盖了日常 Web 项目里比较常见的 UI 场景。 同时支持 MCP Server, 这样在 AI Coding 时，可以直接按照现有的设计系统进行实现界面。 目前项目还在持续完善中，如果你对这个项目感兴趣，欢迎使用和提出 issue 或 pr 。 https://github.com/donaldturinglee/base-ui",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/3a3f/543e/660751_xlarge.png?m=1699538555",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/927f5942ddab1924"
-    },
-    {
-      "title": "Prompt 网站很多，但专门给设计师用的好像不多，所以我自己做了一个",
-      "link": "https://www.v2ex.com/t/1235113#reply0",
-      "date": "2026-08-17T13:14:55+00:00",
-      "description": "我是一个做了很多年 UI 的设计师，工作里经常需要 AI 生图。 海报、产品图、摄影、插画、包装……每次换一个需求，就得重新去 Reddit 、Pinterest 、X 和各种 Prompt 网站翻。 Prompt 网站其实很多，但我一直没找到特别顺手的、**主要围绕设计场景整理 Prompt 的网站**。 所以干脆给自己做了 ** Designhint.com **。 本质上就是一个自己的“设计 Prompt 收藏夹”： **看到喜欢的效果 → 复制 Prompt → 修改 → 直接用。** 目前主要收集海报、电商、摄影、插画、包装、字体、图标、3D 等设计 Prompt 。 后来觉得复制出去再打开各种 AI 生图工具也挺麻烦，所以又加了一个生图工作台。 接下来还想把设计师常用的一些 AI 图片处理工具慢慢加进去。 最后可能会变成： **设计 Prompt + AI 生图 + 图片处理工具箱。** 做这个项目其实也有一点自己的职业焦虑。 我已经算是一个“大龄 UI 设计师”了，这几年越来越觉得以后找工作可能只会越来越难。 所以也想趁 AI 把开发门槛降低之后，试着做点真正属于自己的东",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/a962/966b/837666_xlarge.png?m=1786499463",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/75c72e3c24b60ca7"
     },
     {
       "title": "NS2 还有好的购买渠道吗？",
@@ -4591,15 +4474,6 @@
       "source": "V2EX Play",
       "image": "https://cdn.v2ex.com/avatar/8627/ca70/274063_large.png?m=1781581742",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/803eb88afc1168c7"
-    },
-    {
-      "title": "给 DeepSeek Harness 写了一个原生 macOS 客户端： SwiftUI 三栏、子代理实时浮层、不是套壳",
-      "link": "https://www.v2ex.com/t/1235131#reply0",
-      "date": "2026-08-17T14:51:59+00:00",
-      "description": "DeepSeek 的 agent harness （ dsh ）官方只有 CLI 和网页版，一直觉得缺一个像样的 Mac 客户端，就自己写了一个： SwiftUI/AppKit 原生三栏界面，流式输出、运行状态、快捷键齐全，不是 WebView/Electron 套壳 子代理会话在对话面板上实时流式浮层展示，带只读/可续写区分 常驻菜单栏 + 系统通知：审批请求、Agent 提问、任务完成都会推送——浏览器标签页做不到的 原生设置页直接读真实模型目录，支持任意 OpenAI 兼容端点； API Key 走 write-only 凭据接口，App 永远读不回明文 内置 Node + 完整 dsh runtime ，不依赖任何全局安装 MIT 开源、非官方项目。Release 页有 Apple Silicon 的 zip （ ad-hoc 签名，首次打开要在「隐私与安全性」里点一次「仍要打开」；介意的话一条命令从源码构建）。 还有个好玩的点：这个仓库几乎全程由 AI agent 开发，用的是 spec-coding 工作流——每个非平凡决策都要先写一份「问题/决策/被否掉的替代方案」的短文",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/39f74311ebbc2271c05b9b68dda4c101?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/11c4248da42792dd"
     },
     {
       "title": "动画电影《牛来》导演信雨萌专访",
@@ -4665,24 +4539,6 @@
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/77592c2b79f62eaf"
     },
     {
-      "title": "灭霸指令",
-      "link": "https://www.v2ex.com/t/1235160#reply2",
-      "date": "2026-08-18T00:29:24+00:00",
-      "description": "简介：随机删除当前目录一半的文件（移动到回收站，不会真的删除，哈哈哈） windows： $f=Get-ChildItem . -File -Recurse; $victims=$f | Get-Random -Count ([math]::Floor($f.Count/2)); $shell=New-Object -ComObject Shell.Application; Write-Host \"🫰 灭霸响指：共 $($f.Count) 个文件，随机消灭 $($victims.Count) 个\"; $i=0; foreach($x in $victims){$i++; Write-Host \"[$i/$($victims.Count)] 💨 $($x.FullName)\"; $shell.Namespace(10).MoveHere($x.FullName); Start-Sleep -Milliseconds 100}; Write-Host \"☠️ 宇宙恢复了平衡。\" linux: files=(); while IFS= read -r -d '' f; do files+=(",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/d2fea51cc4b1ccccfda234f13763e613?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/116ecd4f466f44ff"
-    },
-    {
-      "title": "送永久码~~ 双屏工作多年，我最终还是自己写了一个「调暗屏幕」的工具",
-      "link": "https://www.v2ex.com/t/1235163#reply90",
-      "date": "2026-08-18T00:54:34+00:00",
-      "description": "先说一个你可能也有的瞬间： 晚上十点，你打开编辑器准备把白天没写完的东西收个尾。主屏上是代码，副屏上是文档、微信、一个没关的视频页面。你明明只想看中间那一个窗口，但余光里全是别的东西在闪。 系统的「专注模式」管的是通知，管不了你 看到 什么。我想要的很简单：==除了我正在用的窗口，其他全部变暗==。 市面上不是没有类似的工具，但要么只支持单平台，要么多年不更新，要么多显示器支持形同虚设。作为一个写了多年代码的人，最后的答案只有一个：自己做一个。 它叫 幕窗（ VeilWin ） ，今天正式首发。 幕窗做什么 一句话： 调暗一切，只留下你正在工作的窗口。 开启之后，除了你当前聚焦的窗口，屏幕上的其他所有内容——桌面、其他应用、副屏——都会被一层半透明遮罩盖住。你的注意力会被「物理上」收拢到一个窗口里。 它不是壁纸，不是护眼模式，也不是通知拦截。它是视觉层面的聚光灯。 几个我认为做对了的决定 窗口级，而不是屏幕级 很多工具只能「整屏变暗」。幕窗工作在窗口级别：聚焦窗口保持明亮，其余内容变暗。你可以设置「只留当前一个窗口」，也可以留「整个应用的所有窗口」（比如 IDE + 终端一起亮），甚至",
-      "source": "V2EX Creative",
-      "image": "https://img.tougaoya.com/ce/20260817-76b49fa7-253a66e814af.png",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/fb40cb527d8bb49f"
-    },
-    {
       "title": "google play 买 claude 这种，封号现在还会退费吗？",
       "link": "https://www.v2ex.com/t/1235164",
       "date": "2026-08-18T00:54:40+00:00",
@@ -4690,15 +4546,6 @@
       "source": "V2EX Claude (blackantt)",
       "image": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/cb1ef94b13f71cc9"
-    },
-    {
-      "title": "做了一个对话式塔罗牌的网站： Arcavoya",
-      "link": "https://www.v2ex.com/t/1235170#reply1",
-      "date": "2026-08-18T01:04:00+00:00",
-      "description": "本来计划是做 APP 的。在小红书发帖找找了 7-8 个妹子，帮忙测试了快好几周，奶茶都送出去了！ 提交审核的时候 Apple 就是不给过，改了三个版本，最后提交最高权限申诉，还是不通过。理由是：同类目已经饱和。 想着接口服务那些都部署好了，那就干脆把网站做了。建议后续有计划做 APP 的放弃做塔罗这个方向，如果能改造最好。 如果说要区分其他塔罗的特点是： 不讲玄学，讲自我疗愈和认知。----用提示词约束，不让过度玄学化； 多模式选择，目前提供了三个塔罗师，后续要做的就是定制解读师傅； 最后就是，极简，当然收到美女的建议是卡牌交互不够炫，后续再改吧。 用的是 A 家官方模型，所以只要大家对话我的荷包就在燃烧，如果你真的感兴趣，欢迎找我我给你体验会员。 暂时先分享这样，感谢各位佬赏脸体验！ https://arcavoya.com/",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/avatar/dd7d/63a8/760480_xlarge.png?m=1785197147",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/0c07ec95425254b8"
     },
     {
       "title": "《牛来》电影为什么爆火？以及：这样是真实能过审批的吗？",
@@ -4717,15 +4564,6 @@
       "source": "V2EX Play",
       "image": null,
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/d617c9bdb3c247d1"
-    },
-    {
-      "title": "做的一个聚合导航站",
-      "link": "https://www.v2ex.com/t/1235189#reply12",
-      "date": "2026-08-18T01:48:08+00:00",
-      "description": "这是一个按我自己的使用习惯和审美做出来的聚合导航站。之前在 V 站发过一次，之后又断断续续补了些功能、调整了一些细节。最近终于整理得比较顺手了，再来和大家分享一下： https://kaka770.cn/",
-      "source": "V2EX Creative",
-      "image": "https://cdn.v2ex.com/gravatar/c47b543e6245d83a2c58305aee5e17d2?s=73&d=retro",
-      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/0272dbde60fb9781"
     },
     {
       "title": "csift: 全面的 Claude Code 记录搜索、反查与恢复工具，帮你提前踩完会话文件的坑",
@@ -18002,6 +17840,168 @@
       "source": "V2EX Creative",
       "image": "https://raw.githubusercontent.com/DayuanJiang/PecoFence/main/docs/assets/tabs.gif",
       "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/432b9b5e15150916"
+    },
+    {
+      "title": "做了一个天文观察 App，想听听大家的建议",
+      "link": "https://www.v2ex.com/t/1241743#reply11",
+      "date": "2026-09-14T00:28:25+00:00",
+      "description": "最近对观星感兴趣，找了一圈发现市面上的 App 要么太专业（全是英文术语），要么广告太多，就自己做了一个，主要功能： 月相 精确到当天的月相、照明度、月龄 月出、中天、月落时间，会根据你所在的城市计算 带农历，支持翻日历查任意一天的月相 实时星图 以你所在位置的天顶为中心，显示当前地平线以上的恒星、行星和星座连线 支持搜索恒星名字，搜到后高亮标记 行星位置实时计算，不是固定图 太阳系俯视图 8 大行星 + 月球、木卫一到四、土卫六的当前相对位置 对数缩放，能同时看到内行星和外行星 点击任意行星或卫星，显示日心距离、视星等、黄经赤经这些参数，每个参数都带解释 观测目标 23 个深空天体（星云、星团、星系），按月度可见性筛选 每个天体有最佳观测时间、难度、适合的设备（肉眼/双筒/望远镜） 动态评分，根据当前可见天体数量、亮度、月相给出今晚观测条件 点击天体直接跳转对应的科普文章 科普 35 篇文章，覆盖月相知识、行星百科、深空天体、观测指南 深空天体都关联了对应科普，点进去就能看 其他 全国 150 个城市可选，也支持 GPS 自动定位 光污染按城市规模分了三档 首页\"今晚可见行星\"只显示",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&d=retro",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/2bfb36e71e674eff"
+    },
+    {
+      "title": "做了个打发小朋友的迷宫小游戏",
+      "link": "https://www.v2ex.com/t/1241747#reply23",
+      "date": "2026-09-14T00:57:24+00:00",
+      "description": "入口： https://muselabs.co/maze 目前支持 3 个难度，3 种形状的迷宫和 3 个 UI 场景，欢迎体验！ 迷宫路径是随机生成的，每次都不一样。",
+      "source": "V2EX Creative",
+      "image": "https://i.imgur.com/iNXUXAr.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/f8fb8844e8511c0b"
+    },
+    {
+      "title": "我开发了一个导航站，欢迎大家来踢馆",
+      "link": "https://www.v2ex.com/t/1241759#reply13",
+      "date": "2026-09-14T01:33:33+00:00",
+      "description": "之前分享了一个做了导航站的帖子，没想到被大家一顿吐槽，当然了，吐槽说明我做的不好，还有进步空间，我也听劝。\nUI 方面我做了重大改变，之前缺失太花哨了，这次改为清爽一点的风格\n经典广告位，也是被大家吐槽的一点，我觉得做网站没有广告位就是脱裤子放屁，我还是坚持做的，有没有人投放那是另外一回事。\n慢的问题：我解决不了，只有钱能解决，奈何我没钱啊。\n好了，送上链接： https://www.wenjingxiezuo.com/ 原帖： https://www.v2ex.com/t/1240258?p=1#reply91",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/3a78/8bc0/700638_xlarge.png?m=1789121479",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/ca716b0e09cea5ad"
+    },
+    {
+      "title": "为什么女装/男娘/TS 这类群体的自曝欲望显著地强？",
+      "link": "https://www.v2ex.com/t/1241760#reply58",
+      "date": "2026-09-14T01:34:01+00:00",
+      "description": "逛各种论坛有感而发，很多论坛的水区/聊天区 都会看到这类群体高强度发自拍，正经论坛就是女装曝照、NSFW 论坛就是发男娘裸照自拍，多到甚至于某些论坛的坛友开发了插件专门屏蔽这种帖子，幸好本坛目前没有这种情况。 其他群体似乎就没有这么高的自曝欲望，不知这种情况有没有科学解释",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/avatar/989e/8b90/555344_xlarge.png?m=1740575910",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/54a35f0d8684b1f1"
+    },
+    {
+      "title": "做了一个免费的在线屏幕测试工具 - MonitorTester",
+      "link": "https://www.v2ex.com/t/1241765#reply4",
+      "date": "2026-09-14T01:42:05+00:00",
+      "description": "大家好，分享一个自己做的免费在线屏幕测试工具：MonitorTester 网址： https://monitortester.com 这个工具可以用来快速检测显示器/屏幕的各种问题： - 坏点/亮点检测（纯色测试） - 背光漏光检查 - 色彩偏差测试 - 灰阶过渡测试 - 色带/条纹检测 - 烧屏检测 - 拖影/响应时间测试 完全在浏览器中运行，不需要安装任何软件，也不用注册账号。适用于购买新显示器时的验货、二手显示器检查、多显示器校色等场景。 支持的设备：显示器、笔记本屏幕、电视、平板、手机等任何显示设备。 欢迎大家试试，如果有问题或建议欢迎反馈。",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/eaf2/1a31/795236_xlarge.png?m=1789112190",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/5ff2cc8a8377991d"
+    },
+    {
+      "title": "我发现用尖叫瓶子喝茶挺好, 不用总是呸呸呸",
+      "link": "https://www.v2ex.com/t/1241778#reply23",
+      "date": "2026-09-14T02:12:32+00:00",
+      "description": "我发现用尖叫瓶子喝茶挺好, 不用总是呸呸呸",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/gravatar/470f6c34f8a5670a973ec152802ecac2?s=73&d=retro",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/2d89779f5630da40"
+    },
+    {
+      "title": "做了一个 Codex × Grok Bot 的 MCP Task Bridge，让多任务在云端浏览器执行",
+      "link": "https://www.v2ex.com/t/1241782#reply0",
+      "date": "2026-09-14T02:24:38+00:00",
+      "description": "把一个实际使用中的小工具开源 项目地址 https://github.com/aipmer/codex-grok-task-bridge [能力描述] Codex 负责拆解任务和提交请求，Grok Bot 通过 Custom MCP Connector 领取任务，然后在自己的云电脑和浏览器里执行，最后把进度、证据和结果交回 Codex 。 [处理流程] Codex create_task\n→ Cloudflare Worker / D1 保存任务\n→ Grok Bot claim_next_task\n→ Grok Bot 云端浏览器执行\n→ append_progress / renew_task_lease\n→ complete_task\n→ Codex get_task 读取结果 任务桥本身只负责任务传递和状态管理，包含： 异步队列 领取租约和自动恢复 幂等键 进度事件 结构化结果和证据 小附件上传 Codex 、Hermes 、Grok 三类权限边界 OAuth 2.1 + PKCE 当前版本聚焦 Codex → Grok Bot 。 [已经验证能力] Codex 重启后远程 M",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/1cb3/de96/774952_xlarge.png?m=1788958491",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/564170544d442ea6"
+    },
+    {
+      "title": "众测招募｜泡泡骚 Low Pro：给新 iPhone 添一件极简「背心」",
+      "link": "https://sspai.com/post/114410",
+      "date": "2026-09-14T03:00:00+00:00",
+      "description": "每年九月都是苹果用户最期待的时节——苹果发布新一代iPhone。当新机到手，你可能也要随之给手上的配件更新换代。巧了，这一次，少数派给大家带来了一款颠覆以往所有磁吸支架形态的产品，它够薄、够轻、够好用 ... 查看全文",
+      "source": "sspai.com",
+      "image": "https://rssfile.sspai.com/2026/09/10/56224b2289025e93a4db83f6aa1eb15d.png?imageMogr2/auto-orient/ignore-error/1",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/237c59530e5aba5c"
+    },
+    {
+      "title": "周末给我的网站加了个 AI 看手相的功能 欢迎大家试用一下",
+      "link": "https://www.v2ex.com/t/1241799#reply2",
+      "date": "2026-09-14T03:03:17+00:00",
+      "description": "如题： 网站地址 https://tianjiyao.com/zh 在我的占卜 八字紫薇的基础上新加了一个 AI 看手相， 哈，大家感兴趣的可以试用一下，需要手相的试用名额的可以留下注册的邮箱\n我会在后台赠送一次免费使用的机会， 我也想借此校验一下解读手相的质量。谢谢 附一张我自己的手相的解读",
+      "source": "V2EX Play",
+      "image": "https://i.imgur.com/30S40Vv.jpeg",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/f60edea6288517d1"
+    },
+    {
+      "title": "Casdoor v4 发布：进了 CNCF 全景图的开源 IAM，现在也给 MCP Server 和 AI Agent 发身份",
+      "link": "https://www.v2ex.com/t/1241806#reply0",
+      "date": "2026-09-14T03:14:08+00:00",
+      "description": "Casdoor 是我们社区在做的开源身份认证平台（ IAM / SSO ），Go + React ，Apache 2.0 ，14.4k star 。这两周连发了 v4.0 到 v4.3 ，顺便说一下今年 2 月它进了 CNCF 云原生全景图，在 Provisioning 板块的 Security & Compliance 那一格。 先说它是什么：一个完整的身份提供方，不是挡在应用前面的登录代理，也不是 import 进代码的库。用户存在它这里，token 它签，管理界面自带。同一份用户目录，OAuth 2.0 、OIDC 、SAML 2.0 、CAS 、LDAP 、SCIM 2.0 都能访问到——新写的 SPA 和只认 CAS 的十年老系统共用一批账号，这是它在国内企业环境里最实用的地方。一个 Go 二进制加一个数据库，没有 JVM ，没有 operator 。 想看看长什么样： docker run -p 8000:8000 casbin/casdoor-all-in-one 打开 http://localhost:8000 ，组织 built-in ，用户名 admin ，密码 1",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/68180bfeba79054e"
+    },
+    {
+      "title": "Davflare 更新：网页里就能试 MCP",
+      "link": "https://www.v2ex.com/t/1241809#reply0",
+      "date": "2026-09-14T03:15:50+00:00",
+      "description": "Davflare 这轮加了 `#/mcp` 试玩台：贴一把已有 API Key ，就能看 25 个工具、对根目录跑只读 list ，全绿再一键复制 Cursor 的 mcp.json 。不用先装 Cursor 才敢碰。 可去 live 试： https://flaredrive-bgb.pages.dev/#/mcp （或自建实例 `#/mcp`） GitHub： https://github.com/fanchenggang/Davflare 本文由 AI 生成。",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/de87/8546/447841_xlarge.png?m=1788141816",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/8a73b68270ca2950"
+    },
+    {
+      "title": "做了一个 agent 看板，每个卡片都是可交互的 agent",
+      "link": "https://www.v2ex.com/t/1241811#reply0",
+      "date": "2026-09-14T03:23:22+00:00",
+      "description": "昨晚睡不着让 Kimi-K3 根据我的设计出了一版纯前端设计稿，目前是打算接 dsh 作为后端 agent ，不过还没具体实现，想先打磨一下前端交互再做后端接入，期待大家给点意见，看 ui 层面还有啥可以优化的 ui 核心亮点： 鼠标 hover 卡片就可以打字交互，查看任务详情，再次点击可以固定为一个小窗，还可以放大到全屏 子代理会作为主会话的附着卡片生成，有一个分裂的生殖动画可以看看 待实现，session 之间通话的时候会有一条数据流从一张卡片流向另一张 https://zisen123.github.io/dsh-kanban-demo/",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/5c3b/d976/405428_large.png?m=1768658555",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/b4872594280fc51c"
+    },
+    {
+      "title": "两条「格聂」线路如何选择",
+      "link": "https://www.v2ex.com/t/1241814#reply0",
+      "date": "2026-09-14T03:30:32+00:00",
+      "description": "准备中秋国庆期间去川西玩一趟，目前在这两条线路之前做抉择。第一次去川西，麻烦各位 V 友给个意见。 路线 A：成都进出 · 格聂南坡 | 40KM 格聂牧场线精华徒步 8 日 出发/解散：全国出发 → 成都集合，成都解散 住宿大本营：然日卡村藏家客栈（ 3800M ）连住 4 晚 D1 成都指定酒店集合，行前会+签合同（自由玩锦里/武侯祠/宽窄巷子/春熙路） D2 成都—雅安—康定—折多山垭口(4298M)—新都桥—雅江｜车约 410KM/6H ，宿雅江(2600M) D3 雅江—天路十八湾—卡子拉山(4716M)—理塘(4014M)—毛垭草原—铁匠山垭口(4770M)—喇嘛垭—然日卡村｜车约 240KM/6H ，宿然日卡(3800M) D4 然日卡—则巴村—则巴秘境—则巴村—然日卡｜徒步 3-5KM ，爬升 100-200M （适应性徒步） D5 然日卡—格聂之眼—虎皮坝—老冷古寺—然日卡｜徒步 9-11KM ，±250M ，约 5-6H D6 然日卡—格聂南坡精华路段—则巴村—然日卡｜徒步 11KM ，±600M ，约 6H D7 然日卡—英格牧场—喀麦隆措(喀麦隆之碗)—然日卡—",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/avatar/4b70/8e0e/679201_xlarge.png?m=1789356512",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/82aeec2e3e5cdc17"
+    },
+    {
+      "title": "有趣的头像哪里找？",
+      "link": "https://www.v2ex.com/t/1241818#reply4",
+      "date": "2026-09-14T03:34:58+00:00",
+      "description": "日常 vx V2EX 等都能看到大家用有趣的头像，想问问都是去哪里找的呢？我尝试在 pinterest 等平台搜索头像但都找不到想要的，都很稀松平常很难找到有趣、个性的头像",
+      "source": "V2EX Creative",
+      "image": "https://cdn.v2ex.com/avatar/5596/66c0/558742_xlarge.png?m=1776861159",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/18a7f42fe07043fa"
+    },
+    {
+      "title": "开源了一个自研引擎的邮件系统 Mailez，单二进制跑完整邮件栈",
+      "link": "https://www.v2ex.com/t/1241832#reply0",
+      "date": "2026-09-14T04:29:14+00:00",
+      "description": "做了一年多、最近刚发 1.0.0 的项目： Mailez （ GitHub 同名镜像），一个自托管邮件系统。不一样的地方在于邮件核心不是拿 Postfix / Dovecot / Roundcube 拼的，四个协议（ SMTP / IMAP / POP3 / ManageSieve ）全部自己实现，装进一个 Go 二进制（我们叫它 Mailezine ）。 起因很简单：给自己域名搭邮箱，跟了一圈传统方案的文档，被 main.cf 和 dovecot.conf 劝退了。与其学一套上世纪的配置哲学，不如自己写一个——反正 RFC 都摆在那。 为什么敢自己写 邮件协议看着老，但 RFC 写得相当清楚，IMAP 的扩展（ CONDSTORE / QRESYNC / SORT / ACL ）都有明确语义 收发、存取、过滤在一个进程里完成，没有组件间的 socket 往返，部署面小、故障面也小 存储做了可插拔：单机 Pebble KV + 本地文件起步，换 TiDB + S3 就能水平扩展，同一份引擎代码 实测数据（同机 A/B ，10,000 人负载模型） 指标 传统拼装栈 Mailezine ",
+      "source": "V2EX Creative",
+      "image": "https://oscimg.oschina.net/oscnet//707d48207ce7d371464d97f2c7c55639.jpg",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/16b478c1c62e2053"
+    },
+    {
+      "title": "Agent 长任务怎么少烧额度（4 步）",
+      "link": "https://www.v2ex.com/t/1241834#reply0",
+      "date": "2026-09-14T04:38:59+00:00",
+      "description": "Agent 不是聊天，是代你干活——额度会跟着任务长度跳。 1 ）先写验收标准，再开跑 2 ）拆成可检查的小步骤，别一口一个超长 prompt 3 ）难的用强模型，批量用够用的模型 4 ）少整仓塞上下文，只给相关文件 （配图见上传） 国内可加微信 mkapikey 聊自己的场景；不写价目表。 ![]( )",
+      "source": "V2EX Creative",
+      "image": "https://i.v2ex.co/I7R24HDm.png",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/818f847e607d741b"
+    },
+    {
+      "title": "有趣的大模型榜单可视化网站",
+      "link": "https://www.v2ex.com/t/1241838#reply0",
+      "date": "2026-09-14T04:52:40+00:00",
+      "description": "把大模型榜单做成赛车游戏了，哈哈哈 网站地址： https://airace.lol/?circuit=ring",
+      "source": "V2EX Play",
+      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/6e1d3152d1999d29"
+    },
+    {
+      "title": "做了个能复盘的 AI 口语陪练，聊完还能看复盘",
+      "link": "https://www.v2ex.com/t/1241843#reply0",
+      "date": "2026-09-14T05:11:32+00:00",
+      "description": "最近给自己的单词学习网站加了一个 AI 口语陪练功能，起因很简单：老婆的新工作里有不少场景需要和外教沟通，但只靠背单词、刷教材，真正要开口的时候还是会卡住。 所以我想做一个更接近日常使用的练习方式：不用先准备一大堆材料，直接选一个真实场景，然后和 AI 用英语自然对话。 网址 https://waiyuka.cc/zh-CN/conversation 使用录屏 https://www.bilibili.com/video/BV15EYi6kEFK 目前支持的场景包括： 点咖啡 酒店入住 机场出入境 求职面试 日常聊天 练习时，AI 会根据你的回答继续追问或展开，不是固定脚本；中途也可以随时打断、换说法、重新组织表达。对我来说，这一点很重要，因为口语练习最难的不是“看懂”，而是把脑子里的中文想法比较顺地说出口。 每次练习结束后，还可以看一份复盘： 完整对话转写 表达亮点 语法和用词纠错 更自然的替代表达 下一次练习建议 我希望它解决的不是“学英语又多了一个功能”，而是一个更具体的问题：每天花几分钟，把“看得懂英语”慢慢变成“敢开口说英语”。 现在还在继续打磨中，后面想继续优化场景质量、纠",
+      "source": "V2EX Play",
+      "image": "https://github.com/user-attachments/assets/26cae1f2-d940-485d-af96-457d405c8dfe",
+      "entry_id": "tag:trvny.github.io,2024:feedseek/v2ex/3bc4a74a8bfb0676"
     }
   ]
 }

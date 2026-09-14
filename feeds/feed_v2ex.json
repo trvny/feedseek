@@ -8,48 +8,416 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/432b9b5e15150916",
-      "url": "https://www.v2ex.com/t/1241742#reply0",
-      "title": "[PecoFence] 做了个免费开源的 Windows 11 桌面整理工具，类似 Fences",
-      "content_text": "最近桌面特别乱，fences 要钱，免费的 360 啊腾讯桌面有有隐私问题。搜了一下 v 站有个 openfence 但是功能有点孱弱。所以我选择 vibe 一个，基本就是照着 Fences 做的。Rust 写的,占用资源小，好看。 可以把桌面上的文件、文件夹和快捷方式放进不同的分组，支持拖动、缩放、自动分类，以及 Fluent / Liquid Glass 两种外观。 官网： pecofence.jiang.jp 源码和下载： GitHub / PecoFence 下面是两个小功能演示，可以去网站上看更多的演示。 分组可以合成标签页，也可以拖出来 相关文件可以放在同一个窗口的不同标签里，需要同时查看时，把标签拖出来就变成独立分组。 不用最小化窗口，直接取用桌面文件 按 Ctrl + Alt + 空格 ，桌面分组会浮现在当前应用上方，取用文件后按 Esc 返回。 其他功能 文件夹实时映射，可以进入子文件夹，内容变化自动同步。 双击桌面空白处隐藏全部分组，再双击恢复。 按文件类型、名称等规则自动分类。 布局快照、自动备份和配置导入导出。 调整分组颜色、透明度和深浅色。 自动分类不会搬动原",
-      "date_published": "2026-09-14T00:04:46Z",
-      "date_modified": "2026-09-14T00:04:46Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3bc4a74a8bfb0676",
+      "url": "https://www.v2ex.com/t/1241843#reply0",
+      "title": "做了个能复盘的 AI 口语陪练，聊完还能看复盘",
+      "content_text": "最近给自己的单词学习网站加了一个 AI 口语陪练功能，起因很简单：老婆的新工作里有不少场景需要和外教沟通，但只靠背单词、刷教材，真正要开口的时候还是会卡住。 所以我想做一个更接近日常使用的练习方式：不用先准备一大堆材料，直接选一个真实场景，然后和 AI 用英语自然对话。 网址 https://waiyuka.cc/zh-CN/conversation 使用录屏 https://www.bilibili.com/video/BV15EYi6kEFK 目前支持的场景包括： 点咖啡 酒店入住 机场出入境 求职面试 日常聊天 练习时，AI 会根据你的回答继续追问或展开，不是固定脚本；中途也可以随时打断、换说法、重新组织表达。对我来说，这一点很重要，因为口语练习最难的不是“看懂”，而是把脑子里的中文想法比较顺地说出口。 每次练习结束后，还可以看一份复盘： 完整对话转写 表达亮点 语法和用词纠错 更自然的替代表达 下一次练习建议 我希望它解决的不是“学英语又多了一个功能”，而是一个更具体的问题：每天花几分钟，把“看得懂英语”慢慢变成“敢开口说英语”。 现在还在继续打磨中，后面想继续优化场景质量、纠",
+      "date_published": "2026-09-14T05:11:32Z",
+      "date_modified": "2026-09-14T05:11:32Z",
       "authors": [
         {
-          "name": "V2EX Creative"
+          "name": "V2EX Play"
         }
       ],
-      "image": "https://raw.githubusercontent.com/DayuanJiang/PecoFence/main/docs/assets/tabs.gif",
+      "image": "https://github.com/user-attachments/assets/26cae1f2-d940-485d-af96-457d405c8dfe",
       "tags": [
-        "V2EX Creative"
+        "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://raw.githubusercontent.com/DayuanJiang/PecoFence/main/docs/assets/tabs.gif",
-          "mime_type": "image/gif"
+          "url": "https://github.com/user-attachments/assets/26cae1f2-d940-485d-af96-457d405c8dfe",
+          "mime_type": "image/jpeg"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/089955f4d6262274",
-      "url": "https://www.v2ex.com/t/1241740#reply0",
-      "title": "[开源] Neo Chat（1.8k Star），把 AI 的真正力量，交还到你手中，一款本地优先的全能型 AI 工作台。",
-      "content_text": "Neo Chat 是我自用的一款界面简洁，输出优雅的轻量化 AI Chat 。我将互联网上大量的免费服务接入到了这个项目中，您可以通过这些服务构建强大的 AI 聊天体验。 项目支持主流的模型格式接入，不管是 Google 、OpenAI 、Anthropic 以及所有 OpenAI 兼容端点，一个平台全部接入，图片输入与生成也一并支持。内置日常对话、Agent 多步骤工具执行和 Deep Research 三种模式，智能路由会帮您选择最合适的模型执行您的任务。您还可以创建自己的知识库，文件附件、RAG 知识检索、本地搜索、记忆系统与可复用的助手预设，让你的 AI 真正了解你。最重要的是，本地优先，数据归您，对话默认存储在浏览器本地，支持 ZIP 备份/恢复，可选 WebDAV 或 S3/MinIO 端到端加密同步。 部署简单，控制权在你 无论你是个人开发者还是团队，Neo Chat 都能快速落地： 本地开发：git clone → pnpm install → pnpm dev ，三行命令即刻运行 Docker 一键启动：官方镜像直接跑，环境变量配置即完成 云端部署：支持 Vercel",
-      "date_published": "2026-09-13T23:38:54Z",
-      "date_modified": "2026-09-13T23:38:54Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/6e1d3152d1999d29",
+      "url": "https://www.v2ex.com/t/1241838#reply0",
+      "title": "有趣的大模型榜单可视化网站",
+      "content_text": "把大模型榜单做成赛车游戏了，哈哈哈 网站地址： https://airace.lol/?circuit=ring",
+      "date_published": "2026-09-14T04:52:40Z",
+      "date_modified": "2026-09-14T04:52:40Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/818f847e607d741b",
+      "url": "https://www.v2ex.com/t/1241834#reply0",
+      "title": "Agent 长任务怎么少烧额度（4 步）",
+      "content_text": "Agent 不是聊天，是代你干活——额度会跟着任务长度跳。 1 ）先写验收标准，再开跑 2 ）拆成可检查的小步骤，别一口一个超长 prompt 3 ）难的用强模型，批量用够用的模型 4 ）少整仓塞上下文，只给相关文件 （配图见上传） 国内可加微信 mkapikey 聊自己的场景；不写价目表。 ![]( )",
+      "date_published": "2026-09-14T04:38:59Z",
+      "date_modified": "2026-09-14T04:38:59Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://github.com/u14app/neo-chat/raw/main/public/desktop.png",
+      "image": "https://i.v2ex.co/I7R24HDm.png",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://github.com/u14app/neo-chat/raw/main/public/desktop.png",
+          "url": "https://i.v2ex.co/I7R24HDm.png",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/16b478c1c62e2053",
+      "url": "https://www.v2ex.com/t/1241832#reply0",
+      "title": "开源了一个自研引擎的邮件系统 Mailez，单二进制跑完整邮件栈",
+      "content_text": "做了一年多、最近刚发 1.0.0 的项目： Mailez （ GitHub 同名镜像），一个自托管邮件系统。不一样的地方在于邮件核心不是拿 Postfix / Dovecot / Roundcube 拼的，四个协议（ SMTP / IMAP / POP3 / ManageSieve ）全部自己实现，装进一个 Go 二进制（我们叫它 Mailezine ）。 起因很简单：给自己域名搭邮箱，跟了一圈传统方案的文档，被 main.cf 和 dovecot.conf 劝退了。与其学一套上世纪的配置哲学，不如自己写一个——反正 RFC 都摆在那。 为什么敢自己写 邮件协议看着老，但 RFC 写得相当清楚，IMAP 的扩展（ CONDSTORE / QRESYNC / SORT / ACL ）都有明确语义 收发、存取、过滤在一个进程里完成，没有组件间的 socket 往返，部署面小、故障面也小 存储做了可插拔：单机 Pebble KV + 本地文件起步，换 TiDB + S3 就能水平扩展，同一份引擎代码 实测数据（同机 A/B ，10,000 人负载模型） 指标 传统拼装栈 Mailezine",
+      "date_published": "2026-09-14T04:29:14Z",
+      "date_modified": "2026-09-14T04:29:14Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://oscimg.oschina.net/oscnet//707d48207ce7d371464d97f2c7c55639.jpg",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://oscimg.oschina.net/oscnet//707d48207ce7d371464d97f2c7c55639.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/18a7f42fe07043fa",
+      "url": "https://www.v2ex.com/t/1241818#reply4",
+      "title": "有趣的头像哪里找？",
+      "content_text": "日常 vx V2EX 等都能看到大家用有趣的头像，想问问都是去哪里找的呢？我尝试在 pinterest 等平台搜索头像但都找不到想要的，都很稀松平常很难找到有趣、个性的头像",
+      "date_published": "2026-09-14T03:34:58Z",
+      "date_modified": "2026-09-14T03:34:58Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/5596/66c0/558742_xlarge.png?m=1776861159",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/5596/66c0/558742_xlarge.png?m=1776861159",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/82aeec2e3e5cdc17",
+      "url": "https://www.v2ex.com/t/1241814#reply0",
+      "title": "两条「格聂」线路如何选择",
+      "content_text": "准备中秋国庆期间去川西玩一趟，目前在这两条线路之前做抉择。第一次去川西，麻烦各位 V 友给个意见。 路线 A：成都进出 · 格聂南坡 | 40KM 格聂牧场线精华徒步 8 日 出发/解散：全国出发 → 成都集合，成都解散 住宿大本营：然日卡村藏家客栈（ 3800M ）连住 4 晚 D1 成都指定酒店集合，行前会+签合同（自由玩锦里/武侯祠/宽窄巷子/春熙路） D2 成都—雅安—康定—折多山垭口(4298M)—新都桥—雅江｜车约 410KM/6H ，宿雅江(2600M) D3 雅江—天路十八湾—卡子拉山(4716M)—理塘(4014M)—毛垭草原—铁匠山垭口(4770M)—喇嘛垭—然日卡村｜车约 240KM/6H ，宿然日卡(3800M) D4 然日卡—则巴村—则巴秘境—则巴村—然日卡｜徒步 3-5KM ，爬升 100-200M （适应性徒步） D5 然日卡—格聂之眼—虎皮坝—老冷古寺—然日卡｜徒步 9-11KM ，±250M ，约 5-6H D6 然日卡—格聂南坡精华路段—则巴村—然日卡｜徒步 11KM ，±600M ，约 6H D7 然日卡—英格牧场—喀麦隆措(喀麦隆之碗)—然日卡—",
+      "date_published": "2026-09-14T03:30:32Z",
+      "date_modified": "2026-09-14T03:30:32Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/4b70/8e0e/679201_xlarge.png?m=1789356512",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/4b70/8e0e/679201_xlarge.png?m=1789356512",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b4872594280fc51c",
+      "url": "https://www.v2ex.com/t/1241811#reply0",
+      "title": "做了一个 agent 看板，每个卡片都是可交互的 agent",
+      "content_text": "昨晚睡不着让 Kimi-K3 根据我的设计出了一版纯前端设计稿，目前是打算接 dsh 作为后端 agent ，不过还没具体实现，想先打磨一下前端交互再做后端接入，期待大家给点意见，看 ui 层面还有啥可以优化的 ui 核心亮点： 鼠标 hover 卡片就可以打字交互，查看任务详情，再次点击可以固定为一个小窗，还可以放大到全屏 子代理会作为主会话的附着卡片生成，有一个分裂的生殖动画可以看看 待实现，session 之间通话的时候会有一条数据流从一张卡片流向另一张 https://zisen123.github.io/dsh-kanban-demo/",
+      "date_published": "2026-09-14T03:23:22Z",
+      "date_modified": "2026-09-14T03:23:22Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/5c3b/d976/405428_large.png?m=1768658555",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/5c3b/d976/405428_large.png?m=1768658555",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/8a73b68270ca2950",
+      "url": "https://www.v2ex.com/t/1241809#reply0",
+      "title": "Davflare 更新：网页里就能试 MCP",
+      "content_text": "Davflare 这轮加了 `#/mcp` 试玩台：贴一把已有 API Key ，就能看 25 个工具、对根目录跑只读 list ，全绿再一键复制 Cursor 的 mcp.json 。不用先装 Cursor 才敢碰。 可去 live 试： https://flaredrive-bgb.pages.dev/#/mcp （或自建实例 `#/mcp`） GitHub： https://github.com/fanchenggang/Davflare 本文由 AI 生成。",
+      "date_published": "2026-09-14T03:15:50Z",
+      "date_modified": "2026-09-14T03:15:50Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/de87/8546/447841_xlarge.png?m=1788141816",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/de87/8546/447841_xlarge.png?m=1788141816",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/68180bfeba79054e",
+      "url": "https://www.v2ex.com/t/1241806#reply0",
+      "title": "Casdoor v4 发布：进了 CNCF 全景图的开源 IAM，现在也给 MCP Server 和 AI Agent 发身份",
+      "content_text": "Casdoor 是我们社区在做的开源身份认证平台（ IAM / SSO ），Go + React ，Apache 2.0 ，14.4k star 。这两周连发了 v4.0 到 v4.3 ，顺便说一下今年 2 月它进了 CNCF 云原生全景图，在 Provisioning 板块的 Security & Compliance 那一格。 先说它是什么：一个完整的身份提供方，不是挡在应用前面的登录代理，也不是 import 进代码的库。用户存在它这里，token 它签，管理界面自带。同一份用户目录，OAuth 2.0 、OIDC 、SAML 2.0 、CAS 、LDAP 、SCIM 2.0 都能访问到——新写的 SPA 和只认 CAS 的十年老系统共用一批账号，这是它在国内企业环境里最实用的地方。一个 Go 二进制加一个数据库，没有 JVM ，没有 operator 。 想看看长什么样： docker run -p 8000:8000 casbin/casdoor-all-in-one 打开 http://localhost:8000 ，组织 built-in ，用户名 admin ，密码 1",
+      "date_published": "2026-09-14T03:14:08Z",
+      "date_modified": "2026-09-14T03:14:08Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f60edea6288517d1",
+      "url": "https://www.v2ex.com/t/1241799#reply2",
+      "title": "周末给我的网站加了个 AI 看手相的功能 欢迎大家试用一下",
+      "content_text": "如题： 网站地址 https://tianjiyao.com/zh 在我的占卜 八字紫薇的基础上新加了一个 AI 看手相， 哈，大家感兴趣的可以试用一下，需要手相的试用名额的可以留下注册的邮箱\n我会在后台赠送一次免费使用的机会， 我也想借此校验一下解读手相的质量。谢谢 附一张我自己的手相的解读",
+      "date_published": "2026-09-14T03:03:17Z",
+      "date_modified": "2026-09-14T03:03:17Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://i.imgur.com/30S40Vv.jpeg",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.imgur.com/30S40Vv.jpeg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/237c59530e5aba5c",
+      "url": "https://sspai.com/post/114410",
+      "title": "众测招募｜泡泡骚 Low Pro：给新 iPhone 添一件极简「背心」",
+      "content_text": "每年九月都是苹果用户最期待的时节——苹果发布新一代iPhone。当新机到手，你可能也要随之给手上的配件更新换代。巧了，这一次，少数派给大家带来了一款颠覆以往所有磁吸支架形态的产品，它够薄、够轻、够好用 ... 查看全文",
+      "date_published": "2026-09-14T03:00:00Z",
+      "date_modified": "2026-09-14T03:00:00Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/09/10/56224b2289025e93a4db83f6aa1eb15d.png?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/09/10/56224b2289025e93a4db83f6aa1eb15d.png?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/564170544d442ea6",
+      "url": "https://www.v2ex.com/t/1241782#reply0",
+      "title": "做了一个 Codex × Grok Bot 的 MCP Task Bridge，让多任务在云端浏览器执行",
+      "content_text": "把一个实际使用中的小工具开源 项目地址 https://github.com/aipmer/codex-grok-task-bridge [能力描述] Codex 负责拆解任务和提交请求，Grok Bot 通过 Custom MCP Connector 领取任务，然后在自己的云电脑和浏览器里执行，最后把进度、证据和结果交回 Codex 。 [处理流程] Codex create_task\n→ Cloudflare Worker / D1 保存任务\n→ Grok Bot claim_next_task\n→ Grok Bot 云端浏览器执行\n→ append_progress / renew_task_lease\n→ complete_task\n→ Codex get_task 读取结果 任务桥本身只负责任务传递和状态管理，包含： 异步队列 领取租约和自动恢复 幂等键 进度事件 结构化结果和证据 小附件上传 Codex 、Hermes 、Grok 三类权限边界 OAuth 2.1 + PKCE 当前版本聚焦 Codex → Grok Bot 。 [已经验证能力] Codex 重启后远程 M",
+      "date_published": "2026-09-14T02:24:38Z",
+      "date_modified": "2026-09-14T02:24:38Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/1cb3/de96/774952_xlarge.png?m=1788958491",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/1cb3/de96/774952_xlarge.png?m=1788958491",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2d89779f5630da40",
+      "url": "https://www.v2ex.com/t/1241778#reply23",
+      "title": "我发现用尖叫瓶子喝茶挺好, 不用总是呸呸呸",
+      "content_text": "我发现用尖叫瓶子喝茶挺好, 不用总是呸呸呸",
+      "date_published": "2026-09-14T02:12:32Z",
+      "date_modified": "2026-09-14T02:12:32Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/470f6c34f8a5670a973ec152802ecac2?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/470f6c34f8a5670a973ec152802ecac2?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5ff2cc8a8377991d",
+      "url": "https://www.v2ex.com/t/1241765#reply4",
+      "title": "做了一个免费的在线屏幕测试工具 - MonitorTester",
+      "content_text": "大家好，分享一个自己做的免费在线屏幕测试工具：MonitorTester 网址： https://monitortester.com 这个工具可以用来快速检测显示器/屏幕的各种问题： - 坏点/亮点检测（纯色测试） - 背光漏光检查 - 色彩偏差测试 - 灰阶过渡测试 - 色带/条纹检测 - 烧屏检测 - 拖影/响应时间测试 完全在浏览器中运行，不需要安装任何软件，也不用注册账号。适用于购买新显示器时的验货、二手显示器检查、多显示器校色等场景。 支持的设备：显示器、笔记本屏幕、电视、平板、手机等任何显示设备。 欢迎大家试试，如果有问题或建议欢迎反馈。",
+      "date_published": "2026-09-14T01:42:05Z",
+      "date_modified": "2026-09-14T01:42:05Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/eaf2/1a31/795236_xlarge.png?m=1789112190",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/eaf2/1a31/795236_xlarge.png?m=1789112190",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/54a35f0d8684b1f1",
+      "url": "https://www.v2ex.com/t/1241760#reply58",
+      "title": "为什么女装/男娘/TS 这类群体的自曝欲望显著地强？",
+      "content_text": "逛各种论坛有感而发，很多论坛的水区/聊天区 都会看到这类群体高强度发自拍，正经论坛就是女装曝照、NSFW 论坛就是发男娘裸照自拍，多到甚至于某些论坛的坛友开发了插件专门屏蔽这种帖子，幸好本坛目前没有这种情况。 其他群体似乎就没有这么高的自曝欲望，不知这种情况有没有科学解释",
+      "date_published": "2026-09-14T01:34:01Z",
+      "date_modified": "2026-09-14T01:34:01Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/989e/8b90/555344_xlarge.png?m=1740575910",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/989e/8b90/555344_xlarge.png?m=1740575910",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ca716b0e09cea5ad",
+      "url": "https://www.v2ex.com/t/1241759#reply13",
+      "title": "我开发了一个导航站，欢迎大家来踢馆",
+      "content_text": "之前分享了一个做了导航站的帖子，没想到被大家一顿吐槽，当然了，吐槽说明我做的不好，还有进步空间，我也听劝。\nUI 方面我做了重大改变，之前缺失太花哨了，这次改为清爽一点的风格\n经典广告位，也是被大家吐槽的一点，我觉得做网站没有广告位就是脱裤子放屁，我还是坚持做的，有没有人投放那是另外一回事。\n慢的问题：我解决不了，只有钱能解决，奈何我没钱啊。\n好了，送上链接： https://www.wenjingxiezuo.com/ 原帖： https://www.v2ex.com/t/1240258?p=1#reply91",
+      "date_published": "2026-09-14T01:33:33Z",
+      "date_modified": "2026-09-14T01:33:33Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/3a78/8bc0/700638_xlarge.png?m=1789121479",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/3a78/8bc0/700638_xlarge.png?m=1789121479",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f8fb8844e8511c0b",
+      "url": "https://www.v2ex.com/t/1241747#reply23",
+      "title": "做了个打发小朋友的迷宫小游戏",
+      "content_text": "入口： https://muselabs.co/maze 目前支持 3 个难度，3 种形状的迷宫和 3 个 UI 场景，欢迎体验！ 迷宫路径是随机生成的，每次都不一样。",
+      "date_published": "2026-09-14T00:57:24Z",
+      "date_modified": "2026-09-14T00:57:24Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://i.imgur.com/iNXUXAr.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.imgur.com/iNXUXAr.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2bfb36e71e674eff",
+      "url": "https://www.v2ex.com/t/1241743#reply11",
+      "title": "做了一个天文观察 App，想听听大家的建议",
+      "content_text": "最近对观星感兴趣，找了一圈发现市面上的 App 要么太专业（全是英文术语），要么广告太多，就自己做了一个，主要功能： 月相 精确到当天的月相、照明度、月龄 月出、中天、月落时间，会根据你所在的城市计算 带农历，支持翻日历查任意一天的月相 实时星图 以你所在位置的天顶为中心，显示当前地平线以上的恒星、行星和星座连线 支持搜索恒星名字，搜到后高亮标记 行星位置实时计算，不是固定图 太阳系俯视图 8 大行星 + 月球、木卫一到四、土卫六的当前相对位置 对数缩放，能同时看到内行星和外行星 点击任意行星或卫星，显示日心距离、视星等、黄经赤经这些参数，每个参数都带解释 观测目标 23 个深空天体（星云、星团、星系），按月度可见性筛选 每个天体有最佳观测时间、难度、适合的设备（肉眼/双筒/望远镜） 动态评分，根据当前可见天体数量、亮度、月相给出今晚观测条件 点击天体直接跳转对应的科普文章 科普 35 篇文章，覆盖月相知识、行星百科、深空天体、观测指南 深空天体都关联了对应科普，点进去就能看 其他 全国 150 个城市可选，也支持 GPS 自动定位 光污染按城市规模分了三档 首页\"今晚可见行星\"只显示",
+      "date_published": "2026-09-14T00:28:25Z",
+      "date_modified": "2026-09-14T00:28:25Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/9dc1c7a2812b5b842e7ac9dd77d60c23?s=73&d=retro",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -123,75 +491,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2672f9d3d407f4f9",
-      "url": "https://www.v2ex.com/t/1241735#reply3",
-      "title": "WikiNow: 一个阅读 Wikipedia 的 App，以抖音的方式",
-      "content_text": "WikiNow: https://apps.apple.com/app/id6799438017 开发了一个新的 app ，实现了一直以来的想法，以抖音的滑动方式，轻松浏览维基百科。 用户体验上做了大量优化，打开关闭文章的方式，做了大量测试才确定，甚至比抖音本身更简洁。",
-      "date_published": "2026-09-13T20:01:04Z",
-      "date_modified": "2026-09-13T20:01:04Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://picui.ogmua.cn/s1/2026/09/14/6aa6ffb37d256.webp",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://picui.ogmua.cn/s1/2026/09/14/6aa6ffb37d256.webp",
-          "mime_type": "image/webp"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c47c946508b434d5",
-      "url": "https://www.v2ex.com/t/1241725#reply2",
-      "title": "PhotoBridge：让 iPhone 通过 Wi-Fi 直传 Pixel，动图也能保留",
-      "content_text": "前几天分享了 PixelBridge ，用 Mac 给 Apple 照片多做一份备份。后来收到一些反馈，发现我默认大家都有 iCloud 和一台常开的 Mac ，其实不是。 有人现在的流程是：iPhone → NAS → Pixel → Google 相册。NAS 在这里主要承担中转，用户真正想要的就是 iPhone 直接传到 Pixel 。 于是另开了一个项目 PhotoBridge： iPhone / Mac → Wi-Fi → Pixel → Google 相册 支持照片、视频、Live Photo 和连拍，可以导入已有图库，也可以增量备份新照片。Live Photo 会在接收端转换为支持的 Motion Photo ，已经在 Pixel 和 Google 相册网页版验证过播放。 这次也把发送和接收拆开了。发送端负责从系统图库取照片，接收端负责保存，以及需要时做格式转换。核心传输、校验、续传和队列共用 Rust ，各平台用原生能力处理图库和后台任务：Apple 端是 SwiftUI ，Android 端是 Kotlin 。 这样以后增加 Windows 发送端、NAS 接收端，或",
-      "date_published": "2026-09-13T15:27:50Z",
-      "date_modified": "2026-09-13T15:27:50Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/9065/5739/64765_xlarge.png?m=1789313239",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/9065/5739/64765_xlarge.png?m=1789313239",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f1933e2f030c5d2d",
-      "url": "https://www.v2ex.com/t/1241722#reply2",
-      "title": "Status Trio: 将 iPhone Duo 的三合一状态图标带到 macOS",
-      "content_text": "Status Trio：一款借鉴 iPhone Duo 设计的三合一状态栏图标，集成 Wi‑Fi 、电池与蜂窝数据；适配 Mac 平台后，将蜂窝数据替换为音量图标。 常规的时候： 点击后展示简单的三个状态： 做个落地页方便大家查看效果： https://statustrio.lingai.net/ 项目主页： https://github.com/lingyired/status-trio",
-      "date_published": "2026-09-13T14:53:02Z",
-      "date_modified": "2026-09-13T14:53:02Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.imgur.com/sHW3BJY.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/sHW3BJY.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/7fd9b4beae83e325",
       "url": "https://www.v2ex.com/t/1241721#reply0",
       "title": "程序员居家办公屏幕求推荐， 32 寸 4k 屏幕",
@@ -238,98 +537,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5b25ce21d1f3580b",
-      "url": "https://www.v2ex.com/t/1241717#reply0",
-      "title": "做了一个本地处理的 iPhone 打码工具：图片、PDF 和视频都能用，无需订阅",
-      "content_text": "大家好，我是 zeroNet Redact 的开发者，来分享一下这个 iPhone 隐私处理工具。 发订单截图要隐藏手机号，分享 PDF 要遮掉部分内容，转发视频又要处理画面里的私人信息。我希望这些操作可以在同一个 App 里完成，文件内容在本机处理，原文件无需上传。 目前支持图片、PDF 和视频处理。图片可以检测手机号、邮箱等敏感文字，也能手动补充遮挡；处理完保存独立副本，分享前可以再检查一次。 这次录了一个 34 秒的实际操作演示：先把示例图片里的手机号、邮箱涂黑，再给视频添加固定位置的遮挡框。视频里是已提交审核的 1.5 预览界面，录制时商店公开版本仍是 1.4.1 ，请以下载页面为准。素材里的姓名、电话和邮箱均为虚构演示数据。 演示视频： https://www.youtube.com/watch?v=569eGFPFgow 1.5 的一个重点是把视频遮挡操作简化：点「添加遮挡」就有一个框，轻点要遮住的位置，再拖右下角调整大小。这个手动框固定在画面上，不会自动跟随移动目标，分享前仍需要检查完整视频。 收费方式直接说明：免费版图片和视频合计每天可导出 3 次，PDF 每天 3 次",
-      "date_published": "2026-09-13T14:41:40Z",
-      "date_modified": "2026-09-13T14:41:40Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/539292bd7eece8a671d124d70a4a9065?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/539292bd7eece8a671d124d70a4a9065?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/869c911aa96cd266",
-      "url": "https://www.v2ex.com/t/1241715#reply0",
-      "title": "做了一个免费的 macOS 下载软件： Torrid",
-      "content_text": "下载链接： https://github.com/cobaltdisco/torrid-releases/releases 之前下载软件得用 Folx 、Transmission 、Downie 来干不同的事情，而且 Transmission 还不支持 RSS ，觉得太麻烦。 于是和 Claude 定下状态机和 MVP 功能，几个“长任务”加上“实机测试”，直接 Vibe 出了一个多种功能合一的下载工具。 至于这个“Torrid”名字，只是和“Torrent”的共享一个词根 😗 目前支持： 1. HTTP 下载 (URLSession) 2. BT 下载 (libtorrent) 3. 非版权内容的流媒体下载 (yt-dlp 、如果 yt-dlp 不支持则降级到模拟浏览器点击、再不行则降级到弹出浏览器手动点击) 接下来迭代 (同时也会开源出来，目前主要还在清理 Claude 和我的对话文档)： 1. BT 下载的 RSS 订阅。 2. 自动识别链接后自动选择对应下载方式。 3. 浏览器插件。 4. UI 优化 (目前 UI 不是那么好用，比如 yt-dlp 安装/登录这块，藏的有点深；",
-      "date_published": "2026-09-13T14:24:03Z",
-      "date_modified": "2026-09-13T14:24:03Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.imgur.com/XH4xLH1.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/XH4xLH1.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5eb34d734ceba47a",
-      "url": "https://www.v2ex.com/t/1241712#reply3",
-      "title": "做了一个给孩子理解 AI 原理的游戏，有 beta 福利，求真实反馈",
-      "content_text": "最近做了 Mindogo 迈多乐 ，一款面向青少年的 AI 启蒙游戏。 不教写代码，也不和 AI 聊天。孩子通过一个个小游戏观察 AI 怎么分类、怎么从奖励中调整选择、AI 怎么生成内容，以及为什么还需要核查事实、认清 AI 幻觉。涉及 监督学习、无监督学习、强化学习和生成式 AI 等经典原理和知识。涉及到 AI 知识的出处，我尽最大能力做到有据可查，部分技术文章我自己也看过，自家孩子也玩这个游戏。 项目地址： https://mindogo.ai/zh/ 前 5 关无需注册，目前共 9 关，关卡不定期更新中 验证邮箱后，可免费体验更多关卡 目前不收费 想请大家帮忙体验一下：大一点的孩子能不能看懂(如初中孩子。其实大人也可以玩)、是否知道下一步做什么、玩完能否说清结果为什么变化。任何真实反馈都欢迎。 有什么 AI 知识想让孩子搞懂，也欢迎反馈。",
-      "date_published": "2026-09-13T14:12:45Z",
-      "date_modified": "2026-09-13T14:12:45Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.v2ex.co/PrtSfRDhl.jpeg",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.v2ex.co/PrtSfRDhl.jpeg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5d48d44d6a8c0268",
-      "url": "https://www.v2ex.com/t/1241711#reply6",
-      "title": "我开源的“浏览器双语翻译插件”已经获得 8k star",
-      "content_text": "从 2024 年开始，我自己开发了一款浏览器双语翻译插件—— FluentRead 流畅阅读 ，最初只是想做一个能够替代沉浸式翻译、同时更符合自己使用习惯的工具。 它最早只是我的本科毕业设计，从写下第一行代码开始，它就是开源的。两年过去了，兜兜转转这个小项目已经在 GitHub 上收获了 8000  多 Star 。\n这两年里，有越来越多来自开源社区的朋友参与进来，提出建议、反馈问题、贡献代码。流畅阅读也因此一点点从一个毕业设计，变成了一款更加完整、成熟的浏览器双语翻译插件，最近还接入了 DeepSeek Harness 内核。 开源项目 ： https://github.com/FluentRead/FluentRead , 希望各位佬们喜欢。",
-      "date_published": "2026-09-13T14:10:20Z",
-      "date_modified": "2026-09-13T14:10:20Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.v2ex.co/31NjzkH3.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.v2ex.co/31NjzkH3.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/f04e4dba354c41de",
       "url": "https://www.v2ex.com/t/1241710#reply1",
       "title": "马上 9.15 记录片人生七年（70up）就要播了。Nick 跨越了阶层，却没躲过癌症。阶层和宿命哪个更硬？",
@@ -349,52 +556,6 @@
         {
           "url": "https://cdn.v2ex.com/gravatar/d97f9da872c3fe84d087943a61e1bbd1?s=73&d=retro",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b877b038f8e3e383",
-      "url": "https://www.v2ex.com/t/1241705#reply5",
-      "title": "路书工具，适合自驾游做计划",
-      "content_text": "体验： https://lushu.fittools.cc/ github： https://github.com/yangyang5214/lushu 欢迎 issue/pr 功能特色 1. 顺序自动排 2. 按天好规划",
-      "date_published": "2026-09-13T13:30:12Z",
-      "date_modified": "2026-09-13T13:30:12Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/9d6a/82a8/738193_xlarge.png?m=1768527827",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/9d6a/82a8/738193_xlarge.png?m=1768527827",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c9b890245815c441",
-      "url": "https://www.v2ex.com/t/1241701#reply7",
-      "title": "疯狂进攻的象棋，你能坚持几个回合",
-      "content_text": "游戏地址： https://eb6c5369.pinme.dev/",
-      "date_published": "2026-09-13T12:57:45Z",
-      "date_modified": "2026-09-13T12:57:45Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -445,75 +606,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/208ca6d3c2340430",
-      "url": "https://www.v2ex.com/t/1241687#reply0",
-      "title": "AI 赛博算命，六爻与紫微斗数，测一下准不准 http://aitjg.com/",
-      "content_text": "http://aitjg.com/ 问一件事， 起一卦，看清眼前。 三枚铜钱、六度投掷，定出本卦与变卦。八宫世应、纳甲干支、六亲六神、 旬空一次排全 —— 排盘由确定性算法推得，AI 只负责依卦而解，不凭玄谈。",
-      "date_published": "2026-09-13T10:08:18Z",
-      "date_modified": "2026-09-13T10:08:18Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/84cc8c36ad478d46134cb7d54f8510a5?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/84cc8c36ad478d46134cb7d54f8510a5?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/52e2e00c3830935d",
-      "url": "https://www.v2ex.com/t/1241679#reply0",
-      "title": "雷达·鹈鹕骑自行车大赛 正式开赛",
-      "content_text": "度完假回来了！ 最近大家是不是为了测是否降智花了一推的鹈鹕，咱们废物利用起来。 本次鹈鹕杯正式上线接受投稿了！ 这次开放两个赛道.\n一个是 classic ，用来评选正经好看的鹈鹕.\n一个是 open ，用来投稿奇思妙想和各种奇奇怪怪的鹈鹕.\n申明： 本次站点为了吸引更多的小伙伴投稿，不设任何注册、加群等信息，请大胆投稿，但投稿后请留好每个作品的上传凭证，万一中了呢.\n两个赛道冠军各提供一个电子工牌作为奖品。话不多说，快来玩吧！ 投稿、投票地址",
-      "date_published": "2026-09-13T09:37:18Z",
-      "date_modified": "2026-09-13T09:37:18Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://i.imgur.com/dy6QMhl.png",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/dy6QMhl.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/db55dcbf1bbe7a61",
-      "url": "https://www.v2ex.com/t/1241673#reply10",
-      "title": "如果抄作业就能得高分进好大学，且老师及学校都不管，那该多好呀",
-      "content_text": "如果抄作业就能得高分进好大学，且老师及学校都不管，那该多好呀？ 试问谁还愿意努力学习，等着抄就好啦。 试问谁还愿意花钱训练，等着蒸馏就好啦。 试问谁还愿意花精力创新，等着抄过来拼价格就好啦。 最终就是卷卷卷，卷死你",
-      "date_published": "2026-09-13T08:32:25Z",
-      "date_modified": "2026-09-13T08:32:25Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/18fa04f8814c3296209b2c2857c07463?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/18fa04f8814c3296209b2c2857c07463?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/a4e9d45fcafa155a",
       "url": "https://sspai.com/post/113880",
       "title": "搭建自己的 HomeLab（一）：聊聊我的硬件清单",
@@ -556,75 +648,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/40d7/16ee/78254_large.png?m=1783849374",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c38ddf11d25b9bef",
-      "url": "https://www.v2ex.com/t/1241637#reply21",
-      "title": "陶哲轩等数学家反对 AI，论失败的意义",
-      "content_text": "[反 AI 声明] 本文 AI 含量为零，未使用 AI 辅助创作，也未使用 AI 润色 2026 年 9 月 12 日，陶哲轩、邓煜等 25 位菲尔兹奖得主联合警告，AI 攻破数学难题可能有害。这件事有点反直觉，很多人不理解，为什么人类破解难题就是大好事，而 AI 破解难题却是坏事？ 如果你了解人类数学的发展历史，就很容易理解了。在数学专业的圈子里，最想得到的从来不是一道难题的答案，而是在解决难题的过程中发展出来的全新数学工具。 数学是一种“工具”，只有在解决难题的过程中经历无数次失败，才可能改善工具、发明新工具。有无数的商业案例表明，如果你独占一种技术，完全不让别人使用，那么别人就会有极大的动力去研究，很有可能找到新的方法来实现这种技术。 因此，一种比较常见的策略是自己只保留一部分最新技术的机密，然后低价卖技术给别人，让别人刚好卡在一个尴尬的处境：自己研究的成本太高，直接买反而更便宜。这就能打击别人研究的积极性。AI 破解数学难题恰好实现了类似的效果，人类自己不研究数学，直接向 AI“采购”数学答案，长此以往，对于人类来说数学这个工具就消亡了，再也难以发展。 在现实生活中，有很多“头",
-      "date_published": "2026-09-13T03:28:10Z",
-      "date_modified": "2026-09-13T03:28:10Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/07c9/d6c7/439711_large.png?m=1786343180",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/07c9/d6c7/439711_large.png?m=1786343180",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/674267cac1d727ea",
-      "url": "https://www.v2ex.com/t/1241631#reply1",
-      "title": "Play 商店，通知栏提示的更新哪里找？",
-      "content_text": "前提，个人有点更新强迫症。 手机是 Note 12 Turbo 刷了 xiaomi.eu 的 HyperOS3.0 。自带 Play 商店。 之前没怎么注意，从小米系统停更以来问题越发明显。 EU 版中自带的浏览器，video ，music 三项，被开发者修改过无法被 Play 商店覆盖更新，导致长期滞留在“可更内容”列表。 今天发现 Play 商店的通知条提示：“共用 6 项更新待安装，有 1 项新发布的更新“。 点击通知跳转到“可用内容”列表里只用：浏览器，video ，music ，Gboard“4 项，新发布的 1 项就是 Gboard 。 通过 Libchecker 一项项查看找出“Android Swith”这项未在 Play 商店的“可用列表”中，剩余 1 项待安装的应用始终找不出来。 尝试过安装“Aurora Store”和“Apkpure App”也未能找出来。 最后还有什么办法可以把剩余 1 项待安装应用找出来吗？",
-      "date_published": "2026-09-13T02:49:46Z",
-      "date_modified": "2026-09-13T02:49:46Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/dc68528cfc9d73a06f8575274add57b9?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/dc68528cfc9d73a06f8575274add57b9?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e7b76dee9db4263c",
-      "url": "https://www.v2ex.com/t/1241618#reply0",
-      "title": "半夜寂寞,买了个飞机杯,到手感觉亏大了，我日！拍断大腿！",
-      "content_text": "这两天寂寞难耐,买了个飞机杯回来玩，介绍写的很动人 什么自动吮吸 伸缩 加热功能应有尽有 看的我饥渴难耐,于是果断下单一个 二百出头 到手之后发现中计了 就一个硅胶+一个极其廉价塑料做的伸缩的的玩意 所谓的加热功能 就是给了个看起来几毛钱的小棒,插上 USB 之后有 2-3W 的功率 然后放进去加热  体验感极差 两百多完全血亏",
-      "date_published": "2026-09-12T21:51:02Z",
-      "date_modified": "2026-09-12T21:51:02Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://picui.ogmua.cn/s1/2026/09/13/6aa5c79dafee5.webp",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://picui.ogmua.cn/s1/2026/09/13/6aa5c79dafee5.webp",
-          "mime_type": "image/webp"
         }
       ]
     },
@@ -924,29 +947,6 @@
         {
           "url": "https://rssfile.sspai.com/2026/09/09/9849c1286bb6cf406bded66759298381.png?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ed0736a051537d1f",
-      "url": "https://sspai.com/post/114394",
-      "title": "派早报：Apple 发布 iPhone Duo 折叠屏等",
-      "content_text": "奥之心发布 OM SYSTEM PEN 相机、Sonos 更新音频系统等。 查看全文",
-      "date_published": "2026-09-09T22:38:42Z",
-      "date_modified": "2026-09-09T22:38:42Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/10/09/2026/article/b26495c5-2c69-1ff3-a0f4-d61984b80c50.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/10/09/2026/article/b26495c5-2c69-1ff3-a0f4-d61984b80c50.jpeg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
         }
       ]
     },
