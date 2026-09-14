@@ -32,6 +32,7 @@ SOURCES = [
     ("RubyInstaller", "https://rubyinstaller.org/feed.xml", 40),
     ("JetBrains Blog", "https://blog.jetbrains.com/feed/", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
+    ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
     ("Standard C++", "https://isocpp.org/blog/rss", 40),
     ("Django Weblog", "https://www.djangoproject.com/rss/weblog/", 30),
     ("Django News", "https://django-news.com/rss", 30),

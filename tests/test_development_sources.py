@@ -26,6 +26,7 @@ class DevelopmentSourceTests(unittest.TestCase):
         self.assertEqual(urls["RubyInstaller"], "https://rubyinstaller.org/feed.xml")
         self.assertEqual(urls["JetBrains Blog"], "https://blog.jetbrains.com/feed/")
         self.assertEqual(urls["web.dev Blog"], "https://web.dev/blog/feed.xml")
+        self.assertEqual(urls["Jupyter Blog"], "https://blog.jupyter.org/feed")
         self.assertEqual(urls["Standard C++"], "https://isocpp.org/blog/rss")
         self.assertEqual(development.DEV_TOP_MONTH_URL, "https://dev.to/top/month")
         self.assertEqual(
