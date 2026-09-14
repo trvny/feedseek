@@ -1,9 +1,8 @@
 # zizmor policy for trvny/feedseek.
-# unpinned-uses: this repo pins actions to version tags (e.g. @v7), not commit
-#   SHAs. That's an accepted posture here, so require a ref-pin (tag/branch)
-#   rather than a hash-pin. Still flags a bare, fully unpinned `uses:`.
+# GitHub Actions are pinned to full commit SHAs. Enforce that posture so a
+# future tag/branch pin cannot silently weaken the workflow supply-chain policy.
 rules:
   unpinned-uses:
     config:
       policies:
-        "*": ref-pin
+        "*": hash-pin
