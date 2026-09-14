@@ -253,14 +253,19 @@ class IncrementalCacheGuardTests(unittest.TestCase):
         self.assertFalse(marker.exists())
         run_registry.assert_called_once()
 
-    def test_full_run_does_not_require_restore_marker(self):
-        with (
-            TemporaryDirectory() as tmp,
-            mock.patch.object(run_all_feeds, "CACHE_DIR", Path(tmp)),
-            mock.patch.object(run_all_feeds, "load_feed_registry", return_value=({}, [])),
-            mock.patch.object(run_all_feeds, "_run_registry", return_value=0) as run_registry,
-        ):
-            status = run_all_feeds.run_all_feeds(full=True)
+    def test_full_run_does_not_require_or_leave_restore_marker(self):
+        with TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp)
+            marker = cache_dir / ".r2-restored"
+            marker.write_text("restored\n", encoding="utf-8")
+            with (
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache_dir),
+                mock.patch.object(run_all_feeds, "load_feed_registry", return_value=({}, [])),
+                mock.patch.object(run_all_feeds, "_run_registry", return_value=0) as run_registry,
+            ):
+                status = run_all_feeds.run_all_feeds(full=True)
+
+            self.assertFalse(marker.exists())
 
         self.assertEqual(status, 0)
         run_registry.assert_called_once_with({}, [], full=True)

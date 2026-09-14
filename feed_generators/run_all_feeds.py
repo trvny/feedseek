@@ -350,7 +350,8 @@ def run_all_feeds(
     full: bool = False,
 ) -> int:
     """Run generators from the registry and return a truthful process status."""
-    if not full and not _consume_cache_restore_marker():
+    cache_restored = _consume_cache_restore_marker()
+    if not full and not cache_restored:
         logger.error(
             "Incremental generation requires a fresh R2 cache restore. "
             "Use `make feeds`, `make feed NAME=...`, or run `make cache-restore` "

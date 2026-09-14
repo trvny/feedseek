@@ -74,6 +74,7 @@ feeds_windows11_release_notes: cache-restore ## Compatibility alias for Microsof
 # standalone helper remains useful and is not a feeds.yaml entry.
 .PHONY: feeds_commoninja
 feeds_commoninja: cache-restore ## Generate only the standalone Common Ninja blog feed
+	rm -f cache/.r2-restored
 	$(PY) feed_generators/commoninja.py
 
 .PHONY: validate
