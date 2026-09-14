@@ -133,8 +133,8 @@ def load_cache(feed_name: str, entries_key: str = "entries") -> dict:
     cache_file = get_cache_file(feed_name)
     if cache_file.exists():
         try:
-            # Cache files are committed, so they cross platforms; the default
-            # encoding does not. UnicodeDecodeError means the same thing here
+            # Cache snapshots cross platforms through R2; the default encoding
+            # does not. UnicodeDecodeError means the same thing here
             # as a bad parse: refetch rather than take the run down.
             with open(cache_file, encoding="utf-8") as f:
                 data = json.load(f)
@@ -387,9 +387,9 @@ def save_cache(
 def write_atomically(path, write) -> None:
     """Write via a temporary sibling and rename into place.
 
-    Every published artifact is written straight to its final path, and the
-    scheduled job commits feeds/ and cache/ whether or not generation
-    succeeded. So a generator killed mid-write - by the per-generator timeout,
+    Every published artifact is written straight to its final path, while the
+    scheduled job persists cache state to R2 only after a healthy run. A generator
+    killed mid-write - by the per-generator timeout,
     by the job timeout, by anything - would commit a truncated file over a good
     one. os.replace is atomic on both POSIX and Windows as long as source and
     destination share a filesystem, which a sibling always does: readers either
