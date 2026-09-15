@@ -8,6 +8,29 @@
   "icon": "https://aws.amazon.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/c90fcc44d26ebf3b",
+      "url": "https://github.com/aws/aws-cli/releases/tag/2.36.45",
+      "title": "AWS CLI 2.36.45",
+      "content_text": "api-change:sts: Increases the maximum session token size to 4,096 bytes and removes the packed policy size limit. Adds SessionTokenSize and SessionTokenUtilization fields and a new MinimumSessionTokenSize parameter. PackedPolicySize is deprecated. api-change:billing: Increased the maximum number of services returned in the supportEligibleSpendByService field of ListEnterpriseSupportLinkedAccountCharges api-change:imagebuilder: This release adds a dryRun option to Image Builder create APIs (except CreateImage), structured failure context on failed images including component and distribution failure details, and step retry attempt tracking. api-change:glue: Amazon Glue releasing the new API ListIntegrationTableProperties and adding IntegrationArn to TargetTableConfig api-change:codedeploy: AWS CodeDeploy now returns the deployment mode on GetDeployment and BatchGetDeployments. The new deploymentMode field on DeploymentInfo indicates whether a deployment used the standard deployment process or restarted the application using a previously installed revision (RESTART mode). api-change:billingconductor: This release adds support for custom volume tiering. You can now define custom tiers on a pricing rule's tiering configuration, where each tier specifies a usage range and the rate applied to usage in that range.",
+      "date_published": "2026-09-14T18:55:19Z",
+      "date_modified": "2026-09-14T18:55:19Z",
+      "authors": [
+        {
+          "name": "AWS CLI v2 Changelog"
+        }
+      ],
+      "image": "https://opengraph.githubassets.com/2747530401321f910228bea297263c7e4ec3f4b36ae2bcc44d355af35f5b90d7/aws/aws-cli",
+      "tags": [
+        "AWS CLI v2 Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://opengraph.githubassets.com/2747530401321f910228bea297263c7e4ec3f4b36ae2bcc44d355af35f5b90d7/aws/aws-cli",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/6814a2182f2c84d0",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/01/qwen3.6-35b-a3b-nvfp4-wan2.1-t2v-1.3B-diffusers-jumpstart/",
       "title": "Qwen3.6-35B-A3B-NVFP4 and Wan2.1-T2V-1.3B-Diffusers models now available on Amazon SageMaker JumpStart",
@@ -115,6 +138,54 @@
           "url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/14/2025-gpt-6-astra-on-bedrack.png",
           "mime_type": "image/png"
         }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/e98112030a8a3823",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/glue-zero-etl-ownership-conflicts/",
+      "title": "AWS Glue zero-ETL adds target table property ownership and conflict detection",
+      "content_text": "AWS Glue zero-ETL integrations now detect table property conflicts and track integration ownership. When you configure a source table and target catalog, Glue associates the resulting table properties with the owning integration, so two integrations can no longer be pointed at the same target table without your knowledge. This works across Amazon S3 Tables and SageMaker Lakehouse catalogs. Data teams running multiple zero-ETL integrations gain predictable control over where each source table lan",
+      "date_published": "2026-09-14T08:00:00Z",
+      "date_modified": "2026-09-14T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/73604cba48e79705",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-improves-deliverability",
+      "title": "AWS End User Messaging strengthens SMS deliverability with automatic failover",
+      "content_text": "AWS End User Messaging is advancing its deliverability capabilities in phone pools. Now, customers sending through phone pools automatically benefit from automatic failover to the next best performing number in the pool when SMS delivery is impacted from downstream disruptions. SMS deliverability can be affected by drops or delays when trying to reach the end recipient while it's being routed from AWS to messaging providers and eventually mobile carriers. These disruptions can hit the most impor",
+      "date_published": "2026-09-14T07:00:00Z",
+      "date_modified": "2026-09-14T07:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/035a31fd5d114fab",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows",
+      "title": "AWS End User Messaging now supports Dynamic Flows in WhatsApp",
+      "content_text": "AWS End User Messaging now supports dynamic WhatsApp flows so you can turn WhatsApp conversations into rich, interactive experiences that end-users complete directly in WhatsApp. Instead of pushing end-users to a website or a separate form to complete an interactive experience, you can instead guide them through an appointment booking, lead generation, sign-up, survey or a transaction directly in the chat. Customers can start building a flow using one of Meta's stater templates with familiar bui",
+      "date_published": "2026-09-14T07:00:00Z",
+      "date_modified": "2026-09-14T07:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
       ]
     },
     {
@@ -2493,54 +2564,6 @@
       "content_text": "AWS User Experience Customization (UXC) is now available in all commercial AWS Regions. UXC enables account administrators to set a custom account color and control which services and Regions appear in the AWS Management Console. Previously, UXC was available only in US East (N. Virginia), requiring customers who manage these settings programmatically to direct API calls to that single Region. With today's expansion, customers can manage account customizations from any commercial AWS Region usin",
       "date_published": "2026-09-02T13:00:00Z",
       "date_modified": "2026-09-02T13:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a0fb5f248879d50a",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/07/aws-lambda-snapstart-container/",
-      "title": "AWS Lambda now supports SnapStart for container image functions",
-      "content_text": "Starting today, AWS Lambda supports SnapStart for functions packaged as container images , reducing startup times from several seconds to as low as sub-second. Lambda SnapStart is an opt-in capability that makes it easier for you to build highly responsive and scalable applications without provisioning resources or implementing complex performance optimizations. Customers deploy Lambda functions with container images to align with their organization's container-based deployment standards, or to",
-      "date_published": "2026-09-02T09:00:00Z",
-      "date_modified": "2026-09-02T09:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/1b9c409f638487ab",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-cicd-notebook-ai-manifest/",
-      "title": "Amazon SageMaker Unified Studio CI/CD adds notebook promotion and AI-assisted manifest generation",
-      "content_text": "Amazon SageMaker Unified Studio CI/CD expands its open-source deployment toolkit with two new capabilities: (1) an AI agent skill that automates manifest authoring, and (2) native notebook promotion across environments. Together, they help data teams go from project to production faster while maintaining best-practice defaults across stages. AI-assisted manifest generation. The new generate-bundle-manifest agent skill inspects a project's connections, storage, and workflows and produces a ready-",
-      "date_published": "2026-09-02T08:00:00Z",
-      "date_modified": "2026-09-02T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/f3717dbc3e42b013",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/rds-sqlserver-supports-additional-trace-flags/",
-      "title": "Amazon RDS for SQL Server supports additional SQL trace flags",
-      "content_text": "Amazon RDS for SQL Server supports 18 additional SQL trace flags that you can enable through database parameter groups. Trace flags are configuration switches that modify SQL Server engine behavior — such as query optimizer cardinality estimation, lock escalation, statistics management, and memory handling — to allow database administrators to fine-tune performance and address workload-specific challenges. With this expansion, you have greater flexibility to optimize and stabilize your SQL Serve",
-      "date_published": "2026-09-02T07:00:00Z",
-      "date_modified": "2026-09-02T07:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
