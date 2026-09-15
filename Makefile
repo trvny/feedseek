@@ -7,6 +7,15 @@
 PY := uv run --locked
 RUN_FEED := $(PY) feed_generators/run_all_feeds.py --feed
 
+# Incremental generation shares one cache tree and a one-shot restore marker.
+# Keep Make-level execution serialized; run_all_feeds.py owns safe parallelism.
+.NOTPARALLEL:
+
+define RESTORE_CACHE
+@if [ ! -x feeds-proxy/node_modules/.bin/wrangler ] && [ ! -f feeds-proxy/node_modules/.bin/wrangler.cmd ]; then npm --prefix feeds-proxy ci; fi
+$(PY) tools/restore_r2_cache.py
+endef
+
 .DEFAULT_GOAL := help
 
 .PHONY: help
@@ -25,8 +34,13 @@ install: ## Install the locked dependencies (fails if uv.lock is stale — run `
 lock: ## Refresh uv.lock after editing pyproject.toml
 	uv lock
 
+.PHONY: cache-restore
+cache-restore: ## Restore the durable generation cache from R2
+	$(RESTORE_CACHE)
+
 .PHONY: feeds
 feeds: ## Generate all feeds (incremental)
+	$(RESTORE_CACHE)
 	$(PY) feed_generators/run_all_feeds.py
 
 .PHONY: feeds-full
@@ -36,6 +50,7 @@ feeds-full: ## Regenerate all feeds from scratch (ignore cache)
 .PHONY: feed
 feed: ## Generate one feed: make feed NAME=<feeds.yaml name>
 	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
+	$(RESTORE_CACHE)
 	$(RUN_FEED) "$(NAME)"
 
 .PHONY: feed-full
@@ -49,6 +64,7 @@ feed-full: ## Regenerate one feed from scratch: make feed-full NAME=<feeds.yaml 
 FORCE:
 
 feeds_%: FORCE
+	$(RESTORE_CACHE)
 	$(RUN_FEED) "$*"
 
 FULL_FEEDS := trojka czworka nexusmods_news jbzd foobar2000
@@ -59,17 +75,20 @@ $(FULL_TARGETS): feeds_%_full:
 
 .PHONY: feeds_beatport
 feeds_beatport: ## Compatibility alias for the Beatport Top 100 feed
+	$(RESTORE_CACHE)
 	$(RUN_FEED) beatport_top100
 
 .PHONY: feeds_windows11_release_notes
 feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows updates
+	$(RESTORE_CACHE)
 	$(RUN_FEED) microsoft_updates
 
-# Common Ninja is also consumed by the consolidated SaaS generator, but this
-# standalone helper remains useful and is not a feeds.yaml entry.
+# Common Ninja is also consumed by the consolidated SaaS generator. This
+# standalone helper is intentionally full/stateless so it cannot race the
+# scheduled workflow by rewriting the shared durable R2 snapshot.
 .PHONY: feeds_commoninja
 feeds_commoninja: ## Generate only the standalone Common Ninja blog feed
-	$(PY) feed_generators/commoninja.py
+	$(PY) feed_generators/commoninja.py --full
 
 .PHONY: validate
 validate: ## Validate all generated feeds
@@ -77,4 +96,4 @@ validate: ## Validate all generated feeds
 
 .PHONY: clean
 clean: ## Remove generated feeds and cache
-	rm -f feeds/feed_*.xml feeds/feed_*.json cache/*_posts.json
+	rm -f feeds/feed_*.xml feeds/feed_*.json cache/*_posts.json cache/.r2-restored

@@ -58,82 +58,14 @@ jobs:
         working-directory: feeds-proxy
         run: npm ci
 
-      - name: Prepare R2 cache bucket
-        id: r2
-        continue-on-error: true
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          set -euo pipefail
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-            echo "::warning::Cloudflare credentials unavailable; using the repository cache seed."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          response="$RUNNER_TEMP/r2-buckets.json"
-          curl --fail-with-body --silent --show-error \
-            --retry 3 --retry-all-errors \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/r2/buckets?per_page=1000" \
-            --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            --output "$response"
-
-          exists="$(uv run --no-project python - "$response" "$FEEDSEEK_CACHE_BUCKET" <<'PY'
-          import json
-          import sys
-
-          path, bucket = sys.argv[1:]
-          data = json.load(open(path, encoding="utf-8"))
-          if not data.get("success"):
-              raise SystemExit("Cloudflare bucket listing failed")
-          print("true" if any(item.get("name") == bucket for item in data.get("result", {}).get("buckets", [])) else "false")
-          PY
-          )"
-
-          if [ "$exists" != "true" ]; then
-            create_response="$RUNNER_TEMP/r2-create.json"
-            curl --fail-with-body --silent --show-error \
-              --retry 3 --retry-all-errors \
-              --request POST \
-              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/r2/buckets" \
-              --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-              --header "Content-Type: application/json" \
-              --data "{\"name\":\"$FEEDSEEK_CACHE_BUCKET\"}" \
-              --output "$create_response"
-            uv run --no-project python - "$create_response" <<'PY'
-          import json
-          import sys
-
-          data = json.load(open(sys.argv[1], encoding="utf-8"))
-          if not data.get("success"):
-              raise SystemExit("Cloudflare bucket creation failed")
-          PY
-          fi
-
-          echo "ready=true" >> "$GITHUB_OUTPUT"
-
       - name: Restore Feedseek cache from R2
-        if: steps.r2.outputs.ready == 'true'
+        id: restore
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          archive="$RUNNER_TEMP/feedseek-cache.tar.gz"
-          restore_dir="$(mktemp -d)"
-          trap 'rm -rf "$restore_dir"' EXIT
-
-          if feeds-proxy/node_modules/.bin/wrangler r2 object get \
-            "$FEEDSEEK_CACHE_BUCKET/$FEEDSEEK_CACHE_KEY" \
-            --file "$archive" \
-            --remote && \
-            uv run --locked tools/restore_cache_archive.py \
-              "$archive" "$restore_dir" --merge-into cache; then
-            echo "Merged Feedseek cache from R2 without replacing newer repository state."
-          else
-            echo "::warning::No usable R2 snapshot yet; using the repository cache seed."
-          fi
+          uv run --locked tools/restore_r2_cache.py
 
       - name: Run feed tests
         working-directory: .
@@ -163,47 +95,27 @@ jobs:
         run: uv run --locked feed_generators/docs_sources.py
 
       - name: Back up Feedseek cache to R2
+        id: backup
         if: >-
           always() &&
           github.ref == 'refs/heads/main' &&
-          steps.r2.outputs.ready == 'true'
-        continue-on-error: true
+          steps.validate.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          set -euo pipefail
-          archive="$RUNNER_TEMP/feedseek-cache.tar.gz"
-          cache_bytes="$(find cache -type f -printf '%s\n' | awk '{total += $1} END {print total + 0}')"
-          if [ "$cache_bytes" -gt "$FEEDSEEK_CACHE_MAX_BYTES" ]; then
-            echo "::warning::Feedseek cache is $cache_bytes bytes; keeping the existing R2 snapshot (limit: $FEEDSEEK_CACHE_MAX_BYTES)."
-            exit 0
-          fi
-
-          tar \
-            --sort=name \
-            --mtime='UTC 1970-01-01' \
-            --owner=0 \
-            --group=0 \
-            --numeric-owner \
-            -czf "$archive" \
-            -C . cache
-          feeds-proxy/node_modules/.bin/wrangler r2 object put \
-            "$FEEDSEEK_CACHE_BUCKET/$FEEDSEEK_CACHE_KEY" \
-            --file "$archive" \
-            --content-type application/gzip \
-            --remote
+        run: uv run --locked tools/backup_r2_cache.py
 
       - name: Commit and push successful updates
         if: >-
           always() &&
           !cancelled() &&
           github.ref == 'refs/heads/main' &&
-          steps.validate.outcome == 'success'
+          steps.validate.outcome == 'success' &&
+          steps.backup.outcome == 'success'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add feeds cache docs/sources.md
+          git add feeds docs/sources.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

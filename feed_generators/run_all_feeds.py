@@ -22,7 +22,7 @@ from pathlib import Path
 
 from models import FeedConfig, load_feed_registry
 from normalize_feed_self_links import normalize_feed_self_links
-from utils import write_atomically
+from utils import CACHE_RESTORE_ENV, write_atomically
 from validate_feeds import validate_feed, validate_json_sidecar
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -55,6 +55,8 @@ def _configured_generator_workers() -> int:
 # into a thundering herd; override locally/temporarily when profiling.
 GENERATOR_WORKERS = _configured_generator_workers()
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
+CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
+CACHE_RESTORE_MARKER = ".r2-restored"
 
 
 def _pair_paths(feed_name: str) -> tuple[Path, Path]:
@@ -68,6 +70,16 @@ def _snapshot_feed_pair(feed_name: str) -> dict[Path, bytes | None]:
         path: path.read_bytes() if path.exists() else None
         for path in _pair_paths(feed_name)
     }
+
+
+def _cache_path(feed_name: str) -> Path:
+    return CACHE_DIR / f"{feed_name}_posts.json"
+
+
+def _snapshot_cache(feed_name: str) -> dict[Path, bytes | None]:
+    """Keep one generator's cache state so failed children cannot advance it."""
+    path = _cache_path(feed_name)
+    return {path: path.read_bytes() if path.exists() else None}
 
 
 def _restore_feed_pair(snapshot: dict[Path, bytes | None]) -> None:
@@ -99,11 +111,16 @@ def _feed_pair_is_valid(feed_name: str) -> bool:
 
 
 def _reject_feed_update(
-    feed_name: str, snapshot: dict[Path, bytes | None], message: str, *args
+    feed_name: str,
+    feed_snapshot: dict[Path, bytes | None],
+    cache_snapshot: dict[Path, bytes | None],
+    message: str,
+    *args,
 ) -> bool:
     logger.error(message, *args)
-    _restore_feed_pair(snapshot)
-    logger.info("Restored last-known-good XML + JSON pair for %s", feed_name)
+    _restore_feed_pair(feed_snapshot)
+    _restore_feed_pair(cache_snapshot)
+    logger.info("Restored last-known-good feed pair and cache for %s", feed_name)
     return False
 
 
@@ -116,11 +133,20 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
     if full:
         cmd.append("--full")
 
-    snapshot = _snapshot_feed_pair(feed_name)
+    feed_snapshot = _snapshot_feed_pair(feed_name)
+    cache_snapshot = _snapshot_cache(feed_name)
     logger.info("Running %s: %s", feed_name, script_path)
     try:
+        child_env = os.environ.copy()
+        if not full:
+            child_env[CACHE_RESTORE_ENV] = "1"
         result = subprocess.run(
-            cmd, capture_output=True, text=True, check=False, timeout=GENERATOR_TIMEOUT
+            cmd,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=GENERATOR_TIMEOUT,
+            env=child_env,
         )
     except subprocess.TimeoutExpired as exc:
         # subprocess.run has already killed the child by this point.
@@ -129,7 +155,8 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
                 logger.warning("[%s %s before timeout]\n%s", feed_name, label, stream.rstrip())
         return _reject_feed_update(
             feed_name,
-            snapshot,
+            feed_snapshot,
+            cache_snapshot,
             "Generator %s exceeded %.0fs and was killed",
             feed_name,
             GENERATOR_TIMEOUT,
@@ -144,14 +171,19 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
     if result.returncode != 0:
         return _reject_feed_update(
             feed_name,
-            snapshot,
+            feed_snapshot,
+            cache_snapshot,
             "Generator %s exited with status %d",
             feed_name,
             result.returncode,
         )
     if not _feed_pair_is_valid(feed_name):
         return _reject_feed_update(
-            feed_name, snapshot, "Generator %s failed the XML + JSON pair check", feed_name
+            feed_name,
+            feed_snapshot,
+            cache_snapshot,
+            "Generator %s failed the XML + JSON pair check",
+            feed_name,
         )
 
     logger.info("Successfully ran: %s", feed_name)
@@ -307,11 +339,33 @@ def _run_registry(
     return 1 if failed_scripts or skipped_configs or not normalization_ok else 0
 
 
+def _consume_cache_restore_marker() -> bool:
+    """Require one successful R2 restore for exactly one incremental invocation."""
+    marker = CACHE_DIR / CACHE_RESTORE_MARKER
+    try:
+        marker.unlink()
+    except FileNotFoundError:
+        return False
+    except OSError as exc:
+        logger.error("Could not consume R2 cache restore marker: %s", exc)
+        return False
+    return True
+
+
+
 def run_all_feeds(
     feed: str | None = None,
     full: bool = False,
 ) -> int:
     """Run generators from the registry and return a truthful process status."""
+    cache_restored = _consume_cache_restore_marker()
+    if not full and not cache_restored:
+        logger.error(
+            "Incremental generation requires a fresh R2 cache restore. "
+            "Use `make feeds`, `make feed NAME=...`, or run `make cache-restore` "
+            "immediately before invoking this runner directly."
+        )
+        return 2
     registry, skipped_configs = load_feed_registry(return_skipped=True)
     if feed:
         return _run_named_feed(feed, registry, skipped_configs, full=full)

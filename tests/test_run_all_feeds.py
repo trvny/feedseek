@@ -68,6 +68,35 @@ class GeneratorTimeoutTests(unittest.TestCase):
             self.assertEqual(xml.read_text(encoding="utf-8"), "old xml")
             self.assertEqual(sidecar.read_text(encoding="utf-8"), "old json")
 
+    def test_timeout_restores_generator_cache_after_partial_child_write(self):
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            feeds = root / "feeds"
+            cache = root / "cache"
+            feeds.mkdir()
+            cache.mkdir()
+            xml = feeds / "feed_reuters.xml"
+            sidecar = feeds / "feed_reuters.json"
+            cache_file = cache / "reuters_posts.json"
+            xml.write_text("old xml", encoding="utf-8")
+            sidecar.write_text("old json", encoding="utf-8")
+            cache_file.write_text("old cache", encoding="utf-8")
+
+            def partial_then_timeout(*args, **kwargs):
+                cache_file.write_text("new cache", encoding="utf-8")
+                raise subprocess.TimeoutExpired(cmd=["python"], timeout=1)
+
+            with (
+                mock.patch.object(run_all_feeds, "FEEDS_DIR", feeds),
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache),
+                mock.patch.object(
+                    run_all_feeds.subprocess, "run", side_effect=partial_then_timeout
+                ),
+            ):
+                self.assertFalse(run_all_feeds.run_feed("reuters", self.config()))
+
+            self.assertEqual(cache_file.read_text(encoding="utf-8"), "old cache")
+
     def test_success_with_invalid_pair_is_rolled_back(self):
         with TemporaryDirectory() as tmp:
             directory = Path(tmp)
@@ -94,6 +123,21 @@ class GeneratorTimeoutTests(unittest.TestCase):
 
             self.assertEqual(xml.read_text(encoding="utf-8"), "old xml")
             self.assertEqual(sidecar.read_text(encoding="utf-8"), "old json")
+
+    def test_incremental_child_receives_cache_restore_authorization(self):
+        done = subprocess.CompletedProcess(
+            args=["python"], returncode=0, stdout="", stderr=""
+        )
+        with (
+            mock.patch.object(run_all_feeds.subprocess, "run", return_value=done) as run,
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True),
+        ):
+            self.assertTrue(run_all_feeds.run_feed("reuters", self.config()))
+
+        self.assertEqual(
+            run.call_args.kwargs["env"][run_all_feeds.CACHE_RESTORE_ENV], "1"
+        )
+
 
 
 class GeneratorBatchTests(unittest.TestCase):
@@ -194,6 +238,52 @@ class GeneratorBatchTests(unittest.TestCase):
         output = "\n".join(caught.output)
         self.assertLess(output.index("slow: 3.2s"), output.index("medium: 2.1s"))
         self.assertLess(output.index("medium: 2.1s"), output.index("fast: 1.0s"))
+
+
+class IncrementalCacheGuardTests(unittest.TestCase):
+    def test_incremental_run_refuses_without_one_shot_restore_marker(self):
+        with (
+            TemporaryDirectory() as tmp,
+            mock.patch.object(run_all_feeds, "CACHE_DIR", Path(tmp)),
+            mock.patch.object(run_all_feeds, "load_feed_registry") as load_registry,
+        ):
+            status = run_all_feeds.run_all_feeds(full=False)
+
+        self.assertEqual(status, 2)
+        load_registry.assert_not_called()
+
+    def test_incremental_run_consumes_restore_marker(self):
+        with TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp)
+            marker = cache_dir / ".r2-restored"
+            marker.write_text("restored\n", encoding="utf-8")
+            with (
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache_dir),
+                mock.patch.object(run_all_feeds, "load_feed_registry", return_value=({}, [])),
+                mock.patch.object(run_all_feeds, "_run_registry", return_value=0) as run_registry,
+            ):
+                status = run_all_feeds.run_all_feeds(full=False)
+
+        self.assertEqual(status, 0)
+        self.assertFalse(marker.exists())
+        run_registry.assert_called_once()
+
+    def test_full_run_does_not_require_or_leave_restore_marker(self):
+        with TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp)
+            marker = cache_dir / ".r2-restored"
+            marker.write_text("restored\n", encoding="utf-8")
+            with (
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache_dir),
+                mock.patch.object(run_all_feeds, "load_feed_registry", return_value=({}, [])),
+                mock.patch.object(run_all_feeds, "_run_registry", return_value=0) as run_registry,
+            ):
+                status = run_all_feeds.run_all_feeds(full=True)
+
+            self.assertFalse(marker.exists())
+
+        self.assertEqual(status, 0)
+        run_registry.assert_called_once_with({}, [], full=True)
 
 
 if __name__ == "__main__":

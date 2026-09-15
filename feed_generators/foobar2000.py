@@ -50,8 +50,13 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup, Tag
 from feedgen.feed import FeedGenerator
-
-from utils import REPO_SLUG, favicon_url, save_atom_feed, write_atomically
+from utils import (
+    REPO_SLUG,
+    favicon_url,
+    require_fresh_cache_restore,
+    save_atom_feed,
+    write_atomically,
+)
 
 # --------------------------------------------------------------------------- #
 # Constants
@@ -171,6 +176,7 @@ def _shorten(text: str) -> str:
 # Cache (rolling archive)
 # --------------------------------------------------------------------------- #
 def load_cache() -> list[dict]:
+    require_fresh_cache_restore()
     if not CACHE_FILE.exists():
         return []
     try:
@@ -195,6 +201,7 @@ def load_cache() -> list[dict]:
 
 
 def save_cache(entries: list[dict]) -> None:
+    require_fresh_cache_restore()
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     serializable = [{**e, "published": e["published"].isoformat()} for e in entries]
     payload = json.dumps(serializable, ensure_ascii=False, indent=2)
