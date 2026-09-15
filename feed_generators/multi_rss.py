@@ -11,9 +11,8 @@ from __future__ import annotations
 
 import re
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 
-import pytz
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
@@ -137,8 +136,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(_normalize_localized_date(date_str))
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as exc:
         logger.warning("Could not parse date %r: %s", date_str, exc)
         return None

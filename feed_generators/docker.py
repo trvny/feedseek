@@ -19,11 +19,9 @@ import argparse
 import json
 import re
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 
-import pytz
 from bs4 import BeautifulSoup
-
 from multi_rss import get_html, parse_date, run
 from utils import sanitize_xml, setup_logging, stable_fallback_date
 
@@ -79,7 +77,7 @@ def _section_date(date_mode, heading, body):
         m = _QUARTER.search(heading)
         if m:
             month, day = _QUARTER_START[int(m.group(1))]
-            return pytz.UTC.localize(datetime(int(m.group(2)), month, day))
+            return datetime(int(m.group(2)), month, day, tzinfo=UTC)
     return None
 
 

@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """xAI feed generator.
 
 Aggregates xAI's update sources into one **Atom** feed written to
@@ -32,7 +34,6 @@ import argparse
 import re
 import sys
 
-import pytz
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
@@ -54,15 +55,9 @@ from utils import (
     sort_posts_for_feed,
     stable_fallback_date,
 )
-from x_changelog import (
-    BLOG_URL as X_API_CHANGELOG_URL,
-)
-from x_changelog import (
-    fetch_text as fetch_x_api_changelog,
-)
-from x_changelog import (
-    parse_items as parse_x_api_items,
-)
+from x_changelog import BLOG_URL as X_API_CHANGELOG_URL
+from x_changelog import fetch_text as fetch_x_api_changelog
+from x_changelog import parse_items as parse_x_api_items
 
 logger = setup_logging()
 
@@ -123,8 +118,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(date_str)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
         logger.warning(f"Could not parse date '{date_str}': {e}")
         return None
@@ -254,7 +249,7 @@ def scrape_release_notes(known_links, today=None):
     # Walk the markdown line by line: "## <Month>" sets the current month
     # (year inferred newest-first, rolling back when the month jumps upward),
     # "### <heading>" starts a feature section.
-    today = today or _dt.datetime.now(pytz.UTC)
+    today = today or _dt.datetime.now(UTC)
     year, prev_month = today.year, None
     cur_date = None
     sections = []   # (heading, date, [body lines])
@@ -269,7 +264,7 @@ def scrape_release_notes(known_links, today=None):
             elif month > prev_month:
                 year -= 1
             prev_month = month
-            cur_date = _dt.datetime(year, month, 1, tzinfo=pytz.UTC)
+            cur_date = _dt.datetime(year, month, 1, tzinfo=UTC)
             continue
         m3 = re.match(r"^###\s+(.+?)\s*$", line)
         if m3 and cur_date is not None:

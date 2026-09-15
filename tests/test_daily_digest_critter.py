@@ -2,21 +2,18 @@ import json
 import random
 import sys
 import unittest
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import patch
-
-import pytz
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 import daily_digest  # noqa: E402
 
-
 # The date seeds the species, so both are pinned: 30.07 draws a dog, 31.07 a cat.
-FIXED_NOW = datetime(2026, 7, 30, 12, 0, tzinfo=pytz.UTC)
+FIXED_NOW = datetime(2026, 7, 30, 12, 0, tzinfo=UTC)
 FIXED_DAY = "2026-07-30"
-CAT_DAY_NOW = datetime(2026, 7, 31, 12, 0, tzinfo=pytz.UTC)
+CAT_DAY_NOW = datetime(2026, 7, 31, 12, 0, tzinfo=UTC)
 
 # Every wired-up source, keyed by URL, so a test can answer whichever pair the
 # day's seed happens to reach for without pinning the species.

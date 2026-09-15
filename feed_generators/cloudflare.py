@@ -14,11 +14,9 @@ accumulates across hourly runs via the shared JSON cache
 import argparse
 import re
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 
-import pytz
 from bs4 import BeautifulSoup
-
 from multi_rss import get_html, run
 from utils import sanitize_xml, setup_logging
 
@@ -61,7 +59,7 @@ def scrape_research(known_links):
         seen.add(link)
 
         year = int(m.group(2))
-        date_obj = pytz.UTC.localize(datetime(year, 1, 1))
+        date_obj = datetime(year, 1, 1, tzinfo=UTC)
 
         title = None
         page = get_html(link)

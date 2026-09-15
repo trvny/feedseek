@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """Common Ninja blog feed generator.
 
 Common Ninja's blog (https://www.commoninja.com/blog) has no native RSS/Atom
@@ -15,11 +17,9 @@ import argparse
 import sys
 from urllib.parse import urljoin
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 from feedgen.feed import FeedGenerator
-
 from utils import (
     deserialize_entries,
     fetch_page,
@@ -87,7 +87,7 @@ def parse_items(html: str) -> list[dict]:
                 if raw:
                     try:
                         dt = date_parser.parse(raw)
-                        date = dt.astimezone(pytz.UTC) if dt.tzinfo else pytz.UTC.localize(dt)
+                        date = dt.astimezone(UTC) if dt.tzinfo else dt.replace(tzinfo=UTC)
                     except (ValueError, OverflowError):
                         date = None
             if date is None:

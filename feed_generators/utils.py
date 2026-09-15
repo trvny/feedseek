@@ -3,7 +3,7 @@
 A trimmed, self-contained version: HTTP fetching, XML sanitization, a JSON
 cache for incremental updates, and feedgen link helpers. No Selenium and no
 external settings library — everything here depends only on requests, feedgen,
-and pytz.
+and standard-library time zones.
 """
 
 import hashlib
@@ -14,11 +14,10 @@ import os
 import re
 import sys
 import unicodedata
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
-import pytz
 import requests
 from feedgen.feed import FeedGenerator
 
@@ -111,6 +110,19 @@ def fetch_page(url: str, timeout: int = 30, headers: dict | None = None) -> str:
 # ---------------------------------------------------------------------------
 
 
+def localize_wall_time(value: datetime, zone) -> datetime:
+    """Attach an IANA zone while preserving pytz.localize(..., is_dst=False) semantics."""
+    if value.tzinfo is not None:
+        return value.astimezone(zone)
+    first = value.replace(tzinfo=zone, fold=0)
+    second = value.replace(tzinfo=zone, fold=1)
+    first_offset = first.utcoffset()
+    second_offset = second.utcoffset()
+    if first_offset is not None and second_offset is not None and first_offset != second_offset:
+        return first if first_offset < second_offset else second
+    return first
+
+
 def stable_fallback_date(identifier: str) -> datetime:
     """Generate a stable date from a URL/title hash for dateless posts.
 
@@ -120,7 +132,7 @@ def stable_fallback_date(identifier: str) -> datetime:
     """
     digest = hashlib.sha256(identifier.encode("utf-8")).hexdigest()
     hash_val = int(digest, 16) % 730
-    epoch = datetime(2023, 1, 1, 0, 0, 0, tzinfo=pytz.UTC)
+    epoch = datetime(2023, 1, 1, 0, 0, 0, tzinfo=UTC)
     return epoch + timedelta(days=hash_val)
 
 
@@ -412,7 +424,7 @@ def save_cache(
                 logger.info(f"Cache unchanged; keeping {cache_file}")
                 return
 
-    data = {"last_updated": datetime.now(pytz.UTC).isoformat(), **payload}
+    data = {"last_updated": datetime.now(UTC).isoformat(), **payload}
 
     def _write(target):
         with open(target, "w", encoding="utf-8") as f:

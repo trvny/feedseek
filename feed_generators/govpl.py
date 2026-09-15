@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """Gov.pl news feed generator.
 
 Aggregates several Polish government news/announcement listings into one
@@ -47,27 +49,25 @@ import re
 import sys
 import time
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from google_news import entry_url
 from utils import (
     add_entry_media,
-    feed_item_image,
-    setup_feed_extensions,
     deserialize_entries,
+    favicon_proxy,
+    feed_item_image,
     load_cache,
     merge_entries,
     sanitize_xml,
     save_atom_feed,
     save_cache,
+    setup_feed_extensions,
     setup_feed_links,
     setup_logging,
     sort_posts_for_feed,
-    favicon_proxy,
 )
 
 logger = setup_logging()
@@ -142,8 +142,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(date_str, dayfirst=True)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError):
         return None
 
@@ -248,7 +248,7 @@ def collect_prezydent(known_links):
             if date_el:
                 try:
                     dt = date_parser.parse(date_el.get_text(strip=True))
-                    date_obj = (dt if dt.tzinfo else dt.replace(tzinfo=pytz.UTC)).astimezone(pytz.UTC)
+                    date_obj = (dt if dt.tzinfo else dt.replace(tzinfo=UTC)).astimezone(UTC)
                 except (ValueError, TypeError, OverflowError):
                     pass
             desc_el = item.find("description")
@@ -294,7 +294,7 @@ def collect_native_rss(label, url, known_links):
             if date_el:
                 try:
                     dt = date_parser.parse(date_el.get_text(strip=True))
-                    date_obj = (dt if dt.tzinfo else dt.replace(tzinfo=pytz.UTC)).astimezone(pytz.UTC)
+                    date_obj = (dt if dt.tzinfo else dt.replace(tzinfo=UTC)).astimezone(UTC)
                 except (ValueError, TypeError, OverflowError):
                     pass
             desc_el = item.find("description") or item.find("summary") or item.find("content")

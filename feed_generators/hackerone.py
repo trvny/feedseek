@@ -27,13 +27,11 @@ from __future__ import annotations
 import argparse
 import sys
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 
-import pytz
 from bs4 import BeautifulSoup
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     deserialize_entries,
@@ -110,7 +108,7 @@ def _row_date(row) -> datetime | None:
     tm = row.find("time")
     if tm and tm.get("datetime"):
         try:
-            return datetime.fromisoformat(tm["datetime"].replace("Z", "+00:00")).astimezone(pytz.UTC)
+            return datetime.fromisoformat(tm["datetime"].replace("Z", "+00:00")).astimezone(UTC)
         except ValueError:
             pass
     return None

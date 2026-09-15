@@ -14,11 +14,10 @@ import datetime
 import html
 import sys
 import time
+from datetime import UTC
 
-import pytz
 import requests
 from bs4 import BeautifulSoup
-
 from multi_rss import run
 from utils import sanitize_xml, setup_logging
 
@@ -101,7 +100,7 @@ def scrape_board(board: str, label: str, known_links: set) -> list:
             headline = subject or (body[:80] + ("…" if len(body) > 80 else "")) or f"thread {number}"
             timestamp = thread.get("time")
             published = (
-                datetime.datetime.fromtimestamp(int(timestamp), tz=pytz.UTC)
+                datetime.datetime.fromtimestamp(int(timestamp), tz=UTC)
                 if timestamp
                 else None
             )

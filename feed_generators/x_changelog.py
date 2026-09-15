@@ -1,9 +1,10 @@
+from datetime import UTC
+
 """X API changelog source adapter used by the grouped xAI feed."""
 
 import re
 import time
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 from utils import sanitize_xml, setup_logging
@@ -55,8 +56,8 @@ def parse_date(date_str):
     try:
         value = date_parser.parse(date_str)
         if value.tzinfo is None:
-            value = value.replace(tzinfo=pytz.UTC)
-        return value.astimezone(pytz.UTC)
+            value = value.replace(tzinfo=UTC)
+        return value.astimezone(UTC)
     except (ValueError, TypeError, OverflowError):
         return None
 

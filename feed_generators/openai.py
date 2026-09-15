@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """OpenAI feed generator.
 
 Aggregates OpenAI's product/update sources into one **Atom** feed written to
@@ -45,14 +47,12 @@ import hashlib
 import re
 import sys
 
-import pytz
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
 from entry_identity import entry_id_for
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     dedupe_entries,
@@ -145,8 +145,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(date_str)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
         logger.warning(f"Could not parse date '{date_str}': {e}")
         return None
@@ -362,7 +362,7 @@ def scrape_api_changelog(known_links, today=None):
     # Rows are newest-first with no year on the badge. Anchor the first row to
     # the current year (stepping back one year if that lands in the future),
     # then roll the year back whenever the month jumps upward as we descend.
-    today = today or _dt.datetime.now(pytz.UTC)
+    today = today or _dt.datetime.now(UTC)
     year = today.year
     prev_month = None
     for mon_name, day, row in rows:
@@ -374,7 +374,7 @@ def scrape_api_changelog(known_links, today=None):
             elif month > prev_month:
                 year -= 1
             prev_month = month
-            date_obj = _dt.datetime(year, month, day, tzinfo=pytz.UTC)
+            date_obj = _dt.datetime(year, month, day, tzinfo=UTC)
 
             content = row.find("div", class_=re.compile(r"MarkdownContent"))
             text = content.get_text(" ", strip=True) if content else ""

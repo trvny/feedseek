@@ -21,12 +21,10 @@ import argparse
 import json
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
-import pytz
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
-
 from utils import (
     add_entry_media,
     deserialize_entries,
@@ -227,7 +225,7 @@ def main(full=False):
         logger.warning("No tracks extracted — skipping write to avoid an empty feed")
         return False
 
-    now = datetime.now(pytz.UTC)
+    now = datetime.now(UTC)
     new_entries = build_entries(tracks, now)
     if not new_entries:
         logger.warning("No usable entries built — skipping write to avoid an empty feed")

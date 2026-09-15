@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import UTC, datetime
 from urllib.parse import urljoin
 
 import multi_rss
-import pytz
 from bs4 import BeautifulSoup
 from utils import sanitize_xml
 
@@ -35,7 +34,7 @@ def _fetch(url: str) -> str | None:
 
 def _cognition_date(value: str):
     try:
-        return datetime.strptime(value, "%m.%d.%y").replace(tzinfo=pytz.UTC)
+        return datetime.strptime(value, "%m.%d.%y").replace(tzinfo=UTC)
     except ValueError:
         print(f"[Cognition] invalid date {value!r}; skipping")
         return None
@@ -130,7 +129,7 @@ def collect_devin_release_notes(known_links: set[str]) -> list[dict]:
     entries: list[dict] = []
     for label, body in _release_sections(md):
         try:
-            date = datetime.strptime(label, "%B %d, %Y").replace(tzinfo=pytz.UTC)
+            date = datetime.strptime(label, "%B %d, %Y").replace(tzinfo=UTC)
         except ValueError:
             print(f"[Devin Release Notes] invalid date {label!r}; skipping")
             continue

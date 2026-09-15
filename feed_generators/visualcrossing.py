@@ -32,11 +32,9 @@ import os
 import sys
 import time
 import urllib.parse
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
-import pytz
 from feedgen.feed import FeedGenerator
-
 from utils import (
     fetch_page,
     load_cache,
@@ -301,7 +299,7 @@ def build_day_entries(data: dict) -> list[dict]:
                 "link": link,
                 "description": description_html,
                 "date": local_date,
-                "updated": datetime.now(pytz.UTC),
+                "updated": datetime.now(UTC),
                 "kind": "day",
                 "summary_hash": hashlib.sha1(
                     (title + description_html).encode("utf-8"), usedforsecurity=False
@@ -342,7 +340,7 @@ def build_alert_entries(data: dict) -> list[dict]:
                 "link": alert.get("link") or "https://www.visualcrossing.com/",
                 "description": description_html,
                 "date": when,
-                "updated": datetime.now(pytz.UTC),
+                "updated": datetime.now(UTC),
                 "kind": "alert",
                 "summary_hash": hashlib.sha256((event + description_html).encode("utf-8")).hexdigest(),
             }

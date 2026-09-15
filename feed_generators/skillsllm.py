@@ -83,10 +83,10 @@ import argparse
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 
 import feedparser
-import pytz
+from _skillsllm_aihubmix import AIHUBMIX_DOC_SOURCES, collect_aihubmix_blog
 from bs4 import BeautifulSoup
 from cognition import (
     COGNITION_BLOG_URL,
@@ -100,7 +100,6 @@ from dateutil import parser as date_parser
 from enrich import enrich_entries
 from feedgen.feed import FeedGenerator
 from multi_rss import apply_per_source_cap, get_html
-from _skillsllm_aihubmix import AIHUBMIX_DOC_SOURCES, collect_aihubmix_blog
 from utils import (
     add_entry_media,
     dedupe_entries,
@@ -410,8 +409,8 @@ def parse_date(value):
     try:
         dt = date_parser.parse(value)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError):
         return None
 
@@ -450,7 +449,7 @@ def discover_urls(source):
         found.append((loc, date_obj))
 
     found.sort(
-        key=lambda t: (t[1] or datetime.min.replace(tzinfo=pytz.UTC)), reverse=True
+        key=lambda t: (t[1] or datetime.min.replace(tzinfo=UTC)), reverse=True
     )
     logger.info(f"[{source['label']}] discovered {len(found)} article URLs in sitemap")
     return found[: source["max_candidates"]]
@@ -666,7 +665,7 @@ def parse_mcpso_feed(html, known_links=None, now=None):
     """Parse the user-submitted MCP.so feed listing."""
     soup = BeautifulSoup(html, "html.parser")
     known_links = known_links or set()
-    now = now or datetime.now(pytz.UTC)
+    now = now or datetime.now(UTC)
     entries = []
     seen = set()
     for card in soup.find_all("a", href=True):
@@ -698,7 +697,7 @@ def parse_mcpso_blog(html, known_links=None, now=None):
     """Parse MCP.so editorial blog cards."""
     soup = BeautifulSoup(html, "html.parser")
     known_links = known_links or set()
-    now = now or datetime.now(pytz.UTC)
+    now = now or datetime.now(UTC)
     entries = []
     seen = set()
     for card in soup.find_all("a", href=True):
@@ -751,7 +750,7 @@ def _native_entry_date(entry):
     for key in ("published_parsed", "updated_parsed"):
         struct = entry.get(key)
         if struct:
-            return datetime(*struct[:6], tzinfo=pytz.UTC)
+            return datetime(*struct[:6], tzinfo=UTC)
     return None
 
 

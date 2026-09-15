@@ -28,11 +28,9 @@ import os
 import sys
 import time
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
-import pytz
 from feedgen.feed import FeedGenerator
-
 from utils import (
     fetch_page,
     load_cache,
@@ -179,7 +177,7 @@ def aggregate_daily(data: dict) -> list[dict]:
                 "link": link,
                 "description": description_html,
                 "date": local_date,  # day midnight, used for ordering + published
-                "updated": datetime.now(pytz.UTC),
+                "updated": datetime.now(UTC),
                 "summary_hash": hashlib.sha1(
                     (title + description_html).encode("utf-8")
                 ).hexdigest(),

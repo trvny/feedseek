@@ -31,14 +31,12 @@ import argparse
 import json
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 from enrich import enrich_entries
 from feedgen.feed import FeedGenerator
-
 from utils import (
     add_entry_media,
     deserialize_entries,
@@ -153,8 +151,8 @@ def parse_date(raw):
     try:
         dt = date_parser.parse(raw)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, OverflowError, TypeError):
         return None
 
@@ -238,7 +236,7 @@ def collect_entries():
 
     # Assign first-seen timestamps to anything still undated, preserving the
     # order in which items were collected (newest sections/positions first).
-    now = datetime.now(pytz.UTC)
+    now = datetime.now(UTC)
     for offset, entry in enumerate(by_link.values()):
         if entry.get("date") is None:
             entry["date"] = now - timedelta(seconds=offset)

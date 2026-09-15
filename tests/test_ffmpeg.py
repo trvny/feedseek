@@ -1,9 +1,7 @@
 import sys
 import unittest
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-
-import pytz
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -16,11 +14,11 @@ class FFmpegTests(unittest.TestCase):
             ffmpeg.news_title_date(
                 "June 24th, 2026, Ampere Server Donation"
             ),
-            datetime(2026, 6, 24, tzinfo=pytz.UTC),
+            datetime(2026, 6, 24, tzinfo=UTC),
         )
         self.assertEqual(
             ffmpeg.news_title_date("October 28, 2013, FFmpeg 2.1"),
-            datetime(2013, 10, 28, tzinfo=pytz.UTC),
+            datetime(2013, 10, 28, tzinfo=UTC),
         )
 
     def test_news_title_date_rejects_unexpected_titles(self):
@@ -30,20 +28,20 @@ class FFmpegTests(unittest.TestCase):
         entry = {
             "title": "August 22nd, 2015, FFmpeg 2.8",
             "source": "FFmpeg News",
-            "date": datetime(2026, 7, 30, tzinfo=pytz.UTC),
+            "date": datetime(2026, 7, 30, tzinfo=UTC),
         }
 
         repaired = ffmpeg.repair_news_date(entry)
 
         self.assertEqual(
-            repaired["date"], datetime(2015, 8, 22, tzinfo=pytz.UTC)
+            repaired["date"], datetime(2015, 8, 22, tzinfo=UTC)
         )
         self.assertEqual(
-            entry["date"], datetime(2026, 7, 30, tzinfo=pytz.UTC)
+            entry["date"], datetime(2026, 7, 30, tzinfo=UTC)
         )
 
     def test_cache_repair_leaves_code_dates_untouched(self):
-        date = datetime(2026, 7, 30, tzinfo=pytz.UTC)
+        date = datetime(2026, 7, 30, tzinfo=UTC)
         entry = {
             "title": "June 24th, 2015, commit title",
             "source": "FFmpeg Code",

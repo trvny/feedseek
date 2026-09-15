@@ -1,17 +1,14 @@
 import sys
 import unittest
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import patch
-
-import pytz
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 import daily_digest  # noqa: E402
 
-
-FIXED_NOW = datetime(2026, 7, 30, 12, 0, tzinfo=pytz.UTC)
+FIXED_NOW = datetime(2026, 7, 30, 12, 0, tzinfo=UTC)
 
 
 class DailyDigestViewBitsTests(unittest.TestCase):
