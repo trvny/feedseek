@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 import unittest
 from pathlib import Path
@@ -22,15 +23,23 @@ class MakefileCacheTests(unittest.TestCase):
             makefile.split(".PHONY: feeds\n", 1)[1].split(".PHONY: feeds-full", 1)[0],
             makefile.split(".PHONY: feed\n", 1)[1].split(".PHONY: feed-full", 1)[0],
             makefile.split("feeds_%:", 1)[1].split("FULL_FEEDS :=", 1)[0],
-            makefile.split(".PHONY: feeds_beatport", 1)[1].split(".PHONY: feeds_windows11_release_notes", 1)[0],
-            makefile.split(".PHONY: feeds_windows11_release_notes", 1)[1].split(".PHONY: feeds_commoninja", 1)[0],
+            makefile.split(".PHONY: feeds_beatport", 1)[1].split(
+                ".PHONY: feeds_windows11_release_notes", 1
+            )[0],
+            makefile.split(".PHONY: feeds_windows11_release_notes", 1)[1].split(
+                ".PHONY: feeds_commoninja", 1
+            )[0],
         )
         for section in sections:
             self.assertIn("$(RESTORE_CACHE)", section)
 
     def test_multiple_incremental_goals_each_get_a_restore(self):
+        make = shutil.which("make")
+        if make is None:
+            self.fail("make is required for this test")
+
         result = subprocess.run(
-            ["make", "-n", "feeds_trojka", "feeds_czworka"],
+            [make, "-n", "feeds_trojka", "feeds_czworka"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -43,7 +52,9 @@ class MakefileCacheTests(unittest.TestCase):
         makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
         self.assertNotIn("feeds-full: cache-restore", makefile)
         self.assertNotIn("feed-full: cache-restore", makefile)
-        commoninja = makefile.split(".PHONY: feeds_commoninja", 1)[1].split(".PHONY: validate", 1)[0]
+        commoninja = makefile.split(".PHONY: feeds_commoninja", 1)[1].split(
+            ".PHONY: validate", 1
+        )[0]
         self.assertIn("feed_generators/commoninja.py --full", commoninja)
         self.assertNotIn("RESTORE_CACHE", commoninja)
         self.assertNotIn("tools/backup_r2_cache.py", commoninja)
