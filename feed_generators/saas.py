@@ -56,14 +56,13 @@ import re
 import sys
 from datetime import datetime, timezone
 
-from bs4 import BeautifulSoup
-from feedgen.feed import FeedGenerator
-
 import bitly
 import commoninja
 import hcp
 import multi_rss
+from bs4 import BeautifulSoup
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     allocate_fair_share,
@@ -1008,7 +1007,7 @@ def main(full: bool = False) -> bool:
                 "Retired cache rows removed, but no active entries are available; "
                 "preserving the last good feed"
             )
-            save_cache(FEED_NAME, [])
+            save_cache(FEED_NAME, [], extra={"intentional_empty": True})
             return True
         logger.error("No entries from any source; preserving the last good feed")
         return False

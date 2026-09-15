@@ -80,13 +80,21 @@ def required_cache_files(registry_path: Path = ROOT / "feeds.yaml") -> set[str]:
     return required
 
 
+def _is_intentionally_empty_cache(path: Path) -> bool:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return False
+    return isinstance(data, dict) and data.get("entries") == [] and data.get("intentional_empty") is True
+
+
 def _validate_cache_files(cache_dir: Path, required: set[str]) -> set[str]:
     actual = {path.name for path in cache_dir.glob("*_posts.json")}
     missing = sorted(required - actual)
     if missing:
         raise ValueError("missing required cache file(s): " + ", ".join(missing))
 
-    invalid = sorted(name for name in actual if not _cache_state(cache_dir / name)[0])
+    invalid = sorted(name for name in actual if not (_cache_state(cache_dir / name)[0] or _is_intentionally_empty_cache(cache_dir / name)))
     if invalid:
         raise ValueError("invalid cache JSON file(s): " + ", ".join(invalid))
     return actual

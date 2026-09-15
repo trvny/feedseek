@@ -26,6 +26,21 @@ class BackupR2CacheTests(unittest.TestCase):
             self.assertIn("cache/.snapshot-manifest.json", names)
             self.assertNotIn("cache/.r2-restored", names)
 
+    def test_intentionally_empty_cache_is_valid_durable_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cache = root / "cache"
+            cache.mkdir()
+            (cache / "saas_posts.json").write_text(
+                '{"entries": [], "intentional_empty": true}', encoding="utf-8"
+            )
+            archive = root / "cache.tar.gz"
+            backup_r2_cache.create_cache_archive(
+                cache, archive, {"saas_posts.json"}, max_bytes=1024 * 1024
+            )
+            with tarfile.open(archive, "r:gz") as bundle:
+                self.assertIn("cache/saas_posts.json", bundle.getnames())
+
     def test_size_limit_fails_before_upload(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

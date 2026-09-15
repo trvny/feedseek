@@ -67,7 +67,7 @@ class CodeRabbitSaasTests(unittest.TestCase):
             patch.object(saas, "save_atom_feed") as save_atom_feed,
         ):
             self.assertTrue(saas.main())
-        save_cache.assert_called_once_with(saas.FEED_NAME, [])
+        save_cache.assert_called_once_with(saas.FEED_NAME, [], extra={"intentional_empty": True})
         generate_atom_feed.assert_not_called()
         save_atom_feed.assert_not_called()
 
