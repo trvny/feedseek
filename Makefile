@@ -7,6 +7,15 @@
 PY := uv run --locked
 RUN_FEED := $(PY) feed_generators/run_all_feeds.py --feed
 
+# Incremental generation shares one cache tree and a one-shot restore marker.
+# Keep Make-level execution serialized; run_all_feeds.py owns safe parallelism.
+.NOTPARALLEL:
+
+define RESTORE_CACHE
+@if [ ! -x feeds-proxy/node_modules/.bin/wrangler ] && [ ! -f feeds-proxy/node_modules/.bin/wrangler.cmd ]; then npm --prefix feeds-proxy ci; fi
+$(PY) tools/restore_r2_cache.py
+endef
+
 .DEFAULT_GOAL := help
 
 .PHONY: help
@@ -27,11 +36,11 @@ lock: ## Refresh uv.lock after editing pyproject.toml
 
 .PHONY: cache-restore
 cache-restore: ## Restore the durable generation cache from R2
-	@if [ ! -x feeds-proxy/node_modules/.bin/wrangler ] && [ ! -f feeds-proxy/node_modules/.bin/wrangler.cmd ]; then npm --prefix feeds-proxy ci; fi
-	$(PY) tools/restore_r2_cache.py
+	$(RESTORE_CACHE)
 
 .PHONY: feeds
-feeds: cache-restore ## Generate all feeds (incremental)
+feeds: ## Generate all feeds (incremental)
+	$(RESTORE_CACHE)
 	$(PY) feed_generators/run_all_feeds.py
 
 .PHONY: feeds-full
@@ -39,8 +48,9 @@ feeds-full: ## Regenerate all feeds from scratch (ignore cache)
 	$(PY) feed_generators/run_all_feeds.py --full
 
 .PHONY: feed
-feed: cache-restore ## Generate one feed: make feed NAME=<feeds.yaml name>
+feed: ## Generate one feed: make feed NAME=<feeds.yaml name>
 	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
+	$(RESTORE_CACHE)
 	$(RUN_FEED) "$(NAME)"
 
 .PHONY: feed-full
@@ -53,7 +63,8 @@ feed-full: ## Regenerate one feed from scratch: make feed-full NAME=<feeds.yaml 
 .PHONY: FORCE
 FORCE:
 
-feeds_%: cache-restore FORCE
+feeds_%: FORCE
+	$(RESTORE_CACHE)
 	$(RUN_FEED) "$*"
 
 FULL_FEEDS := trojka czworka nexusmods_news jbzd foobar2000
@@ -63,11 +74,13 @@ $(FULL_TARGETS): feeds_%_full:
 	$(RUN_FEED) "$*" --full
 
 .PHONY: feeds_beatport
-feeds_beatport: cache-restore ## Compatibility alias for the Beatport Top 100 feed
+feeds_beatport: ## Compatibility alias for the Beatport Top 100 feed
+	$(RESTORE_CACHE)
 	$(RUN_FEED) beatport_top100
 
 .PHONY: feeds_windows11_release_notes
-feeds_windows11_release_notes: cache-restore ## Compatibility alias for Microsoft/Windows updates
+feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows updates
+	$(RESTORE_CACHE)
 	$(RUN_FEED) microsoft_updates
 
 # Common Ninja is also consumed by the consolidated SaaS generator. This
