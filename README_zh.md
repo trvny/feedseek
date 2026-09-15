@@ -53,19 +53,19 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 ## 📰 小新闻
 
 <!--README_FEED:START-->
-- [RUSI Reflects: The Mecca Agreement: From US Primacy to Regional Agency](https://www.rusi.org/news-and-comment/rusi-reflects/rusi-reflects-mecca-agreement-us-primacy-regional-agency)
-- [W Płokach znów tłumy pielgrzymów. Wieczorem niebo rozświetlą fajerwerki \(WIDEO,ZDJĘCIA\) - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMixAFBVV95cUxQaC1GaFhPX2pHZFJfamMxZzF2YmhfQm80Skc0dXpKUjhacjhsVG1zTVJIVlVsZTBCeURHbHVpb1hxcFZQUnp5UFVsRjkzWUNrUnZad19lR25McVM3aUFOejdxR3FyYVhUaFlFZXJBdjFvUXhkQ3RXZVJNVEZabFhNMm1xbE04QnpfeHhVa29ibGFOeS1vaFRTc0hDV2MyM2tYTHFDcDRkbEFOZVAzVy1paHU4OW8tRmJOd0ZJV3lPSHgtMXRt?oc=5)
-- [Dokąd trafia drewno z lokalnych lasów? Znamy największego odbiorcę - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiywFBVV95cUxONzNnUVJJRFJGLUVFWDZZejZTRzM0LV9faTRmSm5sV3hqQWM0OFExRjZwMXk0VW9LUlVreUVjMTFmUTdGQmdKUWNIdDVXTDA2WE82YjhtY2dSWFMtNGhoU1hYNTQtVV9PdEJONTctTno5bHdjN09JTHpVQWl2b21DQm8yclA0U0lET3R3OUhYeUZnXzhUR0VycW5TR3dWMFBySXFvaGF6Ukprb2xZckd4OE1NOE5oRnBGNXg4dXAtZVJaVW8wMzZ1Z2ZfOA?oc=5)
-- [Trump says he is removing U.S. tariffs on Irish whiskey](https://www.reuters.com/world/us/trump-says-he-is-lifting-tariffs-irish-whiskey-2026-09-13/)
-- [Ahead of Fed meeting, Trump says US should have world's lowest interest rate](https://www.reuters.com/business/ahead-fed-meeting-trump-says-us-should-have-worlds-lowest-interest-rate-2026-09-13/)
-- [Trump says he will consider request to release more 9/11 records](https://www.reuters.com/world/us/trump-says-hell-consider-whether-release-more-911-records-2026-09-13/)
+- [What Would Need to Happen to Slow AI Development?](https://carnegieendowment.org/emissary/2026/09/ai-development-slow-pace-what-happens)
+- [Iran war cost hits $38 billion, forecast to rise $3 billion a month, CBO says](https://www.reuters.com/world/middle-east/iran-war-cost-hits-38-billion-forecast-rise-3-billion-month-cbo-says-2026-09-15/)
+- [Libya NOC chief says production not greatly affected after protests hit oil facilities](https://www.reuters.com/business/energy/libyas-noc-says-it-may-declare-force-majeure-after-protests-hit-oil-facilities-2026-09-15/)
+- [Kennedy Center board votes to close for renovations after judge blocks Trump's name from facade](https://www.reuters.com/world/us/kennedy-center-board-vote-venues-future-says-trump-name-critical-survival-2026-09-15/)
+- [Prosecutors rule out death penalty for son of slain filmmaker Rob Reiner](https://www.reuters.com/legal/litigation/prosecutors-will-not-seek-death-penalty-nick-reiner-2026-09-15/)
+- [US agency orders Tesla to answer questions on Cybercab certification](https://www.reuters.com/business/autos-transportation/us-agency-orders-tesla-answer-questions-cybercab-certification-2026-09-15/)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝When you don't know what you believe, everything becomes an argument. Everything is debatable. But when you stand for something, decisions are obvious. — Anonymous❞</i>
+<i>❝“The problem of viruses is temporary and will be solved in two years.”— John McAfee, 1988❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
