@@ -103,30 +103,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          set -euo pipefail
-          archive="$RUNNER_TEMP/feedseek-cache.tar.gz"
-          uv run --locked tools/restore_r2_cache.py --write-manifest
-          cache_bytes="$(find cache -type f -printf '%s\n' | awk '{total += $1} END {print total + 0}')"
-          if [ "$cache_bytes" -gt "$FEEDSEEK_CACHE_MAX_BYTES" ]; then
-            echo "::error::Feedseek cache is $cache_bytes bytes; refusing to publish without a durable R2 snapshot (limit: $FEEDSEEK_CACHE_MAX_BYTES)."
-            exit 1
-          fi
-
-          tar \
-            --sort=name \
-            --mtime='UTC 1970-01-01' \
-            --owner=0 \
-            --group=0 \
-            --numeric-owner \
-            --exclude='cache/.r2-restored' \
-            -czf "$archive" \
-            -C . cache
-          feeds-proxy/node_modules/.bin/wrangler r2 object put \
-            "$FEEDSEEK_CACHE_BUCKET/$FEEDSEEK_CACHE_KEY" \
-            --file "$archive" \
-            --content-type application/gzip \
-            --remote
+        run: uv run --locked tools/backup_r2_cache.py
 
       - name: Commit and push successful updates
         if: >-

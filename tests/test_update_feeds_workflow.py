@@ -5,12 +5,9 @@ from pathlib import Path
 class UpdateFeedsWorkflowTests(unittest.TestCase):
     @staticmethod
     def workflow() -> str:
-        return (
-            Path(__file__).resolve().parents[1]
-            / ".github"
-            / "workflows"
-            / "update-feeds.yml"
-        ).read_text(encoding="utf-8")
+        return (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "update-feeds.yml").read_text(
+            encoding="utf-8"
+        )
 
     def test_commit_requires_final_validation_and_non_cancelled_job(self):
         workflow = self.workflow()
@@ -47,10 +44,10 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = workflow.split("- name: Commit and push successful updates", 1)[1]
         commit = commit.split("- name: Apply feed health gate", 1)[0]
         self.assertIn("steps.validate.outcome == 'success'", backup)
-        self.assertIn("tools/restore_r2_cache.py --write-manifest", backup)
+        self.assertIn("tools/backup_r2_cache.py", backup)
+        self.assertNotIn("wrangler r2 object put", backup)
         self.assertNotIn("bootstrap", backup.casefold())
         self.assertNotIn("continue-on-error: true", backup)
-        self.assertIn("exit 1", backup)
         self.assertNotIn("git add feeds cache", commit)
         self.assertIn("git add feeds docs/sources.md", commit)
         self.assertIn("steps.backup.outcome == 'success'", commit)

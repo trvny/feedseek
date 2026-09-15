@@ -12,7 +12,6 @@ import tempfile
 from pathlib import Path
 
 import yaml
-
 from restore_cache_archive import _cache_state, restore_cache_archive
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,16 +35,12 @@ def _wrangler_path() -> Path:
     suffix = ".cmd" if os.name == "nt" else ""
     path = ROOT / "feeds-proxy" / "node_modules" / ".bin" / f"wrangler{suffix}"
     if not path.exists():
-        raise FileNotFoundError(
-            "locked Wrangler is not installed; run `npm --prefix feeds-proxy ci` first"
-        )
+        raise FileNotFoundError("locked Wrangler is not installed; run `npm --prefix feeds-proxy ci` first")
     return path
 
 
 def _fetch_archive(bucket: str, key: str, archive: Path) -> bool:
-    if not os.environ.get("CLOUDFLARE_API_TOKEN") or not os.environ.get(
-        "CLOUDFLARE_ACCOUNT_ID"
-    ):
+    if not os.environ.get("CLOUDFLARE_API_TOKEN") or not os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
         raise RuntimeError("Cloudflare credentials are required for R2 cache restore")
 
     result = subprocess.run(
@@ -91,9 +86,7 @@ def _validate_cache_files(cache_dir: Path, required: set[str]) -> set[str]:
     if missing:
         raise ValueError("missing required cache file(s): " + ", ".join(missing))
 
-    invalid = sorted(
-        name for name in actual if not _cache_state(cache_dir / name)[0]
-    )
+    invalid = sorted(name for name in actual if not _cache_state(cache_dir / name)[0])
     if invalid:
         raise ValueError("invalid cache JSON file(s): " + ", ".join(invalid))
     return actual
@@ -127,8 +120,16 @@ def validate_cache_snapshot(cache_dir: Path, required: set[str]) -> None:
 
 
 def write_cache_manifest(cache_dir: Path, required: set[str]) -> Path:
-    """Record the complete validated cache set for the next restore."""
-    files = sorted(_validate_cache_files(cache_dir, required))
+    """Record the complete validated cache set for the next restore.
+
+    An existing manifest is the durable definition of already-established state.
+    Newly configured feeds become established only after they actually produce a
+    valid cache file. Legacy manifestless snapshots remain strict against the
+    current registry during the one-time migration.
+    """
+    established = _read_snapshot_manifest(cache_dir)
+    required_now = required if established is None else established
+    files = sorted(_validate_cache_files(cache_dir, required_now))
     path = cache_dir / SNAPSHOT_MANIFEST
     temporary = path.with_suffix(path.suffix + ".tmp")
     payload = json.dumps({"version": 1, "files": files}, indent=2) + "\n"

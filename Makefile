@@ -75,6 +75,7 @@ feeds_windows11_release_notes: cache-restore ## Compatibility alias for Microsof
 .PHONY: feeds_commoninja
 feeds_commoninja: cache-restore ## Generate only the standalone Common Ninja blog feed
 	$(PY) feed_generators/commoninja.py
+	$(PY) tools/backup_r2_cache.py
 
 .PHONY: validate
 validate: ## Validate all generated feeds
