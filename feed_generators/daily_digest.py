@@ -42,14 +42,12 @@ import os
 import random
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from urllib.parse import quote, urljoin
 
-import pytz
 from dateutil import parser as date_parser
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     deserialize_entries,
@@ -225,7 +223,7 @@ def _clean(text):
 
 
 def _today_utc():
-    return datetime.now(pytz.UTC)
+    return datetime.now(UTC)
 
 
 def _day_midnight(date_str=None):
@@ -238,7 +236,7 @@ def _day_midnight(date_str=None):
             d = _today_utc()
     else:
         d = _today_utc()
-    return d.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=pytz.UTC)
+    return d.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=UTC)
 
 
 # --- Per-source adapters. Each returns a list of normalized entry dicts:
@@ -309,9 +307,9 @@ def adapt_headlines(data):
             try:
                 date_obj = date_parser.parse(pub) if pub else None
                 if date_obj and date_obj.tzinfo is None:
-                    date_obj = date_obj.replace(tzinfo=pytz.UTC)
+                    date_obj = date_obj.replace(tzinfo=UTC)
                 if date_obj:
-                    date_obj = date_obj.astimezone(pytz.UTC)
+                    date_obj = date_obj.astimezone(UTC)
             except (ValueError, TypeError, OverflowError):
                 date_obj = None
             entries.append({

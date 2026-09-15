@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """GitLab and federated forge feed.
 
 Five native feeds are the primary content:
@@ -19,10 +21,8 @@ import argparse
 import sys
 from urllib.parse import urljoin
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-
 from multi_rss import get_html, run
 from utils import sanitize_xml, setup_logging, stable_fallback_date
 
@@ -48,8 +48,8 @@ def _parse_date(text):
     try:
         dt = date_parser.parse(text)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError):
         return None
 

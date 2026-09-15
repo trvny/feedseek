@@ -8,17 +8,17 @@ import json
 import re
 import sys
 from datetime import datetime
-
-import pytz
-from feedgen.feed import FeedGenerator
+from zoneinfo import ZoneInfo
 
 from enrich import enrich_entries
 from entry_identity import entry_id_for
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     deserialize_entries,
     fetch_page,
     load_cache,
+    localize_wall_time,
     merge_entries,
     sanitize_xml,
     save_atom_feed,
@@ -52,7 +52,7 @@ def _parse_date(value: str | None, fallback_id: str) -> datetime:
     try:
         parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
         if parsed.tzinfo is None:
-            parsed = pytz.timezone("Europe/Warsaw").localize(parsed)
+            parsed = localize_wall_time(parsed, ZoneInfo("Europe/Warsaw"))
         return parsed
     except (ValueError, TypeError):
         logger.warning("Unable to parse date %r; using fallback", value)

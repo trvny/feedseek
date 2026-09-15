@@ -27,22 +27,22 @@ import argparse
 import re
 import time
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
-import pytz
 from bs4 import BeautifulSoup
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
-    setup_feed_extensions,
     deserialize_entries,
     fetch_page,
     load_cache,
+    localize_wall_time,
     merge_entries,
     sanitize_xml,
-    save_cache,
     save_atom_feed,
+    save_cache,
+    setup_feed_extensions,
     setup_feed_links,
     setup_logging,
     sort_posts_for_feed,
@@ -60,7 +60,7 @@ HOMEPAGE_URLS = (
     "https://www.polskieradio.pl/10",
     "https://www.polskieradio.pl/10,Czworka",
 )
-WARSAW = pytz.timezone("Europe/Warsaw")
+WARSAW = ZoneInfo("Europe/Warsaw")
 
 # Czwórka is portal id 10; article links look like /10/{sub}/Artykul/{id}[,slug].
 _CZWORKA_LINK_RE = re.compile(r"^/10/\d+/Artykul/\d+", re.I)
@@ -99,7 +99,7 @@ def _parse_article_date(soup: BeautifulSoup, fallback_id: str) -> datetime:
         if m:
             day, month, year, hh, mm = (int(g) for g in m.groups())
             try:
-                return WARSAW.localize(datetime(year, month, day, hh, mm))
+                return localize_wall_time(datetime(year, month, day, hh, mm), WARSAW)
             except ValueError:
                 break
     at = main.find("div", class_="article-time")
@@ -108,7 +108,7 @@ def _parse_article_date(soup: BeautifulSoup, fallback_id: str) -> datetime:
         if m:
             day, month, year, hh, mm = (int(g) for g in m.groups())
             try:
-                return WARSAW.localize(datetime(year, month, day, hh, mm))
+                return localize_wall_time(datetime(year, month, day, hh, mm), WARSAW)
             except ValueError:
                 pass
     return stable_fallback_date(fallback_id)

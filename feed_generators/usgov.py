@@ -29,10 +29,9 @@ Proxied:
 import argparse
 import re
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 from urllib.parse import urljoin
 
-import pytz
 from bs4 import BeautifulSoup
 from multi_rss import get_html, parse_date, run
 from utils import sanitize_xml
@@ -133,7 +132,7 @@ def _date_from_path(href, *, with_day):
         return None
     day = int(m.group(3)) if (with_day and m.group(3)) else 1
     try:
-        return datetime(int(m.group(1)), int(m.group(2)), day, tzinfo=pytz.UTC)
+        return datetime(int(m.group(1)), int(m.group(2)), day, tzinfo=UTC)
     except ValueError:
         return None
 
@@ -228,7 +227,7 @@ def scrape_gsa_news(known_links):
                         int(m.group(3)),
                         int(m.group(1)),
                         int(m.group(2)),
-                        tzinfo=pytz.UTC,
+                        tzinfo=UTC,
                     )
                 except ValueError:
                     pass

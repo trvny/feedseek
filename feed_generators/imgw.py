@@ -37,14 +37,14 @@ import json
 import os
 import sys
 import time
-from datetime import datetime
+from datetime import UTC, datetime
+from zoneinfo import ZoneInfo
 
-import pytz
 from feedgen.feed import FeedGenerator
-
 from utils import (
     fetch_page,
     load_cache,
+    localize_wall_time,
     sanitize_xml,
     save_atom_feed,
     save_cache,
@@ -69,7 +69,7 @@ WOJEWODZTWA = [
     s.strip().lower() for s in os.getenv("IMGW_WOJEWODZTWA", "małopolskie,śląskie").split(",") if s.strip()
 ]
 
-PL_TZ = pytz.timezone("Europe/Warsaw")
+PL_TZ = ZoneInfo("Europe/Warsaw")
 
 # Roughly: ~5 observation entries/day + occasional warnings -> a few weeks.
 MAX_ENTRIES = 150
@@ -93,7 +93,7 @@ def parse_pl_datetime(value: str | None) -> datetime | None:
     if not value:
         return None
     try:
-        return PL_TZ.localize(datetime.strptime(value, "%Y-%m-%d %H:%M:%S"))
+        return localize_wall_time(datetime.strptime(value, "%Y-%m-%d %H:%M:%S"), PL_TZ)
     except ValueError:
         return None
 
@@ -130,14 +130,14 @@ def synop_entries() -> list[dict]:
         "cisnienie": data.get("cisnienie"),
     }
 
-    day_dt = PL_TZ.localize(datetime.strptime(date_str, "%Y-%m-%d"))
+    day_dt = localize_wall_time(datetime.strptime(date_str, "%Y-%m-%d"), PL_TZ)
     entry = {
         "guid": f"urn:imgw:synop:{SYNOP_ID}:{date_str}",
         "kind": "synop",
         "station": station,
         "link": f"{BASE_URL}/api/data/synop/id/{SYNOP_ID}",
         "date": day_dt,
-        "updated": datetime.now(pytz.UTC),
+        "updated": datetime.now(UTC),
         "readings": {hour: reading},
     }
     render_synop(entry)
@@ -231,8 +231,8 @@ def hydro_entries() -> list[dict]:
                     "title": title,
                     "link": f"{BASE_URL}/api/data/hydro",
                     "description": description,
-                    "date": PL_TZ.localize(datetime.strptime(date_str, "%Y-%m-%d")),
-                    "updated": datetime.now(pytz.UTC),
+                    "date": localize_wall_time(datetime.strptime(date_str, "%Y-%m-%d"), PL_TZ),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )
@@ -311,8 +311,8 @@ def meteo_entries() -> list[dict]:
                     "title": title,
                     "link": f"{BASE_URL}/api/data/meteo",
                     "description": description,
-                    "date": PL_TZ.localize(datetime.strptime(date_str, "%Y-%m-%d")),
-                    "updated": datetime.now(pytz.UTC),
+                    "date": localize_wall_time(datetime.strptime(date_str, "%Y-%m-%d"), PL_TZ),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )
@@ -340,7 +340,7 @@ def warning_meteo_entries() -> list[dict]:
             teryt = w.get("teryt") or []
             if not any(code.startswith(TERYT_PREFIXES) for code in teryt):
                 continue
-            published = parse_pl_datetime(w.get("opublikowano")) or datetime.now(pytz.UTC)
+            published = parse_pl_datetime(w.get("opublikowano")) or datetime.now(UTC)
             level = LEVEL_LABEL.get(str(w.get("stopien")), f"stopień {w.get('stopien')}")
             title = sanitize_xml(f"⚠️ Ostrzeżenie meteo {level}: {w.get('nazwa_zdarzenia', 'b.d.')}")
             lines = [
@@ -362,7 +362,7 @@ def warning_meteo_entries() -> list[dict]:
                     "link": f"{BASE_URL}/api/data/warningsmeteo",
                     "description": description,
                     "date": published,
-                    "updated": datetime.now(pytz.UTC),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )
@@ -384,7 +384,7 @@ def warning_hydro_entries() -> list[dict]:
             wojs = {(o.get("wojewodztwo") or "").lower() for o in obszary}
             if not wojs.intersection(WOJEWODZTWA):
                 continue
-            published = parse_pl_datetime(w.get("opublikowano")) or datetime.now(pytz.UTC)
+            published = parse_pl_datetime(w.get("opublikowano")) or datetime.now(UTC)
             zdarzenie = w.get("zdarzenie", "b.d.")
             opis = "; ".join(o.get("opis", "") for o in obszary if o.get("opis"))
             title = sanitize_xml(f"💧 Ostrzeżenie hydro: {zdarzenie} ({', '.join(sorted(wojs))})")
@@ -408,7 +408,7 @@ def warning_hydro_entries() -> list[dict]:
                     "link": f"{BASE_URL}/api/data/warningshydro",
                     "description": description,
                     "date": published,
-                    "updated": datetime.now(pytz.UTC),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )

@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """OLX Group feed generator.
 
 Aggregates the native RSS feeds published across the OLX Group's Polish
@@ -24,12 +26,10 @@ import argparse
 import sys
 import time
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     deserialize_entries,
@@ -93,8 +93,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(date_str)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
         logger.warning(f"Could not parse date '{date_str}': {e}")
         return None

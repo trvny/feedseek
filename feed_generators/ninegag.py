@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """9GAG feed: scraped Atom feed of the 9GAG Hot page.
 
 9GAG has no native feed; the Hot page ships its post list in a
@@ -13,8 +15,6 @@ import datetime
 import json
 import re
 import sys
-
-import pytz
 
 from multi_rss import get_html, run
 from utils import sanitize_xml, setup_logging
@@ -58,7 +58,7 @@ def scrape_hot(known_links):
                 title = f"[NSFW] {title}"
             ts = post.get("creationTs")
             date_obj = (
-                datetime.datetime.fromtimestamp(int(ts), tz=pytz.UTC) if ts else None
+                datetime.datetime.fromtimestamp(int(ts), tz=UTC) if ts else None
             )
             img = (post.get("images") or {}).get("image700") or {}
             img_src = img.get("url")

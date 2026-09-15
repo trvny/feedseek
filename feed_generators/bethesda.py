@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """Bethesda News feed: combined Atom from Bethesda.net news pages.
 
 Sources (none have native RSS):
@@ -31,10 +33,8 @@ import re
 import sys
 from urllib.parse import urljoin
 
-import pytz
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-
 from multi_rss import get_html, logger, run
 from utils import sanitize_xml
 
@@ -73,10 +73,10 @@ def parse_bethesda_date(s):
     if m:
         day, month, year = m.group(1), m.group(2).lower(), m.group(3)
         if month in PL_MONTHS:
-            return datetime.datetime(int(year), PL_MONTHS[month], int(day), tzinfo=pytz.UTC)
+            return datetime.datetime(int(year), PL_MONTHS[month], int(day), tzinfo=UTC)
     try:
         dt = date_parser.parse(s)
-        return dt.replace(tzinfo=pytz.UTC) if dt.tzinfo is None else dt.astimezone(pytz.UTC)
+        return dt.replace(tzinfo=UTC) if dt.tzinfo is None else dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError):
         logger.warning(f"  could not parse date {s!r}")
         return None

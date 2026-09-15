@@ -17,21 +17,19 @@ merge, while ``--full`` walks several pages to backfill the archive.
 
 import argparse
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 
-import pytz
 from bs4 import BeautifulSoup
-from feedgen.feed import FeedGenerator
-
 from enrich import enrich_entries
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     deserialize_entries,
     load_cache,
     merge_entries,
     sanitize_xml,
-    save_cache,
     save_atom_feed,
+    save_cache,
     setup_feed_extensions,
     setup_feed_links,
     setup_logging,
@@ -104,7 +102,7 @@ def parse_date(card) -> datetime | None:
     for text in candidates:
         for fmt in DATE_FORMATS:
             try:
-                return datetime.strptime(text, fmt).replace(tzinfo=pytz.UTC)
+                return datetime.strptime(text, fmt).replace(tzinfo=UTC)
             except ValueError:
                 continue
     return None

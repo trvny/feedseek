@@ -35,14 +35,14 @@ import json
 import os
 import sys
 import time
-from datetime import date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
-import pytz
 from feedgen.feed import FeedGenerator
-
 from utils import (
     fetch_page,
     load_cache,
+    localize_wall_time,
     sanitize_xml,
     save_atom_feed,
     save_cache,
@@ -61,7 +61,7 @@ LON = os.getenv("OPEN_METEO_LON", "19.41654").strip()
 PLACE = os.getenv("OPEN_METEO_PLACE", "Kościelec (Chrzanów)").strip()
 FORECAST_DAYS = int(os.getenv("OPEN_METEO_DAYS", "7"))
 
-PL_TZ = pytz.timezone("Europe/Warsaw")
+PL_TZ = ZoneInfo("Europe/Warsaw")
 LOC_SLUG = f"{LAT},{LON}"
 SATELLITE_DOCS_URL = "https://open-meteo.com/en/docs/satellite-radiation-api"
 
@@ -167,7 +167,7 @@ def _t(value) -> str:
 
 
 def _day_dt(date_str: str) -> datetime:
-    return PL_TZ.localize(datetime.strptime(date_str, "%Y-%m-%d"))
+    return localize_wall_time(datetime.strptime(date_str, "%Y-%m-%d"), PL_TZ)
 
 
 def _col(daily: dict, key: str, i: int):
@@ -229,7 +229,7 @@ def forecast_day_entries(data: dict) -> list[dict]:
                     "link": SITE_URL,
                     "description": description,
                     "date": day_dt,
-                    "updated": datetime.now(pytz.UTC),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )
@@ -310,7 +310,7 @@ def current_conditions_entry(forecast: dict | None, air: dict | None) -> list[di
             "link": SITE_URL,
             "description": description,
             "date": _day_dt(date_str),
-            "updated": datetime.now(pytz.UTC),
+            "updated": datetime.now(UTC),
             "summary_hash": _hash(title, description),
         }
     ]
@@ -388,7 +388,7 @@ def solar_entries() -> list[dict]:
                     "link": SITE_URL,
                     "description": description,
                     "date": day_dt,
-                    "updated": datetime.now(pytz.UTC),
+                    "updated": datetime.now(UTC),
                     "summary_hash": _hash(title, description),
                 }
             )

@@ -1,3 +1,5 @@
+from datetime import UTC
+
 """Bitly feed generator.
 
 Aggregates Bitly's update sources into one **Atom** feed written to
@@ -34,17 +36,13 @@ import re
 import sys
 import time
 
-import pytz
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-from feedgen.feed import FeedGenerator
-
 from entry_identity import entry_id_for, persist_entry_ids
-
+from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
-    setup_feed_extensions,
     dedupe_entries,
     deserialize_entries,
     load_cache,
@@ -52,6 +50,7 @@ from utils import (
     sanitize_xml,
     save_atom_feed,
     save_cache,
+    setup_feed_extensions,
     setup_feed_links,
     setup_logging,
     sort_posts_for_feed,
@@ -121,8 +120,8 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(date_str)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=pytz.UTC)
-        return dt.astimezone(pytz.UTC)
+            dt = dt.replace(tzinfo=UTC)
+        return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
         logger.warning(f"Could not parse date '{date_str}': {e}")
         return None

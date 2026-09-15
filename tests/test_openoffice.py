@@ -1,10 +1,9 @@
 import json
 import sys
 import unittest
+from datetime import UTC
 from pathlib import Path
 from unittest.mock import Mock, patch
-
-import pytz
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -71,7 +70,7 @@ class OpenOfficeFeedTests(unittest.TestCase):
         entry = entries[0]
         self.assertEqual(entry["title"], "Post")
         self.assertEqual(entry["link"], "https://www.onlyoffice.com/blog/2026/08/post")
-        self.assertEqual(entry["date"].tzinfo, pytz.UTC)
+        self.assertEqual(entry["date"].tzinfo, UTC)
         self.assertEqual(entry["source"], "ONLYOFFICE Blog")
         self.assertEqual(
             entry["image"], "https://static-blog.onlyoffice.com/featured.png"

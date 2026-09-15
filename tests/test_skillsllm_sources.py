@@ -1,6 +1,6 @@
 import sys
 import unittest
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import patch
 
@@ -140,7 +140,7 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         </a>
         """
         entries = skillsllm.parse_mcpso_feed(
-            html, now=datetime(2026, 8, 30, 21, 0, tzinfo=skillsllm.pytz.UTC)
+            html, now=datetime(2026, 8, 30, 21, 0, tzinfo=UTC)
         )
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0]["link"], "https://mcp.so/servers/demo")
@@ -157,7 +157,7 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
           <span title="08/30/2026, 08:34 PM">Submitted in 5 hours</span>
         </a>
         """
-        now = datetime(2026, 8, 30, 15, 0, tzinfo=skillsllm.pytz.UTC)
+        now = datetime(2026, 8, 30, 15, 0, tzinfo=UTC)
         entries = skillsllm.parse_mcpso_feed(html, now=now)
         self.assertEqual(entries[0]["date"], now)
 
@@ -181,7 +181,7 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
           <span>Sep 2, 2026</span>
         </a>
         """
-        now = datetime(2026, 8, 30, 15, 0, tzinfo=skillsllm.pytz.UTC)
+        now = datetime(2026, 8, 30, 15, 0, tzinfo=UTC)
         entries = skillsllm.parse_mcpso_blog(html, now=now)
         self.assertEqual(entries[0]["date"], now)
 
