@@ -210,6 +210,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ab2da48e48597556",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-infrastructure-target-tags/",
+      "title": "Cloudflare One, Access - Access for Infrastructure now supports tagged targets and tag-based target criteria",
+      "content_text": "Access for Infrastructure now integrates with Resource Tagging . You can attach key-value tags to infrastructure targets and use them in access policies. You can manage tags on targets inline when you create or edit a target or through the central Resource Tagging API . Cloudflare keeps tags in sync across both methods. Infrastructure applications also support a target criteria model with include , require , and exclude operators. Each operator can match targets by hostname, tag, or both. Includ",
+      "date_published": "2026-09-15T00:00:00Z",
+      "date_modified": "2026-09-15T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/50143ee744c94468",
       "url": "https://www.cloudflarestatus.com/incidents/95c8hvlcvxmj",
       "title": "Increased 5xx errors and latency for Los Angeles (LAX) Sept 14 22:15 - Sept 14 23:10 UTC",
@@ -276,6 +299,52 @@
       "url": "https://developers.cloudflare.com/changelog/post/2026-09-14-guardrails/",
       "title": "Browser Run - Control which hostnames Browser Run sessions can access",
       "content_text": "Browser Run now supports guardrails , which limit a browser session's HTTP and HTTPS requests to permitted hostnames. Use guardrails when you need to: Keep a browser workflow limited to a specific website and its subdomains. Load only known third-party APIs, scripts, images, and fonts. Generate a screenshot or PDF from HTML you provide while preventing it from loading external content. Set guardrails when starting a session with Puppeteer, Playwright, or the REST API. With a browser binding name",
+      "date_published": "2026-09-14T00:00:00Z",
+      "date_modified": "2026-09-14T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/66b56a195c5cebeb",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-14-require-provider-credentials/",
+      "title": "AI Gateway - Prevent Unified Billing fallback for BYOK third-party providers",
+      "content_text": "AI Gateway can now require credentials for third-party provider requests. Credentials must accompany the request or be stored on the gateway. This setting prevents fallback to Unified Billing with Cloudflare-managed credentials. Turn on Require provider credentials in your gateway settings. To use the API, set byok_only to true in the request body of a PUT request to update the gateway : { \"byok_only\" : true } To require provider credentials for one third-party request, set the cf-aig-no-wholesa",
+      "date_published": "2026-09-14T00:00:00Z",
+      "date_modified": "2026-09-14T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/061b4a66d2210f50",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-14-shadowed-record-warnings/",
+      "title": "DNS - Shadowed record warnings are now available for all zones",
+      "content_text": "Cloudflare now displays warnings for shadowed records in all zones. A record is shadowed when a subdomain delegation gives authority for its name, or a name below it, to another set of nameservers. The record remains present, but your zone is not authoritative for it thus Cloudflare will not respond with it to matching DNS queries. These warnings help you find records that may no longer resolve from the expected zone. Shadow metadata is also available in DNS records API responses when you set in",
       "date_published": "2026-09-14T00:00:00Z",
       "date_modified": "2026-09-14T00:00:00Z",
       "authors": [
@@ -2031,75 +2100,6 @@
       ],
       "tags": [
         "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/64b33651fcb49088",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-new-workers-ai-models/",
-      "title": "AI Search - New Workers AI text generation models in AI Search",
-      "content_text": "AI Search now supports six additional Workers AI models for text generation: Model Context window (tokens) @cf/deepseek-ai/deepseek-v4-flash-0731 1,048,576 @cf/deepseek-ai/deepseek-v4-pro-0813 1,048,576 @cf/openai/gpt-oss-120b 128,000 @cf/openai/gpt-oss-20b 128,000 @cf/qwen/qwen3.8-27b 262,144 @cf/moonshotai/kimi-k2.7-code 262,144 These models run on Workers AI, so they do not require an additional provider key. Select a model when creating or updating an AI Search instance in the dashboard or t",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0d850a2dab650a11",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-sentinel-functions-connector-deprecation/",
-      "title": "Logpush Connectors, Logs - Azure Functions-based Microsoft Sentinel connector deprecation",
-      "content_text": "Cloudflare Enterprise customers using the Azure Functions-based Microsoft Sentinel connector ↗ must migrate to the Cloudflare for Microsoft Sentinel Codeless Connector Framework (CCF) connector ↗ by 2026-09-14. Microsoft is deprecating the Azure Monitor HTTP Data Collector API. Support for the API ends on 2026-09-14. As a result, Cloudflare will no longer maintain the Azure Functions-based connector after that date. To migrate, follow the Microsoft Sentinel integration setup guide . Additional r",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/8e717ba46b15c789",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-radar-researcher-improvements/",
-      "title": "Radar - Radar Researcher adds richer sources and URL Scanner explanations",
-      "content_text": "Cloudflare Radar expands the Radar Researcher ↗ beta with richer sources and new ways to investigate Internet data. Connected insights Radar Researcher responses can now link to relevant Radar pages, reports, and Cloudflare Blog posts. URL Scanner report explanations Select Explain with AI on a URL Scanner report ↗ to have Radar Researcher explain its findings and answer follow-up questions about the scanned site. Improved shared sessions Shared conversations now open in fullscreen, while the sh",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=798,height=668,format=webp/_astro/radar-researcher-page-links.D74GzYoL.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=798,height=668,format=webp/_astro/radar-researcher-page-links.D74GzYoL.png",
-          "mime_type": "image/png"
-        }
       ]
     },
     {
