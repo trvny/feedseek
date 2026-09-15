@@ -145,11 +145,15 @@ def _running_generator_cli() -> bool:
 
 def require_fresh_cache_restore() -> None:
     """Require a one-shot R2 restore for direct incremental generator runs."""
-    if "--full" in sys.argv or os.environ.get(CACHE_RESTORE_ENV) == "1":
-        return
     if not _running_generator_cli():
         return
     marker = get_cache_dir() / CACHE_RESTORE_MARKER
+    if "--full" in sys.argv:
+        marker.unlink(missing_ok=True)
+        os.environ.pop(CACHE_RESTORE_ENV, None)
+        return
+    if os.environ.get(CACHE_RESTORE_ENV) == "1":
+        return
     try:
         marker.unlink()
     except FileNotFoundError as exc:
@@ -357,6 +361,7 @@ def save_cache(
     Identical state is not rewritten: ``last_updated`` tracks the last semantic
     cache change, which keeps repository diffs quiet and R2 freshness meaningful.
     """
+    require_fresh_cache_restore()
     cache_file = get_cache_file(feed_name)
     original_count = len(entries)
     entries = trim_entries(

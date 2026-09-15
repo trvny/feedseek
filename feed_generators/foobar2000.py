@@ -201,6 +201,7 @@ def load_cache() -> list[dict]:
 
 
 def save_cache(entries: list[dict]) -> None:
+    require_fresh_cache_restore()
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     serializable = [{**e, "published": e["published"].isoformat()} for e in entries]
     payload = json.dumps(serializable, ensure_ascii=False, indent=2)
