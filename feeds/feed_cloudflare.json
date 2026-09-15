@@ -8,6 +8,107 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e04f70c6056e8e5a",
+      "url": "https://www.cloudflarestatus.com/incidents/s4x7n3nfqnyy",
+      "title": "Cloudflare Queues issues",
+      "content_text": "Sep 15 , 15:14 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 15 , 02:01 UTC Identified - We are investigating an issue where messages published to some queues are not being delivered to their consumers, resulting in delivery delays. Publishing to queues is unaffected, and messages are being received and safely retained — no messages are being lost. We have identified the root cause and are actively working on a fix. Affected messages will be delivered automat",
+      "date_published": "2026-09-15T15:14:25Z",
+      "date_modified": "2026-09-15T15:14:25Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bb0b7ff5c3a9c7e8",
+      "url": "https://www.cloudflarestatus.com/incidents/19g1m7tsvncw",
+      "title": "Some Replicate models are failing to start",
+      "content_text": "Sep 15 , 14:06 UTC Resolved - This incident has been resolved. Sep 15 , 00:03 UTC Identified - Some third party models as well as https://replicate.com/qwen/qwen-edit-multiangle are affected and are unable to scale out. Please use alternate models while we work with providers to publish fixed versions. Sep 14 , 22:25 UTC Investigating - We are investigating an issue which is preventing Replicate models from failing to start new replicas.",
+      "date_published": "2026-09-15T14:06:32Z",
+      "date_modified": "2026-09-15T14:06:32Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/758d5608389ee85c",
+      "url": "https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/",
+      "title": "Have it both ways: stay discoverable in search while disallowing AI training",
+      "content_text": "Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.",
+      "date_published": "2026-09-15T13:00:00Z",
+      "date_modified": "2026-09-15T13:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Blog"
+        }
+      ],
+      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png",
+      "tags": [
+        "Cloudflare Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M2H2Z9EEQXN77GRVF484P66A.01M2H2ZAMANYA3DTBA92G3WQ5X.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/5d70773893bff252",
+      "url": "https://blog.cloudflare.com/workers-granular-authorization/",
+      "title": "Give every teammate and agent the right level of access to your Workers",
+      "content_text": "You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.",
+      "date_published": "2026-09-15T13:00:00Z",
+      "date_modified": "2026-09-15T13:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Blog"
+        }
+      ],
+      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW448A863P1CW4V1VXP9CBBR.png",
+      "tags": [
+        "Cloudflare Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KW448A863P1CW4V1VXP9CBBR.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/63bf0fd7373e0d0d",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-instance-event-subscriptions/",
+      "title": "Workflows, Workers - Stream Workflow instance events in your Worker or via the API with .subscribe()",
+      "content_text": "You can now stream Workflow instance events via WorkflowInstance.subscribe() and the GET /subscribe API endpoint. Workers and HTTP clients can react to workflow and step events, including attempts, sleeps, waits, and rollbacks, without polling for instance status. A subscription first streams the entire event history of the Workflow instance. After streaming past events, the subscription waits for new events as the instance runs. You can use filter to receive only specific event types or cursor",
+      "date_published": "2026-09-15T12:00:00Z",
+      "date_modified": "2026-09-15T12:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/44488fcb205d9906",
       "url": "https://www.cloudflarestatus.com/incidents/pj1qcy7lhm11",
       "title": "Network latency affecting Singapore",
@@ -30,38 +131,6 @@
       "content_text": "Sep 15 , 02:27 UTC Resolved - This incident has been resolved. Sep 15 , 00:39 UTC Monitoring - We are continuing to monitor for any further issues. Sep 15 , 00:37 UTC Monitoring - Load Balancing health events analytics and notifications are now up to date. Events and notifications between 22:02 and 22:45 UTC were skipped. Sep 14 , 23:03 UTC Investigating - Cloudflare is investigating delays affecting analytics and notifications for Load Balancing health monitoring events. Load Balancing steering",
       "date_published": "2026-09-15T02:27:03Z",
       "date_modified": "2026-09-15T02:27:03Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e04f70c6056e8e5a",
-      "url": "https://www.cloudflarestatus.com/incidents/s4x7n3nfqnyy",
-      "title": "Cloudflare Queues issues",
-      "content_text": "Sep 15 , 02:01 UTC Identified - We are investigating an issue where messages published to some queues are not being delivered to their consumers, resulting in delivery delays. Publishing to queues is unaffected, and messages are being received and safely retained — no messages are being lost. We have identified the root cause and are actively working on a fix. Affected messages will be delivered automatically once the issue is resolved. Sep 14 , 20:22 UTC Investigating - Cloudflare is aware of i",
-      "date_published": "2026-09-15T02:01:55Z",
-      "date_modified": "2026-09-15T02:01:55Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bb0b7ff5c3a9c7e8",
-      "url": "https://www.cloudflarestatus.com/incidents/19g1m7tsvncw",
-      "title": "Some Replicate models are failing to start",
-      "content_text": "Sep 15 , 00:03 UTC Identified - Some third party models as well as https://replicate.com/qwen/qwen-edit-multiangle are affected and are unable to scale out. Please use alternate models while we work with providers to publish fixed versions. Sep 14 , 22:25 UTC Investigating - We are investigating an issue which is preventing Replicate models from failing to start new replicas.",
-      "date_published": "2026-09-15T00:03:02Z",
-      "date_modified": "2026-09-15T00:03:02Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -113,6 +182,29 @@
       "attachments": [
         {
           "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/1253d47bf9a06c77",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-granular-worker-permissions/",
+      "title": "Workers - Grant teammates and agents access to specific Workers",
+      "content_text": "You can now grant access to specific Workers and choose from four roles to control the level of access you give teammates, agents, and CI/CD workflows. Choose from four roles to control the level of access: Metadata Read-Only : View settings, metrics, logs, and traces without access to Worker code or the ability to make changes. Content Read-Only : Read Worker code, settings, and observability data without the ability to modify or deploy changes. Editor : Update and deploy a Worker without the a",
+      "date_published": "2026-09-15T00:00:00Z",
+      "date_modified": "2026-09-15T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png",
           "mime_type": "image/png"
         }
       ]
@@ -1942,52 +2034,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/c192485c2cc819c5",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-app-scoped-tokens/",
-      "title": "Flagship - Create app-scoped API tokens for Flagship",
-      "content_text": "You can now create app-scoped API tokens for Flagship . These tokens grant access only to the Flagship apps you select, instead of every app in the account. When you create a custom token, open the resource dropdown (it defaults to Entire Account ) and select Specified Flagship apps . Then choose the app and a Flagship App permission: Evaluate, Read, or Write. Account-wide Flagship Evaluate, Read, and Write permissions still exist when you need access to every app. Use app-scoped tokens in trust",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0b612e6afc6b4f80",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-emergency-waf-release/",
-      "title": "WAF - WAF Release - 2026-08-26 - Emergency",
-      "content_text": "This emergency release updates an existing Next.js remote code execution rule to identify CVE-2026-75604 and adds a new rule for remote code execution in the Next.js Image Optimizer via crafted AVIF images. Key Findings CVE-2026-75604 affects Windows-hosted Next.js applications using both the Pages Router and App Router without Cache Components and can lead to unauthenticated remote code execution. GHSA-2xp9-vwfh-vxw4 affects the Next.js Image Optimizer and can lead to unauthenticated remote cod",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/64b33651fcb49088",
       "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-new-workers-ai-models/",
       "title": "AI Search - New Workers AI text generation models in AI Search",
@@ -2151,7 +2197,7 @@
     {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e7c671b86ed96fd8",
       "url": "https://blog.cloudflare.com/bot-preference-sync/",
-      "title": "Say it once: Introducing Bot Preference Sync",
+      "title": "Say it once: introducing Bot Preference Sync",
       "content_text": "Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.",
       "date_published": "2026-08-21T23:19:57Z",
       "date_modified": "2026-08-21T23:19:57Z",
@@ -2954,29 +3000,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/32a76da78a0d3f55",
-      "url": "https://blog.cloudflare.com/grpc-workers/",
-      "title": "Cloudflare Workers and Containers now support inbound TCP connections and gRPC",
-      "content_text": "Cloudflare Workers now support inbound TCP connections via Spectrum, allowing direct socket forwarding to Durable Objects and Containers. Developers can run full-duplex gRPC applications or leverage automatic gRPC-to-gRPC-web translation directly within Workers.",
-      "date_published": "2026-08-03T13:00:00Z",
-      "date_modified": "2026-08-03T13:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Blog"
-        }
-      ],
-      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01KZ21KFNREJ92D2GV77M4BES4.png",
-      "tags": [
-        "Cloudflare Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KZ21KFNREJ92D2GV77M4BES4.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/73ae87aa31ee7af3",
       "url": "https://blog.cloudflare.com/billable-usage-api/",
       "title": "Introducing the Billable Usage API: programmatic cost visibility for Cloudflare",
@@ -3041,29 +3064,6 @@
       "attachments": [
         {
           "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KZ0TDJZWV1KTGFZ7R50RN9QP.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/40845b4956540dd5",
-      "url": "https://blog.cloudflare.com/agents-week-welcome/",
-      "title": "Welcome to Agents Week",
-      "content_text": "Agents Week explores how cloud infrastructure must evolve to serve autonomous agents rather than human browsers. Join us as we unpack the storage, execution, and security primitives needed for an agent-native web.",
-      "date_published": "2026-08-02T16:00:00Z",
-      "date_modified": "2026-08-02T16:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Blog"
-        }
-      ],
-      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01KYZDT3S6ATPE291NTTTYKKMV.png",
-      "tags": [
-        "Cloudflare Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01KYZDT3S6ATPE291NTTTYKKMV.png",
           "mime_type": "image/png"
         }
       ]
