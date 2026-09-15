@@ -13,7 +13,7 @@
 | feedsearch.dev | HTTP API | Manual fallback feed discovery when local crawler is unavailable/empty | none | low | `feed_generators/discover.py` |
 | GitHub repository + raw content | Git hosting/CDN | Source of truth, scheduled commits and `rel=self` feed URLs | GitHub Actions token for writes | high | `.github/workflows/update-feeds.yml`, `feed_generators/utils.py` |
 | GitHub Pages | Static hosting | Public feed directory, XML/JSON artifacts and reader | GitHub deployment workflow | high | `.github/workflows/deploy-pages.yml`, `site/build_site.py` |
-| Cloudflare R2 | Object storage | Private backup of persistent generation cache | Cloudflare API token/account ID | medium | `.github/workflows/update-feeds.yml`, `docs/cache.md` |
+| Cloudflare R2 | Object storage | Authoritative durable generation-cache snapshot | Cloudflare API token/account ID | high | `.github/workflows/update-feeds.yml`, `docs/cache.md` |
 | Cloudflare Workers | Edge runtime | Optional HTTPS CORS proxy for the browser reader | Deployment account config; public read endpoint | medium | `feeds-proxy/wrangler.jsonc`, `feeds-proxy/src/index.js` |
 | Google S2 / DuckDuckGo icons | HTTP asset services | Favicon fallback/resolution | none | low | `feed_generators/utils.py`, `site/build_site.py` |
 
@@ -21,9 +21,9 @@
 
 | Store | Role | Access layer | Key risk | Evidence |
 |-------|------|--------------|----------|----------|
-| `cache/*.json` | Incremental entry state, durable IDs and settled enrichment results | `feed_generators/utils.py` and source adapters | Stale/corrupt cache can affect dedupe/history; loaders fall back safely and writes are atomic | `feed_generators/utils.py` |
+| `cache/*.json` | Ephemeral working copy of incremental state restored from R2 | `feed_generators/utils.py` and source adapters | Missing or invalid durable state blocks incremental production runs; local writes are atomic | `feed_generators/utils.py`, `docs/cache.md` |
 | `feeds/*.xml` + `feeds/*.json` | Published feed artifacts | shared feed writers and `jsonfeed.py` | Generated output must not be hand-edited | `feed_generators/utils.py`, `feed_generators/jsonfeed.py` |
-| R2 `feedseek-cache/snapshots/cache.tar.gz` | Off-repo cache recovery snapshot | scheduled GitHub Actions workflow | Backup is best-effort and intentionally skipped above the size ceiling | `.github/workflows/update-feeds.yml` |
+| R2 `feedseek-cache/snapshots/cache.tar.gz` | Authoritative off-repo durable cache snapshot | scheduled workflow plus R2 restore/backup tools | Restore, validation, backup, or the 128 MB size ceiling can fail closed and block publishing | `.github/workflows/update-feeds.yml`, `tools/restore_r2_cache.py`, `tools/backup_r2_cache.py` |
 
 No database, queue or event bus is present in the repository.
 
@@ -40,7 +40,7 @@ No database, queue or event bus is present in the repository.
 - HTTP calls generally use explicit per-request timeouts; `run_all_feeds.py` adds a 480-second default wall-clock limit per generator.
 - Image and Google News enrichment have per-run count, wall-clock and retry-attempt budgets and are non-fatal.
 - The top-level generator loop is failure-isolated and continues after a source failure; empty/failing source runs preserve last-known-good output.
-- R2 restore/backup is best-effort (`continue-on-error`) and falls back to committed cache state.
+- R2 is authoritative and fail-closed: incremental production requires a validated restore, and tracked feed updates are published only after the resulting snapshot uploads successfully; there is no committed-cache fallback.
 - `feeds-proxy` allows only HTTPS targets, revalidates redirects, caps redirects at 3, response bodies at 2 MiB and upstream time at 8 seconds.
 - No general circuit-breaker abstraction is present; source-specific retry/backoff varies by adapter.
 
