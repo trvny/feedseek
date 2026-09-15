@@ -26,7 +26,9 @@ previously established cache cannot silently disappear from R2.
 `make feeds`, `make feed NAME=...`, and the compatibility Make targets restore
 R2 automatically. Direct incremental generator execution is guarded by the
 same one-shot restore marker. Explicit full rebuilds are cache-independent, but
-the scheduled production workflow intentionally uses the durable R2 state.
+the scheduled production workflow intentionally uses the durable R2 state. The
+standalone make feeds_commoninja helper is intentionally full/stateless and
+never rewrites the shared R2 snapshot.
 
 ## Size is bounded by an entry limit
 

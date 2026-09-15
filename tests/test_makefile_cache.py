@@ -13,10 +13,10 @@ class MakefileCacheTests(unittest.TestCase):
         self.assertIn("feeds_%: cache-restore FORCE", makefile)
         self.assertIn("feeds_beatport: cache-restore", makefile)
         self.assertIn("feeds_windows11_release_notes: cache-restore", makefile)
-        self.assertIn("feeds_commoninja: cache-restore", makefile)
-        commoninja = makefile.split("feeds_commoninja: cache-restore", 1)[1].split(".PHONY: validate", 1)[0]
-        self.assertNotIn("rm -f cache/.r2-restored", commoninja)
-        self.assertIn("tools/backup_r2_cache.py", commoninja)
+        self.assertNotIn("feeds_commoninja: cache-restore", makefile)
+        commoninja = makefile.split(".PHONY: feeds_commoninja", 1)[1].split(".PHONY: validate", 1)[0]
+        self.assertIn("feed_generators/commoninja.py --full", commoninja)
+        self.assertNotIn("tools/backup_r2_cache.py", commoninja)
         self.assertIn("tools/restore_r2_cache.py", makefile)
 
         self.assertNotIn("feeds-full: cache-restore", makefile)

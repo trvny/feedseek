@@ -70,12 +70,12 @@ feeds_beatport: cache-restore ## Compatibility alias for the Beatport Top 100 fe
 feeds_windows11_release_notes: cache-restore ## Compatibility alias for Microsoft/Windows updates
 	$(RUN_FEED) microsoft_updates
 
-# Common Ninja is also consumed by the consolidated SaaS generator, but this
-# standalone helper remains useful and is not a feeds.yaml entry.
+# Common Ninja is also consumed by the consolidated SaaS generator. This
+# standalone helper is intentionally full/stateless so it cannot race the
+# scheduled workflow by rewriting the shared durable R2 snapshot.
 .PHONY: feeds_commoninja
-feeds_commoninja: cache-restore ## Generate only the standalone Common Ninja blog feed
-	$(PY) feed_generators/commoninja.py
-	$(PY) tools/backup_r2_cache.py
+feeds_commoninja: ## Generate only the standalone Common Ninja blog feed
+	$(PY) feed_generators/commoninja.py --full
 
 .PHONY: validate
 validate: ## Validate all generated feeds

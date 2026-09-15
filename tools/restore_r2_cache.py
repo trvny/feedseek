@@ -158,6 +158,7 @@ def replace_cache_tree(restored: Path, target: Path) -> None:
 
 def restore_from_r2(bucket: str, key: str, target: Path) -> bool:
     target.mkdir(parents=True, exist_ok=True)
+    (target / CACHE_MARKER).unlink(missing_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         tmp_path = Path(tmp)
         archive = tmp_path / "cache.tar.gz"

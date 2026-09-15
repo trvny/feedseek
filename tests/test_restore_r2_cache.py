@@ -2,6 +2,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
@@ -17,6 +18,17 @@ class RestoreR2CacheTests(unittest.TestCase):
     def test_default_contract_matches_feedseek_r2_storage(self):
         self.assertEqual(restore_r2_cache.DEFAULT_BUCKET, "feedseek-cache")
         self.assertEqual(restore_r2_cache.DEFAULT_KEY, "snapshots/cache.tar.gz")
+
+    def test_failed_restore_clears_stale_authorization_marker(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "cache"
+            target.mkdir()
+            marker = target / restore_r2_cache.CACHE_MARKER
+            marker.write_text("stale\n", encoding="utf-8")
+            with mock.patch.object(restore_r2_cache, "_fetch_archive", return_value=False):
+                restored = restore_r2_cache.restore_from_r2("bucket", "key", target)
+            self.assertFalse(restored)
+            self.assertFalse(marker.exists())
 
 
 class AuthoritativeRestoreTests(unittest.TestCase):
