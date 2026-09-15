@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-15T05:13:54.957708+00:00</updated>
+  <updated>2026-09-15T12:03:04.612330+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,16 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/44488fcb205d9906</id>
+    <title>Network latency affecting Singapore</title>
+    <updated>2026-09-15T07:35:44+00:00</updated>
+    <content>Sep 15 , 07:35 UTC Resolved - This incident has been resolved. Sep 15 , 07:16 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 15 , 07:15 UTC Investigating - Cloudflare is investigating issues with network performance in Singapore. We are working to analyse and mitigate this problem. More updates to follow shortly.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/pj1qcy7lhm11" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-15T07:35:44+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/338732fe33aee9e2</id>
     <title>Load Balancing Analytics and Notification Delays</title>
@@ -41,6 +51,36 @@
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-15T00:03:02+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
+    <title>WAF - WAF Release - Scheduled changes for 2026-09-22</title>
+    <updated>2026-09-15T00:00:00+00:00</updated>
+    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-09-15 2026-09-22 Log N/A ...0f0313d6 SSRF - Block jar HTTP loopback payload This is a new detection. 2026-09-15 2026-09-22 Log N/A ...5f21b651 SSRF - Cloud,Link-Local non-standard IP notation This is a new detection. 2026-09-15 2026-09-22 Log N/A ...75cd912a SSRF - Local non-standard IP notation This is a new detection. 2026-09-15 2026-09-22 Log N/A ...a1ba83f6 SSTI - Jinja Dangerous Globals Chain Th</content>
+    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-15T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3827e8f88fefaf9c</id>
+    <title>WAF - WAF Release - 2026-09-15</title>
+    <updated>2026-09-15T00:00:00+00:00</updated>
+    <content>This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...ca453d31 N/A SSRF - Cloud - 3 Log Block This is a new detection. Cloudflare Managed Ruleset ...e540f17f N/A Version Control - Information Disclosure - Beta Log Block T</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-15-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-15T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/50143ee744c94468</id>
@@ -450,21 +490,6 @@ A workaround can be used:
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-08T01:42:38+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
-    <title>WAF - WAF Release - Scheduled changes for 2026-09-15</title>
-    <updated>2026-09-08T00:00:00+00:00</updated>
-    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-09-08 2026-09-15 Log N/A ...ca453d31 SSRF - Cloud - 3 This is a new detection. 2026-09-08 2026-09-15 Log N/A ...e540f17f Version Control - Information Disclosure - Beta This rule will be merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529 ). 2026-09-08 2026-09-15 Log N/A ...ba458b4b Command Injection - Generic 10 This is a new detection.</content>
-    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/13a0bbce4527a32d</id>
@@ -1254,16 +1279,6 @@ Further details will be provided as more information becomes available.</content
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f8baeac5a80fd556</id>
-    <title>Cloudflare MCP Portal tool invocation logging instability</title>
-    <updated>2026-08-26T15:38:03+00:00</updated>
-    <content>Aug 26 , 15:38 UTC Resolved - This incident has been resolved. Aug 26 , 15:28 UTC Monitoring - After further investigation it was determined that the issue was isolated to internal accounts. There was no customer facing impact. Aug 26 , 14:59 UTC Investigating - Cloudflare engineering is investigating an issue causing some tool call invocation logs to be dropped. This affects logpush and the dashboard. Portal connectivity and initial authentication logs are not impacted.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/gjw0tnhh4f3f" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-08-26T15:38:03+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/c192485c2cc819c5</id>
     <title>Flagship - Create app-scoped API tokens for Flagship</title>
     <updated>2026-08-26T00:00:00+00:00</updated>
@@ -1376,21 +1391,6 @@ Further details will be provided as more information becomes available.</content
     <link href="https://developers.cloudflare.com/changelog/post/2026-08-26-service-token-secret-format/" rel="alternate"/>
     <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
     <published>2026-08-26T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/43318d4e2986d300</id>
-    <title>API Shield - Symmetric key support for JWT validation</title>
-    <updated>2026-08-25T00:00:00+00:00</updated>
-    <content>API Shield JSON Web Token validation now supports symmetric keys that use the HS256 , HS384 , and HS512 algorithms. You can configure HMAC verification keys in the Cloudflare dashboard or with the Cloudflare API. Cloudflare never stores symmetric credentials in plaintext. API responses do not include the credential. Refer to Configure JWT validation via the API for supported key formats and credential requirements.</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-08-25-symmetric-jwt-validation/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-08-25T00:00:00+00:00</published>
     <media:group>
       <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
