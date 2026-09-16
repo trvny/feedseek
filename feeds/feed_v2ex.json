@@ -8,6 +8,52 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/53085661e04d53b3",
+      "url": "https://www.v2ex.com/t/1242289#reply1",
+      "title": "我做了一款英语学习专用的播放器，播放体验媲美 Vidhub",
+      "content_text": "我是 vidhub 的重度用户，我很喜欢使用 vidhub 观看我的影视资源。 但是我在看美剧的时候遇到不认识的单词总得切到欧陆词典去查词收藏，这个过程很影响观看体验。所以我一直想做一款像 infuse/vidhub 那样的播放器，但是集成英语学习的功能。 所以 zigloo 诞生了。我自己已经使用了一段时间，现在分享给大家。 目前还在上架审核中，有兴趣的可以先通过 testflight 进行安装试用 https://testflight.apple.com/join/kkGBDuDK",
+      "date_published": "2026-09-16T00:11:16Z",
+      "date_modified": "2026-09-16T00:11:16Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/38f1/1ce9/394023_large.png?m=1768555851",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/38f1/1ce9/394023_large.png?m=1768555851",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/85598bcdf8d8dc5a",
+      "url": "https://www.v2ex.com/t/1242285#reply0",
+      "title": "紅米舊機器手把沒震動，核心沒開支援，核心源碼又不全, 乾脆自己 magisk module 補上了",
+      "content_text": "我用紅米 Note 12 Pro 5G 接 GameSir G8+，手把能連上，但就是不會震動。後來和 AI 一起查，才發現手機原廠核心沒有開啟 Sony 手把的震動支援，而 G8+ 當時用的是 DS4 藍牙模式。\n一開始以為得重編整個核心，偏偏小米公開的原始碼又和手機上的版本對不上。最後走通的方式，是另外編一個有震動功能的驅動，讓這支手把改用它，再包成 Magisk 模組，處理開機載入和斷線重連。\n現在兩邊馬達都能震動了。我把程式、安裝包和整個排查過程放上 GitHub ，也寫了中英文的技術文章，包含中間走過的彎路。如果你也遇到「手把明明有震動，接到手機卻沒反應」，希望這份紀錄能幫上一點忙。 還沒適配 DS4 以外的手把, 但我認為這套做法應該能套用到不少內核開源做一半的老小米機子, 請各位先進多指點. 專案： https://github.com/29988122/xiaomi-controller-rumble 下載： https://github.com/29988122/xiaomi-controller-rumble/releases/tag/v0.2.0 繁體中文說明：",
+      "date_published": "2026-09-15T23:08:21Z",
+      "date_modified": "2026-09-15T23:08:21Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/15fcb7bb3dc9ec10c32320a063671ee8?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/15fcb7bb3dc9ec10c32320a063671ee8?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/c8cd07cbfe09e474",
       "url": "https://www.v2ex.com/t/1242276#reply0",
       "title": "能用的免费白嫖的 ai llm 越来越少",
@@ -307,29 +353,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/240ebf0600c1195c",
-      "url": "https://www.v2ex.com/t/1242229#reply3",
-      "title": "dshcloud：开源自托管的 DeepSeek Harness 多用户、多实例平台",
-      "content_text": "开源仓库地址： https://github.com/eskim2001/dshcloud 自托管的多用户、多实例平台，用户数据持久化 起源 最近用 dsh 创造模式用的很多，经常就把 dsh 改造成一个完全不同的 app 了，这时候要分享给不太会用的朋友比较麻烦，就想到了把这个部署到云上。没考虑现有的方案主要是第二个问题，dsh 版本更新的很快，希望能方便的更新 dsh ，保留原来的用户数据，于是就想到了做容器化的隔离+mount 持久化。 什么时候用得上 和朋友分享你改造的 dsh：每个 dsh 是一个独立域名 ，数据与配额互相隔离，甚至未来可以作为多租户 不想依赖本地设备：跑在自己的 VPS 上持续在线，浏览器从任意设备进 想要快速升级新版的 dsh：换镜像升级，升前自动打数据快照，失败能回滚 具体能力 workspace 创建/启停/重建/删除：每个 workspace 独立容器 + 持久化存储，CPU 、内存、进程数、磁盘容量都有配额 邀请制多用户：管理员发邀请链接加人，没有公开注册 访问控制：workspace 端口只绑宿主机回环，外部访问要走 Traefik forwar",
-      "date_published": "2026-09-15T11:25:23Z",
-      "date_modified": "2026-09-15T11:25:23Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/90534895cbcebf98224dd791d5b17a28?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/90534895cbcebf98224dd791d5b17a28?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/d6cbb9ad6ce2476e",
       "url": "https://www.v2ex.com/t/1242203#reply4",
       "title": "端口全开的服务器一般做啥用的？",
@@ -510,29 +533,6 @@
         {
           "url": "https://cdn.v2ex.com/gravatar/5c95348d467de48afdf92026ddf30bff?s=73&d=retro",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/36a97b64c509b2fd",
-      "url": "https://www.v2ex.com/t/1242120#reply0",
-      "title": "今天早上过地铁闸机同时刷了我 iPhone 钱包里的交通卡和银行卡",
-      "content_text": "大家大家注意一下自己钱包里添加的银行卡，如果银行卡开启了 apple pay 小额免密，会出现被 POS 机不经意间刷上，遇到这种地铁服务窗口还无法退钱",
-      "date_published": "2026-09-15T05:00:41Z",
-      "date_modified": "2026-09-15T05:00:41Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/11bd/dd70/494150_large.png?m=1632640634",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/11bd/dd70/494150_large.png?m=1632640634",
-          "mime_type": "image/png"
         }
       ]
     },
