@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-09-16T13:43:18.249187+00:00</updated>
+  <updated>2026-09-16T16:19:47.269309+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -12,6 +12,668 @@
   <icon>https://blog.google/favicon.ico</icon>
   <logo>https://blog.google/favicon.ico</logo>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses</id>
+    <title>Cloud CISO Perspectives: How Google monitors AI threats and advances AI defenses</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Welcome to the first Cloud CISO Perspectives for September 2026. Today, Sandra Joyce shares the latest details on Google’s visibility into how attackers are using AI, and how we’re using AI to stop them.&lt;/p&gt;&lt;p&gt;As with all Cloud CISO Perspectives, the contents of this newsletter are posted to the &lt;a href="https://cloud.google.com/blog/products/identity-security/"&gt;Google Cloud blog&lt;/a&gt;. If you’re reading this on the website and you’d like to receive the email version, you can &lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;subscribe here&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Get vital board insights with Google Cloud&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f04b6b97b90&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Visit the hub&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://cloud.google.com/solutions/security/board-of-directors?utm_source=cgc-site&amp;amp;utm_medium=et&amp;amp;utm_campaign=FY26-Q2-GLOBAL-GCP39634-email-dl-dgcsm-CISOP-NL-177159&amp;amp;utm_content=-&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: GCAT-replacement-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;‘Spellcheck for cybersecurity’ and beyond: How Google monitors AI threats and advances AI defenses&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;&lt;i&gt;By Sandra Joyce, VP, Google Threat Intelligence&lt;/i&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="Sandra Joyce" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2022_S_Joyce_Headshot.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Sandra Joyce, VP, Google Threat Intelligence&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;Anyone operating in security knows that speculation is a major liability during periods of technological disruption. While there is plenty of hype and understandable concern around how threats might use and target AI, a CISO’s AI security strategy has to be anchored in ground truth.&lt;/p&gt;&lt;p&gt;Google operates at a rare intersection as both a frontier AI lab and a security company with a frontline view of global incidents. This dual vantage point allows us to understand how AI is built, and exactly how AI is being targeted in the wild. To provide the operational realities that security and business leaders need in the AI era, Google Threat Intelligence Group (GTIG) recently released our &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai"&gt;latest AI Threat Tracker&lt;/a&gt;.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When we strip away the noise and look at the telemetry, the real threat landscape boils down to three structural shifts that CISOs must address:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI is reshaping how software is built. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI is expanding the attack surface.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI is enhancing threat capabilities. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we’re sharing details on Google’s visibility into these three challenges, and our approach for solving them.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Building securely in the AI era &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI has fundamentally altered software development velocity. Across the industry, autonomous agents and AI workflows now push code into production at unprecedented speed. This creates exciting opportunities for innovation, yet CISOs are faced with the difficult task of mitigating enterprise risk while maintaining business momentum. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’re seeing threat actors turn our greatest engineering shortcut against us by contaminating upstream packages that AI assistants are trained to suggest and trust. GTIG believes that malicious contamination of AI-assisted coding practices has been contributing to the significant growth in large-scale, open-source software supply chain compromises we &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/mitigation-guidance-for-supply-chain-compromise"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;observed in 2025 and early 2026&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
+        &lt;q class="uni-pull-quote__text"&gt;The solution to a machine-speed threat landscape isn&amp;#x27;t slowing developers down — it’s building security natively into the AI pipeline. Part of this process involves in-editor guardrails for developers that create a real-time &amp;#x27;spellcheck for cybersecurity.&amp;#x27;&lt;/q&gt;
+
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’re also monitoring adversaries targeting agents. The financially-motivated threat actor TeamPCP (UNC6780) has implemented more than half a dozen methods to exploit AI tools and open-source software development practices, including hijacking AI toolkits, prompt injection, and blinding AI scanners with toxic prompts to obfuscate malicious payloads.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The solution to a machine-speed threat landscape isn't slowing developers down — it’s building security natively into the AI pipeline. Part of this process involves in-editor guardrails for developers that create a real-time “spellcheck for cybersecurity.” &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Just as word processors underline typos without forcing the writer to stop, security controls must sit natively inside the developer’s editor and agentic workflows, instantly flagging poisoned packages, toxic prompts, and misconfigured toolkits. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Crucially, this can’t stop at the editor. Traditional security suffers from context blindness: Code editors can’t see cloud configurations, delivery pipelines miss runtime exposure, and production teams can’t easily patch root-cause blueprints. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Bridging this gap requires an integrated code-to-cloud approach — the exact design principle behind platforms like &lt;/span&gt;&lt;a href="https://www.wiz.io/platform/wiz-code" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Wiz Code&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. The underlying approach is to ensure code is continuously verified against live cloud realities before it ships.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When organizations think about AI-driven code analysis, the default assumption is to pick one frontier model and point it at their repository. However, our research and telemetry show that single-model security creates a dangerous monoculture: No single AI model can discover every vulnerability, and threat actors are already testing inputs that can blind specific LLM safety filters and scanners. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
+        &lt;q class="uni-pull-quote__text"&gt;To secure this expanding attack surface, CISOs should avoid the trap of managing AI through disconnected silos... The future of cloud and AI defense needs to be built on a unified and dynamic graph that connects your code, your models, your data lineage, and your runtime identities into a single living map.&lt;/q&gt;
+
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To solve this, Google takes a &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-next-26-why-we-re-multicloud-and-multi-ai"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;deliberate multi-model approach&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. By orchestrating several foundation models — including Gemini, commercial, and open-source — we cross-validate findings, strip out false positives, remediate code, and identify complex logic flaws that a single model misses. We’re smarter with more than one “brain.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Securing AI &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Securing the development lifecycle is only half the battle. We also need to prevent adversaries from exploiting AI attack surfaces and weaponizing over-privileged agents. Threat actors are targeting AI workloads with techniques that include: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;LLMJacking&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Cybercriminals and state-sponsored groups target GPU access to support running their AI models and agentic workflows. In one notable intrusion Mandiant investigated in April, a threat actor gained initial access to a victim’s cloud environment from an exposed personal access token, and used it to deploy unauthorized AI infrastructure and scale high-performance compute resources, leaving the victim to absorb the hardware and platform costs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Targeting of AI data and access&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Cybercriminals now recognize that your custom prompts, agent instructions, and fine-tuned models represent high-value crown jewels. In Q2 2026, Mandiant investigated multiple data theft extortion operations where threat actors stole proprietary AI data, including models, skills, prompts, source code, and related research. Demand is also surging for AI account credentials in underground marketplace forums, with some sellers offering steep discounts for consumer accounts at up to 99% off retail prices.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To secure this expanding attack surface, CISOs should avoid the trap of managing AI through disconnected silos. Don’t treat agent access policies, model inventories (AI-BOMs) and shadow AI as separate challenges because these risks are deeply connected. The future of cloud and AI defense needs to be built on a unified and dynamic graph that connects your code, your models, your data lineage, and your runtime identities into a single living map. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pioneered by the &lt;/span&gt;&lt;a href="https://www.wiz.io/lp/wiz-security-graph" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Wiz Security Graph&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, this approach serves as the contextual engine for &lt;/span&gt;&lt;a href="https://cloud.google.com/security/ai-threat-defense"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google AI Threat Defense&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (AITD) — our broader autonomous security framework that fuses the reasoning power of Gemini and other frontier models, the contextual risk prioritization of Wiz, the code remediation capabilities of CodeMender, and the frontline expertise of Mandiant to stay ahead of AI-driven attacks. Crucially, this context is not siloed; it directly feeds &lt;/span&gt;&lt;a href="https://cloud.google.com/security/products/security-operations"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Security Operations&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, ensuring that security operations teams can continuously identify, prioritize, and sever toxic attack paths at machine speed.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Defending against AI threats&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Threat actors are rapidly moving beyond simple prompt generation toward fully-automated, multi-agent attack pipelines.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
+        &lt;q class="uni-pull-quote__text"&gt;To take advantage of your deep context, it’s imperative to shift from manual, human-scale incident response to machine-speed security operations. We can no longer rely on human analysts manually triaging endless backlogs of static alerts.&lt;/q&gt;
+
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In one notable intrusion investigated by Mandiant, a financially-motivated actor compromised an organization's cloud infrastructure and deployed an autonomous agent framework. The threat actor used an AI coding chatbot, a prompt, and a set of agent instructions to plan, build, and execute a mass credential harvesting campaign in less than six hours.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’re also tracking adversaries using AI as an intelligent orchestrator across the entire attack lifecycle. GTIG recently observed a PRC-nexus espionage group experimenting with a tool called CC Switch to cycle across multiple accounts and swap AI models — like Claude, Codex, and Gemini — picking the best model for specific tasks, such as writing exploit scripts and drafting lures. While the underlying hacking tools aren’t new, AI turned what had been a disjointed manual process into a smooth and automated workflow.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While these machine-speed attacks sound daunting, defenders actually hold an asymmetric advantage. Even when armed with autonomous AI, an attacker operates from the outside with limited context — probing in the dark, guessing connections, and hoping a compromised credential leads to a useful asset. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Defenders, on the other hand, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-ai-leverages-deep-context-defenders-advantage"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;possess deep context&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that attackers don’t have. You know your code, cloud configurations, user identities, deployment realities, and internal architecture better than anyone. When you feed this rich, multi-dimensional internal observability into security models, AI defense becomes inherently faster and more accurate than AI offense.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To take advantage of your deep context, it’s imperative to shift from manual, human-scale incident response to machine-speed security operations. We can no longer rely on human analysts manually triaging endless backlogs of static alerts. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By codifying our frontline threat intelligence directly into these AI models, these autonomous agents can continuously monitor for, investigate, prioritize, and remediate attacks.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How Google is helping defend the ecosystem&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As adversaries adopt AI, we have a unique opportunity to disrupt them at the source. As a major security and AI provider, we take this responsibility seriously, using multiple levers to stay ahead.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Disabling malicious infrastructure&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. If you use Google tools to facilitate an attack, you lose access to those tools. We proactively disable the projects, accounts, and assets of known bad actors.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Hardening our AI models and classifiers&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. We operate a continuous feedback loop for our AI models. By feeding threat intelligence directly back into product development, our models learn to recognize and refuse malicious requests before an attack can even be generated.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Automating vulnerability hunting and patching also disrupt adversaries&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. We are moving from manual patching to AI-driven hunting. Tools like &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/find-and-fix-software-vulnerabilities-with-codemender"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;CodeMender automatically fix critical vulnerabilities&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in the code itself.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Developing advanced defenses and threat models&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Our teams at Google DeepMind are building specialized defenses for generative AI — deploying active monitoring across our entire ecosystem to identify misuse in real-time.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Securing the AI era can’t be achieved with the disconnected, manual tools of the past, and you can only defend against an AI-powered threat with an AI-powered defense. To tip the scales back in favor of defenders, we must transition to a continuous, machine-speed model of protection — and at Google, we are committed to building that secure future alongside you.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To learn more about our approach to securing the AI era, please check out our new &lt;/span&gt;&lt;a href="https://cloud.google.com/security/resources/ai-risk-and-resilience-2026"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Mandiant AI Risk and Resilience report&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Learn something new&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f04b5b05590&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Watch now&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://x.com/googlecloud/status/2090213589558698309?s=20&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: Cloud-CISO-Perspectives-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;In case you missed it&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Here are the latest updates, products, services, and resources from our security teams so far this month:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;A manufacturing blueprint for secure agentic AI&lt;/b&gt;: AI and agents have arrived on the factory floor. Today’s CISOs and business leaders must balance innovation with precision, physical safety, and operational resilience. &lt;a href="https://cloud.google.com/transform/a-manufacturing-blueprint-for-secure-agentic-ai"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Proactive cyber defense for governments and enterprises&lt;/b&gt;: Our new Fairwind Program is a limited access program for governments and trusted partners to use our most advanced cyber defense capabilities. &lt;a href="https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Getting started with the Mantis harness to find and fix bugs&lt;/b&gt;: Mantis is part of how Google finds and fixes vulnerabilities at machine-speed. The open-source AI harness creates a more effective repository analysis. &lt;a href="https://cloud.google.com/blog/products/identity-security/getting-started-with-the-mantis-harness-to-find-and-fix-bugs"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Breaking into Google's GFile for $100,000&lt;/b&gt;: Learn about how a vulnerability — that was not exploited and has now been patched — could have allowed attackers to chain unauthenticated, undocumented internal APIs with overly-permissive shared file libraries to achieve unrestricted data access across core infrastructure. &lt;a href="https://bughunters.google.com/blog/breaking-into-googles-gfile-for-100k" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Introducing new session management tools with native, granular controls&lt;/b&gt;: New Google Cloud session controls are deeply integrated and a granular feature of Context-Aware Access. Here’s what you need to know. &lt;a href="https://cloud.google.com/blog/products/identity-security/introducing-new-session-management-tools-with-native-granular-controls"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;How Blackline prevents data exfiltration with VPC Service Controls&lt;/b&gt;: We’re excited to share new policy intelligence capabilities in VPC-SC that help drive operational simplicity: Violation analyzer and violation dashboard. &lt;a href="https://cloud.google.com/blog/topics/customers/how-blackline-prevents-data-exfiltration-with-vpc-service-controls"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Introducing Continuous Vulnerability Assessment&lt;/b&gt;: You can detect exposure to new vulnerabilities the moment they’re published with Wiz CVA. &lt;a href="https://www.wiz.io/blog/introducing-cva" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;How developers prevent production risk at the source&lt;/b&gt;: Fixing security vulnerabilities in code takes seconds, while patching in production creates high operational costs and risk. Discover how empowering developers as your first line of defense eliminates exposure across every phase of your software pipeline. &lt;a href="https://www.wiz.io/blog/prevent-production-risk-at-code-stage" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Wiz achieves GovRAMP High authorization&lt;/b&gt;: Delivering unified cloud security and accelerating secure modernization to protect citizen data and critical infrastructure. &lt;a href="https://www.wiz.io/blog/wiz-govramp-high" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Please visit the Google Cloud blog for more security stories &lt;a href="https://cloud.google.com/blog/products/identity-security"&gt;published this month&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Join the Google Cloud CISO Community&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f04b57a0690&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Learn more&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://rsvp.withgoogle.com/events/google-cloud-ciso-community-interest-form-2026?utm_source=cgc-blog&amp;amp;utm_medium=blog&amp;amp;utm_campaign=FY25-Q1-global-GCP30328-physicalevent-er-dgcsm-parent-CISO-community-2025&amp;amp;utm_content=cisop_&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: GCAT-replacement-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Threat Intelligence news&lt;/b&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;AI Threat Tracker: From prompting to autonomy&lt;/b&gt;: In the newest Google Threat Intelligence Group (GTIG) report on the adversarial misuse of AI, we’ve observed adversaries transition from basic prompting to agentic AI workflows and AI-enabled automation, including threat actors compromise a cloud resource, then plan, build, and execute an agent-enabled mass credential harvesting campaign in under six hours. &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Financially-motivated threat actor BREEZE COMET targets Brazil&lt;/b&gt;: Learn about BREEZE COMET’s tactics and toolkit, and our mitigation recommendations and detections to support organizations in defending against this active and developing threat. &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;JFrog Artifactory under attack&lt;/b&gt;: Wiz Research has identified active, in-the-wild exploitation of three critical and high-severity vulnerabilities impacting JFrog Artifactory. Attackers are chaining these vulnerabilities to bypass authentication and gain administrative control. &lt;a href="https://www.wiz.io/blog/artifactory-under-attack-in-the-wild-exploitation-of-cve-2026-42016-cve-2026-4201" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Please visit the Google Cloud blog for more threat intelligence stories &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/"&gt;published this month&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Now hear this: Podcasts from Google Cloud&lt;/b&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Cloud Security Podcast: Patching browsers with AI, agents, Rust, and your tabs&lt;/b&gt;: Jasika Bawa and Doug Turner of Chrome Security explore how Google Chrome now uses AI agents to autonomously identify and patch security vulnerabilities at an unprecedented scale, significantly accelerating the browser's update cadence. &lt;a href="https://www.youtube.com/watch?v=pCXT8lQqg_U" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cloud Security Podcast: All about Project Atlas, Wiz's AI vulnerability research&lt;/b&gt;: Nir Orfeld, head of vulnerability research, Wiz, discusses how his team uses multi-agent AI systems for discovering high-impact zero-day vulnerabilities in cloud infrastructure. &lt;a href="https://www.youtube.com/watch?v=qRJJ9ekpuVg" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cloud Security Podcast: How Google eliminates classes of vulnerabilities at scale&lt;/b&gt;: How do you build the foundations for a secure Google-scale enterprise that stays secure even if an AI is writing the code and nobody has time to review it? Christoph Kern, principal security engineer, Google, explores what secure-by-design really means in the AI era. &lt;a href="https://www.youtube.com/watch?v=43imRRfgLgc" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;To have our Cloud CISO Perspectives post delivered twice a month to your inbox, &lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;sign up for our newsletter&lt;/a&gt;. We’ll be back in a few weeks with more security-related updates from Google Cloud.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/telecommunications/how-orange-uses-agents-to-make-finops-everyones-responsibility</id>
+    <title>How Orange uses agents to make FinOps everyone's responsibility</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At &lt;/span&gt;&lt;a href="https://cloud.google.com/customers/orange"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Orange&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, the leading France-based multinational telecom provider, there are days when engineering teams set aside their delivery backlogs and spend the day cleaning up cloud spend together. There's a leaderboard. There are goodies on the line. Experienced practitioners guide the newcomers, so people learn the work while doing it. By the end of the day, sponsors can see the results.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Orange calls these FinOps Clean Days. Together with gamified hackathons, they've earned the company's 100-plus person FinOps community a Net Promoter Score within the organization that’s above 70.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Those numbers point at something the wider industry is wrestling with. Recent State of FinOps reports identify getting engineers to take action as one of the top challenges organizations face. Moving from awareness to action means finding ways to build FinOps accountability, and to get teams to genuinely care.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That makes FinOps a business change problem. And business change problems have known solutions. We spoke with Camille Marini, the FinOps lead at Orange, to get a deeper understanding of how the company overcame these hurdles to accelerate AI adoption and ROI, and how your organization might follow the same course.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Why the Clean Days work&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Orange has held two principles since it set up its FinOps team. First, Cloud FinOps is a shared responsibility, with every stakeholder in a project involved in their own way. And the only path to that shared responsibility runs through communication and a deliberate change effort. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;“We insisted on the concept of shared responsibility across the organization for our FinOps practices,” Marini told us. “It’s very similar to how we approach cloud security. We needed to make teams understand that every single stakeholder in a project is involved in FinOps, each in their own way, if we are going to achieve responsible and impactful AI spending and usage.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Those principles led Orange to create a FinOps Community of Practice, with support from Google Cloud Consulting. The team ran it on standardized communication channels so the methodology reached well beyond the central group, and kept the meetings actionable, sharing optimizations and billing updates so every session provided value.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The Clean Days came from a clear-eyed reading of how agile teams actually operate. In agile environments with deployment running constantly, optimization work rarely wins against the sprint. Delivery priorities, backlogs, and daily operations take the available time first. So Orange created protected time, made it collaborative, and made it fun.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;McKinsey's four building blocks of change explain why this approach lands. Any large organizational change, the framework holds, requires action across four areas:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Conviction and understanding: "I know what is expected of me and I agree with it."&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Formal mechanisms: "The structures, processes, and systems reinforce the change."&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Role modeling: "I see my leaders and colleagues behaving differently."&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Talent and skills: "I have the skills and opportunities to behave in a new way."&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Map Orange's practice onto those blocks and the pattern is visible. Gamification and rewards give engineers colleagues to emulate: The leaderboard makes different behavior visible, and sponsors see the quick wins for themselves. Experienced practitioners guiding novices builds talent and skills through the community itself. The regular sessions, sharing optimizations and billing updates, build the conviction that comes from knowing where the money goes.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_m5giQlH.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;FinOps activities mapped to the four building blocks of change, with the points where AI agents can reinforce them.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;What happens beyond 100 people&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A community of 100 engaged people is an achievement. But in an organization with thousands of engineers, no central FinOps team can reach everyone directly. The question for leaders is how to extend what a community like Orange's creates — the awareness, the shared ownership, the habit of acting — to people the FinOps team will never meet.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This is where AI agents extend the capabilities of a FinOps team with two core benefits. They take on complex, time-intensive activities that previously needed a human, and they reduce friction around FinOps for individuals across the business.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Getting teams to adopt them takes a strategy aimed at your own organization's pain points, which often come from high cognitive load, unclear accountability, or competing priorities. Start by finding where engagement drops off in your FinOps lifecycle:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;An awareness gap: If teams are unsure of their spend impact, an insight agent can push real-time cost data into their daily tools.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A bandwidth gap: If engineers are too busy with backlogs, a remediation agent can identify quick wins and present them as ready-to-merge code changes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A complexity gap: If reporting feels like a manual chore, an orchestration agent can gather the data and simplify the process.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Start with trust, then add autonomy&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The sensible path runs in sequence. Establish the community practice, the way Orange did. Then introduce read-only agents that inform and suggest. Only once those are established across the community should you build agents that execute changes. Direct action carries operational risk, so manage it carefully. It's also where significant wins often sit.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;How you build depends on who's building. For teams that want to deploy quickly with minimal code, the &lt;/span&gt;&lt;a href="https://cloud.google.com/gemini-enterprise"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise App&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides a no-code environment for creating agents. For developers who need granular control, the &lt;/span&gt;&lt;a href="https://cloud.google.com/products/gemini-enterprise-agent-platform"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise Agent Platform&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (formerly Vertex AI) offers advanced tools for launching and governing agents built with frameworks like the Agent Development Kit (ADK).&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Cloud FinOps is moving beyond centralized reporting toward action that happens where the work does. The organizations getting there start with the culture, then use agents to carry it further than any one team could reach. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Orange's numbers came out of the community work. Building that foundation is the part worth copying first. When you're ready to extend it, &lt;/span&gt;&lt;a href="https://cloud.google.com/consulting" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Consulting&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; can help you shape the community practice, and the Gemini Enterprise App is a low-lift way to put your first read-only agent in front of your teams.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/telecommunications/how-orange-uses-agents-to-make-finops-everyones-responsibility" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/orange-finops-shared-responsibility.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/orange-finops-shared-responsibility.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/orange-finops-shared-responsibility.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/compute/compute-engine-m4n-vms</id>
+    <title>M4N VM family, now GA: Highest per-core IOPS and throughput for I/O and memory-bound workloads</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As enterprise organizations scale mission-critical applications, storage I/O and memory access can become severe operational bottlenecks. Whether its Oracle databases, in-memory databases like SAP HANA, or high-throughput SQL Server clusters, EHR systems, and real-time big data analytics, memory-bound databases often force enterprises to over-provision compute cores (vCPUs) to get the RAM capacity and storage bandwidth they need, driving up costly third-party software licensing fees.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we are thrilled to announce the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;general availability&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; of the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;M4N&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; machine series in Google Compute Engine, purpose-built for I/O intensive, high-memory workloads, the second offering in our network- and block-storage optimized VM family.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; Compared to similar offerings from other hyperscalers&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;M4N provides the highest per-core IOPS and throughput for high-memory instances, and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;over 20% TCO reduction for Oracle databases.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image4" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image4_gZSsHxy.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;M4N is also the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;industry’s first&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; instance of network and block storage optimized with higher memory ratios (up to 26:1) and size (6TB). Powered by 5th Gen Intel® Xeon® Scalable processors and built on Google Cloud's custom&lt;/span&gt;&lt;a href="https://cloud.google.com/titanium"&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Titanium&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; offload architecture, M4N instances deliver up to 25,000 MiB/s (25 GiB/s) of aggregate host storage performance and up to 1 million IOPS when paired with&lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hyperdisks"&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk Extreme&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; — doubling the block storage performance of current M4 instances.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;M4N targets workloads that demand both extreme high-density RAM and uncompromising I/O performance, complementing our existing memory-optimized families (such as M1, M2, M3, M4, and X4) by solving specific storage and network bottlenecks for high-throughput enterprise applications.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Built for demanding workloads&lt;/span&gt;&lt;/h3&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Workload Category&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Typical Applications&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Why M4N Wins&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Mission-critical enterprise DBs&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Oracle, SAP HANA, SQL Server, IBM DB2, MySQL, PostgreSQL&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Memory-to-core ratios (up to 26.57 GB/vCPU) paired with 25 GiB/s storage for rapid data ingestion, transaction logging, and zero-stall backup cycles.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Generative AI and RAG data layers&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Milvus, Pinecone, Qdrant, Vespa, Redis, In-Memory Context Caching&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Sub-millisecond similarity search across massive vector indexes in RAM, combined with 400 Gbps network bandwidth for distributed model retrieval.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enterprise healthcare and ERP&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Epic Systems (Operational Database), SAP ECC, SAP S/4HANA&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Sustained I/O headroom that prevents query latency spikes during peak clinical/transactional hours.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Real-time analytics and EDA&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Electronic Design Automation, Genomic Modeling, In-Memory OLAP&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;High memory capacity to load massive datasets entirely in RAM with maximum storage bandwidth for checkpoint dumps.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Optimizing &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Oracle&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; licensing costs&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;E&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;nterprise IT departments struggle with the rising cost of core-based software licensing. For workloads like Oracle database, licensing fees are typically calculated based on the number of vCPUs or physical cores assigned to the instance. Historically, this has forced a difficult trade-off: paying for more compute cores than necessary just to obtain the required amount of RAM and storage performance.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;M4N changes this paradigm with its industry-leading high memory-to-vCPU ratio. By providing the highest per-core IOPS and throughput for high-memory instances of all the leading hyperscalers, M4N allows database administrators to:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Reduce TCO and licensing overhead: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Stop over-provisioning of cores while meeting Oracle database performance density requirements, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;resulting in over 20% TCO reduction&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; compared to similar offerings from leading hyperscalers.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Right-size infrastructure:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Allocate the exact amount of compute power needed for the workload while still accessing massive memory pools.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Improve cache-hit ratios:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; With more memory available per core, larger portions of the database can reside in the system global area (SGA), reducing expensive I/O operations and further boosting efficiency.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;What customers are saying&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Early experiences with M4N show &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;that workload-optimized infrastructure is the engine for transformation&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Before M4N, meeting our demanding I/O requirements on Google Cloud often required over-provisioning our compute to achieve the necessary performance density. The new M4N instances solve this by delivering high throughput across the smaller to larger shapes.”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; - Sherri Trojan, Sr Principal Solution Architect, Sabre&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="sabre" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/sabre_jNZmgxf.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"We are delighted to see Google Cloud introduce this next-generation high-performance infrastructure for mission-critical database workloads. The new compute platform demonstrates tremendous potential for enterprise Oracle deployments requiring scalability, resiliency, and performance. We are excited about what this innovation means for customers running Oracle workloads on Google Cloud.” &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;- Bala Kuchibhotla, Co-Founder and CEO, Tessell&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="tessel" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/tessel.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"With M4N, Google Cloud continues to push the boundaries of platform co-design. By combining 5th Gen Intel Xeon Scalable processors with Google's custom Titanium offload architecture, M4N delivers the extreme memory capacity, high memory bandwidth, and uncompromising I/O throughput required for the world’s most demanding mission-critical data environments."&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; -  Intel&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="intel" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/intel_iwN65co.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;What’s new: Scaling extreme data layers with M4N&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;M4N bridges two previously separate paradigms in cloud infrastructure: &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;large memory footprints&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;extreme I/O performance&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Engineered with custom Titanium offloads, M4N minimizes I/O bottlenecks without requiring infrastructure add-ons or compromises on memory density. Let’s take a look at how M4N fits into these environments. &lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;1. Enabling high bandwidth data transfer&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For workloads with large memory footprints, M4N provides: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Superior VM-to-VM bandwidth:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Delivers up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;400 Gbps aggregate VM-to-VM network bandwidth&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;50 Gbps single-flow bandwidth&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; within the same VPC, unlocking non-blocking data exchange for distributed database clusters and real-time streaming data layers.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced internet and egress throughput:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Enjoy up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;200 Gbps internet egress bandwidth&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;48 MPPS&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; packet processing performance.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;High bandwidth out-of-the-box:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Achieve full performance without needing to purchase or configure premium Tier_1 networking add-ons.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;2. Dynamic storage performance with Hyperdisk&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Paired with Google Cloud's next-generation storage portfolio, M4N with Hyperdisk lets you independently tune IOPS, throughput, and capacity:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Hyperdisk Extreme (HdX):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Delivers up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;25 GiB/s aggregate block storage throughput and 1,000,000 IOPS&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;—double the storage performance of standard M4. This is great for rapid database recovery, transactional checkpointing, and instant in-memory index reloads.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Hyperdisk Balanced (HdB):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Scales up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;20 GiB/s throughput and 640,000 IOPS&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; for cost-effective enterprise storage at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;M4N machine types and specifications&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;M4N instances are offered across three distinct memory-to-vCPU ratio tiers, scaling from 16 to 224 vCPUs and up to 5,952 GB of DDR5 RAM. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;M4N also offers predefined VM shapes across three distinct memory-to-vCPU ratios to match specific workload requirements, with support for Resource-based Committed Use Discounts (CUDs).  Details &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/memory-optimized-machines#m4n_machine_types"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Get started today&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The M4N instances are now available in select regions around the globe. To learn more about how the M4N family can enhance your memory- and I/O-bound applications and reduce your licensing costs, contact your account representative or explore the &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/memory-optimized-machines"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/compute/compute-engine-m4n-vms" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image4_gZSsHxy.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image4_gZSsHxy.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/image4_gZSsHxy.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/containers-kubernetes/seaverse-chooses-gke-agent-sandbox</id>
+    <title>For SeaVerse, GKE Agent Sandbox reduces infrastructure costs by 60%</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Editor’s note:&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; Today we hear from &lt;/span&gt;&lt;a href="https://seaverse.ai/" rel="noopener" target="_blank"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;SeaVerse&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;a gaming startup from &lt;/span&gt;&lt;a href="https://www.seaart.ai" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;SeaArt&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that is building a platform for playable AI experiences&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, where users can open lightweight games, character chats, and interactive apps, or create their own experiences from a prompt. To support that creative loop, SeaVerse needed infrastructure that could run dynamic, multi-tenant sandbox workloads with strong isolation, low latency, better observability, and more flexible costs. &lt;/span&gt;&lt;a href="https://cloud.google.com/kubernetes-engine"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;Google Kubernetes Engine (GKE)&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/bringing-you-agent-sandbox-on-gke-and-agent-substrate"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;GKE Agent Sandbox&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; gave SeaVerse the managed foundation from which to execute these AI workloads, helping the team reduce their infrastructure costs by up to 60%, while giving creators a faster path from idea to playable experiences.&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; Read on to learn more.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What if AI were a playground? Welcome to SeaVerse, a creation-first platform for playable AI experiences. Here, an AI creation can be as peaceful as drawing a path for a snake to follow, or as chaotic as a music-backed stickman simulation. Some people come to play lightweight games. Others come to chat with AI characters, try interactive apps, create visual patterns, share what they made, or remix an idea into something new.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We built SeaVerse around a simple promise: Every experience should feel immediate and easy to share. A creator should be able to describe an idea in plain language, refine the result, and publish it in moments, without a traditional coding workflow.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Delivering that simplicity requires serious infrastructure. Every creation that users make moves through the same chain: generate, run, preview, debug, publish, remix. If any part of that chain is slow, unstable, or poorly isolated, users feel it immediately. That’s why we turned to GKE and GKE Agent Sandbox. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;The infrastructure challenge of instant interaction&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What looks effortless to a user is anything but on our end. Every creation on SeaVerse runs as a distinct workload and is expected to behave reliably from the first interaction.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because each workload runs in its own environment, we needed clear security boundaries between users, creations, and sandboxes. But overly strict isolation could slow the very creative loop we were trying to protect, and when something went wrong, diagnosing it was costly. Our engineers had to trace problems across multiple parts of the execution chain with little visibility into what was happening inside the environment.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We explored existing sandbox approaches, but needed deeper kernel-level isolation and native observability at scale to support fast diagnosis across multi-tenant environments. Something had to change.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Building on GKE and GKE Agent Sandbox&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We chose &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;GKE&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; because we needed a reliable, secure way to operate Kubernetes without turning our engineering team into a cluster maintenance team. GKE brought together the proven ecosystem and operational tooling we needed, freeing us to focus on building the platform rather than managing the infrastructure beneath it.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As a Kubernetes primitive designed for agent code execution and computer use, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;GKE Agent Sandbox&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; addressed our requirement for strong isolation, enforcing strong security boundaries without slowing down the creation experience. By utilizing GKE Agent Sandbox with Kata Containers+Cloudhypervisor (microVM), we’ve achieved the perfect balance of multi-cloud flexibility and robust security, option to switch isolation runtime between microVM and gVisor, running our AI sandboxes safely. GKE empowers us to scale toward our long-term vision of supporting over a million sandboxes. Built on gVisor, it provides kernel-level isolation for dynamic sandbox workloads while preserving the Kubernetes orchestration model, so that they can be managed through the same scheduling, monitoring, and operations as the rest of the cluster. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With SeaVerse, users can generate interactive experiences from a single prompt. After an experience is generated, GKE Agent Sandbox supports the run, test, integration, and verification steps needed to make it ready to preview, refine, and publish. At general availability, it supports allocating up to 300 sandboxes per second, per cluster, with 90% of allocations completing in 200 milliseconds. Together, GKE and GKE Agent Sandbox gave us a reliable foundation for AI-generated interactive workloads that helped keep our team focused on the product experience.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;From black box to glass box&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Before GKE Agent Sandbox, a failed sandbox workload could feel like flying blind. We could often see that something had gone wrong, but didn’t have enough runtime status, metrics, or failure signals to understand why.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Now, Google Cloud’s native logging and monitoring reach directly into those sandboxed environments, giving us a clearer view of workload behavior, faster issue resolution, and a stronger foundation for managing multi-tenant workloads.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That visibility matters to developers, but it also matters to the platform’s users: A creator never sees the logs, the cluster, or the orchestration layer. They see whether an experience opens quickly, whether it responds when they draw, click, chat, or share, and whether they can keep building without friction. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Flexibility that translates to savings&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;GKE Agent Sandbox also changed how we think about cost. Previously, running secure sandboxed environments meant stronger dependencies on specific server types, which limited how precisely we could match resources to each workload. With GKE Agent Sandbox, we can run secure, isolated workloads on appropriately sized cloud VMs. This gives us greater flexibility in resource allocation and helped us cut our infrastructure costs by up to 60%.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That same flexibility extended to storage. Not all SeaVerse creations are built in a single session. Some evolve over time as creators return to refine them, build on earlier ideas, or invite others to remix what they’ve made. Our previous architecture didn’t support the persistent file-system capabilities those more complex use cases demanded, but that gap is gone now. We can attach persistent storage where workloads require it while maintaining the isolation boundaries that multi-tenant AI experiences need. For creators, that means experiences that are fast to open and easier to refine, revisit, and build on over time.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;The next remix&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Supporting creations that can evolve and deepen is central to what we’re building. It’s still early in what playable AI can become. As the platform grows, we need to keep strengthening what matters most: stability, observability, elastic scaling, and cost efficiency, all in service of a creator experience that stays fast, reliable, and expressive.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’re also exploring additional Google Cloud tools to support smarter analytics and creation assistance. Gemini and agent models could help operators and creators better understand how experiences perform. &lt;/span&gt;&lt;a href="https://cloud.google.com/bigquery"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; AI and ML capabilities can support use cases such as churn prediction, LTV and ROI prediction, and user segmentation. Multimodal tools such as Imagen and Veo on &lt;/span&gt;&lt;a href="https://cloud.google.com/products/gemini-enterprise-agent-platform"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise Agent Platform&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; open up new possibilities for material analysis, creative generation, and AI interactive content production.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our goal is to make AI experiences feel immediate, expressive, and connected. With &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;GKE&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;GKE Agent Sandbox&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, we have a stronger foundation for the next generation of playable AI.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/containers-kubernetes/seaverse-chooses-gke-agent-sandbox" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/products-and-platforms/products/search/3-new-ways-were-improving-search-profiles-for-publishers</id>
+    <title>3 new ways we're improving Search profiles for publishers</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content type="html">Search profiles</content>
+    <link href="https://blog.google/products-and-platforms/products/search/3-new-ways-were-improving-search-profiles-for-publishers" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Profiles_Blog_Header_v1..max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Profiles_Blog_Header_v1..max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Profiles_Blog_Header_v1..max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/technology/families/teens-ai-research-findings</id>
+    <title>5 things to know about teens' views on AI today</title>
+    <updated>2026-09-16T15:00:00+00:00</updated>
+    <content type="html">Collage of images showing teenagers using devices like phones and tablets</content>
+    <link href="https://blog.google/innovation-and-ai/technology/families/teens-ai-research-findings" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-09-16T15:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Teens_views_on_AI_hero.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Teens_views_on_AI_hero.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Teens_views_on_AI_hero.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/products/ads-commerce/rethink-2026</id>
+    <title>Rethink 2026</title>
+    <updated>2026-09-16T14:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Rethink_2026_collection_hero.max-600x600.format-webp.webp" /&gt;At Rethink 2026, we’re helping marketers prepare for the holiday season with new ways to connect with customers and boost ROI.</content>
+    <link href="https://blog.google/products/ads-commerce/rethink-2026" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-09-16T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Rethink_2026_collection_hero.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Rethink_2026_collection_hero.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Rethink_2026_collection_hero.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/products-and-platforms/products/shopping/google-shopping-updates-holiday-shopping</id>
+    <title>Boost your holiday sales with these agentic commerce updates</title>
+    <updated>2026-09-16T14:00:00+00:00</updated>
+    <content type="html">A woman standing at a counter and typing on a laptop. Behind her are shelves full of ceramics and supplies</content>
+    <link href="https://blog.google/products-and-platforms/products/shopping/google-shopping-updates-holiday-shopping" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-09-16T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Think_Retail_hero_xePKgsT.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Think_Retail_hero_xePKgsT.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Think_Retail_hero_xePKgsT.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
   <entry>
     <id>https://blog.google/company-news/outreach-and-initiatives/sustainability/terradot-superpollutants-carbon-removal</id>
     <title>We’re catalyzing megaton-scale climate impact in Brazil</title>
@@ -28365,429 +29027,5 @@ available for all regions.&lt;/p&gt;</content>
     <link href="https://workspaceupdates.googleblog.com/2026/07/weekly-recap-07-31-2026.html" rel="alternate"/>
     <category term="Workspace Updates"/>
     <published>2026-07-31T19:25:01+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana</id>
-    <title>Simplify your morning with this vibe-coded schedule app.</title>
-    <updated>2026-07-31T19:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Glanceboard_socialshare.max-600x600.format-webp.webp" /&gt;Tired of starting your morning staring at bright screens and stressful notifications? Raph, a creative technologist at Google, built a custom app called Glanceboard with…</content>
-    <link href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/glanceboard-gemini-flash-nano-banana" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-07-31T19:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Glanceboard_socialshare.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Glanceboard_socialshare.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Glanceboard_socialshare.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month</id>
-    <title>What’s new in AI infrastructure and orchestration this month</title>
-    <updated>2026-07-31T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At Google, AI is a soup-to-nuts endeavor. Obviously, we make leading AI models like Gemini and Nano Banana. We incorporate AI into the tools you use every day (think Gmail, BigQuery, AlloyDB, Google Cloud Code and Google Cloud Assist). We make software frameworks to help you build with AI, like Gemini Enterprise Agent Platform, JAX, or MaxTest. And we co-design the powerful infrastructure platform that runs underneath it all, including a broad range of standard compute, accelerators like TPUs and GPUs, optimized networks and storage, as well as orchestration software like GKE and Cluster Director. Then we package them all up into supercomputing platforms like AI Hypercomputer to power the industry-wide transformation to the AI and agentic future.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This is critical in today’s agentic era, where AI is evolving from answering questions to reasoning and taking action. Companies that want to lead in this next phase of AI need computing infrastructure that’s designed and optimized for these new requirements, so they can innovate faster, deliver compelling user and customer experiences, and optimize for cost and energy efficiency — all at massive scale.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To support this, we are making AI infrastructure and orchestration news at a furious pace. In this blog, we provide a monthly snapshot of the recent launches and milestones that you need to know about to keep up-to-date, deep dives on architecture and performance tuning, and discussions of specialized use cases, always with pointers to where you can learn more. Keep an eye out for updates to this blog every month. &lt;/span&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;July 2026&lt;/span&gt;&lt;/h3&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Product, technology, and tools updates&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Product update:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/products/managed-lustre"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Managed Lustre&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is now GA, and available in four distinct performance tiers that deliver throughput ranging from 125 MB/s, 250 MB/s, 500 MB/s, to 1000 MB/s per TiB of capacity — with the ability to scale up to 8 PB of storage capacity. The Managed Lustre solution is powered by DDN’s EXAScaler, combining DDN's decades of leadership in high-performance storage with Google Cloud's expertise in cloud infrastructure.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Product update:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/c4n-network-and-storage-optimized-vms?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;C4N network and storage optimized VMs are now GA&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. C4N is our first network- and block-storage-optimized VM series built to eliminate data-transfer bottlenecks. Powered by 5th Gen Intel Xeon Scalable processors and built on Google's &lt;/span&gt;&lt;a href="https://cloud.google.com/titanium?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Titanium&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; offloading hardware, it achieves 400 Gbps network bandwidth, 95 million packets per second (MPPS), and up to 25 GiB/s of block storage throughput when paired with Hyperdisk Extreme.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New feature:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/planning-large-clusters#clusters-5k-nodes"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Dataplane V2 up to 15K Nodes with Network Policies (GA)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. This capability enables standard GKE clusters to scale up to 15,000 nodes while maintaining full active Network Policy enforcement, supporting the massive infrastructure needs of large enterprise and AI/ML customers.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New feature:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/introducing-co-operative-time-slicing-for-rl-in-llm-d?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Co-operative time-slicing in llm-d&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. If you’re running reinforcement learning (RL) workloads, you can now interleave independent RL jobs onto shared physical hardware, increasing aggregate accelerator duty cycles from a ~40% baseline up to 70% without impacting model convergence or accuracy. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New AI security tool:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/introducing-k8s-aibom-on-gke-for-automated-ai-bills-of-materials?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Looking to secure your AI supply chain on GKE&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, deploy AI workloads safely, and cut down on shadow AI? We open-sourced k8s-aibom, a lightweight, unprivileged Kubernetes controller that continuously monitors container clusters to automatically detect running AI runtimes (like vLLM and Triton) and generate standard CycloneDX Machine Learning Bill of Materials (ML-BOMs). Check out the &lt;/span&gt;&lt;a href="https://github.com/GoogleCloudPlatform/k8s-aibom" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;k8s-aibom project&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and get involved.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Practitioner guides and how-tos&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;On July 27, Google announced &lt;/span&gt;&lt;a href="https://discuss.google.dev/t/announcing-day-0-support-for-kimi-k3-on-google-cloud/385392" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Day 0 support for Moonshot AI’s Kimi K3&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; 2.8-trillion-parameter open-weight model, the day weights were released. Whichever your preferred deployment path — via Model Garden, custom orchestration, or GKE with llm-d recipes — this guide offers detailed step-by-step instructions to help you evaluate and pilot Kimi K3 in Google Cloud. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/autopilot-clusters-with-gke-managed-dranet-gpus-and-tpus"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Kubernetes Engine (GKE) managed DRANET supports both GPUs and TPUs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. There are several configurations to use this implementation, including standard cluster (where you have full control) and autopilot cluster (where Google does the heavy configs for you). Take a deeper dive in the hands-on lab, &lt;/span&gt;&lt;a href="https://codelabs.developers.google.com/codelabs/gke-autopilot-tpus-dranet-gemma#0" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Autopilot clusters with TPUs, GKE managed DRANET and Gemma 4&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Learn to run Ray on TPUs, not GPUs. In &lt;/span&gt;&lt;a href="https://developers.googleblog.com/run-ray-on-tpu-part-1-the-foundations/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Part 1&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; of this two-part series, we discuss TPU slices (hint: Ray thinks of them as just another accelerator on which to schedule), then walk through Ray’s various AI libraries (&lt;/span&gt;&lt;a href="https://developers.googleblog.com/run-ray-on-tpu-part-2-ray-ai-libraries/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Part 2&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;).&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Evaluate TPUs for sample workloads using a new microbenchmark suite that helps you accurately assess whether a device is achieving its theoretical performance specifications, and to identify specific performance gaps or architecture-specific bottlenecks. Dive in &lt;/span&gt;&lt;a href="https://developers.googleblog.com/how-to-use-google-microbenchmarks-for-evaluating-tpu-performance/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Scale your agents without killing your budget. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/reduce-your-agents-costs-with-gke-agent-sandbox?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Learn how GKE orchestration can help you safely pack more agents onto a fixed compute footprint&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; with GKE Agent Sandbox and Pod snapshots. Whether your goal is performance or cost optimization, we teach you how to turn the right dials for optimal agent efficiency. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Technical blueprint: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Inside the optimization of Mistral 3 large inference on Ironwood. This blog outlines how one Google team optimized Mistral 3 large MoE model inference on Google’s Ironwood (TPU v7x), achieving a 1.5x performance gain. They did so with hybrid sharding, replacing linear VPU summations with tree reductions, optimizing GMM/MLA kernels, and adopting asynchronous scheduling. As a result, they boosted throughput by up to 48% while maintaining benchmark accuracy neutrality. Read the full blog &lt;/span&gt;&lt;a href="https://discuss.google.dev/t/inside-the-optimization-of-mistral-3-large-inference-on-ironwood/385847" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Research, reports and deep-dives&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Report: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Google was named a Leader in the inaugural &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/google-is-a-leader-in-gartner-magic-quadrant-for-ai-infra?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gartner&lt;/span&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;Ⓡ&lt;/span&gt;&lt;/span&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; Magic Quadrant™ for AI Infrastructure&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, positioned highest for ‘Ability to Execute’ and furthest for ‘Completeness of Vision’. Gartner called out Google’s proprietary scalable compute, integrated AI Hypercomputer architecture, and the scale of our AI compute capacity as key strengths. Download a copy &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/content/2026-gartner-mq-ai-infrastructure?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Report:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; We recently surveyed more than 1,400 senior IT leaders for our &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/content/state-of-infrastructure-in-the-agentic-ai-era?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;State of AI Infrastructure report&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and a resounding pattern emerged: The gap between AI ambition and infrastructure reality is widening. In fact, 83% of organizations say they require infrastructure upgrades to support production-grade agentic AI. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/state-of-ai-infrastructure-report-overview?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Read the accompanying blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to understand how adapting your infrastructure to meet the demands that agentic applications place on your systems will help you move from pilot to production.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;June 2026&lt;/span&gt;&lt;/h3&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Product, technology and tool updates&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Product update:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Protecting sensitive data used with AI is a critical part of advanced and secure cloud infrastructure. &lt;/span&gt;&lt;a href="https://cloud.google.com/security/products/confidential-computing?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Confidential Computing&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; cryptographically protects data in use in hardware-based Trusted Execution Environments (TEEs) with verifiable data integrity, and is &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/verifiable-trust-in-the-ai-era-whats-new-in-confidential-computing?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;now available&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; on the accelerator-optimized &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/accelerator-optimized-machines#g4-series"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;G4 machine series&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, featuring &lt;/span&gt;&lt;a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000-family/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Get started with &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/confidential-computing/confidential-vm/docs/create-a-confidential-vm-instance-with-gpu"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Confidential G4 VMs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpus-confidential-nodes"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Confidential G4 GKE Nodes&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Developer resource: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;The new &lt;/span&gt;&lt;a href="https://cloud.google.com/products/tpu/tpu-developer?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TPU Developer Hub&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is the place to go for model builders, optimizers, and developers to learn to unlock the full performance of Google Cloud TPUs. Read more in this &lt;/span&gt;&lt;a href="https://developers.googleblog.com/unlocking-the-power-of-the-tpu-stack-introducing-our-new-developer-hub/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New product: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Scale your AI workloads with the new &lt;/span&gt;&lt;a href="https://discuss.google.dev/t/stop-training-blind-scaling-ai-with-the-new-opentelemetry-based-tpu-ai-telemetry-collector-agent/375210" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;OpenTelemetry-Based TPU AI Telemetry Collector Agent&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. For the first time, you can route high-fidelity TPU hardware telemetry to Google Cloud Monitoring, Google Managed Prometheus, or your own self-hosted Grafana stack.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Practitioner guides and how-tos&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Learn how to build high availability into an AI inference workload running on GKE Inference Gateway with TPUs, Cloud Storage FUSE and Dynamic Resource Allocation (DRA). This &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/experimenting-with-tpus-gke-managed-dranet-and-multi-cluster-inference-gateway?_gl=1*jj3plw*_ga*OTAxNzc0MzU1LjE3ODIyMjAxNDk.*_ga_4LYFWVHBEB*czE3ODI3NTc3NzAkbzkkZzEkdDE3ODI3NTg2MDEkajYwJGwwJGgw&amp;amp;e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides an overview, or you can get all the technical details in the &lt;/span&gt;&lt;a href="https://codelabs.developers.google.com/codelabs/gke-inference-gateway-multi-cluster-tpus-dranet#0" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;hands-on codelab&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How-to guide:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Did you know you can connect your AI agents to unstructured data in &lt;/span&gt;&lt;a href="https://cloud.google.com/storage"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud Storage&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; via Model Context Protocol (MCP)? In &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;this blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, learn about why would want to do that from three customer examples, then how to do it, choosing either a fully managed service, or a self-managed local server for more customization and control. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Research, reports and deep-dives&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Report: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;According to an independent benchmark report, &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-gke-inference-gateway"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Inference Gateway&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; outperforms the next leading managed Kubernetes service with 15.7% higher throughput, 92.8% shorter wait times, and 62.6% lower inter-token latency. This performance can be attributed to its use of prefix caching, which optimizes LLM performance by storing the KV cache (activation states) of long, repetitive prompt prefixes. Learn more in the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/gke-inference-gateway-prefix-caching-accelerates-ai-inference?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Architecture deep dive: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;A closer look at &lt;/span&gt;&lt;a href="https://discuss.google.dev/t/accelerate-tpu-model-loading-while-saving-ram-on-gke/374835" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;the cold start problem, this time for TPUs and GKE&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and how the Run:ai Model Streamer can help change the dynamic. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Customer and partner updates&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Customer win:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Leveraging GKE, BigQuery, Cloud SQL, and Gemini Enterprise Agent Platform, &lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=x36QJ-QKRGg" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Pager Health is eliminating operational fragmentation to deliver a simplified, personalized U.S. healthcare experience&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that transforms lives.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Customer win:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Trustpilot, the customer review platform, built a high-volume streaming pipeline using fine-tuned Gemma models with Dataflow and Gemini Enterprise Agent Platform running on cost-optimized A2 VMs using A100 GPUs, as well as optimized version of vLLM maintained by Gemini Enterprise Agent Platform.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;May 2026&lt;/span&gt;&lt;/h3&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Product, technology and tool updates&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Product update:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/machine-learning/agent-sandbox"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Agent Sandbox&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is now generally available.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New open-source project:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://github.com/agent-substrate/substrate" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is a new open-source project aimed at continuing to push the limits of agentic infrastructure density&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;New feature:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://ai.google.dev/edge/ai-edge-portal" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google AI Edge Portal&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, a solution for testing and benchmarking on-device machine learning (ML) at scale, now supports benchmarking and debugging on-device LLMs. Read more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/benchmark-llms-on-device-with-ai-edge-portal?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Product deep dive: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;We went &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/storage-data-transfer/cloud-storage-rapid-turbocharges-object-storage-for-ai-analytics?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;into depth about Cloud Storage Rapid&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, a new family of high-performance storage offerings for AI workloads. At launch, offerings include Rapid Bucket (formerly Rapid Storage), a high-performance zonal object storage offering, and Rapid Cache (formerly Anywhere Cache), which accelerates reads on-demand and colocates compute and data for workloads in existing buckets. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Research, reports and deep dives&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Architecture deep dive: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Google Global Infrastructure VP Bikash Koley and Engineering Fellow Arjun Singh provide a high-level overview of &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/networking/data-center-and-global-networks-built-for-ai-era"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;the challenges that AI workloads pose to network infrastructure&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and discuss the deep enhancements we’ve made to our data center fabrics, WAN, and global networks to better support them. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Architecture deep dive: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;We unveiled a &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/cluster-reliability-for-trillion-parameter-models-on-tpus?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;new cluster-level reliability model&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for developing frontier AI models on TPUs, ditching instance-level reliability &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Customer and partner updates&lt;/span&gt;&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Customer win:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Visual media provider &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/infrastructure/how-imgix-processes-8-billion-images-daily-with-g4-vms-powered-by-nvidia-blackwell?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Imgix serves more than 8 billion images and videos from AI Hypercomputer&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; equipped with G4 VMs powered by NVIDIA RTX PRO 6000 Blackwell GPUs.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-07-31T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Whats_new_in_AI_infrastructure.max-600x600.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Whats_new_in_AI_infrastructure.max-600x600.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Whats_new_in_AI_infrastructure.max-600x600.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026</id>
-    <title>Find out what’s new in the Gemini app in July's Gemini Drop.</title>
-    <updated>2026-07-31T16:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Drops_Social.max-600x600.format-webp.webp" /&gt;Gemini Drops is our regular monthly update on how to get the most out of the Gemini app.</content>
-    <link href="https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-07-31T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Drops_Social.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Drops_Social.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Drops_Social.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-why-ai-threat-defense-is-the-new-boardroom-baseline</id>
-    <title>Cloud CISO Perspectives: Why AI Threat Defense is the new boardroom baseline</title>
-    <updated>2026-07-31T13:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Welcome to the second Cloud CISO Perspectives for July 2026. Today, Chris Betz, CISO, Google Cloud, and Alicja Cade, Senior Director, Office of the CISO, Google Cloud, explain what boards of directors need to know about AI security and how to prepare their organizations for security governance and business agility in the AI era.&lt;/p&gt;&lt;p&gt;As with all Cloud CISO Perspectives, the contents of this newsletter are posted to the &lt;a href="https://cloud.google.com/blog/products/identity-security/"&gt;Google Cloud blog&lt;/a&gt;. If you’re reading this on the website and you’d like to receive the email version, you can &lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;subscribe here&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-aside"&gt;&lt;dl&gt;
-    &lt;dt&gt;aside_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Get vital board insights with Google Cloud&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f30cf41b9d0&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Visit the hub&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://cloud.google.com/solutions/security/board-of-directors?utm_source=cgc-site&amp;amp;utm_medium=et&amp;amp;utm_campaign=FY26-Q2-GLOBAL-GCP39634-email-dl-dgcsm-CISOP-NL-177159&amp;amp;utm_content=-&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: GCAT-replacement-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Why AI Threat Defense is the new boardroom baseline&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;&lt;i&gt;By Chris Betz, CISO, and Alicja Cade, Senior Director, Office of the CISO, Google Cloud&lt;/i&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
-  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
-    &lt;div class="uni-paragraph
-      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
-      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
-
-      
-
-
-
-
-
-
-  
-
-    &lt;figure class="article-image--wrap-small
-      
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="Chris Betz Google-9779" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/Chris_Betz_Google-9779.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Chris Betz, CISO, Google Cloud&lt;/p&gt;&lt;/figcaption&gt;
-      
-    &lt;/figure&gt;
-
-  
-
-
-
-
-
-      &lt;p&gt;Modern security governance has become a critical part of the foundation for business agility. Often treated as an operational cost center, security is increasingly recognized as a primary business enabler, a runway that empowers your organization to move fast, adopt cutting-edge generative AI, and capture new markets securely.&lt;/p&gt;&lt;p&gt;In today’s environment, every major business initiative is an AI initiative, and every AI initiative requires a secure foundation. Ensuring your company is investing in the right technologies and using the right tools will be crucial in leading through the rapid AI transformation.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
-  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
-    &lt;div class="uni-paragraph
-      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
-      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
-
-      
-
-
-
-
-
-
-  
-
-    &lt;figure class="article-image--wrap-small
-      
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="Alicja Cade headshot 2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/Alicja_Cade_headshot_2.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Alicja Cade, Senior Director, Office of the CISO, Google Cloud&lt;/p&gt;&lt;/figcaption&gt;
-      
-    &lt;/figure&gt;
-
-  
-
-
-
-
-
-      &lt;p&gt;To operate against AI speed threats, boards of directors should encourage their CISOs and business leaders to transform their strategic approach for speed, scope, and scale. We need to emphasize risk and vulnerability management with a defensive strategy that’s AI native, agentic, and open.&lt;/p&gt;&lt;p&gt;By aligning defensive speeds with automated attack cycles, using &lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-ai-leverages-deep-context-defenders-advantage"&gt;deep internal business context&lt;/a&gt;, and integrating tools into unified platforms, AI-powered defense can help you confidently manage today’s threats at machine speed, and simultaneously greenlight aggressive innovation. Based on our learnings defending ourselves and our customers, Google developed AI Threat Defense (AITD) to help transition security from manual, reactive firefighting to an automated, continuous capability.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
-  &lt;section class="h-c-grid"&gt;
-    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
-      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
-      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
-        &lt;q class="uni-pull-quote__text"&gt;While directors don’t need to manage the execution of these technologies, they have to provide the governance frameworks that encourage operational modernization. To help guide your organization’s leadership team in this transition, we recommend focusing on these five strategic, constructive areas of inquiry.&lt;/q&gt;
-
-        
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For boards of directors, investing in these capabilities helps build the resilience required to drive business velocity.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Key questions for CISOs, business, and tech leadership&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While directors don’t need to manage the execution of these technologies, they have to provide the governance frameworks that encourage operational modernization. To help guide your organization’s leadership team in this transition, we recommend focusing on these five strategic, constructive areas of inquiry.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;1. Business enablement&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: When an enterprise transitions to automated threat defense, it is not just closing a security gap — it’s reclaiming engineering productivity and protecting operational continuity.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ask your team&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: How will modernization investments speed up our business to deliver value to our customers? What additional resources do we need (if any) to create this business value more quickly, and create a competitive advantage? &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Governance objective&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Ensure that any decisions about investments align with business strategy. Speed up time to market on new features. Create competitive agility advantage for security and shareholders.  &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Expected operational standard&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Consolidate business process, speed up execution and time to market.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;2. Remediation cycle&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: By integrating business logic and context into defensive platforms, AI can help filter out the background noise that has historically overwhelmed security operations, and also keep you on top of the complex threat landscape.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ask your team&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: How are we managing the organization’s risk in the era of fighting AI with AI? &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Governance objective&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Expect a management plan with CISO input for balancing business operations, risk, and profitability with speed and reliability in an AI threat-driven world.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Expected operational standard&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Your organizational mean time to remediate (MTTR) exposures and other desired changes into production goes down and to the right.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;3. System consolidation&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Boards should look beyond standalone AI features and point products to address systemic risk and truly enable business speed.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ask your team&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Are we moving toward a unified security platform, or maintaining a patchwork of point tools? &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Governance objective&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Reduce visibility gaps and operational friction created by fragmented vendor environments.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Expected operational standard&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Consolidate scanning, risk prioritization, and code remediation into an integrated workflow.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;4. Contextual prioritization&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Your organization knows exactly how applications are interconnected, where critical data assets reside, who has access privileges, and which workflows drive actual business logic. That deep context becomes the defender’s advantage when you are using AI powered defenses, including those in AI Threat Defense.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ask your team&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: How are we using our deep business context to reduce security alert fatigue? &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Governance objective&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Optimize engineering resources by ensuring teams are not consumed by false-positive alerts.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Expected operational standard&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Direct AI systems to prioritize vulnerabilities based on actual reachability and business context.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;5. AI safety and policy&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Every AI conversation is a security conversation. Securing AI infrastructure starts with directing teams toward &lt;/span&gt;&lt;a href="https://cloud.google.com/transform/these-4-ai-governance-tips-help-counter-shadow-agents"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;approved architectures with proper governance&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ask your team&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: What frameworks do we have in place to secure our internal AI pipelines and monitor shadow AI? &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Governance objective&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Protect intellectual property and maintain compliance as the enterprise adopts generative tools.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Expected operational standard&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Implement clear runtime visibility, data egress controls, and secure development standards for AI.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Innovate with confidence&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In a highly automated digital environment, passive oversight is no longer practical. Your teams should be looking at how they are using AI to accelerate security and respond to AI-driven threats at AI speed.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By steering the enterprise toward a platform-centered, context-driven security posture, boards can support long-term business resilience, protect asset value, and give the organization the confidence to innovate, scale, and lead in its next phase of growth safely.  Consider technologies like AI Threat Defense as part of your defenses in this new world.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For more insight, check out our &lt;/span&gt;&lt;a href="https://cloud.google.com/solutions/security/board-of-directors?utm_source=cgc-site&amp;amp;utm_medium=et&amp;amp;utm_campaign=FY26-Q2-GLOBAL-GCP39634-email-dl-dgcsm-CISOP-NL-177159&amp;amp;utm_content=-&amp;amp;utm_term=-"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Board of Directors hub here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-aside"&gt;&lt;dl&gt;
-    &lt;dt&gt;aside_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Learn something new&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f30cf41b040&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Watch now&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://www.youtube.com/watch?v=CmGWIwgHR60&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: Cloud-CISO-Perspectives-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;In case you missed it&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Here are the latest updates, products, services, and resources from our security teams so far this month:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Now in preview: Find and fix software vulnerabilities with CodeMender&lt;/b&gt;: Our AI code security agent CodeMender can scan and fix software vulnerabilities, and is now available in preview through Agent Platform and AI Threat Defense. &lt;a href="https://cloud.google.com/blog/products/identity-security/find-and-fix-software-vulnerabilities-with-codemender"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cyber Snapshot Report: Enterprise resilience key to toolchain success&lt;/b&gt;: Check out curated frontline insights and blueprints to turn potential crises into manageable events in the newest Cyber Snapshot Report. &lt;a href="https://cloud.google.com/blog/products/identity-security/cyber-snapshot-report-enterprise-resilience-key-to-toolchain-success"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Future-proofing data integrity: Quantum-safe digital signatures in Cloud KMS&lt;/b&gt;: TWe are extending the PQC digital signature algorithms suite available in Google Cloud Key Management System to include ML-DSA and SLH-DSA. Here’s why. &lt;a href="https://cloud.google.com/blog/products/identity-security/future-proofing-data-integrity-quantum-safe-digital-signatures-in-cloud-kms"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Atlas, Wiz's autonomous vulnerability-research agent, has been ranked #1 on CyberGym&lt;/b&gt;: See how Wiz built Atlas, an autonomous AI system for vulnerability research that validates every finding with a real, working exploit. &lt;a href="https://www.wiz.io/blog/atlas-ai-vulnerability-researcher" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Best Buy scales AI workloads and secures access with Workforce Identity Federation&lt;/b&gt;: As Best Buy expanded its use of Google Cloud for advanced analytics and AI, its technology teams faced two significant scaling challenges: Mitigating risk and managing administrative friction when syncing thousands of backend users from Microsoft Entra ID. Here’s how Workforce Identity Federation helped them solve both problems. &lt;a href="https://cloud.google.com/blog/topics/retail/best-buy-scales-secure-ai-access-with-workforce-identity-federation"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;The risk hiding behind exposed MCP servers&lt;/b&gt;: Learn how unauthenticated model context protocol (MCP) servers are opening doors to sensitive cloud data, IAM, and command execution. &lt;a href="https://www.wiz.io/blog/the-risk-hiding-behind-exposed-mcp-servers" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Agentless threat detection: Illuminating cloud blind spots&lt;/b&gt;: Learn how Agentless Workload Detection exposes hidden threats in virtual appliances and modern cloud networks. &lt;a href="https://www.wiz.io/blog/agentless-visibility-uncovering-cloud-blind-spots" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AlloyDB adds group authentication to secure enterprise scale and AI agents&lt;/b&gt;: We’re bringing identity-driven access control to your enterprise workloads through IAM group authentication for AlloyDB, now available in preview. &lt;a href="https://cloud.google.com/blog/products/databases/alloydb-adds-group-authentication-to-secure-enterprise-scale-and-ai-agents"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Please visit the Google Cloud blog for more security stories &lt;a href="https://cloud.google.com/blog/products/identity-security"&gt;published this month&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-aside"&gt;&lt;dl&gt;
-    &lt;dt&gt;aside_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Join the Google Cloud CISO Community&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f30cf41b6a0&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Learn more&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://rsvp.withgoogle.com/events/google-cloud-ciso-community-interest-form-2026?utm_source=cgc-blog&amp;amp;utm_medium=blog&amp;amp;utm_campaign=FY25-Q1-global-GCP30328-physicalevent-er-dgcsm-parent-CISO-community-2025&amp;amp;utm_content=cisop_&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, &amp;lt;GAEImage: GCAT-replacement-logo-A&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Threat Intelligence news&lt;/b&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Updated cyber threat actor naming system&lt;/b&gt;: Google Threat Intelligence Group (GTIG) has begun rolling out a unified naming schema for tracking threat actors. This new naming taxonomy represents an effort to standardize tracking across platforms and public reporting. &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Demystifying AI exploits: A blueprint for AI-assisted vulnerability management&lt;/b&gt;: Concerned about how to safely integrate AI capabilities into vulnerability management workflows? Here’s actionable guidance from Mandiant Consulting on establishing operational guardrails for AI assisted vulnerability management, including detailed scenarios. &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/ai-assisted-vulnerability-management"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;GhostApproval: A trust boundary gap in AI coding assistants&lt;/b&gt;: Learn how Wiz uncovered a category-level blind spot in modern AI coding assistants, and why the human-in-the-loop safety model fails against this classic threat. &lt;a href="https://www.wiz.io/blog/ghostapproval-a-trust-boundary-gap-in-ai-coding-assistants" target="_blank"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;The risk of exposed cloud functions and how to harden&lt;/b&gt;: Mandiant uses recent lessons from customer engagements to describe attack scenarios and provide actionable guidance on how to secure serverless environments. While this analysis focuses on hardening strategies for Google Cloud Run services and functions that must remain publicly accessible, these principles apply universally to any public serverless deployment. &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/exposed-cloud-functions-harden"&gt;&lt;b&gt;Read more&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Please visit the Google Cloud blog for more threat intelligence stories &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/"&gt;published this month&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Now hear this: Podcasts from Google Cloud&lt;/b&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Cloud Security Podcast: CISO tested, board approved&lt;/b&gt;: Noah Korba, vice-president, Digital Core, Cybersecurity, and Enterprise Architecture, General Mills, goes under the hood of Mills Collaborative Recovery, the company’s intensive, annual two-week drill that recovers 90% of their Google Cloud estate to test real-world cyber resilience. &lt;a href="https://www.youtube.com/watch?v=Ai6_PzsLUDY" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cloud Security Podcast: Creating trust at global scale with local AI&lt;/b&gt;: Shuman Ghosemajumder, CEO, Reken, traces the evolution of automated fraud, from Gmail's early invite days to the origin of credential stuffing. &lt;a href="https://www.youtube.com/watch?v=o3pACI6VQfo" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Defender’s Advantage: Shadow LLMs, agentic identities, and securely integrating AI&lt;/b&gt;: Join Muhammad Muneer, technical manager, Incident Response, Mandiant, as he unpacks the stark realities of enterprise AI adoption. &lt;a href="https://www.youtube.com/watch?v=vPoChAxbxtY&amp;amp;list=PLjiTz6DAEpuINUjE8zp5bAFAKtyGJvnew" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Behind the Binary: The challenges of reversing modern languages&lt;/b&gt;: Jae Young Kim from the Mandiant FLARE team discusses navigating how software has evolved, and what it actually takes to reverse engineer modern compiled languages like Go and Rust. &lt;a href="https://www.youtube.com/watch?v=XW6ZhlVXM6U&amp;amp;list=PLjiTz6DAEpuLAykjYGpAUDL-tCrmTpXTf" target="_blank"&gt;&lt;b&gt;Listen here&lt;/b&gt;&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;To have our Cloud CISO Perspectives post delivered twice a month to your inbox, &lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;sign up for our newsletter&lt;/a&gt;. We’ll be back in a few weeks with more security-related updates from Google Cloud.&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-why-ai-threat-defense-is-the-new-boardroom-baseline" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-07-31T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/maps/google-street-view-kosovo</id>
-    <title>Experience the magic of Kosovo from anywhere with Street View</title>
-    <updated>2026-07-31T08:00:00+00:00</updated>
-    <content type="html">A stone bridge near several buildings</content>
-    <link href="https://blog.google/products-and-platforms/products/maps/google-street-view-kosovo" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-07-31T08:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Kosovo_Hero_image.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Kosovo_Hero_image.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Kosovo_Hero_image.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#July_31_2026</id>
-    <title>Cloud Release Notes — July 31, 2026</title>
-    <updated>2026-07-31T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Datastream&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;You can now replicate change data from Workday with Datastream.
-For more information, see
-&lt;a href="https://docs.cloud.google.com/datastream/docs/sources-workday"&gt;Stream data from Workday&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This feature is in
-&lt;a href="https://cloud.google.com/products/#product-launch-stages"&gt;Preview&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#July_31_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-07-31T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://antigravity.google/changelog#1.1.9-2026-07-31-version-1-1-9</id>
-    <title>Antigravity 1.1.9 — Version 1.1.9</title>
-    <updated>2026-07-31T00:00:00+00:00</updated>
-    <content type="text">Version 1.1.9</content>
-    <link href="https://antigravity.google/changelog#1.1.9-2026-07-31-version-1-1-9" rel="alternate"/>
-    <category term="Antigravity Changelog"/>
-    <published>2026-07-31T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-default.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://antigravity.google/changelog#2.5.0-2026-07-31-version-2-5-0</id>
-    <title>Antigravity 2.5.0 — Version 2.5.0</title>
-    <updated>2026-07-31T00:00:00+00:00</updated>
-    <content type="text">Version 2.5.0</content>
-    <link href="https://antigravity.google/changelog#2.5.0-2026-07-31-version-2-5-0" rel="alternate"/>
-    <category term="Antigravity Changelog"/>
-    <published>2026-07-31T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-default.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" length="0"/>
   </entry>
 </feed>

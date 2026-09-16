@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 814 źródeł
+105 feedów · 826 źródeł
 
 ## Spis grup
 
@@ -494,7 +494,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=chat-sdk.dev&sz=16) Chat SDK — <https://chat-sdk.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=flags-sdk.dev&sz=16) Flags SDK — <https://flags-sdk.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=workflow-sdk.dev&sz=16) Workflow SDK — <https://workflow-sdk.dev/rss.xml>
-- ![](https://www.google.com/s2/favicons?domain=elements.ai-sdk.dev&sz=16) AI Elements — <https://elements.ai-sdk.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.apify.com&sz=16) Apify — <https://blog.apify.com/rss/>
 - ![](https://www.google.com/s2/favicons?domain=zapier.com&sz=16) Zapier — <https://zapier.com/blog/feeds/latest/>
 - ![](https://www.google.com/s2/favicons?domain=www.fastly.com&sz=16) Fastly — <https://www.fastly.com/blog_rss.xml>
@@ -1015,6 +1014,19 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Flutter — <https://medium.com/feed/flutter>
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Android Developers — <https://medium.com/feed/androiddevelopers>
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Google Cloud — <https://medium.com/feed/google-cloud>
+- ![](https://www.google.com/s2/favicons?domain=ai.plainenglish.io&sz=16) Artificial Intelligence in Plain English — <https://ai.plainenglish.io/feed>
+- ![](https://www.google.com/s2/favicons?domain=drpicox.medium.com&sz=16) David Rodenas PhD — <https://drpicox.medium.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=pub.towardsai.net&sz=16) Towards AI — <https://pub.towardsai.net/feed>
+- ![](https://www.google.com/s2/favicons?domain=aiadvances.org&sz=16) AI Advances — <https://aiadvances.org/feed>
+- ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Data Science Collective — <https://medium.com/feed/data-science-collective>
+- ![](https://www.google.com/s2/favicons?domain=netflixtechblog.com&sz=16) Netflix TechBlog — <https://netflixtechblog.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=netflixtechblog.medium.com&sz=16) Netflix Technology Blog – Medium — <https://netflixtechblog.medium.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=engineering.omio.com&sz=16) Omio Engineering — <https://engineering.omio.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=levelup.gitconnected.com&sz=16) Level Up Coding — <https://levelup.gitconnected.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Skill Stuff — <https://medium.com/feed/skillstuff>
+- ![](https://www.google.com/s2/favicons?domain=blog.stackademic.com&sz=16) Stackademic — <https://blog.stackademic.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Let’s Code Future — <https://medium.com/feed/lets-code-future>
+- ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Artificial Corner — <https://medium.com/feed/artificial-corner>
 - ![](https://www.google.com/s2/favicons?domain=proandroiddev.com&sz=16) ProAndroidDev — <https://proandroiddev.com/feed>
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Samsung Internet Developers — <https://medium.com/feed/samsung-internet-dev>
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Yandex — <https://medium.com/feed/yandex>
