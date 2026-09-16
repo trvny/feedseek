@@ -12,6 +12,7 @@ import github  # noqa: E402
 import google  # noqa: E402
 import huggingface  # noqa: E402
 import microsoft  # noqa: E402
+import medium  # noqa: E402
 import netflix  # noqa: E402
 import opensource  # noqa: E402
 import pap  # noqa: E402
@@ -122,6 +123,56 @@ class RequestedFeedSourcesTests(unittest.TestCase):
         self.assertIn("https://www.netlify.com/feed.xml", urls)
         self.assertIn("https://www.netlify.com/changelog/feed.xml", urls)
         self.assertIn("https://www.netlify.com/knowledge-base/feed.xml", urls)
+
+    def test_saas_retires_ai_elements_docs_feed(self):
+        urls = {source[1] for source in saas.NATIVE_FEEDS}
+        self.assertNotIn("https://elements.ai-sdk.dev/rss.xml", urls)
+        self.assertIn("AI Elements", saas.RETIRED_CACHE_SOURCES)
+        cached = [
+            {"source": "AI Elements", "link": "https://elements.ai-sdk.dev/components/foo"},
+            {"source": "Vercel", "link": "https://vercel.com/blog/example"},
+        ]
+        self.assertEqual(saas._active_cached_entries(cached), [cached[1]])
+
+    def test_medium_includes_requested_sources_once(self):
+        sources = {(label, url) for label, url, _ in medium.SOURCES}
+        requested = {
+            ("Google Cloud", "https://medium.com/feed/google-cloud"),
+            ("Artificial Intelligence in Plain English", "https://ai.plainenglish.io/feed"),
+            ("David Rodenas PhD", "https://drpicox.medium.com/feed"),
+            ("Towards AI", "https://pub.towardsai.net/feed"),
+            ("AI Advances", "https://aiadvances.org/feed"),
+            ("Predict", "https://medium.com/feed/predict"),
+            ("Data Science Collective", "https://medium.com/feed/data-science-collective"),
+            ("Netflix TechBlog", "https://netflixtechblog.com/feed"),
+            ("Netflix Technology Blog – Medium", "https://netflixtechblog.medium.com/feed"),
+            ("Omio Engineering", "https://engineering.omio.com/feed"),
+            ("Level Up Coding", "https://levelup.gitconnected.com/feed"),
+            ("Skill Stuff", "https://medium.com/feed/skillstuff"),
+            ("Stackademic", "https://blog.stackademic.com/feed"),
+            ("Let’s Code Future", "https://medium.com/feed/lets-code-future"),
+            ("Artificial Corner", "https://medium.com/feed/artificial-corner"),
+        }
+        self.assertTrue(requested <= sources)
+        labels = [label for label, _, _ in medium.SOURCES]
+        self.assertEqual(labels.count("Google Cloud"), 1)
+        self.assertEqual(labels.count("Predict"), 1)
+
+    def test_medium_uses_hard_caps_for_broad_publications(self):
+        self.assertEqual(medium.PER_SOURCE_CAPS[""], 6)
+        for label in (
+            "Artificial Intelligence in Plain English",
+            "Towards AI",
+            "AI Advances",
+            "Predict",
+            "Data Science Collective",
+            "Level Up Coding",
+            "Skill Stuff",
+            "Stackademic",
+            "Let’s Code Future",
+            "Artificial Corner",
+        ):
+            self.assertEqual(medium.PER_SOURCE_CAPS[label], 4)
 
     def test_microsoft_includes_requested_sources(self):
         urls = {source[1] for source in microsoft.SOURCES}
