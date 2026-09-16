@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 826 źródeł
+105 feedów · 830 źródeł
 
 ## Spis grup
 
@@ -336,6 +336,8 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 `github` · [feed_github.xml](../feeds/feed_github.xml)
 
 - ![](https://www.google.com/s2/favicons?domain=beeware.org&sz=16) BeeWare News — <https://beeware.org/news/>
+- ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History — <https://www.star-history.com/>
+- ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History Blog — <https://www.star-history.com/blog/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Changelog — <https://github.blog/changelog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Engineering — <https://github.blog/engineering/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Security — <https://github.blog/security/feed/>
@@ -355,6 +357,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=jekyllrb.com&sz=16) Jekyll — <https://jekyllrb.com/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.travis-ci.com&sz=16) Travis CI — <https://www.travis-ci.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=hellogithub.com&sz=16) HelloGitHub — <https://hellogithub.com/rss>
+- ![](https://www.google.com/s2/favicons?domain=rss.beehiiv.com&sz=16) Star History Newsletter — <https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml>
 - ![](https://www.google.com/s2/favicons?domain=mshibanami.github.io&sz=16) GitHub Trending — <https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml>
 - ![](https://www.google.com/s2/favicons?domain=mshibanami.github.io&sz=16) GitHub Trending — <https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml>
 - ![](https://www.google.com/s2/favicons?domain=mshibanami.github.io&sz=16) GitHub Trending — <https://mshibanami.github.io/GitHubTrendingRSS/monthly/all.xml>
@@ -497,6 +500,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=blog.apify.com&sz=16) Apify — <https://blog.apify.com/rss/>
 - ![](https://www.google.com/s2/favicons?domain=zapier.com&sz=16) Zapier — <https://zapier.com/blog/feeds/latest/>
 - ![](https://www.google.com/s2/favicons?domain=www.fastly.com&sz=16) Fastly — <https://www.fastly.com/blog_rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=www.genymotion.com&sz=16) Genymotion Blog — <https://www.genymotion.com/blog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.postman.com&sz=16) Postman — <https://blog.postman.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=exa.ai&sz=16) Exa Changelog — <https://exa.ai/docs/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.home-assistant.io&sz=16) Home Assistant — <https://www.home-assistant.io/atom.xml>
