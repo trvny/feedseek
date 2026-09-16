@@ -16,7 +16,10 @@ class GitHubSourceTests(unittest.TestCase):
             "https://docs.mergify.com/changelog/rss.xml",
         )
         self.assertNotIn("Devin Desktop", source_urls)
-        self.assertEqual(github.EXTRA_SCRAPERS, (github.scrape_beeware_news,))
+        self.assertEqual(
+            github.EXTRA_SCRAPERS,
+            (github.scrape_beeware_news, github.scrape_star_history_blog),
+        )
         self.assertFalse(github._active_cache_entry({"source": "Devin Desktop"}))
         self.assertFalse(github._active_cache_entry({"source": "Devin Release Notes"}))
         self.assertTrue(github._active_cache_entry({"source": "GitHub Changelog"}))
