@@ -11,6 +11,7 @@ single Atom stream written to ``feeds/feed_saas.xml``:
     - Apify             blog (native RSS)
     - Zapier            blog (native RSS)
     - Fastly            blog (native RSS)
+    - Genymotion        blog (native RSS)
     - Postman           blog (native RSS) + app release notes (first-party JSON)
                         + press room (scraped)
     - Exa               changelog (native RSS) + blog (sitemap + per-post fetch)
@@ -85,7 +86,7 @@ FEED_TITLE = "SaaS vendors"
 FEED_SUBTITLE = (
     "Combined updates from HashiCorp / HCP (blog + changelog), "
     "Bitly (blog + press + MCP changelog), Common Ninja, "
-    "Vercel (blog + changelog + SDK docs), Apify, Zapier, Fastly, "
+    "Vercel (blog + changelog + SDK docs), Apify, Zapier, Fastly, Genymotion, "
     "Postman (blog + app release notes + press), "
     "Exa (blog + changelog), Home Assistant, "
     "Upstash Workflow releases, "
@@ -180,6 +181,7 @@ NATIVE_FEEDS = [
     ("Apify", "https://blog.apify.com/rss/", None),
     ("Zapier", "https://zapier.com/blog/feeds/latest/", None),
     ("Fastly", "https://www.fastly.com/blog_rss.xml", 40),
+    ("Genymotion Blog", "https://www.genymotion.com/blog/feed/", 30),
     ("Postman", "https://blog.postman.com/feed/", 40),
     ("Exa Changelog", "https://exa.ai/docs/changelog/rss.xml", 40),
     ("Home Assistant", "https://www.home-assistant.io/atom.xml", 40),
