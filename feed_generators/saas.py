@@ -7,8 +7,7 @@ single Atom stream written to ``feeds/feed_saas.xml``:
     - Bitly             blog + press room + MCP changelog
     - Common Ninja      blog
     - Vercel            blog (native Atom) + changelog (native RSS)
-                        + Chat SDK / Flags SDK / Workflow SDK / AI Elements
-                        docs feeds (native RSS)
+                        + Chat SDK / Flags SDK / Workflow SDK docs feeds
     - Apify             blog (native RSS)
     - Zapier            blog (native RSS)
     - Fastly            blog (native RSS)
@@ -178,7 +177,6 @@ NATIVE_FEEDS = [
     ("Chat SDK", "https://chat-sdk.dev/rss.xml", 40),
     ("Flags SDK", "https://flags-sdk.dev/rss.xml", 40),
     ("Workflow SDK", "https://workflow-sdk.dev/rss.xml", 40),
-    ("AI Elements", "https://elements.ai-sdk.dev/rss.xml", 40),
     ("Apify", "https://blog.apify.com/rss/", None),
     ("Zapier", "https://zapier.com/blog/feeds/latest/", None),
     ("Fastly", "https://www.fastly.com/blog_rss.xml", 40),
@@ -198,9 +196,13 @@ NATIVE_FEEDS = [
     ("Behance Blog", "http://feeds.feedburner.com/behance/vorr", 40),
 ]
 
-# Sources intentionally moved to another aggregate. Filter their old cache rows
-# so the migration takes effect on the first post-merge generation.
-RETIRED_CACHE_SOURCES = {"Upstash Blog", "Upstash Workflow Changelog"}
+# Sources intentionally removed or moved to another aggregate. Filter their old
+# cache rows so the change takes effect on the first post-merge generation.
+RETIRED_CACHE_SOURCES = {
+    "AI Elements",
+    "Upstash Blog",
+    "Upstash Workflow Changelog",
+}
 
 
 def _active_cached_entries(entries: list[dict]) -> list[dict]:

@@ -2,11 +2,12 @@
 per-author RSS feeds — the Medium Blog, Medium Engineering, engineering and
 design publications (Flutter, Angular, Android Developers, Google Cloud,
 ProAndroidDev, Samsung Internet, Bootcamp, UX Planet), science and geopolitics
-publications, and a handful of individual authors.
+publications, AI/data publications, and a handful of individual authors.
 
 Medium serves only the 10 newest items per feed, so history comes from the
-JSON cache. Because ~25 sources publish at wildly different rates, the write
-uses ``per_source_cap`` so the fast publications cannot evict the slow ones.
+JSON cache. The shared fair-share allocator gives every active source a turn;
+we then hard-cap broad high-churn publications so they cannot consume leftover
+slots when quieter engineering and author feeds run dry.
 
 Angular is fetched twice on purpose: ``blog.angular.dev`` (the publication's
 custom domain) and ``@angularteam`` (the profile) each carry a couple of posts
@@ -29,6 +30,19 @@ SOURCES = [
     ("Flutter", "https://medium.com/feed/flutter", 10),  # blog.flutter.dev/feed 404s
     ("Android Developers", "https://medium.com/feed/androiddevelopers", 10),
     ("Google Cloud", "https://medium.com/feed/google-cloud", 10),
+    ("Artificial Intelligence in Plain English", "https://ai.plainenglish.io/feed", 10),
+    ("David Rodenas PhD", "https://drpicox.medium.com/feed", 10),
+    ("Towards AI", "https://pub.towardsai.net/feed", 10),
+    ("AI Advances", "https://aiadvances.org/feed", 10),
+    ("Data Science Collective", "https://medium.com/feed/data-science-collective", 10),
+    ("Netflix TechBlog", "https://netflixtechblog.com/feed", 10),
+    ("Netflix Technology Blog – Medium", "https://netflixtechblog.medium.com/feed", 10),
+    ("Omio Engineering", "https://engineering.omio.com/feed", 10),
+    ("Level Up Coding", "https://levelup.gitconnected.com/feed", 10),
+    ("Skill Stuff", "https://medium.com/feed/skillstuff", 10),
+    ("Stackademic", "https://blog.stackademic.com/feed", 10),
+    ("Let’s Code Future", "https://medium.com/feed/lets-code-future", 10),
+    ("Artificial Corner", "https://medium.com/feed/artificial-corner", 10),
     ("ProAndroidDev", "https://proandroiddev.com/feed", 10),
     ("Samsung Internet Developers", "https://medium.com/feed/samsung-internet-dev", 10),
     ("Yandex", "https://medium.com/feed/yandex", 10),
@@ -61,26 +75,37 @@ SOURCES = [
     ("Angular (Medium)", "https://medium.com/feed/@angularteam", 10),
 ]
 
+# A mapping is a hard ceiling in the shared allocator. Most sources may fill up
+# to six slots when capacity remains; broad multi-author publications stop at
+# four so an unusually busy outlet cannot backfill the aggregate by itself.
+PER_SOURCE_CAPS = {
+    "": 6,
+    "Artificial Intelligence in Plain English": 4,
+    "Towards AI": 4,
+    "AI Advances": 4,
+    "Predict": 4,
+    "Data Science Collective": 4,
+    "Level Up Coding": 4,
+    "Skill Stuff": 4,
+    "Stackademic": 4,
+    "Let’s Code Future": 4,
+    "Artificial Corner": 4,
+}
+
 
 def main(full=False):
     return run(
         feed_name=FEED_NAME,
         title="Medium",
-        subtitle="Combined Medium feed: the Medium Blog and Engineering, "
-                 "Flutter, Angular, Android Developers, Google Cloud, "
-                 "ProAndroidDev, Samsung Internet, Yandex, Toyota Research, "
-                 "Bootcamp, UX Planet, The Useful Life, The Riff, Starts With "
-                 "A Bang!, Science Spectrum, Science Fiction, 404: Geek Not "
-                 "Found, The Ugly Monster, Women in Technology, The Code "
-                 "Frontier, Predict, Philosophy Today, The Knowledge of "
-                 "Laughter, The Mixtape Memoirs, No Time, The Haven, "
-                 "Globetrotters, geopolitics publications, and selected authors.",
+        subtitle="Combined Medium feed: official and engineering publications, "
+                 "AI and data-science outlets, science and geopolitics, design, "
+                 "culture, and selected authors.",
         blog_url="https://medium.com/",
         author="Medium",
         sources=SOURCES,
         icon=favicon_proxy("medium.com", provider="duckduckgo"),
         max_entries=200,
-        per_source_cap=8,
+        per_source_cap=PER_SOURCE_CAPS,
         full=full,
     )
 
