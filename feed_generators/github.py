@@ -13,6 +13,7 @@ All regular sources are native RSS:
     github-store.org, which is the same site under its older domain.
   * The wider Git/GitHub tooling ecosystem: Mergify, GitGuardian,
     GitKraken, Tower, Shields.io, git-annex, Jekyll, Travis CI and HelloGitHub.
+  * Star History's blog (scraped index) and newsletter (native Beehiiv RSS).
   * The GitHubTrendingRSS streams. Daily, weekly and monthly list the same
     repositories over different windows, so they share one source label: the
     URL dedupe collapses the overlap and the per-source quota treats trending
@@ -48,6 +49,14 @@ BEEWARE_LABEL = "BeeWare News"
 BEEWARE_MAX = 20
 _BEEWARE_ARTICLE_RE = re.compile(r"^/news/[^/]+/20\d{2}/[^/]+/?$")
 
+STAR_HISTORY_URL = "https://www.star-history.com/"
+STAR_HISTORY_BLOG_URL = "https://www.star-history.com/blog/"
+STAR_HISTORY_BLOG_LABEL = "Star History Blog"
+STAR_HISTORY_BLOG_MAX = 20
+STAR_HISTORY_NEWSLETTER_LABEL = "Star History Newsletter"
+STAR_HISTORY_NEWSLETTER_RSS_URL = "https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml"
+_STAR_HISTORY_ARTICLE_RE = re.compile(r"^/blog/[^/?#]+/?$")
+
 SOURCES = [
     ("GitHub Changelog", "https://github.blog/changelog/feed/", 40),
     ("GitHub Engineering", "https://github.blog/engineering/feed/", 30),
@@ -68,6 +77,7 @@ SOURCES = [
     ("Jekyll", "https://jekyllrb.com/feed.xml", 10),
     ("Travis CI", "https://www.travis-ci.com/feed/", 10),
     ("HelloGitHub", "https://hellogithub.com/rss", 20),
+    (STAR_HISTORY_NEWSLETTER_LABEL, STAR_HISTORY_NEWSLETTER_RSS_URL, 15),
     (TRENDING, "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml", 15),
     (TRENDING, "https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml", 15),
     (TRENDING, "https://mshibanami.github.io/GitHubTrendingRSS/monthly/all.xml", 15),
@@ -81,6 +91,8 @@ PER_SOURCE_QUOTA = {
     "GitHub Status": 20,
     TRENDING: 20,
     AWESOME_LISTS: 30,
+    STAR_HISTORY_BLOG_LABEL: 20,
+    STAR_HISTORY_NEWSLETTER_LABEL: 15,
 }
 
 
@@ -153,12 +165,60 @@ def scrape_beeware_news(known_links):
     return entries
 
 
-EXTRA_SCRAPERS = (scrape_beeware_news,)
+def _parse_star_history_blog(html, known_links=None):
+    """Parse Star History's server-rendered blog index."""
+    known_links = known_links or set()
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen = set()
+    for anchor in soup.select("a[href^='/blog/']"):
+        href = anchor.get("href", "").split("#", 1)[0].split("?", 1)[0]
+        if not _STAR_HISTORY_ARTICLE_RE.match(href):
+            continue
+        link = urljoin(STAR_HISTORY_URL, href)
+        if link in known_links or link in seen:
+            continue
+        title_el = anchor.find(["h2", "h3"])
+        if not title_el:
+            continue
+        title = sanitize_xml(title_el.get_text(" ", strip=True))
+        if not title:
+            continue
+        date_el = anchor.find("time") or anchor.find("span")
+        date_text = date_el.get_text(" ", strip=True) if date_el else ""
+        seen.add(link)
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": parse_date(date_text) if date_text else stable_fallback_date(link),
+                "description": title,
+                "source": STAR_HISTORY_BLOG_LABEL,
+            }
+        )
+        if len(entries) >= STAR_HISTORY_BLOG_MAX:
+            break
+    return entries
+
+
+def scrape_star_history_blog(known_links):
+    """Fetch Star History's blog index and normalize its newest posts."""
+    html = get_html(STAR_HISTORY_BLOG_URL)
+    if not html:
+        return []
+    return _parse_star_history_blog(html, known_links)
+
+
+EXTRA_SCRAPERS = (scrape_beeware_news, scrape_star_history_blog)
 
 
 def doc_sources():
     """Expose non-RSS sources to generated docs."""
-    return [(BEEWARE_LABEL, BEEWARE_NEWS_URL)]
+    return [
+        (BEEWARE_LABEL, BEEWARE_NEWS_URL),
+        ("Star History", STAR_HISTORY_URL),
+        (STAR_HISTORY_BLOG_LABEL, STAR_HISTORY_BLOG_URL),
+    ]
 
 
 RETIRED_CACHE_SOURCES = {"Devin Desktop", "Devin Release Notes"}
@@ -173,7 +233,7 @@ def main(full=False):
         feed_name=FEED_NAME,
         title="GitHub",
         subtitle="Combined GitHub feed: GitHub blogs and changelogs, GitHub "
-        "Status, Mergify, BeeWare News, Komi Store, the Git "
+        "Status, Mergify, BeeWare News, Star History, Komi Store, the Git "
         "tooling ecosystem, Track Awesome List and deduplicated GitHub trending "
         "streams.",
         blog_url="https://github.blog/",

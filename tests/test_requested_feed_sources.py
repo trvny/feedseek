@@ -7,6 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 import _google_ai_studio as google_ai_studio  # noqa: E402
 import anthropic  # noqa: E402
 import claude  # noqa: E402
+import development  # noqa: E402
 import europa  # noqa: E402
 import github  # noqa: E402
 import google  # noqa: E402
@@ -241,6 +242,38 @@ class RequestedFeedSourcesTests(unittest.TestCase):
             (github.BEEWARE_LABEL, github.BEEWARE_NEWS_URL),
             github.doc_sources(),
         )
+
+    def test_github_includes_star_history_sources(self):
+        urls = {source[1] for source in github.SOURCES}
+        self.assertIn(github.STAR_HISTORY_NEWSLETTER_RSS_URL, urls)
+        docs = dict(github.doc_sources())
+        self.assertEqual(docs["Star History"], github.STAR_HISTORY_URL)
+        self.assertEqual(
+            docs[github.STAR_HISTORY_BLOG_LABEL], github.STAR_HISTORY_BLOG_URL
+        )
+
+    def test_github_parses_star_history_blog_index(self):
+        html = """
+        <a href="/blog/example-post">
+          <div><h2>Example post</h2><span>Sep 2, 2026</span></div>
+        </a>
+        """
+        entries = github._parse_star_history_blog(html)
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["title"], "Example post")
+        self.assertEqual(
+            entries[0]["link"], "https://www.star-history.com/blog/example-post"
+        )
+        self.assertEqual(entries[0]["date"].isoformat(), "2026-09-02T00:00:00+00:00")
+        self.assertEqual(entries[0]["source"], github.STAR_HISTORY_BLOG_LABEL)
+
+    def test_development_includes_paolino_feed(self):
+        urls = {source[1] for source in development.SOURCES}
+        self.assertIn("https://paolino.me/feed.xml", urls)
+
+    def test_saas_includes_genymotion_blog(self):
+        urls = {source[1] for source in saas.NATIVE_FEEDS}
+        self.assertIn("https://www.genymotion.com/blog/feed/", urls)
 
     def test_python_includes_anaconda_feed(self):
         urls = {source[1] for source in python.SOURCES}

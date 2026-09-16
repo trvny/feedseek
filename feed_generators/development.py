@@ -28,6 +28,7 @@ SOURCES = [
     ("Scripting News", "http://scripting.com/rss.xml", 40),
     ("Development Seed", "https://developmentseed.org/rss.xml", 40),
     ("Coding Horror", "https://blog.codinghorror.com/rss/", 40),
+    ("Carmine Paolino", "https://paolino.me/feed.xml", 30),
     ("RubyGems Blog", "https://blog.rubygems.org/atom.xml", 40),
     ("RubyInstaller", "https://rubyinstaller.org/feed.xml", 40),
     ("JetBrains Blog", "https://blog.jetbrains.com/feed/", 40),
