@@ -187,7 +187,7 @@ function parseFeed(xml, source, feedUrl){
     const title=txt(n,'title')||'(untitled)';
     let desc=clean(txt(n,'description','summary','content','encoded'));
     if(desc && desc.toLowerCase()===title.toLowerCase()) desc='';
-    return {source, title, desc, url:safeHttpUrl(lnk(n),feedUrl),
+    return {source, feedUrl, title, desc, url:safeHttpUrl(lnk(n),feedUrl),
             ts:isNaN(ts)?0:ts, img:mediaImg(n,feedUrl)};
   }).filter(i=>i.title && i.url);
 }
@@ -333,11 +333,8 @@ async function run(){
     });
     if(version!==runVersion || controller.signal.aborted) return;
 
-    const nextItems=[], nextFailed=[];
-    results.forEach((res,i)=>{
-      if(res.status==='fulfilled') nextItems.push(...res.value);
-      else nextFailed.push(feeds[i].title);
-    });
+    const merged=FeedseekReaderUtils.mergeRefreshResults(feeds,results,ITEMS);
+    const nextItems=merged.items, nextFailed=merged.failed;
     const seen=new Set();
     const deduped=nextItems.filter(i=>!seen.has(i.url)&&seen.add(i.url)).sort((a,b)=>b.ts-a.ts);
     const limited=fairLimit(deduped,ITEM_LIMIT);

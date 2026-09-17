@@ -22,7 +22,30 @@
     return results;
   }
 
-  window.FeedseekReaderUtils = { allSettledLimited };
+  function mergeRefreshResults(feeds, results, previousItems) {
+    const items = [];
+    const failed = [];
+    const failedUrls = new Set();
+    const titlesByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed.title]));
+
+    results.forEach((result, index) => {
+      const feed = feeds[index];
+      if (result.status === "fulfilled") items.push(...result.value);
+      else {
+        failed.push(feed.title);
+        failedUrls.add(feed.xmlUrl);
+      }
+    });
+
+    for (const item of previousItems) {
+      if (!failedUrls.has(item.feedUrl)) continue;
+      items.push({ ...item, source: titlesByUrl.get(item.feedUrl) || item.source });
+    }
+
+    return { items, failed };
+  }
+
+  window.FeedseekReaderUtils = { allSettledLimited, mergeRefreshResults };
 
   function configuredProxy() {
     try {

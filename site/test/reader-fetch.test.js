@@ -94,3 +94,44 @@ test("keeps same-origin proxy bypass unchanged", async () => {
 
   assert.deepEqual(seen, [target]);
 });
+
+
+test("keeps cached items only for feeds that failed", () => {
+  const window = makeContext(async () => new Response("ok"));
+  const { mergeRefreshResults } = window.FeedseekReaderUtils;
+  const feeds = [
+    { title: "Same title", xmlUrl: "https://a.test/feed" },
+    { title: "Same title", xmlUrl: "https://b.test/feed" },
+  ];
+  const fresh = { source: "Same title", feedUrl: feeds[0].xmlUrl, url: "https://a.test/new" };
+  const staleA = { source: "Same title", feedUrl: feeds[0].xmlUrl, url: "https://a.test/old" };
+  const staleB = { source: "Old title", feedUrl: feeds[1].xmlUrl, url: "https://b.test/old" };
+  const results = [
+    { status: "fulfilled", value: [fresh] },
+    { status: "rejected", reason: new Error("down") },
+  ];
+
+  const merged = mergeRefreshResults(feeds, results, [staleA, staleB]);
+
+  assert.deepEqual(Array.from(merged.failed), ["Same title"]);
+  assert.equal(merged.items.length, 2);
+  assert.equal(merged.items[0].url, fresh.url);
+  assert.equal(merged.items[1].url, staleB.url);
+  assert.equal(merged.items[1].source, "Same title");
+});
+
+test("does not keep cached items for unsubscribed feeds", () => {
+  const window = makeContext(async () => new Response("ok"));
+  const { mergeRefreshResults } = window.FeedseekReaderUtils;
+  const feed = { title: "Current", xmlUrl: "https://current.test/feed" };
+  const removed = { source: "Removed", feedUrl: "https://removed.test/feed", url: "https://removed.test/old" };
+
+  const merged = mergeRefreshResults(
+    [feed],
+    [{ status: "rejected", reason: new Error("down") }],
+    [removed],
+  );
+
+  assert.equal(merged.items.length, 0);
+  assert.deepEqual(Array.from(merged.failed), ["Current"]);
+});
