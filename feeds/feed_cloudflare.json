@@ -8,6 +8,45 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/af62bf51e78b9644",
+      "url": "https://www.cloudflarestatus.com/incidents/83kl8stzw5zn",
+      "title": "Increased HTTP Errors in GIG (Rio de Janeiro)",
+      "content_text": "Sep 17 , 14:00 UTC Resolved - Cloudflare is aware that there was an increased level of HTTP errors in the GIG (Rio de Janeiro) datacenter, between 14:00 and 14:30 UTC. This has since recovered and normal operations have resumed.",
+      "date_published": "2026-09-17T14:00:00Z",
+      "date_modified": "2026-09-17T14:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/5b10703322098b9d",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-17-instance-delete/",
+      "title": "Workflows, Workers - Delete Workflow instances individually or in batches",
+      "content_text": "You can now delete one or up to 100 Workflow instances and their stored state via the Workflows API or Wrangler 4.125.0 and later. Deleting an instance frees its stored state and stops its current execution. Storage billing is based on the average daily peak. Delete one instance by calling delete() on its handle: const instance = await env. MY_WORKFLOW . get ( \"instance-abc\" ); await instance. delete (); If a Workflow deletes its own instance, execution stops during await instance.delete() . Cod",
+      "date_published": "2026-09-17T12:00:00Z",
+      "date_modified": "2026-09-17T12:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a29a4f6eed2c961b",
       "url": "https://www.cloudflarestatus.com/incidents/823rbdm2k25x",
       "title": "Replicate Pruna issue",
@@ -21,6 +60,75 @@
       ],
       "tags": [
         "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4151998fd7598305",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-free-account-creation/",
+      "title": "Cloudflare Fundamentals - Create additional Free accounts through the dashboard and API",
+      "content_text": "We're expanding how customers create accounts across Cloudflare, making it easier to self-serve account creation in the dashboard, automate standalone account creation with user-owned API tokens or OAuth access tokens, and create Free accounts directly within Enterprise Organizations. What's New Dashboard account creation: All cloudflare customers can create additional Free accounts directly through self-serve flows in the Cloudflare dashboard. Enterprise Organization account creation: Super Adm",
+      "date_published": "2026-09-17T00:00:00Z",
+      "date_modified": "2026-09-17T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bdb94431769becb3",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-17-reject-if-busy/",
+      "title": "Workers AI - Reject busy synchronous inference requests",
+      "content_text": "The rejectIfBusy option lets synchronous Workers AI inference requests fail when capacity is unavailable. Use it when your application should not wait in a capacity queue. Pass the option as the third argument to the Workers AI binding: const response = await env. AI . run ( \"@cf/google/gemma-4-26b-a4b-it\" , { messages: [{ role: \"user\" , content: \"Explain capacity queues.\" }], }, { rejectIfBusy: true }, ); const response = await env. AI . run ( \"@cf/google/gemma-4-26b-a4b-it\" , { messages: [{ ro",
+      "date_published": "2026-09-17T00:00:00Z",
+      "date_modified": "2026-09-17T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ae85e728ba14aa91",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-17-javascript-rpc-session-spans/",
+      "title": "Workers, Durable Objects - Workers traces now automatically include JavaScript RPC session spans",
+      "content_text": "Workers traces can now follow JavaScript RPC calls across Worker boundaries and into Durable Objects. Previously, a trace stopped at the caller's RPC boundary. The dashboard now shows the caller-side session and method calls alongside the callee invocation, nested calls, and callbacks into another Worker. A session span covers the lifetime of a caller-side session and groups calls that reuse it. Individual call spans show each method invocation. Execution colors distinguish the Workers or Durabl",
+      "date_published": "2026-09-17T00:00:00Z",
+      "date_modified": "2026-09-17T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2878,height=1576,format=webp/_astro/jsrpc-session-spans.DQuwQrpm.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2878,height=1576,format=webp/_astro/jsrpc-session-spans.DQuwQrpm.png",
+          "mime_type": "image/png"
+        }
       ]
     },
     {
@@ -163,6 +271,22 @@
       "content_text": "Sep 15 , 22:31 UTC Resolved - This incident has been resolved. Sep 15 , 15:14 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 15 , 02:01 UTC Identified - We are investigating an issue where messages published to some queues are not being delivered to their consumers, resulting in delivery delays. Publishing to queues is unaffected, and messages are being received and safely retained — no messages are being lost. We have identified the root cause and are activel",
       "date_published": "2026-09-15T22:31:10Z",
       "date_modified": "2026-09-15T22:31:10Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/fb19b5d195a54dc0",
+      "url": "https://www.cloudflarestatus.com/incidents/1k5ckxlq77kp",
+      "title": "Network Performance Issues in Ashburn",
+      "content_text": "Sep 15 , 22:00 UTC Resolved - Between 20:55-21:52 UTC on 2026-09-15, Cloudflare experienced an elevated rate of 5xx HTTP errors affecting traffic passing through Ashburn (IAD). The issue has been  resolved, and impact to the IAD location is mitigated.",
+      "date_published": "2026-09-15T22:00:00Z",
+      "date_modified": "2026-09-15T22:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -388,22 +512,6 @@
       "content_text": "Sep 14 , 22:00 UTC Resolved - We’re receiving reports of network related issues/congestion in Los Angeles between Sept 14 22:15 - Sept 14 23:10 UTC. This issue is now resolved.",
       "date_published": "2026-09-14T22:00:00Z",
       "date_modified": "2026-09-14T22:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/fb19b5d195a54dc0",
-      "url": "https://www.cloudflarestatus.com/incidents/1k5ckxlq77kp",
-      "title": "Network Performance Issues in Ashburn",
-      "content_text": "Sep 14 , 20:30 UTC Resolved - Between 20:55-21:52 UTC on 2026-09-15, Cloudflare experienced an elevated rate of 5xx HTTP errors affecting traffic passing through Ashburn (IAD). The issue has been  resolved, and impact to the IAD location is mitigated.",
-      "date_published": "2026-09-14T20:30:00Z",
-      "date_modified": "2026-09-14T20:30:00Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -1880,22 +1988,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/f28be7a7e6050e79",
-      "url": "https://www.cloudflarestatus.com/incidents/fcdl2yb3q7qw",
-      "title": "Cloudflare Access bypass IP service experiencing availability issues",
-      "content_text": "Aug 31 , 14:50 UTC Resolved - This incident has been resolved. Aug 31 , 13:08 UTC Identified - The issue has been identified and a fix is being implemented. Aug 31 , 11:40 UTC Investigating - We are investigating an issue affecting the Access IP List service, which may result in failures when bypassing users whose IPs are listed in them. Our engineering team is currently working to identify and resolve the root cause. We will provide updates as more information becomes available.",
-      "date_published": "2026-08-31T14:50:56Z",
-      "date_modified": "2026-08-31T14:50:56Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/26ace185f75ed80d",
       "url": "https://blog.cloudflare.com/introducing-adaptive-intelligence/",
       "title": "Introducing Adaptive Intelligence: Undermining the economics of every bot attack",
@@ -2080,75 +2172,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0e128286b84dbabd",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-28-durable-objects-dynamic-workers-limit/",
-      "title": "Workers, Durable Objects - Durable Objects can use up to ten Dynamic Workers concurrently",
-      "content_text": "Durable Objects can have up to ten distinct Dynamic Workers with in-flight requests, increased from four. This limit applies across all concurrent requests to the same Durable Object because they share an input/output (I/O) context. Other Workers can have up to four distinct Dynamic Workers with in-flight requests per request. Multiple in-flight requests to the same Dynamic Worker count as one toward this limit. For more information, refer to Dynamic Workers limits .",
-      "date_published": "2026-08-28T00:00:00Z",
-      "date_modified": "2026-08-28T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/fd0e5cef3556ff02",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-28-glm-5.3-workers-ai/",
-      "title": "Workers AI - Z.ai GLM-5.3 now available on Workers AI",
-      "content_text": "@cf/zai-org/glm-5.3 is now available on Workers AI. It is Z.ai's flagship agentic coding model, built for long-running, tool-driven development workflows rather than single-turn chat. GLM-5.3 uses the same base model as GLM-5.2, with every gain coming from post-training. The results are substantial on coding and agentic benchmarks: Z.ai reports ↗ a 50% improvement over GLM-5.2 on its in-house Z.ai Code Bench, and calls GLM-5.3 the most capable open-weights model for coding. On public benchmarks,",
-      "date_published": "2026-08-28T00:00:00Z",
-      "date_modified": "2026-08-28T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e8826de6c2947f4a",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-28-dataset-configuration/",
-      "title": "Log Explorer - Improved dataset configuration in Log Explorer",
-      "content_text": "Log Explorer has a refreshed dataset configuration experience in the Cloudflare dashboard. The new controls make it easier to choose which fields and events Log Explorer ingests. Grouped field selection organizes fields by category and shows the number selected in each group. Field details identify each field's data type and mark required or deprecated fields. Bulk controls let you select all fields or reset the selection to the dataset defaults. Ingestion filters let you ingest all events or on",
-      "date_published": "2026-08-28T00:00:00Z",
-      "date_modified": "2026-08-28T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0dcbe66061954566",
       "url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
       "title": "How we saved 100 terabytes of memory by optimizing 1.1.1.1’s DNS cache",
@@ -2167,29 +2190,6 @@
       "attachments": [
         {
           "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M117Y6R8CDGVT4K2XX6VQ2YX.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/eabad7402835cc5c",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-08-26-service-token-secret-format/",
-      "title": "Access - Access service token secrets use a scannable format",
-      "content_text": "Cloudflare Access service token Client Secrets created on or after August 26, 2026, use the format cfast_[40 alphanumeric characters][8-character checksum] . The prefix and checksum make these credentials easier for secret scanning tools to identify with fewer false positives. Existing service token secrets continue to work and do not require rotation. Both formats use the same Client ID and the same CF-Access-Client-Id and CF-Access-Client-Secret authentication headers. For more information, re",
-      "date_published": "2026-08-26T00:00:00Z",
-      "date_modified": "2026-08-26T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
           "mime_type": "image/png"
         }
       ]
