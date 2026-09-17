@@ -55,6 +55,7 @@ FEED_NAME = "czworka"
 BLOG_URL = "https://czworka.online/"
 FETCH_BASE_URL = "https://czworka.online"
 PUBLIC_BASE_URL = "https://www.polskieradio.pl"
+ARTICLE_FETCH_BASE_URLS = (PUBLIC_BASE_URL, FETCH_BASE_URL)
 HOMEPAGE_URLS = (
     BLOG_URL,
     "https://www.polskieradio.pl/10",
@@ -78,11 +79,15 @@ def _canonical(link: str) -> str:
     return re.sub(r"(/Artykul/\d+),.*$", r"\1", link)
 
 
-def _fetch_url(href: str) -> str:
-    """Route Polskie Radio article paths through the reachable Czwórka host."""
+def _fetch_urls(href: str) -> list[str]:
+    """Return article fetch candidates, preferring the canonical public host."""
     if href.startswith("/"):
-        return f"{FETCH_BASE_URL}{href}"
-    return _SOURCE_HOST_RE.sub(FETCH_BASE_URL, href)
+        return [f"{base}{href}" for base in ARTICLE_FETCH_BASE_URLS]
+    return [_SOURCE_HOST_RE.sub(base, href) for base in ARTICLE_FETCH_BASE_URLS]
+
+
+def _fetch_url(href: str) -> str:
+    return _fetch_urls(href)[0]
 
 
 def _meta(soup: BeautifulSoup, prop: str) -> str | None:
@@ -161,10 +166,14 @@ def fetch_homepage_links(retries: int = 3, backoff: float = 2.0) -> list[str]:
 
 def fetch_article(url: str) -> dict | None:
     """Fetch a single article page and extract title, lead, and date."""
-    try:
-        html = fetch_page(url, timeout=15)
-    except Exception as exc:
-        logger.warning("Failed to fetch %s: %s", url, exc)
+    html = None
+    for candidate in _fetch_urls(url):
+        try:
+            html = fetch_page(candidate, timeout=15)
+            break
+        except Exception as exc:
+            logger.warning("Failed to fetch %s: %s", candidate, exc)
+    if html is None:
         return None
 
     soup = BeautifulSoup(html, "html.parser")
@@ -190,18 +199,22 @@ def fetch_article(url: str) -> dict | None:
     }
 
 
-def fetch_new_articles(links: list[str], known: set[str]) -> list[dict]:
-    """Fetch only the article pages we haven't cached yet."""
+def fetch_new_articles(links: list[str], known: set[str]) -> tuple[list[dict], list[str]]:
+    """Fetch uncached articles and report any that failed on every host."""
     posts: list[dict] = []
+    failed: list[str] = []
     for url in links:
-        if _canonical(url) in known:
+        canonical = _canonical(url)
+        if canonical in known:
             continue
         post = fetch_article(url)
         if post:
             posts.append(post)
+        else:
+            failed.append(canonical)
         time.sleep(FETCH_DELAY_SECONDS)
     logger.info("Fetched %d new article pages", len(posts))
-    return posts
+    return posts, failed
 
 
 def generate_rss_feed(posts: list[dict]) -> FeedGenerator:
@@ -243,7 +256,13 @@ def main(full_reset: bool = False) -> bool:
         logger.warning("Czwórka homepage unavailable after retries — keeping the last good feed")
         return False
 
-    new_posts = fetch_new_articles(links, known)
+    new_posts, failed_articles = fetch_new_articles(links, known)
+    if failed_articles:
+        logger.warning(
+            "Failed to fetch %d new Czwórka article(s) — keeping the last good feed",
+            len(failed_articles),
+        )
+        return False
 
     if full_reset or not cached_entries:
         mode = "full reset" if full_reset else "no cache exists"
