@@ -166,37 +166,34 @@ def fetch_homepage_links(retries: int = 3, backoff: float = 2.0) -> list[str]:
 
 def fetch_article(url: str) -> dict | None:
     """Fetch a single article page and extract title, lead, and date."""
-    html = None
+    canon = _canonical(url)
     for candidate in _fetch_urls(url):
         try:
             html = fetch_page(candidate, timeout=15)
-            break
         except Exception as exc:
             logger.warning("Failed to fetch %s: %s", candidate, exc)
-    if html is None:
-        return None
+            continue
 
-    soup = BeautifulSoup(html, "html.parser")
-    title = _meta(soup, "og:title")
-    if not title:
-        h1 = soup.find("h1")
-        title = h1.get_text(strip=True) if h1 else None
-    if not title:
-        logger.warning("No title for %s; skipping", url)
-        return None
+        soup = BeautifulSoup(html, "html.parser")
+        title = _meta(soup, "og:title")
+        if not title:
+            h1 = soup.find("h1")
+            title = h1.get_text(strip=True) if h1 else None
+        if not title:
+            logger.warning("No article title at %s; trying fallback host", candidate)
+            continue
 
-    lead = _meta(soup, "og:description") or ""
-    image = _meta(soup, "og:image")
-    canon = _canonical(url)
-    date = _parse_article_date(soup, canon)
-
-    return {
-        "link": canon,
-        "title": sanitize_xml(title.strip()),
-        "description": sanitize_xml(lead.strip()) or sanitize_xml(title.strip()),
-        "date": date,
-        "image": image,
-    }
+        lead = _meta(soup, "og:description") or ""
+        image = _meta(soup, "og:image")
+        date = _parse_article_date(soup, canon)
+        return {
+            "link": canon,
+            "title": sanitize_xml(title.strip()),
+            "description": sanitize_xml(lead.strip()) or sanitize_xml(title.strip()),
+            "date": date,
+            "image": image,
+        }
+    return None
 
 
 def fetch_new_articles(links: list[str], known: set[str]) -> tuple[list[dict], list[str]]:

@@ -52,6 +52,17 @@ class CzworkaTests(unittest.TestCase):
             [url, f"{FETCH_BASE_URL}/10/218/Artykul/3732406"],
         )
 
+    def test_fetch_article_falls_back_from_soft_404(self):
+        url = f"{PUBLIC_BASE_URL}/10/218/Artykul/3732406"
+        soft_404 = "<html><body>Not found</body></html>"
+        article = '<h1>Fallback title</h1><meta property="og:description" content="Lead">'
+
+        with patch.object(czworka, "fetch_page", side_effect=[soft_404, article]) as fetch:
+            post = czworka.fetch_article(url)
+
+        self.assertEqual(post["title"], "Fallback title")
+        self.assertEqual(len(fetch.call_args_list), 2)
+
     def test_main_keeps_last_good_feed_when_new_article_fetch_fails(self):
         old = {"link": f"{PUBLIC_BASE_URL}/10/218/Artykul/1"}
         new = f"{PUBLIC_BASE_URL}/10/218/Artykul/2"
