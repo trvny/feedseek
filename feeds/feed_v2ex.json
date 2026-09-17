@@ -8,324 +8,531 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/69b7c7e556ff51ac",
-      "url": "https://www.v2ex.com/t/1242566#reply5",
-      "title": "做了款 iOS 复古胶片摄影 app，送 20 个永久 Pro",
-      "content_text": "NORY 相机 是一款融合实时拍摄、胶片模拟与照片编辑的影像相机。你可以在取景时直接预览不同胶片色彩，也可以导入照片重新调色，从按下快门到完成作品，保持简单而专注。 [经典胶片色彩] 探索彩色负片、反转片、电影感与黑白胶片等多种影像风格。实时预览色彩效果，调节滤镜强度，找到适合当下光线与场景的画面。 [胶卷模式] 装入一卷 12 、24 或 36 张胶卷，在拍摄过程中暂时放下即时预览。完成或提前收卷后，再进入本地暗房统一冲扫、查看接触印样，并将整卷作品一次导出。 [双重曝光] 连续拍摄两张照片，通过半透明取景辅助完成构图，在设备上自动叠加为一幅具有层次感的双重曝光作品。 [胶片配方实验室] 选择标准胶片风格作为基底，自由调整曝光、对比度、饱和度、色温、颗粒、暗角与锐化。保存属于自己的胶片配方，并在实时拍摄与照片编辑中重复使用。 [完整照片编辑] • 胶片滤镜与手动调色 • 自然美颜与人像调整 • 自由裁剪、缩放和旋转 • 白边、即时成像、CCD 日期等多种相框 • 添加日期、地点和自定义文字 • 支持无相框高清导出 • 随时对比原图并撤销调整 [智能暗房] 在设备本地识别人像、天空、植",
-      "date_published": "2026-09-17T00:36:46Z",
-      "date_modified": "2026-09-17T00:36:46Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/08058befc67884e0",
+      "url": "https://www.v2ex.com/t/1242727#reply0",
+      "title": "我有个暴论： AI 视频工具以后不应该让普通用户选模型",
+      "content_text": "最近在做 Ikat： https://ikat.app 现在接了 Kling 、Wan 、Seedance 、MiniMax 这些模型。 但接得越多，我越觉得有件事很奇怪： 我们把供应商选择题丢给用户了 用户想要的是： “把这张产品图做成广告。” 产品却在问： “请选择 Kling / Wan / Seedance 。” 有点像打车软件上来先问： “请选择发动机型号。” 所以我下一步想在 Ikat 里试试另一条路： 用户只告诉 Agent 想要什么，它自己选模型、拆步骤、生成，失败了再自己换路线。 当然专业用户还是可以手动控制。 但对大多数人来说， 模型也许最终应该像云服务器一样退到产品后面。 不知道这个判断对不对。 V 友平时用 AI 视频，会在意背后具体是哪一个模型吗？",
+      "date_published": "2026-09-17T07:42:06Z",
+      "date_modified": "2026-09-17T07:42:06Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/e089/3731/420921_xlarge.png?m=1715849017",
+      "image": "https://cdn.v2ex.com/gravatar/4d9c887c084514112bf566fe0b1611e9?s=73&d=retro",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/e089/3731/420921_xlarge.png?m=1715849017",
+          "url": "https://cdn.v2ex.com/gravatar/4d9c887c084514112bf566fe0b1611e9?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/1801e6b9120228dc",
+      "url": "https://www.v2ex.com/t/1242717#reply0",
+      "title": "iMessage AI Bot： BubblePilot v2.0.0 发布了！能翻聊天记录、联网搜索了",
+      "content_text": "之前分享过 BubblePilot ，一个基于 BlueBubbles 的 iMessage AI Bot 项目 。最近更新到了 v2.0.0 ，再来介绍一下这段时间做的东西。 它可以让你直接在 iMessage 私聊或群聊里和 AI 聊天：发消息、发图片，让它查资料、翻以前的聊天记录。模型、角色和回复条件都可以自己配置，后台支持可视化工作流，部署在 NAS 或自己的服务器上就能运行。 你可以用它做什么 功能 实际用法 🧠 聊天长期记忆 问“之前聊过的那个方案是什么”，通过向量与关键词找回历史对话 🔎 历史查询与统计 查某人最近一次发言，或者统计某段时间里有多少条消息提到了某个词 🌐 联网搜索 在 iMessage 里直接问需要查资料的问题，由模型按需搜索 🖼️ 图片理解 发一张图片给 Bot ，让它结合聊天上下文一起看 🎭 多角色 Bot 给不同自动化配置角色昵称，在同一个群里安排不同分工，并记录发言归属 💬 连续对话 保留近期聊天原文，用基础窗口和缓冲窗口减少上下文频繁变化 🧩 可视化工作流 拖拽编排触发条件、AI 和回复节点，决定 Bot 什么时候回应、怎么处理 🛠️ 工具组合调",
+      "date_published": "2026-09-17T07:17:11Z",
+      "date_modified": "2026-09-17T07:17:11Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://i.imgur.com/FFyn4Lu.jpeg",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.imgur.com/FFyn4Lu.jpeg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5c66ab7fe0c1256c",
+      "url": "https://sspai.com/post/114643",
+      "title": "具透 | macOS 27 正式版来了，这些是你值得了解新细节",
+      "content_text": "除了只支持 Apple Silicon，macOS 27 Golden Gate 还有这些变化。 查看全文",
+      "date_published": "2026-09-17T07:00:00Z",
+      "date_modified": "2026-09-17T07:00:00Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/7/16/2026/article/6e27e08b-007a-ba1e-ab82-ea54f2148a79.jpeg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/7/16/2026/article/6e27e08b-007a-ba1e-ab82-ea54f2148a79.jpeg?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4f6fb9621de1854d",
+      "url": "https://www.v2ex.com/t/1242712#reply0",
+      "title": "人在杭州，求 2-3 天自然风光路线",
+      "content_text": "除了黄山，想再找一些足够游玩几天的自然风光。宁波人，我觉得浙江都很无聊。",
+      "date_published": "2026-09-17T06:54:47Z",
+      "date_modified": "2026-09-17T06:54:47Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/f5ad/464e/326812_xlarge.png?m=1730773870",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/f5ad/464e/326812_xlarge.png?m=1730773870",
           "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2dafec00600c03cb",
-      "url": "https://www.v2ex.com/t/1242553#reply0",
-      "title": "GPT6 的审美到底好在哪里了？怎么这么多人夸",
-      "content_text": "我让他给我建一个 deepseek 娘的雕像，结果如图... 两眼一黑 等有额度了试试 gemini ，给的方案感觉靠谱（如下） 另外下面是参考图，照着抄都做不好，服了",
-      "date_published": "2026-09-16T17:51:33Z",
-      "date_modified": "2026-09-16T17:51:33Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f7ee3ecab336d4f1",
+      "url": "https://www.v2ex.com/t/1242709#reply1",
+      "title": "把走路时想到的东西直接变成 Obsidian 里的 Markdown 笔记",
+      "content_text": "先说清楚，这是我做的东西。 我思考最顺的时候是在走路，而手机打字比想法慢。语音备忘录解决了记下来这一步，但造出了一个新的坟场——整个文件夹的音频，谁都不会再打开。我想要的是完整那条链路：对着手机说，最后落在 vault 里一个真正的 Markdown 笔记，中间不要有一个 app 把我的笔记扣在它自己的库里。 SpeakPen 大概是这样： - 手机上录音。自动识别语言，免费版单条 5 分钟，Pro 20 分钟。 - 转写、去掉口癖、补标点，自动起标题和摘要，再按会议、课堂、随手记分类。 - 通过 SpeakPen Sync 插件落进你自己的 vault ，是纯 .md 文件，插件在 Obsidian 社区插件市场里。不想装插件也可以自己导出 Markdown 丢进去。 - 因为就是文件夹里的纯文本，Claude Code 或者 Codex 指向这个 vault 就能读，不需要我们专门做什么集成。 两个我特意这么选的地方，你要是不同意可以反驳： - 录音发生在手机上，不在电脑上。只能在我 Mac 上跑的录音器，在我离它两公里的时候一文不值。 - 笔记是文件，不是我们数据库里的一行。停止",
+      "date_published": "2026-09-17T06:47:41Z",
+      "date_modified": "2026-09-17T06:47:41Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://i.imgur.com/NYe3hbK.png",
+      "image": "https://cdn.v2ex.com/gravatar/4d89d38e9d8830ba5609126b9667664c?s=73&d=retro",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://i.imgur.com/NYe3hbK.png",
+          "url": "https://cdn.v2ex.com/gravatar/4d89d38e9d8830ba5609126b9667664c?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/6cc8ffb3ae2ecf61",
+      "url": "https://www.v2ex.com/t/1242700#reply0",
+      "title": "体感上觉得 antigravity 的推理速度好像是和 5h 内余量成反比的",
+      "content_text": "用的 gemini-flash-3.8-medium 特别是 20%以下就非常慢，然后一到 100%就很快",
+      "date_published": "2026-09-17T06:26:27Z",
+      "date_modified": "2026-09-17T06:26:27Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/9957/cdcc/347966_large.png?m=1787302070",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/9957/cdcc/347966_large.png?m=1787302070",
           "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/94d7b15b72ec3c6e",
-      "url": "https://www.v2ex.com/t/1242552#reply0",
-      "title": "Tars: 把 iPhone 变成星际穿越里的 Mac agents 面板",
-      "content_text": "给 agents 一个星际穿越的 tars 面板。 写代码的时候来回切窗口这个动作，一天下来不知道做了多少次。 监控很耗神，屏幕上的 agent 监控又比较干扰人。 所以和 ai 一起写了一个纯黑的 tars 来用余光监控 眼睛安安静静——空闲，没事干 眼睛在动——正干着活，你可以接着摸鱼 眼睛瞪大了——它卡住了，等你批准 眼睛弯成两道笑眯眯的弧——干完了 低延迟通讯，做了 amoled 可变刷新率和省电优化，不用切窗口，不用盯着终端。余光扫一眼就知道该不该回去。 还支持不同主题（欢迎 pr 贡献更多主题！）。 开源的，自己拿去改： https://github.com/reycn/tars （名字来自《星际穿越》里的 TARS ，虽然不会说冷笑话）",
-      "date_published": "2026-09-16T17:26:08Z",
-      "date_modified": "2026-09-16T17:26:08Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/228a0d36f808cf7b",
+      "url": "https://www.v2ex.com/t/1242696#reply4",
+      "title": "做了个开源项目推荐站，接受开发者自荐：给你们的 side project 一个被看见的地方",
+      "content_text": "各位好，分享一个最近上线的站： Zendot ，一个开源项目推荐站。今天主要想面向和我一样的独立开发者聊 自荐 channel 这件事。 先说共鸣 ：我们花几个月写的 side project ，发出去往往就 3 个 star——其中 2 个还是自己的小号。不是项目不好，是根本没人看见。社区里到处是「求推广」的帖子，但个人开发者缺的从来不是论坛，是一个 能把项目讲清楚、能被搜索到、长期挂着 的页面。 在 Zendot 提交项目，你会得到： 一篇 中英双语的项目推荐稿 ：它是什么、亮点在哪、怎么上手、适合谁——按统一的编辑结构整理，英文版不是机翻，是按英文读者习惯重写的 硬信息齐全：star 、语言、license 、仓库直链、live demo 链接 页面对搜索引擎做了完整收录优化（结构化数据、双语 hreflang 、sitemap ），AI 搜索引擎（ Perplexity 这类）也在抓取范围内——很多人搜「 xxx 的开源替代」，你的项目有机会被命中 归入领域分类（自托管、开发运维、数据分析等 9 类），长期挂在站内导航里，不是发完就沉的帖子 怎么提交 ：打开 zendot.or",
+      "date_published": "2026-09-17T06:17:03Z",
+      "date_modified": "2026-09-17T06:17:03Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/3d69/abef/65409_large.png?m=1789625712",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/3d69/abef/65409_large.png?m=1789625712",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c12cc89117e41750",
+      "url": "https://www.v2ex.com/t/1242695#reply0",
+      "title": "Marlo：不用填 API key 的桌面 AI 助手，给它一个文件夹就说要什么",
+      "content_text": "这是我做的东西，先说明一下。 起因：我试过几个桌面 AI agent ，第一屏基本都是问你用哪个模型厂商、API key 填在哪。对开发者这没什么，但对没有工程背景的人来说就是死路——他不知道 OpenRouter 是什么，也不该需要知道。 所以我做了 Marlo：下载、用 Qumge 账号登录一次、把一个文件夹交给它，然后用大白话说你要什么结果。 它接的活大概长这样： 把文件夹里这几张发票整理成按月分组的表格 根据这个文件夹写这周的周报 看看这个脚本哪里坏了，修一下 几个我自己觉得重要的点： 不用填 key 。登录之后 500+ 个模型在后面，选模型这件事不该是使用门槛。 动手前先停。任何会改文件、会执行命令的动作，都会先把计划摆出来等你点同意，不是跑完再让你猜它干了什么。 交付的是文件。表格、报告、草稿、脚本都写回你的文件夹里，不是在对话框里丢一段让你自己粘贴的文本。 可以说每周五跑一次这种话。 底层引擎是 Andrew Ng 的 OpenWorker ，MIT 协议，我们做的是发行和体验层；非 Qumge 特有的修复会回上游。 现在还不够好的地方，我列在前面： Mac 版（ Ap",
+      "date_published": "2026-09-17T06:16:35Z",
+      "date_modified": "2026-09-17T06:16:35Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://raw.githubusercontent.com/reycn/tars/main/doc/demo.gif",
+      "image": "https://cdn.v2ex.com/gravatar/4d89d38e9d8830ba5609126b9667664c?s=73&d=retro",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://raw.githubusercontent.com/reycn/tars/main/doc/demo.gif",
+          "url": "https://cdn.v2ex.com/gravatar/4d89d38e9d8830ba5609126b9667664c?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/18712b25144192f9",
+      "url": "https://www.v2ex.com/t/1242693",
+      "title": "claude team 拼车（6.25x premium 席位）",
+      "content_text": "<p>claude team 非盈利车 premium 席位 6.25 倍额度。</p>\n<p>价格为 700r/月（周期到 10.16 为止）可以走鱼（走鱼需要+10r 手续费）</p>\n<p>上车后会拉微信群进行管理</p>\n<p>给域名邮箱，直接登录即可。</p>\n<p>整个周期内，非 team 炸掉，自身环境原因封号的，可以质保 2 次（因为 team 拉的很频繁会风控，所以没办法一直质保）</p>\n<p>如果 team 炸了，可以拉新的 team 或者按剩余时间比例退。</p>\n<p>注意：\n1.网页必须使用指纹浏览器登录\n2.禁止反代,中转,cyber 等行为，如果发现直接清退，不予退款</p>",
+      "date_published": "2026-09-17T06:11:19Z",
+      "date_modified": "2026-09-17T06:11:19Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (asdqp)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/7597f83d7dd64a6021484f953cf55b03?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (asdqp)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/7597f83d7dd64a6021484f953cf55b03?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/76f59794ef51b01f",
+      "url": "https://www.v2ex.com/t/1242690#reply2",
+      "title": "[分享创造] 作为一个老年 DOTA2 玩家，我给自己造了一个“DOTA2 驿站”（多路分屏直播 / 开黑 / 资讯聚合）",
+      "content_text": "作为一个老年 DOTA2 玩家，我给自己造了一个“DOTA2 驿站”（多路分屏直播 / 开黑 / 资讯聚合） V 友们好。作为一个老年 DOTA2 玩家，平时最大的爱好就是下班后看看直播，周末打打鱼塘局。 但现在的环境大家也懂，体验属实割裂：\n想看几个 OB 兄弟，得在斗鱼、虎牙开好几个网页；\n想找点版本更新或者社区乐子，得在 NGA 、虎扑、官网之间来回切；\n想找人开黑，又不想进乌烟瘴气的微信群，只想打完就散。 被折磨久了，索性自己动手，花了一个多月的时间，撸了一个名叫 DOTA2 驿站 的小站（其实是个大杂烩）。 🔪 主要做了几个功能： 1. 监控室（多路分屏直播）—— 个人最满意的功能 支持斗鱼、虎牙的直播间直接拖拽排布。你看图就知道，左边是房间列表，右边是 1/2/4/6/9 宫格。想看 YYF 解说同时切 Zhou 的第一视角？直接把左边的卡片拖到右边的格子里就行了。支持一键静音、隐藏弹幕、全屏。所有配置都存在浏览器本地，下次打开还在。 2. 开黑房间（用完即走） 没有复杂的注册流程，支持 Steam 直接登录。建个房，把链接丢到群里，队友点进来就能分路、Roll 点。最核心",
+      "date_published": "2026-09-17T06:02:38Z",
+      "date_modified": "2026-09-17T06:02:38Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://imgbed.hiwenbin.com/file/1789617016333_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260917113440_103_31.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://imgbed.hiwenbin.com/file/1789617016333_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260917113440_103_31.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/fb3a8ff011908bb2",
+      "url": "https://www.v2ex.com/t/1242686#reply0",
+      "title": "RED 实战：用 AI 把一个想法做成能用的 DSH 插件",
+      "content_text": "上一篇 V2EX 帖子： https://www.v2ex.com/t/1241608 这次接着上一篇的方法介绍，直接看它怎样参与一次真实的插件开发：从一个说不清的使用问题开始，让 AI 先研究并做 demo ，看到效果后再进入 E ，最后把确认过的行为整理进 D 。这次不再只讲方法，直接看两轮开发怎样展开。 最近 DSH （ DeepSeek Harness ）挺火，很多人一边拿它做项目，一边研究怎么给它加点东西。用着哪里不顺，顺手做个插件改进一下，也正是它适合折腾的地方。 用 DSH 做项目时，最自然的动作是先选工作区，再让 AI 读代码、改文件。可临时查个资料、问个技术细节，或者只想聊两句时，也得先准备一个项目目录。话题和项目混在一起，操作还多了一步。 在这次使用的 DSH Web 0.1.5-rc.2 中，新对话要先有工作区。想解决的问题很小：加一个入口，点一下就能开始聊天，同时准备好独立的工作目录。 做出来的 dsh-just-chat 首页和侧栏各有一个入口。点击后，它会准备独立工作目录，再打开 DSH 原生对话。 先看成品 本文对应插件 0.1.4 和 DSH Web 0",
+      "date_published": "2026-09-17T05:50:31Z",
+      "date_modified": "2026-09-17T05:50:31Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://raw.githubusercontent.com/exoticknight/dsh-just-chat/v0.1.4/docs/images/quick-chat-head.jpg",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://raw.githubusercontent.com/exoticknight/dsh-just-chat/v0.1.4/docs/images/quick-chat-head.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/648d8af3ab7806c8",
+      "url": "https://www.v2ex.com/t/1242684#reply0",
+      "title": "求好心人分享个《凡人修仙传》TV 版的阿里云分享链接",
+      "content_text": "现在网上能找到的链接基本都失效了，之前存过一份，总计大概 500G 了，后来空间不够用给删了，哪成想现在这么难找？我只有阿里云的会员，所以问问哪位 V 友还有资源？",
+      "date_published": "2026-09-17T05:43:50Z",
+      "date_modified": "2026-09-17T05:43:50Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/c823/7eda/202226_large.png?m=1574547887",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/c823/7eda/202226_large.png?m=1574547887",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3c547bc7b3506d37",
+      "url": "https://www.v2ex.com/t/1242683#reply1",
+      "title": "用键盘练英语的开源免费小工具, 打开即用, 无需登录",
+      "content_text": "为了每天练习一下英文, 我随手用 claude 写了一个小工具. 用了一周, 感觉挺好用, 分享给大家! 源码 https://github.com/nolanzhao/learn-english （ MIT LICENSE ） 可以提 PR 加词库; 也可以 fork 一份代码自行定制; 在线使用 https://learn-english.nolanzhao.workers.dev （不用注册， 点开即用） 功能 三种练法: 看着单词逐字母打；只看中文释义自己拼；只听发音做听写。打错的字母标红，可以左右方向键移过去改。 音频: 使用的是浏览器自带的, 推荐使用 Chrome; 收藏 & 自动记录错题 自动统计练习数据 词库: 雅思 / PTE(AWL 学术词族、ACL 学术搭配) /托福 / GRE 核心词汇（带音标和例句），外加多个生活场景的口语句式。 专注模式: 一键把界面收到只剩单词和释义。 进度: 存在浏览器本地, 关掉页面下次从上次的位置接着练 截图 技术栈 前端是纯 HTML / CSS / JS ，没有框架，没有构建步骤 本地运行只要 Python 标准库: pyth",
+      "date_published": "2026-09-17T05:37:29Z",
+      "date_modified": "2026-09-17T05:37:29Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://img.nolanzhao.cc/learn-english/typing3.jpg",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://img.nolanzhao.cc/learn-english/typing3.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/db4d8730ef602519",
+      "url": "https://www.v2ex.com/t/1242680#reply0",
+      "title": "UmamiBar - mac 菜单栏查看 Umami 统计数据",
+      "content_text": "最近把我的网站的流量统计都迁移到了自建的 Umamai ，为了更方便的随时查看数据，做了这个菜单栏应用： https://github.com/wong2/UmamiBar",
+      "date_published": "2026-09-17T05:19:47Z",
+      "date_modified": "2026-09-17T05:19:47Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://raw.githubusercontent.com/wong2/UmamiBar/refs/heads/main/docs/screenshot.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://raw.githubusercontent.com/wong2/UmamiBar/refs/heads/main/docs/screenshot.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2a9edd736b51fa0e",
+      "url": "https://www.v2ex.com/t/1242672#reply0",
+      "title": "vibe coding 实用工具",
+      "content_text": "CC-Monitor 是我给自己写的一个小工具：把 Claude Code 每一次读文件、写文件、跑命令、连网络都记下来。 官网： www.cc-monitor.com github: https://github.com/cn0xroot/CC-Monitor 目前支持 Linux 和 Mac 两个平台",
+      "date_published": "2026-09-17T04:47:41Z",
+      "date_modified": "2026-09-17T04:47:41Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/534f/7898/245093_large.png?m=1789223650",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/534f/7898/245093_large.png?m=1789223650",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7fe45a787f748eac",
+      "url": "https://www.v2ex.com/t/1242663#reply3",
+      "title": "求推荐 1-2K 上下的游戏无线耳机",
+      "content_text": "平常主玩三角洲这类对 立体音效 要求较高的 FPS ，希望能替代掉我现在的杂牌有线。平常也会听听流行乐，对音质有点要求，不喜欢轰头低频拉爆的偏科耳机。 目前候选 1.飓风 3 2.ROG 臻世 (有线但实在优秀) 3.戴灵 G4 4.漫步者 G5 MAX",
+      "date_published": "2026-09-17T03:38:40Z",
+      "date_modified": "2026-09-17T03:38:40Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/badd20e23b00ea89bcb10e02aedcc182?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/badd20e23b00ea89bcb10e02aedcc182?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f6f8cc7d77b4873a",
+      "url": "https://www.v2ex.com/t/1242658#reply1",
+      "title": "分享下我的开源博客主题 https://github.com/callmesoul/soul-blog-theme",
+      "content_text": "主题地址： https://github.com/callmesoul/soul-blog-theme demo 地址： https://callmesoul.github.io/",
+      "date_published": "2026-09-17T03:29:11Z",
+      "date_modified": "2026-09-17T03:29:11Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://picui.ogmua.cn/s1/2026/09/17/6aab5cf6cd6ea.webp",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://picui.ogmua.cn/s1/2026/09/17/6aab5cf6cd6ea.webp",
+          "mime_type": "image/webp"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f0a3b915787be27f",
+      "url": "https://www.v2ex.com/t/1242656",
+      "title": "Claude 啥时候会重置一下",
+      "content_text": "<p>Codex 不定时就会重置，Claude 已经好久没有重置了</p>",
+      "date_published": "2026-09-17T03:23:51Z",
+      "date_modified": "2026-09-17T03:23:51Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (yexiaoqi)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (yexiaoqi)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/de7e3b6dc992f12c",
+      "url": "https://www.v2ex.com/t/1242650#reply5",
+      "title": "小米公开 Mimo 2.6 RL 后训练实时仪表盘，一天花费一百万刀",
+      "content_text": "Pro 马上练完 Step 12 。Step 10 的 DeepSWE 1.1 分数 63.72 ，刚好超过 DeepSeek V4 Pro Flash 马上练完 Step 15 。Step 12 的 DeepSWE 1.1 分数 60.77 ，超过 Opus 4.8 。 训练一天十几个小时，总花费已超过一百二十万美元 现在理解苹果为什么不自己训练大模型，DeepSeek 为什么死磕架构效率优化了。要么不差钱要么软硬优化实力过硬，一般公司还真烧不起。",
+      "date_published": "2026-09-17T03:18:28Z",
+      "date_modified": "2026-09-17T03:18:28Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/c9cbf77b2c201958de61a5e8278ac97c?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/c9cbf77b2c201958de61a5e8278ac97c?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/06df31b7edf88b3c",
+      "url": "https://www.v2ex.com/t/1242645#reply1",
+      "title": "[开源] 受够了“最终版、最终版-01” 这种起名，我做了一款带版本的文件管理器",
+      "content_text": "LumeTrace 是一款开源的本地文件管理器，保持使用简单与页面清爽的原则，且不依赖任何服务器绝对的本地运行。 工作区 首次打开配置工作区，选择一个本地目录就好，直接加载目录下的所有文件进入工作区，不修改目录结构与文件名称。 文件的版本记录与查看 不会更改使用者的习惯，无论是在应用内部修改文件还是使用您顺手的应用修改文件，都会自动记录一个版本，可以在应用内查看版本变化与恢复。 全文搜索 Command + K 快速唤醒搜索，不是单纯的检索文件名称，而是全文检索且高亮命中关键词，双击直接打开命中位置。 AI 文件助手 LumeTrace 不提供 AI 模型 API ，而是可以配置本地的 LLM 或者 你在本地配置过的 Codex 、Claude 、Hermes 的 CLI 直接处理，不仅可以用于寻找文件、总结文件、还可以比对两个文件版本的变化。 支持功能 创建本地工作区、拖拽加入工作区、删除冷静期、自动检测文件变化并记录版本、版本恢复、全文检索、AI 文件问答 LumeTrace Tauri + Rust 架构，目前只支持 macOS 版本，其他版本正在努力开发中，暂时不准备再增加新功",
+      "date_published": "2026-09-17T03:11:18Z",
+      "date_modified": "2026-09-17T03:11:18Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://i.ibb.co/s9qZC40s/lumetrace-overview.gif",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.ibb.co/s9qZC40s/lumetrace-overview.gif",
           "mime_type": "image/gif"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/27428c106cd0ca1d",
-      "url": "https://www.v2ex.com/t/1242551#reply2",
-      "title": "Codex 额度什么时候重置？我做了个查询工具",
-      "content_text": "最近用 Codex 比较多，最烦的就是额度用完以后不知道什么时候恢复。 顺手做了个小工具： https://codexreset.remit.ee/ 可以看 Codex Limit Reset 的最新动态、历史记录和平均等待时间，也支持浏览器通知。 经常把 Codex 跑满的可以收藏一下，省得一直手动刷。 非官方工具，数据基于公开信息整理。",
-      "date_published": "2026-09-16T17:11:00Z",
-      "date_modified": "2026-09-16T17:11:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/77aa56472584c329",
+      "url": "https://sspai.com/post/114451",
+      "title": "一个小创意的诞生：BeatBox 雪漫天外壳定制指南",
+      "content_text": "今年早些时候，在少数派 × 飞傲联名 CD 机盖板设计大赛中，不少朋友都参与设计了自己的 CD 机盖板，但如何才能把它们制作出来呢？ 查看全文",
+      "date_published": "2026-09-17T03:11:01Z",
+      "date_modified": "2026-09-17T03:11:01Z",
       "authors": [
         {
-          "name": "V2EX Play"
+          "name": "sspai.com"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/7d73/15dc/718146_xlarge.png?m=1768202945",
+      "image": "https://rssfile.sspai.com/2026/09/11/1c9eb5b5eda845f2200f93bbd1c0e189.jpg?imageMogr2/auto-orient/ignore-error/1",
       "tags": [
-        "V2EX Play"
+        "sspai.com"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/7d73/15dc/718146_xlarge.png?m=1768202945",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/1d1d47524f6d6ba9",
-      "url": "https://www.v2ex.com/t/1242546#reply0",
-      "title": "为了解决竖屏视频在电视播放的问题，我做了三视频同播",
-      "content_text": "起初是做了一个下载抖音和其他平台作品的软件，可以把某个博主的所有视频都下载到 iCloud 相册。\n后来在想怎么能更好的播放这些视频，\n在电视上播放竖屏视频，左右两块会有黑边。\n前几天突然突发奇想，想着三个视频是不是可以同时播放，\n于是就有了现在的雏形，大家觉得怎么样？\n现在的音频焦点默认是中间音频，可通过遥控器切换左中右。\n同时还做了 iPad 端的双视频左右并行播放，或者三视频同播。 搭配的设备是 Apple TV 。\n只需要登录同一个 iCloud 账号，就可以读取所有相簿进行选中播放。\n可以全部相簿随机，也可以锁定某一个相簿。\n安卓 TV 端也可以做，不过文件要从 NAS 取了",
-      "date_published": "2026-09-16T15:04:01Z",
-      "date_modified": "2026-09-16T15:04:01Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.v2ex.co/Y7WiXK7T.jpeg",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.v2ex.co/Y7WiXK7T.jpeg",
+          "url": "https://rssfile.sspai.com/2026/09/11/1c9eb5b5eda845f2200f93bbd1c0e189.jpg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/9c42cc963e6018cc",
-      "url": "https://www.v2ex.com/t/1242543#reply0",
-      "title": "把猫咪安排到 Mac 定时提醒我休息🐮绝不绝！",
-      "content_text": "上次发了个休息提醒 APP ，没啥反馈，应该是 APP 体验还差点。 不过前几天刷了些帖子有了点💡💡💡就做一次大更新，把家里可爱的猫咪做成动画直接搬进了 Mac 💻 里面。 每持续工作一段时间，屏幕就会准时跳出我家主子的大脸盘子提醒我：“两脚兽，该停下来...啦！”🐾 不得不说，看到可爱的宠物，工作久了瞬间感觉轻松多了，同时还能实现健康提醒！ 最后想问下大家：LookAway 、Time Out 或者 番茄钟，大家会使用这类软件来实现休息提醒吗？还是有用其他方式实现休息提醒？",
-      "date_published": "2026-09-16T14:32:11Z",
-      "date_modified": "2026-09-16T14:32:11Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d66e63a236cdbce3",
+      "url": "https://www.v2ex.com/t/1242644#reply11",
+      "title": "广州移动送了条宽带，不打算拆掉电信了，移动怎么样可以使用起来？",
+      "content_text": "广州移动送了条宽带，不打算拆掉电信了，移动怎么样可以使用起来？",
+      "date_published": "2026-09-17T03:10:30Z",
+      "date_modified": "2026-09-17T03:10:30Z",
       "authors": [
         {
-          "name": "V2EX Creative"
+          "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/gravatar/1fa07bd72237429fcbabe8d0221b53ec?s=73&d=retro",
+      "image": "https://cdn.v2ex.com/avatar/d69a/ff95/181380_xlarge.png?m=1728969108",
       "tags": [
-        "V2EX Creative"
+        "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/gravatar/1fa07bd72237429fcbabe8d0221b53ec?s=73&d=retro",
+          "url": "https://cdn.v2ex.com/avatar/d69a/ff95/181380_xlarge.png?m=1728969108",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/480c77bc6d404792",
+      "url": "https://sspai.com/post/114658",
+      "title": "派早报：佳能发布 EOS R8 Mark II、GPT-5.5 即将下线等",
+      "content_text": "惠普发布 ZBook Ultra G3a 16 移动工作站、影石发布 Mic Pro 腾讯会议版 AI 录音领夹麦等。 查看全文",
+      "date_published": "2026-09-17T00:25:30Z",
+      "date_modified": "2026-09-17T00:25:30Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/16/09/2026/article/6728b3b0-6d66-1478-f271-2cb385f85016.jpeg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/16/09/2026/article/6728b3b0-6d66-1478-f271-2cb385f85016.jpeg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/11259df6cf299575",
-      "url": "https://www.v2ex.com/t/1242541#reply2",
-      "title": "关于 高度近视 自由曲面 镜片厚度的一些发现和问题",
-      "content_text": "说明： 本文中的配镜经历、实测数据和观点均来自本人，文章结构及部分文字表述使用 AI 辅助整理。 本人高度近视，联合光度约 1300 度 。 之前线下配过一副 蔡司智锐 1.74 ，当时用了 53mm 左右的大框，再加上单眼约 2.5mm 的水平移心，最终成镜侧边靠上的最大厚度达到了： 约 8.4mm 而且还是做过美薄之后的结果，下方也有 6.x mm 。 旧眼镜实物 后来开始系统研究高度近视配镜，主要参考了这两位 UP： 烤麸冷面加块肉 没有風干 目前对镜片厚度影响因素的粗略理解是： 镜框尺寸 > 折射率 > 镜片品牌 这里只讨论物理厚度，不讨论镀膜、阿贝数、周边成像等问题。 一、自己写了一个镜片厚度计算器 最近借助 GPT 写了一个简单的镜片厚度计算器，主要用于根据： 镜框轮廓 度数 瞳距 瞳高 折射率 中心厚度 估算最终最大边厚。 目的主要是配镜前先筛掉明显不适合高度近视的大框。 二、新镜框：46mm ，初始估算 6mm 多 这次重新配镜时，选择了一副 46mm 左右的小框 ，水平方向基本 0 移心。 最初按接近几何中心点瞳计算，最大边厚为： 6mm 多 这个结果对我来说已经可以",
-      "date_published": "2026-09-16T14:23:37Z",
-      "date_modified": "2026-09-16T14:23:37Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://i.imgur.com/QvDUS2l.jpg",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/QvDUS2l.jpg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/aca10a413534266d",
-      "url": "https://www.v2ex.com/t/1242540#reply0",
-      "title": "[分享创造] 升级 macOS 27 之后菜单栏折叠失效了，所以来推广一下我做的 Knot",
-      "content_text": "这是一篇推广帖。 升级 macOS 27 后，Knot 原来隐藏菜单栏图片的出了问题，之前用的 https://github.com/dwarvesf/hidden 也不好用了。于是给 Knot 做了适配。 最初做 Knot 是因为我买了台新 Mac ，常用的功能分散在好几个软件里，所以安装、设置、快捷键都要重新弄，很麻烦。Raycast 的 Quicklinks 自动云同步又需要订阅（所以 Knot 的 Quicklinks 支持导入导出放到 iCloud 上同步），其他很多功能又不到。 常用的功能： Search：应用、文件搜索和计算器，类似 Raycast 、Alfred 。 Bar：菜单栏折叠，类似 Hidden Bar 、Ice 。 Window：窗口分屏，类似 Rectangle 。 Clipboard：文字、图片剪贴板历史，类似 Maccy 、Raycast 。 Capture：截图、标注、本地 OCR ，类似 Shottr 、CleanShot X 。（这种一般我都是用微信或者钉钉的） Quicklinks：关键词打开网址，类似 Raycast Quicklinks 、",
-      "date_published": "2026-09-16T14:21:45Z",
-      "date_modified": "2026-09-16T14:21:45Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/86b9/3b45/394922_large.png?m=1582309706",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/86b9/3b45/394922_large.png?m=1582309706",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/bac4a7d25885d8d7",
-      "url": "https://www.v2ex.com/t/1242526#reply0",
-      "title": "Panda Dock：一个更好用的浏览器侧边栏工具箱",
-      "content_text": "编辑了半天正文，发现没有 ai 润色还真写不下去 插件介绍烦请移步至博客文章： https://ua42.com/post/panda-dock 插件地址： https://chromewebstore.google.com/detail/lgihhgadmbnedffjadpbnecdebllcjlk GitHub： https://github.com/forestRhapsody/panda-dock 粗略介绍：Panda Dock 是一个开源的浏览器侧边栏/抽屉形态的开发者插件，支持网页解析选中文本，JSON 序列化、base64 等常见功能，也支持更好的管理 localStorage/sessionStorage/cookies 。",
-      "date_published": "2026-09-16T13:03:24Z",
-      "date_modified": "2026-09-16T13:03:24Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://i.imgur.com/2k0DlpO.png",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/2k0DlpO.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/43d667b91877b3f1",
-      "url": "https://www.v2ex.com/t/1242523#reply0",
-      "title": "本着不浪费任何一个域名的原则， vibe 了一个小工具。",
-      "content_text": "vibe 了一个小工具，Freelance Rate Calculator： https://thechmodcalc.com 看看能不能赚回域名钱",
-      "date_published": "2026-09-16T12:58:58Z",
-      "date_modified": "2026-09-16T12:58:58Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/ac56d52341531b2153d5db80c5f31a46?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/ac56d52341531b2153d5db80c5f31a46?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/288c7c2031974ed3",
-      "url": "https://www.v2ex.com/t/1242522#reply0",
-      "title": "整了个 AI 整理网页内容生成笔记的游览器插件，可能也就满足自己需求吧",
-      "content_text": "现在 ai 时代，只要有想法就真的太容易实现了，不管是复刻，还是原创，一切都是那么的简单，就像我最近在搞的三个 ios app ，最初看了下 swift 语言语法和项目经典分层架构，然后约束了一下项目结构，后面全靠 AI 一点点的搞完了，争取这个月上架试试，有可能，也仅仅是满足了我自己的需求吧，不过也因此感受了不同模型的差异性，同一个模型不同版本之间差异真的不小，想想最差让 AI 实现我的想法，还很难一次性实现，让他生成 UI 设计图，还非常丑。但到后面，ai 生成的 UI 图一次比一次好看，好看到让我忍不住想立马体验这个 app ，可惜咯，AI 终究差了点，复刻 UI ，需要多次调整。就这样吧，大家要是对我的插件感兴趣，可以安装用用，给个评价，最初真就为了自己开发了个，后面发现也可以上架试试。 https://chromewebstore.google.com/detail/mynote-ai-%E7%BD%91%E9%A1%B5%E5%88%86%E6%9E%90%E3%80%81markdown-%E4%B8%8E/iaejiichooljicpanlmfigjkdohakmij",
-      "date_published": "2026-09-16T12:56:18Z",
-      "date_modified": "2026-09-16T12:56:18Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/2e04/39e2/611558_xlarge.png?m=1702015640",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/2e04/39e2/611558_xlarge.png?m=1702015640",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b7be247ba78d5280",
-      "url": "https://www.v2ex.com/t/1242513#reply1",
-      "title": "张一鸣登顶中国富豪榜榜首，财富净值突破 1050 亿美元",
-      "content_text": "张一鸣登顶中国富豪榜榜首，财富净值突破 1050 亿美元",
-      "date_published": "2026-09-16T11:34:09Z",
-      "date_modified": "2026-09-16T11:34:09Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/9e38/0cf2/413420_xlarge.png?m=1789083210",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/9e38/0cf2/413420_xlarge.png?m=1789083210",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b29bd100e6ed43d7",
-      "url": "https://www.v2ex.com/t/1242504#reply7",
-      "title": "从电信换到联通",
-      "content_text": "运气好？没有遇到网上说的刁难。 坐标成都，20 年办的电信 816 元 / 年 100M 宽带。第 3 年升级成 300M 。\n21 年申请了公网 IP ，折腾 NAS 用了一年，后面就闲置了。\n后来上网看到别人 900 多一年 1000M ，心里有点不平衡，不过自己也用不到，所以就没升级。 其实 25 年就想换掉了，当时找不到机顶盒，就拖了一年。\n周末打 10000 号线上申请注销，客服也没多说什么，核实完身份证，说稍后会有工作人员联系上门。 之后确实有人打电话过来，但让我自己跑线下营业厅，好在也不远。出门吃饭顺路过去，5 分钟就办完注销了。\n网上看到联通 480 元 / 年 500M 宽带。打了一个电话，工作人员上门，10 分钟就装好。 所以整体感觉都挺顺利的。是因为办的都是单宽带的缘故吗？是不是融合套餐注销才比较麻烦？",
-      "date_published": "2026-09-16T10:58:19Z",
-      "date_modified": "2026-09-16T10:58:19Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/0d33/107a/380881_xlarge.png?m=1789555786",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/0d33/107a/380881_xlarge.png?m=1789555786",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/01dadf49787080fb",
-      "url": "https://www.v2ex.com/t/1242498#reply0",
-      "title": "疑似找到了只用 clash 判断节点是否支持 YTmusic 的方法",
-      "content_text": "测试 url: https://one.google.com 期望状态,能用是 302,不能用是 307",
-      "date_published": "2026-09-16T10:27:05Z",
-      "date_modified": "2026-09-16T10:27:05Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/d7c4/b3ac/478757_xlarge.png?m=1772443381",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/d7c4/b3ac/478757_xlarge.png?m=1772443381",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -353,52 +560,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f2b85a2813dd9a1c",
-      "url": "https://www.v2ex.com/t/1242479#reply0",
-      "title": "出海指南之 App Store 上架避坑经验：税务身份的选择",
-      "content_text": "前文提要： https://v2ex.com/t/1242148 上文说到审核问题，我们接下来再聊聊税务身份的问题。 一个应用上架 App Store 要付 99 美元，所以大多数开发者都有通过应用变现的想法。至少，能补贴一下年费。 以本人注册的美国单人 LLC 角度，来谈一下税务表格的坑。\n当 App 需要上架付费内容时，要在 App Store Connect 中填写报税表。苹果默认表格是 U.S. Form W-9 。 简单科普一下，U.S. Form W-9 报税表适用于美国公民或美国实体，外国人需要提交的是 W-8. 这里我选择的方式是给 Apple 官方客户发送邮件。他们回得特别慢，不过回复是让你自己去找一份 W-8 表格填写完毕后，直接回复邮件并将报税表附加在附件中。\n这里有一个知识点要记住：他们会提供一个案例号，你每次回复邮件需要将案例号放在邮件顶部。 问题来了，W-8 表格在哪下载呢？在 IRS 官方网站 irs.gov 。\n搜索 W-8 会有两种选择：\nW-8BEN 和 W-8BEN-E 。W-8BEN 适用于外国人，W-8BEN-E 适用于企业。 我当时问了 Ch",
-      "date_published": "2026-09-16T09:02:32Z",
-      "date_modified": "2026-09-16T09:02:32Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/b85ffedde6be247cffcab9b16d593dc7?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/b85ffedde6be247cffcab9b16d593dc7?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/91c4dc2147ed8cbd",
-      "url": "https://www.v2ex.com/t/1242457#reply31",
-      "title": "有哪些好看的 ai 剧",
-      "content_text": "我先来说说我在追的几部 ai 剧\n《大天蓬》\n《李景隆》\n《山城爱情故事》\n《古人每周来我家》 - 这个之前看的是沙雕，现在在追 ai 剧\n《谁说没有灵根不能修仙》 - 这个胜在更新太快了，但是并不是很喜欢",
-      "date_published": "2026-09-16T07:55:39Z",
-      "date_modified": "2026-09-16T07:55:39Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/87b2828c6511244b8576dc1ed82b1bd7?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/87b2828c6511244b8576dc1ed82b1bd7?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/23b90fd829c57db3",
       "url": "https://sspai.com/post/114607",
       "title": "具透 | Liquid Glass 设计改进、性能提升……iPadOS 27 中值得一瞥的新特性",
@@ -418,52 +579,6 @@
         {
           "url": "https://rssfile.sspai.com/7/16/2026/article/55afe1db-6ff5-1e2c-093d-d0052b25f81c.jpeg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3989930ea2834304",
-      "url": "https://www.v2ex.com/t/1242438#reply4",
-      "title": "有没有人留意过运营商策略丢包的情况？",
-      "content_text": "如题，我向大家直接指出四川移动这边省网是有精准丢包策略的，同时地市公司不会承认，具体表现是每日 19:33-22:06 分压制上传流量，时间非常精准，时间一过直接恢复，精准丢包，你在限制时段测速没测不出来任何毛病的，如果没有监控网络质量的机器会极难发现，压制后如果有流量刚好匹配这个策略，会导致网络 100%丢包，如果入站请求被阻断了，不断尝试建立新连接会导致路由器连接数超过 MAX 而无法上网。有没有其他省份的朋友遇到过类似的策略？首先肯定，四川所有地市都有这个限制，由省公司下发，不管你是家客还是政企客户、高价值专线、固定 IPPON 、IDC ，统统都有限制。 这个策略极大概率会误伤正常用户。",
-      "date_published": "2026-09-16T06:47:31Z",
-      "date_modified": "2026-09-16T06:47:31Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/903512f8eb6aee5493e28e883f116981?s=73&d=retro",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/903512f8eb6aee5493e28e883f116981?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/face493a9fbc515b",
-      "url": "https://www.v2ex.com/t/1242402#reply3",
-      "title": "TypeSafe 推出新模型 Jev",
-      "content_text": "今天逛 Hacker News 发现讨论的非常火热 https://typesafe.ai/blog/introducing-system-one-models-and-jev 就我目前接触到的 Agent 开发场景来看，尤其是在金融这类对可靠性和可控性要求较高的业务中，Workflow 依然是主流。很多 Agent Workflow 里的 step ，本质上都是先观察当前状态，再判断应该进入哪条路由，随后在对应的路由中执行特定任务，而现在这类路由判断本身就会消耗不少时间和 Token 。如果 Jev 真能在这类结构化决策任务上达到 Terra 级别的表现，同时大幅降低成本和延迟，我感觉会很大改善 Agent 应用的用户体验。",
-      "date_published": "2026-09-16T05:15:02Z",
-      "date_modified": "2026-09-16T05:15:02Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/b989/ed4a/91590_large.png?m=1789125076",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/b989/ed4a/91590_large.png?m=1789125076",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -606,52 +721,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/befb38f3c8337824",
-      "url": "https://sspai.com/post/114565",
-      "title": "具透 | 精心优化， 体验感愉悦升华：iOS 27 中值得关注的新特性",
-      "content_text": "少数派在体验了新版系统之后，帮你整理了 iOS 27 中值得关注的新功能和新特性，希望帮你能了解新版系统的方方面面。 查看全文",
-      "date_published": "2026-09-15T07:00:00Z",
-      "date_modified": "2026-09-15T07:00:00Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/7/16/2026/article/74bc07b0-2d00-c1ec-bc87-cde602289321.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/7/16/2026/article/74bc07b0-2d00-c1ec-bc87-cde602289321.jpeg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/801f51419d7c7e2c",
-      "url": "https://sspai.com/post/47126",
-      "title": "开学季 | 学生理财的三条建议，学生党也可以一样理财",
-      "content_text": "学生理财应是「理」字当头，培养收支的计划性是第一位，也恰恰是理财投资的基础。 查看全文",
-      "date_published": "2026-09-15T03:10:08Z",
-      "date_modified": "2026-09-15T03:10:08Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/article/e8fe39fd-abd2-ea6d-bd03-aae9ab102514.jpg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/article/e8fe39fd-abd2-ea6d-bd03-aae9ab102514.jpg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/6751420e8589bbe3",
       "url": "https://www.v2ex.com/t/1242082",
       "title": "合租 Claude + GPT + Grok 多 AI 工具一起合租，没有套路",
@@ -670,29 +739,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/a62e/8d4d/399185_xlarge.png?m=1713701925",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/01ff9a0aaeee8dbe",
-      "url": "https://sspai.com/post/114593",
-      "title": "派早报：中国联通宣布支持所有国行设备 eSIM 业务办理、Homebrew 7.0.0 发布等",
-      "content_text": "英伟达发布 RTX PRO 5500 Blackwell 专业显卡，阿凡途发布 AVENTHO Y 头戴式耳机等 查看全文",
-      "date_published": "2026-09-15T00:06:40Z",
-      "date_modified": "2026-09-15T00:06:40Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/9/15/2026/article/6bc3642d-6853-ba07-404c-a82e66fc6fcf.png?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/9/15/2026/article/6bc3642d-6853-ba07-404c-a82e66fc6fcf.png?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/png"
         }
       ]
@@ -717,29 +763,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/6571/442b/141199_large.png?m=1466488762",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c92f22940c5a4656",
-      "url": "https://sspai.com/prime/story/ai-assisted-spreadsheeting-a-survey",
-      "title": "Excel AI 辅助工作流横评：数据分析高手还是照葫芦画瓢？",
-      "content_text": "用具体的测试数据和盲评结果，聊聊当下 AI 辅助制作 Excel 的真实水平，以及我使用 AI 辅助制作 Excel 的心得。 查看全文 本文为会员文章，出自 《单篇文章》 ，订阅后可阅读全文。",
-      "date_published": "2026-09-14T08:35:27Z",
-      "date_modified": "2026-09-14T08:35:27Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/9/11/2026/article/c6949613-70fe-f214-5a0f-905281093594.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/9/11/2026/article/c6949613-70fe-f214-5a0f-905281093594.jpeg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -2188,29 +2211,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/gravatar/1468759c7923feeb9dc058a6f457ac12?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a5fb1c41057546df",
-      "url": "https://www.v2ex.com/t/1235219",
-      "title": "如果请美国朋友代申请新号，用他的美国信用卡代买；或者只用信用卡代充， 1.他会担心信用卡信息泄露吗？ 2.被封的话，美国人能容易的把钱要回来吗？",
-      "content_text": "<p>拿到账号后，应该看不到信用卡信息的吧？</p>",
-      "date_published": "2026-08-18T02:42:16Z",
-      "date_modified": "2026-08-18T02:42:16Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (blackantt)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (blackantt)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
           "mime_type": "image/jpeg"
         }
       ]
