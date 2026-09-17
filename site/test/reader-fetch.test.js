@@ -135,3 +135,21 @@ test("does not keep cached items for unsubscribed feeds", () => {
   assert.equal(merged.items.length, 0);
   assert.deepEqual(Array.from(merged.failed), ["Current"]);
 });
+
+
+test("migrates legacy cached items to a unique feed URL before preserving them", () => {
+  const window = makeContext(async () => new Response("ok"));
+  const { mergeRefreshResults } = window.FeedseekReaderUtils;
+  const feed = { title: "Legacy", xmlUrl: "https://legacy.test/feed" };
+  const cached = { source: "Legacy", url: "https://legacy.test/article" };
+
+  const merged = mergeRefreshResults(
+    [feed],
+    [{ status: "rejected", reason: new Error("down") }],
+    [cached],
+  );
+
+  assert.equal(merged.items.length, 1);
+  assert.equal(merged.items[0].feedUrl, feed.xmlUrl);
+  assert.equal(merged.items[0].url, cached.url);
+});
