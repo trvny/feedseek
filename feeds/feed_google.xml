@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-09-17T18:30:48.363249+00:00</updated>
+  <updated>2026-09-17T18:37:42.381114+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -25,6 +25,128 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/CC_hero.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/CC_hero.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/supply-chain-logistics/the-future-of-orchestration-pine59s-journey-to-airflow-3-on-google-cloud</id>
+    <title>The future of orchestration: Pine59’s journey to Airflow 3 on Google Cloud</title>
+    <updated>2026-09-17T17:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Operating large data pipelines requires an orchestration layer that scales smoothly as workloads expand. When your pipelines process millions of complex data points every day to feed predictive models, staying up-to-date with your technology stack is a strategic necessity.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.pine59.com/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Pine59&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides location intelligence data through data pipelines that produce analytical metrics on cadences ranging from hourly to quarterly. One of the company’s most data-intensive metrics, Daily Foot Traffic, computes data for as many as 14 million distinct locations in a single job. To handle this massive volume, Pine59’s system runs entirely on Google Cloud, with the heavy lifting in &lt;/span&gt;&lt;a href="https://cloud.google.com/bigquery"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and all of it orchestrated by &lt;/span&gt;&lt;a href="https://cloud.google.com/products/managed-service-for-apache-airflow"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Managed Service for Apache Airflow&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (formerly Cloud Composer) running Apache Airflow 3.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As the company’s volume of data and number of machine learning workloads scaled up, Pine59 decided to modernize its monorepo, which contains hundreds of directed acyclic graphs (DAGs). Here is a look at how that transition improved Pine59’s MLOps capabilities, developer workflow, and pipeline speed.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Proactive modernization for growth&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pine59 has long relied on a shared monorepo with code and tooling spanning multiple projects to run its metric production pipelines. As it considered its infrastructure’s future, the company wanted to help its data pipelines run faster and more reliably.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That’s why it decided to stress-test production workloads against the newly available Managed Airflow (Gen 3) architecture running Airflow 3. The initial results were unambiguous: the Gen 3 environment delivered immediate and significant processing speed, task scheduling, and overall stability improvements. Recognizing the clear potential for performance gains, Pine59 initiated a full transition to the new environment.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1 - Pine59 Google Cloud Architecture Vertical Version" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/Vertical_Version_yyTMhsG.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Orchestrating advanced MLOps&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pine59’s pipelines don’t just move data; they drive complex ML models, so a core aspect of its migration was optimizing the orchestration of its ML inference workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Previously, Pine59 had used standard Kubernetes operators for these tasks. By moving to Managed Airflow (Gen 3), which features a highly optimized and abstracted infrastructure layer, the company’s engineering team refined its MLOps architecture. They did so by setting up a dedicated &lt;/span&gt;&lt;a href="https://cloud.google.com/kubernetes-engine"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Kubernetes Engine&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (GKE) cluster that was specifically optimized for model inference and integrated it into the Pine59 pipelines.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This clear separation of orchestration and heavy ML execution compute allows data processing and model inference to run efficiently, showcasing Managed Airflow as a resilient, scalable backbone for enterprise MLOps.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Supporting developers with custom extensibility&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Beyond infrastructure improvements, Pine59 was also able to immediately capitalize on Airflow 3’s delivery of a vastly improved developer workflow and user interface. Indeed, managing hundreds of interconnected DAGs requires excellent observability, and Pine59 found Airflow 3’s plugin authoring system remarkably easy to use.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To improve internal developer velocity, the company quickly built a number of custom plugins that it integrated directly into its new Airflow UI:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery Auto-linkify:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A tool that automatically detects internal BigQuery table references within the Airflow Logs and XCom tabs, dynamically generating direct links to BigQuery Studio for faster debugging (available as a &lt;/span&gt;&lt;a href="https://gist.github.com/jan-hajny-unacast/74e1e504e3e3c8765323bd019a87fb30" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;public GitHub gist&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;DAG Run Configuration Search:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A custom search form added directly to the DAG overview page. It allows Pine59 engineers to query specific key-value pairs within DAG run payloads (configs) and instantly surface matching runs. This in turn drastically reduces troubleshooting time.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In addition, the team also deployed a compatibility shim layer within its monorepo. This “compat” module dynamically abstracts logic between Airflow versions, streamlining operator migration across versions.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Faster, more reliable pipelines&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For Pine59, migrating to Managed Airflow (Gen 3) with Airflow 3 has yielded clear, quantifiable results.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The most important improvement was the speed of its DAG runs. In the company’s previous setup, tasks often got stuck in a queued state during peak processing surges. With Gen 3, queue latency has dropped dramatically, allowing tasks to start running almost immediately.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Consider the comparison below of total aggregated “queued” &amp;amp; “running” time of more than 300 runs of the same DAG between Managed Airflow (Gen2) with Airflow 2.11 vs. Managed Airflow (Gen3) with Airflow 3.1 below. As we can readily see, the difference in queued time is significant.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image2_fCfKA2m.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Coupled with internal DAG optimizations made during the transition, the performance gains are also highly tangible. For example, the Daily Foot Traffic pipeline previously took nearly 38 minutes to complete. With the new instance, the same workload now takes less than 26 minutes —nearly 32% less processing time.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, Pine59 processes all its production workloads on its new Managed Airflow (Gen 3) instance. By moving to this next generation orchestration, the company improved its MLOps capabilities, equipped its developers with better tools, and built a faster, more resilient foundation for future workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If your engineering team spends more time managing infrastructure than delivering value, consider a similar transition and discover how it can help you move from maintaining servers to building the future of your data and AI pipelines today.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Special thanks to the following contributor to this post: Alexandre Crespo-Perez&lt;/span&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/supply-chain-logistics/the-future-of-orchestration-pine59s-journey-to-airflow-3-on-google-cloud" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-17T17:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Vertical_Version_yyTMhsG.max-1000x1000.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Vertical_Version_yyTMhsG.max-1000x1000.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Vertical_Version_yyTMhsG.max-1000x1000.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>https://cloud.google.com/blog/products/identity-security/google-named-a-leader-in-the-external-threat-intelligence-service-forrester-wave</id>
@@ -28372,28 +28494,5 @@ spaces&lt;/a&gt;.&lt;/p&gt;</content>
       <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/v8c5e9c8e09d4f0c961905721a95aa2027138cb55ec6e1fa60fd7aaa3726ca05f/developers/images/opengraph/white.png"/>
     </media:group>
     <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/v8c5e9c8e09d4f0c961905721a95aa2027138cb55ec6e1fa60fd7aaa3726ca05f/developers/images/opengraph/white.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_04_2026</id>
-    <title>Cloud Release Notes — August 04, 2026</title>
-    <updated>2026-08-04T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Cloud CDN&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;Cloud CDN supports native image optimization at the Google network edge
-for global external Application Load Balancers. This feature offloads
-compute-intensive image transformations, such as resizing, cropping,
-and format conversion to reduce origin server load and egress costs.
-This feature is in &lt;strong&gt;Preview&lt;/strong&gt;.&lt;/p&gt;
-&lt;aside class="note"&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;span&gt; During the Preview phase, image optimization is available free of charge.
-Charges will apply once it becomes Generally Available (GA).&lt;/span&gt;&lt;/aside&gt;
-&lt;p&gt;For more information, see &lt;a href="https://docs.cloud.google.com/cdn/docs/imageoptimization"&gt;Optimize images with Cloud CDN&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_04_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-04T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
   </entry>
 </feed>

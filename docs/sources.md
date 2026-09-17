@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 830 źródeł
+105 feedów · 832 źródła
 
 ## Spis grup
 
@@ -722,9 +722,11 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) Blog — <https://trojka.polskieradio.pl/czytaj-wiecej>
 
-### ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) PR4 Czwórka
+### ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) PR4 Czwórka
 `czworka` · [feed_czworka.xml](../feeds/feed_czworka.xml)
 
+- ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) www.polskieradio.pl — <https://www.polskieradio.pl>
+- ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) czworka.online — <https://czworka.online>
 - ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) czworka.online — <https://czworka.online/>
 - ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) www.polskieradio.pl (10) — <https://www.polskieradio.pl/10>
 - ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) www.polskieradio.pl (10,Czworka) — <https://www.polskieradio.pl/10,Czworka>
