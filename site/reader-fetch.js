@@ -22,7 +22,44 @@
     return results;
   }
 
-  window.FeedseekReaderUtils = { allSettledLimited };
+  function migrateLegacyFeedUrls(items, feeds) {
+    const urlsByTitle = new Map();
+    for (const feed of feeds) {
+      if (!urlsByTitle.has(feed.title)) urlsByTitle.set(feed.title, feed.xmlUrl);
+      else urlsByTitle.set(feed.title, null);
+    }
+    return items.map(item => {
+      if (item.feedUrl) return item;
+      const feedUrl = urlsByTitle.get(item.source);
+      return feedUrl ? { ...item, feedUrl } : item;
+    });
+  }
+
+  function mergeRefreshResults(feeds, results, previousItems) {
+    const items = [];
+    const failed = [];
+    const failedUrls = new Set();
+    const titlesByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed.title]));
+    const cachedItems = migrateLegacyFeedUrls(previousItems, feeds);
+
+    results.forEach((result, index) => {
+      const feed = feeds[index];
+      if (result.status === "fulfilled") items.push(...result.value);
+      else {
+        failed.push(feed.title);
+        failedUrls.add(feed.xmlUrl);
+      }
+    });
+
+    for (const item of cachedItems) {
+      if (!failedUrls.has(item.feedUrl)) continue;
+      items.push({ ...item, source: titlesByUrl.get(item.feedUrl) || item.source });
+    }
+
+    return { items, failed };
+  }
+
+  window.FeedseekReaderUtils = { allSettledLimited, mergeRefreshResults };
 
   function configuredProxy() {
     try {
