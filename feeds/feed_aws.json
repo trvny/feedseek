@@ -8,12 +8,193 @@
   "icon": "https://aws.amazon.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/96377e586d40a5bc",
+      "url": "https://aws.amazon.com/blogs/aws/new-low-cost-burstable-amazon-ec2-t8i-instances-are-generally-available/",
+      "title": "New low-cost burstable Amazon EC2 T8i instances are generally available",
+      "content_text": "AWS introduces new low-cost burstable Amazon EC2 T8i instances powered by custom sixth generation Intel Xeon Scalable Processors (Granite Rapids), available only on AWS. T8i instances are among the lowest-cost EC2 instances and deliver up to 30% better price performance over previous generation T3 instances.",
+      "date_published": "2026-09-17T21:11:48Z",
+      "date_modified": "2026-09-17T21:11:48Z",
+      "authors": [
+        {
+          "name": "AWS News Blog"
+        }
+      ],
+      "image": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2025/12/02/EC2_with_gradient.png",
+      "tags": [
+        "AWS News Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2025/12/02/EC2_with_gradient.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/5339fce29a287c39",
+      "url": "https://aws.amazon.com/blogs/aws/aws-elastic-beanstalk-introduces-cluster-mode/",
+      "title": "AWS Elastic Beanstalk introduces Cluster Mode",
+      "content_text": "Run an application on AWS Elastic Beanstalk Cluster Mode without provisioning or operating the compute underneath it. You provide a container image or source code; Elastic Beanstalk with service-operated compute creates and operates the environment that runs it.",
+      "date_published": "2026-09-17T19:20:21Z",
+      "date_modified": "2026-09-17T19:20:21Z",
+      "authors": [
+        {
+          "name": "AWS News Blog"
+        }
+      ],
+      "image": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/11/2026-eb-eks-1-1.jpg",
+      "tags": [
+        "AWS News Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/11/2026-eb-eks-1-1.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/d8c8a042ec361c9f",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/transfer-family-sftp-source-ip-nlb/",
+      "title": "AWS Transfer Family now supports source IP preservation for SFTP servers behind a Network Load Balancer (NLB)",
+      "content_text": "AWS Transfer Family now preserves the client's source IP address using Proxy Protocol v2 (PPv2) when you place a Network Load Balancer (NLB) in front of your SFTP server that uses a VPC-hosted endpoint. You can now retain visibility of the client's source IP for IP-based auditing, access controls, and compliance when you use your own NLB. Previously, an NLB replaced the client's source IP with its own private IP address, so your Transfer Family logs and events recorded the NLB's address instead",
+      "date_published": "2026-09-17T19:00:00Z",
+      "date_modified": "2026-09-17T19:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/1a6fea76986bd1a2",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/omics-iam-session-policy/",
+      "title": "AWS HealthOmics now supports IAM session policies",
+      "content_text": "AWS HealthOmics now supports IAM session policies, enabling you to restrict permissions for individual runs without creating and managing multiple IAM roles. Until now, there was no way to dynamically scope down permissions for a single run, requiring you to create a separate IAM role for each tenant or run. AWS HealthOmics is a HIPAA-eligible service that helps healthcare and life sciences customers accelerate scientific breakthroughs with fully managed bioinformatics workflows. An IAM session",
+      "date_published": "2026-09-17T18:32:00Z",
+      "date_modified": "2026-09-17T18:32:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7f317b8cde03199a",
+      "url": "https://github.com/aws/aws-cli/releases/tag/2.36.48",
+      "title": "AWS CLI 2.36.48",
+      "content_text": "bugfix:crt: Return error when final rename task fails on downloads api-change:iotwireless: Adds Multi-frame GNSS support to the AWS IoT Core Device Location GetPositionEstimate API. The new GnssMultiFrame measurement type improves location accuracy by combining multiple GNSS signal captures (2, 4, 8, 16, or 32) from the same device to estimate its position. enhancement:s3: Follow bucket region redirects for the s3 commands when CRT is enabled. api-change:ec2: Adding support for \"Tunnel\" VPC Endpoint api-change:vpc-lattice: Adding support for CIDR Resource Configuration enhancement:awscrt: Update awscrt to version 0.36.4 enhancement:crt: Set lower 4gbps target throughput default for non-EC2 hosts. enhancement:crt: Configure CRT client to download with single GET when object size is below multipart_threshold enhancement:crt: Pass resolved max_attempts value to the CRT client. api-change:bedrock-agentcore: Batch evaluation now supports evaluating specific traces within a session. Each session can specify up to 100 trace IDs to evaluate. api-change:notifications: Added support for attachments on managed notification events. Added support to access and subscribe sensitive managed notification events. enhancement:crt: Enforce minimum 10gbps target throughput for explicitly configured crt environments api-change:sesv2: Added support to query the tenant name for BatchGetMetricData and CreateExportJob APIs to filter metrics and messages at the tenant level. enhancement:crt: Support multipart_threshold (upload only) and max_concurrent_requests config options for CRT client. api-change:socialmessaging: Add support for WhatsApp Calling APIs. api-change:sns: SNS API reference documentation update api-change:connect: Made the replicaAlias attribute optional in the ReplicateInstance API to support Global routing for Amazon Connect Global Resiliency (ACGR) instances. This change maintains backward compatibility. When onboarding to ACGR without Global routing, you must specify a custom replicaAlias in your API call api-change:guardduty: This change surfaces AI Protection resources on existing public IAM attack sequences. Customers will now see which model was accessed and whether a guardrail intervened as part of the credential-compromise sequence.",
+      "date_published": "2026-09-17T18:15:28Z",
+      "date_modified": "2026-09-17T18:15:28Z",
+      "authors": [
+        {
+          "name": "AWS CLI v2 Changelog"
+        }
+      ],
+      "image": "https://opengraph.githubassets.com/f2dbbc032c283812d6e2f76187577f194e8ba4181cb823d42e384f71e7afa863/aws/aws-cli",
+      "tags": [
+        "AWS CLI v2 Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://opengraph.githubassets.com/f2dbbc032c283812d6e2f76187577f194e8ba4181cb823d42e384f71e7afa863/aws/aws-cli",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/7deae31bc136acfc",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-batch-bulk-cancellation/",
       "title": "AWS Batch now supports bulk job cancellation and termination",
       "content_text": "AWS Batch now supports bulk job cancellation and termination, enabling you to cancel or terminate up to 50 jobs with a single API call. The new CancelJobs, TerminateJobs, and TerminateServiceJobs APIs reduce the operational complexity of managing large-scale batch workloads, letting you act on groups of jobs at once and receive per-job results in a single response. Additionally, ListJobs now returns isCancelled and isTerminated fields, and ListServiceJobs returns isTerminated, making it easier t",
       "date_published": "2026-09-17T17:23:00Z",
       "date_modified": "2026-09-17T17:23:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9d1017b5f170fe4e",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-t8i-instances-ga/",
+      "title": "Introducing Amazon EC2 T8i instances",
+      "content_text": "AWS is announcing the general availability of new low-cost burstable Amazon EC2 T8i instances. These instances are powered by custom sixth generation Intel Xeon 6 processors, available exclusively on AWS, and built on the latest sixth generation AWS Nitro cards. T8i instances deliver up to 30% better price performance compared to previous generation T3 instances, and offer four sizes: nano, micro, small, and medium. These instances are designed for workloads requiring low to moderate CPU utiliza",
+      "date_published": "2026-09-17T15:00:00Z",
+      "date_modified": "2026-09-17T15:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/ff0dd8c0d1e57389",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/elastic-beanstalk-cluster-mode/",
+      "title": "AWS Elastic Beanstalk introduces Cluster Mode to run multiple applications on shared infrastructure",
+      "content_text": "AWS Elastic Beanstalk introduces Cluster Mode, a new deployment mode that lets you run and manage multiple applications on shared infrastructure in your account. Provide your source code, a Dockerfile, or a container image in Amazon ECR, and Elastic Beanstalk handles containerization, provisioning, and ongoing operations through the console, CLI, and APIs you already use. A new Elastic Beanstalk GitHub Action deploys your application directly from your repository as part of your CI/CD pipeline.",
+      "date_published": "2026-09-17T08:00:00Z",
+      "date_modified": "2026-09-17T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/94c5bd31f6e2173f",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/s3-express-one-zone-7-regions/",
+      "title": "Amazon S3 Express One Zone is now available in 7 additional AWS Regions",
+      "content_text": "The Amazon S3 Express One Zone storage class is now available in 7 additional AWS Regions: Asia Pacific (Singapore), South America (Sao Paulo), US West (N. California), Canada (Central), Europe (Paris), Asia Pacific (Sydney), and Asia Pacific (Seoul). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express",
+      "date_published": "2026-09-17T08:00:00Z",
+      "date_modified": "2026-09-17T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/5120f003f8cf82d0",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-builder-center-now-available-as-mobile-app/",
+      "title": "AWS Builder Center now available as mobile app on iOS and Android",
+      "content_text": "AWS Builder Center is a platform that brings together the global builder community, offering articles, workshops, sandbox environments, events, and learning resources in one place. Previously limited to desktop and web access, the experience is now available as a mobile app on iOS and Android. Builders worldwide can stay connected and engaged with the community from anywhere, using their AWS Builder ID to remain signed in across sessions. The AWS Builder Center mobile app enables builders to bro",
+      "date_published": "2026-09-17T07:09:00Z",
+      "date_modified": "2026-09-17T07:09:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7cda828fd2836557",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/generate-sheet-and-generate-analysis-from-an-image/",
+      "title": "Amazon Quick now generates individual sheets and builds analyses from an image",
+      "content_text": "Amazon Quick now expands Generate Analysis with two new ways to create dashboards faster. You can generate a single sheet inside an existing analysis by describing it in natural language, and you can generate a new analysis from an image of an existing dashboard. With Generate Sheet, you describe the sheet you want and Amazon Quick adds it to your current analysis with visuals selected for your data, filter controls, and calculated fields such as year-over-year growth and month-over-month compar",
+      "date_published": "2026-09-17T02:37:00Z",
+      "date_modified": "2026-09-17T02:37:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -234,6 +415,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-apis/",
       "title": "Amazon Connect Customer now lets you create, manage, and search custom metrics through APIs",
       "content_text": "Amazon Connect Customer provides a library of standard metrics. Custom metrics let you go further; defining the measurements unique to your business. But managing them across various instances manually means definitions slowly drift until the numbers no longer align. A metric you can't trust is worse than no metric at all, because people still make decisions on it. Now you define a metric once and manage it programmatically through seven new API operations (CreateMetric, DeleteMetric, DescribeMe",
+      "date_published": "2026-09-16T16:00:00Z",
+      "date_modified": "2026-09-16T16:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/bdf71df2af9220c6",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-keyspaces/",
+      "title": "Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions",
+      "content_text": "Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions, allowing customers in those Regions to build Cassandra-compatible applications with lower latency while keeping their data within the Region to meet data residency requirements.. Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, and managed Apache Cassandra–compatible database service. Amazon Keyspaces is serverless, so you pay for only the resources that you use and you can build",
       "date_published": "2026-09-16T16:00:00Z",
       "date_modified": "2026-09-16T16:00:00Z",
       "authors": [
@@ -2492,102 +2689,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/f1af8617f6cc0ea5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/guardduty-optional-detection-rules/",
-      "title": "Amazon GuardDuty adds optional threat detection rules",
-      "content_text": "Amazon GuardDuty now offers Custom Detection Rules, a library of 35 prebuilt, opt-in rules for CloudTrail management events that let you extend threat detection coverage to match your environment. Custom Detection Rules produces 26 unique finding types mapped to 10 MITRE ATT&CK® tactics, without the heavy lifting of log ingestion, normalization, or storage. Some threat techniques, such as sharing an AMI externally, disabling flow logs, or signing in without MFA, could be meaningful indicators of",
-      "date_published": "2026-09-04T17:01:00Z",
-      "date_modified": "2026-09-04T17:01:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/489e372052334514",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ecs-deployments-early-success/",
-      "title": "Amazon ECS introduces Early Success Criteria for service deployments",
-      "content_text": "Amazon Elastic Container Service (Amazon ECS) now supports Early Success Criteria for rolling service deployments, giving you the flexibility to define when a deployment is considered successful based on your confidence level and the operational needs of your workload. This can help you complete deployments sooner and unblock subsequent deployments, CI/CD pipelines, and other dependent operations. With Early Success Criteria, you configure the healthy percent - the proportion of desired tasks th",
-      "date_published": "2026-09-04T17:00:00Z",
-      "date_modified": "2026-09-04T17:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/5b6b9a7672818eeb",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-mcp-server-serverless/",
-      "title": "AWS MCP Server adds a serverless capability for AWS Lambda functions",
-      "content_text": "Today, AWS Model Context Protocol Server (AWS MCP Server) added a serverless capability so that coding agents such as Claude Code and Kiro can efficiently diagnose issues with your Lambda functions. The serverless capability helps you troubleshoot your running Lambda functions and their connected resources. The AWS MCP Server, available through the Agent Toolkit for AWS or as a standalone installation, is a managed service that gives AI coding agents secure access to AWS services. With the new s",
-      "date_published": "2026-09-04T16:31:00Z",
-      "date_modified": "2026-09-04T16:31:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/2c89491a820dd19f",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ec2-c8g-instances-additional-regions/",
-      "title": "Amazon EC2 C8g instances now available in additional regions",
-      "content_text": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C8g instances are available in AWS Asia Pacific (Taipei, New Zealand), and AWS GovCloud (US-East) regions. These instances are powered by AWS Graviton4 processors and deliver up to 30% better performance compared to AWS Graviton3-based instances. Amazon EC2 C8g instances are built for compute-intensive workloads, such as high performance computing (HPC), batch processing, gaming, video encoding, scientific modeling, distributed analytics,",
-      "date_published": "2026-09-04T14:06:00Z",
-      "date_modified": "2026-09-04T14:06:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/3b07a93265a40203",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/transfer-family-sftp-credential-rotation/",
-      "title": "AWS Transfer Family SFTP Connectors now support continuing file transfers during credential rotation",
-      "content_text": "AWS Transfer Family SFTP Connectors now continue running file transfers while you rotate the credentials used to authenticate with remote SFTP servers. You no longer need to update the connector to point to a new secret version each time a credential rotates, removing a manual step and helping avoid failed transfers during the rotation window. Connectors can now retrieve credentials from an ordered list of AWS Secrets Manager version stages, such as the current and previous versions, during auth",
-      "date_published": "2026-09-04T08:00:00Z",
-      "date_modified": "2026-09-04T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/cc91629bbab944f7",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-batch-transform-g6e-instances/",
-      "title": "Amazon SageMaker AI Batch Transform now supports G6e instances",
-      "content_text": "Amazon SageMaker AI now supports Amazon EC2 G6e instances for batch transform. Batch Transform enables you to run predictions on datasets stored in Amazon S3 and is suited for large datasets that do not require a persistent inference endpoint. Amazon EC2 G6e instances are powered by up to eight NVIDIA L40S Tensor Core GPUs with 48 GB of memory per GPU and third-generation AMD EPYC processors. G6e instances deliver improved performance for GPU-intensive workloads. With this launch, you can use G6",
-      "date_published": "2026-09-04T08:00:00Z",
-      "date_modified": "2026-09-04T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/fdf8ae71ec2ce114",
       "url": "https://repost.aws/articles/ARsHyyePGFTdaDxSzFtfMshA/connecting-bitbucket-to-aws-devops-agent-with-the-atlassian-rovo-mcp-server",
       "title": "Connecting Bitbucket to AWS DevOps Agent with the Atlassian Rovo MCP Server",
@@ -2608,38 +2709,6 @@
           "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/533b7375bedaa7c5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-c9g-c9gd-asia-pacific-tokyo/",
-      "title": "Amazon EC2 C9g and C9gd instances are now available in Asia Pacific (Tokyo) region",
-      "content_text": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C9g and C9gd instances, powered by AWS Graviton5 processors, are available in the Asia Pacific (Tokyo) region. AWS Graviton5 processors are the fifth generation of custom-designed CPUs, delivering the best price performance for compute-intensive workloads running on Amazon EC2. C9g and C9gd instances deliver up to 25% better compute performance compared to AWS Graviton4-based C8g and C8gd instances. They are up to 30% faster for databases",
-      "date_published": "2026-09-03T23:00:00Z",
-      "date_modified": "2026-09-03T23:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/548076a35b0dfe7e",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/ecs-managed-daemons-non-critical/",
-      "title": "Amazon ECS Managed Daemons now support non-critical daemons",
-      "content_text": "Amazon Elastic Container Service (Amazon ECS) now support non-critical Managed Daemons for ECS Managed Instances . You can configure a daemon as non-critical so that your mission-critical application tasks continue running uninterrupted, even when a daemon fails, stops, or becomes unhealthy. Amazon ECS Managed Daemons lets you centrally deploy and manage software agents independently of application deployments to ensure consistent coverage and compliance across your container infrastructure. For",
-      "date_published": "2026-09-03T22:01:00Z",
-      "date_modified": "2026-09-03T22:01:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
       ]
     },
     {

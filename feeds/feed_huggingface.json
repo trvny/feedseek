@@ -146,6 +146,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/ddda9493140676ba",
+      "url": "https://huggingface.co/papers/2609.18063",
+      "title": "The Other Half of the Memory Wall: Serving 35B MoEs from SSD with Trained Routing Prediction",
+      "content_text": "Mixture-of-experts (MoE) inference on consumer hardware is bounded by weight memory: a 35B-class model is 19.5GB at 4-bit, and sparsity shrinks the compute per token, not the bytes that must be held. Naive offloading to SSD does not help on its own, because layer N+1's experts must be chosen before layer N's output exists, so the reads cannot start early enough to hide behind compute. We present Edge0, a streaming MoE inference engine that closes the gap with a prerouter: a per-layer head predicts the next layer's routing one token ahead, and the prediction is consumed as the routing itself, so the staged expert set equals the routed set and nothing is dropped. An unmerged recovery LoRA, tra",
+      "date_published": "2026-09-16T00:00:00Z",
+      "date_modified": "2026-09-16T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.18063/gradient.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.18063/gradient.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/f414fb0c0b128a7f",
       "url": "https://huggingface.co/posts/mahwizzzz/453417306425852",
       "title": "I implemented the attention-free bidirectional encoder architecture Avey-B for Urdu a compact 24.87M-parameter language encoder built for efficient Urdu NLP research.",
