@@ -276,6 +276,8 @@ def allocate_fair_share(
     ``group_field`` defaults to ``source``. Generators may point it at a stable
     category field when provenance and allocation buckets are intentionally
     different, for example one publisher split into many topical communities.
+    Entries without that custom field fall back to ``source``, so native sibling
+    streams can share the same allocator without inventing duplicate bucket data.
 
     ``entries`` arrives ascending (see :func:`sort_posts_for_feed`); the result is
     returned in the same order, so only membership changes, never feed ordering.
@@ -287,7 +289,10 @@ def allocate_fair_share(
 
     by_source: dict[str, list[dict]] = {}
     for entry in entries:
-        by_source.setdefault(entry.get(group_field) or "", []).append(entry)
+        # A custom allocation field may apply only to one source family. Native
+        # sibling streams can omit it and still retain their own fair-share bucket.
+        group = entry.get(group_field) or entry.get("source") or ""
+        by_source.setdefault(group, []).append(entry)
     for bucket in by_source.values():
         bucket.reverse()  # ascending input -> newest first within each source
 

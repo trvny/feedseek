@@ -80,6 +80,23 @@ def required_cache_files(registry_path: Path = ROOT / "feeds.yaml") -> set[str]:
     return required
 
 
+def cache_file_migrations(registry_path: Path = ROOT / "feeds.yaml") -> dict[str, str]:
+    """Return explicit legacy -> current cache filenames declared by feeds."""
+    data = yaml.safe_load(registry_path.read_text(encoding="utf-8")) or {}
+    migrations: dict[str, str] = {}
+    for name, config in data.get("feeds", {}).items():
+        if not isinstance(config, dict):
+            continue
+        legacy = config.get("cache_migrate_from")
+        if not isinstance(legacy, str) or not legacy.strip():
+            continue
+        legacy = legacy.strip()
+        if Path(legacy).name != legacy or legacy in {".", ".."}:
+            raise ValueError(f"invalid cache_migrate_from for {name}: {legacy!r}")
+        migrations[f"{legacy}_posts.json"] = f"{name}_posts.json"
+    return migrations
+
+
 def _is_intentionally_empty_cache(path: Path) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -118,6 +135,36 @@ def _read_snapshot_manifest(cache_dir: Path) -> set[str] | None:
     return set(files)
 
 
+def _write_snapshot_manifest(cache_dir: Path, files: set[str]) -> Path:
+    """Atomically write the durable cache manifest."""
+    path = cache_dir / SNAPSHOT_MANIFEST
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    payload = json.dumps({"version": 1, "files": sorted(files)}, indent=2) + "\n"
+    temporary.write_text(payload, encoding="utf-8")
+    os.replace(temporary, path)
+    return path
+
+
+def apply_cache_file_migrations(cache_dir: Path, migrations: dict[str, str]) -> None:
+    """Rename explicitly declared cache files and keep the manifest in lockstep."""
+    manifest = _read_snapshot_manifest(cache_dir)
+    changed_manifest = False
+    for legacy_name, current_name in migrations.items():
+        legacy = cache_dir / legacy_name
+        current = cache_dir / current_name
+        if legacy.exists():
+            if current.exists():
+                legacy.unlink()
+            else:
+                os.replace(legacy, current)
+        if manifest is not None and legacy_name in manifest:
+            manifest.remove(legacy_name)
+            manifest.add(current_name)
+            changed_manifest = True
+    if manifest is not None and changed_manifest:
+        _write_snapshot_manifest(cache_dir, manifest)
+
+
 def validate_cache_snapshot(cache_dir: Path, required: set[str]) -> None:
     """Reject incomplete or malformed durable cache snapshots."""
     manifest_files = _read_snapshot_manifest(cache_dir)
@@ -137,13 +184,8 @@ def write_cache_manifest(cache_dir: Path, required: set[str]) -> Path:
     """
     established = _read_snapshot_manifest(cache_dir)
     required_now = required if established is None else established
-    files = sorted(_validate_cache_files(cache_dir, required_now))
-    path = cache_dir / SNAPSHOT_MANIFEST
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    payload = json.dumps({"version": 1, "files": files}, indent=2) + "\n"
-    temporary.write_text(payload, encoding="utf-8")
-    os.replace(temporary, path)
-    return path
+    files = _validate_cache_files(cache_dir, required_now)
+    return _write_snapshot_manifest(cache_dir, files)
 
 
 def replace_cache_tree(restored: Path, target: Path) -> None:
@@ -173,6 +215,7 @@ def restore_from_r2(bucket: str, key: str, target: Path) -> bool:
         if not _fetch_archive(bucket, key, archive):
             return False
         restored = restore_cache_archive(archive, tmp_path / "restored")
+        apply_cache_file_migrations(restored, cache_file_migrations())
         validate_cache_snapshot(restored, required_cache_files())
         replace_cache_tree(restored, target)
 

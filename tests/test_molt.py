@@ -6,24 +6,32 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-import moltbook  # noqa: E402
-from moltbook import (  # noqa: E402
+import molt  # noqa: E402
+from molt import (  # noqa: E402
     MOLTBOOK_API_URL,
     _fresh_unmoderated,
     _parse_date,
     doc_sources,
     fetch_moltbook_pages,
     parse_posts,
+    scrape_spacemolt_changelog,
 )
 from utils import dedupe_entries  # noqa: E402
 
 
-class MoltbookTests(unittest.TestCase):
+class MoltTests(unittest.TestCase):
     """Parser and pagination coverage for the Moltbook feed."""
 
-    def test_doc_sources_exposes_posts_api(self):
-        """Source docs should point at the JSON endpoint, not the HTML homepage."""
-        self.assertEqual(doc_sources(), [("Moltbook Posts API", MOLTBOOK_API_URL)])
+    def test_doc_sources_exposes_all_upstreams(self):
+        """Source docs should expose both official streams and the Moltbook API."""
+        self.assertEqual(
+            doc_sources(),
+            [
+                ("SpaceMolt News", "https://spacemolt.com/news/feed.xml"),
+                ("SpaceMolt Changelog", "https://spacemolt.com/changelog/rss.xml"),
+                ("Moltbook Posts API", MOLTBOOK_API_URL),
+            ],
+        )
 
     def test_parse_posts_skips_spam_deleted_and_known_entries(self):
         """Only fresh, usable Moltbook posts should become feed entries."""
@@ -77,15 +85,55 @@ class MoltbookTests(unittest.TestCase):
         self.assertIn("score 42", entry["description"])
         self.assertIn("7 comments", entry["description"])
 
+    def test_spacemolt_changelog_uses_version_fragments_as_stable_links(self):
+        """Shared changelog links should not collapse distinct release entries."""
+        raw_entries = [
+            {
+                "title": "SpaceMolt v0.607.0",
+                "link": "https://spacemolt.com/changelog",
+                "source": "SpaceMolt Changelog",
+            },
+            {
+                "title": "SpaceMolt v0.606.3",
+                "link": "https://spacemolt.com/changelog",
+                "source": "SpaceMolt Changelog",
+            },
+        ]
+        known = {"https://spacemolt.com/changelog#v0.606.3"}
+
+        with patch.object(molt, "scrape_feed", return_value=raw_entries) as mocked_scrape:
+            entries = scrape_spacemolt_changelog(known)
+
+        mocked_scrape.assert_called_once_with(
+            "SpaceMolt Changelog",
+            "https://spacemolt.com/changelog/rss.xml",
+            set(),
+            cap=40,
+        )
+        self.assertEqual(
+            [entry["link"] for entry in entries],
+            ["https://spacemolt.com/changelog#v0.607.0"],
+        )
+        self.assertEqual(raw_entries[0]["link"], "https://spacemolt.com/changelog")
+
     def test_restore_submolt_migrates_legacy_cache_description(self):
         entry = {
             "source": "Moltbook",
             "description": "agent · m/research · score 7 · 2 comments",
         }
 
-        migrated = moltbook._restore_submolt(entry)
+        migrated = molt._restore_submolt(entry)
 
         self.assertEqual(migrated["submolt"], "m/research")
+        self.assertNotIn("submolt", entry)
+
+    def test_restore_submolt_leaves_spacemolt_streams_unbucketed(self):
+        entry = {
+            "source": "SpaceMolt News",
+            "description": "Official game news",
+        }
+
+        self.assertIs(molt._restore_submolt(entry), entry)
         self.assertNotIn("submolt", entry)
 
     def test_parse_date_contains_extreme_offset_overflow(self):
@@ -209,7 +257,7 @@ class MoltbookTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(moltbook, "CANDIDATE_LIMIT", 3):
+        with patch.object(molt, "CANDIDATE_LIMIT", 3):
             entries, _moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertTrue(complete)
@@ -361,7 +409,7 @@ class MoltbookTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(moltbook, "CANDIDATE_LIMIT", 3):
+        with patch.object(molt, "CANDIDATE_LIMIT", 3):
             entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertFalse(complete)
@@ -402,7 +450,7 @@ class MoltbookTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(moltbook, "CANDIDATE_LIMIT", 2):
+        with patch.object(molt, "CANDIDATE_LIMIT", 2):
             entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertTrue(complete)
@@ -425,20 +473,32 @@ class MoltbookTests(unittest.TestCase):
 
         self.assertEqual(len(dedupe_entries(entries, title_field=None)), 2)
 
-    def test_main_requests_identity_only_dedupe(self):
-        """Moltbook must opt out of title-based deduplication in the shared runner."""
+    def test_main_combines_sources_with_fair_caps_and_identity_only_dedupe(self):
+        """Molt should combine official streams without collapsing submolt fairness."""
         with (
-            patch.object(moltbook, "fetch_moltbook_pages", return_value=([], set(), True)),
-            patch.object(moltbook, "run", return_value=True) as mocked_run,
+            patch.object(molt, "fetch_moltbook_pages", return_value=([], set(), True)),
+            patch.object(molt, "run", return_value=True) as mocked_run,
         ):
-            self.assertTrue(moltbook.main())
+            self.assertTrue(molt.main())
 
         kwargs = mocked_run.call_args.kwargs
+        self.assertEqual(kwargs["feed_name"], "molt")
+        self.assertEqual(kwargs["title"], "Molt")
+        self.assertEqual(kwargs["sources"], molt.SPACEMOLT_NATIVE_SOURCES)
+        self.assertEqual(len(kwargs["extra_scrapers"]), 2)
+        self.assertIs(kwargs["extra_scrapers"][0], molt.scrape_spacemolt_changelog)
         self.assertIsNone(kwargs["dedupe_title_field"])
-        self.assertEqual(kwargs["per_source_cap"], {"": 20})
+        self.assertEqual(
+            kwargs["per_source_cap"],
+            {"": 20, "SpaceMolt News": 30, "SpaceMolt Changelog": 30},
+        )
         self.assertEqual(kwargs["allocation_field"], "submolt")
         self.assertEqual(kwargs["candidate_limit"], 1000)
-        self.assertIs(kwargs["cache_transform"], moltbook._restore_submolt)
+        self.assertEqual(
+            kwargs["candidate_source_reserve"],
+            {"SpaceMolt News": 30, "SpaceMolt Changelog": 30},
+        )
+        self.assertIs(kwargs["cache_transform"], molt._restore_submolt)
 
 
 if __name__ == "__main__":

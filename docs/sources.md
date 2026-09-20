@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 832 źródła
+105 feedów · 834 źródła
 
 ## Spis grup
 
@@ -1070,9 +1070,11 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Campus — <https://news.mit.edu/rss/campus>
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Latest — <https://news.mit.edu/rss/feed>
 
-### ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook
-`moltbook` · [feed_moltbook.xml](../feeds/feed_moltbook.xml)
+### ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) Molt
+`molt` · [feed_molt.xml](../feeds/feed_molt.xml)
 
+- ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt News — <https://spacemolt.com/news/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt Changelog — <https://spacemolt.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook Posts API — <https://www.moltbook.com/api/v1/posts?sort=new&limit=50>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.onlyoffice.com&sz=16) OPENOFFICE
