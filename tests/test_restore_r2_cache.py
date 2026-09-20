@@ -55,6 +55,31 @@ class RegistryCacheContractTests(unittest.TestCase):
         self.assertIn("daily_quote_posts.json", required)
         self.assertNotIn("weather_posts.json", required)
 
+    def test_registry_declares_molt_cache_rename(self):
+        migrations = restore_r2_cache.cache_file_migrations()
+        self.assertEqual(migrations["moltbook_posts.json"], "molt_posts.json")
+
+    def test_cache_rename_updates_file_and_manifest_without_rewriting_payload(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp)
+            payload = '{"entries":[{"entry_id":"legacy-id","link":"https://example.com"}]}'
+            legacy = cache / "moltbook_posts.json"
+            legacy.write_text(payload, encoding="utf-8")
+            (cache / restore_r2_cache.SNAPSHOT_MANIFEST).write_text(
+                '{"version": 1, "files": ["moltbook_posts.json"]}', encoding="utf-8"
+            )
+
+            restore_r2_cache.apply_cache_file_migrations(
+                cache, {"moltbook_posts.json": "molt_posts.json"}
+            )
+
+            current = cache / "molt_posts.json"
+            self.assertFalse(legacy.exists())
+            self.assertEqual(current.read_text(encoding="utf-8"), payload)
+            self.assertEqual(
+                restore_r2_cache._read_snapshot_manifest(cache), {"molt_posts.json"}
+            )
+
     def test_previous_manifest_allows_a_new_stateful_feed_to_bootstrap(self):
         with tempfile.TemporaryDirectory() as tmp:
             cache = Path(tmp)

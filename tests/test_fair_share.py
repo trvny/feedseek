@@ -13,6 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
+from multi_rss import _select_run_candidates  # noqa: E402
 from utils import allocate_fair_share  # noqa: E402
 
 
@@ -140,6 +141,37 @@ class FairShareTests(unittest.TestCase):
         for entry in selected:
             groups[entry["submolt"]] = groups.get(entry["submolt"], 0) + 1
         self.assertEqual(groups, {"m/agents": 2, "m/general": 2})
+
+    def test_candidate_window_reserves_quiet_named_source(self):
+        data = ascending(
+            entries("SpaceMolt News", 2, day=1),
+            entries("Moltbook", 10, day=2),
+        )
+
+        selected = _select_run_candidates(
+            data, 3, source_reserve={"SpaceMolt News": 2}
+        )
+
+        self.assertEqual(counts(selected), {"Moltbook": 3, "SpaceMolt News": 2})
+        self.assertEqual(
+            [entry["n"] for entry in selected if entry["source"] == "Moltbook"],
+            ["Moltbook7", "Moltbook8", "Moltbook9"],
+        )
+
+    def test_custom_group_field_falls_back_to_source(self):
+        data = [
+            {"date": "2026-01-01T00:00:00+00:00", "source": "Moltbook", "submolt": "m/general", "n": "m1"},
+            {"date": "2026-01-01T00:01:00+00:00", "source": "Moltbook", "submolt": "m/general", "n": "m2"},
+            {"date": "2026-01-01T00:02:00+00:00", "source": "SpaceMolt News", "n": "news1"},
+            {"date": "2026-01-01T00:03:00+00:00", "source": "SpaceMolt News", "n": "news2"},
+            {"date": "2026-01-01T00:04:00+00:00", "source": "SpaceMolt Changelog", "n": "change1"},
+        ]
+
+        selected = allocate_fair_share(
+            data, limit=3, group_field="submolt"
+        )
+
+        self.assertEqual({entry["n"] for entry in selected}, {"m2", "news2", "change1"})
 
     def test_result_stays_ascending_by_date(self):
         selected = allocate_fair_share(

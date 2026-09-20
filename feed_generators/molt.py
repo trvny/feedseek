@@ -1,9 +1,9 @@
-"""Moltbook feed generator backed by the public posts API.
+"""Combined Molt ecosystem feed.
 
-Moltbook is a social network for AI agents. Its public JSON endpoint exposes
-post titles, bodies, authors, submolts, scores, comment counts and timestamps,
-so this generator can avoid brittle HTML scraping entirely. Cursor pagination
-scans the complete publishable window before the shared cache is advanced.
+Moltbook posts come from the public JSON API, while SpaceMolt news and changelog
+entries come from their native feeds. Moltbook pagination scans the complete
+publishable window before shared cache state advances. Publication then uses the
+shared fair-share allocator across submolts and the two official SpaceMolt streams.
 """
 
 from __future__ import annotations
@@ -20,22 +20,39 @@ from utils import sanitize_xml, setup_logging
 
 logger = setup_logging()
 
-FEED_NAME = "moltbook"
+FEED_NAME = "molt"
 SOURCE_NAME = "Moltbook"
-SITE_URL = "https://www.moltbook.com/"
+SITE_URL = "https://spacemolt.com/"
+MOLTBOOK_SITE_URL = "https://www.moltbook.com/"
 MOLTBOOK_PAGE_SIZE = 50
 MOLTBOOK_API_URL = (
     f"https://www.moltbook.com/api/v1/posts?sort=new&limit={MOLTBOOK_PAGE_SIZE}"
 )
+SPACEMOLT_SOURCES = (
+    ("SpaceMolt News", "https://spacemolt.com/news/feed.xml", 40),
+    ("SpaceMolt Changelog", "https://spacemolt.com/changelog/rss.xml", 40),
+)
 MAX_ENTRIES = 250
 CANDIDATE_LIMIT = 1000
-PER_SUBMOLT_CAP = {"": 20}
+OFFICIAL_STREAM_CAP = 30
+PER_STREAM_CAP = {
+    "": 20,
+    "SpaceMolt News": OFFICIAL_STREAM_CAP,
+    "SpaceMolt Changelog": OFFICIAL_STREAM_CAP,
+}
+CANDIDATE_SOURCE_RESERVE = {
+    label: OFFICIAL_STREAM_CAP for label, _url, _fetch_cap in SPACEMOLT_SOURCES
+}
 ALLOCATION_FIELD = "submolt"
 
 
 def doc_sources():
-    """Expose the concrete Moltbook endpoint used by the generator."""
-    return [("Moltbook Posts API", MOLTBOOK_API_URL)]
+    """Expose all concrete upstream endpoints used by the combined feed."""
+    return [
+        ("SpaceMolt News", SPACEMOLT_SOURCES[0][1]),
+        ("SpaceMolt Changelog", SPACEMOLT_SOURCES[1][1]),
+        ("Moltbook Posts API", MOLTBOOK_API_URL),
+    ]
 
 
 def _parse_date(value) -> datetime | None:
@@ -46,7 +63,7 @@ def _parse_date(value) -> datetime | None:
 def _post_link(post: dict) -> str:
     """Return the canonical Moltbook web URL for an API post."""
     post_id = str(post.get("id") or "").strip()
-    return f"{SITE_URL}post/{post_id}" if post_id else ""
+    return f"{MOLTBOOK_SITE_URL}post/{post_id}" if post_id else ""
 
 
 def _post_submolt(post: dict) -> str:
@@ -60,8 +77,8 @@ def _post_submolt(post: dict) -> str:
 
 
 def _restore_submolt(entry: dict) -> dict:
-    """Backfill the allocation bucket on cache entries written before caps."""
-    if entry.get(ALLOCATION_FIELD):
+    """Backfill the submolt bucket on legacy Moltbook cache entries only."""
+    if entry.get(ALLOCATION_FIELD) or entry.get("source") != SOURCE_NAME:
         return entry
     migrated = entry.copy()
     match = re.search(r"\bm/[\w.-]+", str(entry.get("description") or ""))
@@ -269,34 +286,36 @@ def _fresh_unmoderated(
 
 
 def main(full: bool = False) -> bool:
-    """Generate the Moltbook Atom feed."""
+    """Generate the combined Molt Atom feed."""
     fresh_entries, moderated_links, complete = fetch_moltbook_pages(set())
     if not complete:
         logger.warning("[Moltbook] incomplete pagination; preserving last good feed")
         return False
 
     def scrape_prefetched(known_links: set[str]) -> list[dict]:
-        """Return prefetched entries that remain fresh and unmoderated."""
+        """Return prefetched Moltbook entries that remain fresh and unmoderated."""
         return _fresh_unmoderated(fresh_entries, known_links, moderated_links)
 
     def keep_cached(entry: dict) -> bool:
-        """Drop cached posts observed as deleted or spam in the publishable window."""
+        """Drop Moltbook posts observed as deleted or spam in the publishable window."""
         return entry.get("link") not in moderated_links
 
     return run(
         feed_name=FEED_NAME,
-        title="Moltbook",
+        title="Molt",
         subtitle=(
-            "Newest non-spam posts from Moltbook, balanced across submolts with "
-            "at most 20 published entries from any one community."
+            "Moltbook agent posts plus official SpaceMolt news and changelog updates, "
+            "fair-shared across communities and official streams."
         ),
         blog_url=SITE_URL,
-        author="Moltbook agents",
+        author="Molt ecosystem",
+        sources=SPACEMOLT_SOURCES,
         extra_scrapers=(scrape_prefetched,),
         max_entries=MAX_ENTRIES,
-        per_source_cap=PER_SUBMOLT_CAP,
+        per_source_cap=PER_STREAM_CAP,
         allocation_field=ALLOCATION_FIELD,
         candidate_limit=CANDIDATE_LIMIT,
+        candidate_source_reserve=CANDIDATE_SOURCE_RESERVE,
         image_backfill=False,
         cache_filter=keep_cached,
         cache_transform=_restore_submolt,
@@ -306,7 +325,7 @@ def main(full: bool = False) -> bool:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate the Moltbook Atom feed")
+    parser = argparse.ArgumentParser(description="Generate the combined Molt Atom feed")
     parser.add_argument(
         "--full", action="store_true", help="Ignore cache and rebuild from scratch"
     )

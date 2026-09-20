@@ -18,6 +18,7 @@ class FeedConfig(BaseModel):
     blog_url: str
     enabled: bool = True
     cache_required: bool = True
+    cache_migrate_from: str | None = None
 
     @field_validator("script")
     @classmethod

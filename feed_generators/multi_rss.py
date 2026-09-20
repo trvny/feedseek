@@ -430,6 +430,33 @@ def _merge_run_entries(
     return sort_posts_for_feed(merged, date_field="date")
 
 
+def _select_run_candidates(entries, limit, source_reserve=None):
+    """Keep the recency window plus newest reserved entries from named sources."""
+    if limit is None or len(entries) <= limit:
+        candidates = list(entries)
+    else:
+        candidates = list(entries[-limit:])
+    if not source_reserve:
+        return candidates
+
+    included = {id(entry) for entry in candidates}
+    for source, reserve in source_reserve.items():
+        reserve = max(0, int(reserve))
+        present = sum(1 for entry in candidates if entry.get("source") == source)
+        needed = reserve - present
+        if needed <= 0:
+            continue
+        for entry in reversed(entries):
+            if needed <= 0:
+                break
+            if entry.get("source") != source or id(entry) in included:
+                continue
+            candidates.append(entry)
+            included.add(id(entry))
+            needed -= 1
+    return sort_posts_for_feed(candidates, date_field="date")
+
+
 def run(
     *,
     feed_name,
@@ -445,6 +472,7 @@ def run(
     per_source_cap=None,
     allocation_field="source",
     candidate_limit=None,
+    candidate_source_reserve=None,
     language="en",
     full=False,
     cache_filter=None,
@@ -465,7 +493,9 @@ def run(
     such as resumable pagination cursors. Set ``dedupe_title_field=None`` for
     sources whose stable URL is the only identity. ``allocation_field`` can
     separate fair-share buckets from provenance; ``candidate_limit`` constrains
-    publication to the newest N merged entries without shrinking the cache.
+    the ordinary publication window to the newest N merged entries without
+    shrinking the cache. ``candidate_source_reserve`` may supplement that window
+    with the newest N entries from explicitly named provenance sources.
     """
     cache, cached = _load_run_cache(
         feed_name,
@@ -501,10 +531,10 @@ def run(
     # (steam published 7 of the 20 sources in its cache; cheezburger 4 of 6, with
     # two sources at zero). Round-robin needs no tuning to be fair, so there is
     # no reason to make it opt-in — per_source_cap now only adds a ceiling.
-    candidates = (
-        merged[-candidate_limit:]
-        if candidate_limit is not None and len(merged) > candidate_limit
-        else merged
+    candidates = _select_run_candidates(
+        merged,
+        candidate_limit,
+        source_reserve=candidate_source_reserve,
     )
     feed_items = apply_per_source_cap(
         candidates,
