@@ -898,6 +898,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.lesswrong.com&sz=16) LessWrong — <https://www.lesswrong.com/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.lesswrong.com&sz=16) LessWrong (all posts) — <https://www.lesswrong.com/feed.xml?view=allPosts>
 - ![](https://www.google.com/s2/favicons?domain=80000hours.org&sz=16) 80,000 Hours — <https://80000hours.org/latest/feed/>
+- ![](https://www.google.com/s2/favicons?domain=www.alphaxiv.org&sz=16) alphaXiv Explore — <https://www.alphaxiv.org/>
 
 ### ![](https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=16) AWS
 `aws` · [feed_aws.xml](../feeds/feed_aws.xml)
