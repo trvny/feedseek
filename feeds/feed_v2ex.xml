@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-09-20T16:28:56.947828+00:00</updated>
+  <updated>2026-09-20T19:03:56.479673+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.v2ex.com/favicon.ico</icon>
   <logo>https://www.v2ex.com/favicon.ico</logo>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/defd2e7a18e31106</id>
+    <title>两天三夜，用 Qoder 把某虎盒子刷成了 Linux</title>
+    <updated>2026-09-20T17:57:13+00:00</updated>
+    <content>这两天 Qoder 免费，看到家里闲置的电视盒子，想试试 Qoder cli 能不能把它给刷成 linux. Qoder 一开始是拒绝的，说最好买根啥啥线咱线刷，要不然不好搞啊。 我心想买线还得等好几天，token 可是随时有，于是让它全面测试能不能纯软件&amp;网络方式把活干了。 于是它开始飞速运转，最后想到通过 DLNA 执行什么命令，但是我的盒子过期了，无法打开它说的什么媒体中心，这条路走不通。 继续研究，它发现盒子暴露了一些 html 路径，虽然无法爆破，但是最后走到了伪造升级包刷机的路线，先后解决了劫持升级域名，伪造升级包，解决盒子升级验证等等等等问题，终于成功（超多次尝试）让盒子执行了伪造的包并进入了 recovery 。 然后就是在 recovery 页面反复尝试，反复重建包，期间用一个 U 盘来回倒腾升级包，通过报错信息修改包的构建。终于是成功的刷入了它自己构建的系统。在 recovery 页面有个问题就是 wifi 没有了，它无法 ssh 了，于是我给盒子接上了网线。 这期间因为对话太长了，context 反复压缩，我不确定是不是因为这样，它理解成了在 U 盘上装一个 li</content>
+    <link href="https://www.v2ex.com/t/1243497#reply2" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-09-20T17:57:13+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/8722/de6d/161814_xlarge.png?m=1750921858" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/8722/de6d/161814_xlarge.png?m=1750921858"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/8722/de6d/161814_xlarge.png?m=1750921858" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/4ad264ba40ec6aa1</id>
     <title>Jev 最近真的很火。🚀</title>
@@ -231,21 +246,6 @@ curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scr
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/f133/45f7/734296_xlarge.png?m=1789897249" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/b3f0ae6b833ad7f8</id>
-    <title>jev 的类似开源这两天都爆了，测了一下 laya</title>
-    <updated>2026-09-20T09:38:02+00:00</updated>
-    <content>因为我把 jav 扩展到了自动选择 thinking 的等级，想看看效果。 然后就突发奇想，我已经用了 1 年的 vb 了，积攒了大量的 jsonl 。于是让 astra 来进行抽取 10000 条符合可以做 thinking 判定的。但是太多了，我怕 astra 给我标记了。先抽取出 200 条来做一个基线。用 astra 和 sol 进行独立评分，然后喂给 jev 看看 jev 的结果情况（这是不是就是蒸馏 astra 。。。）。。因为我打算直接拿这个来训练微调 laya 。 看结果不是很好 | 指标 | Laya 多语言版 | 翻译＋ Laya 英文版 | Jev | |---|---:|---:|---:| | 与共识等级一致 | 22.6% | 38.7% | 68.5% | | 最多相差一档 | 53.2% | 76.6% | 96.8% | | 判低两档及以上 | 52 条 | 5 条 | 1 条 | | 总延迟中位数 | 71ms | 3.19 秒 | 377ms | jev 肯定是有大量的判例来进行训练的，不是一蹴而就的。laya 的 readme 也说了他裸跑不如 </content>
-    <link href="https://www.v2ex.com/t/1243435#reply0" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-09-20T09:38:02+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/3b198446b72d1e5a3b0090f106a75f3c?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/3b198446b72d1e5a3b0090f106a75f3c?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/3b198446b72d1e5a3b0090f106a75f3c?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/40fb6b6bcba1ee86</id>
