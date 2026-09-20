@@ -14,6 +14,7 @@ from molt import (  # noqa: E402
     doc_sources,
     fetch_moltbook_pages,
     parse_posts,
+    scrape_spacemolt_changelog,
 )
 from utils import dedupe_entries  # noqa: E402
 
@@ -83,6 +84,37 @@ class MoltTests(unittest.TestCase):
         self.assertIn("lobsterbot", entry["description"])
         self.assertIn("score 42", entry["description"])
         self.assertIn("7 comments", entry["description"])
+
+    def test_spacemolt_changelog_uses_version_fragments_as_stable_links(self):
+        """Shared changelog links should not collapse distinct release entries."""
+        raw_entries = [
+            {
+                "title": "SpaceMolt v0.607.0",
+                "link": "https://spacemolt.com/changelog",
+                "source": "SpaceMolt Changelog",
+            },
+            {
+                "title": "SpaceMolt v0.606.3",
+                "link": "https://spacemolt.com/changelog",
+                "source": "SpaceMolt Changelog",
+            },
+        ]
+        known = {"https://spacemolt.com/changelog#v0.606.3"}
+
+        with patch.object(molt, "scrape_feed", return_value=raw_entries) as mocked_scrape:
+            entries = scrape_spacemolt_changelog(known)
+
+        mocked_scrape.assert_called_once_with(
+            "SpaceMolt Changelog",
+            "https://spacemolt.com/changelog/rss.xml",
+            set(),
+            cap=40,
+        )
+        self.assertEqual(
+            [entry["link"] for entry in entries],
+            ["https://spacemolt.com/changelog#v0.607.0"],
+        )
+        self.assertEqual(raw_entries[0]["link"], "https://spacemolt.com/changelog")
 
     def test_restore_submolt_migrates_legacy_cache_description(self):
         entry = {
@@ -452,7 +484,9 @@ class MoltTests(unittest.TestCase):
         kwargs = mocked_run.call_args.kwargs
         self.assertEqual(kwargs["feed_name"], "molt")
         self.assertEqual(kwargs["title"], "Molt")
-        self.assertEqual(kwargs["sources"], molt.SPACEMOLT_SOURCES)
+        self.assertEqual(kwargs["sources"], molt.SPACEMOLT_NATIVE_SOURCES)
+        self.assertEqual(len(kwargs["extra_scrapers"]), 2)
+        self.assertIs(kwargs["extra_scrapers"][0], molt.scrape_spacemolt_changelog)
         self.assertIsNone(kwargs["dedupe_title_field"])
         self.assertEqual(
             kwargs["per_source_cap"],

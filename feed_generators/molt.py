@@ -15,7 +15,7 @@ import sys
 from datetime import datetime
 from urllib.parse import quote
 
-from multi_rss import get_html, parse_date, run
+from multi_rss import get_html, parse_date, run, scrape_feed
 from utils import sanitize_xml, setup_logging
 
 logger = setup_logging()
@@ -32,6 +32,8 @@ SPACEMOLT_SOURCES = (
     ("SpaceMolt News", "https://spacemolt.com/news/feed.xml", 40),
     ("SpaceMolt Changelog", "https://spacemolt.com/changelog/rss.xml", 40),
 )
+SPACEMOLT_NATIVE_SOURCES = (SPACEMOLT_SOURCES[0],)
+SPACEMOLT_CHANGELOG_PAGE = "https://spacemolt.com/changelog"
 MAX_ENTRIES = 250
 CANDIDATE_LIMIT = 1000
 OFFICIAL_STREAM_CAP = 30
@@ -58,6 +60,29 @@ def doc_sources():
 def _parse_date(value) -> datetime | None:
     """Parse a Moltbook timestamp through Feedseek's shared safe date parser."""
     return parse_date(value) if value else None
+
+
+def _spacemolt_changelog_link(entry: dict) -> str:
+    """Give SpaceMolt releases the unique fragment carried by their RSS GUID."""
+    match = re.search(r"\bv(\d+(?:\.\d+)+)\b", str(entry.get("title") or ""))
+    if match:
+        return f"{SPACEMOLT_CHANGELOG_PAGE}#v{match.group(1)}"
+    return str(entry.get("link") or "").strip()
+
+
+def scrape_spacemolt_changelog(known_links: set[str]) -> list[dict]:
+    """Keep changelog releases distinct even though their RSS <link> is shared."""
+    label, feed_url, cap = SPACEMOLT_SOURCES[1]
+    entries = scrape_feed(label, feed_url, set(), cap=cap)
+    fresh: list[dict] = []
+    for entry in entries:
+        link = _spacemolt_changelog_link(entry)
+        if not link or link in known_links:
+            continue
+        normalized = entry.copy()
+        normalized["link"] = link
+        fresh.append(normalized)
+    return fresh
 
 
 def _post_link(post: dict) -> str:
@@ -309,8 +334,8 @@ def main(full: bool = False) -> bool:
         ),
         blog_url=SITE_URL,
         author="Molt ecosystem",
-        sources=SPACEMOLT_SOURCES,
-        extra_scrapers=(scrape_prefetched,),
+        sources=SPACEMOLT_NATIVE_SOURCES,
+        extra_scrapers=(scrape_spacemolt_changelog, scrape_prefetched),
         max_entries=MAX_ENTRIES,
         per_source_cap=PER_STREAM_CAP,
         allocation_field=ALLOCATION_FIELD,
