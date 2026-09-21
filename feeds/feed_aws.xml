@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-09-21T05:22:24.831474+00:00</updated>
+  <updated>2026-09-21T13:15:32.745642+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://aws.amazon.com/favicon.ico</icon>
   <logo>https://aws.amazon.com/favicon.ico</logo>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/6530e12a709896dd</id>
+    <title>When the first Data API statement to an idle Amazon Redshift Serverless workgroup fails: using RedshiftQueryId to tell whether the SQL ran</title>
+    <updated>2026-09-21T05:47:31.568000+00:00</updated>
+    <content>The first Data API statement sent to an idle Amazon Redshift Serverless workgroup can fail with an internal error, while resending the same SQL as a new statement succeeds. This article explains how the RedshiftQueryId value in the DescribeStatement response tells you whether the SQL ever ran on the engine, why the official retry guidance does not cover this case, and when a resend is safe. It is for application and pipeline developers who call Redshift Serverless through the Data API.</content>
+    <link href="https://repost.aws/articles/ARgTQQ-YB0Q-amujWX3MdUeQ/when-the-first-data-api-statement-to-an-idle-amazon-redshift-serverless-workgroup-fails-using-redshiftqueryid-to-tell-whether-the-sql-ran" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-09-21T05:47:31.568000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/e528927788822c71</id>
     <title>Amazon EC2 X8i instances are now available in the South America (São Paulo) Region</title>
@@ -295,21 +310,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/94c5bd31f6e2173f</id>
-    <title>Amazon S3 Express One Zone is now available in 7 additional AWS Regions</title>
-    <updated>2026-09-17T08:00:00+00:00</updated>
-    <content>The Amazon S3 Express One Zone storage class is now available in 7 additional AWS Regions: Asia Pacific (Singapore), South America (Sao Paulo), US West (N. California), Canada (Central), Europe (Paris), Asia Pacific (Sydney), and Asia Pacific (Seoul). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/s3-express-one-zone-7-regions/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-17T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/ff0dd8c0d1e57389</id>
     <title>AWS Elastic Beanstalk introduces Cluster Mode to run multiple applications on shared infrastructure</title>
     <updated>2026-09-17T08:00:00+00:00</updated>
     <content>AWS Elastic Beanstalk introduces Cluster Mode, a new deployment mode that lets you run and manage multiple applications on shared infrastructure in your account. Provide your source code, a Dockerfile, or a container image in Amazon ECR, and Elastic Beanstalk handles containerization, provisioning, and ongoing operations through the console, CLI, and APIs you already use. A new Elastic Beanstalk GitHub Action deploys your application directly from your repository as part of your CI/CD pipeline. </content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/elastic-beanstalk-cluster-mode/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-17T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/94c5bd31f6e2173f</id>
+    <title>Amazon S3 Express One Zone is now available in 7 additional AWS Regions</title>
+    <updated>2026-09-17T08:00:00+00:00</updated>
+    <content>The Amazon S3 Express One Zone storage class is now available in 7 additional AWS Regions: Asia Pacific (Singapore), South America (Sao Paulo), US West (N. California), Canada (Central), Europe (Paris), Asia Pacific (Sydney), and Asia Pacific (Seoul). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/s3-express-one-zone-7-regions/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-17T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -425,11 +440,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/cddaa9ffc78813d0</id>
-    <title>Amazon Connect Customer custom metrics now supports tag-based access control</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/fc019ac635bff393</id>
+    <title>Amazon Connect Customer can now import evaluation form PDFs using AI</title>
     <updated>2026-09-16T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer now supports tag-based access control for custom metrics, so you can govern which users and roles can view, create, or modify each custom metric. As more teams across your organization adopt custom metrics, they end up editing the same shared library. Without controls, one person can change a metric that other teams count on. The usual fix is to give only a handful of people permissions to custom metrics, but that shuts out every other team that wants to start using them.</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-tag/" rel="alternate"/>
+    <content>Amazon Connect Customer now lets managers import a PDF of an evaluation form from a third-party quality management application, and automatically recreates it in Connect using AI, making it easier to migrate an existing quality program into Connect. Instead of rebuilding an existing form question by question, you upload the PDF and choose the preferred scoring method, either percentage or points-based, and Connect Customer automatically extracts the sections, questions, answer options, and scori</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-customer-import-evaluation-form-PDF/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T17:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -445,11 +460,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/fc019ac635bff393</id>
-    <title>Amazon Connect Customer can now import evaluation form PDFs using AI</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/cddaa9ffc78813d0</id>
+    <title>Amazon Connect Customer custom metrics now supports tag-based access control</title>
     <updated>2026-09-16T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer now lets managers import a PDF of an evaluation form from a third-party quality management application, and automatically recreates it in Connect using AI, making it easier to migrate an existing quality program into Connect. Instead of rebuilding an existing form question by question, you upload the PDF and choose the preferred scoring method, either percentage or points-based, and Connect Customer automatically extracts the sections, questions, answer options, and scori</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-customer-import-evaluation-form-PDF/" rel="alternate"/>
+    <content>Amazon Connect Customer now supports tag-based access control for custom metrics, so you can govern which users and roles can view, create, or modify each custom metric. As more teams across your organization adopt custom metrics, they end up editing the same shared library. Without controls, one person can change a metric that other teams count on. The usual fix is to give only a handful of people permissions to custom metrics, but that shuts out every other team that wants to start using them.</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-tag/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T17:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -475,21 +490,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/bdf71df2af9220c6</id>
-    <title>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions</title>
-    <updated>2026-09-16T16:00:00+00:00</updated>
-    <content>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions, allowing customers in those Regions to build Cassandra-compatible applications with lower latency while keeping their data within the Region to meet data residency requirements.. Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, and managed Apache Cassandra–compatible database service. Amazon Keyspaces is serverless, so you pay for only the resources that you use and you can build </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-keyspaces/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-16T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/2c47d8e7007e7d14</id>
     <title>Amazon Connect Customer now lets you create, manage, and search custom metrics through APIs</title>
     <updated>2026-09-16T16:00:00+00:00</updated>
     <content>Amazon Connect Customer provides a library of standard metrics. Custom metrics let you go further; defining the measurements unique to your business. But managing them across various instances manually means definitions slowly drift until the numbers no longer align. A metric you can't trust is worse than no metric at all, because people still make decisions on it. Now you define a metric once and manage it programmatically through seven new API operations (CreateMetric, DeleteMetric, DescribeMe</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-apis/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bdf71df2af9220c6</id>
+    <title>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions, allowing customers in those Regions to build Cassandra-compatible applications with lower latency while keeping their data within the Region to meet data residency requirements.. Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, and managed Apache Cassandra–compatible database service. Amazon Keyspaces is serverless, so you pay for only the resources that you use and you can build </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-keyspaces/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -798,21 +813,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/035a31fd5d114fab</id>
-    <title>AWS End User Messaging now supports Dynamic Flows in WhatsApp</title>
-    <updated>2026-09-14T07:00:00+00:00</updated>
-    <content>AWS End User Messaging now supports dynamic WhatsApp flows so you can turn WhatsApp conversations into rich, interactive experiences that end-users complete directly in WhatsApp. Instead of pushing end-users to a website or a separate form to complete an interactive experience, you can instead guide them through an appointment booking, lead generation, sign-up, survey or a transaction directly in the chat. Customers can start building a flow using one of Meta's stater templates with familiar bui</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-14T07:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/73604cba48e79705</id>
     <title>AWS End User Messaging strengthens SMS deliverability with automatic failover</title>
     <updated>2026-09-14T07:00:00+00:00</updated>
     <content>AWS End User Messaging is advancing its deliverability capabilities in phone pools. Now, customers sending through phone pools automatically benefit from automatic failover to the next best performing number in the pool when SMS delivery is impacted from downstream disruptions. SMS deliverability can be affected by drops or delays when trying to reach the end recipient while it's being routed from AWS to messaging providers and eventually mobile carriers. These disruptions can hit the most impor</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-improves-deliverability" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-14T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/035a31fd5d114fab</id>
+    <title>AWS End User Messaging now supports Dynamic Flows in WhatsApp</title>
+    <updated>2026-09-14T07:00:00+00:00</updated>
+    <content>AWS End User Messaging now supports dynamic WhatsApp flows so you can turn WhatsApp conversations into rich, interactive experiences that end-users complete directly in WhatsApp. Instead of pushing end-users to a website or a separate form to complete an interactive experience, you can instead guide them through an appointment booking, lead generation, sign-up, survey or a transaction directly in the chat. Customers can start building a flow using one of Meta's stater templates with familiar bui</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-14T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -929,21 +944,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/0cb776f06462abad</id>
-    <title>AWS DevOps Agent adds support for bidirectional Slack communication</title>
-    <updated>2026-09-11T15:00:00+00:00</updated>
-    <content>AWS DevOps Agent now enables engineers to manage production operations across AWS, multicloud, and on-premises environments with the complete investigation lifecycle directly within Slack. Previously, on-call engineers and DevOps teams faced fragmented workflows during high-severity incidents, having to context-switch between communication and investigation platforms. This update consolidates both surfaces into a single, unified location where incident response already happens. Engineering teams</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-devops-agent-bidirectional-slack-communication" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-11T15:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/eb3fc020ea99b832</id>
     <title>AWS HealthOmics now publishes real-time run metrics to Amazon CloudWatch</title>
     <updated>2026-09-11T15:00:00+00:00</updated>
     <content>AWS HealthOmics now publishes real-time run metrics to Amazon CloudWatch, giving you visibility into workflow resource utilization as runs execute. The 14 new run metrics span CPU and GPU usage, memory usage, file system usage and I/O metrics, network throughput, and ephemeral storage usage. AWS HealthOmics is a HIPAA-eligible service that helps healthcare and life sciences customers accelerate scientific breakthroughs at scale with fully managed bioinformatics workflows. Real-time run metrics c</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-healthomics-realtime-run-metrics/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-11T15:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/0cb776f06462abad</id>
+    <title>AWS DevOps Agent adds support for bidirectional Slack communication</title>
+    <updated>2026-09-11T15:00:00+00:00</updated>
+    <content>AWS DevOps Agent now enables engineers to manage production operations across AWS, multicloud, and on-premises environments with the complete investigation lifecycle directly within Slack. Previously, on-call engineers and DevOps teams faced fragmented workflows during high-severity incidents, having to context-switch between communication and investigation platforms. This update consolidates both surfaces into a single, unified location where incident response already happens. Engineering teams</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-devops-agent-bidirectional-slack-communication" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-11T15:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -979,21 +994,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/53a74b2870d8d92b</id>
-    <title>AWS PCS now supports custom GRES, hardware topology, and MIG</title>
-    <updated>2026-09-11T08:00:00+00:00</updated>
-    <content>AWS Parallel Computing Service (AWS PCS) now supports custom Generic Resource (GRES) settings and hardware topology, and adds support for Slurm version 26.05. These capabilities give you finer control over how Slurm sees and schedules your cluster hardware, improving task placement for HPC and machine learning workloads. They also enable NVIDIA Multi-Instance GPU (MIG), which partitions a single GPU into isolated instances that Slurm schedules independently. With Slurm 26.05, AWS PCS configures </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-pcs-gres-hardware-topology-mig/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-11T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/dac6993984c5c689</id>
     <title>Amazon SageMaker Unified Studio now supports ODBC connections for Microsoft Power BI and other analytics tools</title>
     <updated>2026-09-11T08:00:00+00:00</updated>
     <content>Amazon SageMaker Unified Studio now supports ODBC connections, so data users can connect Microsoft Power BI and other ODBC-compatible tools directly to governed data in SageMaker Unified Studio projects using the Amazon Athena ODBC driver. This adds a native connection path for analysts who have standardized on Power BI to work with governed data using their existing tools and workflows. Amazon SageMaker Unified Studio adds an ODBC connection details view to the project overview page, alongside </content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-unified-studio-odbc-power-bi/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-11T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/53a74b2870d8d92b</id>
+    <title>AWS PCS now supports custom GRES, hardware topology, and MIG</title>
+    <updated>2026-09-11T08:00:00+00:00</updated>
+    <content>AWS Parallel Computing Service (AWS PCS) now supports custom Generic Resource (GRES) settings and hardware topology, and adds support for Slurm version 26.05. These capabilities give you finer control over how Slurm sees and schedules your cluster hardware, improving task placement for HPC and machine learning workloads. They also enable NVIDIA Multi-Instance GPU (MIG), which partitions a single GPU into isolated instances that Slurm schedules independently. With Slurm 26.05, AWS PCS configures </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-pcs-gres-hardware-topology-mig/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-11T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1028,11 +1043,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/568f2a008b168df8</id>
-    <title>AWS Transform for .NET now generates unit tests for modernized code</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/2be660e3efd568e8</id>
+    <title>Amazon API Gateway now supports 1 MB execution logs with configurable delivery destinations</title>
     <updated>2026-09-10T20:00:00+00:00</updated>
-    <content>Today, AWS announced that AWS Transform for .NET can automatically generate unit tests for the code it modernizes. When enabled, AWS Transform generates unit tests that target the testable classes in your transformed .NET application, such as business logic and controllers, giving you an automated test safety net on the modernized code as part of the same job that performs the migration. Modernizing a .NET Framework application to modern .NET produces a transformed, buildable codebase, but teams</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-net-unit-tests" rel="alternate"/>
+    <content>Amazon API Gateway now supports configurable delivery destinations and larger log events for REST API execution logs. Previously, execution logs were delivered to a single API Gateway-managed CloudWatch Logs log group with log events truncated at 1 KB, limiting visibility into request and response data. You can now route execution logs up to 1 MB to your own Amazon CloudWatch Logs log groups, Amazon S3 buckets, or Amazon Data Firehose streams, and deliver to multiple destinations simultaneously.</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-api-gateway-1-mb-execution-logs/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-10T20:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1048,11 +1063,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/2be660e3efd568e8</id>
-    <title>Amazon API Gateway now supports 1 MB execution logs with configurable delivery destinations</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/568f2a008b168df8</id>
+    <title>AWS Transform for .NET now generates unit tests for modernized code</title>
     <updated>2026-09-10T20:00:00+00:00</updated>
-    <content>Amazon API Gateway now supports configurable delivery destinations and larger log events for REST API execution logs. Previously, execution logs were delivered to a single API Gateway-managed CloudWatch Logs log group with log events truncated at 1 KB, limiting visibility into request and response data. You can now route execution logs up to 1 MB to your own Amazon CloudWatch Logs log groups, Amazon S3 buckets, or Amazon Data Firehose streams, and deliver to multiple destinations simultaneously.</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-api-gateway-1-mb-execution-logs/" rel="alternate"/>
+    <content>Today, AWS announced that AWS Transform for .NET can automatically generate unit tests for the code it modernizes. When enabled, AWS Transform generates unit tests that target the testable classes in your transformed .NET application, such as business logic and controllers, giving you an automated test safety net on the modernized code as part of the same job that performs the migration. Modernizing a .NET Framework application to modern .NET produces a transformed, buildable codebase, but teams</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-net-unit-tests" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-10T20:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1231,41 +1246,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/c6d205886a78dd2a</id>
-    <title>AWS Elemental MediaTailor now supports Low-Latency HLS ad insertion</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/178f7bec269c4543</id>
+    <title>AWS Storage Gateway now supports FIPS-compliant private connectivity for Amazon S3 File Gateway</title>
     <updated>2026-09-10T08:00:00+00:00</updated>
-    <content>AWS Elemental MediaTailor now supports Low-Latency HTTP Live Streaming (LL-HLS) ad insertion using HLS Interstitials. MediaTailor is a channel assembly and personalized ad insertion service for video providers that monetizes live streams, linear channels, and video-on-demand content. With this launch, video providers can insert ads into low-latency live streams while holding the reduced latency their viewers expect. LL-HLS reduces live latency by delivering partial segments and letting players h</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-elemental-mediatailor-low-latency-hls-ad-insertion" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-10T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/a46b4880de459db2</id>
-    <title>AWS Elemental introduces Dynamic Multiview for live video</title>
-    <updated>2026-09-10T08:00:00+00:00</updated>
-    <content>AWS Elemental MediaPackage now offers Dynamic Multiview, a server-side capability that composes multiple live video sources into viewer-selected tiled layouts on demand. Content providers can deliver multi-angle, multi-game, and personalized viewing experiences as standard HLS (HTTP Live Streaming) and DASH (Dynamic Adaptive Streaming over HTTP) streams playable on most modern consumer devices, televisions, and set top boxes without custom player development. Dynamic Multiview operates entirely </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-elemental-dynamic-multiview-video/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-10T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/fda4c01be8845bf3</id>
-    <title>AWS Elemental Inference now generates contextual metadata from live video in real time</title>
-    <updated>2026-09-10T08:00:00+00:00</updated>
-    <content>AWS Elemental Inference now generates contextual metadata from live video streams in real time, using AI to produce scene-level intelligence without custom machine learning infrastructure. The new capability analyzes live video in parallel with encoding to extract Interactive Advertising Bureau (IAB) content taxonomy categories, Global Alliance for Responsible Media (GARM) brand suitability signals, detected objects and actions, and shot and scene-level descriptions. Broadcasters and content pla</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/elemental-inference-contextual-metadata/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-10T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/11aac42b230db3ff</id>
-    <title>AWS Elemental MediaTailor now offers Yield Optimization to automatically fill ad breaks with Amazon Ads demand</title>
-    <updated>2026-09-10T08:00:00+00:00</updated>
-    <content>AWS Elemental MediaTailor now offers Yield Optimization, a new capability that automatically monetizes unused ad inventory with Amazon Ads demand during server-side ad insertion (SSAI) for livestreams. Available exclusively to publishers in the Amazon Publisher Services (APS) Streaming TV program, yield optimization turns unfilled ad breaks into monetized impressions at zero cost to enable and with no additional infrastructure required. Because ads are stitched directly into the stream before re</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/mediatailor-yield-optimization/" rel="alternate"/>
+    <content>AWS Storage Gateway now supports FIPS 140-3 validated endpoints over AWS PrivateLink for Amazon S3 File Gateway. Previously, FIPS endpoints for File Gateway were available only over the public internet. Now you can keep FIPS-compliant traffic on the private AWS network, making it easier to use Storage Gateway for regulated workloads. With this launch, your File Gateway can reach the Storage Gateway service endpoints privately through a FIPS interface VPC endpoint in your VPC. You can also create</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/storage-gateway-fips-privatelink-s3/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-10T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1281,11 +1266,41 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/178f7bec269c4543</id>
-    <title>AWS Storage Gateway now supports FIPS-compliant private connectivity for Amazon S3 File Gateway</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/11aac42b230db3ff</id>
+    <title>AWS Elemental MediaTailor now offers Yield Optimization to automatically fill ad breaks with Amazon Ads demand</title>
     <updated>2026-09-10T08:00:00+00:00</updated>
-    <content>AWS Storage Gateway now supports FIPS 140-3 validated endpoints over AWS PrivateLink for Amazon S3 File Gateway. Previously, FIPS endpoints for File Gateway were available only over the public internet. Now you can keep FIPS-compliant traffic on the private AWS network, making it easier to use Storage Gateway for regulated workloads. With this launch, your File Gateway can reach the Storage Gateway service endpoints privately through a FIPS interface VPC endpoint in your VPC. You can also create</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/storage-gateway-fips-privatelink-s3/" rel="alternate"/>
+    <content>AWS Elemental MediaTailor now offers Yield Optimization, a new capability that automatically monetizes unused ad inventory with Amazon Ads demand during server-side ad insertion (SSAI) for livestreams. Available exclusively to publishers in the Amazon Publisher Services (APS) Streaming TV program, yield optimization turns unfilled ad breaks into monetized impressions at zero cost to enable and with no additional infrastructure required. Because ads are stitched directly into the stream before re</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/mediatailor-yield-optimization/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-10T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/fda4c01be8845bf3</id>
+    <title>AWS Elemental Inference now generates contextual metadata from live video in real time</title>
+    <updated>2026-09-10T08:00:00+00:00</updated>
+    <content>AWS Elemental Inference now generates contextual metadata from live video streams in real time, using AI to produce scene-level intelligence without custom machine learning infrastructure. The new capability analyzes live video in parallel with encoding to extract Interactive Advertising Bureau (IAB) content taxonomy categories, Global Alliance for Responsible Media (GARM) brand suitability signals, detected objects and actions, and shot and scene-level descriptions. Broadcasters and content pla</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/elemental-inference-contextual-metadata/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-10T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a46b4880de459db2</id>
+    <title>AWS Elemental introduces Dynamic Multiview for live video</title>
+    <updated>2026-09-10T08:00:00+00:00</updated>
+    <content>AWS Elemental MediaPackage now offers Dynamic Multiview, a server-side capability that composes multiple live video sources into viewer-selected tiled layouts on demand. Content providers can deliver multi-angle, multi-game, and personalized viewing experiences as standard HLS (HTTP Live Streaming) and DASH (Dynamic Adaptive Streaming over HTTP) streams playable on most modern consumer devices, televisions, and set top boxes without custom player development. Dynamic Multiview operates entirely </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-elemental-dynamic-multiview-video/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-10T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/c6d205886a78dd2a</id>
+    <title>AWS Elemental MediaTailor now supports Low-Latency HLS ad insertion</title>
+    <updated>2026-09-10T08:00:00+00:00</updated>
+    <content>AWS Elemental MediaTailor now supports Low-Latency HTTP Live Streaming (LL-HLS) ad insertion using HLS Interstitials. MediaTailor is a channel assembly and personalized ad insertion service for video providers that monetizes live streams, linear channels, and video-on-demand content. With this launch, video providers can insert ads into low-latency live streams while holding the reduced latency their viewers expect. LL-HLS reduces live latency by delivering partial segments and letting players h</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-elemental-mediatailor-low-latency-hls-ad-insertion" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-10T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1410,21 +1425,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://opengraph.githubassets.com/c5daf637bfff3eb518e72ac5f00a20bc156625bc5c8c6a5ed2a46ed9450498dd/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/755200108c0557d6</id>
-    <title>AWS Lambda now supports 90-minute function timeout on Lambda Managed Instances</title>
-    <updated>2026-09-09T18:00:00+00:00</updated>
-    <content>AWS Lambda now supports a 90-minute function timeout for asynchronous and event source mapping (ESM) invocations on Lambda Managed Instances (LMI) , a 6x increase from the previous 15-minute limit. You can now run data processing, media transcoding, financial calculations, AI inference, and batch workloads on Lambda for jobs that require longer continuous execution, without re-architecting your applications. Customers use Lambda to build serverless applications like event-driven processors, API </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-lambda-90-minute-function/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-09T18:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/18056c5a1553b2ff</id>
     <title>AWS Lambda now supports Graviton5-powered EC2 instances on Lambda Managed Instances</title>
     <updated>2026-09-09T18:00:00+00:00</updated>
     <content>AWS Lambda now supports AWS Graviton5-powered C9g, C9gd, M9g, and M9gd instances on Lambda Managed Instances . You can now run your Lambda functions on the latest generation of Graviton processors, delivering up to 25% better compute performance compared to Graviton4-powered instances. AWS Lambda Managed Instances lets you run Lambda functions on your AWS EC2 instances while maintaining Lambda's operational simplicity. With Lambda Managed Instances, you can access specialized compute configurati</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-lambda-graviton5-ec2/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-09T18:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/755200108c0557d6</id>
+    <title>AWS Lambda now supports 90-minute function timeout on Lambda Managed Instances</title>
+    <updated>2026-09-09T18:00:00+00:00</updated>
+    <content>AWS Lambda now supports a 90-minute function timeout for asynchronous and event source mapping (ESM) invocations on Lambda Managed Instances (LMI) , a 6x increase from the previous 15-minute limit. You can now run data processing, media transcoding, financial calculations, AI inference, and batch workloads on Lambda for jobs that require longer continuous execution, without re-architecting your applications. Customers use Lambda to build serverless applications like event-driven processors, API </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-lambda-90-minute-function/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-09T18:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1520,21 +1535,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/2e58babd7b90622a</id>
-    <title>AWS Entity Resolution adds record-level confidence scores for ML matching</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/92c1a60addff5b55</id>
+    <title>Amazon Connect Customer Profiles now sends events when customers enter or exit segments</title>
     <updated>2026-09-09T08:00:00+00:00</updated>
-    <content>AWS Entity Resolution now provides record-level confidence scores for Machine Learning (ML) based matching workflows, giving you a per-record signal of how confident the model is in each individual identity match. Previously, all records within a match group carried the same group-level confidence score regardless of actual match quality — making it impossible to distinguish a near-certain match from a borderline one. This forced customers to apply a single confidence threshold across all record</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/entity-resolution-record-confidence/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-09T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/f9ccb2c5f893f813</id>
-    <title>AWS Systems Manager now diagnoses more issues that cause EC2 instances to be unmanaged</title>
-    <updated>2026-09-09T08:00:00+00:00</updated>
-    <content>Today, AWS Systems Manager extends its diagnosis capability to identify six additional categories of issues that can prevent Amazon EC2 instances and hybrid-activated nodes from becoming managed by Systems Manager. An instance must be managed by Systems Manager before you can patch it, run commands, connect with Session Manager, or collect inventory, and when an instance is unmanaged the cause can be difficult to isolate. The diagnosis previously covered network connectivity, and it now also ide</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/systems-manager-diagnoses-ec2-unmanaged/" rel="alternate"/>
+    <content>Amazon Connect Customer Profiles now sends segment membership events, providing the ability to receive real-time and scheduled notifications when customer profiles enter or exit a segment, such as high-value customers or low-satisfaction customers. Previously, detecting when customer profiles joined or left a segment required exporting entire segments at regular intervals and running custom scripts to identify differences. This manual process consumed resources, introduced errors, and created mu</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-profiles-segment-events/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-09T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1550,11 +1555,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/92c1a60addff5b55</id>
-    <title>Amazon Connect Customer Profiles now sends events when customers enter or exit segments</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f9ccb2c5f893f813</id>
+    <title>AWS Systems Manager now diagnoses more issues that cause EC2 instances to be unmanaged</title>
     <updated>2026-09-09T08:00:00+00:00</updated>
-    <content>Amazon Connect Customer Profiles now sends segment membership events, providing the ability to receive real-time and scheduled notifications when customer profiles enter or exit a segment, such as high-value customers or low-satisfaction customers. Previously, detecting when customer profiles joined or left a segment required exporting entire segments at regular intervals and running custom scripts to identify differences. This manual process consumed resources, introduced errors, and created mu</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-profiles-segment-events/" rel="alternate"/>
+    <content>Today, AWS Systems Manager extends its diagnosis capability to identify six additional categories of issues that can prevent Amazon EC2 instances and hybrid-activated nodes from becoming managed by Systems Manager. An instance must be managed by Systems Manager before you can patch it, run commands, connect with Session Manager, or collect inventory, and when an instance is unmanaged the cause can be difficult to isolate. The diagnosis previously covered network connectivity, and it now also ide</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/systems-manager-diagnoses-ec2-unmanaged/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-09T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/2e58babd7b90622a</id>
+    <title>AWS Entity Resolution adds record-level confidence scores for ML matching</title>
+    <updated>2026-09-09T08:00:00+00:00</updated>
+    <content>AWS Entity Resolution now provides record-level confidence scores for Machine Learning (ML) based matching workflows, giving you a per-record signal of how confident the model is in each individual identity match. Previously, all records within a match group carried the same group-level confidence score regardless of actual match quality — making it impossible to distinguish a near-certain match from a borderline one. This forced customers to apply a single confidence threshold across all record</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/entity-resolution-record-confidence/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-09T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1685,11 +1700,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/0716d9708d321ffb6a00818614779e779925365c/2026/09/03/2026-smithy-standalone-types.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/916172f623371546</id>
-    <title>AWS HealthOmics introduces resource fallback order for WDL workflows</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/aad7051c95682e45</id>
+    <title>Amazon RDS for MariaDB now supports community MariaDB minor versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, and 12.3.3</title>
     <updated>2026-09-08T16:00:00+00:00</updated>
-    <content>Today, AWS HealthOmics introduces the resource fallback directive, enabling you to define an ordered list of preferred accelerator types, including an option to fallback to CPU instances, for tasks in your Workflow Description Language (WDL) workflows. Researchers and bioinformaticians can use this directive to reduce time spent diagnosing and resubmitting runs due to accelerator constraints and keep production workflows running. AWS HealthOmics is a HIPAA-eligible service that helps healthcare </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-healthomics-resourcefallback-wdl/" rel="alternate"/>
+    <content>Starting today, Amazon Relational Database Service (Amazon RDS) for MariaDB now supports MariaDB minor versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, and 12.3.3, the latest minors released by community MariaDB. In addition to operational improvements, these minor versions introduce support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. We recommend upgrading to the newer minor versions to accept fixes for Common</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-mariadb-community-versions/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-08T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1705,11 +1720,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/aad7051c95682e45</id>
-    <title>Amazon RDS for MariaDB now supports community MariaDB minor versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, and 12.3.3</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/916172f623371546</id>
+    <title>AWS HealthOmics introduces resource fallback order for WDL workflows</title>
     <updated>2026-09-08T16:00:00+00:00</updated>
-    <content>Starting today, Amazon Relational Database Service (Amazon RDS) for MariaDB now supports MariaDB minor versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, and 12.3.3, the latest minors released by community MariaDB. In addition to operational improvements, these minor versions introduce support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. We recommend upgrading to the newer minor versions to accept fixes for Common</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-mariadb-community-versions/" rel="alternate"/>
+    <content>Today, AWS HealthOmics introduces the resource fallback directive, enabling you to define an ordered list of preferred accelerator types, including an option to fallback to CPU instances, for tasks in your Workflow Description Language (WDL) workflows. Researchers and bioinformaticians can use this directive to reduce time spent diagnosing and resubmitting runs due to accelerator constraints and keep production workflows running. AWS HealthOmics is a HIPAA-eligible service that helps healthcare </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-healthomics-resourcefallback-wdl/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-08T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1785,11 +1800,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d</id>
-    <title>How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e</id>
+    <title>How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
     <updated>2026-09-07T17:16:36.819000+00:00</updated>
-    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`</content>
-    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
+    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.</content>
+    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-09-07T17:16:36.819000+00:00</published>
     <media:group>
@@ -1800,11 +1815,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e</id>
-    <title>How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d</id>
+    <title>How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
     <updated>2026-09-07T17:16:36.819000+00:00</updated>
-    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.</content>
-    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
+    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`</content>
+    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-09-07T17:16:36.819000+00:00</published>
     <media:group>
@@ -2873,22 +2888,6 @@ It walks through creating a custom scheduled agent that discovers resources acro
     <link href="https://repost.aws/articles/ARTNTQAXK6RKOX-nAFIJaI7w/reducing-token-costs-with-a-hybrid-multi-agent-architecture-bedrock-for-routing-sagemaker-ai-for-task-execution" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-08-17T11:54:58.245000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e06f164d02cf3fff</id>
-    <title>How do I move a member account between AWS Organizations without interrupting AWS RAM resource sharing?</title>
-    <updated>2026-08-14T07:59:37.937000+00:00</updated>
-    <content>A member account needs to be migrated to another AWS Organization. This account consumes resources shared by another account through AWS RAM. Because organization-scoped resource shares are automatically revoked when an account leaves the organization, the migration can disconnect shared resources and disrupt dependent workloads.
-This document identifies the migration's impact on existing RAM resource shares and defines a procedure that minimizes workload disruption and side effects.</content>
-    <link href="https://repost.aws/articles/ARoGptVq6MTWSPy4_pBGpFnA/how-do-i-move-a-member-account-between-aws-organizations-without-interrupting-aws-ram-resource-sharing" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-08-14T07:59:37.937000+00:00</published>
     <media:group>
       <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
