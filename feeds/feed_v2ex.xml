@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-09-20T22:42:40.456425+00:00</updated>
+  <updated>2026-09-21T05:24:51.051860+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -13,19 +13,140 @@
   <logo>https://www.v2ex.com/favicon.ico</logo>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/3b982b4c51a0f9d2</id>
-    <title>TidePool —— 让 FTP 连接像池子里的水一样流动</title>
-    <updated>2026-09-20T20:40:08+00:00</updated>
-    <content>TidePool —— 让 FTP 连接像池子里的水一样流动 TidePool 是一个专为 FTP/FTPS 场景打造的高性能连接池（项目名 FtpPool ，品牌名 TidePool ）。 它不是通用资源池的简单套壳，而是针对 FTPClient 「有状态、易失效」的痛点重新设计：归还连接时自动重置工作目录、传输模式、编码等状态，重置失败即标记为损坏并销毁，绝不把坏连接放回池中。 三大可分离轴心——池引擎、生命周期、可观测性——自由组合。默认 hybrid 配置采用 FastPoolEngine 的 CAS 快速路径 + 线程本地候选 + 后台管家，兼顾低延迟与稳定维护；同时提供基于 Commons Pool 的引擎供对比选择。 内置指标、慢操作告警、日志过滤、JMX 、Micrometer 、泄漏检测，密码永不落日志。开箱即用的 Spring Boot Starter 、FTPS 显式/隐式加密支持、优雅停机与健康检查，让你几分钟内接入生产。 代码： https://github.com/honwhy/TidePool Apache-2.0 开源，欢迎 Star 与共建。</content>
-    <link href="https://www.v2ex.com/t/1243499#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/d88e4473bf3bd5b7</id>
+    <title>Jev 的边界</title>
+    <updated>2026-09-21T04:41:06+00:00</updated>
+    <content>最近试了下 Jev ，本来以为它很适合做 Agent 的 System One：大模型负责规划，Jev 负责高频小决策。 但在 Free4Chat 里实际做了一轮 Arena 、Room App 、Live View 相关实验后，结果没那么理想。Scripted Bot 反而更稳，几百毫秒的延迟对很多实时控制也并不够快。继续看 json-render 和一些成功 Demo 后，我反而更清楚了一条边界：规则明确的交给代码，规则模糊但候选明确的才适合 Decision Model ，连候选都需要创造时再用 Generative Model 。 最后没接入 Jev ，但这个失败实验还挺有收获，整理成了一篇： https://www.bmpi.dev/dev/jev-boundary/</content>
+    <link href="https://www.v2ex.com/t/1243613#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T20:40:08+00:00</published>
+    <published>2026-09-21T04:41:06+00:00</published>
     <media:group>
-      <media:content url="https://i.imgur.com/40TqDS4.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.imgur.com/40TqDS4.png"/>
+      <media:content url="https://cdn.v2ex.com/avatar/bd10/046e/552209_xlarge.png?m=1734403816" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/bd10/046e/552209_xlarge.png?m=1734403816"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.imgur.com/40TqDS4.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/bd10/046e/552209_xlarge.png?m=1734403816" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/63eaecee0808fbf3</id>
+    <title>开源了一个 Ai 3D 通用快速建模平台 aigccat 希望大家点评一下</title>
+    <updated>2026-09-21T04:33:09+00:00</updated>
+    <content>先说下心路历程 之前自己在写独立游戏玩 但是不会建模 想着用 llm 也就是 gpt6 说可以直接用 GLB 建模 但是...你懂的烧 100 刀可能建模出来的都不太能看 后来开始测本地 3d 建模从小模型开始测 发现还是太弱 大型模跑不动 最后通过在线 api 建模模型终于出了自己想要的效果 也就是大概改改能用了
+但是一个游戏里面有数千个模型 ai 时代了 总不能一个个去管理 去生成 所以就有了 aigccat 希望大家给点建议特别是会建模的兄弟们 多提点建议 也同时想请教大佬们 想了解下游戏建模的工作流程 下派任务 地模 建筑 游戏道具 人物白模 贴图 动画 特效组 就是我不知道中间有多少个链路 我的最终想法是 打通链路方便管理上手 跟打通主流游戏引擎平台资产快速管理 让它能一键重构几万个游戏模型不用改 做一个通用的 ai 建模平台 也可能会半途而废就是 doge doge doge https://github.com/RainNameless/aigccat 演示站 aigccat.ythmai.com 图片效果 aigccat 一个通用的 3D 游戏建模平台 —— 输入一句自</content>
+    <link href="https://www.v2ex.com/t/1243610#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T04:33:09+00:00</published>
+    <media:group>
+      <media:content url="https://raw.githubusercontent.com/RainNameless/aigccat/main/docs/screenshots/workbench.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://raw.githubusercontent.com/RainNameless/aigccat/main/docs/screenshots/workbench.png"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://raw.githubusercontent.com/RainNameless/aigccat/main/docs/screenshots/workbench.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/37277770416b679e</id>
+    <title>当 AI 让执行力变得廉价，我们该拿什么脱颖而出？</title>
+    <updated>2026-09-21T03:38:08+00:00</updated>
+    <content>当代码与设计的生产成本趋近于零，我们可以这样跳出工具的依赖，构建属于自己的优势和认知壁垒。 查看全文</content>
+    <link href="https://sspai.com/post/114519" rel="alternate"/>
+    <category term="sspai.com" label="sspai.com"/>
+    <published>2026-09-21T03:38:08+00:00</published>
+    <media:group>
+      <media:content url="https://rssfile.sspai.com/2026/09/13/2890e96259b71db0cf9faaf22b7c7e61.png?imageMogr2/auto-orient/ignore-error/1" type="image/png" medium="image"/>
+      <media:thumbnail url="https://rssfile.sspai.com/2026/09/13/2890e96259b71db0cf9faaf22b7c7e61.png?imageMogr2/auto-orient/ignore-error/1"/>
+    </media:group>
+    <dc:creator>sspai.com</dc:creator>
+    <link rel="enclosure" href="https://rssfile.sspai.com/2026/09/13/2890e96259b71db0cf9faaf22b7c7e61.png?imageMogr2/auto-orient/ignore-error/1" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/10f677c1390f1f64</id>
+    <title>开源一个跨设备 Agent 工作台：手机接本地电脑上的 Agent，也能管理多台服务器上的 agent</title>
+    <updated>2026-09-21T03:28:37+00:00</updated>
+    <content>有个挺具体的需求：电脑上 Agent 还在跑，人已经离开工位。只是想看看进度、回一个问题，不太想再回去开电脑屏幕。 Agents Anywhere 可以接入 Codex 、Claude Code 和 DeepSeek Harness ，从手机、桌面或 Web 打开工作设备上的会话。项目 MIT 开源，有官方 Cloud ，也支持自部署。 先放入口： GitHub / 下载 / Web 。 比较值得说的几件事： macOS 、Windows 有桌面端，Android 和 iOS / iPadOS 有原生客户端，也有 Web 。iOS / iPadOS 目前走 TestFlight 。 同一服务、同一账号下可以管理自己的多台设备，按设备进入项目和会话。 桌面端是类似 Codex 的项目工作台体验，能看执行时间线、回复审批和输入请求。 文件浏览、预览、附件上传下载、远程终端也放在工作台里。具体操作看对应 Agent 的支持情况 欢迎大家拍砖</content>
+    <link href="https://www.v2ex.com/t/1243584#reply1" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T03:28:37+00:00</published>
+    <media:group>
+      <media:content url="https://assert.portwise.io/Weixin%20Image_20260918183912_9_1182.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://assert.portwise.io/Weixin%20Image_20260918183912_9_1182.jpg"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://assert.portwise.io/Weixin%20Image_20260918183912_9_1182.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/ac5ce456623e5b52</id>
+    <title>[分享创造] 做了一款轻量好用的域名与网络诊断工具： Domain Checker（内附兑换码福利）</title>
+    <updated>2026-09-21T03:17:00+00:00</updated>
+    <content>大家好，平时打理自己的网站、VPS 和域名时，常常需要随手检查解析生效没有、SSL 证书什么时候到期，或者排查邮件的 SPF / DMARC 记录是否正常。 每次在手机或 Mac 上临时要查，不是在终端里敲 dig / curl ，就是要打开好几个不同的网页工具（站长工具、SSL Labs 、DNS 诊断等），过程繁琐而且网页广告也多。 所以自己动手写了一款轻量、专注的本地工具—— Domain Checker: DNS &amp; SSL ，希望能把这些高频网络诊断需求集成到一个清爽的界面里。 🛠️ 核心功能 DNS 记录查询 ：支持 A 、AAAA 、CNAME 、MX 、TXT 、NS 、SOA 、CAA 等常见记录，一键排查解析配置。 SSL / TLS 证书检测 ：证书颁发机构、到期倒计时、SAN 备用名、指纹信息等，避免证书静默过期导致故障。 HTTP 响应与重定向追踪 ：直观查看状态码、Headers 以及多层重定向链路（ Redirect Chains ）。 邮箱安全配置校验 ：自动检查 MX 、SPF 、DMARC 记录，方便排查邮件发信被拒或进垃圾箱的问题。 WHOIS 信</content>
+    <link href="https://www.v2ex.com/t/1243581#reply7" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T03:17:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/c218f4c6bb9d64099c009964c081c374?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/c218f4c6bb9d64099c009964c081c374?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/c218f4c6bb9d64099c009964c081c374?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/86b1425b33199979</id>
+    <title>额度紧的时候， Agent 任务怎么拆才不至于一轮烧光</title>
+    <updated>2026-09-21T03:05:39+00:00</updated>
+    <content>Agent 一开长任务，额度往往不是「聊崩」的，是「一步一工具调用」叠起来的。 可以试这三步： 1 ）先写验收标准，再让它动手 2 ）难的用强模型，批量改动用够用的档 3 ）少整仓塞上下文，只丢相关文件 国内可加微信 mkapikey 聊自己的场景；不写价目表。</content>
+    <link href="https://www.v2ex.com/t/1243577#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T03:05:39+00:00</published>
+    <media:group>
+      <media:content url="https://i.v2ex.co/I7R24HDm.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://i.v2ex.co/I7R24HDm.png"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://i.v2ex.co/I7R24HDm.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/daebb7eecf662daf</id>
+    <title>写了个简历分类工具「阅历」， AI 打四个分：岗位 / 资历 / 强度 / 注水嫌疑</title>
+    <updated>2026-09-21T02:45:00+00:00</updated>
+    <content>最近招人看简历看得有点烦，写了个桌面小工具给自己用，顺手开源了。 把一个文件夹的简历（ PDF / DOCX / TXT ）丢进去，后台并发调 Jev 模型，每份简历出四个判定： 岗位分类（后端/前端/算法/数据/测试/运维/产品/其他） 资历级别（实习 / 初级 / 中级 / 高级 / 专家） 技术强度 0-10 注水嫌疑 0-1 个人最喜欢注水这个维度：时间线重叠、头衔和职责不符、量化数字堆砌这些信号都会被扣分。实测有份简历年限到了高级，强度只给 2.9 ，注水 0.44——这种「年限撑不起头衔」的组合，约面试时就知道该重点盘什么了。 开源，MIT： https://github.com/fatelei/yueli 三平台安装包在 Release 里直接下。都未签名，mac 装完执行一下 xattr -cr /Applications/yueli.app 即可。 技术栈：Rust （文本提取 / 并发调度 / 缓存 / 导出）+ Tauri 2 + React 。判定结果按内容哈希本地缓存，同文件再跑秒回；判据是份 toml 文件，觉得打分不对劲基本是措辞的锅，改了自动升版本重新判</content>
+    <link href="https://www.v2ex.com/t/1243565#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T02:45:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/beb284a8074c13b87060c3547a30d40c?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/beb284a8074c13b87060c3547a30d40c?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/beb284a8074c13b87060c3547a30d40c?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/d873a03121fe3032</id>
+    <title>编程只剩架构和约束了</title>
+    <updated>2026-09-21T02:38:09+00:00</updated>
+    <content>编程只剩架构和约束了 我最近一直在想一个问题。 身边好多没写过代码的朋友，现在都在用 AI 做东西。有人做了自己的作品集网站，有人做了个接单工具，有人直接用来跑业务了。做出来的东西颜值真的高——有时候比写了十年代码的人做的还好看。（文科生确实有不少有审美的） 但没有学过古法编程的人，是有天花板的。 局部很好，全局在烂 用 AI agent 做项目这段时间，我发现一件挺有意思的事： 你给它一个具体的小任务，它做得挺好的。改一个函数、写一个组件、调一下接口——没什么问题。 但你让它接手稍微大一点的项目，它就开始不知道自己在哪里了。这个模块改了会不会影响那个？状态应该放哪管？这个设计选择以后会不会越来越难扩展？——它不知道，也不会问你，它就直接写了。 它在每一个局部都在"尽力"，但全局在悄悄腐烂。 业界现在已经给这个现象起名字了，叫"Spaghetti Point"——vibe coding 在第一周感觉很快，但大概三个月后线就交叉了，加新功能开始把已有功能搞坏。这些相关的报道最近越来越多： 《 Vibe Coding Technical Debt 2026: The 90-Day Reck</content>
+    <link href="https://www.v2ex.com/t/1243562#reply3" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-21T02:38:09+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.jsdelivr.net/gh/Qiuner/drawing-bed/2026/9/image-20260920105430848.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.jsdelivr.net/gh/Qiuner/drawing-bed/2026/9/image-20260920105430848.png"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.jsdelivr.net/gh/Qiuner/drawing-bed/2026/9/image-20260920105430848.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/b2afcc1706bd1494</id>
+    <title>派早报：微软高管称 AI 爬取是人类历史上最大的劳动成果盗窃</title>
+    <updated>2026-09-20T22:26:04+00:00</updated>
+    <content>微软高管称 AI 爬取是人类历史上最大的劳动成果盗窃 12306 称第三方购票可能更慢或失败 特朗普提议为人工智能改名 谷歌在 Android 17 中加入 Pixel 独占的 API iPhone 18 Pro Max 支持固件限制电量以便发运 苹果硬件工程副总裁表示不建议贴膜 看看就行的简讯 少数派的近期动态 你可能错过的好文章 查看全文</content>
+    <link href="https://sspai.com/post/114788" rel="alternate"/>
+    <category term="sspai.com" label="sspai.com"/>
+    <published>2026-09-20T22:26:04+00:00</published>
+    <media:group>
+      <media:content url="https://rssfile.sspai.com/9/21/2026/article/ca2a684d-9b65-b74e-f13c-de6f3eeda594.png?imageMogr2/auto-orient/format/webp/ignore-error/1" type="image/png" medium="image"/>
+      <media:thumbnail url="https://rssfile.sspai.com/9/21/2026/article/ca2a684d-9b65-b74e-f13c-de6f3eeda594.png?imageMogr2/auto-orient/format/webp/ignore-error/1"/>
+    </media:group>
+    <dc:creator>sspai.com</dc:creator>
+    <link rel="enclosure" href="https://rssfile.sspai.com/9/21/2026/article/ca2a684d-9b65-b74e-f13c-de6f3eeda594.png?imageMogr2/auto-orient/format/webp/ignore-error/1" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/defd2e7a18e31106</id>
@@ -59,21 +180,6 @@
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e83707aeb2cca7e43e6bf97888562c41?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/03aa1d2de732e6bb</id>
-    <title>做了个英文小站： Rice Purity Test（美国大学生的“纯洁度测试”）， Next.js 静态导出 + Cloudflare Workers</title>
-    <updated>2026-09-20T15:35:38+00:00</updated>
-    <content>Rice Purity Test 是 1924 年从美国 Rice 大学流传出来的 100 道“你有没有做过……”问卷，在美国大学生里算入学必玩的梗，搜索量一直不小。网上现有的版本基本都是一整页 100 个 checkbox ，手机上填起来很难受。 我重做了一版： https://ricepuritytestup.com 一屏一题，带进度条，刷新后接着答 答完直接出分，附每个分段的解释 桌面端支持 Y / N / Backspace 快捷键 全部在浏览器本地计算，答案不上传 免费、不用注册、答题过程无广告 技术栈：Next.js 16 静态导出 + Tailwind v4 ，部署在 Cloudflare Workers 静态资产上，GitHub 推送自动构建。Lighthouse 手机端 90/100/100/100 。 刚上线几天，Google 已经收录，正在等出词。欢迎体验，也欢迎交流出海小站 SEO 的经验。</content>
-    <link href="https://www.v2ex.com/t/1243487#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T15:35:38+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/d110b8b2137f79986716f67f8b7d3ca6?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/d110b8b2137f79986716f67f8b7d3ca6?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/d110b8b2137f79986716f67f8b7d3ca6?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/1e225a9ce811ca0d</id>
     <title>有人很多年不使用家庭电视了吗？</title>
     <updated>2026-09-20T15:00:13+00:00</updated>
@@ -87,25 +193,6 @@
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/6e5b/f172/624816_xlarge.png?m=1761108399" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/94742024ea8759a8</id>
-    <title>OpenAgent：一个 exe 就能跑的自托管 AI Agent 平台， Windows 上不用 Docker 也不用 WSL</title>
-    <updated>2026-09-20T14:48:29+00:00</updated>
-    <content>自我介绍一下：我是 Casbin 开源社区的，OpenAgent 是我们在做的一个自托管 AI Agent 平台，Go + React ，Apache 2.0 ，现在 5.6k star 。 先说最想说的一点： 它就是一个可执行文件。 # Windows PowerShell
-irm https://raw.githubusercontent.com/the-open-agent/openagent/master/scripts/install.ps1 | iex
-
-# macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scripts/install.sh | bash 跑完打开 http://localhost:14000 就进去了。Windows 原生跑，不用 WSL ，不用 Docker ，不用先装 Python 和一堆依赖。前端和默认静态资源都 embed 进二进制了，所以内网、没外网的机器上也能正常显示。自带 SQLite ，不用先建库。 它能干</content>
-    <link href="https://www.v2ex.com/t/1243479#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T14:48:29+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/a57e/91d7/541867_large.png?m=1788546177" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/0e1c7691d4db3f50</id>
@@ -139,51 +226,6 @@ curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scr
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/c23c0b22b37b0ba2c94897aac0949f39?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/844cb93a5fa83689</id>
-    <title>Pace — Pi coding agent 的桌面 GUI（开源 / early）</title>
-    <updated>2026-09-20T13:48:00+00:00</updated>
-    <content>大家好！介绍一下 Pace ，给 Pi coding agent 用的桌面 GUI 。 TL;DR Pace 是一个为 Pi Coding Agent 打造的开源桌面 GUI Workbench （基于 Electron + React ）。它不是简单的 API 套壳，而是把 Pi 作为后端独立引擎驱动的工作台，提供可视化的执行轨迹、Diff 审查、Token 成本透视以及子代理观察能力。 GitHub： https://github.com/BubblePtr/pace 1 、为什么做 Pace? 平时高强度使用终端里的 Coding Agent （如 Pi ）时，常常遇到几个痛点： 滚屏混乱与失焦：任务一长、Tool Call 一多，几十屏的日志很难快速回溯「它刚才具体改了什么、哪一步报错了」。 Diff 审查与终端挤占：代码改动需要反复切另外的 git 工具去看，或者在命令行里看折叠 diff ，不够直观。 Token 与成本黑盒：很多工具只给一个最后的花销，中间过程每一步吃了多少 context 、cache 命中情况到底怎样，缺少真凭实据。 子代理（ Subagent ）观测</content>
-    <link href="https://www.v2ex.com/t/1243471#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T13:48:00+00:00</published>
-    <media:group>
-      <media:content url="https://raw.githubusercontent.com/bubbleptr/pace/main/docs/assets/readme/home.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://raw.githubusercontent.com/bubbleptr/pace/main/docs/assets/readme/home.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://raw.githubusercontent.com/bubbleptr/pace/main/docs/assets/readme/home.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/e808ac1ca3651617</id>
-    <title>写的 macOS 围棋 App (Qi： AI Go Review) 终于开张了</title>
-    <updated>2026-09-20T13:15:55+00:00</updated>
-    <content>前帖： https://v2ex.com/t/1232567 关于定价：后续功能进一步完善后，计划定价为 ¥98 终身买断。给首批早期支持者和 V 友设置了国区 ¥68 的限时特惠（相当于两杯咖啡钱），基础复盘功能完全支持免费下载体验。</content>
-    <link href="https://www.v2ex.com/t/1243466#reply2" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T13:15:55+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.jsdelivr.net/gh/zhen-ke/img@main/202606/IMG_2026-09-20-21-14-37-1.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://cdn.jsdelivr.net/gh/zhen-ke/img@main/202606/IMG_2026-09-20-21-14-37-1.webp"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.jsdelivr.net/gh/zhen-ke/img@main/202606/IMG_2026-09-20-21-14-37-1.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/93334b842ed05a68</id>
-    <title>有人和我一样 vibe 的时候靠系统的各种指标提供安全感吗</title>
-    <updated>2026-09-20T12:01:51+00:00</updated>
-    <content>每次 vibe codeing 等待的时候，都喜欢看系统指标，给我一种安全感 之前用的 htop ，后来用 bottom ，但是每次都需要多有个 panel 放在边上，所以就想直接给我的 pi 搞个插件，直接在 pi 的下方显示图表 现在支持了 CPU Memory Network Tokens 的显示 https://github.com/zzjcool/pi-sysmon</content>
-    <link href="https://www.v2ex.com/t/1243461#reply1" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T12:01:51+00:00</published>
-    <media:group>
-      <media:content url="https://github.com/zzjcool/pi-sysmon/raw/main/docs/images/overview.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://github.com/zzjcool/pi-sysmon/raw/main/docs/images/overview.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://github.com/zzjcool/pi-sysmon/raw/main/docs/images/overview.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/87e4eb80d2d8ac4c</id>
@@ -231,21 +273,6 @@ curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scr
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/5e0a49814ae49552405518b00f929e01?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/9a7ffda9fbc9d255</id>
-    <title>vibe 了个功能丰富的微博网页版美化和屏蔽插件，老哥们需要的自取</title>
-    <updated>2026-09-20T10:15:05+00:00</updated>
-    <content>折腾了一个微博网页版插件，叫「全能围脖」，有 Chrome 扩展版和油猴脚本版。 起因也很简单：平时还会用电脑刷微博，但页面上不想看的东西有点多，美化、屏蔽和下载又经常要装好几个脚本。昨天看到 @ aslan1 大佬的分享，索性借助 codex 折腾了一下，把这些功能整合到一个设置面板里，按需开关。上架了 chrome 插件商店 主要能做这些： 页面美化 ：调整卡片排版、图文比例，有 5 组日夜配色，也可以自定义文字和背景颜色；侧栏、发布框、Logo 等可以按喜好隐藏。 快速内容屏蔽 ：支持关键词、正则、来源、超话等过滤，以及广告清理、AI 内容和过期微博过滤。以及即时点击用户屏蔽。 用户名单管理 ：按 UID 过滤用户，支持名单导入导出、官方黑名单同步，在帖子、评论、搜索等场景里过滤不想看的内容。 时间线和页面精简 ：可以切换最新时间线，调整推荐内容、导航和侧栏的显示。 截图和媒体工具 ：Markdown 导出，图片、视频、LivePhoto 的选择与打包下载 功能看起来比较多，不过分成了四个模块，不需要的直接关掉就行。装好后刷新微博，点击右下角「围脖」就能打开设置。 先说明一下来源</content>
-    <link href="https://www.v2ex.com/t/1243443#reply4" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-20T10:15:05+00:00</published>
-    <media:group>
-      <media:content url="https://img.remit.ee/i/fJzOnxxXICae" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://img.remit.ee/i/fJzOnxxXICae"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://img.remit.ee/i/fJzOnxxXICae" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/40fb6b6bcba1ee86</id>
@@ -312,7 +339,7 @@ curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scr
     <id>tag:trvny.github.io,2024:feedseek/v2ex/8d3ee79304431485</id>
     <title>你的脸红是什么红：了解玫瑰痤疮</title>
     <updated>2026-09-19T07:00:00+00:00</updated>
-    <content>脸红发烫却没有小鹿乱撞：警惕玫瑰痤疮。 查看全文</content>
+    <content>脸红发烫却没有小鹿乱撞，可能真不是什么好事…… 查看全文</content>
     <link href="https://sspai.com/post/114641" rel="alternate"/>
     <category term="sspai.com" label="sspai.com"/>
     <published>2026-09-19T07:00:00+00:00</published>
@@ -407,36 +434,6 @@ curl -fsSL https://raw.githubusercontent.com/the-open-agent/openagent/master/scr
     </media:group>
     <dc:creator>sspai.com</dc:creator>
     <link rel="enclosure" href="https://rssfile.sspai.com/2026/09/14/274f1724aa6e8b646f58e9685644b023.jpg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/242e54aa58645317</id>
-    <title>具透 | 细数 watchOS 27 中你值得了解的新变化：动态应用网格、智能叠放……</title>
-    <updated>2026-09-18T03:30:00+00:00</updated>
-    <content>让我们一起细数 watchOS 27 中的新功能。 查看全文</content>
-    <link href="https://sspai.com/post/114670" rel="alternate"/>
-    <category term="sspai.com" label="sspai.com"/>
-    <published>2026-09-18T03:30:00+00:00</published>
-    <media:group>
-      <media:content url="https://rssfile.sspai.com/7/17/2026/article/a0fd9aa7-0634-53b8-6491-169ba187fb5f.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://rssfile.sspai.com/7/17/2026/article/a0fd9aa7-0634-53b8-6491-169ba187fb5f.jpeg?imageMogr2/auto-orient/ignore-error/1"/>
-    </media:group>
-    <dc:creator>sspai.com</dc:creator>
-    <link rel="enclosure" href="https://rssfile.sspai.com/7/17/2026/article/a0fd9aa7-0634-53b8-6491-169ba187fb5f.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/ce6cf3b6b28cec2c</id>
-    <title>让 Agent 读懂你的身体：数据获取篇</title>
-    <updated>2026-09-18T03:19:13+00:00</updated>
-    <content>某一天，我站在健身房里，发现自己似乎已经有一阵子没什么进步了，隐约生出一种「怎么练来练去还是这样」的顿感。我知道，这多半是平台期。理论上，我要做的无非是调整训练量、换动作、看恢复、查饮食，必要时调整周 ... 查看全文 本文为会员文章，出自 《单篇文章》 ，订阅后可阅读全文。</content>
-    <link href="https://sspai.com/prime/story/how-to-obtain-data-for-agent-analysis" rel="alternate"/>
-    <category term="sspai.com" label="sspai.com"/>
-    <published>2026-09-18T03:19:13+00:00</published>
-    <media:group>
-      <media:content url="https://rssfile.sspai.com/9/18/2026/article/15d4cad1-60d2-60b0-9814-0e6317e42fcb.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://rssfile.sspai.com/9/18/2026/article/15d4cad1-60d2-60b0-9814-0e6317e42fcb.jpeg?imageMogr2/auto-orient/ignore-error/1"/>
-    </media:group>
-    <dc:creator>sspai.com</dc:creator>
-    <link rel="enclosure" href="https://rssfile.sspai.com/9/18/2026/article/15d4cad1-60d2-60b0-9814-0e6317e42fcb.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/585abe69e149e88f</id>
