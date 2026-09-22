@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-22T17:13:32.847091+00:00</updated>
+  <updated>2026-09-22T21:37:47.604794+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,16 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/dce21ab9f431b61b</id>
+    <title>Cloudflare One Clients are incorrectly challenged on some sites</title>
+    <updated>2026-09-22T19:23:17+00:00</updated>
+    <content>Sep 22 , 19:23 UTC Investigating - Cloudflare is investigating an issue where Cloudflare One Client customers are incorrectly challenged while visiting some websites.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/tl0vrgjy99r0" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-22T19:23:17+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/7f04b6aa9f57c88b</id>
     <title>Bot Management Configuration Propagation Issues</title>
@@ -59,7 +69,7 @@
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/55b3c8585e3f0847</id>
-    <title>Introducing Worker Previews: isolated preview environments for every change your agent makes</title>
+    <title>Introducing Worker Previews: Isolated preview environments for every change your agent makes</title>
     <updated>2026-09-22T13:00:00+00:00</updated>
     <content>Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.</content>
     <link href="https://blog.cloudflare.com/worker-previews/" rel="alternate"/>
@@ -146,6 +156,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1370,format=webp/_astro/preview-resource-isolation.CyeUXRJS.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6ca534a1502a879a</id>
+    <title>Access - Automatically manage inactive Access service tokens</title>
+    <updated>2026-09-22T00:00:00+00:00</updated>
+    <content>Cloudflare Access administrators can now automatically disable or delete inactive service tokens. Administrators can set an inactivity period from 30 to 365 days and choose what Access does when a token reaches that limit. To be eligible for cleanup, a token must be older than the configured period, must not have successfully authenticated during that period, and must not be directly referenced by an Access policy rule. Cleanup runs gradually in the background, so eligible tokens may not be disa</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-22-service-token-inactivity-cleanup/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-22T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/fc326e2f61220026</id>
@@ -1346,16 +1371,6 @@ This is purely a dashboard visibility issue— firewall policies are not impacte
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/8ca474c3276c77c9</id>
-    <title>Cache Purging Errors</title>
-    <updated>2026-09-04T16:58:46+00:00</updated>
-    <content>Sep 4 , 16:58 UTC Resolved - This incident is now resolved. Sep 4 , 15:31 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 4 , 14:51 UTC Investigating - Cloudflare cache purging called via the Dashboard or API is returning errors, with the message "unable to purge. internal error". We are working to resolve this issue as soon as possible. More updates to follow.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/ff0yvx1d6tby" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-04T16:58:46+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/570b6ff3d263ddba</id>
     <title>Workers - Deploy larger Workers — up to 64 MiB for both free and paid plans</title>
     <updated>2026-09-04T00:00:00+00:00</updated>
@@ -1414,21 +1429,6 @@ This is purely a dashboard visibility issue— firewall policies are not impacte
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M1JDYW2RHXMJDDXS13K6VESF.01M1JDYX370D7EV4BHCDQS4C6J.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/68b2b58d3a1633de</id>
-    <title>Workers - Python Workers now support WSGI web frameworks like Django and Flask</title>
-    <updated>2026-09-02T00:00:00+00:00</updated>
-    <content>Python web frameworks following the Web Server Gateway Interface (WSGI) ↗ or Asynchronous Server Gateway Interface (ASGI) ↗ specification can now be used in Python Workers. Using web frameworks with Python Workers Based on the web framework you are using, you can use either wsgi or asgi from the workers module. WSGI frameworks For WSGI frameworks like Django or Flask: from workers import wsgi from django.core.wsgi import get_wsgi_application app = get_wsgi_application() Default = wsgi.entrypoint</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-02-python-workers-web-framework-support/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-02T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/220e6d264f21e160</id>
