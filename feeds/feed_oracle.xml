@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-09-22T05:20:41.383623+00:00</updated>
+  <updated>2026-09-22T12:02:20.438113+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -12,6 +12,16 @@
   <icon>https://blogs.oracle.com/favicon.ico</icon>
   <logo>https://blogs.oracle.com/favicon.ico</logo>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/285124f13e38fb6c</id>
+    <title>[26.3] Translation Pop up LOV bug</title>
+    <updated>2026-09-22T08:12:27.254843+00:00</updated>
+    <content>Hello, I have a shared List of Values with the following definition: select 'Last name '||to_char (rownum) as lastname ,'First name '||to_char (rownum) as firstname ,rownum as r from dual connect by level &lt;= 10 and for the additional columns, the heading is: &amp;{LASTNAME}. &amp;{FIRSTNAME}. These labels have been placed there by the using “Convert to Text Messages”  in Shared Components &gt; Translate Based on the Shared LOV, I created a Pop LOV. The headings are not translated, they show as &amp;{LASTNAME}.</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/26-3-translation-pop-up-lov-bug-3094" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-09-22T08:12:27.254843+00:00</published>
+    <dc:creator>Oracle Developer Community</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/38d2daaab79533d2</id>
     <title>Proving where PHI goes: what OCI’s native controls make possible</title>
@@ -26,6 +36,21 @@
     </media:group>
     <dc:creator>Oracle Cloud Infrastructure</dc:creator>
     <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/feature_b-1.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/0d12c08659fc9ffd</id>
+    <title>Helidon 27 Released</title>
+    <updated>2026-09-22T00:00:00+00:00</updated>
+    <content>The Helidon team is pleased to announce Helidon 27, the first release under the Tip-and-Tail model used by OpenJDK.</content>
+    <link href="https://inside.java/2026/09/22/helidon27-release/" rel="alternate"/>
+    <category term="Inside Java" label="Inside Java"/>
+    <published>2026-09-22T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg"/>
+    </media:group>
+    <dc:creator>Inside Java</dc:creator>
+    <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/79723c4c667a0562</id>
@@ -260,21 +285,6 @@
     <link href="https://forums.oracle.com/ords/apexds/post/title-apex-26-1-different-color-for-each-locpl-group-in-a-p-5136" rel="alternate"/>
     <category term="Oracle Developer Community" label="Oracle Developer Community"/>
     <published>2026-09-19T10:40:18.225505+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/usZakwxzsyewMRwrzramy7IpDhL0NnhNKqIsS4oCJQZlZGXvq0UNqBQXLk6rcQI4/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/usZakwxzsyewMRwrzramy7IpDhL0NnhNKqIsS4oCJQZlZGXvq0UNqBQXLk6rcQI4/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/usZakwxzsyewMRwrzramy7IpDhL0NnhNKqIsS4oCJQZlZGXvq0UNqBQXLk6rcQI4/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/3c6079f71876bccb</id>
-    <title>DBMS_XA allows a TMSUSPEND branch to advance to prepared or committed before TMRESUME</title>
-    <updated>2026-09-19T09:32:57.688633+00:00</updated>
-    <content>On Oracle AI Database 26ai Free `23.26.3.0.0`, I observed that an XA branch could advance to the prepared state through `XA_PREPARE`, or be finalized as committed through one-phase `XA_COMMIT`, after Session A suspended its association with `XA_END(..., TMSUSPEND)` but before Session A called `TMRESUME` and `XA_END(TMSUCCESS)`. Session B knew the exact XID and was able to call `DBMS_XA`. The question is therefore about XA state handling, not access control. I expected Oracle to preserve the susp</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/dbms-xa-allows-a-tmsuspend-branch-to-advance-to-prepared-or-0388" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-09-19T09:32:57.688633+00:00</published>
     <media:group>
       <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/usZakwxzsyewMRwrzramy7IpDhL0NnhNKqIsS4oCJQZlZGXvq0UNqBQXLk6rcQI4/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/usZakwxzsyewMRwrzramy7IpDhL0NnhNKqIsS4oCJQZlZGXvq0UNqBQXLk6rcQI4/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
