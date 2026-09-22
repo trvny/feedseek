@@ -20,6 +20,7 @@ on: # yamllint disable-line rule:truthy
       - "**/.clinerules"
       - ".github/workflows/instruction-rot.yml"
   push:
+    branches: [main]
     paths:
       - AGENTS.md
       - CLAUDE.md
@@ -47,4 +48,4 @@ jobs:
       contents: read
       issues: write
       pull-requests: write
-    uses: trvny/.github/.github/workflows/instruction-rot.yml@main
+    uses: trvny/.github/.github/workflows/instruction-rot.yml@b89675008df80a128bd1ff956c665a196314cd15
