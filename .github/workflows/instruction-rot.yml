@@ -1,0 +1,49 @@
+---
+name: Instruction Rot
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - AGENTS.md
+      - CLAUDE.md
+      - GEMINI.md
+      - CODEX.md
+      - "**/AGENTS.md"
+      - "**/CLAUDE.md"
+      - "**/GEMINI.md"
+      - "**/CODEX.md"
+      - "**/copilot-instructions.md"
+      - ".github/instructions/**"
+      - "**/.cursor/rules/**"
+      - "**/.cursorrules"
+      - "**/.windsurfrules"
+      - "**/.clinerules"
+      - ".github/workflows/instruction-rot.yml"
+  push:
+    branches: [main]
+    paths:
+      - AGENTS.md
+      - CLAUDE.md
+      - GEMINI.md
+      - CODEX.md
+      - "**/AGENTS.md"
+      - "**/CLAUDE.md"
+      - "**/GEMINI.md"
+      - "**/CODEX.md"
+      - "**/copilot-instructions.md"
+      - ".github/instructions/**"
+      - "**/.cursor/rules/**"
+      - "**/.cursorrules"
+      - "**/.windsurfrules"
+      - "**/.clinerules"
+      - ".github/workflows/instruction-rot.yml"
+  workflow_dispatch:
+
+jobs:
+  # Shared implementation lives in trvny/.github.
+  instruction-rot:
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    uses: trvny/.github/.github/workflows/instruction-rot.yml@b89675008df80a128bd1ff956c665a196314cd15
