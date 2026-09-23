@@ -172,6 +172,8 @@ class SiteFaviconTests(unittest.TestCase):
             rendered,
         )
         self.assertIn("Sitemap: https://feeds.example/sitemap.xml", rendered)
+        for agent in ("OAI-SearchBot", "Claude-SearchBot", "PerplexityBot"):
+            self.assertIn(f"User-agent: {agent}", rendered)
 
     def test_publication_requires_json_sidecar(self):
         with tempfile.TemporaryDirectory() as tmp:
