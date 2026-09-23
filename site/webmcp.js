@@ -5,7 +5,17 @@
   const context = document.modelContext;
   if (!context?.registerTool) return;
 
+  const ownerKey = Symbol.for("feedseek.webmcp.lifecycle");
+  const previous = globalThis[ownerKey];
+  if (previous && typeof previous.abort === "function") previous.abort();
+
   const lifecycle = new AbortController();
+  globalThis[ownerKey] = lifecycle;
+
+  const cleanup = () => {
+    lifecycle.abort();
+    if (globalThis[ownerKey] === lifecycle) delete globalThis[ownerKey];
+  };
   const register = (tool) => {
     try {
       Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal }))
@@ -16,13 +26,25 @@
   };
 
   window.addEventListener("pagehide", (event) => {
-    if (!event.persisted) lifecycle.abort();
-  });
+    if (!event.persisted) cleanup();
+  }, { once: true });
 
-  const clampLimit = (value, fallback = 20) => {
-    const number = Number(value);
-    if (!Number.isFinite(number)) return fallback;
-    return Math.max(1, Math.min(50, Math.floor(number)));
+  const requireString = (value, field, maxLength = 500) => {
+    if (typeof value !== "string") throw new TypeError(`${field} must be a string.`);
+    if (value.length > maxLength) throw new RangeError(`${field} is too long.`);
+    return value;
+  };
+  const requireLimit = (value, fallback = 20) => {
+    if (value === undefined) return fallback;
+    if (!Number.isInteger(value) || value < 1 || value > 50) {
+      throw new RangeError("limit must be an integer between 1 and 50.");
+    }
+    return value;
+  };
+  const requireEmptyInput = (value) => {
+    if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).length !== 0) {
+      throw new TypeError("This tool does not accept arguments.");
+    }
   };
 
   const text = (element) => element?.textContent?.trim() || "";
@@ -54,7 +76,7 @@
       },
       annotations: { readOnlyHint: true, untrustedContentHint: true },
       execute({ query = "", limit = 20 } = {}) {
-        const needle = String(query).trim().toLowerCase();
+        const needle = requireString(query, "query").trim().toLowerCase();
         const matches = cards
           .map(feedFromCard)
           .filter((feed) => {
@@ -63,7 +85,7 @@
           });
         return {
           count: matches.length,
-          feeds: matches.slice(0, clampLimit(limit)),
+          feeds: matches.slice(0, requireLimit(limit)),
         };
       },
     });
@@ -80,7 +102,7 @@
       },
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute({ query }) {
-        search.value = String(query ?? "");
+        search.value = requireString(query, "query");
         search.dispatchEvent(new Event("input", { bubbles: true }));
         return {
           query: search.value,
@@ -121,7 +143,7 @@
       },
       annotations: { readOnlyHint: true, untrustedContentHint: true },
       execute({ query = "", limit = 20 } = {}) {
-        const needle = String(query).trim().toLowerCase();
+        const needle = requireString(query, "query").trim().toLowerCase();
         const articles = visibleArticles().filter((article) => {
           if (!needle) return true;
           return `${article.title} ${article.source} ${article.summary}`.toLowerCase().includes(needle);
@@ -129,7 +151,7 @@
         return {
           currentSource: text(document.querySelector("#chips .chip.on")) || "All",
           count: articles.length,
-          articles: articles.slice(0, clampLimit(limit)),
+          articles: articles.slice(0, requireLimit(limit)),
         };
       },
     });
@@ -146,7 +168,7 @@
       },
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute({ source }) {
-        const wanted = String(source ?? "").trim();
+        const wanted = requireString(source, "source", 200).trim();
         const buttons = [...chips.querySelectorAll(".chip")];
         const button = buttons.find((chip) => text(chip).toLowerCase() === wanted.toLowerCase());
         if (!button) {
@@ -178,7 +200,7 @@
     register({
       name: "open_article",
       title: "Open Feedseek article",
-      description: "Open one of the articles currently visible in the Feedseek Reader by its exact URL.",
+      description: "Start navigation to one article currently visible in the Feedseek Reader, selected by its exact URL.",
       inputSchema: {
         type: "object",
         properties: { url: { type: "string", format: "uri" } },
@@ -187,7 +209,7 @@
       },
       annotations: { readOnlyHint: false, untrustedContentHint: true },
       execute({ url }) {
-        const wanted = String(url ?? "").trim();
+        const wanted = requireString(url, "url", 2048).trim();
         const anchor = [...document.querySelectorAll("#list a.item")]
           .find((item) => item.href === wanted);
         if (!anchor) return { ok: false, error: "Article is not visible in the current Reader view." };
