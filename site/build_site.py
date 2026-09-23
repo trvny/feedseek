@@ -681,7 +681,18 @@ def build_sitemap(feeds: list[dict], base: str) -> str:
 def build_robots(base: str) -> str:
     return (
         "# AI crawlers and user-triggered fetchers explicitly welcome.\\n"
-        "User-agent: GPTBot\\n"\n        "User-agent: OAI-SearchBot\\n"\n        "User-agent: OAI-AdsBot\\n"\n        "User-agent: ChatGPT-User\\n"\n        "User-agent: ClaudeBot\\n"\n        "User-agent: Claude-SearchBot\\n"\n        "User-agent: Claude-User\\n"\n        "User-agent: PerplexityBot\\n"\n        "User-agent: Perplexity-User\\n"\n        "User-agent: Google-Extended\\n"\n        "User-agent: Applebot\\n"\n        "User-agent: Applebot-Extended\\n"
+        "User-agent: GPTBot\\n"
+        "User-agent: OAI-SearchBot\\n"
+        "User-agent: OAI-AdsBot\\n"
+        "User-agent: ChatGPT-User\\n"
+        "User-agent: ClaudeBot\\n"
+        "User-agent: Claude-SearchBot\\n"
+        "User-agent: Claude-User\\n"
+        "User-agent: PerplexityBot\\n"
+        "User-agent: Perplexity-User\\n"
+        "User-agent: Google-Extended\\n"
+        "User-agent: Applebot\\n"
+        "User-agent: Applebot-Extended\\n"
         "Content-Signal: ai-train=yes, search=yes, ai-input=yes\\n"
         "Allow: /\\n"
         "\\n"
@@ -690,7 +701,6 @@ def build_robots(base: str) -> str:
         "Allow: /\\n"
         f"Sitemap: {base}sitemap.xml\\n"
     )
-
 
 def build_opml(feeds: list[dict], base: str) -> str:
     stamp = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
