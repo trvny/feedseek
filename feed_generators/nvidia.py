@@ -68,27 +68,34 @@ def parse_geforce_driver_news(html, known_links=None):
         if link in known or link in seen:
             continue
 
-        scope = anchor
+        heading = anchor.find(["h1", "h2", "h3", "h4"])
+        title = (
+            heading.get_text(" ", strip=True)
+            if heading
+            else anchor.get_text(" ", strip=True)
+        )
+        title = re.sub(r"\s+", " ", title).strip()
+
+        card = anchor.find_parent(["article", "li"])
+        if not _DRIVER_NEWS_RE.search(title) and card is not None:
+            heading = card.find(["h1", "h2", "h3", "h4"])
+            if heading is not None:
+                title = re.sub(
+                    r"\s+", " ", heading.get_text(" ", strip=True)
+                ).strip()
+        if not _DRIVER_NEWS_RE.search(title):
+            continue
+
+        scope = card or anchor.parent
         date = None
-        title = ""
         description = ""
-        for _ in range(7):
-            if scope is None:
+        for _ in range(6):
+            if scope is None or getattr(scope, "name", None) in {"main", "body", "html"}:
                 break
             text = re.sub(r"\s+", " ", scope.get_text(" ", strip=True)).strip()
-            heading = scope.find(["h1", "h2", "h3", "h4"])
-            candidate = (
-                heading.get_text(" ", strip=True)
-                if heading
-                else anchor.get_text(" ", strip=True)
-            )
-            candidate = re.sub(r"\s+", " ", candidate).strip()
-            if candidate and _DRIVER_NEWS_RE.search(candidate):
-                title = candidate
             match = _DATE_RE.search(text)
             if match:
                 date = parse_date(match.group(1))
-            if title and date is not None:
                 for paragraph in scope.find_all("p"):
                     value = re.sub(
                         r"\s+", " ", paragraph.get_text(" ", strip=True)
@@ -99,7 +106,7 @@ def parse_geforce_driver_news(html, known_links=None):
                 break
             scope = scope.parent
 
-        if not title or date is None:
+        if date is None:
             continue
         seen.add(link)
         entries.append(
