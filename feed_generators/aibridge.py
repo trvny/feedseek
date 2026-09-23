@@ -10,7 +10,8 @@ same parsers, separate cache, so this feed stands alone even though the
 sources overlap with feed_perplexity.xml and feed_thebatch.xml. Groq
 (blog/newsroom/changelog + groq-changelog commits) is folded in the same way
 via groq.scrape_all. MiniMax Research/Blog, MiniMax News and the PLLuM blog are
-scraped from their HTML listings.
+scraped from their HTML listings. Goodfire Research is scraped from its public
+research index.
 
 Stability AI: plain /news?format=rss and /news/rss.xml both 301-redirect to
 the client-rendered /news-updates page, dropping the query string — but
@@ -348,6 +349,95 @@ def scrape_crewclaw(known_links):
     return entries[:40]
 
 
+
+GOODFIRE_RESEARCH_URL = "https://www.goodfire.com/research"
+GOODFIRE_BASE_URL = "https://www.goodfire.com"
+_GOODFIRE_DATE_RE = re.compile(
+    r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
+    r"Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|"
+    r"Dec(?:ember)?)\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+20\d{2}\b",
+    re.IGNORECASE,
+)
+
+
+def scrape_goodfire_research(known_links):
+    html = get_html(GOODFIRE_RESEARCH_URL)
+    if not html:
+        return []
+
+    known = {(link or "").rstrip("/") for link in known_links}
+    soup = BeautifulSoup(html, "html.parser")
+    seen, entries = set(), []
+
+    for anchor in soup.select("a[href]"):
+        href = (anchor.get("href", "") or "").split("?", 1)[0].split("#", 1)[0]
+        if href.startswith("//"):
+            link = "https:" + href
+        elif href.startswith("/"):
+            link = GOODFIRE_BASE_URL + href
+        else:
+            link = href
+        link = link.rstrip("/")
+        if not link.startswith(f"{GOODFIRE_BASE_URL}/research/"):
+            continue
+        if link in known or link in seen:
+            continue
+
+        scope = anchor
+        date = None
+        for _ in range(7):
+            if scope is None:
+                break
+            text = re.sub(r"\s+", " ", scope.get_text(" ", strip=True)).strip()
+            match = _GOODFIRE_DATE_RE.search(text)
+            if match:
+                date = parse_date(match.group(0))
+                break
+            scope = scope.parent
+        if date is None:
+            continue
+
+        heading = anchor.find(["h1", "h2", "h3", "h4"])
+        if heading is None and scope is not None:
+            heading = scope.find(["h1", "h2", "h3", "h4"])
+        title = (
+            heading.get_text(" ", strip=True)
+            if heading is not None
+            else anchor.get_text(" ", strip=True)
+        )
+        title = re.sub(r"\s+", " ", title).strip()
+        if len(title) < 8 or title.lower() == "research":
+            continue
+
+        description = title
+        if scope is not None:
+            for paragraph in scope.find_all("p"):
+                value = re.sub(
+                    r"\s+", " ", paragraph.get_text(" ", strip=True)
+                ).strip()
+                if (
+                    len(value) >= 20
+                    and value != title
+                    and not _GOODFIRE_DATE_RE.fullmatch(value)
+                ):
+                    description = value
+                    break
+
+        seen.add(link)
+        entries.append(
+            {
+                "title": sanitize_xml(title[:200]),
+                "link": link,
+                "date": date,
+                "description": sanitize_xml(description[:500]),
+                "source": "Goodfire Research",
+            }
+        )
+
+    entries.sort(key=lambda entry: entry["date"], reverse=True)
+    return entries[:40]
+
+
 PLLUM_BLOG_URL = "https://pllum.org.pl/blog"
 
 
@@ -405,7 +495,7 @@ def main(full=False):
         title="AI-bridge",
         subtitle="Combined AI feed: Thinking Machines, Ollama, Mistral, "
         "Interconnected, AI Clock, Stability AI, Bielik, SpeakLeash, Promptowy, Maistry, "
-        "Karpathy (bearblog + old blog), Transformer, MiniMax News/Blog, PLLuM, "
+        "Karpathy (bearblog + old blog), Transformer, Goodfire Research, MiniMax News/Blog, PLLuM, "
         "Perplexity (blog/changelog/research/API changelog), "
         "The Batch / DeepLearning.AI, and Groq (blog/newsroom/changelog).",
         blog_url="https://thinkingmachines.ai/blog/",
@@ -421,6 +511,7 @@ def main(full=False):
             scrape_dlai_blog,
             scrape_groq,
             scrape_crewclaw,
+            scrape_goodfire_research,
             scrape_pllum_blog,
             scrape_widocznosc_news,
         ],
