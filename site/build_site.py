@@ -680,10 +680,15 @@ def build_sitemap(feeds: list[dict], base: str) -> str:
 
 def build_robots(base: str) -> str:
     return (
-        "User-agent: *\n"
-        "Content-Signal: ai-train=yes, search=yes, ai-input=yes\n"
-        "Allow: /\n"
-        f"Sitemap: {base}sitemap.xml\n"
+        "# AI crawlers and user-triggered fetchers explicitly welcome.\\n"
+        "User-agent: GPTBot\\n"\n        "User-agent: OAI-SearchBot\\n"\n        "User-agent: OAI-AdsBot\\n"\n        "User-agent: ChatGPT-User\\n"\n        "User-agent: ClaudeBot\\n"\n        "User-agent: Claude-SearchBot\\n"\n        "User-agent: Claude-User\\n"\n        "User-agent: PerplexityBot\\n"\n        "User-agent: Perplexity-User\\n"\n        "User-agent: Google-Extended\\n"\n        "User-agent: Applebot\\n"\n        "User-agent: Applebot-Extended\\n"
+        "Content-Signal: ai-train=yes, search=yes, ai-input=yes\\n"
+        "Allow: /\\n"
+        "\\n"
+        "User-agent: *\\n"
+        "Content-Signal: ai-train=yes, search=yes, ai-input=yes\\n"
+        "Allow: /\\n"
+        f"Sitemap: {base}sitemap.xml\\n"
     )
 
 
