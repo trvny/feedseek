@@ -2,7 +2,7 @@
 
 Native RSS sources: Thinking Machines, Ollama, Mistral, Interconnected
 (Matt Webb), AI Clock (Substack), the Polish AI blogs Bielik, SpeakLeash,
-Promptowy and Maistry, and Stability AI (news-updates, via the
+Promptowy, Maistry and Innowacje.ai, plus Stability AI (news-updates, via the
 Squarespace ?format=rss trick — see note below). On top of those it reuses
 the existing scrapers for Perplexity's Framer sites (Blog/Changelog/Research
 + API docs changelog RSS) and The Batch / DeepLearning.AI (__NEXT_DATA__) —
@@ -69,6 +69,7 @@ SOURCES = [
     ("Karpathy", "https://karpathy.bearblog.dev/feed/", 40),
     ("Karpathy (blog)", "https://karpathy.github.io/feed.xml", 40),
     ("Transformer", "https://www.transformernews.ai/feed", 40),
+    ("Innowacje.ai", "https://innowacje.ai/blog/feed.xml", 40),
 ] + list(PERPLEXITY_RSS)
 
 
@@ -495,7 +496,7 @@ def main(full=False):
         title="AI-bridge",
         subtitle="Combined AI feed: Thinking Machines, Ollama, Mistral, "
         "Interconnected, AI Clock, Stability AI, Bielik, SpeakLeash, Promptowy, Maistry, "
-        "Karpathy (bearblog + old blog), Transformer, Goodfire Research, MiniMax News/Blog, PLLuM, "
+        "Karpathy (bearblog + old blog), Transformer, Innowacje.ai, Goodfire Research, MiniMax News/Blog, PLLuM, "
         "Perplexity (blog/changelog/research/API changelog), "
         "The Batch / DeepLearning.AI, and Groq (blog/newsroom/changelog).",
         blog_url="https://thinkingmachines.ai/blog/",
