@@ -160,19 +160,19 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 ## 📰 Mini news
 
 <!--README_FEED:START-->
-- [Recasting American Power in Latin America](https://carnegieendowment.org/research/2026/09/recasting-american-power-in-latin-america)
-- [Pojawili się w Trzebini. Jedna kontrola i poważne konsekwencje - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMirgFBVV95cUxQLWFvQTFMZXk5SWpRdTdpYXluMTdCYU5ibm10UnFwc2tnUjItcjhTWXZVa3dENkhmNHlyamM5YnVQR254RmdqNFFoWXJyTEhWMzRLNHVtLTJrY0xLM1VhSVFjclUzekMzZEMtbExMeTU4aVh5Ym9FU2lfLVhvS1QyTnM2dWtGd0xzcU9Ga01jb1FTZVhDRzVGbnRFZjBLNHF0c0czUmN5b2RLbmZGaUE?oc=5)
-- [Nvidia, QIA-backed Iambic Therapeutics files for US IPO as biotech boom rolls on](https://www.reuters.com/legal/litigation/nvidia-qia-backed-iambic-therapeutics-files-us-ipo-biotech-boom-rolls-2026-09-21/)
-- [Poland concludes military air operations, says no airspace violation](https://www.reuters.com/world/poland-starts-military-aviation-operations-amid-russian-strikes-ukraine-army-2026-09-21/)
-- [UK's Burnham agrees to Saudi request for refuelling support](https://www.reuters.com/business/aerospace-defense/uks-burnham-agrees-saudi-request-refuelling-support-2026-09-21/)
-- [OpenAI calls for US to take lead in global efforts to develop technical standards](https://www.reuters.com/legal/government/openai-calls-us-take-lead-global-efforts-develop-technical-standards-2026-09-21/)
+- [Untangling the Nuclear Knot: A Constructive Agenda for Managing China’s Nuclear Relations with the United States and Its Allies](https://carnegieendowment.org/research/2026/09/untangling-the-nuclear-knot-a-constructive-agenda-for-managing-chinas-nuclear-relations-with-the-united-states-and-its-allies)
+- [Ponad 620 tys. zł przepadło. 33-latek uwierzył oszustom - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiowFBVV95cUxOb2U5dGY5S2tzcXR6WWdwZHBFN2ZNTUhhMFQydnpuNDF3blFPNG0tS3dTdjlOeHVHUjRPdTd4T29wUXRST09ORGZHMjZ2bG9mSXRlbG1qYVdrSllCeDhKX2ZFWnRyWWRjUml0eHhaNmxMTFZfZU9SX196aHJ2NUh4YnR6aWNEUHJtaG9fdmZnMW5BX0I0eUFTS2dtVlhyMzk3X1FR?oc=5)
+- [Incident across several services](https://www.githubstatus.com/incidents/8zc63m64hy36)
+- [More ways to request and configure Copilot code reviews](https://github.blog/changelog/2026-09-23-copilot-code-review-more-ways-to-request-and-configure-reviews)
+- [Warcraft III: Forsaken Kingdom - to już nie jest RTS](https://antyweb.pl/warcraft-iii-forsaken-kingdom-to-juz-nie-jest-rts)
+- [EXCLUSIVE: Hacked FBI data has sensitive information about employees’ intelligence roles](https://www.reuters.com/world/hacked-fbi-data-has-sensitive-information-about-employees-intelligence-roles-2026-09-23/)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝“Commenting your code is like cleaning your bathroom — you never want to do it, but it really does create a more pleasant experience for you and your guests.”— Ryan Campbell❞</i>
+<i>❝Go put your creed into the deed. Nor speak with double tongue. — Ralph Emerson❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
