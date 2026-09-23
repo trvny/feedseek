@@ -8,6 +8,22 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a55a11b0b151802c",
+      "url": "https://www.cloudflarestatus.com/incidents/f8wg5htd3zz4",
+      "title": "Elevated Errors with any / all in http_response_cache_settings",
+      "content_text": "Sep 23 , 18:08 UTC Resolved - This incident has been resolved. Sep 23 , 15:54 UTC Identified - We have identified an issue causing unexpected errors when creating or updating configurations using any or all expressions in the http_response_cache_settings. \nThis issue strictly affects API operations; existing active configurations and live traffic are not impacted. A fix is currently being deployed, and we will provide an update once the rollout is complete.",
+      "date_published": "2026-09-23T18:08:18Z",
+      "date_modified": "2026-09-23T18:08:18Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/dce21ab9f431b61b",
       "url": "https://www.cloudflarestatus.com/incidents/tl0vrgjy99r0",
       "title": "Cloudflare One Clients are incorrectly challenged on some sites",
@@ -69,6 +85,29 @@
       ],
       "tags": [
         "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/3019918df8157847",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-23-mesh-participant-onboarding/",
+      "title": "Cloudflare One, Cloudflare Mesh - Add Mesh participants with guided onboarding",
+      "content_text": "Cloudflare Mesh now makes it faster to add and manage participants from the dashboard. Select Add participant from Networking > Mesh to deploy a Mesh node or find the information needed to connect a client device . The updated dashboard includes the following improvements: More Mesh node deployment options — Install a node on Linux, Kubernetes, Docker Compose, or Docker CLI. The dashboard provides requirements, commands, configuration, and links for each method. Refer to Run Mesh in Docker / Kub",
+      "date_published": "2026-09-23T00:00:00Z",
+      "date_modified": "2026-09-23T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=680,format=webp/_astro/guided-participant-onboarding-clicks.B0r-5ElX.gif",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=680,format=webp/_astro/guided-participant-onboarding-clicks.B0r-5ElX.gif",
+          "mime_type": "image/gif"
+        }
       ]
     },
     {
@@ -2064,51 +2103,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/9028a1316124a76a",
-      "url": "https://www.cloudflarestatus.com/incidents/np4n61ckjdw7",
-      "title": "Increased Workflow Instance Creation Errors",
-      "content_text": "Sep 7 , 07:35 UTC Resolved - This incident has been resolved. Sep 7 , 07:03 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 7 , 05:12 UTC Investigating - Cloudflare is aware of, and investigating an issue which potentially impacts multiple customers. Further detail will be provided as more information becomes available.",
-      "date_published": "2026-09-07T07:35:46Z",
-      "date_modified": "2026-09-07T07:35:46Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0d3d229c8f424e8f",
       "url": "https://developers.cloudflare.com/changelog/post/2026-09-07-application-profiles/",
       "title": "WAF - Enforce positive security with Application Profiles",
       "content_text": "Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure. The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, strin",
       "date_published": "2026-09-07T00:00:00Z",
       "date_modified": "2026-09-07T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/570b6ff3d263ddba",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-04-increased-worker-size-limit/",
-      "title": "Workers - Deploy larger Workers — up to 64 MiB for both free and paid plans",
-      "content_text": "You can now deploy Workers with larger dependencies, heavier frameworks, and more code without hitting size limits. When you deploy a Worker, Wrangler bundles your code and compresses it before uploading. Previously, Cloudflare checked that compressed size and rejected deploys over 3 MB (Free) or 10 MB (Paid). That limit has been removed. Cloudflare now only checks the uncompressed size of your bundle, which is 64 MiB across all plans. To check your Worker's bundle size before deploying: wrangle",
-      "date_published": "2026-09-04T00:00:00Z",
-      "date_modified": "2026-09-04T00:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Changelog"
