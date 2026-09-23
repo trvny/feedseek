@@ -14,6 +14,12 @@ class AiBridgeTests(unittest.TestCase):
         urls = {label: url for label, url, _ in aibridge.SOURCES}
         self.assertEqual(urls["SpeakLeash"], "https://speakleash.org/feed/")
 
+    def test_innowacje_ai_source_is_registered(self):
+        urls = {label: url for label, url, _ in aibridge.SOURCES}
+        self.assertEqual(
+            urls["Innowacje.ai"], "https://innowacje.ai/blog/feed.xml"
+        )
+
     def test_repairs_answer_ai_toolcalling_entry(self):
         original = {
             "title": "The unauthorized tool call problem",
