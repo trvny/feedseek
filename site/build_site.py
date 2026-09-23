@@ -702,6 +702,7 @@ def build_robots(base: str) -> str:
         f"Sitemap: {base}sitemap.xml\n"
     )
 
+
 def build_opml(feeds: list[dict], base: str) -> str:
     stamp = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     lines = [
