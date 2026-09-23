@@ -278,5 +278,40 @@ class AiBridgeTests(unittest.TestCase):
         self.assertEqual(entries[0]["description"], "Krótki opis wydarzenia.")
 
 
+    def test_goodfire_research_scraper_parses_cards_and_dedupes(self):
+        html = """
+        <main>
+          <article>
+            <a href="/research/reward-hacking-activation-monitors">
+              <h2>Models know when they’re reward hacking — and we can catch them at scale</h2>
+            </a>
+            <span>September 17, 2026</span>
+            <p>Activation monitors reveal when agents know they are gaming rewards.</p>
+          </article>
+          <article>
+            <a href="/research/reward-hacking-activation-monitors">
+              <h2>Duplicate card</h2>
+            </a>
+            <span>September 17, 2026</span>
+          </article>
+          <a href="/research">Research index</a>
+        </main>
+        """
+
+        with patch.object(aibridge, "get_html", return_value=html):
+            entries = aibridge.scrape_goodfire_research(set())
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["source"], "Goodfire Research")
+        self.assertEqual(
+            entries[0]["link"],
+            "https://www.goodfire.com/research/reward-hacking-activation-monitors",
+        )
+        self.assertEqual(
+            entries[0]["date"], datetime(2026, 9, 17, tzinfo=timezone.utc)
+        )
+        self.assertIn("Activation monitors", entries[0]["description"])
+
+
 if __name__ == "__main__":
     unittest.main()
