@@ -8,6 +8,38 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/6f488292af14ca2f",
+      "url": "https://www.cloudflarestatus.com/incidents/jg6ys8sbd6ny",
+      "title": "Intermittent authentication errors for API and R2",
+      "content_text": "Sep 23 , 20:59 UTC Resolved - This incident has been resolved. Sep 23 , 20:09 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 23 , 09:08 UTC Identified - A known issue affected authentication for a small percentage of requests to the API and R2.\nThe issue was identified on Sep 22 at 13:30 UTC, and major impact was mitigated at 19:00 UTC.\nOur team is actively working to resolve the residual impact.",
+      "date_published": "2026-09-23T20:59:35Z",
+      "date_modified": "2026-09-23T20:59:35Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2",
+      "url": "https://www.cloudflarestatus.com/incidents/8wmvkv5jkf15",
+      "title": "Network Performance Degradation — Asia-Pacific",
+      "content_text": "Sep 23 , 18:44 UTC Identified - The issue has been identified and a fix is being implemented. Sep 23 , 18:42 UTC Investigating - Since September 21, 2026 at 02:20 UTC, multiple subsea cable outages have caused congestion between Tokyo and Singapore datacenters. We have rerouted traffic to reduce impact and are working with third-party vendors to restore capacity.",
+      "date_published": "2026-09-23T18:44:55Z",
+      "date_modified": "2026-09-23T18:44:55Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a55a11b0b151802c",
       "url": "https://www.cloudflarestatus.com/incidents/f8wg5htd3zz4",
       "title": "Elevated Errors with any / all in http_response_cache_settings",
@@ -30,22 +62,6 @@
       "content_text": "Sep 23 , 11:02 UTC Identified - The issue has been identified and a fix is being implemented. Sep 22 , 19:23 UTC Investigating - Cloudflare is investigating an issue where Cloudflare One Client customers are incorrectly challenged while visiting some websites.",
       "date_published": "2026-09-23T11:02:41Z",
       "date_modified": "2026-09-23T11:02:41Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/6f488292af14ca2f",
-      "url": "https://www.cloudflarestatus.com/incidents/jg6ys8sbd6ny",
-      "title": "Intermittent authentication errors for API and R2",
-      "content_text": "Sep 23 , 09:08 UTC Identified - A known issue affected authentication for a small percentage of requests to the API and R2.\nThe issue was identified on Sep 22 at 13:30 UTC, and major impact was mitigated at 19:00 UTC.\nOur team is actively working to resolve the residual impact.",
-      "date_published": "2026-09-23T09:08:53Z",
-      "date_modified": "2026-09-23T09:08:53Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -107,6 +123,29 @@
         {
           "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=680,format=webp/_astro/guided-participant-onboarding-clicks.B0r-5ElX.gif",
           "mime_type": "image/gif"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ecd6e81f6c564ce9",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-23-traffic-destination-selector/",
+      "title": "Gateway, Cloudflare One - Traffic Destination selector in Gateway policies",
+      "content_text": "Gateway HTTP and Network policies now include a Traffic Destination selector that identifies how traffic exits Cloudflare. This allows administrators to write policies that target specific off-ramp methods - for example, applying different rules to traffic destined for the public Internet compared to traffic routed through Cloudflare Tunnel or Cloudflare WAN. Available traffic destination values UI name API value Description Internet internet Traffic to the public Internet Cloudflare WAN cloudfl",
+      "date_published": "2026-09-23T00:00:00Z",
+      "date_modified": "2026-09-23T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
         }
       ]
     },
@@ -2087,51 +2126,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/250472e90fa75844",
-      "url": "https://www.cloudflarestatus.com/incidents/pgn7y7hgd25l",
-      "title": "Performance degradation affecting TURN service",
-      "content_text": "Sep 7 , 13:52 UTC Resolved - A fix was deployed for this issue and the impact is over for any new connections on Realtime TURN service.\n\nExisting connection will continue to use TCP until the customers clients end and restart their connections. Sep 7 , 13:04 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 7 , 13:02 UTC Investigating - We are investigating reports of performance degradation affecting our TURN service since August 22nd. Currently, a significant p",
-      "date_published": "2026-09-07T13:52:48Z",
-      "date_modified": "2026-09-07T13:52:48Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0d3d229c8f424e8f",
       "url": "https://developers.cloudflare.com/changelog/post/2026-09-07-application-profiles/",
       "title": "WAF - Enforce positive security with Application Profiles",
       "content_text": "Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure. The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, strin",
       "date_published": "2026-09-07T00:00:00Z",
       "date_modified": "2026-09-07T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/f5f68803c2a95150",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-04-r2-data-access-logs/",
-      "title": "R2 - R2 Data Access Logs",
-      "content_text": "R2 Data Access Logs are now generally available. Turn on logging for a bucket to record object read, write, list, multipart upload, and delete operations with response status codes below 400 . Data Access Logs cover requests made through the S3-compatible API, Cloudflare API and dashboard, Workers bindings, and public buckets through r2.dev or custom domains. Events are available in Workers Observability, where you can filter by bucket, operation, interface, actor, and other request fields. Log",
-      "date_published": "2026-09-04T00:00:00Z",
-      "date_modified": "2026-09-04T00:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Changelog"

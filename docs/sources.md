@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-105 feedów · 835 źródeł
+106 feedów · 842 źródła
 
 ## Spis grup
 
@@ -194,6 +194,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=karpathy.bearblog.dev&sz=16) Karpathy — <https://karpathy.bearblog.dev/feed/>
 - ![](https://www.google.com/s2/favicons?domain=karpathy.github.io&sz=16) Karpathy (blog) — <https://karpathy.github.io/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.transformernews.ai&sz=16) Transformer — <https://www.transformernews.ai/feed>
+- ![](https://www.google.com/s2/favicons?domain=innowacje.ai&sz=16) Innowacje.ai — <https://innowacje.ai/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=groq.com&sz=16) Groq Blog — <https://groq.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=groq.com&sz=16) Groq Newsroom — <https://groq.com/newsroom>
 - ![](https://www.google.com/s2/favicons?domain=www.perplexity.ai&sz=16) Perplexity Blog — <https://www.perplexity.ai/hub/blog>
@@ -202,6 +203,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.answer.ai&sz=16) Answer ai — <https://www.answer.ai/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.answer.ai&sz=16) Answer ai toolcalling — <https://www.answer.ai/posts/2026-01-20-toolcalling.html>
 - ![](https://www.google.com/s2/favicons?domain=crewclaw.com&sz=16) Crewclaw — <https://crewclaw.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=www.goodfire.com&sz=16) Goodfire research — <https://www.goodfire.com/research>
 - ![](https://www.google.com/s2/favicons?domain=www.minimax.io&sz=16) Minimax blog — <https://www.minimax.io/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.minimax.io&sz=16) Minimax news — <https://www.minimax.io/news>
 - ![](https://www.google.com/s2/favicons?domain=pllum.org.pl&sz=16) Pllum blog — <https://pllum.org.pl/blog>
@@ -444,6 +446,15 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=lenovo24.pl&sz=16) lenovo24.pl — <https://lenovo24.pl/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=lenovogaming.pl&sz=16) Lenovo Gaming PL — <https://lenovogaming.pl/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.lenovocdrt.com&sz=16) CDRT Blog — <https://blog.lenovocdrt.com/feed.xml>
+
+### ![](https://www.google.com/s2/favicons?domain=nvidianews.nvidia.com&sz=16) NVIDIA
+`nvidia` · [feed_nvidia.xml](../feeds/feed_nvidia.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=nvidianews.nvidia.com&sz=16) NVIDIA Newsroom — <https://nvidianews.nvidia.com/releases.xml>
+- ![](https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=16) NVIDIA Blog — <https://blogs.nvidia.com/feed/>
+- ![](https://www.google.com/s2/favicons?domain=developer.nvidia.com&sz=16) NVIDIA Developer Blog — <https://developer.nvidia.com/blog/feed/>
+- ![](https://www.google.com/s2/favicons?domain=www.nvidia.com&sz=16) Geforce driver results — <https://www.nvidia.com/Download/processFind.aspx?dtcid=1&lang=en-us&lid=1>
+- ![](https://www.google.com/s2/favicons?domain=www.nvidia.com&sz=16) Geforce news — <https://www.nvidia.com/en-us/geforce/news/>
 
 ### ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) Canva
 `canva` · [feed_canva.xml](../feeds/feed_canva.xml)
