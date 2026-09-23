@@ -189,7 +189,8 @@
       description: "Start refreshing the Feedseek Reader using its current subscriptions and settings.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: false, untrustedContentHint: false },
-      execute() {
+      execute(input = {}) {
+        requireEmptyInput(input);
         const source = text(document.querySelector("#chips .chip.on")) || "All";
         if (refresh.disabled) return { started: false, alreadyRunning: true, source };
         refresh.click();
