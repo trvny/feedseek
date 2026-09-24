@@ -8,25 +8,163 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a8301071b255cd24",
-      "url": "https://www.v2ex.com/t/1244658#reply0",
-      "title": "EVASafe：一个由 Agent 完全主导编写的安卓本地密码管理器",
-      "content_text": "https://github.com/EvanTop/EVASafe 一个完全离线的安卓本地密码管理器 —— 密码只存在你自己的手机里。",
-      "date_published": "2026-09-24T13:23:45Z",
-      "date_modified": "2026-09-24T13:23:45Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/616f44cb107d4c13",
+      "url": "https://www.v2ex.com/t/1244682#reply0",
+      "title": "做了一个面部评分站 face-rating.net：模型在浏览器本地跑，照片全程不出设备，求拍砖",
+      "content_text": "做了一个面部评分站 face-rating.net ：模型在浏览器本地跑，照片全程不出设备，求拍砖 链接： https://face-rating.net 这是什么 一个面部评分工具。一张正面照，浏览器里的图像模型给一个 10 分制的分。不用注册、不用邮箱， 照片不上传 。目前全站免费，没有付费墙，也没有订阅。 分数是怎么来的 浏览器里的关键点模型先测出 478 个面部关键点（ MediaPipe Face Mesh ，468 点 + 10 个虹膜点）。 这一步不出分数。 用眼睛的位置把照片摆正、裁到脸部，裁剪时不拉伸五官。 一个 本地 图像模型读裁剪图，再读它的 镜像版 ，两次预测取平均，换算成 10 分。 这个模型是在 人类照片评分数据 上训练的——所以它输出的是学到的偏好，不是普世审美标准。这点我写在页面上了，不想含糊过去。 几何读数是另一回事，不参与评分 同一批关键点还能算出对称性、纵向横向间距、脸型、眼角角度。很多人以为这些是分数的「成分」， 不是 。分数来自图像模型，几何来自关键点，两者不相乘也不相加。页面上和 FAQ 里我都逐个说明了。 「本地」具体是什么意思 模型文件跟",
+      "date_published": "2026-09-24T17:56:57Z",
+      "date_modified": "2026-09-24T17:56:57Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://i.imgur.com/iv2Ymoq.png",
+      "image": "https://cdn.v2ex.com/avatar/577f/0222/314498_xlarge.png?m=1790272427",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://i.imgur.com/iv2Ymoq.png",
+          "url": "https://cdn.v2ex.com/avatar/577f/0222/314498_xlarge.png?m=1790272427",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/df378810ebf2f056",
+      "url": "https://www.v2ex.com/t/1244680#reply0",
+      "title": "[分享小小的 dle 游戏] RNGdle：每天抽一个数字，看看它藏着什么规律",
+      "content_text": "最近做了一个小小的 dle 游戏，RNGdle ，想把“随机数”变成一种可以每天玩一下的轻量游戏。 玩法很简单：每天抽一个 0 到 1,000,000 之间的整数，然后看看这个数字能触发哪些规律。比如它是不是质数、回文数、完全平方数，或者有重复、递增之类的数位特征。 项目地址： https://rngdle.run/ 每日抽数之外，还能怎么玩 每日游戏：每天抽一次，结果在 UTC 00:00 重置。刷新页面不会换数字。 数字计算器：输入任意范围内的数字，查看它命中的徽章和 EP 得分。 Infinite 无限模式：可以连续抽取，观察一段时间里的结果和统计。 Sandbox 沙盒：只改动一个数位，看看分数和徽章会怎么变化。 挑战分享：把自己的结果发给朋友，对方可以改动其中一个数位，再比较得分。 目前游戏有 233 项徽章规则，涵盖数学性质、数字排列和一些熟悉的数字典故。同一家族的关联徽章只取最高分计入 EP ，避免相似特征重复加分。 关于随机和分数 范围内的 1,000,001 个整数等概率抽取，所以某个指定数字不会因为看起来更特别就更容易抽到。 EP 和稀有度是按固定规则计算的，用来比",
+      "date_published": "2026-09-24T17:06:14Z",
+      "date_modified": "2026-09-24T17:06:14Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/b836fdd310c596c1e82f46a44a487ccb?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/b836fdd310c596c1e82f46a44a487ccb?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/801ec809bdd362d7",
+      "url": "https://www.v2ex.com/t/1244676#reply0",
+      "title": "放弃 Linear 后，我开发了 Gitstride：一个 GitHub Projects 的 macOS 原生客户端",
+      "content_text": "我之前半年，开发个人项目的时候一直在用 Linear 来进行项目管理。本来我以为免费配额是够用的，但最近几个月，我同时开发多个项目，Issue 就多了起来，Linear 的免费配额就不够用了，因此，我就转向了 GitHub Projects ，毕竟这些项目的代码本来就托管在 GitHub 上。 迁移到 GitHub Projects 之后，我发现它内置的 PR 与 Issue 联动工作流不如 Linear 完善，也不太符合我的需求。比如，当我给一个 Issue 关联 Draft PR 时，我希望这个 Issue 的状态能自动变成 In Progress ；当 PR 准备好 Review 的时候，Issue 的状态也能跟着变成 In review 。如果一个 Issue 关联了多个 PR ，我希望等这些 PR 全部合并之后，它才会进入 Done ，而不是合并其中一个 PR 就算完成了。 此外，我也不太喜欢每次都要打开网页来管理项目，还是更想用本地客户端来操作。 所以，在 codex 的协助下，我用 Swift 6 开发了 GitStride ，一个 GitHub Projects 的 m",
+      "date_published": "2026-09-24T16:09:03Z",
+      "date_modified": "2026-09-24T16:09:03Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://s41.ax1x.com/2026/09/25/pn1KrPe.png",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://s41.ax1x.com/2026/09/25/pn1KrPe.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d75c1e5c1eff59cf",
+      "url": "https://www.v2ex.com/t/1244674#reply9",
+      "title": "用半年时间打磨的 HTTPS 抓包和调试工具-ApiCatcher，对标 Proxyman",
+      "content_text": "25 年年底，我当时还在上班，有一天领导让我接手一个我不了解的项目，上来就要改接口，于是就有了用抓包工具从 app 端抓包看涉及的功能都调用了哪些接口，这才有了后续我们做抓包工具的灵感，后来我想用到一些功能但试了几款都没有，就更想自己做一款了。 25 年我在 app store 看到的抓包工具还不到十款吧（现在再去看就多了），基本长得都差不多，功能也差不多，体验也差不多。一看就知道都是基于开源的版本改的。 我感觉这是个机会吧，虽然是小众需求，但能选择的产品不多，而且现有产品也不好用，于是就想开发一款比现有产品都好用的抓包工具：UI 简洁、容易上手、操作简单。把 90%常用的功能做得足够简单，让用户使用不需要看说明书，并且操作步骤能一步完成就不要让用户操作两步。 第一个版本只做了几个核心功能，但用了一个月时间写完，因审核问题，又延迟一个月，到 26 年 1 月低才上架成功。 当时我其实没有了解到有 Proxyman 这款产品，我发布后不久才发现的，因为我没去做什么调研，只在 AppStore 上搜索有哪些抓包工具，而 Proxyman 又没有上架中国。 所以后面当我了解到 Proxyma",
+      "date_published": "2026-09-24T15:58:19Z",
+      "date_modified": "2026-09-24T15:58:19Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://apicatcher.net/apicatcher.webp",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://apicatcher.net/apicatcher.webp",
+          "mime_type": "image/webp"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b7c34d7c442226d6",
+      "url": "https://www.v2ex.com/t/1244673#reply0",
+      "title": "大家帮我看一下是软银炸了还是联通炸了",
+      "content_text": "延迟高的飞起",
+      "date_published": "2026-09-24T15:44:03Z",
+      "date_modified": "2026-09-24T15:44:03Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://i.ibb.co/xSQ1Dk74/2282.jpg",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.ibb.co/xSQ1Dk74/2282.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/fc2c92abd1e9e4c0",
+      "url": "https://www.v2ex.com/t/1244672#reply3",
+      "title": "分享一个制作沉浸式网页视频的 Skill，附《奥德赛》案例和制作过程",
+      "content_text": "最近做了一个《奥德赛》的沉浸式网页：往下滚动，镜头就沿着故事往前走，从特洛伊战后的海面进入洞穴，再经过冥界和海上大漩涡，最后回到伊萨卡\n先放效果： Skill： https://github.com/OpenSenseNova/SenseNova-Skills 使用文档： https://github.com/OpenSenseNova/SenseNova-Skills/blob/main/docs/sn-motion-html_cn.md 1. 开始前，把内容资料和视觉参考准备好 建议把资料来源，交互参考录屏，还有其他各部分内容分开整理，可以参考我这个结构 references/\n  brief.md                  # 目标、受众、章节规模、语言\n  story-notes.md            # 故事梗概、必须保留的事件\n  sources.md                # 资料来源、阅读范围、优先级\n  interaction-reference.mp4 # 交互参考录屏\n  reference-notes.md        # 录屏时间段及需",
+      "date_published": "2026-09-24T15:17:56Z",
+      "date_modified": "2026-09-24T15:17:56Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://i.imgur.com/H6E75Kn.gif",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://i.imgur.com/H6E75Kn.gif",
+          "mime_type": "image/gif"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b5ec0e767e4a11b9",
+      "url": "https://www.v2ex.com/t/1244668#reply7",
+      "title": "实体倒闭真是活该的",
+      "content_text": "我奶奶在超市买的天地一号苹果醋，39 块钱 10 罐，外观看起来跟平时 15 罐的包装一样的，但是用小字写着 赠送两包纸巾。没错，里面塞了两包天地一号的纸巾充数，换作我去买我估计也会上当，毕竟不会看太仔细。 作为参考，拼多多日常价格 37 块钱 15 罐。 真是人才，买苹果醋饮料，还塞两包纸巾。 标题仅攻击实体经济中的无良商家。",
+      "date_published": "2026-09-24T15:00:13Z",
+      "date_modified": "2026-09-24T15:00:13Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/91c2088e234cc4c47a2b896116bd31bd?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/91c2088e234cc4c47a2b896116bd31bd?s=73&d=retro",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -50,75 +188,6 @@
         {
           "url": "https://cdn.v2ex.com/gravatar/a80071a761a22d70457019e297d164b1?s=73&d=retro",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a085edabeb3ab3af",
-      "url": "https://www.v2ex.com/t/1244651#reply3",
-      "title": "做了个文本/文件/配置分享工具",
-      "content_text": "PlainMote 一直苦于企业微信发长文本直接转文档，而且社交平台还有偷看内容的毛病。\n就做了这个项目 内容直接转公网地址分享。\n免登录就能用，登录后能控制分享，添加媒体资源和文件。\n当然额度都比较小，小 vps 负担不起。😭 分享出来，有帮助到大家的话，也很高兴。 https://plainmote.link",
-      "date_published": "2026-09-24T12:32:35Z",
-      "date_modified": "2026-09-24T12:32:35Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/6875/c32d/646408_xlarge.png?m=1749115408",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/6875/c32d/646408_xlarge.png?m=1749115408",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/0c61590fc46ab8ca",
-      "url": "https://www.v2ex.com/t/1244644#reply1",
-      "title": "开发了一个 支持 C++ 20/23 Modules & import std 可用的 C++ Lanuage Server, 已支持 Zed / Neovim / VSCode / Clion 的 lsp 插件",
-      "content_text": "https://github.com/Sunrisepeak/mcpp-language-server",
-      "date_published": "2026-09-24T11:35:37Z",
-      "date_modified": "2026-09-24T11:35:37Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/ef35/5423/676355_large.png?m=1750149658",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/ef35/5423/676355_large.png?m=1750149658",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c043c808711da74c",
-      "url": "https://www.v2ex.com/t/1244643#reply0",
-      "title": "做了几个 DSH 插件后，我开源了一套 AI agent 能照着走的开发流程",
-      "content_text": "做了几个 DSH 插件后，我把从想法到做出来、测试和发布的经验，整理成一套 AI 编程助手能照着走的开发流程，开源分享。 想做自己的 DSH 插件，可以把仓库链接和需求交给 AI 编程助手，让它按流程一步步推进。遇到需要登录账号、授权或提交申请的步骤，再自己接手。 项目起步：按需求决定做纯后台插件，还是带网页界面；也能选择发布到 npm 或只放在 GitHub 。 直接开始开发：常用的项目文件和打包方式都准备好了，不用从空目录摸索。 独立环境试用：开发和安装测试都在单独环境完成，不影响平时使用的 DSH 。 自动检查：帮你检查项目能不能正常运行、插件有没有接好、发布包有没有漏文件。 CI 流程已配好：提交代码时会自动检查；发布新版本前也会再检查，通过后才继续发布。 自动发布：完成一次设置后，发布新版本就能自动发到 npm ，并在 GitHub 创建版本记录；也支持发测试版或只发 GitHub 。发布时不用把 npm 密钥放进代码仓库。 插件收录：整理了 20 个常见目录和发现渠道。 dsh-plugin.org 、DSH Market 支持自动发现； dsh.pub 、Awesome",
-      "date_published": "2026-09-24T11:27:54Z",
-      "date_modified": "2026-09-24T11:27:54Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/35d8/23b4/35521_large.png?m=1789223681",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/35d8/23b4/35521_large.png?m=1789223681",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -188,75 +257,6 @@
         {
           "url": "https://rssfile.sspai.com/2026/09/18/7ee84e5ca3d4b57096b606ac87bcf9b6.jpg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/aa315dcf66a64ace",
-      "url": "https://www.v2ex.com/t/1244578#reply1",
-      "title": "1password 新用户续费首年 50% 优惠码",
-      "content_text": "1 、起因 之前一直通过土区 Apple 订阅 1Password ，年费 499 里拉。今天收到邮件，到期后续费要涨到 1999 里拉一年，直接变成原来的四倍，只好另找续费的路子。 2 、过程 之前听说过“新建账号享首年优惠，再把旧账号数据迁过去”的方法，迁移也不复杂。 懒得自己挨个找优惠码，就把方向告诉 GPT ，让它搜索网上的优惠码，再逐个打开官方注册页验证。最后测试了 19 个码，还真找到了一个能用的五折码：CYBER25 。 注册链接： https://start.1password.com/sign-up?c=CYBER25 3 、结果 已经注册新账号、绑定支付方式，亲测优惠生效。个人版首年五折，约 24 美元，折合人民币 160 元左右，具体以结账金额为准。 先把优惠拿下，等国庆后再迁移数据。准备下班了 😂",
-      "date_published": "2026-09-24T07:44:46Z",
-      "date_modified": "2026-09-24T07:44:46Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://i.imgur.com/hvS0HVE.png",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://i.imgur.com/hvS0HVE.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a2adc0a8e2c7e6c1",
-      "url": "https://www.v2ex.com/t/1244576#reply0",
-      "title": "你们所在运营商获取到的 IPv6 有几个？",
-      "content_text": "广东 终端获取到的公网 IPv6 。 电信 2 个,联通 2 个，移动 3 个。 移动很多 IPv6 吗？",
-      "date_published": "2026-09-24T07:36:25Z",
-      "date_modified": "2026-09-24T07:36:25Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/51ae/7051/123092_large.png?m=1722924596",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/51ae/7051/123092_large.png?m=1722924596",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/05a5be6b0f269359",
-      "url": "https://www.v2ex.com/t/1244565#reply1",
-      "title": "百度搭子免费咖啡组队",
-      "content_text": "888 最近挖到一个绝佳的 AI 办公搭子 DuMate ，处理文档和杂事绝对是提效神器！走我的专属链接，咱俩各领一张星巴克中杯咖啡券，一起体验准点下班的快乐： https://www.dumate.cn/activity/starbucks?dutoken=3.s%3A%2F%C2%A5%5Em%24Dj3enxa%23%5E%25&track=1063479p&sa=dialog_command",
-      "date_published": "2026-09-24T07:08:04Z",
-      "date_modified": "2026-09-24T07:08:04Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/e765/5c5f/627953_xlarge.png?m=1786513871",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/e765/5c5f/627953_xlarge.png?m=1786513871",
-          "mime_type": "image/png"
         }
       ]
     },

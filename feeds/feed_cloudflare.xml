@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-24T13:44:57.065011+00:00</updated>
+  <updated>2026-09-24T18:37:56.454420+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -13,6 +13,51 @@
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5d4efc84958b947a</id>
+    <title>Cloudflare Access updates delayed</title>
+    <updated>2026-09-24T18:25:30+00:00</updated>
+    <content>Sep 24 , 18:25 UTC Resolved - This incident has been resolved. Sep 24 , 15:31 UTC Monitoring - We have applied a fix and are actively monitoring. Sep 24 , 15:20 UTC Investigating - Cloudflare engineering is investigating an issue causing a delay in configuration updates. This includes applications and policy updates. Authentication and policy enforcement are not impacted.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/xbgbb80yw0jh" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-24T18:25:30+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/797857620a689239</id>
+    <title>Delays Starting Cloudflare Workers Builds</title>
+    <updated>2026-09-24T17:33:57+00:00</updated>
+    <content>Sep 24 , 17:33 UTC Monitoring - Customers may experience delays starting Cloudflare Workers builds.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/dwfzz0bwhmsq" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-24T17:33:57+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/99c6208d48d90e5a</id>
+    <title>Browser isolation session data sync issues</title>
+    <updated>2026-09-24T17:28:20+00:00</updated>
+    <content>Sep 24 , 17:28 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 24 , 17:26 UTC Identified - Cloudflare is investigating issues with Browser Isolation's session data sync. Customers that use Browser Isolation may observe errors on acquiring a browser stating that browser storage is unavailable, and they will need to sign into web apps again. They will continue to be able to use browsers during this time.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/mltthh0jxxpz" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-24T17:28:20+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4224c10f944548df</id>
+    <title>How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers</title>
+    <updated>2026-09-24T15:00:00+00:00</updated>
+    <content>External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we investigated it, and the steps we took to remediate it.</content>
+    <link href="https://blog.cloudflare.com/containers-cross-tenant-vulnerability/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-09-24T15:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M38DQFQRTYYSM43H964E1E3F.01M38DQGBNEE0N3C6WAXNMGS0H.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M38DQFQRTYYSM43H964E1E3F.01M38DQGBNEE0N3C6WAXNMGS0H.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M38DQFQRTYYSM43H964E1E3F.01M38DQGBNEE0N3C6WAXNMGS0H.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/0e631e0f934e89ab</id>
     <title>Customers using BYOIP can have issues updating their BGP prefixes, including advertising or withdrawing prefixes.</title>
     <updated>2026-09-24T10:25:52+00:00</updated>
@@ -21,6 +66,36 @@
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-24T10:25:52+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/0fa9dc99a7c2e6b0</id>
+    <title>1.1.1.1 - RFC 8509 root key trust anchor sentinel support</title>
+    <updated>2026-09-24T00:00:00+00:00</updated>
+    <content>1.1.1.1 now supports RFC 8509 ↗ root key trust anchor sentinels. They let you check whether the responding resolver trusts a DNSSEC root key ahead of a key rollover. To check for KSK-2024 (key tag 38696), query DNSSEC-signed names in dnstest.dev : # On a sentinel-aware resolver that trusts KSK-2024: # Returns NOERROR with an A answer. dig @1.1.1.1 root-key-sentinel-is-ta-38696.dnstest.dev. A +noall +comments +answer # Returns SERVFAIL without an answer. dig @1.1.1.1 root-key-sentinel-not-ta-3869</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-24-root-key-trust-anchor-sentinel/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-24T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e3720bce8028192e</id>
+    <title>R2 - R2 bandwidth usage metrics</title>
+    <updated>2026-09-24T00:00:00+00:00</updated>
+    <content>New R2 product-level Metrics page in the Cloudflare dashboard shows bandwidth usage. You can view usage across all buckets or per bucket. Go to R2 Metrics ↗ Bandwidth throughput is split by object upload and download. The GraphQL Analytics API exposes the same bandwidth usage metrics that power the dashboard for your queries and analytics. For more information, refer to R2 metrics and analytics .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-24-r2-bandwidth-metrics/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-24T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1443,height=747,format=webp/_astro/r2-bandwidth-metrics.9lTC-zY2.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1443,height=747,format=webp/_astro/r2-bandwidth-metrics.9lTC-zY2.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1443,height=747,format=webp/_astro/r2-bandwidth-metrics.9lTC-zY2.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/6f488292af14ca2f</id>
@@ -124,6 +199,21 @@ Further detail will b</content>
     <updated>2026-09-23T00:00:00+00:00</updated>
     <content>You can now view account-level analytics for your Images transformation usage. Go to Images &amp; Stream &gt; Transformations &gt; Analytics to view sampled estimates of image transformation request traffic, including: Requests by source, split between URL-based transformations and Images binding transformations Top zones, transformation configurations, and origin hosts for URL-based requests Top Worker scripts for Images binding requests Use these analytics to identify the zones, configurations, origins,</content>
     <link href="https://developers.cloudflare.com/changelog/post/2026-09-23-transformation-analytics/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-23T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ae81c840add20c9</id>
+    <title>Durable Objects - Durable Object name search now supports 128 characters</title>
+    <updated>2026-09-23T00:00:00+00:00</updated>
+    <content>Durable Object name searches in the Cloudflare dashboard now accept up to 128 characters, up from 20. Search results and recent invocation lists show up to 128 characters before being truncated with an ellipsis. This limit applies to the object filter on the Metrics tab and object search in Data Studio . For more information, refer to Metrics and analytics and Data Studio .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-24-durable-object-name-search-limit/" rel="alternate"/>
     <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
     <published>2026-09-23T00:00:00+00:00</published>
     <media:group>
@@ -1303,64 +1393,6 @@ https://letsencrypt.status.io/pages/incident/55957a99e800baa4</content>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M1PVTWFH1FTSY24GMGKMD4G2.01M1PVTXAKN3C2KME8M5NF4SS4.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/652c79981097cf58</id>
-    <title>Cache Reserve Issue in Paris</title>
-    <updated>2026-09-08T05:22:41+00:00</updated>
-    <content>Sep 8 , 05:22 UTC Resolved - This incident has been resolved. Sep 8 , 04:42 UTC Identified - The issue has been identified and a fix is being implemented. Sep 8 , 03:25 UTC Investigating - Cloudflare is investigating an issue with Cache Reserve errors in Paris (CDG). Customers may see an elevated request volume to origin servers in the forementioned region.
-
-We are working to analyse and mitigate this problem.  More updates to follow shortly.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/qz292kvy220g" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-08T05:22:41+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d6e560bc521762c1</id>
-    <title>Cloudflare Account Member Invite Issue</title>
-    <updated>2026-09-08T01:42:38+00:00</updated>
-    <content>Sep 8 , 01:42 UTC Resolved - This incident has been resolved. Sep 8 , 01:32 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 8 , 00:35 UTC Investigating - Cloudflare customers may experience an issue when invited to a new account. An error message is displayed, "Invaild redirect_url". 
-
-A workaround can be used:
-* Invited members create an account directly from the dashboard (not using the email link)
-* Admin resends invitation
-* Invited member clicks new link a</content>
-    <link href="https://www.cloudflarestatus.com/incidents/pjr4m9q1xxb1" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-08T01:42:38+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/13a0bbce4527a32d</id>
-    <title>Workers - Miniflare v5 prepares local development for the cf CLI</title>
-    <updated>2026-09-08T00:00:00+00:00</updated>
-    <content>Miniflare v5 prepares Cloudflare local development tooling for the upcoming cf CLI. Miniflare powers local Workers development behind wrangler dev , the Cloudflare Vite plugin, and @cloudflare/vitest-plugin .
-Most projects should use those tools instead of depending on Miniflare directly, and Miniflare v5 will not require any action. The most significant change is a new configuration shape which aligns Miniflare with cloudflare.config.ts , the programmatic Cloudflare configuration format now ava</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-08-miniflare-v5/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a78ecf1c7f7de619</id>
-    <title>Radar - Radar search now includes Internet events</title>
-    <updated>2026-09-08T00:00:00+00:00</updated>
-    <content>Cloudflare Radar search now includes Internet events and outages alongside existing results. Search event descriptions or related entities, such as locations, ASes, bots, and top-level domains, to find relevant events and open the most relevant Radar view. Event links preserve the event date range, making it easier to investigate what changed before, during, and after an event. These results are also available to browser-based AI agents through WebMCP .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-08-radar-search-events/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2512,height=1130,format=webp/_astro/radar-search-events.DpZAk59G.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2512,height=1130,format=webp/_astro/radar-search-events.DpZAk59G.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2512,height=1130,format=webp/_astro/radar-search-events.DpZAk59G.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9c22a947e58e0ba6</id>
     <title>WAF - WAF Release - 2026-09-08</title>
     <updated>2026-09-08T00:00:00+00:00</updated>
@@ -1398,33 +1430,6 @@ Most projects should use those tools instead of depending on Miniflare directly,
     <link href="https://developers.cloudflare.com/changelog/post/2026-09-08-private-mcp-servers/" rel="alternate"/>
     <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
     <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d5334cf67241ae07</id>
-    <title>Browser Isolation Session Initialization Failures</title>
-    <updated>2026-09-07T19:14:29+00:00</updated>
-    <content>Sep 7 , 19:14 UTC Resolved - This incident has been resolved. Sep 7 , 15:11 UTC Monitoring - A fix has been implemented and we are monitoring the results.
-
-Customers still experiencing the issue may attempt to close all their Browser Isolation tabs for 2 minutes before starting a new session. Sep 7 , 14:59 UTC Identified - The issue has been identified and a fix is being implemented. Sep 7 , 14:25 UTC Investigating - We are investigating reports of customers encountering a white screen when atte</content>
-    <link href="https://www.cloudflarestatus.com/incidents/z16209cfb1xv" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-07T19:14:29+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/0d3d229c8f424e8f</id>
-    <title>WAF - Enforce positive security with Application Profiles</title>
-    <updated>2026-09-07T00:00:00+00:00</updated>
-    <content>Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure. The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, strin</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-07-application-profiles/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-07T00:00:00+00:00</published>
     <media:group>
       <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
@@ -1926,21 +1931,6 @@ Customers still experiencing the issue may attempt to close all their Browser Is
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01KZ7B4VA7KJWAWH8CXYKRWQSK.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/12934eb892da8425</id>
-    <title>Announcing Cloudflare Wallets: the programmable wallet for the agentic Internet</title>
-    <updated>2026-08-04T13:00:00+00:00</updated>
-    <content>Cloudflare Wallets will provide AI agents with native payments and verifiable identity on the web. Using the x402 protocol, agents can autonomously purchase APIs and content within clear safety guardrails.</content>
-    <link href="https://blog.cloudflare.com/wallets/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-08-04T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01KZ517FXTQNNJ8YGVAX2EV3YW.png" type="image/png" medium="image" height="628" width="1200"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01KZ517FXTQNNJ8YGVAX2EV3YW.png" height="628" width="1200"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01KZ517FXTQNNJ8YGVAX2EV3YW.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/c757d87940d0a351</id>
