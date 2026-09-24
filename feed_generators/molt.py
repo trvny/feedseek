@@ -1,8 +1,8 @@
 """Combined Molt ecosystem feed.
 
-Moltbook posts come from the public JSON API, while SpaceMolt news and changelog
-entries come from their native feeds. Moltbook pagination scans the complete
-publishable window before shared cache state advances. Publication then uses the
+Moltbook hot posts come from the public JSON API, while SpaceMolt news and
+changelog entries come from their native feeds. Moltbook pagination fills a
+bounded hot window before shared cache state advances. Publication then uses the
 shared fair-share allocator across submolts and the two official SpaceMolt streams.
 """
 
@@ -22,11 +22,12 @@ logger = setup_logging()
 
 FEED_NAME = "molt"
 SOURCE_NAME = "Moltbook"
-SITE_URL = "https://spacemolt.com/"
 MOLTBOOK_SITE_URL = "https://www.moltbook.com/"
-MOLTBOOK_PAGE_SIZE = 50
+SITE_URL = MOLTBOOK_SITE_URL
+MOLTBOOK_PAGE_SIZE = 25
+MOLTBOOK_HOT_WINDOW = 25
 MOLTBOOK_API_URL = (
-    f"https://www.moltbook.com/api/v1/posts?sort=new&limit={MOLTBOOK_PAGE_SIZE}"
+    f"https://www.moltbook.com/api/v1/posts?sort=hot&limit={MOLTBOOK_PAGE_SIZE}"
 )
 SPACEMOLT_SOURCES = (
     ("SpaceMolt News", "https://spacemolt.com/news/feed.xml", 40),
@@ -245,14 +246,12 @@ def _append_unique(entries: list[dict], page_entries: list[dict], seen: set[str]
 def fetch_moltbook_pages(
     known_links: set[str], *, fetch=get_html
 ) -> tuple[list[dict], set[str], bool]:
-    """Fetch the recent candidate window used for capped publication.
+    """Fetch the current Moltbook hot window used for publication.
 
-    Publication is balanced by submolt, but only inside the newest
-    ``CANDIDATE_LIMIT`` usable global posts. Scanning that entire window keeps
-    moderation checks aligned with every item eligible for publication while
-    giving quieter submolts enough room to fill the 250-entry feed. A failed
-    cursor page discards the whole batch so cache state never advances across an
-    unobserved gap.
+    The API is ranked by ``sort=hot``. Pagination only continues when filtered
+    or overlapping rows leave fewer than ``MOLTBOOK_HOT_WINDOW`` distinct
+    usable posts. A failed cursor page discards the whole batch so cache state
+    never advances across an unobserved gap.
     """
     entries: list[dict] = []
     moderated_links: set[str] = set()
@@ -261,7 +260,7 @@ def fetch_moltbook_pages(
     seen_cursors: set[str] = set()
     cursor: str | None = None
 
-    while len(usable_links_seen) < CANDIDATE_LIMIT:
+    while len(usable_links_seen) < MOLTBOOK_HOT_WINDOW:
         if cursor is not None:
             if cursor in seen_cursors:
                 logger.warning("[Moltbook] repeated cursor detected: %s", cursor)
@@ -291,7 +290,7 @@ def fetch_moltbook_pages(
         cursor = next_cursor
 
     logger.info(
-        "[Moltbook] scanned %d distinct usable post(s), collected %d new, found %d moderated",
+        "[Moltbook] scanned %d distinct hot post(s), collected %d new, found %d moderated",
         len(usable_links_seen),
         len(entries),
         len(moderated_links & known_links),
@@ -316,20 +315,24 @@ def main(full: bool = False) -> bool:
     if not complete:
         logger.warning("[Moltbook] incomplete pagination; preserving last good feed")
         return False
+    current_hot_links = {entry["link"] for entry in fresh_entries}
 
     def scrape_prefetched(known_links: set[str]) -> list[dict]:
         """Return prefetched Moltbook entries that remain fresh and unmoderated."""
         return _fresh_unmoderated(fresh_entries, known_links, moderated_links)
 
     def keep_cached(entry: dict) -> bool:
-        """Drop Moltbook posts observed as deleted or spam in the publishable window."""
-        return entry.get("link") not in moderated_links
+        """Keep SpaceMolt history, but only Moltbook posts still in the hot window."""
+        if entry.get("source") != SOURCE_NAME:
+            return True
+        link = entry.get("link")
+        return link in current_hot_links and link not in moderated_links
 
     return run(
         feed_name=FEED_NAME,
         title="Molt",
         subtitle=(
-            "Moltbook agent posts plus official SpaceMolt news and changelog updates, "
+            "Moltbook hot posts plus official SpaceMolt news and changelog updates, "
             "fair-shared across communities and official streams."
         ),
         blog_url=SITE_URL,
