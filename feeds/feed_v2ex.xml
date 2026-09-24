@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-09-23T21:46:49.179942+00:00</updated>
+  <updated>2026-09-24T00:52:50.357174+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -12,6 +12,66 @@
   <icon>https://www.v2ex.com/favicon.ico</icon>
   <logo>https://www.v2ex.com/favicon.ico</logo>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/49f299618163f15a</id>
+    <title>qclaw 倒闭了</title>
+    <updated>2026-09-24T00:26:22+00:00</updated>
+    <content>亲爱的 QClaw 用户： 非常感谢您一直以来的信任与陪伴。我们非常遗憾地通知您，因业务发展调整，QClaw 将于 2026 年 12 月 24 日 00:00 正式停止运营。</content>
+    <link href="https://www.v2ex.com/t/1244394#reply7" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-09-24T00:26:22+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/e690/8bee/445453_xlarge.png?m=1711885731" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/e690/8bee/445453_xlarge.png?m=1711885731"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/e690/8bee/445453_xlarge.png?m=1711885731" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/337f1aa8d88f3ac4</id>
+    <title>Wild H3C：把 antirez 的 h3.c 包成了 ComfyUI 插件， Mac 本地跑 MiniMax H3 视频生成</title>
+    <updated>2026-09-24T00:22:28+00:00</updated>
+    <content>背景：MiniMax H3 （ 33B 视频生成模型）官方本地推理只支持 CUDA ，Mac 上基本不可用。antirez （ Redis 作者）写了 h3.c —— 纯 C + Metal 的 Apple Silicon 原生推理引擎。 我把它封装成了 ComfyUI 自定义节点并上架了官方 Registry ，应该是 h3.c 生态的第一个 ComfyUI 插件： - 两个节点：文生视频（画幅 / 时长 / 步数 / 速度预设 / seed / 首尾帧）+ Ref2VA 参考生成（最多 9 张有序参考图 + 1 条参考音频） - ComfyUI 界面内实时进度（分阶段进度条）、可取消；标准 VIDEO 输出直接接 SaveVideo - 已经下载过模型权重的话直接把目录指过去就行，不用重下 268GB - 97 个 pytest 用例 + 真机端到端验证（ M 系列 MBP 128G ，512×512 / 4 步约 32 秒） 设计上没有重写任何引擎逻辑，就是 subprocess 包 CLI —— 上游更新 git pull &amp;&amp; make 就能获得；包内不含二进制和权重，REA</content>
+    <link href="https://www.v2ex.com/t/1244391#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-24T00:22:28+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/d1ae918cf7d64647e1c4347f30a1f8b9?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/d1ae918cf7d64647e1c4347f30a1f8b9?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/d1ae918cf7d64647e1c4347f30a1f8b9?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/118d5dde869afc2d</id>
+    <title>[分享创造] PageLens：把多个网页的变化整理成个人信息流</title>
+    <updated>2026-09-24T00:15:31+00:00</updated>
+    <content>分享一款网页变化监控产品：PageLens，目前可以免费使用。它的重点不是简单提示“页面变了”，而是按你的要求提取具体信号，并把多个网页的结果整理成持续更新的信息流。 在当前网页打开扩展，用一句自然语言描述要关注的内容，再按设定周期检查并保留结果，不需要逐个打开页面反复刷新。 一些使用场景： 每小时记录 S&amp;P 500、Nasdaq 100 和 VIX，只标记超过阈值的波动； 记录 BTC 价格、24 小时变化和成交量； 关注某位 X 用户发布的特定主题，忽略回复和转发； 观察商品价格和库存，降到目标价格或恢复供货时留下记录。 PageLens 支持云端检查，也提供 macOS 本地运行方式。登录页面需要用户明确授予站点权限；遇到 CAPTCHA、MFA 或网站限制时不会尝试绕过。目前还是早期版本，复杂页面的兼容性仍在继续完善。 官网和示例： https://pagelens.net/?utm_source=v2ex&amp;utm_medium=community&amp;utm_campaign=seed_launch 下载： https://pagelens.net/download?sourc</content>
+    <link href="https://www.v2ex.com/t/1244390#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-24T00:15:31+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/e485/b3fc/50423_large.png?m=1401276128" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/e485/b3fc/50423_large.png?m=1401276128"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/e485/b3fc/50423_large.png?m=1401276128" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/f0031b216b5156db</id>
+    <title>做了一个 Mac 窗口分组工具 TabSash，想找几位朋友试用反馈</title>
+    <updated>2026-09-24T00:09:32+00:00</updated>
+    <content>大家好，我做了一个 macOS 窗口分组工具 TabSash ，可以把多个应用的窗口放进一个组，进行切换和移动。 目前发布了 0.1.2 ，想找几位朋友帮忙看看首次安装、权限设置和日常使用是否顺畅。 下载： https://tabsash.app/ - 支持 Apple 芯片 Mac ，macOS 14 或更高版本。 - 提供 7 天完整功能试用，无需付款，不会自动续费。 - 试用后可选择一次性购买，当前价格 US$6.99 ，适用税费以结账页为准。 - 管理窗口需要辅助功能权限；窗口缩略图需要屏幕录制权限。 如果遇到问题，欢迎在帖子里反馈操作步骤、Mac 芯片和 macOS 版本，也欢迎指出不好理解的地方。</content>
+    <link href="https://www.v2ex.com/t/1244387#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-09-24T00:09:32+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/927b373908f9f6c7c492669d9d1a19fc?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/927b373908f9f6c7c492669d9d1a19fc?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/927b373908f9f6c7c492669d9d1a19fc?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/b6b8b2bc264b88bc</id>
     <title>grok bot 风格头像提示词</title>
@@ -84,51 +144,6 @@
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/ce7971ceb5c34c83dbefa9e2e0072480?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/90247d7db649fecc</id>
-    <title>[送码] 立项一年陆续开发 10 个月的学英语网站（听说读写一网打尽）</title>
-    <updated>2026-09-23T13:57:01+00:00</updated>
-    <content>最近在 V2EX 看过几个 学英语的产品 了,都不错，有些想法确实很好，等有时间，我也借鉴一下。 接下来，介绍一个精心打磨的学英语网站。 前前后后陆陆续续开发了差不多 10 个月 我始终觉得，一个 好用的工具 ，应该具备 好看，简单的特点。 于是最近耐心重新打磨了一下我的 背词背句产品。 为什么要强调 背词背句 呢，因为实际上 我做了两个网站 ，一个强调的是背词背句，主打 一个通过打字学英语 。在打字学英语的基础上，增加一些辅助功能，如：学音标，练习口语（影子跟读）。接入相关评测服务。 而另外 一个负责 提供主动输入 （看视频 听播客）语境视听 两个的 UI 和 UX 我目前对 背词背句产品 比较满意，因为打磨过的次数版本迭代比较多。后续可能会对产品二进行二次 UI 打磨。 产品一（背词背句）核心功能 ： 单词练习：敲键盘背单词，默写/不默写都行 句子练习：支持连词成句，有句子成分讲解 单词计划：允许选择词库计划每天学多少 复习系统：采用 FSRS v4 间隔算法 记忆加入系统的单词 跟读评测：打分/反馈调整建议 产品二 (看视频 听播客）核心功能 ： 全英视频：通过 Volg 切片字</content>
-    <link href="https://www.v2ex.com/t/1244351#reply2" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-23T13:57:01+00:00</published>
-    <media:group>
-      <media:content url="https://img.erpweb.eu.org/imgs/2026/09/2c96818200c1ce3b.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://img.erpweb.eu.org/imgs/2026/09/2c96818200c1ce3b.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://img.erpweb.eu.org/imgs/2026/09/2c96818200c1ce3b.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/675ab54a674c069d</id>
-    <title>做了个 macOS 27 菜单栏辅助小工具，让原生折叠范围可以主动控制</title>
-    <updated>2026-09-23T13:31:07+00:00</updated>
-    <content>升级到 macOS 27 后，系统终于把菜单栏图标折叠做进了原生功能。但实际用下来，我觉得它目前阶段更像一个「半成品」：只有菜单栏图标比较多、空间不足时，系统才会触发隐藏功能。 我的需求其实更简单，不管菜单栏有没有挤满，我都希望把不常用的图标先收起来，需要的时候再一键展开。 所以费尽心思打磨了一个很小的 macOS 工具：ShiftBar 。 ShiftBar 没有重新做一套菜单栏，也不是想做成 Bartender / Ice / Thaw 那种功能比较完整的 Menu Bar Manager 。 它的思路反而是尽量利用 macOS 27 已经提供的原生菜单栏折叠能力，只补上我自己觉得缺少的那部分控制，它甚至没有设置页面（全部在图标和菜单中完成）。 目前主要做了这些： * 自定义菜单栏图标的隐藏范围 * 单击胶囊即可展开 / 收起（基于 macOS 27 原生折叠机制） * Shift + 拖动快速调整隐藏范围 * 记住设置好的隐藏范围 * 支持菜单栏布局备份与恢复 * 右键点击胶囊图标查看使用方法 为什么系统已经有原生折叠了，还要做这个？如果只是想永久隐藏几个菜单栏图标，macOS </content>
-    <link href="https://www.v2ex.com/t/1244347#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-23T13:31:07+00:00</published>
-    <media:group>
-      <media:content url="https://i.v2ex.co/W1518244l.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.v2ex.co/W1518244l.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.v2ex.co/W1518244l.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/1429807c607493ee</id>
-    <title>马上放假，分享一下 随时随地在路上用手机管理服务器的面板，还请大佬指点</title>
-    <updated>2026-09-23T13:26:09+00:00</updated>
-    <content>[福利] 普通用户可以免费永久托管 10 台 linux/mac 服务器，能满足大部分人的需求 产品地址 https://hoston.work 核心功能 ssh 管理 （可 vibe 编程） 文件管理 docker 管理 主要特色 自带内网穿透，无需公网 IP 支持手机操作（安卓） ssh 支持弱网断网重连 刷新不断开 类似 tmux 全程使用 mTLS 证书加密 功能截图 ssh 截图 docker 管理截图 文件管理截图 手机截图</content>
-    <link href="https://www.v2ex.com/t/1244345#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-09-23T13:26:09+00:00</published>
-    <media:group>
-      <media:content url="https://i.imgur.com/PUsQDDU.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.imgur.com/PUsQDDU.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.imgur.com/PUsQDDU.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/482f46a26c459dc2</id>
     <title>codex 最近发的重置卡似乎只重置了平时的 1/4token 额度</title>
     <updated>2026-09-23T12:44:47+00:00</updated>
@@ -187,21 +202,6 @@
     </media:group>
     <dc:creator>sspai.com</dc:creator>
     <link rel="enclosure" href="https://rssfile.sspai.com/2026/6/30/article/831096df-1239-9d40-8cb1-c42319e8f9f3.png?imageMogr2/auto-orient/ignore-error/1" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/efa716ed3f6dfcfa</id>
-    <title>技术人员使用电话的频率 &lt;=1 次/年，还正常吗？</title>
-    <updated>2026-09-23T08:03:18+00:00</updated>
-    <content>回念过去好多年电话呼入呼出的频率几乎为零，工作和生活都有对应的 IM app ，也没有接听和拨打电话的场景诉求。 外卖、快递的电话，我也不接，最后物品也会顺利的拿到。呼入的电话其实很多，没接过也没后续，猜都是广告等骚扰电话。 即使难缠的政府那边办事，也是通过互联网去查询备好资料而不是打电话确认事宜。 也没同事、朋友、亲人会打我电话，有事都是 IM app 处理。忙或者需要思考的话，就先回复一个“1”告知已收，再整理回复内容。 其他行业肯定是电话作为信息互通的第一通讯工具。对于技术行业人员，信息的流转还需要电话吗？</content>
-    <link href="https://www.v2ex.com/t/1244284#reply7" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-09-23T08:03:18+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/6e5b/f172/624816_xlarge.png?m=1761108399" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/6e5b/f172/624816_xlarge.png?m=1761108399"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/6e5b/f172/624816_xlarge.png?m=1761108399" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/7837adbcffb3367c</id>
