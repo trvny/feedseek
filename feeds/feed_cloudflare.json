@@ -8,6 +8,22 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0e631e0f934e89ab",
+      "url": "https://www.cloudflarestatus.com/incidents/gwrzznc9f642",
+      "title": "Customers using BYOIP can have issues updating their BGP prefixes, including advertising or withdrawing prefixes.",
+      "content_text": "Sep 24 , 10:25 UTC Resolved - This incident has now been resolved - Customers with BYOIP addresses were unable to update their BGP prefixes, including advertising or withdrawing prefixes. Customers making changes to their address maps may also have experienced delays. Sep 24 , 10:22 UTC Investigating - We are currently investigating an issue where customers with BYOIP addresses will be unable to update their BGP prefixes, including advertising or withdrawing prefixes.",
+      "date_published": "2026-09-24T10:25:52Z",
+      "date_modified": "2026-09-24T10:25:52Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/6f488292af14ca2f",
       "url": "https://www.cloudflarestatus.com/incidents/jg6ys8sbd6ny",
       "title": "Intermittent authentication errors for API and R2",
@@ -131,6 +147,29 @@
       "url": "https://developers.cloudflare.com/changelog/post/2026-09-23-traffic-destination-selector/",
       "title": "Gateway, Cloudflare One - Traffic Destination selector in Gateway policies",
       "content_text": "Gateway HTTP and Network policies now include a Traffic Destination selector that identifies how traffic exits Cloudflare. This allows administrators to write policies that target specific off-ramp methods - for example, applying different rules to traffic destined for the public Internet compared to traffic routed through Cloudflare Tunnel or Cloudflare WAN. Available traffic destination values UI name API value Description Internet internet Traffic to the public Internet Cloudflare WAN cloudfl",
+      "date_published": "2026-09-23T00:00:00Z",
+      "date_modified": "2026-09-23T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/7115ac767f2a7a30",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-23-transformation-analytics/",
+      "title": "Cloudflare Images - View transformation analytics in Images",
+      "content_text": "You can now view account-level analytics for your Images transformation usage. Go to Images & Stream > Transformations > Analytics to view sampled estimates of image transformation request traffic, including: Requests by source, split between URL-based transformations and Images binding transformations Top zones, transformation configurations, and origin hosts for URL-based requests Top Worker scripts for Images binding requests Use these analytics to identify the zones, configurations, origins,",
       "date_published": "2026-09-23T00:00:00Z",
       "date_modified": "2026-09-23T00:00:00Z",
       "authors": [
@@ -2110,51 +2149,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/9636edc21aeeb9a4",
-      "url": "https://www.cloudflarestatus.com/incidents/kjfs3vqkxkgs",
-      "title": "Issues rendering route configuration table in Networking > Routes UI",
-      "content_text": "Sep 7 , 17:12 UTC Resolved - This incident has been resolved. Sep 7 , 16:46 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 7 , 16:11 UTC Identified - The issue has been identified and a fix is being implemented. Sep 7 , 15:52 UTC Investigating - We are continuing to investigate this issue. Sep 7 , 15:32 UTC Investigating - Cloudflare is investigating an issue within the Dashboard UI (Networking > Routes) where the route configuration table is failing to displa",
-      "date_published": "2026-09-07T17:12:30Z",
-      "date_modified": "2026-09-07T17:12:30Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/0d3d229c8f424e8f",
       "url": "https://developers.cloudflare.com/changelog/post/2026-09-07-application-profiles/",
       "title": "WAF - Enforce positive security with Application Profiles",
       "content_text": "Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure. The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, strin",
       "date_published": "2026-09-07T00:00:00Z",
       "date_modified": "2026-09-07T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/3ee2e0d457641f20",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-04-enterprise-self-serve-upload-limits/",
-      "title": "Cloudflare Fundamentals, Workers - Enterprise customers can self-serve CDN upload limits up to 5 GB",
-      "content_text": "Enterprise customers can now configure a zone's CDN Maximum Upload Size up to 5 GB directly from the Network page in the Cloudflare dashboard. This removes the need to contact your account team or Cloudflare Support when applications need to accept request bodies larger than 500 MB and no greater than 5 GB. The default maximum upload size remains 500 MB. Upload limits above 5 GB still require additional configuration through your account team or Cloudflare Support . Very large uploads may reach",
-      "date_published": "2026-09-04T00:00:00Z",
-      "date_modified": "2026-09-04T00:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Changelog"
