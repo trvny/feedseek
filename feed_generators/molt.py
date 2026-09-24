@@ -289,7 +289,9 @@ def fetch_moltbook_pages(
             return [], set(), False
         cursor = next_cursor
 
-    entries = entries[:MOLTBOOK_HOT_WINDOW]
+    entries = [
+        entry for entry in entries if entry.get("link") not in moderated_links
+    ][:MOLTBOOK_HOT_WINDOW]
     logger.info(
         "[Moltbook] scanned %d distinct hot post(s), collected %d new, found %d moderated",
         len(usable_links_seen),
