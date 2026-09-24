@@ -233,6 +233,43 @@ class MoltTests(unittest.TestCase):
         )
         self.assertEqual(moderated, set())
 
+    def test_fetch_pages_trims_overflow_to_hot_window(self):
+        """A partially filled first page must not let the next page overflow the hot window."""
+        first_posts = [
+            {"id": f"first-{index}", "title": f"First {index}"}
+            for index in range(24)
+        ]
+        second_posts = [
+            {"id": f"second-{index}", "title": f"Second {index}"}
+            for index in range(25)
+        ]
+        pages = {
+            MOLTBOOK_API_URL: {
+                "success": True,
+                "posts": first_posts,
+                "has_more": True,
+                "next_cursor": "second",
+            },
+            MOLTBOOK_API_URL + "&cursor=second": {
+                "success": True,
+                "posts": second_posts,
+                "has_more": True,
+                "next_cursor": "unused",
+            },
+        }
+
+        def fake_fetch(url, *, retry_delay):
+            """Serve enough rows to overflow the 25-post hot window."""
+            self.assertEqual(retry_delay, 2)
+            return json.dumps(pages[url])
+
+        entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
+
+        self.assertTrue(complete)
+        self.assertEqual(moderated, set())
+        self.assertEqual(len(entries), 25)
+        self.assertEqual(entries[-1]["link"], "https://www.moltbook.com/post/second-0")
+
     def test_fetch_pages_counts_distinct_usable_posts_across_overlaps(self):
         """Overlapping cursor pages must not consume the publication-window quota twice."""
         pages = {
