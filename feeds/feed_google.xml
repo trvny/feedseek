@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-09-24T18:38:39.522407+00:00</updated>
+  <updated>2026-09-24T23:23:58.758848+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -12,6 +12,352 @@
   <icon>https://blog.google/favicon.ico</icon>
   <logo>https://blog.google/favicon.ico</logo>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/developers-practitioners/agent-factory-recap-agent-harnesses-shifting-left-and-autonomous-coding</id>
+    <title>Agent Factory recap: Agent harnesses, shifting left, and autonomous coding</title>
+    <updated>2026-09-24T23:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this episode of &lt;/span&gt;&lt;a href="https://www.youtube.com/playlist?list=PLIivdWyY5sqLXR1eSkiM5bE6pFlXC-OSs" rel="noopener" target="_blank"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;The Agent Factory&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, we explore the reality of building with autonomous agents alongside Ryan Lopopolo, a software engineer at Google Cloud and the person who coined the term &lt;/span&gt;&lt;a href="https://cloud.google.com/discover/agent-harness?e=48754805"&gt;&lt;strong style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;agent harness&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. From throwing out manual code editors to treating team collaboration like leveling up RPG stats, Ryan breaks down how grounding models in rich context and shifting interventions left unlocks high levels of agent autonomy.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=F8EZJAm9iO8"&gt;
+
+      
+        &lt;img alt="Harness Engineering Explained: Inside the Stack Behind Antigravity, Claude Code &amp;amp; Cursor" src="//img.youtube.com/vi/F8EZJAm9iO8/maxresdefault.jpg" /&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=F8EZJAm9iO8"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This post guides you through the key ideas from our conversation. Use it to quickly recap topics or dive deeper into specific segments with links and timestamps.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;The Agent Harness - What is it?&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=F8EZJAm9iO8&amp;amp;t=30s" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;00:30&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;An &lt;em&gt;AI agent&lt;/em&gt; as we're defining it here is a large language model (LLM) plus an &lt;/span&gt;&lt;a href="https://cloud.google.com/discover/agent-harness?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;agent harness&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Think of the harness as everything wrapped around the LLM that isn't the model itself. For example, if you're working in &lt;/span&gt;&lt;a href="https://antigravity.google/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Antigravity&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; using &lt;/span&gt;&lt;a href="https://antigravity.google/blog/gemini-3-8-flash-in-google-antigravity" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 3.8 Flash&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Gemini Flash is the LLM and Google Antigravity is the harness.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While an unassisted model can answer simple questions out of the box, it can't check live conditions or interact with your workspace on its own. When a user asks a question like &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Why is the sky blue?"&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, an unassisted LLM can respond without issue. However, when asked a question like &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Should I wear a raincoat today?"&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, the model can't answer on its own because it lacks the necessary data. The harness catches the intent, queries live weather tools, bundles that context back into the prompt, and hands it to the model to produce an informed answer.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Ryan Lopopolo on agent harnesses and autonomous coding&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Tilde Thurium sat down with Ryan Lopopolo to discuss what it takes to run fully autonomous coding workflows in production. See the summary below!&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Coining the harness and writing zero production code&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=F8EZJAm9iO8&amp;amp;t=142s" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;02:22&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The term &lt;em&gt;agent harness&lt;/em&gt; grew out of Ryan's extensive work on autonomous coding agents, culminating in a &lt;/span&gt;&lt;a href="https://openai.com/index/harness-engineering/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;February 2026 essay&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; on leveraging coding models in an agent-first world. Ryan shared that he hasn't opened a traditional code editor since May of last year, maintaining that streak through his transition into &lt;/span&gt;&lt;a href="https://cloud.google.com/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. In this paradigm, engineers no longer author or review individual lines of syntax; instead, they operate at the level of natural language specifications and inspect the final artifacts, such as pull requests, documents, and spreadsheets. Then they determine whether the end result meets organizational standards.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
+        &lt;q class="uni-pull-quote__text"&gt;Harness engineering is the study and the practice of putting a model into an environment where it can succeed. If you don&amp;#x27;t do that work, you end up doing what I call &amp;#x27;prompt and pray&amp;#x27;.&lt;/q&gt;
+
+        
+          &lt;cite class="uni-pull-quote__author"&gt;
+            
+            
+              &lt;span class="uni-pull-quote__author-meta"&gt;
+                
+                  &lt;strong class="h-u-font-weight-medium"&gt;Ryan Lopopolo&lt;/strong&gt;&lt;br /&gt;
+                
+                
+              &lt;/span&gt;
+            
+          &lt;/cite&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Context curation and lazy prompting&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=dZGjT_rG5fiLeVfm&amp;amp;t=215" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;03:35&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Upfront harness investment pays off by allowing engineers to become lazy prompters. When the repository contains structured documentation, clear interfaces, and discoverable tools, you do not need to paste walls of text into a prompt box every morning &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"I aspire to be an incredibly lazy prompter. If I have done the job to give the model the tools and context it needs to ground itself, I don't need to write a long prompt. It figures it out."&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The model uses its harness to pull relevant context, allowing it to navigate large codebases and execute complex tasks without oversight.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Shifting left: engineering best practices as autonomous guardrails&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=F8EZJAm9iO8&amp;amp;t=300s" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;05:00&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When an agent fails, developers face a whole spectrum of interventions. The most common reflex is to fiddle with the prompt or retry, but that never scales across a team.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"The simplest, smooth-brain, stupidest intervention I can think of is literally just: try my prompt again without changing anything else. But shifting left means moving interventions earlier into the development lifecycle where they are cheapest and automated: from prompts, to repo docs, to linters, to tests, and all the way to upstream evals."&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Instead of hoping the model guesses right on the next turn, shifting left embeds standards directly into the environment. Linters, tests, and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;AGENTS.md&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; files act as durable memory and enforcement of what you think good looks like, making sure the agent stays on the rails without needing constant hand-holding.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Leveraging established tools and determinism&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=0K18aWfjWSkEv0Ws&amp;amp;t=410" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;06:50&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Agents shine when they're handed tools that already mirror patterns heavily represented in pre-training data. Pairing models with standard command-line interfaces moves reasoning into determinism, shifting the burden of context aggregation away from the model and onto reliable tools.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ryan also shared an environmental design trick for context efficiency: structuring markdown files so link anchors sit directly beneath their corresponding prose blocks rather than inline. This prevents context clutter and mitigates "lost in the middle" retrieval issues. Because Ryan operates exclusively by reviewing end-state artifacts, keeping documentation readable allows him to easily inspect execution runs:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"I want to be able to look at the pull request and review it. If it made a bad decision, I need to know where it went off the rails so I can whack the agent on the head and make sure it does not make that same mistake again."&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Long horizons and expanding the agentic loop&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=o3r4mie7FkoYLTTS&amp;amp;t=586" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;09:45&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The central challenge of harness engineering is ensuring that agents cohere over long time horizons. Because human organizations produce software through iterative refinement rather than single-shot prompts, agent workflows must mirror that cadence. Harness engineering uses tightly scoped, reviewable pull requests to narrow the agent's state space. Stacking these high-confidence changes end-to-end allows supervisors to gradually expand the loop size, building trust until agents can autonomously execute large-scale initiatives, including entire language migrations &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Curating agent teams like RPG stats&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=1l25hbXKZjjKoLsh&amp;amp;t=718" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;11:58&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Rather than divvying up sprint tasks based on individual specialties, having a diverse team contribute to an agent turns it into a central producer of work that carries everyone's strengths. Ryan compared leveling up an agent's capabilities to building out a character sheet:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"[It's like] building out the stats of your RPG character. I get a new person on the team who is a React architect and boom! The attention that they pay is able to bump out the stats in front-end architecture and performance."&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With that collective expertise baked into the environment, the agent can autonomously classify incoming work and activate the exact skills it needs on demand, operating as both a backend architect and a front-end specialist.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Accruing leverage in tools, not custom harnesses&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=giil4EL8zs3RDif-&amp;amp;t=878" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;14:38&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For developers wondering whether to build their own custom agent harness, Ryan offered clear advice: don't build one from scratch. Standard harnesses already provide the foundational primitives: file reading, grep search, and command execution. Over-scaffolding an agent with rigid, bespoke frameworks creates technical debt and leads to sunk-cost traps when frontier models advance.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"If you focus all of your efforts on improving quality on tools and context, you can freely adopt the newest models as they come out and you'll be constantly accruing leverage into a bit of the system that will never become obsolete."&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Operating Google Cloud and eliminating capability overhang&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=MlXgcYa5QcQqOogM&amp;amp;t=1007" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;16:47&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Discussing his work at &lt;/span&gt;&lt;a href="https://cloud.google.com/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Ryan outlined his motivation to eliminate &lt;em&gt;capability overhang&lt;/em&gt;: the delta between what frontier AI models are theoretically capable of and how much useful work is currently extracted in production. Because the cloud functions as a massive, programmable surface, equipping agents with direct interfaces to Google Cloud lets them manage and deploy infrastructure effectively, turning raw model capability into tangible enterprise utility.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Continually updating your priors on AI&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=NSFTXZjs6QvgCFiM&amp;amp;t=1093" rel="noopener" target="_blank"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;18:13&lt;/span&gt;&lt;/a&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The speed of AI development requires engineers and teams to actively unlearn old limitations and constantly reassess what these models can achieve. "&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;It's very important to continually be updating what you think is possible with these lovely tools that we have&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;," Ryan urged. What broke six months ago often runs effortlessly on today's frontier models. Rather than getting locked into rigid workflows, developers should build around the two highly extensible interfaces that will remain relevant across every model upgrade: tools and context.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Agents will always need context in order to do that last mile adaptation into what you think good is. And as you can continue to... shift it to the left, in terms of increasingly capable tools which act as a form of memory and enforcement of what you think good looks like, you'll continually be amazed as the models are able to do more and more interesting things for you over time."&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;How To Build A Custom Harness&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Next, &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/billyjacobson/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Billy Jacobson&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; started us off by showing how developers can customize their own agent harnesses for specific tasks.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Under the hood: Why build a custom harness?&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=F8EZJAm9iO8&amp;amp;t=1184s&amp;amp;pp=0gcJCWMAwfN6Pr3D" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;19:44&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Before jumping into code, Billy unpacked why developers should understand the mechanics of a harness rather than treating it like a black box. Recalling advice from an engineering mentor that &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"You can just use the framework, but a great engineer will really understand the framework"&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, Billy explained that building a &lt;/span&gt;&lt;a href="https://cloud.google.com/discover/agent-harness?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;harness&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; yourself is the best way to debug what happens when an agent breaks. You can evaluate three core design decisions for every workflow:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Looping&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: How many iterations should the agent run, and what conditions trigger an exit state?&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Tools&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: What specific tools should the agent access, and when and how should it invoke them?&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Memory&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: How important is conversational and operational memory, and when should it be retrieved or compacted?&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Linear Agent Harness: Deterministic Single-Pass Execution&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=teRfnEVBrXQa0DBl&amp;amp;t=1234" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;21:34&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Billy demonstrated a minimalist &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system#sequential-pattern"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;linear harness&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; designed for deterministic workflows where looping is unnecessary. This pattern is ideal for targeted inspections, file transformations, or single-turn data analyses where you want a high level of determinism and need the agent to perform the exact same execution flow every single time.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Closed-Loop Agent Harness: Iterative Test-Driven Repair&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=SZK9VsaI6x4FpKXT&amp;amp;t=1365" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;22:45&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When tasks demand active bug fixing and refactoring, a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system#loop-pattern"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;closed-loop harness&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides the iterative reasoning required to reach a verified resolution. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this demo, Billy showcased an agent that applies an automated code edit to address a failing requirement, and the harness executes the unit test suite against the updated codebase. If the tests fail, the runtime captures standard failure logs and detailed stack traces, feeding those error diagnostics directly back into the agent's working memory. The process repeats continuously until all unit tests pass, backed by a five-iteration ceiling to prevent infinite loops and runaway execution costs.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Guardrail Harness with Google's Agent Development Kit (ADK)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=iyoPxuMlAkYkrrls&amp;amp;t=1405" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;23:25&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For developers who require custom behavior without rewriting core orchestration plumbing from scratch, Google's &lt;/span&gt;&lt;a href="https://adk.dev/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Development Kit &lt;span style="vertical-align: baseline;"&gt;(ADK)&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides scaffolding with automated memory management and execution safeguards. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Billy walked through an example that leverages ADK's native context compaction to summarize older conversational turns, preventing context window bloat during extended debugging runs. Custom interception hooks inspect and filter shell actions before execution, automatically stopping high-risk operations such as recursive file deletions, database drops, or unauthorized remote git pushes. This architecture gives teams fine-grained control over tool execution boundaries while avoiding the maintenance burden of bespoke harness frameworks.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;The 3-Layer Agent Dev Stack: Gemini 3.8 Flash, Google Antigravity, and Google Skills&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="vertical-align: baseline;"&gt;Timestamp: [&lt;/span&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=L0T5reEiQBXxZ86H&amp;amp;t=1527" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;25:27&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Next up, &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/smithakolan/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Smitha Kolan&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; broke down why coding agents do not always require heavier reasoning models, emphasizing that high performance stems from balancing the three layers of the agent stack: &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Model&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Harness&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Knowledge&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Your coding agent doesn't need a smarter model. It needs a better stack: model, harness, and knowledge. When all three click into place, everything changes."&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;She then walked through the three tools she's been loving recently, one for each layer of the stack.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Layer 1 | Model | &lt;/strong&gt;&lt;a href="https://antigravity.google/blog/gemini-3-8-flash-in-google-antigravity" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 3.8 Flash&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; High-frequency agentic loops run between 20 and 60 sequential hops per task (inspecting files, updating functions, and executing unit tests). Because latency and API costs compound across iterations, a lightweight, responsive model like Gemini 3.8 Flash makes real-time agent loops practical without running up a massive bill.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Layer 2 | Harness | &lt;/strong&gt;&lt;a href="https://antigravity.google/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Google Antigravity&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; with &lt;/strong&gt;&lt;a href="https://antigravity.google/docs/boost/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;/boost&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; Default Antigravity handles standard navigation and component creation. On top of that, the &lt;/span&gt;&lt;code&gt;&lt;span style="vertical-align: baseline;"&gt;/boost&lt;/span&gt;&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; command spins up an orchestrator that coordinates specialized sub-agents in parallel and concludes with an independent audit pass before modifying files.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Layer 3 | Knowledge | &lt;/strong&gt;&lt;a href="https://github.com/google/skills/tree/main" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Google Skills Repository&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; With over 19,000 GitHub stars and 100+ curated domain packages across Google Cloud, Firebase, Flutter, and Maps, this harness-agnostic repository injects precise domain context on demand, preventing agents from guessing cloud configurations &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Your turn to build&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Building effective coding agents requires moving past the reflex of simply swapping in larger models. As Ryan Lopopolo's philosophy of harness engineering illustrates, true developer leverage is achieved by shifting best practices to the left and investing in rich tools, deterministic verifiers, and well-curated context that survive model upgrades. When combined with fast inference models, structured orchestration harnesses, and modular domain knowledge, agents evolve from conversational novelties into dependable, autonomous engineering partners.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to put it into practice? Explore the tools and resources covered in this episode:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://antigravity.google/blog/gemini-3-8-flash-in-google-antigravity" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 3.8 Flash&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Fast, low-cost model for multi-hop agent loops.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://antigravity.google/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Antigravity&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (&lt;/span&gt;&lt;a href="https://antigravity.google/docs/boost/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;/boost&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;): Orchestrator harness for parallel coding agents and verification.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://github.com/google/skills/tree/main" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Modular domain knowledge for Google Cloud, Firebase, and Flutter.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://adk.dev/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Development Kit (ADK)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Custom harness middleware for safety guardrails and memory compaction.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://youtu.be/F8EZJAm9iO8?si=Uptrs898iW1XIRC6" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Full episode video&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: The full interview and live Factory Floor code demos.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Connect with us&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Smitha Kolan&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; →&lt;/span&gt; &lt;a href="https://www.linkedin.com/in/smithakolan/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; |&lt;/span&gt; &lt;a href="https://www.youtube.com/@smithakolan" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;YouTube&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; |&lt;/span&gt; &lt;a href="https://x.com/smithakolan" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;X&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Luke Schlangen&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; → &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/lukeschlangen/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; |&lt;/span&gt; &lt;a href="https://www.luke.mn/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;website&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Ryan Lopopolo&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; → &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/ryanlopopolo/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; | &lt;/span&gt;&lt;a href="https://hyperbo.la/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperbola&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; | &lt;/span&gt;&lt;a href="https://x.com/_lopopolo" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;X&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Tilde&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Thurium &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;→&lt;/span&gt; &lt;a href="https://www.linkedin.com/in/annthurium/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Billy Jacobson&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; →&lt;/span&gt; &lt;a href="https://www.linkedin.com/in/billyjacobson/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; | &lt;/span&gt;&lt;a href="https://x.com/billyjacobson" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;X&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Mollie Pettit&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; → &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/molliepettit/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; | &lt;/span&gt;&lt;a href="https://dev.to/molliepettit" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;dev.to&lt;/span&gt;&lt;/a&gt; | &lt;a href="https://x.com/MollzMP" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;X&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; |&lt;/span&gt; &lt;a href="https://bsky.app/profile/mollzmp.bsky.social" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Bluesky&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/developers-practitioners/agent-factory-recap-agent-harnesses-shifting-left-and-autonomous-coding" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-24T23:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-factory-recap-agent-harness.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-factory-recap-agent-harness.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-factory-recap-agent-harness.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://research.google/blog/coherent-long-form-video-generation</id>
+    <title>Automating coherent long-form video generation</title>
+    <updated>2026-09-24T19:40:00+00:00</updated>
+    <content type="html">Generative AI</content>
+    <link href="https://research.google/blog/coherent-long-form-video-generation" rel="alternate"/>
+    <category term="Google Research"/>
+    <published>2026-09-24T19:40:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-research2023-media/original_images/AI-video-co-director_hero.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-research2023-media/original_images/AI-video-co-director_hero.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-research2023-media/original_images/AI-video-co-director_hero.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/containers-kubernetes/2026-gartner-magic-quadrant-for-container-management</id>
+    <title>Google is a Leader in the 2026 Gartner Magic Quadrant for Container Management</title>
+    <updated>2026-09-24T19:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’re excited and proud to share that Gartner has recognized &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google as a Leader for the fourth year in a row in the 2026 Gartner® Magic Quadrant™ for Container Management&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, based on its Completeness of Vision and Ability to Execute. Google was positioned &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;highest in Ability to Execute of all vendors evaluated&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and we believe this validates the success of our mission to deliver a container platform that’s highly optimized for both performance and efficiency. We help global customers to build and run their most demanding and complex workloads at scale, including the next generation of AI and agentic applications. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In the accompanying &lt;/span&gt;&lt;a href="https://www.gartner.com/interactive/cc/8353849" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;2026 Gartner Critical Capabilities for Container Management&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; report, Google Cloud was ranked first in every use case: New Cloud Native Applications, Containerized Existing Applications, AI Training, AI Inference, Edge Applications, and Hybrid Applications.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Gartner predicts&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; that “By 2028, 95% of new AI deployments will use Kubernetes, up from less than 30% in 2025.” Containers power today’s most innovative apps and businesses — and deliver the infrastructure customers demand as they transform their businesses in the agentic era.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2026 Gartner Magic Quadrant for Container Management" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2026_Gartner_Magic_Quadrant_for_Container_.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Google Cloud spearheaded the industry-wide cloud-native revolution when we introduced Kubernetes in 2014 and launched Google Kubernetes Engine (GKE), the world’s first managed Kubernetes service, in 2015. Our commitment to container platforms and the vibrant, innovative Kubernetes ecosystem has only grown stronger and deeper since. Alongside GKE, our serverless container platforms GKE Autopilot and Cloud Run dramatically lower operational costs and help developers deliver amazing containerized apps faster than ever before. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The massive acceleration in enterprise AI has inspired us to redefine infrastructure management for the AI era. In 2026 so far we’ve introduced a wide range of foundational improvements to shift GKE and Cloud Run into agent-native, high-performance platforms designed for autonomous AI systems, massive inference workloads, and secure runtime isolation. Whether you’re training AI at the frontier, launching an AI startup, or leading your enterprise AI transformation, we have the container platform you need. Important highlights include:&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Delivering leading performance and efficiency for AI infrastructure&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE predictive latency boost:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Built into the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/whats-new-in-gke-at-next26"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Inference Gateway&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, this ML-driven capability uses capacity-aware routing rather than static configurations to reduce Time-to-First-Token (TTFT) by up to 70%.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE automatic KV Cache storage tiering: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Automatically shifts KV cache data across RAM, Local SSD, and Cloud Storage. This reduces memory bottlenecks, improving TTFT by 40% via RAM offloading and increasing throughput by 70% via Local SSDs for large prompt contexts. [&lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;1&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE accelerated container and model startups: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;GKE node spin-up times are up to 4x faster, and pod startup speeds have improved by up to 80%. Additionally, native run:AI Model Streamer integration pulls heavy models from Cloud Storage 5x faster.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Run on-demand serverless GPU scale-to-zero:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Cloud Run supports NVIDIA RTX PRO 6000 Blackwell GPUs, allowing teams to serve 70B+ parameter models on-demand. Your services can go from zero to a fully provisioned GPU — with all drivers pre-installed — in under 5 seconds. Once active inference or fine-tuning runs complete, Cloud Run automatically scales instances back to zero, eliminating idle infrastructure costs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Evolving Kubernetes for agentic infrastructure security and scale&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE Agent Substrate: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;As an open-source, secure-by-default agent execution runtime, &lt;/span&gt;&lt;a href="http://ate.dev/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is engineered to run millions of sandboxes with &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;10x higher density than standard container runtimes&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Purpose-built for the era of autonomous agents, Substrate delivers &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;sub-500ms resume operations &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;at over &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;500 suspend/resume activations per second&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; with a native zero-trust kernel and network isolation. Agent Substrate is available as an open-source solution that runs on any Kubernetes infrastructure and is optimized for GKE.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE Agent Sandbox: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Built on gVisor kernel-isolation technology, &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/machine-learning/agent-sandbox"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Sandbox&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; isolates the host environment from untrusted, multi-agent AI code execution. It provides secure execution at scale, processing up to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;300 sandboxes per second&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; with sub-second latency and delivering up to 30% better price-performance when running on Axion processors than comparable hyperscaler cloud providers. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE Dataplane V2 scalability limits: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Architectural capacity bounds for GKE clusters implementing active NetworkPolicies doubled from 7,500 nodes to &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/planning-large-clusters"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;15,000 nodes per cluster&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, supporting the massive infrastructure needs of large enterprise and AI customers.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GKE intent-based autoscaling:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; GKE can now natively autoscale horizontally using application intent and custom metrics beyond basic hardware metrics. This reduces resource allocation reaction times from &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;25 seconds down to just 5 seconds&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/storage-data-transfer/filestore-agent-volumes"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Filestore agent volumes&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: a new offering that attaches and detaches NFS mounts in milliseconds, allowing agents to start/resume near-instantaneously, along with native Read-Write-Many (RWX) access and POSIX-compliant file locking to enable safe multi-agent collaboration without write collisions. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Next-gen developer experience with serverless containers&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Whether you’re hosting a standard web API, running a heavy batch data job, processing an asynchronous message queue, or deploying a complex AI agent, Cloud Run handles it all under a single, unified serverless model that delivers an unmatched developer experience and maximum engineering velocity. &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;One-click prototyping in Google AI Studio: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;You can build and deploy full-stack applications directly within Google AI Studio, making it an exceptional environment for rapid prototyping and experimentation. With a single click, you can instantly package and publish your vibe-coded applications to Cloud Run.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Run instances:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; This new primitive manages individual, addressable, long-running singleton resources with integrated Cloud Storage volume mounts, allowing persistent background agents like OpenClaw to be deployed cost-effectively. With baseline shared-CPU configurations starting at a highly predictable flat rate of ~$5.70 per month (for 1 vCPU and 1 GiB of RAM), Cloud Run instances delivers an always-on, VM-like experience while bypassing the idle-cost penalties and operational overhead of traditional VMs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Run sandboxes:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Hard-isolated environments spin up in under 500 milliseconds to safely execute untrusted, model-generated code, protecting the host system from unauthorized access.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Take the next steps&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As we reach for new heights of performance, security, and scale for our container platforms, we continue to build the future in the open. We invite you to explore Agent Sandbox and Agent Substrate today. We can’t wait to shape the future of agent infrastructure together with our customers and partners. Check out these resources to continue your learning journey:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Download your complimentary copy of the &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/content/2026-gartner-mq-for-container-management"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;2026 Gartner® Magic Quadrant™ for Container Management&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Try&lt;/span&gt; &lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/machine-learning/agent-sandbox"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Sandbox&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; on GKE.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Contribute: Join the Agent Sandbox &lt;/span&gt;&lt;a href="http://github.com/kubernetes-sigs/agent-sandbox" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;open-source community&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Explore &lt;/span&gt;&lt;a href="https://github.com/agent-substrate/substrate" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Join us at &lt;/span&gt;&lt;a href="http://goo.gle/KubeConSLC26" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;KubeCon North America 2026&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in Salt Lake City, November 9-12. For even more fun, arrive a day early for GKE Day on November 9.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Discover why Google is also named a Leader in the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/application-development/2026-gartner-mq-for-cloud-native-application-platforms?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;2026 Gartner® Magic Quadrant™ for Cloud-Native Application Platforms&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Start building the future of serverless applications today at &lt;/span&gt;&lt;a href="http://cloud.run" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;cloud.run&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;&lt;span style="vertical-align: baseline;"&gt;1. &lt;span style="vertical-align: baseline;"&gt;Gartner report: &lt;/span&gt;&lt;a href="https://www.gartner.com/interactive/cc/8353849" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Critical Capabilities for Container Management, 8 September 2026&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;Gartner, Magic Quadrant for Container Management, Dennis Smith, et al, 2 September 2026&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;/sup&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;Gartner, Critical Capabilities for Container Management, By Tony Iams, Wataru Katsurashima, Lucas Albuquerque, Dennis Smith, Bhuvie Chhabra, 8 September 2026. &lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;/sup&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;Gartner and Magic Quadrant are trademarks of Gartner, Inc. and/or its affiliates.&lt;br /&gt;&lt;/span&gt;&lt;/span&gt;&lt;/sup&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;&lt;span style="vertical-align: super;"&gt;Disclaimer: Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner’s business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose.&lt;/span&gt;&lt;/span&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/containers-kubernetes/2026-gartner-magic-quadrant-for-container-management" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-24T19:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/2026_Gartner_Magic_Quadrant_for_Container_.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/2026_Gartner_Magic_Quadrant_for_Container_.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/2026_Gartner_Magic_Quadrant_for_Container_.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workspaceupdates.googleblog.com/2026/09/now-in-beta-import-and-convert-your.html</id>
+    <title>Now in beta: Import and convert your PowerPoint files to client-side encrypted Slides</title>
+    <updated>2026-09-24T18:06:25+00:00</updated>
+    <content type="html">&lt;p&gt;Eligible customers can now import PowerPoint files as client-side encrypted (CSE) Slides, allowing users to access and edit content. This enables interoperability with Microsoft Office, with this launch PowerPoint files are encrypted on the client before the content is imported to Workspace, and then converted to high-fidelity encrypted Slides.&lt;/p&gt;&lt;p&gt;The feature is available via the CSE Office Interop beta program, which offers immediate access to features for Microsoft Office Editing, export, import, and takeout. Eligible Google Workspace admins can &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;apply for the beta program&lt;/a&gt; today. For organizations that are already registered, this feature is now available across their domains.&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAezIJIckL3xXm83uiSg0vtTmhrSxSQEW0cT266DRCbMD7lA-mVD41Yh5ehV3JB22ctQVoyjcliKdGNO5I81ZGclRZ6PbPVVORkHeVLjil_sSefrIQ5DlLkJ0V2bFy1dx3IsaTS1-DcOwd88QHkPqXXPhnmosCS9zeQqFRSPPnc3bZPDk-wjDT2zsV0iQ/s2048/Now%20in%20beta%20Import%20and%20convert%20your%20PowerPoint%20files%20to%20client-side%20encrypted%20Slides%20-%207286.png" style="margin-left: auto; margin-right: auto;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAezIJIckL3xXm83uiSg0vtTmhrSxSQEW0cT266DRCbMD7lA-mVD41Yh5ehV3JB22ctQVoyjcliKdGNO5I81ZGclRZ6PbPVVORkHeVLjil_sSefrIQ5DlLkJ0V2bFy1dx3IsaTS1-DcOwd88QHkPqXXPhnmosCS9zeQqFRSPPnc3bZPDk-wjDT2zsV0iQ/s1600/Now%20in%20beta%20Import%20and%20convert%20your%20PowerPoint%20files%20to%20client-side%20encrypted%20Slides%20-%207286.png" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;&lt;br /&gt;Encrypted .pptx file imported to CSE Slides&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;Admins with eligible Workspace licenses can &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;sign up for the CSE Office Interop beta&lt;/a&gt;. We’ll provide more information on how to get started if you’re accepted.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users:&lt;/b&gt; This feature is ON for users in domains that have registered for the &lt;a href="https://forms.gle/AdC8ov3HeCsGMLsC9" target="_blank"&gt;CSE Interop beta program&lt;/a&gt;.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Available now for customers previously accepted into the CSE Office Interop beta program, and upon acceptance into the beta for those who sign up in the future,&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Enterprise: &lt;/b&gt;Enterprise Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Education: &lt;/b&gt;Education Standard and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Other Editions: &lt;/b&gt;Frontline Plus, Assured Controls, Assured Controls Plus&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://support.google.com/a/answer/10741897?hl=en&amp;amp;ref_topic=10742486" target="_blank"&gt;About client-side encryption&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Updates Blog: &lt;a href="https://workspaceupdates.googleblog.com/2026/04/now-in-beta-download-client-side-encrypted-Google-Slides.html" target="_blank"&gt;Now in beta: Download client-side encrypted Google Slides&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Updates Blog: &lt;a href="https://workspaceupdates.googleblog.com/2026/05/available-in-beta-convert-your-client-side-encrypted-Slides-after-a-Vault-or-Takeout-export.html" target="_blank"&gt;Available in beta: Convert your client-side encrypted Slides after a Vault or Takeout export&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Beta Application: &lt;a href="https://forms.gle/tP2gaMr7DW3Xd1FQ6" target="_blank"&gt;Registration form&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
+    <link href="https://workspaceupdates.googleblog.com/2026/09/now-in-beta-import-and-convert-your.html" rel="alternate"/>
+    <category term="Workspace Updates"/>
+    <published>2026-09-24T18:06:25+00:00</published>
+    <media:group>
+      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAezIJIckL3xXm83uiSg0vtTmhrSxSQEW0cT266DRCbMD7lA-mVD41Yh5ehV3JB22ctQVoyjcliKdGNO5I81ZGclRZ6PbPVVORkHeVLjil_sSefrIQ5DlLkJ0V2bFy1dx3IsaTS1-DcOwd88QHkPqXXPhnmosCS9zeQqFRSPPnc3bZPDk-wjDT2zsV0iQ/s72-c/Now%20in%20beta%20Import%20and%20convert%20your%20PowerPoint%20files%20to%20client-side%20encrypted%20Slides%20-%207286.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAezIJIckL3xXm83uiSg0vtTmhrSxSQEW0cT266DRCbMD7lA-mVD41Yh5ehV3JB22ctQVoyjcliKdGNO5I81ZGclRZ6PbPVVORkHeVLjil_sSefrIQ5DlLkJ0V2bFy1dx3IsaTS1-DcOwd88QHkPqXXPhnmosCS9zeQqFRSPPnc3bZPDk-wjDT2zsV0iQ/s72-c/Now%20in%20beta%20Import%20and%20convert%20your%20PowerPoint%20files%20to%20client-side%20encrypted%20Slides%20-%207286.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAezIJIckL3xXm83uiSg0vtTmhrSxSQEW0cT266DRCbMD7lA-mVD41Yh5ehV3JB22ctQVoyjcliKdGNO5I81ZGclRZ6PbPVVORkHeVLjil_sSefrIQ5DlLkJ0V2bFy1dx3IsaTS1-DcOwd88QHkPqXXPhnmosCS9zeQqFRSPPnc3bZPDk-wjDT2zsV0iQ/s72-c/Now%20in%20beta%20Import%20and%20convert%20your%20PowerPoint%20files%20to%20client-side%20encrypted%20Slides%20-%207286.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://blog.google/products-and-platforms/products/google-health/health-guardian-features-live</id>
     <title>Our new health and safety tools are live in the Google Health app.</title>
@@ -27455,88 +27801,5 @@ available for all regions.&lt;/p&gt;</content>
       <media:thumbnail url="https://www.googlecloudpresscorner.com/image/1000000073-thumb.jpg"/>
     </media:group>
     <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/1000000073-thumb.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/08/weekly-recap-08-14-2026.html</id>
-    <title>Google Workspace Weekly Recap - August 14, 2026</title>
-    <updated>2026-08-14T19:41:50+00:00</updated>
-    <content type="html">&lt;h3 style="text-align: left;"&gt;Improved file importing in Google Sheets with tables and linked pivot tables&lt;/h3&gt;&lt;p&gt;We’re introducing two key improvements in Google Sheets that preserve formatting and linked data when converting files from Microsoft Excel. First, Excel tables will now seamlessly import as Sheets tables. Second, Sheets now fully supports importing Excel pivot tables that are backed by table ranges.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/08/improved-file-import-google-sheets-tables.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;New usability features in Connected Sheets&lt;/h3&gt;&lt;p&gt;Google Workspace is introducing two usability enhancements to Connected Sheets to improve data presentation and give more flexibility when analyzing BigQuery data.&amp;nbsp;|&amp;nbsp;&lt;a href="https://workspaceupdates.googleblog.com/2026/08/new-usability-features-connected-sheets-google.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Use Sheets canvas to visualize data in custom, interactive mini-apps&lt;/h3&gt;&lt;p&gt;We’re excited to launch Sheets canvas, a new Gemini-powered capability that transforms your spreadsheets into custom, interactive, read-write applications using simple natural language prompts. It acts as a dynamic visualization layered directly on top of your spreadsheet data, allowing you and your team to work in layouts that best fit your workflows. | &lt;a href="https://workspaceupdates.googleblog.com/2026/08/use-google-sheets-canvas-to-visualize-data.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Take Notes for me for in-person meetings is now available&lt;/h3&gt;&lt;p&gt;We know that balancing active participation with note taking during face-to-face discussions can be a challenge. You shouldn't have to choose between staying present in the moment and capturing critical context for later. We’re excited to start rolling out a new way to make Google Meet the home for all of your meetings, expanding beyond just video calls to support your in-person collaboration.&amp;nbsp; | &lt;a href="https://workspaceupdates.googleblog.com/2026/08/take-notes-with-me-for-in-person-meetings-is-now-available.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;New admin controls for adding invitations to Google Calendar&lt;/h3&gt;&lt;p&gt;Google Calendar users have three options for how event invitations are added to their calendar: auto-add invitations from everyone, auto-add invitations from known senders only, or add invitations only after the user responds in email. To date, administrators can only choose the default value for users in their organization. | &lt;a href="https://workspaceupdates.googleblog.com/2026/08/new-admin-controls-for-adding-invitations-to-Google-Calendar.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style="font-size: x-small;"&gt;The announcements above were published on the Workspace Updates blog over the last week. Please refer to the original blog posts for complete details.&lt;/span&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/08/weekly-recap-08-14-2026.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-08-14T19:41:50+00:00</published>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/08/new-admin-controls-for-adding-invitations-to-Google-Calendar.html</id>
-    <title>New admin controls for adding invitations to Google Calendar</title>
-    <updated>2026-08-14T18:03:14+00:00</updated>
-    <content type="html">&lt;p&gt;Google Calendar users have &lt;a href="https://support.google.com/calendar/answer/13159188" target="_blank"&gt;three options for how event invitations are added to their calendar:&lt;/a&gt;&amp;nbsp;auto-add invitations from everyone, auto-add invitations from known senders only, or add invitations only after the user responds in email. To date, administrators can only choose the default value for users in their organization.&lt;/p&gt;&lt;p&gt;With this release, we’re expanding Calendar settings in the Admin console to offer organizations more granular controls on invitations.&amp;nbsp; Administrators can now determine the invitation options available to end users, providing organizations more control over inbound event invitations from unknown senders and minimizing potential security risks from the content contained within them.&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirqY8Dj5aXaW1bqGZ6yat3XqJLKcO8_IaXoPnGRHq_fGonHqU76k7fIJw9DuARKp09JSXfMgYW31oezNpOfKJzHxn8TJkKGxKx3DKbz-ohSiJMo45fJWWAaAaRTI2C42onL5klyHg0YKTAPdWP6tS3cripx65vl2bmC9Ybp7yyaZAElbwQJG6bc5ERnAw/s1734/New%20admin%20controls%20for%20adding%20invitations%20to%20Google%20Calendar%20-%207168.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirqY8Dj5aXaW1bqGZ6yat3XqJLKcO8_IaXoPnGRHq_fGonHqU76k7fIJw9DuARKp09JSXfMgYW31oezNpOfKJzHxn8TJkKGxKx3DKbz-ohSiJMo45fJWWAaAaRTI2C42onL5klyHg0YKTAPdWP6tS3cripx65vl2bmC9Ybp7yyaZAElbwQJG6bc5ERnAw/s1600/New%20admin%20controls%20for%20adding%20invitations%20to%20Google%20Calendar%20-%207168.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Admins: This control is set to “From everyone” by default and can be adjusted at the organizational unit (OU) or group level. Visit the Help Center to &lt;a href="https://knowledge.workspace.google.com/admin/calendar/automatically-add-events-to-calendars" target="_blank"&gt;learn more about automatically adding events to calendars&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;End users: Users can select the value in their Calendar settings within the boundaries set by their administrator. Visit the Help Center to &lt;a href="https://support.google.com/calendar/answer/13159188" target="_blank"&gt;learn more about managing invitations in Calendar&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on August 14, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Available to all Google Workspace customers&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://knowledge.workspace.google.com/admin/calendar/automatically-add-events-to-calendars" target="_blank"&gt;Automatically add events to calendars&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Calendar Help: &lt;a href="https://support.google.com/calendar/answer/13159188" target="_blank"&gt;Manage invitations in Calendar&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/08/new-admin-controls-for-adding-invitations-to-Google-Calendar.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-08-14T18:03:14+00:00</published>
-    <media:group>
-      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirqY8Dj5aXaW1bqGZ6yat3XqJLKcO8_IaXoPnGRHq_fGonHqU76k7fIJw9DuARKp09JSXfMgYW31oezNpOfKJzHxn8TJkKGxKx3DKbz-ohSiJMo45fJWWAaAaRTI2C42onL5klyHg0YKTAPdWP6tS3cripx65vl2bmC9Ybp7yyaZAElbwQJG6bc5ERnAw/s72-c/New%20admin%20controls%20for%20adding%20invitations%20to%20Google%20Calendar%20-%207168.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirqY8Dj5aXaW1bqGZ6yat3XqJLKcO8_IaXoPnGRHq_fGonHqU76k7fIJw9DuARKp09JSXfMgYW31oezNpOfKJzHxn8TJkKGxKx3DKbz-ohSiJMo45fJWWAaAaRTI2C42onL5klyHg0YKTAPdWP6tS3cripx65vl2bmC9Ybp7yyaZAElbwQJG6bc5ERnAw/s72-c/New%20admin%20controls%20for%20adding%20invitations%20to%20Google%20Calendar%20-%207168.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirqY8Dj5aXaW1bqGZ6yat3XqJLKcO8_IaXoPnGRHq_fGonHqU76k7fIJw9DuARKp09JSXfMgYW31oezNpOfKJzHxn8TJkKGxKx3DKbz-ohSiJMo45fJWWAaAaRTI2C42onL5klyHg0YKTAPdWP6tS3cripx65vl2bmC9Ybp7yyaZAElbwQJG6bc5ERnAw/s72-c/New%20admin%20controls%20for%20adding%20invitations%20to%20Google%20Calendar%20-%207168.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_14_2026</id>
-    <title>Cloud Release Notes — August 14, 2026</title>
-    <updated>2026-08-14T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;App Engine flexible environment Go&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;To improve security, starting in August 2026, App Engine opts your application into TLS version 1.2 and later. You can opt out until the end of August 2026. Starting in September 2026, App Engine might permanently block insecure traffic with TLS version 1.1 and earlier. For more information, see &lt;a href="https://docs.cloud.google.com/appengine/docs/flexible/secure-minimum-tls"&gt;Secure minimum TLS&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;App Engine flexible environment Java&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;To improve security, starting in August 2026, App Engine opts your application into TLS version 1.2 and later. You can opt out until the end of August 2026. Starting in September 2026, App Engine might permanently block insecure traffic with TLS version 1.1 and earlier. For more information, see &lt;a href="https://docs.cloud.google.com/appengine/docs/flexible/secure-minimum-tls"&gt;Secure minimum TLS&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;App Engine flexible environment Ruby&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;To improve security, starting in August 2026, App Engine opts your application into TLS version 1.2 and later. You can opt out until the end of August 2026. Starting in September 2026, App Engine might permanently block insecure traffic with TLS version 1.1 and earlier. For more information, see &lt;a href="https://docs.cloud.google.com/appengine/docs/flexible/secure-minimum-tls"&gt;Secure minimum TLS&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;App Engine standard environment Go&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;To improve security, starting in August 2026, App Engine opts your application into TLS version 1.2 and later. You can opt out until the end of August 2026. Starting in September 2026, App Engine might permanently block insecure traffic with TLS version 1.1 and earlier. For more information, see &lt;a href="https://docs.cloud.google.com/appengine/docs/standard/secure-minimum-tls"&gt;Secure minimum TLS&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;App Engine standard environment Ruby&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;To improve security, starting in August 2026, App Engine opts your application into TLS version 1.2 and later. You can opt out until the end of August 2026. Starting in September 2026, App Engine might permanently block insecure traffic with TLS version 1.1 and earlier. For more information, see &lt;a href="https://docs.cloud.google.com/appengine/docs/standard/secure-minimum-tls"&gt;Secure minimum TLS&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Carbon Footprint&lt;/h2&gt;
-&lt;h3&gt;Announcement&lt;/h3&gt;
-&lt;p&gt;As detailed in our &lt;a href="https://storage.googleapis.com/gweb-mobius-cdn/sustainability/uploads/21455428735c7305f2cb5c0038fc14bb0803abb8.pdf#page=22"&gt;2026 Environmental Report (p. 22)&lt;/a&gt;, Google is now using Granular Certificates purchased from the marketplace to strategically match more of our load on an hourly basis. To accurately incorporate these certificates into the Cloud customers' allocation of carbon intensity calculations, the July 2026 semi-annual &lt;a href="https://docs.cloud.google.com/carbon-footprint/docs/methodology#market-based-allocation"&gt;methodology refresh&lt;/a&gt; will be delayed by one month. We will provide further updates once the revised data is available.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Cortex Framework&lt;/h2&gt;
-&lt;h3&gt;Announcement&lt;/h3&gt;
-&lt;h3 id="release_7_0_2"&gt;Release 7.0.3&lt;/h3&gt;
-&lt;h3&gt;Fixed&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Resolved an issue where &lt;code&gt;SapBdcProductBuilder&lt;/code&gt; incorrectly enforced SAP-versioned sections (ecc, s4, common) in &lt;code&gt;table_settings&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 class="release-note-product-title"&gt;Identity and Access Management&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;You can use custom constraints with Organization Policy to provide more
-granular control over specific fields for Agent Identity resources, such as
-&lt;code&gt;agentidentity.googleapis.com/AuthProvider&lt;/code&gt;. For more information, see
-&lt;a href="https://docs.cloud.google.com/iam/docs/agent-identity-custom-constraints"&gt;Use custom organization policies for Agent Identity&lt;/a&gt;.
-This feature is in
-&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;GA&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_14_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-14T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://antigravity.google/changelog#1.1.13-2026-08-14-version-1-1-13</id>
-    <title>Antigravity 1.1.13 — Version 1.1.13</title>
-    <updated>2026-08-14T00:00:00+00:00</updated>
-    <content type="text">Version 1.1.13</content>
-    <link href="https://antigravity.google/changelog#1.1.13-2026-08-14-version-1-1-13" rel="alternate"/>
-    <category term="Antigravity Changelog"/>
-    <published>2026-08-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-default.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" length="0"/>
   </entry>
 </feed>
