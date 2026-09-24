@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 import molt  # noqa: E402
 from molt import (  # noqa: E402
     MOLTBOOK_API_URL,
+    MOLTBOOK_HOT_WINDOW,
     _fresh_unmoderated,
     _parse_date,
     doc_sources,
@@ -21,6 +22,14 @@ from utils import dedupe_entries  # noqa: E402
 
 class MoltTests(unittest.TestCase):
     """Parser and pagination coverage for the Moltbook feed."""
+
+    def test_moltbook_uses_bounded_hot_api(self):
+        """Moltbook should be a small ranked window rather than the full new-post firehose."""
+        self.assertEqual(MOLTBOOK_HOT_WINDOW, 25)
+        self.assertEqual(
+            MOLTBOOK_API_URL,
+            "https://www.moltbook.com/api/v1/posts?sort=hot&limit=25",
+        )
 
     def test_doc_sources_exposes_all_upstreams(self):
         """Source docs should expose both official streams and the Moltbook API."""
@@ -224,6 +233,43 @@ class MoltTests(unittest.TestCase):
         )
         self.assertEqual(moderated, set())
 
+    def test_fetch_pages_trims_overflow_to_hot_window(self):
+        """A partially filled first page must not let the next page overflow the hot window."""
+        first_posts = [
+            {"id": f"first-{index}", "title": f"First {index}"}
+            for index in range(24)
+        ]
+        second_posts = [
+            {"id": f"second-{index}", "title": f"Second {index}"}
+            for index in range(25)
+        ]
+        pages = {
+            MOLTBOOK_API_URL: {
+                "success": True,
+                "posts": first_posts,
+                "has_more": True,
+                "next_cursor": "second",
+            },
+            MOLTBOOK_API_URL + "&cursor=second": {
+                "success": True,
+                "posts": second_posts,
+                "has_more": True,
+                "next_cursor": "unused",
+            },
+        }
+
+        def fake_fetch(url, *, retry_delay):
+            """Serve enough rows to overflow the 25-post hot window."""
+            self.assertEqual(retry_delay, 2)
+            return json.dumps(pages[url])
+
+        entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
+
+        self.assertTrue(complete)
+        self.assertEqual(moderated, set())
+        self.assertEqual(len(entries), 25)
+        self.assertEqual(entries[-1]["link"], "https://www.moltbook.com/post/second-0")
+
     def test_fetch_pages_counts_distinct_usable_posts_across_overlaps(self):
         """Overlapping cursor pages must not consume the publication-window quota twice."""
         pages = {
@@ -257,7 +303,7 @@ class MoltTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(molt, "CANDIDATE_LIMIT", 3):
+        with patch.object(molt, "MOLTBOOK_HOT_WINDOW", 3):
             entries, _moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertTrue(complete)
@@ -378,7 +424,6 @@ class MoltTests(unittest.TestCase):
         self.assertEqual(entries, [])
         self.assertEqual(moderated, set())
 
-
     def test_parse_posts_rejects_title_removed_by_xml_sanitization(self):
         """Control-only titles must not reach feedgen as empty required fields."""
         payload = {"posts": [{"id": "bad-title", "title": "\x01\x02"}]}
@@ -409,7 +454,7 @@ class MoltTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(molt, "CANDIDATE_LIMIT", 3):
+        with patch.object(molt, "MOLTBOOK_HOT_WINDOW", 3):
             entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertFalse(complete)
@@ -450,7 +495,7 @@ class MoltTests(unittest.TestCase):
             calls.append(url)
             return json.dumps(pages[url])
 
-        with patch.object(molt, "CANDIDATE_LIMIT", 2):
+        with patch.object(molt, "MOLTBOOK_HOT_WINDOW", 2):
             entries, moderated, complete = fetch_moltbook_pages(set(), fetch=fake_fetch)
 
         self.assertTrue(complete)
@@ -484,6 +529,7 @@ class MoltTests(unittest.TestCase):
         kwargs = mocked_run.call_args.kwargs
         self.assertEqual(kwargs["feed_name"], "molt")
         self.assertEqual(kwargs["title"], "Molt")
+        self.assertEqual(kwargs["blog_url"], "https://www.moltbook.com/")
         self.assertEqual(kwargs["sources"], molt.SPACEMOLT_NATIVE_SOURCES)
         self.assertEqual(len(kwargs["extra_scrapers"]), 2)
         self.assertIs(kwargs["extra_scrapers"][0], molt.scrape_spacemolt_changelog)
@@ -499,6 +545,41 @@ class MoltTests(unittest.TestCase):
             {"SpaceMolt News": 30, "SpaceMolt Changelog": 30},
         )
         self.assertIs(kwargs["cache_transform"], molt._restore_submolt)
+
+    def test_main_evicts_moltbook_posts_that_leave_hot_window(self):
+        """Moltbook cache follows the current hot set without trimming SpaceMolt history."""
+        hot = {
+            "title": "Still hot",
+            "link": "https://www.moltbook.com/post/hot-1",
+            "source": "Moltbook",
+            "submolt": "m/general",
+        }
+        with (
+            patch.object(molt, "fetch_moltbook_pages", return_value=([hot], set(), True)),
+            patch.object(molt, "run", return_value=True) as mocked_run,
+        ):
+            self.assertTrue(molt.main())
+
+        keep_cached = mocked_run.call_args.kwargs["cache_filter"]
+        self.assertTrue(keep_cached(hot))
+        self.assertFalse(
+            keep_cached(
+                {
+                    "title": "Fell out",
+                    "link": "https://www.moltbook.com/post/old-hot",
+                    "source": "Moltbook",
+                }
+            )
+        )
+        self.assertTrue(
+            keep_cached(
+                {
+                    "title": "SpaceMolt release",
+                    "link": "https://spacemolt.com/changelog#v1.0.0",
+                    "source": "SpaceMolt Changelog",
+                }
+            )
+        )
 
 
 if __name__ == "__main__":
