@@ -8,117 +8,324 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/49f299618163f15a",
-      "url": "https://www.v2ex.com/t/1244394#reply7",
-      "title": "qclaw 倒闭了",
-      "content_text": "亲爱的 QClaw 用户： 非常感谢您一直以来的信任与陪伴。我们非常遗憾地通知您，因业务发展调整，QClaw 将于 2026 年 12 月 24 日 00:00 正式停止运营。",
-      "date_published": "2026-09-24T00:26:22Z",
-      "date_modified": "2026-09-24T00:26:22Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/aa315dcf66a64ace",
+      "url": "https://www.v2ex.com/t/1244578#reply1",
+      "title": "1password 新用户续费首年 50% 优惠码",
+      "content_text": "1 、起因 之前一直通过土区 Apple 订阅 1Password ，年费 499 里拉。今天收到邮件，到期后续费要涨到 1999 里拉一年，直接变成原来的四倍，只好另找续费的路子。 2 、过程 之前听说过“新建账号享首年优惠，再把旧账号数据迁过去”的方法，迁移也不复杂。 懒得自己挨个找优惠码，就把方向告诉 GPT ，让它搜索网上的优惠码，再逐个打开官方注册页验证。最后测试了 19 个码，还真找到了一个能用的五折码：CYBER25 。 注册链接： https://start.1password.com/sign-up?c=CYBER25 3 、结果 已经注册新账号、绑定支付方式，亲测优惠生效。个人版首年五折，约 24 美元，折合人民币 160 元左右，具体以结账金额为准。 先把优惠拿下，等国庆后再迁移数据。准备下班了 😂",
+      "date_published": "2026-09-24T07:44:46Z",
+      "date_modified": "2026-09-24T07:44:46Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/e690/8bee/445453_xlarge.png?m=1711885731",
+      "image": "https://i.imgur.com/hvS0HVE.png",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/e690/8bee/445453_xlarge.png?m=1711885731",
+          "url": "https://i.imgur.com/hvS0HVE.png",
           "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/337f1aa8d88f3ac4",
-      "url": "https://www.v2ex.com/t/1244391#reply0",
-      "title": "Wild H3C：把 antirez 的 h3.c 包成了 ComfyUI 插件， Mac 本地跑 MiniMax H3 视频生成",
-      "content_text": "背景：MiniMax H3 （ 33B 视频生成模型）官方本地推理只支持 CUDA ，Mac 上基本不可用。antirez （ Redis 作者）写了 h3.c —— 纯 C + Metal 的 Apple Silicon 原生推理引擎。 我把它封装成了 ComfyUI 自定义节点并上架了官方 Registry ，应该是 h3.c 生态的第一个 ComfyUI 插件： - 两个节点：文生视频（画幅 / 时长 / 步数 / 速度预设 / seed / 首尾帧）+ Ref2VA 参考生成（最多 9 张有序参考图 + 1 条参考音频） - ComfyUI 界面内实时进度（分阶段进度条）、可取消；标准 VIDEO 输出直接接 SaveVideo - 已经下载过模型权重的话直接把目录指过去就行，不用重下 268GB - 97 个 pytest 用例 + 真机端到端验证（ M 系列 MBP 128G ，512×512 / 4 步约 32 秒） 设计上没有重写任何引擎逻辑，就是 subprocess 包 CLI —— 上游更新 git pull && make 就能获得；包内不含二进制和权重，REA",
-      "date_published": "2026-09-24T00:22:28Z",
-      "date_modified": "2026-09-24T00:22:28Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/d1ae918cf7d64647e1c4347f30a1f8b9?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/d1ae918cf7d64647e1c4347f30a1f8b9?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/118d5dde869afc2d",
-      "url": "https://www.v2ex.com/t/1244390#reply0",
-      "title": "[分享创造] PageLens：把多个网页的变化整理成个人信息流",
-      "content_text": "分享一款网页变化监控产品：PageLens，目前可以免费使用。它的重点不是简单提示“页面变了”，而是按你的要求提取具体信号，并把多个网页的结果整理成持续更新的信息流。 在当前网页打开扩展，用一句自然语言描述要关注的内容，再按设定周期检查并保留结果，不需要逐个打开页面反复刷新。 一些使用场景： 每小时记录 S&P 500、Nasdaq 100 和 VIX，只标记超过阈值的波动； 记录 BTC 价格、24 小时变化和成交量； 关注某位 X 用户发布的特定主题，忽略回复和转发； 观察商品价格和库存，降到目标价格或恢复供货时留下记录。 PageLens 支持云端检查，也提供 macOS 本地运行方式。登录页面需要用户明确授予站点权限；遇到 CAPTCHA、MFA 或网站限制时不会尝试绕过。目前还是早期版本，复杂页面的兼容性仍在继续完善。 官网和示例： https://pagelens.net/?utm_source=v2ex&utm_medium=community&utm_campaign=seed_launch 下载： https://pagelens.net/download?sourc",
-      "date_published": "2026-09-24T00:15:31Z",
-      "date_modified": "2026-09-24T00:15:31Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/e485/b3fc/50423_large.png?m=1401276128",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/e485/b3fc/50423_large.png?m=1401276128",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f0031b216b5156db",
-      "url": "https://www.v2ex.com/t/1244387#reply0",
-      "title": "做了一个 Mac 窗口分组工具 TabSash，想找几位朋友试用反馈",
-      "content_text": "大家好，我做了一个 macOS 窗口分组工具 TabSash ，可以把多个应用的窗口放进一个组，进行切换和移动。 目前发布了 0.1.2 ，想找几位朋友帮忙看看首次安装、权限设置和日常使用是否顺畅。 下载： https://tabsash.app/ - 支持 Apple 芯片 Mac ，macOS 14 或更高版本。 - 提供 7 天完整功能试用，无需付款，不会自动续费。 - 试用后可选择一次性购买，当前价格 US$6.99 ，适用税费以结账页为准。 - 管理窗口需要辅助功能权限；窗口缩略图需要屏幕录制权限。 如果遇到问题，欢迎在帖子里反馈操作步骤、Mac 芯片和 macOS 版本，也欢迎指出不好理解的地方。",
-      "date_published": "2026-09-24T00:09:32Z",
-      "date_modified": "2026-09-24T00:09:32Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/927b373908f9f6c7c492669d9d1a19fc?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/927b373908f9f6c7c492669d9d1a19fc?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b6b8b2bc264b88bc",
-      "url": "https://www.v2ex.com/t/1244381#reply1",
-      "title": "grok bot 风格头像提示词",
-      "content_text": "使用说明：\n（ 1 ）打开 gpt ，选择创建图片选项，上传参考人物图片\n（ 2 ）输入以下提示词 提示词如下： [目标] 将用户提供的图片中的人物或角色，重新诠释为一张拥有黑色胶囊形眼睛的极简 2D 机器人图标。 从原图中提取足以辨认对象的外观特征；脸部结构、眼睛、表情、构图与上色则遵循以下规范。本文中的“Grok bot icon”指的就是这套视觉规范。 [从原图提取的信息] 确认转换对象的肤色或脸部表面的基础颜色，以及发色和发型轮廓。头发长度、分缝方式、卷曲程度、代表性的刘海和扎发形态，均以原图为准。 从有辨识度的耳朵、帽子、眼镜、胡须、饰品、机械部件中，选择确有必要的识别元素。保留其基础颜色，并将需要在造型上保留的核心特征控制在最多约三项。优先保留大轮廓，而不是细小细节。 不要把肤色和发色统一改成某一种固定颜色。若原图中没有头发，或头发被遮住，则保持该状态；不要添加原图没有的刘海、饰品或机械部件。 不要复制原图中的表情和写实面部结构。复杂服装与装备只保留对识别对象有必要的部分。 即使另有风格参考图，角色的外观信息也只能来自转换对象本身。不要把风格参考图中的肤色、发色、发型或饰品",
-      "date_published": "2026-09-23T20:49:12Z",
-      "date_modified": "2026-09-23T20:49:12Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a2adc0a8e2c7e6c1",
+      "url": "https://www.v2ex.com/t/1244576#reply0",
+      "title": "你们所在运营商获取到的 IPv6 有几个？",
+      "content_text": "广东 终端获取到的公网 IPv6 。 电信 2 个,联通 2 个，移动 3 个。 移动很多 IPv6 吗？",
+      "date_published": "2026-09-24T07:36:25Z",
+      "date_modified": "2026-09-24T07:36:25Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+      "image": "https://cdn.v2ex.com/avatar/51ae/7051/123092_large.png?m=1722924596",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/1f5f/a780/673712_xlarge.png?m=1787934204",
+          "url": "https://cdn.v2ex.com/avatar/51ae/7051/123092_large.png?m=1722924596",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ee71bc0e8e54d722",
+      "url": "https://www.v2ex.com/t/1244574#reply1",
+      "title": "Bookmark OS - 围绕书签和收藏 做了一个浏览器里的操作系统",
+      "content_text": "纯浏览器的操作系统有很多啊 不过看下来感觉都没什么实用价值 想给这种 “浏览器 OS” 加点实用功能，于是做了一个浏览器端的书签管理系统 Repo: https://github.com/chengmarc/chengmarc.github.io Demo: https://chengmarc.com/",
+      "date_published": "2026-09-24T07:30:15Z",
+      "date_modified": "2026-09-24T07:30:15Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/2aa0/943f/645496_xlarge.png?m=1790235097",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/2aa0/943f/645496_xlarge.png?m=1790235097",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/05a5be6b0f269359",
+      "url": "https://www.v2ex.com/t/1244565#reply1",
+      "title": "百度搭子免费咖啡组队",
+      "content_text": "888 最近挖到一个绝佳的 AI 办公搭子 DuMate ，处理文档和杂事绝对是提效神器！走我的专属链接，咱俩各领一张星巴克中杯咖啡券，一起体验准点下班的快乐： https://www.dumate.cn/activity/starbucks?dutoken=3.s%3A%2F%C2%A5%5Em%24Dj3enxa%23%5E%25&track=1063479p&sa=dialog_command",
+      "date_published": "2026-09-24T07:08:04Z",
+      "date_modified": "2026-09-24T07:08:04Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/e765/5c5f/627953_xlarge.png?m=1786513871",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/e765/5c5f/627953_xlarge.png?m=1786513871",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/278d947ae4abffa9",
+      "url": "https://www.v2ex.com/t/1244562#reply0",
+      "title": "基于 jev 写了一个全新的 lint 引擎，更快更智能更高效，节省 llm 的调用，尤其适合大型项目的开发",
+      "content_text": "基于 TypeSafe 的 Jev 写了一个新的 lint 引擎\n使用自然语言描述规则，对于传统 lint 无法做到或难以实现的部分，可以交由 jev 去做一次验证 对于大型项目来说，每个模块或功能都有自己的一套规范和规则，agent 受限于上下文并不总是会遵循这些规范去开发，且让传统 llm 对照 skills 或规范去做审查和调整，无论效率还是成本都难以优化 所以开发了这样一个引擎，基于 ast-grep 去匹配函数/文件/路径，且带有缓存，同样的代码每次运行不会重复调用 jev ，也会智能的去匹配对应的规则进行审查，并给出原始规则/修复建议，类似 eslint/oxlint 这样的传统引擎的使用体验 规则定义大概是这样 // jevlint.config.ts\nimport { defineConfig, defineRule } from '@hazymoon/jevlint';\n\nconst noSecretInLog = defineRule({\n    id: 'logging/no-secret-in-log',\n    severity: 'error',\n    s",
+      "date_published": "2026-09-24T07:02:26Z",
+      "date_modified": "2026-09-24T07:02:26Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/201b/3a4d/215986_large.png?m=1511166052",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/201b/3a4d/215986_large.png?m=1511166052",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e1ede8730144d92e",
+      "url": "https://www.v2ex.com/t/1244561#reply3",
+      "title": "希望获得一些灵感。",
+      "content_text": "我的产品已经发布四年了，经过 150 多次不断地迭代升级，已经到了稳定的阶段，但是对于使用场景除了个人使用，有没有新的使用场景，大家能否提供参考， 官网: https://www.mtab.cc 产品: https://go.mtab.cc 可以给一些关于教育，或者企业协作方面的功能新增方向。考虑向这两个方向增加一些功能。",
+      "date_published": "2026-09-24T07:02:14Z",
+      "date_modified": "2026-09-24T07:02:14Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/67f9/df68/600311_xlarge.png?m=1711171782",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/67f9/df68/600311_xlarge.png?m=1711171782",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e3fdb8c98321425b",
+      "url": "https://www.v2ex.com/t/1244560#reply5",
+      "title": "中原地区电信，移动不给桥接。",
+      "content_text": "我想办理一条电信宽带，咨询了营业厅和安装师傅他们给的确切答案现在不给桥接，移动更是如此，难到时代在倒退吗？",
+      "date_published": "2026-09-24T07:00:18Z",
+      "date_modified": "2026-09-24T07:00:18Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/10d544be83d0f25aee14764bd799f1a7?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/10d544be83d0f25aee14764bd799f1a7?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/21c3ff4908398e8b",
+      "url": "https://www.v2ex.com/t/1244556#reply1",
+      "title": "出海新手，折腾了一个 AI 图片工具站，想请大家帮忙挑挑毛病",
+      "content_text": "最近开始尝试做出海，边学边做，终于把自己的第一个 AI 图片工具站上线了，来 V2EX 交个作业。 网站地址： https://tancky.io/ 一个人折腾容易陷入自己的思路，所以想请大家来体验一下。哪里不好用、功能有没有实际价值，或者第一眼就想关掉，都欢迎直接说，帮我少走点弯路 😂 想多试试的朋友，可以留下注册邮箱，我会每人赠送 50 积分。感谢大家捧场，也欢迎同样刚起步的朋友交流。",
+      "date_published": "2026-09-24T06:56:10Z",
+      "date_modified": "2026-09-24T06:56:10Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/fb154bd3584193c4016304e6b667f3e4?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/fb154bd3584193c4016304e6b667f3e4?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/947afaffafc2b893",
+      "url": "https://www.v2ex.com/t/1244530",
+      "title": "寻找以前在这里开车的一个新加坡 team 车主.",
+      "content_text": "6 还是 7 月份上过你的新加坡 team 车, 我没留微信, 后来就找不到你了, <a target=\"_blank\" href=\"http://记得你的域名好像是阿童木.ai\" rel=\"nofollow noopener\">记得你的域名好像是阿童木.ai</a>, 但现在找不到了, 想问下你现在还开车吗? 我的好几个朋友想上车, 我懒得折腾这些玩意.<br /><br />看到后联系下我.",
+      "date_published": "2026-09-24T06:07:04Z",
+      "date_modified": "2026-09-24T06:07:04Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (wises)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/f3cd7b451651e027df6fae684d587b78?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (wises)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/f3cd7b451651e027df6fae684d587b78?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a9dc5001804dbe2f",
+      "url": "https://www.v2ex.com/t/1244518",
+      "title": "到底应该用 astra 还是 opus 5.5 来写代码呢？",
+      "content_text": "到底应该用 astra 还是 opus 5.5 来写代码呢？",
+      "date_published": "2026-09-24T05:22:21Z",
+      "date_modified": "2026-09-24T05:22:21Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (blackantt)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (blackantt)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/49857b4b4e583b4c",
+      "url": "https://sspai.com/post/114395",
+      "title": "古董电脑室十周年记：为什么我不再是收藏家（上）",
+      "content_text": "站在十年的时间节点回望，2016 年知乎专栏「古董电脑室」的起点，其实并非一个怀旧的「博物馆」，而是一个试图在商业上寻找切口的「最小可行产品」（MVP）。然而，这场始于「市场验证」的创业实验，在随后的十年里，撞上了中国独特的社群生态与商业现实，最终将我推向了一个完全意想不到的方向，并彻底改变了我对「技术」和「收藏」的理解。 查看全文",
+      "date_published": "2026-09-24T04:15:24Z",
+      "date_modified": "2026-09-24T04:15:24Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/09/10/8e581424b4477877961b489e9083c090.jpg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/09/10/8e581424b4477877961b489e9083c090.jpg?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5d2b252e8bec1769",
+      "url": "https://www.v2ex.com/t/1244481",
+      "title": "Claude 送 250 刀额度？",
+      "content_text": "早上用着 CLaude 的时候看 Token 刷新突然发现有云会话的额度可以领，而且额度还挺高的，直接送了有 250 刀。<br /><br /><a target=\"_blank\" href=\"https://i.imgur.com/BJlXKqy.png\" rel=\"nofollow noopener\" target=\"_blank\"><img src=\"https://i.imgur.com/BJlXKqy.png\" class=\"embedded_image\" rel=\"noreferrer\"></a><br /><br /><a target=\"_blank\" href=\"https://i.imgur.com/3GqPquq.png\" rel=\"nofollow noopener\" target=\"_blank\"><img src=\"https://i.imgur.com/3GqPquq.png\" class=\"embedded_image\" rel=\"noreferrer\"></a>",
+      "date_published": "2026-09-24T03:05:14Z",
+      "date_modified": "2026-09-24T03:05:14Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (wxVIP)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/beb0/f325/298083_large.png?m=1781164871",
+      "tags": [
+        "V2EX Claude (wxVIP)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/beb0/f325/298083_large.png?m=1781164871",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d35d97820f8fcea8",
+      "url": "https://www.v2ex.com/t/1244469",
+      "title": "Your account has been suspended",
+      "content_text": "<p>claude 账号终于炸了</p>\n<p>从 3 月份用到现在，gmail 注册的</p>\n<p>早上一开电脑才发现。\n一时之间，竟不知道该干啥了。</p>\n<p>大家有什么好的替代方案，可以推荐下</p>\n<p>Hello,</p>\n<p>Our automated systems detected signals associated with your account which indicate violation of our Supported Countries Policy. These signals were, in turn, reviewed by our team to validate our system's findings. As a result, we have revoked your access to Claude.</p>\n<p>To appeal our decision, log in to <a href=\"http://claude.ai\" rel=\"nofollow\">claude.ai</a> with this account and you'll be taken to the appeals page. You can learn more about the process here.</p>\n<p>Regards</p>\n<p>Anthropic's Safeguards Team</p>",
+      "date_published": "2026-09-24T02:40:48Z",
+      "date_modified": "2026-09-24T02:40:48Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (jiehuangwei)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/fb49/74ac/95559_large.png?m=1438585139",
+      "tags": [
+        "V2EX Claude (jiehuangwei)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/fb49/74ac/95559_large.png?m=1438585139",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f2ff42209d37247b",
+      "url": "https://sspai.com/post/114913",
+      "title": "派早报：小米召开秋季新品发布会、千问发布 Qwen-Audio-3.1系列模型等",
+      "content_text": "Amazfit 推出智能手表 T-Rex Dual Solar、雷蛇推出灰鲭鲨 X 游戏音箱等。 查看全文",
+      "date_published": "2026-09-24T00:19:37Z",
+      "date_modified": "2026-09-24T00:19:37Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/9/23/2026/article/d01e0451-4a25-3e44-e177-d19924239b36.jpeg?imageMogr2/auto-orient/format/webp/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/9/23/2026/article/d01e0451-4a25-3e44-e177-d19924239b36.jpeg?imageMogr2/auto-orient/format/webp/ignore-error/1",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -141,121 +348,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/7daf/c7a0/351624_large.png?m=1706530376",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/22b2430d3fb11f80",
-      "url": "https://www.v2ex.com/t/1244357#reply0",
-      "title": "PicSqueeze：纯浏览器端图片批量压缩，同时支持 20 张批量处理，",
-      "content_text": "在线体验地址： https://tliens.github.io/picsqueeze/?lang=zh 引擎 调优 MozJPEG 渐进式 + 霍夫曼优化 + Trellis 量化表搜索 + 按分辨率自适应画质 OxiPNG 真·无损优化（滤波/策略搜索 + Alpha 优化），像素 100% 不变 libwebp method 5+、sharp YUV 、低画质自动滤波、运行时探测 SIMD 用加速版 实测数据（浏览器真实运行） JPEG 照片：552KB→132KB （-76%，SSIM 99.5 ）；六张混合批：总节省 60–80% 目标体积 100KB：6 张全部达标（ 89–99KB ），PNG 自动转 JPEG 并标注 PNG 无损：截图 1.86MB→1.18MB （-36.5%，SSIM 100 ） 线上生产环境复测：364KB→78KB （-78.6%）✓",
-      "date_published": "2026-09-23T14:37:16Z",
-      "date_modified": "2026-09-23T14:37:16Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/33d9fa78e90b29135b0ed524955a3620?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/33d9fa78e90b29135b0ed524955a3620?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/1691c38a91857aed",
-      "url": "https://www.v2ex.com/t/1244356#reply0",
-      "title": "做了一个把歌词变成歌曲的网站，想听听大家对创作流程的建议",
-      "content_text": "分享一下我在做的网站 Lyrics to Song AI ，主要功能是把自己写的歌词变成 AI 歌曲。\n它面向的场景比较具体：你已经写了一段歌词，或者想给某个人写一首生日、纪念日歌曲，希望听听这些文字唱出来是什么感觉。\n网站的创作流程围绕歌词展开：先准备歌词，登录后生成歌曲，再到自己的作品库里试听和管理。界面支持中文和英文。\n中文入口： https://lyricstosongai.org/zh 关于试用，提前说清楚： 可以先浏览页面、填写歌词，实际生成需要注册登录。 新账号赠送 90 积分，歌曲每次成功生成消耗 30 积分；如果全部用来生成歌曲，可以体验 3 次。 有付费套餐，免费积分生成的作品用于非商业用途。\n技术上用的是 TanStack Start 、React 和 Cloudflare Workers ，数据库用 D1 ，生成音频保存在私有 R2 ，通过登录鉴权访问。音乐生成接入第三方服务，网站侧主要做歌词输入、生成任务、作品管理和积分流程。\n这次发出来，想听听大家对实际体验的意见： 从填写歌词到听到歌曲，哪些操作让你觉得不清楚或者麻烦？ 生成结果有没有表达出你写这段歌词时想",
-      "date_published": "2026-09-23T14:28:04Z",
-      "date_modified": "2026-09-23T14:28:04Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/ce7971ceb5c34c83dbefa9e2e0072480?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/ce7971ceb5c34c83dbefa9e2e0072480?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/482f46a26c459dc2",
-      "url": "https://www.v2ex.com/t/1244338#reply0",
-      "title": "codex 最近发的重置卡似乎只重置了平时的 1/4token 额度",
-      "content_text": "我订阅的是 pro 5x ，下午发现忽然多了一张重置卡，马上就用了。结果现在只有 13%额度了，今晚睡前肯定用完。我之前正常重置（ 1 周到期重置）用了 2 天才用完，这次只有小半天，我感觉这个重置卡跟以前不太一样了。",
-      "date_published": "2026-09-23T12:44:47Z",
-      "date_modified": "2026-09-23T12:44:47Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/1430/7ec9/178263_xlarge.png?m=1749261711",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/1430/7ec9/178263_xlarge.png?m=1749261711",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/8f015c9f2f4bb662",
-      "url": "https://www.v2ex.com/t/1244321#reply1",
-      "title": "亲测用这个邮箱能收到 muse 注册验证码，但要挂加拿大/美国梯子",
-      "content_text": "用这个邮箱 https://mail.proton.me/ 注册成功后在设置->兑换推荐码填写 Z6OV9B 可以获得 10 亿永久 token 还可以用 30 次",
-      "date_published": "2026-09-23T10:17:59Z",
-      "date_modified": "2026-09-23T10:17:59Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/c8e9/3281/297792_xlarge.png?m=1790158600",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/c8e9/3281/297792_xlarge.png?m=1790158600",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5d366468addfbe65",
-      "url": "https://www.v2ex.com/t/1244306#reply0",
-      "title": "男男情感问题咨询",
-      "content_text": "发现一个网站 众生平等 人多力量大 林子大了什么鸟都有 很有意思 分享一下哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈 https://www.nannanqinggan.com/",
-      "date_published": "2026-09-23T09:27:44Z",
-      "date_modified": "2026-09-23T09:27:44Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/7eae/2e5c/412901_xlarge.png?m=1788484471",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/7eae/2e5c/412901_xlarge.png?m=1788484471",
           "mime_type": "image/png"
         }
       ]
@@ -330,29 +422,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/8471d9ce0c3f59d3",
-      "url": "https://sspai.com/post/114211",
-      "title": "Here Wallpaper：把喜欢的地图做成壁纸",
-      "content_text": "家附近的街道、旅行时喜欢上的一座城市、或者喜欢的海岸线和岛屿，都可以拿来做壁纸。 查看全文",
-      "date_published": "2026-09-23T02:19:17Z",
-      "date_modified": "2026-09-23T02:19:17Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/09/05/3722409a40de21da62c92f7e4fa32094.jpg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/09/05/3722409a40de21da62c92f7e4fa32094.jpg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/6b50ca6b1da7a097",
       "url": "https://www.v2ex.com/t/1244145",
       "title": "reclaude 有正在用的吗？",
@@ -376,29 +445,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/fcabb209b22325d7",
-      "url": "https://sspai.com/post/114889",
-      "title": "派早报：OPPO Find X10 系列发布、Beats 360 头戴式耳机发布等",
-      "content_text": "高通发布两款第六代骁龙 8 旗舰芯片，Claude Opus 5.5 与 GPT-6 Sol/Luna 发布等。 查看全文",
-      "date_published": "2026-09-22T23:30:05Z",
-      "date_modified": "2026-09-22T23:30:05Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/9/23/article/58f7159c-f8c8-25dd-d2af-c932e318f61e.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/9/23/article/58f7159c-f8c8-25dd-d2af-c932e318f61e.jpeg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/93fa042c7cc27fac",
       "url": "https://www.v2ex.com/t/1244087",
       "title": "Claude 终于也有重置卡了但是好像只能重置五小时限额，不能重置周限额",
@@ -417,29 +463,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/812391ef6b3ff5e1",
-      "url": "https://sspai.com/post/114878",
-      "title": "可定制、更出彩，头戴式耳机新选择：Beats 360 首发体验",
-      "content_text": "在BeatsStudioPro发布3年之后，Beats终于想起来要更新一下自家头戴式耳机的旗舰款了，推出了全新的Beats360。值得一提的是，Beats不久前刚刚度过了成立后的20周年生日，Beat ... 查看全文",
-      "date_published": "2026-09-22T14:00:00Z",
-      "date_modified": "2026-09-22T14:00:00Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/9/22/article/0ce8d304-b9c8-5c69-107d-d53ce79e2b1f.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/9/22/article/0ce8d304-b9c8-5c69-107d-d53ce79e2b1f.jpeg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
         }
       ]
@@ -1729,29 +1752,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/f8d0/1045/102641_xlarge.png?m=1641529094",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/28b0f3584ab08fbd",
-      "url": "https://www.v2ex.com/t/1237961",
-      "title": "为啥 fable 5-max 有时给的方案没有 gemini 好呢？ 是智者千虑吗？",
-      "content_text": "<p>如题。 看来不能看低了 gemini 。</p>",
-      "date_published": "2026-08-28T12:54:57Z",
-      "date_modified": "2026-08-28T12:54:57Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (blackantt)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (blackantt)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&d=retro",
-          "mime_type": "image/jpeg"
         }
       ]
     },

@@ -1087,7 +1087,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt News — <https://spacemolt.com/news/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt Changelog — <https://spacemolt.com/changelog/rss.xml>
-- ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook Posts API — <https://www.moltbook.com/api/v1/posts?sort=new&limit=50>
+- ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook Posts API — <https://www.moltbook.com/api/v1/posts?sort=hot&limit=25>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.onlyoffice.com&sz=16) OPENOFFICE
 `openoffice` · [feed_openoffice.xml](../feeds/feed_openoffice.xml)
