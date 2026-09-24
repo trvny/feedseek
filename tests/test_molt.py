@@ -387,7 +387,6 @@ class MoltTests(unittest.TestCase):
         self.assertEqual(entries, [])
         self.assertEqual(moderated, set())
 
-
     def test_parse_posts_rejects_title_removed_by_xml_sanitization(self):
         """Control-only titles must not reach feedgen as empty required fields."""
         payload = {"posts": [{"id": "bad-title", "title": "\x01\x02"}]}
@@ -504,6 +503,12 @@ class MoltTests(unittest.TestCase):
         )
         self.assertEqual(kwargs["allocation_field"], "submolt")
         self.assertEqual(kwargs["candidate_limit"], 1000)
+        self.assertEqual(
+            kwargs["candidate_source_reserve"],
+            {"SpaceMolt News": 30, "SpaceMolt Changelog": 30},
+        )
+        self.assertIs(kwargs["cache_transform"], molt._restore_submolt)
+
     def test_main_evicts_moltbook_posts_that_leave_hot_window(self):
         """Moltbook cache follows the current hot set without trimming SpaceMolt history."""
         hot = {
@@ -538,12 +543,6 @@ class MoltTests(unittest.TestCase):
                 }
             )
         )
-
-        self.assertEqual(
-            kwargs["candidate_source_reserve"],
-            {"SpaceMolt News": 30, "SpaceMolt Changelog": 30},
-        )
-        self.assertIs(kwargs["cache_transform"], molt._restore_submolt)
 
 
 if __name__ == "__main__":
