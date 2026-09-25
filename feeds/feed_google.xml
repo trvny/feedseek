@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-09-25T12:08:51.142251+00:00</updated>
+  <updated>2026-09-25T17:31:08.514057+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -12,6 +12,666 @@
   <icon>https://blog.google/favicon.ico</icon>
   <logo>https://blog.google/favicon.ico</logo>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/storage-data-transfer/storage-intelligence-advisor-and-batch-operations-updates</id>
+    <title>Storage Intelligence advisor: Know what changed in your storage estate and act on it</title>
+    <updated>2026-09-25T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The volume of data being generated today brings both opportunity and massive operational complexity. Most teams that operate at scale don't discover issues until they appear on an invoice — and by the time an unusual access pattern shows up as a line item, it has often been running for weeks. Understanding what happened means exporting inventory, joining it against access logs, and hoping someone still remembers which service account belongs to which job.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That workflow was manageable in the past, but today’s AI training and inference pipelines create data faster than governance systems can classify it, and read data in patterns that shift from week to week. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today we're announcing two new features for Google Cloud Storage: the general availability of &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-intelligence/advisor-overview"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Storage Intelligence advisor&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; along with expanded capabilities in &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/batch-operations/overview"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;storage batch operations&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Advisor tells you what changed in your storage estate and what to do about it. Batch operations can carry that decision out across millions of objects. These features are available now to all Storage Intelligence customers.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image1_Hd9cY5m.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Storage Intelligence advisor in cloud console.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Storage Intelligence advisor makes reporting easy&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For the last decade, answering "what’s in my buckets?" has been a data engineering project. Export your inventory, load it somewhere queryable, join it against usage, build dashboards, and then maintain them. &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-intelligence/overview"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Storage Intelligence&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; delivers visibility without the engineering overhead. Teams are voting with their workloads: the number of customers using Storage Intelligence to analyze datasets of over 1 billion objects has more than doubled this year. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;There are two ways to run a large storage estate. Teams can leverage daily activity data and metadata snapshots to build exactly the pipelines they need –Storage Intelligence still gives you that option – but most teams would prefer not to build pipelines if they don’t have to. They want to be told what changed in their storage environment and what to do about it. Storage Intelligence advisor is for them.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;What Advisor gives you on day one&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Storage Intelligence advisor brings visibility into your storage without having to perform any setup. Advisor starts from a curated set of findings. There's no schema to design, no pipeline to manage, and no dashboard to assemble. Enable Storage Intelligence on an organization, folder, or project, and charts and findings appear for the buckets in that scope. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Shipt&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; can now more quickly detect anomalies with Storage Intelligence advisor:&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Before Storage Intelligence advisor, tracking critical usage metrics and catching anomalies [in Google Cloud Storage] required heavy engineering and complex data pipelines. Now, with native, out-of-the-box dashboards, we can instantly identify usage spikes and drill down into the details. Having the visibility to immediately remediate unintended usage — without any configuration — has turned what used to be a major effort into a simple, self-service task." - &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Charley King, DataOps-DevOps Engineer, Shipt (a subsidiary of Target.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Once it’s installed, Advisor immediately starts analyzing the Cloud Storage estate, scanning for anomalies and optimization opportunities including:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A spike in Class A or B operations against &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-classes?e=48754805#coldline"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Coldline&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-classes?e=48754805#archive"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Archive&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; data. Cold storage is cheap to use but expensive to access.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A spike in 429 errors. Where a request pattern is outrunning limits, timeouts follow.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A spike in cross-region egress.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Total consumption rising above a long-term trend.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Each finding is baselined from your project's own activity and metadata and works from daily snapshots of your storage usage, so a spike on one day is surfaced within 24 hours, not a line item you discover at the end of the month. In the last 30 days, over 6,000 findings have been generated across hundreds of customers. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Take a runaway analytics job that issues millions of daily reads against Archive storage. Without Storage Intelligence advisor, this surfaces as a retrieval-fee weeks later on a bill. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Advisor identifies the anomaly against your project’s baseline, attributes it to the responsible bucket, prefix, and service account, and points at the controls that apply: bulk-transition the affected objects to Cloud Storage &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-classes?e=48754805#standard"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Standard&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to stop retrieval charges, enable Autoclass so tiering follows real access patterns, or tighten access with Managed Folders so the job can’t reach data it was never meant to access. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Act on findings with storage batch operations&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Most storage recommendations go unactioned because carrying them out is a lot of work. Updating retention policies or storage classes across billions of objects means handling throttling, partial failures, and retries. Storage batch operations removes that work. Execution is fully managed and serverless, with progress tracking and automatic retries built in, so a recommendation becomes a policy-driven job rather than a project. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Palo Alto Networks had this to say about batch operations:&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Object retention locks were essential for our security guardrails, but managing them across billions of objects was once a non-starter. Storage Intelligence changed that. Today, our team uses storage batch operations to seamlessly update retention policies on demand across our entire fleet.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" - Kurtis Nusbaum, Senior Principal Software Engineer, Palo Alto Networks&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because Storage Intelligence advisor and batch operations are part of the same Storage Intelligence subscription so customers can now quickly identify issues with Advisor and easily remediate those issues with batch operations.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Batch operations enables the following:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Remediating operational spikes:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Bulk-transition high-traffic Archive or Coldline objects to Standard as soon as the pattern is detected, curbing retrieval and operation charges immediately.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Containing runaway growth.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Mass-delete stale or temporary data across specific prefixes when the advisor flags above-trend storage growth.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enforcing fleet-wide consistency.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Apply metadata, tagging, retention, or encryption changes uniformly across massive object sets, with no dedicated compute to provision.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We also expanded and enhanced the existing capabilities of batch operations, making it easier to execute actions at scale:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Multi-bucket processing&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Run a single job across up to a thousand buckets per project, rather than executing it bucket-by-bucket.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Dry-run validation&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Simulate your transformations using dry-run mode before modifying live data. A dry run helps you safely preview a job's impact (including affected object counts, total size, and potential errors) before committing to permanent changes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Advanced filters powered by Storage Insights datasets&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Use Common Expression Language (CEL) expressions to select objects directly by specifying conditions that match fields in Insights datasets. For example, you can filter objects across your buckets by storage class, object size, creation date, or custom attributes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Below is a CLI example demonstrating how to create a batch operations job using advanced filters. This job deletes all temporary objects belonging to the Standard storage class present in a user's "analytics" buckets.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;gcloud storage batch-operations jobs create bulk-delete-temp-objects \\\r\n    --description=&amp;quot;Bulk delete temporary objects in analytics buckets&amp;quot; \\\r\n    --target-project=&amp;quot;my-project-id&amp;quot; \\\r\n--insights-dataset-config=&amp;quot;projects/my-project-id/locations/us-central1/datasetConfigs/my-dataset&amp;quot; \\\r\n    --bucket-filters=&amp;quot;name.startsWith(\&amp;#x27;analytics-\&amp;#x27;)&amp;quot; \\\r\n    --object-filters=&amp;quot;storageClass == \&amp;#x27;STANDARD\&amp;#x27; &amp;amp;&amp;amp; name.endsWith(\&amp;#x27;.temp\&amp;#x27;)&amp;quot; \\\r\n    --delete-object&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fb33d4da290&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;The evolution of storage management&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Storage management shouldn’t be a reactive effort reserved for quarterly reviews and post-incident fire drills. It should be continuous, proactive, and contextual.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Storage Intelligence advisor and batch operations help to surface what changed and enable insights and action at scale. As Storage Intelligence gets better at recognizing which findings matter, Cloud Storage can carry more of the operating load for teams that need to manage storage at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Storage Intelligence advisor and enhanced storage batch operations are generally available today.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To get started, &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/storage/docs/storage-intelligence/configure-and-manage-storage-intelligence#console"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;enable Storage Intelligence on a project or org&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. If you haven't used Storage Intelligence before, a 30-day trial is available at no cost.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/storage-data-transfer/storage-intelligence-advisor-and-batch-operations-updates" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-25T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image1_Hd9cY5m.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image1_Hd9cY5m.gif"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image1_Hd9cY5m.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models</id>
+    <title>Best practices guide for customizing Gemini models via Reinforcement Learning (RL)</title>
+    <updated>2026-09-25T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Reinforcement learning (RL) has been a keystone of modern LLM post-training, but it demands large training clusters and access to model internals that external customers can't have with proprietary models like Gemini. So here at Google Cloud, we packaged it into &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;a managed RL fine-tuning service (RLFT service) &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;— you bring prompts and a reward function; we handle the infrastructure and the proprietary model internals. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Now, you can adapt Gemini with the service — teaching the model from a reward signal you define, rather than from a fixed set of labeled answers. This unlocks a class of problems that supervised fine-tuning (SFT) struggles with: tasks that are hard to demonstrate but easy to score.  &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this guide, we will walk through practical best practices for using RL fine-tuning service. We'll start with a short tour of the RL training loop, how to decide if and when to use RL, and introduce how to get the most value from this approach.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;What is RLFT? &lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;RLFT adapts Gemini from a &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;reward signal you define&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; rather than labeled answers. Instead of authoring a large set of gold examples, you write one program that &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;scores&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; a response and the service improves the model against it — unlocking tasks that are hard to &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;demonstrate&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; but easy to &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;verify&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;: you can't hand-write the ideal SQL for every schema, but you can run the query and check the result.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1 - Single-Step RL Training Loop" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Single-Step_RL_Training_Loop.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At each training step the service generates multiple candidate responses to your prompts, scores them with your reward, and improves the model so that higher-scoring responses become more likely while it stays close to the original Gemini. The reinforcement learning that makes this work is fully managed — you never configure it. The one thing you own, and the thing that most determines your results, is the reward.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Three properties define what RLFT can and can't do:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;learns from the model's own outputs:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; It refines what the model already produces rather than copying an external target, so it tends to disturb unrelated capabilities less than SFT. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;rewards outcomes, not paths:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;   Any response that reaches a good result earns reward, which fits open-ended tasks with many valid solutions. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;amplifies existing competence: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;  It makes &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;occasional&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; success &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;reliable&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, but it can't teach a skill the model never demonstrates.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;When to use RLFT&lt;/span&gt;&lt;/h3&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2 - RLFT Approaches - Direct RL or SFT Warmup to Continuous RLFT" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_-_RLFT_Approaches_-_Direct_RL_or_SFT_War.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Prompting and SFT handle most adaptation; exhaust them first. RLFT earns its keep when you can &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;grade a response but can't cheaply author it&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, when &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;SFT has plateaued&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; on the metric that matters (faithfulness, schema validity, tone), or when the task has &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;many equally valid answers&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; a single reference target would wrongly penalize. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;SFT and RLFT are complementary, not competing:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Direct RLFT&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; when the base model already succeeds part of the time — enough for the reward to tell better answers from worse ones.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Two-stage SFT → RLFT&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; when you have SFT data or the base success rate is too low for RL to gain traction. Use SFT as a short, cheap warm start — kept light, since over-fitting the demonstrations leaves less room for RL to improve — then continue into RL via &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Continuous Tuning&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, which initializes RL from the SFT checkpoint.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Across early adopters, these patterns show where RLFT delivers the most value — each scoring an outcome the business cares about but could never cheaply demonstrate.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Use cases for RLFT&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;AI-powered NPCs in games&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; In-character, on-brand dialogue held across long, multilingual, multi-turn conversations.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Problem:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Off-the-shelf models break immersion — wrong language, hallucinated items, ignored players, repetitive loops.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Objective and reward:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini autorater (LLM-as-a-judge)&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; scores each turn on persona, flow, and game-state syntax, penalizing format and language errors.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Results:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Loops and language drift disappeared and state syntax held, making shippable in-game characters viable at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Structured entity extraction&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Pulling a set of items from unstructured documents, such as supplier invoices and shipping manifests, into structured records automatically&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Problem:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The long tail where SFT plateaus — missing required fields (recall) or inventing ones that aren't there (precision).&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Objective and reward:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;rule-based precision/recall reward&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; forces every field to be grounded in the source text, not imitated from one gold answer.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Results:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Field-level accuracy rose on noisy real-world documents where tuning had stalled, turning a manual review step into an automated one.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Content moderation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Applying intricate policies and decision trees at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Problem:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Models hallucinate false positives or reward-hack with invalid formats to dodge evaluation.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Objective and reward:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Run reward&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; pairs format validation with a deterministic grader to enforce multi-step policy adherence.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Results:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The model handled complex exemption carve-outs, sharply cut false positives, and stopped reward hacking — reducing the human-escalation volume that makes moderation expensive.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Code measured by execution&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; SQL or API calls graded on whether they actually run against customer data.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Problem:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; SFT mimics one reference query and breaks on unseen proprietary schemas.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Objective &amp;amp; Reward:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;code-execution reward&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; runs the code in a secure sandbox and pays out only if it compiles, executes, and returns the correct result.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Results:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The model produced first-attempt executable queries at closed-frontier quality and lower inference cost, letting non-technical users query proprietary data in natural language.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Presentation slide generation via HTML&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Multi-slide decks authored as HTML/CSS.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Problem:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Training on text alone is blind to visual quality — overflows, clipped elements, and inconsistent styling slip through unnoticed.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Objective &amp;amp; Reward:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;code-execution reward&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; renders the slides and scores visual design, layout integrity, structural completeness, and rubric adherence.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Results:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The model emitted modular, well-styled decks with cohesive themes and no layout overflow.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Where to start?&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;A dataset.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A diverse set of prompts with a held-out validation split is enough for a first run — confirm the loop converges and reward moves the right way, then scale. Keep train and eval strictly separated; a contaminated eval hides overfitting.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;A reward function.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Your task specification as code or configs, and the dominant driver of quality. A good reward correlates with human preference, is robust to malformed output (catch the failed parse and return a clearly negative score rather than crashing), and resists reward hacking — ensemble judges, penalize length, floor degenerate outputs, and prefer a verifiable check over a model's opinion. Validate it offline before launch.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The service handles the rest; start from the defaults, watch reward and eval curves in the console, and take the checkpoint where validation reward saturates rather than the last step.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="3 - rlft_tutorial" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/3_-_rlft_tutorial.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Get started today&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What will you build? The tools are ready and waiting. &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/reinforcement-tuning"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Documentation: Reinforcement Learning Fine-Tuning&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-25T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Single-Step_RL_Training_Loop.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Single-Step_RL_Training_Loop.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Single-Step_RL_Training_Loop.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/databases/memorystore-for-valkey-9-1-3x-qps-caching</id>
+    <title>Unlock 3x QPS and microsecond latency with Memorystore for Valkey 9.1</title>
+    <updated>2026-09-25T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At Google Cloud, we are committed to delivering the best managed experience backed by open source software. Today, we’re announcing the general availability of &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/memorystore/docs/valkey/supported-versions"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Memorystore for Valkey 9.1&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, which&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;achieves up to 3x queries per second (QPS) at microsecond latency compared to Memorystore for Redis Cluster.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our support for &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/databases/announcing-memorystore-for-valkey"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Valkey dates back to 2024&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, when Redis Inc. shifted its licensing away from the permissive open-source BSD license to a dual-license model. In response, Google Cloud, alongside other technology leaders, backed the creation of Valkey, an open-source alternative governed by the Linux Foundation.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Valkey has come a remarkably long way since then, delivering major performance and feature updates that push boundaries far beyond the original fork. Valkey is particularly compelling for organizations scaling AI and microservices to handle millions of concurrent users. Here, backend developers and architects must deliver both massive throughput while also maintaining microsecond latency. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this blog, let’s take a look at how Valkey 9.1 achieves its performance, new developer capabilities, how to get started, and how customers are using it.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Under the hood: Rethinking thread communication&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In high-throughput, in-memory datastores, efficient I/O offloading is critical to keeping the main execution loop unblocked. Previously, Valkey assigned client sockets to I/O threads statically in a round-robin fashion, requiring the main thread to continuously poll lists of pending clients to detect completed work.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Valkey 9.1 replaces list-polling with a lock-free, multi-queue messaging architecture that eliminates cross-thread CPU waste and unlocks dynamic work balancing. It involves three complimentary queues:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Main thread to I/O thread queue&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Dispatches read and write jobs to a single-producer multi-consumer (SPMC) queue. Free worker threads pull tasks on demand, enabling dynamic work-stealing that prevents thread starvation or hot-spotting.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;I/O thread to main thread queue&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Worker threads push completed tasks into a multi-producer single-consumer (MPSC) queue. The main thread pops completed work instantly, eliminating busy-wait list iteration.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;I/O thread-specific queues&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Dedicated single-producer single-consumer (SPSC) queues handle thread-affine memory cleanup and high-volume epoll offloading.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Valkey 9.1 also replaces static thread thresholds with a two-phase dynamic scaling engine:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;CPU-driven "ignition"&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: When main-thread CPU usage crosses 30%, the engine automatically activates the first background I/O thread to absorb incoming traffic before queue bottlenecks form.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Queue-depth auto-scaling&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Once ignited, Valkey dynamically scales the number of active I/O worker threads up or down based on real-time SPMC queue backlog, ensuring extra cores are used only when needed and parked when idle.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;New developer capabilities in Valkey 9.1&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Beyond raw performance, Valkey 9.1 addresses key feature requests from engineering teams with powerful new commands and enhanced security controls. Here is a look at what you can do with these new capabilities:&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;1. Granular database-level access control (ACLs)&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We recently launched support for &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;access control lists&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; on Memorystore for Valkey to provide more granular key-level and command-level authorization using IAM. This foundational security mechanism is offered at no additional cost and includes the following capabilities:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Centralized management:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A 1:N mapping approach allows you to define a single ACL policy and attach it across multiple clusters.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Secure multi-tenancy:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Organizations can easily enforce least privilege and secure multi-tenancy across their database fleets.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced observability:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The feature includes versioned policy revisions and comprehensive audit logging.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Previously, ACL rules applied globally across an instance. Valkey 9.1 allows administrators to restrict user access at the specific numeric database level within the ACL framework. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Real-world example: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;You can configure a staging or service-specific user and isolate their access strictly to non-production databases:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;production&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; user: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;@all ~* db=0&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;staging&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; user: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;@all ~* db=1&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;dev&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; user: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;@all ~* db=2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Protect against unauthorized data access and guard against application bugs by leveraging database-level access control across multiple databases, all without needing to prefix your keys.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_JicgxIP.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;2. CLUSTERSCAN: Efficient cluster-wide key scanning&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Previously, scanning keys across a large cluster required querying nodes individually. This approach was not cluster- or failover-aware. Consequently, scans could miss keys, return duplicates, or fail if slot migrations or node failovers occurred during the process.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;CLUSTERSCAN&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; command addresses these limitations by introducing a topology-aware cursor. This cursor encodes the current slot, the fingerprint of the local hashtable, and the local cursor. With this additional encoded information, clients can scan keys across the entire cluster while gracefully handling topology changes and redirections.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;CLUSTERSCAN&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; supports two primary scanning strategies:&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Use case 1: Sequential full cluster scan (single worker)&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This strategy is suitable for simple scripts or background jobs that prioritize simplicity over speed. The client starts with cursor 0 and sequentially traverses all slots in the cluster:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;CLUSTERSCAN 0 MATCH &amp;quot;user:*&amp;quot; COUNT 10\r\n1) &amp;quot;0B3a21-{06S}-64&amp;quot;\r\n2) 1) &amp;quot;user:101&amp;quot;\r\n2) 2) ...&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fb33d79e390&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To continue the scan, pass the returned cursor to the next call. The cursor automatically transitions to the next slot when the current one is fully scanned.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;CLUSTERSCAN 0B3a21-{06S}-64 MATCH &amp;quot;user:*&amp;quot; COUNT 10\r\n1) &amp;quot;0B3a21-{07T}-0&amp;quot;\r\n2) 1) &amp;quot;user:102&amp;quot;\r\n2) 2) ...&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fb33d56e450&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The scan is complete when the command returns a cursor of "0".&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Use case 2: Parallelized cluster scan (multiple workers)&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This strategy is suitable for high-throughput scans. Using the SLOT argument restricts the scan to a specific slot, allowing you to partition the 16,384 slots across multiple parallel workers.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Worker 1 (Scanning Slot 0):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;CLUSTERSCAN 0 SLOT 0 MATCH &amp;quot;user:*&amp;quot; COUNT 10\r\n1) &amp;quot;0B3a21-{06S}-64&amp;quot;\r\n2) 1) &amp;quot;user:101&amp;quot;\r\n2) 2) ...&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fb33d56ea10&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Worker 2 (Scanning slot 1000 in parallel):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;CLUSTERSCAN 0 SLOT 1000 MATCH &amp;quot;user:*&amp;quot; COUNT 10\r\n1) &amp;quot;0B3a21-{08X}-32\r\n2) 1) &amp;quot;user:999&amp;quot;\r\n2) 2) ...&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fb33d56fd10&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;From here, Worker 1 continues to pass SLOT 0 and Worker 2 continues to pass SLOT 1000. Mismatching the slot and the cursor returns an error. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Once all 16384 slots have been scanned, the cluster scan is considered complete.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="3" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/3_kgFC6Uv.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;3. More commands for atomicity and expirations&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;HGETDEL: Atomic fetch and delete&lt;br /&gt;&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;A frequent application pattern involves reading a hash field and deleting it immediately (such as consuming single-use authentication tokens or short-lived session states). Valkey 9.1 introduces HGETDEL, which retrieves the value of a hash field and deletes it atomically in a single network round-trip.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Real-world example:&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;HSET user:1001 temp_token "abcde"&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;(integer) 1&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;HGETDEL user:1001 FIELDS 1 temp_token&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;   1. "abcde"&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;HGET user:1001 temp_token&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;(nil)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;MSETEX: Shared expiration for multiple keys&lt;br /&gt;&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;To eliminate multi-command pipeline overhead, the new MSETEX command enables setting multiple keys simultaneously with a single, shared expiration time.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Real-world example: Setting up a temporary session state where multiple distinct keys must expire together in 300 seconds:&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;MSETEX 2 session:auth "ok" session:user_id "1001" EX 300&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;(integer) 1&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;TTL session:auth&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;(integer) 300&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced HSETEX with conditional flags&lt;br /&gt;&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;HSETEX now supports the NX (only set if the field does not exist) and XX (only set if the field exists) conditional flags.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Real-world example: Initializing a rate-limit threshold field with a 1-hour TTL, ensuring you don't overwrite an existing active limit:&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;HSETEX config:123 NX EX 3600 FIELDS 1 "rate_limit" "100"&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;(integer) 1&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Built on Memorystore for Valkey 9.0&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The release of Valkey 9.1 builds upon the major updates we unveiled for &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Memorystore for Valkey&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; at Google Cloud Next '26:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Built-in modules for AI &amp;amp; vector workloads: &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Native JSON support and Bloom filters &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;enable fast document querying and membership checks.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Six new node sizes: To help you manage costs and scale, we added six new node sizes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Small Size Nodes: Custom-Pico (1.25 GB), Custom-Micro (2.5 GB), and Custom-Mini (3.5 GB) for lightweight microservices and dev/test environments. These are only available for cluster mode disabled environments.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;High CPU and Large SKUs: HighCPU-Medium (8 vCPU/13 GB) and Standard-Large (8 vCPU/26 GB) optimized for CPU-heavy applications.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;XXL SKU: Highmem-XXLarge with 110 GB RAM and 16 vCPUs per node for massive cluster consolidation to power your most demanding workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;(Note: The figures above are based on open-source benchmarks; actual performance improvements will vary depending on your specific workloads.)&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Migrating to &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;fully&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; managed Memorystore for Valkey&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Having to self-manage your Redis OSS /Valkey caching layers drains valuable engineering bandwidth and creates operational friction during scaling. We are also excited to announce a new migration workflow to Memorystore for Valkey.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With this release, migrating your infrastructure is straightforward, fully managed, and requires a simple configuration change on your application to point to Memorystore for Valkey once your data is migrated. This workflow is generally available.To move off self-managed Redis or Valkey to fully managed Memorystore for Valkey, follow these four steps:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Provision the target instance:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Deploy a Memorystore for Valkey instance configured with your required shard count, node sizing, and clustered database options.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2.&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; Establish online replication:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Initiate continuous, dual-sync online migration directly from your source database to Memorystore.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;3. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Validate data synchronization:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Monitor replication metrics in real time to verify full dataset alignment and low-latency replication health.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;4. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Execute the cutover:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Switch application connection endpoints over to Memorystore for Valkey to start using the new cache.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;What Memorystore for Valkey customers are saying&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Already, over 95% of the top 100 Google Cloud customers already rely on Google Cloud Memorystore to power demanding, high-throughput workloads, led by increasing numbers of Memorystore for Valkey users.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Consider the fast-paced world of live sports, where delivering a flawless digital experience is of utmost importance. When a game-changing play happens, millions of fans immediately reach for their devices to check real-time stats, watch highlights, and engage with interactive features. These massive, unpredictable traffic spikes require an underlying architecture capable of immense scale. For organizations like &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Major League Baseball (MLB)&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; , a partner since Valkey’s early days, managing unpredictable traffic spikes without compromising performance is essential. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"We trust &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Memorystore for Valkey&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt; to power the massive scale of live baseball, delivering real-time stats and uninterrupted digital experiences to millions of fans. As we look ahead, we are incredibly excited about the Memorystore for Valkey 9.1 launch. The engine optimizations and latency enhancements will give us even more horsepower to handle the most unpredictable game-day traffic spikes, ensuring fans get the best technology-powered experience the game has to offer."&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;- Rob Engel, SVP of Software Engineering, Major League Baseball&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Beyond the stadium, the retail industry faces its own intense scaling challenges, particularly during major shopping holidays or flash sales. Modern e-commerce platforms rely on real-time personalization, dynamic pricing, and instant inventory updates to keep shoppers engaged. A lag of even a few milliseconds can disrupt the customer journey and impact the bottom line. To maintain a competitive edge, leading retailers such as &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Target&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; require ultra-responsive caching layers to power their most crucial customer-facing platforms.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"By leveraging &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Google Cloud Memorystore for Valkey&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, Target delivers ultra-low-latency, resilient caching for personalization services. We look forward to leveraging the performance enhancements in Valkey 9.1 to make our personalization platform even faster, more scalable, and more resilient during periods of peak demand." &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;- Scott Weide and Sumanth Huddar, Senior Engineering Managers, Target&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The demand for these ultra-low-latency architectures extends far beyond sports and retail. Across the digital landscape, organizations in banking, AI-native development, digital streaming, and telecommunications all share a common mandate: the need for superfast, highly available caches. Whether it is processing high-frequency financial transactions, serving complex machine learning inferences in real time, delivering seamless global video streams, or routing immense volumes of telecom data, microsecond latency is the new baseline for success.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Make the move to Valkey&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stop letting cache bottlenecks slow down your most demanding applications. Experience the performance, dynamic scalability, and enhanced security of Memorystore for Valkey 9.1 today.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Start building:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://console.cloud.google.com/memorystore/valkey/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Create a Memorystore for Valkey 9.1 instance in the Google Cloud console&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Dive deeper:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/memorystore/docs/valkey"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Read the technical documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to view the full list of supported commands, ACL configurations, and detailed capabilities of Memorystore for Valkey.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/databases/memorystore-for-valkey-9-1-3x-qps-caching" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-25T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#September_25_2026</id>
+    <title>Cloud Release Notes — September 25, 2026</title>
+    <updated>2026-09-25T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;API Keys API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;The API Keys remote Model Context Protocol (MCP) server is available in
+&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;Preview&lt;/a&gt;. You can
+connect to the API Keys remote MCP server from AI applications to
+create, inspect, restrict, and manage the lifecycle of API keys in your
+Google Cloud projects.&lt;/p&gt;
+&lt;p&gt;For more information, see the
+&lt;a href="https://docs.cloud.google.com/api-keys/docs/reference/mcp"&gt;API Keys MCP reference&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#September_25_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-09-25T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://cloud.google.com/blog/topics/developers-practitioners/agent-factory-recap-agent-harnesses-shifting-left-and-autonomous-coding</id>
     <title>Agent Factory recap: Agent harnesses, shifting left, and autonomous coding</title>
@@ -27701,105 +28361,5 @@ Flow attributed as the flow’s name with owner’s information&lt;/td&gt;&lt;/t
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/football_multi-club_hero_nphU3P.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/football_multi-club_hero_nphU3P.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_17_2026</id>
-    <title>Cloud Release Notes — August 17, 2026</title>
-    <updated>2026-08-17T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Cloud Database Migration Service&lt;/h2&gt;
-&lt;h3&gt;Announcement&lt;/h3&gt;
-&lt;p&gt;Database Migration Service for MySQL homogeneous migrations now supports MySQL version 9.7.
-For more information, see
-&lt;a href="https://docs.cloud.google.com/database-migration/docs/supported-databases"&gt;
-Supported source and destination databases&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Cloud NGFW&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;Support for the Advanced malware sandbox (WildFire) service is now restored.
-You can now use Advanced malware sandbox to perform deep inspection of
-network-routed file transfers and block zero-day malware before it reaches
-your workloads. Advanced malware sandbox
-is available in the Cloud Next Generation Firewall Enterprise tier.&lt;/p&gt;
-&lt;p&gt;For more information, see
-&lt;a href="https://docs.cloud.google.com/firewall/docs/about-wildfire"&gt;Advanced malware sandbox overview&lt;/a&gt; and
-&lt;a href="https://docs.cloud.google.com/firewall/docs/configure-wildfire"&gt;Configure Advanced malware sandbox in your network&lt;/a&gt;.
-This feature is available in &lt;strong&gt;Preview&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Cloud Trace&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;The following limits associated with the Cloud Trace API,
-&lt;code&gt;cloudtrace.googleapis.com&lt;/code&gt;, have increased:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Maximum attributes per span: 1,024&lt;/li&gt;
-&lt;li&gt;Maximum attribute value size: 65,532 bytes&lt;/li&gt;
-&lt;li&gt;Maximum attribute key size: 512 bytes&lt;/li&gt;
-&lt;li&gt;Maximum span name length: 1,024 bytes&lt;/li&gt;
-&lt;li&gt;Maximum events per span: 256&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The new limits are consistent with those supported by the Telemetry API,
-which implements the &lt;a href="https://opentelemetry.io/docs/specs/otlp"&gt;OpenTelemetry Protocol (OTLP)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;For more information, see
-&lt;a href="https://docs.cloud.google.com/trace/docs/quotas#trace-api-quotas-and-limits"&gt;Cloud Trace API quotas and limits&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class="release-note-product-title"&gt;Dataform&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;You can now use the
-&lt;a href="https://docs.cloud.google.com/dataform/docs/use-dataform-mcp"&gt;Dataform remote Model Context Protocol (MCP) server&lt;/a&gt;
-to manage data transformation workflows through AI agents. This feature is
-&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;generally available&lt;/a&gt;
-(GA).&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_17_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-17T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_16_2026</id>
-    <title>Cloud Release Notes — August 16, 2026</title>
-    <updated>2026-08-16T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google SecOps SOAR&lt;/h2&gt;
-&lt;h3&gt;Announcement&lt;/h3&gt;
-&lt;p&gt;Release 6.3.98 is being rolled out to the first phase of regions as listed
-&lt;a href="https://docs.cloud.google.com/chronicle/docs/soar/overview-and-introduction/soar-gradual-release"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This release contains internal and customer bug fixes.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_16_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-16T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_15_2026</id>
-    <title>Cloud Release Notes — August 15, 2026</title>
-    <updated>2026-08-15T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google SecOps SOAR&lt;/h2&gt;
-&lt;h3&gt;Announcement&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://docs.cloud.google.com/chronicle/docs/soar/release-notes#August_09_2026"&gt;Release 6.3.97&lt;/a&gt; is now
-available for all regions.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_15_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-15T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://googlecloudpresscorner.com/2026-08-15-Google-Cloud-and-Mahindra-Partner-to-Redefine-the-In-Car-Experience-with-Gemini-Enterprise</id>
-    <title>Google Cloud and Mahindra Partner to Redefine the In-Car Experience with Gemini Enterprise</title>
-    <updated>2026-08-15T04:01:00+00:00</updated>
-    <link href="https://googlecloudpresscorner.com/2026-08-15-Google-Cloud-and-Mahindra-Partner-to-Redefine-the-In-Car-Experience-with-Gemini-Enterprise" rel="alternate"/>
-    <category term="Google Cloud Press"/>
-    <published>2026-08-15T04:01:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.googlecloudpresscorner.com/image/1000000073-thumb.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/1000000073-thumb.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/1000000073-thumb.jpg" type="image/jpeg" length="0"/>
   </entry>
 </feed>
