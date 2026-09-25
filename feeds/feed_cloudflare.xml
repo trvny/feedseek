@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-25T17:30:14.921042+00:00</updated>
+  <updated>2026-09-25T21:47:28.823296+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -115,6 +115,51 @@ We are working to u</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/811fa79d57a93db9</id>
+    <title>Cloudflare Network Firewall, Magic Transit, Cloudflare WAN - Managed Rulesets supported in Unified Routing</title>
+    <updated>2026-09-25T00:00:00+00:00</updated>
+    <content>Cloudflare Advanced Network Firewall Managed Rulesets are now supported for accounts using Unified Routing mode. For the full list of feature availability, refer to Check feature availability before upgrading .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-unified-routing-managed-rulesets/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-25T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/04aaa8df23388d85</id>
+    <title>Workers - Workers tracing — new getActiveSpan(), recordException(), startSpan(), and setAttributes() APIs</title>
+    <updated>2026-09-25T00:00:00+00:00</updated>
+    <content>Custom spans in Workers now support more of the OpenTelemetry span API, so you can instrument more of your code and record errors directly on your spans. tracing.startSpan(name) creates a span without making it the active span, and returns it. Other spans do not nest under it. Call span.end() when the operation is complete. tracing.getActiveSpan() returns the currently active span. Use it to annotate the current span from helper functions and libraries without passing the span object through you</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-custom-span-apis/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-25T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3ef7d9517474cfa2</id>
+    <title>Workers - See every release and gradual deployment on Workers Metrics charts</title>
+    <updated>2026-09-25T00:00:00+00:00</updated>
+    <content>Workers Metrics charts now show every release in the selected time range, including the full progression of gradual deployments . This makes it easier to correlate changes in memory, CPU time, errors, or latency with the code that was serving traffic. A gradual deployment appears as a single rollout across the chart, with shading that increases as more traffic moves to the new version. Hover over a rollout to see the previous and new versions, the rollout duration, and the traffic percentage con</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-release-flows-workers-metrics/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-25T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/99c6208d48d90e5a</id>
@@ -1382,21 +1427,6 @@ https://letsencrypt.status.io/pages/incident/55957a99e800baa4</content>
     <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/98cf4e532bba5fcc</id>
-    <title>Cloudflare One Client - Cloudflare One Client for Windows (version 2026.8.1290.1)</title>
-    <updated>2026-09-09T18:10:26+00:00</updated>
-    <content>A new Beta release for the Windows Cloudflare One Client is now available on the beta releases downloads page . This beta release includes the following changes and improvements: Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM. Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel. Improved API reliabil</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-09-warp-windows-beta/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-09T18:10:26+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/7eed123a34dc82ae</id>
     <title>How we rebuilt Cloudflare Workers’ module registry for Node.js compatibility</title>
     <updated>2026-09-09T13:00:00+00:00</updated>
@@ -1410,36 +1440,6 @@ https://letsencrypt.status.io/pages/incident/55957a99e800baa4</content>
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M1WCDP58M0ZWWK4EQ5Z60396.01M1WCDPYM384QTHNEZA0WQ8W8.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b788bd92f6967f4a</id>
-    <title>Browser Isolation, Cloudflare One - Improved iOS tap-to-type experience for Browser Isolation</title>
-    <updated>2026-09-09T00:00:00+00:00</updated>
-    <content>Browser Isolation has improved the tap-to-type experience for users on iOS devices. Previously, Browser Isolation displayed a full-screen overlay with the message tap to type when users focused a text field. The prompt now appears inline over the focused text field, reducing disruption when users enter text in isolated sessions. If the focused text field is too small to display the full prompt, Browser Isolation displays a keyboard icon in the center of the text field instead. iOS users should t</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-09-ios-tap-to-type/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-09T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1320,height=605,format=webp/_astro/tap-to-type.UmUg_KNp.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1320,height=605,format=webp/_astro/tap-to-type.UmUg_KNp.jpg"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1320,height=605,format=webp/_astro/tap-to-type.UmUg_KNp.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cae958ed3339681a</id>
-    <title>CASB - New CASB integration for Zoom</title>
-    <updated>2026-09-09T00:00:00+00:00</updated>
-    <content>Cloudflare CASB now integrates with Zoom . The integration connects through Cloudflare's pre-built OAuth application — no manual app setup in Zoom is required. After an initial scan, CASB continuously scans your Zoom account to surface new findings as your environment changes. Zoom is widely used for meetings, webinars, and collaboration. Misconfigurations in account settings, meeting security controls, and recording access can expose organizations to data leakage, unauthorized access, and compl</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-09-casb-zoom-integration/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-09T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/de2784bec6a72647</id>
