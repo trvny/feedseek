@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-106 feedów · 842 źródła
+107 feedów · 847 źródeł
 
 ## Spis grup
 
@@ -522,12 +522,9 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=blog.character.ai&sz=16) Character.AI — <https://blog.character.ai/rss/>
 - ![](https://www.google.com/s2/favicons?domain=www.astralcodexten.com&sz=16) Astral Codex Ten — <https://www.astralcodexten.com/feed>
 - ![](https://www.google.com/s2/favicons?domain=feeds.feedburner.com&sz=16) Behance Blog — <http://feeds.feedburner.com/behance/vorr>
-- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Weather API Changelog — <https://www.xweather.com/docs/weather-api/changelog>
-- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather MCP Server Changelog — <https://www.xweather.com/docs/mcp-server/changelog>
 - ![](https://www.google.com/s2/favicons?domain=exa.ai&sz=16) EXA sitemap — <https://exa.ai/sitemap.xml>
 - ![](https://www.google.com/s2/favicons?domain=mkt.cdn.postman.com&sz=16) Postman app release notes data — <https://mkt.cdn.postman.com/www-next/release-notes/app-release-notes.json>
 - ![](https://www.google.com/s2/favicons?domain=www.postman.com&sz=16) Postman press — <https://www.postman.com/company/press-media/>
-- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather blog — <https://www.xweather.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=bitly.com&sz=16) Blog listing — <https://bitly.com/blog/>
 - ![](https://www.google.com/s2/favicons?domain=dev.bitly.com&sz=16) MCP changelog — <https://dev.bitly.com/bitly-mcp/overview/mcp-changelog/>
 - ![](https://www.google.com/s2/favicons?domain=bitly.com&sz=16) Press — <https://bitly.com/pages/press>
@@ -567,6 +564,18 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=apidev.accuweather.com&sz=16) Changelog — <https://apidev.accuweather.com/developers/change-log>
 - ![](https://www.google.com/s2/favicons?domain=name.accuweather.com&sz=16) Corporate — <https://name.accuweather.com/corporate/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.accuweather.com&sz=16) News sitemap — <https://www.accuweather.com/sitemaps_v2/articles/news/>
+
+### ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Log
+`xweather_log` · [feed_xweather_log.xml](../feeds/feed_xweather_log.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Blog — <https://www.xweather.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Weather API — <https://www.xweather.com/docs/weather-api/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) MCP Server — <https://www.xweather.com/docs/mcp-server/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Android SDK — <https://www.xweather.com/docs/android-sdk/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Maps UI SDK — <https://www.xweather.com/docs/maps-ui-sdk/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Webhooks — <https://www.xweather.com/docs/webhooks/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) MapsGL — <https://www.xweather.com/docs/mapsgl/changelog>
+- ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Phrases API — <https://www.xweather.com/docs/phrases-api/changelog>
 
 ### ![](https://www.google.com/s2/favicons?domain=danepubliczne.imgw.pl&sz=16) IMGW
 `imgw` · [feed_imgw.xml](../feeds/feed_imgw.xml)
