@@ -204,6 +204,9 @@ RETIRED_CACHE_SOURCES = {
     "AI Elements",
     "Upstash Blog",
     "Upstash Workflow Changelog",
+    "Xweather Blog",
+    "Xweather Weather API Changelog",
+    "Xweather MCP Server Changelog",
 }
 
 
@@ -517,130 +520,6 @@ def collect_exa_blog(known_links: set[str]) -> list[dict]:
         except Exception as exc:
             logger.warning("Exa Blog: skipping %s: %s", link, exc)
     logger.info("Exa Blog: %d entries", len(out))
-    return out
-
-
-# --------------------------------------------------------------------------- #
-# Xweather blog: no feed, but the index is server-rendered — every post is an
-# <article> with a cover-link, an h2/h3 title, and either a <time datetime>
-# (list cards) or a plain date span (the hero card). Scraped directly, no
-# per-post fetch needed.
-# --------------------------------------------------------------------------- #
-XWEATHER_BLOG_URL = "https://www.xweather.com/blog"
-_XWEATHER_DATE_RE = re.compile(r"[A-Z][a-z]{2,8} \d{1,2}, 20\d{2}")
-
-
-def collect_xweather_blog() -> list[dict]:
-    out: list[dict] = []
-    try:
-        html = multi_rss.get_html(XWEATHER_BLOG_URL)
-    except Exception as exc:
-        logger.warning("Xweather Blog fetch failed: %s", exc)
-        return out
-    if not html:
-        logger.warning("Xweather Blog unavailable; continuing")
-        return out
-    soup = BeautifulSoup(html, "html.parser")
-    seen = set()
-    for art in soup.find_all("article"):
-        a = art.find("a", class_="cover-link", href=True)
-        if not a:
-            continue
-        heading = a.find(["h2", "h3"])
-        if not heading:
-            continue
-        title = sanitize_xml(heading.get_text(" ", strip=True))
-        if not title:
-            continue
-        href = a["href"]
-        link = href if href.startswith("http") else "https://www.xweather.com" + href
-        if link in seen:
-            continue
-        seen.add(link)
-
-        date = None
-        time_el = art.find("time")
-        if time_el and time_el.get("datetime"):
-            date = multi_rss.parse_date(time_el["datetime"])
-        if date is None:
-            date_el = art.find("span", string=_XWEATHER_DATE_RE)
-            if date_el:
-                date = multi_rss.parse_date(date_el.get_text(strip=True))
-
-        desc_el = art.find("div", class_=re.compile("simpleRichText"))
-        description = _text(str(desc_el)) if desc_el else title
-
-        out.append({
-            "id": link,
-            "title": title,
-            "link": link,
-            "date": date or stable_fallback_date(link),
-            "description": sanitize_xml(description)[:500] or title,
-            "content_html": None,
-            "source": "Xweather Blog",
-        })
-    logger.info("Xweather Blog: %d entries", len(out))
-    return out
-
-
-# --------------------------------------------------------------------------- #
-# Xweather docs changelogs (weather-api, mcp-server): Nextra-style single
-# page, ``<h2 id="..">version</h2>`` followed by a sibling ``<p>`` date
-# (sometimes wrapped in ``<em>``, sometimes not) and a sibling ``<ul>`` of
-# bullet points, newest first. No per-entry permalink, so the h2's own id
-# becomes a stable ``#fragment``.
-# --------------------------------------------------------------------------- #
-XWEATHER_CHANGELOGS = [
-    ("Xweather Weather API Changelog", "https://www.xweather.com/docs/weather-api/changelog"),
-    ("Xweather MCP Server Changelog", "https://www.xweather.com/docs/mcp-server/changelog"),
-]
-CHANGELOG_MAX_ENTRIES = 30
-
-
-def _parse_docs_changelog(html: str, base_url: str, label: str) -> list[dict]:
-    soup = BeautifulSoup(html, "html.parser")
-    out = []
-    for h2 in soup.find_all("h2", id=True):
-        version = h2.get_text(strip=True)
-        if not version:
-            continue
-        date = None
-        p = h2.find_next_sibling("p")
-        if p:
-            em = p.find("em")
-            date_text = em.get_text(strip=True) if em else p.get_text(strip=True)
-            date = multi_rss.parse_date(date_text)
-        bullets = []
-        ul = h2.find_next_sibling("ul")
-        if ul:
-            bullets = [li.get_text(" ", strip=True) for li in ul.find_all("li")]
-        description = "; ".join(bullets)[:500] or version
-        link = f"{base_url}#{h2['id']}"
-        out.append({
-            "id": link,
-            "title": sanitize_xml(f"{label} {version}"),
-            "link": link,
-            "date": date or stable_fallback_date(link),
-            "description": sanitize_xml(description),
-            "content_html": None,
-            "source": label,
-        })
-    out.sort(key=lambda e: e["date"] or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
-    return out[:CHANGELOG_MAX_ENTRIES]
-
-
-def collect_xweather_changelogs() -> list[dict]:
-    out: list[dict] = []
-    for label, url in XWEATHER_CHANGELOGS:
-        try:
-            html = multi_rss.get_html(url)
-            if not html:
-                logger.warning("%s fetch failed", label)
-                continue
-            out += _parse_docs_changelog(html, url, label)
-        except Exception as exc:
-            logger.warning("%s failed: %s", label, exc)
-    logger.info("Xweather changelogs: %d entries", len(out))
     return out
 
 
@@ -1001,8 +880,6 @@ def main(full: bool = False) -> bool:
         + collect_postman_app_release_notes(known_links)
         + collect_postman_press(known_links)
         + collect_exa_blog(known_links)
-        + collect_xweather_blog()
-        + collect_xweather_changelogs()
         + collect_dated_anchor_sources()
     )
     if not new_entries and not cached:
