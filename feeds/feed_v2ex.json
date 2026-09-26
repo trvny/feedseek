@@ -8,93 +8,139 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f9ad108313b39c19",
-      "url": "https://www.v2ex.com/t/1244926#reply0",
-      "title": "在浏览器运行魔兽争霸 3 (Warcraft III)",
-      "content_text": "看到 https://www.v2ex.com/t/1244870 和 https://www.v2ex.com/t/1244710 ，感觉最近 Web 端有意思的项目越来越多了，忍不住先给大家分享一下团队最近的作品。 可以 1920 * 1080 60hz 流畅运行，支持 DotA 等自定义地图 demo: 由于一些原因还暂时没有公开部署，想体验的朋友可以留个联系方式 :) P.S. 本项目暂未使用 Opus 5.5",
-      "date_published": "2026-09-26T13:15:54Z",
-      "date_modified": "2026-09-26T13:15:54Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3a3754e35e38e01d",
+      "url": "https://www.v2ex.com/t/1244956#reply0",
+      "title": "做了个应用，把电子书变成一站站带朗读的幻灯片",
+      "content_text": "想读的书太多，读完的太少。\n所以做了 Cairn：导入自己的 EPUB/PDF/MOBI ，选一档深浅（知道个大概 → 完整走一遍），它按书的目录和章节原文排出一条路径，每站是几页带语音和字幕的幻灯片，边听边生成后面的站。 结构来自原文，每站标注来源章节，不靠模型\"记得\"这本书 旁边有个伴读助手，可以随时问这本书的问题，引用原文会先核对 模型自己选：OpenAI / Claude / Gemini / DeepSeek / 本地模型都行，书只存在本机 链接： https://github.com/jiehaoZ/Cairn 开源 MIT ，Apple Silicon 的 DMG 在 Release 里\n欢迎拍砖，特别想知道大家拿什么书试。",
+      "date_published": "2026-09-26T17:49:35Z",
+      "date_modified": "2026-09-26T17:49:35Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://i.imgur.com/8jjItLa.jpeg",
+      "image": "https://cdn.v2ex.com/avatar/4d0a/660f/525631_xlarge.png?m=1790444877",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://i.imgur.com/8jjItLa.jpeg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/1a16d1478769ee06",
-      "url": "https://www.v2ex.com/t/1244921#reply0",
-      "title": "MatrixMedia v0.11.6：社区 PR 实现视频号自动挂载小程序短剧/剧集，发布失败自动截图",
-      "content_text": "MatrixMedia 是一款开源的多平台视频矩阵发布工具（ Electron + Puppeteer ）。 刚发布 v0.11.6 ，核心功能来自社区贡献者 ababa00 的 PR：视频号发布时自动挂载小程序短剧和视频号原生剧集，GUI/CLI/HTTP/MCP 四条路径全打通，CLI 用 --sph-drama-id / --sph-series-id 传剧名即可。做短剧矩阵分发的应该懂这个价值——挂载失败不会误报成功，会自动转存草稿，退出码 4 提示人工确认。 技术上踩了不少视频号发布页的坑：shadow DOM 穿透、antd 固定列的隐藏克隆行、弹窗遮罩残留吞掉「保存草稿」按钮，实现细节都写在仓库 docs/ sph-links.md 里。近期版本还加了发布失败自动截图（点失败次数回看现场）和 macOS arm64 打包。 项目 GPL-2.0 ，Star 850+，欢迎试用和提 PR 。 https://github.com/hanliang97/MatrixMedia",
-      "date_published": "2026-09-26T12:28:25Z",
-      "date_modified": "2026-09-26T12:28:25Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/b94a5d5f93c2f3ba6afc4fda52948b72?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/b94a5d5f93c2f3ba6afc4fda52948b72?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/cc9a88cb0b29836f",
-      "url": "https://www.v2ex.com/t/1244916#reply3",
-      "title": "每天都有 AI 新品发布，我做了个 AI 产品墓地",
-      "content_text": "最近每天都是新模型、新工具发布。我想反着做一个：不收录刚上线的，收录后来没了的。 于是做了个 We Used This （我们用过它） ，一个 AI 产品死亡目录。 名字有点损，不过不是想嘲笑谁。新产品上线的时候挺热闹，停服往往就剩一封邮件、一条公告。想给这些东西留个地方，也让用过的人能聊两句。 像 Cortana 、Humane Ai Pin 的消费者服务，还有从 ChatGPT 里退役的 GPT-4o ，都在里面。大厂也逃不过。先收藏、以后再试，结果产品先走了…… 做了个 3D 地球，把产品的位置点亮。也可以直接搜名字，看它原来干什么、什么时候上线、什么时候告别，顺便算算活了多久。 这两张是 AI 做的宣传图，实际页面以网站为准。 网站里放了点黑色幽默，也留了写回忆的地方。不用注册就能逛，留回忆需要登录。 有些只是某个版本退役，有些是宣布了停服但还没到日期，这些会单独标清楚，免得给人提前送走。 基础产品清单也开源了，可以补充漏掉的产品。开源的是这份清单，网站代码和完整资料暂时没开放。 https://github.com/leontloveless/dead-ai-products",
-      "date_published": "2026-09-26T11:57:24Z",
-      "date_modified": "2026-09-26T11:57:24Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://ph-files.imgix.net/e6e3fabd-9654-45e5-9571-30a780f04977.png?auto=compress,format&fit=max&w=1600",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://ph-files.imgix.net/e6e3fabd-9654-45e5-9571-30a780f04977.png?auto=compress,format&fit=max&w=1600",
+          "url": "https://cdn.v2ex.com/avatar/4d0a/660f/525631_xlarge.png?m=1790444877",
           "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/dc592e3d9489082f",
-      "url": "https://www.v2ex.com/t/1244894#reply2",
-      "title": "分享一个专注中国市场风险的老域名查询工具 + 可复现研究",
-      "content_text": "最近在搞老域名相关的东西，越查越觉得很多工具有个隐蔽但很致命的问题：\n「没查到」经常被直接当成 0 或「安全」。\n比如查 ICP 、历史备案、反链来源、大陆可达性的时候，接口超时、数据缺失、结果为空，很多地方会默默记成 0 。 结果就是：真正有风险的域名被当成干净的，真正干净的反而因为数据不全被误判。\n这不是简单的数据缺失，而是语义错误。 missing ≠ 0 ，unknown ≠ safe 。\n基于这个观察，我做了一个工具，也顺手把对应的研究流程和数据规范写清楚了：\n工具地址： https://aiyucha.com 主要功能比较聚焦： 域名历史（ Wayback + 主题变化）\nWHOIS / RDAP\n反链概览（不只看数量，看来源结构）\nICP 历史记录\n大陆可达性 + DNS 一致性 + 微信访问检测\n批量筛选和尽调支持 不是又一个「查一下就完事」的工具，而是尽量把「查不到」和「查到是空」区分开，并在结果里显式标注。\n同时把研究侧的东西也公开了： 技术说明 / technical note （ Zenodo DOI ）： https://doi.org/10.5281/zen",
-      "date_published": "2026-09-26T09:16:01Z",
-      "date_modified": "2026-09-26T09:16:01Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/797228f12b800dca",
+      "url": "https://www.v2ex.com/t/1244954#reply0",
+      "title": "从 Arc 回到 Chrome 受不了 ⌃⇥，自己做了一个：按最近使用切标签，外加 ⌘E 搜遍标签、书签、历史",
+      "content_text": "从 Arc 回到 Chrome 以后，最不习惯的是 ⌃⇥：Chrome 按标签栏顺序切，Arc 按最近用过的顺序切。扩展做不了这件事（ Chrome 33 起扩展不能绑定带 Tab 的快捷键），所以写了一个菜单栏 App 加一个扩展，两边用本机 WebSocket 连起来。 现在有两块： 切换器（⌃⇥） 按最近使用顺序切，⌃⇥ 一下回到上一个标签，再一下回来 按住 ⌃ 时显示网页缩略图，松开才切，中途经过的不算用过 方向键、鼠标点选都行，只列当前窗口的标签（可关） 搜索面板（⌘E ，别的 App 里 ⌥Space ） 一个框搜活标签、最近关闭、书签、历史记录、收藏的文件夹、已装的 App 中文标题可以用拼音搜，全拼、首字母都行 Tab 切范围：全部 / 标签 / 搜索 / 历史 / 书签 / 最近关闭 / 文件夹 / 应用 没找到就直接用浏览器默认引擎搜，或者 GitHub 、YouTube 这类站内搜索 界面有简中、繁中、英、日、韩、西、法、德八种语言。 另外还有置顶标签重启后恢复、闲置标签自动清理、菜单栏标签列表这些。 支持 Chrome 和其他 Chromium 浏览器（ Edg",
+      "date_published": "2026-09-26T16:51:38Z",
+      "date_modified": "2026-09-26T16:51:38Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.jsdelivr.net/gh/lifedever/TabFlick@v0.16.0/docs/search-all-dark.jpg",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.jsdelivr.net/gh/lifedever/TabFlick@v0.16.0/docs/search-all-dark.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5eed5274473ea5ed",
+      "url": "https://www.v2ex.com/t/1244953#reply0",
+      "title": "有没有用深圳电信的？",
+      "content_text": "感觉晚上炸了。\n不管哪个地区的节点都炸了。包括 hk",
+      "date_published": "2026-09-26T16:36:21Z",
+      "date_modified": "2026-09-26T16:36:21Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/gravatar/2df769ff8be86ea27fc5d4107ae491a4?s=73&d=retro",
+      "image": "https://cdn.v2ex.com/avatar/6b41/f17a/24760_large.png?m=1411378517",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/gravatar/2df769ff8be86ea27fc5d4107ae491a4?s=73&d=retro",
+          "url": "https://cdn.v2ex.com/avatar/6b41/f17a/24760_large.png?m=1411378517",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/0360dcb773d54a75",
+      "url": "https://www.v2ex.com/t/1244949#reply0",
+      "title": "Muse 注册方法分享-刚成功，仅要美国节点与脸书账号",
+      "content_text": "最近这个相当火。我开始也是跟着别人方法试了，要验证信息就退出了。 刚刚试着用脸书账号直接注册，丝滑注册成功。不要验证信息，也不要验证正面照片。 我想是两个原因，一是美国节点，二是脸书老账号。 最后互助一波： 快来看看你的个人 AI 智能体 Muse 。在加入后的 48 小时内通过“设置”兑现我的邀请码，我们就能分别获得 10 亿个 Muse 词元。 邀请码：R8YD2C https://muse.ai/join",
+      "date_published": "2026-09-26T16:13:24Z",
+      "date_modified": "2026-09-26T16:13:24Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/fe99/bf9e/227043_large.png?m=1790383864",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/fe99/bf9e/227043_large.png?m=1790383864",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/143fe28c2fd7363d",
+      "url": "https://www.v2ex.com/t/1244948#reply0",
+      "title": "写了个 HA 集成支持米家/美的设备输出到小度智能音箱",
+      "content_text": "背景 由于家里的设备品牌主要是米家/美的/小度音箱,  多年来米家墙壁开关都只能用小爱同学控制, 而美的空调又只能用小度同学控制, 语音操作体验有点割裂, 借着现在 vibe coding 的春风, 写了一个 HA 集成 xiaodu bridge 来解决这个问题. 核心原理: HA 集成提供 OAuth Server 和设备云服务, 利用小度音箱自定义的智能家居技能(云云接入), 实现米家/美的设备接入小度智能音箱, 同时外输给 iPhone homekit, 支持多 iPhone 手机控制. 美的已经支持云厂商接入小度音箱, 为啥也要通过这个集成接入呢? 用过就知道, 美的云服务的状态同步比较差劲, 空调关着小度 app 还是开启状态. 整体运转流程: 米家 / 美的 / Sonoff / 其他 HA 集成\n        ↓\nHome Assistant 实体 + 区域\n        ↓\nxiaodu bridge （ DuerOS 语义模型 + OAuth 服务端）\n        ↓\n小度音箱 / 小度 App / Homekit Bridge 实现方式 集成在 HA 里直",
+      "date_published": "2026-09-26T16:13:05Z",
+      "date_modified": "2026-09-26T16:13:05Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/402b/557b/30529_large.png?m=1790436651",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/402b/557b/30529_large.png?m=1790436651",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/23b22ea76ca66c33",
+      "url": "https://www.v2ex.com/t/1244945#reply5",
+      "title": "付费求解决方案：想让指纹浏览器的某个窗口用安卓手机流量上网",
+      "content_text": "付费求解决方案 需求：想让指纹浏览器的某个窗口用安卓手机流量上网，而电脑里的其他软件正常用本地宽带上网。 要求：最好是自己实际操作过的，简单稳定的，如采用方案，愿意出 50 软妹币。 咨询过 AI ，一直解决不了，所以来这里求助，不知道是否符合版规。",
+      "date_published": "2026-09-26T15:46:00Z",
+      "date_modified": "2026-09-26T15:46:00Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/5ef508356ca1a6b3cc605f9392bf9f21?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/5ef508356ca1a6b3cc605f9392bf9f21?s=73&d=retro",
           "mime_type": "image/jpeg"
         }
       ]
@@ -123,29 +169,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2b7f26b823714b32",
-      "url": "https://www.v2ex.com/t/1244851#reply4",
-      "title": "新思路，用 muse 注册 claude 成功不被封",
-      "content_text": "muse 后面也是美国的一台电脑，ip 在美国，反正套娃就完事，muse 是 spark 注册的，再用 muse 注册 claude ，已经成功实操了几个号都没问题 可以用我的码还有 5 次：获得 10 亿个 Muse 词元。 邀请码：Z6OV9B",
-      "date_published": "2026-09-26T02:47:22Z",
-      "date_modified": "2026-09-26T02:47:22Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/c8e9/3281/297792_xlarge.png?m=1790158600",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/c8e9/3281/297792_xlarge.png?m=1790158600",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/995b339f3e10d543",
       "url": "https://www.v2ex.com/t/1244849",
       "title": "订阅 Claude Max 后续——Appstore 订阅安稳用了一个月，这次改用信用卡订阅试试",
@@ -164,29 +187,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/f8d0/1045/102641_xlarge.png?m=1641529094",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/5f9ba9be700557ec",
-      "url": "https://www.v2ex.com/t/1244817#reply3",
-      "title": "关于 tr069 是否要删除",
-      "content_text": "之前装新宽带的时候运维死活不给超密,前前后后花了快 5 个月时间才找到获取超密的办法成功获取了超密\n想问问各位大佬,关于 tr069 是否要删除还是说直接修改他连接的 URL 或者设置成静态 IP,因为我怕他把我光猫的配置给改回去了,还有还想请问一下这一个如果改了会不会直接被运维上门改回来,求大佬给给意见",
-      "date_published": "2026-09-25T19:30:23Z",
-      "date_modified": "2026-09-25T19:30:23Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895",
           "mime_type": "image/png"
         }
       ]
