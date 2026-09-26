@@ -60,7 +60,7 @@ GROUPS = [
     ("🌍 Świat — newsy", ["reuters", "euronews", "europa", "geopolitics"]),
     ("🤖 AI / LLM", ["anthropic", "claude", "openai", "xai", "aibridge", "skillsllm"]),
     ("💻 Tech / vendorzy oprogramowania", ["microsoft", "microsoft_updates", "redhat", "cloudflare", "docker", "gitlab", "github", "mozilla", "google", "apple", "sony", "lenovo", "nvidia", "canva", "youtube", "meta_newsroom", "saas", "hackerone", "creativecommons"]),
-    ("🌦️ Pogoda", ["openweather", "visualcrossing", "open_meteo", "accuweather", "imgw"]),
+    ("🌦️ Pogoda", ["openweather", "visualcrossing", "open_meteo", "accuweather", "xweather_log", "imgw"]),
     ("🎮 Gaming", ["steam", "ea", "bethesda", "nexusmods_news", "lichess"]),
     ("🚗 Motoryzacja", ["lexus_newsroom", "toyota_global"]),
     ("🏦 Bank", ["pekao"]),

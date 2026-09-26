@@ -50,8 +50,6 @@ class CodeRabbitSaasTests(unittest.TestCase):
             "collect_postman_app_release_notes",
             "collect_postman_press",
             "collect_exa_blog",
-            "collect_xweather_blog",
-            "collect_xweather_changelogs",
             "collect_dated_anchor_sources",
         )
         patches = [patch.object(saas, name, return_value=[]) for name in collectors]
