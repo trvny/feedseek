@@ -54,18 +54,18 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 
 <!--README_FEED:START-->
 - [Battery Ecosystems: A Comparative Analysis of Lithium-Ion Tech Policy](https://carnegieendowment.org/research/2026/09/battery-ecosystems-a-comparative-analysis-of-lithium-ion-tech-policy)
-- [Już jutro wielkie otwarcie w Krzeszowicach. Cennik Parku Wodnego wzbudza emocje - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiwwFBVV95cUxNaFhRTTFoLW1xWURhaGQ5NzB3MFV0RE90REJXU3FjVGUyZjVESGRxY0NyanlwcTc0VHg3Y3dCemRlMVZibmtUUUhnd3RRSXFZOEhrMXZlVHZLSEVfekNheTR2SFFEOEhIemdIZGFYNTVES244TkZyWjc0Um9mY1Q4TG0zWll4b2lCVjNYMC03aDRGVS1NaFYzeElHY2dEN1pXRC1aVUl4UG1WRUp5ZXBTb1BvdmMxWE9FUjE1Ty1sOFR4NVk?oc=5)
-- [Obława w powiecie chrzanowskim. 13 osób zatrzymanych - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMioAFBVV95cUxQb1lkb3ZXUGVRQ09pRWJvdWtadk5vczJBRzZBYi02N0pXQjBHcWE0bVRRSnlsLVQ2dTdNWFp4X1JpNXZhQnVqUzkwcFcxVmZhWHVzRmZGREZQelFsczRPSWlXb2dxVzFwOS1pajcyc25tc0hXTWQyMDNlb2Zxa0RKZjRMbkFCbXFkWEdZZkdLeVNXSEp5MXZOakFTSVZWaEdF?oc=5)
-- [Lipowiec wkrótce zamknięty na ponad dwa lata. Będzie wielki remont zamku - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiwwFBVV95cUxQQ3c0RXB5NFRRZHA4QnpYVjZ2R0JSMDlKdEhudFZ6QV9xQmRuSG5BcU5KU3hNZFJlXy1fLXpISEh2VVBJdktabkQzbFNicFZVa3g4dzZQaFZBcmtYZFZjN1FyR1cyaDExR1RXazlmQ2VlMTBpOEFOVWFra1B5c1RYMWowb2FEdzY3WEJsUnllNFRmR1JfcjNxb1pDYWkycHA3NEROOWtZcjU5VzhwaHZRU21wTGREb0FNcGdSUEZQM19fMUk?oc=5)
-- [US appeals court rules against Kalshi, says states can regulate prediction markets](https://www.reuters.com/business/finance/us-appeals-court-rules-against-kalshi-says-states-can-regulate-prediction-2026-09-25/)
-- [Zbyt płytkie groby na cmentarzu w Jaworznie? Mieszkaniec mówi o nieprawidłowościach - jaw.pl](https://news.google.com/atom/articles/CBMiYkFVX3lxTE9LdFB4MUZtb3J4N3ZTUmh1MllxZFBHNmV1ZkxQSDgwTmlXcUJpRDhUNzZwSktHWmFMRTlScy05aXVxOWpMa1VrdzJBRFJhTHNkZGd1Szh6Z0FJSDNGQlVZMUdB?oc=5)
+- [Matka Boża Wspomożenie Wiernych w Oświęcimiu ukoronowana - Diecezja Bielsko-Żywiecka](https://news.google.com/atom/articles/CBMijgFBVV95cUxNY2FHQW9wWmgyS01NM0ZpQ3lYZE15TXQ2dFFHZ0o4ZU1GUTh1Rm5kano3cmM5OGVERlpPX2t3ZnVBaktmdE9NU29QRTNBdjBQMUhXNTlSZThjeEN3cVRNWm1IZ2FEU1M2MXRQSE12NExLeXFxaDd3VldoSTJmMGxnY1N6RWZiNmhMd2ZxbHp3?oc=5)
+- [Ponad 21 mln zł na inwestycję w Szczakowej. Powstaje nowy węzeł transportowy - jaw.pl](https://news.google.com/atom/articles/CBMibkFVX3lxTE1QTVNiQ3dzSHo4bTdhcFZ4cmpMV2F2TmIyRkQ0c0xmbno3ZGZtdFBudk9relZLZW9aUnp1dzZKMEFCUERESEsydDV2dkRBM2phTXlIaWd2aElpTHhOTnZRbERnMnZhR2NIQUF2T0pR?oc=5)
+- [Biblioteka, sekretariat, szkolna kuchnia... Szkoła KSW w Libiążu ma wiele twarzy - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMivwFBVV95cUxQVTRhTFhRNGtyd24yanAtQXJOU1QyUmZ6RnBlRWxBT0c5WVlwVl9NMlNOZFdCQTlGMzdmbkNuQlp5c3NJRE10YTZPa05qeXRqZThzdVdQdDNOYWM2UDl5dXhhTnZLYkxieFZpdDRxRWUtQzA5Vk93ZWlZQ3MzTVZQSERVLXlzOUxtenpsMXVhRnA4aldJZEE3cDdCeGVBWWViV3FYUU9vZXJObzdJVXBhVlFma2x1NkM0ZEljS1E1TQ?oc=5)
+- [Z bronią nie tylko na polowanie. Coraz więcej pozwoleń, także w powiecie chrzanowskim - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiwwFBVV95cUxQSmpnbHJsaGIzUlVOVWxuaTN3SkxTdWpFZ3RScm9wcVpHMl8zRTk3Um1zaEhydVg4WDY5cHdpQTRrU2pkcVVQeVRtdVZnMldlUS10WV9OQUozc0RyR2Q0cmpkRmctclJKbGFPQUgyUlQ3R3prZmpYakpqcmEzZE5ZUkwwOFBxamRyUkR2emNlc3J4QjJVQkQtVjhMeWFKVFh5SDNjVmdJOVgtYmpPcGJWbWgzQU9qNjJxbmstMEhHSTEtLTg?oc=5)
+- [Google rozdaje rabaty z okazji urodziny. Nawet 20% taniej za Pixela](https://antyweb.pl/google-rozdaje-rabaty-z-okazji-urodziny-nawet-20-taniej-za-pixela)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝4004 was the name given to the first microprocessor by Intel.❞</i>
+<i>❝“The more you know, the more you realize you know nothing.”— Socrates❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
