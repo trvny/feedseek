@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-09-27T08:32:18.682072+00:00</updated>
+  <updated>2026-09-27T14:15:46.642413+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=64</icon>
   <logo>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=256</logo>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/7b6e3f542696906e</id>
+    <title>Fine-tuned Qwen 2.5 (0.5B → 3B) on real coding-agent traces, 10 controlled runs, one 16GB Mac. Compared PyTorch MPS vs. Apple MLX for local LoRA SFT — and the honest answer is "it depends on what you're optimizing for":</title>
+    <updated>2026-09-27T14:15:45.795223+00:00</updated>
+    <content>Fine-tuned Qwen 2.5 (0.5B → 3B) on real coding-agent traces, 10 controlled runs, one 16GB Mac. Compared PyTorch MPS vs. Apple MLX for local LoRA SFT — and the honest answer is "it depends on what you're optimizing for": • PyTorch MPS: 2.2x–5.7x faster raw throughput, but hits a hard memory wall — can't load a 3B model in FP16 on 16GB. • Apple MLX: 4-bit QLoRA fits 3B+ models with almost flat memory scaling as context grows (+109 MB going from 1k→4k tokens). • 4-bit quantization doesn't cost you convergence — eval loss tracks closely across backends. • The bigger surprise: most of MLX's slowdown isn't the 4-bit dequant tax. Two of the 10 runs went unquantized to isolate it — dequant only expl</content>
+    <link href="https://huggingface.co/posts/harshitkgupta/469838134336315" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-09-27T14:15:45.795223+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/harshitkgupta/469838134336315.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/harshitkgupta/469838134336315.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/harshitkgupta/469838134336315.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/5b83e772df081d75</id>
     <title>Everything going on here at basically AI:</title>
@@ -2171,21 +2186,6 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/48550d7a45e696c5</id>
-    <title>Canceling My Pro Subscription</title>
-    <updated>2026-09-06T00:15:18.927503+00:00</updated>
-    <content>Canceling My Pro Subscription I'm officially canceling my Hugging Face Pro subscription today. I supported this platform because it stood for true openness and neutrality. This acquisition by NVIDIA fundamentally changes that. Here’s why I’m against this deal: - Neutrality is dead. NVIDIA is a US-based company. This means US regulations will inevitably dictate platform policies, creating direct pressure on Chinese developers and anyone building open-weight models outside the US. - Community over bureaucracy. NVIDIA is a massive, slow-moving corporation. This acquisition will likely drown the community in corporate processes and commercial interests. Soon, uploading a simple finetune might be</content>
-    <link href="https://huggingface.co/posts/kostakoff/291719541262870" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-06T00:15:18.927503+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/684cc105c94f57af8b956042/mUFxZQGUQdar4CFsTzGFC.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/684cc105c94f57af8b956042/mUFxZQGUQdar4CFsTzGFC.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/684cc105c94f57af8b956042/mUFxZQGUQdar4CFsTzGFC.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/dbb34d05e5ffcc7c</id>
