@@ -41,6 +41,7 @@ real ``<title>`` / ``<meta description>`` and sometimes ``article:published_time
 Server-rendered listing scrape (no native feed):
   * MCP.so Feed         https://mcp.so/feed
   * MCP.so Blog         https://mcp.so/blog
+  * OrcaRouter Blog     https://www.orcarouter.ai/blog
 
 Index asset-slug discovery + detail fetch (no feed, no sitemap):
   * MCP Servers Blog    https://blog.mcpservers.org  (/posts/<slug>, slugs from
@@ -325,6 +326,7 @@ def doc_sources():
         ("Devin Release Notes", DEVIN_RELEASE_NOTES_URL),
         ("MCP.so Feed", MCPSO_FEED_URL),
         ("MCP.so Blog", MCPSO_BLOG_URL),
+        ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
     ] + list(AIHUBMIX_DOC_SOURCES)
 
 
@@ -347,6 +349,11 @@ MCPSO_BLOG_URL = f"{MCPSO_BASE}/blog"
 _MCPSO_FEED_PATH_RE = re.compile(r"^/(?:servers|remote-servers|clients)/[^/?#]+$")
 _MCPSO_BLOG_PATH_RE = re.compile(r"^/blog/[^/?#]+$")
 _MCPSO_BLOG_DATE_RE = re.compile(r"\b[A-Z][a-z]{2} \d{1,2}, \d{4}\b")
+
+ORCAROUTER_BASE = "https://www.orcarouter.ai"
+ORCAROUTER_BLOG_URL = f"{ORCAROUTER_BASE}/blog"
+_ORCAROUTER_POST_RE = re.compile(r"^/blog/[a-z0-9][a-z0-9-]*/?$")
+_ORCAROUTER_DATE_RE = re.compile(r"\b[A-Z][a-z]{2} \d{1,2}, \d{4}\b")
 
 
 # Locale-neutral LobeHub feeds replaced the former /pl/ endpoints. Drop only
@@ -389,6 +396,7 @@ PER_SOURCE_CAP = {
     "Glama MCP Servers": 10,
     "MCP.so Feed": 10,
     "AI Skill Market": 10,
+    "OrcaRouter Blog": 30,
 }
 
 
@@ -745,6 +753,73 @@ def collect_mcpso(known_links):
     return entries
 
 
+def parse_orcarouter_blog(html, known_links=None):
+    """Parse server-rendered OrcaRouter blog cards into normalized entries."""
+    soup = BeautifulSoup(html, "html.parser")
+    known_links = known_links or set()
+    entries = []
+    seen = set()
+
+    for card in soup.find_all("a", href=True):
+        href = card.get("href", "").split("?", 1)[0].split("#", 1)[0]
+        if href.startswith(ORCAROUTER_BASE):
+            href = href.removeprefix(ORCAROUTER_BASE)
+        if not _ORCAROUTER_POST_RE.match(href):
+            continue
+
+        link = f"{ORCAROUTER_BASE}{href.rstrip('/')}"
+        if link in known_links or link in seen:
+            continue
+
+        heading = card.find(["h2", "h3"])
+        if heading is None:
+            continue
+        title = sanitize_xml(heading.get_text(" ", strip=True))
+        if not title:
+            continue
+
+        full_text = card.get_text(" ", strip=True)
+        date_match = _ORCAROUTER_DATE_RE.search(full_text)
+        date = parse_date(date_match.group(0)) if date_match else None
+
+        description = ""
+        paragraph = card.find("p")
+        if paragraph is not None:
+            description = sanitize_xml(paragraph.get_text(" ", strip=True))
+
+        image = card.find("img", src=True)
+        image_url = image.get("src") if image else None
+        if image_url and image_url.startswith("/"):
+            image_url = f"{ORCAROUTER_BASE}{image_url}"
+
+        seen.add(link)
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": date or stable_fallback_date(link),
+                "description": description or title,
+                "source": "OrcaRouter Blog",
+                "category": "orcarouter",
+                "image": image_url,
+            }
+        )
+    return entries
+
+
+def collect_orcarouter_blog(known_links):
+    """Collect OrcaRouter's blog listing without making it a run-wide dependency."""
+    raw = fetch_url(ORCAROUTER_BLOG_URL)
+    if raw is None:
+        logger.warning("[OrcaRouter Blog] listing unavailable; continuing")
+        return []
+    entries = parse_orcarouter_blog(raw, known_links)
+    cap = PER_SOURCE_CAP["OrcaRouter Blog"]
+    entries = entries[:cap]
+    logger.info("[OrcaRouter Blog] parsed %d entries", len(entries))
+    return entries
+
+
 def _native_entry_date(entry):
     """Return a native feed entry's published/updated timestamp when present."""
     for key in ("published_parsed", "updated_parsed"):
@@ -962,7 +1037,7 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "Protocol, FastMCP, Agent Client Protocol, Pieces, ClaudePluginHub, MCP "
         "Servers blog, Claude Skills Hub, Agent Zero, MindStudio, "
         "Mintlify (blog + changelog), OtterlyAI, Flavio Longato, OpenRouter, "
-        "Upstash, x-cmd, "
+        "OrcaRouter, Upstash, x-cmd, "
         "Graphify (blog + changelog), MCP.so (feed + blog), "
         "AIHubMix (blog + docs + "
         "changelog), LiteLLM (blog + releases), Glama "
@@ -1011,6 +1086,7 @@ def main(full=False):
     sitemap_entries = collect_entries(known_links, ledger)
     native_entries = collect_native_feeds()
     mcpso_entries = collect_mcpso(known_links)
+    orcarouter_entries = collect_orcarouter_blog(known_links)
     mcpblog_entries = collect_mcpservers_blog(known_links, ledger)
     aihubmix_entries = collect_aihubmix_blog(
         known_links, ledger, fetch_url, fetch_detail
@@ -1026,6 +1102,7 @@ def main(full=False):
         sitemap_entries is None
         and not native_entries
         and not mcpso_entries
+        and not orcarouter_entries
         and not mcpblog_entries
         and not aihubmix_entries
         and not glama_rn_entries
@@ -1042,6 +1119,7 @@ def main(full=False):
         (sitemap_entries or [])
         + native_entries
         + mcpso_entries
+        + orcarouter_entries
         + mcpblog_entries
         + aihubmix_entries
         + glama_rn_entries

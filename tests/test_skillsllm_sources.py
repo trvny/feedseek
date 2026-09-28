@@ -65,6 +65,60 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         self.assertEqual(documented["OtterlyAI Blog"], "https://otterly.ai/blog/")
         self.assertEqual(documented["Flavio Longato"], "https://www.longato.ch/blog/")
 
+    def test_openrouter_and_orcarouter_sources_are_registered(self):
+        """Keep both requested LLM router blogs in SkillsLLM."""
+        native = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
+        self.assertEqual(native["OpenRouter"], "https://openrouter.ai/blog/feed.xml")
+        documented = dict(skillsllm.doc_sources())
+        self.assertEqual(
+            documented["OrcaRouter Blog"],
+            "https://www.orcarouter.ai/blog",
+        )
+
+    def test_orcarouter_blog_listing_parser(self):
+        """Parse only real OrcaRouter post cards, with date and description."""
+        html = """
+        <main>
+          <a href="/blog/router-release">
+            <article>
+              <span>Engineering &amp; Research</span>
+              <h2>Router release notes</h2>
+              <p>What changed in the routing stack.</p>
+              <time>Sep 27, 2026</time>
+            </article>
+          </a>
+          <a href="https://www.orcarouter.ai/blog/model-guide?ref=home">
+            <article>
+              <h3>Model guide</h3>
+              <p>Choosing the right model.</p>
+              <span>Sep 26, 2026</span>
+            </article>
+          </a>
+          <a href="/blog">Blog index</a>
+          <a href="/models/foo"><h2>Not a blog post</h2></a>
+          <a href="/blog/router-release"><h2>Duplicate</h2></a>
+        </main>
+        """
+        entries = skillsllm.parse_orcarouter_blog(html)
+        self.assertEqual(
+            [entry["title"] for entry in entries],
+            ["Router release notes", "Model guide"],
+        )
+        self.assertEqual(
+            entries[0]["link"],
+            "https://www.orcarouter.ai/blog/router-release",
+        )
+        self.assertEqual(
+            entries[0]["date"].isoformat(),
+            "2026-09-27T00:00:00+00:00",
+        )
+        self.assertEqual(
+            entries[0]["description"],
+            "What changed in the routing stack.",
+        )
+        self.assertEqual(entries[0]["source"], "OrcaRouter Blog")
+        self.assertEqual(entries[0]["category"], "orcarouter")
+
     def test_graphify_native_feeds_are_registered(self):
         """Graphify blog and changelog should use their native upstream feeds."""
         feeds = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
