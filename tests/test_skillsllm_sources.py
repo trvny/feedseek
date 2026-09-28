@@ -100,10 +100,22 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         </main>
         """
         entries = skillsllm.parse_orcarouter_blog(html)
-        self.assertEqual([entry["title"] for entry in entries], ["Router release notes", "Model guide"])
-        self.assertEqual(entries[0]["link"], "https://www.orcarouter.ai/blog/router-release")
-        self.assertEqual(entries[0]["date"].isoformat(), "2026-09-27T00:00:00+00:00")
-        self.assertEqual(entries[0]["description"], "What changed in the routing stack.")
+        self.assertEqual(
+            [entry["title"] for entry in entries],
+            ["Router release notes", "Model guide"],
+        )
+        self.assertEqual(
+            entries[0]["link"],
+            "https://www.orcarouter.ai/blog/router-release",
+        )
+        self.assertEqual(
+            entries[0]["date"].isoformat(),
+            "2026-09-27T00:00:00+00:00",
+        )
+        self.assertEqual(
+            entries[0]["description"],
+            "What changed in the routing stack.",
+        )
         self.assertEqual(entries[0]["source"], "OrcaRouter Blog")
         self.assertEqual(entries[0]["category"], "orcarouter")
 
