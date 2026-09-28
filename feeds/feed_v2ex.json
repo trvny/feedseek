@@ -8,70 +8,162 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c199f69ccbae8836",
-      "url": "https://www.v2ex.com/t/1245222#reply0",
-      "title": "做了一个 Mac 本地批量压图片/视频的小工具 MediaSlim，不用再反复猜参数了",
-      "content_text": "平时传网站素材、交设计稿或者发长录屏的时候，经常遇到体积超标要压缩的情况。 以往用类似工具最麻烦的不是“压”，而是“猜参数”： 一批图片如果一刀切套用 75% 质量，有的图可能已经糊了，有的平涂素材却还能再压； 视频更麻烦，码率、分辨率、CRF 调来调去，经常压完一次发现要么画质崩了，要么体积基本没降。 所以我写了这款 Mac 本地压缩工具 MediaSlim ，核心想法就是把“调参数”这件事交给软件自动做： 图片压缩 ：批量拖入 JPG / PNG ，软件会根据每张图的内容和细节复杂度动态分配压缩强度，而不是整批图套同一个死参数。支持转成 WebP / AVIF 或 HEIC 转 JPG 。 视频压缩 ：拖入视频后，它会分析不同画面的动态程度自适应参数，省去手动试码率的折腾。 纯本地处理 ：所有计算都在 Mac 本地完成，完全不传云端，没有素材泄露风险。 Finder 快捷操作 ：支持直接在访达（ Finder ）右键一键压缩，连 App 主窗口都无需特意打开，不打断当前流程。 目前的限制与说明： 系统要求 ：需要 macOS 15 (Sequoia) 及以上的 Apple 芯片 M",
-      "date_published": "2026-09-28T05:44:25Z",
-      "date_modified": "2026-09-28T05:44:25Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e5dc847f1995fbe0",
+      "url": "https://www.v2ex.com/t/1245362#reply0",
+      "title": "用 Opus 5.5 搞了个网页小游戏「蚂蚁搬家」，欢迎尝试",
+      "content_text": "https://ants.pomodiary.com/",
+      "date_published": "2026-09-28T14:12:38Z",
+      "date_modified": "2026-09-28T14:12:38Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/f149/041f/272071_large.png?m=1790567821",
+      "image": "https://cdn.v2ex.com/gravatar/b109d2874a4524dcedb6a50ceb202e2f?s=128&d=retro",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/f149/041f/272071_large.png?m=1790567821",
-          "mime_type": "image/png"
+          "url": "https://cdn.v2ex.com/gravatar/b109d2874a4524dcedb6a50ceb202e2f?s=128&d=retro",
+          "mime_type": "image/jpeg"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/566ae97b08a5c48b",
-      "url": "https://www.v2ex.com/t/1245221#reply0",
-      "title": "🦖 带上恐龙小队，开启史前探险！",
-      "content_text": "给小朋友做的第三款小游戏上线了！ 从一只小小的伙伴出发，自由探索陆地、天空和海洋。遇见远古生物，施展特色技能，收集新伙伴，组建最多三只成员的探险小队。\n别忘了去河湾、草丛和树林里找一找——神秘的隐藏恐龙，正等着你发现！ 欢迎带娃体验： https://muselabs.co/dinosaurs https://i.imgur.com/RsnOpDm.png https://i.imgur.com/sWOYW98.png https://i.imgur.com/u8tIAYZ.png",
-      "date_published": "2026-09-28T05:43:54Z",
-      "date_modified": "2026-09-28T05:43:54Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/bff57263cdc76fbd",
+      "url": "https://www.v2ex.com/t/1245357#reply0",
+      "title": "keepane， AI 时代的终端多路复用",
+      "content_text": "keepane 并非单纯的终端多路复用器：每个 pane （窗格）之间可以互相通信、投递消息，配过对的两台电脑之间也行，手机扫个码也能控制和观测。平时用起来和 tmux 一样，快捷键、命令都照旧，配置文件也基本兼容，同时也支持跨平台。 几个 pane 里各跑一个 agent 的时候，想让它们配合起来很麻烦，就慢慢往这个方向做了。现在大概有这些： pane 之间通信。每个 pane 有自己的收件箱，可以从一个 pane 给另一个 pane 发消息，或者让它执行一条命令，结果和输出之后都能查到。pane 有三种模式：手动模式，消息先放着，程序自己来取； shell 模式，收到就当命令执行； ai 模式，交给里面的 agent 处理。 跨机器通信。两台电脑在同一个局域网，或者都连着 tailscale ，配对一次（和 ssh-copy-id 差不多，之后就不用再管密钥了），一台上的 pane 就能给另一台上的 pane 发消息，回信会回到发消息的那个 pane 。也能看对方机器的状态，看命令在那边跑得怎么样；对方同意的话，还能看它某个 pane 的屏幕。安全上我做得比较保守：对方发来的消息默",
+      "date_published": "2026-09-28T13:43:56Z",
+      "date_modified": "2026-09-28T13:43:56Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/b79f/017f/755045_xlarge.png?m=1754481459",
+      "image": "https://dfine.tech/keepane/img/keepane-tour.gif",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/b79f/017f/755045_xlarge.png?m=1754481459",
-          "mime_type": "image/png"
+          "url": "https://dfine.tech/keepane/img/keepane-tour.gif",
+          "mime_type": "image/gif"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b17658050fd071aa",
-      "url": "https://www.v2ex.com/t/1245214#reply6",
-      "title": "跨省跨运营商 IPV6 连接速度问题， AI 也解决不了，求大佬。",
-      "content_text": "环境： A 省电信宽带有一台 NAS ，宽带上行 50M ，NAS 上跑了 OpenSpeedTest 服务 B 省移动宽带有 iPad 、Mac 、安卓手机 分别测试速率如下： iPad 50M 安卓手机 50M Mac 2.9M 找 AI 说了半天也找不到啥原因。",
-      "date_published": "2026-09-28T05:24:12Z",
-      "date_modified": "2026-09-28T05:24:12Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/cd5606331f40eae1",
+      "url": "https://www.v2ex.com/t/1245334#reply2",
+      "title": "成功注册 muse 了，虽然有点过时了，但还是发出来给大家参考",
+      "content_text": "凑热闹来分享一下我刚刚成功的 muse 注册方式。\n我是在 iPhone 上注册的，感觉成功率会高不少。 在美区 AppStore 下载 muse\n代理选择美国的节点\n验证年龄的时候用招行 visa 卡\n地址选美国就行，随便找个美国的邮编填上 一次通过，很顺滑。\n顺便分享一下我的邀请码 E0LW5N",
+      "date_published": "2026-09-28T11:50:25Z",
+      "date_modified": "2026-09-28T11:50:25Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/gravatar/0344b43a67721463995cc1163609a89b?s=73&d=retro",
+      "image": "https://cdn.v2ex.com/avatar/2fc1/5950/472493_large.png?m=1584500692",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/gravatar/0344b43a67721463995cc1163609a89b?s=73&d=retro",
+          "url": "https://cdn.v2ex.com/avatar/2fc1/5950/472493_large.png?m=1584500692",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/445c43aaa6a5df3a",
+      "url": "https://www.v2ex.com/t/1245316#reply0",
+      "title": "muse.mu 这个站居然是 muse 乐队的？",
+      "content_text": "最近看到到处都在说 Muse,特意去 semrush 上搜索了一下排首位的站点是 muse.mu ，点开一看详情页居然是缪斯乐队的网站",
+      "date_published": "2026-09-28T09:52:31Z",
+      "date_modified": "2026-09-28T09:52:31Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/d7ee9513d3dbbbf98638543a6a0f4972?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/d7ee9513d3dbbbf98638543a6a0f4972?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/00783a3bb6764c23",
+      "url": "https://sspai.com/prime/story/dev-env-on-android-with-termux",
+      "title": "基于 Termux 的 Android 手机开发服务器实操",
+      "content_text": "不 root、不刷机，在随身设备上跑通 AI Agent 与微型 Linux 环境。 查看全文 本文为会员文章，出自 《单篇文章》 ，订阅后可阅读全文。",
+      "date_published": "2026-09-28T09:33:03Z",
+      "date_modified": "2026-09-28T09:33:03Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/09/19/e557f9c9760b643db8359daccce2883d.jpg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/09/19/e557f9c9760b643db8359daccce2883d.jpg?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c3f165099ffc6e44",
+      "url": "https://www.v2ex.com/t/1245286",
+      "title": "ios 订阅的 claude 5x 套餐自用号不挂 api 中转会被封号吗？",
+      "content_text": "<p>rt 。上周开了个 pro 套餐试试水。这周 codex 蠢得没法用了，想试试看转 claude 。</p>",
+      "date_published": "2026-09-28T08:16:45Z",
+      "date_modified": "2026-09-28T08:16:45Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (hachimen)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/78307c13b7fe546263d5ef76fe40089b?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (hachimen)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/78307c13b7fe546263d5ef76fe40089b?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/210aeef9c4764d06",
+      "url": "https://sspai.com/post/114972",
+      "title": "比起折痕， iPhone Duo 的交互设计更加令人着迷",
+      "content_text": "一起来看看 Apple 是如何围绕一块会改变形状的屏幕，重新思考人与界面的关系。 查看全文",
+      "date_published": "2026-09-28T07:00:00Z",
+      "date_modified": "2026-09-28T07:00:00Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/09/25/c116909558b7cdab5b864cb67fd5d8af.jpg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/09/25/c116909558b7cdab5b864cb67fd5d8af.jpg?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/jpeg"
         }
       ]
@@ -95,52 +187,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/2fc1/5950/472493_large.png?m=1584500692",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/971f075f092ace9c",
-      "url": "https://sspai.com/post/114967",
-      "title": "摸鱼+3 | 还剩三天班，一天一个解谜游戏",
-      "content_text": "节后再说！ 查看全文",
-      "date_published": "2026-09-28T03:00:30Z",
-      "date_modified": "2026-09-28T03:00:30Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/9/24/article/261897ae-ca7e-aabd-d11f-1c227607a42f.png?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/9/24/article/261897ae-ca7e-aabd-d11f-1c227607a42f.png?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c43e5ef71e304d65",
-      "url": "https://www.v2ex.com/t/1245176#reply1",
-      "title": "原来几倍光学变焦是这么回事",
-      "content_text": "关于焦距、光圈与手机镜头。 研究了一会儿相机原理和手机镜头，新学到一些东西： 对专业相机来说，决定焦距与光圈的部件在镜头上，决定快门与感光度的部件在相机上。 光圈值的格式是 f/x ，它的含义就是公式的字面意思，两数相除。f 是镜头的等效焦距，x 是一个倍数，指光圈孔径是焦距的多少倍。 x 是分母，因此光圈值 f/x 里的 x 越小，光圈值越大。 光圈值之所以这样表示，而不是直接表示成绝对的光孔直径，是因为对于不同焦距的镜头，只要这个 x 倍数一样，曝光和虚化效果就基本相同。这应该可以通过三角函数证明。 焦距决定了镜头最清晰的画面，也就是焦点在什么距离，光圈的大小决定了焦点前后多远范围的画面也能保持清晰。光圈大，清晰的范围就小，前后景虚化越明显，反之亦然。 手机摄像头由于物理空间限制，较少采用可变焦距、可变光圈这类复杂结构，而是在几个固定焦距、固定光圈的独立镜头间切换。 目前主流旗舰机型通常带有 3 个摄像头。一个焦距适中，20-35mm ，略偏广角一点，拍摄日常事物；一个焦距较短，20mm 以下，超广角镜头，拍摄大视野场面和微距；一个长焦，50mm 以上，拍小角度远景。 手机摄像头并",
-      "date_published": "2026-09-28T03:00:24Z",
-      "date_modified": "2026-09-28T03:00:24Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/db2b/cfda/284083_xlarge.png?m=1790346521",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/db2b/cfda/284083_xlarge.png?m=1790346521",
           "mime_type": "image/png"
         }
       ]
@@ -210,29 +256,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/a95c/4050/14375_large.png?m=1754922138",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/427ae651c903f369",
-      "url": "https://sspai.com/post/115079",
-      "title": "派早报：OpenAI 称与苹果合作效果不佳",
-      "content_text": "OpenAI 称与苹果合作效果不佳 iPhone 4「天线门」媒体问答录像时隔十六年现身 F-Droid 2.0 发布 三星冰箱固件升级后罢工，影响韩国用户过中秋 Excel 单元格将支持数组 微软不再使用 Copilot+ PC 品牌 看看就行的简讯 少数派的近期动态 你可能错过的好文章 查看全文",
-      "date_published": "2026-09-27T23:03:45Z",
-      "date_modified": "2026-09-27T23:03:45Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/9/28/2026/article/1aec97c3-7256-f8d3-a5a1-beb433cd3174.png?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/9/28/2026/article/1aec97c3-7256-f8d3-a5a1-beb433cd3174.png?imageMogr2/auto-orient/ignore-error/1",
           "mime_type": "image/png"
         }
       ]
@@ -4826,29 +4849,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/gravatar/e3976f03a9fa2ee601fc70a0aacf52df?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ca1949605f4a5cb4",
-      "url": "https://www.v2ex.com/t/1225464",
-      "title": "国行红米手机有推荐吗？",
-      "content_text": "<p>一直是苹果全家桶用户</p>\n<p>想先入一台国行的主力机去填补苹果机无法覆盖到的功能区间</p>\n<p>身边有朋友推荐红米的手机</p>\n<p>请问现在红米手机入手哪部比较好</p>\n<p>要冲新机吗还是就买二手？</p>",
-      "date_published": "2026-07-07T01:45:29Z",
-      "date_modified": "2026-07-07T01:45:29Z",
-      "authors": [
-        {
-          "name": "V2EX Android (adz2k)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/0097d2b884216cfea9ff0a2c9584716a?s=73&d=retro",
-      "tags": [
-        "V2EX Android (adz2k)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/0097d2b884216cfea9ff0a2c9584716a?s=73&d=retro",
           "mime_type": "image/jpeg"
         }
       ]

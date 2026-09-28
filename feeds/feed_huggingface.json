@@ -8,6 +8,75 @@
   "icon": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/5a698ff9aff98ff0",
+      "url": "https://huggingface.co/posts/SeaWolf-AI/104982681748125",
+      "title": "🧬 Darwin-180B-RSI — an AI that learns from itself and knows when it's right",
+      "content_text": "🧬 Darwin-180B-RSI — an AI that learns from itself and knows when it's right 👉 FINAL-Bench/Darwin-180B-RSI 🧬 Darwin — crossbreed and evolve the parent Darwin diagnoses strong parent models like an MRI, inherits only their best parts, and evolves the weak spots — producing a child stronger than its parents. Father model: Qwen3.8-Flash-Next (180B MoE). 🔧 Rewired paths 🔹 12 full-attention layers · 🔹 36 linear-attention layers · 🔹 48 shared-expert layers — precision-strengthened 🔒 512 routed experts · router · vision encoder — untouched → Only 0.02% of the weights changed. 🔁 RSI × 🏛️ ZTC RSI (recursive self-improvement): solve → verify against real answers → learn only the correct reasoning → rep",
+      "date_published": "2026-09-28T14:25:01Z",
+      "date_modified": "2026-09-28T14:25:01Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/J8dTwRLLV7-RrM5406jwJ.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/J8dTwRLLV7-RrM5406jwJ.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/2ee97903a960692c",
+      "url": "https://huggingface.co/posts/DedeProGames/191699145972128",
+      "title": "🧱 SLM Tetris Arena: can a small language model play Tetris without ever being trained on it?",
+      "content_text": "🧱 SLM Tetris Arena: can a small language model play Tetris without ever being trained on it? I built an arena where tiny decoder-only LMs (50K–250M params) play Tetris zero-shot. There is no fine-tuning and no game data. They only use what they picked up from pre-training on text. How it works: - For every piece, the engine simulates each legal placement and describes the result in plain English (\"clears one line, creates no new holes, keeps the stack low…\"). - The model never sees the grid. It reads each description, and the arena compares log P(\" good move\") with log P(\" bad move\"). The best-rated placement is played. - Every player gets the same piece sequence, so it's a fair race. - Ther",
+      "date_published": "2026-09-28T14:25:01Z",
+      "date_modified": "2026-09-28T14:25:01Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/191699145972128.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/191699145972128.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/9552195c964ddb7b",
+      "url": "https://huggingface.co/blog/Hcompany/holo4",
+      "title": "Holo4: powering generalist computer-use agents",
+      "content_text": "Holo4: powering generalist computer-use agents",
+      "date_published": "2026-09-28T09:44:05Z",
+      "date_modified": "2026-09-28T09:44:05Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/69fc7e49052f11ab9931b672/yzjxvlmlZKtjASwAYu6bN.jpeg",
+      "tags": [
+        "Hugging Face Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/69fc7e49052f11ab9931b672/yzjxvlmlZKtjASwAYu6bN.jpeg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/a301fd3bc750d108",
       "url": "https://huggingface.co/posts/Hoglet-33/570014208346738",
       "title": "Hey everyone! I got sidetracked from my main projects and decided to test out the BananaAll app and see if I could make a small model not regress too much during SFT. Here is what happened:",
@@ -325,6 +394,29 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/tegridydev/564316849762370.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/c9515cbd2e634ffd",
+      "url": "https://huggingface.co/papers/2609.31620",
+      "title": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders",
+      "content_text": "Representation autoencoders (RAEs) reuse features from a pretrained visual encoder as reconstruction and diffusion latents, integrating strong visual representations into image generation. However, RAEs still need to decide which encoder layers form the shared latent space for the generator and pixel decoder. This choice involves a trade-off. Shallower layers tend to preserve fine pixel details better, while deeper layers tend to yield better generation metrics. A fixed heuristic layer fusion therefore couples two stages that benefit from different information. We introduce FuseReg, which replaces heuristic feature selection with training over random subsets of encoder layers. We theoretical",
+      "date_published": "2026-09-25T00:00:00Z",
+      "date_modified": "2026-09-25T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.31620.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.31620.png",
           "mime_type": "image/png"
         }
       ]
@@ -3412,52 +3504,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/1f5b2cb7023487d1",
-      "url": "https://huggingface.co/posts/sergiopaniego/303405094307070",
-      "title": "Can you do RL over taste?",
-      "content_text": "Can you do RL over taste? I've spent some time reproducing, in the open, Surya N's idea of training a model to paint with code. It's a coding model that learns to paint watercolours by writing JS code, trained with GRPO. I used TRL and OpenEnv for this, with the whole pipeline running on Hugging Face. The interesting part is that the reward has no correct answer, unlike a math problem. In this case it's based on the artistic preferences of the person who builds the dataset. Everything is published: the environment, the reference pool, the trained adapters, every painting of every run with the code that made it, and a write-up with all the decisions, including the ones that went wrong. Blog p",
-      "date_published": "2026-09-06T00:15:18Z",
-      "date_modified": "2026-09-06T00:15:18Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-uploads.huggingface.co/production/uploads/61929226ded356549e20c5da/eb78WVn85ZK74VIlBbtTa.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-uploads.huggingface.co/production/uploads/61929226ded356549e20c5da/eb78WVn85ZK74VIlBbtTa.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/f384bc500a503da4",
-      "url": "https://huggingface.co/posts/onekq/346185491326254",
-      "title": "CoT: 💬💬💬💬",
-      "content_text": "CoT: 💬💬💬💬 Astra: 🧠🧠🧠💬",
-      "date_published": "2026-09-06T00:15:18Z",
-      "date_modified": "2026-09-06T00:15:18Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/onekq/346185491326254.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/onekq/346185491326254.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/b9ac566f1b947e86",
       "url": "https://huggingface.co/posts/branikita/957668959698294",
       "title": "SO-ARM 102 goes open source in the next few weeks.",
@@ -6448,29 +6494,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/6af9b6a7000314f8",
-      "url": "https://huggingface.co/blog/ibm-granite/granite-4-1",
-      "title": "Granite 4.1 LLMs: How They’re Built",
-      "content_text": "Granite 4.1 LLMs: How They’re Built",
-      "date_published": "2026-04-29T15:01:48Z",
-      "date_modified": "2026-04-29T15:01:48Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ibm-granite/granite-4-1.png",
-      "tags": [
-        "Hugging Face Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ibm-granite/granite-4-1.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/2a8f0f0b7f71ea50",
       "url": "https://huggingface.co/papers/2604.22085",
       "title": "Memanto: Typed Semantic Memory with Information-Theoretic Retrieval for Long-Horizon Agents",
@@ -6880,29 +6903,6 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19205.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/f36563661fbfb09b",
-      "url": "https://huggingface.co/papers/2508.16279",
-      "title": "AgentScope 1.0: A Developer-Centric Framework for Building Agentic Applications",
-      "content_text": "AgentScope enhances agentic applications by providing flexible tool-based interactions, unified interfaces, and advanced infrastructure based on the ReAct paradigm, supporting efficient and safe development and deployment.",
-      "date_published": "2025-08-22T00:00:00Z",
-      "date_modified": "2025-08-22T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.16279.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.16279.png",
           "mime_type": "image/png"
         }
       ]
