@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-107 feedów · 847 źródeł
+107 feedów · 848 źródeł
 
 ## Spis grup
 
@@ -221,6 +221,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=docs.devin.ai&sz=16) Devin Release Notes — <https://docs.devin.ai/release-notes/overview>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Feed — <https://mcp.so/feed>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
+- ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
 - ![](https://www.google.com/s2/favicons?domain=aihubmix.com&sz=16) AIHubMix Blog (PL) — <https://aihubmix.com/blog/pl>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Docs Blog (EN) — <https://docs.aihubmix.com/en/blogs>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Changelog — <https://docs.aihubmix.com/en/update/News>
