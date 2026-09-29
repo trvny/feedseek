@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-29T02:15:00.209995+00:00</updated>
+  <updated>2026-09-29T08:58:35.321383+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -196,6 +196,36 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/og.png?v=c1dc93ee8d6fa496" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/366424eae6ac961e</id>
+    <title>Cache - Invalidate cached content instead of purging it</title>
+    <updated>2026-09-28T00:00:00+00:00</updated>
+    <content>You can now invalidate cached content instead of purging it. Invalidation marks matching content as stale. On the next request, Cloudflare revalidates the content with your origin. If your origin responds with 304 Not Modified , Cloudflare reuses the cached content instead of downloading it again. Use invalidation to refresh a group of assets when only some of them have changed. For example, invalidate all content that shares a cache tag. Cloudflare reuses unchanged assets instead of downloading</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-invalidation/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-invalidation/og.png?v=811ceca1b7927686" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-invalidation/og.png?v=811ceca1b7927686"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-invalidation/og.png?v=811ceca1b7927686" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e786837562ecca37</id>
+    <title>Cache - Purge now forces a cache miss for Cache Reserve content</title>
+    <updated>2026-09-28T00:00:00+00:00</updated>
+    <content>Purge requests now force a cache miss for Cache Reserve content, regardless of purge type. Previously, purging by cache tag, hostname, prefix, or everything marked matching Cache Reserve content for revalidation. Purging by URL already removed content from Cache Reserve and is unchanged. This change applies to purge requests from the API and the dashboard. Cache Reserve now handles purges the same way as the edge cache. Cost impact After a purge, the next request for affected content is a Cache </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/og.png?v=7d0bb45fdbc98846" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/og.png?v=7d0bb45fdbc98846"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/og.png?v=7d0bb45fdbc98846" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/55521e37d6b0b5ae</id>
@@ -1525,36 +1555,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M2842WCZ10Q81ZNG6FHF2FAJ.01M2842X2Z3B513P6VHC1SXMTC.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/80b8caf47f7f504a</id>
-    <title>Agents - Inspect Voice Agent turn latency and outcomes</title>
-    <updated>2026-09-11T00:00:00+00:00</updated>
-    <content>@cloudflare/voice v0.4.0 now lets you inspect where each Voice Agent turn spends time and how it ends. client. addEventListener ( "turnmetrics" , ( turn ) =&gt; { console. log (turn.outcome, turn.turnTotalMs); }); About the Voice package The @cloudflare/voice package lets you build real-time voice agents with Cloudflare Agents. It streams microphone audio to an Agent over WebSocket, transcribes speech, runs your model through onTurn() , converts the response to speech, and streams audio back to the</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-11-voice-diagnostics-turn-metrics/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-11T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c57e04651d1292ee</id>
-    <title>AI Search - AI Search supports extensionless R2 objects with Content-Type metadata</title>
-    <updated>2026-09-11T00:00:00+00:00</updated>
-    <content>AI Search can index R2 objects without filename extensions when they include supported Content-Type metadata. This supports object keys that do not include file extensions while preserving file-type validation during indexing. For supported file types and Content-Type requirements, refer to R2 data sources .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-11-extensionless-r2-content-type/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-11T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ed3eedaf835d3d01</id>
