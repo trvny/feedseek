@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-09-29T16:37:09.002246+00:00</updated>
+  <updated>2026-09-29T21:01:10.201308+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -12,6 +12,41 @@
   <icon>https://aws.amazon.com/favicon.ico</icon>
   <logo>https://aws.amazon.com/favicon.ico</logo>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d4ed22629c61bac1</id>
+    <title>AWS CLI 2.37.6</title>
+    <updated>2026-09-29T18:21:53+00:00</updated>
+    <content>api-change:opensearch: Amazon OpenSearch Service now supports advisory pre-validations for domain config changes. Non-critical checks now surface as warnings you can acknowledge (via the new AcceptedWarnings parameter) and proceed, instead of hard-blocking. Severity is reported in change-progress and dry-run results. api-change:elasticache: Amazon ElastiCache Serverless now supports public endpoints for Valkey caches. With the new Connection Type parameter, you can create a serverless cache accessible over the internet without any VPC configuration. Public endpoint caches require IAM authentication. api-change:glue: Add support for Glue system-managed materialized views. api-change:identitystore: Add support for network access controls to restrict Identity Store API and SCIM access to trusted networks, optimistic locking for users and groups via resource revisions, and resource ARNs as identifiers in requests. api-change:sesv2: Added Filter support for ListTenants, ListEmailIdentities, and ListConfigurationSets APIs. api-change:bedrock-agent-runtime: Amazon Bedrock Agentic Retrieve now supports the Bedrock Mantle (OpenAI Responses) endpoint via a new MantleFoundationModel configuration with an optional projectId. api-change:sagemaker: Adds support for cpu flex type instances on SageMaker Training and Processing. Also contains minor updates to DescribeTrainingPlan to support ARN inputs. enhancement:crt: Enable the CRT S3 transfer client by default on the following EC2 instance families - c6in, c6id, c6i, c6gn, c6gd, c6g, c6a, m6in, m6idn, m6id, m6i, m6a, m6gd, m6g, r6in, r6idn, r6id, r6i, r6a, r6gd, r6g api-change:securityagent: Adds support for Azure DevOps and Bitbucket Data Center integration providers. api-change:appstream: Add support for NVIDIA GRID driver version metadata in Workspace Applications image responses through the new ImageSoftwareMetadata field. api-change:mediatailor: AWS Elemental MediaTailor now supports beaconing configuration on playback configurations. In Insights reporting mode, MediaTailor will now gather client side beaconing metrics. Set the reporting mode to Disabled to turn this off. api-change:ec2: Adds the LaunchStatus field to CapacityReservation in the DescribeCapacityReservations response. This field indicates whether you can currently launch instances into an UltraServer. api-change:rds: Adds the TargetResourceConfigurations parameter to CreateBlueGreenDeployment, letting you specify a target KMS key for each resource in the green environment. api-change:transfer: AWS Transfer Family now supports configuring up to three custom ports on public SFTP servers, instead of the single default port 22. You can also set each port's communication mode (server-talk-first or client-talk-first) so legacy and modern SFTP clients connect reliably. bugfix:crt: Default to global endpoint and sign for us-east-1 when CRT transfer client is resolved and region isn't configured api-change:elementalinference: Adds an extendedAnalysi</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.37.6" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-09-29T18:21:53+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/410ce27604eb787f88f0820a03da60da8ec2433f3b2c25f01cca9041a85e01ac/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/410ce27604eb787f88f0820a03da60da8ec2433f3b2c25f01cca9041a85e01ac/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/410ce27604eb787f88f0820a03da60da8ec2433f3b2c25f01cca9041a85e01ac/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/22db00c4831ab7aa</id>
+    <title>Amazon Connect Customer now lets business users manage more reference data to adjust contact center configurations in real time</title>
+    <updated>2026-09-29T17:00:00+00:00</updated>
+    <content>Amazon Connect Customer now lets administrators store more of the reference data that drives their contact center configurations. Administrators can now use data tables to hold up to 20,000 values per table for defining configurations such as operating hours, escalation rules, AI agent prompts or queue assignments that drive contact flows. Administrators can now also export tables, edit hundreds of records, move tables between Connect Customer instances, or load reference data from external syst</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-manage-data-tables/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-29T17:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/9fb934680f503cbe</id>
+    <title>Amazon RDS for PostgreSQL announces Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514 and 11.22-rds.20260514</title>
+    <updated>2026-09-29T16:00:00+00:00</updated>
+    <content>Amazon Relational Database Service (RDS) for PostgreSQL announces Amazon RDS Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514, and 11.22-rds.20260514. Amazon RDS Extended Support provides up to three additional years of fixes for critical Common Vulnerabilities and Exposures (CVE) and bugs beyond a major version's end of standard support date, giving you more time to upgrade to a new major version. You can upgrade your database using Amazon RDS Blue/Green Deployments , in-p</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-postgresql-extended-support/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-29T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/c2ca751724d4550e</id>
     <title>If you allow Amazon MSK broker private IPs one by one in security groups or firewalls: what happens to broker IPs when you remove or add brokers, and allow rules that don't depend on IPs</title>
@@ -51,6 +86,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5fc165a6576fed54</id>
+    <title>Amazon Route 53 Resolver DNS Firewall support for Palo Alto Networks Advanced DNS Security is now Generally Available (GA)</title>
+    <updated>2026-09-29T01:03:00+00:00</updated>
+    <content>​​Amazon Route 53 Resolver DNS Firewall support for Palo Alto Networks (PANW) Advanced DNS Security is now generally available across 32 AWS Regions, allowing security teams to detect and block malicious DNS traffic directly from their VPCs using PANW Advanced DNS Security rules without deploying separate firewalls or modifying VPC configurations.​ ​​ Previewed at AWS Summit New York City, the feature enables security administrators to enforce DNS threat protections (Command and Control, Malware</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/route-53-dns-firewall-panw-dns-security-generally-available" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-29T01:03:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/c4ca211fbf8b2488</id>
@@ -128,21 +173,21 @@
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2025/01/30/2025-deepseek-r1-on-aws-1-andy-keynote.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e8690a69de169fe5</id>
-    <title>Claude Sonnet 5.5 now available on AWS GovCloud (US)</title>
-    <updated>2026-09-28T15:00:00+00:00</updated>
-    <content>AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-28T15:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/0d9443fcfb3cb4e6</id>
     <title>Claude Sonnet 5.5 now available on AWS</title>
     <updated>2026-09-28T15:00:00+00:00</updated>
     <content>AWS now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work at faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same sess</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-28T15:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/e8690a69de169fe5</id>
+    <title>Claude Sonnet 5.5 now available on AWS GovCloud (US)</title>
+    <updated>2026-09-28T15:00:00+00:00</updated>
+    <content>AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-28T15:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -158,11 +203,11 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/762e82fd35ffd222</id>
-    <title>Amazon DocumentDB (with MongoDB compatibility) adds support for 5 MongoDB aggregation stages and change stream capabilities in version 8.0.2</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7cd27e325e8b9a53</id>
+    <title>AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP</title>
     <updated>2026-09-28T08:00:00+00:00</updated>
-    <content>Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes, 5 new aggregation stages, and change stream enhancements starting from minor version 8.0.2. This release expands MongoDB API compatibility and improves query performance, making it easier to migrate MongoDB workloads to Amazon DocumentDB without application code changes. Key new capabilities in version 8.0.2 include: - Retryable Writes — insert, update, and delete operations automatically retry on transient network err</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/" rel="alternate"/>
+    <content>AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event. You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-28T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -178,11 +223,21 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/7cd27e325e8b9a53</id>
-    <title>AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/762e82fd35ffd222</id>
+    <title>Amazon DocumentDB (with MongoDB compatibility) adds support for 5 MongoDB aggregation stages and change stream capabilities in version 8.0.2</title>
     <updated>2026-09-28T08:00:00+00:00</updated>
-    <content>AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event. You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/" rel="alternate"/>
+    <content>Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes, 5 new aggregation stages, and change stream enhancements starting from minor version 8.0.2. This release expands MongoDB API compatibility and improves query performance, making it easier to migrate MongoDB workloads to Amazon DocumentDB without application code changes. Key new capabilities in version 8.0.2 include: - Retryable Writes — insert, update, and delete operations automatically retry on transient network err</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-28T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7c661bb4c7bba36f</id>
+    <title>Amazon SageMaker Unified Studio now supports two new connection capabilities: Iceberg REST Catalog connections and IAM authentication for Amazon DocumentDB</title>
+    <updated>2026-09-28T08:00:00+00:00</updated>
+    <content>Amazon SageMaker Unified Studio now supports two new connection capabilities: (1) Iceberg REST Catalog (IRC) connections for external Apache Iceberg catalogs, and (2) IAM authentication for Amazon DocumentDB. Together, they let data teams connect to a broader set of governed data sources and use credential-less authentication across projects. Iceberg REST Catalog connections. SageMaker Unified Studio now supports Iceberg REST Catalog (IRC) connections, letting customers connect to external Apach</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-iceberg-rest-iam-documentdb/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-28T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -395,21 +450,21 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4072675185cc8b86</id>
-    <title>AWS End User Messaging now supports voice calling on WhatsApp</title>
-    <updated>2026-09-25T07:00:00+00:00</updated>
-    <content>AWS End User Messaging now lets businesses place and receive voice calls with their customers directly inside WhatsApp, using the same verified business identity they already use for messaging. With WhatsApp voice calling, a conversation can move seamlessly from a chat thread to a voice call without switching to a separate channel or application, so context is never lost and customers stay in the message thread where the conversation started. Voice calling works in both directions. Customers can</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-voice-calling-whatsapp" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-25T07:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/7e3748fcff6ff0a0</id>
     <title>AWS End User Messaging and Amazon SES now offer AI agent skills for the AWS MCP Server</title>
     <updated>2026-09-25T07:00:00+00:00</updated>
     <content>AWS End User Messaging and Amazon SES now publish AI agent skills for the AWS MCP Server, enabling developers to build and send messages by asking their AI coding agent in plain language. Previously, developers had to navigate multiple documentation pages and management console screens to complete messaging tasks. Now, each skill provides your agent with step-by-step, validated guidance for tasks like verifying sending identities, building branded Rich Communication Services (RCS) agents, and se</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-messaging-ses-ai-skills-mcp-server/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-25T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/4072675185cc8b86</id>
+    <title>AWS End User Messaging now supports voice calling on WhatsApp</title>
+    <updated>2026-09-25T07:00:00+00:00</updated>
+    <content>AWS End User Messaging now lets businesses place and receive voice calls with their customers directly inside WhatsApp, using the same verified business identity they already use for messaging. With WhatsApp voice calling, a conversation can move seamlessly from a chat thread to a voice call without switching to a separate channel or application, so context is never lost and customers stay in the message thread where the conversation started. Voice calling works in both directions. Customers can</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-voice-calling-whatsapp" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-25T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -580,11 +635,11 @@ modernization project.</content>
     <link rel="enclosure" href="https://opengraph.githubassets.com/4d0a59c8b9480391fd6667f883f85160a641bfe2d181b7fd2d41830f90694a2e/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/52cfbc42b1d5ec57</id>
-    <title>Amazon RDS for PostgreSQL now supports PostgreSQL 19 Beta 4 in the Amazon RDS Database Preview Environment</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/41185c1c9aac9582</id>
+    <title>Amazon RDS for PostgreSQL now supports post-quantum TLS key exchange</title>
     <updated>2026-09-24T16:00:00+00:00</updated>
-    <content>Starting today, Amazon RDS for PostgreSQL 19 Beta 4 is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of PostgreSQL 19 on Amazon RDS for PostgreSQL. PostgreSQL 19 Beta 4 refines the query performance and autovacuum management capabilities introduced in earlier releases and includes bug fixes and stability improvements since Beta 3. Fixes include pg_stat_autovacuum_scores view reporting for TOAST tables and corrected freeze-score scaling so you</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/" rel="alternate"/>
+    <content>Starting today, Amazon RDS for PostgreSQL introduces support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. RDS for PostgreSQL versions 18 and higher support modification of the ssl_groups parameter. You can select cryptographic groups from the RDS for PostgreSQL allow list to align with your organization's security standards. Amazon RDS for PostgreSQL makes it simple to set up, operate, and scale PostgreSQL d</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-post-quantum-tls-key-exchange/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-24T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -600,11 +655,11 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/41185c1c9aac9582</id>
-    <title>Amazon RDS for PostgreSQL now supports post-quantum TLS key exchange</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/52cfbc42b1d5ec57</id>
+    <title>Amazon RDS for PostgreSQL now supports PostgreSQL 19 Beta 4 in the Amazon RDS Database Preview Environment</title>
     <updated>2026-09-24T16:00:00+00:00</updated>
-    <content>Starting today, Amazon RDS for PostgreSQL introduces support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. RDS for PostgreSQL versions 18 and higher support modification of the ssl_groups parameter. You can select cryptographic groups from the RDS for PostgreSQL allow list to align with your organization's security standards. Amazon RDS for PostgreSQL makes it simple to set up, operate, and scale PostgreSQL d</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-post-quantum-tls-key-exchange/" rel="alternate"/>
+    <content>Starting today, Amazon RDS for PostgreSQL 19 Beta 4 is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of PostgreSQL 19 on Amazon RDS for PostgreSQL. PostgreSQL 19 Beta 4 refines the query performance and autovacuum management capabilities introduced in earlier releases and includes bug fixes and stability improvements since Beta 3. Fixes include pg_stat_autovacuum_scores view reporting for TOAST tables and corrected freeze-score scaling so you</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-24T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -620,11 +675,11 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/bba7df609e8d450e</id>
-    <title>Amazon GameLift Servers now available in 5 new regions and 8 Local Zones</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b57618620b09c889</id>
+    <title>Amazon SageMaker HyperPod Inference Gateway for scalable LLM inference</title>
     <updated>2026-09-24T08:00:00+00:00</updated>
-    <content>Amazon GameLift Servers is a fully managed service for deploying, operating, and scaling dedicated game servers for multiplayer games. High latency caused by geographic distance between players and servers remains one of the most common challenges in multiplayer game development. This expansion helps game developers and studios address that challenge by bringing Amazon GameLift Servers to 5 new AWS Regions and 8 AWS Local Zones worldwide. With this expansion, customers can deploy game server fle</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-gamelift-servers-region-expansion-2026" rel="alternate"/>
+    <content>Amazon SageMaker HyperPod Inference Gateway is a Kubernetes-native, GPU-aware routing system that deploys as a single EKS managed add-on on existing SageMaker HyperPod infrastructure with zero application changes. By replacing unintelligent round-robin load balancing with real-time inference-signal-driven routing, it reduces first-token latency by up to 82% and p99 TTFT reductions of 97–98% in mixed-hardware and burst traffic scenarios. The Gateway is built around 3 core components. The Envoy En</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-hyperpod-inference-gateway/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-24T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -640,23 +695,13 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b57618620b09c889</id>
-    <title>Amazon SageMaker HyperPod Inference Gateway for scalable LLM inference</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bba7df609e8d450e</id>
+    <title>Amazon GameLift Servers now available in 5 new regions and 8 Local Zones</title>
     <updated>2026-09-24T08:00:00+00:00</updated>
-    <content>Amazon SageMaker HyperPod Inference Gateway is a Kubernetes-native, GPU-aware routing system that deploys as a single EKS managed add-on on existing SageMaker HyperPod infrastructure with zero application changes. By replacing unintelligent round-robin load balancing with real-time inference-signal-driven routing, it reduces first-token latency by up to 82% and p99 TTFT reductions of 97–98% in mixed-hardware and burst traffic scenarios. The Gateway is built around 3 core components. The Envoy En</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-hyperpod-inference-gateway/" rel="alternate"/>
+    <content>Amazon GameLift Servers is a fully managed service for deploying, operating, and scaling dedicated game servers for multiplayer games. High latency caused by geographic distance between players and servers remains one of the most common challenges in multiplayer game development. This expansion helps game developers and studios address that challenge by bringing Amazon GameLift Servers to 5 new AWS Regions and 8 AWS Local Zones worldwide. With this expansion, customers can deploy game server fle</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-gamelift-servers-region-expansion-2026" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-24T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b1c56669eeec9dc3</id>
-    <title>Amazon ElastiCache Global Datastore now supports tagging and tag-based access control</title>
-    <updated>2026-09-24T07:00:00+00:00</updated>
-    <content>Amazon ElastiCache now supports resource tagging and tag-based access control (TBAC) for Global Datastore. Previously, ElastiCache supported tagging on all resources except Global Datastore, which prevented customers from applying a single, consistent permission and cost-allocation model across their ElastiCache fleet. With this launch, you can use AddTagsToResource, RemoveTagsFromResource, and ListTagsForResource on a Global Datastore, and reference those tags as conditions in IAM policies and </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-elasticache-global-datastore-tagging/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-24T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
@@ -665,6 +710,16 @@ modernization project.</content>
     <updated>2026-09-24T07:00:00+00:00</updated>
     <content>Amazon Relational Database Service (Amazon RDS) for SQL Server now supports Multi-AZ deployments using Always On Availability Groups for SQL Server Developer Edition. Multi-AZ deployments maintain a synchronous standby replica in a different Availability Zone and provide automatic failover during infrastructure failure. You can use this capability to build and test high availability configurations in non-production environments using Developer Edition, which includes all the functionality of Ent</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-sql-server-multi-az-developer-edition/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-24T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b1c56669eeec9dc3</id>
+    <title>Amazon ElastiCache Global Datastore now supports tagging and tag-based access control</title>
+    <updated>2026-09-24T07:00:00+00:00</updated>
+    <content>Amazon ElastiCache now supports resource tagging and tag-based access control (TBAC) for Global Datastore. Previously, ElastiCache supported tagging on all resources except Global Datastore, which prevented customers from applying a single, consistent permission and cost-allocation model across their ElastiCache fleet. With this launch, you can use AddTagsToResource, RemoveTagsFromResource, and ListTagsForResource on a Global Datastore, and reference those tags as conditions in IAM policies and </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-elasticache-global-datastore-tagging/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-24T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -870,16 +925,6 @@ modernization project.</content>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/09/21/image1-1.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/74c274806f61a2f8</id>
-    <title>Claude Opus 5.5 is now available on AWS</title>
-    <updated>2026-09-22T15:00:00+00:00</updated>
-    <content>AWS now offers Claude Opus 5.5, Anthropic’s most capable Opus model yet and, the first of the Claude 5.5 model family, a better collaborator that handles long-running coding and knowledge work, reporting back clearly on what it did, what it found, and what it needs next. According to Anthropic, Claude Opus 5.5 completes tasks using fewer tokens than Claude Opus 5, at a lower price per token, with cheaper cache reads stacking on top of the efficiency gain. Claude Opus 5.5 is the enterprise workho</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-opus-5-5-aws/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-22T15:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/8fc6aec035970074</id>
     <title>Claude Opus 5.5 is now available on AWS GovCloud (US)</title>
     <updated>2026-09-22T15:00:00+00:00</updated>
@@ -890,31 +935,21 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/506bcaf76cd87244</id>
-    <title>AWS Glue Data Quality delivers context-specific rule recommendations in seconds</title>
-    <updated>2026-09-22T08:00:00+00:00</updated>
-    <content>AWS Glue Data Quality now generates data quality rules in seconds, reducing the time to establish data quality checks for your tables in the AWS Glue Data Catalog. You get a ready-to-use set of rules with full coverage across every column, with no manual setup—so you can move from raw data to trusted data faster while authoring pipelines. This is delivered through a new Advanced mode for rule recommendations, in which AWS Glue Data Quality uses generative AI to detect the intent behind your data</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/glue-data-quality-rule-recommendations/" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/aws/74c274806f61a2f8</id>
+    <title>Claude Opus 5.5 is now available on AWS</title>
+    <updated>2026-09-22T15:00:00+00:00</updated>
+    <content>AWS now offers Claude Opus 5.5, Anthropic’s most capable Opus model yet and, the first of the Claude 5.5 model family, a better collaborator that handles long-running coding and knowledge work, reporting back clearly on what it did, what it found, and what it needs next. According to Anthropic, Claude Opus 5.5 completes tasks using fewer tokens than Claude Opus 5, at a lower price per token, with cheaper cache reads stacking on top of the efficiency gain. Claude Opus 5.5 is the enterprise workho</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-opus-5-5-aws/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-22T08:00:00+00:00</published>
+    <published>2026-09-22T15:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b2fc5edf0584dd7a</id>
-    <title>AWS Security Hub AI Inventory adds Azure self-hosted instance support</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b09ae761f3fc494e</id>
+    <title>Amazon EMR 7.14 is now available</title>
     <updated>2026-09-22T08:00:00+00:00</updated>
-    <content>AWS Security Hub AI Inventory now supports discovering and cataloging AI assets running on self-hosted instances in Microsoft Azure. This expansion extends Security Hub's existing self-hosted discovery capabilities beyond AWS, enabling central security teams to gain a continuously updated, organization-wide view of AI assets and their security posture across multi-cloud environments. Security Hub leverages the software bill of materials (SBOM) analysis from Amazon Inspector, which has been enhan</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/security-hub-ai-inventory-azure-support/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-22T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/bcadde411980e677</id>
-    <title>Amazon Route 53 Resolver is now generally available on second-generation AWS Outposts racks</title>
-    <updated>2026-09-22T08:00:00+00:00</updated>
-    <content>Amazon Route 53 Resolver is now generally available on second-generation AWS Outposts, providing local, managed recursive DNS resolution directly on your Outpost. DNS queries from workloads running on your Outpost are resolved locally, reducing latency and eliminating the need to traverse the Service Link to reach the parent AWS Region. Route 53 Resolver maintains cached DNS records during Service Link disconnections, ensuring continuous DNS resolution even during connectivity interruptions. Rou</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/route-53-resolver-gen2-outposts/" rel="alternate"/>
+    <content>Amazon EMR 7.14 is now available with new features across Amazon EMR on EC2, Amazon EMR on EKS, and Amazon EMR Serverless, along with version upgrades for additional applications. This release also upgrades Apache Spark to 3.5.8 and Apache Iceberg to 1.10.1. Apache Iceberg materialized views now refresh faster on tables with updates and deletes, using change data capture to read only the data files affected by a change. On Amazon EMR on EKS, clusters now support Spark Connect endpoints for inter</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-emr-7-14-available/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-22T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -930,11 +965,31 @@ modernization project.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b09ae761f3fc494e</id>
-    <title>Amazon EMR 7.14 is now available</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bcadde411980e677</id>
+    <title>Amazon Route 53 Resolver is now generally available on second-generation AWS Outposts racks</title>
     <updated>2026-09-22T08:00:00+00:00</updated>
-    <content>Amazon EMR 7.14 is now available with new features across Amazon EMR on EC2, Amazon EMR on EKS, and Amazon EMR Serverless, along with version upgrades for additional applications. This release also upgrades Apache Spark to 3.5.8 and Apache Iceberg to 1.10.1. Apache Iceberg materialized views now refresh faster on tables with updates and deletes, using change data capture to read only the data files affected by a change. On Amazon EMR on EKS, clusters now support Spark Connect endpoints for inter</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-emr-7-14-available/" rel="alternate"/>
+    <content>Amazon Route 53 Resolver is now generally available on second-generation AWS Outposts, providing local, managed recursive DNS resolution directly on your Outpost. DNS queries from workloads running on your Outpost are resolved locally, reducing latency and eliminating the need to traverse the Service Link to reach the parent AWS Region. Route 53 Resolver maintains cached DNS records during Service Link disconnections, ensuring continuous DNS resolution even during connectivity interruptions. Rou</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/route-53-resolver-gen2-outposts/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-22T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b2fc5edf0584dd7a</id>
+    <title>AWS Security Hub AI Inventory adds Azure self-hosted instance support</title>
+    <updated>2026-09-22T08:00:00+00:00</updated>
+    <content>AWS Security Hub AI Inventory now supports discovering and cataloging AI assets running on self-hosted instances in Microsoft Azure. This expansion extends Security Hub's existing self-hosted discovery capabilities beyond AWS, enabling central security teams to gain a continuously updated, organization-wide view of AI assets and their security posture across multi-cloud environments. Security Hub leverages the software bill of materials (SBOM) analysis from Amazon Inspector, which has been enhan</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/security-hub-ai-inventory-azure-support/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-22T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/506bcaf76cd87244</id>
+    <title>AWS Glue Data Quality delivers context-specific rule recommendations in seconds</title>
+    <updated>2026-09-22T08:00:00+00:00</updated>
+    <content>AWS Glue Data Quality now generates data quality rules in seconds, reducing the time to establish data quality checks for your tables in the AWS Glue Data Catalog. You get a ready-to-use set of rules with full coverage across every column, with no manual setup—so you can move from raw data to trusted data faster while authoring pipelines. This is delivered through a new Advanced mode for rule recommendations, in which AWS Glue Data Quality uses generative AI to detect the intent behind your data</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/glue-data-quality-rule-recommendations/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-22T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1347,21 +1402,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/94c5bd31f6e2173f</id>
-    <title>Amazon S3 Express One Zone is now available in 7 additional AWS Regions</title>
-    <updated>2026-09-17T08:00:00+00:00</updated>
-    <content>The Amazon S3 Express One Zone storage class is now available in 7 additional AWS Regions: Asia Pacific (Singapore), South America (Sao Paulo), US West (N. California), Canada (Central), Europe (Paris), Asia Pacific (Sydney), and Asia Pacific (Seoul). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/s3-express-one-zone-7-regions/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-17T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/ff0dd8c0d1e57389</id>
     <title>AWS Elastic Beanstalk introduces Cluster Mode to run multiple applications on shared infrastructure</title>
     <updated>2026-09-17T08:00:00+00:00</updated>
     <content>AWS Elastic Beanstalk introduces Cluster Mode, a new deployment mode that lets you run and manage multiple applications on shared infrastructure in your account. Provide your source code, a Dockerfile, or a container image in Amazon ECR, and Elastic Beanstalk handles containerization, provisioning, and ongoing operations through the console, CLI, and APIs you already use. A new Elastic Beanstalk GitHub Action deploys your application directly from your repository as part of your CI/CD pipeline. </content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/elastic-beanstalk-cluster-mode/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-17T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/94c5bd31f6e2173f</id>
+    <title>Amazon S3 Express One Zone is now available in 7 additional AWS Regions</title>
+    <updated>2026-09-17T08:00:00+00:00</updated>
+    <content>The Amazon S3 Express One Zone storage class is now available in 7 additional AWS Regions: Asia Pacific (Singapore), South America (Sao Paulo), US West (N. California), Canada (Central), Europe (Paris), Asia Pacific (Sydney), and Asia Pacific (Seoul). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/s3-express-one-zone-7-regions/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-17T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1477,11 +1532,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/cddaa9ffc78813d0</id>
-    <title>Amazon Connect Customer custom metrics now supports tag-based access control</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/fc019ac635bff393</id>
+    <title>Amazon Connect Customer can now import evaluation form PDFs using AI</title>
     <updated>2026-09-16T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer now supports tag-based access control for custom metrics, so you can govern which users and roles can view, create, or modify each custom metric. As more teams across your organization adopt custom metrics, they end up editing the same shared library. Without controls, one person can change a metric that other teams count on. The usual fix is to give only a handful of people permissions to custom metrics, but that shuts out every other team that wants to start using them.</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-tag/" rel="alternate"/>
+    <content>Amazon Connect Customer now lets managers import a PDF of an evaluation form from a third-party quality management application, and automatically recreates it in Connect using AI, making it easier to migrate an existing quality program into Connect. Instead of rebuilding an existing form question by question, you upload the PDF and choose the preferred scoring method, either percentage or points-based, and Connect Customer automatically extracts the sections, questions, answer options, and scori</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-customer-import-evaluation-form-PDF/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T17:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1497,11 +1552,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/fc019ac635bff393</id>
-    <title>Amazon Connect Customer can now import evaluation form PDFs using AI</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/cddaa9ffc78813d0</id>
+    <title>Amazon Connect Customer custom metrics now supports tag-based access control</title>
     <updated>2026-09-16T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer now lets managers import a PDF of an evaluation form from a third-party quality management application, and automatically recreates it in Connect using AI, making it easier to migrate an existing quality program into Connect. Instead of rebuilding an existing form question by question, you upload the PDF and choose the preferred scoring method, either percentage or points-based, and Connect Customer automatically extracts the sections, questions, answer options, and scori</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-customer-import-evaluation-form-PDF/" rel="alternate"/>
+    <content>Amazon Connect Customer now supports tag-based access control for custom metrics, so you can govern which users and roles can view, create, or modify each custom metric. As more teams across your organization adopt custom metrics, they end up editing the same shared library. Without controls, one person can change a metric that other teams count on. The usual fix is to give only a handful of people permissions to custom metrics, but that shuts out every other team that wants to start using them.</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-tag/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T17:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1527,21 +1582,21 @@ the two constraints when you override them: startup fails if transaction.timeout
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/bdf71df2af9220c6</id>
-    <title>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions</title>
-    <updated>2026-09-16T16:00:00+00:00</updated>
-    <content>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions, including Mexico (Central), Europe (Spain), Asia Pacific (Jakarta), Asia Pacific (New Zealand), Asia Pacific (Taipei), Europe (Milan), Israel (Tel Aviv), Asia Pacific (Osaka), Asia Pacific (Hyderabad), Europe (Zurich), and Asia Pacific (Melbourne). This allows customers in those Regions to build Cassandra-compatible applications with lower latency while keeping their data within the Region to meet data r</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-keyspaces/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-16T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/2c47d8e7007e7d14</id>
     <title>Amazon Connect Customer now lets you create, manage, and search custom metrics through APIs</title>
     <updated>2026-09-16T16:00:00+00:00</updated>
     <content>Amazon Connect Customer provides a library of standard metrics. Custom metrics let you go further; defining the measurements unique to your business. But managing them across various instances manually means definitions slowly drift until the numbers no longer align. A metric you can't trust is worse than no metric at all, because people still make decisions on it. Now you define a metric once and manage it programmatically through seven new API operations (CreateMetric, DeleteMetric, DescribeMe</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/connect-customer-custom-metrics-apis/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-09-16T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bdf71df2af9220c6</id>
+    <title>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions</title>
+    <updated>2026-09-16T16:00:00+00:00</updated>
+    <content>Amazon Keyspaces (for Apache Cassandra) is now generally available in 11 additional Regions, including Mexico (Central), Europe (Spain), Asia Pacific (Jakarta), Asia Pacific (New Zealand), Asia Pacific (Taipei), Europe (Milan), Israel (Tel Aviv), Asia Pacific (Osaka), Asia Pacific (Hyderabad), Europe (Zurich), and Asia Pacific (Melbourne). This allows customers in those Regions to build Cassandra-compatible applications with lower latency while keeping their data within the Region to meet data r</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-keyspaces/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-09-16T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1840,36 +1895,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/14/2025-gpt-6-astra-on-bedrack.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e98112030a8a3823</id>
-    <title>AWS Glue zero-ETL adds target table property ownership and conflict detection</title>
-    <updated>2026-09-14T08:00:00+00:00</updated>
-    <content>AWS Glue zero-ETL integrations now detect table property conflicts and track integration ownership. When you configure a source table and target catalog, Glue associates the resulting table properties with the owning integration, so two integrations can no longer be pointed at the same target table without your knowledge. This works across Amazon S3 Tables and SageMaker Lakehouse catalogs. Data teams running multiple zero-ETL integrations gain predictable control over where each source table lan</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/glue-zero-etl-ownership-conflicts/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-14T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/035a31fd5d114fab</id>
-    <title>AWS End User Messaging now supports Dynamic Flows in WhatsApp</title>
-    <updated>2026-09-14T07:00:00+00:00</updated>
-    <content>AWS End User Messaging now supports dynamic WhatsApp flows so you can turn WhatsApp conversations into rich, interactive experiences that end-users complete directly in WhatsApp. Instead of pushing end-users to a website or a separate form to complete an interactive experience, you can instead guide them through an appointment booking, lead generation, sign-up, survey or a transaction directly in the chat. Customers can start building a flow using one of Meta's stater templates with familiar bui</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-14T07:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/73604cba48e79705</id>
-    <title>AWS End User Messaging strengthens SMS deliverability with automatic failover</title>
-    <updated>2026-09-14T07:00:00+00:00</updated>
-    <content>AWS End User Messaging is advancing its deliverability capabilities in phone pools. Now, customers sending through phone pools automatically benefit from automatic failover to the next best performing number in the pool when SMS delivery is impacted from downstream disruptions. SMS deliverability can be affected by drops or delays when trying to reach the end recipient while it's being routed from AWS to messaging providers and eventually mobile carriers. These disruptions can hit the most impor</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-improves-deliverability" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-14T07:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/445615da10e1df52</id>
     <title>Automating Daily RDS PostgreSQL Database Backups to Amazon S3 Using pg_dump, EC2, and Cron</title>
     <updated>2026-09-14T05:56:50.510000+00:00</updated>
@@ -1883,16 +1908,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/245f1780f0ba96e3</id>
-    <title>AWS Elemental MediaLive enables frame-accurate pipeline locking for streams without timecode</title>
-    <updated>2026-09-12T08:00:00+00:00</updated>
-    <content>AWS Elemental MediaLive now supports Video Aligned Locking, a new feature to synchronize video pipelines without requiring timecode from the source. Previously, achieving frame-accurate locking across video outputs required investing in specialized hardware or managing complex, external synchronization workflows. While timecode is generally standard for highly produced, traditional broadcast content, it is often unavailable and difficult to manage in typical digital streaming workflows. The new </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/medialive-pipeline-locking/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-12T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/3307ddc9540e2c8e</id>
@@ -2327,11 +2342,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d</id>
-    <title>How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e</id>
+    <title>How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
     <updated>2026-09-07T17:16:36.819000+00:00</updated>
-    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`</content>
-    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
+    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.</content>
+    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-09-07T17:16:36.819000+00:00</published>
     <media:group>
@@ -2342,11 +2357,11 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e</id>
-    <title>How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d</id>
+    <title>How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?</title>
     <updated>2026-09-07T17:16:36.819000+00:00</updated>
-    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.</content>
-    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
+    <content>When I click Save &amp; Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`</content>
+    <link href="https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-09-07T17:16:36.819000+00:00</published>
     <media:group>

@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-09-29T16:37:56.794249+00:00</updated>
+  <updated>2026-09-29T21:02:04.229446+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=64</icon>
   <logo>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=256</logo>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/9731aef2e029c515</id>
+    <title>🚀 NanoVDR goes multi-vector: meet ColNanoVDR!</title>
+    <updated>2026-09-29T21:02:03.037931+00:00</updated>
+    <content>🚀 NanoVDR goes multi-vector: meet ColNanoVDR! Multi-vector VLM retrievers lead visual document retrieval, but every search runs a multi-billion-parameter query encoder. We distill that encoder into a 149M text-only student that queries the teacher's existing page index directly. No re-indexing, and no pages during training. 🧠 How: OTW (Optimal Transport with Learned Weights) aligns the student's query tokens with the teacher's, even though the two tokenize differently (e.g. 17 vs 29 tokens). We prove the alignment cost bounds the MaxSim score gap on every page, so training only needs cached teacher query tokens. 📊 Five teachers → five 149M students, ViDoRe v3 NDCG@5: - ColVec1.1-8b: 62.6 → 6</content>
+    <link href="https://huggingface.co/posts/Ryenhails/353296435255153" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-09-29T21:02:03.037931+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Ryenhails/353296435255153.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Ryenhails/353296435255153.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Ryenhails/353296435255153.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/16f8503d4c1ae5f7</id>
     <title>Imajev-4b is #1 of 91 on JevBench and #3 of 56 on DecisionBench 🎉</title>
@@ -206,6 +221,36 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35504.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/6fd1dbabbe0fe13e</id>
+    <title>WorldPlay2: Extending Real-Time Interactive World Models in Control and Horizon</title>
+    <updated>2026-09-28T00:00:00+00:00</updated>
+    <content>Interactive world models require responding in real time to versatile controls and maintaining long-horizon consistency. However, modeling heterogeneous controls remains difficult, while explosive contexts and unstable distillation impede achieving both long-horizon consistency and real-time responsiveness. In this paper, we present WorldPlay2, an interactive world model that couples a factorized hybrid control interface with a co-design of compressed memory and stable distillation. 1) Our factorized hybrid control interface integrates frame-aligned action control with structured semantic control that explicitly disentangles scene appearance, character identity, and dynamic semantic events, </content>
+    <link href="https://huggingface.co/papers/2609.35560" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35560/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35560/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35560/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/e0a4a87d39458670</id>
+    <title>Learning Native Reflection in Unified Models with Interleaved Reinforcement Learning</title>
+    <updated>2026-09-28T00:00:00+00:00</updated>
+    <content>Unified multimodal models can both look at and render images, so in principle they can repair their own generations: diagnose what an image gets wrong, revise it, observe the result, and diagnose again. Whether a revision helps is known only after it is rendered, so the reflection text and the image generation must be learned jointly, over the whole loop. Supervised fine-tuning (SFT) on reflection trajectories gives a cold start but does not find the high-success repair paths, and naive RL that optimizes only the renderer or only one head leaves most of the gain untapped. We introduce UMM-Reflection, which applies reinforcement learning (RL) to complete reflection trajectories inside one uni</content>
+    <link href="https://huggingface.co/papers/2609.35767" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35767.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35767.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.35767.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/192582a770c3922f</id>
@@ -913,21 +958,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.25199.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/eb792e0fc3420085</id>
-    <title>tokenizers v1: encode, decode and scaling, measured</title>
-    <updated>2026-09-21T00:00:00+00:00</updated>
-    <content>tokenizers v1: encode, decode and scaling, measured</content>
-    <link href="https://huggingface.co/blog/tokenizers-v1" rel="alternate"/>
-    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
-    <published>2026-09-21T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/c438a74ad1833676</id>
     <title>Tactile-JEPA: Topology-Aware Self-Supervised Representation Learning for Distributed Tactile Sensors</title>
     <updated>2026-09-21T00:00:00+00:00</updated>
@@ -941,6 +971,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.24385.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/eb792e0fc3420085</id>
+    <title>tokenizers v1: encode, decode and scaling, measured</title>
+    <updated>2026-09-21T00:00:00+00:00</updated>
+    <content>tokenizers v1: encode, decode and scaling, measured</content>
+    <link href="https://huggingface.co/blog/tokenizers-v1" rel="alternate"/>
+    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
+    <published>2026-09-21T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Blog</dc:creator>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/c3b187f319504fce</id>
@@ -2456,21 +2501,6 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/052bd05022a6b459</id>
-    <title>The SLM Consortium has begun work on a safety dataset for Small Language Models, with the creation of the dataset being headed by</title>
-    <updated>2026-09-06T00:15:18.927503+00:00</updated>
-    <content>The SLM Consortium has begun work on a safety dataset for Small Language Models, with the creation of the dataset being headed by @ wayneworkman2012 The dataset will focus on refusals and redirects surrounding dangerous or extreme sexual content, designed to be shaped sized appropriately for SLMs, without significantly lowering benchmark performance. More info will be out soon! slmconsortium</content>
-    <link href="https://huggingface.co/posts/KlondikeDev/683348012504726" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-06T00:15:18.927503+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/KlondikeDev/683348012504726.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/KlondikeDev/683348012504726.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/KlondikeDev/683348012504726.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/72cedb041bee0a9d</id>
@@ -4481,35 +4511,5 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2511.09554.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/0b85061420c9ba11</id>
-    <title>LongCat-Video Technical Report</title>
-    <updated>2025-10-25T00:00:00+00:00</updated>
-    <content>LongCat-Video, a 13.6B parameter video generation model based on the Diffusion Transformer framework, excels in efficient and high-quality long video generation across multiple tasks using unified architecture, coarse-to-fine generation, and block sparse attention.</content>
-    <link href="https://huggingface.co/papers/2510.22200" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2025-10-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.22200.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.22200.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.22200.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/27359fa608cfdabf</id>
-    <title>Cache-to-Cache: Direct Semantic Communication Between Large Language Models</title>
-    <updated>2025-10-03T00:00:00+00:00</updated>
-    <content>Cache-to-Cache (C2C) enables direct semantic communication between LLMs using neural network projections, improving accuracy and reducing latency compared to text-based communication.</content>
-    <link href="https://huggingface.co/papers/2510.03215" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2025-10-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.03215.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.03215.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2510.03215.png" type="image/png" length="0"/>
   </entry>
 </feed>

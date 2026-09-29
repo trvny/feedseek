@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-29T16:37:22.254434+00:00</updated>
+  <updated>2026-09-29T21:01:24.392865+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,16 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/7d9505660d04aac3</id>
+    <title>OTP Deliverability Errors</title>
+    <updated>2026-09-29T20:50:35+00:00</updated>
+    <content>Sep 29 , 20:50 UTC Resolved - Cloudflare engineering determined that customers didn't actually experience elevated levels of OTP failures. The rise in failures was an isolated incident without widespread impact. Sep 29 , 20:11 UTC Investigating - We are investigating an issue causing a high percentage of Access One Time Pin emails to fail. All other authentication methods are operating as normal.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/vcstgt8gqkyk" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-29T20:50:35+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/a9490e2c440604e9</id>
     <title>Using AI to chart a course for our post-quantum migration</title>
@@ -191,6 +201,51 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/68ce36d152ea03da</id>
+    <title>AI Gateway - Identify model overuse and potential savings with User Insights</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>AI Gateway User Insights now gives you more context about the traffic flowing through your gateway. It shows what users and agents are doing with AI, and where a selected model may be more capable than a task requires. On the analysis side, User Insights groups conversations by task, tracks conversation turns, and helps you compare model fit with cost and latency. The Potential Savings view highlights requests that may work with faster or less expensive models without compromising output quality</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-29-user-insights-task-analysis/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1434,height=606,format=webp/_astro/user-insights-task-analysis.CS2pm7wg.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1434,height=606,format=webp/_astro/user-insights-task-analysis.CS2pm7wg.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1434,height=606,format=webp/_astro/user-insights-task-analysis.CS2pm7wg.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/39791b8558cc39e9</id>
+    <title>Containers - Custom Container instance types no longer have a disk to memory ratio limit</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>Containers custom instance types no longer limit disk based on memory. Previously, a custom instance type could have a maximum of 2 GB of disk for each 1 GiB of memory. You can now allocate up to the 20 GB disk maximum to any custom instance type. Use this to run workloads that need more disk than memory, such as workloads with large container images, datasets, or build caches. The maximum image size is the same as the instance disk space, so more disk also lets you deploy larger images. For exa</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-29-remove-disk-to-memory-ratio/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-29-remove-disk-to-memory-ratio/og.png?v=55f24f5293ed20da" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-29-remove-disk-to-memory-ratio/og.png?v=55f24f5293ed20da"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-29-remove-disk-to-memory-ratio/og.png?v=55f24f5293ed20da" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/47395e5e0a6cbf58</id>
+    <title>Cloudflare Mesh, Cloudflare Tunnel, Cloudflare One, Gateway, Workers VPC - Identify Mesh, Workers VPC, and Cloudflare Tunnel replicas in network logs</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>You can now tell a person on a laptop apart from a Mesh node or an AI agent running on Workers, without matching on connector email addresses or Mesh IP ranges — and see exactly which Cloudflare Tunnel and cloudflared replica received each session. Gateway network logs and Zero Trust Network Session Logs now identify two new kinds of traffic: Mesh — Traffic sent from or delivered to a Cloudflare Mesh node. Previously, Mesh nodes were logged the same way as devices running the Cloudflare One Clie</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-29-mesh-workers-vpc-network-logs/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1439,height=796,format=webp/_astro/2026-09-28-mesh-workers-vpc-network-logs.iGvLKYk7.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1439,height=796,format=webp/_astro/2026-09-28-mesh-workers-vpc-network-logs.iGvLKYk7.gif"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1439,height=796,format=webp/_astro/2026-09-28-mesh-workers-vpc-network-logs.iGvLKYk7.gif" type="image/gif" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/030afd902d2a0b66</id>
@@ -391,6 +446,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/og.png?v=7d0bb45fdbc98846" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ef5a4ee581aa93b9</id>
+    <title>Workers, Cloudflare CLI - Cloudflare CLI is now in beta</title>
+    <updated>2026-09-28T00:00:00+00:00</updated>
+    <content>The Cloudflare CLI , cf , is now in beta. cf is one command-line interface for the public Cloudflare API and for Workers projects. Use it to manage zones, DNS, storage, and security settings, and to create, develop, and deploy Workers, without switching between tools. Install cf globally, then sign in: npm yarn pnpm bun npm install --global cf yarn global add cf pnpm add --global cf bun add --global cf cf auth login With cf , you can: Manage resources across Cloudflare. More than 2,900 commands </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-28-cloudflare-cli-beta/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-28-cloudflare-cli-beta/og.png?v=4ec58a21377d20d5" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-28-cloudflare-cli-beta/og.png?v=4ec58a21377d20d5"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-cloudflare-cli-beta/og.png?v=4ec58a21377d20d5" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/55521e37d6b0b5ae</id>
@@ -1545,21 +1615,6 @@ We strongly advise holding non-urgent cases until the incident is resolved. Plea
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3827e8f88fefaf9c</id>
-    <title>WAF - WAF Release - 2026-09-15</title>
-    <updated>2026-09-15T00:00:00+00:00</updated>
-    <content>This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...ca453d31 N/A SSRF - Cloud - 3 Log Block This is a new detection. Cloudflare Managed Ruleset ...e540f17f N/A Version Control - Information Disclosure - Beta Log Block T</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-15-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/1253d47bf9a06c77</id>
     <title>Workers - Grant teammates and agents access to specific Workers</title>
     <updated>2026-09-15T00:00:00+00:00</updated>
@@ -1600,51 +1655,6 @@ We strongly advise holding non-urgent cases until the incident is resolved. Plea
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/01d7241da1d3c146</id>
-    <title>Browser Run - Control which hostnames Browser Run sessions can access</title>
-    <updated>2026-09-14T00:00:00+00:00</updated>
-    <content>Browser Run now supports guardrails , which limit a browser session's HTTP and HTTPS requests to permitted hostnames. Use guardrails when you need to: Keep a browser workflow limited to a specific website and its subdomains. Load only known third-party APIs, scripts, images, and fonts. Generate a screenshot or PDF from HTML you provide while preventing it from loading external content. Set guardrails when starting a session with Puppeteer, Playwright, or the REST API. With a browser binding name</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-14-guardrails/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/66b56a195c5cebeb</id>
-    <title>AI Gateway - Prevent Unified Billing fallback for BYOK third-party providers</title>
-    <updated>2026-09-14T00:00:00+00:00</updated>
-    <content>AI Gateway can now require credentials for third-party provider requests. Credentials must accompany the request or be stored on the gateway. This setting prevents fallback to Unified Billing with Cloudflare-managed credentials. Turn on Require provider credentials in your gateway settings. To use the API, set byok_only to true in the request body of a PUT request to update the gateway : { "byok_only" : true } To require provider credentials for one third-party request, set the cf-aig-no-wholesa</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-14-require-provider-credentials/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/061b4a66d2210f50</id>
-    <title>DNS - Shadowed record warnings are now available for all zones</title>
-    <updated>2026-09-14T00:00:00+00:00</updated>
-    <content>Cloudflare now displays warnings for shadowed records in all zones. A record is shadowed when a subdomain delegation gives authority for its name, or a name below it, to another set of nameservers. The record remains present, but your zone is not authoritative for it thus Cloudflare will not respond with it to matching DNS queries. These warnings help you find records that may no longer resolve from the expected zone. Shadow metadata is also available in DNS records API responses when you set in</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-14-shadowed-record-warnings/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/b222deae356c964c</id>
     <title>Issues creating and updating Cloud Connector Rules</title>
     <updated>2026-09-12T10:42:51+00:00</updated>
@@ -1662,18 +1672,6 @@ We strongly advise holding non-urgent cases until the incident is resolved. Plea
     <link href="https://www.cloudflarestatus.com/incidents/sjs8s0q2x4hw" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-12T03:34:16+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/66f95af6139005e0</id>
-    <title>Network Performance Issues with Taiwan datacenter (TPE)</title>
-    <updated>2026-09-11T22:03:51+00:00</updated>
-    <content>Sep 11 , 22:03 UTC Resolved - This incident has been resolved. Sep 11 , 19:35 UTC Investigating - Cloudflare is investigating issues with Network Performance in Taiwan datacenter (TPE)
-
-We are working to analyze and mitigate this problem. More updates to follow shortly.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/2njywrxj8qjf" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-11T22:03:51+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
