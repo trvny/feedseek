@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-28T20:43:27.954637+00:00</updated>
+  <updated>2026-09-29T02:15:00.209995+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a71dbab81a6e7770</id>
+    <title>Browser Run - Connect multiple clients to one Browser Run session</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>Browser Run sessions now accept multiple concurrent connections. Before, a session accepted only one connection at a time, and other Workers had to wait until that connection closed. Now multiple Workers can connect to the same browser at the same time. Each puppeteer.connect() call opens its own Chrome DevTools Protocol (CDP) connection. Create a separate browser context for each request to keep its pages, cookies, and storage apart from other clients. const browser = await puppeteer. connect (</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/030afd902d2a0b66</id>
     <title>Network Performance Issues in Eastern North America</title>
@@ -1555,21 +1570,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M25DK32HZ1WQH3H12JRZ8W35.01M25DK70WYHHWWR2VQYE94TNP.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/59bff5c1f52694de</id>
-    <title>Workflows - Default instance retention for new Workflows on Workers Paid is seven days</title>
-    <updated>2026-09-10T12:00:00+00:00</updated>
-    <content>Workflows created on or after September 10, 2026, on the Workers Paid plan retain completed and errored instance state for seven days by default (previously 30 days). The seven day default helps to reduce storage costs by default. The maximum retention limit remains 30 days. The retention period for existing Workflows is unchanged. The Workers Free plan retains its three-day default and limit. To set the retention period for a Workflow instance, specify successRetention , errorRetention , or bot</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-10T12:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/7eed123a34dc82ae</id>

@@ -8,6 +8,29 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a71dbab81a6e7770",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/",
+      "title": "Browser Run - Connect multiple clients to one Browser Run session",
+      "content_text": "Browser Run sessions now accept multiple concurrent connections. Before, a session accepted only one connection at a time, and other Workers had to wait until that connection closed. Now multiple Workers can connect to the same browser at the same time. Each puppeteer.connect() call opens its own Chrome DevTools Protocol (CDP) connection. Create a separate browser context for each request to keep its pages, cookies, and storage apart from other clients. const browser = await puppeteer. connect (",
+      "date_published": "2026-09-29T00:00:00Z",
+      "date_modified": "2026-09-29T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/og.png?v=0d0f196fad04b353",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/030afd902d2a0b66",
       "url": "https://www.cloudflarestatus.com/incidents/32sg73xwyq89",
       "title": "Network Performance Issues in Eastern North America",
@@ -2374,29 +2397,6 @@
       "attachments": [
         {
           "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M25DK32HZ1WQH3H12JRZ8W35.01M25DK70WYHHWWR2VQYE94TNP.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/59bff5c1f52694de",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/",
-      "title": "Workflows - Default instance retention for new Workflows on Workers Paid is seven days",
-      "content_text": "Workflows created on or after September 10, 2026, on the Workers Paid plan retain completed and errored instance state for seven days by default (previously 30 days). The seven day default helps to reduce storage costs by default. The maximum retention limit remains 30 days. The retention period for existing Workflows is unchanged. The Workers Free plan retains its three-day default and limit. To set the retention period for a Workflow instance, specify successRetention , errorRetention , or bot",
-      "date_published": "2026-09-10T12:00:00Z",
-      "date_modified": "2026-09-10T12:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
           "mime_type": "image/png"
         }
       ]

@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://nodejs.org/</id>
   <title>JS | Node</title>
-  <updated>2026-09-28T20:44:20.407362+00:00</updated>
+  <updated>2026-09-29T02:15:57.416249+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -31,7 +31,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/8b037a8d4b0de8af</id>
     <title>pnpm 11.28</title>
     <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>pnpm 11.28 adds the forceIgnoresPlatform setting and pnpm update --peer,</content>
+    <content>pnpm 11.28 adds the forceIgnoresPlatform setting and pnpm update --peer, and brings a large batch of fixes from pnpm 12 to the JavaScript CLI: pnpm deploy, --filter, nodeLinker: hoisted, and custom modulesDir setups all behave better. It also carries security fixes for shell completion, bin...</content>
     <link href="https://pnpm.io/blog/releases/11.28" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-25T00:00:00+00:00</published>
@@ -46,7 +46,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/d15c3111f76e7474</id>
     <title>pnpm 12.7</title>
     <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>pnpm 12.7 lets the global node shim follow .nvmrc and .node-version,</content>
+    <content>pnpm 12.7 lets the global node shim follow .nvmrc and .node-version, adds pnpm install --allow-build and pnpm publish --publish-wait-timeout, and creates pnpm-workspace.yaml from the workspaces field of package.json. pnpm install --force no longer installs optional dependencies built for other...</content>
     <link href="https://pnpm.io/blog/releases/12.7" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-25T00:00:00+00:00</published>
@@ -151,7 +151,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/ba1575690330e781</id>
     <title>pnpm 12.6</title>
     <updated>2026-09-22T00:00:00+00:00</updated>
-    <content>pnpm 12.6 ships with automatic dependency deduplication, relocatable</content>
+    <content>pnpm 12.6 ships with automatic dependency deduplication, relocatable node_modules, --save-types for installing @types/* packages alongside their counterparts, package.yaml manifest editing, and file: / link: protocols in catalogs.</content>
     <link href="https://pnpm.io/blog/releases/12.6" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-22T00:00:00+00:00</published>
@@ -196,7 +196,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/3e2c7a5f5312ce0d</id>
     <title>pnpm 12.5</title>
     <updated>2026-09-18T00:00:00+00:00</updated>
-    <content>pnpm 12.5 expands Python support with editable project packages, shared workspace</content>
+    <content>pnpm 12.5 expands Python support with editable project packages, shared workspace environments, automatic interpreter downloads, and lockfiles for multiple platforms and Python versions. It also accepts Package URLs in pnpm add, adds machine-wide task concurrency groups, and cleans up obsolete...</content>
     <link href="https://pnpm.io/blog/releases/12.5" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-18T00:00:00+00:00</published>
@@ -301,7 +301,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/26c72e3d51bf1b6e</id>
     <title>pnpm 12.4</title>
     <updated>2026-09-10T00:00:00+00:00</updated>
-    <content>pnpm 12.4 installs crates and Python packages next to npm packages in the same</content>
+    <content>pnpm 12.4 installs crates and Python packages next to npm packages in the same workspace, adds pnpm pipeline to run a workspace's tasks the way a CI job would, and ships binaries for six more platforms. pnpr 0.1.0-alpha.11, released alongside 12.4.1, serves Cargo, Python, and container...</content>
     <link href="https://pnpm.io/blog/releases/12.4" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-10T00:00:00+00:00</published>
@@ -376,7 +376,7 @@
     <id>tag:trvny.github.io,2024:feedseek/js_node/ad0c77475dd63e64</id>
     <title>pnpm 11.26</title>
     <updated>2026-09-07T00:00:00+00:00</updated>
-    <content>pnpm 11.26 brings the JavaScript CLI level with what pnpm 12 gained over the</content>
+    <content>pnpm 11.26 brings the JavaScript CLI level with what pnpm 12 gained over the past two weeks: workspace: ranges in catalogs, the supply-chain flags on remove and update, pnpm change check for CI, and pnpm deploy without injected dependencies.</content>
     <link href="https://pnpm.io/blog/releases/11.26" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-07T00:00:00+00:00</published>
@@ -482,7 +482,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/6c2bc89905b38c42</id>
     <title>pnpm 12.2-12.3</title>
     <updated>2026-09-02T00:00:00+00:00</updated>
-    <content>pnpm 12.2 and 12.3 are largely a catch-up pair: a long list of things pnpm 11</content>
+    <content>pnpm 12.2 and 12.3 are largely a catch-up pair: a long list of things pnpm 11 did that the Rust CLI did not, put back. Catalogs learned the workspace: protocol, pnpm remove and pnpm update gained the supply-chain flags, every project-aware global command became a real executable, and hostname...</content>
     <link href="https://pnpm.io/blog/releases/12.2-12.3" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-09-02T00:00:00+00:00</published>
@@ -557,7 +557,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/d6b89f5858f2dcad</id>
     <title>pnpm 11.25</title>
     <updated>2026-08-29T00:00:00+00:00</updated>
-    <content>pnpm 11.25 replaces topological batches with a task scheduler, adds configurable</content>
+    <content>pnpm 11.25 replaces topological batches with a task scheduler, adds configurable workspace task dependencies and per-task concurrency, and makes interrupted recursive runs resumable from the work that actually passed. It also introduces registry revisions, signed build artifacts shared through...</content>
     <link href="https://pnpm.io/blog/releases/11.25" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-29T00:00:00+00:00</published>
@@ -572,7 +572,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/6ba557117933b3de</id>
     <title>pnpm 12.1</title>
     <updated>2026-08-29T00:00:00+00:00</updated>
-    <content>pnpm 12.1 brings the new workspace task scheduler to the Rust CLI, persists</content>
+    <content>pnpm 12.1 brings the new workspace task scheduler to the Rust CLI, persists successful recursive tasks for precise retries, expands shared build artifacts to macOS and Windows, and moves login credentials into pnpm's structured global configuration. pnpr 0.1.0-alpha.9, released with it, makes...</content>
     <link href="https://pnpm.io/blog/releases/12.1" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-29T00:00:00+00:00</published>
@@ -737,7 +737,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/0ccc2686f146917c</id>
     <title>pnpm 11.24</title>
     <updated>2026-08-24T00:00:00+00:00</updated>
-    <content>pnpm 11.24 brings back pnpm approve-builds --global, which isolated global installs took away in v11.0, and makes recursive batch publishing group its packages by registry so a credential mismatch is caught before anything is published. It also stops --frozen-lockfile from failing over the pnpm version the lockfile pins.</content>
+    <content>pnpm 11.24 brings back pnpm approve-builds --global, which isolated global installs took away in v11.0, and makes recursive batch publishing group its packages by registry so a credential mismatch is caught before anything is published. It also stops --frozen-lockfile from failing over the pnpm...</content>
     <link href="https://pnpm.io/blog/releases/11.24" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-24T00:00:00+00:00</published>
@@ -752,7 +752,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/9a7dddbc5f0282fe</id>
     <title>pnpm 11.23</title>
     <updated>2026-08-23T00:00:00+00:00</updated>
-    <content>pnpm 11.23 gives the registries setting a shape that describes each registry once — its tarball layout, the scopes routed to it, the prefix it answers to — so an Artifactory or GitLab registry can finally keep its tarball URLs out of pnpm-lock.yaml. It adds virtualStoreType, makes undeclared imports resolve under ESM with the global virtual store without a plugin, teaches pnpm config get to report the settings pnpm actually acts on, and warns about settings no pnpm version recognizes.</content>
+    <content>pnpm 11.23 gives the registries setting a shape that describes each registry once — its tarball layout, the scopes routed to it, the prefix it answers to — so an Artifactory or GitLab registry can finally keep its tarball URLs out of pnpm-lock.yaml. It adds virtualStoreType, makes undeclared...</content>
     <link href="https://pnpm.io/blog/releases/11.23" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-23T00:00:00+00:00</published>
@@ -902,7 +902,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/bad35912311dc527</id>
     <title>pnpm 11.21-11.22</title>
     <updated>2026-08-18T00:00:00+00:00</updated>
-    <content>pnpm 11.21 and 11.22 teach pnpm install to update the lockfile in place for most everyday changes instead of re-resolving the whole dependency graph, stop recording SSH URLs that break installs on CI, make global installs switch over atomically and global interactive updates select whole install groups, add pnpm cache path, and take away a project's ability to relocate pnpm's machine-level state through pnpm-workspace.yaml.</content>
+    <content>pnpm 11.21 and 11.22 teach pnpm install to update the lockfile in place for most everyday changes instead of re-resolving the whole dependency graph, stop recording SSH URLs that break installs on CI, make global installs switch over atomically and global interactive updates select whole install...</content>
     <link href="https://pnpm.io/blog/releases/11.21-11.22" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-18T00:00:00+00:00</published>
@@ -1187,7 +1187,7 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     <id>tag:trvny.github.io,2024:feedseek/js_node/21a29a97d5a7d509</id>
     <title>pnpm 11.20</title>
     <updated>2026-08-03T00:00:00+00:00</updated>
-    <content>pnpm 11.20 fixes a package-substitution risk in projects that install from more than one registry alias, stops empty proxy settings from failing installs, hardens pnpm rebuild against a malicious lockfile, and speeds up dependency resolution.</content>
+    <content>pnpm 11.20 fixes a package-substitution risk in projects that install from more than one registry: packages resolved from a named registry are now recorded in the lockfile under registry-qualified keys. It also adds a built-in npmjs: alias, stops empty proxy settings from failing installs,...</content>
     <link href="https://pnpm.io/blog/releases/11.20" rel="alternate"/>
     <category term="pnpm Blog" label="pnpm Blog"/>
     <published>2026-08-03T00:00:00+00:00</published>
