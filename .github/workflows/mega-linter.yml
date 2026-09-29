@@ -101,6 +101,11 @@ jobs:
               contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
             }}
           APPLY_FIXES_EVENT: none
+          # Never expose the shared LLM credential to code/config from pull requests.
+          LLM_ADVISOR_ENABLED: ${{ github.event_name != 'pull_request' && secrets.ORCAROUTER_API_KEY != '' }}
+          LLM_PROVIDER: orcarouter
+          LLM_MODEL_NAME: orcarouter/auto
+          ORCAROUTER_API_KEY: ${{ github.event_name != 'pull_request' && secrets.ORCAROUTER_API_KEY || '' }}
 
       - name: Archive MegaLinter reports
         if: always()
