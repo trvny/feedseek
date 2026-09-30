@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-107 feedów · 848 źródeł
+107 feedów · 854 źródła
 
 ## Spis grup
 
@@ -154,12 +154,15 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=status.claude.com&sz=16) Status atom — <https://status.claude.com/history.atom>
 - ![](https://www.google.com/s2/favicons?domain=support.claude.com&sz=16) Support release notes — <https://support.claude.com/en/articles/12138966-release-notes>
 
-### ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) OpenAI
+### ![](https://www.google.com/s2/favicons?domain=status.openai.com&sz=16) OpenAI
 `openai` · [feed_openai.xml](../feeds/feed_openai.xml)
 
+- ![](https://www.google.com/s2/favicons?domain=status.openai.com&sz=16) OpenAI Status — <https://status.openai.com/feed.atom>
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) Codex changelog — <https://developers.openai.com/codex/changelog>
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) Apps SDK changelog — <https://developers.openai.com/apps-sdk/changelog>
 - ![](https://www.google.com/s2/favicons?domain=learn.chatgpt.com&sz=16) ChatGPT changelog — <https://learn.chatgpt.com/docs/changelog>
+- ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI Research PL — <https://openai.com/pl-PL/research/index/>
+- ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI News PL — <https://openai.com/pl-PL/news/>
 - ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI News — <https://openai.com/news/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI Engineering — <https://openai.com/news/engineering/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI Release notes — <https://openai.com/products/release-notes/rss.xml>
@@ -168,6 +171,9 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) OpenAI Codex — <https://developers.openai.com/codex/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) API changelog — <https://developers.openai.com/api/docs/changelog>
 - ![](https://www.google.com/s2/favicons?domain=help.openai.com&sz=16) Chatgpt help — <https://help.openai.com/en/articles/6825453-chatgpt-release-notes>
+- ![](https://www.google.com/s2/favicons?domain=learn.chatgpt.com&sz=16) Chatgpt whats new — <https://learn.chatgpt.com/docs/whats-new>
+- ![](https://www.google.com/s2/favicons?domain=deploymentsafety.openai.com&sz=16) Deployment safety — <https://deploymentsafety.openai.com/>
+- ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) Developer blog — <https://developers.openai.com/blog>
 
 ### ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) xAI
 `xai` · [feed_xai.xml](../feeds/feed_xai.xml)

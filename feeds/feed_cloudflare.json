@@ -8,6 +8,68 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/5283828898fbf7c7",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/",
+      "title": "Containers - New scheduling policy for Containers to configure image and instance from Durable Objects",
+      "content_text": "Containers now support the durable_object scheduling policy in public beta. This policy lets a Durable Object select the image and instance size for a Container at runtime instead of using one centrally managed configuration for the application. To use custom images, configure the policy and one or more named images in Wrangler: { \"containers\" : [ { \"class_name\" : \"AgentComputer\" , \"scheduling_policy\" : \"durable_object\" , \"images\" : { \"base\" : { \"dockerfile\" : \"./container/Dockerfile\" , }, }, },",
+      "date_published": "2026-09-30T12:45:00Z",
+      "date_modified": "2026-09-30T12:45:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/og.png?v=c282df86d1714143",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/og.png?v=c282df86d1714143",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4e89d537add92d6a",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/",
+      "title": "Containers - Snapshot and restore Container filesystem",
+      "content_text": "Containers now support snapshot APIs in public beta for saving and restoring point-in-time filesystem state. Create a snapshot first, then pass it back to start() to restore files after container sleep, restart, or handoff to another Durable Object. Use snapshotContainer() through the Durable Object Container API to capture the full container filesystem. Create a snapshot from a running Container, store its handle, and pass that handle to start() when you restore it later: src/index.js js import",
+      "date_published": "2026-09-30T12:45:00Z",
+      "date_modified": "2026-09-30T12:45:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/og.png?v=3d369698fe1a01e8",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/og.png?v=3d369698fe1a01e8",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a6cc9a0a10255a1f",
+      "url": "https://www.cloudflarestatus.com/incidents/0dq5fbp2xwbj",
+      "title": "WARP connectivity in Newark, NJ",
+      "content_text": "Sep 30 , 00:45 UTC Resolved - Between 00:45- 01:35 UTC, Cloudflare WARP and Zero Trust users in Newark, NJ, may have experienced connectivity issues or a degraded Internet experience.",
+      "date_published": "2026-09-30T00:45:00Z",
+      "date_modified": "2026-09-30T00:45:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2",
       "url": "https://www.cloudflarestatus.com/incidents/8wmvkv5jkf15",
       "title": "Network Performance Degradation — Asia-Pacific",
@@ -2469,52 +2531,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/1253d47bf9a06c77",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-granular-worker-permissions/",
-      "title": "Workers - Grant teammates and agents access to specific Workers",
-      "content_text": "You can now grant access to specific Workers and choose from four roles to control the level of access you give teammates, agents, and CI/CD workflows. Choose from four roles to control the level of access: Metadata Read-Only : View settings, metrics, logs, and traces without access to Worker code or the ability to make changes. Content Read-Only : Read Worker code, settings, and observability data without the ability to modify or deploy changes. Editor : Update and deploy a Worker without the a",
-      "date_published": "2026-09-15T00:00:00Z",
-      "date_modified": "2026-09-15T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ab2da48e48597556",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-infrastructure-target-tags/",
-      "title": "Cloudflare One, Access - Access for Infrastructure now supports tagged targets and tag-based target criteria",
-      "content_text": "Access for Infrastructure now integrates with Resource Tagging . You can attach key-value tags to infrastructure targets and use them in access policies. You can manage tags on targets inline when you create or edit a target or through the central Resource Tagging API . Cloudflare keeps tags in sync across both methods. Infrastructure applications also support a target criteria model with include , require , and exclude operators. Each operator can match targets by hostname, tag, or both. Includ",
-      "date_published": "2026-09-15T00:00:00Z",
-      "date_modified": "2026-09-15T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/50143ee744c94468",
       "url": "https://www.cloudflarestatus.com/incidents/95c8hvlcvxmj",
       "title": "Increased 5xx errors and latency for Los Angeles (LAX) Sept 14 22:15 - Sept 14 23:10 UTC",
@@ -2537,22 +2553,6 @@
       "content_text": "Sep 12 , 10:42 UTC Resolved - This incident has been resolved. Sep 12 , 10:10 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 12 , 08:11 UTC Identified - The issue has been identified and a fix is being implemented. Sep 12 , 08:06 UTC Investigating - Cloudflare is investigating failures in updating and creating Cloud Connector Rules.  We are working to mitigate this problem. More updates to follow shortly.",
       "date_published": "2026-09-12T10:42:51Z",
       "date_modified": "2026-09-12T10:42:51Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4a1180d18983dc85",
-      "url": "https://www.cloudflarestatus.com/incidents/sjs8s0q2x4hw",
-      "title": "Workers Cron Triggers degraded",
-      "content_text": "Sep 12 , 03:34 UTC Resolved - This incident has been resolved. Sep 12 , 02:25 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 9 , 19:18 UTC Identified - The issue has been identified and a fix is being implemented. Sep 9 , 19:17 UTC Investigating - Workers Cron Triggers may not execute or may be delayed in executing. Updates to Workers Cron Triggers may take some time to take effect.",
-      "date_published": "2026-09-12T03:34:16Z",
-      "date_modified": "2026-09-12T03:34:16Z",
       "authors": [
         {
           "name": "Cloudflare Status"

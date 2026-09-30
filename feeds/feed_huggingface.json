@@ -8,6 +8,52 @@
   "icon": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/14f83e746ef088b6",
+      "url": "https://huggingface.co/posts/dipankarsarkar/584613518985388",
+      "title": "I audited one of my own evaluations. The ranking did not hold up the way I expected.",
+      "content_text": "I audited one of my own evaluations. The ranking did not hold up the way I expected. Eight open models, one task: infer the structure of a prompt. Then ask again with the identical call. Caching off. - Agreement between repeated identical calls (mean Jaccard) ranged from 0.39 to 0.96 across models. - Only 35 of 127 prompt-model cells were perfectly reproducible on every run. - I bootstrapped the reproducibility ranking over prompts. The two least reproducible models kept their rank in 99% and 86% of resamples. The middle four kept theirs in 27% to 48%. So the table reliably finds the worst model. It does not reliably find the best. Reproducible is also not the same as correct. F1 against gol",
+      "date_published": "2026-09-30T08:58:57Z",
+      "date_modified": "2026-09-30T08:58:57Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/dipankarsarkar/584613518985388.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/dipankarsarkar/584613518985388.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/f93a74323cb97f85",
+      "url": "https://huggingface.co/posts/SoulInPsyAbstract/232072130002796",
+      "title": "Eval · EXP-046",
+      "content_text": "Eval · EXP-046 A LoRA Specialist Beat Zero-Shot on Every Group. Merging 3 of Them Gave Most of the Gain Back. Three Qwen2.5-7B LoRA specialists, one per risk group (vulnerability, deletion, sensitive_publication), trained to predict how likely a causal chain actually completes to its harmful outcome. Each one genuinely beat its own zero-shot baseline: * vulnerability: MAE 0.098 → 0.085 * deletion: MAE 0.144 → 0.113 * sensitive_publication: MAE 0.134 → 0.100 This wasn't a task already saturated zero-shot (unlike a same-day decomposition-classifier tune, EXP-045, where the base model was already at 100% before any training). Real signal, real improvement, on a task with actual headroom. Then t",
+      "date_published": "2026-09-30T08:58:57Z",
+      "date_modified": "2026-09-30T08:58:57Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SoulInPsyAbstract/232072130002796.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SoulInPsyAbstract/232072130002796.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/9731aef2e029c515",
       "url": "https://huggingface.co/posts/Ryenhails/353296435255153",
       "title": "🚀 NanoVDR goes multi-vector: meet ColNanoVDR!",
@@ -486,6 +532,52 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33803.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/c6287575379c2eca",
+      "url": "https://huggingface.co/papers/2609.33757",
+      "title": "YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality",
+      "content_text": "Symbolic models make melody, harmony, rhythm, and form explicit but typically stop before a finished recording; audio models produce complete songs while leaving composition implicit. We introduce YuE2, which unifies symbolic and audio music generation at frontier quality through symbolic planning. A single AR-NAR Mixture-of-Transformers (MoT) first writes a readable score specifying melody and harmony, expands it into semantic music tokens, and realizes it as full-song audio. In comparisons using the same checkpoint, experts prefer symbolic planning for overall quality and musicality, with 49.3% of overall preferences versus 34.6% without planning. Experts also favor the unified model over",
+      "date_published": "2026-09-27T00:00:00Z",
+      "date_modified": "2026-09-27T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33757.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33757.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/f7d42e6b38c8b853",
+      "url": "https://huggingface.co/papers/2609.33325",
+      "title": "VisionHOPE: Visual Backbones as Self-Modifying Learning Systems",
+      "content_text": "Visual backbones have evolved from Convolutional Neural Networks (CNNs) with local aggregation to Vision Transformers (ViTs) with global interactions, State-Space Models (SSMs) with input-dependent state transitions, and Test-Time Training (TTT) layers that adapt an inner learner while processing an image. Across this progression, visual computation has become increasingly adaptive to each input, yet the rules governing that adaptation remain largely prescribed by the trained backbone. We introduce VisionHOPE, the first generic visual backbone formulated as a self-modifying learning system, in which what the model remembers and how it learns co-evolve within an image. Building on the self-re",
+      "date_published": "2026-09-27T00:00:00Z",
+      "date_modified": "2026-09-27T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33325.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33325.png",
           "mime_type": "image/png"
         }
       ]
@@ -3803,52 +3895,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/ae2ca92ccc6c431a",
-      "url": "https://huggingface.co/posts/appvoid/134522551338240",
-      "title": "We got gpt6 before gta6",
-      "content_text": "We got gpt6 before gta6",
-      "date_published": "2026-09-06T11:21:23Z",
-      "date_modified": "2026-09-06T11:21:23Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/appvoid/134522551338240.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/appvoid/134522551338240.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/b3958aa29ee2aecc",
-      "url": "https://huggingface.co/posts/tegridydev/225938221687091",
-      "title": "Been playing around with Astra the last few days and gave it my usual dumb Minecraft test lol",
-      "content_text": "Been playing around with Astra the last few days and gave it my usual dumb Minecraft test lol Started with a super vague oneshot prompt in Work on Astra Max, got a surprisingly complete voxel game back, then pushed the same project through one more Max revision and finally into Codex CLI with Astra xHigh for /plan + Astra Low for /goal . Whole run was about 145 mins from first prompt to the final top-down sim version, and the overall dev experience was noticeably smoother than my similar Sol 5.6 runs. Wrote up the process, timings, screenshots and linked the original one-shot Wildblock source here: https://huggingface.co/blog/tegridydev/minecraft-time-with-astra-tegridydev Source / one-shot:",
-      "date_published": "2026-09-06T05:05:10Z",
-      "date_modified": "2026-09-06T05:05:10Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/72cedb041bee0a9d",
       "url": "https://huggingface.co/papers/2609.06055",
       "title": "DriveZero: End-to-End Driving Beyond Human Demonstrations",
@@ -6402,29 +6448,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/357d064be8691681",
-      "url": "https://huggingface.co/blog/torch-profiler",
-      "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
-      "content_text": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
-      "date_published": "2026-05-29T00:00:00Z",
-      "date_modified": "2026-05-29T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "image": "https://huggingface.co/blog/assets/torch-profiler/thumbnail.png",
-      "tags": [
-        "Hugging Face Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://huggingface.co/blog/assets/torch-profiler/thumbnail.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/1ed3bfe49ebe8c08",
       "url": "https://huggingface.co/papers/2605.31264",
       "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
@@ -6443,6 +6466,29 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.31264.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/357d064be8691681",
+      "url": "https://huggingface.co/blog/torch-profiler",
+      "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+      "content_text": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+      "date_published": "2026-05-29T00:00:00Z",
+      "date_modified": "2026-05-29T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "image": "https://huggingface.co/blog/assets/torch-profiler/thumbnail.png",
+      "tags": [
+        "Hugging Face Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://huggingface.co/blog/assets/torch-profiler/thumbnail.png",
           "mime_type": "image/png"
         }
       ]
@@ -6857,52 +6903,6 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2602.04634.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/cf89f1ed99e6f1e3",
-      "url": "https://huggingface.co/papers/2601.02163",
-      "title": "EverMemOS: A Self-Organizing Memory Operating System for Structured Long-Horizon Reasoning",
-      "content_text": "EverMemOS presents a self-organizing memory system for large language models that processes dialogue streams into structured memory cells and scenes to enhance long-term interaction capabilities.",
-      "date_published": "2026-01-05T00:00:00Z",
-      "date_modified": "2026-01-05T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2601.02163.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2601.02163.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/e6b551d4c4735f0a",
-      "url": "https://huggingface.co/papers/2512.16676",
-      "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "content_text": "DataFlow is an LLM-driven data preparation framework that enhances data quality and reproducibility for various tasks, improving LLM performance with automatically generated pipelines.",
-      "date_published": "2025-12-18T00:00:00Z",
-      "date_modified": "2025-12-18T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2512.16676.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2512.16676.png",
           "mime_type": "image/png"
         }
       ]

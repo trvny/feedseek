@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-09-30T01:29:12.686909+00:00</updated>
+  <updated>2026-09-30T08:58:04.960962+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,46 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5283828898fbf7c7</id>
+    <title>Containers - New scheduling policy for Containers to configure image and instance from Durable Objects</title>
+    <updated>2026-09-30T12:45:00+00:00</updated>
+    <content>Containers now support the durable_object scheduling policy in public beta. This policy lets a Durable Object select the image and instance size for a Container at runtime instead of using one centrally managed configuration for the application. To use custom images, configure the policy and one or more named images in Wrangler: { "containers" : [ { "class_name" : "AgentComputer" , "scheduling_policy" : "durable_object" , "images" : { "base" : { "dockerfile" : "./container/Dockerfile" , }, }, },</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-30T12:45:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/og.png?v=c282df86d1714143" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/og.png?v=c282df86d1714143"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/og.png?v=c282df86d1714143" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4e89d537add92d6a</id>
+    <title>Containers - Snapshot and restore Container filesystem</title>
+    <updated>2026-09-30T12:45:00+00:00</updated>
+    <content>Containers now support snapshot APIs in public beta for saving and restoring point-in-time filesystem state. Create a snapshot first, then pass it back to start() to restore files after container sleep, restart, or handoff to another Durable Object. Use snapshotContainer() through the Durable Object Container API to capture the full container filesystem. Create a snapshot from a running Container, store its handle, and pass that handle to start() when you restore it later: src/index.js js import</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-30T12:45:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/og.png?v=3d369698fe1a01e8" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/og.png?v=3d369698fe1a01e8"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/og.png?v=3d369698fe1a01e8" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a6cc9a0a10255a1f</id>
+    <title>WARP connectivity in Newark, NJ</title>
+    <updated>2026-09-30T00:45:00+00:00</updated>
+    <content>Sep 30 , 00:45 UTC Resolved - Between 00:45- 01:35 UTC, Cloudflare WARP and Zero Trust users in Newark, NJ, may have experienced connectivity issues or a degraded Internet experience.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/0dq5fbp2xwbj" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-09-30T00:45:00+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2</id>
     <title>Network Performance Degradation — Asia-Pacific</title>
@@ -1615,36 +1655,6 @@ We strongly advise holding non-urgent cases until the incident is resolved. Plea
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1253d47bf9a06c77</id>
-    <title>Workers - Grant teammates and agents access to specific Workers</title>
-    <updated>2026-09-15T00:00:00+00:00</updated>
-    <content>You can now grant access to specific Workers and choose from four roles to control the level of access you give teammates, agents, and CI/CD workflows. Choose from four roles to control the level of access: Metadata Read-Only : View settings, metrics, logs, and traces without access to Worker code or the ability to make changes. Content Read-Only : Read Worker code, settings, and observability data without the ability to modify or deploy changes. Editor : Update and deploy a Worker without the a</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-15-granular-worker-permissions/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1752,height=888,format=webp/_astro/individual-worker-permission-roles.Cn5i9cW0.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ab2da48e48597556</id>
-    <title>Cloudflare One, Access - Access for Infrastructure now supports tagged targets and tag-based target criteria</title>
-    <updated>2026-09-15T00:00:00+00:00</updated>
-    <content>Access for Infrastructure now integrates with Resource Tagging . You can attach key-value tags to infrastructure targets and use them in access policies. You can manage tags on targets inline when you create or edit a target or through the central Resource Tagging API . Cloudflare keeps tags in sync across both methods. Infrastructure applications also support a target criteria model with include , require , and exclude operators. Each operator can match targets by hostname, tag, or both. Includ</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-15-infrastructure-target-tags/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2372,height=1616,format=webp/_astro/tags-in-infra-app.ja2Tp-Gq.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/50143ee744c94468</id>
     <title>Increased 5xx errors and latency for Los Angeles (LAX) Sept 14 22:15 - Sept 14 23:10 UTC</title>
     <updated>2026-09-14T22:00:00+00:00</updated>
@@ -1662,16 +1672,6 @@ We strongly advise holding non-urgent cases until the incident is resolved. Plea
     <link href="https://www.cloudflarestatus.com/incidents/t4gby3dqzbg1" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-12T10:42:51+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4a1180d18983dc85</id>
-    <title>Workers Cron Triggers degraded</title>
-    <updated>2026-09-12T03:34:16+00:00</updated>
-    <content>Sep 12 , 03:34 UTC Resolved - This incident has been resolved. Sep 12 , 02:25 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 9 , 19:18 UTC Identified - The issue has been identified and a fix is being implemented. Sep 9 , 19:17 UTC Investigating - Workers Cron Triggers may not execute or may be delayed in executing. Updates to Workers Cron Triggers may take some time to take effect.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/sjs8s0q2x4hw" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-12T03:34:16+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>

@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-09-30T01:30:05.998498+00:00</updated>
+  <updated>2026-09-30T08:58:57.995264+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -12,6 +12,36 @@
   <icon>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=64</icon>
   <logo>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=256</logo>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/14f83e746ef088b6</id>
+    <title>I audited one of my own evaluations. The ranking did not hold up the way I expected.</title>
+    <updated>2026-09-30T08:58:57.126661+00:00</updated>
+    <content>I audited one of my own evaluations. The ranking did not hold up the way I expected. Eight open models, one task: infer the structure of a prompt. Then ask again with the identical call. Caching off. - Agreement between repeated identical calls (mean Jaccard) ranged from 0.39 to 0.96 across models. - Only 35 of 127 prompt-model cells were perfectly reproducible on every run. - I bootstrapped the reproducibility ranking over prompts. The two least reproducible models kept their rank in 99% and 86% of resamples. The middle four kept theirs in 27% to 48%. So the table reliably finds the worst model. It does not reliably find the best. Reproducible is also not the same as correct. F1 against gol</content>
+    <link href="https://huggingface.co/posts/dipankarsarkar/584613518985388" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-09-30T08:58:57.126661+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/dipankarsarkar/584613518985388.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/dipankarsarkar/584613518985388.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/dipankarsarkar/584613518985388.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/f93a74323cb97f85</id>
+    <title>Eval · EXP-046</title>
+    <updated>2026-09-30T08:58:57.126661+00:00</updated>
+    <content>Eval · EXP-046 A LoRA Specialist Beat Zero-Shot on Every Group. Merging 3 of Them Gave Most of the Gain Back. Three Qwen2.5-7B LoRA specialists, one per risk group (vulnerability, deletion, sensitive_publication), trained to predict how likely a causal chain actually completes to its harmful outcome. Each one genuinely beat its own zero-shot baseline: * vulnerability: MAE 0.098 → 0.085 * deletion: MAE 0.144 → 0.113 * sensitive_publication: MAE 0.134 → 0.100 This wasn't a task already saturated zero-shot (unlike a same-day decomposition-classifier tune, EXP-045, where the base model was already at 100% before any training). Real signal, real improvement, on a task with actual headroom. Then t</content>
+    <link href="https://huggingface.co/posts/SoulInPsyAbstract/232072130002796" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-09-30T08:58:57.126661+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SoulInPsyAbstract/232072130002796.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SoulInPsyAbstract/232072130002796.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SoulInPsyAbstract/232072130002796.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/9731aef2e029c515</id>
     <title>🚀 NanoVDR goes multi-vector: meet ColNanoVDR!</title>
@@ -326,6 +356,36 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33803.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/c6287575379c2eca</id>
+    <title>YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality</title>
+    <updated>2026-09-27T00:00:00+00:00</updated>
+    <content>Symbolic models make melody, harmony, rhythm, and form explicit but typically stop before a finished recording; audio models produce complete songs while leaving composition implicit. We introduce YuE2, which unifies symbolic and audio music generation at frontier quality through symbolic planning. A single AR-NAR Mixture-of-Transformers (MoT) first writes a readable score specifying melody and harmony, expands it into semantic music tokens, and realizes it as full-song audio. In comparisons using the same checkpoint, experts prefer symbolic planning for overall quality and musicality, with 49.3% of overall preferences versus 34.6% without planning. Experts also favor the unified model over </content>
+    <link href="https://huggingface.co/papers/2609.33757" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33757.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33757.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33757.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/f7d42e6b38c8b853</id>
+    <title>VisionHOPE: Visual Backbones as Self-Modifying Learning Systems</title>
+    <updated>2026-09-27T00:00:00+00:00</updated>
+    <content>Visual backbones have evolved from Convolutional Neural Networks (CNNs) with local aggregation to Vision Transformers (ViTs) with global interactions, State-Space Models (SSMs) with input-dependent state transitions, and Test-Time Training (TTT) layers that adapt an inner learner while processing an image. Across this progression, visual computation has become increasingly adaptive to each input, yet the rules governing that adaptation remain largely prescribed by the trained backbone. We introduce VisionHOPE, the first generic visual backbone formulated as a self-modifying learning system, in which what the model remembers and how it learns co-evolve within an image. Building on the self-re</content>
+    <link href="https://huggingface.co/papers/2609.33325" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33325.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33325.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.33325.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/5b83e772df081d75</id>
@@ -2488,36 +2548,6 @@
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6615494716917dfdc645c44e/rhj5uB0gOJ_6kqZBySkIO.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/ae2ca92ccc6c431a</id>
-    <title>We got gpt6 before gta6</title>
-    <updated>2026-09-06T11:21:23.988142+00:00</updated>
-    <content>We got gpt6 before gta6</content>
-    <link href="https://huggingface.co/posts/appvoid/134522551338240" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-06T11:21:23.988142+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/appvoid/134522551338240.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/appvoid/134522551338240.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/appvoid/134522551338240.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/b3958aa29ee2aecc</id>
-    <title>Been playing around with Astra the last few days and gave it my usual dumb Minecraft test lol</title>
-    <updated>2026-09-06T05:05:10.314924+00:00</updated>
-    <content>Been playing around with Astra the last few days and gave it my usual dumb Minecraft test lol Started with a super vague oneshot prompt in Work on Astra Max, got a surprisingly complete voxel game back, then pushed the same project through one more Max revision and finally into Codex CLI with Astra xHigh for /plan + Astra Low for /goal . Whole run was about 145 mins from first prompt to the final top-down sim version, and the overall dev experience was noticeably smoother than my similar Sol 5.6 runs. Wrote up the process, timings, screenshots and linked the original one-shot Wildblock source here: https://huggingface.co/blog/tegridydev/minecraft-time-with-astra-tegridydev Source / one-shot:</content>
-    <link href="https://huggingface.co/posts/tegridydev/225938221687091" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-06T05:05:10.314924+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6702d5463fe7cea28adbc921/b3cNfLZL0ljxOCOUGSFIC.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/72cedb041bee0a9d</id>
     <title>DriveZero: End-to-End Driving Beyond Human Demonstrations</title>
     <updated>2026-09-05T00:00:00+00:00</updated>
@@ -4183,21 +4213,6 @@
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/65b12ed52be9660f0b7e5f72/mu_IH3lDD1qGRQZptFmPP.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/357d064be8691681</id>
-    <title>Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler</title>
-    <updated>2026-05-29T00:00:00+00:00</updated>
-    <content>Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler</content>
-    <link href="https://huggingface.co/blog/torch-profiler" rel="alternate"/>
-    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
-    <published>2026-05-29T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/1ed3bfe49ebe8c08</id>
     <title>COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation</title>
     <updated>2026-05-29T00:00:00+00:00</updated>
@@ -4211,6 +4226,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.31264.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/357d064be8691681</id>
+    <title>Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler</title>
+    <updated>2026-05-29T00:00:00+00:00</updated>
+    <content>Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler</content>
+    <link href="https://huggingface.co/blog/torch-profiler" rel="alternate"/>
+    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
+    <published>2026-05-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Blog</dc:creator>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/torch-profiler/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/5b218fefef6f1e06</id>
@@ -4481,35 +4511,5 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2602.04634.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/cf89f1ed99e6f1e3</id>
-    <title>EverMemOS: A Self-Organizing Memory Operating System for Structured Long-Horizon Reasoning</title>
-    <updated>2026-01-05T00:00:00+00:00</updated>
-    <content>EverMemOS presents a self-organizing memory system for large language models that processes dialogue streams into structured memory cells and scenes to enhance long-term interaction capabilities.</content>
-    <link href="https://huggingface.co/papers/2601.02163" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-01-05T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2601.02163.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2601.02163.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2601.02163.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/e6b551d4c4735f0a</id>
-    <title>DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI</title>
-    <updated>2025-12-18T00:00:00+00:00</updated>
-    <content>DataFlow is an LLM-driven data preparation framework that enhances data quality and reproducibility for various tasks, improving LLM performance with automatically generated pipelines.</content>
-    <link href="https://huggingface.co/papers/2512.16676" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2025-12-18T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2512.16676.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2512.16676.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2512.16676.png" type="image/png" length="0"/>
   </entry>
 </feed>
