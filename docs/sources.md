@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-107 feedów · 854 źródła
+107 feedów · 857 źródeł
 
 ## Spis grup
 
@@ -180,8 +180,11 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Blog — <https://x.ai/news>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Build changelog — <https://x.ai/build/changelog>
+- ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Console changelog — <https://x.ai/api/changelog>
+- ![](https://www.google.com/s2/favicons?domain=grok.com&sz=16) GROK release notes — <https://grok.com/release-notes>
 - ![](https://www.google.com/s2/favicons?domain=docs.x.ai&sz=16) Release notes md — <https://docs.x.ai/developers/release-notes.md>
 - ![](https://www.google.com/s2/favicons?domain=docs.x.com&sz=16) X api changelog — <https://docs.x.com/changelog>
+- ![](https://www.google.com/s2/favicons?domain=blog.x.com&sz=16) X engineering — <https://blog.x.com/engineering/en_us>
 
 ### ![](https://www.google.com/s2/favicons?domain=docs.perplexity.ai&sz=16) AI-bridge
 `aibridge` · [feed_aibridge.xml](../feeds/feed_aibridge.xml)
