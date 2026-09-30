@@ -8,7 +8,10 @@ Aggregates xAI's update sources into one **Atom** feed written to
     - xAI News               https://x.ai/news                          (HTML)
     - Grok Build changelog   https://x.ai/build/changelog               (HTML)
     - xAI API release notes  https://docs.x.ai/developers/release-notes (Mintlify .md)
-    - X API changelog         https://docs.x.com/changelog                (HTML)
+    - Grok release notes     https://grok.com/release-notes             (HTML)
+    - X Blog                 https://blog.x.com/                         (HTML)
+    - X Engineering          https://blog.x.com/engineering/en_us        (HTML)
+    - X API changelog        https://docs.x.com/changelog                (HTML)
 
 Source handling:
   * News — server-rendered listing cards: ``<a href="/news/...">`` with an
@@ -33,6 +36,7 @@ normalized URL/title.
 import argparse
 import re
 import sys
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -69,6 +73,9 @@ NEWS_BASE = "https://x.ai"
 BUILD_CHANGELOG_URL = "https://x.ai/build/changelog"
 RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes"
 RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
+GROK_RELEASE_NOTES_URL = "https://grok.com/release-notes"
+X_BLOG_URL = "https://blog.x.com/"
+X_ENGINEERING_URL = "https://blog.x.com/engineering/en_us"
 
 DATE_RE = re.compile(
     r"((?:January|February|March|April|May|June|July|August|September|October|November|December"
@@ -80,6 +87,16 @@ MONTH_NAMES = {
 }
 # Grok Build h2 anchors look like "v0.2.20-2026-06-03".
 _BUILD_ID_RE = re.compile(r"^v.+-(\d{4}-\d{2}-\d{2})$")
+_X_BLOG_DATE_RE = re.compile(
+    r"(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s+"
+    r"(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|"
+    r"September|October|November|December)\s+\d{4})",
+    re.IGNORECASE,
+)
+_GROK_RELEASE_RE = re.compile(
+    r"/release-notes/([a-z]{3})-(\d{1,2})-(\d{4})(?:[/?#\"']|$)",
+    re.IGNORECASE,
+)
 
 DESC_LIMIT = 500
 MAX_ENTRIES = 200
@@ -303,6 +320,155 @@ def scrape_release_notes(known_links, today=None):
 
 
 # --------------------------------------------------------------------------- #
+# X Blog / Engineering
+# --------------------------------------------------------------------------- #
+
+
+def _ancestor_with_date(anchor, date_re):
+    """Return the nearest ancestor whose text contains a matching date."""
+    for parent in [anchor, *anchor.parents]:
+        if getattr(parent, "name", None) == "main":
+            break
+        text = re.sub(r"\s+", " ", parent.get_text(" ", strip=True))
+        match = date_re.search(text)
+        if match:
+            return parent, match
+    return anchor, None
+
+
+def _parse_x_blog_index(html, label, page_url, path_prefix):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen_links = set()
+
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(page_url, anchor.get("href", ""))
+        parsed = urlparse(link)
+        if parsed.netloc != "blog.x.com" or not parsed.path.startswith(path_prefix):
+            continue
+        if link in seen_links:
+            continue
+
+        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True))
+        if not title or title.lower() in {"see more", "back"}:
+            continue
+
+        card, match = _ancestor_with_date(anchor, _X_BLOG_DATE_RE)
+        if match is None:
+            continue
+        date_obj = parse_date(match.group(1))
+        if date_obj is None:
+            continue
+
+        description = title
+        paragraph = card.find("p") if hasattr(card, "find") else None
+        if paragraph:
+            paragraph_text = re.sub(r"\s+", " ", paragraph.get_text(" ", strip=True))
+            if paragraph_text and paragraph_text != title:
+                description = paragraph_text[:DESC_LIMIT]
+
+        entries.append({
+            "title": sanitize_xml(title),
+            "link": link,
+            "date": date_obj,
+            "description": sanitize_xml(description),
+            "source": label,
+        })
+        seen_links.add(link)
+
+    return entries
+
+
+def scrape_x_blog(label, page_url, path_prefix, known_links):
+    html = _get_html(page_url)
+    if html is None:
+        return []
+    candidates = _parse_x_blog_index(html, label, page_url, path_prefix)
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
+    if not candidates:
+        logger.warning(f"  [{label}] no posts matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [{label}] {entry['title']}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
+# Grok release notes
+# --------------------------------------------------------------------------- #
+
+
+def _parse_grok_release_notes_index(html):
+    import datetime as _dt
+
+    matches = {}
+    soup = BeautifulSoup(html, "html.parser")
+
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(GROK_RELEASE_NOTES_URL, anchor.get("href", ""))
+        match = _GROK_RELEASE_RE.search(urlparse(link).path + "/")
+        if not match:
+            continue
+        matches[link.rstrip("/")] = re.sub(
+            r"\s+", " ", anchor.get_text(" ", strip=True)
+        )
+
+    # grok.com may serialize client-side links into its app payload rather than
+    # server-rendering anchors. Extract those paths too, but keep the same
+    # canonical URL/date logic.
+    serialized_html = html.replace("\\/", "/")
+    for match in _GROK_RELEASE_RE.finditer(serialized_html):
+        path = match.group(0).rstrip("/?#\"'")
+        path = re.sub(r"[\\\"]+$", "", path)
+        link = urljoin(GROK_RELEASE_NOTES_URL, path).rstrip("/")
+        matches.setdefault(link, "")
+
+    entries = []
+    month_numbers = {
+        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    }
+    for link, anchor_text in matches.items():
+        match = _GROK_RELEASE_RE.search(urlparse(link).path + "/")
+        if not match:
+            continue
+        month = month_numbers.get(match.group(1).lower())
+        if month is None:
+            continue
+        date_obj = _dt.datetime(
+            int(match.group(3)), month, int(match.group(2)), tzinfo=UTC
+        )
+        date_label = date_obj.strftime("%b %d, %Y")
+        anchor_is_date = parse_date(anchor_text) is not None if anchor_text else False
+        title = (
+            f"Grok release notes — {date_label}"
+            if not anchor_text or anchor_is_date
+            else anchor_text
+        )
+        entries.append({
+            "title": sanitize_xml(title),
+            "link": link,
+            "date": date_obj,
+            "description": sanitize_xml(title),
+            "source": "Grok release notes",
+        })
+
+    return sorted(entries, key=lambda entry: entry["date"], reverse=True)
+
+
+def scrape_grok_release_notes(known_links):
+    html = _get_html(GROK_RELEASE_NOTES_URL)
+    if html is None:
+        return []
+    candidates = _parse_grok_release_notes_index(html)
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
+    if not candidates:
+        logger.warning("  [Grok release notes] no releases matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [Grok release notes] {entry['title']}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
 # X (Twitter) API changelog
 # --------------------------------------------------------------------------- #
 
@@ -370,6 +536,14 @@ def scrape_all(known_links):
     new_entries += scrape_build_changelog(known_links)
     logger.info("Scraping xAI API release notes ...")
     new_entries += scrape_release_notes(known_links)
+    logger.info("Scraping Grok release notes ...")
+    new_entries += scrape_grok_release_notes(known_links)
+    logger.info("Scraping X Blog ...")
+    new_entries += scrape_x_blog("X Blog", X_BLOG_URL, "/en_us/topics/", known_links)
+    logger.info("Scraping X Engineering ...")
+    new_entries += scrape_x_blog(
+        "X Engineering", X_ENGINEERING_URL, "/engineering/en_us/", known_links
+    )
     logger.info("Scraping X API changelog ...")
     new_entries += scrape_x_api_changelog(known_links)
     return new_entries
@@ -380,8 +554,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://x.ai/{feed_name}")
     fg.title("xAI")
     fg.subtitle(
-        "xAI product updates: News, the Grok Build changelog, and the xAI API "
-        "release notes, plus the X developer API changelog."
+        "xAI and Grok product updates, plus X Blog, X Engineering, "
+        "and the X developer API changelog."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
