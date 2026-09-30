@@ -6,6 +6,7 @@ Aggregates xAI's update sources into one **Atom** feed written to
 ``feeds/feed_xai.xml``:
 
     - xAI News               https://x.ai/news                          (HTML)
+    - xAI Console changelog  https://x.ai/api/changelog                 (HTML)
     - Grok Build changelog   https://x.ai/build/changelog               (HTML)
     - xAI API release notes  https://docs.x.ai/developers/release-notes (Mintlify .md)
     - Grok release notes     https://grok.com/release-notes             (HTML)
@@ -70,6 +71,7 @@ BLOG_URL = "https://x.ai/news"
 
 NEWS_URL = "https://x.ai/news"
 NEWS_BASE = "https://x.ai"
+CONSOLE_CHANGELOG_URL = "https://x.ai/api/changelog"
 BUILD_CHANGELOG_URL = "https://x.ai/build/changelog"
 RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes"
 RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
@@ -87,6 +89,11 @@ MONTH_NAMES = {
 }
 # Grok Build h2 anchors look like "v0.2.20-2026-06-03".
 _BUILD_ID_RE = re.compile(r"^v.+-(\d{4}-\d{2}-\d{2})$")
+_CONSOLE_DATE_RE = re.compile(
+    r"^(?:January|February|March|April|May|June|July|August|September|October|"
+    r"November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+    r"\.?\s+\d{1,2},?\s+\d{4}$"
+)
 _X_BLOG_DATE_RE = re.compile(
     r"(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s+"
     r"(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|"
@@ -200,6 +207,96 @@ def scrape_news(known_links):
             logger.info(f"  [{label}] {title}")
         except Exception as e:
             logger.warning(f"  [{label}] skipping malformed card {href}: {e}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
+# xAI Console changelog (date block -> heading + bullets)
+# --------------------------------------------------------------------------- #
+
+
+def _parse_console_changelog(html):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen_links = set()
+
+    date_nodes = []
+    for text_node in soup.find_all(string=True):
+        text = re.sub(r"\s+", " ", str(text_node)).strip()
+        if _CONSOLE_DATE_RE.fullmatch(text):
+            date_nodes.append((text_node, text))
+
+    for text_node, date_text in date_nodes:
+        date_obj = parse_date(date_text)
+        if date_obj is None:
+            continue
+
+        title = None
+        parts = []
+        seen_parts = set()
+
+        for node in text_node.parent.next_elements:
+            if node is text_node:
+                continue
+
+            if isinstance(node, str):
+                next_text = re.sub(r"\s+", " ", str(node)).strip()
+                if _CONSOLE_DATE_RE.fullmatch(next_text):
+                    break
+                continue
+
+            name = getattr(node, "name", None)
+            if name in {"h2", "h3"} and title is None:
+                heading_text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+                if heading_text and heading_text != "Changelog":
+                    title = heading_text
+                continue
+
+            if name not in {"p", "li"}:
+                continue
+            body_text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+            if (
+                not body_text
+                or body_text == title
+                or _CONSOLE_DATE_RE.fullmatch(body_text)
+                or body_text in seen_parts
+            ):
+                continue
+            seen_parts.add(body_text)
+            parts.append(body_text)
+
+        title = sanitize_xml(title or f"SpaceXAI Console update — {date_text}")
+        fragment = (
+            f"console-{date_obj.date().isoformat()}-"
+            f"{slugify(title)[:48]}"
+        )
+        link = f"{CONSOLE_CHANGELOG_URL}#{fragment}"
+        if link in seen_links:
+            continue
+
+        description = sanitize_xml(" ".join(parts))[:DESC_LIMIT] or title
+        entries.append({
+            "title": title,
+            "link": link,
+            "date": date_obj,
+            "description": description,
+            "source": "xAI Console changelog",
+        })
+        seen_links.add(link)
+
+    return entries
+
+
+def scrape_console_changelog(known_links):
+    html = _get_html(CONSOLE_CHANGELOG_URL)
+    if html is None:
+        return []
+    candidates = _parse_console_changelog(html)
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
+    if not candidates:
+        logger.warning("  [xAI Console changelog] no updates matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [xAI Console changelog] {entry['title']}")
     return entries
 
 
@@ -532,6 +629,8 @@ def scrape_all(known_links):
     new_entries = []
     logger.info("Scraping xAI News ...")
     new_entries += scrape_news(known_links)
+    logger.info("Scraping xAI Console changelog ...")
+    new_entries += scrape_console_changelog(known_links)
     logger.info("Scraping Grok Build changelog ...")
     new_entries += scrape_build_changelog(known_links)
     logger.info("Scraping xAI API release notes ...")
@@ -554,8 +653,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://x.ai/{feed_name}")
     fg.title("xAI")
     fg.subtitle(
-        "xAI and Grok product updates, plus X Blog, X Engineering, "
-        "and the X developer API changelog."
+        "xAI and Grok product updates, Console and Build changelogs, plus "
+        "X Blog, X Engineering, and the X developer API changelog."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
