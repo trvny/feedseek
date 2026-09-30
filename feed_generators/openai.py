@@ -9,7 +9,10 @@ Aggregates OpenAI's product/update sources into one **Atom** feed written to
     - OpenAI Engineering     https://openai.com/news/engineering/rss.xml        (native RSS)
     - OpenAI Release notes   https://openai.com/products/release-notes/rss.xml  (native RSS)
     - OpenAI Developers      https://developers.openai.com/rss.xml              (native RSS)
-    - OpenAI Alignment       https://alignment.openai.com/rss.xml               (native RSS)
+    - OpenAI Alignment       https://alignment.openai.com/                      (native RSS)
+    - Misalignment reports   https://alignment.openai.com/misalignment-reports/  (HTML)
+    - Deployment Safety      https://deploymentsafety.openai.com/                (HTML)
+    - OpenAI Status          https://status.openai.com/feed.atom                 (native Atom)
     - Codex changelog        https://developers.openai.com/codex/changelog      (HTML)
     - Apps SDK changelog     https://developers.openai.com/apps-sdk/changelog   (HTML)
     - ChatGPT changelog      https://learn.chatgpt.com/docs/changelog           (HTML)
@@ -46,6 +49,7 @@ import argparse
 import hashlib
 import re
 import sys
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -72,6 +76,10 @@ logger = setup_logging()
 
 FEED_NAME = "openai"
 BLOG_URL = "https://openai.com/news/"
+ALIGNMENT_URL = "https://alignment.openai.com/"
+MISALIGNMENT_REPORTS_URL = "https://alignment.openai.com/misalignment-reports/"
+DEPLOYMENT_SAFETY_URL = "https://deploymentsafety.openai.com/"
+STATUS_ATOM_URL = "https://status.openai.com/feed.atom"
 
 # (label, rss_url, per-run intake cap or None)
 RSS_SOURCES = [
@@ -79,8 +87,13 @@ RSS_SOURCES = [
     ("OpenAI Engineering", "https://openai.com/news/engineering/rss.xml", None),
     ("OpenAI Release notes", "https://openai.com/products/release-notes/rss.xml", 80),
     ("OpenAI Developers", "https://developers.openai.com/rss.xml", None),
-    ("OpenAI Alignment", "https://alignment.openai.com/rss.xml", 80),
+    ("OpenAI Alignment", urljoin(ALIGNMENT_URL, "rss.xml"), 80),
     ("OpenAI Codex", "https://developers.openai.com/codex/changelog/rss.xml", None),
+]
+
+# (label, atom_url, per-run intake cap or None)
+ATOM_SOURCES = [
+    ("OpenAI Status", STATUS_ATOM_URL, 80),
 ]
 
 # (label, page_url) — all share the li/time/h3/article layout.
@@ -106,6 +119,10 @@ _HELP_DATE_RE = re.compile(
     r"^(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
     r"Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|"
     r"Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?,\s+\d{4}$",
+    re.IGNORECASE,
+)
+_MISALIGNMENT_DATE_RE = re.compile(
+    r"(?:Updated\s+|Notice\s*·\s*)([A-Z][a-z]{2,8}\s+\d{1,2},\s+\d{4})",
     re.IGNORECASE,
 )
 
@@ -202,6 +219,221 @@ def scrape_rss(label, rss_url, known_links, cap=None):
             logger.info(f"  [{label}] {title}")
         except Exception as e:
             logger.warning(f"  [{label}] skipping malformed item: {e}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
+# Atom feeds
+# --------------------------------------------------------------------------- #
+
+
+def scrape_atom(label, atom_url, known_links, cap=None):
+    entries = []
+    html = _get_html(atom_url)
+    if html is None:
+        return entries
+
+    try:
+        soup = BeautifulSoup(html, "xml")
+    except Exception as e:
+        logger.warning(f"Could not parse {atom_url}: {e}")
+        return entries
+
+    items = soup.find_all("entry")
+    if cap:
+        items = items[:cap]
+    for item in items:
+        try:
+            link_el = item.find("link", href=True)
+            link = link_el.get("href", "").strip() if link_el else ""
+            if not link or link in known_links:
+                continue
+            title_el = item.find("title")
+            title = sanitize_xml(title_el.get_text(" ", strip=True)) if title_el else label
+            date_el = item.find("updated") or item.find("published")
+            date_obj = parse_date(date_el.get_text(strip=True)) if date_el else None
+            desc_el = item.find("content") or item.find("summary")
+            if desc_el:
+                desc_html = desc_el.get_text()
+                desc = BeautifulSoup(desc_html, "html.parser").get_text(" ", strip=True)
+                desc = sanitize_xml(desc)[:DESC_LIMIT]
+            else:
+                desc = title
+            entries.append({
+                "title": title,
+                "link": link,
+                "date": date_obj,
+                "description": desc or title,
+                "source": label,
+            })
+            logger.info(f"  [{label}] {title}")
+        except Exception as e:
+            logger.warning(f"  [{label}] skipping malformed entry: {e}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
+# Alignment reports / Deployment Safety
+# --------------------------------------------------------------------------- #
+
+
+def _heading_block(heading):
+    """Return text, paragraphs and links until the next h2/h3 heading."""
+    title = re.sub(r"\s+", " ", heading.get_text(" ", strip=True))
+    raw_parts = []
+    paragraphs = []
+    links = []
+    seen_paragraphs = set()
+
+    for node in heading.next_elements:
+        name = getattr(node, "name", None)
+        if name in {"h2", "h3"}:
+            break
+        if name == "a":
+            href = node.get("href")
+            if href:
+                links.append(href)
+        elif name == "p":
+            text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+            if text and text != title and text not in seen_paragraphs:
+                seen_paragraphs.add(text)
+                paragraphs.append(text)
+        elif name is None:
+            text = re.sub(r"\s+", " ", str(node)).strip()
+            if text and text != title:
+                raw_parts.append(text)
+
+    return " ".join(raw_parts), paragraphs, links
+
+
+def _parse_misalignment_index(html):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen_links = set()
+
+    for heading in soup.find_all("h3"):
+        section = heading.find_previous("h2")
+        section_name = section.get_text(" ", strip=True) if section else ""
+        if section_name not in {"Reports", "Notices"}:
+            continue
+
+        title = sanitize_xml(re.sub(r"\s+", " ", heading.get_text(" ", strip=True)))
+        block_text, paragraphs, links = _heading_block(heading)
+        match = _MISALIGNMENT_DATE_RE.search(block_text)
+        date_obj = parse_date(match.group(1)) if match else None
+
+        if section_name == "Reports":
+            link = None
+            for href in links:
+                absolute = urljoin(MISALIGNMENT_REPORTS_URL, href)
+                if (
+                    absolute.startswith(MISALIGNMENT_REPORTS_URL)
+                    and absolute.rstrip("/") != MISALIGNMENT_REPORTS_URL.rstrip("/")
+                ):
+                    link = absolute
+                    break
+            if not link:
+                continue
+            source = "OpenAI Misalignment Report"
+        else:
+            date_slug = date_obj.date().isoformat() if date_obj else "undated"
+            link = f"{MISALIGNMENT_REPORTS_URL}#notice-{slugify(title)}-{date_slug}"
+            source = "OpenAI Misalignment Notice"
+
+        if link in seen_links:
+            continue
+        seen_links.add(link)
+        description = sanitize_xml(" ".join(paragraphs))[:DESC_LIMIT] or title
+        entries.append({
+            "title": title,
+            "link": link,
+            "date": date_obj,
+            "description": description,
+            "source": source,
+        })
+
+    return entries
+
+
+def scrape_misalignment_reports(known_links):
+    html = _get_html(MISALIGNMENT_REPORTS_URL)
+    if html is None:
+        return []
+    entries = [
+        entry for entry in _parse_misalignment_index(html)
+        if entry["link"] not in known_links
+    ]
+    if not entries and not known_links:
+        logger.warning("  [OpenAI Misalignment] no reports or notices matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [{entry['source']}] {entry['title']}")
+    return entries
+
+
+def _parse_deployment_safety_index(html):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen_links = set()
+    base_host = urlparse(DEPLOYMENT_SAFETY_URL).netloc
+
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(DEPLOYMENT_SAFETY_URL, anchor.get("href", ""))
+        parsed = urlparse(link)
+        if parsed.netloc != base_host or parsed.path in {"", "/"}:
+            continue
+
+        strings = [re.sub(r"\s+", " ", part).strip() for part in anchor.stripped_strings]
+        strings = [part for part in strings if part]
+        date_index = None
+        date_obj = None
+        for index, part in enumerate(strings):
+            if _HELP_DATE_RE.match(part):
+                date_index = index
+                date_obj = parse_date(part)
+                break
+        if date_index is None or date_obj is None:
+            continue
+
+        heading = anchor.find(["h2", "h3", "h4"])
+        title = (
+            re.sub(r"\s+", " ", heading.get_text(" ", strip=True))
+            if heading
+            else next((part for part in strings[date_index + 1:] if part), "")
+        )
+        title = sanitize_xml(title)
+        if not title or link in seen_links:
+            continue
+
+        paragraph = anchor.find("p")
+        if paragraph:
+            description = sanitize_xml(paragraph.get_text(" ", strip=True))[:DESC_LIMIT]
+        else:
+            tail = [part for part in strings[date_index + 1:] if part != title]
+            description = sanitize_xml(" ".join(tail))[:DESC_LIMIT]
+        entries.append({
+            "title": title,
+            "link": link,
+            "date": date_obj,
+            "description": description or title,
+            "source": "OpenAI Deployment Safety",
+        })
+        seen_links.add(link)
+
+    return entries
+
+
+def scrape_deployment_safety(known_links):
+    html = _get_html(DEPLOYMENT_SAFETY_URL)
+    if html is None:
+        return []
+    entries = [
+        entry for entry in _parse_deployment_safety_index(html)
+        if entry["link"] not in known_links
+    ]
+    if not entries and not known_links:
+        logger.warning("  [OpenAI Deployment Safety] no updates matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [OpenAI Deployment Safety] {entry['title']}")
     return entries
 
 
@@ -416,6 +648,13 @@ def scrape_all(known_links):
     for label, url, cap in RSS_SOURCES:
         logger.info(f"Scraping {label} ...")
         new_entries += scrape_rss(label, url, known_links, cap=cap)
+    for label, url, cap in ATOM_SOURCES:
+        logger.info(f"Scraping {label} ...")
+        new_entries += scrape_atom(label, url, known_links, cap=cap)
+    logger.info("Scraping OpenAI Misalignment reports and notices ...")
+    new_entries += scrape_misalignment_reports(known_links)
+    logger.info("Scraping OpenAI Deployment Safety ...")
+    new_entries += scrape_deployment_safety(known_links)
     for label, url in LI_CHANGELOGS:
         logger.info(f"Scraping {label} ...")
         new_entries += scrape_li_changelog(label, url, known_links)
@@ -431,8 +670,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://openai.com/{feed_name}")
     fg.title("OpenAI")
     fg.subtitle(
-        "OpenAI product updates: News (incl. Research), Engineering, Release "
-        "notes, Developers, ChatGPT, and the Codex / Apps SDK / API changelogs."
+        "OpenAI updates: News (incl. Research), Engineering, Release notes, "
+        "Developers, Alignment, Deployment Safety, Status, ChatGPT, and changelogs."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
