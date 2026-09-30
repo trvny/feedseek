@@ -161,19 +161,19 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 ## 📰 Mini news
 
 <!--README_FEED:START-->
-- [Battery Ecosystems: A Comparative Analysis of Lithium-Ion Tech Policy](https://carnegieendowment.org/research/2026/09/battery-ecosystems-a-comparative-analysis-of-lithium-ion-tech-policy)
-- [Russian drones kill two in market outside Kyiv, three others in different regions, officials say](https://www.reuters.com/world/russian-attacks-kills-three-ukrainian-cities-strikes-hit-kyiv-districts-2026-09-27/)
-- [Oil rebounds after Trump rejects Iran peace deal](https://www.reuters.com/business/energy/oil-rebounds-after-trump-rejects-iran-peace-deal-2026-09-27/)
-- [Iran-linked diesel price spike makes electric trucks cheaper than diesel in key EU markets, environmental group says](https://www.reuters.com/business/autos-transportation/iran-linked-diesel-price-spike-makes-electric-trucks-cheaper-than-diesel-key-eu-2026-09-27/)
-- [Gmina Spytkowice - wiadomości - Gazeta Krakowska](https://news.google.com/atom/articles/CBMifEFVX3lxTE1SZzNOcERBUklmMVFJQ1lXMVVrLXNNNWo5YTZwdzBLZU5yak5qZHBhNTlNZlA3bWNQUVZfWGktN1dQTmRoQUowdk0tdVdpSFU3RFNYeWJTa3M4aElPWkJCRHZ4clZJUkx3aDBQWDUwR2JEUHZFV2pVSlBEbEg?oc=5)
-- [Greece stun Germany 1-0 in losing home debut for Klopp](https://www.reuters.com/sports/soccer/greece-stun-germany-1-0-losing-home-debut-klopp-2026-09-27/)
+- [I LO w Chrzanowie świętuje jubileusz z absolwentami - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMi2wFBVV95cUxPS0xvVlI2STRvZTZ1b0l2SnJjQTJ5aEM0V29ZWVNPMkRlQVRpNEh3TkVfdlJqaTJRNExsWEQxd0QtSmpwc2tlVDlSY0pWOU51Tm05WXI2YUE4Si11TERaYWE5TjZfZmY2UFZrSFZxbmJfLWY0RDVlX0l4R3NBNmdOUVpMNHZtSWVaNXhUQW5rd2lMVG5MWnB5UkQ0RzNwaHVmeEV0U1NUMmE1aUhNa3EyaVc5TF84dUJxNXlUQW1xV2NFRW56SUFYZTlzUWZ1XzRyWlk4ZGdCVHA2UVk?oc=5)
+- [Mieszkańcy nie kryją strachu. Setki ich działek trafią do polderów - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiuwFBVV95cUxOZHlZb0FrczllSkhvOXVuLUJOX1VMQVMxTnhnMVpZVlFXQVg4bXlSbm9tNHczdGtTZzhHb0d5OHFnZG9nNk13T3RTLXZNUVRaQlNhZjRUeHZUdmI2Z2k3dmpnWEpyOEdGWVJhbklNaGNRVldYZlZDQTdCT0l3bUUxWXhibnAyLW9SWTRvMUs5OFFnYnFpNDlPTkdNcGppRGt2bDdvaXZGY21QeUMtN01WUTl5WWNTVXRnVDZF?oc=5)
+- [Fed's Williams sees no urgency for next Fed rate hike](https://www.reuters.com/business/feds-williams-sees-no-urgency-next-fed-rate-hike-2026-09-29/)
+- [OpenAI’s latest features take direct aim at the app store model](https://techcrunch.com/2026/09/29/openais-latest-features-take-direct-aim-at-the-app-store-model/)
+- [Supreme Court lets Trump resume deporting migrants to countries not their own](https://www.reuters.com/world/supreme-court-lets-trump-resume-third-country-deportations-2026-09-29/)
+- [Somali pirates kill 5 crew members before tanker rescue, state authorities say](https://www.reuters.com/world/africa/puntland-forces-rescue-another-hijacked-ship-somali-pirates-2026-09-29/)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝“I think it is inevitable that people program poorly.  Training will not substantially help matters.  We have to learn to live with it.”— Alan Perlis❞</i>
+<i>❝It does good also to take walks out of doors, that our spirits may be raised and refreshed by the open air and fresh breeze: sometimes we gain strength by driving in a carriage, by travel, by change of air, or by social meals and a more generous allowance of wine. — Seneca❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
