@@ -6,9 +6,12 @@ Aggregates OpenAI's product/update sources into one **Atom** feed written to
 ``feeds/feed_openai.xml``:
 
     - OpenAI News            https://openai.com/news/rss.xml                    (native RSS)
+    - OpenAI News PL         https://openai.com/pl-PL/news/                     (HTML)
+    - OpenAI Research PL     https://openai.com/pl-PL/research/index/           (HTML)
     - OpenAI Engineering     https://openai.com/news/engineering/rss.xml        (native RSS)
     - OpenAI Release notes   https://openai.com/products/release-notes/rss.xml  (native RSS)
     - OpenAI Developers      https://developers.openai.com/rss.xml              (native RSS)
+    - OpenAI Developer Blog  https://developers.openai.com/blog                 (HTML)
     - OpenAI Alignment       https://alignment.openai.com/                      (native RSS)
     - Misalignment reports   https://alignment.openai.com/misalignment-reports/  (HTML)
     - Deployment Safety      https://deploymentsafety.openai.com/                (HTML)
@@ -16,6 +19,7 @@ Aggregates OpenAI's product/update sources into one **Atom** feed written to
     - Codex changelog        https://developers.openai.com/codex/changelog      (HTML)
     - Apps SDK changelog     https://developers.openai.com/apps-sdk/changelog   (HTML)
     - ChatGPT changelog      https://learn.chatgpt.com/docs/changelog           (HTML)
+    - ChatGPT What's new     https://learn.chatgpt.com/docs/whats-new           (HTML)
     - ChatGPT release notes  https://help.openai.com/en/articles/6825453-chatgpt-release-notes (HTML)
     - API changelog          https://developers.openai.com/api/docs/changelog   (HTML)
 
@@ -24,8 +28,9 @@ Source handling:
     so everything is fetched via curl_cffi Chrome impersonation with a plain
     requests fallback. The News feed is huge (~1000 items), so per-run intake
     is capped to the newest slice; history still accumulates in the cache.
-    Research posts (openai.com/research/index) are republished through the
-    News RSS, so they arrive via that source — no separate scraper needed.
+    English research posts are republished through the News RSS. The Polish
+    News and Research indexes are scraped separately so localized titles and
+    article links remain available without replacing the English entries.
   * Codex / Apps SDK changelogs — server-rendered Astro pages. Each entry is a
     ``<li id=...>`` with a ``<time>`` stamp, an ``<h3>`` title and an
     ``<article>`` body; the ``li`` id is a stable anchor, so links use it as a
@@ -80,6 +85,10 @@ ALIGNMENT_URL = "https://alignment.openai.com/"
 MISALIGNMENT_REPORTS_URL = "https://alignment.openai.com/misalignment-reports/"
 DEPLOYMENT_SAFETY_URL = "https://deploymentsafety.openai.com/"
 STATUS_ATOM_URL = "https://status.openai.com/feed.atom"
+PL_NEWS_URL = "https://openai.com/pl-PL/news/"
+PL_RESEARCH_URL = "https://openai.com/pl-PL/research/index/"
+DEVELOPER_BLOG_URL = "https://developers.openai.com/blog"
+CHATGPT_WHATS_NEW_URL = "https://learn.chatgpt.com/docs/whats-new"
 
 # (label, rss_url, per-run intake cap or None)
 RSS_SOURCES = [
@@ -94,6 +103,13 @@ RSS_SOURCES = [
 # (label, atom_url, per-run intake cap or None)
 ATOM_SOURCES = [
     ("OpenAI Status", STATUS_ATOM_URL, 80),
+]
+
+# Scrape Research first so entries shared with News retain the more specific
+# source label after link-level deduplication.
+PL_INDEX_SOURCES = [
+    ("OpenAI Research PL", PL_RESEARCH_URL),
+    ("OpenAI News PL", PL_NEWS_URL),
 ]
 
 # (label, page_url) — all share the li/time/h3/article layout.
@@ -125,6 +141,35 @@ _MISALIGNMENT_DATE_RE = re.compile(
     r"(?:Updated\s+|Notice\s*·\s*)([A-Z][a-z]{2,8}\s+\d{1,2},\s+\d{4})",
     re.IGNORECASE,
 )
+_SHORT_EN_DATE_RE = re.compile(
+    r"^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})$"
+)
+_PL_DATE_RE = re.compile(
+    r"^(\d{1,2})\s+"
+    r"(sty(?:cznia)?|lut(?:ego)?|mar(?:ca)?|kwi(?:etnia)?|maj(?:a)?|"
+    r"cze(?:rwca)?|lip(?:ca)?|sie(?:rpnia)?|wrz(?:eśnia)?|"
+    r"paź(?:dziernika)?|lis(?:topada)?|gru(?:dnia)?)\s+(\d{4})$",
+    re.IGNORECASE,
+)
+_WHATS_NEW_WEEK_RE = re.compile(
+    r"^([A-Z][a-z]+)\s+(\d{1,2})\s*[–-]\s*"
+    r"(?:(?P<end_month>[A-Z][a-z]+)\s+)?(?P<end_day>\d{1,2}),\s+(\d{4})$"
+)
+
+_PL_MONTHS = {
+    "sty": 1, "stycznia": 1,
+    "lut": 2, "lutego": 2,
+    "mar": 3, "marca": 3,
+    "kwi": 4, "kwietnia": 4,
+    "maj": 5, "maja": 5,
+    "cze": 6, "czerwca": 6,
+    "lip": 7, "lipca": 7,
+    "sie": 8, "sierpnia": 8,
+    "wrz": 9, "września": 9,
+    "paź": 10, "października": 10,
+    "lis": 11, "listopada": 11,
+    "gru": 12, "grudnia": 12,
+}
 
 DESC_LIMIT = 500
 MAX_ENTRIES = 200
@@ -171,6 +216,35 @@ def parse_date(date_str):
 
 def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
+
+
+def parse_pl_date(text):
+    """Parse the Polish short/full month dates used on localized OpenAI indexes."""
+    match = _PL_DATE_RE.match(re.sub(r"\s+", " ", text or "").strip())
+    if not match:
+        return None
+    import datetime as _dt
+
+    month = _PL_MONTHS[match.group(2).lower()]
+    return _dt.datetime(int(match.group(3)), month, int(match.group(1)), tzinfo=UTC)
+
+
+def parse_whats_new_week(text):
+    """Return the end date of a ChatGPT What's new weekly range."""
+    match = _WHATS_NEW_WEEK_RE.match(re.sub(r"\s+", " ", text or "").strip())
+    if not match:
+        return None
+    import datetime as _dt
+
+    start_month_name = match.group(1)
+    end_month_name = match.group("end_month") or start_month_name
+    try:
+        end_month = date_parser.parse(end_month_name).month
+    except (ValueError, TypeError, OverflowError):
+        return None
+    return _dt.datetime(
+        int(match.group(5)), end_month, int(match.group("end_day")), tzinfo=UTC
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -269,6 +343,289 @@ def scrape_atom(label, atom_url, known_links, cap=None):
             logger.info(f"  [{label}] {title}")
         except Exception as e:
             logger.warning(f"  [{label}] skipping malformed entry: {e}")
+    return entries
+
+
+# --------------------------------------------------------------------------- #
+# Localized OpenAI indexes / Developer Blog / ChatGPT What's new
+# --------------------------------------------------------------------------- #
+
+
+def _nearest_card(anchor):
+    """Find a useful card-ish ancestor without depending on CSS class names."""
+    for parent in anchor.parents:
+        if getattr(parent, "name", None) in {"article", "li"}:
+            return parent
+        if getattr(parent, "name", None) == "main":
+            break
+    return anchor
+
+
+def _first_heading(node):
+    heading = node.find(["h2", "h3", "h4"]) if hasattr(node, "find") else None
+    if heading:
+        return re.sub(r"\s+", " ", heading.get_text(" ", strip=True))
+    return ""
+
+
+def _first_description(node, title):
+    if not hasattr(node, "find_all"):
+        return title
+    for paragraph in node.find_all("p"):
+        text = re.sub(r"\s+", " ", paragraph.get_text(" ", strip=True))
+        if text and text != title:
+            return sanitize_xml(text)[:DESC_LIMIT]
+    return title
+
+
+def _parse_pl_openai_index(html, label, page_url):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen_links = set()
+
+    for anchor in soup.find_all("a", href=True):
+        absolute = urljoin(page_url, anchor.get("href", ""))
+        parsed = urlparse(absolute)
+        if parsed.netloc != "openai.com":
+            continue
+        path = parsed.path
+        if path.startswith("/pl-PL/index/"):
+            localized_path = path
+        elif path.startswith("/index/"):
+            localized_path = "/pl-PL" + path
+        else:
+            continue
+        if localized_path.rstrip("/") in {"/pl-PL/index", "/pl-PL/research/index"}:
+            continue
+
+        link = f"https://openai.com{localized_path}"
+        if parsed.query:
+            link += f"?{parsed.query}"
+        if link in seen_links:
+            continue
+
+        card = _nearest_card(anchor)
+        title = _first_heading(anchor) or _first_heading(card)
+        strings = [
+            re.sub(r"\s+", " ", text).strip()
+            for text in anchor.stripped_strings
+            if re.sub(r"\s+", " ", text).strip()
+        ]
+        if not title:
+            title = next(
+                (
+                    text for text in strings
+                    if len(text) >= 8 and parse_pl_date(text) is None
+                ),
+                "",
+            )
+        title = sanitize_xml(title)
+        if not title:
+            continue
+
+        date_obj = None
+        for node in (anchor, card):
+            time_el = node.find("time") if hasattr(node, "find") else None
+            if time_el:
+                date_obj = parse_date(time_el.get("datetime") or time_el.get_text(" ", strip=True))
+                if date_obj:
+                    break
+            for text in getattr(node, "stripped_strings", []):
+                date_obj = parse_pl_date(text)
+                if date_obj:
+                    break
+            if date_obj:
+                break
+
+        description = _first_description(anchor, title)
+        if description == title:
+            description = _first_description(card, title)
+
+        entries.append({
+            "title": title,
+            "link": link,
+            "date": date_obj,
+            "description": description or title,
+            "source": label,
+        })
+        seen_links.add(link)
+
+    return entries
+
+
+def scrape_pl_openai_index(label, page_url, known_links):
+    html = _get_html(page_url)
+    if html is None:
+        return []
+    entries = [
+        entry for entry in _parse_pl_openai_index(html, label, page_url)
+        if entry["link"] not in known_links
+    ]
+    if not entries and not known_links:
+        logger.warning(f"  [{label}] no localized index entries matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [{label}] {entry['title']}")
+    return entries
+
+
+def _parse_developer_blog_index(html, today=None):
+    import datetime as _dt
+
+    soup = BeautifulSoup(html, "html.parser")
+    candidates = []
+    seen_links = set()
+
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(DEVELOPER_BLOG_URL, anchor.get("href", ""))
+        parsed = urlparse(link)
+        if parsed.netloc != "developers.openai.com":
+            continue
+        path = parsed.path.rstrip("/")
+        if not path.startswith("/blog/") or path.startswith("/blog/topic/"):
+            continue
+        if path == "/blog" or link in seen_links:
+            continue
+
+        strings = [
+            re.sub(r"\s+", " ", text).strip()
+            for text in anchor.stripped_strings
+            if re.sub(r"\s+", " ", text).strip()
+        ]
+        date_match = None
+        date_index = None
+        for index, text in enumerate(strings):
+            match = _SHORT_EN_DATE_RE.match(text)
+            if match:
+                date_match = match
+                date_index = index
+                break
+        if not date_match:
+            continue
+
+        title = _first_heading(anchor)
+        if not title and date_index is not None:
+            title = next(
+                (text for text in strings[date_index + 1:] if len(text) >= 4),
+                "",
+            )
+        title = sanitize_xml(title)
+        if not title:
+            continue
+
+        paragraph = anchor.find("p")
+        description = (
+            sanitize_xml(paragraph.get_text(" ", strip=True))[:DESC_LIMIT]
+            if paragraph else title
+        )
+        candidates.append({
+            "month": MONTHS[date_match.group(1)],
+            "day": int(date_match.group(2)),
+            "title": title,
+            "link": link,
+            "description": description or title,
+        })
+        seen_links.add(link)
+
+    today = today or _dt.datetime.now(UTC)
+    year = today.year
+    prev_month = None
+    entries = []
+    for candidate in candidates:
+        month = candidate["month"]
+        day = candidate["day"]
+        if prev_month is None:
+            if (month, day) > (today.month, today.day + 7):
+                year -= 1
+        elif month > prev_month:
+            year -= 1
+        prev_month = month
+        entries.append({
+            "title": candidate["title"],
+            "link": candidate["link"],
+            "date": _dt.datetime(year, month, day, tzinfo=UTC),
+            "description": candidate["description"],
+            "source": "OpenAI Developer Blog",
+        })
+
+    return entries
+
+
+def scrape_developer_blog(known_links):
+    html = _get_html(DEVELOPER_BLOG_URL)
+    if html is None:
+        return []
+    entries = [
+        entry for entry in _parse_developer_blog_index(html)
+        if entry["link"] not in known_links
+    ]
+    if not entries and not known_links:
+        logger.warning("  [OpenAI Developer Blog] no posts matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [OpenAI Developer Blog] {entry['title']}")
+    return entries
+
+
+def _whats_new_description(heading):
+    parts = []
+    seen = set()
+    for node in heading.next_elements:
+        name = getattr(node, "name", None)
+        if name in {"h2", "h3"}:
+            break
+        if name not in {"p", "li"}:
+            continue
+        text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        parts.append(text)
+        if sum(len(part) for part in parts) >= DESC_LIMIT:
+            break
+    return sanitize_xml(" ".join(parts))[:DESC_LIMIT]
+
+
+def _parse_chatgpt_whats_new(html):
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    current_date = None
+
+    for heading in soup.find_all(["h2", "h3"]):
+        text = re.sub(r"\s+", " ", heading.get_text(" ", strip=True))
+        if heading.name == "h2":
+            current_date = parse_whats_new_week(text)
+            continue
+        if current_date is None or not text:
+            continue
+
+        title = sanitize_xml(text)
+        title_hash = hashlib.sha256(title.encode("utf-8")).hexdigest()[:8]
+        fragment = (
+            f"whats-new-{current_date.date().isoformat()}-"
+            f"{slugify(title)[:48]}-{title_hash}"
+        )
+        entries.append({
+            "title": title,
+            "link": f"{CHATGPT_WHATS_NEW_URL}#{fragment}",
+            "date": current_date,
+            "description": _whats_new_description(heading) or title,
+            "source": "ChatGPT What's new",
+        })
+
+    return entries
+
+
+def scrape_chatgpt_whats_new(known_links, cap=80):
+    html = _get_html(CHATGPT_WHATS_NEW_URL)
+    if html is None:
+        return []
+    candidates = _parse_chatgpt_whats_new(html)
+    if cap:
+        candidates = candidates[:cap]
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
+    if not candidates:
+        logger.warning("  [ChatGPT What's new] no weekly entries matched — layout may have changed")
+    for entry in entries:
+        logger.info(f"  [ChatGPT What's new] {entry['title']}")
     return entries
 
 
@@ -651,6 +1008,11 @@ def scrape_all(known_links):
     for label, url, cap in ATOM_SOURCES:
         logger.info(f"Scraping {label} ...")
         new_entries += scrape_atom(label, url, known_links, cap=cap)
+    for label, url in PL_INDEX_SOURCES:
+        logger.info(f"Scraping {label} ...")
+        new_entries += scrape_pl_openai_index(label, url, known_links)
+    logger.info("Scraping OpenAI Developer Blog ...")
+    new_entries += scrape_developer_blog(known_links)
     logger.info("Scraping OpenAI Misalignment reports and notices ...")
     new_entries += scrape_misalignment_reports(known_links)
     logger.info("Scraping OpenAI Deployment Safety ...")
@@ -658,6 +1020,8 @@ def scrape_all(known_links):
     for label, url in LI_CHANGELOGS:
         logger.info(f"Scraping {label} ...")
         new_entries += scrape_li_changelog(label, url, known_links)
+    logger.info("Scraping ChatGPT What's new ...")
+    new_entries += scrape_chatgpt_whats_new(known_links)
     logger.info(f"Scraping {CHATGPT_HELP_LABEL} ...")
     new_entries += scrape_chatgpt_help_release_notes(known_links)
     logger.info(f"Scraping {API_CHANGELOG_LABEL} ...")
@@ -670,8 +1034,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://openai.com/{feed_name}")
     fg.title("OpenAI")
     fg.subtitle(
-        "OpenAI updates: News (incl. Research), Engineering, Release notes, "
-        "Developers, Alignment, Deployment Safety, Status, ChatGPT, and changelogs."
+        "OpenAI updates: News and Research (EN/PL), Engineering, Release notes, "
+        "Developer Blog, Alignment, Deployment Safety, Status, ChatGPT, and changelogs."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
