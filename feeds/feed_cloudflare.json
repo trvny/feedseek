@@ -10,10 +10,26 @@
     {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/9c8c868703256275",
       "url": "https://www.cloudflarestatus.com/incidents/mq69fw5ykdwb",
-      "title": "R2 Latency",
-      "content_text": "Sep 30 , 14:39 UTC Investigating - We are continuing to investigate this issue. Sep 30 , 13:49 UTC Investigating - Cloudflare is aware of R2 latency, and investigating an issue which potentially impacts multiple customers. \nFurther detail will be provided as more information becomes available.",
-      "date_published": "2026-09-30T14:39:04Z",
-      "date_modified": "2026-09-30T14:39:04Z",
+      "title": "Network Performance Issues in Los Angeles (LAX)",
+      "content_text": "Sep 30 , 19:18 UTC Resolved - This incident has been resolved. Sep 30 , 14:39 UTC Investigating - We are continuing to investigate this issue. Sep 30 , 13:49 UTC Investigating - Cloudflare is investigating possible network congestion in Los Angeles (LAX) affecting Vectorize, Durable Objects, R2, Hyperdrive, Stream, and Cloudchamber. We are working to mitigate the impact to Internet users in the region.",
+      "date_published": "2026-09-30T19:18:41Z",
+      "date_modified": "2026-09-30T19:18:41Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/b1f3b3693237be65",
+      "url": "https://www.cloudflarestatus.com/incidents/2h896759fg2f",
+      "title": "Membership Permission Change Delays",
+      "content_text": "Sep 30 , 18:10 UTC Resolved - This incident has been resolved. Sep 30 , 18:04 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 30 , 13:36 UTC Investigating - Cloudflare is investigating delays in applying changes to account member roles and permissions. Recently updated permissions may not be immediately reflected in some Cloudflare services. We are working to mitigate this issue.",
+      "date_published": "2026-09-30T18:10:55Z",
+      "date_modified": "2026-09-30T18:10:55Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -30,22 +46,6 @@
       "content_text": "Sep 30 , 14:06 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 30 , 11:31 UTC Identified - The issue has been identified and a fix is being implemented. Sep 30 , 10:31 UTC Investigating - Cloudflare is investigating issues with network performance in Madrid (MAD). \nWe are working to analyse and mitigate this problem. More updates to follow shortly.",
       "date_published": "2026-09-30T14:06:40Z",
       "date_modified": "2026-09-30T14:06:40Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/b1f3b3693237be65",
-      "url": "https://www.cloudflarestatus.com/incidents/2h896759fg2f",
-      "title": "Membership Permission Change Delays",
-      "content_text": "Sep 30 , 13:36 UTC Investigating - Cloudflare is investigating delays in applying changes to account member roles and permissions. Recently updated permissions may not be immediately reflected in some Cloudflare services. We are working to mitigate this issue.",
-      "date_published": "2026-09-30T13:36:42Z",
-      "date_modified": "2026-09-30T13:36:42Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -389,6 +389,29 @@
       "attachments": [
         {
           "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-closed-beta/og.png?v=80fcf6b57d16238b",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/2ba9a53fcab18e2a",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-browser-isolation-rbac/",
+      "title": "Browser Isolation, Gateway, Cloudflare One - Role-based access control for Browser Isolation policies",
+      "content_text": "Isolation policies support role-based access control (RBAC). Because isolation policies are Gateway HTTP policies with the Isolate action, Gateway's account-level and resource-scoped roles apply to them directly. Use the Zero Trust HTTP Policies Admin account-level role to grant access to all HTTP policies in the account. You can also assign a resource-scoped role to let a team member manage a specific isolation policy without exposing other Gateway resources. Policy settings such as copy/paste,",
+      "date_published": "2026-09-30T00:00:00Z",
+      "date_modified": "2026-09-30T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-browser-isolation-rbac/og.png?v=bf3672b5ab7f8583",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-browser-isolation-rbac/og.png?v=bf3672b5ab7f8583",
           "mime_type": "image/png"
         }
       ]
@@ -2448,29 +2471,6 @@
       "content_text": "You can now delete one or up to 100 Workflow instances and their stored state via the Workflows API or Wrangler 4.125.0 and later. Deleting an instance frees its stored state and stops its current execution. Storage billing is based on the average daily peak. Delete one instance by calling delete() on its handle: const instance = await env. MY_WORKFLOW . get ( \"instance-abc\" ); await instance. delete (); If a Workflow deletes its own instance, execution stops during await instance.delete() . Cod",
       "date_published": "2026-09-17T12:00:00Z",
       "date_modified": "2026-09-17T12:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4151998fd7598305",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-15-free-account-creation/",
-      "title": "Cloudflare Fundamentals - Create additional Free accounts through the dashboard and API",
-      "content_text": "We're expanding how customers create accounts across Cloudflare, making it easier to self-serve account creation in the dashboard, automate standalone account creation with user-owned API tokens or OAuth access tokens, and create Free accounts directly within Enterprise Organizations. What's New Dashboard account creation: All cloudflare customers can create additional Free accounts directly through self-serve flows in the Cloudflare dashboard. Enterprise Organization account creation: Super Adm",
-      "date_published": "2026-09-17T00:00:00Z",
-      "date_modified": "2026-09-17T00:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Changelog"
