@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.xweather.com/</id>
   <title>Xweather Log</title>
-  <updated>2026-10-01T17:12:50.910586+00:00</updated>
+  <updated>2026-10-01T22:55:13.616090+00:00</updated>
   <author>
     <name>Xweather</name>
   </author>
@@ -12,6 +12,18 @@
   <icon>https://www.xweather.com/favicon.ico</icon>
   <logo>https://www.xweather.com/favicon.ico</logo>
   <subtitle>Xweather blog posts and product changelogs in one feed.</subtitle>
+  <entry>
+    <id>https://www.xweather.com/docs/mapsgl/changelog#1102</id>
+    <title>MapsGL 1.10.2</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather MapsGL</name>
+    </author>
+    <content type="text">✨ Features: Add interpolated tropical cyclone layers, which move each storm’s marker smoothly along its past track, current position, and forecast path as the timeline plays, instead of jumping from one advisory point to the next. The track line grows with the marker, a marker stays at each storm’s latest advisory position, and the moving marker and its label draw above the other tropical layers. Variants are available for active storms, invests, and archived storms, as the composites tropical-cyclones-interpolated , tropical-cyclones-icons-interpolated , tropical-cyclones-invests-interpolated , tropical-cyclones-invests-icons-interpolated , tropical-cyclones-archive-interpolated , and tropical-cyclones-archive-icons-interpolated , and as individual position, position icon, name, and track line layers (e.g. tropical-cyclones-positions-interpolated , tropical-cyclones-names-archive-interpolated ). The existing tropical layers are unchanged. controller. addWeatherLayer ( 'tropical-cyclones-icons-interpolated' ); 🐞 Bug Fixes: Fix type declarations that broke in 1.10.0: import { ValueRange } from '@xweather/mapsgl' failed to compile, and ValueRange , Measurement , and FilterExpression were typed as any . Expression , ExpressionValue , and ExpressionOperator are now exported from the package as well. Fix weather layers disappearing, or coming back in the wrong order, after switching the Mapbox basemap style with setStyle() . Fix dispose() on the Mapbox controller throwing Style is not done loading with Mapbox GL v3 when it is called before the style has loaded, for example under React strict mode. Fix paint properties set to 0 being ignored. For example, heatmap.weight , stroke.thickness , and circle.radius now render as 0 instead of falling back to a default. Fix weather layers that share child layers through composites, such as tropical-cyclones and tropical-cyclones-interpolated . Removing one composite no longer removes layers the other still uses. Fix memory use that grew each time a weather layer was added and removed. Fix load:complete never firing again after a source is removed while it is still loading. Fix severe weather alerts staying on the map after the timeline passes their expiration time. Fix icons and labels on time-gated layers, such as tropical cyclone track points, all disappearing at low zoom while the timeline animates. Fix queryFeatures and the data inspector returning features that the timeline has not reached yet and that aren’t drawn on the map. Fix tropical cyclone track line segments appearing one time step early and extending past the last visible track point during animation. Fix the alerts legend failing to display entirely when a single alert is missing its advisory name. Fix vector tile properties that contain JSON-encoded objects or arrays, so filters, expressions, and the data inspector can read their nested values. Improve the detail and sharpness of the pressure-msl and pressure-msl-contour layers. 🛠 Improvements:</content>
+    <link href="https://www.xweather.com/docs/mapsgl/changelog#1102" rel="alternate"/>
+    <category term="MapsGL"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://www.xweather.com/docs/mapsgl/changelog#1100</id>
     <title>MapsGL 1.10.0</title>

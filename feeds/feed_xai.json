@@ -8,6 +8,42 @@
   "icon": "https://x.ai/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/xai/750e0fc9e98198e7",
+      "url": "https://docs.x.com/changelog#real-time-reply-moderation-guide-now-uses-grok",
+      "title": "Real-time reply moderation guide now uses Grok",
+      "content_text": "We rewrote the Manage replies in real time integration guide. It now receives replies through the X Activity API post.reply.create event, classifies each reply with Grok through the xAI API using structured outputs, and hides high-confidence violations with the Hide Replies endpoint. The previous version relied on the deprecated Perspective API and the Account Activity API.",
+      "date_published": "2026-10-01T00:00:00Z",
+      "date_modified": "2026-10-01T00:00:00Z",
+      "image": "https://docs.x.com/images/og-default.png",
+      "tags": [
+        "X API changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://docs.x.com/images/og-default.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/xai/549aed0a58a6deb7",
+      "url": "https://x.ai/build/changelog#v1.0.46-2026-09-30",
+      "title": "Grok Build 1.0.46",
+      "content_text": "grok inspect and the MCP doctor report MCP server sources correctly Tool search activity folds as \"Ran N tool searches\" instead of claiming MCP tool results Client rules supplied at session start are preserved when the system prompt is rebuilt later Permission rules with relative paths apply even when the working directory contains symlinks The context-compacted line shows the token count from right after compaction, instead of the count at the end of a long turn Pressing Enter on a video card n",
+      "date_published": "2026-09-30T00:00:00Z",
+      "date_modified": "2026-09-30T00:00:00Z",
+      "image": "https://x.ai/build/changelog/opengraph-image-d662hs.png?opengraph-image.3xls_hn_hxfok.png?dpl=57e7f741a61585edd92593012cfb0f7019f22d42",
+      "tags": [
+        "Grok Build changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://x.ai/build/changelog/opengraph-image-d662hs.png?opengraph-image.3xls_hn_hxfok.png?dpl=57e7f741a61585edd92593012cfb0f7019f22d42",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/xai/f98b971375fa2345",
       "url": "https://x.ai/api/changelog#console-2026-09-30-spacexai-console-update-sep-30-2026",
       "title": "SpaceXAI Console update — Sep 30, 2026",
@@ -22,6 +58,24 @@
         {
           "url": "https://x.ai/_next/static/media/opengraph-image.0orfa17elfpiu.jpg?dpl=1c6147e33fd182a57a62d2442ba9ad60cc70fb3f",
           "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/xai/da55d7056beef253",
+      "url": "https://x.ai/build/changelog#v1.0.45-2026-09-29",
+      "title": "Grok Build 1.0.45",
+      "content_text": "Custom agents from plugins or your config can be chosen directly with spawn_subagent MCP servers can use a token file that is re-read on every request, so rotating credentials stay fresh A selected model can show a colored notice banner above the prompt Subagent wait status shows \"Waiting for N subagents…\" when the parent turn is blocked",
+      "date_published": "2026-09-29T00:00:00Z",
+      "date_modified": "2026-09-29T00:00:00Z",
+      "image": "https://x.ai/build/changelog/opengraph-image-d662hs.png?opengraph-image.3xls_hn_hxfok.png?dpl=57e7f741a61585edd92593012cfb0f7019f22d42",
+      "tags": [
+        "Grok Build changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://x.ai/build/changelog/opengraph-image-d662hs.png?opengraph-image.3xls_hn_hxfok.png?dpl=57e7f741a61585edd92593012cfb0f7019f22d42",
+          "mime_type": "image/png"
         }
       ]
     },
@@ -3542,60 +3596,6 @@
       "content_text": "MCP servers from host integrations can now be added, replaced, or removed without restarting the session Agent-run terminal commands now set GROK_AGENT=1 so host tools can tell them apart from interactive shells Attached images are now saved to real disk paths so the model can read them in any terminal /resume now selects the correct model when a saved model name is ambiguous Slash and completion menus no longer crash if the terminal is resized while open",
       "date_published": "2026-06-26T00:00:00Z",
       "date_modified": "2026-06-26T00:00:00Z",
-      "image": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-      "tags": [
-        "Grok Build changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/xai/682047e1f5d98c22",
-      "url": "https://x.ai/build/changelog#v0.2.69-2026-06-26",
-      "title": "Grok Build 0.2.69",
-      "content_text": "The agent dashboard now shows each agent’s model and mode in the peek panel, lets you cycle modes with Shift+Tab , collapses the Inactive section by default, and hides older idle agents behind a \"N more\" row Tool usage cards for search, directory listing, file deletion and glob now render as distinct typed cards instead of generic MCP entries The keyboard shortcuts help now shows richer descriptions and correctly scrolls wrapped text in the detail view You can now pass --json-schema to grok -p a",
-      "date_published": "2026-06-26T00:00:00Z",
-      "date_modified": "2026-06-26T00:00:00Z",
-      "image": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-      "tags": [
-        "Grok Build changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/xai/831b59f888499bef",
-      "url": "https://x.ai/build/changelog#v0.2.66-2026-06-25",
-      "title": "Grok Build 0.2.66",
-      "content_text": "Custom sandbox profiles can now kernel-deny specific files and directories for reads/writes Marketplace plugins in subdirectories of a git repo can now be installed and loaded correctly Folder trust prompt now appears before starting a session when the feature is enabled Preview panes no longer hibernate while actively viewed Keyboard shortcuts help now expands inline for individual entries instead of only sections Idle detection can now ignore background tasks when the env flag is set (off by d",
-      "date_published": "2026-06-25T00:00:00Z",
-      "date_modified": "2026-06-25T00:00:00Z",
-      "image": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-      "tags": [
-        "Grok Build changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/xai/bd6c503a15673058",
-      "url": "https://x.ai/build/changelog#v0.2.67-2026-06-25",
-      "title": "Grok Build 0.2.67",
-      "content_text": "Added --json-schema flag for headless mode to constrain model output to a supplied JSON Schema Idle detection can now ignore background tasks when the env flag is set (off by default) Preview panes no longer hibernate while actively viewed or polled Manual /rename now persists correctly and appears in /session-info even after auto title generation or resume Find and grep now transparently use faster bfs and ugrep binaries when present in the harness",
-      "date_published": "2026-06-25T00:00:00Z",
-      "date_modified": "2026-06-25T00:00:00Z",
       "image": "https://media.x.ai/v1/website/changelog-6ccbbcad.jpg",
       "tags": [
         "Grok Build changelog"

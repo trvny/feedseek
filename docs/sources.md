@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-107 feedów · 857 źródeł
+108 feedów · 859 źródeł
 
 ## Spis grup
 
@@ -1107,6 +1107,12 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt News — <https://spacemolt.com/news/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt Changelog — <https://spacemolt.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook Posts API — <https://www.moltbook.com/api/v1/posts?sort=hot&limit=25>
+
+### ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify
+`newsify` · [feed_newsify.xml](../feeds/feed_newsify.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify Polski — <https://newsify.today/polish/PL>
+- ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify English — <https://newsify.today/english/PL>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.onlyoffice.com&sz=16) OPENOFFICE
 `openoffice` · [feed_openoffice.xml](../feeds/feed_openoffice.xml)

@@ -8,6 +8,22 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/8b8ae2fd1ac751c3",
+      "url": "https://www.cloudflarestatus.com/incidents/hyv5p7wn1c8v",
+      "title": "Increased Errors for Durable Objects and R2",
+      "content_text": "Oct 1 , 21:18 UTC Resolved - This incident has been resolved. Oct 1 , 21:06 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 1 , 20:59 UTC Investigating - Cloudflare is investigating issues causing an increase of errors for Durable Objects and R2 as a result in Amsterdam. We are working to analyse and mitigate this problem. More updates to follow shortly.",
+      "date_published": "2026-10-01T21:18:42Z",
+      "date_modified": "2026-10-01T21:18:42Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ebb2d7850d0e52ce",
       "url": "https://blog.cloudflare.com/clef-decision-models/",
       "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform",
@@ -479,6 +495,52 @@
       "attachments": [
         {
           "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-emergency-waf-release/og.png?v=365b4a29871a035d",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bfe2efcadd84db68",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/",
+      "title": "Cloudflare One, Access - Simplified permissions for tagging targets with Access for Infrastructure",
+      "content_text": "You can now tag targets using only the Zero Trust Write API token permission. Previously, tagging targets through the API required both Zero Trust Write and Tag Write permissions on the API token. This change applies to inline target tagging through the Infrastructure Access Targets API . Tagging resources through the general Resource Tagging API still requires the Tag Admin , Tag Write , or equivalent role. For more information, refer to Tag targets .",
+      "date_published": "2026-10-01T00:00:00Z",
+      "date_modified": "2026-10-01T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/og.png?v=05d4b4062e94a2e8",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/og.png?v=05d4b4062e94a2e8",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/dfad335ed0507e63",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-account-api-token-provisioning/",
+      "title": "Cloudflare Fundamentals - Account members can self-serve create Account API tokens",
+      "content_text": "Account API token creation is no longer limited to Super Administrators. Members with the API Token Provisioning role can now create Account API tokens via the Dashboard, API, Terraform, or CF CLI, making it easier for developers and platform teams to provision credentials without depending on a Super Administrator for Account API Token Provisioning. What's new Delegated creation : Members with the API Token Provisioning role can create Account API tokens from the dashboard. Administrators can g",
+      "date_published": "2026-10-01T00:00:00Z",
+      "date_modified": "2026-10-01T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1540,height=818,format=webp/_astro/2026-10-01-account-api-token-provisioning.Dn0G5DUa.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1540,height=818,format=webp/_astro/2026-10-01-account-api-token-provisioning.Dn0G5DUa.png",
           "mime_type": "image/png"
         }
       ]
@@ -2528,52 +2590,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/6ca534a1502a879a",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-22-service-token-inactivity-cleanup/",
-      "title": "Access - Automatically manage inactive Access service tokens",
-      "content_text": "Cloudflare Access administrators can now automatically disable or delete inactive service tokens. Administrators can set an inactivity period from 30 to 365 days and choose what Access does when a token reaches that limit. To be eligible for cleanup, a token must be older than the configured period, must not have successfully authenticated during that period, and must not be directly referenced by an Access policy rule. Cleanup runs gradually in the background, so eligible tokens may not be disa",
-      "date_published": "2026-09-22T00:00:00Z",
-      "date_modified": "2026-09-22T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/f4d276de8bdcb2bc",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-22-waf-release/",
-      "title": "WAF - WAF Release - 2026-09-22",
-      "content_text": "This release introduces new threat detections to enhance protection against Server-Side Request Forgery (SSRF) attempts using non-standard IP notations or jar loopback payloads, alongside new defenses against Server-Side Template Injection (SSTI) targeting Jinja environments. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...5f21b651 N/A SSRF - Cloud,Link-Local non-standard IP notation Log Block This is a new detection. Cloudflare Manage",
-      "date_published": "2026-09-22T00:00:00Z",
-      "date_modified": "2026-09-22T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/fc326e2f61220026",
       "url": "https://www.cloudflarestatus.com/incidents/mrqb4d6q0y26",
       "title": "Increased Cache Failures",
@@ -2905,22 +2921,6 @@
       "content_text": "Sep 15 , 22:00 UTC Resolved - Between 20:55-21:52 UTC on 2026-09-15, Cloudflare experienced an elevated rate of 5xx HTTP errors affecting traffic passing through Ashburn (IAD). The issue has been  resolved, and impact to the IAD location is mitigated.",
       "date_published": "2026-09-15T22:00:00Z",
       "date_modified": "2026-09-15T22:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bb0b7ff5c3a9c7e8",
-      "url": "https://www.cloudflarestatus.com/incidents/19g1m7tsvncw",
-      "title": "Some Replicate models are failing to start",
-      "content_text": "Sep 15 , 14:06 UTC Resolved - This incident has been resolved. Sep 15 , 00:03 UTC Identified - Some third party models as well as https://replicate.com/qwen/qwen-edit-multiangle are affected and are unable to scale out. Please use alternate models while we work with providers to publish fixed versions. Sep 14 , 22:25 UTC Investigating - We are investigating an issue which is preventing Replicate models from failing to start new replicas.",
-      "date_published": "2026-09-15T14:06:32Z",
-      "date_modified": "2026-09-15T14:06:32Z",
       "authors": [
         {
           "name": "Cloudflare Status"
