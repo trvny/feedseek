@@ -332,6 +332,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/907fcdce0db1e0c2",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/",
+      "title": "Cloudflare One Client - Cloudflare One Client for Windows (version 2026.8.2033.1)",
+      "content_text": "A new Beta release for the Windows Cloudflare One Client is now available on the beta releases downloads page . This beta release includes the following changes and improvements: Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting. Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration. Improved client reaction to the current network lowering its MTU. Added sup",
+      "date_published": "2026-09-30T02:01:09Z",
+      "date_modified": "2026-09-30T02:01:09Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a6cc9a0a10255a1f",
       "url": "https://www.cloudflarestatus.com/incidents/0dq5fbp2xwbj",
       "title": "WARP connectivity in Newark, NJ",
@@ -2471,29 +2494,6 @@
       "content_text": "You can now delete one or up to 100 Workflow instances and their stored state via the Workflows API or Wrangler 4.125.0 and later. Deleting an instance frees its stored state and stops its current execution. Storage billing is based on the average daily peak. Delete one instance by calling delete() on its handle: const instance = await env. MY_WORKFLOW . get ( \"instance-abc\" ); await instance. delete (); If a Workflow deletes its own instance, execution stops during await instance.delete() . Cod",
       "date_published": "2026-09-17T12:00:00Z",
       "date_modified": "2026-09-17T12:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bdb94431769becb3",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-17-reject-if-busy/",
-      "title": "Workers AI - Reject busy synchronous inference requests",
-      "content_text": "The rejectIfBusy option lets synchronous Workers AI inference requests fail when capacity is unavailable. Use it when your application should not wait in a capacity queue. Pass the option as the third argument to the Workers AI binding: const response = await env. AI . run ( \"@cf/google/gemma-4-26b-a4b-it\" , { messages: [{ role: \"user\" , content: \"Explain capacity queues.\" }], }, { rejectIfBusy: true }, ); const response = await env. AI . run ( \"@cf/google/gemma-4-26b-a4b-it\" , { messages: [{ ro",
-      "date_published": "2026-09-17T00:00:00Z",
-      "date_modified": "2026-09-17T00:00:00Z",
       "authors": [
         {
           "name": "Cloudflare Changelog"

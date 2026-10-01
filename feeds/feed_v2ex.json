@@ -8,6 +8,75 @@
   "icon": "https://www.v2ex.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7cf2182e75d13eb7",
+      "url": "https://www.v2ex.com/t/1245956",
+      "title": "用 Claude 改网页，整理了一张只处理一处问题的改稿单",
+      "content_text": "<p>我和 AI 做 KANSEI 时，把页面修改过程整理成了一张小单子。想和正在用 Claude 改个人网页的人讨论：已有设计规则时，一次具体修改该怎么交代。</p>\n<p>KANSEI 是把视觉选择转成设计规则文件的工具。这张单子可以放进原来的 Claude 对话，不用先测一遍，也不需要装新工具。已有规则照样保留；如果和这次修改打架，先把冲突说清楚，再由页面拥有者决定。</p>\n<p>整页“不好看”很难核对。我想先试着把一次修改缩到能指认的地方：比如照片被压暗、标题挡住画面，或者点进详情后找不到返回入口。可以先把下面几句填好，贴给 AI：</p>\n<pre><code class=\"language-text\">这页给谁用：\n他在这页要完成的一件事：\n现在最想改的一处（说位置和现象；说不清可给截图）：\n必须保留的内容和功能：\n已有约束或参考（没有可以留空）：\n\n先复述问题；信息不够就问我，不猜我的偏好。\n已有规则若与这次修改冲突，指出来等我决定，不擅自删改规则。\n给我两个可选择的修改方向，解释各自会影响什么，先不动代码。\n我也可以都不选，保留现在的页面。\n等我确定方向，再在副本里修改，保留原文件，交可比较的前后页面。\n检查原有内容、链接和操作，以及手机、电脑上的使用。\n不要只用“更高级”“更好看”解释修改。\n</code></pre>\n<p>拿已有的一张摄影演示页举例，可以这样填：</p>\n<blockquote>\n<p>让读者看完整组照片并进入详情。现在图上的压暗层影响原本颜色，标题又挡住画面。保留深色背景、全部照片、原顺序和详情入口；不要为了显得简洁删照片。</p>\n</blockquote>\n<p>这只是从我们已有的演示修改整理出的输入示例，这张单子尚未单独用 Claude 跑过，也没做过真实用户试验，不能保证少返工。参考图、现成组件和 AI 自己写的规范也都可以继续用。</p>\n<p>如果你正好用它改了自己的页面，愿意的话留一句：改了哪一处，最后用了新页面还是旧页面。两种结果都想知道。暂时不用贴代码、私人素材或联系方式。</p>",
+      "date_published": "2026-10-01T00:43:27Z",
+      "date_modified": "2026-10-01T00:43:27Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (woodywdd)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/b109fde10ec86065086cb2678225ddfc?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (woodywdd)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/b109fde10ec86065086cb2678225ddfc?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7249a1d85d24f68e",
+      "url": "https://www.v2ex.com/t/1245951#reply5",
+      "title": "FluxDown（免费的 IDM 替代）桌面端从 Flutter 迁移到 GPUI 了，聊聊为什么和怎么做的",
+      "content_text": "FluxDown 是一个免费的多协议下载管理器（ HTTP 多线程 / BT / 磁力 / HLS 等），定位是 IDM 的替代品。这次来汇报一个比较大的变化： 桌面端界面从 Flutter 换成了 GPUI （ Zed 编辑器用的 Rust UI 框架）。 为什么换 FluxDown 的下载引擎一直是 Rust 写的，之前的桌面端是 Flutter 界面，通过 FFI 和 Rust 引擎通信。用下来主要有几个问题： 中间需要跨语言绑定，每加一个功能都要 Rust 、Dart 两边各写一遍，再生成绑定代码； 界面和引擎跑在同一个进程里，界面出问题，下载也会跟着受影响； 下载器需要常驻后台，但界面进程没必要耗费无用的内存等硬件资源。 所以干脆从引擎到界面全部改用 Rust 。 现在的架构 桌面端拆成了三个进程： fluxdown-desktop （ GPUI 界面）\n    → fluxdown-agent （常驻：托盘、账户、云同步、设备协同）\n        → fluxdownd （纯下载核心） 关掉窗口后界面进程直接退出，下载由后台核心继续跑； 界面崩溃不会拖垮正在下载的任务；",
+      "date_published": "2026-10-01T00:29:11Z",
+      "date_modified": "2026-10-01T00:29:11Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/d6e36067c8461c96e0ea78d9421ae78c?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/d6e36067c8461c96e0ea78d9421ae78c?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3404050d74665ead",
+      "url": "https://www.v2ex.com/t/1245945#reply1",
+      "title": "突然想起来一件事",
+      "content_text": "大概高中的时候，我妈说了这样一句话，她说 你就不要想着要电脑了，不然像你表哥一样沉迷游戏。 但是我从来没跟任何人提过想要电脑，因为我以为电脑很贵要一万多，家里很穷买不起。 现在想想，感觉她是知道我想要的，但就是不给。 或者换种说法，假装看不到就是不存在。 当时作为留守儿童的我，现在看来也有很多被\"假装看不到就是不存在的时刻\", 例如总是问为什么不出去找朋友玩，但是从来没主动给过零花钱(我觉得出去坐公交要钱，喝奶茶要钱，干嘛都要钱，待在家里打游戏最省钱)",
+      "date_published": "2026-09-30T23:48:55Z",
+      "date_modified": "2026-09-30T23:48:55Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/91c2088e234cc4c47a2b896116bd31bd?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/91c2088e234cc4c47a2b896116bd31bd?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/8563eb9d43b79c60",
       "url": "https://www.v2ex.com/t/1245941",
       "title": "现在凌晨 4 点突然睡不着，梦见自己 cluade 弹出来了确认提示框",
@@ -27,52 +96,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1790132290",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/aeac7b6fe2149554",
-      "url": "https://www.v2ex.com/t/1245940#reply3",
-      "title": "Gemini 4 出来了，吊打其他的公司啊",
-      "content_text": "Gemini 4 出来了，吊打其他的公司啊\n周三，该公司发布了 Gemini4Argon ，这是迄今为止最先进的人工智能模型，在编码、网络安全和复杂的专业工作方面提供了重大改进。\n该公司表示，该模型在现实世界的软件工程方面创造了新的记录，在网络安\n全方面并列第一，并在衡量金融、法律和其他专业任务绩效的另一项基准中\n领先。\n谷歌表示，Argon 已在公司内部用于优化其数据中心的内存，无需购买额外硬件即可释放数百 TB 的内存。量子计算研究人员也已利用了该模型。",
-      "date_published": "2026-09-30T20:25:12Z",
-      "date_modified": "2026-09-30T20:25:12Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/06bc/eb98/679304_xlarge.png?m=1782664383",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/06bc/eb98/679304_xlarge.png?m=1782664383",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b58b8fbcd5ce3562",
-      "url": "https://www.v2ex.com/t/1245938#reply0",
-      "title": "一个 AI 工具站 vocalove.io",
-      "content_text": "集成主流 AI 模型，功能包含： • AI 视频图片转视频 • 图像生成：文生图、图生图 • TTS 文本转语音，支持多音色 • 语音克隆，复刻人声 有一定免费额度 https://vocalove.io",
-      "date_published": "2026-09-30T18:21:05Z",
-      "date_modified": "2026-09-30T18:21:05Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/c3dd692ccb4f698febe84b59f6d89920?s=73&d=retro",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/c3dd692ccb4f698febe84b59f6d89920?s=73&d=retro",
-          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -2308,6 +2331,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3dc72c4774961c46",
+      "url": "https://www.v2ex.com/t/1235718",
+      "title": "google play 的 12 人 14 天的测试，是每发布一个新的 app 都需要这样搞一轮吗？",
+      "content_text": "<p>这里新的 app 是指完全不同的 app ，不是已经测试过的发新版本。</p>\n<p>问 gpt 和网上看好像是每个新的 app 都要，有没有人清楚是什么情况？</p>",
+      "date_published": "2026-08-19T14:01:14Z",
+      "date_modified": "2026-08-19T14:01:14Z",
+      "authors": [
+        {
+          "name": "V2EX Android (sskycn)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397",
+      "tags": [
+        "V2EX Android (sskycn)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/907a0647cdb707f2",
       "url": "https://www.v2ex.com/t/1235647",
       "title": "买了 claude 的 team 的两个座位，用不完，有愿意跟我拼的吗， 25 刀，",
@@ -2350,29 +2396,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/4785/931a/450222_large.png?m=1783264470",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b93393fafe50c0f8",
-      "url": "https://www.v2ex.com/t/1235266",
-      "title": "高价收 ccmax 号，稳定、量大的老板私聊",
-      "content_text": "<p>高价收 ccmax 正价号、速刷号，需要成品，不能纯代充，量大的老板私聊。</p>",
-      "date_published": "2026-08-18T05:13:33Z",
-      "date_modified": "2026-08-18T05:13:33Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (tingshijie520)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/1468759c7923feeb9dc058a6f457ac12?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (tingshijie520)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/1468759c7923feeb9dc058a6f457ac12?s=73&d=retro",
-          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -3678,29 +3701,6 @@
       ],
       "tags": [
         "V2EX Claude (feifeichen)"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/9afb7a52c999e07a",
-      "url": "https://www.v2ex.com/t/1229047",
-      "title": "claude code 配置的 routine 任务不能刷新 5 小时窗口了吗？",
-      "content_text": "<p>今天早上的 routine task 执行了，但是窗口没刷新。模型选的 haiku 。\n这个是偶发 bug 还是最近改的不支持了？</p>",
-      "date_published": "2026-07-22T05:56:20Z",
-      "date_modified": "2026-07-22T05:56:20Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (sssjjjjj)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/efc196a8fd427d0701f4512baac96669?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (sssjjjjj)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/efc196a8fd427d0701f4512baac96669?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
       ]
     },
     {
