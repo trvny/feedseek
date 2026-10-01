@@ -2,13 +2,358 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.foobar2000.org/</id>
   <title>foobar2000</title>
-  <updated>2026-10-01T09:22:47.972468+00:00</updated>
+  <updated>2026-10-01T17:08:29.549092+00:00</updated>
   <link href="https://www.foobar2000.org/news" rel="alternate"/>
   <link href="https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foobar2000.xml" rel="self"/>
   <generator>trvny-feeds foobar2000.py</generator>
   <icon>https://www.foobar2000.org/favicon.ico</icon>
   <logo>https://www.foobar2000.org/favicon.ico</logo>
   <subtitle>News and change logs from foobar2000.org (Windows, Mac, Android, iOS, Encoder Pack)</subtitle>
+  <entry>
+    <id>https://www.foobar2000.org/news#2026-10-01</id>
+    <title>[News] 2026-10-01: foobar2000 v2.26 has been released, for Windows and macOS .</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;&#13;
+    foobar2000 v2.26 has been released, for &lt;a href="https://www.foobar2000.org/windows"&gt;Windows&lt;/a&gt; and &lt;a href="https://www.foobar2000.org/mac"&gt;macOS&lt;/a&gt;.   &#13;
+&lt;/p&gt;&lt;p&gt;&#13;
+    Versions for iOS/tvOS and Android will be released soon as well.&#13;
+&lt;/p&gt;</content>
+    <link href="https://www.foobar2000.org/news" rel="alternate"/>
+    <category term="News"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.foobar2000.org/changelog#2.26</id>
+    <title>[Change Log (Windows)] 2.26 — 2026-10-01</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content type="html">&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Converter changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New preset format, presets stored as .ini files in profile subfolder. Old presets imported on first run.&lt;/li&gt;
+&lt;li&gt;
+Better error messages when receiving unexpected data format change in mid-conversion; made discard blank chunks before checking for format match.&lt;/li&gt;
+&lt;li&gt;
+Added extensible post-conversion actions which can be used for ReplayGain scanning, integrity testing, etc.&lt;/li&gt;
+&lt;li&gt;
+On conversion error, encoder's stderr output is forwarded to foobar2000 console.&lt;/li&gt;
+&lt;li&gt;
+Ogg chaining is now off by default, Ogg chapters written by default instead.&lt;/li&gt;
+&lt;li&gt;
+Added %source_list_index% &amp;amp; %source_list_total%, only for multi track image naming pattern use, to allow use of list indexes in the pattern.&lt;/li&gt;
+&lt;li&gt;
+Made file name preview recognize newly added %source_list_index%.&lt;/li&gt;
+&lt;li&gt;
+Made show output of command-line encoder program in error popup if conversion has failed.&lt;/li&gt;
+&lt;li&gt;
+Made "no DSP reset" explicitly shown in overview, as it's dangerous if enabled unintentionally.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ReplayGain Scanner changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Added new interface for components to access ReplayGain scanning options.&lt;/li&gt;
+&lt;li&gt;
+Added option to write REPLAYGAIN_ALGORITHM tag.&lt;/li&gt;
+&lt;li&gt;
+Default mode is now more accurately named "ITU-R BS.1770".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Resampler technology updates&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New resamplers: ARDFTSRC and Speex, replacing SSRC and libretro from previous versions. New resamplers provide better quality at comparable speeds / better speeds at comparable quality.&lt;/li&gt;
+&lt;li&gt;
+Cleaned up resampler settings, removed pointless "exclude rates" checkboxes, added explicit hints about formatting.&lt;/li&gt;
+&lt;li&gt;
+Made resampler priority setting accept short names of resamplers, e.g. "speex;ardftsrc".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Playback &amp;amp; file format handling changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Added support for decoding TrueHD &amp;amp; MLP streams in Matroska.&lt;/li&gt;
+&lt;li&gt;
+New info field: container (MP4, Matroska, Ogg, etc)&lt;/li&gt;
+&lt;li&gt;
+Improved handling of Matroska Segment Title field.&lt;/li&gt;
+&lt;li&gt;
+Improved recovery of malformed UTF-8 text in various tag formats.&lt;/li&gt;
+&lt;li&gt;
+Made print name of file format handler used to console, after "opening track for playback".&lt;/li&gt;
+&lt;li&gt;
+More accurate on_playback_dynamic_info() timing, restored correct operation of OpenMPT visualizations.&lt;/li&gt;
+&lt;li&gt;
+Added advanced preferences toggle to turn off all subsong support, forcibly present 1 file as 1 playlist entry.&lt;/li&gt;
+&lt;li&gt;
+Faster opening of Matroska files.&lt;/li&gt;
+&lt;li&gt;
+Monkey's Audio format is now handled via FFmpeg.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+MP4/M4A/M4B improvements&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Tagtype info (Apple, Nero)&lt;/li&gt;
+&lt;li&gt;
+No longer writes Nero tags by default for single chapter files, only for multi chapter where other tagging formats can't store per track tags.&lt;/li&gt;
+&lt;li&gt;
+Added support for some rarely used Apple tag elements.&lt;/li&gt;
+&lt;li&gt;
+No longer alters binary structure of Apple tag elements which are not affected by edits.&lt;/li&gt;
+&lt;li&gt;
+More robust handling of unusual Apple tag fields.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+General usability changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New title formatting field: %_cpu_arch%&lt;/li&gt;
+&lt;li&gt;
+Added drag&amp;amp;drop from Internet Radio pages to playlist.&lt;/li&gt;
+&lt;li&gt;
+Attempt to play a password-protected resource such as radio stream now shows a password prompt.&lt;/li&gt;
+&lt;li&gt;
+Equalizer now accepts presets via drag&amp;amp;drop from Explorer/Finder.&lt;/li&gt;
+&lt;li&gt;
+Added "Play on" feature from foobar2000 mobile - accessible from playlist &amp;amp; internet radio context menu .&lt;/li&gt;
+&lt;li&gt;
+Made playlist sort operations recognize %queue_index% and other playlist specific fields.&lt;/li&gt;
+&lt;li&gt;
+Added "Playback Information" section to View menu, meant for components.&lt;/li&gt;
+&lt;li&gt;
+Made "Verify with AccurateRip" command available if your tracknumbers don't strictly match most common numbering scheme.&lt;/li&gt;
+&lt;li&gt;
+Added Help / Search Query Syntax.&lt;/li&gt;
+&lt;li&gt;
+Smarter "remove duplicates" code, made aware of various scenarios where different perceived paths point to same file.&lt;/li&gt;
+&lt;li&gt;
+Restored LargeFieldsConfig feature - &lt;a href="https://www.foobar2000.org/LargeFieldsConfig-v2"&gt;https://www.foobar2000.org/LargeFieldsConfig-v2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+Updated title formatting help with some recent and some not-really-recent additions.&lt;/li&gt;
+&lt;li&gt;
+File Operations: Made gracefully refuse to rename archive contents.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Networking&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Improved reading of RAR archives on network shares.&lt;/li&gt;
+&lt;li&gt;
+Improved SMB read throughput over high-latency connections.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Windows specific changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Advanced Preferences: Disabled Wine treeview workarounds if running Wine newer than 11.12.&lt;/li&gt;
+&lt;li&gt;
+Default User Interface: made render album art using Windows Imaging Component / Direct2D.&lt;/li&gt;
+&lt;li&gt;
+Enabled reading of EXIF orientation info from album cover pictures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Libraries updated to newer versions: FFmpeg, Opus, zlib, RAR, 7-zip, SQLite&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://www.foobar2000.org/changelog" rel="alternate"/>
+    <category term="Change Log (Windows)"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.foobar2000.org/changelog#2.25.11</id>
+    <title>[Change Log (Windows)] 2.25.11 — 2026-10-01</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content type="html">&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Fixed multiple bugs in smooth seeking implementation.&lt;/li&gt;
+&lt;li&gt;
+Fixed longtime Null Output bug causing playback position jitter when paused.&lt;/li&gt;
+&lt;li&gt;
+Fixed certain malformed MP4/M4A/M4B files being presented with thousands of chapters.&lt;/li&gt;
+&lt;li&gt;
+More spec-compliant writing of FLAC/Vorbis/Opus cover art (number of colors field).&lt;/li&gt;
+&lt;li&gt;
+Increased accepted HTTP reply line length because some sites tripped the old limit in legitimate responses.&lt;/li&gt;
+&lt;li&gt;
+Improved compatibility with specific UPnP renderers.&lt;/li&gt;
+&lt;li&gt;
+Converter: Made recover from read cache allocation errors and continue conversion.&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://www.foobar2000.org/changelog" rel="alternate"/>
+    <category term="Change Log (Windows)"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.foobar2000.org/changelog-mac#2.26</id>
+    <title>[Change Log (Mac)] 2.26 — 2026-10-01</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content type="html">&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Converter changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New preset format, presets stored as .ini files in profile subfolder. Old presets imported on first run.&lt;/li&gt;
+&lt;li&gt;
+Better error messages when receiving unexpected data format change in mid-conversion; made discard blank chunks before checking for format match.&lt;/li&gt;
+&lt;li&gt;
+Added extensible post-conversion actions which can be used for ReplayGain scanning, integrity testing, etc.&lt;/li&gt;
+&lt;li&gt;
+On conversion error, encoder's stderr output is forwarded to foobar2000 console.&lt;/li&gt;
+&lt;li&gt;
+Ogg chaining is now off by default, Ogg chapters written by default instead.&lt;/li&gt;
+&lt;li&gt;
+Added %source_list_index% &amp;amp; %source_list_total%, only for multi track image naming pattern use, to allow use of list indexes in the pattern.&lt;/li&gt;
+&lt;li&gt;
+Made file name preview recognize newly added %source_list_index%.&lt;/li&gt;
+&lt;li&gt;
+Made show output of command-line encoder program in error popup if conversion has failed.&lt;/li&gt;
+&lt;li&gt;
+Made "no DSP reset" explicitly shown in overview, as it's dangerous if enabled unintentionally.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ReplayGain Scanner changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Added new interface for components to access ReplayGain scanning options.&lt;/li&gt;
+&lt;li&gt;
+Added option to write REPLAYGAIN_ALGORITHM tag.&lt;/li&gt;
+&lt;li&gt;
+Default mode is now more accurately named "ITU-R BS.1770".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Resampler technology updates&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New resamplers: ARDFTSRC and Speex, replacing SSRC and libretro from previous versions. New resamplers provide better quality at comparable speeds / better speeds at comparable quality.&lt;/li&gt;
+&lt;li&gt;
+Cleaned up resampler settings, removed pointless "exclude rates" checkboxes, added explicit hints about formatting.&lt;/li&gt;
+&lt;li&gt;
+Made resampler priority setting accept short names of resamplers, e.g. "speex;ardftsrc".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Playback &amp;amp; file format handling changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Added support for decoding TrueHD &amp;amp; MLP streams in Matroska.&lt;/li&gt;
+&lt;li&gt;
+New info field: container (MP4, Matroska, Ogg, etc)&lt;/li&gt;
+&lt;li&gt;
+Improved handling of Matroska Segment Title field.&lt;/li&gt;
+&lt;li&gt;
+Improved recovery of malformed UTF-8 text in various tag formats.&lt;/li&gt;
+&lt;li&gt;
+Made print name of file format handler used to console, after "opening track for playback".&lt;/li&gt;
+&lt;li&gt;
+Added advanced preferences toggle to turn off all subsong support, forcibly present 1 file as 1 playlist entry.&lt;/li&gt;
+&lt;li&gt;
+Faster opening of Matroska files.&lt;/li&gt;
+&lt;li&gt;
+Monkey's Audio format is now handled via FFmpeg.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+MP4/M4A/M4B improvements&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Tagtype info (Apple, Nero)&lt;/li&gt;
+&lt;li&gt;
+No longer writes Nero tags by default for single chapter files, only for multi chapter where other tagging formats can't store per track tags.&lt;/li&gt;
+&lt;li&gt;
+Added support for some rarely used Apple tag elements.&lt;/li&gt;
+&lt;li&gt;
+No longer alters binary structure of Apple tag elements which are not affected by edits.&lt;/li&gt;
+&lt;li&gt;
+More robust handling of unusual Apple tag fields.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+General usability changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New title formatting field: %_cpu_arch%&lt;/li&gt;
+&lt;li&gt;
+Added drag&amp;amp;drop from Internet Radio pages to playlist.&lt;/li&gt;
+&lt;li&gt;
+Attempt to play a password-protected resource such as radio stream now shows a password prompt.&lt;/li&gt;
+&lt;li&gt;
+Equalizer now accepts presets via drag&amp;amp;drop from Explorer/Finder.&lt;/li&gt;
+&lt;li&gt;
+Added "Play on" feature from foobar2000 mobile - accessible from playlist &amp;amp; internet radio context menu .&lt;/li&gt;
+&lt;li&gt;
+Made playlist sort operations recognize %queue_index% and other playlist specific fields.&lt;/li&gt;
+&lt;li&gt;
+Added "Playback Information" section to View menu, meant for components.&lt;/li&gt;
+&lt;li&gt;
+Made "Verify with AccurateRip" command available if your tracknumbers don't strictly match most common numbering scheme.&lt;/li&gt;
+&lt;li&gt;
+Added Help / Search Query Syntax.&lt;/li&gt;
+&lt;li&gt;
+Smarter "remove duplicates" code, made aware of various scenarios where different perceived paths point to same file.&lt;/li&gt;
+&lt;li&gt;
+Added LargeFieldsConfig feature - &lt;a href="https://www.foobar2000.org/LargeFieldsConfig-v2"&gt;https://www.foobar2000.org/LargeFieldsConfig-v2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+Updated title formatting help with some recent and some not-really-recent additions.&lt;/li&gt;
+&lt;li&gt;
+File Operations: Made gracefully refuse to rename archive contents.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Networking&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Improved reading of RAR archives on network shares.&lt;/li&gt;
+&lt;li&gt;
+Improved SMB read throughput over high-latency connections.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Mac specific changes&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+New icon made with Apple Icon Composer&lt;/li&gt;
+&lt;li&gt;
+Made playlist view receive copy/paste from Finder&lt;/li&gt;
+&lt;li&gt;
+Install components by drag&amp;amp;drop from Finder to components list.&lt;/li&gt;
+&lt;li&gt;
+Playlist Manager columns can be toggled.&lt;/li&gt;
+&lt;li&gt;
+Fixed jumpy seekbar on short tracks.&lt;/li&gt;
+&lt;li&gt;
+Fixed various issues with Audio Unit settings panels.&lt;/li&gt;
+&lt;li&gt;
+Implemented real Help menu.&lt;/li&gt;
+&lt;li&gt;
+Fixed File Operations destination being editable in "rename" mode.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+Libraries updated to newer versions: FFmpeg, Opus, RAR, 7-zip&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://www.foobar2000.org/changelog-mac" rel="alternate"/>
+    <category term="Change Log (Mac)"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.foobar2000.org/changelog-mac#2.25.11</id>
+    <title>[Change Log (Mac)] 2.25.11 — 2026-10-01</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content type="html">&lt;ul style="list-style-type:disc;"&gt;
+&lt;li&gt;
+Fixed multiple bugs in smooth seeking implementation.&lt;/li&gt;
+&lt;li&gt;
+Fixed longtime Null Output bug causing playback position jitter when paused.&lt;/li&gt;
+&lt;li&gt;
+Fixed certain malformed MP4/M4A/M4B files being presented with thousands of chapters.&lt;/li&gt;
+&lt;li&gt;
+More spec-compliant writing of FLAC/Vorbis/Opus cover art (number of colors field).&lt;/li&gt;
+&lt;li&gt;
+Increased accepted HTTP reply line length because some sites tripped the old limit in legitimate responses.&lt;/li&gt;
+&lt;li&gt;
+Improved compatibility with specific UPnP renderers.&lt;/li&gt;
+&lt;li&gt;
+Fixed seekbar jitter.&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://www.foobar2000.org/changelog-mac" rel="alternate"/>
+    <category term="Change Log (Mac)"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://www.foobar2000.org/news#2026-09-18</id>
     <title>[News] 2026-09-18: foobar2000 is now available on Apple TV via TestFlight.</title>
@@ -4375,11 +4720,7 @@ Fixed resampler DSP crashing when asked to resample to 0 Hz.&lt;/li&gt;
 Fixed a bug with could lead to stuck foobar2000 process after playing a network stream.&lt;/li&gt;
 &lt;li&gt;
 Fixed a rare crash bug in new list controls.&lt;/li&gt;
-&lt;/ul&gt;&lt;br/&gt;&lt;a href="https://www.foobar2000.org/changelog-old"&gt;View archived change log&lt;/a&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7486094669119395"&gt;&lt;/script&gt;
-&lt;ins class="adsbygoogle" data-ad-client="ca-pub-7486094669119395" data-ad-format="horizontal" data-ad-slot="4546990646" data-full-width-responsive="true" style="display:block; width: 700px;"&gt;&lt;/ins&gt;
-&lt;script&gt;&#13;
-     (adsbygoogle = window.adsbygoogle || []).push({});&#13;
-&lt;/script&gt;&lt;/div&gt;</content>
+&lt;/ul&gt;&lt;br/&gt;&lt;a href="https://www.foobar2000.org/changelog-old"&gt;View archived change log&lt;/a&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/batch-ripper.htm?fb=1"&gt;&lt;img alt="dBpoweramp Batch Ripper" src="https://www.foobar2000.org/images/db/batchripper.png" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;dBpoweramp Batch Ripper&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;ripping on the industrial scale&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Appeals to commercial ripping houses, radio stations or individuals.&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
     <link href="https://www.foobar2000.org/changelog" rel="alternate"/>
     <category term="Change Log (Windows)"/>
     <published>2022-08-29T00:00:00+00:00</published>
@@ -5770,7 +6111,7 @@ Added smooth playback mode - fade on pause/seek/stop; see advanced settings.&lt;
 Added a toggle to loop module files indefinitely, see advanced settings.&lt;/li&gt;
 &lt;li&gt;
 Various bug fixes and stability improvements.&lt;/li&gt;
-&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/asset-upnp-dlna.htm?fb=1"&gt;&lt;img alt="Asset UPnP" src="https://www.foobar2000.org/images/db/asset.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;Asset UPnP&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;at the heart of your media network&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;A DLNA &amp;amp; UPnP compatible audio server, streaming audio around the home.&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
+&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/perfecttunes.htm?fb=1"&gt;&lt;img alt="PerfectTUNES" src="https://www.foobar2000.org/images/db/pt-2026.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;PerfectTUNES&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;a helping hand for your audio collection&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Add or upgrade Album Art, De-Dup and check for ripping errors&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
     <link href="https://www.foobar2000.org/changelog-ios" rel="alternate"/>
     <category term="Change Log (iOS)"/>
     <published>2020-03-18T00:00:00+00:00</published>
@@ -5794,7 +6135,7 @@ Added a toggle to loop module files indefinitely, see advanced settings.&lt;/li&
 Various bug fixes and stability improvements.&lt;/li&gt;
 &lt;li&gt;
 Reworked Android notification appearance.&lt;/li&gt;
-&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/video-converter.htm?fb=1"&gt;&lt;img alt="dBpoweramp Video Converter" src="https://www.foobar2000.org/images/db/dbvideo.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;dBpoweramp Video Converter&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;pro-quality video conversion&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Batch convert videos using familiar dBpoweramp interface&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
+&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/tunefusion.htm?fb=1"&gt;&lt;img alt="TuneFUSION" src="https://www.foobar2000.org/images/db/tunefusion5.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;TuneFUSION&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;set your music library free&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Automatic synchronization to USB removable flash drives, Mobile foobar2000, Network Shares and FTP.&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
     <link href="https://www.foobar2000.org/changelog-android" rel="alternate"/>
     <category term="Change Log (Android)"/>
     <published>2020-03-13T00:00:00+00:00</published>
@@ -6881,7 +7222,7 @@ Opus uses libopus v1.1.3.&lt;/li&gt;
     <content type="html">&lt;ul style="list-style-type:disc;"&gt;
 &lt;li&gt;
 Added refalac.&lt;/li&gt;
-&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/tunefusion.htm?fb=1"&gt;&lt;img alt="TuneFUSION" src="https://www.foobar2000.org/images/db/tunefusion5.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;TuneFUSION&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;set your music library free&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Automatic synchronization to USB removable flash drives, Mobile foobar2000, Network Shares and FTP.&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
+&lt;/ul&gt;&lt;div class="slimad nofloatad"&gt;advertisement&lt;a class="db_link_style db_roundrect db_slim" href="https://www.dbpoweramp.com/video-converter.htm?fb=1"&gt;&lt;img alt="dBpoweramp Video Converter" src="https://www.foobar2000.org/images/db/dbvideo.webp" style="max-width: 120px; max-height: 120px;"/&gt;&lt;span class="db_content_slim"&gt;&lt;span class="db_programtitle"&gt;dBpoweramp Video Converter&lt;/span&gt;&lt;br/&gt;&lt;span class="db_programtitledesc"&gt;pro-quality video conversion&lt;/span&gt;&lt;br/&gt;&lt;span class="db_norm"&gt;Batch convert videos using familiar dBpoweramp interface&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</content>
     <link href="https://www.foobar2000.org/changelog-encoderpack" rel="alternate"/>
     <category term="Change Log (Encoder Pack)"/>
     <published>2015-03-22T00:00:00+00:00</published>
