@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-01T01:28:52.237052+00:00</updated>
+  <updated>2026-10-01T09:22:22.111297+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -12,6 +12,66 @@
   <icon>https://blog.cloudflare.com/favicon.ico</icon>
   <logo>https://blog.cloudflare.com/favicon.ico</logo>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/025d238720733177</id>
+    <title>Basin Pipelines, Basin - Basin Pipelines ingest limit increased to 1 GB/s</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content>Each Basin Pipelines stream can now ingest up to 1 GB/s, increased from 5 MB/s. The higher per-stream limit gives high-volume application events, telemetry, and logs more room to grow without splitting ingestion across streams solely to stay within the previous limit. For the full list of stream, sink, and pipeline limits, refer to Basin Pipelines limits .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-stream-ingest-limit-increase/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-01-stream-ingest-limit-increase/og.png?v=2e1614c76a62c3f4" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-01-stream-ingest-limit-increase/og.png?v=2e1614c76a62c3f4"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-01-stream-ingest-limit-increase/og.png?v=2e1614c76a62c3f4" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/eddf5abaf0025164</id>
+    <title>Basin, Basin Pipelines, Basin Catalog, Basin SQL - Cloudflare Basin is now generally available</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content>Basin , formerly the Cloudflare Data Platform, is now generally available. Basin brings an end-to-end analytics platform to the Developer Platform, enabling you to collect data from a variety of sources, such as apps, infrastructure, devices, and other Cloudflare services, then query it to answer analytical questions. Basin Pipelines Basin Pipelines , formerly Cloudflare Pipelines, ingests events from Workers, HTTP endpoints, and Cloudflare Logpush . It transforms events with SQL and ingests the</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-basin-ga/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-01-basin-ga/og.png?v=cb42c4b226f41dee" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-01-basin-ga/og.png?v=cb42c4b226f41dee"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-01-basin-ga/og.png?v=cb42c4b226f41dee" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c56655641b8bb866</id>
+    <title>Durable Objects - Pending I/O operations allow Durable Objects to continue long-running work without a connected client</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content>Durable Objects remain active while handling a request from a connected client. This change applies when no client is connected, such as when an agent continues a submitted job after its client disconnects. This behavior is the default for Workers with a compatibility date of 2026-10-01 or later. To use it with an earlier date, add the durable_object_io_tasks_prevent_eviction compatibility flag. To opt out, add the durable_object_io_tasks_do_not_prevent_eviction flag. Pending service binding req</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-pending-io-keep-alive/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=360,format=svg/_astro/pending-io-keep-alive.vVfDqYTX.svg" type="image/svg+xml" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=360,format=svg/_astro/pending-io-keep-alive.vVfDqYTX.svg"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=360,format=svg/_astro/pending-io-keep-alive.vVfDqYTX.svg" type="image/svg+xml" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/122b46f55ba4e024</id>
+    <title>Workers - Web Crypto adds ML-KEM and ML-DSA support</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content>The Workers Web Crypto API now supports ML-KEM-768, ML-KEM-1024, ML-DSA-44, ML-DSA-65, and ML-DSA-87. ML-KEM establishes shared secrets, while ML-DSA signs and verifies data. The opt-in API also adds key encapsulation and decapsulation methods, getPublicKey() , SubtleCrypto.supports() , and JSON Web Keys (JWKs) with the AKP key type. Turn on the webcrypto_modern_algorithms compatibility flag to use these features: { "$schema" : "./node_modules/wrangler/config-schema.json" , "compatibility_flags"</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-28-webcrypto-modern-algorithms/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-28-webcrypto-modern-algorithms/og.png?v=2e8cda1d0804d920" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-28-webcrypto-modern-algorithms/og.png?v=2e8cda1d0804d920"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-webcrypto-modern-algorithms/og.png?v=2e8cda1d0804d920" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9c8c868703256275</id>
     <title>Network Performance Issues in Los Angeles (LAX)</title>
@@ -249,6 +309,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
+    <title>WAF - WAF Release - Scheduled changes for 2026-10-06</title>
+    <updated>2026-09-30T00:00:00+00:00</updated>
+    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-09-22 2026-10-06 Log N/A ...a056caff Command Injection - Generic 8 - uri - Beta This rule will be merged into the original rule "Command Injection - Generic 8 - uri" (ID: ...ee159e2e ). 2026-09-30 2026-10-06 Log N/A ...7206c737 F5 BIG-IP - UnAuth Heap-Overflow - CVE:CVE-2026-94127 This is a new detection.</content>
+    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-30T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/436d0cd77d9e83cd</id>
     <title>AI Gateway - Pay for AI inference with Machine Payments</title>
     <updated>2026-09-30T00:00:00+00:00</updated>
@@ -292,6 +367,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-browser-isolation-rbac/og.png?v=bf3672b5ab7f8583" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/eb430228b43a883b</id>
+    <title>WAF - WAF Release - 2026-09-30</title>
+    <updated>2026-09-30T00:00:00+00:00</updated>
+    <content>This release introduces new detections to enhance protection against a specific GitLab path traversal vulnerability, alongside advanced generic rules targeting HTTP request smuggling, directory traversal, and command injection attempts. Key Findings CVE-2026-85706: A path traversal vulnerability affecting GitLab. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...cb14ded8 N/A Broken Access Control - Directory Traversal Log Block This is a</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-30T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-waf-release/og.png?v=5a93ea2a4512f830" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-waf-release/og.png?v=5a93ea2a4512f830"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-waf-release/og.png?v=5a93ea2a4512f830" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2</id>
@@ -1284,21 +1374,6 @@ Further detail will b</content>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
-    <title>WAF - WAF Release - Scheduled changes for 2026-09-29</title>
-    <updated>2026-09-22T00:00:00+00:00</updated>
-    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-09-22 2026-09-29 Log N/A ...cb14ded8 Broken Access Control - Directory Traversal This is a new detection. 2026-09-22 2026-09-29 Log N/A ...0364bd7e HTTP Request Smuggling - Request Body Anomaly - Beta This rule will be merged into the original rule "HTTP/2 Request Smuggling - Request Body Anomaly" (ID: ...1489d892 ). 2026-09-22 2026-09-29 Disabled N/A ...d498a69a Command Injection - Generic 8 - body </content>
-    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-22T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/1ec7ef28df912127</id>
     <title>Rules - concat() now supports up to 32 arguments</title>
     <updated>2026-09-22T00:00:00+00:00</updated>
@@ -1526,36 +1601,6 @@ Further detail will b</content>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cda0ccae6928637e</id>
-    <title>Cloudflare Tunnel, Cloudflare Tunnel for SASE - cloudflared to deprecate 32-bit Windows and Intel-based macOS builds in 2027</title>
-    <updated>2026-09-18T00:00:00+00:00</updated>
-    <content>Starting in 2027, Cloudflare will deprecate 32-bit Windows and Intel-based macOS builds of cloudflared . After the deprecation takes effect, Cloudflare will no longer publish new cloudflared releases for either architecture. Windows 10, the last Windows release to support 32-bit systems, reached end of support in October 2025. Apple has also deprecated Intel-based Mac computers. macOS 26 Tahoe, released in September 2025, was the final macOS release to support Intel-based Macs. macOS 27, release</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-18-cloudflared-architecture-deprecation/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-18T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cbc08eaf86ba6d32</id>
-    <title>Browser Run - Inspect logs, network requests, and DOM in Session Recordings</title>
-    <updated>2026-09-18T00:00:00+00:00</updated>
-    <content>Browser Run Session Recordings now include an Inspect panel, giving you more context to understand what happened during a browser session without having to reproduce it. The Logs tab lets you search captured console output and filter messages by level. The Network tab shows each request's method, status, headers, payload, response, and timing waterfall, with the option to download the session's network activity as a HAR file. You can also retrieve recorded network activity via API as raw JSON or</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-18-browser-run-session-recording-inspect/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-18T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/images/browser-run/session-recording-inspect.gif" type="image/gif" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/images/browser-run/session-recording-inspect.gif"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/images/browser-run/session-recording-inspect.gif" type="image/gif" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/3a65c88a8c779079</id>
     <title>Cloudflare WAN, Magic Transit, Cloudflare One - Unified Routing generally available</title>
     <updated>2026-09-18T00:00:00+00:00</updated>
@@ -1624,51 +1669,6 @@ Further detail will b</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-17T14:00:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5b10703322098b9d</id>
-    <title>Workflows, Workers - Delete Workflow instances individually or in batches</title>
-    <updated>2026-09-17T12:00:00+00:00</updated>
-    <content>You can now delete one or up to 100 Workflow instances and their stored state via the Workflows API or Wrangler 4.125.0 and later. Deleting an instance frees its stored state and stops its current execution. Storage billing is based on the average daily peak. Delete one instance by calling delete() on its handle: const instance = await env. MY_WORKFLOW . get ( "instance-abc" ); await instance. delete (); If a Workflow deletes its own instance, execution stops during await instance.delete() . Cod</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-17-instance-delete/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-17T12:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ae85e728ba14aa91</id>
-    <title>Workers, Durable Objects - Workers traces now automatically include JavaScript RPC session spans</title>
-    <updated>2026-09-17T00:00:00+00:00</updated>
-    <content>Workers traces can now follow JavaScript RPC calls across Worker boundaries and into Durable Objects. Previously, a trace stopped at the caller's RPC boundary. The dashboard now shows the caller-side session and method calls alongside the callee invocation, nested calls, and callbacks into another Worker. A session span covers the lifetime of a caller-side session and groups calls that reuse it. Individual call spans show each method invocation. Execution colors distinguish the Workers or Durabl</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-17-javascript-rpc-session-spans/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-17T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2878,height=1576,format=webp/_astro/jsrpc-session-spans.DQuwQrpm.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2878,height=1576,format=webp/_astro/jsrpc-session-spans.DQuwQrpm.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2878,height=1576,format=webp/_astro/jsrpc-session-spans.DQuwQrpm.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f3c268d4c16ebb73</id>
-    <title>Rules - Validate Rulesets changes before deployment</title>
-    <updated>2026-09-17T00:00:00+00:00</updated>
-    <content>Cloudflare Rules now validates ruleset changes before deployment, helping you catch invalid expressions, action parameters, permission issues, unavailable features, and quota limits without publishing the configuration. The Cloudflare dashboard performs this validation automatically when you create or update rules from Security &gt; Security rules or Rules &gt; Overview . Supported Rulesets API mutation endpoints now also accept the dry_run=true query parameter. A dry run performs the same authorizati</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-17-rulesets-dry-run-validation/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-17T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/27b0673fd35db298</id>
