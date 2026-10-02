@@ -8,6 +8,45 @@
   "icon": "https://about.gitlab.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/gitlab/2243b349d3b95723",
+      "url": "https://docs.gitlab.com/releases/patches/other-patches/patch-release-gitlab-ai-gateway-19-4-1-released/",
+      "title": "GitLab AI Gateway Critical Patch Release: 19.2.4, 19.3.2, and 19.4.1",
+      "content_text": "We have released versions 19.2.4, 19.3.2, and 19.4.1 of the GitLab AI Gateway. These versions contain a critical security fix for GitLab Self-Hosted AI Gateway, and we strongly recommend that all GitLab Self-Managed customers with GitLab Self-Hosted AI Gateway installations update to one of these versions immediately. We have conducted targeted outreach to Self-Hosted AI Gateway customers prior to this release post with this guidance. A fix has already been deployed for GitLab-hosted AI Gateways",
+      "date_published": "2026-10-02T00:00:00Z",
+      "date_modified": "2026-10-02T00:00:00Z",
+      "authors": [
+        {
+          "name": "GitLab Patch Releases"
+        }
+      ],
+      "tags": [
+        "GitLab Patch Releases"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/gitlab/415782a46f992c00",
+      "url": "https://about.gitlab.com/blog/deepseek-reasonix-vulnerability-discovered/",
+      "title": "DeepSeek-Reasonix: How a poisoned config can hijack an AI coding agent",
+      "content_text": "GitLab's Threat Research Group discovered a command execution vulnerability ( GHSA-grg2-7gc6-36m6 , CVE-2026-102437 ) in DeepSeek-Reasonix Studio, a desktop git client designed for developers pairing with AI coding assistants. The flaw, called ConfigPoisoning, could allow attacker-supplied code to execute when a developer views a file's diff. To address this vulnerability, you should update to DeepSeek-Reasonix Studio 2.21.0 or DeepSeek Reasonix npm 1.39.3. This is not an isolated DeepSeek-Reaso",
+      "date_published": "2026-10-02T00:00:00Z",
+      "date_modified": "2026-10-02T00:00:00Z",
+      "authors": [
+        {
+          "name": "GitLab Blog"
+        }
+      ],
+      "image": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png",
+      "tags": [
+        "GitLab Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/gitlab/215f7c420e12bfd3",
       "url": "https://about.gitlab.com/blog/gitlab-and-claude-code-fast-compliant-ai/",
       "title": "GitLab and Claude Code: Fast, compliant AI",
@@ -890,29 +929,6 @@
       "attachments": [
         {
           "url": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1783421764/x0oyszct1nuhzg7sxv0z.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/gitlab/b15c511852bc5351",
-      "url": "https://about.gitlab.com/blog/improved-scope-offset-fingerprinting/",
-      "title": "How GitLab tracks vulnerabilities through refactors and reformatting",
-      "content_text": "Every day, security scans face the same problem: an agent or a developer adds a comment, reformats a file, or moves a function, and a naive vulnerability tracker suddenly reports the same finding twice. Security teams end up re-triaging issues they already dismissed, which causes futile auditing effort and erodes trust in the scan results. In 2022, we introduced advanced vulnerability tracking to tackle exactly this problem of code volatility . It is based on our Scope+Offset fingerprinting meth",
-      "date_published": "2026-08-12T00:00:00Z",
-      "date_modified": "2026-08-12T00:00:00Z",
-      "authors": [
-        {
-          "name": "GitLab Blog"
-        }
-      ],
-      "image": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1759320418/xjmqcozxzt4frx0hori3.png",
-      "tags": [
-        "GitLab Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://res.cloudinary.com/about-gitlab-com/image/upload/v1759320418/xjmqcozxzt4frx0hori3.png",
           "mime_type": "image/png"
         }
       ]
@@ -1950,22 +1966,6 @@
       "content_text": "On August 18, 2025, we released versions 18.2.4 for GitLab Community Edition and Enterprise Edition. These versions resolve a number of regressions and bugs. This patch release does not include any security fixes. GitLab Community Edition and Enterprise Edition 18.2.4 Build with Go 1.24.5 Update golang-fips/go Update gitlab-shell to v14.44.0 Backport “Use projectRootPath to compose breadcrumb links” Backport “Add custom encoding for repository path for commit data” Backport ‘Fixes reviewer drawe",
       "date_published": "2025-08-18T00:00:00Z",
       "date_modified": "2025-08-18T00:00:00Z",
-      "authors": [
-        {
-          "name": "GitLab Patch Releases"
-        }
-      ],
-      "tags": [
-        "GitLab Patch Releases"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/gitlab/44f128818fa7f799",
-      "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-17-11-7-released/",
-      "title": "GitLab Patch Release: 17.11.7",
-      "content_text": "On August 15, 2025, we released version 17.11.7 for GitLab Community Edition and Enterprise Edition. These versions resolve a number of regressions and bugs. This patch release does not include any security fixes. GitLab Community Edition and Enterprise Edition 17.11.7 Backport ‘Replace test-on-gdk with test-on-cng in backport mr pipelines’ Quarantine failing DORA Metrics dashboard tests (target single context) Backport of “Ensure docs hugo_build CI job uses docs-gitlab-com stable branches” Back",
-      "date_published": "2025-08-15T00:00:00Z",
-      "date_modified": "2025-08-15T00:00:00Z",
       "authors": [
         {
           "name": "GitLab Patch Releases"
