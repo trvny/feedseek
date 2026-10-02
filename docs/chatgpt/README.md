@@ -14,10 +14,27 @@ https://feeds.trfny.com/mcp
 | `search` | Standard connector/deep-research search over the recent Feedseek index. |
 | `fetch` | Standard connector fetch for the full entry behind a search result id. |
 | `recent` | Bulk digest input with optional time, topic and source filters. |
+| `feedseek_reader_open` | App-only sidebar/thread reader, using the same read-only recent filters. |
 
 `search` and `fetch` intentionally follow OpenAI's standard read-only connector contract.
 `recent` exists so a 24/72-hour digest can retrieve compact summaries in one call instead
 of fetching every candidate separately.
+
+## Reader panel
+
+The self-contained MCP App resource `ui://feedseek/reader/v1` registers global/sidebar
+and thread entrypoints. Filter the indexed archive by topic, time and source key,
+preview full text through `fetch`, and select up to 20 entries. **Use selection**
+explicitly adds the immutable IDs, original URLs and compact summaries to this
+conversation's model context. It does not send a message or create a subscription.
+Source suggestions come from entries already loaded into the panel; other known
+source keys can be typed directly. Coverage limits and skipped sources remain visible.
+
+Selections live only in the panel and survive filter changes until cleared or the
+panel closes. Article text is rendered as plain text. No external runtime assets,
+browser storage, account or new data store are required. Conversational clients
+continue to use `search`, `fetch` and `recent` independently of the UI. Host support
+for extension entrypoints varies; refresh the app's tool scan after deployment.
 
 ## Data path
 

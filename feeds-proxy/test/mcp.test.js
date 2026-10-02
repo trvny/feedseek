@@ -58,6 +58,31 @@ const indexPayload = {
   ],
 };
 
+test("reader is an app-only entrypoint with a fixed self-contained resource", async () => {
+  const tools = (await (await call("tools/list")).json()).result.tools;
+  const reader = tools.find((tool) => tool.name === "feedseek_reader_open");
+  assert.deepEqual(reader._meta.ui.visibility, ["app"]);
+  assert.deepEqual(reader._meta["openai/ui"].entrypoints, [{ type: "global" }, { type: "thread" }]);
+  const uri = reader._meta.ui.resourceUri;
+  const resource = (await (await call("resources/read", { uri })).json()).result.contents[0];
+  assert.equal(resource.mimeType, "text/html;profile=mcp-app");
+  assert.doesNotMatch(resource.text, /<script[^>]+src=|<link[^>]+href=/);
+  assert.deepEqual(resource._meta.ui.csp.connectDomains, []);
+  const invalid = await (await call("resources/read", { uri: "https://example.com/private" })).json();
+  assert.equal(invalid.error.code, -32602);
+});
+
+test("reader filters share recent validation, coverage and immutable ids", async () => {
+  await withFetch(async () => new Response(JSON.stringify(indexPayload)), async () => {
+    const body = await (await call("tools/call", { name: "feedseek_reader_open", arguments: { sources: ["openai"], query: "coding", limit: 1 } })).json();
+    assert.equal(body.result.structuredContent.count, 1);
+    assert.equal(body.result.structuredContent.entries[0].id, opaqueId);
+    assert.equal(body.result.structuredContent.truncated, true);
+    const bad = await (await call("tools/call", { name: "feedseek_reader_open", arguments: { since: "2026-02-30T00:00:00Z" } })).json();
+    assert.equal(bad.result.isError, true);
+  });
+});
+
 test("negotiates initialize and advertises tool capability", async () => {
   const response = await call("initialize", {
     protocolVersion: "2026-07-28",
@@ -68,7 +93,7 @@ test("negotiates initialize and advertises tool capability", async () => {
   assert.equal(response.status, 200);
   assert.equal(body.result.protocolVersion, "2026-07-28");
   assert.equal(body.result.resultType, "complete");
-  assert.deepEqual(body.result.capabilities, { tools: {} });
+  assert.deepEqual(body.result.capabilities, { tools: {}, resources: {} });
 });
 
 test("unsupported protocol returns modern error with HTTP 400", async () => {
@@ -92,7 +117,7 @@ test("modern tools/list includes cache metadata", async () => {
   assert.equal(body.result.resultType, "complete");
   assert.equal(body.result.cacheScope, "public");
   assert.ok(Number.isInteger(body.result.ttlMs));
-  assert.deepEqual(body.result.tools.map((tool) => tool.name), ["search", "fetch", "recent"]);
+  assert.deepEqual(body.result.tools.map((tool) => tool.name), ["search", "fetch", "recent", "feedseek_reader_open"]);
   for (const tool of body.result.tools) {
     assert.equal(tool.annotations.readOnlyHint, true);
     assert.equal(tool.annotations.destructiveHint, false);
@@ -104,7 +129,7 @@ test("legacy tools/list remains compatible", async () => {
   const body = await (await call("tools/list", {}, 1, "2025-11-25")).json();
   assert.equal(body.result.resultType, undefined);
   assert.equal(body.result.ttlMs, undefined);
-  assert.equal(body.result.tools.length, 3);
+  assert.equal(body.result.tools.length, 4);
 });
 
 test("strict RFC 3339 parser rejects loose and impossible dates", () => {
