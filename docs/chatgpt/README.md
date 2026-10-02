@@ -133,7 +133,7 @@ Before submission:
    add realistic starter prompts, choose the intended countries/regions, and describe this as
    the initial Feedseek submission in the release notes.
 
-The app is tool-only, so it has no widget CSP to declare. All three tools explicitly declare
+The Reader resource declares an empty CSP (no connect or resource domains). All four tools explicitly declare
 `readOnlyHint: true`, `openWorldHint: false`, and `destructiveHint: false`, and each tool
 declares an `outputSchema`.
 

@@ -73,7 +73,7 @@ test("reader is an app-only entrypoint with a fixed self-contained resource", as
 });
 
 test("reader filters share recent validation, coverage and immutable ids", async () => {
-  await withFetch(async () => new Response(JSON.stringify(indexPayload)), async () => {
+  await withFetch(() => Promise.resolve(new Response(JSON.stringify(indexPayload))), async () => {
     const body = await (await call("tools/call", { name: "feedseek_reader_open", arguments: { sources: ["openai"], query: "coding", limit: 1 } })).json();
     assert.equal(body.result.structuredContent.count, 1);
     assert.equal(body.result.structuredContent.entries[0].id, opaqueId);

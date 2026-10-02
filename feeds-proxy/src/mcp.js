@@ -146,6 +146,7 @@ const TOOLS = [
     },
     outputSchema: FETCH_OUTPUT_SCHEMA,
     annotations: READ_ONLY_ANNOTATIONS,
+    _meta: { ui: { visibility: ["model", "app"] } },
   },
   {
     name: "recent",
