@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.mozilla.org/</id>
   <title>Mozilla</title>
-  <updated>2026-10-02T06:07:22.364372+00:00</updated>
+  <updated>2026-10-02T13:06:43.963598+00:00</updated>
   <author>
     <name>Mozilla</name>
   </author>
@@ -12,6 +12,16 @@
   <icon>https://www.google.com/s2/favicons?domain=blog.mozilla.org&amp;sz=64</icon>
   <logo>https://www.google.com/s2/favicons?domain=blog.mozilla.org&amp;sz=256</logo>
   <subtitle>Combined Mozilla feed: the Mozilla, Firefox Nightly, Add-ons, Hacks and Thunderbird blogs, SpiderMonkey, Mozilla Connect, Planet Mozilla, Nightly release notes, and shipped Firefox desktop and Android release notes.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/mozilla/bf39053751f5e614</id>
+    <title>Nova UI Config</title>
+    <updated>2026-10-02T12:51:26+00:00</updated>
+    <content>The new Firefox UI with heavily rounded tabs/buttons and gradient coloring is a significant downgrade for me. I strongly prefer the previous flatter, more rectangular interface. Please keep an official setting to disable the Nova redesign or offer a “classic” appearance option. I should not need about:config or userChrome.css just to retain the previous Firefox appearance.</content>
+    <link href="https://connect.mozilla.org/t5/discussions/nova-ui-config/m-p/140918#M57438" rel="alternate"/>
+    <category term="Mozilla Connect" label="Mozilla Connect"/>
+    <published>2026-10-02T12:51:26+00:00</published>
+    <dc:creator>Mozilla Connect</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/f1e4bc7a28a3e29c</id>
     <title>How to Download Facebook Reels on Android and iPhone</title>
@@ -66,6 +76,27 @@
     </media:group>
     <dc:creator>Mozilla Connect</dc:creator>
     <link rel="enclosure" href="https://images.pickapic.live/get/ce5138fc-5ad6-c080-23fc-2a38543244fb-1684430071.jpeg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/mozilla/1c2cb7447977246d</id>
+    <title>Demoting i686 Windows targets to std-only</title>
+    <updated>2026-10-02T00:00:00+00:00</updated>
+    <content>With Rust 1.100.0, the following changes to 32-bit Windows targets will happen:
+
+i686-pc-windows-msvc Tier 1 with host tools target will be demoted to Tier 1 without host tools.
+i686-pc-windows-gnu Tier 2 with host tools target will be demoted to Tier 2 without host tools.
+
+Builds of the standard library will continue to be distributed, but host tools such as the compiler will be no longer available. i686-pc-windows-msvc as a Tier 1 target still undergoes CI testing.
+To build 32-bit Windows bina</content>
+    <link href="https://blog.rust-lang.org/2026/10/02/demoting-i686-windows-targets-to-std-only/" rel="alternate"/>
+    <category term="Planet Mozilla" label="Planet Mozilla"/>
+    <published>2026-10-02T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.rust-lang.org/static/images/rust-social-wide.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"/>
+    </media:group>
+    <dc:creator>Planet Mozilla</dc:creator>
+    <link rel="enclosure" href="https://www.rust-lang.org/static/images/rust-social-wide.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/6b6571d101c1d0c0</id>
@@ -296,21 +327,6 @@
     </media:group>
     <dc:creator>Mozilla Connect</dc:creator>
     <link rel="enclosure" href="https://images.pickapic.live/get/ce5138fc-5ad6-c080-23fc-2a38543244fb-1684430071.jpeg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/mozilla/5de1001e7d18d8e9</id>
-    <title>Collapsed sidebar looks odd in the new design</title>
-    <updated>2026-10-01T07:53:32+00:00</updated>
-    <content>Hello, just got this new 'nova' design thing, I don't hugely mind the rounded corners and colors and all that, but this is unpleasant to look at: looks like this in the default theme, slightly more subtle: I don't really get why the collapsed sidebar would have a different color anyways – when it's not collapsed it's the same color as the top chrome and looks just fine. Could this be changed?</content>
-    <link href="https://connect.mozilla.org/t5/discussions/collapsed-sidebar-looks-odd-in-the-new-design/m-p/140390#M57159" rel="alternate"/>
-    <category term="Mozilla Connect" label="Mozilla Connect"/>
-    <published>2026-10-01T07:53:32+00:00</published>
-    <media:group>
-      <media:content url="https://connect.mozilla.org/t5/image/serverpage/image-id/15951i04C474806517627A/image-size/medium/is-moderation-mode/true?v=v2&amp;px=400" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://connect.mozilla.org/t5/image/serverpage/image-id/15951i04C474806517627A/image-size/medium/is-moderation-mode/true?v=v2&amp;px=400"/>
-    </media:group>
-    <dc:creator>Mozilla Connect</dc:creator>
-    <link rel="enclosure" href="https://connect.mozilla.org/t5/image/serverpage/image-id/15951i04C474806517627A/image-size/medium/is-moderation-mode/true?v=v2&amp;px=400" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/7d7cbf9be959855b</id>
@@ -1126,24 +1142,6 @@ Some highlights from </content>
     </media:group>
     <dc:creator>Nightly Release Notes</dc:creator>
     <link rel="enclosure" href="https://www.firefox.com/media/protocol/img/logos/firefox/browser/nightly/og.3190903353c3.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/mozilla/302e38c00ccfe19f</id>
-    <title>Checkout a Github pull request from one-off contributions</title>
-    <updated>2026-09-14T00:00:00+00:00</updated>
-    <content>EDIT: Updated to reference gh correctly. Thanks flod!
-Sometimes on Github, I need to fetch a patch from a fork I don't typically see everyday so I can try it out locally. I use the line at the top of the patch which has a copy button next to it because it's convenient.
-
-The common steps for this are:
-
-Click the contributor's branch and go to their github fork repository.
-Copy the repository link.
-Add a new git remote with an alias (typically their username).
-git fetch git checkout / Here is a on</content>
-    <link href="https://jonalmeida.com/til/fetch-one-off-github-contributions/" rel="alternate"/>
-    <category term="Planet Mozilla" label="Planet Mozilla"/>
-    <published>2026-09-14T00:00:00+00:00</published>
-    <dc:creator>Planet Mozilla</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/5b03cd5a9cf4c7ce</id>

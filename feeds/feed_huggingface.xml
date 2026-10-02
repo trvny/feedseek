@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-02T06:06:46.502928+00:00</updated>
+  <updated>2026-10-02T13:06:11.765334+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=64</icon>
   <logo>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=256</logo>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/e0a7cf6ffbfd3059</id>
+    <title>💻 Data-center AI, now on a laptop: POCKET-Darwin-180B</title>
+    <updated>2026-10-02T13:06:10.850769+00:00</updated>
+    <content>💻 Data-center AI, now on a laptop: POCKET-Darwin-180B We're releasing a 4-bit GGUF build of Darwin-180B-RSI, #1 on seven official Hugging Face leaderboards (self-reported), that runs without a GPU. 📦 360 GB → 111 GB (4-bit GGUF, 4 files) 🖥️ No GPU: one server CPU (16 threads) at 18.4–21.0 tokens/s 💻 RTX 5060 laptop (8 GB VRAM) + 32 GB RAM: 4.17 tokens/s 🧊 128 GB mini PC: whole model in memory, no GPU needed 🎯 MMLU-Pro, 2,000 questions, paired: original 87.65% = 4-bit 87.65% How? · Only ~3B of 180B parameters are active per token (10 of 512 experts) · llama.cpp streams just the needed experts from SSD, so 32 GB RAM is enough · Graft quantization: we took the proven Unsloth UD-Q4_K_XL base bui</content>
+    <link href="https://huggingface.co/posts/SeaWolf-AI/446226611129845" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-02T13:06:10.850769+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/8gjDq-SPeommwC2ZvZmTs.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/8gjDq-SPeommwC2ZvZmTs.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/8gjDq-SPeommwC2ZvZmTs.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/a885ed61f54a415a</id>
     <title>AutoSynthData: Generating Training Data for Enterprise Agents</title>
@@ -386,6 +401,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.38177.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/5f92814b1d56376a</id>
+    <title>PixelUMM: Encoder-Free Unified Image and Video Understanding and Generation</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>Unified Multimodal Models (UMMs) often rely on separate visual representations for understanding and generation, increasing visual context length and complicating integration with established vision-language pretraining pipelines. Recent advances in pixel-space modeling offer an encoder-free alternative, but extending this paradigm from images to videos is non-trivial: video understanding and generation adopt different temporal representations, leaving the design of a unified visual interface an open question. We present PixelUMM, an encoder-free model for unified image and video understanding and generation directly in pixel space. PixelUMM represents images as spatial patches and videos as</content>
+    <link href="https://huggingface.co/papers/2609.38597" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.38597/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.38597/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.38597/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/5a698ff9aff98ff0</id>
@@ -2698,21 +2728,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.08084/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/f8f4a7fd7a452583</id>
-    <title>@</title>
-    <updated>2026-09-07T18:51:01.089136+00:00</updated>
-    <content>@ retrain-pipelines execution engine is in perpetual evolution, with the aim to establish itself as SOTA, and for the long run. However, we neglect no aspect of ML-Eng centricity. If notebooks is where you like to do dev most, we support you there 100% too. Build crazy combos of inline tasks, deep parallel sub-DAG branches, nested asynchronous groups... ... the DAG renderer is undergoing an incremental upgrade until the next one. * starring toy tasks here. No ML has been hurt in this video 🙂</content>
-    <link href="https://huggingface.co/posts/Aurelien-Morgan/656385261354634" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-07T18:51:01.089136+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Aurelien-Morgan/656385261354634.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Aurelien-Morgan/656385261354634.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Aurelien-Morgan/656385261354634.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/1978c4cdf5ea4e0f</id>
     <title>OpenWAM: An Open, Modular Exploration Towards Systematic World-Action Model Pretraining</title>
     <updated>2026-09-07T00:00:00+00:00</updated>
@@ -4391,21 +4406,6 @@
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/65b12ed52be9660f0b7e5f72/mu_IH3lDD1qGRQZptFmPP.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/1ed3bfe49ebe8c08</id>
-    <title>COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation</title>
-    <updated>2026-05-29T00:00:00+00:00</updated>
-    <content>Person-grounded AI skills are automatically distilled from heterogeneous traces into inspectable, correctable packages that capture both capabilities and behavioral patterns.</content>
-    <link href="https://huggingface.co/papers/2605.31264" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-05-29T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.31264.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.31264.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.31264.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/357d064be8691681</id>
