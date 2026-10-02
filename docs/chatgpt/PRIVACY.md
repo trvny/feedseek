@@ -1,6 +1,6 @@
 # Feedseek Privacy Policy
 
-_Last updated: September 7, 2026_
+_Last updated: October 1, 2026_
 
 This policy applies to the public Feedseek service, including the Feedseek ChatGPT app and its MCP endpoint.
 
@@ -15,6 +15,12 @@ Feedseek does not require a user account, OAuth authorization, payment informati
 Feedseek does not intentionally store ChatGPT conversation content, user prompts, per-user profiles, or tool arguments as persistent application data. It does not use cookies or build advertising profiles through the MCP app.
 
 The service is hosted using third-party infrastructure, including Cloudflare and GitHub. Those providers may process ordinary network and request metadata needed to operate, secure, and deliver the service under their own policies.
+
+The Reader panel keeps filters and selected public entries in temporary in-memory
+UI state. It does not use browser storage. Clicking **Use selection** shares the
+selected public entry IDs, URLs and compact summaries with the current ChatGPT
+conversation through the host's model-context API. Closing the panel discards its
+local selection; context already shared with ChatGPT follows ChatGPT's retention rules.
 
 ## Public source content
 

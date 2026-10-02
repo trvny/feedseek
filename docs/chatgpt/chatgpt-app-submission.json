@@ -43,6 +43,18 @@
         "open_world_justification": "Recent reads public feed data without publishing or changing any third-party system.",
         "destructive_justification": "Recent cannot delete, overwrite, revoke, or otherwise mutate data."
       }
+    },
+    "feedseek_reader_open": {
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false,
+        "destructiveHint": false
+      },
+      "justifications": {
+        "read_only_justification": "The app-only Reader filters the same published index as recent and provides an ephemeral selection UI.",
+        "open_world_justification": "The Reader reads public entries and shares selected public data with the current host conversation only.",
+        "destructive_justification": "The Reader cannot delete, overwrite, send, publish, purchase or mutate external data."
+      }
     }
   },
   "test_cases": [
