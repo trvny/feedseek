@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-01T23:38:55.267949+00:00</updated>
+  <updated>2026-10-02T06:06:50.801637+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -719,6 +719,197 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Browser_Telemetry_Whitepapee_BlogHeader_2436.max-600x600.png"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Browser_Telemetry_Whitepapee_BlogHeader_2436.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/docs/release-notes#October_01_2026</id>
+    <title>Docs API — October 01, 2026</title>
+    <updated>2026-10-01T07:00:00+00:00</updated>
+    <content type="html">&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Docs Model Context Protocol (MCP) server now supports reading and
+managing document comments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Include comments when reading a document by setting the optional
+&lt;code&gt;commentsIncluded&lt;/code&gt; field on the
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/read_doc"&gt;&lt;code&gt;read_doc&lt;/code&gt;&lt;/a&gt;
+tool.&lt;/li&gt;
+&lt;li&gt;Create, reply to, resolve or reopen, update, and delete comments and replies
+using the
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/update_doc"&gt;&lt;code&gt;update_doc&lt;/code&gt;&lt;/a&gt;
+tool with the &lt;code&gt;insertComment&lt;/code&gt;, &lt;code&gt;addCommentReply&lt;/code&gt;, &lt;code&gt;updateCommentPost&lt;/code&gt;,
+&lt;code&gt;deleteComment&lt;/code&gt;, and &lt;code&gt;deleteCommentReply&lt;/code&gt; operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server"&gt;Configure the Docs MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp"&gt;Docs MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Docs Model Context Protocol (MCP) server and its reference documentation
+include the following updates:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the optional &lt;code&gt;writeControl&lt;/code&gt; (&lt;code&gt;WriteControl&lt;/code&gt; with &lt;code&gt;writeMode&lt;/code&gt;,
+&lt;code&gt;requiredRevisionId&lt;/code&gt;, and &lt;code&gt;targetRevisionId&lt;/code&gt;) field to &lt;code&gt;UpdateDocRequest&lt;/code&gt;
+and &lt;code&gt;UpdateDocResponse&lt;/code&gt; in
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/update_doc"&gt;&lt;code&gt;update_doc&lt;/code&gt;&lt;/a&gt;,
+along with inline request schemas for all &lt;code&gt;documents.batchUpdate&lt;/code&gt; operations
+(including &lt;code&gt;acceptSuggestion&lt;/code&gt;, &lt;code&gt;rejectSuggestion&lt;/code&gt;, and &lt;code&gt;deleteSuggestion&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Expanded the Tool Annotations section across tool reference pages with
+definitions of &lt;code&gt;readOnlyHint&lt;/code&gt;, &lt;code&gt;destructiveHint&lt;/code&gt;, &lt;code&gt;idempotentHint&lt;/code&gt;, and
+&lt;code&gt;openWorldHint&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server"&gt;Configure the Docs MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp"&gt;Docs MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/docs/release-notes#October_01_2026" rel="alternate"/>
+    <category term="Docs API"/>
+    <published>2026-10-01T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/release-notes#October_01_2026</id>
+    <title>Workspace Release Notes — October 01, 2026</title>
+    <updated>2026-10-01T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google Docs API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Docs Model Context Protocol (MCP) server now supports reading and
+managing document comments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Include comments when reading a document by setting the optional
+&lt;code&gt;commentsIncluded&lt;/code&gt; field on the
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/read_doc"&gt;&lt;code&gt;read_doc&lt;/code&gt;&lt;/a&gt;
+tool.&lt;/li&gt;
+&lt;li&gt;Create, reply to, resolve or reopen, update, and delete comments and replies
+using the
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/update_doc"&gt;&lt;code&gt;update_doc&lt;/code&gt;&lt;/a&gt;
+tool with the &lt;code&gt;insertComment&lt;/code&gt;, &lt;code&gt;addCommentReply&lt;/code&gt;, &lt;code&gt;updateCommentPost&lt;/code&gt;,
+&lt;code&gt;deleteComment&lt;/code&gt;, and &lt;code&gt;deleteCommentReply&lt;/code&gt; operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server"&gt;Configure the Docs MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp"&gt;Docs MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Docs Model Context Protocol (MCP) server and its reference documentation
+include the following updates:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the optional &lt;code&gt;writeControl&lt;/code&gt; (&lt;code&gt;WriteControl&lt;/code&gt; with &lt;code&gt;writeMode&lt;/code&gt;,
+&lt;code&gt;requiredRevisionId&lt;/code&gt;, and &lt;code&gt;targetRevisionId&lt;/code&gt;) field to &lt;code&gt;UpdateDocRequest&lt;/code&gt;
+and &lt;code&gt;UpdateDocResponse&lt;/code&gt; in
+&lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp/tools_list/update_doc"&gt;&lt;code&gt;update_doc&lt;/code&gt;&lt;/a&gt;,
+along with inline request schemas for all &lt;code&gt;documents.batchUpdate&lt;/code&gt; operations
+(including &lt;code&gt;acceptSuggestion&lt;/code&gt;, &lt;code&gt;rejectSuggestion&lt;/code&gt;, and &lt;code&gt;deleteSuggestion&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Expanded the Tool Annotations section across tool reference pages with
+definitions of &lt;code&gt;readOnlyHint&lt;/code&gt;, &lt;code&gt;destructiveHint&lt;/code&gt;, &lt;code&gt;idempotentHint&lt;/code&gt;, and
+&lt;code&gt;openWorldHint&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server"&gt;Configure the Docs MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/docs/api/reference/mcp"&gt;Docs MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Sheets API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Sheets Model Context Protocol (MCP) server now supports reading and
+managing spreadsheet comments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Include comments when retrieving a spreadsheet by setting the optional
+&lt;code&gt;commentsIncluded&lt;/code&gt; field on the
+&lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp/tools_list/get_spreadsheet"&gt;&lt;code&gt;get_spreadsheet&lt;/code&gt;&lt;/a&gt;
+tool.&lt;/li&gt;
+&lt;li&gt;Create, reply to, resolve or reopen, update, and delete comments and replies
+using the
+&lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp/tools_list/update_spreadsheet"&gt;&lt;code&gt;update_spreadsheet&lt;/code&gt;&lt;/a&gt;
+tool with the &lt;code&gt;insertComment&lt;/code&gt;, &lt;code&gt;addCommentReply&lt;/code&gt;, &lt;code&gt;updateCommentPost&lt;/code&gt;,
+&lt;code&gt;deleteComment&lt;/code&gt;, and &lt;code&gt;deleteCommentReply&lt;/code&gt; operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/sheets/api/guides/configure-mcp-server"&gt;Configure the Sheets MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp"&gt;Sheets MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Sheets Model Context Protocol (MCP) server and its reference
+documentation include the following updates:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the optional &lt;code&gt;fields&lt;/code&gt; (field mask) and &lt;code&gt;ranges&lt;/code&gt; (A1 or R1C1 notation)
+parameters to
+&lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp/tools_list/get_spreadsheet"&gt;&lt;code&gt;get_spreadsheet&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added the optional &lt;code&gt;writeControl&lt;/code&gt; (&lt;code&gt;WriteControl&lt;/code&gt; with &lt;code&gt;requiredRevisionId&lt;/code&gt;)
+parameter to
+&lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp/tools_list/update_spreadsheet"&gt;&lt;code&gt;update_spreadsheet&lt;/code&gt;&lt;/a&gt;,
+along with inline request schemas in tool descriptions across the Sheets MCP
+reference pages.&lt;/li&gt;
+&lt;li&gt;Expanded the Tool Annotations section across tool reference pages with
+definitions of &lt;code&gt;readOnlyHint&lt;/code&gt;, &lt;code&gt;destructiveHint&lt;/code&gt;, &lt;code&gt;idempotentHint&lt;/code&gt;, and
+&lt;code&gt;openWorldHint&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/sheets/api/guides/configure-mcp-server"&gt;Configure the Sheets MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/sheets/api/reference/mcp"&gt;Sheets MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Slides API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Slides Model Context Protocol (MCP) server now supports reading and
+managing presentation comments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Include comments when reading a presentation or slide page by setting the
+optional &lt;code&gt;commentsIncluded&lt;/code&gt; field on the
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/read_presentation"&gt;&lt;code&gt;read_presentation&lt;/code&gt;&lt;/a&gt;
+and
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/read_slide_page"&gt;&lt;code&gt;read_slide_page&lt;/code&gt;&lt;/a&gt;
+tools.&lt;/li&gt;
+&lt;li&gt;Create, reply to, resolve or reopen, update, and delete comments and replies
+using the
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/update_presentation"&gt;&lt;code&gt;update_presentation&lt;/code&gt;&lt;/a&gt;
+tool with the &lt;code&gt;insertComment&lt;/code&gt;, &lt;code&gt;addCommentReply&lt;/code&gt;, &lt;code&gt;updateCommentPost&lt;/code&gt;,
+&lt;code&gt;deleteComment&lt;/code&gt;, and &lt;code&gt;deleteCommentReply&lt;/code&gt; operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/slides/api/guides/configure-mcp-server"&gt;Configure the Slides MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp"&gt;Slides MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview&lt;/a&gt;&lt;/strong&gt;: The
+Google Slides Model Context Protocol (MCP) server and its reference
+documentation include the following updates:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/read_slide_page"&gt;&lt;code&gt;read_slide_page&lt;/code&gt;&lt;/a&gt;
+tool to read a single slide page from a presentation and the
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/read_slide_page_thumbnail"&gt;&lt;code&gt;read_slide_page_thumbnail&lt;/code&gt;&lt;/a&gt;
+tool to retrieve a thumbnail image of a slide page.&lt;/li&gt;
+&lt;li&gt;Added the optional &lt;code&gt;fields&lt;/code&gt; field mask parameter to
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/read_presentation"&gt;&lt;code&gt;read_presentation&lt;/code&gt;&lt;/a&gt;
+and updated &lt;code&gt;ReadPresentationResponse.content&lt;/code&gt; to &lt;code&gt;object (Struct format)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added the optional &lt;code&gt;writeControl&lt;/code&gt; (&lt;code&gt;WriteControl&lt;/code&gt; with &lt;code&gt;requiredRevisionId&lt;/code&gt;)
+parameter and inline request schemas for all &lt;code&gt;presentations.batchUpdate&lt;/code&gt;
+operations to
+&lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp/tools_list/update_presentation"&gt;&lt;code&gt;update_presentation&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Expanded the Tool Annotations section across tool reference pages with
+definitions of &lt;code&gt;readOnlyHint&lt;/code&gt;, &lt;code&gt;destructiveHint&lt;/code&gt;, &lt;code&gt;idempotentHint&lt;/code&gt;, and
+&lt;code&gt;openWorldHint&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see &lt;a href="https://developers.google.com/workspace/slides/api/guides/configure-mcp-server"&gt;Configure the Slides MCP
+server&lt;/a&gt;
+and the &lt;a href="https://developers.google.com/workspace/slides/api/reference/mcp"&gt;Slides MCP tool
+reference&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/release-notes#October_01_2026" rel="alternate"/>
+    <category term="Workspace Release Notes"/>
+    <published>2026-10-01T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/vfdb441d2e08dbd9d3e48d8cd72b242388a87bcf7626bf5fb9df50c2bdd4a70fd/developers/images/opengraph/white.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://docs.cloud.google.com/release-notes#October_01_2026</id>
@@ -30172,91 +30363,5 @@ version includes the following:&lt;/p&gt;
       <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-default.png"/>
     </media:group>
     <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-default.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_23_2026</id>
-    <title>Cloud Release Notes — August 23, 2026</title>
-    <updated>2026-08-23T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Agent Platform Workbench&lt;/h2&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="20260823-2330-rc0_release"&gt;20260823-2330-rc0 Release&lt;/h3&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="20260823-2330-rc0_release"&gt;20260823-2330-rc0 Release&lt;/h3&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="20260823-2230-rc0_release"&gt;20260823-2230-rc0 Release&lt;/h3&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="20260823-2230-rc0_release"&gt;20260823-2230-rc0 Release&lt;/h3&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Fixed&lt;/h3&gt;
-&lt;p&gt;Scheduled notebook executions now report their final status when the execution user's credentials stop working part way through a run, instead of continuing until the execution timeout.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="20260823-2130-rc0_release"&gt;20260823-2130-rc0 Release&lt;/h3&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Fixed&lt;/h3&gt;
-&lt;p&gt;Scheduled notebook executions now report their final status when the execution user's credentials stop working part way through a run, instead of continuing until the execution timeout.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;p&gt;Installed latest packages from upstream dependencies.&lt;/p&gt;
-&lt;h3&gt;Change&lt;/h3&gt;
-&lt;h3 id="m147_release"&gt;M147 Release&lt;/h3&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_23_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-23T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#August_22_2026</id>
-    <title>Cloud Release Notes — August 22, 2026</title>
-    <updated>2026-08-22T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Apigee UI&lt;/h2&gt;
-&lt;h3&gt;Fixed&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th width="10%"&gt;Bug ID&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;540008387&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;
-&lt;b&gt;Developer custom attributes now save reliably in the Apigee UI&lt;/b&gt;
-&lt;/p&gt;
-&lt;p&gt;
-          Saving changes to a developer in the
-          &lt;a href="https://docs.cloud.google.com/apigee/docs/api-platform/fundamentals/ui-overview"&gt;Apigee UI in Cloud console&lt;/a&gt;
-          no longer intermittently fails to persist that developer's custom
-          attributes.
-        &lt;/p&gt;
-&lt;p&gt;
-          Previously, the UI reported the save as successful, but the previous
-          attribute values reappeared when the page was reloaded. Developer
-          updates made with the Apigee API were not affected.
-        &lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#August_22_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-08-22T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
   </entry>
 </feed>
