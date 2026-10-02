@@ -1,12 +1,83 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "model": "opusplan",
+  "advisorModel": "opus",
+  "autoCompactWindow": 750000,
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  },
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Glob",
+      "Grep",
+      "LSP",
+      "WebFetch",
+      "WebSearch",
+      "Skill(*)",
+      "Agent(Explore)",
+      "Edit(**/src/**/*.ts)",
+      "Bash(ls*)",
+      "Bash(npm run *)",
+      "Bash(npx wrangler:*)",
+      "Bash(npx vitest:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git commit:*)",
+      "Bash(git fetch:*)",
+      "Bash(git log:*)",
+      "Bash(git mv:*)",
+      "Bash(git pull:*)",
+      "Bash(git push:*)",
+      "Bash(git rebase:*)",
+      "Bash(git remote:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh release list:*)",
+      "Bash(gh release view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh api repos/:*)",
+      "Bash(python -c *)",
+      "Bash(python3 -c *)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)",
+      "Bash(./gradlew *)",
+      "mcp__github__*"
+    ],
+    "deny": [
+      "Bash(chmod 777:*)",
+      "Bash(dd:*)",
+      "Read(//**/.env)",
+      "Read(//**/.env.*)",
+      "Read(//**/.dev.vars)",
+      "Read(//**/*.pem)",
+      "Read(//**/*.key)",
+      "Read(//**/*.keystore)",
+      "Read(//**/*.jks)",
+      "Read(//**/.credentials.json)",
+      "Read(//**/.ssh/**)",
+      "Read(//**/.npmrc)"
+    ],
+    "ask": [
+      "Bash(rm -rf:*)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup|resume",
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/session-start.sh",
-            "args": []
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/session-start.sh\""
           }
         ]
       }

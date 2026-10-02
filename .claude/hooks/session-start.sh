@@ -1,6 +1,7 @@
 #!/bin/bash
 # SessionStart hook: install dependencies so tests and linters work in
-# Claude Code on the web. Local sessions are left alone.
+# Claude Code on the web. Local sessions are left alone. Runs on startup and
+# resume only (matcher in .claude/settings.json), not after /compact.
 #
 # Covers the parts of the repository with checks that run outside Docker:
 #   .  (Feedseek)   uv sync  -> python -m unittest discover -s tests
@@ -40,14 +41,8 @@ if ! has_stable_314 uv; then
 	export PATH="$UV_BIN_DIR:$PATH"
 fi
 
-echo "==> feedseek: uv sync"
-"$UV" python install 3.14
-"$UV" sync
-
-# Match Worker CI and install exactly the committed lockfile graph.
-echo "==> feeds-proxy: npm ci"
-(cd feeds-proxy && npm ci --no-audit --no-fund)
-
+# Persist the session environment before installing, so a failed install
+# below still leaves the right uv on PATH and generators importable.
 # Generators run as scripts and import their siblings by bare name (utils,
 # models, ...), so keep feed_generators/ importable from anywhere.
 if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
@@ -55,6 +50,22 @@ if [ -n "${CLAUDE_ENV_FILE:-}" ]; then
 		echo "export PATH=\"$UV_BIN_DIR:\$PATH\"" >>"$CLAUDE_ENV_FILE"
 	fi
 	echo "export PYTHONPATH=\"$PWD/feed_generators:\${PYTHONPATH:-}\"" >>"$CLAUDE_ENV_FILE"
+fi
+
+echo "==> feedseek: uv sync"
+"$UV" python install 3.14
+"$UV" sync
+
+# Match Worker CI and install exactly the committed lockfile graph. npm ci
+# wipes node_modules first, so skip it on resume when the lockfile is unchanged.
+LOCK_SUM=$(sha256sum feeds-proxy/package-lock.json | cut -d' ' -f1)
+STAMP=feeds-proxy/node_modules/.lock-sha256
+if [ -f "$STAMP" ] && [ "$(cat "$STAMP")" = "$LOCK_SUM" ]; then
+	echo "==> feeds-proxy: node_modules up to date"
+else
+	echo "==> feeds-proxy: npm ci"
+	(cd feeds-proxy && npm ci --no-audit --no-fund)
+	echo "$LOCK_SUM" >"$STAMP"
 fi
 
 echo "==> dependencies ready"
