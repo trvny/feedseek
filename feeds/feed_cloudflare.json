@@ -8,6 +8,22 @@
   "icon": "https://blog.cloudflare.com/favicon.ico",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a0e69822c477e8ec",
+      "url": "https://www.cloudflarestatus.com/incidents/2xnmsnv8yv5x",
+      "title": "Cloudflare CDN experiencing increase in errors.",
+      "content_text": "Oct 2 , 21:57 UTC Resolved - This incident has been resolved. Oct 2 , 21:46 UTC Monitoring - Cloudflare is investigating an increase in errors for CDN configuration changes and purge calls specifically issued from the dashboard. Purges sent via API were unaffected. CDN configuration changes across the dashboard, API and others saw impact.",
+      "date_published": "2026-10-02T21:57:57Z",
+      "date_modified": "2026-10-02T21:57:57Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/2464ff1b5fbeb693",
       "url": "https://blog.cloudflare.com/streamline/",
       "title": "Streamline: custom video pipelines with Cloudflare Stream and Workers",
@@ -28,6 +44,22 @@
           "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M3XKCAN8X5Q5KQ1Q5EW20NBG.01M3XKCB43AH4EZPQE0QQ7MNND.png",
           "mime_type": "image/png"
         }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a3268827f6bae6b6",
+      "url": "https://www.cloudflarestatus.com/incidents/0kj5cjjq93xn",
+      "title": "Network Performance Issues - Seoul (ICN)",
+      "content_text": "Oct 2 , 16:00 UTC Resolved - Between 17:11 and 17:22 UTC, Cloudflare experienced network performance degradation impacting Seoul, South Korea (ICN).\nThe issue has been identified and fully mitigated, and network performance has returned to normal levels.",
+      "date_published": "2026-10-02T16:00:00Z",
+      "date_modified": "2026-10-02T16:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
       ]
     },
     {
@@ -410,6 +442,29 @@
       "attachments": [
         {
           "url": "https://developers.cloudflare.com/changelog/post/2026-10-02-hash-in-range-ga/og.png?v=f5c092ebf0412ae3",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/09b3d0f4195d7f62",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-02-strict-service-token-authentication/",
+      "title": "Access, Cloudflare One - New strict service token authentication setting for Access",
+      "content_text": "The strict service token authentication setting applies consistent behavior to requests made with service tokens. When the setting is on for a Zero Trust organization, Access handles requests with service token headers as follows: If authentication or authorization fails, Access always returns 401 or 403 instead of redirecting the client to the login page with 302 . Only Service Auth policies can authorize the request. Access ignores Allow policies and any CF_Authorization cookie sent with the r",
+      "date_published": "2026-10-02T00:00:00Z",
+      "date_modified": "2026-10-02T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-02-strict-service-token-authentication/og.png?v=1567ce58fae60c3b",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-02-strict-service-token-authentication/og.png?v=1567ce58fae60c3b",
           "mime_type": "image/png"
         }
       ]
@@ -2575,29 +2630,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/655359e1bcfdfb5b",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-24-workflow-exports/",
-      "title": "Workflows, Workers - Declare Workflows in the `exports` configuration",
-      "content_text": "You can now declare the Workflows a Worker defines in the exports field of your Wrangler configuration file. Previously, a Worker could only define a Workflow through a workflows binding, even when the Worker never called the Workflow itself. Key each entry by the name of the class that extends WorkflowEntrypoint : { \"exports\" : { \"MyWorkflow\" : { \"type\" : \"workflow\" , \"name\" : \"my-workflow\" , \"limits\" : { \"steps\" : 25000 , }, \"schedules\" : [ \"0 * * * *\" ], }, }, } [ exports . MyWorkflow ] type",
-      "date_published": "2026-09-24T00:00:00Z",
-      "date_modified": "2026-09-24T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/changelog/post/2026-09-24-workflow-exports/og.png?v=25a0417742b748b9",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/changelog/post/2026-09-24-workflow-exports/og.png?v=25a0417742b748b9",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/6f488292af14ca2f",
       "url": "https://www.cloudflarestatus.com/incidents/jg6ys8sbd6ny",
       "title": "Intermittent authentication errors for API and R2",
@@ -3027,38 +3059,6 @@
       "content_text": "Sep 16 , 14:58 UTC Resolved - This incident has been resolved. Sep 16 , 13:34 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 16 , 11:43 UTC Identified - Support portal and live chat support remain unavailable while our helpdesk provider works toward a resolution. \n\nWe strongly advise holding non-urgent cases until the incident is resolved. Please note that emergency phone support is reserved for P1 and emergency issues. Response times on this backup channel ma",
       "date_published": "2026-09-16T14:58:00Z",
       "date_modified": "2026-09-16T14:58:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a1c8e0c25e1c79ed",
-      "url": "https://www.cloudflarestatus.com/incidents/d4kgs6xmq9tl",
-      "title": "Email Notifications Delayed",
-      "content_text": "Sep 16 , 08:50 UTC Resolved - This incident has been resolved. Sep 16 , 08:33 UTC Investigating - Cloudflare is investigating delays with dispatching of notification emails for some customers. Webhooks and PagerDuty notifications are not affected.",
-      "date_published": "2026-09-16T08:50:45Z",
-      "date_modified": "2026-09-16T08:50:45Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e04f70c6056e8e5a",
-      "url": "https://www.cloudflarestatus.com/incidents/s4x7n3nfqnyy",
-      "title": "Cloudflare Queues issues",
-      "content_text": "Sep 15 , 22:31 UTC Resolved - This incident has been resolved. Sep 15 , 15:14 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 15 , 02:01 UTC Identified - We are investigating an issue where messages published to some queues are not being delivered to their consumers, resulting in delivery delays. Publishing to queues is unaffected, and messages are being received and safely retained — no messages are being lost. We have identified the root cause and are activel",
-      "date_published": "2026-09-15T22:31:10Z",
-      "date_modified": "2026-09-15T22:31:10Z",
       "authors": [
         {
           "name": "Cloudflare Status"

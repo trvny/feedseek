@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-02T19:31:59.546069+00:00</updated>
+  <updated>2026-10-03T00:01:47.123805+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -12,6 +12,21 @@
   <icon>https://www.v2ex.com/favicon.ico</icon>
   <logo>https://www.v2ex.com/favicon.ico</logo>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/a385f55b22dcc765</id>
+    <title>用 kite 让 Claude Code 自己开会话派活给别的 Claude Code，记录一下今天实际跑的情况</title>
+    <updated>2026-10-02T22:44:26+00:00</updated>
+    <content>之前发过几次 kite 的帖子，这次就记录一下今天实际怎么用的。 今天下午我在一个 Claude Code 会话里把要做的事说清楚，它通过 kite 的 MCP 在我 ubuntu 那台机器上又开了两个 Claude Code 会话，一个做平台的配音模型迁移（旧模型 10 号下线），一个修我自己的项目管理工具 robin ，晚上又开了一个修 kite 自己的问题。 迁移那个下午三点开始，七点前代码写完，review 和 CI 都过了，然后停下来等我确认上线。晚上九点半我回复同意以后，它合并、打版本、上线，十点四十观察期过了，十一点半切到新模型，按旧的调用方式真实合成了一句验收，都通过了。 robin 那个两个小时左右修完，测试环境验过了。合并、发版、上生产这些都要我确认，别的我基本没管。 问题也不少： 它们要我确认的时候会推送到手机，我这边一直没收到，两个会话等了两个多小时，后来我直接在会话里回复才继续 确认请求十分钟左右就超时，超时后我再回复它就收不到了 下面的会话做完或者卡住，发起的那个 Claude 不知道，得我自己去看 它开的会话和我自己开的混在一起，不好区分 这几个现在也是让</content>
+    <link href="https://www.v2ex.com/t/1246199#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-10-02T22:44:26+00:00</published>
+    <media:group>
+      <media:content url="https://i.imgur.com/mskKFcU.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://i.imgur.com/mskKFcU.png"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://i.imgur.com/mskKFcU.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/09b129b577425e68</id>
     <title>AMD EPYC 9006 全系价格出来了： 8 核 700 美元到 256 核 14904 美元，附完整型号表</title>
@@ -41,21 +56,6 @@
     </media:group>
     <dc:creator>V2EX Claude (GDSR)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/a65ec31eafe3a1a7</id>
-    <title>[开源推广] Vatrix：一款视频加密混淆编码工具，在 B 站、油管上传你想要的任何视频！附 B 站 / YouTube 油猴脚本</title>
-    <updated>2026-10-02T16:46:13+00:00</updated>
-    <content>Vatrix 的 Github 仓库地址 灵感来源 不久之前刷到过了之前 B 站守望先锋直播的加密方案，就是对直播流进行分块重排置换，接着在网页端上再反着做一遍，实现直播原本不让直播的守望先锋，于是借鉴这个思路，我开发了 Vatrix 。 用法 作为一个独立的软件，它可以对视频做编码处理，并在编码完成的视频开头显示一秒的二维码，其中包含了解码所需的一些参数信息。 安装了配套的油猴插件后，会在视频刚播放的 0-1 秒检测当前视频画面中是否有二维码，有的话就尝试解析，并用解析出的参数对视频进行解码，下面上几张图 ⬆️ 编码后的视频，支持编码时做反色处理，使得编码后的内容更难被肉眼识别 ⬆️ 解码后的效果，能看到还是存在一些小方格，略有瑕疵，但不影响识别内容。顺带一提这里对原始音频做了个简单的频率倒置处理，可以去掉原始音频的语义性，人耳无法识别出处理后的音频表达什么内容。这个过程也是可逆的。 浏览器插件面板。这里以 B 站未为例，入口在分享按钮的右边，默认是会自动解码的，不需要手动点启动。 用 AI 简单搓的一个软件 UI ，有点丑，但能用。 后话 想看各位大佬会用它上传什么呢？ 有人用的话</content>
-    <link href="https://www.v2ex.com/t/1246187#reply2" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-02T16:46:13+00:00</published>
-    <media:group>
-      <media:content url="https://xingyeai-images-cdn.oss-cn-shanghai.aliyuncs.com/talkie-user-img/448124399158206/448129631791480.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://xingyeai-images-cdn.oss-cn-shanghai.aliyuncs.com/talkie-user-img/448124399158206/448129631791480.png"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://xingyeai-images-cdn.oss-cn-shanghai.aliyuncs.com/talkie-user-img/448124399158206/448129631791480.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/24fac841887ff389</id>
