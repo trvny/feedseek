@@ -49,6 +49,23 @@ class SiteFaviconTests(unittest.TestCase):
 
         self.assertEqual(feed["icon"], "https://example.com/rss.png")
 
+    def test_relative_rss_icon_resolves_against_source(self):
+        feed = self._parse(
+            """<?xml version="1.0"?>
+            <rss version="2.0"><channel>
+              <title>Test</title>
+              <link>https://example.com/news/</link>
+              <description>Test feed</description>
+              <image><url>icons/favicon.png</url></image>
+            </channel></rss>
+            """
+        )
+
+        self.assertEqual(
+            feed["icon"],
+            "https://example.com/news/icons/favicon.png",
+        )
+
     def test_feed_icon_precedes_service_fallbacks(self):
         candidates = build_site.favicon_candidates(
             {

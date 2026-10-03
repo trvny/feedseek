@@ -90,6 +90,18 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
                 {"domain": ["newsify.today"], "sz": ["64"]},
             )
             self.assertEqual(parse_qs(urlsplit(logo).query)["sz"], ["256"])
+            self.assertIn(
+                'xmlns:webfeeds="http://webfeeds.org/rss/1.0"',
+                rendered,
+            )
+            self.assertIn(
+                f"<webfeeds:icon>{icon.replace('&', '&amp;')}</webfeeds:icon>",
+                rendered,
+            )
+            self.assertIn(
+                f"<webfeeds:logo>{logo.replace('&', '&amp;')}</webfeeds:logo>",
+                rendered,
+            )
 
     def test_migrates_old_third_party_resolver_without_preserving_it(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -164,8 +176,15 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
             )
 
             changed = normalize_feed_self_links(feeds_dir)
+            self.assertEqual(changed, [feed])
+            first = feed.read_text(encoding="utf-8")
+            self.assertIn("xmlns:webfeeds=", first)
+            self.assertIn("<webfeeds:icon>", first)
+            self.assertIn("<webfeeds:logo>", first)
 
+            changed = normalize_feed_self_links(feeds_dir)
             self.assertEqual(changed, [])
+            self.assertEqual(feed.read_text(encoding="utf-8"), first)
 
     def test_json_sidecar_item_urls_are_not_rebuilt(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -40,6 +40,11 @@ _TAG_RE = {
     tag: re.compile(rf"<{tag}>(?P<value>[^<]+)</{tag}>")
     for tag in ("icon", "logo")
 }
+WEBFEEDS_NS = "http://webfeeds.org/rss/1.0"
+_WEBFEEDS_TAG_RE = {
+    tag: re.compile(rf"<webfeeds:{tag}>(?P<value>[^<]+)</webfeeds:{tag}>")
+    for tag in ("icon", "logo")
+}
 _LINK_RE = re.compile(r"<link\b(?P<attrs>[^>]*)/?>", re.IGNORECASE)
 _ATTR_RE = re.compile(
     r"""(?P<name>[:\w.-]+)\s*=\s*(?P<quote>["'])(?P<value>.*?)\2""",
@@ -161,8 +166,39 @@ def _managed_icon_pair(content: str) -> tuple[str, str] | None:
     return icon, large_icon(icon, 256)
 
 
+def _normalize_webfeeds_icons(content: str, icon_value: str, logo_value: str) -> str:
+    """Mirror favicon metadata through the WebFeeds extension too."""
+    if "xmlns:webfeeds=" not in content:
+        content = content.replace(
+            "<feed",
+            f'<feed xmlns:webfeeds="{WEBFEEDS_NS}"',
+            1,
+        )
+
+    values = {"icon": icon_value, "logo": logo_value}
+    for tag, value in values.items():
+        escaped = html_lib.escape(value, quote=False)
+        pattern = _WEBFEEDS_TAG_RE[tag]
+        if pattern.search(content):
+            content = pattern.sub(
+                f"<webfeeds:{tag}>{escaped}</webfeeds:{tag}>",
+                content,
+                count=1,
+            )
+            continue
+
+        anchor = _tag_match(content, "logo") or _tag_match(content, "icon")
+        if not anchor:
+            continue
+        indent = _tag_indent(content, anchor.start())
+        insertion = f"\n{indent}<webfeeds:{tag}>{escaped}</webfeeds:{tag}>"
+        content = content[: anchor.end()] + insertion + content[anchor.end() :]
+
+    return content
+
+
 def _normalize_atom_icons(content: str) -> str:
-    """Publish stable managed Atom icon/logo metadata for every source feed."""
+    """Publish managed favicon metadata through Atom and WebFeeds channels."""
     pair = _managed_icon_pair(content)
     if pair is None:
         return content
@@ -190,7 +226,7 @@ def _normalize_atom_icons(content: str) -> str:
         content = _replace_tag(content, "logo", logo_value)
     else:
         content = _insert_after_tag(content, "icon", "logo", logo_value)
-    return content
+    return _normalize_webfeeds_icons(content, icon_value, logo_value)
 
 
 def _rewrite_json_sidecar(xml_path: Path, icon: str, logo: str) -> None:
