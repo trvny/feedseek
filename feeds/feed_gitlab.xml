@@ -2,7 +2,7 @@
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://about.gitlab.com/</id>
   <title>GitLab</title>
-  <updated>2026-10-02T13:06:01.808552+00:00</updated>
+  <updated>2026-10-03T05:40:48.985355+00:00</updated>
   <author>
     <name>Various</name>
   </author>
@@ -12,6 +12,31 @@
   <icon>https://about.gitlab.com/favicon.ico</icon>
   <logo>https://about.gitlab.com/favicon.ico</logo>
   <subtitle>Combined GitLab and federated forge feed: GitLab blog, release notes, patch releases, press releases and what's new, plus Codeberg and Forgejo.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/gitlab/2243b349d3b95723</id>
+    <title>GitLab AI Gateway Critical Patch Release: 19.2.4, 19.3.2, and 19.4.1</title>
+    <updated>2026-10-02T00:00:00+00:00</updated>
+    <content>We have released versions 19.2.4, 19.3.2, and 19.4.1 of the GitLab AI Gateway. These versions contain a critical security fix for GitLab Self-Hosted AI Gateway, and we strongly recommend that all GitLab Self-Managed customers with GitLab Self-Hosted AI Gateway installations update to one of these versions immediately. We have conducted targeted outreach to Self-Hosted AI Gateway customers prior to this release post with this guidance. A fix has already been deployed for GitLab-hosted AI Gateways</content>
+    <link href="https://docs.gitlab.com/releases/patches/other-patches/patch-release-gitlab-ai-gateway-19-4-1-released/" rel="alternate"/>
+    <category term="GitLab Patch Releases" label="GitLab Patch Releases"/>
+    <published>2026-10-02T00:00:00+00:00</published>
+    <dc:creator>GitLab Patch Releases</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/gitlab/415782a46f992c00</id>
+    <title>DeepSeek-Reasonix: How a poisoned config can hijack an AI coding agent</title>
+    <updated>2026-10-02T00:00:00+00:00</updated>
+    <content>GitLab's Threat Research Group discovered a command execution vulnerability ( GHSA-grg2-7gc6-36m6 , CVE-2026-102437 ) in DeepSeek-Reasonix Studio, a desktop git client designed for developers pairing with AI coding assistants. The flaw, called ConfigPoisoning, could allow attacker-supplied code to execute when a developer views a file's diff. To address this vulnerability, you should update to DeepSeek-Reasonix Studio 2.21.0 or DeepSeek Reasonix npm 1.39.3. This is not an isolated DeepSeek-Reaso</content>
+    <link href="https://about.gitlab.com/blog/deepseek-reasonix-vulnerability-discovered/" rel="alternate"/>
+    <category term="GitLab Blog" label="GitLab Blog"/>
+    <published>2026-10-02T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png"/>
+    </media:group>
+    <dc:creator>GitLab Blog</dc:creator>
+    <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/gitlab/215f7c420e12bfd3</id>
     <title>GitLab and Claude Code: Fast, compliant AI</title>
@@ -597,21 +622,6 @@ He is also an active translator and a member of the GitLab Community Discord. Pr
     </media:group>
     <dc:creator>GitLab Blog</dc:creator>
     <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1783421764/x0oyszct1nuhzg7sxv0z.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/gitlab/b15c511852bc5351</id>
-    <title>How GitLab tracks vulnerabilities through refactors and reformatting</title>
-    <updated>2026-08-12T00:00:00+00:00</updated>
-    <content>Every day, security scans face the same problem: an agent or a developer adds a comment, reformats a file, or moves a function, and a naive vulnerability tracker suddenly reports the same finding twice. Security teams end up re-triaging issues they already dismissed, which causes futile auditing effort and erodes trust in the scan results. In 2022, we introduced advanced vulnerability tracking to tackle exactly this problem of code volatility . It is based on our Scope+Offset fingerprinting meth</content>
-    <link href="https://about.gitlab.com/blog/improved-scope-offset-fingerprinting/" rel="alternate"/>
-    <category term="GitLab Blog" label="GitLab Blog"/>
-    <published>2026-08-12T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1759320418/xjmqcozxzt4frx0hori3.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1759320418/xjmqcozxzt4frx0hori3.png"/>
-    </media:group>
-    <dc:creator>GitLab Blog</dc:creator>
-    <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1759320418/xjmqcozxzt4frx0hori3.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/gitlab/12b6b486d148d59e</id>
@@ -1308,16 +1318,6 @@ He has consistently delivered essential Git operations, directly addressing</con
     <link href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-18-2-4-released/" rel="alternate"/>
     <category term="GitLab Patch Releases" label="GitLab Patch Releases"/>
     <published>2025-08-18T00:00:00+00:00</published>
-    <dc:creator>GitLab Patch Releases</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/gitlab/44f128818fa7f799</id>
-    <title>GitLab Patch Release: 17.11.7</title>
-    <updated>2025-08-15T00:00:00+00:00</updated>
-    <content>On August 15, 2025, we released version 17.11.7 for GitLab Community Edition and Enterprise Edition. These versions resolve a number of regressions and bugs. This patch release does not include any security fixes. GitLab Community Edition and Enterprise Edition 17.11.7 Backport ‘Replace test-on-gdk with test-on-cng in backport mr pipelines’ Quarantine failing DORA Metrics dashboard tests (target single context) Backport of “Ensure docs hugo_build CI job uses docs-gitlab-com stable branches” Back</content>
-    <link href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-17-11-7-released/" rel="alternate"/>
-    <category term="GitLab Patch Releases" label="GitLab Patch Releases"/>
-    <published>2025-08-15T00:00:00+00:00</published>
     <dc:creator>GitLab Patch Releases</dc:creator>
   </entry>
   <entry>
