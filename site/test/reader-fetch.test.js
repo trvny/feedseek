@@ -20,7 +20,7 @@ function makeContext(nativeFetch, cfg = {}) {
 }
 
 test("limits feed tasks while preserving input order", async () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { allSettledLimited } = window.FeedseekReaderUtils;
   let active = 0;
   let maxActive = 0;
@@ -42,7 +42,7 @@ test("limits feed tasks while preserving input order", async () => {
 });
 
 test("does not start queued tasks until a worker slot is free", async () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { allSettledLimited } = window.FeedseekReaderUtils;
   const releases = [];
   const started = [];
@@ -63,7 +63,7 @@ test("does not start queued tasks until a worker slot is free", async () => {
 });
 
 test("preserves rejected results without stopping other tasks", async () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { allSettledLimited } = window.FeedseekReaderUtils;
   const boom = new Error("boom");
 
@@ -80,11 +80,51 @@ test("preserves rejected results without stopping other tasks", async () => {
   assert.equal(results[2].value, "C");
 });
 
+
+
+test("reader favicon candidates prefer explicit feed assets, then managed resolver", () => {
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
+  const { faviconCandidates } = window.FeedseekReaderUtils;
+
+  const wykop = Array.from(faviconCandidates(
+    "https://wykop.pl/static/img/favicons/favicon.png",
+    "https://wykop.pl/",
+    32,
+  ));
+  assert.equal(wykop[0], "https://wykop.pl/static/img/favicons/favicon.png");
+  assert.match(wykop[1], /^https:\/\/feeds\.trfny\.com\/favicon\?/);
+  assert.match(wykop[1], /domain=wykop\.pl/);
+
+  const newsify = Array.from(faviconCandidates(
+    "https://newsify.today/favicon.ico",
+    "https://newsify.today/polish/PL",
+    32,
+  ));
+  assert.match(newsify[0], /^https:\/\/feeds\.trfny\.com\/favicon\?/);
+  assert.equal(newsify.at(-1), "https://newsify.today/favicon.ico");
+});
+
+test("reader favicon candidates keep already managed feed icons first", () => {
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
+  const { faviconCandidates } = window.FeedseekReaderUtils;
+  const managed = "https://feeds.trfny.com/favicon?domain=jbzd.com.pl&sz=64";
+
+  const candidates = Array.from(faviconCandidates(
+    managed,
+    "https://jbzd.com.pl/",
+    32,
+  ));
+
+  assert.equal(candidates[0], managed);
+  assert.match(candidates[1], /domain=jbzd\.com\.pl/);
+  assert.match(candidates[1], /sz=32/);
+});
+
 test("keeps same-origin proxy bypass unchanged", async () => {
   const seen = [];
-  const nativeFetch = async input => {
+  const nativeFetch = input => {
     seen.push(String(input));
-    return new Response("ok");
+    return Promise.resolve(new Response("ok"));
   };
   const proxy = "https://proxy.test/?url=";
   const window = makeContext(nativeFetch, { proxy });
@@ -97,11 +137,11 @@ test("keeps same-origin proxy bypass unchanged", async () => {
 
 
 test("keeps cached items only for feeds that failed", () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { mergeRefreshResults } = window.FeedseekReaderUtils;
   const feeds = [
-    { title: "Same title", xmlUrl: "https://a.test/feed" },
-    { title: "Same title", xmlUrl: "https://b.test/feed" },
+    { title: "Same title", xmlUrl: "https://a.test/feed", htmlUrl: "https://a.test/" },
+    { title: "Same title", xmlUrl: "https://b.test/feed", htmlUrl: "https://b.test/" },
   ];
   const fresh = { source: "Same title", feedUrl: feeds[0].xmlUrl, url: "https://a.test/new" };
   const staleA = { source: "Same title", feedUrl: feeds[0].xmlUrl, url: "https://a.test/old" };
@@ -121,7 +161,7 @@ test("keeps cached items only for feeds that failed", () => {
 });
 
 test("does not keep cached items for unsubscribed feeds", () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { mergeRefreshResults } = window.FeedseekReaderUtils;
   const feed = { title: "Current", xmlUrl: "https://current.test/feed" };
   const removed = { source: "Removed", feedUrl: "https://removed.test/feed", url: "https://removed.test/old" };
@@ -138,7 +178,7 @@ test("does not keep cached items for unsubscribed feeds", () => {
 
 
 test("migrates legacy cached items to a unique feed URL before preserving them", () => {
-  const window = makeContext(async () => new Response("ok"));
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { mergeRefreshResults } = window.FeedseekReaderUtils;
   const feed = { title: "Legacy", xmlUrl: "https://legacy.test/feed" };
   const cached = { source: "Legacy", url: "https://legacy.test/article" };
@@ -152,4 +192,25 @@ test("migrates legacy cached items to a unique feed URL before preserving them",
   assert.equal(merged.items.length, 1);
   assert.equal(merged.items[0].feedUrl, feed.xmlUrl);
   assert.equal(merged.items[0].url, cached.url);
+});
+
+
+test("legacy cached items inherit the OPML site URL for favicon fallback", () => {
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
+  const { mergeRefreshResults } = window.FeedseekReaderUtils;
+  const feed = {
+    title: "Legacy",
+    xmlUrl: "https://reader.test/feed_legacy.xml",
+    htmlUrl: "https://legacy.example/news",
+  };
+  const cached = { source: "Legacy", url: "https://other.example/article" };
+
+  const merged = mergeRefreshResults(
+    [feed],
+    [{ status: "rejected", reason: new Error("down") }],
+    [cached],
+  );
+
+  assert.equal(merged.items[0].feedUrl, feed.xmlUrl);
+  assert.equal(merged.items[0].feedSite, feed.htmlUrl);
 });

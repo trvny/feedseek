@@ -10,6 +10,8 @@ const BROWSER_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 const DEFAULT_ACCEPT = "application/atom+xml, application/rss+xml, application/xml, text/xml, application/json, text/plain, text/html;q=0.8, */*;q=0.1";
 const MAX_REDIRECTS = 3;
 const MAX_RESPONSE_BYTES = 2 * 1024 * 1024;
+const MAX_FAVICON_BYTES = 512 * 1024;
+const FAVICON_ACCEPT = "image/avif, image/webp, image/png, image/svg+xml, image/*, */*;q=0.1";
 const BODYLESS_STATUSES = new Set([101, 204, 205, 304]);
 const PROXY_ORIGIN = "https://feeds.trfny.com";
 const ROBOTS = "User-agent: *\nAllow: /index.md\nAllow: /llms.txt\nAllow: /llms-full.txt\nDisallow: /\n";
@@ -76,13 +78,14 @@ function parseTarget(value, base) {
 
 /**
  * @param {URL} initialUrl
- * @param {{timeoutMs?: number, userAgent?: string, allowedHosts?: Set<string>}} [options]
+ * @param {{timeoutMs?: number, userAgent?: string, allowedHosts?: Set<string>, accept?: string}} [options]
  */
 async function fetchWithRedirects(initialUrl, options = {}) {
   const {
     timeoutMs = FETCH_TIMEOUT_MS,
     userAgent = DEFAULT_USER_AGENT,
     allowedHosts = null,
+    accept = DEFAULT_ACCEPT,
   } = options;
   let target = initialUrl;
   const signal = AbortSignal.timeout(timeoutMs);
@@ -91,7 +94,7 @@ async function fetchWithRedirects(initialUrl, options = {}) {
     const response = await fetch(target, {
       headers: {
         "user-agent": userAgent,
-        accept: DEFAULT_ACCEPT,
+        accept,
       },
       redirect: "manual",
       signal,
@@ -111,12 +114,15 @@ async function fetchWithRedirects(initialUrl, options = {}) {
   throw new Error("too many redirects");
 }
 
-/** @param {Response} response */
-async function readLimited(response) {
+/**
+ * @param {Response} response
+ * @param {number} [maxBytes]
+ */
+async function readLimited(response, maxBytes = MAX_RESPONSE_BYTES) {
   if (BODYLESS_STATUSES.has(response.status) || !response.body) return null;
 
   const declared = Number(response.headers.get("content-length") || 0);
-  if (declared > MAX_RESPONSE_BYTES) throw new Error("response too large");
+  if (declared > maxBytes) throw new Error("response too large");
 
   const reader = response.body.getReader();
   /** @type {Uint8Array[]} */
@@ -129,7 +135,7 @@ async function readLimited(response) {
       if (done) break;
 
       size += value.byteLength;
-      if (size > MAX_RESPONSE_BYTES) {
+      if (size > maxBytes) {
         await reader.cancel("response too large");
         throw new Error("response too large");
       }
@@ -266,6 +272,104 @@ async function thirteen37xResponse() {
   return text(message, 502);
 }
 
+/** @param {string} value */
+function parseFaviconDomain(value) {
+  const raw = value.trim().toLowerCase().replace(/\.$/, "");
+  if (!raw || raw.includes("/") || raw.includes("@") || raw.includes(":")) {
+    throw new Error("bad domain");
+  }
+  const target = parseTarget(`https://${raw}/`);
+  return target.hostname.toLowerCase();
+}
+
+/** @param {Uint8Array | null} body @param {string} contentType */
+function looksLikeImage(body, contentType) {
+  if (!body || body.byteLength < 4) return false;
+  if (contentType.startsWith("image/")) return true;
+
+  const head = body.slice(0, 16);
+  const ascii = new TextDecoder().decode(body.slice(0, 256)).trimStart().toLowerCase();
+  if (head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47) return true;
+  if (head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff) return true;
+  if (head[0] === 0x47 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x38) return true;
+  if (head[0] === 0x00 && head[1] === 0x00 && head[2] === 0x01 && head[3] === 0x00) return true;
+  if (ascii.startsWith("<svg") || (ascii.startsWith("<?xml") && ascii.includes("<svg"))) return true;
+  return head[0] === 0x52 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x46;
+}
+
+/** @param {URL} requestUrl @param {string} method */
+async function faviconResponse(requestUrl, method = "GET") {
+  const rawUrl = requestUrl.searchParams.get("url")?.trim() || "";
+  let explicit = null;
+  if (rawUrl) {
+    try {
+      explicit = parseTarget(rawUrl);
+    } catch (error) {
+      const blocked = error instanceof Error && error.message === "blocked host";
+      return text(blocked ? "blocked host" : "bad url", blocked ? 403 : 400);
+    }
+  }
+
+  let domain = "";
+  const rawDomain = requestUrl.searchParams.get("domain")?.trim() || "";
+  if (rawDomain) {
+    try {
+      domain = parseFaviconDomain(rawDomain);
+    } catch (error) {
+      const blocked = error instanceof Error && error.message === "blocked host";
+      return text(blocked ? "blocked host" : "bad domain", blocked ? 403 : 400);
+    }
+  } else if (explicit) {
+    domain = explicit.hostname.toLowerCase();
+  }
+  if (!domain) return text("bad domain", 400);
+
+  const requestedSize = Number.parseInt(requestUrl.searchParams.get("sz") || "64", 10);
+  const size = Number.isFinite(requestedSize)
+    ? Math.min(512, Math.max(16, requestedSize))
+    : 64;
+  const provider = requestUrl.searchParams.get("provider") === "duckduckgo"
+    ? "duckduckgo"
+    : "google";
+  const google = new URL("https://www.google.com/s2/favicons");
+  google.searchParams.set("domain", domain);
+  google.searchParams.set("sz", String(size));
+  const duckduckgo = new URL(`https://icons.duckduckgo.com/ip3/${domain}.ico`);
+  const direct = new URL(`https://${domain}/favicon.ico`);
+  const resolverOrder = provider === "duckduckgo"
+    ? [duckduckgo, google]
+    : [google, duckduckgo];
+  const candidates = [...resolverOrder, direct];
+  if (explicit) candidates.unshift(explicit);
+  const seen = new Set();
+
+  for (const target of candidates) {
+    if (seen.has(target.href)) continue;
+    seen.add(target.href);
+    try {
+      const upstream = await fetchWithRedirects(target, {
+        userAgent: BROWSER_USER_AGENT,
+        accept: FAVICON_ACCEPT,
+      });
+      if (!upstream.ok) continue;
+      const body = await readLimited(upstream, MAX_FAVICON_BYTES);
+      const contentType = (upstream.headers.get("content-type") || "").split(";")[0].toLowerCase();
+      if (!looksLikeImage(body, contentType)) continue;
+
+      const headers = new Headers({ ...CORS_HEADERS, ...SECURITY_HEADERS });
+      headers.set("content-type", contentType.startsWith("image/") ? contentType : "image/x-icon");
+      headers.set("cache-control", "public, max-age=86400, stale-while-revalidate=604800");
+      headers.set("x-robots-tag", "noindex, nofollow");
+      return new Response(method === "HEAD" ? null : body, { status: 200, headers });
+    } catch {
+      // Try the next resolver. One broken favicon must not make the endpoint brittle.
+    }
+  }
+
+  return text("favicon unavailable", 404);
+}
+
+
 /** @param {URL} requestUrl */
 async function proxyResponse(requestUrl) {
   const raw = requestUrl.searchParams.get("url");
@@ -312,6 +416,12 @@ export default {
     const requestUrl = new URL(request.url);
     const discovery = discoveryResponse(request, requestUrl);
     if (discovery) return discovery;
+    if (requestUrl.pathname === "/favicon") {
+      if (request.method !== "GET" && request.method !== "HEAD") {
+        return text("method not allowed", 405);
+      }
+      return faviconResponse(requestUrl, request.method);
+    }
     if (request.method !== "GET") return text("method not allowed", 405);
     if (requestUrl.pathname === "/download-soundtracks") {
       return downloadSoundtracksResponse(requestUrl);

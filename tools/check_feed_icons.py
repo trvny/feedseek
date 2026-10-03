@@ -2,12 +2,9 @@
 """Report published feeds whose <icon> does not actually resolve to an image.
 
 Why this exists: every feed declares an <icon>, but nothing ever checked that
-the URL answers. On 11.08.2026 seventeen of ninety were dead — some 404, some
-403, some a 200 with an empty body — and the failure is invisible from inside
-the repo: the XML looks complete, validate_feeds.py passes, and the only symptom
-is a letter avatar in the reader. The site does not show it either, because
-site/build_site.py carries its own fallback chain in the browser, so a feed can
-look fine there and blank in a reader.
+the URL answers. The feeds now converge on Feedseek's stable favicon resolver,
+so this primarily checks that the resolver is returning actual image bytes for
+every generated feed rather than a status-200 error page.
 
 Deliberately a manual tool, not part of validate_feeds.py: it needs the network
 and talks to third-party icon proxies, so wiring it into the scheduled run would
@@ -107,8 +104,8 @@ def main() -> int:
             print(f"  ZLE   {name:26s} {note}")
             print(f"        {icon or '(nic nie zadeklarowano)'}")
         print(
-            "\nNaprawa: dopisz domene do utils.VERIFIED_ICONS (trafi przez Google S2,\n"
-            "ktory sam sie naprawia), albo podaj icon= w generatorze."
+            "\nNaprawa: sprawdz feeds.trfny.com/favicon i ewentualny jawny icon= "
+            "w generatorze; wszystkie feedy powinny isc przez wspolny resolver."
         )
         return 1
 

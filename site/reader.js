@@ -90,26 +90,32 @@ function saveFavsCache(){
   }
   ls.set('favs', JSON.stringify(favsCache));
 }
-function makeFav(h){
-  if(!cfg.favs || !h) return null;
+function makeFav(iconUrl, siteUrl){
+  if(!cfg.favs) return null;
+  const candidates=window.FeedseekReaderUtils.faviconCandidates(iconUrl,siteUrl,32);
   const img=document.createElement('img');
   img.className='fav';
   img.loading='lazy';
   img.alt='';
-  const remember=state=>{ favsCache[h]=state; saveFavsCache(); };
-  const useFallback=()=>{ img.onerror=null; img.onload=null; img.src=RSS_FALLBACK; remember('x'); };
-  const useGoogle=()=>{
-    img.onerror=useFallback;
-    img.onload=()=>remember('g');
-    img.src=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(h)}&sz=32`;
+  const key=candidates.join('|')||'fallback';
+  const remember=state=>{ favsCache[key]=state; saveFavsCache(); };
+  const useFallback=()=>{
+    img.onerror=null;
+    img.onload=null;
+    img.src=RSS_FALLBACK;
+    remember('x');
   };
-  const state=favsCache[h];
+  const useCandidate=index=>{
+    if(index>=candidates.length){ useFallback(); return; }
+    img.onerror=()=>useCandidate(index+1);
+    img.onload=()=>remember(String(index));
+    img.src=candidates[index];
+  };
+  const state=favsCache[key];
   if(state==='x') img.src=RSS_FALLBACK;
-  else if(state==='g') useGoogle();
   else{
-    img.onerror=useGoogle;
-    img.onload=()=>remember('ddg');
-    img.src=`https://icons.duckduckgo.com/ip3/${encodeURIComponent(h)}.ico`;
+    const remembered=Number.parseInt(state,10);
+    useCandidate(Number.isInteger(remembered)&&remembered>=0?remembered:0);
   }
   return img;
 }
@@ -178,16 +184,33 @@ function mediaImg(n, base){
   const m=body && body.match(/<img[^>]+src=["']([^"']+)["']/i);
   return m ? safeHttpUrl(m[1],base) : '';
 }
-function parseFeed(xml, source, feedUrl){
+function parseFeed(xml, source, feedUrl, opmlSite=''){
   const doc=new DOMParser().parseFromString(xml,'text/xml');
   if(doc.querySelector('parsererror')) throw new Error('bad xml');
+  const root=doc.documentElement;
+  const rootName=root?.tagName?.toLowerCase().replace(/^.*:/,'')||'';
+  let feedIcon='', feedSite=safeHttpUrl(opmlSite,feedUrl);
+
+  if(rootName==='feed'){
+    feedIcon=safeHttpUrl(txt(root,'icon','logo'),feedUrl);
+    feedSite=safeHttpUrl(lnk(root),feedUrl)||feedSite;
+  }else if(rootName==='rss'){
+    const channel=[...root.children].find(e=>e.tagName.toLowerCase().replace(/^.*:/,'')==='channel');
+    if(channel){
+      const image=[...channel.children].find(e=>e.tagName.toLowerCase().replace(/^.*:/,'')==='image');
+      feedIcon=image?safeHttpUrl(txt(image,'url'),feedUrl):'';
+      feedSite=safeHttpUrl(lnk(channel),feedUrl)||feedSite;
+    }
+  }
+
   return [...doc.querySelectorAll('item, entry')].map(n=>{
     const d=txt(n,'pubdate','published','updated','date');
     const ts=d ? Date.parse(d) : NaN;
     const title=txt(n,'title')||'(untitled)';
     let desc=clean(txt(n,'description','summary','content','encoded'));
     if(desc && desc.toLowerCase()===title.toLowerCase()) desc='';
-    return {source, feedUrl, title, desc, url:safeHttpUrl(lnk(n),feedUrl),
+    return {source, feedUrl, feedIcon, feedSite, title, desc,
+            url:safeHttpUrl(lnk(n),feedUrl),
             ts:isNaN(ts)?0:ts, img:mediaImg(n,feedUrl)};
   }).filter(i=>i.title && i.url);
 }
@@ -222,7 +245,8 @@ function parseOpml(text, base=document.baseURI){
       attrs[attr[1].toLowerCase()]=decodeXmlAttr(attr[2]??attr[3]??'');
     }
     const xmlUrl=safeHttpUrl(attrs.xmlurl,base);
-    if(xmlUrl) feeds.push({title:attrs.title||attrs.text||'feed',xmlUrl});
+    const htmlUrl=safeHttpUrl(attrs.htmlurl,base);
+    if(xmlUrl) feeds.push({title:attrs.title||attrs.text||'feed',xmlUrl,htmlUrl});
   }
   return feeds;
 }
@@ -231,9 +255,10 @@ function opmlOutlineCount(text){
 }
 function buildOpml(feeds){
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const body=feeds.map(f=>
-    `    <outline type="rss" text="${esc(f.title)}" title="${esc(f.title)}" xmlUrl="${esc(f.xmlUrl)}"/>`
-  ).join('\n');
+  const body=feeds.map(f=>{
+    const htmlUrl=f.htmlUrl?` htmlUrl="${esc(f.htmlUrl)}"`:'';
+    return `    <outline type="rss" text="${esc(f.title)}" title="${esc(f.title)}" xmlUrl="${esc(f.xmlUrl)}"${htmlUrl}/>`;
+  }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<opml version="2.0">\n  <head><title>feed·seek subscriptions</title></head>\n  <body>\n${body}\n  </body>\n</opml>\n`;
 }
 
@@ -258,7 +283,7 @@ async function fetchText(url, options={}, timeoutMs=FEED_TIMEOUT_MS){
 }
 async function loadFeed(f, signal){
   const xml=await fetchText(prox(f.xmlUrl),{redirect:'follow',signal},FEED_TIMEOUT_MS);
-  return parseFeed(xml,f.title,f.xmlUrl);
+  return parseFeed(xml,f.title,f.xmlUrl,f.htmlUrl||'');
 }
 function fairLimit(items, limit){
   if(items.length<=limit) return items;
@@ -327,13 +352,13 @@ async function run(){
     }
 
     let done=0;
-    const results=await FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
+    const results=await window.FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
       try{ return await loadFeed(f,controller.signal); }
       finally{ done++; setProgress(done,feeds.length,version); }
     });
     if(version!==runVersion || controller.signal.aborted) return;
 
-    const merged=FeedseekReaderUtils.mergeRefreshResults(feeds,results,ITEMS);
+    const merged=window.FeedseekReaderUtils.mergeRefreshResults(feeds,results,ITEMS);
     const nextItems=merged.items, nextFailed=merged.failed;
     const seen=new Set();
     const deduped=nextItems.filter(i=>!seen.has(i.url)&&seen.add(i.url)).sort((a,b)=>b.ts-a.ts);
@@ -395,7 +420,7 @@ function render(){
     link.className='item'; link.href=url; link.target='_blank'; link.rel='noopener';
     const text=document.createElement('div'); text.className='itxt';
     const source=document.createElement('div'); source.className='src';
-    const fav=makeFav(host(url)); if(fav) source.appendChild(fav);
+    const fav=makeFav(item.feedIcon,item.feedSite||item.feedUrl); if(fav) source.appendChild(fav);
     source.appendChild(document.createTextNode(item.source||'feed'));
     const title=document.createElement('div'); title.className='t'; title.textContent=item.title||'(untitled)';
     text.append(source,title);

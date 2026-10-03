@@ -1,5 +1,45 @@
 (() => {
   const nativeFetch = window.fetch.bind(window);
+  const FAVICON_PROXY_ORIGIN = "https://feeds.trfny.com/favicon";
+
+  function faviconCandidates(iconUrl, siteUrl, size = 32) {
+    const httpUrl = value => {
+      try {
+        const url = new URL(String(value || ""));
+        return url.protocol === "http:" || url.protocol === "https:" ? url : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const icon = httpUrl(iconUrl);
+    const site = httpUrl(siteUrl);
+    const domain = site?.hostname || icon?.hostname || "";
+    if (!domain) return icon ? [icon.href] : [];
+
+    const managed = new URL(FAVICON_PROXY_ORIGIN);
+    managed.searchParams.set("domain", domain);
+    managed.searchParams.set("sz", String(size));
+
+    const rootGuess = site ? new URL("/favicon.ico", site).href : "";
+    const isOldResolver = icon && (
+      icon.hostname === "www.google.com"
+      || icon.hostname === "icons.duckduckgo.com"
+    );
+    const preferredExplicit = icon
+      && icon.href !== rootGuess
+      && !isOldResolver
+      && !(icon.hostname === "feeds.trfny.com" && icon.pathname === "/favicon");
+
+    const candidates = [];
+    if (preferredExplicit) candidates.push(icon.href);
+    if (icon?.hostname === "feeds.trfny.com" && icon.pathname === "/favicon") {
+      candidates.push(icon.href);
+    }
+    candidates.push(managed.href);
+    if (icon) candidates.push(icon.href);
+    return [...new Set(candidates)];
+  }
 
   async function allSettledLimited(items, limit, task) {
     const results = new Array(items.length);
@@ -22,16 +62,22 @@
     return results;
   }
 
-  function migrateLegacyFeedUrls(items, feeds) {
-    const urlsByTitle = new Map();
+  function migrateLegacyFeedMetadata(items, feeds) {
+    const feedsByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed]));
+    const feedsByTitle = new Map();
     for (const feed of feeds) {
-      if (!urlsByTitle.has(feed.title)) urlsByTitle.set(feed.title, feed.xmlUrl);
-      else urlsByTitle.set(feed.title, null);
+      if (!feedsByTitle.has(feed.title)) feedsByTitle.set(feed.title, feed);
+      else feedsByTitle.set(feed.title, null);
     }
     return items.map(item => {
-      if (item.feedUrl) return item;
-      const feedUrl = urlsByTitle.get(item.source);
-      return feedUrl ? { ...item, feedUrl } : item;
+      const feed = (item.feedUrl && feedsByUrl.get(item.feedUrl))
+        || feedsByTitle.get(item.source);
+      if (!feed) return item;
+      return {
+        ...item,
+        feedUrl: item.feedUrl || feed.xmlUrl,
+        feedSite: item.feedSite || feed.htmlUrl || "",
+      };
     });
   }
 
@@ -40,7 +86,7 @@
     const failed = [];
     const failedUrls = new Set();
     const titlesByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed.title]));
-    const cachedItems = migrateLegacyFeedUrls(previousItems, feeds);
+    const cachedItems = migrateLegacyFeedMetadata(previousItems, feeds);
 
     results.forEach((result, index) => {
       const feed = feeds[index];
@@ -59,7 +105,11 @@
     return { items, failed };
   }
 
-  window.FeedseekReaderUtils = { allSettledLimited, mergeRefreshResults };
+  window.FeedseekReaderUtils = {
+    allSettledLimited,
+    faviconCandidates,
+    mergeRefreshResults,
+  };
 
   function configuredProxy() {
     try {

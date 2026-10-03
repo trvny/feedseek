@@ -43,6 +43,99 @@ test("forwards valid HTTPS feeds with cache and security headers", async () => {
   });
 });
 
+
+
+test("serves favicons through one stable image endpoint", async () => {
+  const seen = [];
+  await withFetch((url, init) => {
+    seen.push({ url: String(url), init });
+    return Promise.resolve(new Response(new Uint8Array([0x89, 0x50, 0x4e, 0x47]), {
+      status: 200,
+      headers: { "content-type": "image/png" },
+    }));
+  }, async () => {
+    const explicit = encodeURIComponent("https://example.com/assets/icon.png");
+    const response = await worker.fetch(new Request(
+      `https://proxy.test/favicon?domain=example.com&url=${explicit}&sz=64`,
+    ));
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("content-type"), "image/png");
+    assert.match(response.headers.get("cache-control"), /max-age=86400/);
+    assert.equal(response.headers.get("access-control-allow-origin"), "*");
+    assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+    assert.equal(seen[0].url, "https://example.com/assets/icon.png");
+    assert.equal(seen[0].init.headers.accept.startsWith("image/"), true);
+  });
+});
+
+test("falls back from a bad explicit favicon to a resolver", async () => {
+  const seen = [];
+  await withFetch((url) => {
+    seen.push(String(url));
+    if (seen.length === 1) {
+      return Promise.resolve(new Response("<html>not an icon</html>", {
+        status: 200,
+        headers: { "content-type": "text/html" },
+      }));
+    }
+    return Promise.resolve(new Response(new Uint8Array([0x00, 0x00, 0x01, 0x00]), {
+      status: 200,
+      headers: { "content-type": "image/x-icon" },
+    }));
+  }, async () => {
+    const explicit = encodeURIComponent("https://example.com/favicon.ico");
+    const response = await worker.fetch(new Request(
+      `https://proxy.test/favicon?domain=example.com&url=${explicit}&sz=32`,
+    ));
+
+    assert.equal(response.status, 200);
+    assert.equal(seen[0], "https://example.com/favicon.ico");
+    assert.match(seen[1], /^https:\/\/www\.google\.com\/s2\/favicons\?/);
+    assert.match(seen[1], /domain=example\.com/);
+    assert.match(seen[1], /sz=32/);
+  });
+});
+
+test("favicon endpoint prefers the requested resolver and supports HEAD", async () => {
+  let seen = "";
+  await withFetch((url) => {
+    seen = String(url);
+    return Promise.resolve(new Response(new Uint8Array([0x00, 0x00, 0x01, 0x00]), {
+      status: 200,
+      headers: { "content-type": "image/x-icon" },
+    }));
+  }, async () => {
+    const response = await worker.fetch(new Request(
+      "https://proxy.test/favicon?domain=example.com&provider=duckduckgo&sz=9999",
+      { method: "HEAD" },
+    ));
+
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), "");
+    assert.equal(seen, "https://icons.duckduckgo.com/ip3/example.com.ico");
+  });
+});
+
+test("favicon endpoint rejects blocked or malformed domains before fetching", async () => {
+  let calls = 0;
+  await withFetch(() => {
+    calls += 1;
+    return Promise.resolve(new Response("unexpected"));
+  }, async () => {
+    const privateHost = await worker.fetch(new Request(
+      "https://proxy.test/favicon?domain=127.0.0.1",
+    ));
+    const malformed = await worker.fetch(new Request(
+      "https://proxy.test/favicon?domain=example.com%2Fevil",
+    ));
+
+    assert.equal(privateHost.status, 403);
+    assert.equal(malformed.status, 400);
+    assert.equal(calls, 0);
+  });
+});
+
 test("uses the allowlisted Download Soundtracks fetch route", async () => {
   let seenUrl;
   let seenInit;

@@ -41,6 +41,7 @@ SITE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "feed_generators"))
 
 from models import load_published_feeds  # noqa: E402
+from utils import favicon_proxy  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
@@ -221,29 +222,30 @@ def _absolute_icon(url: str, source: str) -> str:
 
 
 def favicon_candidates(feed: dict) -> list[str]:
-    """Return preferred icon URLs, ending with the local RSS mark."""
+    """Return one shared favicon path plus source-specific and local fallbacks."""
     source = feed.get("source", "")
     dom = domain_of(source)
+    origin = origin_of(source)
+    root_guess = f"{origin}/favicon.ico" if origin else ""
     supplied = [
         _absolute_icon(feed.get("icon", ""), source),
         _absolute_icon(feed.get("logo", ""), source),
     ]
-    candidates = [
+
+    # A source-specific asset (for example Wykop's PNG) is valuable and should
+    # win. Generic root guesses and old third-party resolver URLs are demoted:
+    # the managed Feedseek endpoint can validate/fallback them server-side.
+    preferred = [
         value
         for value in supplied
-        if value and "google.com/s2/favicons" not in value
+        if value
+        and value != root_guess
+        and "google.com/s2/favicons" not in value
+        and "icons.duckduckgo.com/ip3/" not in value
     ]
-
-    origin = origin_of(source)
-    if origin:
-        candidates.append(f"{origin}/favicon.ico")
+    candidates = list(preferred)
     if dom:
-        candidates.extend(
-            [
-                f"https://icons.duckduckgo.com/ip3/{dom}.ico",
-                f"https://www.google.com/s2/favicons?domain={dom}&sz=64",
-            ]
-        )
+        candidates.append(favicon_proxy(dom, sz=64))
     candidates.extend(value for value in supplied if value)
     candidates.append(FAVICON_SVG)
 
