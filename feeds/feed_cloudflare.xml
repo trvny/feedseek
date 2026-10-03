@@ -1,16 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-03T16:38:33.773559+00:00</updated>
+  <updated>2026-10-03T21:42:36.260321+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
   <link href="https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cloudflare.xml" rel="self"/>
   <link href="https://blog.cloudflare.com/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
-  <icon>https://blog.cloudflare.com/favicon.ico</icon>
-  <logo>https://blog.cloudflare.com/favicon.ico</logo>
+  <icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</icon>
+  <logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</logo>
+  <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
+  <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/d74d05508ced18f2</id>
@@ -1260,6 +1262,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1439,height=796,format=webp/_astro/2026-09-28-mesh-workers-vpc-network-logs.iGvLKYk7.gif" type="image/gif" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/64c2a73975f3e2dc</id>
+    <title>Workers - Workers Cache — mark cached responses stale with invalidate()</title>
+    <updated>2026-09-29T00:00:00+00:00</updated>
+    <content>Workers Cache now supports invalidate() , the soft counterpart of purge() . purge() deletes matching cached responses, so the next request is a cache miss. invalidate() keeps them but marks them stale, so the cache revalidates them with your Worker instead. To revalidate a response, the cache sends your Worker a conditional request built from the validators stored with it — for example, If-None-Match carrying the cached ETag . If your Worker answers 304 Not Modified , the cache keeps the stored </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-29-workers-cache-invalidate/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-29-workers-cache-invalidate/og.png?v=b9ff9438b0928b54" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-29-workers-cache-invalidate/og.png?v=b9ff9438b0928b54"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-29-workers-cache-invalidate/og.png?v=b9ff9438b0928b54" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/030afd902d2a0b66</id>
     <title>Network Performance Issues in Eastern North America</title>
     <updated>2026-09-28T20:36:00+00:00</updated>
@@ -1572,21 +1589,6 @@ We are working to u</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-25T01:52:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/89a375c24bb618c4</id>
-    <title>WAF - WAF Release - 2026-09-25 - Emergency</title>
-    <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>This update provides immediate defense against critical vulnerabilities affecting WordPress and JFrog Artifactory, including path traversal, local file inclusion (LFI), cross-site scripting (XSS), and authentication bypass exploits. Key Findings CVE-2026-87902: A high-severity Path Traversal and Local File Inclusion (LFI) vulnerability affecting WordPress. Unauthenticated attackers can exploit this flaw to read arbitrary files on the host server,  potentially exposing sensitive configuration dat</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-emergency-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/695ac6d54eea1ecc</id>

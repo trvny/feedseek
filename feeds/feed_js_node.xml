@@ -1,17 +1,49 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://nodejs.org/</id>
   <title>JS | Node</title>
-  <updated>2026-10-03T16:39:31.123054+00:00</updated>
+  <updated>2026-10-03T21:43:35.874730+00:00</updated>
   <author>
     <name>various</name>
   </author>
   <link href="https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_js_node.xml" rel="self"/>
   <link href="https://nodejs.org/" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
-  <icon>https://nodejs.org/favicon.ico</icon>
-  <logo>https://nodejs.org/favicon.ico</logo>
+  <icon>https://feeds.trfny.com/favicon?domain=nodejs.org&amp;sz=64</icon>
+  <logo>https://feeds.trfny.com/favicon?domain=nodejs.org&amp;sz=256</logo>
+  <webfeeds:logo>https://feeds.trfny.com/favicon?domain=nodejs.org&amp;sz=256</webfeeds:logo>
+  <webfeeds:icon>https://feeds.trfny.com/favicon?domain=nodejs.org&amp;sz=64</webfeeds:icon>
   <subtitle>Combined JS/Node.js runtime &amp; tooling feed: Node.js, pnpm, jsDelivr (blog + status), Bun, Deno, NodeSource, Total.js, Vite, Next.js, Vue, Svelte, React, JavaScript Weekly, ReactLibs, Bootstrap, jQuery, V8, PWABuilder, npm status, npmx, and the OpenJS Foundation blog.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/js_node/5dba7e606ba9250a</id>
+    <title>pnpm 12.9.1</title>
+    <updated>2026-10-03T00:00:00+00:00</updated>
+    <content>This release moves the WebContainer build into a separate @pnpm/wasm package, shrinks the pnpm package back to about 4 MB, and fixes pnpm publish with provenance from GitLab CI.</content>
+    <link href="https://pnpm.io/blog/releases/12.9.1" rel="alternate"/>
+    <category term="pnpm Blog" label="pnpm Blog"/>
+    <published>2026-10-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
+    </media:group>
+    <dc:creator>pnpm Blog</dc:creator>
+    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/js_node/2a1827ce6a0f2655</id>
+    <title>pnpm 11.28.4</title>
+    <updated>2026-10-03T00:00:00+00:00</updated>
+    <content>pnpm 11.28.4 fixes two ways credentials could leak, makes pnpm install --frozen-lockfile accept several lockfiles it rejected, warns when an optional dependency cannot be fetched, and stops pnpm self-update from installing a second pnpm next to a Homebrew one.</content>
+    <link href="https://pnpm.io/blog/releases/11.28.4" rel="alternate"/>
+    <category term="pnpm Blog" label="pnpm Blog"/>
+    <published>2026-10-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
+    </media:group>
+    <dc:creator>pnpm Blog</dc:creator>
+    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/js_node/5112c3b706bc08ec</id>
     <title>pnpm 12.9.0</title>
@@ -1002,36 +1034,6 @@ We shipped new experimental features to improve chunking in Next.js 16.3.</conte
     </media:group>
     <dc:creator>JavaScript Weekly</dc:creator>
     <link rel="enclosure" href="https://res.cloudinary.com/cpress/image/upload/w_1280,e_sharpen:60,q_auto/jgkycdtzpabaibtigxfp.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/js_node/0ccc2686f146917c</id>
-    <title>pnpm 11.24</title>
-    <updated>2026-08-24T00:00:00+00:00</updated>
-    <content>pnpm 11.24 brings back pnpm approve-builds --global, which isolated global installs took away in v11.0, and makes recursive batch publishing group its packages by registry so a credential mismatch is caught before anything is published. It also stops --frozen-lockfile from failing over the pnpm...</content>
-    <link href="https://pnpm.io/blog/releases/11.24" rel="alternate"/>
-    <category term="pnpm Blog" label="pnpm Blog"/>
-    <published>2026-08-24T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://pnpm.io/blog/releases/11.24##logo##" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://pnpm.io/blog/releases/11.24##logo##"/>
-    </media:group>
-    <dc:creator>pnpm Blog</dc:creator>
-    <link rel="enclosure" href="https://pnpm.io/blog/releases/11.24##logo##" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/js_node/9a7dddbc5f0282fe</id>
-    <title>pnpm 11.23</title>
-    <updated>2026-08-23T00:00:00+00:00</updated>
-    <content>pnpm 11.23 gives the registries setting a shape that describes each registry once — its tarball layout, the scopes routed to it, the prefix it answers to — so an Artifactory or GitLab registry can finally keep its tarball URLs out of pnpm-lock.yaml. It adds virtualStoreType, makes undeclared...</content>
-    <link href="https://pnpm.io/blog/releases/11.23" rel="alternate"/>
-    <category term="pnpm Blog" label="pnpm Blog"/>
-    <published>2026-08-23T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://pnpm.io/blog/releases/11.23##logo##" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://pnpm.io/blog/releases/11.23##logo##"/>
-    </media:group>
-    <dc:creator>pnpm Blog</dc:creator>
-    <link rel="enclosure" href="https://pnpm.io/blog/releases/11.23##logo##" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/js_node/5b69ebc99fc9e702</id>

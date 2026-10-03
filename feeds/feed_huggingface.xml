@@ -1,17 +1,64 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-03T16:39:08.013316+00:00</updated>
+  <updated>2026-10-03T21:43:09.599277+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
   <link href="https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_huggingface.xml" rel="self"/>
   <link href="https://huggingface.co" rel="alternate"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="2.0.1">python-feedgen</generator>
-  <icon>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=64</icon>
-  <logo>https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=256</logo>
+  <icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</icon>
+  <logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</logo>
+  <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
+  <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/656d539b05d4add5</id>
+    <title>stuntd 0.1.3 is out, and most of it started with a comment under my last post :)</title>
+    <updated>2026-10-03T21:43:08.432881+00:00</updated>
+    <content>stuntd 0.1.3 is out, and most of it started with a comment under my last post :) @ dipankarsarkar ran the support demo himself and showed my "1,000 tickets the heads never saw" were new wording of known tickets, not new kinds. On templates left out of training the heads were sure on 40% of tickets and right on only 61% of those. They also answered "what's the weather in Paris" like it was a billing ticket. So now every head keeps the encoder vectors of what it trained on, and anything far from all of them goes to the big model no matter how confident the head is. Screenshot is the same three requests with the gate off and on. It's local Jev mode with no provider, so the gate hands them to ze</content>
+    <link href="https://huggingface.co/posts/pollix/200093791272900" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-03T21:43:08.432881+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/6930ee36b3db77a27a0e3515/ZCH7Md58hmL1h_h6o_NR1.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/6930ee36b3db77a27a0e3515/ZCH7Md58hmL1h_h6o_NR1.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6930ee36b3db77a27a0e3515/ZCH7Md58hmL1h_h6o_NR1.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/c4a7e8b535a5734e</id>
+    <title>I built Model Pulse: daily download history for every model on the Hub 📈</title>
+    <updated>2026-10-03T21:43:08.432881+00:00</updated>
+    <content>I built Model Pulse: daily download history for every model on the Hub 📈 A model page tells you its downloads for the last 30 days, but not how it got there. Model Pulse rebuilds the day-by-day history for 1.6M models, back to July 2024, from the daily snapshots in @ cfahlgren1 's hub-stats dataset. A few things the data shows: - The Hub now serves ~100M model downloads a day, up from ~62M a year ago - Vision-language models grew about 7x in that year, to 10.7M downloads a day - 37% of Qwen3-8B's monthly downloads go to its 6,283 quantizations, fine-tunes and merges, not to the original What you can do with it: - Open any model, e.g. modelpulse/model-pulse - Compare up to five models on one </content>
+    <link href="https://huggingface.co/posts/tardellirs/358817887125841" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-03T21:43:08.432881+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/Vd3tSB21sBhSilfqHEPcS.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/Vd3tSB21sBhSilfqHEPcS.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/Vd3tSB21sBhSilfqHEPcS.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/8e68c213b7717403</id>
+    <title>Welp, I ended up getting a supermicro DGX-1 variant, so soon I'll have 8 nvlink'd V100s and 256gb of VRAM to play with, more things will be otw soon.</title>
+    <updated>2026-10-03T21:43:08.432881+00:00</updated>
+    <content>Welp, I ended up getting a supermicro DGX-1 variant, so soon I'll have 8 nvlink'd V100s and 256gb of VRAM to play with, more things will be otw soon.</content>
+    <link href="https://huggingface.co/posts/philbert440/211765001064779" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-03T21:43:08.432881+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/philbert440/211765001064779.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/philbert440/211765001064779.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/philbert440/211765001064779.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/eab1f5a8424cd96c</id>
     <title>The stop that was supposed to be automatic took 2.5 hours.</title>
@@ -2578,21 +2625,6 @@
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/ASfNeaaO56M7BIZcf3vdC.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/69aa6014ea2c8057</id>
-    <title>🇹🇷 One of our small Turkish models quietly reached **500+ monthly downloads** on Hugging Face.</title>
-    <updated>2026-09-09T16:53:03.040425+00:00</updated>
-    <content>🇹🇷 One of our small Turkish models quietly reached **500+ monthly downloads** on Hugging Face. **Werea-TR-TextRestore — only 300M parameters.** Its job is simple: istanbulda hava cok guzel → İstanbul'da hava çok güzel. A lightweight model for restoring Turkish text: • diacritics • punctuation • casing • corrupted text **96.5% word accuracy** on real Turkish news sentences. And it runs without sending your text to a cloud API. 🤗 Try the model: Werea-co/Werea-TR-TextRestore 🇹🇷 Built in Türkiye. Open source. If you're working on Turkish NLP, I'd love to hear what we should build next. #TurkishNLP #HuggingFace #OpenSourceAI #NLP</content>
-    <link href="https://huggingface.co/posts/GoktugD/875808960716281" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-09T16:53:03.040425+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/875808960716281.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/875808960716281.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/875808960716281.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/2d997e6d17818126</id>
     <title>SONAR is now open-source! 🔊</title>
     <updated>2026-09-09T16:53:03.040425+00:00</updated>
@@ -2638,21 +2670,6 @@
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/69d3d41eef229c09afea5d83/KYse3pX6t3l8FnI-1pKsi.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/e778c8cdfb90efee</id>
-    <title>It’s easy to get distracted by benchmarks, throughput (tok/s), and all the hype around frontier model releases.</title>
-    <updated>2026-09-09T00:30:51.187435+00:00</updated>
-    <content>It’s easy to get distracted by benchmarks, throughput (tok/s), and all the hype around frontier model releases. This is Shiny Model Syndrome, which makes engineers and teams forget the basic physics of production software, i.e., using the right tool for the job and optimizing for ease of integration. - Teams spend huge amounts of money on frontier models for document parsing, OCR, detection, segmentation, and other task-specific visual AI workflows. - Inference marketplaces don’t find it profitable to list task-specific models like glm-ocr, paddleocr, or dots.mocr, even though they’re all superior to frontier VLMs for document parsing and OCR. - Engineers stitch together multiple endpoints f</content>
-    <link href="https://huggingface.co/posts/nwaughachukwuma/199024335043983" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-09T00:30:51.187435+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/nwaughachukwuma/199024335043983.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/nwaughachukwuma/199024335043983.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/nwaughachukwuma/199024335043983.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/818667f5d0cabedd</id>
     <title>Show-Harness: Just a VLM Agent Can Play Robots</title>
     <updated>2026-09-09T00:00:00+00:00</updated>
@@ -2681,21 +2698,6 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.10540/gradient.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/10ac7bb5839a927d</id>
-    <title>Qwen3.8-27B Unsloth GGUF is now the #1 most-liked GGUF of all time! 🤗🦥</title>
-    <updated>2026-09-08T21:22:35.089452+00:00</updated>
-    <content>Qwen3.8-27B Unsloth GGUF is now the #1 most-liked GGUF of all time! 🤗🦥 The model hit 10M downloads and 3.7K likes in just 24 days on Hugging Face - all thanks to you. GGUF: unsloth/Qwen3.8-27B-GGUF Guide: https://unsloth.ai/docs/models/qwen3.8</content>
-    <link href="https://huggingface.co/posts/danielhanchen/664381486199600" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-08T21:22:35.089452+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/xWjFbAUaF-On-2b7BuOhy.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/xWjFbAUaF-On-2b7BuOhy.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/xWjFbAUaF-On-2b7BuOhy.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/4f420d1c5cd0cb94</id>

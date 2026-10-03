@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-108 feedów · 859 źródeł
+109 feedów · 864 źródła
 
 ## Spis grup
 
@@ -919,6 +919,15 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.officeholidays.com&sz=16) Upcoming — <https://www.officeholidays.com/rss/all_holidays>
 
 ## 🗂️ Inne
+
+### ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba
+`alibaba` · [feed_alibaba.xml](../feeds/feed_alibaba.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba Cloud Press — <https://www.alibabacloud.com/en/press-room/press-release>
+- ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba Cloud Product Updates — <https://www.alibabacloud.com/en/news/product>
+- ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba Cloud Blog — <https://www.alibabacloud.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=qwen.ai&sz=16) Qwen Research — <https://qwen.ai/research>
+- ![](https://www.google.com/s2/favicons?domain=www.qwencloud.com&sz=16) QwenCloud News — <https://www.qwencloud.com/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.arxiv.org&sz=16) arXiv
 `arxiv` · [feed_arxiv.xml](../feeds/feed_arxiv.xml)
