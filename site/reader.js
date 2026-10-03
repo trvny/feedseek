@@ -184,21 +184,23 @@ function mediaImg(n, base){
   const m=body && body.match(/<img[^>]+src=["']([^"']+)["']/i);
   return m ? safeHttpUrl(m[1],base) : '';
 }
-function parseFeed(xml, source, feedUrl, opmlSite=''){
+function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
   const doc=new DOMParser().parseFromString(xml,'text/xml');
   if(doc.querySelector('parsererror')) throw new Error('bad xml');
   const root=doc.documentElement;
   const rootName=root?.tagName?.toLowerCase().replace(/^.*:/,'')||'';
-  let feedIcon='', feedSite=safeHttpUrl(opmlSite,feedUrl);
+  let feedIcon=safeHttpUrl(opmlIcon,feedUrl), feedSite=safeHttpUrl(opmlSite,feedUrl);
 
   if(rootName==='feed'){
-    feedIcon=safeHttpUrl(txt(root,'icon','logo'),feedUrl);
+    const atomIcon=safeHttpUrl(txt(root,'icon','logo'),feedUrl);
+    if(atomIcon) feedIcon=atomIcon;
     feedSite=safeHttpUrl(lnk(root),feedUrl)||feedSite;
   }else if(rootName==='rss'){
     const channel=[...root.children].find(e=>e.tagName.toLowerCase().replace(/^.*:/,'')==='channel');
     if(channel){
       const image=[...channel.children].find(e=>e.tagName.toLowerCase().replace(/^.*:/,'')==='image');
-      feedIcon=image?safeHttpUrl(txt(image,'url'),feedUrl):'';
+      const rssIcon=image?safeHttpUrl(txt(image,'url'),feedUrl):'';
+      if(rssIcon) feedIcon=rssIcon;
       feedSite=safeHttpUrl(lnk(channel),feedUrl)||feedSite;
     }
   }
@@ -246,7 +248,11 @@ function parseOpml(text, base=document.baseURI){
     }
     const xmlUrl=safeHttpUrl(attrs.xmlurl,base);
     const htmlUrl=safeHttpUrl(attrs.htmlurl,base);
-    if(xmlUrl) feeds.push({title:attrs.title||attrs.text||'feed',xmlUrl,htmlUrl});
+    const icon=safeHttpUrl(
+      attrs.icon||attrs.favicon||attrs.image||attrs.imageurl,
+      base,
+    );
+    if(xmlUrl) feeds.push({title:attrs.title||attrs.text||'feed',xmlUrl,htmlUrl,icon});
   }
   return feeds;
 }
@@ -257,7 +263,8 @@ function buildOpml(feeds){
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const body=feeds.map(f=>{
     const htmlUrl=f.htmlUrl?` htmlUrl="${esc(f.htmlUrl)}"`:'';
-    return `    <outline type="rss" text="${esc(f.title)}" title="${esc(f.title)}" xmlUrl="${esc(f.xmlUrl)}"${htmlUrl}/>`;
+    const icon=f.icon?` icon="${esc(f.icon)}" favicon="${esc(f.icon)}" image="${esc(f.icon)}"`:'';
+    return `    <outline type="rss" text="${esc(f.title)}" title="${esc(f.title)}" xmlUrl="${esc(f.xmlUrl)}"${htmlUrl}${icon}/>`;
   }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<opml version="2.0">\n  <head><title>feed·seek subscriptions</title></head>\n  <body>\n${body}\n  </body>\n</opml>\n`;
 }
@@ -283,7 +290,7 @@ async function fetchText(url, options={}, timeoutMs=FEED_TIMEOUT_MS){
 }
 async function loadFeed(f, signal){
   const xml=await fetchText(prox(f.xmlUrl),{redirect:'follow',signal},FEED_TIMEOUT_MS);
-  return parseFeed(xml,f.title,f.xmlUrl,f.htmlUrl||'');
+  return parseFeed(xml,f.title,f.xmlUrl,f.htmlUrl||'',f.icon||'');
 }
 function fairLimit(items, limit){
   if(items.length<=limit) return items;

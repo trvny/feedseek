@@ -32,6 +32,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import urljoin
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 
@@ -148,7 +149,10 @@ def parse_feed(path: Path) -> dict:
         info["source"] = _text(ch.find("link"))
         image = ch.find("image")
         if image is not None:
-            info["icon"] = _text(image.find("url"))
+            info["icon"] = _absolute_icon(
+                _text(image.find("url")),
+                str(info["source"]),
+            )
         items = ch.findall("item")
         info["entries"] = len(items)
         dates = []
@@ -212,13 +216,10 @@ def _absolute_icon(url: str, source: str) -> str:
     value = (url or "").strip()
     if not value or value.startswith("data:") or "://" in value:
         return value
-    origin = origin_of(source)
     if value.startswith("//"):
         scheme = source.split(":", 1)[0] if "://" in source else "https"
         return f"{scheme}:{value}"
-    if value.startswith("/") and origin:
-        return origin + value
-    return value
+    return urljoin(source, value) if "://" in source else value
 
 
 def favicon_candidates(feed: dict) -> list[str]:
@@ -724,6 +725,17 @@ def build_opml(feeds: list[dict], base: str) -> str:
         )
         if feed["source"]:
             attrs += f' htmlUrl="{html.escape(feed["source"], quote=True)}"'
+        icon = _absolute_icon(
+            str(feed.get("icon") or "").strip(),
+            str(feed.get("source") or ""),
+        )
+        if icon:
+            escaped_icon = html.escape(icon, quote=True)
+            attrs += (
+                f' icon="{escaped_icon}"'
+                f' favicon="{escaped_icon}"'
+                f' image="{escaped_icon}"'
+            )
         lines.append(f"    <outline {attrs} />")
     lines += ["  </body>", "</opml>"]
     return "\n".join(lines) + "\n"
