@@ -62,20 +62,40 @@ class SiteFaviconTests(unittest.TestCase):
             candidates[0],
             "https://trojka.polskieradio.pl/assets/favicon-32x32.png",
         )
+        self.assertIn(
+            build_site.favicon_proxy("trojka.polskieradio.pl", sz=64),
+            candidates,
+        )
         self.assertEqual(candidates[-1], build_site.FAVICON_SVG)
 
-    def test_google_proxy_icon_does_not_mask_origin_favicon(self):
+    def test_old_third_party_icon_is_demoted_behind_managed_resolver(self):
+        old_google = "https://www.google.com/s2/favicons?domain=usa.gov&sz=64"
         candidates = build_site.favicon_candidates(
             {
                 "source": "https://www.usa.gov/",
-                "icon": "https://www.google.com/s2/favicons?domain=usa.gov&sz=64",
+                "icon": old_google,
                 "logo": "",
             }
         )
 
-        self.assertEqual(candidates[0], "https://www.usa.gov/favicon.ico")
-        self.assertIn("https://icons.duckduckgo.com/ip3/usa.gov.ico", candidates)
+        self.assertEqual(candidates[0], build_site.favicon_proxy("usa.gov", sz=64))
+        self.assertIn(old_google, candidates)
         self.assertEqual(candidates[-1], build_site.FAVICON_SVG)
+
+    def test_root_favicon_guess_is_demoted_behind_managed_resolver(self):
+        candidates = build_site.favicon_candidates(
+            {
+                "source": "https://newsify.today/polish/PL",
+                "icon": "https://newsify.today/favicon.ico",
+                "logo": "https://newsify.today/favicon.ico",
+            }
+        )
+
+        self.assertEqual(
+            candidates[0],
+            build_site.favicon_proxy("newsify.today", sz=64),
+        )
+        self.assertIn("https://newsify.today/favicon.ico", candidates)
 
     def test_rendered_card_embeds_remaining_fallbacks(self):
         card = build_site.render_card(
@@ -96,7 +116,7 @@ class SiteFaviconTests(unittest.TestCase):
         start = card.index(marker) + len(marker)
         encoded = card[start : card.index('"', start)]
         fallbacks = json.loads(html.unescape(encoded))
-        self.assertIn("https://example.com/favicon.ico", fallbacks)
+        self.assertIn(build_site.favicon_proxy("example.com", sz=64), fallbacks)
         self.assertEqual(fallbacks[-1], build_site.FAVICON_SVG)
 
     def test_rendered_card_has_expandable_description_viewport(self):

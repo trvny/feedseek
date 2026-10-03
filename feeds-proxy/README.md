@@ -34,3 +34,9 @@ npm run deploy
 
 Live at `feeds-proxy.travny.workers.dev`; the Feedseek MCP endpoint uses the
 `feeds.trfny.com` custom domain.
+
+
+## Endpoints
+
+- `/?url=https://…` — constrained public HTTPS fetch for the browser Reader.
+- `/favicon?domain=example.com&sz=64` — stable favicon resolver used by generated feeds, the directory and Reader. An optional `url=` keeps a source-provided icon as the first candidate; `provider=duckduckgo` changes resolver preference.

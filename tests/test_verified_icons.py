@@ -1,26 +1,20 @@
-"""Feeds whose site serves no usable /favicon.ico get a working <icon> anyway.
-
-Offline by design: it asserts the wiring, not the live HTTP status. Whether the
-URLs still resolve is what tools/check_feed_icons.py is for — a network probe in
-CI would make an unrelated third-party hiccup fail the build, and the previous
-tests here showed the opposite failure mode, pinning two proxy URLs that had
-been returning 404 for who knows how long.
-"""
+"""Shared favicon routing stays stable for feeds and external readers."""
 
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 from feedgen.feed import FeedGenerator  # noqa: E402
 
 from utils import (  # noqa: E402
-    VERIFIED_ICONS,
+    FAVICON_PROXY_ORIGIN,
+    favicon_proxy,
     favicon_url,
     large_icon,
     setup_feed_links,
-    verified_icon,
 )
 
 
@@ -32,78 +26,64 @@ def feed_with(feed_name, blog_url, icon=None):
     return fg
 
 
-def icon_of(feed_name, blog_url, icon=None):
-    return feed_with(feed_name, blog_url, icon).icon()
+class ManagedIconTests(unittest.TestCase):
+    def test_default_icon_uses_feedseek_resolver(self):
+        icon = favicon_url("https://example.com/blog")
+        parts = urlsplit(icon)
 
-
-class LargeIconTests(unittest.TestCase):
-    def test_a_proxied_icon_is_offered_at_display_size(self):
-        # Atom <logo> and JSON Feed "icon" are the big ones; S2 takes the size
-        # as a parameter, so it costs nothing to ask for it.
         self.assertEqual(
-            large_icon("https://www.google.com/s2/favicons?domain=news.mit.edu&sz=64"),
-            "https://www.google.com/s2/favicons?domain=news.mit.edu&sz=256",
+            f"{parts.scheme}://{parts.netloc}{parts.path}",
+            FAVICON_PROXY_ORIGIN,
+        )
+        self.assertEqual(parse_qs(parts.query), {"domain": ["example.com"], "sz": ["64"]})
+
+    def test_provider_preference_survives_the_stable_proxy(self):
+        icon = favicon_proxy("nasa.gov", provider="duckduckgo", sz=32)
+        query = parse_qs(urlsplit(icon).query)
+
+        self.assertEqual(query["domain"], ["nasa.gov"])
+        self.assertEqual(query["provider"], ["duckduckgo"])
+        self.assertEqual(query["sz"], ["32"])
+
+    def test_explicit_source_icon_is_preserved_as_first_resolver_candidate(self):
+        fg = feed_with(
+            "wykop",
+            "https://wykop.pl/",
+            icon="https://wykop.pl/static/img/favicons/favicon.png",
+        )
+        query = parse_qs(urlsplit(fg.icon()).query)
+
+        self.assertEqual(query["domain"], ["wykop.pl"])
+        self.assertEqual(
+            query["url"],
+            ["https://wykop.pl/static/img/favicons/favicon.png"],
         )
 
-    def test_any_other_icon_is_left_exactly_as_it_is(self):
-        # A site's own /favicon.ico has no size dial; inventing one would 404.
-        for url in ("https://example.com/favicon.ico", "", "https://x.test/i.png?sz=1"):
-            with self.subTest(url=url):
-                self.assertEqual(large_icon(url), url)
+    def test_feed_gets_small_icon_and_large_logo_on_same_service(self):
+        fg = feed_with("ubuntu", "https://ubuntu.com/blog")
 
-    def test_feeds_get_both_an_icon_and_a_logo(self):
-        fg = feed_with("mit", "https://news.mit.edu/")
-        self.assertTrue(fg.icon())
-        self.assertTrue(fg.logo())
-        self.assertIn("sz=256", fg.logo())
+        self.assertTrue(fg.icon().startswith(FAVICON_PROXY_ORIGIN))
+        self.assertTrue(fg.logo().startswith(FAVICON_PROXY_ORIGIN))
+        self.assertEqual(parse_qs(urlsplit(fg.icon()).query)["sz"], ["64"])
+        self.assertEqual(parse_qs(urlsplit(fg.logo()).query)["sz"], ["256"])
 
-
-class VerifiedIconTests(unittest.TestCase):
-    def test_listed_feed_gets_the_proxy_instead_of_a_dead_guess(self):
-        # mit's own /favicon.ico 404s, so the guess produced an <icon> no reader
-        # could load.
+    def test_large_icon_resizes_feedseek_and_google_resolvers_only(self):
+        managed = favicon_proxy("example.com", sz=64)
         self.assertEqual(
-            icon_of("mit", "https://news.mit.edu/"),
-            "https://www.google.com/s2/favicons?domain=news.mit.edu&sz=64",
+            parse_qs(urlsplit(large_icon(managed)).query)["sz"],
+            ["256"],
+        )
+        self.assertEqual(
+            large_icon("https://www.google.com/s2/favicons?domain=x.test&sz=64"),
+            "https://www.google.com/s2/favicons?domain=x.test&sz=256",
+        )
+        self.assertEqual(
+            large_icon("https://example.com/icon.png?sz=1"),
+            "https://example.com/icon.png?sz=1",
         )
 
-    def test_unlisted_feed_still_guesses_its_own_favicon(self):
-        # 73 of 90 feeds serve a working /favicon.ico; they must not be rerouted
-        # through a third party for no reason.
-        self.assertEqual(
-            icon_of("some_feed", "https://example.com/blog"),
-            "https://example.com/favicon.ico",
-        )
-
-    def test_explicit_icon_still_wins(self):
-        self.assertEqual(
-            icon_of("mit", "https://news.mit.edu/", icon="https://x.test/i.png"),
-            "https://x.test/i.png",
-        )
-
-    def test_verified_icon_returns_none_for_unlisted_feed(self):
-        self.assertIsNone(verified_icon("definitely_not_a_feed"))
-
-    def test_every_listed_feed_is_registered(self):
-        # A stale key would silently do nothing; catch renames and deletions.
-        import yaml
-
-        registry = yaml.safe_load(
-            (Path(__file__).resolve().parents[1] / "feeds.yaml").read_text(
-                encoding="utf-8"
-            )
-        )["feeds"]
-        unknown = sorted(set(VERIFIED_ICONS) - set(registry))
-        self.assertEqual(unknown, [], "VERIFIED_ICONS names a feed that no longer exists")
-
-    def test_entries_are_bare_domains_not_urls(self):
-        # The value is fed to favicon_proxy(), which builds the URL itself, so a
-        # full URL slipped in here would produce a nonsense proxy query.
-        for name, domain in VERIFIED_ICONS.items():
-            with self.subTest(feed=name):
-                self.assertNotIn("://", domain)
-                self.assertNotIn("/", domain)
-                self.assertIn(".", domain)
+    def test_unparseable_site_falls_back_without_inventing_a_domain(self):
+        self.assertEqual(favicon_url("not a url"), "not a url")
 
 
 if __name__ == "__main__":

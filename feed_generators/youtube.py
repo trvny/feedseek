@@ -319,7 +319,6 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.title(FEED_TITLE)
     fg.subtitle(FEED_DESC)
     setup_feed_links(fg, BLOG_URL, feed_name, icon=ICON_URL)
-    fg.logo(ICON_URL)
     setup_feed_extensions(fg)
     fg.language(FEED_LANG)
     fg.author({"name": "YouTube"})

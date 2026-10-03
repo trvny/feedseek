@@ -533,116 +533,82 @@ def merge_entries(
 # ---------------------------------------------------------------------------
 
 
-def favicon_url(blog_url: str) -> str:
-    """Best-guess favicon URL for a site: scheme + host + /favicon.ico.
+FAVICON_PROXY_ORIGIN = "https://feeds.trfny.com/favicon"
 
-    Not guaranteed (some sites serve their icon elsewhere), but it's the same
-    convention every hand-set <icon> in this repo already uses, and most feed
-    readers show it in place of a fallback letter-avatar when present.
-    Returns blog_url unchanged if it can't be parsed.
-    """
+
+def _favicon_domain(blog_url: str) -> str:
+    """Return the source hostname used by the shared favicon resolver."""
     try:
         parts = urlsplit(blog_url)
-        if not parts.scheme or not parts.netloc:
-            return blog_url
-        return f"{parts.scheme}://{parts.netloc}/favicon.ico"
+        return (parts.hostname or "").lower()
     except Exception:
-        return blog_url
+        return ""
 
 
-def favicon_proxy(domain: str, *, sz: int = 64, provider: str = "google") -> str:
-    """Favicon URL via a third-party resolver, for sites whose own
-    ``/favicon.ico`` 404s or serves HTML. The resolver finds the real icon
-    server-side and self-heals when the site moves it, so it never rots the way
-    a hard-coded asset path does.
+def favicon_proxy(
+    domain: str,
+    *,
+    sz: int = 64,
+    provider: str = "google",
+    url: str | None = None,
+) -> str:
+    """Return Feedseek's stable favicon endpoint for a source domain.
 
-    ``provider="google"`` -> Google S2 (honours ``sz``); ``"duckduckgo"`` ->
-    DDG ip3 (fixed size). Pick whichever actually resolves the domain.
+    External readers should not have to know whether a source's own favicon,
+    Google S2, or DuckDuckGo happens to work today. The Feedseek favicon
+    endpoint resolves those candidates server-side and returns image bytes
+    from one stable first-party URL.
     """
+    params = {"domain": domain, "sz": str(sz)}
     if provider == "duckduckgo":
-        return f"https://icons.duckduckgo.com/ip3/{domain}.ico"
-    return f"https://www.google.com/s2/favicons?domain={domain}&sz={sz}"
+        params["provider"] = "duckduckgo"
+    if url:
+        params["url"] = url
+    return f"{FAVICON_PROXY_ORIGIN}?{urlencode(params)}"
 
 
-# Feeds whose site does not serve a usable /favicon.ico, so the guess made by
-# favicon_url() produces a dead <icon> and the reader falls back to a letter
-# avatar. Measured 11.08.2026 by fetching every published feed's <icon>: 17 of
-# 90 were dead — 404 (europa, lemmy, mit, ra, saas, sony, spotify, usgov,
-# wykop), 403 (nexusmods_news, openai) or a 200 with an empty body (jbzd,
-# lexus_newsroom, microsoft, mozilla, theysaidso, toyota_global).
-#
-# Every entry resolves through Google S2 rather than the site's own asset path.
-# That is deliberate: the sites here mostly *do* serve an icon, just from a
-# versioned theme path like /wp-content/themes/foxtail/... which rots at the
-# next redesign — exactly how these 17 broke. S2 re-resolves server-side, so it
-# self-heals. Checked 11.08.2026: all 17 return a distinct real image (269 B to
-# 3877 B, no two alike), not S2's generic globe placeholder.
-#
-# An explicit icon= argument still wins over this map; use it when a feed wants
-# a specific mark rather than whatever the domain resolves to. Re-check the map
-# with tools/check_feed_icons.py.
-VERIFIED_ICONS = {
-    "europa": "european-union.europa.eu",
-    "jbzd": "jbzd.com.pl",
-    "lemmy": "join-lemmy.org",
-    "lexus_newsroom": "pressroom.lexus.com",
-    "microsoft": "blogs.microsoft.com",
-    "mit": "news.mit.edu",
-    "mozilla": "blog.mozilla.org",
-    "nexusmods_news": "nexusmods.com",
-    "openai": "openai.com",
-    "ra": "ra.co",
-    "saas": "hashicorp.com",
-    "sony": "sony.com",
-    "spotify": "newsroom.spotify.com",
-    "theysaidso": "theysaidso.com",
-    "toyota_global": "pressroom.toyota.com",
-    # usgov and wykop were dead too, but they already set icon= explicitly, so
-    # they are fixed at their call site rather than duplicated here.
-}
+def favicon_url(blog_url: str) -> str:
+    """Return the managed favicon URL for a source site."""
+    domain = _favicon_domain(blog_url)
+    return favicon_proxy(domain) if domain else blog_url
 
 
-def verified_icon(feed_name: str) -> str | None:
-    """Icon URL for a feed whose own /favicon.ico is known not to work."""
-    domain = VERIFIED_ICONS.get(feed_name)
-    return favicon_proxy(domain) if domain else None
+def _managed_explicit_icon(blog_url: str, icon: str, size: int = 64) -> str:
+    """Wrap a source-provided icon in the same resolver used by every feed."""
+    if icon.startswith(FAVICON_PROXY_ORIGIN):
+        return large_icon(icon, size)
+    domain = _favicon_domain(blog_url)
+    if domain and icon.startswith("https://"):
+        return favicon_proxy(domain, sz=size, url=icon)
+    return icon
 
 
 def large_icon(icon_url: str, size: int = 256) -> str:
-    """A bigger version of an icon URL, when the source can serve one.
-
-    Atom's <logo> and JSON Feed's "icon" are both meant to be the large,
-    display-sized image, next to the small <icon>/"favicon" pair - and a
-    64px square stretched into a card header looks like exactly what it is.
-    Google's S2 resolver takes the size as a query parameter, so for the icons
-    this project routes through it the bigger one is free. Anything else is
-    returned unchanged rather than guessed at.
-    """
-    if "google.com/s2/favicons" not in (icon_url or ""):
+    """Return a display-sized variant when the icon service supports sz."""
+    if not icon_url:
         return icon_url
-    return re.sub(r"([?&]sz=)\d+", rf"\g<1>{size}", icon_url)
+    if icon_url.startswith(FAVICON_PROXY_ORIGIN) or "google.com/s2/favicons" in icon_url:
+        return re.sub(r"([?&]sz=)\d+", rf"\g<1>{size}", icon_url)
+    return icon_url
 
 
 def setup_feed_links(
     fg: FeedGenerator, blog_url: str, feed_name: str, icon: str | None = None
 ) -> None:
-    """Set feed links so <link rel="self"> points to the raw feed and the main
-    link points to the source site. Also sets <icon> to a best-guess favicon
-    so readers show a real icon instead of a letter-avatar fallback; pass
-    ``icon`` to override the guess when a site serves its icon elsewhere.
+    """Set canonical feed links plus interoperable icon and logo metadata.
 
-    feedgen requires rel="self" be set first and rel="alternate" last.
+    Every generated feed publishes a stable Feedseek-hosted favicon URL. The
+    resolver preserves an explicit source icon as its first candidate and
+    otherwise resolves by source domain. Atom, JSON Feed, the Feedseek UI and
+    external readers therefore share the same icon path.
     """
     fg.link(
         href=f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{feed_name}.xml",
         rel="self",
     )
     fg.link(href=blog_url, rel="alternate")
-    resolved = icon or verified_icon(feed_name) or favicon_url(blog_url)
+    resolved = _managed_explicit_icon(blog_url, icon) if icon else favicon_url(blog_url)
     fg.icon(resolved)
-    # Readers disagree on which of the two they read, so set both rather than
-    # leave either to chance. normalize_feed_self_links still mirrors one into
-    # the other for generators that write their feed without this helper.
     fg.logo(large_icon(resolved))
 
 
