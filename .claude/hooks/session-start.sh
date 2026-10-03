@@ -57,9 +57,10 @@ echo "==> feedseek: uv sync"
 "$UV" sync
 
 # Match Worker CI and install exactly the committed lockfile graph. npm ci
-# wipes node_modules first, so skip it on resume when the lockfile is unchanged.
-LOCK_SUM=$(sha256sum feeds-proxy/package-lock.json | cut -d' ' -f1)
-STAMP=feeds-proxy/node_modules/.lock-sha256
+# wipes node_modules first, so skip it on resume when neither the manifest nor
+# the lockfile changed (a manifest-only edit must still hit npm ci's mismatch check).
+LOCK_SUM=$(cat feeds-proxy/package.json feeds-proxy/package-lock.json | sha256sum | cut -d' ' -f1)
+STAMP=feeds-proxy/node_modules/.deps-sha256
 if [ -f "$STAMP" ] && [ "$(cat "$STAMP")" = "$LOCK_SUM" ]; then
 	echo "==> feeds-proxy: node_modules up to date"
 else
