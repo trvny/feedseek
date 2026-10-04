@@ -37,7 +37,7 @@ preserve space for lower-volume ecosystem sources.
 import argparse
 import re
 import sys
-from urllib.parse import quote, urljoin, urlparse
+from urllib.parse import parse_qsl, quote, urlencode, urljoin, urlparse, urlsplit, urlunsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -230,7 +230,6 @@ _EVENT_TITLE_ACTIONS = {
     "CommitCommentEvent": "commented on a commit in",
     "DeleteEvent": "deleted a ref from",
     "DiscussionCommentEvent": "commented on a discussion in",
-    "DiscussionEvent": "updated a discussion in",
     "ForkEvent": "forked",
     "GollumEvent": "updated wiki pages in",
     "MemberEvent": "updated repository membership in",
@@ -388,8 +387,13 @@ def _event_title(event):
         )
         review = payload.get("review") or {}
         review_id = review.get("id") if isinstance(review, dict) else None
-        suffix = f" · review {review_id}" if review_id else ""
-        return f"{actor} reviewed PR #{number} in {repo}{suffix}"
+        suffix = f" {review_id}" if review_id else ""
+        action = payload.get("action") or "created"
+        return f"{actor} {action} review{suffix} on PR #{number} in {repo}"
+
+    if event_type == "DiscussionEvent":
+        action = payload.get("action") or "created"
+        return f"{actor} {action} a discussion in {repo}"
 
     if event_type == "PushEvent":
         ref = str(payload.get("ref") or "").removeprefix("refs/heads/")
@@ -424,6 +428,24 @@ def _event_title(event):
     return f"{actor} triggered {event_name} in {repo}"
 
 
+def _event_identity_url(base_link, event_id):
+    """Keep canonical anchors while giving every GitHub event a durable identity."""
+    parsed = urlsplit(base_link)
+    if parsed.fragment:
+        query = parse_qsl(parsed.query, keep_blank_values=True)
+        query.append(("feedseek_event", event_id))
+        return urlunsplit(
+            (
+                parsed.scheme,
+                parsed.netloc,
+                parsed.path,
+                urlencode(query),
+                parsed.fragment,
+            )
+        )
+    return f"{base_link}#feedseek-event-{quote(event_id, safe='')}"
+
+
 def _normalize_travnie_event(event):
     """Convert one GitHub Events API object into a Feedseek entry."""
     if not isinstance(event, dict):
@@ -436,10 +458,7 @@ def _normalize_travnie_event(event):
     base_link = _event_payload_url(event)
     if not base_link:
         return None
-    if "#" in base_link:
-        link = base_link
-    else:
-        link = f"{base_link}#feedseek-event-{event_id}"
+    link = _event_identity_url(base_link, event_id)
     title = sanitize_xml(_event_title(event))
     return {
         "title": title,
