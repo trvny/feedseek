@@ -206,6 +206,53 @@ class GitHubRequestedSourcesTests(unittest.TestCase):
             "octocat created a discussion in travnie/example",
         )
 
+    def test_gollum_event_links_to_affected_wiki_page(self):
+        event = {
+            "id": "wiki-event",
+            "type": "GollumEvent",
+            "public": True,
+            "actor": {"login": "octocat"},
+            "repo": {"name": "travnie/example"},
+            "created_at": "2026-10-04T12:34:56Z",
+            "payload": {
+                "pages": [
+                    {
+                        "page_name": "Home",
+                        "title": "Home",
+                        "action": "edited",
+                        "html_url": "https://github.com/travnie/example/wiki/Home",
+                    }
+                ]
+            },
+        }
+
+        entry = github._normalize_travnie_event(event)
+
+        self.assertEqual(
+            entry["link"],
+            "https://github.com/travnie/example/wiki/Home"
+            "#feedseek-event-wiki-event",
+        )
+
+    def test_gollum_event_falls_back_to_repository_wiki(self):
+        event = {
+            "id": "wiki-fallback",
+            "type": "GollumEvent",
+            "public": True,
+            "actor": {"login": "octocat"},
+            "repo": {"name": "travnie/example"},
+            "created_at": "2026-10-04T12:34:56Z",
+            "payload": {"pages": []},
+        }
+
+        entry = github._normalize_travnie_event(event)
+
+        self.assertEqual(
+            entry["link"],
+            "https://github.com/travnie/example/wiki"
+            "#feedseek-event-wiki-fallback",
+        )
+
     def test_less_common_event_type_has_readable_action(self):
         event = {
             "id": "commit-comment-event",
