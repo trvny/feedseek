@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-03T21:44:36.655608+00:00</updated>
+  <updated>2026-10-04T02:00:09.532504+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,40 +15,34 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/2dc41c42f56a6472</id>
-    <title>做了一个 Raindance AI 视频小工具，欢迎大家来用</title>
-    <updated>2026-10-03T19:27:47+00:00</updated>
-    <content>最近做了一个网站：Raindance AI，今天刚上线，想在这里分享一下，也请大家帮忙看看。
-它的用途比较简单：选一个视频模板，上传照片，把自己放进视频里。围绕的是 Dave 和 Tems 的 Raindance 视频趋势，目前有夕阳码头、雨天、海边等 10 个模板，支持单人和双人。
-做的时候，我觉得有一个问题需要说清楚：用户说“换脸”，实际期待可能不一样。有人希望只换自己的头，保留模板里的衣服和动作；有人希望连人物的外形、服装一起换。
-所以现在提供了两种选择： 换头：参考上传照片的脸和发型，尽量保留模板的身体与服装。 全身替换：参考照片中的人物外形和服装，建议上传全身照片。
-换头模式也包含发型。只把五官换过去、头发仍然是模板人物的，看起来很容易让人觉得“这不是我”。当然，AI 视频编辑仍然会出现细节变化，我也不想把它描述成能够百分之百还原本人。
-操作流程就是选模板、上传照片、选择模式，然后生成、预览和下载。双人模板分别上传左右两个人的照片，上传图片会先经过内容检测。
-技术上复用了已有项目的后端，部署在 Cloudflare 上，用 Workers、D1 和 R2，登录接了 Googl</content>
-    <link href="https://www.v2ex.com/t/1246324#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-03T19:27:47+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/1ee57308c2b96715</id>
-    <title>老男人们互相问：“你几个亿？”在当下多半不是问精子数了</title>
-    <updated>2026-10-03T14:35:09+00:00</updated>
-    <content>以前老男人们互相问一句几个亿，当然绝大部分是谈不到能赚这么多钱的，所以可能多是私下聊聊精子量，对生育有没有影响，现在技术男之间问你一天几个亿，可能默认问的是 token 数了</content>
-    <link href="https://www.v2ex.com/t/1246304#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/fb15a717a286f4af</id>
+    <title>面向低尾延迟的多中转路径传输：一种不追求带宽聚合的多路径方案</title>
+    <updated>2026-10-04T01:36:50+00:00</updated>
+    <content>面向低尾延迟的多中转路径传输：一种不追求带宽聚合的多路径方案 免责声明 ：本文内容完全由 AI 生成，文中所有内容均为 A\ 的幻觉，不代表任何事实或建议。请勿将本文任何内容用于违反任何国家或地区法律法规及公序良俗的用途。 摘要 在带宽普遍过剩的今天，代理网络的主要体验瓶颈已从吞吐转向尾延迟：单个中转节点的间歇性排队与假死，会直接表现为交互卡顿。现有代理客户端的选路机制均工作在连接粒度，依赖周期性探测，无法在毫秒到秒级掩盖单路径故障；学术界与商业界的低尾延迟多路径系统则普遍依赖 UDP 或内核 MPTCP ，无法用于只有 TCP 中转可用的环境。本文提出一种思路：经由多个相互独立的中转节点同时维持长连接，在其上运行轻量的传输层，以"晚绑定、对冲重发、慢路径隔离"为调度原则，将多路径用于压低尾延迟而非叠加带宽。配合两家中转机场与一台自建落地机（独享出口 IP ，避免机场共享 IP 被污染），月成本约 ¥70 ，可由 2–3 人分摊；如需使用 AI 工具，可再叠加家宽出口。 1 引言 主流中转机场的带宽已足以覆盖日常需求，用户感知到的问题主要是偶发卡顿：SSH 回显停顿、LLM 流式输出中</content>
+    <link href="https://www.v2ex.com/t/1246340#reply0" rel="alternate"/>
     <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-03T14:35:09+00:00</published>
+    <published>2026-10-04T01:36:50+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/43d0/d81c/545067_xlarge.png?m=1784648001" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/43d0/d81c/545067_xlarge.png?m=1784648001"/>
+      <media:content url="https://cdn.v2ex.com/avatar/9335/96b8/7670_xlarge.png?m=1721270420" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/9335/96b8/7670_xlarge.png?m=1721270420"/>
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/43d0/d81c/545067_xlarge.png?m=1784648001" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/9335/96b8/7670_xlarge.png?m=1721270420" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/c17d95d05c89d801</id>
+    <title>关于喜马拉雅主播粉丝数的一个疑惑</title>
+    <updated>2026-10-04T01:00:11+00:00</updated>
+    <content>我发现喜马拉雅主播的粉丝数好像集中在几个档位：粉丝少一点的大多在 30 万左右，多一点的在 300 万左右。很奇怪，感觉跟"3"这个数字特别有缘。 另外，300 万左右、破百万的主播，播讲效果普遍还不错；而几十万粉丝的，效果就差了不少。 让我有点难过的是，我喜欢的好几本书都是几十万粉丝的主播在播，听了他们的声音，实在不太喜欢。 反倒是几百万粉丝的主播，声音你不一定会特别喜欢，但就是能一直听下去</content>
+    <link href="https://www.v2ex.com/t/1246336#reply2" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-10-04T01:00:11+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978"/>
+    </media:group>
+    <dc:creator>V2EX Creative</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/d06de11cc56d06c9</id>
