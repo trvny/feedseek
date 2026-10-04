@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-109 feedów · 868 źródeł
+109 feedów · 873 źródła
 
 ## Spis grup
 
@@ -231,6 +231,8 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Blog — <https://lmstudio.ai/blog>
 - ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio API Changelog — <https://lmstudio.ai/docs/developer/api-changelog>
 - ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Changelog — <https://lmstudio.ai/changelog/lmstudio>
+- ![](https://www.google.com/s2/favicons?domain=manufact.com&sz=16) Manufact Blog — <https://manufact.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=docs.manufact.com&sz=16) Manufact Cloud Changelog — <https://docs.manufact.com/dashboard/changelog>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Feed — <https://mcp.so/feed>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
@@ -242,6 +244,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Changelog — <https://www.mintlify.com/docs/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Blog — <https://www.mintlify.com/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Blog — <https://lmstudio.ai/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=docs.mcp-use.com&sz=16) mcp-use TypeScript Changelog — <https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.modelcontextprotocol.io&sz=16) Model Context Protocol — <https://blog.modelcontextprotocol.io/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=gofastmcp.com&sz=16) FastMCP — <https://gofastmcp.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=agentclientprotocol.com&sz=16) Agent Client Protocol — <https://agentclientprotocol.com/updates/rss.xml>
@@ -354,6 +357,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=beeware.org&sz=16) BeeWare News — <https://beeware.org/news/>
 - ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History — <https://www.star-history.com/>
 - ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History Blog — <https://www.star-history.com/blog/>
+- ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) travnie GitHub Activity — <https://github.com/orgs/travnie>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Changelog — <https://github.blog/changelog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Engineering — <https://github.blog/engineering/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Security — <https://github.blog/security/feed/>
@@ -379,6 +383,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mshibanami.github.io&sz=16) GitHub Trending — <https://mshibanami.github.io/GitHubTrendingRSS/monthly/all.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/week/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) Travnie public events — <https://api.github.com/orgs/travnie/events?per_page=100>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.mozilla.org&sz=16) Mozilla
 `mozilla` · [feed_mozilla.xml](../feeds/feed_mozilla.xml)

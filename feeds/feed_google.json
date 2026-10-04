@@ -8,6 +8,24 @@
   "icon": "https://feeds.trfny.com/favicon?domain=blog.google&sz=256",
   "items": [
     {
+      "id": "https://docs.cloud.google.com/release-notes#October_04_2026",
+      "url": "https://docs.cloud.google.com/release-notes#October_04_2026",
+      "title": "Cloud Release Notes — October 04, 2026",
+      "content_html": "<h2 class=\"release-note-product-title\">Google SecOps SOAR</h2>\n<h3>Announcement</h3>\n<p>Release 6.3.102 is being rolled out to the first phase of regions as listed\n<a href=\"https://docs.cloud.google.com/chronicle/docs/soar/overview-and-introduction/soar-gradual-release\">here</a>.</p>\n<p>This release contains internal and customer bug fixes.</p>",
+      "date_published": "2026-10-04T07:00:00Z",
+      "date_modified": "2026-10-04T07:00:00Z",
+      "image": "https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
+      "tags": [
+        "Cloud Release Notes"
+      ],
+      "attachments": [
+        {
+          "url": "https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "https://docs.cloud.google.com/release-notes#October_03_2026",
       "url": "https://docs.cloud.google.com/release-notes#October_03_2026",
       "title": "Cloud Release Notes — October 03, 2026",
@@ -8846,24 +8864,6 @@
         {
           "url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/Gemini_Enterprise_for_legal.max-600x600.jpg",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "https://docs.cloud.google.com/release-notes#August_25_2026",
-      "url": "https://docs.cloud.google.com/release-notes#August_25_2026",
-      "title": "Cloud Release Notes — August 25, 2026",
-      "content_html": "<h2 class=\"release-note-product-title\">Cloud SDK</h2>\n<h3>Breaking</h3>\n<h2 id=\"58200_2026-08-25\">582.0.0 (2026-08-25)</h2>\n<h3 id=\"breaking_changes\">Breaking Changes</h3>\n<ul>\n<li><strong>(Google Cloud CLI)</strong> Removed the legacy Cloud SQL Proxy V1 component ('cloud_sql_proxy') from the Google Cloud CLI. All connect commands now rely exclusively on Cloud SQL Auth Proxy V2 ('cloud-sql-proxy').</li>\n<li><strong>(API Registry)</strong> Removed <code>gcloud api-registry mcp servers list</code> and <code>gcloud api-registry\nmcp tools list</code>. For similar functionality, see Agent Registry at\n<code>&lt;https://docs.cloud.google.com/sdk/gcloud/reference/alpha/agent-registry/mcp-servers&gt;</code>.</li>\n<li><strong>(Cloud Services)</strong> Removed <code>gcloud beta services mcp policies get</code>, <code>gcloud beta services mcp\npolicies get-effective</code>, and <code>gcloud beta services mcp policies test-enabled</code>\nas MCP policies are not required and they have been functioning as no-ops.</li>\n</ul>\n<h3 id=\"anthos\">Anthos</h3>\n<ul>\n<li>Updated anthos-cli with newer go version and library dependencies.</li>\n</ul>\n<h3 id=\"app_engine\">App Engine</h3>\n<ul>\n<li>Updated the Java SDK to version 5.1.0 build from the open source project\n<a href=\"https://github.com/GoogleCloudPlatform/appengine-java-standard/releases/tag/v5.1.0\">https://github.com/GoogleCloudPlatform/appengine-java-standard/releases/tag/v5.1.0</a>.</li>\n<li>Upgraded Jetty 12.0 to 12.0.38 and Jetty 12.1 to 12.1.12.</li>\n<li>Added gRPC support to the App Engine Images service for image transformations and composition.</li>\n</ul>\n<h3 id=\"app_lifecycle_manager\">App Lifecycle Manager</h3>\n<ul>\n<li>Added <code>--flags</code> flag to <code>gcloud beta app-lifecycle-manager flags releases create</code> to allow creating flag releases from a list of flag IDs.</li>\n</ul>\n<h3 id=\"cloud_composer\">Cloud Composer</h3>\n<ul>\n<li>Enabled Airflow CLI commands for Composer environments running new Airflow 3.3.x versions.</li>\n</ul>\n<h3 id=\"cloud_firestore\">Cloud Firestore</h3>\n<ul>\n<li>Added support for search shorthands to <code>gcloud beta firestore indexes composite create</code>.</li>\n</ul>\n<h3 id=\"cloud_key_management_service\">Cloud Key Management Service</h3>\n<ul>\n<li>Added <code>--protection-level</code> and <code>--crypto-key-backend</code> flags to <code>gcloud kms keys versions update</code> command.</li>\n</ul>\n<h3 id=\"cloud_managed_kafka\">Cloud Managed Kafka</h3>\n<ul>\n<li>Released 'broker-disk' flags to GA.</li>\n</ul>\n<h3 id=\"cloud_run\">Cloud Run</h3>\n<ul>\n<li>Promote <code>gcloud run instances</code> commands to the beta track.</li>\n<li>Added <code>--delay-execution</code> flag to <code>gcloud beta run jobs</code> command groups to\nallow run job execution within a delay window.</li>\n<li>Added <code>--run-upload</code> flag to <code>gcloud beta run deploy</code> to specify that the source should be uploaded via the Cloud Run UploadSource API.</li>\n</ul>\n<h3 id=\"cloud_sql\">Cloud SQL</h3>\n<ul>\n<li>Updated 'cloud-sql-proxy' packaged component to use 2.25.2 of the Cloud SQL\nProxy.</li>\n</ul>\n<h3 id=\"cloud_spanner_emulator\">Cloud Spanner Emulator</h3>\n<ul>\n<li>Added <code>--remote_functions_host_port</code> flag to Spanner emulator start command.\nThis flag allows Spanner emulator to connect to a Functions Framework\ninstance that hosts implementation of Remote User Defined Functions.</li>\n</ul>\n<h3 id=\"cloud_workstations\">Cloud Workstations</h3>\n<ul>\n<li>Changed the default value of <code>--pool-size</code> flag for <code>gcloud workstations\nconfigs create</code> and <code>gcloud beta workstations configs create</code> to 1. To\nexplicitly create a configuration without a fast start pool, run with\n<code>--pool-size=0</code>.</li>\n</ul>\n<h3 id=\"compute_engine\">Compute Engine</h3>\n<ul>\n<li>Added <code>gcloud compute composite-health-checks test-iam-permissions</code> command to test IAM permissions on a Compute Engine composite health check in <code>alpha</code>, <code>beta</code>, and <code>GA</code>.</li>\n<li>Added <code>--security-settings-client-tls-policy</code>, <code>--security-settings-subject-alt-names</code>, and <code>--security-settings-aws-v4-*</code> flags to <code>gcloud compute backend-services create</code> and <code>update</code> commands.</li>\n<li>Added allowed value <code>asn</code> to flags <code>--enforce-on-key</code> and <code>--enforce-on-key-configs</code> to <code>gcloud compute security-policies rules create</code> and <code>update</code> commands in alpha, beta, and GA.</li>\n<li>Added <code>gcloud beta compute service-attachments test-iam-permissions</code> command to test IAM permissions on a service attachment.</li>\n<li>Added <code>--consistent-hash-http-header-name</code> flag to\n<code>gcloud compute backend-services create</code> and <code>update</code> commands.</li>\n<li>Added <code>BMSAI</code> support to <code>--confidential-compute-type</code> option in <code>gcloud compute instances create</code> and <code>bulk create</code> commands.</li>\n<li>Promoted identity support for Backend Services to GA.</li>\n</ul>\n<h3 id=\"design_center\">Design Center</h3>\n<ul>\n<li>Added <code>gcloud design-center spaces application-templates export</code> command to export IaC for an application template.</li>\n<li>Added <code>gcloud design-center spaces application-templates revisions export</code> command to export IaC for an application template revision.</li>\n</ul>\n<h3 id=\"developer_connect\">Developer Connect</h3>\n<ul>\n<li>Promoted <code>gcloud developer-connect account-connectors</code> commands to GA.</li>\n</ul>\n<h3 id=\"orchestration_pipelines\">Orchestration Pipelines</h3>\n<ul>\n<li>Added <code>gcloud beta orchestration-pipelines</code> command group to manage Orchestration Pipelines.</li>\n</ul>\n<h3 id=\"vmware_engine\">Vmware Engine</h3>\n<ul>\n<li>Added <code>gcloud vmware private-clouds migrate-management-vms</code> which migrates the management VMs of a private cloud from the current management cluster to a workload cluster.</li>\n</ul>\n<p>Subscribe to these release notes at <a href=\"https://groups.google.com/forum/#!forum/google-cloud-sdk-announce\">https://groups.google.com/forum/#!forum/google-cloud-sdk-announce</a>.</p>\n<h2 class=\"release-note-product-title\">Cloud SQL for PostgreSQL</h2>\n<h3>Feature</h3>\n<p>Use assessments (<a href=\"https://cloud.google.com/products/#product-launch-stages\">Preview</a>)\nin <a href=\"https://docs.cloud.google.com/database-center/docs/overview\">Database Center</a> to assess and test the\nperformance impact of database recommendations before you apply them to your\nproduction database fleet.</p>\n<p>The assessments workflow performs these operations:</p>\n<ul>\n<li>Clones your database instance.</li>\n<li>Runs benchmarking simulation tests on the clone.</li>\n<li>Compares the baseline performance of the clone against the performance after\nyou apply the recommended configuration changes.</li>\n</ul>\n<p>For more information, see <a href=\"https://docs.cloud.google.com/sql/docs/postgres/assessments-overview\">Assessments in Database Center</a>.</p>\n<h2 class=\"release-note-product-title\">reCAPTCHA</h2>\n<h3>Change</h3>\n<p>Fraud Defense Mobile SDK v18.10.0-beta01 is available for iOS. This\nversion includes the following:</p>\n<ul>\n<li>Adds support for macOS desktop and tvOS.</li>\n<li>Improvements to networking consumption.</li>\n<li>Improvements to latency and reliability.</li></ul>",
-      "date_published": "2026-08-25T07:00:00Z",
-      "date_modified": "2026-08-25T07:00:00Z",
-      "image": "https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
-      "tags": [
-        "Cloud Release Notes"
-      ],
-      "attachments": [
-        {
-          "url": "https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
-          "mime_type": "image/png"
         }
       ]
     }

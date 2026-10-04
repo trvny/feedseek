@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-04T19:49:11.432509+00:00</updated>
+  <updated>2026-10-04T23:34:29.827633+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,19 +15,19 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/fe305150128d03b7</id>
-    <title>[开源] Precedent Loop：让 Agnet 换个会话也记得项目里踩过的坑</title>
-    <updated>2026-10-04T18:59:43+00:00</updated>
-    <content>用 Codex 和 Claude Code 写代码久了，最头疼的是它不记事。上周跟它一起查了一下午，根因找到了，方案也定了。这周开个新会话，它又从头猜一遍，有时还会把当初否掉的方案再提出来。 我试过两种办法，都不太顺手。 一种是写进 AGENTS.md / CLAUDE.md 。放"必须遵守的规则"没问题。但"这个接口为什么要做幂等""那个报错其实是连接池配置引起的"这类经验，一条条加进去，文件很快就几百行。每次会话都全量塞给模型，真正相关的那几句反而被淹没了。 另一种是用客户端自带的记忆。记什么由模型自己决定，我看不全，也不知道哪条在哪次起了作用，记错了也很难发现。 所以我做了 Precedent Loop ，思路很简单：经验让 Agent 来提，入不入库我说了算，用的时候按需去取。 实际用起来是这样一个循环： 方案定下来，或者根因查清楚的时候，Agent 会整理一条"候选"，写明背景、结论和适用范围。 候选出现在桌面 App 里。我可以改，可以让 AI 重写，也可以直接拒掉。点了确认才会入库，入库的就是我看到的那一版。 之后的会话里，Agent 碰到相关任务会自己去查。一次最多拿 </content>
-    <link href="https://www.v2ex.com/t/1246437#reply1" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/ec8736dc853c31f1</id>
+    <title>[问书] 自主学习网站</title>
+    <updated>2026-10-04T20:40:15+00:00</updated>
+    <content>简介：将任意电子书蒸馏知识为 skills ，然后对话提问学习，自行配置模型信息，可导出导入蒸馏后的 skills ，有本地书架功能 寻找免费电子书地址： https://z-library.biz/ 项目地址： https://github.com/ns2250225/ask-book 项目预览图：</content>
+    <link href="https://www.v2ex.com/t/1246438#reply2" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-04T18:59:43+00:00</published>
+    <published>2026-10-04T20:40:15+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro"/>
+      <media:content url="https://github.com/ns2250225/ask-book/blob/main/demo.gif?raw=true" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://github.com/ns2250225/ask-book/blob/main/demo.gif?raw=true"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://github.com/ns2250225/ask-book/blob/main/demo.gif?raw=true" type="image/gif" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/759a1217e8686902</id>
