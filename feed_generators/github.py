@@ -285,6 +285,19 @@ def _fetch_travnie_events():
 def _event_payload_url(event):
     """Prefer the page touched by an event over the repository homepage."""
     payload = event.get("payload") or {}
+    if event.get("type") == "GollumEvent":
+        pages = payload.get("pages")
+        if isinstance(pages, list):
+            for page in pages:
+                if not isinstance(page, dict):
+                    continue
+                html_url = page.get("html_url")
+                if (
+                    isinstance(html_url, str)
+                    and html_url.startswith("https://github.com/")
+                ):
+                    return html_url
+
     for key in (
         "comment",
         "review",
@@ -321,6 +334,9 @@ def _event_payload_url(event):
             and ref_type in {"tag", "branch"}
         ):
             return f"{base}/tree/{quote(ref, safe='')}"
+
+    if event.get("type") == "GollumEvent":
+        return f"{base}/wiki"
 
     return base
 
