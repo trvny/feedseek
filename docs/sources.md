@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-109 feedów · 864 źródła
+109 feedów · 868 źródeł
 
 ## Spis grup
 
@@ -228,6 +228,9 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=cognition.com&sz=16) Cognition Blog — <https://cognition.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=cognition.com&sz=16) Cognition Research — <https://cognition.com/research>
 - ![](https://www.google.com/s2/favicons?domain=docs.devin.ai&sz=16) Devin Release Notes — <https://docs.devin.ai/release-notes/overview>
+- ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Blog — <https://lmstudio.ai/blog>
+- ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio API Changelog — <https://lmstudio.ai/docs/developer/api-changelog>
+- ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Changelog — <https://lmstudio.ai/changelog/lmstudio>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Feed — <https://mcp.so/feed>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
@@ -238,6 +241,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.mindstudio.ai&sz=16) MindStudio — <https://www.mindstudio.ai/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Changelog — <https://www.mintlify.com/docs/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Blog — <https://www.mintlify.com/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=16) LM Studio Blog — <https://lmstudio.ai/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.modelcontextprotocol.io&sz=16) Model Context Protocol — <https://blog.modelcontextprotocol.io/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=gofastmcp.com&sz=16) FastMCP — <https://gofastmcp.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=agentclientprotocol.com&sz=16) Agent Client Protocol — <https://agentclientprotocol.com/updates/rss.xml>
