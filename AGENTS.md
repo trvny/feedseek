@@ -16,9 +16,8 @@
 
 ## Repository conventions
 
-- Check `main`, open PRs and recent changes before overlapping work.
 - Prefer reliable native feed over scraping its HTML. Do not pass through unchanged when shared normalization or enrichment can improve published feed.
-- Keep one maintained source of truth per concern; use shared normalization/deduplication helpers, not local copies.
+- Use shared normalization/deduplication helpers rather than source-local copies.
 - Fix maintained sources; regenerate `feeds/` / `cache/`, no hand-editing generated output. For incremental local generation, restore durable R2 cache immediately before each run.
 - One broken source must not block unrelated feed updates.
 - Failed or empty fetch must not replace last good feed with empty output.
