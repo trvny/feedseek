@@ -65,6 +65,104 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         self.assertEqual(documented["OtterlyAI Blog"], "https://otterly.ai/blog/")
         self.assertEqual(documented["Flavio Longato"], "https://www.longato.ch/blog/")
 
+    def test_lmstudio_requested_sources_are_registered(self):
+        native = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
+        documented = dict(skillsllm.doc_sources())
+
+        self.assertEqual(native["LM Studio Blog"], "https://lmstudio.ai/rss.xml")
+        self.assertEqual(
+            documented["LM Studio Blog"],
+            "https://lmstudio.ai/blog",
+        )
+        self.assertEqual(
+            documented["LM Studio API Changelog"],
+            "https://lmstudio.ai/docs/developer/api-changelog",
+        )
+        self.assertEqual(
+            documented["LM Studio Changelog"],
+            "https://lmstudio.ai/changelog/lmstudio",
+        )
+
+    def test_lmstudio_api_changelog_parser_splits_versions(self):
+        html = """
+        <main>
+          <h6>LM Studio 0.4.1</h6>
+          <h3>Anthropic-compatible API</h3>
+          <ul><li>New endpoint: POST /v1/messages.</li></ul>
+          <h6>LM Studio 0.3.29 • 2025‑10‑06</h6>
+          <h3>OpenAI /v1/responses and variant listing</h3>
+          <p>Stateful interactions and remote MCP support.</p>
+        </main>
+        """
+
+        entries = skillsllm.parse_lmstudio_api_changelog(html)
+
+        self.assertEqual(len(entries), 2)
+        self.assertEqual(
+            entries[0]["link"],
+            "https://lmstudio.ai/docs/developer/api-changelog#lm-studio-0-4-1",
+        )
+        self.assertEqual(
+            entries[0]["title"],
+            "LM Studio 0.4.1 — Anthropic-compatible API",
+        )
+        self.assertEqual(entries[0]["source"], "LM Studio API Changelog")
+        self.assertEqual(
+            entries[1]["date"].isoformat(),
+            "2025-10-06T00:00:00+00:00",
+        )
+        self.assertIn("remote MCP", entries[1]["description"])
+
+    def test_lmstudio_app_changelog_parser_uses_visible_release_date(self):
+        html = """
+        <main>
+          <h2>LM Studio 0.4.20</h2>
+          <div>Build 1</div>
+          <ul>
+            <li>Support for enterprise internal network model endpoint</li>
+            <li>Added support for Bionic over LM Link</li>
+          </ul>
+          <div>Jul 22, 2026</div>
+          <h2>Other section</h2>
+        </main>
+        """
+
+        entries = skillsllm.parse_lmstudio_changelog(html)
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(
+            entries[0]["link"],
+            "https://lmstudio.ai/changelog/lmstudio#lm-studio-0-4-20",
+        )
+        self.assertEqual(
+            entries[0]["date"].isoformat(),
+            "2026-07-22T00:00:00+00:00",
+        )
+        self.assertIn("enterprise internal network", entries[0]["description"])
+        self.assertEqual(entries[0]["category"], "lmstudio-changelog")
+
+    def test_lmstudio_changelog_collection_isolates_source_failures(self):
+        app_html = """
+        <main>
+          <h2>LM Studio 0.4.20</h2>
+          <li>One app update.</li>
+          <span>Jul 22, 2026</span>
+        </main>
+        """
+
+        def fake_fetch(url):
+            if url == skillsllm.LMSTUDIO_API_CHANGELOG_URL:
+                return None
+            if url == skillsllm.LMSTUDIO_CHANGELOG_URL:
+                return app_html
+            raise AssertionError(url)
+
+        with patch.object(skillsllm, "fetch_url", side_effect=fake_fetch):
+            entries = skillsllm.collect_lmstudio_changelogs(set())
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["source"], "LM Studio Changelog")
+
     def test_openrouter_and_orcarouter_sources_are_registered(self):
         """Keep both requested LLM router blogs in SkillsLLM."""
         native = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
