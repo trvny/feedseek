@@ -105,13 +105,46 @@ class GitHubRequestedSourcesTests(unittest.TestCase):
 
         self.assertEqual(
             entry["link"],
-            "https://github.com/travnie/example/issues/7#issuecomment-123",
+            "https://github.com/travnie/example/issues/7"
+            "?feedseek_event=comment-event#issuecomment-123",
         )
         self.assertIn("comment 123", entry["title"])
 
     def test_review_event_prefers_specific_review_url(self):
         event = {
             "id": "review-event",
+            "type": "PullRequestReviewEvent",
+            "public": True,
+            "actor": {"login": "octocat"},
+            "repo": {"name": "travnie/example"},
+            "created_at": "2026-10-04T12:34:56Z",
+            "payload": {
+                "pull_request": {
+                    "number": 11,
+                    "html_url": "https://github.com/travnie/example/pull/11",
+                },
+                "action": "created",
+                "review": {
+                    "id": 789,
+                    "html_url": (
+                        "https://github.com/travnie/example/pull/11"
+                        "#pullrequestreview-789"
+                    ),
+                },
+            },
+        }
+
+        entry = github._normalize_travnie_event(event)
+
+        self.assertEqual(
+            entry["link"],
+            "https://github.com/travnie/example/pull/11"
+            "?feedseek_event=review-event#pullrequestreview-789",
+        )
+        self.assertIn("created review 789 on PR #11", entry["title"])
+
+    def test_review_actions_keep_distinct_event_identity(self):
+        base = {
             "type": "PullRequestReviewEvent",
             "public": True,
             "actor": {"login": "octocat"},
@@ -132,13 +165,46 @@ class GitHubRequestedSourcesTests(unittest.TestCase):
             },
         }
 
+        entries = []
+        for event_id, action in (
+            ("review-updated", "updated"),
+            ("review-dismissed", "dismissed"),
+        ):
+            event = {
+                **base,
+                "id": event_id,
+                "payload": {**base["payload"], "action": action},
+            }
+            entries.append(github._normalize_travnie_event(event))
+
+        self.assertNotEqual(entries[0]["link"], entries[1]["link"])
+        self.assertTrue(entries[0]["link"].endswith("#pullrequestreview-789"))
+        self.assertTrue(entries[1]["link"].endswith("#pullrequestreview-789"))
+        self.assertIn("updated review 789 on PR #11", entries[0]["title"])
+        self.assertIn("dismissed review 789 on PR #11", entries[1]["title"])
+
+    def test_discussion_event_preserves_created_action(self):
+        event = {
+            "id": "discussion-event",
+            "type": "DiscussionEvent",
+            "public": True,
+            "actor": {"login": "octocat"},
+            "repo": {"name": "travnie/example"},
+            "created_at": "2026-10-04T12:34:56Z",
+            "payload": {
+                "action": "created",
+                "discussion": {
+                    "html_url": "https://github.com/orgs/travnie/discussions/12",
+                },
+            },
+        }
+
         entry = github._normalize_travnie_event(event)
 
         self.assertEqual(
-            entry["link"],
-            "https://github.com/travnie/example/pull/11#pullrequestreview-789",
+            entry["title"],
+            "octocat created a discussion in travnie/example",
         )
-        self.assertIn("review 789", entry["title"])
 
     def test_less_common_event_type_has_readable_action(self):
         event = {
@@ -195,7 +261,8 @@ class GitHubRequestedSourcesTests(unittest.TestCase):
         self.assertIn("commented on PR #9", entry["title"])
         self.assertEqual(
             entry["link"],
-            "https://github.com/travnie/example/pull/9#issuecomment-456",
+            "https://github.com/travnie/example/pull/9"
+            "?feedseek_event=pr-comment-event#issuecomment-456",
         )
 
     def test_tag_create_event_links_to_git_tag_tree(self):
