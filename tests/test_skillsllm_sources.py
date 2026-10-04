@@ -163,6 +163,99 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0]["source"], "LM Studio Changelog")
 
+    def test_manufact_and_mcp_use_sources_are_registered(self):
+        native = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
+        documented = dict(skillsllm.doc_sources())
+
+        self.assertEqual(
+            native["mcp-use TypeScript Changelog"],
+            "https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml",
+        )
+        self.assertEqual(
+            documented["Manufact Blog"],
+            "https://manufact.com/blog",
+        )
+        self.assertEqual(
+            documented["Manufact Cloud Changelog"],
+            "https://docs.manufact.com/dashboard/changelog",
+        )
+
+    def test_manufact_blog_parser_keeps_real_posts_only(self):
+        html = """
+        <main>
+          <article>
+            <a href="/blog/openai-mcp-extensions">
+              <h2>OpenAI MCP Extensions: bring your app into ChatGPT as a Plugin</h2>
+            </a>
+            <p>A practical guide to OpenAI MCP Extensions.</p>
+            <span>October 2, 2026</span>
+          </article>
+          <a href="/blog/category/mcp-use">mcp-use category</a>
+          <a href="/blog">Blog index</a>
+        </main>
+        """
+        entries = skillsllm.parse_manufact_blog(html)
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(
+            entries[0]["link"],
+            "https://manufact.com/blog/openai-mcp-extensions",
+        )
+        self.assertEqual(
+            entries[0]["date"].isoformat(),
+            "2026-10-02T00:00:00+00:00",
+        )
+        self.assertEqual(entries[0]["source"], "Manufact Blog")
+        self.assertIn("practical guide", entries[0]["description"])
+
+    def test_manufact_changelog_parser_splits_paragraph_based_months(self):
+        html = """
+        <main>
+          <h1>Changelog</h1>
+          <p>Jul 2026</p>
+          <p>Improved OAuth token handling for MCP clients</p>
+          <p>Manufact Cloud MCP OAuth now issues longer-lived tokens.</p>
+          <p>Public Chat SEO metadata customization</p>
+          <p>Customize title, description, and social previews.</p>
+          <p>Jun 2026</p>
+          <p>Manufact available in ChatGPT App Store</p>
+          <p>Manage deployments and analytics from ChatGPT.</p>
+        </main>
+        """
+        entries = skillsllm.parse_manufact_changelog(html)
+
+        self.assertEqual(len(entries), 3)
+        self.assertEqual(
+            entries[0]["link"],
+            "https://docs.manufact.com/dashboard/changelog#2026-07-improved-oauth-token-handling-for-mcp-clients",
+        )
+        self.assertEqual(entries[0]["date"].isoformat(), "2026-07-01T00:00:00+00:00")
+        self.assertEqual(entries[0]["source"], "Manufact Cloud Changelog")
+        self.assertIn("longer-lived tokens", entries[0]["description"])
+        self.assertEqual(entries[2]["date"].isoformat(), "2026-06-01T00:00:00+00:00")
+
+    def test_manufact_collection_isolates_blog_and_changelog_failures(self):
+        changelog_html = """
+        <main>
+          <h2>Jul 2026</h2>
+          <h3>Deployment Logs link opens correct environment</h3>
+          <p>Links now target the active deployment.</p>
+        </main>
+        """
+
+        def fake_fetch(url):
+            if url == skillsllm.MANUFACT_BLOG_URL:
+                return None
+            if url == skillsllm.MANUFACT_CHANGELOG_URL:
+                return changelog_html
+            raise AssertionError(url)
+
+        with patch.object(skillsllm, "fetch_url", side_effect=fake_fetch):
+            entries = skillsllm.collect_manufact(set())
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["source"], "Manufact Cloud Changelog")
+
     def test_openrouter_and_orcarouter_sources_are_registered(self):
         """Keep both requested LLM router blogs in SkillsLLM."""
         native = {source[0]: source[1] for source in skillsllm.NATIVE_FEEDS}
