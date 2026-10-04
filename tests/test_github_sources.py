@@ -18,7 +18,11 @@ class GitHubSourceTests(unittest.TestCase):
         self.assertNotIn("Devin Desktop", source_urls)
         self.assertEqual(
             github.EXTRA_SCRAPERS,
-            (github.scrape_beeware_news, github.scrape_star_history_blog),
+            (
+                github.scrape_beeware_news,
+                github.scrape_star_history_blog,
+                github.scrape_travnie_activity,
+            ),
         )
         self.assertFalse(github._active_cache_entry({"source": "Devin Desktop"}))
         self.assertFalse(github._active_cache_entry({"source": "Devin Release Notes"}))
