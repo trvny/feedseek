@@ -26,6 +26,7 @@ Native RSS/Atom feeds (feedparser):
   * MindStudio              https://www.mindstudio.ai/rss.xml
   * Mintlify Changelog      https://www.mintlify.com/docs/changelog/rss.xml
   * Mintlify Blog           https://www.mintlify.com/feed.xml
+  * LM Studio Blog          https://lmstudio.ai/rss.xml
 
 Sitemap discovery + per-page detail fetch (no native feed; pages server-render
 real ``<title>`` / ``<meta description>`` and sometimes ``article:published_time``):
@@ -52,6 +53,8 @@ Dated listing / MDX scrape (no native feed):
   * Devin Release Notes   https://docs.devin.ai/release-notes/overview
 
 Bespoke HTML/MDX scrape (no feed, no sitemap):
+  * LM Studio API Changelog https://lmstudio.ai/docs/developer/api-changelog
+  * LM Studio Changelog     https://lmstudio.ai/changelog/lmstudio
   * Glama Release Notes https://glama.ai/release-notes (moved here from the
                         aibridge feed along with the rest of Glama's sources)
   * Mem0 Changelog      https://docs.mem0.ai/changelog/highlights (the raw .md
@@ -124,6 +127,10 @@ logger = setup_logging()
 FEED_NAME = "skillsllm"
 BLOG_URL = "https://skillsllm.com/"
 MEM0_SITEMAP_URL = "https://mem0.ai/sitemap.xml"
+LMSTUDIO_RSS_URL = "https://lmstudio.ai/rss.xml"
+LMSTUDIO_BLOG_URL = "https://lmstudio.ai/blog"
+LMSTUDIO_API_CHANGELOG_URL = "https://lmstudio.ai/docs/developer/api-changelog"
+LMSTUDIO_CHANGELOG_URL = "https://lmstudio.ai/changelog/lmstudio"
 
 FETCH_HEADERS = {
     "User-Agent": (
@@ -257,6 +264,7 @@ NATIVE_FEEDS = [
         "mintlify-blog",
         40,
     ),
+    ("LM Studio Blog", LMSTUDIO_RSS_URL, "lmstudio-blog", 40),
     ("Model Context Protocol", "https://blog.modelcontextprotocol.io/index.xml", "mcp"),
     ("FastMCP", "https://gofastmcp.com/changelog/rss.xml", "fastmcp"),
     (
@@ -324,6 +332,9 @@ def doc_sources():
         ("Cognition Blog", COGNITION_BLOG_URL),
         ("Cognition Research", COGNITION_RESEARCH_URL),
         ("Devin Release Notes", DEVIN_RELEASE_NOTES_URL),
+        ("LM Studio Blog", LMSTUDIO_BLOG_URL),
+        ("LM Studio API Changelog", LMSTUDIO_API_CHANGELOG_URL),
+        ("LM Studio Changelog", LMSTUDIO_CHANGELOG_URL),
         ("MCP.so Feed", MCPSO_FEED_URL),
         ("MCP.so Blog", MCPSO_BLOG_URL),
         ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
@@ -879,6 +890,160 @@ def collect_native_feeds():
     return entries
 
 
+_LMSTUDIO_VERSION_RE = re.compile(r"^LM Studio\s+\d+(?:\.\d+)+")
+_LMSTUDIO_ISO_DATE_RE = re.compile(
+    r"\b(\d{4}[\-\u2010-\u2015]\d{2}[\-\u2010-\u2015]\d{2})\b"
+)
+_LMSTUDIO_LONG_DATE_RE = re.compile(
+    r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+    r"[a-z]*\.?\s+\d{1,2},\s+\d{4}\b",
+    re.IGNORECASE,
+)
+
+
+def _lmstudio_slug(text):
+    """Build a stable fragment for changelog sections without durable anchors."""
+    return re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")[:96]
+
+
+def _lmstudio_date(text):
+    """Parse the ISO-ish or long-form dates used on LM Studio changelog pages."""
+    normalized = " ".join((text or "").split())
+    match = _LMSTUDIO_ISO_DATE_RE.search(normalized)
+    if match:
+        raw = re.sub(r"[\u2010-\u2015]", "-", match.group(1))
+        return parse_date(raw)
+    match = _LMSTUDIO_LONG_DATE_RE.search(normalized)
+    return parse_date(match.group(0)) if match else None
+
+
+def _lmstudio_section_text(heading, stop_tag):
+    """Return the first subheading, date, and useful body text after a heading."""
+    subtitle = ""
+    date = _lmstudio_date(heading.get_text(" ", strip=True))
+    parts = []
+    seen_parts = set()
+
+    for node in heading.next_elements:
+        if node is heading:
+            continue
+        name = getattr(node, "name", None)
+        if name == stop_tag:
+            break
+
+        if isinstance(node, str):
+            if date is None:
+                date = _lmstudio_date(node)
+            continue
+
+        if name == "h3" and not subtitle:
+            subtitle = sanitize_xml(node.get_text(" ", strip=True))
+            continue
+        if name not in {"p", "li"}:
+            continue
+
+        text = sanitize_xml(node.get_text(" ", strip=True))
+        if (
+            not text
+            or text in seen_parts
+            or _lmstudio_date(text)
+            or re.fullmatch(r"Build\s+\d+", text, re.IGNORECASE)
+        ):
+            continue
+        seen_parts.add(text)
+        parts.append(text)
+
+    return subtitle, date, " ".join(parts)[:700]
+
+
+def parse_lmstudio_api_changelog(html):
+    """Split LM Studio's API changelog into one entry per app version."""
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen = set()
+
+    for heading in soup.find_all("h6"):
+        version = sanitize_xml(heading.get_text(" ", strip=True))
+        if not _LMSTUDIO_VERSION_RE.match(version):
+            continue
+
+        version_label = version.split("•", 1)[0].strip()
+        link = f"{LMSTUDIO_API_CHANGELOG_URL}#{_lmstudio_slug(version_label)}"
+        if link in seen:
+            continue
+
+        subtitle, date, description = _lmstudio_section_text(heading, "h6")
+        title = f"{version_label} — {subtitle}" if subtitle else version_label
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": date or stable_fallback_date(link),
+                "description": description or subtitle or title,
+                "source": "LM Studio API Changelog",
+                "category": "lmstudio-api-changelog",
+            }
+        )
+        seen.add(link)
+
+    return entries
+
+
+def parse_lmstudio_changelog(html):
+    """Split LM Studio's application changelog into one entry per version."""
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen = set()
+
+    for heading in soup.find_all("h2"):
+        version = sanitize_xml(heading.get_text(" ", strip=True))
+        if not _LMSTUDIO_VERSION_RE.match(version):
+            continue
+
+        link = f"{LMSTUDIO_CHANGELOG_URL}#{_lmstudio_slug(version)}"
+        if link in seen:
+            continue
+
+        _subtitle, date, description = _lmstudio_section_text(heading, "h2")
+        entries.append(
+            {
+                "title": version,
+                "link": link,
+                "date": date or stable_fallback_date(link),
+                "description": description or version,
+                "source": "LM Studio Changelog",
+                "category": "lmstudio-changelog",
+            }
+        )
+        seen.add(link)
+
+    return entries
+
+
+def collect_lmstudio_changelogs(known_links):
+    """Fetch LM Studio's API and application changelogs independently."""
+    entries = []
+    for label, url, parser in (
+        (
+            "LM Studio API Changelog",
+            LMSTUDIO_API_CHANGELOG_URL,
+            parse_lmstudio_api_changelog,
+        ),
+        ("LM Studio Changelog", LMSTUDIO_CHANGELOG_URL, parse_lmstudio_changelog),
+    ):
+        raw = fetch_url(url)
+        if raw is None:
+            logger.warning("[%s] changelog unavailable; continuing", label)
+            continue
+        parsed = [
+            entry for entry in parser(raw)
+            if entry["link"] not in known_links
+        ]
+        entries.extend(parsed)
+        logger.info("[%s] parsed %d entries", label, len(parsed))
+    return entries
+
+
 # Glama's /release-notes page has no feed: each item is an <article> with an
 # <h2> title, an Improvement/Feature/Fix/Announcement badge, a "Mon D, YYYY"
 # date, and a body. Items have no per-entry permalink, so a stable
@@ -1036,7 +1201,8 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "AI tooling news and guides: SkillsLLM, Desktop Commander, Model Context "
         "Protocol, FastMCP, Agent Client Protocol, Pieces, ClaudePluginHub, MCP "
         "Servers blog, Claude Skills Hub, Agent Zero, MindStudio, "
-        "Mintlify (blog + changelog), OtterlyAI, Flavio Longato, OpenRouter, "
+        "Mintlify (blog + changelog), LM Studio (blog + API/app changelogs), "
+        "OtterlyAI, Flavio Longato, OpenRouter, "
         "OrcaRouter, Upstash, x-cmd, "
         "Graphify (blog + changelog), MCP.so (feed + blog), "
         "AIHubMix (blog + docs + "
@@ -1085,6 +1251,7 @@ def main(full=False):
     known_links = {e["link"] for e in cached}
     sitemap_entries = collect_entries(known_links, ledger)
     native_entries = collect_native_feeds()
+    lmstudio_entries = collect_lmstudio_changelogs(known_links)
     mcpso_entries = collect_mcpso(known_links)
     orcarouter_entries = collect_orcarouter_blog(known_links)
     mcpblog_entries = collect_mcpservers_blog(known_links, ledger)
@@ -1101,6 +1268,7 @@ def main(full=False):
     if (
         sitemap_entries is None
         and not native_entries
+        and not lmstudio_entries
         and not mcpso_entries
         and not orcarouter_entries
         and not mcpblog_entries
@@ -1118,6 +1286,7 @@ def main(full=False):
     new_entries = (
         (sitemap_entries or [])
         + native_entries
+        + lmstudio_entries
         + mcpso_entries
         + orcarouter_entries
         + mcpblog_entries
