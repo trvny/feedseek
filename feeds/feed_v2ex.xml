@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-04T15:31:27.128667+00:00</updated>
+  <updated>2026-10-04T19:49:11.432509+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,36 +15,34 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/6829ec16a8f9b6e2</id>
-    <title>发现一个可以出租或租用额度的站</title>
-    <updated>2026-10-04T15:04:27+00:00</updated>
-    <content>发现一个可以出租或租用额度的站，挺有意思的 https://x2.miaooo.cc/ 我有几个 plus 账号，大部分都是 5h 限额，晚上睡觉或者放假休息的时候，额度没有用上，总觉得挺浪费的。
-今天发现这个站可以把闲置时段的账号额度出租出去，按用量计费。
-开启出租的时候，自己调用不收费，别人调用就会获取收益，这个想法还挺不错的。</content>
-    <link href="https://www.v2ex.com/t/1246428#reply2" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-04T15:04:27+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/658d/e859/594829_xlarge.png?m=1783247281" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/658d/e859/594829_xlarge.png?m=1783247281"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/658d/e859/594829_xlarge.png?m=1783247281" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/ad29f973557a7689</id>
-    <title>看 YouTube 总要反复开关字幕？我做了个字幕插件，送大家一年 Pro 权益</title>
-    <updated>2026-10-04T14:43:38+00:00</updated>
-    <content>V 友们好啊，我最近做了一个专门用于 YouTube 的 Chrome 字幕管理插件 subtitle.im ，解决看视频时反复开关字幕的麻烦。 这次给 V 友准备了 200 个免费领取一年 Pro 的名额 ，活动开放一个月。也想请大家多用用，分享下真实使用体验，帮我们把插件打磨好。领取入口放在文末。 YouTube 字幕，该开就开，该关就关。 有些视频已经把字幕压在画面里，再打开 YouTube 字幕，就会出现两层字幕。另一些视频的画面字幕和 YouTube 字幕语言不同，两层都有用，又不一定想关掉。 subtitle.im 会在本机识别画面中的硬字幕，再按你的偏好处理可开关的软字幕。 1. 重复字幕，自动关闭 识别到重复字幕后，自动关闭多余的 YouTube 软字幕，保留画面中的硬字幕；需要时，也可以随时恢复软字幕。 对于有可用软字幕的视频，还可以自动开启字幕，减少每次打开视频后手动切换的操作。 2. 字幕语言不同，由你决定 比如画面里有日语字幕，同时打开了英语软字幕。你可以选择保留、先询问，或按设置自动关闭，让字幕处理符合自己的观看习惯。 3. 你的字幕，你的规则 直接在 You</content>
-    <link href="https://www.v2ex.com/t/1246427#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/fe305150128d03b7</id>
+    <title>[开源] Precedent Loop：让 Agnet 换个会话也记得项目里踩过的坑</title>
+    <updated>2026-10-04T18:59:43+00:00</updated>
+    <content>用 Codex 和 Claude Code 写代码久了，最头疼的是它不记事。上周跟它一起查了一下午，根因找到了，方案也定了。这周开个新会话，它又从头猜一遍，有时还会把当初否掉的方案再提出来。 我试过两种办法，都不太顺手。 一种是写进 AGENTS.md / CLAUDE.md 。放"必须遵守的规则"没问题。但"这个接口为什么要做幂等""那个报错其实是连接池配置引起的"这类经验，一条条加进去，文件很快就几百行。每次会话都全量塞给模型，真正相关的那几句反而被淹没了。 另一种是用客户端自带的记忆。记什么由模型自己决定，我看不全，也不知道哪条在哪次起了作用，记错了也很难发现。 所以我做了 Precedent Loop ，思路很简单：经验让 Agent 来提，入不入库我说了算，用的时候按需去取。 实际用起来是这样一个循环： 方案定下来，或者根因查清楚的时候，Agent 会整理一条"候选"，写明背景、结论和适用范围。 候选出现在桌面 App 里。我可以改，可以让 AI 重写，也可以直接拒掉。点了确认才会入库，入库的就是我看到的那一版。 之后的会话里，Agent 碰到相关任务会自己去查。一次最多拿 </content>
+    <link href="https://www.v2ex.com/t/1246437#reply1" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-04T14:43:38+00:00</published>
+    <published>2026-10-04T18:59:43+00:00</published>
     <media:group>
-      <media:content url="https://i.imgur.com/COD8KvQ.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.imgur.com/COD8KvQ.png"/>
+      <media:content url="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.imgur.com/COD8KvQ.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e0c70d90c1d3333e42bec223e525dc8c?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/759a1217e8686902</id>
+    <title>对着超微的实拍，把 Vera Rubin NVL72 机柜的正面和背面认了一遍</title>
+    <updated>2026-10-04T16:51:44+00:00</updated>
+    <content>超微 9 月 23 日说 Vera Rubin NVL72 机柜开始出货，同时放了正面和背面的实拍。以前看到的多是渲染图，这次是真机。我对着照片把里面的东西认了一遍，写下来大家一起看，有认错的请指正。 （图源：Supermicro 官方实拍，左边正面，右边背面） 正面，从上往下 最上面一台管理交换机。蓝色的线看走向，应该是从它拉到各个托盘的管理网线 一组电源架 10 个计算托盘，每个 1U ，里面是 4 颗 Rubin GPU 加 2 颗 Vera CPU 中间浅色的一段，是 9 个 NVLink 交换托盘，把 72 颗 GPU 连成一体 再往下 8 个计算托盘，和上面合起来 18 个 最下面又一组电源架 背面 供电线缆从顶部进来 中间一整片是 NVLink 铜缆背板。计算托盘和交换托盘靠它互连，所以正面看不到 GPU 之间的线 两侧立柱上下走着一排橙黑色的线缆。具体是什么线，超微没说，我不乱猜 最下面两个大接头是冷却液接口，接机房的冷却回路 一个机柜的数字 72 颗 Rubin GPU ，36 颗 Vera CPU HBM4 合计 20.7TB ，另有最多 54TB 的 LPDDR5</content>
+    <link href="https://www.v2ex.com/t/1246436#reply0" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-04T16:51:44+00:00</published>
+    <media:group>
+      <media:content url="https://pbs.twimg.com/media/HTo1O2vaYAAZB5l?format=jpg&amp;name=large" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://pbs.twimg.com/media/HTo1O2vaYAAZB5l?format=jpg&amp;name=large"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://pbs.twimg.com/media/HTo1O2vaYAAZB5l?format=jpg&amp;name=large" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/3d421f1495d753ea</id>
