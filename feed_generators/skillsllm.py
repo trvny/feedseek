@@ -27,6 +27,7 @@ Native RSS/Atom feeds (feedparser):
   * Mintlify Changelog      https://www.mintlify.com/docs/changelog/rss.xml
   * Mintlify Blog           https://www.mintlify.com/feed.xml
   * LM Studio Blog          https://lmstudio.ai/rss.xml
+  * mcp-use TypeScript      https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml
 
 Sitemap discovery + per-page detail fetch (no native feed; pages server-render
 real ``<title>`` / ``<meta description>`` and sometimes ``article:published_time``):
@@ -43,6 +44,8 @@ Server-rendered listing scrape (no native feed):
   * MCP.so Feed         https://mcp.so/feed
   * MCP.so Blog         https://mcp.so/blog
   * OrcaRouter Blog     https://www.orcarouter.ai/blog
+  * Manufact Blog       https://manufact.com/blog
+  * Manufact Changelog  https://docs.manufact.com/dashboard/changelog
 
 Index asset-slug discovery + detail fetch (no feed, no sitemap):
   * MCP Servers Blog    https://blog.mcpservers.org  (/posts/<slug>, slugs from
@@ -131,6 +134,11 @@ LMSTUDIO_RSS_URL = "https://lmstudio.ai/rss.xml"
 LMSTUDIO_BLOG_URL = "https://lmstudio.ai/blog"
 LMSTUDIO_API_CHANGELOG_URL = "https://lmstudio.ai/docs/developer/api-changelog"
 LMSTUDIO_CHANGELOG_URL = "https://lmstudio.ai/changelog/lmstudio"
+MANUFACT_BLOG_URL = "https://manufact.com/blog"
+MANUFACT_CHANGELOG_URL = "https://docs.manufact.com/dashboard/changelog"
+MCP_USE_TYPESCRIPT_CHANGELOG_RSS_URL = (
+    "https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml"
+)
 
 FETCH_HEADERS = {
     "User-Agent": (
@@ -265,6 +273,12 @@ NATIVE_FEEDS = [
         40,
     ),
     ("LM Studio Blog", LMSTUDIO_RSS_URL, "lmstudio-blog", 40),
+    (
+        "mcp-use TypeScript Changelog",
+        MCP_USE_TYPESCRIPT_CHANGELOG_RSS_URL,
+        "mcp-use-typescript-changelog",
+        40,
+    ),
     ("Model Context Protocol", "https://blog.modelcontextprotocol.io/index.xml", "mcp"),
     ("FastMCP", "https://gofastmcp.com/changelog/rss.xml", "fastmcp"),
     (
@@ -335,6 +349,8 @@ def doc_sources():
         ("LM Studio Blog", LMSTUDIO_BLOG_URL),
         ("LM Studio API Changelog", LMSTUDIO_API_CHANGELOG_URL),
         ("LM Studio Changelog", LMSTUDIO_CHANGELOG_URL),
+        ("Manufact Blog", MANUFACT_BLOG_URL),
+        ("Manufact Cloud Changelog", MANUFACT_CHANGELOG_URL),
         ("MCP.so Feed", MCPSO_FEED_URL),
         ("MCP.so Blog", MCPSO_BLOG_URL),
         ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
@@ -408,6 +424,8 @@ PER_SOURCE_CAP = {
     "MCP.so Feed": 10,
     "AI Skill Market": 10,
     "OrcaRouter Blog": 30,
+    "Manufact Blog": 40,
+    "Manufact Cloud Changelog": 40,
 }
 
 
@@ -1044,6 +1062,228 @@ def collect_lmstudio_changelogs(known_links):
     return entries
 
 
+# Manufact publishes an editorial MCP/dev-tool blog and a Mintlify-style
+# dashboard changelog. The blog has dated server-rendered cards; changelog
+# entries are grouped under month/year headings and do not expose stable item
+# permalinks, so we synthesize one fragment per titled change.
+_MANUFACT_POST_RE = re.compile(r"^/blog/(?!category/)[a-z0-9][a-z0-9-]*/?$", re.I)
+_MANUFACT_DATE_RE = re.compile(
+    r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+    r"[a-z]*\.?\s+\d{1,2},\s+\d{4}\b",
+    re.I,
+)
+_MANUFACT_MONTH_RE = re.compile(
+    r"^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+    r"(?:uary|ruary|ch|il|e|y|ust|tember|ober|ember)?\.?\s+(\d{4})$",
+    re.I,
+)
+_MANUFACT_MONTHS = {
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "sept": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
+}
+
+
+def _manufact_card(anchor):
+    """Return the smallest ancestor that carries one visible Manufact date."""
+    fallback = anchor.parent or anchor
+    for parent in anchor.parents:
+        if getattr(parent, "name", None) in {"main", "body", "html"}:
+            break
+        text = " ".join(parent.get_text(" ", strip=True).split())
+        if _MANUFACT_DATE_RE.search(text):
+            return parent
+        fallback = parent
+    return fallback
+
+
+def parse_manufact_blog(html, known_links=None):
+    """Parse real Manufact blog post cards and ignore categories/navigation."""
+    known_links = known_links or set()
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen = set()
+
+    for anchor in soup.find_all("a", href=True):
+        href = anchor.get("href", "")
+        if not isinstance(href, str):
+            continue
+        href = href.split("?", 1)[0].split("#", 1)[0]
+        if href.startswith("https://manufact.com"):
+            href = href.removeprefix("https://manufact.com")
+        elif href.startswith("https://www.manufact.com"):
+            href = href.removeprefix("https://www.manufact.com")
+        if not _MANUFACT_POST_RE.match(href):
+            continue
+
+        link = f"https://manufact.com{href.rstrip('/')}"
+        if link in known_links or link in seen:
+            continue
+        card = _manufact_card(anchor)
+        full = " ".join(card.get_text(" ", strip=True).split())
+        date_match = _MANUFACT_DATE_RE.search(full)
+        date = parse_date(date_match.group(0)) if date_match else None
+
+        heading = card.find(["h1", "h2", "h3", "h4"])
+        title = sanitize_xml(
+            heading.get_text(" ", strip=True) if heading else anchor.get_text(" ", strip=True)
+        )
+        if not title or len(title) < 8:
+            continue
+
+        description = ""
+        paragraph = card.find("p")
+        if paragraph is not None:
+            description = sanitize_xml(paragraph.get_text(" ", strip=True))
+
+        image = card.find("img", src=True)
+        image_url = image.get("src") if image else None
+        if isinstance(image_url, str) and image_url.startswith("/"):
+            image_url = f"https://manufact.com{image_url}"
+
+        seen.add(link)
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": date or stable_fallback_date(link),
+                "description": description or title,
+                "source": "Manufact Blog",
+                "category": "manufact-blog",
+                "image": image_url if isinstance(image_url, str) else None,
+            }
+        )
+    return entries
+
+
+def _manufact_month(text):
+    """Parse Manufact's abbreviated or long month-year group label."""
+    match = _MANUFACT_MONTH_RE.fullmatch(" ".join((text or "").split()))
+    if not match:
+        return None
+    key = match.group(1).lower().rstrip(".")
+    month = _MANUFACT_MONTHS.get(key)
+    if month is None:
+        return None
+    return datetime(int(match.group(2)), month, 1, tzinfo=UTC)
+
+
+def _manufact_slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:96]
+
+
+def _manufact_changelog_entry(title, date, description, known_links, seen):
+    """Build one stable Manufact changelog entry, or None when already known."""
+    slug = _manufact_slug(title)
+    if not slug:
+        return None
+    link = f"{MANUFACT_CHANGELOG_URL}#{date.strftime('%Y-%m')}-{slug}"
+    if link in known_links or link in seen:
+        return None
+    seen.add(link)
+    return {
+        "title": title,
+        "link": link,
+        "date": date,
+        "description": description or title,
+        "source": "Manufact Cloud Changelog",
+        "category": "manufact-cloud-changelog",
+    }
+
+
+def parse_manufact_changelog(html, known_links=None):
+    """Split Manufact Cloud's monthly changelog into one entry per titled change.
+
+    The live Mintlify page currently renders month labels, titles, and bodies as
+    ordinary paragraph blocks rather than semantic headings. Support both that
+    layout and heading-based fixtures/older renders.
+    """
+    known_links = known_links or set()
+    soup = BeautifulSoup(html, "html.parser")
+    entries = []
+    seen = set()
+    current_month = None
+    pending_title = None
+
+    def flush_pending(description=""):
+        nonlocal pending_title
+        if pending_title is None or current_month is None:
+            pending_title = None
+            return
+        entry = _manufact_changelog_entry(
+            pending_title,
+            current_month,
+            sanitize_xml(description),
+            known_links,
+            seen,
+        )
+        if entry is not None:
+            entries.append(entry)
+        pending_title = None
+
+    for node in soup.find_all(["h2", "h3", "h4", "p"]):
+        text = sanitize_xml(node.get_text(" ", strip=True))
+        if not text:
+            continue
+
+        month = _manufact_month(text)
+        if month is not None:
+            flush_pending()
+            current_month = month
+            continue
+        if current_month is None or text.lower() in {"changelog", "ask ai"}:
+            continue
+
+        if node.name in {"h2", "h3", "h4"}:
+            flush_pending()
+            pending_title = text
+            continue
+
+        # Current Manufact markup alternates paragraph title -> paragraph body.
+        # Keep the first paragraph as a pending title and use the next as its
+        # description. If a month boundary arrives first, the title is still
+        # emitted so a description-less update is not lost.
+        if pending_title is None:
+            pending_title = text
+        else:
+            flush_pending(text)
+
+    flush_pending()
+    return entries
+
+
+def collect_manufact(known_links):
+    """Collect Manufact blog and cloud changelog independently."""
+    entries = []
+    for label, url, parse_listing in (
+        ("Manufact Blog", MANUFACT_BLOG_URL, parse_manufact_blog),
+        (
+            "Manufact Cloud Changelog",
+            MANUFACT_CHANGELOG_URL,
+            parse_manufact_changelog,
+        ),
+    ):
+        raw = fetch_url(url)
+        if raw is None:
+            logger.warning("[%s] unavailable; continuing", label)
+            continue
+        parsed = parse_listing(raw, known_links)
+        cap = PER_SOURCE_CAP.get(label, PER_SOURCE_CAP[""])
+        entries.extend(parsed[:cap])
+        logger.info("[%s] parsed %d entries", label, min(len(parsed), cap))
+    return entries
+
+
 # Glama's /release-notes page has no feed: each item is an <article> with an
 # <h2> title, an Improvement/Feature/Fix/Announcement badge, a "Mon D, YYYY"
 # date, and a body. Items have no per-entry permalink, so a stable
@@ -1202,6 +1442,7 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "Protocol, FastMCP, Agent Client Protocol, Pieces, ClaudePluginHub, MCP "
         "Servers blog, Claude Skills Hub, Agent Zero, MindStudio, "
         "Mintlify (blog + changelog), LM Studio (blog + API/app changelogs), "
+        "Manufact (blog + Cloud changelog), mcp-use TypeScript changelog, "
         "OtterlyAI, Flavio Longato, OpenRouter, "
         "OrcaRouter, Upstash, x-cmd, "
         "Graphify (blog + changelog), MCP.so (feed + blog), "
@@ -1252,6 +1493,7 @@ def main(full=False):
     sitemap_entries = collect_entries(known_links, ledger)
     native_entries = collect_native_feeds()
     lmstudio_entries = collect_lmstudio_changelogs(known_links)
+    manufact_entries = collect_manufact(known_links)
     mcpso_entries = collect_mcpso(known_links)
     orcarouter_entries = collect_orcarouter_blog(known_links)
     mcpblog_entries = collect_mcpservers_blog(known_links, ledger)
@@ -1269,6 +1511,7 @@ def main(full=False):
         sitemap_entries is None
         and not native_entries
         and not lmstudio_entries
+        and not manufact_entries
         and not mcpso_entries
         and not orcarouter_entries
         and not mcpblog_entries
@@ -1287,6 +1530,7 @@ def main(full=False):
         (sitemap_entries or [])
         + native_entries
         + lmstudio_entries
+        + manufact_entries
         + mcpso_entries
         + orcarouter_entries
         + mcpblog_entries
