@@ -26,9 +26,9 @@ Sources (each a native feed unless marked scraped, aggregated here into one):
 * Google Cloud Press          https://www.googlecloudpresscorner.com/press-releases?pagetemplate=rss
 * Workspace Updates (mirror)  https://feeds.feedburner.com/GoogleAppsUpdates
 * Google Analytics            https://blog.google/products/marketingplatform/analytics/rss/
-* Cloud + Workspace release notes (date-titled, label-prefixed): GCP master
-  release notes (one aggregate feed covering all Cloud products), plus the
-  Workspace developer feeds — Workspace, Workspace Marketplace, Calendar API,
+* Cloud + Workspace release notes (date-titled, label-prefixed): Architecture
+  Center updates, the GCP master release notes (one aggregate feed covering all
+  Cloud products), plus the Workspace developer feeds — Workspace, Workspace Marketplace, Calendar API,
   Workspace Add-ons, Cloud Search, Docs API (docs.cloud.google.com/feeds/*.xml,
   developers.google.com/feeds/*.xml)
 * Google Antigravity          https://antigravity.google/blog  (scraped; no native feed)
@@ -182,8 +182,17 @@ SOURCES: list[Source] = [
     Source("cloud-press", "Google Cloud Press", "https://www.googlecloudpresscorner.com/press-releases?pagetemplate=rss"),
     Source("apps-updates", "Workspace Updates", "https://feeds.feedburner.com/GoogleAppsUpdates"),
     Source("analytics", "Google Analytics", "https://blog.google/products/marketingplatform/analytics/rss/"),
+    # Architecture Center has its own native release-notes feed.
+    Source(
+        "architecture-rn",
+        "Architecture Center Release Notes",
+        "https://docs.cloud.google.com/feeds/architecture-center-release-notes.xml",
+        prefix_title=True,
+    ),
     # Google Cloud release notes — the GCP master aggregates every Cloud
     # product's notes, so we take it alone rather than each per-product feed.
+    # The Cloud Console release-notes browser exposes this same corpus; prefer
+    # the native feed instead of scraping the authenticated console SPA.
     # Date-titled, so prefix_title keeps it from colliding with the Workspace
     # release-notes feeds below on shared dates.
     Source("cloud-rn", "Cloud Release Notes", "https://docs.cloud.google.com/feeds/gcp-release-notes.xml", prefix_title=True),
