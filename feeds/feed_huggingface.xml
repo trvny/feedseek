@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-04T23:33:04.843087+00:00</updated>
+  <updated>2026-10-05T06:08:45.576133+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/6d4ca3ada0629c36</id>
+    <title>For a single-purpose 12B rewriter, how much loss per bit? Chinese breaks first.</title>
+    <updated>2026-10-05T06:08:44.460196+00:00</updated>
+    <content>For a single-purpose 12B rewriter, how much loss per bit? Chinese breaks first. We used llama.cpp's --kl-divergence for jialinyyzz/humanizer against bf16 weights, on our held out eval (drafts+rewrites) for English and Chinese. Standard llama-quantize (but our imatrix) without additional training. "differ" means top-choice token is not the same as what bf16 selects. - Q6_K, 10.0 GB: KL .0030 EN / .0027 ZH. About 2 in 100 tokens differ in both. - Q4_K_M, 7.6 GB: .0198 / .0204. About 6 in 100. - IQ3_XXS, 4.7 GB: .138 / .175. 14 vs. 17 in 100. - IQ2_XS, 3.8 GB: .487 / .762. 26 vs. 35 in 100. Both languages track when you go as low as 4 bits. Below that Chinese drops off faster (Chinese KL is 1.3</content>
+    <link href="https://huggingface.co/posts/jialinyyzz/469144109204873" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-05T06:08:44.460196+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/jialinyyzz/469144109204873.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/jialinyyzz/469144109204873.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/jialinyyzz/469144109204873.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/877bd1b317082ffa</id>
     <title>I built inboxmcp, a hosted MCP server that gives your own agent (Grok Bot, Claude, any remote-MCP client) read-only access to the IMAP inboxes you choose.</title>
@@ -2578,21 +2593,6 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/bghira/510789724527926.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/5099785c13f47f68</id>
-    <title>wait why can i post</title>
-    <updated>2026-09-10T16:39:48.708243+00:00</updated>
-    <content>wait why can i post</content>
-    <link href="https://huggingface.co/posts/GGUFGuy/176366105637050" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-10T16:39:48.708243+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GGUFGuy/176366105637050.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GGUFGuy/176366105637050.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GGUFGuy/176366105637050.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/7cf1c2ec554bda2a</id>
