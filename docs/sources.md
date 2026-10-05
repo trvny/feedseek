@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-109 feedów · 873 źródła
+109 feedów · 874 źródła
 
 ## Spis grup
 
@@ -420,6 +420,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.googlecloudpresscorner.com&sz=16) Google Cloud Press — <https://www.googlecloudpresscorner.com/press-releases?pagetemplate=rss>
 - ![](https://www.google.com/s2/favicons?domain=feeds.feedburner.com&sz=16) Workspace Updates — <https://feeds.feedburner.com/GoogleAppsUpdates>
 - ![](https://www.google.com/s2/favicons?domain=blog.google&sz=16) Google Analytics — <https://blog.google/products/marketingplatform/analytics/rss/>
+- ![](https://www.google.com/s2/favicons?domain=docs.cloud.google.com&sz=16) Architecture Center Release Notes — <https://docs.cloud.google.com/feeds/architecture-center-release-notes.xml>
 - ![](https://www.google.com/s2/favicons?domain=docs.cloud.google.com&sz=16) Cloud Release Notes — <https://docs.cloud.google.com/feeds/gcp-release-notes.xml>
 - ![](https://www.google.com/s2/favicons?domain=developers.google.com&sz=16) Workspace Release Notes — <https://developers.google.com/feeds/workspace-release-notes.xml>
 - ![](https://www.google.com/s2/favicons?domain=developers.google.com&sz=16) Workspace Marketplace API — <https://developers.google.com/feeds/marketplace-release-notes.xml>

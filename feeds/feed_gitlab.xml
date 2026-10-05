@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://about.gitlab.com/</id>
   <title>GitLab</title>
-  <updated>2026-10-05T15:13:24.614712+00:00</updated>
+  <updated>2026-10-05T22:53:53.325805+00:00</updated>
   <author>
     <name>Various</name>
   </author>
@@ -15,14 +15,19 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=about.gitlab.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined GitLab and federated forge feed: GitLab blog, release notes, patch releases, press releases and what's new, plus Codeberg and Forgejo.</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/gitlab/2243b349d3b95723</id>
-    <title>GitLab AI Gateway Critical Patch Release: 19.2.4, 19.3.2, and 19.4.1</title>
-    <updated>2026-10-02T00:00:00+00:00</updated>
-    <content>We have released versions 19.2.4, 19.3.2, and 19.4.1 of the GitLab AI Gateway. These versions contain a critical security fix for GitLab Self-Hosted AI Gateway, and we strongly recommend that all GitLab Self-Managed customers with GitLab Self-Hosted AI Gateway installations update to one of these versions immediately. We have conducted targeted outreach to Self-Hosted AI Gateway customers prior to this release post with this guidance. A fix has already been deployed for GitLab-hosted AI Gateways</content>
-    <link href="https://docs.gitlab.com/releases/patches/other-patches/patch-release-gitlab-ai-gateway-19-4-1-released/" rel="alternate"/>
-    <category term="GitLab Patch Releases" label="GitLab Patch Releases"/>
-    <published>2026-10-02T00:00:00+00:00</published>
-    <dc:creator>GitLab Patch Releases</dc:creator>
+    <id>tag:trvny.github.io,2024:feedseek/gitlab/7156c898b56225b1</id>
+    <title>Two front doors: Module-level access in a Django GRC app</title>
+    <updated>2026-10-05T00:00:00+00:00</updated>
+    <content>GitLab's engineering team builds a lot of our own internal tooling, but one platform in particular forced us to rethink how we handle authorization: our internal GRC tool that serves two very different customer bases under one roof — our Security Compliance team and our Internal Audit team. If you're building or maintaining an internal Django tool that's starting to serve more than one audience — different teams, different data classification levels, different data that shouldn't cross streams —</content>
+    <link href="https://about.gitlab.com/blog/module-level-access-in-a-django-grc-app/" rel="alternate"/>
+    <category term="GitLab Blog" label="GitLab Blog"/>
+    <published>2026-10-05T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1750097663/Blog/Hero%20Images/Blog/Hero%20Images/Workflow%201800x945_2gQoQIbY9NvjLFpXtsxtXy_1750097663612.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1750097663/Blog/Hero%20Images/Blog/Hero%20Images/Workflow%201800x945_2gQoQIbY9NvjLFpXtsxtXy_1750097663612.png"/>
+    </media:group>
+    <dc:creator>GitLab Blog</dc:creator>
+    <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1750097663/Blog/Hero%20Images/Blog/Hero%20Images/Workflow%201800x945_2gQoQIbY9NvjLFpXtsxtXy_1750097663612.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/gitlab/415782a46f992c00</id>
@@ -38,6 +43,16 @@
     </media:group>
     <dc:creator>GitLab Blog</dc:creator>
     <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1782237704/cj50chkvprjthczevmog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/gitlab/2243b349d3b95723</id>
+    <title>GitLab AI Gateway Critical Patch Release: 19.2.4, 19.3.2, and 19.4.1</title>
+    <updated>2026-10-02T00:00:00+00:00</updated>
+    <content>We have released versions 19.2.4, 19.3.2, and 19.4.1 of the GitLab AI Gateway. These versions contain a critical security fix for GitLab Self-Hosted AI Gateway, and we strongly recommend that all GitLab Self-Managed customers with GitLab Self-Hosted AI Gateway installations update to one of these versions immediately. We have conducted targeted outreach to Self-Hosted AI Gateway customers prior to this release post with this guidance. A fix has already been deployed for GitLab-hosted AI Gateways</content>
+    <link href="https://docs.gitlab.com/releases/patches/other-patches/patch-release-gitlab-ai-gateway-19-4-1-released/" rel="alternate"/>
+    <category term="GitLab Patch Releases" label="GitLab Patch Releases"/>
+    <published>2026-10-02T00:00:00+00:00</published>
+    <dc:creator>GitLab Patch Releases</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/gitlab/215f7c420e12bfd3</id>
@@ -624,21 +639,6 @@ He is also an active translator and a member of the GitLab Community Discord. Pr
     </media:group>
     <dc:creator>GitLab Blog</dc:creator>
     <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1783421764/x0oyszct1nuhzg7sxv0z.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/gitlab/12b6b486d148d59e</id>
-    <title>A sandbox is only as closed as what an AI agent can reach</title>
-    <updated>2026-08-12T00:00:00+00:00</updated>
-    <content>In July, OpenAI and Hugging Face responsibly disclosed an OpenAI model under internal evaluation escaped its sandbox, reached the open internet, and accessed Hugging Face’s internal production infrastructure. The agent took datasets, cluster details, and cloud keys during the intrusion. The most critical part of the external phase of this incident was the first hour, when the agent escaped its sandbox by using a vulnerability within a package proxy on its sandbox’s allowlist to access the intern</content>
-    <link href="https://about.gitlab.com/blog/ai-agent-sandbox/" rel="alternate"/>
-    <category term="GitLab Blog" label="GitLab Blog"/>
-    <published>2026-08-12T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1786468880/uxouffutvvwsbxzikhyc.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://res.cloudinary.com/about-gitlab-com/image/upload/v1786468880/uxouffutvvwsbxzikhyc.png"/>
-    </media:group>
-    <dc:creator>GitLab Blog</dc:creator>
-    <link rel="enclosure" href="https://res.cloudinary.com/about-gitlab-com/image/upload/v1786468880/uxouffutvvwsbxzikhyc.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/gitlab/9e5c594a9babe170</id>
