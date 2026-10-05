@@ -283,6 +283,17 @@ class RequestedFeedSourcesTests(unittest.TestCase):
         urls = {source.url for source in google.SOURCES}
         self.assertIn("https://firebase.blog/rss.xml", urls)
 
+    def test_google_includes_requested_cloud_release_note_feeds(self):
+        urls = {source.url for source in google.SOURCES}
+        self.assertIn(
+            "https://docs.cloud.google.com/feeds/architecture-center-release-notes.xml",
+            urls,
+        )
+        self.assertIn(
+            "https://docs.cloud.google.com/feeds/gcp-release-notes.xml",
+            urls,
+        )
+
     def test_google_includes_antigravity_blog_and_changelog(self):
         self.assertEqual(google.ANTIGRAVITY_BLOG, "https://antigravity.google/blog")
         self.assertEqual(
