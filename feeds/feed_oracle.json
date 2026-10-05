@@ -8,6 +8,183 @@
   "icon": "https://feeds.trfny.com/favicon?domain=blogs.oracle.com&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/ecbd6f3aa0034fc1",
+      "url": "https://forums.oracle.com/ords/apexds/post/vs-code-extension-26-3-0-applocker-issue-part3-0786",
+      "title": "VS Code Extension 26.3.0: AppLocker issue, Part3",
+      "content_text": "Hi @thatjeffsmith-oracle Thanks for filing the ticket back in July. For context, this continues our previous AppLocker discussions: Part 1: AppLocker issue - dbtools.exe replacing java.exe Part 2: AppLocker issue I see a new version of the extension is out, but the file properties for dbtools.exe and sql.exe are still empty (see attached screenshots). To whitelist these files in our enterprise environment, our AppLocker admin requires the following metadata structure: Product Name: Must not cont",
+      "date_published": "2026-10-05T13:51:11Z",
+      "date_modified": "2026-10-05T13:51:11Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/jBGlCccl-7434-ULwjKwgq",
+      "tags": [
+        "Oracle Developer Community"
+      ],
+      "attachments": [
+        {
+          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/jBGlCccl-7434-ULwjKwgq",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/6e69bb431055b76c",
+      "url": "https://forums.oracle.com/ords/apexds/post/dbms-cloud-on-oracle-ai-database-26ai-free-fails-with-ora-2-7529",
+      "title": "DBMS_CLOUD on Oracle AI Database 26ai Free fails with ORA-20401 for an OCI API-key credential",
+      "content_text": "Environment - Oracle AI Database 26ai Free, Release 23.26.3.0.0 (local install) - SQLcl 26.3 - DBMS_CLOUD as installed in C##CLOUD$SERVICE (via catcon.pl - catclouduser.sql and dbms_cloud_install.sql ) - Target: OCI Object Storage, region eu-frankfurt-1, native endpoint, private bucket (empty) Problem Every call to OCI Object Storage fails with ORA-20401, using a native API signing-key credential. The same key, user OCID, tenancy OCID and fingerprint are accepted by OCI when I sign the request m",
+      "date_published": "2026-10-05T13:36:55Z",
+      "date_modified": "2026-10-05T13:36:55Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
+      "tags": [
+        "Oracle Developer Community"
+      ],
+      "attachments": [
+        {
+          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/eeb7c5b4ce666cf4",
+      "url": "https://blogs.oracle.com/scoter/modern-devx-at-oracle-ai-world",
+      "title": "Modern DevX at Oracle AI World",
+      "content_text": "If you are heading to Oracle AI World in Las Vegas and want a practical view of where modern application development is going next, make room for this session. Modern DevX: Oracle DB Operator for Kubernetes and AI-Assisted Development at Oracle AI World brings together Oracle Database engineering leaders, customers, and technical practitioners for a focused […]",
+      "date_published": "2026-10-05T13:09:50Z",
+      "date_modified": "2026-10-05T13:09:50Z",
+      "authors": [
+        {
+          "name": "Oracle Scoter"
+        }
+      ],
+      "image": "https://blogs.oracle.com/scoter/wp-content/uploads/sites/88/2026/10/modern-devx-oracle-ai-world-thumbnail-1.png",
+      "tags": [
+        "Oracle Scoter"
+      ],
+      "attachments": [
+        {
+          "url": "https://blogs.oracle.com/scoter/wp-content/uploads/sites/88/2026/10/modern-devx-oracle-ai-world-thumbnail-1.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/3f09f8eb6c7198d1",
+      "url": "https://forums.oracle.com/ords/apexds/post/built-in-domains-used-in-table-definition-do-not-appear-in-5739",
+      "title": "Built-in domains used in table definition do not appear in all_dependencies for table, appear for MView",
+      "content_text": "Hi, DB version - Oracle AI Database 26ai Free Release 23.26.0.0.0 Table definition: CREATE TABLE \"HR\".\"EMP_DOMAINS\" (    \"ID\" NUMBER, `\"SSN\" VARCHAR2(11 BYTE) DOMAIN \"SYS\".\"SSN_D\",``\"NAME\" VARCHAR2(100 BYTE),``\"EMAIL\" VARCHAR2(50 BYTE) DOMAIN \"HR\".\"EMAIL\",``\"PHONE\" VARCHAR2(20 BYTE) DOMAIN \"SYS\".\"PHONE_D\",``\"HOURLY_WAGE\" NUMBER(10,0) DOMAIN \"HR\".\"HOURLY_WAGES\"` ) ; select * from dba_dependencies where name = 'EMP_DOMAINS'; returns only domains in HR schema. However if I create Mview: create mate",
+      "date_published": "2026-10-05T10:27:51Z",
+      "date_modified": "2026-10-05T10:27:51Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/epLTdJkB-5508-SOFAedtm",
+      "tags": [
+        "Oracle Developer Community"
+      ],
+      "attachments": [
+        {
+          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/epLTdJkB-5508-SOFAedtm",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/bba7828097af8894",
+      "url": "https://forums.oracle.com/ords/apexds/post/0027838808170-hello-friend-order-det-toeic-without-exam-ets-9275",
+      "title": "0027838808170 Hello friend Order DET toEiC without exam ETS",
+      "content_text": "………….",
+      "date_published": "2026-10-05T10:11:11Z",
+      "date_modified": "2026-10-05T10:11:11Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "tags": [
+        "Oracle Developer Community"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/d7c11a95cc9a2111",
+      "url": "https://forums.oracle.com/ords/apexds/post/autentico-toefl-27-83-880-8170-b1-6311",
+      "title": "auténtico, toEfl[+27-83-880-8170)b1",
+      "content_text": "……………….",
+      "date_published": "2026-10-05T09:53:12Z",
+      "date_modified": "2026-10-05T09:53:12Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png",
+      "tags": [
+        "Oracle Developer Community"
+      ],
+      "attachments": [
+        {
+          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/090f3620f52a7e94",
+      "url": "https://forums.oracle.com/ords/apexds/post/apex-oracle-com-account-is-locked-8862",
+      "title": "APEX.ORACLE.COM Account is locked",
+      "content_text": "MY WORKSPACE : JOEWORKS account name      : joe.samaha@outlook.com please unlock",
+      "date_published": "2026-10-05T07:16:32Z",
+      "date_modified": "2026-10-05T07:16:32Z",
+      "authors": [
+        {
+          "name": "Oracle Developer Community"
+        }
+      ],
+      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
+      "tags": [
+        "Oracle Developer Community"
+      ],
+      "attachments": [
+        {
+          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/oracle/23e2f3ceb511bddf",
+      "url": "https://inside.java/2026/10/05/confined-pools/",
+      "title": "Making Arena.ofConfined() Even Cheaper in JDK 28",
+      "content_text": "Pooled confined arenas provide a significant performance improvement for short-lived native allocations.",
+      "date_published": "2026-10-05T00:00:00Z",
+      "date_modified": "2026-10-05T00:00:00Z",
+      "authors": [
+        {
+          "name": "Inside Java"
+        }
+      ],
+      "image": "https://inside.java/resources/code--RWufeMNS6f2Qg95awttrZ0nyJXg8mWC0lBheGokwU.jpg",
+      "tags": [
+        "Inside Java"
+      ],
+      "attachments": [
+        {
+          "url": "https://inside.java/resources/code--RWufeMNS6f2Qg95awttrZ0nyJXg8mWC0lBheGokwU.jpg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/oracle/08cdb1cafed2f9c0",
       "url": "https://www.oracle.com/news/announcement/oracle-announces-partnership-with-nashville-symphony-2026-10-04/",
       "title": "Oracle Announces $10 Million Partnership with the Nashville Symphony",
@@ -300,52 +477,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/df760392c8be5d77",
-      "url": "https://forums.oracle.com/ords/apexds/post/apex-24-1-21-facet-search-issue-9433",
-      "title": "APEX 24.1.21 Facet Search Issue",
-      "content_text": "I have a classic report region and added a facet search with 5 items on it. The underlying table was recently partitioned. If I compute count more than one item, this error comes out \"Ajax call returned server error ORA-02070: database does not support subqueries in this context for\". Compute count on one of the 5 items works fine but I need to compute count and show the count in each checkbox of the facet search item. I already Gather stats and Clear Cache but did not fix the issue. Before the",
-      "date_published": "2026-10-02T06:19:22Z",
-      "date_modified": "2026-10-02T06:19:22Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/1f1b01b2a74e8130",
-      "url": "https://forums.oracle.com/ords/apexds/post/follow-up-on-session-hangs-with-px-deq-execute-reply-cdb-an-9478",
-      "title": "Follow-up on &quot;Session hangs with PX Deq: Execute Reply…&quot; — CDB answer confirmed, but 12 months of logs still show a version-s",
-      "content_text": "Subject: Follow-up on \"Session hangs with PX Deq: Execute Reply…\" — CDB answer confirmed, but 12 months of logs still show a version-specific difference (25.3.2 vs 25.4.0+) Hi Jeff, Mark — thank you for the marked answer in my previous thread (KB99152, “_px_cdb_view_enabled” ). It corrected how I framed the problem: automatic parallel execution on dictionary views like ALL_SYNONYMS on multitenant is database-side behavior since 12c , not something the extension \"forces\". I verified this on our s",
-      "date_published": "2026-10-02T01:29:49Z",
-      "date_modified": "2026-10-02T01:29:49Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/dRJmtODp-8432-QPiWQyNo",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/dRJmtODp-8432-QPiWQyNo",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/oracle/930d392bc1f45f57",
       "url": "https://inside.java/2026/10/02/jep549-target-jdk28/",
       "title": "JEP targeted to JDK 28: 540: Simple JSON API (Incubator)",
@@ -365,98 +496,6 @@
         {
           "url": "https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/8021762c823acb42",
-      "url": "https://forums.oracle.com/ords/apexds/post/ora-17967-error-connecting-to-a-schema-after-upgrading-to-m-8388",
-      "title": "ORA-17967 error connecting to a schema after upgrading to MacOS 27.0.1",
-      "content_text": "After I upgraded to the latest MacOS 27.0.1, I'm unable to connect to any of the schemas via SQL Developer. I get the ORA-17967 error (SSL Handshake failure). Has anybody encountered this issue? Any help on how to fix this greatly appreciated. Desperatly seeking help as I'm blocked.",
-      "date_published": "2026-10-01T18:54:05Z",
-      "date_modified": "2026-10-01T18:54:05Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/43531b0a9b6f8192",
-      "url": "https://forums.oracle.com/ords/apexds/post/does-apex-work-with-external-company-sso-3747",
-      "title": "Does apex work with external company SSO ?",
-      "content_text": "Please suggest the option I should use because I have tried social sign in and it does not work also let me know if I have login page setup does that affect anything ? Like currently what we have done on load balancer we have setup the sso login hence what is currently happening user can login with sso and again it asks for login in apex side which is thru authentication schema LDAP directory. So ask is we do not want that second login to happen user should able to see home page using that sso l",
-      "date_published": "2026-10-01T15:13:51Z",
-      "date_modified": "2026-10-01T15:13:51Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/302227f8abe47b16",
-      "url": "https://forums.oracle.com/ords/apexds/post/apex-returns-http-200-for-a-non-existent-page-page-not-foun-2328",
-      "title": "APEX returns HTTP 200 for a non-existent page (“Page not found”)",
-      "content_text": "Hello, I noticed that Oracle APEX returns HTTP status 200 OK when requesting a page that does not exist. Example: GET /viva/f?p=200:999999 The response displays the APEX “Page not found” error page, but the HTTP status is: HTTP/1.1 200 OK I would expect: HTTP/1.1 404 Not Found Is this expected behavior or a known issue? Is there a supported way to make APEX return HTTP 404 for a non-existent application page? Thanks.",
-      "date_published": "2026-10-01T12:35:53Z",
-      "date_modified": "2026-10-01T12:35:53Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/3a4815739bbf0e3f",
-      "url": "https://forums.oracle.com/ords/apexds/post/oracle-apex-26-1-interactive-grid-row-wise-calculation-issu-4466",
-      "title": "Oracle APEX 26.1 Interactive Grid – Row-wise Calculation Issue",
-      "content_text": "Oracle APEX 26.1 Interactive Grid – Row-wise Calculation Issue I have an Interactive Grid with Static ID REC for a GRN/Receipt page. The GRN detail data is not initially entered manually . When the user selects a PO from P22_PO_ID , a Dynamic Action calls an AJAX Callback named LOAD_PO_IN_GRN . This AJAX Callback loads the selected PO's detail lines into an APEX Collection ( **GRN_PO_LINES** ) , and then the REC Interactive Grid is refreshed to display those PO lines. The loaded PO data includes",
-      "date_published": "2026-10-01T12:05:48Z",
-      "date_modified": "2026-10-01T12:05:48Z",
-      "authors": [
-        {
-          "name": "Oracle Developer Community"
-        }
-      ],
-      "image": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-      "tags": [
-        "Oracle Developer Community"
-      ],
-      "attachments": [
-        {
-          "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png",
-          "mime_type": "image/png"
         }
       ]
     },
@@ -1880,29 +1919,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/690c186cb68a4175",
-      "url": "https://blogs.oracle.com/cloud-infrastructure/oci-vault-access-from-oke-workloads",
-      "title": "Rethinking Secret Sprawl with Oracle Cloud Infrastructure Vault in Oracle Cloud Infrastructure Kubernetes Engine (OKE) Workloads",
-      "content_text": "A workload identity and Secrets Store CSI Driver pattern for Oracle Cloud Infrastructure Kubernetes Engine, illustrated with WordPress and a MySQL DB system on Oracle Cloud Infrastructure (OCI). Kubernetes applications often depend on databases, message brokers, third-party APIs, and internal services. Many of these integrations require a credential, such as a password, token, or private […]",
-      "date_published": "2026-09-18T07:13:00Z",
-      "date_modified": "2026-09-18T07:13:00Z",
-      "authors": [
-        {
-          "name": "Oracle Cloud Infrastructure"
-        }
-      ],
-      "image": "https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/secrets.png",
-      "tags": [
-        "Oracle Cloud Infrastructure"
-      ],
-      "attachments": [
-        {
-          "url": "https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/secrets.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/oracle/f61d7f199ffb7d07",
       "url": "https://blogs.oracle.com/developers/the-value-proposition-of-a-multi-model-database",
       "title": "The Value Proposition of a Multi-Model Database",
@@ -2635,29 +2651,6 @@
         {
           "url": "https://blogs.oracle.com/java/wp-content/uploads/sites/114/2026/08/industries-communications-gettyimages-1153350345-768x512-1.webp",
           "mime_type": "image/webp"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/oracle/3cd427678aa2ee4e",
-      "url": "https://inside.java/2026/08/14/java-exhaustiveness-guide/",
-      "title": "Preparing for Change: Safe Switching over Sealed APIs",
-      "content_text": "An exhaustive switch on a sealed type covers the permitted subtypes the compiler knows about; it does not cover future additions, which can cause MatchException at run time. API authors should document the expected evolution of sealed types so that client code can choose how to handle future additions. It is almost never necessary to use default when switching over a sealed type—and often not the best option.",
-      "date_published": "2026-08-14T00:00:00Z",
-      "date_modified": "2026-08-14T00:00:00Z",
-      "authors": [
-        {
-          "name": "Inside Java"
-        }
-      ],
-      "image": "https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg",
-      "tags": [
-        "Inside Java"
-      ],
-      "attachments": [
-        {
-          "url": "https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg",
-          "mime_type": "image/jpeg"
         }
       ]
     },
