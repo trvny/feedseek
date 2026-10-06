@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-06T15:25:10.817482+00:00</updated>
+  <updated>2026-10-06T21:11:39.135944+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -15,13 +15,28 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1424f8a74fdc1a2b</id>
+    <title>The keys to the Internet change on October 11. Are you ready?</title>
+    <updated>2026-10-06T17:50:11+00:00</updated>
+    <content>On October 11, 2026, the DNS root switches to a new key-signing key (KSK-2024). Learn what this means for you, and how RFC 8509 trust anchor sentinels allow you to test whether your DNS resolver is ready for the rollover.</content>
+    <link href="https://blog.cloudflare.com/root-ksk-2024-rollover/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-06T17:50:11+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M490CTJ7YDMNAYZRST2FH35F.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M490CTJ7YDMNAYZRST2FH35F.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M490CTJ7YDMNAYZRST2FH35F.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/132d4187b03fda05</id>
     <title>Network routing issue</title>
-    <updated>2026-10-06T14:34:29+00:00</updated>
-    <content>Oct 6 , 14:34 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 14:15 UTC Identified - We are continuing to work on a fix for the issue. Oct 6 , 13:34 UTC Investigating - Cloudflare is aware of an issue with network routing to Microsoft Azure, which is causing errors for requests directed to origins hosted on that service. The team is actively working on remediation.</content>
+    <updated>2026-10-06T15:33:32+00:00</updated>
+    <content>Oct 6 , 15:33 UTC Resolved - This incident has been resolved. Oct 6 , 14:34 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 14:15 UTC Identified - We are continuing to work on a fix for the issue. Oct 6 , 13:34 UTC Investigating - Cloudflare is aware of an issue with network routing to Microsoft Azure, which is causing errors for requests directed to origins hosted on that service. The team is actively working on remediation.</content>
     <link href="https://www.cloudflarestatus.com/incidents/ryvhi2suec0d" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-06T14:34:29+00:00</published>
+    <published>2026-10-06T15:33:32+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
@@ -78,6 +93,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-06-waf-release/og.png?v=35c7686b6ed70be0" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b62be622e3e2cfc1</id>
+    <title>AI Gateway - Standardize provider credential error responses in AI Gateway</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>AI Gateway's REST API now returns consistent responses when an AI provider rejects credentials. The change applies to POST /ai/run ↗︎ . Scenario Previous AI Gateway response New AI Gateway response ElevenLabs Provider-specific UserCredentialsError with HTTP 403 HTTP 401 with error code 2009 Google Vertex HTTP 500 for rejected credentials, with upstream retries HTTP 401 with error code 2009 ; the request fails without retrying the provider All other providers HTTP 402 or another provider-specific</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-05-provider-credential-errors/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-05-provider-credential-errors/og.png?v=007c51d24b1bd95f" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-05-provider-credential-errors/og.png?v=007c51d24b1bd95f"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-05-provider-credential-errors/og.png?v=007c51d24b1bd95f" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/0926eb4d4cc2b65e</id>
@@ -482,6 +512,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-02-us-jurisdiction/og.png?v=d30d6bbc9df715e5" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b9b173073bbe9fb4</id>
+    <title>Cloudflare Fundamentals, Organizations - Organizations support increased account and zone limits</title>
+    <updated>2026-10-02T00:00:00+00:00</updated>
+    <content>Cloudflare Organizations now support up to 20,000 accounts and 200,000 zones . For MSSP/Distributors using sub-organizations, these limits are applied at the root Organization. If you require a higher limit, reach out to your account team. The new limits apply to enterprise and MSSP/Distributor Organizations. Legacy reseller partner and brand partner tenants retain their existing quota behavior. For more information, refer to Account and zone limits .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-02-organization-account-zone-limits/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-02T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-02-organization-account-zone-limits/og.png?v=08db35b301979372" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-02-organization-account-zone-limits/og.png?v=08db35b301979372"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-02-organization-account-zone-limits/og.png?v=08db35b301979372" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/8b8ae2fd1ac751c3</id>
     <title>Increased Errors for Durable Objects and R2</title>
     <updated>2026-10-01T21:18:42+00:00</updated>
@@ -617,21 +662,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3SPF381A5ZFP5JJT0DGXF1T.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d7ce28a37810558a</id>
-    <title>Support for modern cryptographic algorithms in Workers</title>
-    <updated>2026-10-01T13:00:00+00:00</updated>
-    <content>Cloudflare Workers is adding opt-in support for post-quantum-resistant algorithms ML-KEM and ML-DSA. You can try it today.</content>
-    <link href="https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-10-01T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/038dda7eb5837ba3</id>
     <title>Workers AI - Introducing Clef: Cloudflare's first open-source decision models, now on Workers AI</title>
     <updated>2026-10-01T13:00:00+00:00</updated>
@@ -645,6 +675,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/og.png?v=ce0bc3c93ff2fd16" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d7ce28a37810558a</id>
+    <title>Support for modern cryptographic algorithms in Workers</title>
+    <updated>2026-10-01T13:00:00+00:00</updated>
+    <content>Cloudflare Workers is adding opt-in support for post-quantum-resistant algorithms ML-KEM and ML-DSA. You can try it today.</content>
+    <link href="https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-01T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9ee6a049b8915221</id>
@@ -1587,21 +1632,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3AJHGRFR0ZE6MB7TYYXX16K.01M3AJHKNFWTPGSZVRX4VC9KM0.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/bd4c895f1b6f21a0</id>
-    <title>Browser Run - Browser Run adds WebMCP to Kitesurf and moves to document.modelContext</title>
-    <updated>2026-09-28T00:00:00+00:00</updated>
-    <content>WebMCP now works in Kitesurf sessions as well as Lab sessions . Both backends use the document.modelContext API from the WebMCP Community Group draft ↗︎ . Lab sessions no longer expose navigator.modelContextTesting . To list and run page tools: Chrome DevTools : Use the Application &gt; WebMCP panel in the live view of a Lab session or in the Kitesurf playground ↗︎ . AI agents : Start Chrome DevTools MCP with the --category-experimental-webmcp flag to add the list_webmcp_tools and execute_webmcp_to</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-28T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/og.png?v=c1dc93ee8d6fa496" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/og.png?v=c1dc93ee8d6fa496"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/og.png?v=c1dc93ee8d6fa496" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/366424eae6ac961e</id>
     <title>Cache - Invalidate cached content instead of purging it</title>
     <updated>2026-09-28T00:00:00+00:00</updated>
@@ -1662,21 +1692,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3G3F5ZSHVH0CSDBN2M4A43T.01M3G3F6KFD00H82BMWC8VN4TP.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a20b2a70766eb94f</id>
-    <title>Workflows, Workers - Call Workflows declared in `exports` through `ctx.exports`</title>
-    <updated>2026-09-27T00:00:00+00:00</updated>
-    <content>A Worker can now call the Workflows it declares in the exports field of its Wrangler configuration through ctx.exports . You no longer need a workflows binding to call a Workflow from the Worker that defines it. Each Workflow is keyed by class name, and has the same API as a Workflow binding: src/index.js js export default { async fetch ( request , env , ctx ) { const instance = await ctx.exports.MyWorkflow. create ({ params: { name: "World" }, }); return Response. json ({ id: instance.id }); },</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-27-workflow-ctx-exports/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-27T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-27-workflow-ctx-exports/og.png?v=0556f4588a74eeb1" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-27-workflow-ctx-exports/og.png?v=0556f4588a74eeb1"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-27-workflow-ctx-exports/og.png?v=0556f4588a74eeb1" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2d56864bd95780b9</id>
     <title>R2 Service Issues in Western North America (WNAM)</title>
     <updated>2026-09-26T16:00:00+00:00</updated>
@@ -1705,21 +1720,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-25T14:49:01+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f8742313b30e8169</id>
-    <title>Agents can now set up your website’s security with Turnstile Spin</title>
-    <updated>2026-09-25T13:00:00+00:00</updated>
-    <content>Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.</content>
-    <link href="https://blog.cloudflare.com/turnstile-spin/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-25T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3CQMQWGC7WBK8ZR7DG13PFE.01M3CQMRMEBSVS7GAD6GNHZ9JD.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3CQMQWGC7WBK8ZR7DG13PFE.01M3CQMRMEBSVS7GAD6GNHZ9JD.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3CQMQWGC7WBK8ZR7DG13PFE.01M3CQMRMEBSVS7GAD6GNHZ9JD.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2a83c83b4f48cb30</id>

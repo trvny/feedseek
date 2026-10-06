@@ -34,7 +34,7 @@
       "id": "tag:trvny.github.io,2024:feedseek/gitlab/9a27a541d61e72ee",
       "url": "https://about.gitlab.com/blog/transcend-dependency-firewall/",
       "title": "Dependency Firewall: Block risky packages before the build",
-      "content_text": "Malicious packages could turn up in the public registries your builds depend on. Increasingly, the developer is not the one choosing what gets pulled in because AI coding agents now add open source dependencies on their own, often without anyone reviewing or even seeing what landed in the build. That combination means a malicious or vulnerable package can enter your build without anyone deciding to allow it. Once it is in, its code may run inside your build with the same access your pipeline has",
+      "content_text": "Attackers disguise malicious packages as ones you trust. In June 2026, GitLab researchers found five malicious PyPI packages , four of them typosquats of Flask, Requests, and NumPy, that run at install time and steal CI/CD credentials. Additionally, AI coding agents now add open source dependencies on their own, often unreviewed, so developers don't have oversight into what packages may contaminate your build. Once a malicious or vulnerable package enters your build, its code may run with the sa",
       "date_published": "2026-10-06T00:00:00Z",
       "date_modified": "2026-10-06T00:00:00Z",
       "authors": [

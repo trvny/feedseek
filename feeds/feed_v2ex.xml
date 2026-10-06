@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-06T15:27:26.905522+00:00</updated>
+  <updated>2026-10-06T21:14:17.921331+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,19 +15,34 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/a0f327b62d9246cf</id>
-    <title>开源了 12 个电商短视频 Agent Skills：一张商品图 → 带配音字幕的 15 秒竖屏视频，本地 ffmpeg 出片</title>
-    <updated>2026-10-06T14:37:21+00:00</updated>
-    <content>之前发过一个电商出图的 Skills ，有人问能不能接着把图变成视频。这周把这部分也做完了，开源（ MIT ）： https://github.com/xianyu110/ecommerce-video-skills?utm_source=v2ex&amp;utm_medium=post&amp;utm_campaign=ecommerce-video-skills&amp;utm_content=body 想解决的问题 ：让大模型写带货分镜很容易，但写完还得自己开剪映一镜一镜拖。我想让 agent 不光写脚本，还能把片子真剪出来。 做法 ：让 agent 输出一份 storyboard.json （每镜：用哪张图、怎么动、说什么、字幕高亮哪个词），然后本地一条命令渲染： python scripts/assemble.py storyboard.json -o out/demo.mp4 脚本做的事：edge-tts 逐句配音 → 镜头时长按配音实际长度反推 → 静图做 Ken Burns （逐帧 scale+crop ，比 zoompan 稳）→ xfade 转场（居中在镜头分界，不吃配音）→ ASS 字幕</content>
-    <link href="https://www.v2ex.com/t/1246694#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/27431e5c4c85b94c</id>
+    <title>我做了一个 AI 工具，想替代用了十多年的 Excel</title>
+    <updated>2026-10-06T19:40:47+00:00</updated>
+    <content>做独立开发十多年了，这些年我一直有个习惯：用 Google 表格记录每天做了什么。 这个习惯是从辞职后开始的。离开公司，没有了固定的工作安排和管理制度，我有点担心：日子一天天过去，回头却说不清时间都花在了哪里。 于是，我每年建一张表，每天记下做了什么、花了几个小时，还有那些折腾了很久才解决的技术问题，免得半年后遇到同样的坑，又得从头来一遍。 后来，表里也慢慢多了一些生活里的小事：孩子学会走路的那一天，她亲手做给我的小礼物，还有其他不想忘记的瞬间。 十多年下来，记录已经成了习惯。做完一件事，再把它记下来，就像给自己一个小小的奖励。 表格一直挺好用，直到记录越来越多 随着记录不断积累，Google 表格用起来越来越别扭。 想翻几年前的记录很费劲。用关键词搜索，又得先想起当时用了什么词。每天都在记工作时长，却很少再做分析，因为实在懒得折腾图表。 后来我突然意识到： 这些日常记录，说到底就是一条条带时间的消息。 用数据库来存储和分析，应该会方便得多。可数据库讲究结构，生活却很难按固定格式来。 上一条可能是： “今天做支付系统，花了 3.5 小时。” 下一条就变成了： “深蹲 80 公斤，5 组</content>
+    <link href="https://www.v2ex.com/t/1246709#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-06T14:37:21+00:00</published>
+    <published>2026-10-06T19:40:47+00:00</published>
     <media:group>
-      <media:content url="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg"/>
+      <media:content url="https://cdn.v2ex.com/avatar/c922/de9e/3130_large.png?m=1791314916" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/c922/de9e/3130_large.png?m=1791314916"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/c922/de9e/3130_large.png?m=1791314916" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/f88ec925205ee573</id>
+    <title>最近发布的 Googlebook 原来真的是安卓电脑</title>
+    <updated>2026-10-06T15:53:19+00:00</updated>
+    <content>原生应用是 Android app ，用户默认读写访问权限和 Android 一样，可以解锁 bootloader 和 root 。 调试也用的是 ADB ，开发者可以用内置 Linux 虚拟机无线 ADB 调试，宣传中支持的 Antigravity 靠的是 Android 前端应用加 Linux 子系统实现，另外一提这个子系统和之前 Android 支持的 pKVM Linux 虚拟机没区别。有人扒了系统镜像和 Android 基本一样，发布的第一批价格最低起售价 900 刀，感觉又要扑街了🤦 https://developer.android.com/develop/adaptive-apps/guides/googlebook/adb-debugging</content>
+    <link href="https://www.v2ex.com/t/1246701#reply5" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-06T15:53:19+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/ebea/d1b0/254966_xlarge.png?m=1779740858" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/ebea/d1b0/254966_xlarge.png?m=1779740858"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/ebea/d1b0/254966_xlarge.png?m=1779740858" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/91cb738de5459685</id>
@@ -47,21 +62,6 @@
     </media:group>
     <dc:creator>V2EX Claude (ipoh)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/373fe19d89668cfb</id>
-    <title>你们觉得《兰香如故》好看吗？</title>
-    <updated>2026-10-06T13:17:05+00:00</updated>
-    <content>你们觉得《兰香如故》好看吗？</content>
-    <link href="https://www.v2ex.com/t/1246679#reply1" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-06T13:17:05+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/ea7d4ad7c9aff6af</id>
