@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-05T22:53:21.756563+00:00</updated>
+  <updated>2026-10-06T06:48:03.925533+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -83,6 +83,21 @@
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-05T07:28:10+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cba56d6ac9a3d66c</id>
+    <title>Cloudflare WAN, Magic Transit, Cloudflare One - BGP over IPsec and GRE tunnels generally available</title>
+    <updated>2026-10-05T00:00:00+00:00</updated>
+    <content>BGP peering over IPsec and GRE tunnels is generally available for Cloudflare WAN and Magic Transit. You can use it for production workloads. BGP peering exchanges routes dynamically between your devices and your Cloudflare virtual network routing table. You no longer need to update static routes manually as your network changes. BGP over IPsec and GRE tunnels is available to all accounts that use Unified Routing . No enablement is required. BGP over CNI remains in closed beta. For configuration </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-05-bgp-over-tunnels-ga/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-05T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-05-bgp-over-tunnels-ga/og.png?v=0f8e86c35512de42" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-05-bgp-over-tunnels-ga/og.png?v=0f8e86c35512de42"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-05-bgp-over-tunnels-ga/og.png?v=0f8e86c35512de42" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/a0e69822c477e8ec</id>
@@ -1092,6 +1107,21 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/bed492e158770fbe</id>
+    <title>Realtime - Realtime SFU WebSocket adapter is generally available</title>
+    <updated>2026-09-30T00:00:00+00:00</updated>
+    <content>The WebSocket adapter for Cloudflare's Realtime SFU is now generally available. The SFU (selective forwarding unit) is managed WebRTC infrastructure for live audio, video, and data across Cloudflare's global network in 330+ cities ↗︎ . The adapter connects live calls to any server that accepts WebSockets, such as a Durable Object . It delivers uncompressed pulse-code modulation (PCM) audio and JPEG video frames. Your backend can process this media without implementing a WebRTC client. What you c</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-09-30T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2</id>
     <title>Network Performance Degradation — Asia-Pacific</title>
     <updated>2026-09-29T23:01:27+00:00</updated>
@@ -1664,36 +1694,6 @@ We are working to u</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-25T01:52:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/2e3104b67fb16846</id>
-    <title>Email Service - Suppress recipients for one sending domain</title>
-    <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>Email Sending suppressions now have a scope : account : The suppression applies to every sending domain and subdomain in your account. This is the default. sending_domain : The suppression applies to one sending domain only. A suppression for mail.myappexample.com does not block mail from myappexample.com . Most importantly, Email Sending now automatically creates bounce and complaint suppressions at the sending-domain level. This provides greater granularity by preventing an issue with one send</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-sending-domain-suppressions/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/811fa79d57a93db9</id>
-    <title>Cloudflare Network Firewall, Magic Transit, Cloudflare WAN - Managed Rulesets supported in Unified Routing</title>
-    <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>Cloudflare Advanced Network Firewall Managed Rulesets are now supported for accounts using Unified Routing mode. For the full list of feature availability, refer to Check feature availability before upgrading .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-unified-routing-managed-rulesets/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/04aaa8df23388d85</id>

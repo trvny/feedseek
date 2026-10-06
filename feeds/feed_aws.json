@@ -8,6 +8,61 @@
   "icon": "https://feeds.trfny.com/favicon?domain=aws.amazon.com&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/705c436c53fb112a",
+      "url": "https://repost.aws/articles/AR3KM9ai7YS1OioLypi6UqIg/best-practice-guide-preventing-idle-session-%E2%86%92-connection-exhaustion-in-amazon-redshift",
+      "title": "Best Practice Guide: Preventing Idle Session → Connection Exhaustion in Amazon Redshift",
+      "content_text": "An Amazon Redshift cluster can accumulate **idle sessions** — connections that remain open but are no longer actively used by a client (for example, the application crashed, a network link dropped silently, or a connection pool grew unbounded). Over time these idle sessions consume connection slots until the cluster reaches its hard maximum (500–2,000 depending on node type), at which point legitimate workloads are denied access",
+      "date_published": "2026-10-06T01:52:12Z",
+      "date_modified": "2026-10-06T01:52:12Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/328a47bb40432025",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/redshift-iceberg-materialized-views",
+      "title": "Amazon Redshift adds support for creating and refreshing Apache Iceberg materialized views",
+      "content_text": "Amazon Redshift now supports the creation and refresh of Apache Iceberg materialized views. Materialized views pre-compute expensive joins and aggregations once and store the results in an Apache Iceberg table in Amazon S3 or Amazon S3 table buckets, registered in the AWS Glue Data Catalog. Materialized views are created using familiar SQL — CREATE MATERIALIZED VIEW ... USING ICEBERG and the results are instantly queryable by any Iceberg-compatible engine, including Amazon Athena, Apache Spark o",
+      "date_published": "2026-10-05T21:57:18Z",
+      "date_modified": "2026-10-05T21:57:18Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/46e6e150e2bd87b7",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-bedrock-glm-5-3/",
+      "title": "GLM 5.3 by Z.ai is now generally available on Amazon Bedrock",
+      "content_text": "Amazon Bedrock now supports GLM 5.3 from Z.ai, giving you a powerful new option for agentic coding and long-horizon software engineering work. Customers using GLM 5.3 on Amazon Bedrock have access to the latest open weight model with the AWS security and compliance posture. GLM 5.3 is Z.ai’s flagship model, a mixture-of-experts architecture with 753B total parameters and roughly 40B active per token, built on the same base model as GLM 5.2 with all improvements driven by scaled post-training. It",
+      "date_published": "2026-10-05T21:42:00Z",
+      "date_modified": "2026-10-05T21:42:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/d7f65effe12414a1",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/",
       "title": "AWS IAM Identity Center now supports network access controls for Identity Store",
@@ -44,6 +99,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-ruby-driver-wrapper-available/",
       "title": "AWS Advanced Ruby Driver Wrapper is generally available",
       "content_text": "The Amazon Web Services (AWS) Advanced Ruby Driver Wrapper is now generally available for use with Amazon RDS and Amazon Aurora PostgreSQL and MySQL-compatible databases. This advanced database driver reduces RDS Blue/Green switchover, Aurora Global database switchover and database failover times, improving application availability. Additionally, it supports multiple authentication mechanisms for your database, including AWS Secrets Manager authentication, and token-based authentication with AWS",
+      "date_published": "2026-10-05T17:00:00Z",
+      "date_modified": "2026-10-05T17:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/8aa5a39c0270cef5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/",
+      "title": "AWS Client VPN now supports device posture assessment",
+      "content_text": "AWS Client VPN now supports device posture assessment, allowing you to verify that connecting user devices meet your security and compliance requirements before granting network access. This feature integrates with your existing device posture providers, so only trusted, compliant devices can access your AWS resources through Client VPN. Previously, Client VPN authenticated users through certificates, SAML, or Active Directory. With device posture assessment, you can now also integrate CrowdStri",
       "date_published": "2026-10-05T17:00:00Z",
       "date_modified": "2026-10-05T17:00:00Z",
       "authors": [
@@ -101,6 +172,22 @@
       "content_text": "AWS Private CA announces detailed certificate issuance logs, a new AWS CloudTrail service event that records the complete certificate content, issuing CA information, requester identity, and signing status for every issuance. You can use these events for compliance auditing, certificate inventory, algorithm migration tracking, and failed-issuance monitoring. Previously, the CloudTrail management event for the IssueCertificate API confirmed that the API call succeeded by providing a certificate A",
       "date_published": "2026-10-05T09:00:00Z",
       "date_modified": "2026-10-05T09:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/1176608e6532f194",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-nova-2.5-sonic/",
+      "title": "Announcing Amazon Nova 2.5 Sonic with improved reasoning for voice agents",
+      "content_text": "Today, we announce the general availability of Amazon Nova 2.5 Sonic, our latest speech-to-speech model for natural, real-time voice agents. This release brings improved reasoning, instruction following, and tool-calling accuracy to real-time voice applications. The model also delivers lower latency, enabling faster, more natural interactions. Nova 2.5 Sonic helps voice agents maintain context, follow multi-step instructions, and use connected tools to complete customer tasks. For example, a cus",
+      "date_published": "2026-10-05T08:10:00Z",
+      "date_modified": "2026-10-05T08:10:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -189,10 +276,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7449eecb4180f7b3",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
-      "title": "Amazon Aurora DSQL now supports partial indexes",
-      "content_text": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost. Many tables hold a small working set alongside a much larger history, such as open orders among years of completed ones. Add a WHERE clause to CREATE INDEX to index just that working set. The index stays small as the table grows, and queries that target those rows read less data. A",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/454c9996a7cafc85",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
+      "title": "Amazon EKS and Amazon EKS Distro now support Kubernetes version 1.37",
+      "content_text": "Kubernetes version 1.37 introduced several new features and bug fixes, and AWS is excited to announce that you can now use Amazon Elastic Kubernetes Service (EKS) and Amazon EKS Distro to run Kubernetes version 1.37. Starting today, you can create new EKS clusters using version 1.37 and upgrade existing clusters to version 1.37 using the EKS console, the eksctl command line interface, or through an infrastructure-as-code tool. Kubernetes version 1.37 introduces several key improvements, promotin",
       "date_published": "2026-10-02T17:30:00Z",
       "date_modified": "2026-10-02T17:30:00Z",
       "authors": [
@@ -205,10 +292,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/454c9996a7cafc85",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
-      "title": "Amazon EKS and Amazon EKS Distro now support Kubernetes version 1.37",
-      "content_text": "Kubernetes version 1.37 introduced several new features and bug fixes, and AWS is excited to announce that you can now use Amazon Elastic Kubernetes Service (EKS) and Amazon EKS Distro to run Kubernetes version 1.37. Starting today, you can create new EKS clusters using version 1.37 and upgrade existing clusters to version 1.37 using the EKS console, the eksctl command line interface, or through an infrastructure-as-code tool. Kubernetes version 1.37 introduces several key improvements, promotin",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7449eecb4180f7b3",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
+      "title": "Amazon Aurora DSQL now supports partial indexes",
+      "content_text": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost. Many tables hold a small working set alongside a much larger history, such as open orders among years of completed ones. Add a WHERE clause to CREATE INDEX to index just that working set. The index stays small as the table grows, and queries that target those rows read less data. A",
       "date_published": "2026-10-02T17:30:00Z",
       "date_modified": "2026-10-02T17:30:00Z",
       "authors": [
@@ -283,10 +370,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a5630b33e7b8b437",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
-      "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
-      "content_text": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority. With this feature, you can establish native connections to private endpoints in your VPC without requiring an intermediate Application Load Balancer. You can register a private CA certificate with gateway tar",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/8285b344850faa88",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/",
+      "title": "The AWS MCP Server is now available in six additional AWS Regions",
+      "content_text": "The AWS MCP Server is now available in six additional AWS Regions: Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Ireland), Europe (London), and US West (Oregon). The AWS MCP Server, part of the Agent Toolkit for AWS , is a managed Model Context Protocol server that gives AI coding agents a single interface to AWS APIs, so agents can discover and call AWS services without building and maintaining per-service integrations. With this expansion, customers in these Re",
       "date_published": "2026-10-02T08:00:00Z",
       "date_modified": "2026-10-02T08:00:00Z",
       "authors": [
@@ -299,10 +386,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/8285b344850faa88",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/",
-      "title": "The AWS MCP Server is now available in six additional AWS Regions",
-      "content_text": "The AWS MCP Server is now available in six additional AWS Regions: Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Ireland), Europe (London), and US West (Oregon). The AWS MCP Server, part of the Agent Toolkit for AWS , is a managed Model Context Protocol server that gives AI coding agents a single interface to AWS APIs, so agents can discover and call AWS services without building and maintaining per-service integrations. With this expansion, customers in these Re",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/a5630b33e7b8b437",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
+      "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
+      "content_text": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority. With this feature, you can establish native connections to private endpoints in your VPC without requiring an intermediate Application Load Balancer. You can register a private CA certificate with gateway tar",
       "date_published": "2026-10-02T08:00:00Z",
       "date_modified": "2026-10-02T08:00:00Z",
       "authors": [
@@ -567,22 +654,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/95de98e6baa05954",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
-      "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
-      "content_text": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of multiple exposures at once. Each remediation plan includes prioritization guidance (Critical, High, Medium, or Low), impact assessment, and detailed step-by-step instructions with examples in multiple",
-      "date_published": "2026-10-01T10:00:00Z",
-      "date_modified": "2026-10-01T10:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/2c0e03c7fb3cad43",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-cloudwatch-log-groups/",
       "title": "AWS Transfer Family now supports custom CloudWatch log groups for managed workflows",
@@ -599,12 +670,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/ee20cca0c8ecdcb9",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
-      "title": "AWS Budgets now supports email verification for notification subscribers",
-      "content_text": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts. When you add an email address to a budget notification, AWS Budgets sends a verification email to that address, and the address begins receiving notifications once the recipient confirms it. Verification applies to email addresses added from 9/30/26 onward. Addresses already subscribed on exis",
-      "date_published": "2026-10-01T08:00:00Z",
-      "date_modified": "2026-10-01T08:00:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/95de98e6baa05954",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
+      "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
+      "content_text": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of multiple exposures at once. Each remediation plan includes prioritization guidance (Critical, High, Medium, or Low), impact assessment, and detailed step-by-step instructions with examples in multiple",
+      "date_published": "2026-10-01T10:00:00Z",
+      "date_modified": "2026-10-01T10:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -615,10 +686,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/1343f1d09d516202",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/emr-serverless-terabyte-scale-shuffle/",
-      "title": "Serverless Storage on Amazon EMR Serverless now supports terabyte-scale shuffle",
-      "content_text": "Amazon EMR Serverless now offers enhanced serverless storage capabilities with support for up to 1TB shuffle operations, raising the previous 200 GB per-job limit. Amazon EMR Serverless makes it simple for data engineers and data scientists to run open-source big data analytics frameworks without configuring, managing, and scaling clusters or servers. This enhancement enables enterprise customers to run production-scale Apache Spark workloads that require processing large volumes of shuffle data",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/3ea9c1fe8a381ce5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/",
+      "title": "Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall",
+      "content_text": "Route 53 Global Resolver and DNS Firewall now provide DNS analytics and insights through native Amazon CloudWatch integration. These new capabilities enable network administrators and security teams to gain full observability into DNS query patterns, monitor DNS Firewall rule effectiveness, detect anomalous activity, and optimize DNS infrastructure performance. DNS analytics and insights is available in all AWS Regions where Amazon CloudWatch, Route 53 Global Resolver, and DNS Firewall are avail",
       "date_published": "2026-10-01T08:00:00Z",
       "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
@@ -647,10 +718,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/3ea9c1fe8a381ce5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/",
-      "title": "Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall",
-      "content_text": "Route 53 Global Resolver and DNS Firewall now provide DNS analytics and insights through native Amazon CloudWatch integration. These new capabilities enable network administrators and security teams to gain full observability into DNS query patterns, monitor DNS Firewall rule effectiveness, detect anomalous activity, and optimize DNS infrastructure performance. DNS analytics and insights is available in all AWS Regions where Amazon CloudWatch, Route 53 Global Resolver, and DNS Firewall are avail",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/1343f1d09d516202",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/emr-serverless-terabyte-scale-shuffle/",
+      "title": "Serverless Storage on Amazon EMR Serverless now supports terabyte-scale shuffle",
+      "content_text": "Amazon EMR Serverless now offers enhanced serverless storage capabilities with support for up to 1TB shuffle operations, raising the previous 200 GB per-job limit. Amazon EMR Serverless makes it simple for data engineers and data scientists to run open-source big data analytics frameworks without configuring, managing, and scaling clusters or servers. This enhancement enables enterprise customers to run production-scale Apache Spark workloads that require processing large volumes of shuffle data",
       "date_published": "2026-10-01T08:00:00Z",
       "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
@@ -663,12 +734,28 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/016f948cbf8743bb",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
-      "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
-      "content_text": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions. Previously, multi-Region support was available in the enabled-by-default commercial AWS Regions. This helps you improve the resilience of user access to AWS accounts and deploy AWS applications in the AWS Regions that be",
-      "date_published": "2026-10-01T07:00:00Z",
-      "date_modified": "2026-10-01T07:00:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/ee20cca0c8ecdcb9",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
+      "title": "AWS Budgets now supports email verification for notification subscribers",
+      "content_text": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts. When you add an email address to a budget notification, AWS Budgets sends a verification email to that address, and the address begins receiving notifications once the recipient confirms it. Verification applies to email addresses added from 9/30/26 onward. Addresses already subscribed on exis",
+      "date_published": "2026-10-01T08:00:00Z",
+      "date_modified": "2026-10-01T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b091bbf9243ece90",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/eks-auto-mode-advanced-compute-config/",
+      "title": "Amazon EKS Auto Mode now supports advanced compute configuration",
+      "content_text": "Amazon Elastic Kubernetes Service (EKS) Auto Mode now lets you tune kubelet settings, Linux kernel sysctls, and hugepages directly in the NodeClass Kubernetes resource. You can now run workloads that require specific node tuning on EKS Auto Mode, which automates node provisioning, scaling, patching, and upgrades for you. With the new advancedCompute field in NodeClass, you can configure user namespaces for rootless container builds in CI/CD pipelines, tune eviction thresholds and container log r",
+      "date_published": "2026-10-01T08:00:00Z",
+      "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -683,6 +770,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-secrets-manager-security-posture-recommendations",
       "title": "Improve your secrets security posture with actionable recommendations in the AWS Secrets Manager console",
       "content_text": "​​​AWS Secrets Manager now integrates with the AWS Recommended Actions framework to surface contextual, actionable suggestions for your secrets directly in the Secrets Manager console. ​​ ​​With this launch, you can view tailored recommendations alongside your secrets to improve your security posture and follow best practices without leaving the console. For example, you can identify secrets that need rotation configured, use a customer managed key instead of default service-provided key for enc",
+      "date_published": "2026-10-01T07:00:00Z",
+      "date_modified": "2026-10-01T07:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/016f948cbf8743bb",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
+      "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
+      "content_text": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions. Previously, multi-Region support was available in the enabled-by-default commercial AWS Regions. This helps you improve the resilience of user access to AWS accounts and deploy AWS applications in the AWS Regions that be",
       "date_published": "2026-10-01T07:00:00Z",
       "date_modified": "2026-10-01T07:00:00Z",
       "authors": [
@@ -906,10 +1009,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/84cdfe12a961ba94",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-pcs-scaling-logs/",
-      "title": "AWS Parallel Computing Service now supports scaling logs",
-      "content_text": "AWS Parallel Computing Service (AWS PCS) now supports scaling logs, which record how AWS PCS scales the compute node groups in your cluster. Each log entry records one state transition for one compute node—for example, an instance launch, a node registration, a scale-down, or a launch failure with its reason. Using scaling logs, you can more easily troubleshoot scaling issues. For example, you can determine why a compute node group did not reach its target size, which launches failed for capacit",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/04bdfda2fadefa8c",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-ultrafast-on-amazon-bedrock/",
+      "title": "OpenAI GPT-6 Astra now supports UltraFast mode on Amazon Bedrock",
+      "content_text": "Today, AWS announces the availability of UltraFast mode for GPT-6 Astra from OpenAI on Amazon Bedrock. Ultrafast is a premium speed tier for GPT-6 Astra built for workloads where speed matters most. According to OpenAI, Ultrafast delivers up to 6x faster inference in the API, with up to 300 tokens per second. The Amazon Bedrock inference engine delivers the performance, security, and reliability required for production workloads. Use GPT-6 Astra Ultrafast for latency-sensitive applications such",
       "date_published": "2026-09-30T19:00:00Z",
       "date_modified": "2026-09-30T19:00:00Z",
       "authors": [
@@ -922,10 +1025,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/04bdfda2fadefa8c",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-astra-ultrafast-on-amazon-bedrock/",
-      "title": "OpenAI GPT-6 Astra now supports UltraFast mode on Amazon Bedrock",
-      "content_text": "Today, AWS announces the availability of UltraFast mode for GPT-6 Astra from OpenAI on Amazon Bedrock. Ultrafast is a premium speed tier for GPT-6 Astra built for workloads where speed matters most. According to OpenAI, Ultrafast delivers up to 6x faster inference in the API, with up to 300 tokens per second. The Amazon Bedrock inference engine delivers the performance, security, and reliability required for production workloads. Use GPT-6 Astra Ultrafast for latency-sensitive applications such",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/84cdfe12a961ba94",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-pcs-scaling-logs/",
+      "title": "AWS Parallel Computing Service now supports scaling logs",
+      "content_text": "AWS Parallel Computing Service (AWS PCS) now supports scaling logs, which record how AWS PCS scales the compute node groups in your cluster. Each log entry records one state transition for one compute node—for example, an instance launch, a node registration, a scale-down, or a launch failure with its reason. Using scaling logs, you can more easily troubleshoot scaling issues. For example, you can determine why a compute node group did not reach its target size, which launches failed for capacit",
       "date_published": "2026-09-30T19:00:00Z",
       "date_modified": "2026-09-30T19:00:00Z",
       "authors": [
@@ -1023,10 +1126,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/b1913a9430e195ff",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aurora-rds-amd-r8a/",
-      "title": "Amazon Aurora and RDS now support AMD-based R8a instances",
-      "content_text": "Amazon Aurora and Amazon RDS now support R8a database instances powered by 5th generation AMD EPYC processors, expanding the choice available for your database workloads. Each vCPU in R8a database instances corresponds to a physical CPU core, which delivers consistent per-core performance. For workloads with high I/O requirements, R8a instances provide up to 75 Gbps of network bandwidth and 60 Gbps of Amazon EBS bandwidth. All R8a instances are built on the AWS Nitro System using sixth-generatio",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/3b0bcdf405539f5a",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-region-expansion-lhr/",
+      "title": "Amazon Bedrock expands Claude models in-region support in the UK (London)",
+      "content_text": "We're excited to announce in-region support for Anthropic's Claude Opus 5.5 and Claude Sonnet 5 on Amazon Bedrock in the UK (London) Region. Customers who need to process data within the United Kingdom, including those in financial services, healthcare, and the public sector, can now use these models at scale while keeping inference in-country. In the UK, Amazon Bedrock supports Claude Opus 5.5 and Claude Sonnet 5 with in-region inference on the bedrock-runtime endpoint in the London (eu-west-2)",
       "date_published": "2026-09-30T17:00:00Z",
       "date_modified": "2026-09-30T17:00:00Z",
       "authors": [
@@ -1055,10 +1158,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/3b0bcdf405539f5a",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-region-expansion-lhr/",
-      "title": "Amazon Bedrock expands Claude models in-region support in the UK (London)",
-      "content_text": "We're excited to announce in-region support for Anthropic's Claude Opus 5.5 and Claude Sonnet 5 on Amazon Bedrock in the UK (London) Region. Customers who need to process data within the United Kingdom, including those in financial services, healthcare, and the public sector, can now use these models at scale while keeping inference in-country. In the UK, Amazon Bedrock supports Claude Opus 5.5 and Claude Sonnet 5 with in-region inference on the bedrock-runtime endpoint in the London (eu-west-2)",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b1913a9430e195ff",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aurora-rds-amd-r8a/",
+      "title": "Amazon Aurora and RDS now support AMD-based R8a instances",
+      "content_text": "Amazon Aurora and Amazon RDS now support R8a database instances powered by 5th generation AMD EPYC processors, expanding the choice available for your database workloads. Each vCPU in R8a database instances corresponds to a physical CPU core, which delivers consistent per-core performance. For workloads with high I/O requirements, R8a instances provide up to 75 Gbps of network bandwidth and 60 Gbps of Amazon EBS bandwidth. All R8a instances are built on the AWS Nitro System using sixth-generatio",
       "date_published": "2026-09-30T17:00:00Z",
       "date_modified": "2026-09-30T17:00:00Z",
       "authors": [
@@ -1087,10 +1190,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/4c0d676e2ecf7023",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aurora-postgresql-query-apache-iceberg-and-parquet/",
-      "title": "Aurora PostgreSQL now supports querying of Apache Iceberg and Parquet data",
-      "content_text": "Starting today, you can directly query operational data together with data stored in data lakes in Apache Iceberg and Parquet formats using your existing PostgreSQL applications and tools, without extract, transform, and load (ETL) pipelines or data duplication. Applications increasingly need access to data from data lakes, often stored in Apache Iceberg and Parquet formats, to make more informed decisions and automate business processes. Accessing it has typically required pipelines that copy d",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/395da76ae69ddb07",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/rds-mysql-26-7-preview-environment/",
+      "title": "Amazon RDS for MySQL supports MySQL 26.7 in Amazon RDS Database Preview Environment",
+      "content_text": "Starting today, Amazon RDS for MySQL 26.7 is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of MySQL 26.7 on Amazon RDS for MySQL. MySQL 26.7 is the first Innovation release to adopt the new YY.M (Year.Month) calendar versioning model. It includes bug fixes, security patches, and new features such as Change Stream Applier, a modular replication applier that improves apply throughput and backlog recovery in test workloads. For more details, ref",
       "date_published": "2026-09-30T16:00:00Z",
       "date_modified": "2026-09-30T16:00:00Z",
       "authors": [
@@ -1119,28 +1222,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/395da76ae69ddb07",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/rds-mysql-26-7-preview-environment/",
-      "title": "Amazon RDS for MySQL supports MySQL 26.7 in Amazon RDS Database Preview Environment",
-      "content_text": "Starting today, Amazon RDS for MySQL 26.7 is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of MySQL 26.7 on Amazon RDS for MySQL. MySQL 26.7 is the first Innovation release to adopt the new YY.M (Year.Month) calendar versioning model. It includes bug fixes, security patches, and new features such as Change Stream Applier, a modular replication applier that improves apply throughput and backlog recovery in test workloads. For more details, ref",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4c0d676e2ecf7023",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aurora-postgresql-query-apache-iceberg-and-parquet/",
+      "title": "Aurora PostgreSQL now supports querying of Apache Iceberg and Parquet data",
+      "content_text": "Starting today, you can directly query operational data together with data stored in data lakes in Apache Iceberg and Parquet formats using your existing PostgreSQL applications and tools, without extract, transform, and load (ETL) pipelines or data duplication. Applications increasingly need access to data from data lakes, often stored in Apache Iceberg and Parquet formats, to make more informed decisions and automate business processes. Accessing it has typically required pipelines that copy d",
       "date_published": "2026-09-30T16:00:00Z",
       "date_modified": "2026-09-30T16:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/b41c6568f2c15116",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/quick-hierarchy-filter",
-      "title": "Amazon Quick adds Hierarchy Filter for guided dashboard drill-down",
-      "content_text": "Amazon Quick now supports the hierarchy filter, a single control that lets readers drill through related dimensions such as Region, Country, and City. It replaces several stacked filter controls with one, cutting clutter and guiding readers to their data in fewer clicks. The filter holds up to five dimension levels, arranged broadest to most detailed. Readers open one dropdown and expand each level in turn, with every selection narrowing the next and auto-selecting its parent chain. Authors crea",
-      "date_published": "2026-09-30T15:00:00Z",
-      "date_modified": "2026-09-30T15:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -1155,6 +1242,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/live-data-in-apps",
       "title": "Amazon Quick now supports live data from your datasets in apps",
       "content_text": "Today, Amazon Quick adds support for building applications that use live data directly from your Quick datasets, so the KPIs, charts, tables, and insights in your application always reflect the latest data. These applications go beyond viewing data. They facilitate intelligent, data-driven business operations workflows where each person can act on what they see, from handling requests and approvals to triggering the next step. Each application user sees data under their own Amazon Quick permissi",
+      "date_published": "2026-09-30T15:00:00Z",
+      "date_modified": "2026-09-30T15:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b41c6568f2c15116",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/quick-hierarchy-filter",
+      "title": "Amazon Quick adds Hierarchy Filter for guided dashboard drill-down",
+      "content_text": "Amazon Quick now supports the hierarchy filter, a single control that lets readers drill through related dimensions such as Region, Country, and City. It replaces several stacked filter controls with one, cutting clutter and guiding readers to their data in fewer clicks. The filter holds up to five dimension levels, arranged broadest to most detailed. Readers open one dropdown and expand each level in turn, with every selection narrowing the next and auto-selecting its parent chain. Authors crea",
       "date_published": "2026-09-30T15:00:00Z",
       "date_modified": "2026-09-30T15:00:00Z",
       "authors": [
@@ -1206,42 +1309,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/d5105854def1ec5c",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/iam-identity-center-apis-arns/",
-      "title": "AWS IAM Identity Center Identity Store APIs now accept resource ARNs in addition to resource IDs",
-      "content_text": "AWS IAM Identity Center's Identity Store APIs now accept the Amazon Resource Name (ARN) for a user, group, group membership, or identity store anywhere the APIs previously accepted the resource ID. ARN support is additive and existing integrations continue to work unchanged. If you build on the Identity Store APIs, you may already hold resource ARNs — for example, from IAM policy evaluation, CloudTrail events, or cross-service integrations. Previously, you had to strip the ARN down to the resour",
-      "date_published": "2026-09-30T08:00:00Z",
-      "date_modified": "2026-09-30T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/1ca540598b18e4b6",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-accounts-phone-number-verification/",
-      "title": "AWS accounts now support phone number verification",
-      "content_text": "AWS Accounts now support phone number verification for primary contact phone numbers. Previously, phone numbers in AWS account contact information were validated for format but never verified through an out-of-band mechanism. Now, customers can verify their phone numbers via SMS one-time passcode (OTP). To verify a phone number, customers initiate verification through the AWS Management Console or programmatically via the new SendPhoneNumberVerification API, which sends a 6-digit OTP. After ente",
-      "date_published": "2026-09-30T08:00:00Z",
-      "date_modified": "2026-09-30T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/9474bb9c15cd0b1d",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transfer-family-sftp-connector-quota-1000/",
-      "title": "AWS Transfer Family now automatically approves SFTP connector quota increases up to 1,000",
-      "content_text": "AWS Transfer Family now automatically approves requests to increase your SFTP connector quota up to 1,000 connectors per AWS account in each AWS Region. You can add more connectors as your file transfer needs grow without waiting for manual approval. The default quota remains 100 SFTP connectors per AWS account in each AWS Region, and you continue to request increases in the AWS Service Quotas console. Previously, all quota increases required manual approval. Automatic approval applies to connec",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/e207f2a9f987a4e7",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/kinesis-video-streams-vpc-privatelink/",
+      "title": "Amazon Kinesis Video Streams now supports VPC endpoints with AWS PrivateLink",
+      "content_text": "Amazon Kinesis Video Streams now supports interface VPC endpoints powered by AWS PrivateLink , providing private connectivity from your Amazon Virtual Private Cloud (Amazon VPC). Traffic between your VPC and Kinesis Video Streams stays on the AWS network and is not exposed to the public internet, across the control plane and the video ingestion and playback data planes. Customers with strict security, compliance, or network-isolation requirements can now ingest, store, and play back video withou",
       "date_published": "2026-09-30T08:00:00Z",
       "date_modified": "2026-09-30T08:00:00Z",
       "authors": [
@@ -1270,10 +1341,42 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/e207f2a9f987a4e7",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/kinesis-video-streams-vpc-privatelink/",
-      "title": "Amazon Kinesis Video Streams now supports VPC endpoints with AWS PrivateLink",
-      "content_text": "Amazon Kinesis Video Streams now supports interface VPC endpoints powered by AWS PrivateLink , providing private connectivity from your Amazon Virtual Private Cloud (Amazon VPC). Traffic between your VPC and Kinesis Video Streams stays on the AWS network and is not exposed to the public internet, across the control plane and the video ingestion and playback data planes. Customers with strict security, compliance, or network-isolation requirements can now ingest, store, and play back video withou",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9474bb9c15cd0b1d",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transfer-family-sftp-connector-quota-1000/",
+      "title": "AWS Transfer Family now automatically approves SFTP connector quota increases up to 1,000",
+      "content_text": "AWS Transfer Family now automatically approves requests to increase your SFTP connector quota up to 1,000 connectors per AWS account in each AWS Region. You can add more connectors as your file transfer needs grow without waiting for manual approval. The default quota remains 100 SFTP connectors per AWS account in each AWS Region, and you continue to request increases in the AWS Service Quotas console. Previously, all quota increases required manual approval. Automatic approval applies to connec",
+      "date_published": "2026-09-30T08:00:00Z",
+      "date_modified": "2026-09-30T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/1ca540598b18e4b6",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-accounts-phone-number-verification/",
+      "title": "AWS accounts now support phone number verification",
+      "content_text": "AWS Accounts now support phone number verification for primary contact phone numbers. Previously, phone numbers in AWS account contact information were validated for format but never verified through an out-of-band mechanism. Now, customers can verify their phone numbers via SMS one-time passcode (OTP). To verify a phone number, customers initiate verification through the AWS Management Console or programmatically via the new SendPhoneNumberVerification API, which sends a 6-digit OTP. After ente",
+      "date_published": "2026-09-30T08:00:00Z",
+      "date_modified": "2026-09-30T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/d5105854def1ec5c",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/iam-identity-center-apis-arns/",
+      "title": "AWS IAM Identity Center Identity Store APIs now accept resource ARNs in addition to resource IDs",
+      "content_text": "AWS IAM Identity Center's Identity Store APIs now accept the Amazon Resource Name (ARN) for a user, group, group membership, or identity store anywhere the APIs previously accepted the resource ID. ARN support is additive and existing integrations continue to work unchanged. If you build on the Identity Store APIs, you may already hold resource ARNs — for example, from IAM policy evaluation, CloudTrail events, or cross-service integrations. Previously, you had to strip the ARN down to the resour",
       "date_published": "2026-09-30T08:00:00Z",
       "date_modified": "2026-09-30T08:00:00Z",
       "authors": [
@@ -1421,10 +1524,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/4a5bb96ac0037950",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-unified-graphics-images/",
-      "title": "Amazon WorkSpaces Applications introduces unified graphics images",
-      "content_text": "Today, Amazon WorkSpaces Applications announces unified graphics images, a single image type that works across all supported graphics instance families, including G4dn, G5, G6, and G7. Previously, each graphics generation required its own dedicated image. Now customers can use one image to create and manage fleets on any supported graphics instance family. Unified graphics images simplify image management and make it easier to adopt newer GPU generations as they become available. When creating a",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/22db00c4831ab7aa",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-manage-data-tables/",
+      "title": "Amazon Connect Customer now lets business users manage more reference data to adjust contact center configurations in real time",
+      "content_text": "Amazon Connect Customer now lets administrators store more of the reference data that drives their contact center configurations. Administrators can now use data tables to hold up to 20,000 values per table for defining configurations such as operating hours, escalation rules, AI agent prompts or queue assignments that drive contact flows. Administrators can now also export tables, edit hundreds of records, move tables between Connect Customer instances, or load reference data from external syst",
       "date_published": "2026-09-29T17:00:00Z",
       "date_modified": "2026-09-29T17:00:00Z",
       "authors": [
@@ -1437,10 +1540,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/22db00c4831ab7aa",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-manage-data-tables/",
-      "title": "Amazon Connect Customer now lets business users manage more reference data to adjust contact center configurations in real time",
-      "content_text": "Amazon Connect Customer now lets administrators store more of the reference data that drives their contact center configurations. Administrators can now use data tables to hold up to 20,000 values per table for defining configurations such as operating hours, escalation rules, AI agent prompts or queue assignments that drive contact flows. Administrators can now also export tables, edit hundreds of records, move tables between Connect Customer instances, or load reference data from external syst",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4a5bb96ac0037950",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-unified-graphics-images/",
+      "title": "Amazon WorkSpaces Applications introduces unified graphics images",
+      "content_text": "Today, Amazon WorkSpaces Applications announces unified graphics images, a single image type that works across all supported graphics instance families, including G4dn, G5, G6, and G7. Previously, each graphics generation required its own dedicated image. Now customers can use one image to create and manage fleets on any supported graphics instance family. Unified graphics images simplify image management and make it easier to adopt newer GPU generations as they become available. When creating a",
       "date_published": "2026-09-29T17:00:00Z",
       "date_modified": "2026-09-29T17:00:00Z",
       "authors": [
@@ -1469,10 +1572,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/6fdb156063c00550",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-postgresql-18-6-17-11-16-15-15-19-14-24/",
-      "title": "Amazon Aurora now supports PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24",
-      "content_text": "Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.6, 17.11, 16.15, 15.19, and 14.24, which include bug fixes from the PostgreSQL community and Aurora-specific enhancements. We recommend upgrading to the latest minor versions to benefit from these improvements and address Common Vulnerabilities and Exposures (CVEs), as detailed in the release notes . You can upgrade your databases during scheduled maintenance windows using automatic minor version upgrades. To simplif",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9fb934680f503cbe",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-postgresql-extended-support/",
+      "title": "Amazon RDS for PostgreSQL announces Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514 and 11.22-rds.20260514",
+      "content_text": "Amazon Relational Database Service (RDS) for PostgreSQL announces Amazon RDS Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514, and 11.22-rds.20260514. Amazon RDS Extended Support provides up to three additional years of fixes for critical Common Vulnerabilities and Exposures (CVE) and bugs beyond a major version's end of standard support date, giving you more time to upgrade to a new major version. You can upgrade your database using Amazon RDS Blue/Green Deployments , in-p",
       "date_published": "2026-09-29T16:00:00Z",
       "date_modified": "2026-09-29T16:00:00Z",
       "authors": [
@@ -1485,10 +1588,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/9fb934680f503cbe",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-postgresql-extended-support/",
-      "title": "Amazon RDS for PostgreSQL announces Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514 and 11.22-rds.20260514",
-      "content_text": "Amazon Relational Database Service (RDS) for PostgreSQL announces Amazon RDS Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514, and 11.22-rds.20260514. Amazon RDS Extended Support provides up to three additional years of fixes for critical Common Vulnerabilities and Exposures (CVE) and bugs beyond a major version's end of standard support date, giving you more time to upgrade to a new major version. You can upgrade your database using Amazon RDS Blue/Green Deployments , in-p",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/6fdb156063c00550",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-postgresql-18-6-17-11-16-15-15-19-14-24/",
+      "title": "Amazon Aurora now supports PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24",
+      "content_text": "Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.6, 17.11, 16.15, 15.19, and 14.24, which include bug fixes from the PostgreSQL community and Aurora-specific enhancements. We recommend upgrading to the latest minor versions to benefit from these improvements and address Common Vulnerabilities and Exposures (CVEs), as detailed in the release notes . You can upgrade your databases during scheduled maintenance windows using automatic minor version upgrades. To simplif",
       "date_published": "2026-09-29T16:00:00Z",
       "date_modified": "2026-09-29T16:00:00Z",
       "authors": [
@@ -1556,42 +1659,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/b97883fb3bb15800",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/transfer-family-web-apps-download-multiple-files-folders",
-      "title": "AWS Transfer Family now supports downloading multiple files and folders in web apps",
-      "content_text": "AWS Transfer Family now lets web app users download multiple files and folders at once. End users can select any combination of files and folders and download them together in a single action. The download is delivered as a zip archive that preserves the original folder structure when unzipped. You can get started by selecting files and folders in a location and choosing Download from the action menu. Previously, end users could download only one file at a time, and folders could not be download",
-      "date_published": "2026-09-29T08:00:00Z",
-      "date_modified": "2026-09-29T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/53fe2673b6b50df5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-datasync-shared-vpcs/",
-      "title": "AWS DataSync now supports shared VPCs",
-      "content_text": "AWS DataSync now supports shared Virtual Private Clouds (VPCs). You can create DataSync agents and run transfer tasks using subnets shared across AWS accounts with AWS Resource Access Manager (RAM). It allows you to transfer data privately over a shared subnet and VPC endpoint managed in a central account, rather than one per account. Customers that centralize their networking previously had to create a separate DataSync VPC endpoint in every account that connected privately through AWS PrivateL",
-      "date_published": "2026-09-29T08:00:00Z",
-      "date_modified": "2026-09-29T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/08b577ca67d87608",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/systems-manager-sharing-documents-ram/",
-      "title": "AWS Systems Manager now supports sharing documents through AWS Resource Access Manager",
-      "content_text": "AWS Systems Manager now lets you share your Systems Manager Documents (SSM Documents) with an entire AWS organization or with specific organizational units (OUs) using AWS Resource Access Manager (AWS RAM). Previously, you could only share a document publicly or with a list of individual account IDs. You can now easily share a document with your organization or OUs, and Systems Manager automatically keeps that sharing up to date as accounts are added to or removed from your organization or OU, s",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/6e1d961a86bd7730",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-logs-estimate-bytes-scanned/",
+      "title": "Amazon CloudWatch Logs Insights now lets you estimate bytes scanned before running a query",
+      "content_text": "Amazon CloudWatch Logs Insights now lets you estimate the volume of log data, in bytes, that a query would scan over your selected log groups and time range - without running the query. This helps you adjust your log group selection, time range, and filters before running the query. In the CloudWatch console, the estimate appears automatically in the query editor when you change the log group selection, time range, or query text. When using the AWS CLI or API, append the estimate command to your",
       "date_published": "2026-09-29T08:00:00Z",
       "date_modified": "2026-09-29T08:00:00Z",
       "authors": [
@@ -1620,10 +1691,42 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/6e1d961a86bd7730",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-logs-estimate-bytes-scanned/",
-      "title": "Amazon CloudWatch Logs Insights now lets you estimate bytes scanned before running a query",
-      "content_text": "Amazon CloudWatch Logs Insights now lets you estimate the volume of log data, in bytes, that a query would scan over your selected log groups and time range - without running the query. This helps you adjust your log group selection, time range, and filters before running the query. In the CloudWatch console, the estimate appears automatically in the query editor when you change the log group selection, time range, or query text. When using the AWS CLI or API, append the estimate command to your",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/08b577ca67d87608",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/systems-manager-sharing-documents-ram/",
+      "title": "AWS Systems Manager now supports sharing documents through AWS Resource Access Manager",
+      "content_text": "AWS Systems Manager now lets you share your Systems Manager Documents (SSM Documents) with an entire AWS organization or with specific organizational units (OUs) using AWS Resource Access Manager (AWS RAM). Previously, you could only share a document publicly or with a list of individual account IDs. You can now easily share a document with your organization or OUs, and Systems Manager automatically keeps that sharing up to date as accounts are added to or removed from your organization or OU, s",
+      "date_published": "2026-09-29T08:00:00Z",
+      "date_modified": "2026-09-29T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/53fe2673b6b50df5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-datasync-shared-vpcs/",
+      "title": "AWS DataSync now supports shared VPCs",
+      "content_text": "AWS DataSync now supports shared Virtual Private Clouds (VPCs). You can create DataSync agents and run transfer tasks using subnets shared across AWS accounts with AWS Resource Access Manager (RAM). It allows you to transfer data privately over a shared subnet and VPC endpoint managed in a central account, rather than one per account. Customers that centralize their networking previously had to create a separate DataSync VPC endpoint in every account that connected privately through AWS PrivateL",
+      "date_published": "2026-09-29T08:00:00Z",
+      "date_modified": "2026-09-29T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b97883fb3bb15800",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/transfer-family-web-apps-download-multiple-files-folders",
+      "title": "AWS Transfer Family now supports downloading multiple files and folders in web apps",
+      "content_text": "AWS Transfer Family now lets web app users download multiple files and folders at once. End users can select any combination of files and folders and download them together in a single action. The download is delivered as a zip archive that preserves the original folder structure when unzipped. You can get started by selecting files and folders in a location and choosing Download from the action menu. Previously, end users could download only one file at a time, and folders could not be download",
       "date_published": "2026-09-29T08:00:00Z",
       "date_modified": "2026-09-29T08:00:00Z",
       "authors": [
@@ -1808,10 +1911,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/0d9443fcfb3cb4e6",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/",
-      "title": "Claude Sonnet 5.5 now available on AWS",
-      "content_text": "AWS now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work at faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same sess",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/e8690a69de169fe5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/",
+      "title": "Claude Sonnet 5.5 now available on AWS GovCloud (US)",
+      "content_text": "AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in",
       "date_published": "2026-09-28T15:00:00Z",
       "date_modified": "2026-09-28T15:00:00Z",
       "authors": [
@@ -1824,10 +1927,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/e8690a69de169fe5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/",
-      "title": "Claude Sonnet 5.5 now available on AWS GovCloud (US)",
-      "content_text": "AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/0d9443fcfb3cb4e6",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/",
+      "title": "Claude Sonnet 5.5 now available on AWS",
+      "content_text": "AWS now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work at faster speed. Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same sess",
       "date_published": "2026-09-28T15:00:00Z",
       "date_modified": "2026-09-28T15:00:00Z",
       "authors": [
@@ -1856,26 +1959,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7cd27e325e8b9a53",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/",
-      "title": "AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP",
-      "content_text": "AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event. You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using",
-      "date_published": "2026-09-28T08:00:00Z",
-      "date_modified": "2026-09-28T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/dd1c1baa007b2537",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/",
-      "title": "Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes",
-      "content_text": "For developers building MongoDB-compatible applications, retryable writes improve application resilience during transient errors such as network interruptions or primary failovers. Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes starting with engine version 8.0.2, eliminating the need for additional code changes when enabling this capability. With retryable writes, the MongoDB driver automatically retries certain write operations one time if a transient error occurs.",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7c661bb4c7bba36f",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-iceberg-rest-iam-documentdb/",
+      "title": "Amazon SageMaker Unified Studio now supports two new connection capabilities: Iceberg REST Catalog connections and IAM authentication for Amazon DocumentDB",
+      "content_text": "Amazon SageMaker Unified Studio now supports two new connection capabilities: (1) Iceberg REST Catalog (IRC) connections for external Apache Iceberg catalogs, and (2) IAM authentication for Amazon DocumentDB. Together, they let data teams connect to a broader set of governed data sources and use credential-less authentication across projects. Iceberg REST Catalog connections. SageMaker Unified Studio now supports Iceberg REST Catalog (IRC) connections, letting customers connect to external Apach",
       "date_published": "2026-09-28T08:00:00Z",
       "date_modified": "2026-09-28T08:00:00Z",
       "authors": [
@@ -1904,10 +1991,26 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7c661bb4c7bba36f",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-iceberg-rest-iam-documentdb/",
-      "title": "Amazon SageMaker Unified Studio now supports two new connection capabilities: Iceberg REST Catalog connections and IAM authentication for Amazon DocumentDB",
-      "content_text": "Amazon SageMaker Unified Studio now supports two new connection capabilities: (1) Iceberg REST Catalog (IRC) connections for external Apache Iceberg catalogs, and (2) IAM authentication for Amazon DocumentDB. Together, they let data teams connect to a broader set of governed data sources and use credential-less authentication across projects. Iceberg REST Catalog connections. SageMaker Unified Studio now supports Iceberg REST Catalog (IRC) connections, letting customers connect to external Apach",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/dd1c1baa007b2537",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/",
+      "title": "Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes",
+      "content_text": "For developers building MongoDB-compatible applications, retryable writes improve application resilience during transient errors such as network interruptions or primary failovers. Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes starting with engine version 8.0.2, eliminating the need for additional code changes when enabling this capability. With retryable writes, the MongoDB driver automatically retries certain write operations one time if a transient error occurs.",
+      "date_published": "2026-09-28T08:00:00Z",
+      "date_modified": "2026-09-28T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7cd27e325e8b9a53",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/",
+      "title": "AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP",
+      "content_text": "AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event. You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using",
       "date_published": "2026-09-28T08:00:00Z",
       "date_modified": "2026-09-28T08:00:00Z",
       "authors": [
@@ -2239,10 +2342,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7e3748fcff6ff0a0",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-messaging-ses-ai-skills-mcp-server/",
-      "title": "AWS End User Messaging and Amazon SES now offer AI agent skills for the AWS MCP Server",
-      "content_text": "AWS End User Messaging and Amazon SES now publish AI agent skills for the AWS MCP Server, enabling developers to build and send messages by asking their AI coding agent in plain language. Previously, developers had to navigate multiple documentation pages and management console screens to complete messaging tasks. Now, each skill provides your agent with step-by-step, validated guidance for tasks like verifying sending identities, building branded Rich Communication Services (RCS) agents, and se",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4072675185cc8b86",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-voice-calling-whatsapp",
+      "title": "AWS End User Messaging now supports voice calling on WhatsApp",
+      "content_text": "AWS End User Messaging now lets businesses place and receive voice calls with their customers directly inside WhatsApp, using the same verified business identity they already use for messaging. With WhatsApp voice calling, a conversation can move seamlessly from a chat thread to a voice call without switching to a separate channel or application, so context is never lost and customers stay in the message thread where the conversation started. Voice calling works in both directions. Customers can",
       "date_published": "2026-09-25T07:00:00Z",
       "date_modified": "2026-09-25T07:00:00Z",
       "authors": [
@@ -2255,10 +2358,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/4072675185cc8b86",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-voice-calling-whatsapp",
-      "title": "AWS End User Messaging now supports voice calling on WhatsApp",
-      "content_text": "AWS End User Messaging now lets businesses place and receive voice calls with their customers directly inside WhatsApp, using the same verified business identity they already use for messaging. With WhatsApp voice calling, a conversation can move seamlessly from a chat thread to a voice call without switching to a separate channel or application, so context is never lost and customers stay in the message thread where the conversation started. Voice calling works in both directions. Customers can",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7e3748fcff6ff0a0",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-messaging-ses-ai-skills-mcp-server/",
+      "title": "AWS End User Messaging and Amazon SES now offer AI agent skills for the AWS MCP Server",
+      "content_text": "AWS End User Messaging and Amazon SES now publish AI agent skills for the AWS MCP Server, enabling developers to build and send messages by asking their AI coding agent in plain language. Previously, developers had to navigate multiple documentation pages and management console screens to complete messaging tasks. Now, each skill provides your agent with step-by-step, validated guidance for tasks like verifying sending identities, building branded Rich Communication Services (RCS) agents, and se",
       "date_published": "2026-09-25T07:00:00Z",
       "date_modified": "2026-09-25T07:00:00Z",
       "authors": [
@@ -2448,22 +2551,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/5444da9fbacfa522",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/eventbridge-relaunches-custom-event-buses/",
-      "title": "Amazon EventBridge relaunches event buses for enterprise scale",
-      "content_text": "Amazon EventBridge relaunches event buses with a new enhanced Custom event bus that lets you build event-driven applications that decouple teams and can scale with your organization. Create a custom event bus, share it across accounts, and now teams can publish and consume events with strict ordering, open event formats, built-in retention, and support for advanced event transformations. The EventBridge Custom event bus is a serverless event broker that enables you to create scalable event-drive",
-      "date_published": "2026-09-24T21:00:00Z",
-      "date_modified": "2026-09-24T21:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/3612a7c1fb6f844b",
       "url": "https://aws.amazon.com/blogs/aws/introducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications/",
       "title": "Introducing enhanced custom event buses in Amazon EventBridge for enterprise-scale event-driven applications",
@@ -2487,22 +2574,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a4dd148e095592e0",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/durablefunctions-european-sovereign-cloud/",
-      "title": "AWS Lambda durable functions are now available in AWS European Sovereign Cloud region",
-      "content_text": "AWS Lambda durable functions are now available in the AWS European Sovereign Cloud. Lambda durable functions enable developers to build reliable multi-step applications and AI workflows within the Lambda developer experience. Lambda durable functions extend the Lambda programming model with new primitives in your event handler, such as \"step\" and \"wait\", allowing you to checkpoint progress, automatically recover from failures, and pause executions without incurring compute charges for on-demand",
-      "date_published": "2026-09-24T18:29:00Z",
-      "date_modified": "2026-09-24T18:29:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/ab7d368574ec0b54",
       "url": "https://github.com/aws/aws-cli/releases/tag/2.37.2",
       "title": "AWS CLI 2.37.2",
@@ -2523,54 +2594,6 @@
           "url": "https://opengraph.githubassets.com/4d0a59c8b9480391fd6667f883f85160a641bfe2d181b7fd2d41830f90694a2e/aws/aws-cli",
           "mime_type": "image/jpeg"
         }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/41185c1c9aac9582",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-post-quantum-tls-key-exchange/",
-      "title": "Amazon RDS for PostgreSQL now supports post-quantum TLS key exchange",
-      "content_text": "Starting today, Amazon RDS for PostgreSQL introduces support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. RDS for PostgreSQL versions 18 and higher support modification of the ssl_groups parameter. You can select cryptographic groups from the RDS for PostgreSQL allow list to align with your organization's security standards. Amazon RDS for PostgreSQL makes it simple to set up, operate, and scale PostgreSQL d",
-      "date_published": "2026-09-24T16:00:00Z",
-      "date_modified": "2026-09-24T16:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/89326528ef3416bb",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-mysql-extended-support-minor-5744-8046-rds/",
-      "title": "Amazon RDS for MySQL announces Extended Support minor versions 5.7.44-rds.20260902 and 8.0.46-rds.20260908",
-      "content_text": "Amazon Relational Database Service (RDS) for MySQL announces Amazon RDS Extended Support minor versions 5.7.44-rds.20260902 and 8.0.46-rds.20260908. Amazon RDS Extended Support provides up to three additional years of fixes for critical Common Vulnerabilities and Exposures (CVE) and bugs beyond a major version's end of standard support date, giving you more time to upgrade to a new major version. You can upgrade your database using Amazon RDS Blue/Green Deployments , in-place upgrade, or restore",
-      "date_published": "2026-09-24T16:00:00Z",
-      "date_modified": "2026-09-24T16:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/52cfbc42b1d5ec57",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/postgresql-19-beta-4-amazon-rds-database-preview-environment/",
-      "title": "Amazon RDS for PostgreSQL now supports PostgreSQL 19 Beta 4 in the Amazon RDS Database Preview Environment",
-      "content_text": "Starting today, Amazon RDS for PostgreSQL 19 Beta 4 is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of PostgreSQL 19 on Amazon RDS for PostgreSQL. PostgreSQL 19 Beta 4 refines the query performance and autovacuum management capabilities introduced in earlier releases and includes bug fixes and stability improvements since Beta 3. Fixes include pg_stat_autovacuum_scores view reporting for TOAST tables and corrected freeze-score scaling so you",
-      "date_published": "2026-09-24T16:00:00Z",
-      "date_modified": "2026-09-24T16:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
       ]
     },
     {
@@ -4023,10 +4046,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e",
-      "url": "https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch",
-      "title": "How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?",
-      "content_text": "When I click Save & Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d",
+      "url": "https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch",
+      "title": "How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?",
+      "content_text": "When I click Save & Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`",
       "date_published": "2026-09-07T17:16:36Z",
       "date_modified": "2026-09-07T17:16:36Z",
       "authors": [
@@ -4046,10 +4069,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/5bbb0c452e302a3d",
-      "url": "https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-troubleshoot-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch",
-      "title": "How do I troubleshoot 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?",
-      "content_text": "When I click Save & Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/a2baf1598d97541e",
+      "url": "https://repost.aws/articles/AR6tNV31bcSAOjB35QMkfyOg/how-do-i-resolve-504-gateway-timeout-errors-on-an-amazon-cloudwatch-data-source-when-my-amazon-managed-grafana-workspace-has-private-vpc-connectivity-to-cloudwatch",
+      "title": "How do I resolve 504 Gateway Timeout errors on an Amazon CloudWatch data source when my Amazon Managed Grafana workspace has private VPC connectivity to CloudWatch?",
+      "content_text": "When I click Save & Test on an Amazon CloudWatch data source in an Amazon Managed Grafana (AMG) workspace attached to a VPC, the request returns `504 Gateway Timeout`. Retrying doesn't help; the same error comes back every time.",
       "date_published": "2026-09-07T17:16:36Z",
       "date_modified": "2026-09-07T17:16:36Z",
       "authors": [
@@ -4709,29 +4732,6 @@
         {
           "url": "https://opengraph.githubassets.com/4b7d4a9d5013d026222c6a1c805561507ebbf7fa8720df022c94ea4a9abaf804/aws/aws-cli",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/1632e2020a572456",
-      "url": "https://repost.aws/articles/ARFCTVNAejQwuAb6XDGX7SGg/aws-devops-agent-troubleshooting-amazon-mwaa-pipeline-failures",
-      "title": "AWS DevOps Agent - Troubleshooting Amazon MWAA pipeline failures",
-      "content_text": "This article shows how AWS DevOps Agent autonomously diagnoses Amazon MWAA (Airflow) pipeline failures such as broken DAGs, task exceptions, and retry exhaustion by correlating CloudWatch alarms, metrics, and logs, then applies and verifies the fix.",
-      "date_published": "2026-08-27T04:06:59Z",
-      "date_modified": "2026-08-27T04:06:59Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
         }
       ]
     },

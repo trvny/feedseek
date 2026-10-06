@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-05T22:55:37.760133+00:00</updated>
+  <updated>2026-10-06T06:50:29.862109+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,36 +15,99 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/2cf3e66487f88139</id>
-    <title>没想到在 GitHub 下载软件还能中木马病毒…真的吃一堑长一智了</title>
-    <updated>2026-10-05T21:39:38+00:00</updated>
-    <content>说真的感觉已经好久没有去考虑过电脑病毒这件事了 结果就在大前天 我当时想给路由器安装一个插件 需要用到 Xshell 我就顺手打了 Xshell 然后当时就特别着急 没有仔细看 然后就不小心选了一个关键词 最可怕的是 这个搜索结果还在谷歌的第三项 之后就跳到了 GitHub 的一个 Xshell 破解版的项目（叫 xshell-setup-free ） 最夸张的是 我还点进去着急下载 当我解压的时候 发现有密码 但我没想那么多 就直接 虽然当时 Windows 提示我是危险软件 但我还是硬着头皮安装了 安装的一瞬间 我发现我的 Windows 自带杀毒软件跳了一下 然后又马上恢复 我也没想那么多 结果就在第二天 我的 Instagram 我的各种账号邮箱全部被盗 同时还利用我的 Instagram 给我的所有朋友发了钓鱼网站的链接 就在刚刚 我的天呐 我的邮箱又收到了一堆乱七八糟的邮件 一瞬间 100 多个 真的只能为这种坏人 pray 希望他遭到报应吧……以后也真的不能完全的忽略电脑病毒这件事 希望大家以我的例子为警戒～ - （已经和 GitHub 官方举报过好几次了 还没有得到任何</content>
-    <link href="https://www.v2ex.com/t/1246570#reply6" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-05T21:39:38+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/c7035655a8ff4031b2ba82a7ff93a9df?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/c7035655a8ff4031b2ba82a7ff93a9df?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/c7035655a8ff4031b2ba82a7ff93a9df?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/b8d82f96da19d811</id>
-    <title>做了一个 AI Zombie Video 小工具：如果变成丧尸，他还会记得你吗？</title>
-    <updated>2026-10-05T18:47:31+00:00</updated>
-    <content>大家好，最近做了一个面向海外用户的 AI 视频小工具，叫 AI Zombie Video ，想发到 V2EX 和大家交流一下。 它的玩法比较具体：上传照片，生成一段带有剧情反转的丧尸短视频。故事开头是末日场景，一个熟悉的人变成丧尸向你走来，你以为接下来会遭到攻击，结果他认出了你，最后给了你一个拥抱。 可以把它理解成一个围绕 Zombie Love Story （丧尸爱情故事）制作的 AI Zombie Video Generator 。 为什么做这个方向？ 我觉得这个题材有意思的地方，是它能在很短的时间里完成一次情绪变化：从害怕，到认出彼此，再到拥抱。
-AI Zombie Hug Trend 这种形式把恐怖场景和温情结尾放在一起，画面容易理解，也适合用自己、伴侣或宠物的照片去尝试。换一个主角，同样的故事就会有不同的感觉。 所以我做了一个流程比较集中的网站，希望用户从一张照片和一个故事想法出发，就能尝试制作自己的短片。
-目前可以怎么玩？ 网站采用 Photo to Video 的方式，上传参考照片，选择场景和时长，再提交生成。 目前提供了这些选项： 预设剧情：围绕“变成丧尸后依然记得你”</content>
-    <link href="https://www.v2ex.com/t/1246567#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/cbac93ac3d109db5</id>
+    <title>受 Jev 启发，花了三周、600 美元、20 多轮训了两个小模型专门做 Computer use</title>
+    <updated>2026-10-06T06:38:10+00:00</updated>
+    <content>这三周业余时间做了个东西，开源出来给大家看看。 DeskMind 得心：一个在 Mac 上替你操作电脑的 agent ，决定每一步怎么做的是两个跑在本机的小模型（ Qwen3.5 0.8B 和 4B 微调，MLX ）。不走云端，也不按次付费。 思路来自 Jev：把每一步变成选择题，让模型给每个选项打分，而不是生成一段文字。区别是 Jev 是云端服务，我想要一个全在本机跑的版本，所以自己在 Qwen3.5 上训了 0.8B 和 4B 两个小模型。决策服务用的是和 Jev 相同的 POST /v1/systemone 请求格式，已有的 harness 换个地址就能接到本机。和 TypeSafe 没有任何关系。 0.8B 有把握就直接做（大约 0.5 秒），没把握就交给 4B 再判断（约 3.6 秒）。任务有两种理解的时候，它会先问你，比如表里有两笔 Lisa Wong 的订单，它会问你用哪一笔，而不是随便挑一个写进去。 自己出了 13 个真机任务，每个跑 3 次，目前发布版是 38/39 ，没出现过没做完就说「完成」的情况。题是我自己出的、样本也小，仅供参考，逐题结果都公开了。 踩过最有意</content>
+    <link href="https://www.v2ex.com/t/1246631#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-05T18:47:31+00:00</published>
+    <published>2026-10-06T06:38:10+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro"/>
+      <media:content url="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/6ef21ce840203fb59926b17099752ed7?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/b79d8065977691de</id>
+    <title>我又来推荐一个跨平台开发框架了 Lynx</title>
+    <updated>2026-10-06T05:14:54+00:00</updated>
+    <content>上次我推荐了 Flutter 这个强大的跨平台框架 https://v2ex.com/t/1201168 这次我把 Songloft 的 Flutter 客户端直接用 Lynx 全部重写一遍，这个框架的优点就是官方支持原生鸿蒙，而且包体更小，使用 web 前端技术栈开发原生应用。 框架官网地址: https://lynxjs.org/zh/ Songloft Lynx 版客户端: https://github.com/songloft-org/songloft-player-lynx</content>
+    <link href="https://www.v2ex.com/t/1246623#reply0" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-06T05:14:54+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/5504cc47d987722f</id>
+    <title>ai 最可怕的，不是取代你，而是让你无效成功</title>
+    <updated>2026-10-06T02:40:41+00:00</updated>
+    <content>ai 最可怕的，不是取代你，而是让你无效成功</content>
+    <link href="https://www.v2ex.com/t/1246601" rel="alternate"/>
+    <category term="V2EX Claude (xxzhaoming)" label="V2EX Claude (xxzhaoming)"/>
+    <published>2026-10-06T02:40:41+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978"/>
+    </media:group>
+    <dc:creator>V2EX Claude (xxzhaoming)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/396ea830ec641257</id>
+    <title>个人使用 Claude 防止封号的经验分享</title>
+    <updated>2026-10-06T00:42:00+00:00</updated>
+    <content>&lt;p&gt;我是之前 IP 在 US 和 JP 乱窜，开了几个月的 Claude ，被封号了。&lt;/p&gt;
+&lt;p&gt;现在改成一下的配置，目前稳定使用了 3 个月&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;梯子是自建的 aws lightsail 东京，5 刀每月，一个 t 的流量，协议是 vless 加上 reality ，原理是伪装成大站的 https 服务器，IP 被封几率小&lt;/li&gt;
+&lt;li&gt;联通宽带，翻墙稳定&lt;/li&gt;
+&lt;li&gt;所有的 ai 服务通过 IpRoyal 出站，通过 clash 的 dialer-proxy 指向 aws 节点，所有的 AI 强制指定这个 clash proxy name, 没法手动切换，防止手贱乱切。&lt;/li&gt;
+&lt;li&gt;clash 的 AI 规则我是让 AI 直接参考这个仓库写的 ： &lt;a href="https://github.com/szkane/ClashRuleSet" rel="nofollow"&gt;https://github.com/szkane/ClashRuleSet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;除了 Claude code 对话，其他的 LLM 输出都是英语&lt;/li&gt;
+&lt;li&gt;安卓 play 商店加上招商银行卡订阅，订阅之前，现在免费的网页用上一两天，看 setting - account 里面的登陆 session 是否符合预期（多个设备都是一个目标 region ）&lt;/li&gt;
+&lt;li&gt;不要总是用完所有的额度，防止 A 社认为你在蒸馏他，A 社最敏感的是，国内的 AI 开发商蒸馏他，最近的 A 社的报告就写了很多这种案例&lt;/li&gt;
+&lt;li&gt;使用 tun 模式翻墙，我是用的 stash ios 版，在 mac 上很稳&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他的，可以参考别人的分享：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://zhuanlan.zhihu.com/p/2032879874097017916" rel="nofollow"&gt;https://zhuanlan.zhihu.com/p/2032879874097017916&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://feifei.537393.xyz/posts/claude-pro-stable-subscription/" rel="nofollow"&gt;https://feifei.537393.xyz/posts/claude-pro-stable-subscription/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;希望帮到大家&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1246574" rel="alternate"/>
+    <category term="V2EX Claude (loveleyla2013)" label="V2EX Claude (loveleyla2013)"/>
+    <published>2026-10-06T00:42:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/8618aab7f4ed261cc87c1e4a590bdfb3?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/8618aab7f4ed261cc87c1e4a590bdfb3?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Claude (loveleyla2013)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/8618aab7f4ed261cc87c1e4a590bdfb3?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/631ce52536ebd1d2</id>
+    <title>Claude 增加了简体中文</title>
+    <updated>2026-10-05T23:32:51+00:00</updated>
+    <content>&lt;p&gt;&lt;a href="https://imgur.com/a/WojCk0m" rel="nofollow"&gt;https://imgur.com/a/WojCk0m&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我怀疑又在钓鱼, 赶紧切回英文了&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1246571" rel="alternate"/>
+    <category term="V2EX Claude (leadfast)" label="V2EX Claude (leadfast)"/>
+    <published>2026-10-05T23:32:51+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/4779/f3c1/29612_xlarge.png?m=1755665436" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/4779/f3c1/29612_xlarge.png?m=1755665436"/>
+    </media:group>
+    <dc:creator>V2EX Claude (leadfast)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/4779/f3c1/29612_xlarge.png?m=1755665436" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/bbbd2e5b0503bc84</id>
@@ -61,21 +124,6 @@ AI Zombie Hug Trend 这种形式把恐怖场景和温情结尾放在一起，画
     </media:group>
     <dc:creator>V2EX Claude (microscopec)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/837c7adad2a92281f9a4b84e00b1dace?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/fba4486a9d80c461</id>
-    <title>claude 今天被封号了呢我服了</title>
-    <updated>2026-10-05T15:35:01+00:00</updated>
-    <content>如题，昨天封的，昨天申请的，人在吃饭，然后回来看到 claude 于 20min 前自动退出了，难受啊，感觉 opus5.5 用于科研还挺好用的</content>
-    <link href="https://www.v2ex.com/t/1246556" rel="alternate"/>
-    <category term="V2EX Claude (xxzhaoming)" label="V2EX Claude (xxzhaoming)"/>
-    <published>2026-10-05T15:35:01+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978"/>
-    </media:group>
-    <dc:creator>V2EX Claude (xxzhaoming)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791077978" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/31cbd3877d2f815b</id>
@@ -863,21 +911,6 @@ Anthropic's Safeguards Team
     </media:group>
     <dc:creator>V2EX Claude (NickyHaris)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/af50bfa4f7d75087</id>
-    <title>为啥在 蓝叠的 Google 账号下购买 claude 20x 要 $250 啊。 google 账号已经在免税区了</title>
-    <updated>2026-09-19T12:07:31+00:00</updated>
-    <content>为啥在 蓝叠的 Google 账号下购买 claude 20x 要 $250 啊。 google 账号已经在免税区了</content>
-    <link href="https://www.v2ex.com/t/1243195" rel="alternate"/>
-    <category term="V2EX Claude (blackantt)" label="V2EX Claude (blackantt)"/>
-    <published>2026-09-19T12:07:31+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Claude (blackantt)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/003f1b50994eb31aeb26105920380e3a?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/ef66515a474ca16a</id>
@@ -2424,25 +2457,6 @@ Google Play 对新应用有封闭测试要求：希望体验官加入测试计�
     </media:group>
     <dc:creator>V2EX Android (chefan)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/45377edeaa103358e96b9a2f22974249?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/b72124e71973e495</id>
-    <title>为什么 Claude 容易封号？ IDE 里的 Claude 有什么不一样？</title>
-    <updated>2026-08-10T06:59:20+00:00</updated>
-    <content>&lt;p&gt;想问下大家，为什么 Claude 比较容易封号？&lt;/p&gt;
-&lt;p&gt;现在 GitHub Copilot 、Kiro 、Cursor 、Windsurf 等 IDE 也都能用 Claude ，那直接用这些 IDE 里的 Claude ，和官方 Claude 有什么区别？&lt;/p&gt;
-&lt;p&gt;是接口、账号机制，还是模型使用限制不一样？&lt;/p&gt;
-&lt;p&gt;如果主要是用来写代码，大家更推荐直接用 Claude ，还是用 IDE 里的 Claude ？&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1233262" rel="alternate"/>
-    <category term="V2EX Claude (ccai)" label="V2EX Claude (ccai)"/>
-    <published>2026-08-10T06:59:20+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/e8b88983426399f8402bd93f2b96b836?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/e8b88983426399f8402bd93f2b96b836?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Claude (ccai)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e8b88983426399f8402bd93f2b96b836?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/9a382326f6d351d5</id>
