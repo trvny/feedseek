@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-06T06:48:43.495008+00:00</updated>
+  <updated>2026-10-06T15:26:00.575853+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,51 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/3f62c2a034f2b4f0</id>
+    <title>Im working on a 23M ASR model, trained on 100k hours of audio</title>
+    <updated>2026-10-06T15:25:59.792557+00:00</updated>
+    <content>Im working on a 23M ASR model, trained on 100k hours of audio</content>
+    <link href="https://huggingface.co/posts/DedeProGames/223942114658527" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-06T15:25:59.792557+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/685ea8ff7b4139b6845ce395/qwDkUbydJchw9-bR6TtoO.jpeg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/685ea8ff7b4139b6845ce395/qwDkUbydJchw9-bR6TtoO.jpeg"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/685ea8ff7b4139b6845ce395/qwDkUbydJchw9-bR6TtoO.jpeg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/fddce25330016999</id>
+    <title>Vev: Jev-style decisions about images, from a 4B or 9B model you can run yourself.</title>
+    <updated>2026-10-06T15:25:59.792557+00:00</updated>
+    <content>Vev: Jev-style decisions about images, from a 4B or 9B model you can run yourself. Give it a screenshot or photo plus a yes/no, multiple-choice, or scoring question, and it returns a probability for every option instead of generating text. It serves TypeSafe's /v1/systemone format, so the official SDK works by changing the base URL, including requests with images. The clip shows vev-4b playing Doom in real time. On each look, the image is split into 8 vertical slices, and Vev answers 8 yes/no questions in a single request, one per slice. A small fixed-rule harness turns those probabilities into turning and firing. Try it in the browser: CountingSheep/vev Weights: CountingSheep/vev-4b Countin</content>
+    <link href="https://huggingface.co/posts/CountingSheep/549306692000495" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-06T15:25:59.792557+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/CountingSheep/549306692000495.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/CountingSheep/549306692000495.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/CountingSheep/549306692000495.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/7cd99c643a26711a</id>
+    <title>TypeCastLM: Jev-class decision models on frozen LLMs</title>
+    <updated>2026-10-06T15:25:59.792557+00:00</updated>
+    <content>TypeCastLM: Jev-class decision models on frozen LLMs TypeCastLM is a decision model built around a frozen LLM. Given a text and a question, it returns calibrated probabilities over the allowed answers in one forward pass. The LLM is not fine-tuned: not one of its weights changes. TypeCastLM swaps its LM head for a mini one: a linear matrix whose rows are mostly the model's own output rows, with the three verdict rows (true, false, unsure) fitted. A fitted row catches an answer the model spreads over many tokens, such as "yes", "true" or "correct", where a single vocabulary row sees one word. A head that small leaves little room to overfit. It speaks the Jev API, so a Jev client switches by c</content>
+    <link href="https://huggingface.co/posts/mihailgribov/119412006223340" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-06T15:25:59.792557+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/664537fc57210744a6f928ef/MUzGbWSkmo9mRk4wyP960.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/664537fc57210744a6f928ef/MUzGbWSkmo9mRk4wyP960.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/664537fc57210744a6f928ef/MUzGbWSkmo9mRk4wyP960.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/ec590258ddfa442e</id>
     <title>🛡️ SRA-RiskGate-4B is Live on ZeroGPU - Stablecoin - Risk Decision Engine &amp; Dispute Lifecycle Agent</title>
@@ -208,6 +253,21 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/624bebf604abc7ebb01789af/GIAWAZCl27rQtAQvdCk5Y.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/82b3db65c4776a83</id>
+    <title>Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training</title>
+    <updated>2026-10-04T00:00:00+00:00</updated>
+    <content>Natively training joint video-audio generation models at higher resolutions empowers them to learn richer visual details and sharper motion dynamics. However, full attention incurs quadratic cost and, as resolution increases, spreads attention over increasingly redundant tokens, diluting learning signals for informative content and disrupting pretrained priors. Existing sparse attention methods either target training-free acceleration or overlook the unique structure of joint video-audio data, where cross-modal interactions are inherently concentrated around sound-producing regions. To address this, we propose Prism, a dynamic sparse attention framework for natively training joint video-audi</content>
+    <link href="https://huggingface.co/papers/2610.05416" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-04T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.05416.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.05416.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.05416.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/89764eae00994ca8</id>
@@ -2220,6 +2280,21 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20423.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/7e7ad59df36b163f</id>
+    <title>JEPA-Anything: Learning Predictive Models across Different Worlds</title>
+    <updated>2026-09-17T00:00:00+00:00</updated>
+    <content>World modeling enables intelligence to anticipate consequences, guide interventions, and learn from interaction. Yet predictive models remain domain-specific: can a common learning principle support world modeling across radically different systems? We introduce JEPA-Anything, a domain-agnostic framework based on orthogonal predictive factorization (OPF). Extending joint-embedding predictive architectures, OPF decomposes latent targets into complementary factors, learns them through dedicated pathways, and recombines them within a shared predictive design. We evaluate JEPA-Anything across seven domains: vision, biology, clinical trajectories, control, molecular dynamics, physical fields, and</content>
+    <link href="https://huggingface.co/papers/2609.20800" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-09-17T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20800.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20800.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20800.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/cfa76f448da39bb5</id>
     <title>Hi everyone!</title>
     <updated>2026-09-16T18:16:47.951248+00:00</updated>
@@ -2638,51 +2713,6 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/61929226ded356549e20c5da/eACz9S461uk3F2lNg7W9z.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/66daa0b35746ec5f</id>
-    <title>🇹🇷 **Can a 110M model understand Turkish names, places and organizations this well?**</title>
-    <updated>2026-09-12T11:13:23.266214+00:00</updated>
-    <content>🇹🇷 **Can a 110M model understand Turkish names, places and organizations this well?** We tested Werea-TR-NER on the human-labeled WikiANN Turkish test set: **91.7% Entity F1** 👤 Person → **94.2%** 📍 Location → **91.4%** 🏢 Organization → **89.2%** Only ~110M parameters. Try it with a difficult Turkish sentence 👇 Ahmet Yılmaz İstanbul'da Werea şirketinde çalışıyor. → Ahmet Yılmaz — PERSON → İstanbul — LOCATION → Werea — ORGANIZATION But easy examples are boring. **Give me the hardest Turkish sentence you can think of.** I'll run the most interesting ones through the model and share the failures too. 🤗 Model: Werea-co/Werea-TR-NER 🇹🇷 Werea: Werea-co **Follow Werea if you're interested in open T</content>
-    <link href="https://huggingface.co/posts/GoktugD/465200520849812" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-12T11:13:23.266214+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/465200520849812.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/465200520849812.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/465200520849812.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/9d6a616d41dfa534</id>
-    <title>They really do just let you say whatever on here, huh</title>
-    <updated>2026-09-12T00:34:27.469497+00:00</updated>
-    <content>They really do just let you say whatever on here, huh</content>
-    <link href="https://huggingface.co/posts/inflatebot/229267561222072" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-12T00:34:27.469497+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/inflatebot/229267561222072.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/inflatebot/229267561222072.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/inflatebot/229267561222072.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/34473361d19598c3</id>
-    <title>Introducing Audiyo 🎶 — Run Stable Audio Open on 8GB of RAM</title>
-    <updated>2026-09-11T21:14:07.287527+00:00</updated>
-    <content>Introducing Audiyo 🎶 — Run Stable Audio Open on 8GB of RAM https://github.com/TeamAudiyo/Audiyo .</content>
-    <link href="https://huggingface.co/posts/Monster-Code/330421224137907" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-11T21:14:07.287527+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Monster-Code/330421224137907.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Monster-Code/330421224137907.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Monster-Code/330421224137907.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/fee6bc029aff4954</id>
@@ -3598,36 +3628,6 @@
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6a725daa5ca641a21ab61956/wOnyrU6-UQAM5hOwpaw3-.jpeg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/9376b61147eee176</id>
-    <title>FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution</title>
-    <updated>2026-08-17T00:00:00+00:00</updated>
-    <content>FreeToken is an edge-native Mixture-of-Experts serving system that dynamically maps computation and model state onto heterogeneous local hardware to run large open-weight models on personal machines.</content>
-    <link href="https://huggingface.co/papers/2608.16157" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-17T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16157.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16157.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16157.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/d2ebf04cf0e80ea3</id>
-    <title>Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence</title>
-    <updated>2026-08-17T00:00:00+00:00</updated>
-    <content>Zetta is a closed-loop embodied harness that evolves runtime critics and recovery skills online to govern physical execution at action frequency, achieving high success on robot benchmarks with faster inference and scaling self-exploration.</content>
-    <link href="https://huggingface.co/papers/2608.16590" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-17T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16590.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16590.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16590.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/d556a48bace2bfaa</id>

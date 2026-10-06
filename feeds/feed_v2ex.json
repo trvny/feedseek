@@ -8,48 +8,186 @@
   "icon": "https://feeds.trfny.com/favicon?domain=www.v2ex.com&sz=256",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/cbac93ac3d109db5",
-      "url": "https://www.v2ex.com/t/1246631#reply0",
-      "title": "受 Jev 启发，花了三周、600 美元、20 多轮训了两个小模型专门做 Computer use",
-      "content_text": "这三周业余时间做了个东西，开源出来给大家看看。 DeskMind 得心：一个在 Mac 上替你操作电脑的 agent ，决定每一步怎么做的是两个跑在本机的小模型（ Qwen3.5 0.8B 和 4B 微调，MLX ）。不走云端，也不按次付费。 思路来自 Jev：把每一步变成选择题，让模型给每个选项打分，而不是生成一段文字。区别是 Jev 是云端服务，我想要一个全在本机跑的版本，所以自己在 Qwen3.5 上训了 0.8B 和 4B 两个小模型。决策服务用的是和 Jev 相同的 POST /v1/systemone 请求格式，已有的 harness 换个地址就能接到本机。和 TypeSafe 没有任何关系。 0.8B 有把握就直接做（大约 0.5 秒），没把握就交给 4B 再判断（约 3.6 秒）。任务有两种理解的时候，它会先问你，比如表里有两笔 Lisa Wong 的订单，它会问你用哪一笔，而不是随便挑一个写进去。 自己出了 13 个真机任务，每个跑 3 次，目前发布版是 38/39 ，没出现过没做完就说「完成」的情况。题是我自己出的、样本也小，仅供参考，逐题结果都公开了。 踩过最有意",
-      "date_published": "2026-10-06T06:38:10Z",
-      "date_modified": "2026-10-06T06:38:10Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a0f327b62d9246cf",
+      "url": "https://www.v2ex.com/t/1246694#reply0",
+      "title": "开源了 12 个电商短视频 Agent Skills：一张商品图 → 带配音字幕的 15 秒竖屏视频，本地 ffmpeg 出片",
+      "content_text": "之前发过一个电商出图的 Skills ，有人问能不能接着把图变成视频。这周把这部分也做完了，开源（ MIT ）： https://github.com/xianyu110/ecommerce-video-skills?utm_source=v2ex&utm_medium=post&utm_campaign=ecommerce-video-skills&utm_content=body 想解决的问题 ：让大模型写带货分镜很容易，但写完还得自己开剪映一镜一镜拖。我想让 agent 不光写脚本，还能把片子真剪出来。 做法 ：让 agent 输出一份 storyboard.json （每镜：用哪张图、怎么动、说什么、字幕高亮哪个词），然后本地一条命令渲染： python scripts/assemble.py storyboard.json -o out/demo.mp4 脚本做的事：edge-tts 逐句配音 → 镜头时长按配音实际长度反推 → 静图做 Ken Burns （逐帧 scale+crop ，比 zoompan 稳）→ xfade 转场（居中在镜头分界，不吃配音）→ ASS 字幕",
+      "date_published": "2026-10-06T14:37:21Z",
+      "date_modified": "2026-10-06T14:37:21Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif",
+      "image": "https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif",
-          "mime_type": "image/gif"
+          "url": "https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg",
+          "mime_type": "image/jpeg"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/b79d8065977691de",
-      "url": "https://www.v2ex.com/t/1246623#reply0",
-      "title": "我又来推荐一个跨平台开发框架了 Lynx",
-      "content_text": "上次我推荐了 Flutter 这个强大的跨平台框架 https://v2ex.com/t/1201168 这次我把 Songloft 的 Flutter 客户端直接用 Lynx 全部重写一遍，这个框架的优点就是官方支持原生鸿蒙，而且包体更小，使用 web 前端技术栈开发原生应用。 框架官网地址: https://lynxjs.org/zh/ Songloft Lynx 版客户端: https://github.com/songloft-org/songloft-player-lynx",
-      "date_published": "2026-10-06T05:14:54Z",
-      "date_modified": "2026-10-06T05:14:54Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/91cb738de5459685",
+      "url": "https://www.v2ex.com/t/1246685",
+      "title": "Claude 最重要的一点很多人没说，不要用完额度",
+      "content_text": "<p>200 刀的账号当 100 刀来用\n100 刀的当 50 刀来用\n很难封你的\n当然最好还有稳定的 ip</p>",
+      "date_published": "2026-10-06T13:34:12Z",
+      "date_modified": "2026-10-06T13:34:12Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (ipoh)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678",
+      "tags": [
+        "V2EX Claude (ipoh)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/373fe19d89668cfb",
+      "url": "https://www.v2ex.com/t/1246679#reply1",
+      "title": "你们觉得《兰香如故》好看吗？",
+      "content_text": "你们觉得《兰香如故》好看吗？",
+      "date_published": "2026-10-06T13:17:05Z",
+      "date_modified": "2026-10-06T13:17:05Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986",
+      "image": "https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986",
+          "url": "https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ea7d4ad7c9aff6af",
+      "url": "https://www.v2ex.com/t/1246675",
+      "title": "不让干的都干了， A/还是没有封号，实在是善",
+      "content_text": "IP: flower 云 JP/SG/US 出口随便选，还有一个甲骨文大阪出口，几台机器的 IP 都不一样，甚至还有腾讯云 SG 的。<br />环境：Mac + surge / Linux + http proxy （非 tun ） / Linux 直连<br />客户端: CC + 网页版 + App<br />对话语言：全部简体中文<br />对话内容：因为要处理公司资料，他知道我在中国，详细到具体省市，公司名<br />注册：原来的 claude 号因为共享被封了，销号后使用同一邮箱，同一信用卡，指纹浏览器注册（和被封时同一 IP ），注册后原来被封的 CC 重新登陆，未做任何环境清理<br />时区：SG （ SG 和北京时间没有时差）<br />支付：Apple Card （自己的，随便填了个免税州地址）<br />Github：绑定了，上面都是中国相关的 repo<br />用量：Max 20 每周都用完，一滴不剩<br />薅羊毛：每月必取消 plan ，然后 Pro -&gt; Max 5 -&gt; Max 20 玩一遍<br /><br />上面干的基本把不能干的都干了，一点事没有，可见风控他就是个玄学，直接注册，用就完了。上次翻车用了 sub2api 过了半小时就翻车了，这次没有用，无事发生",
+      "date_published": "2026-10-06T12:50:04Z",
+      "date_modified": "2026-10-06T12:50:04Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (WorldDominator)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/71b0/abd8/361609_large.png?m=1762120619",
+      "tags": [
+        "V2EX Claude (WorldDominator)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/71b0/abd8/361609_large.png?m=1762120619",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/323295240cd92042",
+      "url": "https://www.v2ex.com/t/1246668",
+      "title": "Claude 防止封号的经验分享，目前已稳定半个月，涉及支付、VPS、时区等问题",
+      "content_text": "这个也是自己总结搜索一大堆的技巧总结出来，然后，最近一段时间成功将 Claude 开出来并稳定使用。 <br /><br />1 、彻底清理自己的设备的 Claude 痕迹，我用的是开源项目 <a target=\"_blank\" href=\"https://github.com/suyuan2022/suyuan-skill/blob/main/claude-cleanup/SKILL.md\" rel=\"nofollow noopener\">https://github.com/suyuan2022/suyuan-skill/blob/main/claude-cleanup/SKILL.md</a> ，这个是针对 mac ，大家丢尽 AI 后，让其思考后对 Windows 进行清理，给我清三四遍，并且让 AI 多扫描几次，确保没有原来的 Claude 残留。 <br /><br />2 、注册 Proton 邮箱，由于 A 畜会在发的邮件里面进行邮件追踪，而这个隐私邮箱是可以预防追踪的。当然，最好的就是，A 畜发给你的邮件全部不打开。 <br /><br />3 、搭建一下美区 VPS ，个人认为什么纯净家宽最好，机房 ID 不行，都是唬人的，Claude 全球都在用，大量人用 Claude 就在服务器上跑自动化任务，难道就因为你是机房 ID 就封你，很显然不是的，封号都是多因素的。但是，ip 的稳定性以及属于哪个主机的很重要。<br /><br />有些人使用 DMIT 或者搬瓦工，但是，我使用 <a target=\"_blank\" href=\"https://www.hostinger.com?REFERRALCODE=I0MISELIOFTK\" rel=\"nofollow noopener\">https://www.hostinger.com?REFERRALCODE=I0MISELIOFTK</a> ，这是因为 1 个月 9.9 美元便宜，而且它的 hostname 是不在 Claude 的那 147 个域名黑名单里面的，不知道 147 个域名黑名单的，可以去搜索一下，就是 claude 是真的会根据 ip 或者域名与内置的域名黑名单匹配，匹配到后直接封号，这个是之前有人反编译得出来的。<br /><br />所以，我买了这个，而且它这个也是老牌主机供应商了，和那些热门的供应商错开一下，我买的时候是 9.9 美元，你用上面那个链接，还可以再便宜 20%，比 DMIT 便宜多了。 然后，买了以后，自己用这个去搭建。 <br /><br />4 、自己做好自己的分流规则，很多人应该和我使用 Clash Verge ，这家伙有的时候自动连接，而且有的会兜底直连，这个要改。你也不知道 Claude 会使用哪个第三方的来追踪你，所以，你可以使用 <a target=\"_blank\" href=\"https://github.com/Loyalsoldier/clash-rules\" rel=\"nofollow noopener\">https://github.com/Loyalsoldier/clash-rules</a> 的规则，去写你的 Clash YAML 文件，让属于国内的全部直连，国外的就连到你的美国节点，若是匹配不到就兜底拒绝。除非你对于某一个 ip 或者域名特别相信，将其直连，否则，要么去连接美国节点，要么就拒绝。 <br /><br />另外，就是将 Clash Verge 的系统代理关闭，直接开通 Tun 代理，通过虚拟网卡将流量发出去。<br /><br />5 、改电脑的时区，就是直接丢给你的 AI ，让你的电脑时区、区域等与你的美国 vps 的 ip 一致。 <br /><br />6 、开通美国卡 bin 的卡<br /><br />直接开通 biyapay 的卡，这是一个可以玩港美股的地方，然后，它里面也可以开通一张 visa 卡，我开通的时候就是美国卡 bin ，开卡的时候可以选择卡的账单地址，直接选择美国免税州的地址，然后，记下这个地址。 <br /><br />开通地址： <a target=\"_blank\" href=\"https://biyapay.com/re/30150924\" rel=\"nofollow noopener\">https://biyapay.com/re/30150924</a> <br /><br />开通以后，你就获得一张美国卡 bin ，然后，你就把钱充进去。<br /><br />然后，你直接打开 Claude 的网页版进行卡支付，支付的时候 Claude 的账单地址与你开通卡的账单地址填写要一样，然后，就去支付了。<br /><br />7 、若是碰到 KYC",
+      "date_published": "2026-10-06T11:58:52Z",
+      "date_modified": "2026-10-06T11:58:52Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (lsls931011)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/e1dd21e86c5328d61dc8792e0c8cda3c?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (lsls931011)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/e1dd21e86c5328d61dc8792e0c8cda3c?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/8b7c6a4938a61238",
+      "url": "https://www.v2ex.com/t/1246664",
+      "title": "Claude 一条龙服务？",
+      "content_text": "<p>看到最近很多人吐槽 Claude 封号，但是我自己稳定用了几年一直没有被封号，包括前几天领取 claude 送的 250 刀额度我也直接领了没有任何影响，所以如果我提供一个服务，让你的机器保持和我的机器相同的配置，包括机场商家、使用的节点、分流的规则（我告诉你你来充值配置），另外，支付我可以帮你创建 App Store 美区账户来给你充值（我来充值），让这些变量保持一致，不知道有没有人愿意付费？<br/>\n当然，封号的逻辑可能会一直在变，所以我也没法完全保证通过这种方式不会被封号，如果封号退款了我可以退给你，但是如果没有退款，那就没办法了。如果愿意承担这部分风险的可以来。</p>\n<p>附一张机场的检测图：\n<img alt=\"\" class=\"embedded_image\" loading=\"lazy\" referrerpolicy=\"no-referrer\" rel=\"noreferrer\" src=\"https://i.imgur.com/iz3pkYP.png\"/></p>",
+      "date_published": "2026-10-06T11:25:34Z",
+      "date_modified": "2026-10-06T11:25:34Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (ryuichisaikun)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/e2a12e5d0a4557f268c2a13f81a4cc58?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (ryuichisaikun)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/e2a12e5d0a4557f268c2a13f81a4cc58?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7034620d91452410",
+      "url": "https://www.v2ex.com/t/1246660",
+      "title": "Claude 开放大陆地区了？",
+      "content_text": "<p>今天除了 claude code 和网页支持简体中文，刚刚在付款页面的国家，也支持了中国\n<a href=\"https://imgur.com/a/3y45bYq\" rel=\"nofollow\">https://imgur.com/a/3y45bYq</a></p>\n<p>这是为了 IPO 还是为了钓鱼？</p>",
+      "date_published": "2026-10-06T10:17:05Z",
+      "date_modified": "2026-10-06T10:17:05Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (higo4u)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/42576d885ee1efcff3d0bbe51cc0106e?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (higo4u)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/42576d885ee1efcff3d0bbe51cc0106e?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a80ce3657cc7eaed",
+      "url": "https://sspai.com/post/115416",
+      "title": "基于 Vaultwarden 和 Keyguard 的自托管密码管理实践",
+      "content_text": "密码管理服务的数据，当然要掌握在自己手里。 查看全文",
+      "date_published": "2026-10-06T10:00:00Z",
+      "date_modified": "2026-10-06T10:00:00Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/10/6/article/545f1362-1a52-26ca-86c1-279aa8a7f56c.jpeg?imageMogr2/auto-orient/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/10/6/article/545f1362-1a52-26ca-86c1-279aa8a7f56c.jpeg?imageMogr2/auto-orient/ignore-error/1",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -234,29 +372,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/d95b/6d57/26655_large.png?m=1790564040",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/77f3a971edd9461b",
-      "url": "https://sspai.com/post/114536",
-      "title": "十个案例助你轻松上手 iOS 27 通知自动化",
-      "content_text": "iOS 27 通知自动化改变了通知的处理方式，快捷指令也迎来了不少的新玩法。 查看全文",
-      "date_published": "2026-10-05T02:59:24Z",
-      "date_modified": "2026-10-05T02:59:24Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/09/14/448425af4f0dce4b8d12b0d73e0ae42c.jpeg?imageMogr2/auto-orient/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/09/14/448425af4f0dce4b8d12b0d73e0ae42c.jpeg?imageMogr2/auto-orient/ignore-error/1",
-          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -997,29 +1112,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/93fa042c7cc27fac",
-      "url": "https://www.v2ex.com/t/1244087",
-      "title": "Claude 终于也有重置卡了但是好像只能重置五小时限额，不能重置周限额",
-      "content_text": "<p><a href=\"https://imgur.com/6HQA8br\" rel=\"nofollow\">https://imgur.com/6HQA8br</a></p>",
-      "date_published": "2026-09-22T16:32:16Z",
-      "date_modified": "2026-09-22T16:32:16Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (Tory12138)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (Tory12138)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/78fcb290584fbd28",
       "url": "https://www.v2ex.com/t/1243983",
       "title": "[免费工具]reddit 找社区,熟悉规则,写文案必备 Karmit",
@@ -1383,29 +1475,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/6571/442b/141199_large.png?m=1466488762",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c8fb3b3e58d42d4a",
-      "url": "https://www.v2ex.com/t/1241907",
-      "title": "claude desktop 一直弹 tip claude is not available in your region，危险吗？",
-      "content_text": "<p>也不影响使用。之前没有这提醒，是不是跟版本有关系？</p>",
-      "date_published": "2026-09-14T08:07:18Z",
-      "date_modified": "2026-09-14T08:07:18Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (NickyHaris)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068",
-      "tags": [
-        "V2EX Claude (NickyHaris)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068",
           "mime_type": "image/png"
         }
       ]
@@ -1779,29 +1848,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/9cbe565dca46ef26",
-      "url": "https://www.v2ex.com/t/1239642",
-      "title": "有用 claude 进行创意类/设计类工作的吗？体验如何",
-      "content_text": "有用 claude 进行创意类/设计类工作的吗？体验如何",
-      "date_published": "2026-09-05T02:16:04Z",
-      "date_modified": "2026-09-05T02:16:04Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (HvangStormstout)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (HvangStormstout)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/e477a293f0a724a7",
       "url": "https://www.v2ex.com/t/1239620",
       "title": "来个人给我点信心 不用设置好环境 付费账户依旧存活的有没有",
@@ -2073,29 +2119,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/b1d5/0645/477089_xlarge.png?m=1788168400",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/3f0e5005c73a0771",
-      "url": "https://www.v2ex.com/t/1238398",
-      "title": "claude team 开车招人",
-      "content_text": "官网 claude team 车，直接用你的个人账号加入 team ，类似 gpt team<br /><br /> [价格] <br /><br />5x 席位 售价 865cny （对应个人版本的 max5x *1.25 ）<br /><br />team 的额度和价格都是个人版本的 1.25 倍<br /><br />因为 team 的账单日是固定的，中途加人的话会按照账单日的剩余时间折算折扣。（例如还有二十天出账单，那么上车 5x 席位需要的价格为 (865/30)*20=576.67 ）<br /><br /> [上车方式] <br /><br />给邮箱直接上车即可，自备一个能用的 claude 账号就行<br /><br />邮箱方面，不拉 outlook 邮箱，域名邮箱酌情拉。推荐使用 gmail 和 icloud 等滥用较少的邮箱，以降低炸车风险<br /><br />上车后拉微信群进行管理<br /><br /> [售后质保] <br /><br />个人账号炸了给新号邮箱重拉<br /><br />整个 team 炸了根据剩余价值按比例退款<br /><br /> [须知] <br /><br />不允许反代和 cyber ，因为反代或者 cyber 封号的话直接清退不退款<br /><br />为了车子的安全 只接受个人自用，不允许中转站等非自用目的上车<br /><br />请上车用户自行管理好环境避免被封，频繁重拉有概率炸车<br /><br />无法提供开票等服务，如果需要报销的请酌情上车",
-      "date_published": "2026-08-31T06:58:25Z",
-      "date_modified": "2026-08-31T06:58:25Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (WindSakura)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/0a8c/cbfe/589088_xlarge.png?m=1788159474",
-      "tags": [
-        "V2EX Claude (WindSakura)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/0a8c/cbfe/589088_xlarge.png?m=1788159474",
           "mime_type": "image/png"
         }
       ]
@@ -3568,29 +3591,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/8b75/b98f/305534_large.png?m=1779625860",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/35f33586dd016776",
-      "url": "https://www.v2ex.com/t/1229960",
-      "title": "免费版账号也被封了",
-      "content_text": "<p>注册半年以上，这几个月一直是日本节点，而且基本上都是用英文问问题。A/\n<img alt=\"图片\" class=\"embedded_image\" loading=\"lazy\" referrerpolicy=\"no-referrer\" rel=\"noreferrer\" src=\"https://i.imgur.com/E3diFqV.jpeg\"/></p>\n<p>申诉成功的概率估计很小了。</p>",
-      "date_published": "2026-07-26T14:26:36Z",
-      "date_modified": "2026-07-26T14:26:36Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (GDSR)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754",
-      "tags": [
-        "V2EX Claude (GDSR)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754",
           "mime_type": "image/png"
         }
       ]

@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-06T06:50:29.862109+00:00</updated>
+  <updated>2026-10-06T15:27:26.905522+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,34 +15,135 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/cbac93ac3d109db5</id>
-    <title>受 Jev 启发，花了三周、600 美元、20 多轮训了两个小模型专门做 Computer use</title>
-    <updated>2026-10-06T06:38:10+00:00</updated>
-    <content>这三周业余时间做了个东西，开源出来给大家看看。 DeskMind 得心：一个在 Mac 上替你操作电脑的 agent ，决定每一步怎么做的是两个跑在本机的小模型（ Qwen3.5 0.8B 和 4B 微调，MLX ）。不走云端，也不按次付费。 思路来自 Jev：把每一步变成选择题，让模型给每个选项打分，而不是生成一段文字。区别是 Jev 是云端服务，我想要一个全在本机跑的版本，所以自己在 Qwen3.5 上训了 0.8B 和 4B 两个小模型。决策服务用的是和 Jev 相同的 POST /v1/systemone 请求格式，已有的 harness 换个地址就能接到本机。和 TypeSafe 没有任何关系。 0.8B 有把握就直接做（大约 0.5 秒），没把握就交给 4B 再判断（约 3.6 秒）。任务有两种理解的时候，它会先问你，比如表里有两笔 Lisa Wong 的订单，它会问你用哪一笔，而不是随便挑一个写进去。 自己出了 13 个真机任务，每个跑 3 次，目前发布版是 38/39 ，没出现过没做完就说「完成」的情况。题是我自己出的、样本也小，仅供参考，逐题结果都公开了。 踩过最有意</content>
-    <link href="https://www.v2ex.com/t/1246631#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/a0f327b62d9246cf</id>
+    <title>开源了 12 个电商短视频 Agent Skills：一张商品图 → 带配音字幕的 15 秒竖屏视频，本地 ffmpeg 出片</title>
+    <updated>2026-10-06T14:37:21+00:00</updated>
+    <content>之前发过一个电商出图的 Skills ，有人问能不能接着把图变成视频。这周把这部分也做完了，开源（ MIT ）： https://github.com/xianyu110/ecommerce-video-skills?utm_source=v2ex&amp;utm_medium=post&amp;utm_campaign=ecommerce-video-skills&amp;utm_content=body 想解决的问题 ：让大模型写带货分镜很容易，但写完还得自己开剪映一镜一镜拖。我想让 agent 不光写脚本，还能把片子真剪出来。 做法 ：让 agent 输出一份 storyboard.json （每镜：用哪张图、怎么动、说什么、字幕高亮哪个词），然后本地一条命令渲染： python scripts/assemble.py storyboard.json -o out/demo.mp4 脚本做的事：edge-tts 逐句配音 → 镜头时长按配音实际长度反推 → 静图做 Ken Burns （逐帧 scale+crop ，比 zoompan 稳）→ xfade 转场（居中在镜头分界，不吃配音）→ ASS 字幕</content>
+    <link href="https://www.v2ex.com/t/1246694#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-06T06:38:10+00:00</published>
+    <published>2026-10-06T14:37:21+00:00</published>
     <media:group>
-      <media:content url="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif" type="image/gif" medium="image"/>
-      <media:thumbnail url="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif"/>
+      <media:content url="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/asks-first.gif" type="image/gif" length="0"/>
+    <link rel="enclosure" href="https://upload.maynor1024.live/file/1791169828136_evs-one-photo-to-video.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/b79d8065977691de</id>
-    <title>我又来推荐一个跨平台开发框架了 Lynx</title>
-    <updated>2026-10-06T05:14:54+00:00</updated>
-    <content>上次我推荐了 Flutter 这个强大的跨平台框架 https://v2ex.com/t/1201168 这次我把 Songloft 的 Flutter 客户端直接用 Lynx 全部重写一遍，这个框架的优点就是官方支持原生鸿蒙，而且包体更小，使用 web 前端技术栈开发原生应用。 框架官网地址: https://lynxjs.org/zh/ Songloft Lynx 版客户端: https://github.com/songloft-org/songloft-player-lynx</content>
-    <link href="https://www.v2ex.com/t/1246623#reply0" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-06T05:14:54+00:00</published>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/91cb738de5459685</id>
+    <title>Claude 最重要的一点很多人没说，不要用完额度</title>
+    <updated>2026-10-06T13:34:12+00:00</updated>
+    <content>&lt;p&gt;200 刀的账号当 100 刀来用
+100 刀的当 50 刀来用
+很难封你的
+当然最好还有稳定的 ip&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1246685" rel="alternate"/>
+    <category term="V2EX Claude (ipoh)" label="V2EX Claude (ipoh)"/>
+    <published>2026-10-06T13:34:12+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986"/>
+      <media:content url="https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678"/>
+    </media:group>
+    <dc:creator>V2EX Claude (ipoh)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/314a/e9d8/16260_large.png?m=1679845678" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/373fe19d89668cfb</id>
+    <title>你们觉得《兰香如故》好看吗？</title>
+    <updated>2026-10-06T13:17:05+00:00</updated>
+    <content>你们觉得《兰香如故》好看吗？</content>
+    <link href="https://www.v2ex.com/t/1246679#reply1" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-06T13:17:05+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806"/>
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/2d5f/b1ec/172691_large.png?m=1782865986" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/67a7/c3ee/623470_xlarge.png?m=1788749806" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/ea7d4ad7c9aff6af</id>
+    <title>不让干的都干了， A/还是没有封号，实在是善</title>
+    <updated>2026-10-06T12:50:04+00:00</updated>
+    <content>IP: flower 云 JP/SG/US 出口随便选，还有一个甲骨文大阪出口，几台机器的 IP 都不一样，甚至还有腾讯云 SG 的。&lt;br /&gt;环境：Mac + surge / Linux + http proxy （非 tun ） / Linux 直连&lt;br /&gt;客户端: CC + 网页版 + App&lt;br /&gt;对话语言：全部简体中文&lt;br /&gt;对话内容：因为要处理公司资料，他知道我在中国，详细到具体省市，公司名&lt;br /&gt;注册：原来的 claude 号因为共享被封了，销号后使用同一邮箱，同一信用卡，指纹浏览器注册（和被封时同一 IP ），注册后原来被封的 CC 重新登陆，未做任何环境清理&lt;br /&gt;时区：SG （ SG 和北京时间没有时差）&lt;br /&gt;支付：Apple Card （自己的，随便填了个免税州地址）&lt;br /&gt;Github：绑定了，上面都是中国相关的 repo&lt;br /&gt;用量：Max 20 每周都用完，一滴不剩&lt;br /&gt;薅羊毛：每月必取消 plan ，然后 Pro -&amp;gt; Max 5 -&amp;gt; Max 20 玩一遍&lt;br /&gt;&lt;br /&gt;上面干的基本把不能干的都干了，一点事没有，可见风控他就是个玄学，直接注册，用就完了。上次翻车用了 sub2api 过了半小时就翻车了，这次没有用，无事发生</content>
+    <link href="https://www.v2ex.com/t/1246675" rel="alternate"/>
+    <category term="V2EX Claude (WorldDominator)" label="V2EX Claude (WorldDominator)"/>
+    <published>2026-10-06T12:50:04+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/71b0/abd8/361609_large.png?m=1762120619" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/71b0/abd8/361609_large.png?m=1762120619"/>
+    </media:group>
+    <dc:creator>V2EX Claude (WorldDominator)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/71b0/abd8/361609_large.png?m=1762120619" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/323295240cd92042</id>
+    <title>Claude 防止封号的经验分享，目前已稳定半个月，涉及支付、VPS、时区等问题</title>
+    <updated>2026-10-06T11:58:52+00:00</updated>
+    <content>这个也是自己总结搜索一大堆的技巧总结出来，然后，最近一段时间成功将 Claude 开出来并稳定使用。 &lt;br /&gt;&lt;br /&gt;1 、彻底清理自己的设备的 Claude 痕迹，我用的是开源项目 &lt;a target="_blank" href="https://github.com/suyuan2022/suyuan-skill/blob/main/claude-cleanup/SKILL.md" rel="nofollow noopener"&gt;https://github.com/suyuan2022/suyuan-skill/blob/main/claude-cleanup/SKILL.md&lt;/a&gt; ，这个是针对 mac ，大家丢尽 AI 后，让其思考后对 Windows 进行清理，给我清三四遍，并且让 AI 多扫描几次，确保没有原来的 Claude 残留。 &lt;br /&gt;&lt;br /&gt;2 、注册 Proton 邮箱，由于 A 畜会在发的邮件里面进行邮件追踪，而这个隐私邮箱是可以预防追踪的。当然，最好的就是，A 畜发给你的邮件全部不打开。 &lt;br /&gt;&lt;br /&gt;3 、搭建一下美区 VPS ，个人认为什么纯净家宽最好，机房 ID 不行，都是唬人的，Claude 全球都在用，大量人用 Claude 就在服务器上跑自动化任务，难道就因为你是机房 ID 就封你，很显然不是的，封号都是多因素的。但是，ip 的稳定性以及属于哪个主机的很重要。&lt;br /&gt;&lt;br /&gt;有些人使用 DMIT 或者搬瓦工，但是，我使用 &lt;a target="_blank" href="https://www.hostinger.com?REFERRALCODE=I0MISELIOFTK" rel="nofollow noopener"&gt;https://www.hostinger.com?REFERRALCODE=I0MISELIOFTK&lt;/a&gt; ，这是因为 1 个月 9.9 美元便宜，而且它的 hostname 是不在 Claude 的那 147 个域名黑名单里面的，不知道 147 个域名黑名单的，可以去搜索一下，就是 claude 是真的会根据 ip 或者域名与内置的域名黑名单匹配，匹配到后直接封号，这个是之前有人反编译得出来的。&lt;br /&gt;&lt;br /&gt;所以，我买了这个，而且它这个也是老牌主机供应商了，和那些热门的供应商错开一下，我买的时候是 9.9 美元，你用上面那个链接，还可以再便宜 20%，比 DMIT 便宜多了。 然后，买了以后，自己用这个去搭建。 &lt;br /&gt;&lt;br /&gt;4 、自己做好自己的分流规则，很多人应该和我使用 Clash Verge ，这家伙有的时候自动连接，而且有的会兜底直连，这个要改。你也不知道 Claude 会使用哪个第三方的来追踪你，所以，你可以使用 &lt;a target="_blank" href="https://github.com/Loyalsoldier/clash-rules" rel="nofollow noopener"&gt;https://github.com/Loyalsoldier/clash-rules&lt;/a&gt; 的规则，去写你的 Clash YAML 文件，让属于国内的全部直连，国外的就连到你的美国节点，若是匹配不到就兜底拒绝。除非你对于某一个 ip 或者域名特别相信，将其直连，否则，要么去连接美国节点，要么就拒绝。 &lt;br /&gt;&lt;br /&gt;另外，就是将 Clash Verge 的系统代理关闭，直接开通 Tun 代理，通过虚拟网卡将流量发出去。&lt;br /&gt;&lt;br /&gt;5 、改电脑的时区，就是直接丢给你的 AI ，让你的电脑时区、区域等与你的美国 vps 的 ip 一致。 &lt;br /&gt;&lt;br /&gt;6 、开通美国卡 bin 的卡&lt;br /&gt;&lt;br /&gt;直接开通 biyapay 的卡，这是一个可以玩港美股的地方，然后，它里面也可以开通一张 visa 卡，我开通的时候就是美国卡 bin ，开卡的时候可以选择卡的账单地址，直接选择美国免税州的地址，然后，记下这个地址。 &lt;br /&gt;&lt;br /&gt;开通地址： &lt;a target="_blank" href="https://biyapay.com/re/30150924" rel="nofollow noopener"&gt;https://biyapay.com/re/30150924&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;开通以后，你就获得一张美国卡 bin ，然后，你就把钱充进去。&lt;br /&gt;&lt;br /&gt;然后，你直接打开 Claude 的网页版进行卡支付，支付的时候 Claude 的账单地址与你开通卡的账单地址填写要一样，然后，就去支付了。&lt;br /&gt;&lt;br /&gt;7 、若是碰到 KYC </content>
+    <link href="https://www.v2ex.com/t/1246668" rel="alternate"/>
+    <category term="V2EX Claude (lsls931011)" label="V2EX Claude (lsls931011)"/>
+    <published>2026-10-06T11:58:52+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/e1dd21e86c5328d61dc8792e0c8cda3c?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/e1dd21e86c5328d61dc8792e0c8cda3c?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Claude (lsls931011)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e1dd21e86c5328d61dc8792e0c8cda3c?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/8b7c6a4938a61238</id>
+    <title>Claude 一条龙服务？</title>
+    <updated>2026-10-06T11:25:34+00:00</updated>
+    <content>&lt;p&gt;看到最近很多人吐槽 Claude 封号，但是我自己稳定用了几年一直没有被封号，包括前几天领取 claude 送的 250 刀额度我也直接领了没有任何影响，所以如果我提供一个服务，让你的机器保持和我的机器相同的配置，包括机场商家、使用的节点、分流的规则（我告诉你你来充值配置），另外，支付我可以帮你创建 App Store 美区账户来给你充值（我来充值），让这些变量保持一致，不知道有没有人愿意付费？&lt;br/&gt;
+当然，封号的逻辑可能会一直在变，所以我也没法完全保证通过这种方式不会被封号，如果封号退款了我可以退给你，但是如果没有退款，那就没办法了。如果愿意承担这部分风险的可以来。&lt;/p&gt;
+&lt;p&gt;附一张机场的检测图：
+&lt;img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.imgur.com/iz3pkYP.png"/&gt;&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1246664" rel="alternate"/>
+    <category term="V2EX Claude (ryuichisaikun)" label="V2EX Claude (ryuichisaikun)"/>
+    <published>2026-10-06T11:25:34+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/e2a12e5d0a4557f268c2a13f81a4cc58?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/e2a12e5d0a4557f268c2a13f81a4cc58?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Claude (ryuichisaikun)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/e2a12e5d0a4557f268c2a13f81a4cc58?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/7034620d91452410</id>
+    <title>Claude 开放大陆地区了？</title>
+    <updated>2026-10-06T10:17:05+00:00</updated>
+    <content>&lt;p&gt;今天除了 claude code 和网页支持简体中文，刚刚在付款页面的国家，也支持了中国
+&lt;a href="https://imgur.com/a/3y45bYq" rel="nofollow"&gt;https://imgur.com/a/3y45bYq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这是为了 IPO 还是为了钓鱼？&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1246660" rel="alternate"/>
+    <category term="V2EX Claude (higo4u)" label="V2EX Claude (higo4u)"/>
+    <published>2026-10-06T10:17:05+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/42576d885ee1efcff3d0bbe51cc0106e?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/42576d885ee1efcff3d0bbe51cc0106e?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Claude (higo4u)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/42576d885ee1efcff3d0bbe51cc0106e?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/a80ce3657cc7eaed</id>
+    <title>基于 Vaultwarden 和 Keyguard 的自托管密码管理实践</title>
+    <updated>2026-10-06T10:00:00+00:00</updated>
+    <content>密码管理服务的数据，当然要掌握在自己手里。 查看全文</content>
+    <link href="https://sspai.com/post/115416" rel="alternate"/>
+    <category term="sspai.com" label="sspai.com"/>
+    <published>2026-10-06T10:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://rssfile.sspai.com/2026/10/6/article/545f1362-1a52-26ca-86c1-279aa8a7f56c.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://rssfile.sspai.com/2026/10/6/article/545f1362-1a52-26ca-86c1-279aa8a7f56c.jpeg?imageMogr2/auto-orient/ignore-error/1"/>
+    </media:group>
+    <dc:creator>sspai.com</dc:creator>
+    <link rel="enclosure" href="https://rssfile.sspai.com/2026/10/6/article/545f1362-1a52-26ca-86c1-279aa8a7f56c.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/5504cc47d987722f</id>
@@ -235,21 +336,6 @@ and &lt;a href="https://m3.material.io/styles/color/dynamic-color/overview" rel=
     </media:group>
     <dc:creator>V2EX Claude (xueshi)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/d95b/6d57/26655_large.png?m=1790564040" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/77f3a971edd9461b</id>
-    <title>十个案例助你轻松上手 iOS 27 通知自动化</title>
-    <updated>2026-10-05T02:59:24+00:00</updated>
-    <content>iOS 27 通知自动化改变了通知的处理方式，快捷指令也迎来了不少的新玩法。 查看全文</content>
-    <link href="https://sspai.com/post/114536" rel="alternate"/>
-    <category term="sspai.com" label="sspai.com"/>
-    <published>2026-10-05T02:59:24+00:00</published>
-    <media:group>
-      <media:content url="https://rssfile.sspai.com/2026/09/14/448425af4f0dce4b8d12b0d73e0ae42c.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://rssfile.sspai.com/2026/09/14/448425af4f0dce4b8d12b0d73e0ae42c.jpeg?imageMogr2/auto-orient/ignore-error/1"/>
-    </media:group>
-    <dc:creator>sspai.com</dc:creator>
-    <link rel="enclosure" href="https://rssfile.sspai.com/2026/09/14/448425af4f0dce4b8d12b0d73e0ae42c.jpeg?imageMogr2/auto-orient/ignore-error/1" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/3d421f1495d753ea</id>
@@ -844,22 +930,6 @@ Anthropic's Safeguards Team
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/6e5729c2ca0d4cbf7ddea861b9c838b9?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/93fa042c7cc27fac</id>
-    <title>Claude 终于也有重置卡了但是好像只能重置五小时限额，不能重置周限额</title>
-    <updated>2026-09-22T16:32:16+00:00</updated>
-    <content>&lt;p&gt;&lt;a href="https://imgur.com/6HQA8br" rel="nofollow"&gt;https://imgur.com/6HQA8br&lt;/a&gt;&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1244087" rel="alternate"/>
-    <category term="V2EX Claude (Tory12138)" label="V2EX Claude (Tory12138)"/>
-    <published>2026-09-22T16:32:16+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Claude (Tory12138)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/78fcb290584fbd28</id>
     <title>[免费工具]reddit 找社区,熟悉规则,写文案必备 Karmit</title>
     <updated>2026-09-22T07:37:43+00:00</updated>
@@ -1155,22 +1225,6 @@ Anthropic's Safeguards Team
     </media:group>
     <dc:creator>V2EX Claude (fudanglp)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/6571/442b/141199_large.png?m=1466488762" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/c8fb3b3e58d42d4a</id>
-    <title>claude desktop 一直弹 tip claude is not available in your region，危险吗？</title>
-    <updated>2026-09-14T08:07:18+00:00</updated>
-    <content>&lt;p&gt;也不影响使用。之前没有这提醒，是不是跟版本有关系？&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1241907" rel="alternate"/>
-    <category term="V2EX Claude (NickyHaris)" label="V2EX Claude (NickyHaris)"/>
-    <published>2026-09-14T08:07:18+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068"/>
-    </media:group>
-    <dc:creator>V2EX Claude (NickyHaris)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/bdbd/5ebf/12318_large.png?m=1717058068" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/574318db95633ae3</id>
@@ -1500,21 +1554,6 @@ Please Choose the IP You Want To TraceRoute
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/38ce/28a2/312315_xlarge.png?m=1778031551" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/9cbe565dca46ef26</id>
-    <title>有用 claude 进行创意类/设计类工作的吗？体验如何</title>
-    <updated>2026-09-05T02:16:04+00:00</updated>
-    <content>有用 claude 进行创意类/设计类工作的吗？体验如何</content>
-    <link href="https://www.v2ex.com/t/1239642" rel="alternate"/>
-    <category term="V2EX Claude (HvangStormstout)" label="V2EX Claude (HvangStormstout)"/>
-    <published>2026-09-05T02:16:04+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Claude (HvangStormstout)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/3255b79a506a9c3b5e1661dfd3f30cdc?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/e477a293f0a724a7</id>
     <title>来个人给我点信心 不用设置好环境 付费账户依旧存活的有没有</title>
     <updated>2026-09-05T00:57:47+00:00</updated>
@@ -1727,21 +1766,6 @@ in the app.&lt;/p&gt;
     </media:group>
     <dc:creator>V2EX Claude (uruana)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/b1d5/0645/477089_xlarge.png?m=1788168400" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/3f0e5005c73a0771</id>
-    <title>claude team 开车招人</title>
-    <updated>2026-08-31T06:58:25+00:00</updated>
-    <content>官网 claude team 车，直接用你的个人账号加入 team ，类似 gpt team&lt;br /&gt;&lt;br /&gt; [价格] &lt;br /&gt;&lt;br /&gt;5x 席位 售价 865cny （对应个人版本的 max5x *1.25 ）&lt;br /&gt;&lt;br /&gt;team 的额度和价格都是个人版本的 1.25 倍&lt;br /&gt;&lt;br /&gt;因为 team 的账单日是固定的，中途加人的话会按照账单日的剩余时间折算折扣。（例如还有二十天出账单，那么上车 5x 席位需要的价格为 (865/30)*20=576.67 ）&lt;br /&gt;&lt;br /&gt; [上车方式] &lt;br /&gt;&lt;br /&gt;给邮箱直接上车即可，自备一个能用的 claude 账号就行&lt;br /&gt;&lt;br /&gt;邮箱方面，不拉 outlook 邮箱，域名邮箱酌情拉。推荐使用 gmail 和 icloud 等滥用较少的邮箱，以降低炸车风险&lt;br /&gt;&lt;br /&gt;上车后拉微信群进行管理&lt;br /&gt;&lt;br /&gt; [售后质保] &lt;br /&gt;&lt;br /&gt;个人账号炸了给新号邮箱重拉&lt;br /&gt;&lt;br /&gt;整个 team 炸了根据剩余价值按比例退款&lt;br /&gt;&lt;br /&gt; [须知] &lt;br /&gt;&lt;br /&gt;不允许反代和 cyber ，因为反代或者 cyber 封号的话直接清退不退款&lt;br /&gt;&lt;br /&gt;为了车子的安全 只接受个人自用，不允许中转站等非自用目的上车&lt;br /&gt;&lt;br /&gt;请上车用户自行管理好环境避免被封，频繁重拉有概率炸车&lt;br /&gt;&lt;br /&gt;无法提供开票等服务，如果需要报销的请酌情上车</content>
-    <link href="https://www.v2ex.com/t/1238398" rel="alternate"/>
-    <category term="V2EX Claude (WindSakura)" label="V2EX Claude (WindSakura)"/>
-    <published>2026-08-31T06:58:25+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/0a8c/cbfe/589088_xlarge.png?m=1788159474" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/0a8c/cbfe/589088_xlarge.png?m=1788159474"/>
-    </media:group>
-    <dc:creator>V2EX Claude (WindSakura)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/0a8c/cbfe/589088_xlarge.png?m=1788159474" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/5f27dacc4f7c4a36</id>
@@ -3022,24 +3046,6 @@ iPhone🪜工具 Shadownrocket
     </media:group>
     <dc:creator>V2EX Claude (rizon)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/8b75/b98f/305534_large.png?m=1779625860" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/35f33586dd016776</id>
-    <title>免费版账号也被封了</title>
-    <updated>2026-07-26T14:26:36+00:00</updated>
-    <content>&lt;p&gt;注册半年以上，这几个月一直是日本节点，而且基本上都是用英文问问题。A/
-&lt;img alt="图片" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.imgur.com/E3diFqV.jpeg"/&gt;&lt;/p&gt;
-&lt;p&gt;申诉成功的概率估计很小了。&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1229960" rel="alternate"/>
-    <category term="V2EX Claude (GDSR)" label="V2EX Claude (GDSR)"/>
-    <published>2026-07-26T14:26:36+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754"/>
-    </media:group>
-    <dc:creator>V2EX Claude (GDSR)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/4b1e/9ea6/624533_xlarge.png?m=1786453754" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/d02955520c98e6ce</id>

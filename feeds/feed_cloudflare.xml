@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-06T06:48:03.925533+00:00</updated>
+  <updated>2026-10-06T15:25:10.817482+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,71 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/132d4187b03fda05</id>
+    <title>Network routing issue</title>
+    <updated>2026-10-06T14:34:29+00:00</updated>
+    <content>Oct 6 , 14:34 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 14:15 UTC Identified - We are continuing to work on a fix for the issue. Oct 6 , 13:34 UTC Investigating - Cloudflare is aware of an issue with network routing to Microsoft Azure, which is causing errors for requests directed to origins hosted on that service. The team is actively working on remediation.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/ryvhi2suec0d" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-06T14:34:29+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/007478a2cc655c7f</id>
+    <title>RSA Keyless SSL handshake issues</title>
+    <updated>2026-10-06T09:06:33+00:00</updated>
+    <content>Oct 6 , 09:06 UTC Resolved - This incident has been resolved. Oct 6 , 08:55 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 08:22 UTC Identified - Cloudflare is aware of and is investigating an issue with Keyless SSL, which results in TLS handshake failures, only affecting RSA Keyless SSL with specific key backend configurations.  We are working to resolve this. Updates to follow.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/6mlprt9v5si5" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-06T09:06:33+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
+    <title>WAF - WAF Release - Scheduled changes for 2026-10-12</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-10-06 2026-10-12 Log N/A ...02751ef3 Generic Rules - Template Injection - 2 - Beta This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123 ).</content>
+    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/74e30f0e3d00a871</id>
+    <title>DNS - Warnings when approaching your DNS records quota</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>The DNS records page in the Cloudflare dashboard now shows a warning once you have used 85% of your DNS records quota . The warning reflects the quota that applies to you. If your zone has its own quota, the warning shows that zone's usage. If your account uses an account-level DNS records quota , the warning shows your usage across all zones in the account.</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-06-dns-records-quota-warning/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1520,height=226,format=webp/_astro/dns-records-quota-warning.iH_msM4_.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1520,height=226,format=webp/_astro/dns-records-quota-warning.iH_msM4_.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1520,height=226,format=webp/_astro/dns-records-quota-warning.iH_msM4_.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/16e458aba8909a2d</id>
+    <title>WAF - WAF Release - 2026-10-06</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>This release introduces a new detection to mitigate a heap-based buffer overflow vulnerability in F5 BIG-IP, and enhances existing command injection protections by incorporating tested beta logic into the baseline rule. Key Findings CVE-2026-94127: A heap-based buffer overflow vulnerability in F5 BIG-IP. Attackers can exploit this flaw to execute arbitrary code on the affected system. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...a05</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-06-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-06-waf-release/og.png?v=35c7686b6ed70be0" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-06-waf-release/og.png?v=35c7686b6ed70be0"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-06-waf-release/og.png?v=35c7686b6ed70be0" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/0926eb4d4cc2b65e</id>
     <title>API Shield JWT Validation Errors</title>
@@ -1002,21 +1067,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
-    <title>WAF - WAF Release - Scheduled changes for 2026-10-06</title>
-    <updated>2026-09-30T00:00:00+00:00</updated>
-    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-09-22 2026-10-06 Log N/A ...a056caff Command Injection - Generic 8 - uri - Beta This rule will be merged into the original rule "Command Injection - Generic 8 - uri" (ID: ...ee159e2e ). 2026-09-30 2026-10-06 Log N/A ...7206c737 F5 BIG-IP - UnAuth Heap-Overflow - CVE:CVE-2026-94127 This is a new detection.</content>
-    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-30T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/436d0cd77d9e83cd</id>
     <title>AI Gateway - Pay for AI inference with Machine Payments</title>
     <updated>2026-09-30T00:00:00+00:00</updated>
@@ -1696,36 +1746,6 @@ We are working to u</content>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/04aaa8df23388d85</id>
-    <title>Workers - Workers tracing — new getActiveSpan(), recordException(), startSpan(), and setAttributes() APIs</title>
-    <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>Custom spans in Workers now support more of the OpenTelemetry span API, so you can instrument more of your code and record errors directly on your spans. tracing.startSpan(name) creates a span without making it the active span, and returns it. Other spans do not nest under it. Call span.end() when the operation is complete. tracing.getActiveSpan() returns the currently active span. Use it to annotate the current span from helper functions and libraries without passing the span object through you</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-custom-span-apis/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3ef7d9517474cfa2</id>
-    <title>Workers - See every release and gradual deployment on Workers Metrics charts</title>
-    <updated>2026-09-25T00:00:00+00:00</updated>
-    <content>Workers Metrics charts now show every release in the selected time range, including the full progression of gradual deployments . This makes it easier to correlate changes in memory, CPU time, errors, or latency with the code that was serving traffic. A gradual deployment appears as a single rollout across the chart, with shading that increases as more traffic moves to the new version. Hover over a rollout to see the previous and new versions, the rollout duration, and the traffic percentage con</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-25-release-flows-workers-metrics/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-25T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1350,format=webp/_astro/2026-09-25-release-flow-memory-usage.C5rkO7VY.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/99c6208d48d90e5a</id>
     <title>Browser isolation session data sync issues</title>
     <updated>2026-09-24T22:37:13+00:00</updated>
@@ -1981,26 +2001,6 @@ Further detail will b</content>
     <link href="https://www.cloudflarestatus.com/incidents/l3t86mb1xdxc" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-17T20:42:03+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/bccbcb49b44f8028</id>
-    <title>Network Performance Issues in Ashburn, VA, United States</title>
-    <updated>2026-09-17T19:58:13+00:00</updated>
-    <content>Sep 17 , 19:58 UTC Resolved - This incident has been resolved. Sep 17 , 18:32 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 17 , 18:29 UTC Investigating - Cloudflare identified an issue affecting network performance in Ashburn, VA, United States. A fix has been implemented, and we are monitoring the results.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/rhmpng7klcqw" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-17T19:58:13+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/af62bf51e78b9644</id>
-    <title>Increased HTTP Errors in GIG (Rio de Janeiro)</title>
-    <updated>2026-09-17T14:00:00+00:00</updated>
-    <content>Sep 17 , 14:00 UTC Resolved - Cloudflare is aware that there was an increased level of HTTP errors in the GIG (Rio de Janeiro) datacenter, between 14:00 and 14:30 UTC. This has since recovered and normal operations have resumed.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/83kl8stzw5zn" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-17T14:00:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>

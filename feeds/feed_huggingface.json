@@ -8,6 +8,75 @@
   "icon": "https://feeds.trfny.com/favicon?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/3f62c2a034f2b4f0",
+      "url": "https://huggingface.co/posts/DedeProGames/223942114658527",
+      "title": "Im working on a 23M ASR model, trained on 100k hours of audio",
+      "content_text": "Im working on a 23M ASR model, trained on 100k hours of audio",
+      "date_published": "2026-10-06T15:25:59Z",
+      "date_modified": "2026-10-06T15:25:59Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/685ea8ff7b4139b6845ce395/qwDkUbydJchw9-bR6TtoO.jpeg",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/685ea8ff7b4139b6845ce395/qwDkUbydJchw9-bR6TtoO.jpeg",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/fddce25330016999",
+      "url": "https://huggingface.co/posts/CountingSheep/549306692000495",
+      "title": "Vev: Jev-style decisions about images, from a 4B or 9B model you can run yourself.",
+      "content_text": "Vev: Jev-style decisions about images, from a 4B or 9B model you can run yourself. Give it a screenshot or photo plus a yes/no, multiple-choice, or scoring question, and it returns a probability for every option instead of generating text. It serves TypeSafe's /v1/systemone format, so the official SDK works by changing the base URL, including requests with images. The clip shows vev-4b playing Doom in real time. On each look, the image is split into 8 vertical slices, and Vev answers 8 yes/no questions in a single request, one per slice. A small fixed-rule harness turns those probabilities into turning and firing. Try it in the browser: CountingSheep/vev Weights: CountingSheep/vev-4b Countin",
+      "date_published": "2026-10-06T15:25:59Z",
+      "date_modified": "2026-10-06T15:25:59Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/CountingSheep/549306692000495.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/CountingSheep/549306692000495.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/7cd99c643a26711a",
+      "url": "https://huggingface.co/posts/mihailgribov/119412006223340",
+      "title": "TypeCastLM: Jev-class decision models on frozen LLMs",
+      "content_text": "TypeCastLM: Jev-class decision models on frozen LLMs TypeCastLM is a decision model built around a frozen LLM. Given a text and a question, it returns calibrated probabilities over the allowed answers in one forward pass. The LLM is not fine-tuned: not one of its weights changes. TypeCastLM swaps its LM head for a mini one: a linear matrix whose rows are mostly the model's own output rows, with the three verdict rows (true, false, unsure) fitted. A fitted row catches an answer the model spreads over many tokens, such as \"yes\", \"true\" or \"correct\", where a single vocabulary row sees one word. A head that small leaves little room to overfit. It speaks the Jev API, so a Jev client switches by c",
+      "date_published": "2026-10-06T15:25:59Z",
+      "date_modified": "2026-10-06T15:25:59Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/664537fc57210744a6f928ef/MUzGbWSkmo9mRk4wyP960.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/664537fc57210744a6f928ef/MUzGbWSkmo9mRk4wyP960.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/ec590258ddfa442e",
       "url": "https://huggingface.co/posts/sriram1983007/957859997324494",
       "title": "🛡️ SRA-RiskGate-4B is Live on ZeroGPU - Stablecoin - Risk Decision Engine & Dispute Lifecycle Agent",
@@ -302,6 +371,29 @@
       "attachments": [
         {
           "url": "https://cdn-uploads.huggingface.co/production/uploads/624bebf604abc7ebb01789af/GIAWAZCl27rQtAQvdCk5Y.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/82b3db65c4776a83",
+      "url": "https://huggingface.co/papers/2610.05416",
+      "title": "Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training",
+      "content_text": "Natively training joint video-audio generation models at higher resolutions empowers them to learn richer visual details and sharper motion dynamics. However, full attention incurs quadratic cost and, as resolution increases, spreads attention over increasingly redundant tokens, diluting learning signals for informative content and disrupting pretrained priors. Existing sparse attention methods either target training-free acceleration or overlook the unique structure of joint video-audio data, where cross-modal interactions are inherently concentrated around sound-producing regions. To address this, we propose Prism, a dynamic sparse attention framework for natively training joint video-audi",
+      "date_published": "2026-10-04T00:00:00Z",
+      "date_modified": "2026-10-04T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.05416.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.05416.png",
           "mime_type": "image/png"
         }
       ]
@@ -3389,6 +3481,29 @@
       ]
     },
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/7e7ad59df36b163f",
+      "url": "https://huggingface.co/papers/2609.20800",
+      "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+      "content_text": "World modeling enables intelligence to anticipate consequences, guide interventions, and learn from interaction. Yet predictive models remain domain-specific: can a common learning principle support world modeling across radically different systems? We introduce JEPA-Anything, a domain-agnostic framework based on orthogonal predictive factorization (OPF). Extending joint-embedding predictive architectures, OPF decomposes latent targets into complementary factors, learns them through dedicated pathways, and recombines them within a shared predictive design. We evaluate JEPA-Anything across seven domains: vision, biology, clinical trajectories, control, molecular dynamics, physical fields, and",
+      "date_published": "2026-09-17T00:00:00Z",
+      "date_modified": "2026-09-17T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20800.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.20800.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/cfa76f448da39bb5",
       "url": "https://huggingface.co/posts/Banaxi-Tech/785435502406656",
       "title": "Hi everyone!",
@@ -4028,75 +4143,6 @@
       "attachments": [
         {
           "url": "https://cdn-uploads.huggingface.co/production/uploads/61929226ded356549e20c5da/eACz9S461uk3F2lNg7W9z.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/66daa0b35746ec5f",
-      "url": "https://huggingface.co/posts/GoktugD/465200520849812",
-      "title": "🇹🇷 **Can a 110M model understand Turkish names, places and organizations this well?**",
-      "content_text": "🇹🇷 **Can a 110M model understand Turkish names, places and organizations this well?** We tested Werea-TR-NER on the human-labeled WikiANN Turkish test set: **91.7% Entity F1** 👤 Person → **94.2%** 📍 Location → **91.4%** 🏢 Organization → **89.2%** Only ~110M parameters. Try it with a difficult Turkish sentence 👇 Ahmet Yılmaz İstanbul'da Werea şirketinde çalışıyor. → Ahmet Yılmaz — PERSON → İstanbul — LOCATION → Werea — ORGANIZATION But easy examples are boring. **Give me the hardest Turkish sentence you can think of.** I'll run the most interesting ones through the model and share the failures too. 🤗 Model: Werea-co/Werea-TR-NER 🇹🇷 Werea: Werea-co **Follow Werea if you're interested in open T",
-      "date_published": "2026-09-12T11:13:23Z",
-      "date_modified": "2026-09-12T11:13:23Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/465200520849812.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/465200520849812.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/9d6a616d41dfa534",
-      "url": "https://huggingface.co/posts/inflatebot/229267561222072",
-      "title": "They really do just let you say whatever on here, huh",
-      "content_text": "They really do just let you say whatever on here, huh",
-      "date_published": "2026-09-12T00:34:27Z",
-      "date_modified": "2026-09-12T00:34:27Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/inflatebot/229267561222072.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/inflatebot/229267561222072.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/34473361d19598c3",
-      "url": "https://huggingface.co/posts/Monster-Code/330421224137907",
-      "title": "Introducing Audiyo 🎶 — Run Stable Audio Open on 8GB of RAM",
-      "content_text": "Introducing Audiyo 🎶 — Run Stable Audio Open on 8GB of RAM https://github.com/TeamAudiyo/Audiyo .",
-      "date_published": "2026-09-11T21:14:07Z",
-      "date_modified": "2026-09-11T21:14:07Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Monster-Code/330421224137907.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Monster-Code/330421224137907.png",
           "mime_type": "image/png"
         }
       ]
@@ -5501,52 +5547,6 @@
         {
           "url": "https://cdn-uploads.huggingface.co/production/uploads/6a725daa5ca641a21ab61956/wOnyrU6-UQAM5hOwpaw3-.jpeg",
           "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/9376b61147eee176",
-      "url": "https://huggingface.co/papers/2608.16157",
-      "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
-      "content_text": "FreeToken is an edge-native Mixture-of-Experts serving system that dynamically maps computation and model state onto heterogeneous local hardware to run large open-weight models on personal machines.",
-      "date_published": "2026-08-17T00:00:00Z",
-      "date_modified": "2026-08-17T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16157.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16157.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/d2ebf04cf0e80ea3",
-      "url": "https://huggingface.co/papers/2608.16590",
-      "title": "Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
-      "content_text": "Zetta is a closed-loop embodied harness that evolves runtime critics and recovery skills online to govern physical execution at action frequency, achieving high success on robot benchmarks with faster inference and scaling self-exploration.",
-      "date_published": "2026-08-17T00:00:00Z",
-      "date_modified": "2026-08-17T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16590.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.16590.png",
-          "mime_type": "image/png"
         }
       ]
     },
