@@ -241,7 +241,7 @@
       "id": "tag:trvny.github.io,2024:feedseek/oracle/f2bf4d5bb552eed4",
       "url": "https://forums.oracle.com/ords/apexds/post/how-to-test-a-dst-flow-schedule-formula-for-gmt-time-zone-2266",
       "title": "How to test a DST Flow Schedule Formula for GMT Time zone",
-      "content_text": "We are deploying a custom Flow Schedule Fast Formula (Type: Flow Schedule) to handle automatic execution frequencies for our HCM Extracts / Payroll Flows. The target production requirement is that schedules must execute strictly according to the GMT (UTC) time zone, regardless of daylight saving time adjustments or individual user session locations. How to test Formula in GMT time zone.",
+      "content_text": "We are trying to build/test a custom Flow Schedule type Fast Formula in Oracle Fusion HCM Cloud to automate an extract run. Our requirement is to have the extract trigger consistently at  **07:00 AM UK Time ,**instead of changing manually every time when DST changes. The Problem: Because Oracle servers evaluate SCHEDULED_DATE and NEXT_SCHEDULED_DATE in Coordinated Universal Time (UTC), the start/end of Daylight Saving Time shifts our local execution window by an hour (e.g., executing an hour too",
       "date_published": "2026-10-06T12:13:27Z",
       "date_modified": "2026-10-06T12:13:27Z",
       "authors": [
