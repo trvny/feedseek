@@ -68,8 +68,8 @@ test("reader is an app-only entrypoint with a fixed self-contained resource", as
   assert.equal(resource.mimeType, "text/html;profile=mcp-app");
   assert.doesNotMatch(resource.text, /<script[^>]+src=|<link[^>]+href=/);
   assert.ok(resource.text.includes("request('ui/message'"));
-  assert.match(resource.text, /window\.openai\.widgetState/);
-  assert.match(resource.text, /window\.openai\.setWidgetState/);
+  assert.ok(resource.text.includes("host&&host.widgetState"));
+  assert.ok(resource.text.includes("host.setWidgetState"));
   assert.deepEqual(resource._meta.ui.csp.connectDomains, []);
   const invalid = await (await call("resources/read", { uri: "https://example.com/private" })).json();
   assert.equal(invalid.error.code, -32602);
