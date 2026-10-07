@@ -72,18 +72,18 @@ def fetch_listing(page: int, retries: int = 3, backoff: float = 2.0) -> str | No
         try:
             return fetch_page(url)
         except Exception as e:
-            logger.error(f"Fallback fetch failed: {e}")
+            logger.error("Fallback fetch failed: %s", e)
             return None
 
     for attempt in range(1, retries + 1):
         try:
             resp = creq.get(url, impersonate="chrome", timeout=30)
             if resp.status_code == 200 and "tile-content" in resp.text:
-                logger.info(f"Fetched page {page} ({len(resp.text)} bytes)")
+                logger.info("Fetched page %s (%s bytes)", page, len(resp.text))
                 return resp.text
-            logger.warning(f"Unexpected response (status {resp.status_code}) for page {page} on attempt {attempt}")
+            logger.warning("Unexpected response (status %s) for page %s on attempt %s", resp.status_code, page, attempt)
         except Exception as e:
-            logger.warning(f"Fetch failed for page {page} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for page %s (attempt %s/%s): %s", page, attempt, retries, e)
         if attempt < retries:
             time.sleep(backoff * attempt)
     return None
@@ -127,7 +127,6 @@ def parse_posts(html_pages) -> list[dict]:
         html_pages = []
     elif isinstance(html_pages, str):
         html_pages = [html_pages]
-
     posts = []
     seen_links = set()
 
@@ -152,7 +151,7 @@ def parse_posts(html_pages) -> list[dict]:
 
                 date = parse_date(card)
                 if not date:
-                    logger.warning(f"Could not parse date for: {title}")
+                    logger.warning("Could not parse date for: %s", title)
                     date = stable_fallback_date(link)
 
                 desc_elem = card.select_one("p.desc")

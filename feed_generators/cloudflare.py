@@ -78,7 +78,7 @@ def scrape_research(known_links):
             "description": title,
             "source": RESEARCH_LABEL,
         })
-        logger.info(f"  [{RESEARCH_LABEL}] {title}")
+        logger.info("  [%s] %s", RESEARCH_LABEL, title)
     return entries
 
 

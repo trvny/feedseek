@@ -108,7 +108,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
                 return resp.text
             return fetch_page(url, headers=headers)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -170,8 +170,8 @@ def collect_news():
                 }
             )
         except Exception as e:  # one malformed url block never kills the source
-            logger.warning(f"[News] skipping a sitemap entry: {e}")
-    logger.info(f"[News] parsed {len(entries)} articles from the news sitemap")
+            logger.warning("[News] skipping a sitemap entry: %s", e)
+    logger.info("[News] parsed %s articles from the news sitemap", len(entries))
     return entries
 
 
@@ -206,8 +206,8 @@ def collect_corporate():
                 }
             )
         except Exception as exc:
-            logger.warning(f"[Corporate] skipping an entry: {exc}")
-    logger.info(f"[Corporate] parsed {len(entries)} entries")
+            logger.warning("[Corporate] skipping an entry: %s", exc)
+    logger.info("[Corporate] parsed %s entries", len(entries))
     return entries
 
 
@@ -246,8 +246,8 @@ def collect_changelog():
                 }
             )
         except Exception as e:
-            logger.warning(f"[API Change Log] skipping a heading: {e}")
-    logger.info(f"[API Change Log] parsed {len(entries)} changes")
+            logger.warning("[API Change Log] skipping a heading: %s", e)
+    logger.info("[API Change Log] parsed %d changes", len(entries))
     return entries
 
 

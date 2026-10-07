@@ -149,18 +149,18 @@ def _scrape_update_history(label, url, known_links):
                 "description": sanitize_xml(f"{label.rsplit(' ', 1)[0]} update: {title}"),
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping entry: {e}")
+            logger.warning("  [%s] skipping entry: %s", label, e)
     if not count:
-        logger.warning(f"  [{label}] no KB entries matched — layout may have changed")
+        logger.warning("  [%s] no KB entries matched — layout may have changed", label)
     return entries
 
 
 def scrape_update_histories(known_links):
     entries = []
     for label, url in UPDATE_HISTORY_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         entries += _scrape_update_history(label, url, known_links)
     return entries
 
@@ -180,7 +180,7 @@ def scrape_message_center(known_links):
 
     table = soup.find("table")
     if not table:
-        logger.warning(f"  [{label}] no table found — layout may have changed")
+        logger.warning("  [%s] no table found — layout may have changed", label)
         return entries
 
     seen = set()
@@ -222,9 +222,9 @@ def scrape_message_center(known_links):
                 "description": sanitize_xml(description)[:500],
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping row: {e}")
+            logger.warning("  [%s] skipping row: %s", label, e)
     return entries
 
 
@@ -243,7 +243,7 @@ def _scrape_learn_dated(label, url, known_links):
 
     headings = [h for h in soup.find_all("h2", id=True) if _H2_DATE_ID_RE.match(h["id"])]
     if not headings:
-        logger.warning(f"  [{label}] no dated headings matched — layout may have changed")
+        logger.warning("  [%s] no dated headings matched — layout may have changed", label)
         return entries
 
     for h in headings:
@@ -269,16 +269,16 @@ def _scrape_learn_dated(label, url, known_links):
                 "description": sanitize_xml(desc) or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {heading_text}")
+            logger.info("  [%s] %s", label, heading_text)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping section: {e}")
+            logger.warning("  [%s] skipping section: %s", label, e)
     return entries
 
 
 def scrape_learn_pages(known_links):
     entries = []
     for label, url in LEARN_DATED_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         entries += _scrape_learn_dated(label, url, known_links)
     return entries
 
@@ -312,7 +312,7 @@ def scrape_office_current_channel(known_links):
     """Office Current Channel release notes via RSS-Bridge, with the per-entry
     date recovered from each title (the bridge ships none)."""
     label = "Office Current Channel"
-    logger.info(f"Scraping {label} ...")
+    logger.info("Scraping %s ...", label)
     entries = scrape_feed(label, OFFICE_CC_URL, known_links, cap=OFFICE_CC_CAP)
     for e in entries:
         e["date"] = _office_version_date(e["title"]) or stable_fallback_date(e["link"])

@@ -97,18 +97,18 @@ def fetch_section(url, retries=3, backoff=2.0):
         try:
             return fetch_page(url)
         except Exception as e:
-            logger.error(f"Fallback fetch failed for {url}: {e}")
+            logger.error("Fallback fetch failed for %s: %s", url, e)
             return None
 
     for attempt in range(1, retries + 1):
         try:
             resp = creq.get(url, impersonate="chrome", timeout=30)
             if resp.status_code == 200 and "__NEXT_DATA__" in resp.text:
-                logger.info(f"Fetched {url} ({len(resp.text)} bytes)")
+                logger.info("Fetched %s (%d bytes)", url, len(resp.text))
                 return resp.text
-            logger.warning(f"Unexpected response (status {resp.status_code}) for {url} on attempt {attempt}")
+            logger.warning("Unexpected response (status %d) for %s on attempt %d", resp.status_code, url, attempt)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %d/%d): %s", url, attempt, retries, e)
         if attempt < retries:
             time.sleep(backoff * attempt)
     return None
@@ -125,7 +125,7 @@ def extract_apollo_state(html):
         data = json.loads(tag.string)
         return data["props"]["apolloState"] or {}
     except (json.JSONDecodeError, KeyError, TypeError) as e:
-        logger.error(f"Could not parse __NEXT_DATA__ / apolloState: {e}")
+        logger.error("Could not parse __NEXT_DATA__ / apolloState: %s", e)
         return {}
 
 
@@ -193,7 +193,7 @@ def parse_section(html, state_accum):
                 }
             )
         except Exception as e:  # never let one bad object kill the run
-            logger.warning(f"Skipping malformed {obj.get('__typename')} ({key}): {e}")
+            logger.warning("Skipping malformed %s (%s): %s", obj.get("__typename"), key, e)
             continue
 
     return entries
@@ -220,7 +220,7 @@ def collect_entries():
     for url in SECTIONS:
         html = fetch_section(url)
         if html is None:
-            logger.warning(f"Could not fetch {url}; continuing with other sections")
+            logger.warning("Could not fetch %s; continuing with other sections", url)
             continue
         fetched_any = True
         for entry in parse_section(html, state_accum):
@@ -242,7 +242,7 @@ def collect_entries():
             entry["date"] = now - timedelta(seconds=offset)
 
     entries = list(by_link.values())
-    logger.info(f"Collected {len(entries)} unique entries across {len(SECTIONS)} sections")
+    logger.info("Collected %s unique entries across %s sections", len(entries), len(SECTIONS))
     return entries
 
 
@@ -270,7 +270,7 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
             fe.published(entry["date"])
             fe.updated(entry["date"])
 
-    logger.info(f"Generated Atom feed with {len(entries)} entries")
+    logger.info("Generated Atom feed with %d entries", len(entries))
     return fg
 
 

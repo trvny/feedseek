@@ -435,7 +435,7 @@ def fetch_url(url, retries=3, backoff=2.0):
         try:
             return fetch_page(url, headers=FETCH_HEADERS)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %d/%d): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -488,7 +488,7 @@ def discover_urls(source):
     found.sort(
         key=lambda t: (t[1] or datetime.min.replace(tzinfo=UTC)), reverse=True
     )
-    logger.info(f"[{source['label']}] discovered {len(found)} article URLs in sitemap")
+    logger.info("[%s] discovered %s article URLs in sitemap", source["label"], len(found))
     return found[: source["max_candidates"]]
 
 
@@ -635,7 +635,7 @@ def collect_entries(known_links, ledger):
     for source in SOURCES:
         discovered = discover_urls(source)
         if discovered is None:
-            logger.warning(f"[{source['label']}] sitemap unavailable; continuing")
+            logger.warning("[%s] sitemap unavailable; continuing", source['label'])
             continue
         any_sitemap_ok = True
 
@@ -656,12 +656,12 @@ def collect_entries(known_links, ledger):
                 else:
                     ledger.failed(source["label"], link)
                     logger.warning(
-                        f"[{source['label']}] no usable title for {link}; skipping"
+                        "[%s] no usable title for %s; skipping", source['label'], link
                     )
             except Exception as e:  # never let one bad page kill the run
                 ledger.failed(source["label"], link)
-                logger.warning(f"[{source['label']}] skipping {link}: {e}")
-        logger.info(f"[{source['label']}] fetched details for {fetched} new article(s)")
+                logger.warning("[%s] skipping %s: %s", source['label'], link, e)
+        logger.info("[%s] fetched details for %s new article(s)", source['label'], fetched)
 
     if not any_sitemap_ok:
         return None
@@ -1342,7 +1342,9 @@ def collect_glama_release_notes(known_links):
         except Exception:  # one bad item never kills the feed
             continue
     logger.info(
-        f"[Glama Release Notes] fetched {len(entries)} entr{'y' if len(entries) == 1 else 'ies'}"
+        "[Glama Release Notes] fetched %d entr%s",
+        len(entries),
+        "y" if len(entries) == 1 else "ies"
     )
     return entries
 
@@ -1372,12 +1374,12 @@ def collect_mcpservers_blog(known_links, ledger):
             else:
                 ledger.failed(mcp_label, link)
                 logger.warning(
-                    f"[MCP Servers Blog] no usable title for {link}; skipping"
+                    "[MCP Servers Blog] no usable title for %s; skipping", link
                 )
         except Exception as exc:
             ledger.failed(mcp_label, link)
-            logger.warning(f"[MCP Servers Blog] skipping {link}: {exc}")
-    logger.info(f"[MCP Servers Blog] fetched details for {len(entries)} new post(s)")
+            logger.warning("[MCP Servers Blog] skipping %s: %s", link, exc)
+    logger.info("[MCP Servers Blog] fetched details for %s new post(s)", len(entries))
     return entries
 
 
@@ -1427,7 +1429,9 @@ def collect_mem0_changelog(known_links):
         except Exception:  # one bad block never kills the feed
             continue
     logger.info(
-        f"[Mem0 Changelog] fetched {len(entries)} entr{'y' if len(entries) == 1 else 'ies'}"
+        "[Mem0 Changelog] fetched %s entr%s",
+        len(entries),
+        "y" if len(entries) == 1 else "ies",
     )
     return entries
 
@@ -1562,8 +1566,9 @@ def main(full=False):
 
     if ledger.skipped:
         logger.info(
-            f"Skipped {ledger.skipped} URL(s) that failed "
-            f"{MAX_FETCH_ATTEMPTS} times already"
+            "Skipped %s URL(s) that failed %s times already",
+            ledger.skipped,
+            MAX_FETCH_ATTEMPTS,
         )
     save_cache(FEED_NAME, merged, extra={"unresolvable": ledger.current})
 

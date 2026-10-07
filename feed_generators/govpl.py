@@ -129,7 +129,7 @@ def fetch_text(url, retries=3, backoff=2.0):
             from utils import fetch_page
             return fetch_page(url)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -173,12 +173,12 @@ def fetch_lead(url):
 def collect_source(label, listing_url, known_links):
     html = fetch_text(listing_url)
     if not html:
-        logger.warning(f"[{label}] fetch failed -- skipping this source")
+        logger.warning("[%s] fetch failed -- skipping this source", label)
         return []
     soup = BeautifulSoup(html, "html.parser")
     container = soup.select_one(".art-prev")
     if not container:
-        logger.warning(f"[{label}] no .art-prev block found -- structure may have changed")
+        logger.warning("[%s] no .art-prev block found -- structure may have changed", label)
         return []
 
     entries = []
@@ -210,10 +210,10 @@ def collect_source(label, listing_url, known_links):
                 "source": label,
                 "image": image,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
+            logger.warning("[%s] skipped a malformed item: %s", label, e)
+    logger.info("[%s] collected %d new entries", label, len(entries))
     return entries
 
 
@@ -266,8 +266,8 @@ def collect_prezydent(known_links):
                 "image": feed_item_image(item),
             })
         except Exception as e:
-            logger.warning(f"[Prezydent RP] skipped a malformed item: {e}")
-    logger.info(f"[Prezydent RP] collected {len(entries)} new entries")
+            logger.warning("[Prezydent RP] skipped a malformed item: %s", e)
+    logger.info("[Prezydent RP] collected %s new entries", len(entries))
     return entries
 
 
@@ -275,7 +275,7 @@ def collect_native_rss(label, url, known_links):
     """Parse a standard RSS feed (e.g. UOKiK) into the common entry shape."""
     xml = fetch_text(url)
     if not xml:
-        logger.warning(f"[{label}] RSS fetch failed -- skipping this source")
+        logger.warning("[%s] RSS fetch failed -- skipping this source", label)
         return []
     soup = BeautifulSoup(xml, "xml")
     entries = []
@@ -311,30 +311,30 @@ def collect_native_rss(label, url, known_links):
                 "image": feed_item_image(item),
             })
         except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
+            logger.warning("[%s] skipped a malformed item: %s", label, e)
+    logger.info("[%s] collected %s new entries", label, len(entries))
     return entries
 
 
 def collect_all(known_links):
     entries = []
     for label, url in SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         try:
             entries += collect_source(label, url, known_links)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
     for label, url in NATIVE_RSS:
-        logger.info(f"Fetching native RSS: {label} ...")
+        logger.info("Fetching native RSS: %s ...", label)
         try:
             entries += collect_native_rss(label, url, known_links)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
     logger.info("Scraping Prezydent RP (Google News) ...")
     try:
         entries += collect_prezydent(known_links)
     except Exception as e:
-        logger.warning(f"[Prezydent RP] unexpected error: {e}")
+        logger.warning("[Prezydent RP] unexpected error: %s", e)
     return entries
 
 

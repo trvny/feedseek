@@ -80,9 +80,9 @@ def fetch_feed(url, retries=3, backoff=2.0):
             xml = fetch_page(url, headers=FETCH_HEADERS)
             if "<item" in xml or "<entry" in xml:
                 return xml
-            logger.warning(f"No items in response from {url} (attempt {attempt})")
+            logger.warning("No items in response from %s (attempt %s)", url, attempt)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
         if attempt < retries:
             time.sleep(backoff * attempt)
     return None
@@ -96,7 +96,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -136,10 +136,10 @@ def parse_feed(xml_content, source_label, category):
                 }
             )
         except Exception as e:  # never let one bad item kill the run
-            logger.warning(f"[{source_label}] skipping malformed item: {e}")
+            logger.warning("[%s] skipping malformed item: %s", source_label, e)
             continue
 
-    logger.info(f"[{source_label}] parsed {len(entries)} items")
+    logger.info("[%s] parsed %s items", source_label, len(entries))
     return entries
 
 
@@ -149,12 +149,12 @@ def collect_entries():
     for label, category, url in SOURCES:
         xml = fetch_feed(url)
         if xml is None:
-            logger.warning(f"Source '{label}' unavailable; continuing")
+            logger.warning("Source '%s' unavailable; continuing", label)
             continue
         try:
             entries.extend(parse_feed(xml, label, category))
         except Exception as e:
-            logger.warning(f"Source '{label}' parse failed ({e}); continuing")
+            logger.warning("Source '%s' parse failed (%s); continuing", label, e)
     return entries
 
 

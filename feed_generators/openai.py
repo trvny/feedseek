@@ -183,7 +183,7 @@ def _get_html(url):
 
         resp = creq.get(url, impersonate="chrome", timeout=30)
     except ImportError:
-        logger.warning(f"curl_cffi unavailable; using plain requests for {url}")
+        logger.warning("curl_cffi unavailable; using plain requests for %s", url)
         try:
             resp = requests.get(
                 url,
@@ -191,13 +191,13 @@ def _get_html(url):
                 timeout=30,
             )
         except Exception as e:
-            logger.warning(f"Fetch failed for {url}: {e}")
+            logger.warning("Fetch failed for %s: %s", url, e)
             return None
     except Exception as e:
-        logger.warning(f"Fetch failed for {url}: {e}")
+        logger.warning("Fetch failed for %s: %s", url, e)
         return None
     if resp.status_code != 200:
-        logger.warning(f"Fetch for {url} returned HTTP {resp.status_code}")
+        logger.warning("Fetch for %s returned HTTP %s", url, resp.status_code)
         return None
     return resp.text
 
@@ -210,7 +210,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -261,7 +261,7 @@ def scrape_rss(label, rss_url, known_links, cap=None):
     try:
         soup = BeautifulSoup(html, "xml")
     except Exception as e:
-        logger.warning(f"Could not parse {rss_url}: {e}")
+        logger.warning("Could not parse %s: %s", rss_url, e)
         return entries
 
     items = soup.find_all("item")
@@ -290,9 +290,9 @@ def scrape_rss(label, rss_url, known_links, cap=None):
                 "description": desc or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -310,7 +310,7 @@ def scrape_atom(label, atom_url, known_links, cap=None):
     try:
         soup = BeautifulSoup(html, "xml")
     except Exception as e:
-        logger.warning(f"Could not parse {atom_url}: {e}")
+        logger.warning("Could not parse %s: %s", atom_url, e)
         return entries
 
     items = soup.find_all("entry")
@@ -340,9 +340,9 @@ def scrape_atom(label, atom_url, known_links, cap=None):
                 "description": desc or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed entry: {e}")
+            logger.warning("  [%s] skipping malformed entry: %s", label, e)
     return entries
 
 
@@ -462,9 +462,9 @@ def scrape_pl_openai_index(label, page_url, known_links):
         if entry["link"] not in known_links
     ]
     if not entries and not known_links:
-        logger.warning(f"  [{label}] no localized index entries matched — layout may have changed")
+        logger.warning("  [%s] no localized index entries matched — layout may have changed", label)
     for entry in entries:
-        logger.info(f"  [{label}] {entry['title']}")
+        logger.info("  [%s] %s", label, entry['title'])
     return entries
 
 
@@ -561,7 +561,7 @@ def scrape_developer_blog(known_links):
     if not entries and not known_links:
         logger.warning("  [OpenAI Developer Blog] no posts matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [OpenAI Developer Blog] {entry['title']}")
+        logger.info("  [OpenAI Developer Blog] %s", entry["title"])
     return entries
 
 
@@ -625,7 +625,7 @@ def scrape_chatgpt_whats_new(known_links, cap=80):
     if not candidates:
         logger.warning("  [ChatGPT What's new] no weekly entries matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [ChatGPT What's new] {entry['title']}")
+        logger.info("  [ChatGPT What's new] %s", entry['title'])
     return entries
 
 
@@ -723,7 +723,7 @@ def scrape_misalignment_reports(known_links):
     if not entries and not known_links:
         logger.warning("  [OpenAI Misalignment] no reports or notices matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [{entry['source']}] {entry['title']}")
+        logger.info("  [%s] %s", entry['source'], entry['title'])
     return entries
 
 
@@ -790,7 +790,7 @@ def scrape_deployment_safety(known_links):
     if not entries and not known_links:
         logger.warning("  [OpenAI Deployment Safety] no updates matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [OpenAI Deployment Safety] {entry['title']}")
+        logger.info("  [OpenAI Deployment Safety] %s", entry['title'])
     return entries
 
 
@@ -808,7 +808,7 @@ def scrape_li_changelog(label, page_url, known_links):
 
     items = soup.select("section[data-changelog-month-section] li[id]")
     if not items:
-        logger.warning(f"  [{label}] no changelog entries matched — layout may have changed")
+        logger.warning("  [%s] no changelog entries matched — layout may have changed", label)
         return entries
 
     for li in items:
@@ -833,9 +833,9 @@ def scrape_li_changelog(label, page_url, known_links):
                 "description": sanitize_xml(desc) or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -912,12 +912,12 @@ def scrape_chatgpt_help_release_notes(known_links, cap=CHATGPT_HELP_CAP):
             "description": description,
             "source": label,
         })
-        logger.info(f"  [{label}] {title}")
+        logger.info("  [%s] %s", label, title)
 
     if not matched_dates:
-        logger.warning(f"  [{label}] no dated sections matched — layout may have changed")
+        logger.warning("  [%s] no dated sections matched — layout may have changed", label)
     elif not matched_entries:
-        logger.warning(f"  [{label}] no release entries matched — layout may have changed")
+        logger.warning("  [%s] no release entries matched — layout may have changed", label)
     return entries
 
 
@@ -945,7 +945,7 @@ def scrape_api_changelog(known_links, today=None):
         if row is not None:
             rows.append((m.group(1), int(m.group(2)), row))
     if not rows:
-        logger.warning(f"  [{label}] no changelog entries matched — layout may have changed")
+        logger.warning("  [%s] no changelog entries matched — layout may have changed", label)
         return entries
 
     # Rows are newest-first with no year on the badge. Anchor the first row to
@@ -989,9 +989,9 @@ def scrape_api_changelog(known_links, today=None):
                 "description": sanitize_xml(text)[:DESC_LIMIT] or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -1003,13 +1003,13 @@ def scrape_api_changelog(known_links, today=None):
 def scrape_all(known_links):
     new_entries = []
     for label, url, cap in RSS_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_rss(label, url, known_links, cap=cap)
     for label, url, cap in ATOM_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_atom(label, url, known_links, cap=cap)
     for label, url in PL_INDEX_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_pl_openai_index(label, url, known_links)
     logger.info("Scraping OpenAI Developer Blog ...")
     new_entries += scrape_developer_blog(known_links)
@@ -1018,13 +1018,13 @@ def scrape_all(known_links):
     logger.info("Scraping OpenAI Deployment Safety ...")
     new_entries += scrape_deployment_safety(known_links)
     for label, url in LI_CHANGELOGS:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_li_changelog(label, url, known_links)
     logger.info("Scraping ChatGPT What's new ...")
     new_entries += scrape_chatgpt_whats_new(known_links)
-    logger.info(f"Scraping {CHATGPT_HELP_LABEL} ...")
+    logger.info("Scraping %s ...", CHATGPT_HELP_LABEL)
     new_entries += scrape_chatgpt_help_release_notes(known_links)
-    logger.info(f"Scraping {API_CHANGELOG_LABEL} ...")
+    logger.info("Scraping %s ...", API_CHANGELOG_LABEL)
     new_entries += scrape_api_changelog(known_links)
     return new_entries
 

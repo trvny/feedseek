@@ -108,7 +108,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -118,7 +118,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
         try:
             return fetch_page(url, headers=headers)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -203,22 +203,22 @@ def parse_native_feed(xml, label):
                 "image": feed_item_image(item),
             })
         except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] parsed {len(entries)} entries")
+            logger.warning("[%s] skipped a malformed item: %s", label, e)
+    logger.info("[%s] parsed %d entries", label, len(entries))
     return entries
 
 
 def collect_native_feed(label, url, limit=None):
     xml = fetch_text(url, headers={**DEFAULT_HEADERS, "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"})
     if not xml:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
+        logger.warning("[%s] fetch failed — skipping this source", label)
         return []
     entries = parse_native_feed(xml, label)
     if limit is not None and len(entries) > limit:
         # Keep the newest `limit` items (dated first, descending; undated last).
         entries.sort(key=lambda e: (e.get("date") is not None, e.get("date")), reverse=True)
         entries = entries[:limit]
-        logger.info(f"[{label}] capped to newest {limit} of its items")
+        logger.info("[%s] capped to newest %d of its items", label, limit)
     return entries
 
 
@@ -233,7 +233,7 @@ def collect_toyota_connected(known_links):
     label = "Toyota Connected"
     html = fetch_text(TC_LISTING)
     if not html:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
+        logger.warning("[%s] fetch failed — skipping this source", label)
         return []
 
     soup = BeautifulSoup(html, "html.parser")
@@ -283,10 +283,10 @@ def collect_toyota_connected(known_links):
                 "source": label,
                 "image": og_meta(psoup, "og:image", "twitter:image"),
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"[{label}] skipped {link}: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
+            logger.warning("[%s] skipped %s: %s", label, link, e)
+    logger.info("[%s] collected %d new entries", label, len(entries))
     return entries
 
 
@@ -307,7 +307,7 @@ def collect_tri():
             xml = candidate
             break
     if not xml:
-        logger.warning(f"[{label}] no items from Google News proxy — skipping this source")
+        logger.warning("[%s] no items from Google News proxy — skipping this source", label)
         return []
 
     entries = []
@@ -343,8 +343,8 @@ def collect_tri():
                 "source": label,
             })
         except Exception as e:
-            logger.warning(f"[{label}] skipped an item: {e}")
-    logger.info(f"[{label}] collected {len(entries)} entries")
+            logger.warning("[%s] skipped an item: %s", label, e)
+    logger.info("[%s] collected %d entries", label, len(entries))
     return entries
 
 
@@ -358,23 +358,23 @@ def collect_all(known_links):
     skipped so the others still contribute."""
     entries = []
     for label, url, limit in NATIVE_FEEDS:
-        logger.info(f"Fetching native feed: {label}")
+        logger.info("Fetching native feed: %s", label)
         try:
             entries += collect_native_feed(label, url, limit)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
 
     logger.info("Scraping Toyota Connected ...")
     try:
         entries += collect_toyota_connected(known_links)
     except Exception as e:
-        logger.warning(f"[Toyota Connected] unexpected error: {e}")
+        logger.warning("[Toyota Connected] unexpected error: %s", e)
 
     logger.info("Fetching Toyota Research Institute (Google News proxy) ...")
     try:
         entries += collect_tri()
     except Exception as e:
-        logger.warning(f"[{TRI_LABEL}] unexpected error: {e}")
+        logger.warning("[%s] unexpected error: %s", TRI_LABEL, e)
 
     return entries
 

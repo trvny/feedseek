@@ -79,11 +79,11 @@ def fetch_source(retries: int = 3, backoff: float = 2.0):
             try:
                 xml = fetch_page(url, headers=FETCH_HEADERS)
                 if "<item>" in xml:
-                    logger.info(f"Fetched source: {url}")
+                    logger.info("Fetched source: %s", url)
                     return xml
-                logger.warning(f"No <item> elements from {url} (attempt {attempt})")
+                logger.warning("No <item> elements from %s (attempt %s)", url, attempt)
             except Exception as e:
-                logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+                logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -97,7 +97,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -152,10 +152,10 @@ def parse_feed(xml_content):
                 }
             )
         except Exception as e:  # never let one bad item kill the run
-            logger.warning(f"Skipping malformed item: {e}")
+            logger.warning("Skipping malformed item: %s", e)
             continue
 
-    logger.info(f"Parsed {len(articles)} articles from source feed")
+    logger.info("Parsed %d articles from source feed", len(articles))
     return articles
 
 

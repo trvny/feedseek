@@ -118,7 +118,7 @@ def _get_html(url):
 
         resp = creq.get(url, impersonate="chrome", timeout=30)
     except ImportError:
-        logger.warning(f"curl_cffi unavailable; using plain requests for {url}")
+        logger.warning("curl_cffi unavailable; using plain requests for %s", url)
         try:
             resp = requests.get(
                 url,
@@ -126,13 +126,13 @@ def _get_html(url):
                 timeout=30,
             )
         except Exception as e:
-            logger.warning(f"Fetch failed for {url}: {e}")
+            logger.warning("Fetch failed for %s: %s", url, e)
             return None
     except Exception as e:
-        logger.warning(f"Fetch failed for {url}: {e}")
+        logger.warning("Fetch failed for %s: %s", url, e)
         return None
     if resp.status_code != 200:
-        logger.warning(f"Fetch for {url} returned HTTP {resp.status_code}")
+        logger.warning("Fetch for %s returned HTTP %s", url, resp.status_code)
         return None
     return resp.text
 
@@ -145,7 +145,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -204,9 +204,9 @@ def scrape_news(known_links):
                 "description": sanitize_xml(title),
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed card {href}: {e}")
+            logger.warning("  [%s] skipping malformed card %s: %s", label, href, e)
     return entries
 
 
@@ -296,7 +296,7 @@ def scrape_console_changelog(known_links):
     if not candidates:
         logger.warning("  [xAI Console changelog] no updates matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [xAI Console changelog] {entry['title']}")
+        logger.info("  [xAI Console changelog] %s", entry["title"])
     return entries
 
 
@@ -315,7 +315,7 @@ def scrape_build_changelog(known_links):
 
     headings = soup.find_all("h2", id=_BUILD_ID_RE)
     if not headings:
-        logger.warning(f"  [{label}] no release headings matched — layout may have changed")
+        logger.warning("  [%s] no release headings matched — layout may have changed", label)
         return entries
 
     for h in headings:
@@ -340,9 +340,9 @@ def scrape_build_changelog(known_links):
                 "description": sanitize_xml(desc) or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -388,7 +388,7 @@ def scrape_release_notes(known_links, today=None):
             sections[-1][2].append(line)
 
     if not sections:
-        logger.warning(f"  [{label}] no sections parsed — page structure may have changed")
+        logger.warning("  [%s] no sections parsed — page structure may have changed", label)
         return entries
 
     seen_slugs = {}
@@ -410,9 +410,9 @@ def scrape_release_notes(known_links, today=None):
                 "description": sanitize_xml(desc),
                 "source": label,
             })
-            logger.info(f"  [{label}] {heading}")
+            logger.info("  [%s] %s", label, heading)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed section: {e}")
+            logger.warning("  [%s] skipping malformed section: %s", label, e)
     return entries
 
 
@@ -483,9 +483,9 @@ def scrape_x_blog(label, page_url, path_prefix, known_links):
     candidates = _parse_x_blog_index(html, label, page_url, path_prefix)
     entries = [entry for entry in candidates if entry["link"] not in known_links]
     if not candidates:
-        logger.warning(f"  [{label}] no posts matched — layout may have changed")
+        logger.warning("  [%s] no posts matched — layout may have changed", label)
     for entry in entries:
-        logger.info(f"  [{label}] {entry['title']}")
+        logger.info("  [%s] %s", label, entry['title'])
     return entries
 
 
@@ -561,7 +561,7 @@ def scrape_grok_release_notes(known_links):
     if not candidates:
         logger.warning("  [Grok release notes] no releases matched — layout may have changed")
     for entry in entries:
-        logger.info(f"  [Grok release notes] {entry['title']}")
+        logger.info("  [Grok release notes] %s", entry['title'])
     return entries
 
 
@@ -574,7 +574,7 @@ def scrape_x_api_changelog(known_links):
     label = "X API changelog"
     html = fetch_x_api_changelog(X_API_CHANGELOG_URL)
     if html is None:
-        logger.warning(f"  [{label}] fetch failed")
+        logger.warning("  [%s] fetch failed", label)
         return []
 
     entries = []
@@ -584,7 +584,7 @@ def scrape_x_api_changelog(known_links):
             continue
         item["source"] = label
         entries.append(item)
-        logger.info(f"  [{label}] {item['title']}")
+        logger.info("  [%s] %s", label, item['title'])
     return entries
 
 

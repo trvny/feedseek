@@ -11,7 +11,6 @@ import argparse
 import re
 import sys
 from urllib.parse import urlparse
-
 from bs4 import BeautifulSoup
 
 from multi_rss import get_html, parse_date, run
@@ -36,7 +35,7 @@ def scrape_home(known_links):
 
     articles = soup.find_all("article", class_="gallery-item")
     if not articles:
-        logger.warning(f"  [{label}] no gallery items matched — layout may have changed")
+        logger.warning("  [%s] no gallery items matched — layout may have changed", label)
         return entries
 
     for art in articles:
@@ -81,9 +80,9 @@ def scrape_home(known_links):
                 "description": desc,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 

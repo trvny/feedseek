@@ -211,7 +211,7 @@ def fetch_json(url, retries=3, backoff=2.0, headers=None):
             body = fetch_page(_viewbits_request_url(url), headers=headers or FETCH_HEADERS)
             return json.loads(body)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -322,7 +322,7 @@ def adapt_headlines(data):
                 "category": item.get("category") or "news",
             })
         except Exception as e:  # never let one bad item kill the run
-            logger.warning(f"Skipping malformed headline: {e}")
+            logger.warning("Skipping malformed headline: %s", e)
     return entries
 
 
@@ -400,7 +400,7 @@ def fetch_polish_holidays(years):
         if data:
             holidays.extend(data)
         else:
-            logger.warning(f"Nager.Date unavailable for {year}; continuing")
+            logger.warning("Nager.Date unavailable for %s; continuing", year)
     return holidays
 
 
@@ -479,17 +479,17 @@ def _pick_from_sources(sources, rng, *, what):
     for name, url, home, extract in ordered:
         data = fetch_json(url, retries=2)
         if data is None:
-            logger.warning(f"Critter {what} source '{name}' unavailable; trying the next one")
+            logger.warning("Critter %s source '%s' unavailable; trying the next one", what, name)
             continue
         try:
             value = extract(data)
         except (AttributeError, IndexError, KeyError, TypeError) as e:
-            logger.warning(f"Critter {what} source '{name}' changed shape ({e}); trying the next one")
+            logger.warning("Critter %s source '%s' changed shape (%s); trying the next one", what, name, e)
             continue
         text = "" if value is None else str(value).strip()
         if text:
             return text, name, home, url
-        logger.warning(f"Critter {what} source '{name}' answered blank; trying the next one")
+        logger.warning("Critter %s source '%s' answered blank; trying the next one", what, name)
 
     return None, None, None, None
 
@@ -514,7 +514,7 @@ def adapt_critter():
         CRITTER_FACT_SOURCES[kind], rng, what="fact"
     )
     if not fact:
-        logger.warning(f"No {kind} fact available today; skipping the critter entry")
+        logger.warning("No %s fact available today; skipping the critter entry", kind)
         return []
 
     picture, picture_source, picture_home, picture_api = _pick_from_sources(
@@ -576,7 +576,7 @@ def adapt_anycrap():
         name = _clean(product["name"])
         slug = product["slug"]
     except (IndexError, KeyError, TypeError) as e:
-        logger.warning(f"anycrap returned an unusable payload ({e}); continuing")
+        logger.warning("anycrap returned an unusable payload (%s); continuing", e)
         return []
     if not name or not slug:
         return []
@@ -632,7 +632,7 @@ def _cached_guids():
     try:
         cached = load_cache(FEED_NAME).get("entries", [])
     except Exception as e:
-        logger.warning(f"Cache unreadable ({e}); treating it as empty")
+        logger.warning("Cache unreadable (%s); treating it as empty", e)
         return set()
     return {entry.get("guid") for entry in cached}
 
@@ -659,14 +659,14 @@ def collect_entries(full=False):
     for key, url in SOURCES.items():
         data = fetch_json(url)
         if data is None:
-            logger.warning(f"Source '{key}' unavailable; continuing")
+            logger.warning("Source '%s' unavailable; continuing", key)
             continue
         try:
             new = ADAPTERS[key](data)
-            logger.info(f"{key}: {len(new)} entry(ies)")
+            logger.info("%s: %s entry(ies)", key, len(new))
             entries.extend(new)
         except Exception as e:
-            logger.warning(f"Source '{key}' parse failed ({e}); continuing")
+            logger.warning("Source '%s' parse failed (%s); continuing", key, e)
 
     # On This Day needs today's month/day in its query, so it is fetched outside
     # the static SOURCES loop but retains the same failure isolation.
@@ -678,20 +678,20 @@ def collect_entries(full=False):
             logger.warning("Source 'on_this_day' unavailable; continuing")
         else:
             new = adapt_on_this_day(data)
-            logger.info(f"on_this_day: {len(new)} entry(ies)")
+            logger.info("on_this_day: %s entry(ies)", len(new))
             entries.extend(new)
     except Exception as e:
-        logger.warning(f"Source 'on_this_day' parse failed ({e}); continuing")
+        logger.warning("Source 'on_this_day' parse failed (%s); continuing", e)
 
     # Holidays are driven by a date window, not a single upstream URL, so they
     # don't fit the SOURCES/ADAPTERS loop above -- handled separately but with
     # the same per-source isolation (a failure here never sinks the run).
     try:
         holiday_entries = adapt_holidays()
-        logger.info(f"holidays: {len(holiday_entries)} entry(ies)")
+        logger.info("holidays: %s entry(ies)", len(holiday_entries))
         entries.extend(holiday_entries)
     except Exception as e:
-        logger.warning(f"Source 'holidays' failed ({e}); continuing")
+        logger.warning("Source 'holidays' failed (%s); continuing", e)
 
     # These are one entry a day, so on the day's remaining runs the entry is
     # already cached and fetching it again would spend calls on somebody's free
@@ -705,13 +705,13 @@ def collect_entries(full=False):
     ):
         try:
             if f"{label}:{day}" in known:
-                logger.info(f"{label}: today's entry is already cached; not fetching")
+                logger.info("%s: today's entry is already cached; not fetching", label)
                 continue
             new = adapter()
-            logger.info(f"{label}: {len(new)} entry(ies)")
+            logger.info("%s: %s entry(ies)", label, len(new))
             entries.extend(new)
         except Exception as e:
-            logger.warning(f"Source '{label}' failed ({e}); continuing")
+            logger.warning("Source '%s' failed (%s); continuing", label, e)
 
     return entries
 

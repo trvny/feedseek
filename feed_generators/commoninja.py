@@ -47,12 +47,12 @@ def fetch_listing() -> str | None:
     try:
         html = fetch_page(BLOG_URL)
         if html and "posts-container" in html:
-            logger.info(f"Fetched listing ({len(html)} bytes)")
+            logger.info("Fetched listing (%s bytes)", len(html))
             return html
         logger.warning("Listing fetched but expected markup missing")
         return html
     except Exception as e:
-        logger.error(f"Fetch failed: {e}")
+        logger.error("Fetch failed: %s", e)
         return None
 
 
@@ -118,10 +118,10 @@ def parse_items(html: str) -> list[dict]:
                 }
             )
         except Exception as e:  # never let one bad card kill the run
-            logger.warning(f"Skipping malformed card ({href}): {e}")
+            logger.warning("Skipping malformed card (%s): %s", href, e)
             continue
 
-    logger.info(f"Parsed {len(entries)} entries")
+    logger.info("Parsed %d entries", len(entries))
     return entries
 
 

@@ -76,7 +76,7 @@ def scrape_npmx(known_links):
     entries = []
     html = get_html(NPMX_BLOG_URL)
     if html is None:
-        logger.warning(f"  [{label}] fetch failed; continuing")
+        logger.warning("  [%s] fetch failed; continuing", label)
         return entries
     soup = BeautifulSoup(html, "html.parser")
 
@@ -105,9 +105,9 @@ def scrape_npmx(known_links):
                 "description": description,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:  # one bad card never kills the run
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -116,7 +116,7 @@ def scrape_openjsf(known_links):
     entries = []
     html = get_html(OPENJSF_BLOG_URL)
     if html is None:
-        logger.warning(f"  [{label}] fetch failed; continuing")
+        logger.warning("  [%s] fetch failed; continuing", label)
         return entries
     soup = BeautifulSoup(html, "html.parser")
 
@@ -145,9 +145,9 @@ def scrape_openjsf(known_links):
                 "description": description,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:  # one bad card never kills the run
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 

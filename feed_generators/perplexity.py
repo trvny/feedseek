@@ -71,7 +71,7 @@ def _scrape_listing(label, listing_url, href_re, base, known_links, title_from_d
         if m.group(1) not in slugs:
             slugs.append(m.group(1))
     if not slugs:
-        logger.warning(f"  [{label}] no article links matched — layout may have changed")
+        logger.warning("  [%s] no article links matched — layout may have changed", label)
         return entries
 
     for slug in slugs:
@@ -97,16 +97,16 @@ def _scrape_listing(label, listing_url, href_re, base, known_links, title_from_d
                 "description": sanitize_xml(desc)[:500],
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping {slug}: {e}")
+            logger.warning("  [%s] skipping %s: %s", label, slug, e)
     return entries
 
 
 def scrape_framer_listings(known_links):
     entries = []
     for label, url, href_re, base, tfd in LISTINGS:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         entries += _scrape_listing(label, url, href_re, base, known_links,
                                    title_from_description=tfd)
     return entries

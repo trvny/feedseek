@@ -56,7 +56,7 @@ def scrape_v2ex_json_nodes(known_links):
             resp.raise_for_status()
             data = resp.json()
         except Exception as e:
-            logger.warning(f"  [{label}] fetch/parse failed; continuing: {e}")
+            logger.warning("  [%s] fetch/parse failed; continuing: %s", label, e)
             continue
 
         count = 0
@@ -78,8 +78,8 @@ def scrape_v2ex_json_nodes(known_links):
                 })
                 count += 1
             except Exception as e:  # one bad item never kills the run
-                logger.warning(f"  [{label}] skipping malformed item: {e}")
-        logger.info(f"  [{label}] parsed {count} entries")
+                logger.warning("  [%s] skipping malformed item: %s", label, e)
+        logger.info("  [%s] parsed %s entries", label, count)
     return entries
 
 

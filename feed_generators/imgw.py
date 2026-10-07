@@ -82,7 +82,7 @@ def fetch_json(path: str, retries: int = 3, backoff: float = 2.0):
         try:
             return json.loads(fetch_page(url))
         except Exception as e:
-            logger.warning(f"IMGW fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("IMGW fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -194,7 +194,7 @@ def hydro_entries() -> list[dict]:
     for station_id in HYDRO_IDS:
         s = wanted.get(station_id)
         if not s:
-            logger.warning(f"Hydro: station {station_id} not found in API response")
+            logger.warning("Hydro: station %s not found in API response", station_id)
             continue
         try:
             measured = parse_pl_datetime(s.get("stan_wody_data_pomiaru"))
@@ -237,7 +237,7 @@ def hydro_entries() -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"Hydro: skipping station {station_id}: {e}")
+            logger.warning("Hydro: skipping station %s: %s", station_id, e)
     return entries
 
 
@@ -268,7 +268,7 @@ def meteo_entries() -> list[dict]:
     for station_id in METEO_IDS:
         s = by_id.get(station_id)
         if not s:
-            logger.warning(f"Meteo: station {station_id} not found in API response")
+            logger.warning("Meteo: station %s not found in API response", station_id)
             continue
         try:
             # Newest measurement timestamp across the station's fields.
@@ -317,7 +317,7 @@ def meteo_entries() -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"Meteo: skipping station {station_id}: {e}")
+            logger.warning("Meteo: skipping station %s: %s", station_id, e)
     return entries
 
 
@@ -367,7 +367,7 @@ def warning_meteo_entries() -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"WarningsMeteo: skipping one warning: {e}")
+            logger.warning("WarningsMeteo: skipping one warning: %s", e)
     return entries
 
 
@@ -413,7 +413,7 @@ def warning_hydro_entries() -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"WarningsHydro: skipping one warning: {e}")
+            logger.warning("WarningsHydro: skipping one warning: %s", e)
     return entries
 
 
@@ -491,10 +491,10 @@ def main(full: bool = False) -> bool:
     for source in (synop_entries, hydro_entries, meteo_entries, warning_meteo_entries, warning_hydro_entries):
         try:
             got = source()
-            logger.info(f"{source.__name__}: {len(got)} entries")
+            logger.info("%s: %d entries", source.__name__, len(got))
             new_entries.extend(got)
         except Exception as e:
-            logger.error(f"{source.__name__} failed: {e}")
+            logger.error("%s failed: %s", source.__name__, e)
 
     if not new_entries:
         logger.error("All IMGW sources empty/failed — skipping write to preserve the last good feed")
