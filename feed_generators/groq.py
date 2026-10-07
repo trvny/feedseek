@@ -83,7 +83,7 @@ def _get_html(url):
 
         resp = creq.get(url, impersonate="chrome", timeout=30)
     except ImportError:
-        logger.warning(f"curl_cffi unavailable; using plain requests for {url}")
+        logger.warning("curl_cffi unavailable; using plain requests for %s", url)
         try:
             resp = requests.get(
                 url,
@@ -91,13 +91,13 @@ def _get_html(url):
                 timeout=30,
             )
         except Exception as e:
-            logger.warning(f"Fetch failed for {url}: {e}")
+            logger.warning("Fetch failed for %s: %s", url, e)
             return None
     except Exception as e:
-        logger.warning(f"Fetch failed for {url}: {e}")
+        logger.warning("Fetch failed for %s: %s", url, e)
         return None
     if resp.status_code != 200:
-        logger.warning(f"Fetch for {url} returned HTTP {resp.status_code}")
+        logger.warning("Fetch for %s returned HTTP %s", url, resp.status_code)
         return None
     return resp.text
 
@@ -110,7 +110,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -166,9 +166,9 @@ def scrape_cards(label, listing_url, base, prefix, known_links):
                 "description": sanitize_xml(title),
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed card {href}: {e}")
+            logger.warning("  [%s] skipping malformed card %s: %s", label, href, e)
     return entries
 
 
@@ -188,7 +188,7 @@ def scrape_changelog(known_links):
     main = soup.find("main") or soup
     headings = [h for h in main.find_all("h2") if len(h.get_text(strip=True)) > 3]
     if not headings:
-        logger.warning(f"  [{label}] no changelog headings matched — layout may have changed")
+        logger.warning("  [%s] no changelog headings matched — layout may have changed", label)
         return entries
 
     for h in headings:
@@ -213,7 +213,7 @@ def scrape_changelog(known_links):
             if date_obj is None:
                 # Real changelog entries always carry a date; a dateless h2 is
                 # page furniture (e.g. the "Subscribe for updates" box).
-                logger.info(f"  [{label}] skipping dateless heading: {title}")
+                logger.info("  [%s] skipping dateless heading: %s", label, title)
                 continue
 
             # Body: drop the title/date scaffolding, keep the prose.
@@ -230,9 +230,9 @@ def scrape_changelog(known_links):
                 "description": sanitize_xml(desc) or sanitize_xml(title),
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -250,7 +250,7 @@ def scrape_commits_atom(known_links):
     try:
         soup = BeautifulSoup(xml, "xml")
     except Exception as e:
-        logger.warning(f"Could not parse {COMMITS_ATOM_URL}: {e}")
+        logger.warning("Could not parse %s: %s", COMMITS_ATOM_URL, e)
         return entries
 
     for item in soup.find_all("entry"):
@@ -270,9 +270,9 @@ def scrape_commits_atom(known_links):
                 "description": title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed entry: {e}")
+            logger.warning("  [%s] skipping malformed entry: %s", label, e)
     return entries
 
 
@@ -284,11 +284,11 @@ def scrape_commits_atom(known_links):
 def scrape_all(known_links):
     new_entries = []
     for label, url, base, prefix in CARD_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_cards(label, url, base, prefix, known_links)
     logger.info("Scraping Groq Changelog ...")
     new_entries += scrape_changelog(known_links)
-    logger.info(f"Scraping {COMMITS_LABEL} ...")
+    logger.info("Scraping %s ...", COMMITS_LABEL)
     new_entries += scrape_commits_atom(known_links)
     return new_entries
 

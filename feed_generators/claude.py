@@ -112,7 +112,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -148,7 +148,7 @@ def scrape_claude_blog(known_links):
     try:
         soup = BeautifulSoup(fetch_page(CLAUDE_BLOG_LISTING), "html.parser")
     except Exception as e:
-        logger.warning(f"Could not fetch {CLAUDE_BLOG_LISTING}: {e}")
+        logger.warning("Could not fetch %s: %s", CLAUDE_BLOG_LISTING, e)
         return entries
 
     seen = set()
@@ -190,7 +190,7 @@ def scrape_claude_blog(known_links):
             "description": title,
             "source": "Claude Blog",
         })
-        logger.info(f"  [Claude Blog] {title}")
+        logger.info("  [Claude Blog] %s", title)
     return entries
 
 
@@ -204,7 +204,7 @@ def scrape_rss(label, rss_url, known_links):
     try:
         soup = BeautifulSoup(fetch_page(rss_url), "xml")
     except Exception as e:
-        logger.warning(f"Could not fetch {rss_url}: {e}")
+        logger.warning("Could not fetch %s: %s", rss_url, e)
         return entries
 
     for item in soup.find_all("item"):
@@ -229,7 +229,7 @@ def scrape_rss(label, rss_url, known_links):
             "description": desc or title,
             "source": label,
         })
-        logger.info(f"  [{label}] {title}")
+        logger.info("  [%s] %s", label, title)
     return entries
 
 
@@ -243,7 +243,7 @@ def scrape_status_atom(known_links):
     try:
         soup = BeautifulSoup(fetch_page(STATUS_ATOM), "xml")
     except Exception as e:
-        logger.warning(f"Could not fetch {STATUS_ATOM}: {e}")
+        logger.warning("Could not fetch %s: %s", STATUS_ATOM, e)
         return entries
 
     for entry in soup.find_all("entry"):
@@ -268,7 +268,7 @@ def scrape_status_atom(known_links):
             "description": desc or title,
             "source": STATUS_LABEL,
         })
-        logger.info(f"  [{STATUS_LABEL}] {title}")
+        logger.info("  [%s] %s", STATUS_LABEL, title)
     return entries
 
 
@@ -283,7 +283,7 @@ def scrape_support_release_notes(known_links):
     try:
         soup = BeautifulSoup(fetch_page(SUPPORT_RELEASE_NOTES), "html.parser")
     except Exception as e:
-        logger.warning(f"Could not fetch {SUPPORT_RELEASE_NOTES}: {e}")
+        logger.warning("Could not fetch %s: %s", SUPPORT_RELEASE_NOTES, e)
         return entries
 
     root = soup.find("main") or soup
@@ -319,7 +319,7 @@ def scrape_support_release_notes(known_links):
             "description": sanitize_xml(body or head_text)[:500],
             "source": label,
         })
-        logger.info(f"  [{label}] {title}")
+        logger.info("  [%s] %s", label, title)
     return entries
 
 
@@ -332,7 +332,7 @@ def _fetch_markdown(md_url):
     try:
         return fetch_page(md_url, headers=DEFAULT_HEADERS)
     except Exception as e:
-        logger.warning(f"Could not fetch {md_url}: {e}")
+        logger.warning("Could not fetch %s: %s", md_url, e)
         return None
 
 
@@ -375,7 +375,7 @@ def scrape_platform_sysprompts(known_links):
             "description": sanitize_xml(summary or heading),
             "source": label,
         })
-        logger.info(f"  [{label}] {title}")
+        logger.info("  [%s] %s", label, title)
     return entries
 
 
@@ -389,7 +389,7 @@ def scrape_all(known_links):
     logger.info("Scraping Claude Blog ...")
     new_entries += scrape_claude_blog(known_links)
     for label, url in RSS_SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_rss(label, url, known_links)
     logger.info("Scraping Claude Apps Release notes ...")
     new_entries += scrape_support_release_notes(known_links)

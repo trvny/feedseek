@@ -126,11 +126,11 @@ def fetch_json(url: str, retries: int = 3, backoff: float = 2.0):
         try:
             data = json.loads(fetch_page(url))
             if isinstance(data, dict) and data.get("error"):
-                logger.error(f"Open-Meteo API error: {data.get('reason', data)}")
+                logger.error("Open-Meteo API error: %s", data.get('reason', data))
                 return None
             return data
         except Exception as e:
-            logger.warning(f"Open-Meteo fetch failed (attempt {attempt}/{retries}): {e}")
+            logger.warning("Open-Meteo fetch failed (attempt %s/%s): %s", attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -234,7 +234,7 @@ def forecast_day_entries(data: dict) -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"Forecast: skipping day {date_str}: {e}")
+            logger.warning("Forecast: skipping day %s: %s", date_str, e)
     return entries
 
 
@@ -257,7 +257,6 @@ def aqi_label(value) -> str:
         if v <= limit:
             return label
     return "ekstremalnie zła"
-
 
 def current_conditions_entry(forecast: dict | None, air: dict | None) -> list[dict]:
     cur = (forecast or {}).get("current") or {}
@@ -393,7 +392,7 @@ def solar_entries() -> list[dict]:
                 }
             )
         except Exception as e:
-            logger.warning(f"Satellite: skipping day {date_str}: {e}")
+            logger.warning("Satellite: skipping day %s: %s", date_str, e)
     return entries
 
 
@@ -469,7 +468,7 @@ def main(full: bool = False) -> bool:
     try:
         new_entries.extend(solar_entries())
     except Exception as e:
-        logger.error(f"Satellite source failed: {e}")
+        logger.error("Satellite source failed: %s", e)
 
     if not new_entries:
         logger.error("All Open-Meteo sources empty/failed — skipping write to preserve the last good feed")

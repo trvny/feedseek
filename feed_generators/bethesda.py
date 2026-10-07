@@ -78,7 +78,7 @@ def parse_bethesda_date(s):
         dt = date_parser.parse(s)
         return dt.replace(tzinfo=UTC) if dt.tzinfo is None else dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError):
-        logger.warning(f"  could not parse date {s!r}")
+        logger.warning("  could not parse date %r", s)
         return None
 
 
@@ -120,8 +120,8 @@ def scrape_main(known_links):
             ))
             count += 1
         except Exception as e:
-            logger.warning(f"  [Bethesda.net] skipping malformed card: {e}")
-    logger.info(f"  [Bethesda.net News] {count} new entries")
+            logger.warning("  [Bethesda.net] skipping malformed card: %s", e)
+    logger.info("  [Bethesda.net News] %s new entries", count)
     return entries
 
 
@@ -153,8 +153,8 @@ def scrape_elderscrolls(known_links):
             ))
             count += 1
         except Exception as e:
-            logger.warning(f"  [The Elder Scrolls] skipping malformed card: {e}")
-    logger.info(f"  [The Elder Scrolls News] {count} new entries")
+            logger.warning("  [The Elder Scrolls] skipping malformed card: %s", e)
+    logger.info("  [The Elder Scrolls News] %s new entries", count)
     return entries
 
 
@@ -167,7 +167,7 @@ def scrape_fallout(known_links):
     try:
         articles = json.loads(raw).get("articles", [])
     except (ValueError, TypeError) as e:
-        logger.warning(f"  [Fallout] news API JSON changed: {e}")
+        logger.warning("  [Fallout] news API JSON changed: %s", e)
         return entries
     for a in articles:
         try:
@@ -184,8 +184,8 @@ def scrape_fallout(known_links):
             ))
             count += 1
         except Exception as e:
-            logger.warning(f"  [Fallout] skipping malformed item: {e}")
-    logger.info(f"  [Fallout News] {count} new entries")
+            logger.warning("  [Fallout] skipping malformed item: %s", e)
+    logger.info("  [Fallout News] %s new entries", count)
     return entries
 
 

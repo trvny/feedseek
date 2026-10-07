@@ -83,7 +83,8 @@ class ChatGPTHelpReleaseNotesTests(unittest.TestCase):
 
         self.assertEqual(entries, [])
         warning.assert_called_once_with(
-            "  [ChatGPT release notes] no dated sections matched — layout may have changed"
+            "  [%s] no dated sections matched — layout may have changed",
+            openai.CHATGPT_HELP_LABEL,
         )
 
 

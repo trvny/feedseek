@@ -91,7 +91,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -101,7 +101,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
         try:
             return fetch_page(url, headers=headers)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %d/%d): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -186,15 +186,15 @@ def parse_native_feed(xml, label):
                 "image": feed_item_image(item),
             })
         except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] parsed {len(entries)} entries")
+            logger.warning("[%s] skipped a malformed item: %s", label, e)
+    logger.info("[%s] parsed %d entries", label, len(entries))
     return entries
 
 
 def collect_native_feed(label, url):
     xml = fetch_text(url, headers={**DEFAULT_HEADERS, "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"})
     if not xml:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
+        logger.warning("[%s] fetch failed — skipping this source", label)
         return []
     return parse_native_feed(xml, label)
 
@@ -210,7 +210,7 @@ def collect_discover_lexus(known_links):
     label = "Discover Lexus"
     xml = fetch_text(DISCOVER_SITEMAP)
     if not xml:
-        logger.warning(f"[{label}] sitemap fetch failed — skipping this source")
+        logger.warning("[%s] sitemap fetch failed — skipping this source", label)
         return []
 
     entries = []
@@ -252,10 +252,10 @@ def collect_discover_lexus(known_links):
                 "source": label,
                 "image": image,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"[{label}] skipped a sitemap entry: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
+            logger.warning("[%s] skipped a sitemap entry: %s", label, e)
+    logger.info("[%s] collected %d new entries", label, len(entries))
     return entries
 
 
@@ -270,7 +270,7 @@ def collect_lexus_polska(known_links):
     label = "Lexus Polska"
     html = fetch_text(LEXUS_PL_LISTING)
     if not html:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
+        logger.warning("[%s] fetch failed — skipping this source", label)
         return []
 
     soup = BeautifulSoup(html, "html.parser")
@@ -320,10 +320,10 @@ def collect_lexus_polska(known_links):
                 "source": label,
                 "image": image,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"[{label}] skipped {link}: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
+            logger.warning("[%s] skipped %s: %s", label, link, e)
+    logger.info("[%s] collected %d new entries", label, len(entries))
     return entries
 
 
@@ -337,23 +337,23 @@ def collect_all(known_links):
     skipped so the others still contribute."""
     entries = []
     for label, url in NATIVE_FEEDS:
-        logger.info(f"Fetching native feed: {label}")
+        logger.info("Fetching native feed: %s", label)
         try:
             entries += collect_native_feed(label, url)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
 
     logger.info("Scraping Discover Lexus (sitemap) ...")
     try:
         entries += collect_discover_lexus(known_links)
     except Exception as e:
-        logger.warning(f"[Discover Lexus] unexpected error: {e}")
+        logger.warning("[Discover Lexus] unexpected error: %s", e)
 
     logger.info("Scraping Lexus Polska ...")
     try:
         entries += collect_lexus_polska(known_links)
     except Exception as e:
-        logger.warning(f"[Lexus Polska] unexpected error: {e}")
+        logger.warning("[Lexus Polska] unexpected error: %s", e)
 
     return entries
 

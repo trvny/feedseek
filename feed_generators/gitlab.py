@@ -122,9 +122,9 @@ def _extract_entries(soup, base_url, label, known_links):
                 "description": description or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping item: {e}")
+            logger.warning("  [%s] skipping item: %s", label, e)
 
     return entries
 
@@ -137,7 +137,7 @@ def scrape_press(known_links):
         return []
     soup = BeautifulSoup(html, "html.parser")
     entries = _extract_entries(soup, PRESS_URL, "GitLab Press", known_links)
-    logger.info(f"  [GitLab Press] {len(entries)} entries")
+    logger.info("  [GitLab Press] %d entries", len(entries))
     return entries
 
 
@@ -149,7 +149,7 @@ def scrape_whats_new(known_links):
         return []
     soup = BeautifulSoup(html, "html.parser")
     entries = _extract_entries(soup, WHATS_NEW_URL, "GitLab What's New", known_links)
-    logger.info(f"  [GitLab What's New] {len(entries)} entries")
+    logger.info("  [GitLab What's New] %d entries", len(entries))
     return entries
 
 

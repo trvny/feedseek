@@ -123,9 +123,9 @@ def _scrape_page(label, url, date_mode, cap, known_links):
                 "description": _section_description(heading, body),
                 "source": label,
             })
-            logger.info(f"  [{label}] {heading}")
+            logger.info("  [%s] %s", label, heading)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed section: {e}")
+            logger.warning("  [%s] skipping malformed section: %s", label, e)
     return entries
 
 
@@ -201,7 +201,7 @@ def scrape_newsroom(known_links):
         seen.add(link)
         links.append(link)
 
-    logger.info(f"Scraping {NEWSROOM_LABEL} ...")
+    logger.info("Scraping %s ...", NEWSROOM_LABEL)
     for link in links[:NEWSROOM_CAP]:
         if link in known_links:
             continue
@@ -217,9 +217,9 @@ def scrape_newsroom(known_links):
                 "description": sanitize_xml(desc or title)[:DESC_LIMIT],
                 "source": NEWSROOM_LABEL,
             })
-            logger.info(f"  [{NEWSROOM_LABEL}] {title}")
+            logger.info("  [%s] %s", NEWSROOM_LABEL, title)
         except Exception as e:
-            logger.warning(f"  [{NEWSROOM_LABEL}] skipping {link}: {e}")
+            logger.warning("  [%s] skipping %s: %s", NEWSROOM_LABEL, link, e)
     return entries
 
 
@@ -227,7 +227,7 @@ def scrape_docs(known_links):
     """Scrape every configured docs release-notes page into entry dicts."""
     entries = []
     for label, url, date_mode, cap in DOCS_PAGES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         entries += _scrape_page(label, url, date_mode, cap, known_links)
     return entries
 

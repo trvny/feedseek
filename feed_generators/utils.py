@@ -187,10 +187,10 @@ def load_cache(feed_name: str, entries_key: str = "entries") -> dict:
             # as a bad parse: refetch rather than take the run down.
             with open(cache_file, encoding="utf-8") as f:
                 data = json.load(f)
-                logger.info(f"Loaded cache with {len(data.get(entries_key, []))} entries")
+                logger.info("Loaded cache with %d entries", len(data.get(entries_key, [])))
                 return data
         except (json.JSONDecodeError, UnicodeDecodeError):
-            logger.warning(f"Corrupted cache file {cache_file}, starting fresh")
+            logger.warning("Corrupted cache file %s, starting fresh", cache_file)
     logger.info("No cache file found, will do full fetch")
     return {"last_updated": None, entries_key: []}
 
@@ -360,7 +360,6 @@ def trim_entries(
         dated, limit, date_field=date_field, group_field=group_field
     ) + dateless
 
-
 def save_cache(
     feed_name: str,
     entries: list[dict],
@@ -386,8 +385,10 @@ def save_cache(
     )
     if len(entries) < original_count:
         logger.info(
-            f"Trimmed cache from {original_count} to {len(entries)} entries "
-            f"(limit {limit}); oldest dropped first"
+            "Trimmed cache from %s to %s entries (limit %s); oldest dropped first",
+            original_count,
+            len(entries),
+            limit,
         )
     serializable = []
     for entry in entries:
@@ -426,7 +427,7 @@ def save_cache(
                 )
 
             if canonical(previous_payload) == canonical(payload):
-                logger.info(f"Cache unchanged; keeping {cache_file}")
+                logger.info("Cache unchanged; keeping %s", cache_file)
                 return
 
     data = {"last_updated": datetime.now(UTC).isoformat(), **payload}
@@ -436,7 +437,7 @@ def save_cache(
             json.dump(data, f, indent=2, ensure_ascii=False)
 
     write_atomically(cache_file, _write)
-    logger.info(f"Saved cache with {len(entries)} entries to {cache_file}")
+    logger.info("Saved cache with %s entries to %s", len(entries), cache_file)
 
 
 def write_atomically(path, write) -> None:
@@ -524,7 +525,7 @@ def merge_entries(
             existing_ids.add(entry[id_field])
             added += 1
 
-    logger.info(f"Added {added} new entries to cache")
+    logger.info("Added %s new entries to cache", added)
     return sort_posts_for_feed(merged, date_field=date_field)
 
 
@@ -1021,5 +1022,5 @@ def dedupe_entries(entries, id_field="link", title_field="title", date_field="da
             if result[idx].get(date_field) is None and entry.get(date_field) is not None:
                 result[idx] = entry
     if removed:
-        logger.info(f"Deduplicated {removed} entries")
+        logger.info("Deduplicated %s entries", removed)
     return result

@@ -68,18 +68,18 @@ def fetch_chart(retries=3, backoff=2.0):
         try:
             return fetch_page(BLOG_URL)
         except Exception as e:
-            logger.error(f"Fallback fetch failed: {e}")
+            logger.error("Fallback fetch failed: %s", e)
             return None
 
     for attempt in range(1, retries + 1):
         try:
             resp = creq.get(BLOG_URL, impersonate="chrome", timeout=30)
             if resp.status_code == 200 and "__NEXT_DATA__" in resp.text:
-                logger.info(f"Fetched chart ({len(resp.text)} bytes)")
+                logger.info("Fetched chart (%d bytes)", len(resp.text))
                 return resp.text
-            logger.warning(f"Unexpected response (status {resp.status_code}) on attempt {attempt}")
+            logger.warning("Unexpected response (status %d) on attempt %d", resp.status_code, attempt)
         except Exception as e:
-            logger.warning(f"Fetch failed (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed (attempt %d/%d): %s", attempt, retries, e)
         if attempt < retries:
             time.sleep(backoff * attempt)
     return None
@@ -96,7 +96,7 @@ def extract_tracks(html):
         data = json.loads(tag.string)
         queries = data["props"]["pageProps"]["dehydratedState"]["queries"]
     except (json.JSONDecodeError, KeyError, TypeError) as e:
-        logger.error(f"Could not parse __NEXT_DATA__ structure: {e}")
+        logger.error("Could not parse __NEXT_DATA__ structure: %s", e)
         return []
 
     for q in queries:
@@ -177,10 +177,10 @@ def build_entries(tracks, now):
                 }
             )
         except Exception as e:  # never let one bad track kill the run
-            logger.warning(f"Skipping malformed track at rank {rank}: {e}")
+            logger.warning("Skipping malformed track at rank %s: %s", rank, e)
             continue
 
-    logger.info(f"Built {len(entries)} entries from the chart")
+    logger.info("Built %s entries from the chart", len(entries))
     return entries
 
 

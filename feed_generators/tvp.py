@@ -148,7 +148,7 @@ def scrape_portal(known_links):
         try:
             entries += _scrape_section(label, url, known_links)
         except Exception as e:  # noqa: BLE001 — keep other sections alive
-            logger.warning(f"Portal section {label} failed: {e}")
+            logger.warning("Portal section %s failed: %s", label, e)
     return entries
 
 

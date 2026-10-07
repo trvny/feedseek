@@ -96,7 +96,7 @@ def _get_html(url):
 
         resp = creq.get(url, impersonate="chrome", timeout=30)
     except ImportError:
-        logger.warning(f"curl_cffi unavailable; using plain requests for {url}")
+        logger.warning("curl_cffi unavailable; using plain requests for %s", url)
         try:
             resp = requests.get(
                 url,
@@ -104,13 +104,13 @@ def _get_html(url):
                 timeout=30,
             )
         except Exception as e:
-            logger.warning(f"Fetch failed for {url}: {e}")
+            logger.warning("Fetch failed for %s: %s", url, e)
             return None
     except Exception as e:
-        logger.warning(f"Fetch failed for {url}: {e}")
+        logger.warning("Fetch failed for %s: %s", url, e)
         return None
     if resp.status_code != 200:
-        logger.warning(f"Fetch for {url} returned HTTP {resp.status_code}")
+        logger.warning("Fetch for %s returned HTTP %s", url, resp.status_code)
         return None
     return resp.text
 
@@ -123,7 +123,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -187,9 +187,9 @@ def scrape_blog(known_links):
                 "source": label,
                 "image": image,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed post {link}: {e}")
+            logger.warning("  [%s] skipping malformed post %s: %s", label, link, e)
     return entries
 
 
@@ -208,7 +208,7 @@ def scrape_press(known_links):
 
     infos = soup.find_all("div", class_="press-info")
     if not infos:
-        logger.warning(f"  [{label}] no press items matched — layout may have changed")
+        logger.warning("  [%s] no press items matched — layout may have changed", label)
         return entries
 
     for info in infos:
@@ -230,9 +230,9 @@ def scrape_press(known_links):
                 "description": sanitize_xml(title),
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 
@@ -254,7 +254,7 @@ def scrape_mcp_changelog(known_links):
         data = json.loads(nd.string)
         md = data["props"]["pageProps"]["markdownSource"]
     except Exception as e:
-        logger.warning(f"  [{label}] could not extract __NEXT_DATA__ markdown: {e}")
+        logger.warning("  [%s] could not extract __NEXT_DATA__ markdown: %s", label, e)
         return entries
 
     rows = 0
@@ -284,11 +284,11 @@ def scrape_mcp_changelog(known_links):
                 "description": sanitize_xml(summary)[:DESC_LIMIT],
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed row: {e}")
+            logger.warning("  [%s] skipping malformed row: %s", label, e)
     if not rows:
-        logger.warning(f"  [{label}] no table rows parsed — page structure may have changed")
+        logger.warning("  [%s] no table rows parsed — page structure may have changed", label)
     return entries
 
 

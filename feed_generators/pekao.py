@@ -96,10 +96,10 @@ def scrape_google_news(known_links):
     redundant site-name suffix from each title."""
     entries = []
     for label, url, cap in SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         for e in scrape_feed(label, url, known_links, cap=cap):
             if not _is_pekao_article(e["title"]):
-                logger.info(f"  [{label}] dropped non-article: {e['title'][:60]}")
+                logger.info("  [%s] dropped non-article: %s", label, e['title'][:60])
                 continue
             e["title"] = sanitize_xml(_clean_pekao_title(e["title"]))
             entries.append(e)
@@ -126,7 +126,7 @@ def _scrape_page(url, label, known_links):
     """
     html = get_html(url)
     if html is None:
-        logger.warning(f"  [{label}] fetch failed for {url}")
+        logger.warning("  [%s] fetch failed for %s", label, url)
         return []
 
     soup = BeautifulSoup(html, "html.parser")
@@ -206,11 +206,11 @@ def _scrape_page(url, label, known_links):
                 "description": description or title,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping item: {e}")
+            logger.warning("  [%s] skipping item: %s", label, e)
 
-    logger.info(f"  [{label}] {len(entries)} entries")
+    logger.info("  [%s] %s entries", label, len(entries))
     return entries
 
 
