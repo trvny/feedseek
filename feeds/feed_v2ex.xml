@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-07T17:35:23.749510+00:00</updated>
+  <updated>2026-10-07T23:19:40.503317+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,20 +15,53 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/797e4c1057dea643</id>
-    <title>[自荐] 大家都在把 AI 塞进 Obsidian，我却反过来把 Obsidian 接进 AI 官网</title>
-    <updated>2026-10-07T17:15:54+00:00</updated>
-    <content>最近这两年，Obsidian 结合 AI 的主流方向基本都很一致：把 AI 接进 Obsidian 。
-做聊天侧栏、模型选择、API Key 、RAG 、Agent 、知识库…… 这个方向当然没问题，而且有些开源插件确实也做得非常强。但我自己折腾了一圈以后才发现： 我其实并不想在 Obsidian 里养 AI 。 我平时本来就在高频用 ChatGPT 、Claude 、Gemini 的官方网页版。那里有我最习惯的 UI 、历史对话记录、文件上传功能，我也已经付了订阅费。而本地的额度很宝贵，我可不敢在 codex 随便喂几篇 ob 笔记然后聊上半个钟头。 所以对我来说，要在 Obsidian 里再维护一套 API Key 、Token 额度、模型配置和新的聊天入口，并没有让我很踏实。因为我总要考虑很多：这插件走哪个接口？这模型支持多模态传图吗？账户余额还有多少？ token 够不够？... 所以， 我真正想要的不是“把 AI 搬进 Obsidian”，而是我已经整理进 Obsidian 里的资料和附件，能不能一键丝滑的丢到 AI 官网里？ 随后问题就来了 如果只是纯文本笔记，直接复制 m</content>
-    <link href="https://www.v2ex.com/t/1246867#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-07T17:15:54+00:00</published>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/7a2fc56a32a64769</id>
+    <title>光模块里那颗 DSP 占了近一半功耗， LPO 和 CPO 都想把它拿掉</title>
+    <updated>2026-10-07T23:07:45+00:00</updated>
+    <content>最近把 AI 机房里“连接”这条线上的东西理了一遍，记在这里，也想听听各位机房里的实际情况。 1. DSP 在哪 现在主流的可插拔光模块里都有一颗 DSP （数字信号处理芯片）。电信号在铜线上跑一段就会变模糊，它把信号整理干净，再交给激光器变成光。 SemiAnalysis 今年 1 月的拆解：一个 800G 光模块里，DSP 一颗芯片占了将近一半的功耗。 2. 光模块的数量 同一份材料算过一个 1.8 万颗 GPU 的集群：两层网络，大约 4.6 万个光模块，平均每颗 GPU 2.6 个。网络再加一层，业内估算是每颗 GPU 6 个左右。GPU 翻一倍，光模块不止翻一倍。 3. 两条绕开 DSP 的路 线性方案（ LPO ）：模块还是可插拔的，DSP 拿掉，信号交给交换芯片自己处理。功耗省 30%–50%。 共封装光学（ CPO ）：光引擎搬到交换芯片旁边，电信号只走几毫米。一个 800G 光口从 16–17 瓦降到 4–5 瓦。 博通的 CPO 交换机 2024 年已经交付客户；英伟达的以太网 CPO 交换机定在 2026 年下半年。LightCounting 的判断是 2027–</content>
+    <link href="https://www.v2ex.com/t/1246879#reply1" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-07T23:07:45+00:00</published>
     <media:group>
-      <media:content url="https://i.imgur.com/Ndx6MvG.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.imgur.com/Ndx6MvG.png"/>
+      <media:content url="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791414457" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791414457"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791414457" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/a167f945faa9a23d</id>
+    <title>收录了 1497 多个独立博客之后，我做了这么一个网站： indi.blog</title>
+    <updated>2026-10-07T22:59:09+00:00</updated>
+    <content>chinese-independent-blogs 是一个收录中文独立博客的仓库。
+虽然说"独立博客的时代早已过去"，但很奇怪，这个项目一直在自然生长，现在 GitHub 上已经有 24k star ，
+基本每周都会有博主提交自己的博客。 独立博客时代似乎还是没有过去，或许有可能它永远不会过去，直到互联网过去了。 于是我为这个项目做了一个网站： indi.blog 这个网站订阅了所有拥有 RSS 的独立博客，用户可以给博客点赞/评论。
+在主页，用一个类似 Hacker News 的排序算法，方便大家在看到质量较高的内容。
+目前看来，这个数量级的博客下，每天几十篇，每周有几百篇博客，可以偶尔打开刷一刷了。</content>
+    <link href="https://www.v2ex.com/t/1246878#reply1" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-10-07T22:59:09+00:00</published>
+    <media:group>
+      <media:content url="https://t9t.io/star-history-2026108.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://t9t.io/star-history-2026108.png"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.imgur.com/Ndx6MvG.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://t9t.io/star-history-2026108.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/699e91b6623a3423</id>
+    <title>Claude Code 扩大了其初创公司支持计划！</title>
+    <updated>2026-10-07T19:43:37+00:00</updated>
+    <content>大家好，&lt;br /&gt;&lt;br /&gt;你们听说 Claude Code 扩大其初创企业计划 (Startup Program) 的消息了吗？这对开发者和创业团队来说绝对是个好消息。这意味着初创团队可以获得更多的资源支持、API 额度，以及更便捷的 AI 编程工具访问权限，从而加速开发流程。&lt;br /&gt;&lt;br /&gt;有没有人打算在自己的初创项目中使用它？或者已经有团队申请成功了吗？欢迎大家在下面分享你们的看法和经验！&lt;br /&gt;&lt;br /&gt;&lt;a target="_blank" href="https://claude.com/programs/startups" rel="nofollow noopener"&gt;https://claude.com/programs/startups&lt;/a&gt;</content>
+    <link href="https://www.v2ex.com/t/1246872" rel="alternate"/>
+    <category term="V2EX Claude (quiqa)" label="V2EX Claude (quiqa)"/>
+    <published>2026-10-07T19:43:37+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/e7b5/b8a1/41370_xlarge.png?m=1780589788" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/e7b5/b8a1/41370_xlarge.png?m=1780589788"/>
+    </media:group>
+    <dc:creator>V2EX Claude (quiqa)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/e7b5/b8a1/41370_xlarge.png?m=1780589788" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/d1c3804dc0aad6bd</id>
@@ -46,21 +79,6 @@
     </media:group>
     <dc:creator>V2EX Claude (hanssx)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/5912/4ca0/350569_xlarge.png?m=1734523135" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/9f47db6301812375</id>
-    <title>Google Play 上架测试</title>
-    <updated>2026-10-07T15:12:30+00:00</updated>
-    <content>我记得有个 V 友开发了某个东东，可以让开发者抱团参与测试的，大佬们能否指个路，贴子我找不到了。 另外各位大佬有没有办法可以加速整个过程的，每款 APP 都这么来一遍比较耗费时间。</content>
-    <link href="https://www.v2ex.com/t/1246849#reply2" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-07T15:12:30+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/d37bf388e324a946bc0feab053281806?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/d37bf388e324a946bc0feab053281806?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/d37bf388e324a946bc0feab053281806?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/c203393d654a05e9</id>
@@ -2253,23 +2271,6 @@ Google Play 对新应用有封闭测试要求：希望体验官加入测试计�
     </media:group>
     <dc:creator>V2EX Claude (crazytec)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/4785/931a/450222_large.png?m=1783264470" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/c79abaf508e6d0d9</id>
-    <title>i-have-adhd 这个 skills 真爽，建议常驻</title>
-    <updated>2026-08-17T21:14:20+00:00</updated>
-    <content>&lt;p&gt;&lt;a href="https://github.com/ayghri/i-have-adhd" rel="nofollow"&gt;https://github.com/ayghri/i-have-adhd&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;感觉手感回到 opus4.6 了，终于不用再忍受 5 系模型的废话。&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1235152" rel="alternate"/>
-    <category term="V2EX Claude (383394544)" label="V2EX Claude (383394544)"/>
-    <published>2026-08-17T21:14:20+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/64e2/6a06/199603_xlarge.png?m=1741594861" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/64e2/6a06/199603_xlarge.png?m=1741594861"/>
-    </media:group>
-    <dc:creator>V2EX Claude (383394544)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/64e2/6a06/199603_xlarge.png?m=1741594861" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/15ebec9d1660df89</id>
