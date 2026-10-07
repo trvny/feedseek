@@ -73,6 +73,9 @@ test("reader is an app-only entrypoint with a fixed self-contained resource", as
   assert.ok(resource.text.includes("host.setWidgetState"));
   assert.ok(resource.text.includes("selected:Array.from(selection.values())"));
   assert.ok(resource.text.includes("sendUncertainKey=key"));
+  assert.ok(resource.text.includes("init.hostCapabilities.message.text"));
+  assert.ok(resource.text.includes("sendPending||!canSendMessage"));
+  assert.ok(resource.text.includes("sendPending=false;selectionState()"));
   assert.ok(resource.text.includes("if(restoredFilters||!hasSnapshot)await refresh()"));
   assert.deepEqual(resource._meta.ui.csp.connectDomains, []);
   const invalid = await (await call("resources/read", { uri: "https://example.com/private" })).json();
