@@ -81,13 +81,13 @@ def fetch_forecast(retries: int = 3, backoff: float = 2.0):
             if str(data.get("cod")) != "200":
                 # Don't interpolate the response payload: it's taint-tied to the URL
                 # (which carries appid=API_KEY), so logging it trips clear-text-logging.
-                logger.error(f"OpenWeather returned a non-200 status for {LOCATION}")
+                logger.error("OpenWeather returned a non-200 status for %s", LOCATION)
                 return None
             return data
         except Exception as e:
             logger.warning(
-                f"Forecast fetch failed for location {LOCATION} "
-                f"(attempt {attempt}/{retries}): {e}"
+                "Forecast fetch failed for location %s (attempt %d/%d): %s",
+                LOCATION, attempt, retries, e
             )
             if attempt < retries:
                 time.sleep(backoff * attempt)

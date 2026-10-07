@@ -68,18 +68,18 @@ def fetch_chart(retries=3, backoff=2.0):
         try:
             return fetch_page(BLOG_URL)
         except Exception as e:
-            logger.error(f"Fallback fetch failed: {e}")
+            logger.error("Fallback fetch failed: %s", e)
             return None
 
     for attempt in range(1, retries + 1):
         try:
             resp = creq.get(BLOG_URL, impersonate="chrome", timeout=30)
             if resp.status_code == 200 and "__NEXT_DATA__" in resp.text:
-                logger.info(f"Fetched chart ({len(resp.text)} bytes)")
+                logger.info("Fetched chart (%d bytes)", len(resp.text))
                 return resp.text
-            logger.warning(f"Unexpected response (status {resp.status_code}) on attempt {attempt}")
+            logger.warning("Unexpected response (status %d) on attempt %d", resp.status_code, attempt)
         except Exception as e:
-            logger.warning(f"Fetch failed (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed (attempt %d/%d): %s", attempt, retries, e)
         if attempt < retries:
             time.sleep(backoff * attempt)
     return None
@@ -96,7 +96,7 @@ def extract_tracks(html):
         data = json.loads(tag.string)
         queries = data["props"]["pageProps"]["dehydratedState"]["queries"]
     except (json.JSONDecodeError, KeyError, TypeError) as e:
-        logger.error(f"Could not parse __NEXT_DATA__ structure: {e}")
+        logger.error("Could not parse __NEXT_DATA__ structure: %s", e)
         return []
 
     for q in queries:
@@ -152,59 +152,36 @@ def build_entries(tracks, now):
 
             title = sanitize_xml(f"{artist_str} - {full_title}")
 
-            bits = [f"Entered the Beatport Top 100 at #{rank}", f"Artists: {artist_str}"]
-            if remixers:
-                bits.append(f"Remixers: {', '.join(remixers)}")
-            if genre:
-                bits.append(f"Genre: {genre}")
-            if bpm:
-                bits.append(f"BPM: {bpm}")
-            if key_name:
-                bits.append(f"Key: {key_name}")
-            if length:
-                bits.append(f"Length: {length}")
-            if label:
-                bits.append(f"Label: {label}")
-            description = sanitize_xml(" · ".join(bits))
+        bits = [f"Entered the Beatport Top 100 at #{rank}", f"Artists: {artist_str}"]
+        if remixers:
+            bits.append(f"Remixers: {', '.join(remixers)}")
+        if genre:
+            bits.append(f"Genre: {genre}")
+        if bpm:
+            bits.append(f"BPM: {bpm}")
+        if key_name:
+            bits.append(f"Key: {key_name}")
+        if length:
+            bits.append(f"Length: {length}")
+        if label:
+            bits.append(f"Label: {label}")
+        description = sanitize_xml(" · ".join(bits))
 
-            entries.append(
-                {
-                    "title": title,
-                    "link": link,
-                    "date": entry_date,
-                    "description": description,
-                    "image": (release.get("image") or {}).get("uri"),
-                }
-            )
-        except Exception as e:  # never let one bad track kill the run
-            logger.warning(f"Skipping malformed track at rank {rank}: {e}")
-            continue
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": entry_date,
+                "description": description,
+                "image": (release.get("image") or {}).get("uri"),
+            }
+        )
+    except Exception as e:  # never let one bad track kill the run
+        logger.warning("Skipping malformed track at rank %s: %s", rank, e)
+        continue
 
-    logger.info(f"Built {len(entries)} entries from the chart")
-    return entries
-
-
-def generate_atom_feed(entries, feed_name=FEED_NAME):
-    """Build an Atom FeedGenerator from the entry list."""
-    fg = FeedGenerator()
-    fg.id(f"https://www.beatport.com/{feed_name}")
-    fg.title("Beatport Top 100")
-    fg.subtitle("Tracks as they enter the Beatport Top 100 chart")
-    setup_feed_links(fg, BLOG_URL, feed_name, icon=favicon_proxy("beatport.com"))
-    setup_feed_extensions(fg)
-    fg.language("en")
-    fg.author({"name": "Beatport"})
-
-    for entry in entries:
-        fe = fg.add_entry()
-        fe.id(entry["link"])
-        fe.title(entry["title"])
-        fe.link(href=entry["link"])
-        add_entry_media(fe, entry.get("image"))
-        fe.description(entry["description"])
-        if entry.get("date"):
-            fe.published(entry["date"])
-            fe.updated(entry["date"])
+logger.info("Built %s entries from the chart", len(entries))
+return entries
 
     logger.info("Generated Atom feed")
     return fg

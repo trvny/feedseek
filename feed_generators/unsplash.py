@@ -104,11 +104,11 @@ def scrape_wallpapers(known_links):
             timeout=30,
         )
         if resp.status_code != 200:
-            logger.warning(f"[Wallpapers] API returned HTTP {resp.status_code}")
+            logger.warning("[Wallpapers] API returned HTTP %s", resp.status_code)
             return []
         photos = resp.json()
     except Exception as e:
-        logger.warning(f"[Wallpapers] fetch failed: {e}")
+        logger.warning("[Wallpapers] fetch failed: %s", e)
         return []
 
     entries = []
@@ -130,7 +130,7 @@ def scrape_wallpapers(known_links):
             })
         except Exception:  # one bad photo never kills the feed
             continue
-    logger.info(f"[Wallpapers] collected {len(entries)} photo(s)")
+    logger.info("[Wallpapers] collected %s photo(s)", len(entries))
     return entries
 
 

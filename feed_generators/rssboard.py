@@ -40,7 +40,7 @@ def scrape_jsonfeed(known_links):
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
-        logger.warning(f"  [{label}] fetch/parse failed; continuing: {e}")
+        logger.warning("  [%s] fetch/parse failed; continuing: %s", label, e)
         return entries
 
     for item in data.get("items", []):
@@ -58,9 +58,9 @@ def scrape_jsonfeed(known_links):
                 "description": sanitize_xml(content)[:2000],
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:  # one bad item never kills the run
-            logger.warning(f"  [{label}] skipping malformed item: {e}")
+            logger.warning("  [%s] skipping malformed item: %s", label, e)
     return entries
 
 

@@ -149,7 +149,7 @@ def fetch_timeline(retries: int = 3, backoff: float = 2.0):
             body = fetch_page(url)
             return json.loads(body)
         except Exception as e:
-            logger.warning(f"Timeline fetch failed for {safe_url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Timeline fetch failed for %s (attempt %d/%d): %s", safe_url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None

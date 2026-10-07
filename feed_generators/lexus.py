@@ -91,7 +91,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -101,7 +101,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
         try:
             return fetch_page(url, headers=headers)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %d/%d): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -161,42 +161,42 @@ def parse_native_feed(xml, label):
             if not title or not link:
                 continue
 
-            date_el = (
-                item.find("pubDate")
-                or item.find("published")
-                or item.find("updated")
-                or item.find("date")
-            )
-            date_obj = parse_date(date_el.get_text(strip=True)) if date_el else None
+           date_el = (
+               item.find("pubDate")
+               or item.find("published")
+               or item.find("updated")
+               or item.find("date")
+           )
+           date_obj = parse_date(date_el.get_text(strip=True)) if date_el else None
 
-            desc_el = (
-                item.find("description")
-                or item.find("summary")
-                or item.find("encoded")
-                or item.find("content")
-            )
-            description = clean_description(desc_el.get_text() if desc_el else "", fallback=title)
+           desc_el = (
+               item.find("description")
+               or item.find("summary")
+               or item.find("encoded")
+               or item.find("content")
+           )
+           description = clean_description(desc_el.get_text() if desc_el else "", fallback=title)
 
-            entries.append({
-                "title": title,
-                "link": link,
-                "date": date_obj,
-                "description": description,
-                "source": label,
-                "image": feed_item_image(item),
-            })
-        except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] parsed {len(entries)} entries")
-    return entries
+           entries.append({
+               "title": title,
+               "link": link,
+               "date": date_obj,
+               "description": description,
+               "source": label,
+               "image": feed_item_image(item),
+           })
+       except Exception as e:
+           logger.warning("[%s] skipped a malformed item: %s", label, e)
+   logger.info("[%s] parsed %d entries", label, len(entries))
+   return entries
 
 
 def collect_native_feed(label, url):
-    xml = fetch_text(url, headers={**DEFAULT_HEADERS, "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"})
-    if not xml:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
-        return []
-    return parse_native_feed(xml, label)
+   xml = fetch_text(url, headers={**DEFAULT_HEADERS, "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"})
+   if not xml:
+       logger.warning("[%s] fetch failed — skipping this source", label)
+       return []
+   return parse_native_feed(xml, label)
 
 
 # ---------------------------------------------------------------------------
@@ -205,58 +205,58 @@ def collect_native_feed(label, url):
 
 
 def collect_discover_lexus(known_links):
-    """Read story URLs + lastmod from the Discover Lexus sitemap; fetch a title
-    only for stories we haven't cached yet."""
-    label = "Discover Lexus"
-    xml = fetch_text(DISCOVER_SITEMAP)
-    if not xml:
-        logger.warning(f"[{label}] sitemap fetch failed — skipping this source")
-        return []
+   """Read story URLs + lastmod from the Discover Lexus sitemap; fetch a title
+   only for stories we haven't cached yet."""
+   label = "Discover Lexus"
+   xml = fetch_text(DISCOVER_SITEMAP)
+   if not xml:
+       logger.warning("[%s] sitemap fetch failed — skipping this source", label)
+       return []
 
-    entries = []
-    soup = BeautifulSoup(xml, "xml")
-    for url_el in soup.find_all("url"):
-        try:
-            loc_el = url_el.find("loc")
-            if not loc_el:
-                continue
-            link = loc_el.get_text(strip=True)
-            if "/stories/" not in link:
-                continue
+   entries = []
+   soup = BeautifulSoup(xml, "xml")
+   for url_el in soup.find_all("url"):
+       try:
+           loc_el = url_el.find("loc")
+           if not loc_el:
+               continue
+           link = loc_el.get_text(strip=True)
+           if "/stories/" not in link:
+               continue
 
-            lastmod_el = url_el.find("lastmod")
-            date_obj = parse_date(lastmod_el.get_text(strip=True)) if lastmod_el else None
-            if date_obj is None:
-                date_obj = stable_fallback_date(link)
+           lastmod_el = url_el.find("lastmod")
+           date_obj = parse_date(lastmod_el.get_text(strip=True)) if lastmod_el else None
+           if date_obj is None:
+               date_obj = stable_fallback_date(link)
 
-            if link in known_links:
-                continue  # already cached; no metadata fetch needed
+           if link in known_links:
+               continue  # already cached; no metadata fetch needed
 
-            title = summary = image = None
-            page = fetch_text(link)
-            if page:
-                psoup = BeautifulSoup(page, "html.parser")
-                title = og_meta(psoup, "og:title", "twitter:title")
-                if title:
-                    title = re.split(r"\s+\|\s+", title)[0].strip()
-                summary = og_meta(psoup, "og:description", "description")
-                image = og_meta(psoup, "og:image", "twitter:image")
-            time.sleep(SLEEP_BETWEEN)
+           title = summary = image = None
+           page = fetch_text(link)
+           if page:
+               psoup = BeautifulSoup(page, "html.parser")
+               title = og_meta(psoup, "og:title", "twitter:title")
+               if title:
+                   title = re.split(r"\s+\|\s+", title)[0].strip()
+               summary = og_meta(psoup, "og:description", "description")
+               image = og_meta(psoup, "og:image", "twitter:image")
+           time.sleep(SLEEP_BETWEEN)
 
-            title = sanitize_xml(title or title_from_slug(link))
-            entries.append({
-                "title": title,
-                "link": link,
-                "date": date_obj,
-                "description": clean_description(summary, fallback=title),
-                "source": label,
-                "image": image,
-            })
-            logger.info(f"  [{label}] {title}")
-        except Exception as e:
-            logger.warning(f"[{label}] skipped a sitemap entry: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
-    return entries
+           title = sanitize_xml(title or title_from_slug(link))
+           entries.append({
+               "title": title,
+               "link": link,
+               "date": date_obj,
+               "description": clean_description(summary, fallback=title),
+               "source": label,
+               "image": image,
+           })
+           logger.info("  [%s] %s", label, title)
+       except Exception as e:
+           logger.warning("[%s] skipped a sitemap entry: %s", label, e)
+   logger.info("[%s] collected %d new entries", label, len(entries))
+   return entries
 
 
 # ---------------------------------------------------------------------------
@@ -265,66 +265,66 @@ def collect_discover_lexus(known_links):
 
 
 def collect_lexus_polska(known_links):
-    """Scrape the Lexus Polska news listing; fetch JSON-LD date + og:title for
-    links we haven't cached yet."""
-    label = "Lexus Polska"
-    html = fetch_text(LEXUS_PL_LISTING)
-    if not html:
-        logger.warning(f"[{label}] fetch failed — skipping this source")
-        return []
+   """Scrape the Lexus Polska news listing; fetch JSON-LD date + og:title for
+   links we haven't cached yet."""
+   label = "Lexus Polska"
+   html = fetch_text(LEXUS_PL_LISTING)
+   if not html:
+       logger.warning("[%s] fetch failed — skipping this source", label)
+       return []
 
-    soup = BeautifulSoup(html, "html.parser")
-    links = []
-    seen = set()
-    for a in soup.find_all("a", href=True):
-        href = a["href"].split("?")[0].split("#")[0]
-        if LEXUS_PL_LINK_RE.match(href) and href not in seen:
-            seen.add(href)
-            links.append(LEXUS_PL_BASE + href)
+   soup = BeautifulSoup(html, "html.parser")
+   links = []
+   seen = set()
+   for a in soup.find_all("a", href=True):
+       href = a["href"].split("?")[0].split("#")[0]
+       if LEXUS_PL_LINK_RE.match(href) and href not in seen:
+           seen.add(href)
+           links.append(LEXUS_PL_BASE + href)
 
-    entries = []
-    for link in links:
-        try:
-            if link in known_links:
-                continue
-            page = fetch_text(link)
-            if not page:
-                continue
-            psoup = BeautifulSoup(page, "html.parser")
+   entries = []
+   for link in links:
+       try:
+           if link in known_links:
+               continue
+           page = fetch_text(link)
+           if not page:
+               continue
+           psoup = BeautifulSoup(page, "html.parser")
 
-            title = og_meta(psoup, "og:title", "twitter:title")
-            if title:
-                title = re.split(r"\s+\|\s+", title)[0].strip()
+           title = og_meta(psoup, "og:title", "twitter:title")
+           if title:
+               title = re.split(r"\s+\|\s+", title)[0].strip()
 
-            date_obj = None
-            for sc in psoup.find_all("script", type="application/ld+json"):
-                m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', sc.string or "")
-                if m:
-                    date_obj = parse_date(m.group(1))
-                    break
-            if date_obj is None:
-                # Fall back to the year embedded in the URL path.
-                ym = re.search(r"/news/(\d{4})/", link)
-                date_obj = parse_date(f"{ym.group(1)}-01-01") if ym else stable_fallback_date(link)
+           date_obj = None
+           for sc in psoup.find_all("script", type="application/ld+json"):
+               m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', sc.string or "")
+               if m:
+                   date_obj = parse_date(m.group(1))
+                   break
+           if date_obj is None:
+               # Fall back to the year embedded in the URL path.
+               ym = re.search(r"/news/(\d{4})/", link)
+               date_obj = parse_date(f"{ym.group(1)}-01-01") if ym else stable_fallback_date(link)
 
-            summary = og_meta(psoup, "og:description", "description")
-            image = og_meta(psoup, "og:image", "twitter:image")
-            time.sleep(SLEEP_BETWEEN)
+           summary = og_meta(psoup, "og:description", "description")
+           image = og_meta(psoup, "og:image", "twitter:image")
+           time.sleep(SLEEP_BETWEEN)
 
-            title = sanitize_xml(title or title_from_slug(link))
-            entries.append({
-                "title": title,
-                "link": link,
-                "date": date_obj,
-                "description": clean_description(summary, fallback=title),
-                "source": label,
-                "image": image,
-            })
-            logger.info(f"  [{label}] {title}")
-        except Exception as e:
-            logger.warning(f"[{label}] skipped {link}: {e}")
-    logger.info(f"[{label}] collected {len(entries)} new entries")
-    return entries
+           title = sanitize_xml(title or title_from_slug(link))
+           entries.append({
+               "title": title,
+               "link": link,
+               "date": date_obj,
+               "description": clean_description(summary, fallback=title),
+               "source": label,
+               "image": image,
+           })
+           logger.info("  [%s] %s", label, title)
+       except Exception as e:
+           logger.warning("[%s] skipped %s: %s", label, link, e)
+   logger.info("[%s] collected %d new entries", label, len(entries))
+   return entries
 
 
 # ---------------------------------------------------------------------------
@@ -333,29 +333,29 @@ def collect_lexus_polska(known_links):
 
 
 def collect_all(known_links):
-    """Collect entries from every source. A failure in one source is logged and
-    skipped so the others still contribute."""
-    entries = []
-    for label, url in NATIVE_FEEDS:
-        logger.info(f"Fetching native feed: {label}")
-        try:
-            entries += collect_native_feed(label, url)
-        except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+   """Collect entries from every source. A failure in one source is logged and
+   skipped so the others still contribute."""
+   entries = []
+   for label, url in NATIVE_FEEDS:
+       logger.info("Fetching native feed: %s", label)
+       try:
+           entries += collect_native_feed(label, url)
+       except Exception as e:
+           logger.warning("[%s] unexpected error: %s", label, e)
 
-    logger.info("Scraping Discover Lexus (sitemap) ...")
-    try:
-        entries += collect_discover_lexus(known_links)
-    except Exception as e:
-        logger.warning(f"[Discover Lexus] unexpected error: {e}")
+   logger.info("Scraping Discover Lexus (sitemap) ...")
+   try:
+       entries += collect_discover_lexus(known_links)
+   except Exception as e:
+       logger.warning("[Discover Lexus] unexpected error: %s", e)
 
-    logger.info("Scraping Lexus Polska ...")
-    try:
-        entries += collect_lexus_polska(known_links)
-    except Exception as e:
-        logger.warning(f"[Lexus Polska] unexpected error: {e}")
+   logger.info("Scraping Lexus Polska ...")
+   try:
+       entries += collect_lexus_polska(known_links)
+   except Exception as e:
+       logger.warning("[Lexus Polska] unexpected error: %s", e)
 
-    return entries
+   return entries
 
 
 def generate_atom_feed(articles, feed_name=FEED_NAME):

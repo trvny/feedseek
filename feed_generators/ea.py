@@ -123,8 +123,8 @@ def scrape_fc26(known_links):
 def print_log(label, count, note=None):
     from multi_rss import logger
     if note:
-        logger.warning(f"  [{label}] {note}")
-    logger.info(f"  [{label}] {count} new entries")
+        logger.warning("  [%s] %s", label, note)
+    logger.info("  [%s] %s new entries", label, count)
 
 
 def main(full=False):

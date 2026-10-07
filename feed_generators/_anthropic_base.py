@@ -74,7 +74,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -105,7 +105,7 @@ def fetch_article_meta(url):
             summary = None
         image = _meta(soup, "og:image", "twitter:image")
     except Exception as e:
-        logger.warning(f"Could not fetch article meta for {url}: {e}")
+        logger.warning("Could not fetch article meta for %s: %s", url, e)
     time.sleep(SLEEP_BETWEEN)
     return {"title": title, "summary": summary, "image": image}
 
@@ -116,7 +116,7 @@ def scrape_source(label, listing_url, base, prefix, known_links):
     try:
         soup = BeautifulSoup(fetch_page(listing_url), "html.parser")
     except Exception as e:
-        logger.warning(f"Could not fetch {listing_url}: {e}")
+        logger.warning("Could not fetch %s: %s", listing_url, e)
         return entries
 
     seen = set()
@@ -149,7 +149,7 @@ def scrape_source(label, listing_url, base, prefix, known_links):
             "source": label,
             "image": meta.get("image"),
         })
-        logger.info(f"  [{label}] {title}")
+        logger.info("  [%s] %s", label, title)
     return entries
 
 
@@ -172,7 +172,7 @@ def fetch_red_article(url):
         summary = _meta(soup, "og:description", "description")
         image = _meta(soup, "og:image", "twitter:image")
     except Exception as e:
-        logger.warning(f"Could not fetch red article {url}: {e}")
+        logger.warning("Could not fetch red article %s: %s", url, e)
     time.sleep(SLEEP_BETWEEN)
     return {"title": title, "date": date_obj, "summary": summary, "image": image}
 
@@ -183,7 +183,7 @@ def scrape_red(known_links):
     try:
         soup = BeautifulSoup(fetch_page(RED_BASE), "html.parser")
     except Exception as e:
-        logger.warning(f"Could not fetch {RED_BASE}: {e}")
+        logger.warning("Could not fetch %s: %s", RED_BASE, e)
         return entries
 
     seen = set()
@@ -211,7 +211,7 @@ def scrape_red(known_links):
             "source": RED_LABEL,
             "image": meta.get("image"),
         })
-        logger.info(f"  [{RED_LABEL}] {title}")
+        logger.info("  [%s] %s", RED_LABEL, title)
     return entries
 
 
@@ -219,9 +219,9 @@ def scrape_all(known_links):
     """Collect new entries from every source, skipping already-cached links."""
     new_entries = []
     for label, listing, base, prefix in SOURCES:
-        logger.info(f"Scraping {label} ...")
+        logger.info("Scraping %s ...", label)
         new_entries += scrape_source(label, listing, base, prefix, known_links)
-    logger.info(f"Scraping {RED_LABEL} ...")
+    logger.info("Scraping %s ...", RED_LABEL)
     new_entries += scrape_red(known_links)
     return new_entries
 

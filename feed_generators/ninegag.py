@@ -36,16 +36,16 @@ def scrape_hot(known_links):
 
     m = _CONFIG_RE.search(html)
     if not m:
-        logger.warning(f"  [{label}] window._config not found — page structure may have changed")
+        logger.warning("  [%s] window._config not found — page structure may have changed", label)
         return entries
     try:
         cfg = json.loads(json.loads(m.group(1)))
         posts = cfg.get("data", {}).get("posts", [])
     except Exception as e:
-        logger.warning(f"  [{label}] could not parse _config JSON: {e}")
+        logger.warning("  [%s] could not parse _config JSON: %s", label, e)
         return entries
     if not posts:
-        logger.warning(f"  [{label}] no posts in _config — page structure may have changed")
+        logger.warning("  [%s] no posts in _config — page structure may have changed", label)
         return entries
 
     for post in posts:
@@ -75,9 +75,9 @@ def scrape_hot(known_links):
                 "description": desc,
                 "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed post: {e}")
+            logger.warning("  [%s] skipping malformed post: %s", label, e)
     return entries
 
 

@@ -78,12 +78,12 @@ def fetch_quotes():
                 if isinstance(q, dict) and (q.get("quote") or "").strip()
             ]
             if cleaned:
-                logger.info(f"Loaded {len(cleaned)} usable quotes")
+                logger.info("Loaded %s usable quotes", len(cleaned))
                 return cleaned
             logger.warning("Quotes list parsed but empty after cleaning")
             return None
         except Exception as e:
-            logger.warning(f"Quote fetch failed (attempt {attempt}/3): {e}")
+            logger.warning("Quote fetch failed (attempt %s/3): %s", attempt, e)
             if attempt < 3:
                 time.sleep(2.0 * attempt)
     return None
@@ -115,9 +115,9 @@ def resolve_wikiquote(author):
             # Missing pages carry a "missing" key and a negative pageid.
             if "missing" not in page and page.get("pageid", 0) > 0:
                 title = page.get("title", author)
-                return WIKIQUOTE_WIKI + urllib.parse.quote(title.replace(" ", "_"))
+                return WIKIQUOTE_WIKI + urllib.parse.quote(title.replace("", "_"))
     except Exception as e:
-        logger.warning(f"Wikiquote lookup failed for {author!r}: {e}")
+        logger.warning("Wikiquote lookup failed for %r: %s", author, e)
     return None
 
 

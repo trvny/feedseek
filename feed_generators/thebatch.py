@@ -35,7 +35,7 @@ def _next_data(url):
         nd = BeautifulSoup(html, "html.parser").find("script", id="__NEXT_DATA__")
         return json.loads(nd.string)["props"]["pageProps"]
     except Exception as e:
-        logger.warning(f"Could not extract __NEXT_DATA__ from {url}: {e}")
+        logger.warning("Could not extract __NEXT_DATA__ from %s: %s", url, e)
         return None
 
 
@@ -52,7 +52,7 @@ def scrape_thebatch(known_links):
         return entries
     posts = pp.get("posts") or []
     if not posts:
-        logger.warning(f"  [{label}] no posts in __NEXT_DATA__ — page structure may have changed")
+        logger.warning("  [%s] no posts in __NEXT_DATA__ — page structure may have changed", label)
         return entries
     for post in posts:
         try:
@@ -69,9 +69,9 @@ def scrape_thebatch(known_links):
                 "title": title, "link": link, "date": date_obj,
                 "description": desc or title, "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed post: {e}")
+            logger.warning("  [%s] skipping malformed post: %s", label, e)
     return entries
 
 
@@ -83,7 +83,7 @@ def scrape_blog(known_links):
         return entries
     nodes = (pp.get("posts") or {}).get("nodes") or []
     if not nodes:
-        logger.warning(f"  [{label}] no nodes in __NEXT_DATA__ — page structure may have changed")
+        logger.warning("  [%s] no nodes in __NEXT_DATA__ — page structure may have changed", label)
         return entries
     for post in nodes:
         try:
@@ -100,9 +100,9 @@ def scrape_blog(known_links):
                 "title": title, "link": link, "date": date_obj,
                 "description": desc or title, "source": label,
             })
-            logger.info(f"  [{label}] {title}")
+            logger.info("  [%s] %s", label, title)
         except Exception as e:
-            logger.warning(f"  [{label}] skipping malformed post: {e}")
+            logger.warning("  [%s] skipping malformed post: %s", label, e)
     return entries
 
 

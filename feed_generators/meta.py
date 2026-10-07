@@ -81,7 +81,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as e:
-        logger.warning(f"Could not parse date '{date_str}': {e}")
+        logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
 
@@ -105,7 +105,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
                 return resp.text
             return fetch_page(url, headers=headers)
         except Exception as e:
-            logger.warning(f"Fetch failed for {url} (attempt {attempt}/{retries}): {e}")
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
     return None
@@ -169,15 +169,15 @@ def parse_native_feed(xml, label):
                 "source": label,
             })
         except Exception as e:
-            logger.warning(f"[{label}] skipped a malformed item: {e}")
-    logger.info(f"[{label}] parsed {len(entries)} entries")
+            logger.warning("[%s] skipped a malformed item: %s", label, e)
+    logger.info("[%s] parsed %d entries", label, len(entries))
     return entries
 
 
 def collect_native_feed(label, url):
     xml = fetch_text(url, headers={**DEFAULT_HEADERS, "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"})
     if not xml:
-        logger.warning(f"[{label}] fetch failed -- skipping this source")
+        logger.warning("[%s] fetch failed -- skipping this source", label)
         return []
     return parse_native_feed(xml, label)
 
@@ -206,7 +206,7 @@ def _slug(text):
 def scrape_fb_doc_changelog(label, url, known_links):
     html = fetch_text(url)
     if not html:
-        logger.warning(f"[{label}] fetch failed -- skipping this source")
+        logger.warning("[%s] fetch failed -- skipping this source", label)
         return []
     soup = BeautifulSoup(html, "html.parser")
     short = label.replace(" Changelog", "")
@@ -238,7 +238,7 @@ def scrape_fb_doc_changelog(label, url, known_links):
             "description": clean_description(" ".join(parts), fallback=head),
             "source": label,
         })
-    logger.info(f"[{label}] scraped {len(entries)} entries")
+    logger.info("[%s] scraped %d entries", label, len(entries))
     return entries
 
 
@@ -254,7 +254,7 @@ _URL_DATE_RE = re.compile(r"/(20\d\d)/(\d{1,2})/(\d{1,2})/")
 def _scrape_blog_anchors(label, url, known_links, href_substr, base=None, min_title=12):
     html = fetch_text(url)
     if not html:
-        logger.warning(f"[{label}] fetch failed -- skipping this source")
+        logger.warning("[%s] fetch failed -- skipping this source", label)
         return []
     soup = BeautifulSoup(html, "html.parser")
     seen, entries = set(), []
@@ -272,7 +272,7 @@ def _scrape_blog_anchors(label, url, known_links, href_substr, base=None, min_ti
         m = _TEXT_DATE_RE.search(text)
         if m:
             date_obj = parse_date(m.group(1))
-            text = _TEXT_DATE_RE.sub("", text).strip(" \u2014-|\u00b7")
+            text = _TEXT_DATE_RE.sub("", text).strip(" \u2014-| b7")
         if date_obj is None:
             mu = _URL_DATE_RE.search(href)
             if mu:
@@ -288,7 +288,7 @@ def _scrape_blog_anchors(label, url, known_links, href_substr, base=None, min_ti
             "description": sanitize_xml(title[:200]),
             "source": label,
         })
-    logger.info(f"[{label}] scraped {len(entries)} entries")
+    logger.info("[%s] scraped %s entries", label, len(entries))
     return entries
 
 
@@ -326,7 +326,7 @@ def scrape_devmeta_blog(known_links):
             "description": sanitize_xml(title[:200]),
             "source": "Meta Developers",
         })
-    logger.info(f"[Meta Developers] scraped {len(entries)} entries")
+    logger.info("[Meta Developers] scraped %s entries", len(entries))
     return entries
 
 
@@ -344,23 +344,23 @@ def collect_all():
     skipped so the others still contribute."""
     entries = []
     for label, url in NATIVE_FEEDS:
-        logger.info(f"Fetching native feed: {label}")
+        logger.info("Fetching native feed: %s", label)
         try:
             entries += collect_native_feed(label, url)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
 
     known = {e["link"] for e in entries}
     for label, url in FB_DOC_CHANGELOGS:
         try:
             entries += scrape_fb_doc_changelog(label, url, known)
         except Exception as e:
-            logger.warning(f"[{label}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", label, e)
     for scraper in (scrape_devfb_blog, scrape_devmeta_blog, scrape_instagram_blog):
         try:
             entries += scraper(known)
         except Exception as e:
-            logger.warning(f"[{scraper.__name__}] unexpected error: {e}")
+            logger.warning("[%s] unexpected error: %s", scraper.__name__, e)
     return entries
 
 
