@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-10-08T13:57:38.537479+00:00</updated>
+  <updated>2026-10-08T20:04:39.678944+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/6f150b39305ea8d9</id>
+    <title>AWS CLI 2.37.11</title>
+    <updated>2026-10-08T18:13:12+00:00</updated>
+    <content>api-change:cloudformation: CloudFormation introduces force rollback, a new opt-in capability that lets your stacks complete a rollback even when an individual resource cannot be reverted. Set ForceRollback on ContinueUpdateRollback and CloudFormation records each resource that fails as skipped, completing the rollback. api-change:ce: Adds a product attribute dimension to GetCostAndUsage, GetCostAndUsageWithResources, and GetDimensionValues, letting customers group, filter, and discover Cost Explorer costs by structured attributes such as Amazon Bedrock model, provider, inference type, and feature. api-change:securityhub: Release findings export APIs - StartExportJobV2, GetExportJobV2, ListExportJobsV2, and CancelExportJobV2. This supports exporting findings from AWS Security Hub to Amazon S3 bucket. api-change:guardduty: Added support for GuardDuty RDS Data Activity Monitoring api-change:devops-agent: Adds release management associations with private network access to AWS DevOps Agent, and a releaseManagementAssociationId field on GitHub and GitLab associations. This helps release management agents (Release-readiness review and Release Testing) access customer resources that are behind a VPC. api-change:translate: This release adds Smithy RPC v2 CBOR as an additional protocol alongside the existing AWS JSON 1.1. The SDK will prioritize its most performant protocol. api-change:marketplace-agreement: This release adds Smithy RPC v2 CBOR as an additional protocol alongside the existing AWS JSON 1.0. The SDK will prioritize its most performant protocol. api-change:medialive: AWS Elemental MediaLive Workflow Monitor now supports AWS Elemental Inference feeds as a target resource type for CloudWatch alarm templates. api-change:glue: Introduced GetSystemLogsForJobRun and GetSystemLogsForSession APIs, enabling account admins to retrieve system-space logs for FGAC-enabled Glue jobs and sessions. api-change:gamelift: Amazon GameLift Servers container fleets now support CPU bursting for game server container groups. The TotalVcpuLimit property of a game server container group definition is now optional. When you omit it, the group has no CPU cap and its containers can burst into unused CPU on the instance. api-change:eks: Configurations support for EKS ACK Capabilities, including EnableCrossNamespace and DisableServices configuration. api-change:emr-serverless: This release adds support for system profile logs for lakeformation enabled Spark connect sessions . api-change:securityagent: Include model field for suggested remediation steps as part of findings api-change:security-ir: Adds support for retrieving finding-lifecycle metrics for an AWS Security Incident Response membership. api-change:opensearch: This release adds a new EncryptionMode option (DISK or NATIVE) to EncryptionAtRestOptions for the CreateDomain and UpdateDomainConfig operations, enabling selection of engine-native index-level encryption on supported Amazon OpenSearch Service domains. api-</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.37.11" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-10-08T18:13:12+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/73996151fbad70cc01c9b7c93a0a2ea61ccf8dfe4e7492d3d853d59837251f26/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/73996151fbad70cc01c9b7c93a0a2ea61ccf8dfe4e7492d3d853d59837251f26/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/73996151fbad70cc01c9b7c93a0a2ea61ccf8dfe4e7492d3d853d59837251f26/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/895ad0e721e205cb</id>
     <title>Accessing Unredacted Secure Logging Records in Amazon Redshift with the DEBUG Permission</title>
@@ -468,6 +483,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bd72901125bf8b99</id>
+    <title>Amazon OpenSearch Service introduces validation advisory for domain configuration changes</title>
+    <updated>2026-10-02T09:35:00+00:00</updated>
+    <content>Amazon OpenSearch Service now provides validation advisory for domain configuration changes, which helps you make informed decisions about changes that carry risk but can still be applied. Each configuration validation is now classified as either Critical, which blocks the change, or Warning, which gives advisory guidance that you can acknowledge before you proceed. Previously, validation results were limited to pass or block. There was no way to flag changes that would succeed but carry risk. V</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/opensearch-validation-advisory/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-02T09:35:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/8285b344850faa88</id>
@@ -1573,16 +1598,6 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/5dd417460bd2795f</id>
-    <title>Amazon Transcribe adds customer-managed KMS keys for custom resources</title>
-    <updated>2026-09-25T19:19:00+00:00</updated>
-    <content>Amazon Transcribe now lets you encrypt your custom vocabularies, custom vocabulary filters, and custom language models at rest with a customer-managed AWS KMS key that you own and control. Previously, these custom resources were always encrypted with an AWS owned key. Now you can supply your own symmetric AWS KMS key when you create or update these resources, so the artifacts Transcribe stores on your behalf are encrypted under a key in your account. If you do not provide a key, your resources c</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-transcribe/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-25T19:19:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/c65329bff8cb5d33</id>

@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-08T13:58:56.641300+00:00</updated>
+  <updated>2026-10-08T20:05:43.666850+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/47054c1b417c1480</id>
+    <title>You can now train your own Decision model like Jev locally!</title>
+    <updated>2026-10-08T20:05:42.681821+00:00</updated>
+    <content>You can now train your own Decision model like Jev locally! We increased Qwen3.5 0.8B’s aggregate accuracy from 20.7% to 74.3% across 3 decision benchmarks - on just 4GB VRAM. Turn any LLM like Qwen3.8, Gemma 4 into decision models with our open-source Unsloth repo. GitHub: https://github.com/unslothai/unsloth Guide: https://unsloth.ai/docs/basics/train-your-own-decision-model-with-unsloth</content>
+    <link href="https://huggingface.co/posts/danielhanchen/617404124789008" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-08T20:05:42.681821+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/EjI8hMDZuuweV2UwRN-Ht.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/EjI8hMDZuuweV2UwRN-Ht.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/62ecdc18b72a69615d6bd857/EjI8hMDZuuweV2UwRN-Ht.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/8fcd66ecb85c5ef1</id>
     <title>OneDecision-VisionGuard-Demo is now available on Hugging Face Spaces!</title>
@@ -150,6 +165,51 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/comgen42/396102215460575.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/f0f47f577ce2846c</id>
+    <title>SGF+: Decoupling Gradient Flows for Autoregressive Video Generation</title>
+    <updated>2026-10-07T00:00:00+00:00</updated>
+    <content>Autoregressive video generation requires denoising the current frames while writing their key-value representations as context for future predictions. However, these two roles typically share parameters, and we find that their gradients exhibit distinct patterns and systematic negative alignment, hindering the joint optimization of visual quality and temporal consistency. We introduce Self Gradient Forcing Plus (SGF+), which assigns separate parameters to context writing and denoising while preserving their interaction through causal attention. Both roles are jointly optimized using the original generation objective without auxiliary losses, with context writing supervised through its contri</content>
+    <link href="https://huggingface.co/papers/2610.10429" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-07T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10429/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10429/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10429/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/4fd1e28abed6df6c</id>
+    <title>Long-WAM: Scaling the Context of World-Action Models</title>
+    <updated>2026-10-07T00:00:00+00:00</updated>
+    <content>Real-time robot control demands enough visual history to infer motion and task progress, but processing that history can delay action. We present Long-WAM, a model-system framework for scaling the context of causal world-action models under real-time control constraints. Our central finding is that access to history is not the same as using it: longer histories pay off far more when the video foundation is pretrained autoregressively (AR). We first learn causal prediction from robot and egocentric videos without action labels, then preserve this history-to-future structure during world-action adaptation. On RoboCasa GR-1, increasing context from 0.0 to 19.2 seconds raises success from 63.3% </content>
+    <link href="https://huggingface.co/papers/2610.10528" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-07T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10528/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10528/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.10528/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/daf0b3109772e79b</id>
+    <title>UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation</title>
+    <updated>2026-10-07T00:00:00+00:00</updated>
+    <content>Dense visual text requires image generators to reproduce long strings across multiple regions with correct placement and legibility. As short-string rendering improves, evaluation must test sustained performance across more demanding scenes. We introduce UltraText Bench, a bilingual benchmark for prompt-only generation of dense visual text. It contains 432 prompts spanning 24 real-world scene categories and three difficulty levels, split equally between English and Chinese. Each human-reviewed prompt supplies exact strings for four to twelve text regions, paired with structured references for their content, placement, and visual attributes. We use the Q-Judger vision-language model to assess</content>
+    <link href="https://huggingface.co/papers/2610.09823" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-07T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.09823.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.09823.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.09823.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/03f20266de3f6cb3</id>
     <title>Google releases EmbeddingGemma 2, a new open embedding model that runs locally on 0.5GB RAM.</title>
     <updated>2026-10-06T21:12:19.933665+00:00</updated>
@@ -253,6 +313,36 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08699/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/041eb1d29823dcee</id>
+    <title>WorldSonus: Bringing Sound to Worlds</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>Recent advances in world models have enabled increasingly realistic visual synthesis. However, these generated environments remain largely silent. Bringing sound to world models poses three core challenges: real-time generation to keep pace with interactive video streams, interactive control to respond to mid-stream sound instructions, and spatially aligned stereo to reflect scene geometry and camera motion. To address these demands, we introduce WorldSonus, an interactive video-to-audio framework designed for real-time spatial sound synthesis in world models. For real-time generation, WorldSonus employs a streaming causal autoregressive diffusion architecture that synthesizes audio chunks a</content>
+    <link href="https://huggingface.co/papers/2610.08760" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08760/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08760/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08760/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/1854ece46810aaf6</id>
+    <title>Recursive Game Creator: An Agentic Product-Level Experience-Oriented Game Harness</title>
+    <updated>2026-10-06T00:00:00+00:00</updated>
+    <content>Recent game design agents have made substantial progress in generating playable games. However, program correctness does not ensure an enjoyable experience for players. We present Recursive Game Creator, an experience-oriented harness to advance agentic game development from rough game prototypes into entertaining games. Recursive Game Creator organizes recursive development around four components: Designer, Builder, Player, and Reviewer. The Designer translates user instructions and Reviewer's feedback into detailed plans. The Builder turns these plans into candidate games. The coding-native Player creates and executes reusable policies through programmatic interfaces to efficiently collect</content>
+    <link href="https://huggingface.co/papers/2610.08621" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08621/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08621/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.08621/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/3b3a9a2896f45efd</id>
@@ -823,6 +913,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.02188/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/08b08d8a0617c5b1</id>
+    <title>UniWAM: Unified World-Action Model</title>
+    <updated>2026-10-01T00:00:00+00:00</updated>
+    <content>Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provides limited grounding in world dynamics. Conversely, world-action models inherit spatiotemporal priors from video generation models, yet remain limited in semantic understanding and reasoning under distribution shifts. We introduce UniWAM, a unified architecture that integrates a physical reasoner, a world generator, and an action predictor to jointly learn semantic understanding of the physical world, visual generation, and action prediction. To ensure the quality of the training data, we developed a rigorous data cleaning and annotat</content>
+    <link href="https://huggingface.co/papers/2610.02054" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-01T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.02054.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.02054.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.02054.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/8326b024ff4aa73b</id>
@@ -2700,21 +2805,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.17523.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/b05d2e92c0a4b75e</id>
-    <title>I ported Evo 2 inference to plain PyTorch and Transformers so the official checkpoints load through AutoModelForCausalLM with no Vortex, Transformer Engine, or custom kernels required.</title>
-    <updated>2026-09-14T23:24:02.818304+00:00</updated>
-    <content>I ported Evo 2 inference to plain PyTorch and Transformers so the official checkpoints load through AutoModelForCausalLM with no Vortex, Transformer Engine, or custom kernels required. What is included: - GitHub repo with the port, a Vortex to HF converter, and a gene completion repro script: https://github.com/Aquiles-ai/Evo2-transformers - Aquiles-ai/Evo2-1B-Base: the 1B base checkpoint (8k context) in Transformers format: Aquiles-ai/Evo2-1B-Base - Aquiles-ai/Evo2-7B: the 7B checkpoint (1M context) in Transformers format: Aquiles-ai/Evo2-7B Both repos vendor the modeling files, so loading needs trust_remote_code=True. The tokenizer matches the original byte level behavior, including the vo</content>
-    <link href="https://huggingface.co/posts/FredyRivera-dev/974940053234089" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-14T23:24:02.818304+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/FredyRivera-dev/974940053234089.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/FredyRivera-dev/974940053234089.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/FredyRivera-dev/974940053234089.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/ab5d93cd055079cd</id>
     <title>Experimental global target bits‑per‑weight quantization of **XHToken/Spark-X2.5-1.7B** and **XHToken/Spark-X2.5-4B**.</title>
     <updated>2026-09-14T23:24:02.818304+00:00</updated>
@@ -3405,36 +3495,6 @@
     <link rel="enclosure" href="https://huggingface.co/blog/assets/webgpu-kernels/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/875fe766e8810acb</id>
-    <title>LightNav-0: Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation</title>
-    <updated>2026-08-31T00:00:00+00:00</updated>
-    <content>LightNav-0 is a compact generalist navigation model that leverages a pretrained vision-language model’s spatial reasoning via unified pointing tokens and action tokenization to achieve state-of-the-art embodied navigation across diverse tasks and robots.</content>
-    <link href="https://huggingface.co/papers/2608.30935" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-31T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.30935.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.30935.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.30935.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/1aa41a062bea8e62</id>
-    <title>DreamX-Creator: Democratizing Native Audio-Video Generation at 2K Resolution</title>
-    <updated>2026-08-31T00:00:00+00:00</updated>
-    <content>A compact 7B native joint audio-video generator uses cross-modal attention, progressive joint training, reinforcement learning with multimodal feedback, and an autoregressive 2K refinement pipeline to produce synchronized high-resolution outputs.</content>
-    <link href="https://huggingface.co/papers/2608.31106" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-31T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.31106/gradient.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.31106/gradient.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.31106/gradient.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/48172f24d0496172</id>
     <title>CogEvol: Towards Efficient and Reliable Learning Environment Generation</title>
     <updated>2026-08-31T00:00:00+00:00</updated>
@@ -3450,21 +3510,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.30968/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/hf_trending_papers/5443ab32cf8f8cd3</id>
-    <title>ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL</title>
-    <updated>2026-08-28T00:00:00+00:00</updated>
-    <content>ContextPilot improves long-horizon agent reasoning by expanding context-editing tools and using reinforcement learning with branch sampling to identify critical context decisions.</content>
-    <link href="https://huggingface.co/papers/2608.28476" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-28T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.28476.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.28476.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.28476.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/b0b2c2da12a5bc45</id>
     <title>The Open ASR Leaderboard Adds Its First Global South Language</title>
     <updated>2026-08-28T00:00:00+00:00</updated>
@@ -3478,51 +3523,6 @@
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
     <link rel="enclosure" href="https://huggingface.co/blog/assets/open-asr-leaderboard-global-south/thumbnail.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/19126180375fcf2b</id>
-    <title>Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction</title>
-    <updated>2026-08-27T00:00:00+00:00</updated>
-    <content>ABot-Recon achieves stable long-horizon streaming 3D reconstruction by using only local temporal context and frame-independent predictions composed sequentially, reducing drift via a lightweight temporal refiner and composition-aware pose loss.</content>
-    <link href="https://huggingface.co/papers/2608.27529" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-27T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27529.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27529.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27529.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/4439717f061fecb8</id>
-    <title>Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning</title>
-    <updated>2026-08-27T00:00:00+00:00</updated>
-    <content>Code-as-World represents physical environments as executable code to enable quantitative reasoning and scalable supervision for vision-language models.</content>
-    <link href="https://huggingface.co/papers/2608.27549" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-27T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27549/gradient.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27549/gradient.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.27549/gradient.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/0b1ada9433d90b21</id>
-    <title>JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution</title>
-    <updated>2026-08-26T00:00:00+00:00</updated>
-    <content>JIT-Agent is a trainable model that synthesizes adaptive agent harnesses for off-the-shelf LLMs, improving performance across diverse models and tasks.</content>
-    <link href="https://huggingface.co/papers/2608.25593" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-08-26T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.25593.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.25593.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2608.25593.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/5309d96554639301</id>
