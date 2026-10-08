@@ -8,48 +8,209 @@
   "icon": "https://feeds.trfny.com/favicon?domain=www.v2ex.com&sz=256",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7a2fc56a32a64769",
-      "url": "https://www.v2ex.com/t/1246879#reply1",
-      "title": "光模块里那颗 DSP 占了近一半功耗， LPO 和 CPO 都想把它拿掉",
-      "content_text": "最近把 AI 机房里“连接”这条线上的东西理了一遍，记在这里，也想听听各位机房里的实际情况。 1. DSP 在哪 现在主流的可插拔光模块里都有一颗 DSP （数字信号处理芯片）。电信号在铜线上跑一段就会变模糊，它把信号整理干净，再交给激光器变成光。 SemiAnalysis 今年 1 月的拆解：一个 800G 光模块里，DSP 一颗芯片占了将近一半的功耗。 2. 光模块的数量 同一份材料算过一个 1.8 万颗 GPU 的集群：两层网络，大约 4.6 万个光模块，平均每颗 GPU 2.6 个。网络再加一层，业内估算是每颗 GPU 6 个左右。GPU 翻一倍，光模块不止翻一倍。 3. 两条绕开 DSP 的路 线性方案（ LPO ）：模块还是可插拔的，DSP 拿掉，信号交给交换芯片自己处理。功耗省 30%–50%。 共封装光学（ CPO ）：光引擎搬到交换芯片旁边，电信号只走几毫米。一个 800G 光口从 16–17 瓦降到 4–5 瓦。 博通的 CPO 交换机 2024 年已经交付客户；英伟达的以太网 CPO 交换机定在 2026 年下半年。LightCounting 的判断是 2027–",
-      "date_published": "2026-10-07T23:07:45Z",
-      "date_modified": "2026-10-07T23:07:45Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/21bf20584cebf357",
+      "url": "https://www.v2ex.com/t/1247040",
+      "title": "Claude 明天到期，今天被封了。。。",
+      "content_text": "Claude 明天到期，今天被封了。。。",
+      "date_published": "2026-10-08T06:18:16Z",
+      "date_modified": "2026-10-08T06:18:16Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (zhuiyun041)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/369b3500b2497ee6ad9e924d34897c78?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (zhuiyun041)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/369b3500b2497ee6ad9e924d34897c78?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a25b51d698cdc2f7",
+      "url": "https://www.v2ex.com/t/1247032#reply4",
+      "title": "JetBrains 确实失势了，首次净亏损也没人聊了",
+      "content_text": "2025 财年净利润亏损 1350 万美元，净利润率为-1.97%，不过账上还有 3.2 亿美元，暂时不会伤筋动骨。 一方面是 AI 时代掉队，被各种非同行蚕食，哪怕是 DeepSeek harness 这种半桶水，配合 VS Code/Zed ，也能满足很多人的轻量需求，而 JB 自己的 AI 效果又不太行。 另外一方面，因为斯拉夫内战，导致原本占比 50%以上的俄籍程序员无法有效工作，出现了一堆 bug 却来不及修复的现象。 要我说，就应该用 rust 重写 fleet ，彻底抛弃 java ，不破不立，来个 AI 时代的原生 IDE ，趁着还有话语权的时候给 AI IDE 做个标杆和定义。不过这个是句空话，Borland 当年也以为一切都会好起来的。",
+      "date_published": "2026-10-08T06:00:34Z",
+      "date_modified": "2026-10-08T06:00:34Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791414457",
+      "image": "https://cdn.v2ex.com/avatar/dd9d/8f79/520237_xlarge.png?m=1758633378",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791414457",
+          "url": "https://cdn.v2ex.com/avatar/dd9d/8f79/520237_xlarge.png?m=1758633378",
           "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a167f945faa9a23d",
-      "url": "https://www.v2ex.com/t/1246878#reply1",
-      "title": "收录了 1497 多个独立博客之后，我做了这么一个网站： indi.blog",
-      "content_text": "chinese-independent-blogs 是一个收录中文独立博客的仓库。\n虽然说\"独立博客的时代早已过去\"，但很奇怪，这个项目一直在自然生长，现在 GitHub 上已经有 24k star ，\n基本每周都会有博主提交自己的博客。 独立博客时代似乎还是没有过去，或许有可能它永远不会过去，直到互联网过去了。 于是我为这个项目做了一个网站： indi.blog 这个网站订阅了所有拥有 RSS 的独立博客，用户可以给博客点赞/评论。\n在主页，用一个类似 Hacker News 的排序算法，方便大家在看到质量较高的内容。\n目前看来，这个数量级的博客下，每天几十篇，每周有几百篇博客，可以偶尔打开刷一刷了。",
-      "date_published": "2026-10-07T22:59:09Z",
-      "date_modified": "2026-10-07T22:59:09Z",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c033d8954ad7ab8d",
+      "url": "https://www.v2ex.com/t/1247030#reply1",
+      "title": "群里接了几个 Agent 之后，我们是怎么决定「它该不该说话」的",
+      "content_text": "最近做的一个东西，顺手记一下思路，可能对也在折腾 Agent 的人有点用。 背景是这样：我们把几个 coding agent 接进了团队的 Slack 和 GitHub 。接进去之后很快发现一个问题——Agent 不知道什么时候该闭嘴。一个支持频道里，有人提问，有人贴报错，也有人回一句「好的谢谢」。如果每条都回，很快就没人愿意把它留在群里了。 最早的做法是最直觉的那种：把消息丢给大模型，问它「这条需要回复吗」，再解析返回值。能用，但有两个地方一直别扭： - 每条进来的消息都要走一次完整的模型调用，延迟是用户能感觉到的。 - 模型偶尔会很热情地解释它为什么这么判断，而不是老实返回我们要的那个值，于是我们得在返回里做字符串处理。 后来换了个思路：这种判断其实不需要「生成」，只需要「判断」。现在这部分交给 TypeSafe 的 Jev 来做——定义一个问题和判定标准，它返回一个带概率的类型化结果，路由逻辑写在我们自己的代码里，而不是写在 prompt 里。 这个区别比我原本以为的重要。想调「多严才回复」的时候，改的是一个阈值数字，而不是去改 prompt 里的一句话——后者经常会顺带影响到别",
+      "date_published": "2026-10-08T05:57:52Z",
+      "date_modified": "2026-10-08T05:57:52Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://t9t.io/star-history-2026108.png",
+      "image": "https://cdn.v2ex.com/avatar/22be/071d/181488_large.png?m=1469087051",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://t9t.io/star-history-2026108.png",
+          "url": "https://cdn.v2ex.com/avatar/22be/071d/181488_large.png?m=1469087051",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a7fbc48b2d3f81a3",
+      "url": "https://www.v2ex.com/t/1247029",
+      "title": "注册了一个美国公司，可以提供 Claude Code 团队订阅席位。",
+      "content_text": "<p>大家好，我用 AI 编程已经两年多了，期间前后被封过几个 Claude 和 ChatGPT 账号。折腾了几次之后，还是希望能踏实地长期使用官方服务，于是专门在美国注册了一家 LLC ，开始通过企业主体订阅和管理。</p>\n<p>我们目前提供 Claude Code 团队订阅席位，由美国企业主体统一采购和续费，订阅账单使用 Capital One 和 AMEX 的美国信用卡支付。</p>\n<p>每位成员会获得对应的团队席位和企业域名邮箱，加入相应工作区后，登录官方客户端使用。</p>\n<p>网络方面，我们配套提供多条 1000Mbps 美国真实住宅宽带，作为团队统一的网关出口，接入配置和线路维护也由团队统一负责。</p>\n<p>使用正规企业主体进行信用背书、同时进行了美国手机认证+企业法人 KYC 。, 相当于我们公司的员工在同一网段的办公室进行办公。</p>\n<p>作为一项商业项目，我们目前对于 Standard 标准席位的定价为每月 249 元，Premium 高级席位的定价为每月 1249 元。</p>\n<p>如果你厌倦了折腾线路、付款方式、身份认证等，欢迎尝试我们为你提供的服务。</p>\n<p>联系方式：WeChat(cosakau)</p>",
+      "date_published": "2026-10-08T05:57:33Z",
+      "date_modified": "2026-10-08T05:57:33Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (unime)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/713b5288e33a1337379bef834b5f67fc?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (unime)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/713b5288e33a1337379bef834b5f67fc?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4b40749cc29d818c",
+      "url": "https://www.v2ex.com/t/1247027",
+      "title": "免费的号都不放过吗",
+      "content_text": "<p>国庆前申请的号，今天就被 ban 了，关键还没订阅。</p>\n<p>在申请前用 codex 清理了电脑上任何关于 claude 的信息，连 claude code 都卸载了。</p>\n<p>使用美国的代理节点，gmail 申请，申请成功后 WEB 页面对话还特意全部使用英文...</p>\n<p>不折腾了</p>\n<p>Hello,</p>\n<p>An internal investigation of suspicious signals associated with your account indicates a violation of our Usage Policy. As a result, we have revoked your access to Claude.</p>\n<p>To appeal our decision, log in to <a href=\"http://claude.ai\" rel=\"nofollow\">claude.ai</a> with this account and you'll be taken to the appeals page. You can learn more about the process here.</p>\n<p>Regards</p>\n<p>Anthropic's Safeguards Team</p>",
+      "date_published": "2026-10-08T05:56:25Z",
+      "date_modified": "2026-10-08T05:56:25Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (oom)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/fe70b1944c314ecc28d550761cfab24b?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (oom)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/fe70b1944c314ecc28d550761cfab24b?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a011bdf40e457609",
+      "url": "https://www.v2ex.com/t/1247001",
+      "title": "帮过 claude kyc",
+      "content_text": "<p>有需要过 Kyc 的可以联系</p>\n<p>普通区：85\n美区：228</p>\n<p>过 kyc 普号有货</p>\n<p>base64: d3hzc3luZWc=</p>",
+      "date_published": "2026-10-08T04:22:27Z",
+      "date_modified": "2026-10-08T04:22:27Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (wanxiaosong)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/c48b/2239/486417_large.png?m=1589954968",
+      "tags": [
+        "V2EX Claude (wanxiaosong)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/c48b/2239/486417_large.png?m=1589954968",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a844a50c84ae3ae3",
+      "url": "https://www.v2ex.com/t/1246974",
+      "title": "Claude 10 月 6 日被封了，有可能解封吗",
+      "content_text": "<p>用了三月了，还是被封了</p>",
+      "date_published": "2026-10-08T03:10:41Z",
+      "date_modified": "2026-10-08T03:10:41Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (yexiaoqi)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (yexiaoqi)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/39b44c90f078ec40",
+      "url": "https://www.v2ex.com/t/1246927",
+      "title": "求推荐稳定可靠的 Claude 长期车队，需支持长期记忆",
+      "content_text": "<p>想找一个稳定、可靠、有保障，适合长期使用的 Claude 车队，最好能保留长期记忆。请问有没有推荐，目前还能上车吗？</p>",
+      "date_published": "2026-10-08T02:02:55Z",
+      "date_modified": "2026-10-08T02:02:55Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (hslr44)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/290b/d1d1/317410_xlarge.png?m=1791424921",
+      "tags": [
+        "V2EX Claude (hslr44)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/290b/d1d1/317410_xlarge.png?m=1791424921",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f3a53e7b6f5ef32c",
+      "url": "https://sspai.com/post/115462",
+      "title": "App Store 生态规模五年翻倍，助力中国开发者走向全球",
+      "content_text": "10月8日，Apple发布《中国AppStore生态系统——2025年开发者与用户价值研究》。这份由Apple提供支持、上海财经大学商学院副教授居恒与安诺析思国际咨询公司经济学家MarkusvonWa ... 查看全文",
+      "date_published": "2026-10-08T01:47:59Z",
+      "date_modified": "2026-10-08T01:47:59Z",
+      "authors": [
+        {
+          "name": "sspai.com"
+        }
+      ],
+      "image": "https://rssfile.sspai.com/2026/10/8/article/459ef049-d7db-f267-4c23-59d893f91132.jpg?imageMogr2/auto-orient/format/webp/ignore-error/1",
+      "tags": [
+        "sspai.com"
+      ],
+      "attachments": [
+        {
+          "url": "https://rssfile.sspai.com/2026/10/8/article/459ef049-d7db-f267-4c23-59d893f91132.jpg?imageMogr2/auto-orient/format/webp/ignore-error/1",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -188,29 +349,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/02bc/55c3/620210_xlarge.png?m=1791350109",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/6af25f869a144adb",
-      "url": "https://sspai.com/post/114845",
-      "title": "罗马：永恒之城，永恒于世",
-      "content_text": "Matrix首页推荐Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点 ... 查看全文",
-      "date_published": "2026-10-07T03:00:00Z",
-      "date_modified": "2026-10-07T03:00:00Z",
-      "authors": [
-        {
-          "name": "sspai.com"
-        }
-      ],
-      "image": "https://rssfile.sspai.com/2026/09/22/f3eba4d1eaff286598d71df726bc75db.jpeg?imageMogr2/auto-orient/format/webp/ignore-error/1",
-      "tags": [
-        "sspai.com"
-      ],
-      "attachments": [
-        {
-          "url": "https://rssfile.sspai.com/2026/09/22/f3eba4d1eaff286598d71df726bc75db.jpeg?imageMogr2/auto-orient/format/webp/ignore-error/1",
-          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -1457,29 +1595,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f0a3b915787be27f",
-      "url": "https://www.v2ex.com/t/1242656",
-      "title": "Claude 啥时候会重置一下",
-      "content_text": "<p>Codex 不定时就会重置，Claude 已经好久没有重置了</p>",
-      "date_published": "2026-09-17T03:23:51Z",
-      "date_modified": "2026-09-17T03:23:51Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (yexiaoqi)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (yexiaoqi)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/baeca61f2ea3a1a39bf075e20f61ffe2?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/4b33923261102f77",
       "url": "https://www.v2ex.com/t/1242373",
       "title": "求靠谱的大厂，我们有大量的 Key",
@@ -1866,29 +1981,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/d70f/093b/30982_large.png?m=1355999757",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/715054b4a29e8104",
-      "url": "https://www.v2ex.com/t/1240166",
-      "title": "直接用美国实体卡充 ccmax",
-      "content_text": "<p>下午找之前做亚马逊的渠道，弄了 50 张美国实体卡，让人在美国申请账号。不知道 z 能不能行得通</p>",
-      "date_published": "2026-09-07T12:13:26Z",
-      "date_modified": "2026-09-07T12:13:26Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (312004848zhg)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/6a6e/59df/839977_xlarge.png?m=1787058259",
-      "tags": [
-        "V2EX Claude (312004848zhg)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/6a6e/59df/839977_xlarge.png?m=1787058259",
           "mime_type": "image/png"
         }
       ]
@@ -3223,29 +3315,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/1739/33b7/532638_xlarge.png?m=1784173398",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4e75ae39ddb83c56",
-      "url": "https://www.v2ex.com/t/1232322",
-      "title": "tcptun android app 邀请测试",
-      "content_text": "<p>TcpTun 是一款轻量、无广告免登录的 Android VPN 与透明代理客户端，支持多配置管理、二维码导入、智能分流、IPv4/IPv6 、TCP/UDP 转发及完善的连接诊断，让网络连接更灵活、稳定、易管理。</p>\n<p>加入群：</p>\n<p><a href=\"https://groups.google.com/g/tcptun-testers\" rel=\"nofollow\">https://groups.google.com/g/tcptun-testers</a></p>\n<p>测试：</p>\n<p><a href=\"https://play.google.com/apps/testing/com.tcptun.client\" rel=\"nofollow\">https://play.google.com/apps/testing/com.tcptun.client</a></p>\n<p>Promotion code:</p>\n<p>ZVY4M5A32VD09QSC6A4R26M\n370M1E4DPYGXYBKJWVC9AXQ\nLQ50PJ11VGKZLU2HF9U6PE3\nAGH8YMXPVLL2L39C1H5G5MS\nJEFLBKALM4DAEE4STKH7RJ9\nVEYKYJF5XVCWRKLEAP2SLZA\nWXL3L9HWV7P64PUP29C5DTA\nZLXF0ZL5TLU7PYGWJFMK2YP\n30ZRJPAL5PWUQ5UST7GQCB6\nT4RT05M77W3DGH0SLNYC6QR\nKEVCSZ027TN5FATFDP9Z5QJ\n5031UNLQ44QSMEJL7R5JALY\n83EBDHZXHXB2X8SVA9XU8KL\n4NMVARXD1L6XCWSG83YA2K2\n3WSFZ3ENHG2SAF9GTDPZNZA\nX6MWN1S48FGX2PSRT6QVYPB\n0JLDS67UUHDSMM4JZMKBBTQ\nSPYM96UC8WJMFBFC9CRT3H5\nDKU0Y3R5CG3BWT3Y2G57ZC7\nDJP4KPQ5HM7ECGM75D8Q7X0</p>",
-      "date_published": "2026-08-05T14:32:03Z",
-      "date_modified": "2026-08-05T14:32:03Z",
-      "authors": [
-        {
-          "name": "V2EX Android (sskycn)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1783257267",
-      "tags": [
-        "V2EX Android (sskycn)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1783257267",
           "mime_type": "image/png"
         }
       ]
@@ -4647,29 +4716,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/52d423dc652b1837",
-      "url": "https://www.v2ex.com/t/1226071",
-      "title": "现在安卓手机数据迁移方便吗？",
-      "content_text": "<p>现在国行安卓手机数据迁移的便利程度如何？</p>\n<p>能达到 iphone 数据迁移的丝滑程度吗</p>\n<p>是只有同品牌之间可以迁移还是说不同品牌之间也可以迁移？</p>\n<p>并且假如说我当下用国行版本后面用了港版或者日版的安卓</p>\n<p>同样可以丝滑迁移吗？</p>\n<p>外版的迁移利用的是什么机制？</p>\n<p>是手机厂商系统迁移还是 google 迁移，如果是后者的话，那国行 ban google 岂不是完全不可行了？</p>\n<p>本人好几年没用过安卓了，诚心发问</p>",
-      "date_published": "2026-07-09T05:16:04Z",
-      "date_modified": "2026-07-09T05:16:04Z",
-      "authors": [
-        {
-          "name": "V2EX Android (adz2k)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/0097d2b884216cfea9ff0a2c9584716a?s=73&d=retro",
-      "tags": [
-        "V2EX Android (adz2k)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/0097d2b884216cfea9ff0a2c9584716a?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/3b3269550649eec2",
       "url": "https://www.v2ex.com/t/1226008",
       "title": "之前 Claude 奖励的 200 刀+50 刀的 credits 没有了？",
@@ -5153,29 +5199,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/9064a395d371ab09",
-      "url": "https://www.v2ex.com/t/1222588",
-      "title": "物理 SIM 卡方便换机、没法快速换卡， eSIM 可以方便机内切换 SIM 卡、但容易被运营商设限甚至禁止转移，有没有突破这种限制的可能性？",
-      "content_text": "<p>原以为 eSIM 限制转移只是地域特色，但后来发现红茶移动、Holafly 这些旅游网络服务商的 eSIM 同样限制转移。红茶移动 (Redteago) 在激活后不允许移机。Holafly 直接不允许转移。<br/>\n这些服务商的 FAQ 同样明确说明。<br/>\n<a href=\"https://redteago.com/how-to-use-esim-troubleshooting-guide-for-esim-faqs/\" rel=\"nofollow\">How to Use eSIM - RedteaGO</a> <br/>\n<a href=\"https://esim.redteago.com/zh-CN/faq-redteago-esim\" rel=\"nofollow\">RedteaGO eSIM 安装常见问题解答</a> （管理 eSIM - 我可以将我的 eSIM 转移到新设备吗？） <br/>\n<a href=\"https://esim.holafly.com/faq/esim-setup-guide/how-to-transfer-esim/\" rel=\"nofollow\">How to Transfer eSIM to Another Phone? - Holafly FAQs</a> <br/>\n此外，还有用户留言可以佐证(Holafly): <a href=\"https://www.reddit.com/r/eSIMs/comments/1k2t444\" rel=\"nofollow\">https://www.reddit.com/r/eSIMs/comments/1k2t444</a></p>\n<p>尝试搜索解决办法，无果。但找到了源头：GSMA TS 43 的流程的“副作用”。</p>\n<p>根据<a href=\"https://www.gsma.com/get-involved/working-groups/gsma_resources/ts-43-service-entitlement-configuration/\" rel=\"nofollow\">GSMA TS 43</a>第八章节的流程显示，无论是初始发卡，还是转移订阅(eSIM)，都必须经过运营商的“授权服务器”做处理。</p>\n<p>这样一来，运营商就能随意控制宽松／严格的程度。特色地区自然不用多讲。<br/>不少旅游 eSIM 服务商如同普通运营商那样提供了中期长期流量服务（例如半年、一年的多国或全球漫游），如果限制转移，那么用户使用一段时间后换了手机就很不方便了，只能重新再次订阅新套餐。除非改用 eSIM 白卡（仅限于有卡槽的手机）。</p>\n<p>手机厂商自家的转移流程目前仍然全程按照 GSMA 的规定去做，并未跳过“授权服务器”流程。<br/>\n而且似乎并没有第三方工具可以突破这种限制。不知道以后会不会有跳过“授权服务器”流程的工具或做法。</p>\n<hr/>\n<p>快速转移过程如果跳过 GSMA“授权服务器”流程可能会有安全隐患（ SIM 卡交换攻击）。</p>\n<p>如果想要安全起见、以防 eSIM 交换攻击，我个人认为，可以增加一点物理防护措施：</p>\n<ul>\n<li>eSIM 手机必须支持 NFC</li>\n<li>转移 eSIM 时，两台手机必须“背靠背”贴碰，通过 NFC 相互确认“正是这两台手机”</li>\n</ul>\n<p>（不考虑特色地区，该地区肯定不愿意用户主动跳过授权服务器）</p>",
-      "date_published": "2026-06-24T09:48:29Z",
-      "date_modified": "2026-06-24T09:48:29Z",
-      "authors": [
-        {
-          "name": "V2EX Android (cnbatch)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/7eb06cdf719fb364a1dfbbaefc4f9d36?s=73&d=retro",
-      "tags": [
-        "V2EX Android (cnbatch)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/7eb06cdf719fb364a1dfbbaefc4f9d36?s=73&d=retro",
-          "mime_type": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/fb26a79b247fdb22",
       "url": "https://www.v2ex.com/t/1221875",
       "title": "查手机信息的 app，可以共享为网页和 json",
@@ -5332,29 +5355,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/84d8/34e2/221490_xlarge.png?m=1783056570",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/a8a492970a9fdd09",
-      "url": "https://www.v2ex.com/t/1218286",
-      "title": "做了一个 Android 的 prompt 管理软件，送终身兑换码",
-      "content_text": "本来是自己做来自己用的，感觉还行，推到了 googleplay 上<br />适合于频繁的要在一些 app 内外拷贝文本，摘取文本，比如在 GPT 提示词，生图，生视频的提示词，养龙虾，要临时存一下发给龙虾的信息，要临时保存龙虾或者豆包返回的高价值信息，等等，可以类比为一个剪贴板工具，但是功能丰富一点<br /><br />核心功能：<br />1. 管理提示词或者文本，从剪贴板获取后，复制，粘贴，可以查看，可以导出导入为 markdown （方便跨设备共享）<br />3. 手机内开启了一个网页 link ，从 PC 浏览器可以远程编辑手机上的提示词库，这个我自己用的也比较多，觉得还挺好用，也可以下载一个 chrome 插件做辅助，但不是必须<br />4. 所有信息基于手机本地存储，没有云端，所以理论上存一些密码，key ，secret 等也是 ok ，但注意只在可信的局域网开启 http 分享<br /><br />app 下载地址： <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=com.vifly.ai.prompt.manager&amp;utm_campaign=v2ex\" rel=\"nofollow noopener\">https://play.google.com/store/apps/details?id=com.vifly.ai.prompt.manager&amp;utm_campaign=v2ex</a><br /><br />兑换码领取：<br /><a target=\"_blank\" href=\"https://hackmd.io/hrabsSPjQW-5BEqp8Pn7og?view\" rel=\"nofollow noopener\">https://hackmd.io/hrabsSPjQW-5BEqp8Pn7og?view</a><br />50 个兑换码先到先得   <br />注意自己领取后，勾选下前面的勾勾，一定要自觉勾一下，否则会影响其他人，感谢配合！<br /><br />账号很久没登录了，终于找回了账号。。",
-      "date_published": "2026-06-05T11:40:08Z",
-      "date_modified": "2026-06-05T11:40:08Z",
-      "authors": [
-        {
-          "name": "V2EX Android (meyino)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/2b80/0bdf/131337_large.png?m=1782094021",
-      "tags": [
-        "V2EX Android (meyino)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/2b80/0bdf/131337_large.png?m=1782094021",
           "mime_type": "image/png"
         }
       ]
