@@ -67,6 +67,18 @@ test("reader is an app-only entrypoint with a fixed self-contained resource", as
   const resource = (await (await call("resources/read", { uri })).json()).result.contents[0];
   assert.equal(resource.mimeType, "text/html;profile=mcp-app");
   assert.doesNotMatch(resource.text, /<script[^>]+src=|<link[^>]+href=/);
+  assert.ok(resource.text.includes("request('ui/message'"));
+  assert.ok(resource.text.includes("role:'user'"));
+  assert.ok(resource.text.includes("host&&host.widgetState"));
+  assert.ok(resource.text.includes("host.setWidgetState"));
+  assert.ok(resource.text.includes("selected:Array.from(selection.values())"));
+  assert.ok(resource.text.includes("sendUncertainKey=key"));
+  assert.ok(resource.text.includes("init.hostCapabilities.message.text"));
+  assert.ok(resource.text.includes("sendPending||!canSendMessage"));
+  assert.ok(resource.text.includes("sendPending=false;selectionState()"));
+  assert.ok(resource.text.includes("messageResult&&messageResult.isError"));
+  assert.doesNotMatch(resource.text, /else selection\.delete\(entry\.id\);sendUncertainKey=null/);
+  assert.ok(resource.text.includes("if(restoredFilters||!hasSnapshot)await refresh()"));
   assert.deepEqual(resource._meta.ui.csp.connectDomains, []);
   const invalid = await (await call("resources/read", { uri: "https://example.com/private" })).json();
   assert.equal(invalid.error.code, -32602);
