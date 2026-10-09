@@ -395,6 +395,9 @@ def build_index(feeds: list[dict], base: str) -> str:
             "@type": "WebSite",
             "name": "Feedseek",
             "url": base,
+            "creator": {"@id": "https://trfny.com/#creator"},
+            "isPartOf": {"@id": "https://trfny.com/#website"},
+            "isBasedOn": "https://github.com/trvny/feedseek",
             "description": desc,
             "inLanguage": "en",
         },
@@ -413,6 +416,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta name="google-site-verification" content="xbXKq1w3ClpoMlxws6qobmZjpSmGVhi2xbrf7kwJV0s" />
   <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />
   <link rel="canonical" href="{html.escape(base, quote=True)}">
+  <link rel="author" href="https://github.com/trvny">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
   <link rel="describedby" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
@@ -763,6 +767,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "## Resources",
         "",
+        "- [TRAVNY project hub](https://trfny.com/): Canonical creator identity and related applications",
         f"- [All feeds (OPML)]({base}subscriptions.opml): One-shot import of every published feed",
         f"- [Feed directory (sitemap)]({base}sitemap.xml): Machine-readable list of every feed URL",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
