@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.mozilla.org/</id>
   <title>Mozilla</title>
-  <updated>2026-10-10T15:58:15.305266+00:00</updated>
+  <updated>2026-10-10T20:19:28.096293+00:00</updated>
   <author>
     <name>Mozilla</name>
   </author>
@@ -14,6 +14,16 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.mozilla.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.mozilla.org&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Mozilla feed: the Mozilla, Firefox Nightly, Add-ons, Hacks and Thunderbird blogs, SpiderMonkey, Mozilla Connect, Planet Mozilla, Nightly release notes, and shipped Firefox desktop and Android release notes.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/mozilla/e24eade7a623bdab</id>
+    <title>Improving Video Playback and Media Quality in Firefox</title>
+    <updated>2026-10-10T16:10:25+00:00</updated>
+    <content>Hi everyone, I enjoy exploring ways to improve the online media experience. Video clarity, smooth playback, and reliable performance are important when watching tutorials, streaming content, or browsing websites with embedded videos. It would be helpful to discuss how browser settings, hardware acceleration, internet speed, and video formats can affect playback quality. Sometimes, videos may appear blurry or take longer to load, even when the original content is high quality. I'm also interested</content>
+    <link href="https://connect.mozilla.org/t5/discussions/improving-video-playback-and-media-quality-in-firefox/m-p/142737#M58403" rel="alternate"/>
+    <category term="Mozilla Connect" label="Mozilla Connect"/>
+    <published>2026-10-10T16:10:25+00:00</published>
+    <dc:creator>Mozilla Connect</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/9d9c2d3730e926f0</id>
     <title>On macOS, apps that sign in through the default browser, such as ChatGPT, now open their sign-in...</title>
@@ -88,6 +98,16 @@
     </media:group>
     <dc:creator>Mozilla Connect</dc:creator>
     <link rel="enclosure" href="https://images.pickapic.live/get/ce5138fc-5ad6-c080-23fc-2a38543244fb-1684430071.jpeg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/mozilla/ffa56cf85026b227</id>
+    <title>Why 'externalized' proofs of cyclic trait impls does not work</title>
+    <updated>2026-10-10T00:00:00+00:00</updated>
+    <content>For this post, I wanted to talk about two different approaches to handling supertraits. I’m calling them modular proofs vs external proofs. The key idea of this post is that, if we want to have cyclic trait impls, we really need to use a modular proof strategy, where the impl establishes all supertraits hold. Previously we had considered an external strategy, where the piece of code using the impl has the obligation to prove the supertraits hold. Modular proofs always seemed better but I did not</content>
+    <link href="https://smallcultfollowing.com/babysteps/blog/2026/10/10/modular-vs-external-proofs/?utm_source=atom_feed" rel="alternate"/>
+    <category term="Planet Mozilla" label="Planet Mozilla"/>
+    <published>2026-10-10T00:00:00+00:00</published>
+    <dc:creator>Planet Mozilla</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/3df6810acc377601</id>
@@ -447,16 +467,6 @@ The post Canada’s bill C-22 threatens encryption, users’ privacy and the sec
     <link href="https://connect.mozilla.org/t5/discussions/i-finally-gave-firefox-a-chance-and-i-m-so-glad-i-did/m-p/142082#M58049" rel="alternate"/>
     <category term="Mozilla Connect" label="Mozilla Connect"/>
     <published>2026-10-08T06:46:33+00:00</published>
-    <dc:creator>Mozilla Connect</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/mozilla/e0ddd2be0d35fadb</id>
-    <title>How Can I Perform a Large-Scale Email Migration?</title>
-    <updated>2026-10-08T06:27:19+00:00</updated>
-    <content>A large-scale email migration is easier to manage when the process is planned around mailbox mapping, data filtering, and bulk processing. Start by identifying the source and destination accounts, then review the mailbox data that needs to be transferred. Using CSV mapping can simplify account assignments, while date and item-type filters can help control the amount of data being migrated. Previewing the source data before migration is also useful for checking the selected mailboxes. The Aryson </content>
-    <link href="https://connect.mozilla.org/t5/discussions/how-can-i-perform-a-large-scale-email-migration/m-p/142081#M58048" rel="alternate"/>
-    <category term="Mozilla Connect" label="Mozilla Connect"/>
-    <published>2026-10-08T06:27:19+00:00</published>
     <dc:creator>Mozilla Connect</dc:creator>
   </entry>
   <entry>
@@ -1168,25 +1178,6 @@ Repository and issues: GitHub - mozilla/firefox-devtools-mcp: Model Context Prot
     </media:group>
     <dc:creator>Mozilla Blog</dc:creator>
     <link rel="enclosure" href="https://blog.mozilla.org/wp-content/blogs.dir/278/files/2026/08/iOS-AdBlocker-1024x576.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/mozilla/8695479bcec439ba</id>
-    <title>GitHub Actions leaking secrets when Miri output is cached</title>
-    <updated>2026-09-21T00:00:00+00:00</updated>
-    <content>The Rust Security Response Team was notified that Miri stores all environment variables to target/, allowing secrets to persist in caches.
-While not necessary a vulnerability in and of itself, when paired with GitHub Actions caching behavior, it is possible for this to expose secrets to PRs.
-
-Overview
-GitHub Actions makes it possible to cache directories between runs. Typical setups allow CI runs on main (and other branches) to write to cache, and PRs can only read from cache (preventing cache p</content>
-    <link href="https://blog.rust-lang.org/2026/09/21/github-actions-leaking-secrets-when-miri-output-is-cached/" rel="alternate"/>
-    <category term="Planet Mozilla" label="Planet Mozilla"/>
-    <published>2026-09-21T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.rust-lang.org/static/images/rust-social-wide.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"/>
-    </media:group>
-    <dc:creator>Planet Mozilla</dc:creator>
-    <link rel="enclosure" href="https://www.rust-lang.org/static/images/rust-social-wide.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/mozilla/9c8d31191753e6b4</id>
