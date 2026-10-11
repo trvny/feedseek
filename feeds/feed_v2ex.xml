@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-10T23:50:15.872912+00:00</updated>
+  <updated>2026-10-11T06:22:40.716803+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,22 +15,50 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/6cf575cccc33c656</id>
-    <title>做了个 Mistral AI 工作空间，聊天、对话管理和成本估算都放到了一起</title>
-    <updated>2026-10-10T19:56:25+00:00</updated>
-    <content>大家好，最近做的 mistrallarge4.io 已经上线了，来分享一下，也想听听大家的建议。
-这是一个围绕 Mistral 做的 AI 工作空间。想法比较直接：除了打开一个聊天框，也把提示词设置、对话管理和使用成本这些环节放到一起，方便持续使用。
-目前已经实现的功能： AI 对话：支持流式输出、Markdown 和代码块显示，可以粘贴文档内容或添加公开图片链接，用来讨论代码、理解材料、处理日常问题。 自定义设置：可以调整系统提示词、温度和输出长度，也支持 JSON 输出，方便按具体任务设置。 对话管理：支持历史记录、导出和删除。历史默认保存在浏览器里，也可以按需开启账户云同步。 用量和账户管理：可以查看积分消耗、管理订阅和购买额度，账户里也有账单、付款记录和支持入口。 成本估算与接入参考：做了用量估算工具，也整理了模型对比、API 接入和本地部署指南，需要时可以直接查。
-网站有中英文界面，也适配了手机。我希望它能成为一个平时愿意打开来用的工具，所以除了功能本身，也花了些时间调整页面和操作流程。 地址： https://mistrallarge4.io 这是独立项目，与 Mistra</content>
-    <link href="https://www.v2ex.com/t/1247746#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-10T19:56:25+00:00</published>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/29fa5c9c40fd4b77</id>
+    <title>token 羊毛党网站，一站显示所有免费模型和优惠 plan</title>
+    <updated>2026-10-11T06:14:13+00:00</updated>
+    <content>地址： https://token.pencilai.top 汇集国内外可在本地 agent harness 中使用的免费模型、编程套餐优惠及领取步骤，包含 API 接入和厂商自有本地编程工具；网页聊天不收录。
+免费分级：A 、B 均无需付费，登录、注册或 API Key 不影响等级； A 级不限量或额度很大，B 级额度有限且较小。C 级需先付费购买套餐，才能使用套餐内的免费模型。</content>
+    <link href="https://www.v2ex.com/t/1247809#reply0" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-11T06:14:13+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/3b5e23fc8cab10679187226482801ac2?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/3b5e23fc8cab10679187226482801ac2?s=73&amp;d=retro"/>
+      <media:content url="https://cdn.nodeimage.com/i/2hV4Cqbo4UqMtTjUf20KXez9mJuwdeZ0.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.nodeimage.com/i/2hV4Cqbo4UqMtTjUf20KXez9mJuwdeZ0.png"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.nodeimage.com/i/2hV4Cqbo4UqMtTjUf20KXez9mJuwdeZ0.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/21d72ec03d531826</id>
+    <title>最近沉迷飞牛音乐，写了个让 AI Agent 帮我下载音乐的 CLI： Pika</title>
+    <updated>2026-10-11T05:39:32+00:00</updated>
+    <content>最近一直在高强度用飞牛 NAS 的 飞牛音乐 ，越来越喜欢把音乐放在自己的 NAS 上听。 但有个很实际的问题：播放器有了，音乐从哪里来？ 尤其是想听一些老歌、民谣和现场版本时，经常需要搜索、找链接、下载，再整理到音乐目录。我想把这部分操作变得简单一点，于是做了个独立的命令行工具：Pika 。 GitHub： https://github.com/rccoder/Pika 目前支持从 Bilibili 和 YouTube Music 下载音频，我一般会让 Codex 、Claude Code 等 Agent 调用它。比如先和 ChatGPT 聊自己的音乐口味，得到一份推荐歌单，再把歌单交给有终端执行能力的 Agent 有需要的欢迎使用和反馈</content>
+    <link href="https://www.v2ex.com/t/1247803#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-10-11T05:39:32+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/38c4/9ce5/115971_large.png?m=1757069159" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/38c4/9ce5/115971_large.png?m=1757069159"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/3b5e23fc8cab10679187226482801ac2?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/38c4/9ce5/115971_large.png?m=1757069159" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/a828b4eb92607768</id>
+    <title>google pay 订阅的 Claude max x5 不退款了</title>
+    <updated>2026-10-11T04:34:44+00:00</updated>
+    <content>App Store 那边我的 max 被封了一次之后退款了，但第二次被封不给我退款了。&lt;br /&gt;然后重新整，换 IP 换环境，重装，这次走 google play 订阅。&lt;br /&gt;&lt;br /&gt;前 4 个月相安无事，都在正常用，每个月$125 。&lt;br /&gt;&lt;br /&gt;到第五个月，10 月 6 日扣的订阅费，10 月 8 日就给我封了，然后我立即去 google 申请退款，审核了 1 天之后，邮件回复我：&lt;br /&gt;&lt;br /&gt;我们已收到您针对“Claude Max (Claude by Anthropic)”提交的退款申请（退款金额：US$125.00 ；交易 ID：XXX ），但这笔购买交易不符合我们的退款政策所允许的退款条件。我们理解这个结果令人遗憾；对于由此给您带来的任何不便，我们深表歉意。&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;这回对于 Anthropic 来说可真是零成本封号了，各种第三方市场订阅不退费，官方订阅说你违反规则不退费，他有一万种办法知道你是中国用户，他可以随便找一个理由封掉，这可是纯纯的零成本利润啊，太坏了。</content>
+    <link href="https://www.v2ex.com/t/1247793" rel="alternate"/>
+    <category term="V2EX Claude (mogutouer)" label="V2EX Claude (mogutouer)"/>
+    <published>2026-10-11T04:34:44+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/2140/3c8d/97149_large.png?m=1723465965" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/2140/3c8d/97149_large.png?m=1723465965"/>
+    </media:group>
+    <dc:creator>V2EX Claude (mogutouer)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/2140/3c8d/97149_large.png?m=1723465965" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/83b69e297a696792</id>
@@ -46,21 +74,6 @@
     </media:group>
     <dc:creator>V2EX Claude (Tory12138)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/ca8de5ce310c84ec0abf08eb3f12b068?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/ecb2f5d6bfc7162e</id>
-    <title>产品日记 EP01｜ AI 产品都需要对话框吗？</title>
-    <updated>2026-10-10T14:07:49+00:00</updated>
-    <content># 产品日记 EP01 ｜ AI 产品都需要对话框吗？ 一个暴论：对话框是目前 AI 产品最好的交互形态，几乎没有之一。 最开始时，我们是有过一些改变对话框的尝试的。 我们的产品叫连连 AI ，是一个通过 AI 连接不同人的社交小程序。最初的核心流程是：用户发帖表达需求，系统匹配感兴趣的人，再由 AI 自动进行沟通。 它不再是由用户和一个 AI 直接交互，而是用户发一个需求或者朋友圈，再由 AI 根据这个需求和朋友圈去和其他人的 AI 进行交互。听起来似乎还 OK ，在一定程度上改变了对对话框的依赖。但我们很快发现，没有对话框，用户反而无所适从了。 于是，我们又把对话框放回了首页。就大语言模型的 AI 应用而言，任何试图淡化对话框的操作，或者任何试图将对话框从核心交互流程中拿走的操作，都注定会失败。因为： **第一，对话框是目前成本最低的交互方式。** 一个新用户进入产品，需要快速理解两件事：这个产品能帮我做什么，以及我应该从哪里开始。 连连 AI 最开始以发帖为入口，用户需要先理解发布的内容、发布后的用途，以及它和匹配之间的关系。对于一个用 AI 连接人的产品，这些规则都需要学习。 </content>
-    <link href="https://www.v2ex.com/t/1247722#reply0" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-10T14:07:49+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/3352/4dc2/410023_xlarge.png?m=1786270733" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/3352/4dc2/410023_xlarge.png?m=1786270733"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/3352/4dc2/410023_xlarge.png?m=1786270733" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/d4c9041254d1b5a0</id>
@@ -5112,21 +5125,6 @@ proxy-groups:
     </media:group>
     <dc:creator>V2EX Android (xiaokanhongchen)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/80ef/8c8a/96559_xlarge.png?m=1778548693" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/c39feaa4d07ac50d</id>
-    <title>reddit 为什么没有中文设置啊？手机端访问使用好痛苦。</title>
-    <updated>2026-05-08T00:58:03+00:00</updated>
-    <content>有没有什么办法可以解决手机端访问访问 reddit 语言翻译的问题？</content>
-    <link href="https://www.v2ex.com/t/1211038" rel="alternate"/>
-    <category term="V2EX Reddit (ricardowu97)" label="V2EX Reddit (ricardowu97)"/>
-    <published>2026-05-08T00:58:03+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/c591/f232/773188_xlarge.png?m=1762264752" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/c591/f232/773188_xlarge.png?m=1762264752"/>
-    </media:group>
-    <dc:creator>V2EX Reddit (ricardowu97)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/c591/f232/773188_xlarge.png?m=1762264752" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/ef09aab6ce6dc4a3</id>
