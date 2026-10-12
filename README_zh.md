@@ -53,19 +53,19 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 ## 📰 小新闻
 
 <!--README_FEED:START-->
-- [Nowa funkcja w Mapach Google. Pokaże same hity](https://antyweb.pl/nowa-funkcja-w-mapach-google-pokaze-same-hity)
-- [trvny merged PR #280 in travnie/twojstar](https://github.com/travnie/twojstar#feedseek-event-16860299441)
-- [Strong Panama quake damages buildings, disrupts power and air travel](https://www.reuters.com/business/environment/strong-80-magnitude-earthquake-felt-panama-usgs-2026-10-09/)
-- [sourcery-ai commented on PR #280 in travnie/twojstar · comment 6088795847](https://github.com/travnie/twojstar/pull/280?feedseek_event=16859384247#issuecomment-6088795847)
-- [trvny merged PR #278 in travnie/twojstar](https://github.com/travnie/twojstar#feedseek-event-16859176010)
-- [Vance says he does not know if Pentagon will proceed with livestream of Fort Hood gunman's execution](https://www.reuters.com/world/us/vance-says-he-does-not-know-if-pentagon-will-proceed-with-livestream-fort-hood-2026-10-09/)
+- [Operetka wróci do Młoszowej - Przelom.pl](https://news.google.com/atom/articles/CBMif0FVX3lxTE1zeVl6VHlCYlBqSlNRYU5TVGoxV19VSTU0a3FCckpiYjdUT0tMOEptNTRkLV92MzRXdUlINXIxajBRVWVvOVQzSkw3RVdCM3IxUFd5aVZETHNtOG1LN053dHRHUmEtaUZDeW5qTXJjUXl6WC1XdGFYYVZpRXJIUkU?oc=5)
+- [Seniorzy z UTW ruszyli po wiedzę, zdrowie i przygodę - Przelom.pl](https://news.google.com/atom/articles/CBMirgFBVV95cUxPcGRwc1ludjBJSWFaZ0dWZ0JUUkxwczBoSWQ2cGVRUkgxb3NNWWo0ZnJqNW5Id1dyWkFCa1pZQVJRU3VmdXVkajlnZ0xsWHJFaDJrYUtMUmNFeVFta0otcFFSUS1UMlhrTXNhcHF4SExiTnJQZXY5YUtyY2xuSnFYV0ctcEhZcDR5bUFyUDZTdkpHbktDY2lIMFZSdVUyLWpSTkdfWGx4Rl93c1g2SVE?oc=5)
+- [Amazon in talks to buy AI startup Decart for around $7 billion, WSJ reports](https://www.reuters.com/business/retail-consumer/amazon-talks-buy-ai-startup-decart-around-7-billion-wsj-reports-2026-10-11/)
+- [W mijającym tygodniu odeszli od nas \[5 - 10 październik\] - Przelom.pl](https://news.google.com/atom/articles/CBMiogFBVV95cUxQRTFFRDRGbkVMMXI0Ym8yd2g1a3IwaXczZm1VaUpmbWRwaVdwd3Z0TWRlSWZOcW1IVUdPcGluV2VicHo2blVOREt5djFERnowR3dsSkFwN0FraV9HYUt1UEE5T3VXM1RqZG14bHNOVFhLMWUxenBFa2E5ZWpyaHROWERHUXVOZUVldnBfNWhnZnY1X0tnMjIydGQzeG9tQmF3NHc?oc=5)
+- [Wiązanki i kwiaty na cmentarz Wszystkich Świętych 2026. Najpiękniejsze stroiki na cmentarz z żywych kwiatów 12.10.2026 - Dziennik Łódzki](https://news.google.com/atom/articles/CBMi8wFBVV95cUxObjFvTnNmTEh2c2ZWZGttUWJRX25MLU5sRHJJSWVlVWhQdjFvMjVjaFE3amdLd015THpMY2hjb3V3azJOY0xFQ1dRU3lQcjRRaTNZTzJBUEJYWGxOYS1TX3Y2M1N5V2dwQ2xLV0FSblkwaTVCZGFkU2xNdmNSRTY3WmRTal9COW95T1BfaE0zT2pBaENXTk9OU3JKaEwxRnpiZkcwOFBnX3h0ZnNDbTBmUTJEYm4wMVNQQ1pBckQzTE5GdHJwckl0b3hJbzBDaVJhX2ItZTZoMlJRTW5TUEJFOGtRT21udE5DSzBWeEE1LTJsdzg?oc=5)
+- [At least 72 Sudanese artisanal miners killed in strike, rights monitor says](https://www.reuters.com/world/africa/least-72-sudanese-artisanal-miners-killed-strike-saturday-rights-monitor-says-2026-10-11/)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝The business schools reward difficult complex behaviour more than simple behaviour, but simple behaviour is more effective. — Warren Buffett❞</i>
+<i>❝A programmer developed an operating system called TempleOS in Hospitalized for mental health problems, he believes that TempleOS is literally the Third Temple as biblically prophesied. Per God’s “instructions,” the OS uses a 640×480, 16 color display, and uses the language HolyC.❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
