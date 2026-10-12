@@ -11,9 +11,9 @@
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/1fe237b60acd6eec",
       "url": "https://www.cloudflarestatus.com/incidents/cyxclg7nnhjy",
       "title": "Elevated Errors in China Network Colos",
-      "content_text": "Oct 12 , 04:23 UTC Identified - We are investigating reports of degraded performance for traffic traversing the public internet between certain cities and provinces in mainland China and origin servers located outside the region. The impact is being reported across multiple ISPs and manifests as slower speeds or intermittent timeouts. \n\nWhile this congestion occurs upstream of Cloudflare's network, our engineering team is actively working to mitigate the effects. Intermittent 524 timeout errors",
-      "date_published": "2026-10-12T04:23:57Z",
-      "date_modified": "2026-10-12T04:23:57Z",
+      "content_text": "Oct 12 , 15:33 UTC Identified - We have identified that increased latency and 5xx errors affecting certain China Network colos are caused by cross-border routing instability in the China network. \nWe are actively working to mitigate impact for affected customers by adjusting traffic routing, and are continuing to work with our network partners on a resolution. Customers experiencing issues may contact Cloudflare Support. Oct 12 , 04:23 UTC Identified - We are investigating reports of degraded pe",
+      "date_published": "2026-10-12T15:33:07Z",
+      "date_modified": "2026-10-12T15:33:07Z",
       "authors": [
         {
           "name": "Cloudflare Status"
@@ -21,6 +21,176 @@
       ],
       "tags": [
         "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/ae4b5b752a8d5310",
+      "url": "https://blog.cloudflare.com/transformers-on-logpush/",
+      "title": "Filter, reshape, and redact logs before export with Transformers",
+      "content_text": "Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes directly to log data before it reaches the destination.",
+      "date_published": "2026-10-12T14:44:59Z",
+      "date_modified": "2026-10-12T14:44:59Z",
+      "authors": [
+        {
+          "name": "Cloudflare Blog"
+        }
+      ],
+      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png",
+      "tags": [
+        "Cloudflare Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/3630ca24223985b0",
+      "url": "https://www.cloudflarestatus.com/incidents/l9hx816r7e6h",
+      "title": "Cloudflare Workers API",
+      "content_text": "Oct 12 , 14:05 UTC Resolved - This incident has been resolved. Oct 12 , 13:42 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 12 , 13:32 UTC Investigating - Cloudflare is investigating 504s errors when interacting with Workers API and Workers configuration in the dashboard. Customers might experience some unavailability on Workers endpoints, particularly when deploying a script. \n\nWorkers that are already running in production are not affected. More updates to",
+      "date_published": "2026-10-12T14:05:20Z",
+      "date_modified": "2026-10-12T14:05:20Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/5846c461bfc2c56e",
+      "url": "https://www.cloudflarestatus.com/incidents/vyy1a1dspusg",
+      "title": "Elevated errors in Los Angeles (LAX)",
+      "content_text": "Oct 12 , 08:52 UTC Investigating - Customers reaching Los Angeles (LAX) colo may see an elevate number of errors. Our team is investigating and working on mitigating the issue.",
+      "date_published": "2026-10-12T08:52:23Z",
+      "date_modified": "2026-10-12T08:52:23Z",
+      "authors": [
+        {
+          "name": "Cloudflare Status"
+        }
+      ],
+      "tags": [
+        "Cloudflare Status"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651",
+      "url": "https://developers.cloudflare.com/changelog/post/scheduled-waf-release/",
+      "title": "WAF - WAF Release - Scheduled changes for 2026-10-19",
+      "content_text": "Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-10-12 2026-10-19 Log N/A ...5ea9966d Broken Access Control - Directory Traversal (Beta) This rule will be merged into the original rule \"Broken Access Control - Directory Traversal\" (ID: ...cb14ded8 ).",
+      "date_published": "2026-10-12T00:00:00Z",
+      "date_modified": "2026-10-12T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/og-changelog.png",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/og-changelog.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e17af937e17076f6",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/",
+      "title": "API Shield - Run schema learning on demand",
+      "content_text": "You can now manually request an API Shield schema learning run without waiting for the weekly schedule. Use this during testing after sending representative traffic to your API. In Web Assets > Operations , open the More options menu for the operations table and select Ad-hoc learn schema . In the Schema learning dialog, select Run learning . The run covers the entire zone and uses observed traffic. Existing learning thresholds still apply. The dialog shows the learning status and last completed",
+      "date_published": "2026-10-12T00:00:00Z",
+      "date_modified": "2026-10-12T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/og.png?v=726caa5a68f467c0",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/og.png?v=726caa5a68f467c0",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/7b130e777007460d",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/",
+      "title": "WAF - WAF Release - 2026-10-12",
+      "content_text": "This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products. Key Findings CVE-2026-102989: A reflected Cross-Site Scripting (XSS) vulnerability affecting TanStack. Unauthenticated attackers can exploit this flaw to inject malicious scripts into web pages viewed by other users, potentially leading to session hijacking or unauthorized actions. CVE-2026-21589: An arbitrary file access vulnerability affecting Atlassian products. Threat actors c",
+      "date_published": "2026-10-12T00:00:00Z",
+      "date_modified": "2026-10-12T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/og.png?v=e9a509a8e2ea1d9b",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/og.png?v=e9a509a8e2ea1d9b",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/89f6c62c2f668471",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/",
+      "title": "Workers - Workers Builds now posts preview URLs in seconds",
+      "content_text": "Workers Builds now consistently posts preview URLs to GitHub pull requests and GitLab merge requests within a few seconds of a build completing, so you can start testing and reviewing your changes sooner. Previously, posting preview URLs could often take minutes. For details, refer to Workers Builds GitHub integration and Workers Builds GitLab integration .",
+      "date_published": "2026-10-12T00:00:00Z",
+      "date_modified": "2026-10-12T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/og.png?v=101db2d81ae2d957",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/og.png?v=101db2d81ae2d957",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/5b4ac5d7c30e67be",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/",
+      "title": "Agents - Add document conversion and pagination to your agent's web fetch tool",
+      "content_text": "Agents SDK 0.28.0 adds a beta web_fetch tool for reading URLs. It handles HTML, PDF, and supported Office documents through Workers AI Markdown Conversion, requests Markdown directly when available, and formats JSON for the model. Long pages come back in smaller windows with offsets to continue reading. Each result includes the final URL, HTTP status, and content type. You control allowed hosts, response size, timeouts, and redirects. Add the tool to a Pi Durable extension registry before openin",
+      "date_published": "2026-10-11T00:00:00Z",
+      "date_modified": "2026-10-11T00:00:00Z",
+      "authors": [
+        {
+          "name": "Cloudflare Changelog"
+        }
+      ],
+      "image": "https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/og.png?v=5320d0d363efb213",
+      "tags": [
+        "Cloudflare Changelog"
+      ],
+      "attachments": [
+        {
+          "url": "https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/og.png?v=5320d0d363efb213",
+          "mime_type": "image/png"
+        }
       ]
     },
     {
@@ -586,29 +756,6 @@
       ],
       "tags": [
         "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651",
-      "url": "https://developers.cloudflare.com/changelog/post/scheduled-waf-release/",
-      "title": "WAF - WAF Release - Scheduled changes for 2026-10-12",
-      "content_text": "Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-10-06 2026-10-12 Disable N/A ...02751ef3 Generic Rules - Template Injection - 2 - Beta This rule will be merged into the original rule \"Generic Rules - Template Injection - 2\" (ID: ...d3ed0123 ).",
-      "date_published": "2026-10-06T00:00:00Z",
-      "date_modified": "2026-10-06T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/og-changelog.png",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/og-changelog.png",
-          "mime_type": "image/png"
-        }
       ]
     },
     {
@@ -2223,29 +2370,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/907fcdce0db1e0c2",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/",
-      "title": "Cloudflare One Client - Cloudflare One Client for Windows (version 2026.8.2033.1)",
-      "content_text": "A new Beta release for the Windows Cloudflare One Client is now available on the beta releases downloads page . This beta release includes the following changes and improvements: Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting. Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration. Improved client reaction to the current network lowering its MTU. Added sup",
-      "date_published": "2026-09-30T02:01:09Z",
-      "date_modified": "2026-09-30T02:01:09Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/a6cc9a0a10255a1f",
       "url": "https://www.cloudflarestatus.com/incidents/0dq5fbp2xwbj",
       "title": "WARP connectivity in Newark, NJ",
@@ -2259,75 +2383,6 @@
       ],
       "tags": [
         "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/13fcd6d9e2148fba",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/",
-      "title": "logpush, Logs - Logpush is now available on all plans with usage-based pricing",
-      "content_text": "Cloudflare Logpush is now available on Free, Pro, Business, and Enterprise plans with usage-based pricing. Free, Pro, and Business customers can enable Logpush through self-service. Enterprise customers continue to work with their account team. Logpush Transformers are also now generally available. Each account receives included monthly usage before charges apply: Internal exports : 25 GB per month, then $0.03 per additional GB. External exports : 25 GB per month, then $0.10 per additional GB. T",
-      "date_published": "2026-09-30T00:00:00Z",
-      "date_modified": "2026-09-30T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/og.png?v=7979d5002e60a7e2",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/og.png?v=7979d5002e60a7e2",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/4cda08c55a788ecf",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/",
-      "title": "logpush, Logs - Transformers are now generally available",
-      "content_text": "Transformers are now generally available for supported Logpush datasets on Free, Pro, Business, and Enterprise plans. Use SQL to filter records, reshape fields, redact sensitive values, compute new fields, or add metadata before Logpush delivers each batch. Create and preview Transformers in Transformer Studio or through the Cloudflare API, then attach them to eligible account-scoped or zone-scoped Logpush jobs that use NDJSON output. Cloudflare validates each query against the dataset schema be",
-      "date_published": "2026-09-30T00:00:00Z",
-      "date_modified": "2026-09-30T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/bed492e158770fbe",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/",
-      "title": "Realtime - Realtime SFU WebSocket adapter is generally available",
-      "content_text": "The WebSocket adapter for Cloudflare's Realtime SFU is now generally available. The SFU (selective forwarding unit) is managed WebRTC infrastructure for live audio, video, and data across Cloudflare's global network in 330+ cities ↗︎ . The adapter connects live calls to any server that accepts WebSockets, such as a Durable Object . It delivers uncompressed pulse-code modulation (PCM) audio and JPEG video frames. Your backend can process this media without implementing a WebRTC client. What you c",
-      "date_published": "2026-09-30T00:00:00Z",
-      "date_modified": "2026-09-30T00:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Changelog"
-        }
-      ],
-      "image": "https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c",
-      "tags": [
-        "Cloudflare Changelog"
-      ],
-      "attachments": [
-        {
-          "url": "https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c",
-          "mime_type": "image/png"
-        }
       ]
     },
     {
@@ -2671,29 +2726,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e3c78699ca806ab9",
-      "url": "https://blog.cloudflare.com/emdash-cms-plugin-registry/",
-      "title": "EmDash 1.0: the stable CMS with a secure plugin registry",
-      "content_text": "EmDash 1.0 is a stable, open source CMS built for Astro, with agent-friendly workflows, secure sandboxed plugins, and a decentralized registry that keeps publishers in control.",
-      "date_published": "2026-09-28T13:00:00Z",
-      "date_modified": "2026-09-28T13:00:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Blog"
-        }
-      ],
-      "image": "https://blog.cloudflare.com/_emdash/api/media/file/01M3D0T7XHPBZM8YB0PX5W78EQ.png",
-      "tags": [
-        "Cloudflare Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://blog.cloudflare.com/_emdash/api/media/file/01M3D0T7XHPBZM8YB0PX5W78EQ.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/cloudflare/30c18d3f8bb062e3",
       "url": "https://blog.cloudflare.com/rust-workers-emscripten-target/",
       "title": "Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen",
@@ -3027,38 +3059,6 @@
       "content_text": "Sep 22 , 12:51 UTC Resolved - This incident has been resolved. Sep 22 , 10:08 UTC Monitoring - A fix has been implemented and we are monitoring the results. Sep 22 , 09:36 UTC Identified - Cloudflare is monitoring the restoration of Workers and Durable Objects analytics visibility for all Fedramp High customers. While the underlying data remains intact, affected datasets were not being correctly returned by our analytics dashboard and GraphQL API since June 11th. Services are currently recoverin",
       "date_published": "2026-09-22T12:51:46Z",
       "date_modified": "2026-09-22T12:51:46Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/b62459d205482789",
-      "url": "https://www.cloudflarestatus.com/incidents/g4vvd0xrc2m8",
-      "title": "Network Performance Issues in San Jose (SJC-A)",
-      "content_text": "Sep 22 , 08:20 UTC Resolved - Cloudflare verified and resolved performance issues in our San Jose (SJC-A) data center. Users in the region may have experienced increased latency or connectivity issues between 07:20 and 08:20 UTC today.",
-      "date_published": "2026-09-22T08:20:00Z",
-      "date_modified": "2026-09-22T08:20:00Z",
-      "authors": [
-        {
-          "name": "Cloudflare Status"
-        }
-      ],
-      "tags": [
-        "Cloudflare Status"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/cloudflare/e91483c6519e9608",
-      "url": "https://www.cloudflarestatus.com/incidents/nhf2kr8q3nfw",
-      "title": "Network connectivity issues in LHR, London",
-      "content_text": "Sep 22 , 03:36 UTC Resolved - This incident has been resolved. Sep 22 , 02:26 UTC Identified - The issue has been identified and a fix is being implemented. Sep 22 , 02:25 UTC Investigating - Cloudflare is observing network connectivity issues in LHR, London. We are working to analyse and mitigate this problem. More updates to follow shortly",
-      "date_published": "2026-09-22T03:36:56Z",
-      "date_modified": "2026-09-22T03:36:56Z",
       "authors": [
         {
           "name": "Cloudflare Status"

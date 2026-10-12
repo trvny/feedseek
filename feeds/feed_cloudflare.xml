@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-12T06:26:13.878395+00:00</updated>
+  <updated>2026-10-12T16:00:10.097444+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -17,14 +17,125 @@
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/1fe237b60acd6eec</id>
     <title>Elevated Errors in China Network Colos</title>
-    <updated>2026-10-12T04:23:57+00:00</updated>
-    <content>Oct 12 , 04:23 UTC Identified - We are investigating reports of degraded performance for traffic traversing the public internet between certain cities and provinces in mainland China and origin servers located outside the region. The impact is being reported across multiple ISPs and manifests as slower speeds or intermittent timeouts. 
-
-While this congestion occurs upstream of Cloudflare's network, our engineering team is actively working to mitigate the effects. Intermittent 524 timeout errors </content>
+    <updated>2026-10-12T15:33:07+00:00</updated>
+    <content>Oct 12 , 15:33 UTC Identified - We have identified that increased latency and 5xx errors affecting certain China Network colos are caused by cross-border routing instability in the China network. 
+We are actively working to mitigate impact for affected customers by adjusting traffic routing, and are continuing to work with our network partners on a resolution. Customers experiencing issues may contact Cloudflare Support. Oct 12 , 04:23 UTC Identified - We are investigating reports of degraded pe</content>
     <link href="https://www.cloudflarestatus.com/incidents/cyxclg7nnhjy" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-12T04:23:57+00:00</published>
+    <published>2026-10-12T15:33:07+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ae4b5b752a8d5310</id>
+    <title>Filter, reshape, and redact logs before export with Transformers</title>
+    <updated>2026-10-12T14:44:59+00:00</updated>
+    <content>Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes directly to log data before it reaches the destination.</content>
+    <link href="https://blog.cloudflare.com/transformers-on-logpush/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-12T14:44:59+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3630ca24223985b0</id>
+    <title>Cloudflare Workers API</title>
+    <updated>2026-10-12T14:05:20+00:00</updated>
+    <content>Oct 12 , 14:05 UTC Resolved - This incident has been resolved. Oct 12 , 13:42 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 12 , 13:32 UTC Investigating - Cloudflare is investigating 504s errors when interacting with Workers API and Workers configuration in the dashboard. Customers might experience some unavailability on Workers endpoints, particularly when deploying a script. 
+
+Workers that are already running in production are not affected. More updates to </content>
+    <link href="https://www.cloudflarestatus.com/incidents/l9hx816r7e6h" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-12T14:05:20+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5846c461bfc2c56e</id>
+    <title>Elevated errors in Los Angeles (LAX)</title>
+    <updated>2026-10-12T08:52:23+00:00</updated>
+    <content>Oct 12 , 08:52 UTC Investigating - Customers reaching Los Angeles (LAX) colo may see an elevate number of errors. Our team is investigating and working on mitigating the issue.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/vyy1a1dspusg" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-12T08:52:23+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
+    <title>WAF - WAF Release - Scheduled changes for 2026-10-19</title>
+    <updated>2026-10-12T00:00:00+00:00</updated>
+    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-10-12 2026-10-19 Log N/A ...5ea9966d Broken Access Control - Directory Traversal (Beta) This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8 ).</content>
+    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-12T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e17af937e17076f6</id>
+    <title>API Shield - Run schema learning on demand</title>
+    <updated>2026-10-12T00:00:00+00:00</updated>
+    <content>You can now manually request an API Shield schema learning run without waiting for the weekly schedule. Use this during testing after sending representative traffic to your API. In Web Assets &gt; Operations , open the More options menu for the operations table and select Ad-hoc learn schema . In the Schema learning dialog, select Run learning . The run covers the entire zone and uses observed traffic. Existing learning thresholds still apply. The dialog shows the learning status and last completed</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-12T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/og.png?v=726caa5a68f467c0" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/og.png?v=726caa5a68f467c0"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-12-manual-schema-learning/og.png?v=726caa5a68f467c0" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/7b130e777007460d</id>
+    <title>WAF - WAF Release - 2026-10-12</title>
+    <updated>2026-10-12T00:00:00+00:00</updated>
+    <content>This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products. Key Findings CVE-2026-102989: A reflected Cross-Site Scripting (XSS) vulnerability affecting TanStack. Unauthenticated attackers can exploit this flaw to inject malicious scripts into web pages viewed by other users, potentially leading to session hijacking or unauthorized actions. CVE-2026-21589: An arbitrary file access vulnerability affecting Atlassian products. Threat actors c</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-12T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/og.png?v=e9a509a8e2ea1d9b" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/og.png?v=e9a509a8e2ea1d9b"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-12-waf-release/og.png?v=e9a509a8e2ea1d9b" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/89f6c62c2f668471</id>
+    <title>Workers - Workers Builds now posts preview URLs in seconds</title>
+    <updated>2026-10-12T00:00:00+00:00</updated>
+    <content>Workers Builds now consistently posts preview URLs to GitHub pull requests and GitLab merge requests within a few seconds of a build completing, so you can start testing and reviewing your changes sooner. Previously, posting preview URLs could often take minutes. For details, refer to Workers Builds GitHub integration and Workers Builds GitLab integration .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-12T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/og.png?v=101db2d81ae2d957" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/og.png?v=101db2d81ae2d957"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-12-faster-pull-request-comments/og.png?v=101db2d81ae2d957" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5b4ac5d7c30e67be</id>
+    <title>Agents - Add document conversion and pagination to your agent's web fetch tool</title>
+    <updated>2026-10-11T00:00:00+00:00</updated>
+    <content>Agents SDK 0.28.0 adds a beta web_fetch tool for reading URLs. It handles HTML, PDF, and supported Office documents through Workers AI Markdown Conversion, requests Markdown directly when available, and formats JSON for the model. Long pages come back in smaller windows with offsets to continue reading. Each result includes the final URL, HTTP status, and content type. You control allowed hosts, response size, timeouts, and redirects. Add the tool to a Pi Durable extension registry before openin</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-11T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/og.png?v=5320d0d363efb213" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/og.png?v=5320d0d363efb213"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-11-web-fetch/og.png?v=5320d0d363efb213" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/e5db94b592b37f19</id>
@@ -394,21 +505,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-06T09:06:33+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/91e04a5fdaafa651</id>
-    <title>WAF - WAF Release - Scheduled changes for 2026-10-12</title>
-    <updated>2026-10-06T00:00:00+00:00</updated>
-    <content>Announcement Date Release Date Release Behavior Legacy Rule ID Rule ID Description Comments 2026-10-06 2026-10-12 Disable N/A ...02751ef3 Generic Rules - Template Injection - 2 - Beta This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123 ).</content>
-    <link href="https://developers.cloudflare.com/changelog/post/scheduled-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-06T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/og-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/og-changelog.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/og-changelog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/74e30f0e3d00a871</id>
@@ -1458,21 +1554,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-sandbox-sdk-1-0/og.png?v=ff3f7d1c6b5ff963" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/907fcdce0db1e0c2</id>
-    <title>Cloudflare One Client - Cloudflare One Client for Windows (version 2026.8.2033.1)</title>
-    <updated>2026-09-30T02:01:09+00:00</updated>
-    <content>A new Beta release for the Windows Cloudflare One Client is now available on the beta releases downloads page . This beta release includes the following changes and improvements: Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting. Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration. Improved client reaction to the current network lowering its MTU. Added sup</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-30T02:01:09+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-warp-windows-beta/og.png?v=91c7937854869277" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/a6cc9a0a10255a1f</id>
     <title>WARP connectivity in Newark, NJ</title>
     <updated>2026-09-30T00:45:00+00:00</updated>
@@ -1481,51 +1562,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-30T00:45:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/13fcd6d9e2148fba</id>
-    <title>logpush, Logs - Logpush is now available on all plans with usage-based pricing</title>
-    <updated>2026-09-30T00:00:00+00:00</updated>
-    <content>Cloudflare Logpush is now available on Free, Pro, Business, and Enterprise plans with usage-based pricing. Free, Pro, and Business customers can enable Logpush through self-service. Enterprise customers continue to work with their account team. Logpush Transformers are also now generally available. Each account receives included monthly usage before charges apply: Internal exports : 25 GB per month, then $0.03 per additional GB. External exports : 25 GB per month, then $0.10 per additional GB. T</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-30T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/og.png?v=7979d5002e60a7e2" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/og.png?v=7979d5002e60a7e2"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-logpush-usage-based-pricing/og.png?v=7979d5002e60a7e2" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4cda08c55a788ecf</id>
-    <title>logpush, Logs - Transformers are now generally available</title>
-    <updated>2026-09-30T00:00:00+00:00</updated>
-    <content>Transformers are now generally available for supported Logpush datasets on Free, Pro, Business, and Enterprise plans. Use SQL to filter records, reshape fields, redact sensitive values, compute new fields, or add metadata before Logpush delivers each batch. Create and preview Transformers in Transformer Studio or through the Cloudflare API, then attach them to eligible account-scoped or zone-scoped Logpush jobs that use NDJSON output. Cloudflare validates each query against the dataset schema be</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-30T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-transformers-ga/og.png?v=7f1c217167eb4ef5" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/bed492e158770fbe</id>
-    <title>Realtime - Realtime SFU WebSocket adapter is generally available</title>
-    <updated>2026-09-30T00:00:00+00:00</updated>
-    <content>The WebSocket adapter for Cloudflare's Realtime SFU is now generally available. The SFU (selective forwarding unit) is managed WebRTC infrastructure for live audio, video, and data across Cloudflare's global network in 330+ cities ↗︎ . The adapter connects live calls to any server that accepts WebSockets, such as a Durable Object . It delivers uncompressed pulse-code modulation (PCM) audio and JPEG video frames. Your backend can process this media without implementing a WebRTC client. What you c</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-09-30T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/og.png?v=730382f9e32ccc2c" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/31cf41b8a215b3e2</id>
@@ -1746,21 +1782,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3CVZZ7QXKD0CNS4EEKTKC2Q.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e3c78699ca806ab9</id>
-    <title>EmDash 1.0: the stable CMS with a secure plugin registry</title>
-    <updated>2026-09-28T13:00:00+00:00</updated>
-    <content>EmDash 1.0 is a stable, open source CMS built for Astro, with agent-friendly workflows, secure sandboxed plugins, and a decentralized registry that keeps publishers in control.</content>
-    <link href="https://blog.cloudflare.com/emdash-cms-plugin-registry/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-28T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3D0T7XHPBZM8YB0PX5W78EQ.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3D0T7XHPBZM8YB0PX5W78EQ.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3D0T7XHPBZM8YB0PX5W78EQ.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/30c18d3f8bb062e3</id>
@@ -1985,26 +2006,6 @@ Further detail will b</content>
     <link href="https://www.cloudflarestatus.com/incidents/dcmwvjwfyhjg" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-22T12:51:46+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b62459d205482789</id>
-    <title>Network Performance Issues in San Jose (SJC-A)</title>
-    <updated>2026-09-22T08:20:00+00:00</updated>
-    <content>Sep 22 , 08:20 UTC Resolved - Cloudflare verified and resolved performance issues in our San Jose (SJC-A) data center. Users in the region may have experienced increased latency or connectivity issues between 07:20 and 08:20 UTC today.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/g4vvd0xrc2m8" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-22T08:20:00+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e91483c6519e9608</id>
-    <title>Network connectivity issues in LHR, London</title>
-    <updated>2026-09-22T03:36:56+00:00</updated>
-    <content>Sep 22 , 03:36 UTC Resolved - This incident has been resolved. Sep 22 , 02:26 UTC Identified - The issue has been identified and a fix is being implemented. Sep 22 , 02:25 UTC Investigating - Cloudflare is observing network connectivity issues in LHR, London. We are working to analyse and mitigate this problem. More updates to follow shortly</content>
-    <link href="https://www.cloudflarestatus.com/incidents/nhf2kr8q3nfw" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-22T03:36:56+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
