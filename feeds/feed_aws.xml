@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-10-12T15:59:51.136902+00:00</updated>
+  <updated>2026-10-12T23:10:49.310771+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,116 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/41a6d90c681555d4</id>
+    <title>Announcing AWS Lambda Web Functions</title>
+    <updated>2026-10-12T22:34:47+00:00</updated>
+    <content>AWS Lambda Web Functions is a serverless compute primitive that runs your HTTP framework natively, delivering fast, consistent responses through multi-concurrent execution and automated global distribution.</content>
+    <link href="https://aws.amazon.com/blogs/aws/announcing-aws-lambda-web-functions-for-fast-consistent-web-app-performance-anywhere/" rel="alternate"/>
+    <category term="AWS News Blog" label="AWS News Blog"/>
+    <published>2026-10-12T22:34:47+00:00</published>
+    <media:group>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/09/01979_AWS_Lambda_Web_Functions-horizontal-1-1120x630.png" type="image/png" medium="image" height="630" width="1120"/>
+      <media:thumbnail url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/09/01979_AWS_Lambda_Web_Functions-horizontal-1-1120x630.png" height="630" width="1120"/>
+    </media:group>
+    <dc:creator>AWS News Blog</dc:creator>
+    <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/09/01979_AWS_Lambda_Web_Functions-horizontal-1-1120x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d4f20b4fef9e9a1b</id>
+    <title>Amazon EC2 G7 instances now available in Europe (Frankfurt) and Europe (Stockholm) Regions</title>
+    <updated>2026-10-12T22:30:00+00:00</updated>
+    <content>Amazon Elastic Compute Cloud (Amazon EC2) G7 instances powered by NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs are now available in Europe (Frankfurt) and Europe (Stockholm) Regions. G7 instances deliver up to 4.6x AI inference performance and up to 2.1 graphics performance compared to G6 instances. G7 instances also deliver faster performance for GPU-accelerated data analytics workloads. Customers can use G7 instances for deploying AI models for language translation, video and image analys</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-g7-european-regions/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T22:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f8ded03b29715dbe</id>
+    <title>AWS Lambda announces Lambda Web Functions</title>
+    <updated>2026-10-12T19:30:00+00:00</updated>
+    <content>AWS Lambda announces Lambda Web Functions, a new serverless compute primitive where your code handles HTTP requests directly. Your code listens on a port and handles requests as it would on any HTTP server. You use frameworks you already know, such as Express or Hono, with no adapters or custom configuration. This enables you to serve workloads such as AI inference endpoints, server-side rendered (SSR) web apps, streaming API endpoints, microservices, and webhooks. You pay for active CPU time an</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-lambda-web-functions/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T19:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/72745bd5d54d1588</id>
+    <title>AWS CLI 2.37.13</title>
+    <updated>2026-10-12T18:07:19+00:00</updated>
+    <content>api-change:glue: Adds new AWS Glue Data Quality APIs to retrieve and list data quality evaluation results. The new GetDataQualityResultV2, BatchGetDataQualityResultV2, and ListDataQualityResultsV2 operations return data quality results published from any supported data processing engine. api-change:devops-agent: Adds support for the includedData field in GetAgentSpace and ListAgentSpaces APIs api-change:bedrock-agentcore-control: AgentCore Memory now supports configuring Long-Term Memory Time-to-Live (TTL) on Memory Strategies. enhancement:lambda-web: Added aws lambda-web deploy to create or update an AWS Lambda Web Function from a local HTTP application. api-change:sagemaker: Amazon SageMaker Training Session is a managed service for training on shared GPU infrastructure. It provides full lifecycle management of training sessions and exposes low-level primitive APIs for operations like forward-backward passes, optimizer steps, and state management. api-change:cloudwatchomni: Adds support for updating agentCoreEvaluationRoleArn in UpdateSpace API api-change:sagemakertrainingsessionruntime: Amazon SageMaker Training Session Runtime provides APIs for executing operations within active training sessions, including asynchronous training operations, sampling and inference requests, and streaming real-time model responses, enabling programmatic control over the training loop. api-change:observabilityadmin: Adding support for TransactionSearch telemetry rules. api-change:pcs: Adding scheduler version to RegisterComputeNodeGroup API. A compute node uses this value to run the matching scheduler version. api-change:mediaconnect: This release adds support for MediaConnect Router high-bitrate tiers. It also adds a configurable audio reference level for NDI flows, and enhanced source metadata that includes color information and transport stream ID. api-change:lambda: Doc updates to reposition Lambda Functions as Lambda Event Functions api-change:securityagent: Adds support for Jira integration provider in AWS Security Agent. api-change:pinpoint-sms-voice-v2: DescribePhoneNumbers and DescribeSenderIds now return an optional PricingTier field that indicates whether a phone number, sender ID, short code, or long code is classified as Domestic or International, enabling customers to identify origination identities eligible for local pricing. api-change:bedrock-agentcore: AgentCore Memory now supports Long-Term Memory Time-to-Live on Batch APIs. api-change:lambda-core: Lambda Network Connector now supports Lambda Web Functions, letting them reach private VPC resources, and adds versioning, each connector update creates an immutable version that revisions pin to, so customers can roll out and roll back networking changes without affecting running workloads api-change:lambda-web: Lambda Web Functions GA launch. Lambda Web Functions enable customers to run web applications and API backends api-change:omics: AWS HealthOmics now supports private workflow runs using VPC</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.37.13" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-10-12T18:07:19+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/90d2af7dd78718c4891fd4889221796ac3a6f803f687ea89b9cf8f8d21604b0f/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/90d2af7dd78718c4891fd4889221796ac3a6f803f687ea89b9cf8f8d21604b0f/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/90d2af7dd78718c4891fd4889221796ac3a6f803f687ea89b9cf8f8d21604b0f/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/aff79a50d0a8b471</id>
+    <title>Announcing consumption-based pricing for short-term memory in Amazon Bedrock AgentCore</title>
+    <updated>2026-10-12T16:00:00+00:00</updated>
+    <content>Announcing consumption-based pricing for short-term memory in Amazon Bedrock AgentCore Amazon Bedrock AgentCore memory now prices short-term memory (STM) based on the data your agents ingest, retrieve, and store, replacing the previous flat rate per event. AgentCore memory gives agents in-session context through short-term memory and persistent knowledge across sessions through long-term memory. With consumption-based pricing, developers building agents that write frequent, small events pay in p</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-memory-consumption-based-pricing" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/87de56c78085fcbc</id>
+    <title>AWS Transfer Family supports custom ports for public SFTP servers</title>
+    <updated>2026-10-12T08:00:00+00:00</updated>
+    <content>AWS Transfer Family now lets you configure custom ports on public SFTP servers and choose a communication mode for each port. You can support clients that require different ports or start SFTP connections differently on a single server. Previously, public SFTP servers accepted connections only on port 22 and used server-first communication. With this launch, you can configure up to three ports (22, or any port from 2000 to 65535), allowing you to use the port numbers your business or network req</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-ports-sftp/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/974fb3bb85e22e98</id>
+    <title>AWS Secrets Manager adds managed external secrets support for Databricks and Twilio</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content>AWS Secrets Manager now extends its managed external secrets capability to include Databricks and Twilio, enabling you to automatically rotate the credentials that your data pipelines and messaging applications use to call these services. You set up rotation directly from the AWS Management Console or API without writing or maintaining any custom rotation Lambda functions. Long-lived credentials often stay unrotated because rotation is hard to set up and hard to distribute safely to the applicat</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/secrets-manager-managed-external-secrets-databricks-twilio/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f7ed48620bf8fd94</id>
+    <title>Amazon EMR now supports native data quality checks in Apache Spark jobs</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content>Amazon EMR now validates data quality natively within Apache Spark jobs. Data engineering teams can catch quality issues inline before bad data reaches downstream systems, without building or maintaining separate validation infrastructure. Amazon EMR Data Quality, powered by AWS Glue, is available at no additional cost and uses the same declarative rules language (Data Quality Definition Language) and APIs as AWS Glue for a consistent experience across both engines, and works with Apache Iceberg</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-emr-data-quality-spark/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/014d1734481283f1</id>
+    <title>Amazon ElastiCache for Valkey introduces ElastiCache Insights</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content>Amazon ElastiCache for Valkey now features ElastiCache Insights, a pre-built dashboard in Amazon CloudWatch for your node-based clusters. ElastiCache Insights brings cluster health, memory, compute, network, command throughput, latency, keyspace, and errors into a single view sourced from a set of OpenTelemetry metrics that ElastiCache publishes automatically. You can use ElastiCache Insights to check the health of your cache workloads across a Region at a glance, detect when a node nears its me</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-elasticache-valkey-elasticache-insights/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a754073830314851</id>
+    <title>Amazon OpenSearch Service now supports index-level encryption</title>
+    <updated>2026-10-12T02:30:00+00:00</updated>
+    <content>Amazon OpenSearch Service now supports index-level encryption, letting you encrypt each index at rest with its own AWS Key Management Service (AWS KMS) customer managed key. This helps you protect data with different ownership or sensitivity under separate keys on the same domain. For example, you can encrypt each tenant's data with its own key in a multi-tenant application. Index-level encryption builds on the existing encryption at rest capability in Amazon OpenSearch Service. To enable it, se</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/opensearch-index-level-encryption" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-12T02:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/b117b33666c8df4c</id>
     <title>How do I protect sensitive data in API Gateway execution logs without disabling data tracing?</title>
@@ -28,6 +138,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/90f7e3b184e3b6e1</id>
+    <title>AWS now lets customers sign up for AWS and pay invoices using ACH direct debit</title>
+    <updated>2026-10-11T08:00:00+00:00</updated>
+    <content>Starting today, AWS customers in the United States can use a US bank account to sign up for AWS and pay for their AWS services through ACH direct debit. This feature provides a convenient and secure way to manage AWS payments directly from a USD bank account. Customers can securely connect a personal or business US bank account and use it to pay AWS invoices. Previously, new AWS customers needed a credit or debit card to complete signing up for an account. During sign-up, customers can choose Ba</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-sign-up-invoices-ach-direct-debit/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-11T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/428fbb37a9af8036</id>
@@ -1465,36 +1585,6 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/00566dcad3badd0f</id>
-    <title>Amazon RDS now adds full snapshot size information to the Console and API</title>
-    <updated>2026-09-29T21:00:23+00:00</updated>
-    <content>Amazon RDS now displays the full snapshot size for RDS Snapshots. With this enhancement, customers can now retrieve full snapshot sizes programmatically through the DescribeDBSnapshots API using the new field, ‘FullSnapshotSizeInBytes’. They can also view this on the console with the ‘Full Snapshot Size’ column. Amazon RDS snapshots are incremental. This means that if you take multiple snapshots of a volume over time, each snapshot only stores the new or modified blocks while maintaining referen</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-full-snapshot-size-available/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T21:00:23+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/aac41459295210ef</id>
-    <title>AWS Deadline Cloud now supports ECS containers on Linux Service-Managed Fleets</title>
-    <updated>2026-09-29T20:18:00+00:00</updated>
-    <content>AWS Deadline Cloud now supports running jobs using Docker containers from Amazon Elastic Container Service (ECS) on Linux-based service-managed fleets. Deadline Cloud is a fully managed service that helps teams run compute-intensive workloads in the cloud for visual effects, animation, product design, simulation, and gaming. Deadline Cloud customers can now bring their own software containers directly to the service using Docker-enabled fleets. Customers that already package software into contai</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/08/aws-deadline-cloud-ecs-containers-linux-smf/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T20:18:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/8e189456b1db3e01</id>
-    <title>OpenAI GPT-6.1 Sol is now generally available on Amazon Bedrock</title>
-    <updated>2026-09-29T20:17:00+00:00</updated>
-    <content>Today, AWS announces the general availability of GPT-6.1 Sol from OpenAI on Amazon Bedrock. An upgrade to GPT-6 Sol, GPT-6.1 Sol delivers exceptionally strong performance on agentic coding, computer use, and professional work. According to OpenAI, it approaches GPT-6 Astra across demanding evaluations at roughly one-fifth of the cost, giving developers more room to build and run capable agents at scale. The Amazon Bedrock inference engine delivers the performance, security, and reliability requi</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/openai-gpt-6-1-sol-on-amazon-bedrock/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T20:17:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/d4ed22629c61bac1</id>
     <title>AWS CLI 2.37.6</title>
     <updated>2026-09-29T18:21:53+00:00</updated>
@@ -1508,66 +1598,6 @@
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/410ce27604eb787f88f0820a03da60da8ec2433f3b2c25f01cca9041a85e01ac/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/22db00c4831ab7aa</id>
-    <title>Amazon Connect Customer now lets business users manage more reference data to adjust contact center configurations in real time</title>
-    <updated>2026-09-29T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer now lets administrators store more of the reference data that drives their contact center configurations. Administrators can now use data tables to hold up to 20,000 values per table for defining configurations such as operating hours, escalation rules, AI agent prompts or queue assignments that drive contact flows. Administrators can now also export tables, edit hundreds of records, move tables between Connect Customer instances, or load reference data from external syst</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-manage-data-tables/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T17:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4a5bb96ac0037950</id>
-    <title>Amazon WorkSpaces Applications introduces unified graphics images</title>
-    <updated>2026-09-29T17:00:00+00:00</updated>
-    <content>Today, Amazon WorkSpaces Applications announces unified graphics images, a single image type that works across all supported graphics instance families, including G4dn, G5, G6, and G7. Previously, each graphics generation required its own dedicated image. Now customers can use one image to create and manage fleets on any supported graphics instance family. Unified graphics images simplify image management and make it easier to adopt newer GPU generations as they become available. When creating a</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-unified-graphics-images/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T17:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/1ea9a07387392449</id>
-    <title>AWS Service Availability Updates</title>
-    <updated>2026-09-29T16:21:00+00:00</updated>
-    <content>We're announcing availability changes to the following AWS services and features. Services moving to Maintenance Services moving to maintenance will no longer be accessible to new customers starting October 29, 2026. Customers already using these services and features can continue to do so. AWS will continue to operate and support these services and features. We recommend that customers learn about the changes in the product pages and documentation. · Amazon Chime SDK SIP Media Application · Ama</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-service-availability/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T16:21:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/9fb934680f503cbe</id>
-    <title>Amazon RDS for PostgreSQL announces Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514 and 11.22-rds.20260514</title>
-    <updated>2026-09-29T16:00:00+00:00</updated>
-    <content>Amazon Relational Database Service (RDS) for PostgreSQL announces Amazon RDS Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514, and 11.22-rds.20260514. Amazon RDS Extended Support provides up to three additional years of fixes for critical Common Vulnerabilities and Exposures (CVE) and bugs beyond a major version's end of standard support date, giving you more time to upgrade to a new major version. You can upgrade your database using Amazon RDS Blue/Green Deployments , in-p</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-postgresql-extended-support/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/6fdb156063c00550</id>
-    <title>Amazon Aurora now supports PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24</title>
-    <updated>2026-09-29T16:00:00+00:00</updated>
-    <content>Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.6, 17.11, 16.15, 15.19, and 14.24, which include bug fixes from the PostgreSQL community and Aurora-specific enhancements. We recommend upgrading to the latest minor versions to benefit from these improvements and address Common Vulnerabilities and Exposures (CVEs), as detailed in the release notes . You can upgrade your databases during scheduled maintenance windows using automatic minor version upgrades. To simplif</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-postgresql-18-6-17-11-16-15-15-19-14-24/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/f851debad1ee973c</id>
-    <title>Amazon Bedrock expands Claude model availability to India, South Korea, and Singapore</title>
-    <updated>2026-09-29T15:41:00+00:00</updated>
-    <content>We're excited to announce the availability of Anthropic's Claude Opus 5, Claude Sonnet 5 , and Claude Haiku 4.5 on Amazon Bedrock in India, Claude Opus 5 and Claude Sonnet 5 in South Korea, as well as Claude Sonnet 5 in Singapore. Customers who need to process data within a specific geography, including those in financial services, healthcare, and the public sector, can now use these models at scale while keeping inference in-country. In India, the regional endpoint is served through geographic </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/claude-region-expansion-in-sk/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-09-29T15:41:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/c2ca751724d4550e</id>

@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-12T16:01:07.707049+00:00</updated>
+  <updated>2026-10-12T23:11:51.164544+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/f821e13b1bba0a9f</id>
+    <title>Crivo-150M is now on the Pareto frontier of the Decision Index 🎯</title>
+    <updated>2026-10-12T23:11:50.117704+00:00</updated>
+    <content>Crivo-150M is now on the Pareto frontier of the Decision Index 🎯 Scored by the maintainers on the private tests: Full 22.21, the best of all submissions at or below 150M and higher than every model below 0.75B, including models up to 4× its size. Median latency on the board's GPU: 13 ms. It is a 149M typed-decision encoder (Ettin / ModernBERT): a state plus choice, noul or score questions in, a probability for every option out, in one forward pass. Trained on open data only. Next: tasks from new domains, the weak spot of every small encoder on the board. tardellirs/crivo-150m multimodalart/jev-decision-index Thanks to @ multimodalart for the Decision Index and its open kit, @ orionweller and</content>
+    <link href="https://huggingface.co/posts/tardellirs/661264350638472" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-12T23:11:50.117704+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/-nUKV_lkMfukq1dKuG3OV.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/-nUKV_lkMfukq1dKuG3OV.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/-nUKV_lkMfukq1dKuG3OV.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/2670ae27d9e0f374</id>
+    <title>Upstream models my open-source projects run or my articles discuss. Each note says which it is. thenlper/gte-small is real use: RAGFS embeds file chunks with it locally. The two retrieval models from my RAG article, a cross-encoder re-ranker and a bi-encoder, are examples, labelled as such, not claims of production use.</title>
+    <updated>2026-10-12T23:11:50.117704+00:00</updated>
+    <content>Upstream models my open-source projects run or my articles discuss. Each note says which it is. thenlper/gte-small is real use: RAGFS embeds file chunks with it locally. The two retrieval models from my RAG article, a cross-encoder re-ranker and a bi-encoder, are examples, labelled as such, not claims of production use. gianlucamazza/models-used-in-my-projects-6aca0b3201f38f4c264ac9bf</content>
+    <link href="https://huggingface.co/posts/gianlucamazza/637220854786223" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-12T23:11:50.117704+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/gianlucamazza/637220854786223.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/gianlucamazza/637220854786223.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/gianlucamazza/637220854786223.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/22dabad2f3b7c166</id>
     <title>I’ve just left</title>
@@ -418,6 +448,51 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.11287/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/2efbf581ec8a61b9</id>
+    <title>DiffusionART: Efficient, Stable and Scalable Reinforcement of Diffusion Models</title>
+    <updated>2026-10-08T00:00:00+00:00</updated>
+    <content>Online reinforcement learning (RL) fine-tunes diffusion models with black-box rewards, but reverse-process methods such as Flow-GRPO are limited in efficiency by poor credit assignment, while forward-process methods such as DiffusionNFT are efficient yet unstable without carefully tuned exponential-moving-average (EMA) off-policy training. We show that NFT-style objectives contain a hidden forward--reverse consistency force that joint positive--negative training cancels only partially, and that EMA stabilizes training through restoration rather than off-policy rollouts. We introduce DiffusionART (Diffusion Reinforcement with Aggregation-First Reward Tilting), which aggregates each prompt's r</content>
+    <link href="https://huggingface.co/papers/2610.12572" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-08T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12572/gradient.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12572/gradient.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12572/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/f7cecb5d3530b85f</id>
+    <title>Contextual Correction of Parallel Draftsfor Speculative Decoding</title>
+    <updated>2026-10-08T00:00:00+00:00</updated>
+    <content>Speculative decoding accelerates large language model inference by using a lightweight drafter to propose multiple tokens that are subsequently verified in parallel by the target model. Recent diffusion-based drafters make this paradigm particularly attractive: deep attention-based neural backbones provide strong predictions, while drafting multiple future positions in parallel avoids the sequential cost of autoregressive generation. This parallelism, however, comes at a cost. Tokens within a draft block are predicted without access to the realized identities of preceding draft tokens, removing intra-block dependencies that would naturally be available under autoregressive generation. We int</content>
+    <link href="https://huggingface.co/papers/2610.12570" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-08T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12570.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12570.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12570.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/e3deff9f3433b438</id>
+    <title>SoftwareGym: Scaling Computer-Use Agent Training with Diverse Synthesized Software Environments</title>
+    <updated>2026-10-08T00:00:00+00:00</updated>
+    <content>Computer-use agents (CUAs) are rapidly improving, yet synthesizing diverse and reliable software environments at scale remains challenging. Native application environments require substantial construction and integration effort, which limits application coverage and increases the risk of application-specific overfitting. Browser-hosted environments provide limited interaction depth and workflow complexity. These limitations motivate SoftwareGym, an automated pipeline for synthesizing GUI software environments with diverse interfaces, executable functionality, and runtime-verified behavior. It generates structurally diverse designs, realizes them as runnable applications, and uses GUI evaluat</content>
+    <link href="https://huggingface.co/papers/2610.12611" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-08T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12611.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12611.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.12611.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/0f05fd4155a46f47</id>
@@ -2880,36 +2955,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/projectlosangeles/934650689818423.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/e16b25667ef52045</id>
-    <title>We have updated the BananaMind Base Bench leaderboard!</title>
-    <updated>2026-09-19T16:02:53.055206+00:00</updated>
-    <content>We have updated the BananaMind Base Bench leaderboard! We now have these benchmark cards, they make it way easier to see which models are actually good! We've also added the model advisor. It asks you what you want to use the model for and the parameter range and gives you the best model for your task! Try it out at BananaMind/BananaMindBench-Leaderboard And please give us a follow to BananaMind! BananaMind @ Banaxi-Tech</content>
-    <link href="https://huggingface.co/posts/Banaxi-Tech/645799699418280" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-19T16:02:53.055206+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/69ae829a8408eeb0d7dd5491/U22vtf14oOP9qbtujMFdf.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/69ae829a8408eeb0d7dd5491/U22vtf14oOP9qbtujMFdf.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/69ae829a8408eeb0d7dd5491/U22vtf14oOP9qbtujMFdf.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/6037d700d1ee3514</id>
-    <title>A local edge VLM you can run on a phone — with a calibration readout attached.</title>
-    <updated>2026-09-19T11:26:25.811407+00:00</updated>
-    <content>A local edge VLM you can run on a phone — with a calibration readout attached. ginigen-ai/Edge-4B-TELL Image in, answer out, nothing leaving the device. Google's Gemma 4 E4B QAT checkpoint carried unmodified, with the vision and audio projector, plus one thing that is ours: GINIGEN TELL, a 10 KB readout that estimates whether the answer it just gave is likely to be wrong. On a Galaxy S25: zero network calls, 3.6 GB resident, a 12.6 MB inference binary. Calibration matters more here than on a server: nothing downstream catches a bad answer. No retrieval, no second opinion, no reviewer. The model is alone with the user. And its own confidence is unusable. Prompted for it, this checkpoint avera</content>
-    <link href="https://huggingface.co/posts/ginigen-ai/479144305613167" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-19T11:26:25.811407+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/69afc951440366f1cb49477a/wg2NobFy-8dtlsg-DaLJY.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/69afc951440366f1cb49477a/wg2NobFy-8dtlsg-DaLJY.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/69afc951440366f1cb49477a/wg2NobFy-8dtlsg-DaLJY.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/6fb67b6b8e291bb5</id>
     <title>Spatial-Interactor: Learning Spatial Reasoning through Interaction with the Observable Physical World</title>
     <updated>2026-09-19T00:00:00+00:00</updated>
@@ -3330,36 +3375,6 @@
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/668e37fd9c9aa124a3c867e8/HuauFbdznYW4fNQh8j4Tp.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/45cfdd94e4e29de9</id>
-    <title>Omni Interaction Agent Technical Report</title>
-    <updated>2026-09-08T00:00:00+00:00</updated>
-    <content>Gander is an end-to-end framework that integrates continuous multi-modal streaming, real-time full-duplex interaction, and agentic reasoning through a Cerebellum-Brain architecture and a chunk-level token stream design.</content>
-    <link href="https://huggingface.co/papers/2609.08977" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.08977.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.08977.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.08977.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/d52c532d940ca162</id>
-    <title>Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout</title>
-    <updated>2026-09-08T00:00:00+00:00</updated>
-    <content>Mask Forcing mitigates mode collapse in distilled autoregressive video diffusion by injecting masked cleaner signals during self-rollout, improving visual quality without extra training data.</content>
-    <link href="https://huggingface.co/papers/2609.09123" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-09-08T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.09123.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.09123.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.09123.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/54d2827c81bfa5af</id>
     <title>NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness</title>
     <updated>2026-09-08T00:00:00+00:00</updated>
@@ -3418,21 +3433,6 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.08084/gradient.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/1978c4cdf5ea4e0f</id>
-    <title>OpenWAM: An Open, Modular Exploration Towards Systematic World-Action Model Pretraining</title>
-    <updated>2026-09-07T00:00:00+00:00</updated>
-    <content>OpenWAM factorizes world-action pretraining into modular components to identify key design principles, yielding a scalable open model with strong simulation and real-robot performance.</content>
-    <link href="https://huggingface.co/papers/2609.07398" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-09-07T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.07398.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.07398.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.07398.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/96a3500c5a4b2fb7</id>
