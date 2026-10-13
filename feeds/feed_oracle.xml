@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-10-13T07:04:29.478284+00:00</updated>
+  <updated>2026-10-13T16:23:50.673355+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,66 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/8277ec9019da8435</id>
+    <title>DBMS_METADATA.GET_DDL generates wrong DDL for SQL domains (CHAR semantics and TIMESTAMP precision lost)</title>
+    <updated>2026-10-13T16:09:47.207407+00:00</updated>
+    <content>Environment Oracle AI Database 26ai, version 23.26.4.1.0 (Autonomous Database, Always Free, sa-santiago-1) SQLcl 26.3.0.260.1620 (project export / project stage) NLS_LENGTH_SEMANTICS = BYTE (default), AL32UTF8 Test case create domain dom_char7 as varchar2(7 char);create domain dom_ts    as timestamp(6) with local time zone;select dbms_metadata.get_ddl('SQL_DOMAIN','DOM_CHAR7') from dual;select dbms_metadata.get_ddl('SQL_DOMAIN','DOM_TS')    from dual; Expected CREATE DOMAIN "&lt;SCHEMA&gt;"."DOM_CHAR7</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/dbms-metadata-get-ddl-generates-wrong-ddl-for-sql-domains-c-0143" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-13T16:09:47.207407+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/ae7c07b53ee10fdf</id>
+    <title>API error when registering as a publisher on marketplace</title>
+    <updated>2026-10-13T15:18:29.733709+00:00</updated>
+    <content>Any idea why I keep getting the following error when attempting to register as a publisher? I have configured the IAM policy. API Error Authorization failed or requested resource not found. Please ensure your tenancy has the Marketplace publisher IAM policy configured. For more information visit: Publisher IAM policy documentation</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/api-error-when-registering-as-a-publisher-on-marketplace-7044" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-13T15:18:29.733709+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/9a115311a411a097</id>
+    <title>Apex installation and source security</title>
+    <updated>2026-10-13T13:45:47.651219+00:00</updated>
+    <content>I want to deploy my Oracle APEX application on a client's on-premises server. How can I protect the application source code and prevent developers from exporting or downloading the application from their APEX workspace login?</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/apex-installation-and-source-security-9906" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-13T13:45:47.651219+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/7fd1807c1c8d0f75</id>
+    <title>Human Task: Release Action redirects to error page</title>
+    <updated>2026-10-13T09:33:25.590635+00:00</updated>
+    <content>I am using Oracle APEX 26.1 and have a human task "Equipment Change Review". The Unified Task List and and Task Details Page were generated by APEX. In the the latter one, I included a form to immediately complete the task (assuming its claimed by the user). This part also works without a flaw. However, if the user instead wants to release the task again using the Actions menu (that was generated by APEX!), the task indeed gets released but I get redirected to an error page that says that the ta</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/human-task-release-action-redirects-to-error-page-1074" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-13T09:33:25.590635+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/5a0e18aea3416524</id>
     <title>Oracle AI Success Navigator</title>
@@ -255,51 +315,6 @@
     <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/ef5f50d8ffe3edc5</id>
-    <title>ORA-01722 in Interactive Gid</title>
-    <updated>2026-10-10T10:26:26.542624+00:00</updated>
-    <content>Hi, Under APEX 26.1, there an Interactive Grid  on p.36. on a table. The column CHEF_DE_PROJET of the IG is defined as a Select list type SQL Request: select PRENOM || ' ' || NOM D, ID R  FROM AF_FICHE_PERSONNELLE ORDER BY NOM When I run the page, I get an error message: ORA-01722: cannot convert a string value containing 'q' to a number: CHEF_DE_PROJET If I set this colum to static Values : 1, 2 then there is no error message. Why does this happens ? Best regards.</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/ora-01722-in-interactive-gid-4640" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-10T10:26:26.542624+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/dab39c93aaa1aae3</id>
-    <title>REST Synchronization schedule not working Minutely?</title>
-    <updated>2026-10-10T07:19:14.460632+00:00</updated>
-    <content>Hi, I am using Oracle APEX 26.2 latest version on apex.oracle.com and noticed that even I set scheudle every minute still schedule is running after 10 minutes. It is creating confusion so if min time is 10min then every minute it shall not allow. FREQ=MINUTELY;INTERVAL=1;BYSECOND=0 Need your input. Thanks</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/rest-synchronization-schedule-not-working-minutely-7861" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-10T07:19:14.460632+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/nbqojoee-7191-YnxQawVP" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/nbqojoee-7191-YnxQawVP"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/nbqojoee-7191-YnxQawVP" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/75b8dae268cea893</id>
-    <title>Unable to disable REST schema access in 26.2</title>
-    <updated>2026-10-10T03:08:26.377861+00:00</updated>
-    <content>Hi, I Oracle APEX 26.2 facing this issue as just switched off Enable RESTful access and clicked on Save but getting this error,</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/unable-to-disable-rest-schema-access-in-26-2-7312" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-10T03:08:26.377861+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/DEUIuxgO-1415-jrHjiQSd" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/DEUIuxgO-1415-jrHjiQSd"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/DEUIuxgO-1415-jrHjiQSd" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/1554bb594e27ba85</id>
     <title>Managing Access to MCP Servers with OCI IAM</title>
     <updated>2026-10-09T23:00:00+00:00</updated>
@@ -343,21 +358,6 @@
     </media:group>
     <dc:creator>Oracle Cloud Infrastructure</dc:creator>
     <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/featured-ai-experimentation-enterprise-platform-oci-v2.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/6ccf9d2e1e791d32</id>
-    <title>Surrogate keys with M:N in LM</title>
-    <updated>2026-10-09T17:56:41.082444+00:00</updated>
-    <content>Hello! I have simple LM with N:M relation: After Engineer to Relational Model I have: ....but I would like to have: where intersect_ID is the surrogate key that is selected when creating a N:M relationship in the LM. Is this already possible in the current versions of DM or do you still have to do it manually in RM? No AI model can give me a meaningful answer. Regards Ziut</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/surrogate-keys-with-m-n-in-lm-0755" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-09T17:56:41.082444+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/ACXutYqr-3183-EXWCOBGq" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/ACXutYqr-3183-EXWCOBGq"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/ACXutYqr-3183-EXWCOBGq" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/8bfc389293befd30</id>
