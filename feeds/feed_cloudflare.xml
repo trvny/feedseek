@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-14T13:59:23.576709+00:00</updated>
+  <updated>2026-10-14T18:50:31.822879+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,27 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1fe237b60acd6eec</id>
+    <title>Elevated Errors in China Network Colos</title>
+    <updated>2026-10-14T17:50:10+00:00</updated>
+    <content>Oct 14 , 17:50 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 12 , 15:33 UTC Identified - We have identified that increased latency and 5xx errors affecting certain China Network colos are caused by cross-border routing instability in the China network. 
+We are actively working to mitigate impact for affected customers by adjusting traffic routing, and are continuing to work with our network partners on a resolution. Customers experiencing issues may contact C</content>
+    <link href="https://www.cloudflarestatus.com/incidents/cyxclg7nnhjy" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-14T17:50:10+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/dce21ab9f431b61b</id>
+    <title>Cloudflare One Clients are incorrectly challenged on some sites</title>
+    <updated>2026-10-14T16:54:50+00:00</updated>
+    <content>Oct 14 , 16:54 UTC Resolved - This incident has been resolved. Oct 14 , 16:43 UTC Monitoring - Cloudflare has implemented a fix and is currently monitoring for exceptions. We will update the status once the issue is resolved. Sep 23 , 11:02 UTC Identified - The issue has been identified and a fix is being implemented. Sep 22 , 19:23 UTC Investigating - Cloudflare is investigating an issue where Cloudflare One Client customers are incorrectly challenged while visiting some websites.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/tl0vrgjy99r0" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-14T16:54:50+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/3dc14211951ea3e5</id>
     <title>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</title>
@@ -98,6 +119,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e5d484cbc6ab5649</id>
+    <title>Rules - Remove surrounding bytes with trim functions</title>
+    <updated>2026-10-14T00:00:00+00:00</updated>
+    <content>Cloudflare Rules supports three new functions for removing surrounding bytes. Use them to remove whitespace before comparing request values. All HTTP products support these functions on all plans: trim() removes bytes from both ends. trim_start() removes bytes from the start. trim_end() removes bytes from the end. By default, these functions remove ASCII whitespace. An optional constant string specifies a custom set of bytes. If the input value is nil, these functions return nil. For example, th</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ddd1ebaeb376653</id>
@@ -332,17 +368,6 @@ This incident has been resolved.</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-12-warp-linux-ga/og.png?v=8ad95cb29600619f" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1fe237b60acd6eec</id>
-    <title>Elevated Errors in China Network Colos</title>
-    <updated>2026-10-12T15:33:07+00:00</updated>
-    <content>Oct 12 , 15:33 UTC Identified - We have identified that increased latency and 5xx errors affecting certain China Network colos are caused by cross-border routing instability in the China network. 
-We are actively working to mitigate impact for affected customers by adjusting traffic routing, and are continuing to work with our network partners on a resolution. Customers experiencing issues may contact Cloudflare Support. Oct 12 , 04:23 UTC Identified - We are investigating reports of degraded pe</content>
-    <link href="https://www.cloudflarestatus.com/incidents/cyxclg7nnhjy" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-12T15:33:07+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ae4b5b752a8d5310</id>
@@ -1438,21 +1463,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3TES95GDNHB8645HHYQHR1G.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/038dda7eb5837ba3</id>
-    <title>Workers AI - Introducing Clef: Cloudflare's first open-source decision models, now on Workers AI</title>
-    <updated>2026-10-01T13:00:00+00:00</updated>
-    <content>Meet @cf/cloudflare/clef and @cf/cloudflare/clef-flash , the first models trained by the Cloudflare Workers AI team, available on Workers AI today. Clef is a decision model, in the same family as Typesafe's Jev ↗︎ . Instead of generating text, it reads an input state and a set of typed questions, then returns a probability for every allowed answer. Your agent gets a structured decision it can act on immediately, for example: route the ticket, block the request, or escalate to a human. There is n</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-01T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/og.png?v=ce0bc3c93ff2fd16" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/og.png?v=ce0bc3c93ff2fd16"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/og.png?v=ce0bc3c93ff2fd16" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2124bce066ade9bb</id>
     <title>Introducing Workers KV Instant — powered by Quicksilver</title>
     <updated>2026-10-01T13:00:00+00:00</updated>
@@ -1994,16 +2004,6 @@ We are working to u</content>
     <link href="https://www.cloudflarestatus.com/incidents/dwfzz0bwhmsq" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-24T20:52:46+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5d4efc84958b947a</id>
-    <title>Cloudflare Access updates delayed</title>
-    <updated>2026-09-24T18:25:30+00:00</updated>
-    <content>Sep 24 , 18:25 UTC Resolved - This incident has been resolved. Sep 24 , 15:31 UTC Monitoring - We have applied a fix and are actively monitoring. Sep 24 , 15:20 UTC Investigating - Cloudflare engineering is investigating an issue causing a delay in configuration updates. This includes applications and policy updates. Authentication and policy enforcement are not impacted.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/xbgbb80yw0jh" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-24T18:25:30+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
