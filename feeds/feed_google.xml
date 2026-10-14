@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-14T18:51:36.371212+00:00</updated>
+  <updated>2026-10-14T23:25:32.965623+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -3326,6 +3326,175 @@ Hibernation reduces most environment costs to zero.&lt;/p&gt;</content>
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/google_health_fitbit_edge_blog.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/google_health_fitbit_edge_blog.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/docs/release-notes#October_12_2026</id>
+    <title>Docs API — October 12, 2026</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content type="html">&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Google Docs Model Context Protocol (MCP) server
+are required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected in
+&lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Google Docs MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Google Docs MCP server, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up the
+Google Docs MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/docs/release-notes#October_12_2026" rel="alternate"/>
+    <category term="Docs API"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/calendar/docs/release-notes#October_12_2026</id>
+    <title>Calendar API — October 12, 2026</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content type="html">&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Google Calendar Model Context Protocol (MCP)
+server are required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected
+in &lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Google Calendar MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Google Calendar MCP server, see &lt;a href="https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up
+the Google Calendar MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/calendar/docs/release-notes#October_12_2026" rel="alternate"/>
+    <category term="Calendar API"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/release-notes#October_12_2026</id>
+    <title>Workspace Release Notes — October 12, 2026</title>
+    <updated>2026-10-12T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Chat API&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Google Chat Model Context Protocol (MCP) server
+are required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected in
+&lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Google Chat MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Google Chat MCP server, see &lt;a href="https://developers.google.com/workspace/chat/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up the
+Google Chat MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Gmail API&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Gmail Model Context Protocol (MCP) server are
+required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected in
+&lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Gmail MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Gmail MCP server, see &lt;a href="https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up the Gmail
+MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Calendar API&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Google Calendar Model Context Protocol (MCP)
+server are required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected
+in &lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Google Calendar MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Google Calendar MCP server, see &lt;a href="https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up
+the Google Calendar MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Docs API&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;OAuth 2.0 clients calling the Google Docs Model Context Protocol (MCP) server
+are required to have &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt; selected in
+&lt;strong&gt;Google Auth Platform&lt;/strong&gt; &lt;strong&gt;&amp;gt;&lt;/strong&gt; &lt;strong&gt;Clients&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Starting November 11, 2026, Google Workspace MCP servers will reject requests
+from any app or integration whose OAuth client is not marked as agentic by
+selecting &lt;strong&gt;Use this client for an AI-powered agent&lt;/strong&gt;. OAuth clients that are
+not marked as agentic by November 12, 2026 will remain non-agentic and can't
+call Google Workspace MCP servers. To use MCP after this date, you will need to
+create a new OAuth client marked as agentic and update your app to use it.&lt;/p&gt;
+&lt;p&gt;Apps and integrations that are not AI agents, like those that only call Google
+Workspace REST APIs, are not affected by this change. If an existing OAuth
+client is used for both AI agent and non-agent features, create a separate OAuth
+client for the AI agent and mark only that client as agentic. Keep the existing
+client for your non-agent features.&lt;/p&gt;
+&lt;p&gt;The Google Docs MCP server is available as part of the &lt;a href="https://developers.google.com/workspace/preview"&gt;Developer Preview
+Program&lt;/a&gt;. For instructions on
+configuring an OAuth 2.0 client for the Google Docs MCP server, see &lt;a href="https://developers.google.com/workspace/docs/api/guides/configure-mcp-server#configure-mcp-client"&gt;Set up the
+Google Docs MCP
+server&lt;/a&gt;
+and &lt;a href="https://support.google.com/cloud/answer/15549257"&gt;Manage OAuth Clients&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/release-notes#October_12_2026" rel="alternate"/>
+    <category term="Workspace Release Notes"/>
+    <published>2026-10-12T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/v9ce9cb5b22b62a465ff52c45061a0a6a2d86a80b685e9aa8a182b203fdfbf420/developers/images/opengraph/white.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://docs.cloud.google.com/release-notes#October_12_2026</id>
@@ -31215,151 +31384,5 @@ and through &lt;a href="https://antigravity.google/docs/enterprise/#gemini-enter
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/WeatherNext3_Title.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/WeatherNext3_Title.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://googlecloudpresscorner.com/2026-09-03-Santee-Cooper-Partners-with-Google-Cloud-to-Help-Improve-Grid-Reliability-Through-Better-Planning</id>
-    <title>Santee Cooper Partners with Google Cloud to Help Improve Grid Reliability Through Better Planning</title>
-    <updated>2026-09-03T13:00:00+00:00</updated>
-    <link href="https://googlecloudpresscorner.com/2026-09-03-Santee-Cooper-Partners-with-Google-Cloud-to-Help-Improve-Grid-Reliability-Through-Better-Planning" rel="alternate"/>
-    <category term="Google Cloud Press"/>
-    <published>2026-09-03T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.googlecloudpresscorner.com/image/OL_sc_corporate_pms357.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/OL_sc_corporate_pms357.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/OL_sc_corporate_pms357.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/compute/google-named-a-leader-in-2026-gartner-magic-quadrant-for-scps</id>
-    <title>Google named a Leader in 2026 Gartner® Magic Quadrant™ for Strategic Cloud Platform Services</title>
-    <updated>2026-09-03T07:30:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For the ninth consecutive year, Gartner® has named Google a Leader in the &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/content/2026-gartner-magic-quadrant-strategic-cloud-platform-services"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gartner Magic Quadrant™ for Strategic Cloud Platform Services&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, positioned furthest for Completeness of Vision. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="scps-26" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/scps-26.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We believe this recognition reflects our longstanding dedication to helping customers build and scale their most demanding workloads reliably and securely on Google Cloud. As we enter the agentic era, we're accelerating their journeys with a dynamic infrastructure, and connecting enterprise apps, data and agents on a single, flexible platform for predictable cost and performance.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What’s driving this momentum?&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; There are three major advantages that we feel set Google Cloud apart:&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;A co-designed, unified technology stack&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; across custom silicon and hardware systems, open software and orchestration, frontier models and agentic applications.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;A dynamic infrastructure&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; that helps you securely connect and scale your users, data, apps, and agents everywhere.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Digital sovereignty with genuine choice&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, giving organizations total control over their data without sacrificing essential cloud functionality.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We are committed to helping our customers innovate and deliver at scale while giving them the flexibility, performance, and control they need. Let’s dive into three design principles that Google Cloud lives by as we continue to build and enhance our infrastructure:&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;1. Accelerate AI with a co-designed stack without lock-in&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Google Cloud is the only provider to deliver a complete, first-party AI stack that is deeply co-designed from silicon to agentic applications. Our infrastructure team works with Google DeepMind researchers to co-design and optimize every layer of our technology stack. From custom silicon, like Google TPUs and Arm-based Google Axion processors, to Google Kubernetes Engine (GKE) and Gemini models, our system delivers exceptional performance and predictable costs.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Co-designing hardware and software creates massive operational efficiency, but it doesn't mean creating a closed ecosystem. We remain deeply committed to open source and open standards across every layer of the stack including frameworks like llm-d for distributed inference, benchmarking for open models with GKE Prism, and eliminating hardware lock-in with TorchTPU for PyTorch compatibility across TPUs and GPUs. You get the full power of a vertically co-designed stack while maintaining complete freedom across models, frameworks, and silicon. Combining all of these deeply integrated components means building an &lt;/span&gt;&lt;a href="https://cloud.google.com/ai-infrastructure"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AI Hypercomputer&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, capable of exceptional scale, performance, and efficiency. This is the same infrastructure foundation chosen by nine of the top ten AI labs globally. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;2. Scale quickly and economically with a dynamic infrastructure&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, demand for AI resources is skyrocketing. Internally at Google, our data centers now process 3.2 quadrillion tokens monthly, roughly 7x more than last year&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. For enterprise leaders navigating this shift, scaling AI systems are notoriously difficult to architect, resource-intensive, and bursty, which can lead to scaling bottlenecks and large pools of underutilized compute. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Organizations need a dynamic infrastructure to automate capacity management, modernize business applications at their own pace, and securely connect data, apps, and agents to drive optimized global experiences. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To thrive at an agentic scale, you need infrastructure capable of operating as a single system. With Google Cloud, you can:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Kick-start your AI transformation &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;using Gemini-powered tools to intelligently &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/migration-center/docs/app-modernization-assessment"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;map and modernize core apps&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, turning static legacy systems into dynamic foundations for AI and agents.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Choose from a wide range of workload-optimized&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;compute&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; types and configurations. You can combine predefined and custom CPU shapes, NVIDIA GPUs, and Google custom silicon (TPUs and Axion CPUs), which are designed to deliver exceptional performance-per-dollar for AI and Enterprise workloads.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Connect your enterprise and AI infrastructure&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; on a single, flexible control plane with Google Kubernetes Engine. This includes &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/best-practices-for-dynamic-capacity-management"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;capacity management&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; capabilities like&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Dynamic Workload Scheduler to preschedule capacity for planned events and dynamic resource allocation to define advanced rules that dictate how resources are consumed, helping to maximize utilization and reduce costs.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Simplify day two operations&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; using &lt;/span&gt;&lt;a href="https://cloud.google.com/products/gemini/cloud-assis"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Cloud Assist&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to proactively identify, troubleshoot, and resolve operational issues for your new agent-based workflows.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;And finally, run your workloads across hybrid and multicloud environments&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; with &lt;/span&gt;&lt;a href="https://cloud.google.com/solutions/cross-cloud-network"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cross-Cloud Interconnect&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, leveraging Google’s 10+ million kilometer private fiber backbone to deliver up to 40% higher performance than public internet routing and automated delivery in minutes&lt;sup&gt;2&lt;/sup&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By adopting a unified foundation of dynamic infrastructure, adaptive applications, and responsive systems, organizations can establish the resilient, high-performance infrastructure necessary to lead in this new technological frontier.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;3. Embrace digital sovereignty with more choice and security&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You shouldn’t have to compromise between modernization, frontier AI capabilities, and regulatory control. Sovereign Cloud from Google gives you access to Gemini and open-weight models across sovereign platforms with three flexible deployment options:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Data sovereignty and control:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Retain complete control over your data’s location and cryptographic authority with &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud Data Boundary&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Manage your encryption keys outside Google infrastructure using External Key Management (EKM) with Key Access Justifications (KAJ), while enforcing precise geographic processing and storage boundaries across both Google Cloud and Google Workspace.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Local compliance and regional operations:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Run your applications on physically and logically separated regional clouds operated exclusively by local partners, built on &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud dedicated&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; for European customers. In France, S3NS delivers PREMI3NS, providing a standalone sovereign cloud that has achieved the SecNumCloud 3.2 qualification from the French National Agency for the Security of Information Systems (ANSSI)&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. Dedicated sovereign cloud operations operated by Thales are also coming soon to Germany.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;On-premises and air-gapped flexibility:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Bring Google Cloud capabilities directly to your on-premises environment via &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Distributed Cloud (GDC)&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. GDC offers two distinct deployment modes: &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;air-gapped&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, a fully-managed, self-contained environment operating with zero connectivity to the public internet for public sector, defense, and regulated enterprise workloads; and connected, allowing you to run workloads on your hardware locally while leveraging Google Cloud’s centralized control plane for unified management. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Accelerate your Cloud journey&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Whether you're modernizing core enterprise systems, managing complex compliance requirements, or deploying autonomous AI agents, Google Cloud gives you the performance, scale, and freedom of choice to succeed.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Read the full &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/content/2026-gartner-magic-quadrant-strategic-cloud-platform-services"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;2026 Gartner Magic Quadrant for Strategic Cloud Platform Services&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; or explore our &lt;/span&gt;&lt;a href="https://cloud.google.com/ai-infrastructure"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AI Hypercomputer&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; page to learn more.&lt;/span&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;sup&gt;&lt;em&gt;1. &lt;span style="vertical-align: baseline;"&gt;Pichai, Sundar. "&lt;/span&gt;&lt;a href="http://blog.google/innovation-and-ai/sundar-pichai-io-2026/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;I/O 2026: Welcome to the Agentic Gemini Era&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;." The Keyword, Google, 19 May 2026 &lt;br /&gt;2. &lt;span style="vertical-align: baseline;"&gt;During testing, network latency was more than 40% lower when traffic to a target traveled over the Cross-Cloud Network compared to when traffic to the same target traveled across the public internet.&lt;/span&gt;&lt;/span&gt;&lt;/em&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/compute/google-named-a-leader-in-2026-gartner-magic-quadrant-for-scps" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-03T07:30:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/scps-26.max-1000x1000.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/scps-26.max-1000x1000.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/scps-26.max-1000x1000.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#September_03_2026</id>
-    <title>Cloud Release Notes — September 03, 2026</title>
-    <updated>2026-09-03T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;VPC Service Controls&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;VPC Service Controls feature (Status:
-&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;Preview&lt;/a&gt;)&lt;/strong&gt;:
-VPC Service Controls supports retrieving and updating service perimeters that
-contain deleted IAM principals. When you enable this feature, you can manage
-perimeters that contain deleted user, group, or service account identities
-without triggering the &lt;code&gt;The email address is invalid or non-existent&lt;/code&gt; error.&lt;/p&gt;
-&lt;p&gt;For more information, see &lt;a href="https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities#deleted-principals"&gt;Supported identities for ingress and egress
-rules&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#September_03_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-09-03T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
   </entry>
 </feed>

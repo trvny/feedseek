@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-14T18:50:31.822879+00:00</updated>
+  <updated>2026-10-14T23:24:08.271363+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/aad24f89887b4ec0</id>
+    <title>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</title>
+    <updated>2026-10-14T20:24:19+00:00</updated>
+    <content>When strikes hit Yandex data centers, many assumed Russian bot operations went dark. Cloudflare data reveals that while search crawling stopped, malicious bots simply migrated to other networks.</content>
+    <link href="https://blog.cloudflare.com/yandex-outage/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-14T20:24:19+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M4Y142SWPQXA8GMMX3DTNYBY.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M4Y142SWPQXA8GMMX3DTNYBY.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4Y142SWPQXA8GMMX3DTNYBY.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/1fe237b60acd6eec</id>
     <title>Elevated Errors in China Network Colos</title>
@@ -134,6 +149,21 @@ We are actively working to mitigate impact for affected customers by adjusting t
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/87c6d8b7f6a62461</id>
+    <title>Cloudflare One, Access - Infrastructure applications support a configurable session duration</title>
+    <updated>2026-10-14T00:00:00+00:00</updated>
+    <content>Infrastructure applications now have a configurable session duration with a default value of 24 hours. You can set the session duration when creating or editing an infrastructure application in the dashboard or via the API. When the session duration elapses, any active SSH connections through that application will be closed, and users will need to reconnect. Previously, infrastructure applications did not enforce a session duration limit. Sessions could persist beyond 24 hours in some cases, but</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-infrastructure-ssh-session-duration/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ddd1ebaeb376653</id>
@@ -289,6 +319,21 @@ We are actively working to mitigate impact for affected customers by adjusting t
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-gateway-dns64-opt-in/og.png?v=fd21eaea767ef30e" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/06b05f8535a1705d</id>
+    <title>Audit Logs - Audit Logs v2 now captures view actions</title>
+    <updated>2026-10-13T00:00:00+00:00</updated>
+    <content>Audit Logs v2 now records view actions for supported endpoints, providing visibility into read activity across Cloudflare products. These actions correspond to GET requests and provide additional context for security investigations and forensic analysis. The Audit Logs v2 dashboard excludes view actions by default to reduce noise. Remove the default Action type is not view filter to include them, or set Action type to view to show only view actions. View actions are always available through the </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-13T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/28c0beeef943cce6</id>
@@ -1268,36 +1313,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/0e7404829564f9a6</id>
-    <title>Analytics - 30 days of analytics data on every plan</title>
-    <updated>2026-10-02T00:00:00+00:00</updated>
-    <content>Every plan now gets at least 30 days of analytics data. Adaptive analytics datasets, such as HTTP requests, security events, and DNS analytics, retain at least 31 days of data for Free and Pro domains, and you can query up to 30 days in a single request. Previously, Free and Pro domains could see between 24 hours and 8 days of history depending on the dataset. A full month of history lets you investigate an issue after it happens, compare today with the same day in previous weeks, and tell a one</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-02-30-days-analytics-on-every-plan/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-02T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-02-30-days-analytics-on-every-plan/og.png?v=81d0b3d70847ef41" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-02-30-days-analytics-on-every-plan/og.png?v=81d0b3d70847ef41"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-02-30-days-analytics-on-every-plan/og.png?v=81d0b3d70847ef41" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cedf95a06e54269f</id>
-    <title>Analytics - Workers Observability logs and traces in Custom Dashboards</title>
-    <updated>2026-10-02T00:00:00+00:00</updated>
-    <content>You can now build Custom Dashboards charts from Workers Observability data. Two new datasets, Workers Observability — Logs and Workers Observability — Traces (OTel) , let you chart Worker invocations, log levels, errors, CPU and wall time, span counts, and durations next to HTTP traffic, security events, and other analytics datasets. This gives you one dashboard for an application that spans Cloudflare's network and your Workers. For example, you can put request volume, WAF blocks, and Worker er</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-02-workers-observability-in-custom-dashboards/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-02T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-02-workers-observability-in-custom-dashboards/og.png?v=751d0508f8ec4ac2" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-02-workers-observability-in-custom-dashboards/og.png?v=751d0508f8ec4ac2"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-02-workers-observability-in-custom-dashboards/og.png?v=751d0508f8ec4ac2" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/dfd9db3b8b06156a</id>
     <title>KV - Workers KV namespace jurisdictions are now generally available</title>
     <updated>2026-10-02T00:00:00+00:00</updated>
@@ -1906,21 +1921,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-28T20:28:58+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/2ee638419a77610b</id>
-    <title>Introducing cf: the agentic CLI for the entire Cloudflare API</title>
-    <updated>2026-09-28T15:50:00+00:00</updated>
-    <content>We are releasing cf, our new command-line tool that mirrors the entire Cloudflare API and supports programmatic TypeScript configuration. We are also open-sourcing Forge, our internal SDK generator.</content>
-    <link href="https://blog.cloudflare.com/cloudflare-cf-cli-launch/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-28T15:50:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3KR63G9MAXHAG81FC5HKYRY.01M3KR64BVBYV5MM3YBHRRRWGF.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3KR63G9MAXHAG81FC5HKYRY.01M3KR64BVBYV5MM3YBHRRRWGF.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3KR63G9MAXHAG81FC5HKYRY.01M3KR64BVBYV5MM3YBHRRRWGF.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2d56864bd95780b9</id>
