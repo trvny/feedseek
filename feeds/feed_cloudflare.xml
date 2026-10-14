@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-14T07:58:46.292406+00:00</updated>
+  <updated>2026-10-14T13:59:23.576709+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,31 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3dc14211951ea3e5</id>
+    <title>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</title>
+    <updated>2026-10-14T13:00:00+00:00</updated>
+    <content>While adding MySQL support to Hyperdrive, we found a subtle protocol bug when caching query results. Here is how we tracked down a 0.001% rate error and made Hyperdrive MySQL generally available.</content>
+    <link href="https://blog.cloudflare.com/hyperdrive-mysql/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-14T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M4VK1DV41VQ8EZCK68R7E0CS.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M4VK1DV41VQ8EZCK68R7E0CS.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4VK1DV41VQ8EZCK68R7E0CS.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f0ac8835e7f4646b</id>
+    <title>Increased HTTP Errors in London (LHR)</title>
+    <updated>2026-10-14T07:51:00+00:00</updated>
+    <content>Oct 14 , 07:51 UTC Resolved - Cloudflare is aware of, and has resolved, an increased level of HTTP errors in London (LHR), between 07:43 UTC and 07:51 UTC. Services have resumed normal operation after this time.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/ak3kgdz2nyog" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-14T07:51:00+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9347fb08e979a2da</id>
     <title>Elevated number of 5XX errors in PDX</title>
@@ -43,6 +68,36 @@
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-14T03:30:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1adee982e63bb252</id>
+    <title>DNS - Configure Advanced Custom Nameservers with nameserver sets (beta)</title>
+    <updated>2026-10-14T00:00:00+00:00</updated>
+    <content>Nameserver sets are now available in beta to Enterprise accounts. A nameserver set groups two to five custom nameserver names with Cloudflare-assigned IP addresses. You can assign the set to zones in the same account. Enterprise customers using Cloudflare DNS can create Advanced Custom Nameserver sets. These sets distribute addresses across Advanced anycast network groups to improve resiliency. Compared to legacy custom_ns sets, modern nameserver sets offer several advantages: Sets are reusable </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5bfc515103166030</id>
+    <title>WAF - WAF Release - 2026-10-14 - Emergency</title>
+    <updated>2026-10-14T00:00:00+00:00</updated>
+    <content>This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks. Key Findings Key Findings Generic Rules - Remote Code Execution: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ddd1ebaeb376653</id>
@@ -1503,36 +1558,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3TBHN0F85Z2NSDVC4T3HF05.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/bfe2efcadd84db68</id>
-    <title>Cloudflare One, Access - Simplified permissions for tagging targets with Access for Infrastructure</title>
-    <updated>2026-10-01T00:00:00+00:00</updated>
-    <content>You can now tag targets using only the Zero Trust Write API token permission. Previously, tagging targets through the API required both Zero Trust Write and Tag Write permissions on the API token. This change applies to inline target tagging through the Infrastructure Access Targets API . Tagging resources through the general Resource Tagging API still requires the Tag Admin , Tag Write , or equivalent role. For more information, refer to Tag targets .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-01T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/og.png?v=05d4b4062e94a2e8" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/og.png?v=05d4b4062e94a2e8"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-01-infrastructure-target-tag-permissions/og.png?v=05d4b4062e94a2e8" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/dfad335ed0507e63</id>
-    <title>Cloudflare Fundamentals - Account members can self-serve create Account API tokens</title>
-    <updated>2026-10-01T00:00:00+00:00</updated>
-    <content>Account API token creation is no longer limited to Super Administrators. Members with the API Token Provisioning role can now create Account API tokens via the Dashboard, API, Terraform, or CF CLI, making it easier for developers and platform teams to provision credentials without depending on a Super Administrator for Account API Token Provisioning. What's new Delegated creation : Members with the API Token Provisioning role can create Account API tokens from the dashboard. Administrators can g</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-01-account-api-token-provisioning/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-01T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1540,height=818,format=webp/_astro/2026-10-01-account-api-token-provisioning.Dn0G5DUa.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1540,height=818,format=webp/_astro/2026-10-01-account-api-token-provisioning.Dn0G5DUa.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1540,height=818,format=webp/_astro/2026-10-01-account-api-token-provisioning.Dn0G5DUa.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9c8c868703256275</id>
     <title>Network Performance Issues in Los Angeles (LAX)</title>
     <updated>2026-09-30T19:18:41+00:00</updated>
@@ -1888,21 +1913,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3KR63G9MAXHAG81FC5HKYRY.01M3KR64BVBYV5MM3YBHRRRWGF.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d4dd483c393779cb</id>
-    <title>Next.js applications, powered by Vite: introducing Vinext 1.0</title>
-    <updated>2026-09-28T14:51:57+00:00</updated>
-    <content>Vinext 1.0 graduates from an AI experiment to a production-ready framework, letting developers run Next.js apps on Vite. This release brings advanced cache warming, broader compatibility, and an automated testing pipeline.</content>
-    <link href="https://blog.cloudflare.com/vinext-nextjs-on-vite/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-28T14:51:57+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3AZQWQ4KAE58XPW65NKJGT5.01M3AZQXMAQ87JD2W3YGR0KQ2P.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3AZQWQ4KAE58XPW65NKJGT5.01M3AZQXMAQ87JD2W3YGR0KQ2P.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3AZQWQ4KAE58XPW65NKJGT5.01M3AZQXMAQ87JD2W3YGR0KQ2P.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2d56864bd95780b9</id>
     <title>R2 Service Issues in Western North America (WNAM)</title>
     <updated>2026-09-26T16:00:00+00:00</updated>
@@ -1994,16 +2004,6 @@ We are working to u</content>
     <link href="https://www.cloudflarestatus.com/incidents/xbgbb80yw0jh" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-09-24T18:25:30+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/0e631e0f934e89ab</id>
-    <title>Customers using BYOIP can have issues updating their BGP prefixes, including advertising or withdrawing prefixes.</title>
-    <updated>2026-09-24T10:25:52+00:00</updated>
-    <content>Sep 24 , 10:25 UTC Resolved - This incident has now been resolved - Customers with BYOIP addresses were unable to update their BGP prefixes, including advertising or withdrawing prefixes. Customers making changes to their address maps may also have experienced delays. Sep 24 , 10:22 UTC Investigating - We are currently investigating an issue where customers with BYOIP addresses will be unable to update their BGP prefixes, including advertising or withdrawing prefixes.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/gwrzznc9f642" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-09-24T10:25:52+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
