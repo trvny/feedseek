@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-14T01:22:46.552089+00:00</updated>
+  <updated>2026-10-14T07:59:36.142619+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/4e7397e27238353e</id>
+    <title>🚀 We pretrained a language model from scratch on an inference-only NPU, with real backpropagation.</title>
+    <updated>2026-10-14T07:59:35.076582+00:00</updated>
+    <content>🚀 We pretrained a language model from scratch on an inference-only NPU, with real backpropagation. 🤗 Model: FINAL-Bench/VKORE-46M-NPU 📝 Technical write-up: https://huggingface.co/blog/FINAL-Bench/backpropagation-on-an-inference-only-npu-pretraini "NPUs are inference-only, you can't train on them." We built a counterexample: VKORE-46M-NPU, trained from scratch on a first-gen (2025) inference NPU, 32 chips, no pretrained weights. A 46M decoder-only model (RoPE · SwiGLU · RMSNorm · GQA), char-level, TinyStories. 📏 Why trust it: a falling-loss curve proves nothing. So we trained the same model under identical init, data, and schedule on the NPU and on a GPU reference. · Loss trajectories correla</content>
+    <link href="https://huggingface.co/posts/SeaWolf-AI/306714267727369" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-14T07:59:35.076582+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/qPxFAyAo5YzI7NkTykPGu.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/qPxFAyAo5YzI7NkTykPGu.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/qPxFAyAo5YzI7NkTykPGu.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/383749520fe8d146</id>
+    <title>TURBO-BRILLIANCE 50X - Qwen 3.8 27B, LFM, and more coming soon...</title>
+    <updated>2026-10-14T07:59:35.076582+00:00</updated>
+    <content>TURBO-BRILLIANCE 50X - Qwen 3.8 27B, LFM, and more coming soon... 15 AI CONSTRUCTS: Each a precision engineered "consciousness" to help you in every task, using fewer tokens and generating better answers. This model has significant internal upgrades under user control that are "on the fly" (you set in your prompt(s) and/or API). Please read this model card carefully to get the most from it - including all the reasoning and instruct modes (27+27+9 xhigh) that feature model suggestions ("context help") for all use cases. The Turbo Brilliance system will begin appearing in other model sizes/types shortly (IE: Qwen, Gemma, Mistral, GLM, Llama, ... including our strongest fine tunes too). The "ro</content>
+    <link href="https://huggingface.co/posts/DavidAU/700994645911205" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-14T07:59:35.076582+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DavidAU/700994645911205.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DavidAU/700994645911205.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DavidAU/700994645911205.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/e596d802c2c16aa7</id>
     <title>To all the inference providers behind the HuggingFace router - if you want me to use your services you will have to serve native-precision models. I'm not paying for FP8 when I can run in bf16 locally.</title>
@@ -2983,36 +3013,6 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.23377.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/1687ff900740de4c</id>
-    <title>14 days serving</title>
-    <updated>2026-09-19T22:27:49.382873+00:00</updated>
-    <content>14 days serving unsloth/Qwen3.8-27B-NVFP4 to production agents on 2x RTX 5090 (vLLM 0.27, TP=2, 262K context, FP8 KV): 28,097 requests, 860.6M prompt tokens, 82.6% prefix-cache hit rate, TTFT p50 0.61 s, 0 engine errors. The observation: prefix cache, not throughput, decides whether a 27B model keeps up with agents. Mean request is 30,100 tokens in, 983 out, because every turn resends the whole session. Two flags mattered most: --max-num-seqs 12 (queue p95 went 9.4 s to 233.6 s past that) and --watermark 0.08 (preemptions 29 to 2). And thinking off for tool loops: 917 tokens in 11.7 s vs 11,170 in 144 s, same answer. Full config and counters: scalably.io/blog/qwen3-8-27b-nvfp4-rtx-5090-produ</content>
-    <link href="https://huggingface.co/posts/pavle-scalably/128583850864975" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-19T22:27:49.382873+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/pavle-scalably/128583850864975.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/pavle-scalably/128583850864975.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/pavle-scalably/128583850864975.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/489f2f0502aa9705</id>
-    <title>🎹Please check out brand new Endless Piano project! 🎹</title>
-    <updated>2026-09-19T22:27:49.382873+00:00</updated>
-    <content>🎹Please check out brand new Endless Piano project! 🎹 projectlosangeles/Endless-Piano projectlosangeles/endless-piano projectlosangeles/Annotated-MIDI-Songs "Endless Piano generates endless, seamless MIDI piano compositions by chaining musical segments through embedding-based similarity search. Built on midisimx — a greatly improved fork of the original midisim — it performs fast cosine-similarity top-K matching between the outros and intros of over one million musical sequences, drawn from the high quality Annotated MIDI Songs dataset, whose section annotations were made possible by SongFormer (ASLP-lab). A diverse nearest-neighbor sampling strategy — near-duplicate filtering, redundancy pen</content>
-    <link href="https://huggingface.co/posts/projectlosangeles/934650689818423" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-19T22:27:49.382873+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/projectlosangeles/934650689818423.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/projectlosangeles/934650689818423.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/projectlosangeles/934650689818423.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/6fb67b6b8e291bb5</id>
