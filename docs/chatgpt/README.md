@@ -67,8 +67,7 @@ selected JSON Feed at that immutable revision, so a feed update cannot invalidat
 between `search` and `fetch`. This also avoids per-request fan-out over the registry.
 
 Publication and modification timestamps are both considered for recency; the newer valid
-timestamp wins. HTML-only entries are converted to decoded plain text for matching and
-display, while literal angle-bracket text in `content_text` is preserved.
+timestamp wins. Current search/index generation prefers dedicated `*.model.json` sidecars with normalized plaintext and `text_kind` metadata. Older revision-pinned results remain fetchable through the standard JSON Feed fallback, where HTML-only entries are converted to decoded plain text while literal angle-bracket text in `content_text` is preserved.
 
 ## Security and privacy
 

@@ -17,6 +17,7 @@ const CACHE_TTL_MS = 300000;
  * @property {string} title
  * @property {string} url
  * @property {string} summary
+ * @property {string|null|undefined} text_kind
  * @property {string|null|undefined} published_at
  * @property {string|null|undefined} modified_at
  * @property {string[]} tags
@@ -77,6 +78,7 @@ const RECENT_ENTRY_SCHEMA = {
     summary: { type: "string" },
     source: { type: "string" },
     source_key: { type: "string" },
+    text_kind: { type: ["string", "null"] },
     published_at: { type: ["string", "null"] },
     modified_at: { type: ["string", "null"] },
     tags: { type: "array", items: { type: "string" } },
@@ -88,6 +90,7 @@ const RECENT_ENTRY_SCHEMA = {
     "summary",
     "source",
     "source_key",
+    "text_kind",
     "published_at",
     "modified_at",
     "tags",
@@ -135,7 +138,7 @@ const TOOLS = [
   {
     name: "fetch",
     title: "Fetch Feedseek entry",
-    description: "Fetch one Feedseek result by its opaque id and return full text plus source metadata.",
+    description: "Fetch one Feedseek result by its opaque id and return the best available normalized text plus source metadata and text kind.",
     inputSchema: {
       type: "object",
       properties: {
@@ -315,6 +318,19 @@ async function loadJson(url) {
   return /** @type {Promise<JsonObject>} */ (response.json());
 }
 
+/** Prefer the model-oriented sidecar, while keeping old revision ids fetchable.
+ * @param {string} revision
+ * @param {string} sourceKey
+ */
+async function loadRevisionFeed(revision, sourceKey) {
+  const prefix = `${RAW_FEEDS_BASE}/${revision}/feeds/feed_${sourceKey}`;
+  try {
+    return { feed: await loadJson(`${prefix}.model.json`), modelFeed: true };
+  } catch {
+    return { feed: await loadJson(`${prefix}.json`), modelFeed: false };
+  }
+}
+
 /** @param {JsonObject} data @param {{query?: string, since?: string|null, sources?: string[], limit?: number}} [options] */
 function filterIndex(data, { query = "", since = null, sources = [], limit = 20 } = {}) {
   const words = tokens(query);
@@ -372,6 +388,7 @@ async function recentEntries(args = {}) {
       summary: item.summary || "",
       source: item.source,
       source_key: item.source_key,
+      text_kind: typeof item.text_kind === "string" ? item.text_kind : null,
       published_at: item.published_at || null,
       modified_at: item.modified_at || null,
       tags: Array.isArray(item.tags) ? item.tags : [],
@@ -439,18 +456,43 @@ function findTagEnd(html, start) {
 }
 
 const BLOCK_TAGS = new Set([
-  "address", "article", "aside", "blockquote", "br", "div", "footer", "h1", "h2",
-  "h3", "h4", "h5", "h6", "header", "hr", "li", "main", "nav", "ol", "p",
-  "pre", "section", "table", "td", "th", "tr", "ul",
+  "address", "article", "aside", "blockquote", "br", "caption", "dd", "details",
+  "dialog", "div", "dl", "dt", "fieldset", "figcaption", "figure", "footer",
+  "form", "h1", "h2", "h3", "h4", "h5", "h6", "header", "hgroup", "hr",
+  "legend", "li", "main", "menu", "nav", "ol", "p", "pre", "section",
+  "summary", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "ul",
 ]);
 const SKIP_TAGS = new Set(["script", "style", "template"]);
 const INLINE_TAGS = new Set([
-  "a", "abbr", "b", "bdi", "bdo", "cite", "code", "data", "del", "dfn", "em",
-  "i", "img", "ins", "kbd", "mark", "q", "rp", "rt", "ruby", "s", "samp",
-  "small", "span", "strong", "sub", "sup", "time", "u", "var", "wbr",
+  "a", "abbr", "area", "audio", "b", "bdi", "bdo", "button", "canvas", "center",
+  "cite", "code", "col", "colgroup", "data", "datalist", "del", "dfn", "em",
+  "embed", "font", "i", "iframe", "img", "input", "ins", "kbd", "label", "map",
+  "mark", "meter", "noscript", "object", "optgroup", "option", "output", "picture",
+  "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "select", "slot",
+  "small", "source", "span", "strong", "sub", "sup", "textarea", "time", "track",
+  "u", "var", "video", "wbr",
 ]);
 const DOCUMENT_TAGS = new Set(["base", "body", "head", "html", "link", "meta", "title"]);
 const KNOWN_TAGS = new Set([...BLOCK_TAGS, ...SKIP_TAGS, ...INLINE_TAGS, ...DOCUMENT_TAGS]);
+
+/** @param {string} value */
+function looksLikeHtml(value) {
+  const pattern = /<\/?([A-Za-z][A-Za-z0-9:-]*)(?=\s|\/?>)/g;
+  for (const match of value.matchAll(pattern)) {
+    if (KNOWN_TAGS.has(match[1].toLowerCase())) return true;
+  }
+  return false;
+}
+
+/** Preserve real plaintext formatting; only render markup when it is actual HTML.
+ * @param {string} value
+ */
+function legacyTextToText(value) {
+  const normalized = value.replace(/\r\n?/g, "\n");
+  return looksLikeHtml(normalized)
+    ? htmlToText(normalized)
+    : decodeEntities(normalized).trim();
+}
 
 /** @param {string[]} parts */
 function pushBlockBreak(parts) {
@@ -545,20 +587,36 @@ function canonicalUrl(item) {
 /** @param {JsonObject} args */
 async function fetchEntry(args = {}) {
   const { revision, sourceKey, itemId } = decodeOpaqueId(args.id);
-  const feed = await loadJson(`${RAW_FEEDS_BASE}/${revision}/feeds/feed_${sourceKey}.json`);
+  const { feed, modelFeed } = await loadRevisionFeed(revision, sourceKey);
   const items = Array.isArray(feed.items) ? /** @type {JsonObject[]} */ (feed.items) : [];
   const item = items.find((candidate) => candidate?.id === itemId);
   if (!item) throw new Error("Feedseek entry was not found");
   const url = canonicalUrl(item);
   if (!url) throw new Error("Feedseek entry has no citation URL");
+
   let text = "";
-  if (typeof item.content_text === "string" && item.content_text.trim()) {
-    text = item.content_text.replace(/\r\n?/g, "\n").trim();
-  } else if (typeof item.content_html === "string" && item.content_html.trim()) {
-    text = htmlToText(item.content_html);
-  } else if (typeof item.summary === "string") {
-    text = item.summary.replace(/\s+/g, " ").trim();
+  let textKind = null;
+  if (modelFeed && typeof item.text === "string") {
+    text = item.text.replace(/\r\n?/g, "\n").trim();
+    textKind = typeof item.text_kind === "string" ? item.text_kind : null;
+  } else {
+    if (typeof item.content_text === "string" && item.content_text.trim()) {
+      text = legacyTextToText(item.content_text);
+      textKind = "content";
+    } else if (typeof item.content_html === "string" && item.content_html.trim()) {
+      text = htmlToText(item.content_html);
+      textKind = "content";
+    } else if (typeof item.summary === "string") {
+      text = legacyTextToText(item.summary);
+      textKind = "summary";
+    }
+    const extension = item._feedseek;
+    const extensionKind = extension && typeof extension === "object"
+      ? (extension.textKind ?? extension.text_kind)
+      : null;
+    if (typeof extensionKind === "string") textKind = extensionKind;
   }
+
   return {
     id: String(args.id),
     title: String(item.title || "Untitled"),
@@ -568,6 +626,7 @@ async function fetchEntry(args = {}) {
       source: String(feed.title || sourceKey),
       source_key: sourceKey,
       revision,
+      text_kind: textKind,
       published_at: typeof item.date_published === "string" ? item.date_published : null,
       modified_at: typeof item.date_modified === "string" ? item.date_modified : null,
       tags: Array.isArray(item.tags) ? item.tags.filter((tag) => typeof tag === "string").slice(0, 30) : [],
@@ -742,6 +801,7 @@ export {
   decodeOpaqueId,
   fetchEntry,
   htmlToText,
+  legacyTextToText,
   parseWhen,
   recentEntries,
   searchEntries,

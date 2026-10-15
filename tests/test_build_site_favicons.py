@@ -179,6 +179,19 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn('type="application/feed+json"', links)
         self.assertIn('href="https://feeds.example/feed_test.json"', links)
 
+    def test_llms_full_links_dedicated_model_feed(self):
+        feed = {
+            "filename": "feed_test.xml",
+            "title": "Test",
+            "subtitle": "Test feed",
+            "source": "https://example.com/",
+        }
+        rendered = build_site.build_llms_full([feed], "https://feeds.example/")
+        self.assertIn(
+            "- Model Feed: https://feeds.example/feed_test.model.json",
+            rendered,
+        )
+
     def test_markdown_metadata_is_flattened_and_escaped(self):
         feed = {
             "filename": "feed_test.xml",
@@ -219,6 +232,7 @@ class SiteFaviconTests(unittest.TestCase):
         rendered = build_site.build_index([], "https://trvny.github.io/feedseek/")
         self.assertIn('<details class="answer-guide" id="about-feedseek">', rendered)
         self.assertIn("What does Feedseek publish?", rendered)
+        self.assertIn("Model Feed", rendered)
         self.assertIn("How often are the feeds updated?", rendered)
         self.assertIn('href="subscriptions.opml"', rendered)
         self.assertIn('href="reader/"', rendered)

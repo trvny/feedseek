@@ -88,30 +88,56 @@ class FeedPairTests(unittest.TestCase):
         entry.description("One")
         return fg
 
-    def test_json_failure_restores_previous_xml(self):
+    def test_sidecar_failure_restores_previous_publication_set(self):
         with TemporaryDirectory() as tmp:
             directory = Path(tmp)
-            target = directory / "feed_demo.xml"
-            target.write_text("last good xml", encoding="utf-8")
-            with (
-                mock.patch("utils.get_feeds_dir", return_value=directory),
-                mock.patch("utils._write_json_sidecar", side_effect=RuntimeError("json failed")),
-                self.assertRaises(RuntimeError),
-            ):
-                save_atom_feed(self.feed(), "demo")
-            self.assertEqual(target.read_text(encoding="utf-8"), "last good xml")
+            xml = directory / "feed_demo.xml"
+            json_feed = directory / "feed_demo.json"
+            model_feed = directory / "feed_demo.model.json"
+            xml.write_text("last good xml", encoding="utf-8")
+            json_feed.write_text("last good json", encoding="utf-8")
+            model_feed.write_text("last good model", encoding="utf-8")
 
-    def test_json_failure_removes_first_xml_when_no_previous_pair_exists(self):
-        with TemporaryDirectory() as tmp:
-            directory = Path(tmp)
-            target = directory / "feed_demo.xml"
+            def fails_after_writing_sidecars(xml_path, feed_name):
+                del xml_path, feed_name
+                json_feed.write_text("fresh json", encoding="utf-8")
+                model_feed.write_text("fresh model", encoding="utf-8")
+                raise RuntimeError("sidecar failed")
+
             with (
                 mock.patch("utils.get_feeds_dir", return_value=directory),
-                mock.patch("utils._write_json_sidecar", side_effect=RuntimeError("json failed")),
+                mock.patch("utils._write_sidecars", side_effect=fails_after_writing_sidecars),
                 self.assertRaises(RuntimeError),
             ):
                 save_atom_feed(self.feed(), "demo")
-            self.assertFalse(target.exists())
+
+            self.assertEqual(xml.read_text(encoding="utf-8"), "last good xml")
+            self.assertEqual(json_feed.read_text(encoding="utf-8"), "last good json")
+            self.assertEqual(model_feed.read_text(encoding="utf-8"), "last good model")
+
+    def test_sidecar_failure_removes_first_publication_set(self):
+        with TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            xml = directory / "feed_demo.xml"
+            json_feed = directory / "feed_demo.json"
+            model_feed = directory / "feed_demo.model.json"
+
+            def fails_after_writing_sidecars(xml_path, feed_name):
+                del xml_path, feed_name
+                json_feed.write_text("fresh json", encoding="utf-8")
+                model_feed.write_text("fresh model", encoding="utf-8")
+                raise RuntimeError("sidecar failed")
+
+            with (
+                mock.patch("utils.get_feeds_dir", return_value=directory),
+                mock.patch("utils._write_sidecars", side_effect=fails_after_writing_sidecars),
+                self.assertRaises(RuntimeError),
+            ):
+                save_atom_feed(self.feed(), "demo")
+
+            self.assertFalse(xml.exists())
+            self.assertFalse(json_feed.exists())
+            self.assertFalse(model_feed.exists())
 
 
 class GeneratorWriterPolicyTests(unittest.TestCase):

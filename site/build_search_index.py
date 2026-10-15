@@ -17,6 +17,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "feed_generators"))
 
+from html_text import plain_text  # noqa: E402
 from models import load_feed_registry  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
@@ -124,23 +125,48 @@ def html_to_text(value: object) -> str:
 
 
 def entry_text(item: dict) -> str:
+    model_text = item.get("text")
+    if isinstance(model_text, str) and model_text.strip():
+        return " ".join(model_text.split())
+
     content_text = item.get("content_text")
     if isinstance(content_text, str) and content_text.strip():
-        return " ".join(content_text.split())
+        return " ".join(plain_text(content_text).split())
 
     content_html = item.get("content_html")
     if isinstance(content_html, str) and content_html.strip():
-        return html_to_text(content_html)
+        return " ".join(plain_text(content_html, html_hint=True).split())
 
     summary = item.get("summary")
-    return " ".join(summary.split()) if isinstance(summary, str) else ""
+    return " ".join(plain_text(summary).split()) if isinstance(summary, str) else ""
 
 
 def entry_summary(item: dict) -> str:
     summary = item.get("summary")
     if isinstance(summary, str) and summary.strip():
-        return compact_text(summary)
+        return compact_text(plain_text(summary))
     return compact_text(entry_text(item))
+
+
+def entry_text_kind(item: dict) -> str:
+    kind = item.get("text_kind")
+    if isinstance(kind, str) and kind in {"content", "summary", "title"}:
+        return kind
+
+    extension = item.get("_feedseek")
+    if isinstance(extension, dict):
+        kind = extension.get("textKind", extension.get("text_kind"))
+        if isinstance(kind, str) and kind in {"content", "summary", "title"}:
+            return kind
+
+    if any(
+        isinstance(item.get(key), str) and item[key].strip()
+        for key in ("content_text", "content_html")
+    ):
+        return "content"
+    if isinstance(item.get("summary"), str) and item["summary"].strip():
+        return "summary"
+    return "title"
 
 
 def canonical_url(item: dict) -> str:
@@ -174,6 +200,15 @@ def item_date(item: dict) -> datetime | None:
     return max(dates) if dates else None
 
 
+def feed_key(path: Path) -> str:
+    name = path.name
+    if name.startswith("feed_") and name.endswith(".model.json"):
+        return name[len("feed_") : -len(".model.json")]
+    if name.startswith("feed_") and name.endswith(".json"):
+        return name[len("feed_") : -len(".json")]
+    return path.stem.removeprefix("feed_")
+
+
 def load_feed(path: Path) -> dict:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -191,9 +226,12 @@ def enabled_feed_paths() -> tuple[list[Path], list[str]]:
     for key, config in registry.items():
         if not config.enabled:
             continue
-        path = FEEDS_DIR / f"feed_{key}.json"
-        if path.is_file():
-            paths.append(path)
+        model_path = FEEDS_DIR / f"feed_{key}.model.json"
+        json_path = FEEDS_DIR / f"feed_{key}.json"
+        if model_path.is_file():
+            paths.append(model_path)
+        elif json_path.is_file():
+            paths.append(json_path)
         else:
             missing.append(key)
     return paths, missing
@@ -295,12 +333,27 @@ def build_index(
     feed_count = 0
 
     for path in sorted(feed_paths):
-        key = path.stem.removeprefix("feed_")
+        key = feed_key(path)
         try:
             feed = load_feed(path)
         except ValueError:
-            skipped_feeds.append({"source_key": key, "reason": "invalid_json_feed"})
-            continue
+            fallback = (
+                path.with_name(path.name.removesuffix(".model.json") + ".json")
+                if path.name.endswith(".model.json")
+                else None
+            )
+            if fallback is None or not fallback.is_file():
+                skipped_feeds.append(
+                    {"source_key": key, "reason": "invalid_json_feed"}
+                )
+                continue
+            try:
+                feed = load_feed(fallback)
+            except ValueError:
+                skipped_feeds.append(
+                    {"source_key": key, "reason": "invalid_json_feed"}
+                )
+                continue
 
         feed_count += 1
         feed_title = (
@@ -347,6 +400,7 @@ def build_index(
                         "title": title,
                         "url": url,
                         "summary": entry_summary(item),
+                        "text_kind": entry_text_kind(item),
                         "published_at": (
                             item.get("date_published")
                             if isinstance(item.get("date_published"), str)
@@ -369,7 +423,7 @@ def build_index(
     items = [entry for _, _, entry in retained]
 
     return {
-        "version": 3,
+        "version": 4,
         "revision": revision,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "indexed_from": boundary.isoformat().replace("+00:00", "Z"),

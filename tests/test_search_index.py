@@ -47,6 +47,97 @@ class SearchIndexTests(unittest.TestCase):
         self.assertEqual(paths, [present])
         self.assertEqual(missing, ["missing"])
 
+    def test_enabled_feed_paths_prefers_model_sidecar(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            feed_dir = Path(tmp)
+            self.write_feed(tmp, "present", [])
+            model = feed_dir / "feed_present.model.json"
+            model.write_text(
+                json.dumps({"title": "Present", "items": []}), encoding="utf-8"
+            )
+            registry = {"present": SimpleNamespace(enabled=True)}
+            with (
+                patch.object(MODULE, "FEEDS_DIR", feed_dir),
+                patch.object(MODULE, "load_feed_registry", return_value=registry),
+            ):
+                paths, missing = MODULE.enabled_feed_paths()
+
+        self.assertEqual(paths, [model])
+        self.assertEqual(missing, [])
+
+    def test_model_feed_text_is_used_directly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            model = Path(tmp) / "feed_openai.model.json"
+            model.write_text(
+                json.dumps(
+                    {
+                        "title": "OpenAI",
+                        "items": [
+                            {
+                                "id": "tag:example",
+                                "title": "Fresh",
+                                "url": "https://example.com/fresh",
+                                "text": "normalized model text",
+                                "text_kind": "summary",
+                                "date_published": "2026-09-07T10:00:00Z",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            payload = MODULE.build_index([model], NOW, REVISION)
+
+        self.assertEqual(payload["items"][0]["summary"], "normalized model text")
+        self.assertEqual(payload["items"][0]["text_kind"], "summary")
+        self.assertEqual(payload["items"][0]["source_key"], "openai")
+
+    def test_invalid_model_sidecar_falls_back_to_json_feed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            model = Path(tmp) / "feed_openai.model.json"
+            model.write_text("{not-json", encoding="utf-8")
+            standard = self.write_feed(
+                tmp,
+                "openai",
+                [
+                    {
+                        "id": "tag:example",
+                        "title": "Fallback",
+                        "url": "https://example.com/fallback",
+                        "content_text": "<dl><dt>Term</dt><dd>Definition</dd></dl>",
+                        "date_published": "2026-09-07T10:00:00Z",
+                    }
+                ],
+            )
+            self.assertTrue(standard.is_file())
+            payload = MODULE.build_index([model], NOW, REVISION)
+
+        self.assertEqual(payload["feed_count"], 1)
+        self.assertEqual(payload["items"][0]["source_key"], "openai")
+        self.assertEqual(payload["items"][0]["summary"], "Term Definition")
+        self.assertEqual(payload["skipped_feeds"], [])
+
+    def test_non_string_text_kind_uses_structural_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            feed = self.write_feed(
+                tmp,
+                "openai",
+                [
+                    {
+                        "id": "tag:example",
+                        "title": "Fresh",
+                        "url": "https://example.com/fresh",
+                        "content_text": "hello",
+                        "text_kind": ["bad"],
+                        "_feedseek": {"textKind": {"bad": True}},
+                        "date_published": "2026-09-07T10:00:00Z",
+                    }
+                ],
+            )
+            payload = MODULE.build_index([feed], NOW, REVISION)
+
+        self.assertEqual(payload["items"][0]["text_kind"], "content")
+
     def test_build_index_keeps_recent_items_and_stable_opaque_ids(self):
         with tempfile.TemporaryDirectory() as tmp:
             feed = self.write_feed(
@@ -73,6 +164,7 @@ class SearchIndexTests(unittest.TestCase):
 
         self.assertEqual(payload["item_count"], 1)
         self.assertEqual(payload["items"][0]["summary"], "hello world")
+        self.assertEqual(payload["items"][0]["text_kind"], "content")
         self.assertEqual(
             payload["items"][0]["id"], f"{REVISION}.openai:dGFnOmV4YW1wbGU"
         )

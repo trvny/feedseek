@@ -15,6 +15,7 @@ from validate_feeds import (
     JSON_FEED_VERSION,
     _entry_date,
     validate_json_sidecar,
+    validate_model_sidecar,
 )
 
 
@@ -130,6 +131,61 @@ class JsonFeedContractTests(unittest.TestCase):
         result = validate_json_sidecar(path, expected_count=1)
         self.assertEqual(result["status"], "JSON_ERROR")
         self.assertIn("parse/read error", result["message"])
+
+
+
+
+
+class ModelFeedContractTests(unittest.TestCase):
+    def write_feed(self, doc):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        path = Path(tmp.name) / "feed_demo.model.json"
+        path.write_text(json.dumps(doc), encoding="utf-8")
+        return path
+
+    @staticmethod
+    def valid_doc():
+        return {
+            "format": "feedseek-model-feed",
+            "version": 1,
+            "source_key": "demo",
+            "title": "Demo",
+            "items": [
+                {
+                    "id": "one",
+                    "title": "One",
+                    "text": "First",
+                    "text_kind": "content",
+                },
+                {
+                    "id": "two",
+                    "title": "Two",
+                    "text": "Second",
+                    "text_kind": "summary",
+                },
+            ],
+        }
+
+    def test_valid_model_feed_matches_xml_count(self):
+        result = validate_model_sidecar(
+            self.write_feed(self.valid_doc()), expected_count=2
+        )
+        self.assertEqual(result["status"], "OK")
+
+    def test_model_feed_rejects_empty_text(self):
+        doc = self.valid_doc()
+        doc["items"][0]["text"] = ""
+        result = validate_model_sidecar(self.write_feed(doc), expected_count=2)
+        self.assertEqual(result["status"], "MODEL_ERROR")
+        self.assertIn("non-empty text", result["message"])
+
+    def test_model_feed_rejects_unknown_text_kind(self):
+        doc = self.valid_doc()
+        doc["items"][0]["text_kind"] = "full"
+        result = validate_model_sidecar(self.write_feed(doc), expected_count=2)
+        self.assertEqual(result["status"], "MODEL_ERROR")
+        self.assertIn("text_kind", result["message"])
 
 
 if __name__ == "__main__":

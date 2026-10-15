@@ -83,10 +83,18 @@ jobs:
           ANYCRAP_API_KEY: ${{ secrets.ANYCRAP_API_KEY }}
         run: uv run --locked feed_generators/run_all_feeds.py
 
+      - name: Generate Model Feed sidecars
+        id: model_feeds
+        continue-on-error: true
+        working-directory: .
+        run: uv run --locked feed_generators/model_feed.py
+
       - name: Validate feeds
         id: validate
         continue-on-error: true
         working-directory: .
+        env:
+          FEEDSEEK_REQUIRE_MODEL_FEEDS: "1"
         run: uv run --locked feed_generators/validate_feeds.py
 
       - name: Regenerate docs/sources.md
@@ -99,6 +107,7 @@ jobs:
         if: >-
           always() &&
           github.ref == 'refs/heads/main' &&
+          steps.model_feeds.outcome == 'success' &&
           steps.validate.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -110,6 +119,7 @@ jobs:
           always() &&
           !cancelled() &&
           github.ref == 'refs/heads/main' &&
+          steps.model_feeds.outcome == 'success' &&
           steps.validate.outcome == 'success' &&
           steps.backup.outcome == 'success'
         run: |
@@ -127,10 +137,12 @@ jobs:
         if: always()
         env:
           GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+          MODEL_FEEDS_OUTCOME: ${{ steps.model_feeds.outcome }}
           VALIDATE_OUTCOME: ${{ steps.validate.outcome }}
         run: |
           if [ "$GENERATE_OUTCOME" != "success" ] || \
+             [ "$MODEL_FEEDS_OUTCOME" != "success" ] || \
              [ "$VALIDATE_OUTCOME" != "success" ]; then
-            echo "Feed generation or validation reported failures; updates publish only after final validation passes."
+            echo "Feed, Model Feed, or validation generation reported failures; updates publish only after the full publication set passes."
             exit 1
           fi

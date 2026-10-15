@@ -22,6 +22,7 @@ from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
+from model_feed import MODEL_FEED_FORMAT, MODEL_FEED_VERSION
 from models import load_feed_registry
 
 STALE_FLOOR_DAYS = 30
@@ -31,6 +32,7 @@ JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 
 ROOT = Path(__file__).parent.parent
 FEEDS_DIR = ROOT / "feeds"
+REQUIRE_MODEL_FEEDS = os.environ.get("FEEDSEEK_REQUIRE_MODEL_FEEDS") == "1"
 
 
 def _local(tag: str) -> str:
@@ -229,6 +231,53 @@ def validate_json_sidecar(path: Path, *, expected_count: int | None = None) -> d
     return _validate_json_document(path, doc, expected_count=expected_count)
 
 
+def _model_error(path: Path, message: str, *, count: int = 0) -> dict:
+    return _result(path.name, "MODEL_ERROR", message, count=count)
+
+
+def validate_model_sidecar(path: Path, *, expected_count: int | None = None) -> dict:
+    """Validate the Feedseek Model Feed v1 publication contract."""
+    if not path.exists():
+        return _result(path.name, "MODEL_MISSING", "Model Feed sidecar is missing")
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        return _model_error(path, f"JSON parse/read error: {exc}")
+
+    if not isinstance(doc, dict):
+        return _model_error(path, "top level is not an object")
+    if doc.get("format") != MODEL_FEED_FORMAT or doc.get("version") != MODEL_FEED_VERSION:
+        return _model_error(path, "missing or unsupported Model Feed version")
+
+    items = doc.get("items")
+    if not isinstance(items, list):
+        return _model_error(path, "missing top-level items array")
+    if expected_count is not None and len(items) != expected_count:
+        return _model_error(
+            path,
+            f"item count differs from XML ({len(items)} != {expected_count})",
+            count=len(items),
+        )
+
+    seen_ids: set[str] = set()
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            return _model_error(path, f"item {index} is not an object")
+        item_id = item.get("id")
+        if not isinstance(item_id, str) or not item_id.strip():
+            return _model_error(path, f"item {index} has no non-empty id")
+        if item_id in seen_ids:
+            return _model_error(path, f"duplicate item id: {item_id}")
+        seen_ids.add(item_id)
+        text = item.get("text")
+        if not isinstance(text, str) or not text.strip():
+            return _model_error(path, f"item {index} has no non-empty text")
+        if item.get("text_kind") not in {"content", "summary", "title"}:
+            return _model_error(path, f"item {index} has invalid text_kind")
+
+    return _result(path.name, "OK", f"{len(items)} items", count=len(items))
+
+
 def _registry_coverage() -> tuple[list[dict], set[Path]]:
     registry, skipped = load_feed_registry(return_skipped=True)
     results: list[dict] = []
@@ -256,6 +305,11 @@ def _registry_coverage() -> tuple[list[dict], set[Path]]:
                 xml_path.with_suffix(".json"), expected_count=expected_count
             )
         )
+        model_path = xml_path.with_name(f"{xml_path.stem}.model.json")
+        if model_path.exists() or REQUIRE_MODEL_FEEDS:
+            results.append(
+                validate_model_sidecar(model_path, expected_count=expected_count)
+            )
 
     for name in skipped:
         results.append(_result(name, "CONFIG_ERROR", "invalid feeds.yaml entry"))
@@ -304,6 +358,8 @@ def main() -> int:
         "CONFIG_ERROR",
         "JSON_MISSING",
         "JSON_ERROR",
+        "MODEL_MISSING",
+        "MODEL_ERROR",
     }
     fatal = [r for r in results if r["status"] in fatal_statuses]
     stale = [r for r in results if r["status"] == "STALE"]
