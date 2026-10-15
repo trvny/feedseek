@@ -215,6 +215,15 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn('href="https://travny.pages.dev/"', rendered)
         self.assertNotIn('href="https://trfny.com/"', rendered)
 
+    def test_directory_explains_feeds_without_javascript(self):
+        rendered = build_site.build_index([], "https://trvny.github.io/feedseek/")
+        self.assertIn('<details class="answer-guide" id="about-feedseek">', rendered)
+        self.assertIn("What does Feedseek publish?", rendered)
+        self.assertIn("How often are the feeds updated?", rendered)
+        self.assertIn('href="subscriptions.opml"', rendered)
+        self.assertIn('href="reader/"', rendered)
+        self.assertNotIn('"@type":"FAQPage"', rendered)
+
     def test_robots_publish_content_signal(self):
         rendered = build_site.build_robots("https://feeds.example/")
         self.assertIn(
