@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { htmlToText, mcpResponse, parseWhen } from "../src/mcp.js";
+import { htmlToText, legacyTextToText, mcpResponse, parseWhen } from "../src/mcp.js";
 
 const call = (method, params = {}, id = 1, protocol = "2026-07-28") =>
   mcpResponse(
@@ -40,6 +40,7 @@ const indexPayload = {
       title: "Żółć coding model",
       url: "https://example.com/a",
       summary: "Agents and coding",
+      text_kind: "summary",
       published_at: "2026-08-01T10:00:00Z",
       modified_at: "2026-09-07T10:00:00Z",
       tags: ["AI"],
@@ -51,6 +52,7 @@ const indexPayload = {
       title: "Markets",
       url: "https://example.com/b",
       summary: "Daily markets",
+      text_kind: "content",
       published_at: "2026-09-07T11:00:00Z",
       modified_at: null,
       tags: [],
@@ -218,6 +220,7 @@ test("recent reports coverage and uses newest publication or modification time",
       assert.equal(result.truncated, true);
       assert.deepEqual(result.skipped_sources, ["broken"]);
       assert.equal(result.entries[0].modified_at, "2026-09-07T10:00:00Z");
+      assert.equal(result.entries[0].text_kind, "summary");
     },
   );
 });
@@ -232,17 +235,22 @@ test("recent rejects non-RFC and impossible cutoffs before fetching", async () =
   }
 });
 
-test("fetch is pinned to revision and uses external_url fallback", async () => {
+test("fetch prefers the revision-pinned Model Feed", async () => {
   await withFetch(
     async (url) => {
-      assert.equal(String(url), `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`);
+      assert.equal(
+        String(url),
+        `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
+      );
       return new Response(JSON.stringify({
         title: "OpenAI",
         items: [{
           id: "tag:example",
-          title: "Full story",
+          title: "Normalized story",
           external_url: "https://example.com/full",
-          content_text: "Use <T> & keep it",
+          text: "Use <T> & keep it",
+          text_kind: "content",
+          tags: ["AI"],
         }],
       }), { status: 200 });
     },
@@ -250,9 +258,67 @@ test("fetch is pinned to revision and uses external_url fallback", async () => {
       const body = await (
         await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
       ).json();
-      assert.equal(body.result.structuredContent.text, "Use <T> & keep it");
-      assert.equal(body.result.structuredContent.url, "https://example.com/full");
+      const result = body.result.structuredContent;
+      assert.equal(result.text, "Use <T> & keep it");
+      assert.equal(result.url, "https://example.com/full");
+      assert.equal(result.metadata.text_kind, "content");
     },
+  );
+});
+
+test("fetch falls back to JSON Feed for pre-Model-Feed revisions", async () => {
+  const seen = [];
+  await withFetch(
+    async (url) => {
+      seen.push(String(url));
+      if (String(url).endsWith(".model.json")) {
+        return new Response("not found", { status: 404 });
+      }
+      return new Response(JSON.stringify({
+        title: "OpenAI",
+        items: [{
+          id: "tag:example",
+          title: "Legacy story",
+          external_url: "https://example.com/legacy",
+          content_text: "<dl><dt>Legacy</dt><dd>text</dd></dl>",
+          _feedseek: { textKind: "content" },
+        }],
+      }), { status: 200 });
+    },
+    async () => {
+      const body = await (
+        await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
+      ).json();
+      const result = body.result.structuredContent;
+      assert.equal(result.text, "Legacy\ntext");
+      assert.equal(result.metadata.text_kind, "content");
+    },
+  );
+  assert.deepEqual(seen, [
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
+  ]);
+});
+
+test("legacy plaintext keeps spacing while hidden HTML is still rendered", () => {
+  assert.equal(
+    legacyTextToText("Paragraph one\n\n- item\tvalue\n  code"),
+    "Paragraph one\n\n- item\tvalue\n  code",
+  );
+  assert.equal(
+    legacyTextToText("<dl><dt>Term</dt><dd>Definition</dd></dl>"),
+    "Term\nDefinition",
+  );
+});
+
+test("HTML conversion covers definition lists and escaped literal markup", () => {
+  assert.equal(
+    htmlToText("<dl><dt>Term</dt><dd>Definition</dd></dl>"),
+    "Term\nDefinition",
+  );
+  assert.equal(
+    htmlToText("&lt;script&gt;keep()&lt;/script&gt;"),
+    "<script>keep()</script>",
   );
 });
 
