@@ -549,6 +549,15 @@ def build_index(feeds: list[dict], base: str) -> str:
 
     .empty {{ font-family: "IBM Plex Mono", monospace; color: var(--ink-soft); padding: 40px 0; }}
 
+    .answer-guide {{
+      margin-top: 30px; padding: 16px 20px; background: var(--card);
+      border: 1px solid var(--line); border-radius: var(--radius);
+    }}
+    .answer-guide summary {{ cursor: pointer; font-weight: 600; color: var(--ink); }}
+    .answer-guide[open] summary {{ margin-bottom: 12px; }}
+    .answer-guide h2 {{ margin: 14px 0 4px; font-size: 14px; }}
+    .answer-guide p {{ margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--ink-soft); }}
+    .answer-guide a {{ color: var(--accent-deep); }}
     footer.site {{
       margin-top: 56px; padding-top: 22px; border-top: 2px solid var(--ink);
       font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft);
@@ -580,6 +589,16 @@ def build_index(feeds: list[dict], base: str) -> str:
 {cards}
     </section>
     <p class="empty" id="empty" hidden>No feeds match that filter.</p>
+
+    <details class="answer-guide" id="about-feedseek">
+      <summary>About Feedseek · feeds, updates and subscriptions</summary>
+      <h2>What does Feedseek publish?</h2>
+      <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has a JSON Feed sidecar, so readers can choose the format they support.</p>
+      <h2>How often are the feeds updated?</h2>
+      <p>Published feeds are regenerated every two hours. Individual entries retain their source meaning and stable identities; an upstream feed may be normalized rather than copied unchanged.</p>
+      <h2>How can I follow the feeds?</h2>
+      <p>Use a feed URL with any compatible RSS/Atom reader, <a href="subscriptions.opml">import the OPML directory</a>, or open the <a href="reader/">browser Reader</a>. <a href="https://github.com/trvny/feedseek">See how Feedseek works</a>.</p>
+    </details>
 
     <footer class="site">
       <span>Last build: {now}</span>
