@@ -212,6 +212,8 @@ class SiteFaviconTests(unittest.TestCase):
         rendered = build_site.build_index([], "https://trvny.github.io/feedseek/")
         self.assertIn("https://travny.pages.dev/#creator", rendered)
         self.assertIn("https://travny.pages.dev/#website", rendered)
+        self.assertIn('href="https://travny.pages.dev/"', rendered)
+        self.assertNotIn('href="https://trfny.com/"', rendered)
 
     def test_robots_publish_content_signal(self):
         rendered = build_site.build_robots("https://feeds.example/")
