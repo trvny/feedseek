@@ -202,6 +202,17 @@ class SiteFaviconTests(unittest.TestCase):
             rendered,
         )
 
+    def test_sitemap_includes_reader_and_directory(self):
+        rendered = build_site.build_sitemap([], "https://trvny.github.io/feedseek/")
+        self.assertIn("<loc>https://trvny.github.io/feedseek/</loc>", rendered)
+        self.assertIn("<loc>https://trvny.github.io/feedseek/reader/</loc>", rendered)
+        self.assertNotIn("https://trfny.com/", rendered)
+
+    def test_website_schema_uses_durable_hub_identity(self):
+        rendered = build_site.build_index([], "https://trvny.github.io/feedseek/")
+        self.assertIn("https://travny.pages.dev/#creator", rendered)
+        self.assertIn("https://travny.pages.dev/#website", rendered)
+
     def test_robots_publish_content_signal(self):
         rendered = build_site.build_robots("https://feeds.example/")
         self.assertIn(

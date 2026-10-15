@@ -395,8 +395,8 @@ def build_index(feeds: list[dict], base: str) -> str:
             "@type": "WebSite",
             "name": "Feedseek",
             "url": base,
-            "creator": {"@id": "https://trfny.com/#creator"},
-            "isPartOf": {"@id": "https://trfny.com/#website"},
+            "creator": {"@id": "https://travny.pages.dev/#creator"},
+            "isPartOf": {"@id": "https://travny.pages.dev/#website"},
             "isBasedOn": "https://github.com/trvny/feedseek",
             "description": desc,
             "inLanguage": "en",
@@ -670,6 +670,8 @@ def build_index(feeds: list[dict], base: str) -> str:
 def build_sitemap(feeds: list[dict], base: str) -> str:
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [f"  <url><loc>{html.escape(base)}</loc><lastmod>{today}</lastmod></url>"]
+    # Include the separately indexable Reader, not only the directory and feeds.
+    urls.append(f"  <url><loc>{html.escape(base + 'reader/')}</loc></url>")
     for f in feeds:
         lastmod = (f["updated"] or datetime.now(timezone.utc)).strftime("%Y-%m-%d")
         urls.append(
@@ -767,7 +769,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "## Resources",
         "",
-        "- [TRAVNY project hub](https://trfny.com/): Canonical creator identity and related applications",
+        "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
         f"- [All feeds (OPML)]({base}subscriptions.opml): One-shot import of every published feed",
         f"- [Feed directory (sitemap)]({base}sitemap.xml): Machine-readable list of every feed URL",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
