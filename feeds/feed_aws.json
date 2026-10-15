@@ -8,6 +8,321 @@
   "icon": "https://feeds.trfny.com/favicon?domain=aws.amazon.com&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/d69c324eab0e7318",
+      "url": "https://repost.aws/articles/ARGocXDdOQRAmxIjlhE6yykg/kafka-producers-on-amazon-msk-why-retries-0-quietly-turns-off-idempotence-and-how-to-separate-call-latency-from-delivery-timeout",
+      "title": "Kafka producers on Amazon MSK: why retries=0 quietly turns off idempotence, and how to separate call latency from delivery timeout",
+      "content_text": "Teams with strict latency targets sometimes set retries=0 and shorten every producer timeout. On Amazon MSK this turns routine broker restarts, such as rolling patching, into failed sends. With default settings retries=0 also disables idempotence, leaving only an INFO log line. This article explains that behavior from the Kafka source, how max.block.ms, request.timeout.ms and delivery.timeout.ms relate, and a design that keeps latency targets.",
+      "date_published": "2026-10-15T04:01:06Z",
+      "date_modified": "2026-10-15T04:01:06Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9e396f6c23509481",
+      "url": "https://repost.aws/articles/ARCUGmrJjVT-a0Blxq-UlJPw/topic-not-present-in-metadata-on-amazon-msk-when-permissions-are-fine-idle-topics-first-sends-and-max-block-ms",
+      "title": "\"Topic not present in metadata\" on Amazon MSK when permissions are fine: idle topics, first sends, and max.block.ms",
+      "content_text": "This producer error means send() did not get topic metadata within max.block.ms, not that the topic is missing. Beyond missing DESCRIBE permission (covered in another re:Post article), it often hits the first send after a topic was idle longer than metadata.max.idle.ms, or the first send after start-up. This article explains why, how to read Kafka client logs to find the stalled stage, and how to warm up producers.",
+      "date_published": "2026-10-15T03:59:26Z",
+      "date_modified": "2026-10-15T03:59:26Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/8e63f6243ecc3c5d",
+      "url": "https://repost.aws/articles/ARiw9HBwdbR-SMfFLwcNP6qQ/moving-an-amazon-msk-connect-connector-to-a-new-msk-cluster-why-swapping-a-dns-alias-is-not-enough",
+      "title": "Moving an Amazon MSK Connect connector to a new MSK cluster: why swapping a DNS alias is not enough",
+      "content_text": "An MSK Connect connector's target cluster is fixed at creation, so teams often put a DNS alias in bootstrapServers and repoint it to a new cluster. Data can then flow from the new cluster while the connector's framework state topics and worker connections stay on the old one, and deleting the old cluster drops the tasks. This article explains why, how to verify a connector has fully moved before deletion, and the supported migration path.",
+      "date_published": "2026-10-15T03:39:55Z",
+      "date_modified": "2026-10-15T03:39:55Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4052065581f4359b",
+      "url": "https://repost.aws/articles/ARfF2fx8GqSOmDNRZ8WG2erA/monitoring-consumer-lag-on-amazon-msk-why-time-lag-alone-misses-stalled-consumers-and-raises-false-alarms",
+      "title": "Monitoring consumer lag on Amazon MSK: why time lag alone misses stalled consumers and raises false alarms",
+      "content_text": "EstimatedMaxTimeLag is documented as a time estimate to drain MaxOffsetLag, so it is derived from offset lag rather than measured on its own. As a result, a stalled consumer group on a low-throughput topic can show 0 seconds of time lag for hours, while a healthy group on a bursty topic can spike to hundreds of seconds. This article explains both patterns and gives reading and alarm rules that combine time lag with offset lag.",
+      "date_published": "2026-10-15T03:38:12Z",
+      "date_modified": "2026-10-15T03:38:12Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/cf0706ec2db20ea2",
+      "url": "https://repost.aws/articles/ARTdf-AQfbTy--wzQmf2JOOg/managing-exposed-aws-access-keys-part-3-recovery-responding-to-an-exposed-aws-access-key",
+      "title": "Managing exposed AWS access keys Part 3: Recovery—Responding to an exposed AWS access key",
+      "content_text": "Discovered an exposed AWS access key? This third installment in our series is a step-by-step recovery playbook for containing the damage—from locking down the compromised key and rooting out unauthorized activity to safely rotating credentials and hardening your account against a repeat incident.",
+      "date_published": "2026-10-15T01:10:19Z",
+      "date_modified": "2026-10-15T01:10:19Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/57b99bb5cdb75fc0",
+      "url": "https://repost.aws/articles/ARWjY93F_8SkmwRg8y8TisXA/domain-6-organizational-readiness-part-2",
+      "title": "Domain 6: Organizational readiness: part 2",
+      "content_text": "This second part describes the structures that let agentic operations scale past a few teams, covering how a small center of excellence distributes capability instead of becoming a bottleneck, how to decide what gets hosted centrally against what each application team owns, how a governed catalog stops teams rebuilding what already exists, and how to put agents in the channels engineers already work in.",
+      "date_published": "2026-10-15T00:34:04Z",
+      "date_modified": "2026-10-15T00:34:04Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7233ac1db9c279ed",
+      "url": "https://repost.aws/articles/ARHJDnSPoQRX2h-3MXF2AIZQ/domain-6-organizational-readiness-part-1",
+      "title": "Domain 6: Organizational readiness: part 1",
+      "content_text": "This first part describes how to prepare the people side of agentic operations, covering the role profiles that emerge as execution shifts to agents, the reskilling and knowledge capture that keep hard-won expertise from draining away, the first use cases that earn a team's trust before autonomy expands, and the throughput and satisfaction measures that prove value to leadership when headcount reduction is the wrong story.",
+      "date_published": "2026-10-15T00:34:02Z",
+      "date_modified": "2026-10-15T00:34:02Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/f2d3cf665abb4122",
+      "url": "https://repost.aws/articles/ARoho74xvrRDaNyfbf5-8y_A/domain-5-security-and-forensics",
+      "title": "Domain 5: Security and forensics",
+      "content_text": "This article describes how to build agent infrastructure that holds up under investigation, covering the telemetry and immutable storage that make an agent's actions reconstructable months later, the behavioral baselines that reveal misuse at the application layer, the layered defenses that stop a manipulated prompt from becoming a permitted action, and the credential practices that keep one compromised agent from reaching another team's systems.",
+      "date_published": "2026-10-15T00:33:56Z",
+      "date_modified": "2026-10-15T00:33:56Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4df0eae3fe376103",
+      "url": "https://repost.aws/articles/ARdXsMauGTTyCublA_hjzksw/domain-4-cost-management",
+      "title": "Domain 4: Cost management",
+      "content_text": "This article describes how to keep agent spending attributable and bounded as usage grows, covering the separate layers an agentic workload bills across, the tagging and reporting setup that attributes each layer back to the team that owns it, the alarms that catch a runaway agent loop within minutes, and the optimization levers worth pulling. It also sets out where a managed agent shifts that work away from your teams.",
+      "date_published": "2026-10-15T00:33:41Z",
+      "date_modified": "2026-10-15T00:33:41Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/d27b71de7b0d9cfd",
+      "url": "https://repost.aws/articles/ARSgVn7xNoSkiiRnqPi9A18w/domain-3-data-access-and-integration",
+      "title": "Domain 3: Data access and integration",
+      "content_text": "This article describes how to connect agents to the systems that hold your operational knowledge, covering the shared tooling, ownership principles, and credential boundaries that keep a growing agent portfolio from fragmenting into duplicate integrations and over-broad access, along with the topology and documentation groundwork that lets an agent investigate without an operator feeding it context. The guidance holds whether your teams build their own agents or adopt a managed one.",
+      "date_published": "2026-10-15T00:33:35Z",
+      "date_modified": "2026-10-15T00:33:35Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/fe9a95e8296bd75d",
+      "url": "https://repost.aws/articles/ARRrnN9FMVRve7wI2svOTiRg/domain-2-operational-reliability",
+      "title": "Domain 2: Operational reliability",
+      "content_text": "This article describes how to run agents as production systems rather than experiments, covering the testing, observability, and rollback practices that keep agent behavior predictable as prompts, models, and integrations change, along with the containment and review procedures that apply once something goes wrong. The guidance holds whether your teams own the full agent stack or rely on a managed service.",
+      "date_published": "2026-10-15T00:33:26Z",
+      "date_modified": "2026-10-15T00:33:26Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/fb2ebc3cd37ecf96",
+      "url": "https://repost.aws/articles/AR2InSW9F7SvCyBgK6mKyj_g/domain-1-governance-and-compliance",
+      "title": "Domain 1: Governance and compliance",
+      "content_text": "This article describes how to establish governance before agents reach production, covering the data groundwork that determines what agents can be trusted with, the enforcement points that apply policy while an agent is working rather than in quarterly review, and the accountability practices that keep autonomous decisions reviewable after the fact. The guidance holds whether your teams build their own agents or adopt a managed one.",
+      "date_published": "2026-10-15T00:33:10Z",
+      "date_modified": "2026-10-15T00:33:10Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "tags": [
+        "AWS re:Post Articles"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/4a2ce64f566d1730",
+      "url": "https://repost.aws/articles/AR3GW1d0xcTCa1iy6eA0NVkA/building-an-agentic-ai-strategy-for-operations",
+      "title": "Building an agentic AI strategy for operations",
+      "content_text": "A practical guide to adopting agentic operations: the concerns teams raise before they start, the AWS services worth evaluating before you build anything yourself, and a roadmap that runs from leadership alignment to incremental rollout. It also introduces the six domains a durable strategy rests on, each with its own article.",
+      "date_published": "2026-10-15T00:32:47Z",
+      "date_modified": "2026-10-15T00:32:47Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/abf3423fdc879034",
+      "url": "https://repost.aws/articles/AR246dR6MHSRmiP2_2f0OfWA/managing-exposed-aws-access-keys-part-2-risk-assessment-evaluating-an-exposed-aws-access-key",
+      "title": "Managing exposed AWS access keys Part 2: Risk assessment—Evaluating an exposed AWS access key",
+      "content_text": "Discovered an exposed AWS access key? Before you rotate anything, size the risk. This eight-step guide walks you through mapping the key's permissions and exposure window, classifying the severity, checking CloudTrail for unauthorized activity, and deciding whether business needs justify a documented, time-bounded delay in rotation—Part 2 of our three-part series on managing exposed AWS access keys.",
+      "date_published": "2026-10-14T23:47:47Z",
+      "date_modified": "2026-10-14T23:47:47Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/bddb74eb592b71f7",
       "url": "https://repost.aws/articles/ARq_Jvs054T_601JmFl4MB1A/managing-exposed-aws-access-keys-part-1-prevention-stop-aws-access-keys-from-being-exposed",
       "title": "Managing exposed AWS access keys Part 1: Prevention — Stop AWS Access Keys from being exposed",
@@ -28,6 +343,22 @@
           "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7673b35187e3bf71",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/cloudwatch-pipelines-log-routing/",
+      "title": "Amazon CloudWatch announces log routing and chained log parsers",
+      "content_text": "Amazon CloudWatch now supports conditional log routing and chained parsers via pipelines, giving you more control over how log data is transformed and which CloudWatch log group it's sent to. CloudWatch pipelines is a fully managed service that ingests, transforms, and routes telemetry to CloudWatch without managing infrastructure. Log pipelines often carry a mix of event types that belong in different places, and individual events can nest one log format inside another. With conditional log rou",
+      "date_published": "2026-10-14T22:14:00Z",
+      "date_modified": "2026-10-14T22:14:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
       ]
     },
     {
@@ -141,10 +472,26 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/de656e8b5fcaa1a6",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-backup-fsx-asia-pacific-new-zealand/",
-      "title": "AWS Backup now supports Amazon FSx file systems in the Asia Pacific (New Zealand) Region",
-      "content_text": "AWS Backup now supports Amazon FSx for Lustre, Amazon FSx for NetApp ONTAP, Amazon FSx for OpenZFS, and Amazon FSx for Windows File Server in the Asia Pacific (New Zealand) Region. With this launch, you can use AWS Backup to centrally automate and manage data protection for your Amazon FSx file systems in the Asia Pacific (New Zealand) Region, alongside your other supported AWS resources. You can create policy-based backup plans to schedule backups and apply retention rules, store backups in enc",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/d21fbf22912a0907",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-svg-ico-favicons/",
+      "title": "AWS Transfer Family console supports SVG logos and ICO favicons for web apps",
+      "content_text": "The AWS Transfer Family console now supports SVG files for logos and ICO files for favicons in web apps, with upload limits increased to 2 MB. This gives you more flexibility to use existing branding assets when customizing your web app. Previously, the console accepted only JPG and PNG files and limited logo uploads to 50 KB and favicon uploads to 20 KB. The console automatically resizes images and converts them to JPG or PNG before saving them. Existing API upload limits and format requirement",
+      "date_published": "2026-10-14T08:00:00Z",
+      "date_modified": "2026-10-14T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b9ff5abb20cea54f",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-secrets-host-keys/",
+      "title": "AWS Transfer Family now supports AWS Secrets Manager storage for SFTP server host keys",
+      "content_text": "AWS Transfer Family now lets you store SFTP server host keys in AWS Secrets Manager in your own AWS account. This gives you greater control over your server identity and helps simplify server migrations and failover. Previously, Transfer Family stored host keys within the service, so you could not retrieve the associated private key material. With this launch, you can choose Secrets Manager as the storage type when creating a server or importing a host key. You can then retrieve the private key",
       "date_published": "2026-10-14T08:00:00Z",
       "date_modified": "2026-10-14T08:00:00Z",
       "authors": [
@@ -173,26 +520,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/b9ff5abb20cea54f",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-secrets-host-keys/",
-      "title": "AWS Transfer Family now supports AWS Secrets Manager storage for SFTP server host keys",
-      "content_text": "AWS Transfer Family now lets you store SFTP server host keys in AWS Secrets Manager in your own AWS account. This gives you greater control over your server identity and helps simplify server migrations and failover. Previously, Transfer Family stored host keys within the service, so you could not retrieve the associated private key material. With this launch, you can choose Secrets Manager as the storage type when creating a server, importing a host key, or updating an existing one. You can the",
-      "date_published": "2026-10-14T08:00:00Z",
-      "date_modified": "2026-10-14T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/d21fbf22912a0907",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-svg-ico-favicons/",
-      "title": "AWS Transfer Family console supports SVG logos and ICO favicons for web apps",
-      "content_text": "The AWS Transfer Family console now supports SVG files for logos and ICO files for favicons in web apps, with upload limits increased to 2 MB. This gives you more flexibility to use existing branding assets when customizing your web app. Previously, the console accepted only JPG and PNG files and limited logo uploads to 50 KB and favicon uploads to 20 KB. The console automatically resizes images and converts them to JPG or PNG before saving them. Existing API upload limits and format requirement",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/de656e8b5fcaa1a6",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-backup-fsx-asia-pacific-new-zealand/",
+      "title": "AWS Backup now supports Amazon FSx file systems in the Asia Pacific (New Zealand) Region",
+      "content_text": "AWS Backup now supports Amazon FSx for Lustre, Amazon FSx for NetApp ONTAP, Amazon FSx for OpenZFS, and Amazon FSx for Windows File Server in the Asia Pacific (New Zealand) Region. With this launch, you can use AWS Backup to centrally automate and manage data protection for your Amazon FSx file systems in the Asia Pacific (New Zealand) Region, alongside your other supported AWS resources. You can create policy-based backup plans to schedule backups and apply retention rules, store backups in enc",
       "date_published": "2026-10-14T08:00:00Z",
       "date_modified": "2026-10-14T08:00:00Z",
       "authors": [
@@ -253,10 +584,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/2e5c2e5cbf1b57be",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-lambda-durable-gen-limit-increase/",
-      "title": "AWS Lambda durable functions increases durable operation and checkpoint payload limits",
-      "content_text": "Starting today, AWS Lambda durable functions increases the maximum number of durable operations per execution from 3,000 to 30,000, and the maximum checkpoint payload size from 256 KB to 1 MB. Higher operation limits let you safely do more work in a single execution including expanding iterative loops, polling for longer time periods, and building more complex rollback paths that run when a step fails. At 1 MB, checkpoint payloads match the maximum payload size of asynchronous Lambda invocations",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9476b0ae7a4b9ba5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ecs-service-metrics/",
+      "title": "Amazon ECS adds LiveTaskCount and removes the charge for RunningTaskCount metric",
+      "content_text": "Today, Amazon Elastic Container Service (Amazon ECS) announces LiveTaskCount, a new ECS service metric that reports how many tasks are actively running in your service, available to all customers at no additional charge. Additionally, the existing RunningTaskCount metric in Amazon CloudWatch Container Insights no longer incurs a charge. LiveTaskCount reports the number of actively running ECS tasks across all desired states (ACTIVATING, RUNNING, and DEACTIVATING), including tasks still running w",
       "date_published": "2026-10-13T22:00:00Z",
       "date_modified": "2026-10-13T22:00:00Z",
       "authors": [
@@ -269,10 +600,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/9476b0ae7a4b9ba5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ecs-service-metrics/",
-      "title": "Amazon ECS adds LiveTaskCount and removes the charge for RunningTaskCount metric",
-      "content_text": "Today, Amazon Elastic Container Service (Amazon ECS) announces LiveTaskCount, a new ECS service metric that reports how many tasks are actively running in your service, available to all customers at no additional charge. Additionally, the existing RunningTaskCount metric in Amazon CloudWatch Container Insights no longer incurs a charge. LiveTaskCount reports the number of actively running ECS tasks across all desired states (ACTIVATING, RUNNING, and DEACTIVATING), including tasks still running w",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/2e5c2e5cbf1b57be",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-lambda-durable-gen-limit-increase/",
+      "title": "AWS Lambda durable functions increases durable operation and checkpoint payload limits",
+      "content_text": "Starting today, AWS Lambda durable functions increases the maximum number of durable operations per execution from 3,000 to 30,000, and the maximum checkpoint payload size from 256 KB to 1 MB. Higher operation limits let you safely do more work in a single execution including expanding iterative loops, polling for longer time periods, and building more complex rollback paths that run when a step fails. At 1 MB, checkpoint payloads match the maximum payload size of asynchronous Lambda invocations",
       "date_published": "2026-10-13T22:00:00Z",
       "date_modified": "2026-10-13T22:00:00Z",
       "authors": [
@@ -434,10 +765,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/3c0abbf09c4d35ec",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-premium-domains/",
-      "title": "Amazon Route 53 now supports registrations, transfers, and renewals for Premium Domains",
-      "content_text": "Amazon Route 53 Domains now supports Premium Domain Names. Customers can now search for, register, transfer, renew, and restore registry premium names directly through Route 53. Most domain registries set aside a selection of \"premium\" domains - names that are short, memorable, or in high demand. Previously, Route 53 Domains did not support these premium names, which meant customers who wanted them had to register and manage them through other registrars, fragmenting their portfolios across mult",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7863e8f402b4ff23",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/datasync-enhanced-openzfs-nfs42-metadata/",
+      "title": "AWS DataSync Enhanced mode now supports FSx for OpenZFS, NFS 4.2, and object metadata controls",
+      "content_text": "AWS DataSync Enhanced mode now supports Amazon FSx for OpenZFS as a source or destination location, NFS version 4.2 for on-premises NFS servers and FSx for OpenZFS file systems, and a new ObjectMetadata option for object storage transfers. Previously, customers transferring data to or from FSx for OpenZFS were limited to Basic mode. NFS 4.2 lets you transfer data from NFS servers on the latest version without reconfiguring them to an older protocol version. The ObjectMetadata option gives you co",
       "date_published": "2026-10-13T08:00:00Z",
       "date_modified": "2026-10-13T08:00:00Z",
       "authors": [
@@ -450,10 +781,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7863e8f402b4ff23",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/datasync-enhanced-openzfs-nfs42-metadata/",
-      "title": "AWS DataSync Enhanced mode now supports FSx for OpenZFS, NFS 4.2, and object metadata controls",
-      "content_text": "AWS DataSync Enhanced mode now supports Amazon FSx for OpenZFS as a source or destination location, NFS version 4.2 for on-premises NFS servers and FSx for OpenZFS file systems, and a new ObjectMetadata option for object storage transfers. Previously, customers transferring data to or from FSx for OpenZFS were limited to Basic mode. NFS 4.2 lets you transfer data from NFS servers on the latest version without reconfiguring them to an older protocol version. The ObjectMetadata option gives you co",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/3c0abbf09c4d35ec",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-premium-domains/",
+      "title": "Amazon Route 53 now supports registrations, transfers, and renewals for Premium Domains",
+      "content_text": "Amazon Route 53 Domains now supports Premium Domain Names. Customers can now search for, register, transfer, renew, and restore registry premium names directly through Route 53. Most domain registries set aside a selection of \"premium\" domains - names that are short, memorable, or in high demand. Previously, Route 53 Domains did not support these premium names, which meant customers who wanted them had to register and manage them through other registrars, fragmenting their portfolios across mult",
       "date_published": "2026-10-13T08:00:00Z",
       "date_modified": "2026-10-13T08:00:00Z",
       "authors": [
@@ -638,22 +969,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/87de56c78085fcbc",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-ports-sftp/",
-      "title": "AWS Transfer Family supports custom ports for public SFTP servers",
-      "content_text": "AWS Transfer Family now lets you configure custom ports on public SFTP servers and choose a communication mode for each port. You can support clients that require different ports or start SFTP connections differently on a single server. Previously, public SFTP servers accepted connections only on port 22 and used server-first communication. With this launch, you can configure up to three ports (22, or any port from 2000 to 65535), allowing you to use the port numbers your business or network req",
-      "date_published": "2026-10-12T08:00:00Z",
-      "date_modified": "2026-10-12T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/e970c81ddc22ed03",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/s3-express-one-zone-4-additional-regions/",
       "title": "Amazon S3 Express One Zone is now available in 4 additional AWS Regions",
@@ -670,10 +985,26 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/014d1734481283f1",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-elasticache-valkey-elasticache-insights/",
-      "title": "Amazon ElastiCache for Valkey introduces ElastiCache Insights",
-      "content_text": "Amazon ElastiCache for Valkey now features ElastiCache Insights, a pre-built dashboard in Amazon CloudWatch for your node-based clusters. ElastiCache Insights brings cluster health, memory, compute, network, command throughput, latency, keyspace, and errors into a single view sourced from a set of OpenTelemetry metrics that ElastiCache publishes automatically. You can use ElastiCache Insights to check the health of your cache workloads across a Region at a glance, detect when a node nears its me",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/87de56c78085fcbc",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-ports-sftp/",
+      "title": "AWS Transfer Family supports custom ports for public SFTP servers",
+      "content_text": "AWS Transfer Family now lets you configure custom ports on public SFTP servers and choose a communication mode for each port. You can support clients that require different ports or start SFTP connections differently on a single server. Previously, public SFTP servers accepted connections only on port 22 and used server-first communication. With this launch, you can configure up to three ports (22, or any port from 2000 to 65535), allowing you to use the port numbers your business or network req",
+      "date_published": "2026-10-12T08:00:00Z",
+      "date_modified": "2026-10-12T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/974fb3bb85e22e98",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/secrets-manager-managed-external-secrets-databricks-twilio/",
+      "title": "AWS Secrets Manager adds managed external secrets support for Databricks and Twilio",
+      "content_text": "AWS Secrets Manager now extends its managed external secrets capability to include Databricks and Twilio, enabling you to automatically rotate the credentials that your data pipelines and messaging applications use to call these services. You set up rotation directly from the AWS Management Console or API without writing or maintaining any custom rotation Lambda functions. Long-lived credentials often stay unrotated because rotation is hard to set up and hard to distribute safely to the applicat",
       "date_published": "2026-10-12T07:00:00Z",
       "date_modified": "2026-10-12T07:00:00Z",
       "authors": [
@@ -702,10 +1033,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/974fb3bb85e22e98",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/secrets-manager-managed-external-secrets-databricks-twilio/",
-      "title": "AWS Secrets Manager adds managed external secrets support for Databricks and Twilio",
-      "content_text": "AWS Secrets Manager now extends its managed external secrets capability to include Databricks and Twilio, enabling you to automatically rotate the credentials that your data pipelines and messaging applications use to call these services. You set up rotation directly from the AWS Management Console or API without writing or maintaining any custom rotation Lambda functions. Long-lived credentials often stay unrotated because rotation is hard to set up and hard to distribute safely to the applicat",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/014d1734481283f1",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-elasticache-valkey-elasticache-insights/",
+      "title": "Amazon ElastiCache for Valkey introduces ElastiCache Insights",
+      "content_text": "Amazon ElastiCache for Valkey now features ElastiCache Insights, a pre-built dashboard in Amazon CloudWatch for your node-based clusters. ElastiCache Insights brings cluster health, memory, compute, network, command throughput, latency, keyspace, and errors into a single view sourced from a set of OpenTelemetry metrics that ElastiCache publishes automatically. You can use ElastiCache Insights to check the health of your cache workloads across a Region at a glance, detect when a node nears its me",
       "date_published": "2026-10-12T07:00:00Z",
       "date_modified": "2026-10-12T07:00:00Z",
       "authors": [
@@ -835,10 +1166,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/703076f34106477a",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-c9g-m9g-instances-additional-regions/",
-      "title": "Amazon EC2 C9g, C9gd, M9g, and M9gd instances are now available in additional regions",
-      "content_text": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C9g and C9gd instances are available in the Asia Pacific (Malaysia, Seoul, Singapore) regions. Amazon EC2 M9g and M9gd instances are available in the Asia Pacific (Malaysia) and Europe (Spain) regions. These instances are powered by AWS Graviton5 processors, the fifth generation of custom-designed CPUs, which deliver the best price performance for a broad range of workloads running on Amazon EC2. C9g and C9gd instances and M9g and M9gd in",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/5c5a81844de55d61",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-m8id-asia-pacific-malaysia-sydney/",
+      "title": "Amazon EC2 M8id instances now available in Asia Pacific (Malaysia) and Asia Pacific (Sydney)",
+      "content_text": "Amazon Elastic Compute Cloud (Amazon EC2) M8id instances with up to 22.8 TB of local NVMe-based SSD block-level storage are now available in Asia Pacific (Malaysia) and Asia Pacific (Sydney). M8id instances are designed for workloads that require a balance of compute and memory resources along with high-speed, low-latency local block storage, including data logging, media processing, and medium-sized data stores. Amazon EC2 M8id instances offer 3 times more vCPUs, memory and local storage compar",
       "date_published": "2026-10-09T21:00:00Z",
       "date_modified": "2026-10-09T21:00:00Z",
       "authors": [
@@ -851,10 +1182,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/5c5a81844de55d61",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-m8id-asia-pacific-malaysia-sydney/",
-      "title": "Amazon EC2 M8id instances now available in Asia Pacific (Malaysia) and Asia Pacific (Sydney)",
-      "content_text": "Amazon Elastic Compute Cloud (Amazon EC2) M8id instances with up to 22.8 TB of local NVMe-based SSD block-level storage are now available in Asia Pacific (Malaysia) and Asia Pacific (Sydney). M8id instances are designed for workloads that require a balance of compute and memory resources along with high-speed, low-latency local block storage, including data logging, media processing, and medium-sized data stores. Amazon EC2 M8id instances offer 3 times more vCPUs, memory and local storage compar",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/703076f34106477a",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-c9g-m9g-instances-additional-regions/",
+      "title": "Amazon EC2 C9g, C9gd, M9g, and M9gd instances are now available in additional regions",
+      "content_text": "Starting today, Amazon Elastic Compute Cloud (Amazon EC2) C9g and C9gd instances are available in the Asia Pacific (Malaysia, Seoul, Singapore) regions. Amazon EC2 M9g and M9gd instances are available in the Asia Pacific (Malaysia) and Europe (Spain) regions. These instances are powered by AWS Graviton5 processors, the fifth generation of custom-designed CPUs, which deliver the best price performance for a broad range of workloads running on Amazon EC2. C9g and C9gd instances and M9g and M9gd in",
       "date_published": "2026-10-09T21:00:00Z",
       "date_modified": "2026-10-09T21:00:00Z",
       "authors": [
@@ -977,10 +1308,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/75e8b5b8ab8d80c7",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/s3-vectors-metadata-pre-filtering-in-govcloud-regions/",
-      "title": "Amazon S3 Vectors metadata pre-filtering is now available in AWS GovCloud (US) Regions",
-      "content_text": "Amazon S3 Vectors metadata pre-filtering is now available in the AWS GovCloud (US-East) and AWS GovCloud (US-West) Regions. Pre-filtering evaluates metadata filters before running similarity search, returning up to 5x more of the matching vectors when your filter is selective. S3 Vectors also adds a prefix match operator ($startsWith) for filtering on values like paths and URLs. Together, these improvements give your retrieval-augmented generation (RAG), agentic, and semantic-search applications",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/cc63765058456327",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-connect-customer-automated-checks-evaluation-forms/",
+      "title": "Amazon Connect Customer now provides automated checks to improve performance evaluation forms",
+      "content_text": "Amazon Connect Customer now suggests changes to performance evaluation forms that improve the accuracy of evaluations automatically filled by AI. While setting up an evaluation form, managers can run an automated check that compares the form against best practices with a single click. Managers then receive a list of evaluation questions that are missing context for AI to score reliably, along with suggestions to make them more specific. For example, the check might flag \"Did the agent provide a",
       "date_published": "2026-10-09T17:00:00Z",
       "date_modified": "2026-10-09T17:00:00Z",
       "authors": [
@@ -993,10 +1324,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/cc63765058456327",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-connect-customer-automated-checks-evaluation-forms/",
-      "title": "Amazon Connect Customer now provides automated checks to improve performance evaluation forms",
-      "content_text": "Amazon Connect Customer now suggests changes to performance evaluation forms that improve the accuracy of evaluations automatically filled by AI. While setting up an evaluation form, managers can run an automated check that compares the form against best practices with a single click. Managers then receive a list of evaluation questions that are missing context for AI to score reliably, along with suggestions to make them more specific. For example, the check might flag \"Did the agent provide a",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/75e8b5b8ab8d80c7",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/s3-vectors-metadata-pre-filtering-in-govcloud-regions/",
+      "title": "Amazon S3 Vectors metadata pre-filtering is now available in AWS GovCloud (US) Regions",
+      "content_text": "Amazon S3 Vectors metadata pre-filtering is now available in the AWS GovCloud (US-East) and AWS GovCloud (US-West) Regions. Pre-filtering evaluates metadata filters before running similarity search, returning up to 5x more of the matching vectors when your filter is selective. S3 Vectors also adds a prefix match operator ($startsWith) for filtering on values like paths and URLs. Together, these improvements give your retrieval-augmented generation (RAG), agentic, and semantic-search applications",
       "date_published": "2026-10-09T17:00:00Z",
       "date_modified": "2026-10-09T17:00:00Z",
       "authors": [
@@ -1064,10 +1395,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/520333ecd29bc622",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-c8gd-m8gd-additional-regions/",
-      "title": "Amazon EC2 C8gd and M8gd instances are now available in additional regions",
-      "content_text": "Amazon Elastic Compute Cloud (Amazon EC2) C8gd and M8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in additional regions. C8gd instances are now available in Europe (Stockholm), Asia Pacific (Mumbai), and Asia Pacific (Seoul). M8gd instances are now available in Europe (Stockholm), US West (N. California), and Asia Pacific (Singapore). These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-ba",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/bc3e0a455d9f6504",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/sagemaker-custom-tooling-blueprints/",
+      "title": "Amazon SageMaker Unified Studio now supports custom Tooling blueprints",
+      "content_text": "Amazon SageMaker Unified Studio now supports custom Tooling blueprints, giving domain administrators the ability to define the foundation of every project by using their own AWS CloudFormation templates. Administrators can tailor project environments to meet organization-specific requirements, such as IAM role names that comply with company naming standards or custom permissions boundaries instead of AWS managed policies. Amazon SageMaker Unified Studio administrators start by authoring a CloudF",
       "date_published": "2026-10-09T08:00:00Z",
       "date_modified": "2026-10-09T08:00:00Z",
       "authors": [
@@ -1080,10 +1411,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/bc3e0a455d9f6504",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/sagemaker-custom-tooling-blueprints/",
-      "title": "Amazon SageMaker Unified Studio now supports custom Tooling blueprints",
-      "content_text": "Amazon SageMaker Unified Studio now supports custom Tooling blueprints, giving domain administrators the ability to define the foundation of every project by using their own AWS CloudFormation templates. Administrators can tailor project environments to meet organization-specific requirements, such as IAM role names that comply with company naming standards or custom permissions boundaries instead of AWS managed policies. Amazon SageMaker Unified Studio administrators start by authoring a CloudF",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/520333ecd29bc622",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-c8gd-m8gd-additional-regions/",
+      "title": "Amazon EC2 C8gd and M8gd instances are now available in additional regions",
+      "content_text": "Amazon Elastic Compute Cloud (Amazon EC2) C8gd and M8gd instances with up to 11.4 TB of local NVMe-based SSD block-level storage are now available in additional regions. C8gd instances are now available in Europe (Stockholm), Asia Pacific (Mumbai), and Asia Pacific (Seoul). M8gd instances are now available in Europe (Stockholm), US West (N. California), and Asia Pacific (Singapore). These instances are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-ba",
       "date_published": "2026-10-09T08:00:00Z",
       "date_modified": "2026-10-09T08:00:00Z",
       "authors": [
@@ -1222,10 +1553,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/0737737e697aa100",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-rds-data-exfiltration/",
-      "title": "Amazon GuardDuty RDS Protection now detects data exfiltration and destruction in Aurora and RDS databases",
-      "content_text": "Amazon GuardDuty announces an expansion of RDS Protection that extends threat detection beyond login anomalies to identify data exfiltration and data destruction attacks targeting Amazon Aurora PostgreSQL and Amazon RDS for PostgreSQL databases. Available as RDS Protection for data activity, this new capability uses machine learning (ML)-based anomaly detection and integrated threat intelligence to continuously monitor database query patterns, helping you detect unusual data activity without req",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/db605dfc39d6e9d4",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-gamelift-servers-cpu-burstability",
+      "title": "Amazon GameLift Servers adds CPU burstability for container fleets",
+      "content_text": "Amazon GameLift Servers now supports CPU burstability for container fleets, giving game developers greater flexibility in how compute resources are allocated and consumed at runtime. Previously, container fleets relied on a fixed CPU value that simultaneously controlled both container packing density and imposed a hard runtime cap. This dual constraint forced developers to choose between efficient resource utilization and maintaining performance headroom for their game server workloads. Game ser",
       "date_published": "2026-10-08T08:00:00Z",
       "date_modified": "2026-10-08T08:00:00Z",
       "authors": [
@@ -1238,10 +1569,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/db605dfc39d6e9d4",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-gamelift-servers-cpu-burstability",
-      "title": "Amazon GameLift Servers adds CPU burstability for container fleets",
-      "content_text": "Amazon GameLift Servers now supports CPU burstability for container fleets, giving game developers greater flexibility in how compute resources are allocated and consumed at runtime. Previously, container fleets relied on a fixed CPU value that simultaneously controlled both container packing density and imposed a hard runtime cap. This dual constraint forced developers to choose between efficient resource utilization and maintaining performance headroom for their game server workloads. Game ser",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/0737737e697aa100",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-rds-data-exfiltration/",
+      "title": "Amazon GuardDuty RDS Protection now detects data exfiltration and destruction in Aurora and RDS databases",
+      "content_text": "Amazon GuardDuty announces an expansion of RDS Protection that extends threat detection beyond login anomalies to identify data exfiltration and data destruction attacks targeting Amazon Aurora PostgreSQL and Amazon RDS for PostgreSQL databases. Available as RDS Protection for data activity, this new capability uses machine learning (ML)-based anomaly detection and integrated threat intelligence to continuously monitor database query patterns, helping you detect unusual data activity without req",
       "date_published": "2026-10-08T08:00:00Z",
       "date_modified": "2026-10-08T08:00:00Z",
       "authors": [
@@ -1316,22 +1647,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/c5244bbd57c644de",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-config-new-resource-types",
-      "title": "AWS Config now supports 77 new resource types",
-      "content_text": "AWS Config now supports 77 additional AWS resource types across key services including Amazon EC2, Amazon S3 Files, and Amazon Q Business. This expansion provides greater coverage over your AWS environment, enabling you to more effectively discover, assess, audit, and remediate an even broader range of resources. With this launch, if you have enabled recording for all resource types, then AWS Config will automatically track these new additions. The newly supported resource types are also availab",
-      "date_published": "2026-10-07T15:00:00Z",
-      "date_modified": "2026-10-07T15:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/e71eba300a7a5ff5",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/awscapabilities-enhancements/",
       "title": "AWS Capabilities by Region now offers availability notifications for individual features and advanced filters",
@@ -1348,12 +1663,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/40e2829d1e0972d5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/claude-haiku-5-5-aws-govcloud/",
-      "title": "Claude Haiku 5.5 is now available on AWS GovCloud (US)",
-      "content_text": "AWS GovCloud (US) now offers Claude Haiku 5.5, the fastest and most efficient model in the Claude 5.5 family, built for subagents and high-volume, cost-sensitive work. According to Anthropic, it costs around 75% less than Claude Haiku 4.5 for most tasks. Claude Haiku 5.5 is Anthropic's most capable Haiku yet, a significant step up from Haiku 4.5 across coding, tool use, computer use, and agents. It's also the first Haiku with effort controls, so teams can tune cost against intelligence for each",
-      "date_published": "2026-10-07T14:00:00Z",
-      "date_modified": "2026-10-07T14:00:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/c5244bbd57c644de",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-config-new-resource-types",
+      "title": "AWS Config now supports 77 new resource types",
+      "content_text": "AWS Config now supports 77 additional AWS resource types across key services including Amazon EC2, Amazon S3 Files, and Amazon Q Business. This expansion provides greater coverage over your AWS environment, enabling you to more effectively discover, assess, audit, and remediate an even broader range of resources. With this launch, if you have enabled recording for all resource types, then AWS Config will automatically track these new additions. The newly supported resource types are also availab",
+      "date_published": "2026-10-07T15:00:00Z",
+      "date_modified": "2026-10-07T15:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -1368,6 +1683,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/claude-haiku-5-5-aws/",
       "title": "Claude Haiku 5.5 is now available on AWS",
       "content_text": "AWS now offers Claude Haiku 5.5, the fastest and most efficient model in the Claude 5.5 family, built for subagents and high-volume, cost-sensitive work. According to Anthropic, it costs around 75% less than Claude Haiku 4.5 for most tasks. Claude Haiku 5.5 is Anthropic's most capable Haiku yet, a significant step up from Haiku 4.5 across coding, tool use, computer use, and agents. It's also the first Haiku with effort controls, so teams can tune cost against intelligence for each task. Haiku 5.",
+      "date_published": "2026-10-07T14:00:00Z",
+      "date_modified": "2026-10-07T14:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/40e2829d1e0972d5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/claude-haiku-5-5-aws-govcloud/",
+      "title": "Claude Haiku 5.5 is now available on AWS GovCloud (US)",
+      "content_text": "AWS GovCloud (US) now offers Claude Haiku 5.5, the fastest and most efficient model in the Claude 5.5 family, built for subagents and high-volume, cost-sensitive work. According to Anthropic, it costs around 75% less than Claude Haiku 4.5 for most tasks. Claude Haiku 5.5 is Anthropic's most capable Haiku yet, a significant step up from Haiku 4.5 across coding, tool use, computer use, and agents. It's also the first Haiku with effort controls, so teams can tune cost against intelligence for each",
       "date_published": "2026-10-07T14:00:00Z",
       "date_modified": "2026-10-07T14:00:00Z",
       "authors": [
@@ -1708,10 +2039,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/8aa5a39c0270cef5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/",
-      "title": "AWS Client VPN now supports device posture assessment",
-      "content_text": "AWS Client VPN now supports device posture assessment, allowing you to verify that connecting user devices meet your security and compliance requirements before granting network access. This feature integrates with your existing device posture providers, so only trusted, compliant devices can access your AWS resources through Client VPN. Previously, Client VPN authenticated users through certificates, SAML, or Active Directory. With device posture assessment, you can now also integrate CrowdStri",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/129966256874e405",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-ruby-driver-wrapper-available/",
+      "title": "AWS Advanced Ruby Driver Wrapper is generally available",
+      "content_text": "The Amazon Web Services (AWS) Advanced Ruby Driver Wrapper is now generally available for use with Amazon RDS and Amazon Aurora PostgreSQL and MySQL-compatible databases. This advanced database driver reduces RDS Blue/Green switchover, Aurora Global database switchover and database failover times, improving application availability. Additionally, it supports multiple authentication mechanisms for your database, including AWS Secrets Manager authentication, and token-based authentication with AWS",
       "date_published": "2026-10-05T17:00:00Z",
       "date_modified": "2026-10-05T17:00:00Z",
       "authors": [
@@ -1724,10 +2055,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/129966256874e405",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-ruby-driver-wrapper-available/",
-      "title": "AWS Advanced Ruby Driver Wrapper is generally available",
-      "content_text": "The Amazon Web Services (AWS) Advanced Ruby Driver Wrapper is now generally available for use with Amazon RDS and Amazon Aurora PostgreSQL and MySQL-compatible databases. This advanced database driver reduces RDS Blue/Green switchover, Aurora Global database switchover and database failover times, improving application availability. Additionally, it supports multiple authentication mechanisms for your database, including AWS Secrets Manager authentication, and token-based authentication with AWS",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/8aa5a39c0270cef5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-client-vpn-device-posture/",
+      "title": "AWS Client VPN now supports device posture assessment",
+      "content_text": "AWS Client VPN now supports device posture assessment, allowing you to verify that connecting user devices meet your security and compliance requirements before granting network access. This feature integrates with your existing device posture providers, so only trusted, compliant devices can access your AWS resources through Client VPN. Previously, Client VPN authenticated users through certificates, SAML, or Active Directory. With device posture assessment, you can now also integrate CrowdStri",
       "date_published": "2026-10-05T17:00:00Z",
       "date_modified": "2026-10-05T17:00:00Z",
       "authors": [
@@ -1889,10 +2220,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7449eecb4180f7b3",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
-      "title": "Amazon Aurora DSQL now supports partial indexes",
-      "content_text": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost. Many tables hold a small working set alongside a much larger history, such as open orders among years of completed ones. Add a WHERE clause to CREATE INDEX to index just that working set. The index stays small as the table grows, and queries that target those rows read less data. A",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/454c9996a7cafc85",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
+      "title": "Amazon EKS and Amazon EKS Distro now support Kubernetes version 1.37",
+      "content_text": "Kubernetes version 1.37 introduced several new features and bug fixes, and AWS is excited to announce that you can now use Amazon Elastic Kubernetes Service (EKS) and Amazon EKS Distro to run Kubernetes version 1.37. Starting today, you can create new EKS clusters using version 1.37 and upgrade existing clusters to version 1.37 using the EKS console, the eksctl command line interface, or through an infrastructure-as-code tool. Kubernetes version 1.37 introduces several key improvements, promotin",
       "date_published": "2026-10-02T17:30:00Z",
       "date_modified": "2026-10-02T17:30:00Z",
       "authors": [
@@ -1905,10 +2236,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/454c9996a7cafc85",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
-      "title": "Amazon EKS and Amazon EKS Distro now support Kubernetes version 1.37",
-      "content_text": "Kubernetes version 1.37 introduced several new features and bug fixes, and AWS is excited to announce that you can now use Amazon Elastic Kubernetes Service (EKS) and Amazon EKS Distro to run Kubernetes version 1.37. Starting today, you can create new EKS clusters using version 1.37 and upgrade existing clusters to version 1.37 using the EKS console, the eksctl command line interface, or through an infrastructure-as-code tool. Kubernetes version 1.37 introduces several key improvements, promotin",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/7449eecb4180f7b3",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
+      "title": "Amazon Aurora DSQL now supports partial indexes",
+      "content_text": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost. Many tables hold a small working set alongside a much larger history, such as open orders among years of completed ones. Add a WHERE clause to CREATE INDEX to index just that working set. The index stays small as the table grows, and queries that target those rows read less data. A",
       "date_published": "2026-10-02T17:30:00Z",
       "date_modified": "2026-10-02T17:30:00Z",
       "authors": [
@@ -1999,10 +2330,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a5630b33e7b8b437",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
-      "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
-      "content_text": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority. With this feature, you can establish native connections to private endpoints in your VPC without requiring an intermediate Application Load Balancer. You can register a private CA certificate with gateway tar",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/8285b344850faa88",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/",
+      "title": "The AWS MCP Server is now available in six additional AWS Regions",
+      "content_text": "The AWS MCP Server is now available in six additional AWS Regions: Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Ireland), Europe (London), and US West (Oregon). The AWS MCP Server, part of the Agent Toolkit for AWS , is a managed Model Context Protocol server that gives AI coding agents a single interface to AWS APIs, so agents can discover and call AWS services without building and maintaining per-service integrations. With this expansion, customers in these Re",
       "date_published": "2026-10-02T08:00:00Z",
       "date_modified": "2026-10-02T08:00:00Z",
       "authors": [
@@ -2015,10 +2346,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/8285b344850faa88",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/",
-      "title": "The AWS MCP Server is now available in six additional AWS Regions",
-      "content_text": "The AWS MCP Server is now available in six additional AWS Regions: Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Ireland), Europe (London), and US West (Oregon). The AWS MCP Server, part of the Agent Toolkit for AWS , is a managed Model Context Protocol server that gives AI coding agents a single interface to AWS APIs, so agents can discover and call AWS services without building and maintaining per-service integrations. With this expansion, customers in these Re",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/a5630b33e7b8b437",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
+      "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
+      "content_text": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority. With this feature, you can establish native connections to private endpoints in your VPC without requiring an intermediate Application Load Balancer. You can register a private CA certificate with gateway tar",
       "date_published": "2026-10-02T08:00:00Z",
       "date_modified": "2026-10-02T08:00:00Z",
       "authors": [
@@ -2283,22 +2614,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/95de98e6baa05954",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
-      "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
-      "content_text": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of multiple exposures at once. Each remediation plan includes prioritization guidance (Critical, High, Medium, or Low), impact assessment, and detailed step-by-step instructions with examples in multiple",
-      "date_published": "2026-10-01T10:00:00Z",
-      "date_modified": "2026-10-01T10:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/2c0e03c7fb3cad43",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-cloudwatch-log-groups/",
       "title": "AWS Transfer Family now supports custom CloudWatch log groups for managed workflows",
@@ -2315,12 +2630,12 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/b091bbf9243ece90",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/eks-auto-mode-advanced-compute-config/",
-      "title": "Amazon EKS Auto Mode now supports advanced compute configuration",
-      "content_text": "Amazon Elastic Kubernetes Service (EKS) Auto Mode now lets you tune kubelet settings, Linux kernel sysctls, and hugepages directly in the NodeClass Kubernetes resource. You can now run workloads that require specific node tuning on EKS Auto Mode, which automates node provisioning, scaling, patching, and upgrades for you. With the new advancedCompute field in NodeClass, you can configure user namespaces for rootless container builds in CI/CD pipelines, tune eviction thresholds and container log r",
-      "date_published": "2026-10-01T08:00:00Z",
-      "date_modified": "2026-10-01T08:00:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/95de98e6baa05954",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
+      "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
+      "content_text": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of multiple exposures at once. Each remediation plan includes prioritization guidance (Critical, High, Medium, or Low), impact assessment, and detailed step-by-step instructions with examples in multiple",
+      "date_published": "2026-10-01T10:00:00Z",
+      "date_modified": "2026-10-01T10:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -2331,26 +2646,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/ee20cca0c8ecdcb9",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
-      "title": "AWS Budgets now supports email verification for notification subscribers",
-      "content_text": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts. When you add an email address to a budget notification, AWS Budgets sends a verification email to that address, and the address begins receiving notifications once the recipient confirms it. Verification applies to email addresses added from 9/30/26 onward. Addresses already subscribed on exis",
-      "date_published": "2026-10-01T08:00:00Z",
-      "date_modified": "2026-10-01T08:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/1343f1d09d516202",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/emr-serverless-terabyte-scale-shuffle/",
-      "title": "Serverless Storage on Amazon EMR Serverless now supports terabyte-scale shuffle",
-      "content_text": "Amazon EMR Serverless now offers enhanced serverless storage capabilities with support for up to 1TB shuffle operations, raising the previous 200 GB per-job limit. Amazon EMR Serverless makes it simple for data engineers and data scientists to run open-source big data analytics frameworks without configuring, managing, and scaling clusters or servers. This enhancement enables enterprise customers to run production-scale Apache Spark workloads that require processing large volumes of shuffle data",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/3ea9c1fe8a381ce5",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/",
+      "title": "Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall",
+      "content_text": "Route 53 Global Resolver and DNS Firewall now provide DNS analytics and insights through native Amazon CloudWatch integration. These new capabilities enable network administrators and security teams to gain full observability into DNS query patterns, monitor DNS Firewall rule effectiveness, detect anomalous activity, and optimize DNS infrastructure performance. DNS analytics and insights is available in all AWS Regions where Amazon CloudWatch, Route 53 Global Resolver, and DNS Firewall are avail",
       "date_published": "2026-10-01T08:00:00Z",
       "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
@@ -2379,10 +2678,10 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/3ea9c1fe8a381ce5",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-dns-analytics-insights/",
-      "title": "Announcing DNS analytics and insights for Route 53 Global Resolver and DNS Firewall",
-      "content_text": "Route 53 Global Resolver and DNS Firewall now provide DNS analytics and insights through native Amazon CloudWatch integration. These new capabilities enable network administrators and security teams to gain full observability into DNS query patterns, monitor DNS Firewall rule effectiveness, detect anomalous activity, and optimize DNS infrastructure performance. DNS analytics and insights is available in all AWS Regions where Amazon CloudWatch, Route 53 Global Resolver, and DNS Firewall are avail",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/1343f1d09d516202",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/emr-serverless-terabyte-scale-shuffle/",
+      "title": "Serverless Storage on Amazon EMR Serverless now supports terabyte-scale shuffle",
+      "content_text": "Amazon EMR Serverless now offers enhanced serverless storage capabilities with support for up to 1TB shuffle operations, raising the previous 200 GB per-job limit. Amazon EMR Serverless makes it simple for data engineers and data scientists to run open-source big data analytics frameworks without configuring, managing, and scaling clusters or servers. This enhancement enables enterprise customers to run production-scale Apache Spark workloads that require processing large volumes of shuffle data",
       "date_published": "2026-10-01T08:00:00Z",
       "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
@@ -2395,12 +2694,28 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/016f948cbf8743bb",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
-      "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
-      "content_text": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions. Previously, multi-Region support was available in the enabled-by-default commercial AWS Regions. This helps you improve the resilience of user access to AWS accounts and deploy AWS applications in the AWS Regions that be",
-      "date_published": "2026-10-01T07:00:00Z",
-      "date_modified": "2026-10-01T07:00:00Z",
+      "id": "tag:trvny.github.io,2024:feedseek/aws/ee20cca0c8ecdcb9",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
+      "title": "AWS Budgets now supports email verification for notification subscribers",
+      "content_text": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts. When you add an email address to a budget notification, AWS Budgets sends a verification email to that address, and the address begins receiving notifications once the recipient confirms it. Verification applies to email addresses added from 9/30/26 onward. Addresses already subscribed on exis",
+      "date_published": "2026-10-01T08:00:00Z",
+      "date_modified": "2026-10-01T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/b091bbf9243ece90",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/eks-auto-mode-advanced-compute-config/",
+      "title": "Amazon EKS Auto Mode now supports advanced compute configuration",
+      "content_text": "Amazon Elastic Kubernetes Service (EKS) Auto Mode now lets you tune kubelet settings, Linux kernel sysctls, and hugepages directly in the NodeClass Kubernetes resource. You can now run workloads that require specific node tuning on EKS Auto Mode, which automates node provisioning, scaling, patching, and upgrades for you. With the new advancedCompute field in NodeClass, you can configure user namespaces for rootless container builds in CI/CD pipelines, tune eviction thresholds and container log r",
+      "date_published": "2026-10-01T08:00:00Z",
+      "date_modified": "2026-10-01T08:00:00Z",
       "authors": [
         {
           "name": "AWS What's New"
@@ -2415,6 +2730,22 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-secrets-manager-security-posture-recommendations",
       "title": "Improve your secrets security posture with actionable recommendations in the AWS Secrets Manager console",
       "content_text": "​​​AWS Secrets Manager now integrates with the AWS Recommended Actions framework to surface contextual, actionable suggestions for your secrets directly in the Secrets Manager console. ​​ ​​With this launch, you can view tailored recommendations alongside your secrets to improve your security posture and follow best practices without leaving the console. For example, you can identify secrets that need rotation configured, use a customer managed key instead of default service-provided key for enc",
+      "date_published": "2026-10-01T07:00:00Z",
+      "date_modified": "2026-10-01T07:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/016f948cbf8743bb",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
+      "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
+      "content_text": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions. Previously, multi-Region support was available in the enabled-by-default commercial AWS Regions. This helps you improve the resilience of user access to AWS accounts and deploy AWS applications in the AWS Regions that be",
       "date_published": "2026-10-01T07:00:00Z",
       "date_modified": "2026-10-01T07:00:00Z",
       "authors": [
@@ -2463,22 +2794,6 @@
           "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/fc935ffd0aa689f4",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-cmi-g7/",
-      "title": "Amazon WorkSpaces Core Managed Instances adds support for NVIDIA Blackwell GPU",
-      "content_text": "Amazon WorkSpaces Core Managed Instances now supports Graphics G7 instances, powered by NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs and Intel Xeon 6 processors. G7 instances deliver up to 2.1X better performance for graphics-intensive workloads compared to previous generation G6 instances. With Graphics G7, customers can run demanding professional applications such as CAD/CAM, 3D rendering, scientific visualization, video editing, and AI-assisted design workflows at higher fidelity and fra",
-      "date_published": "2026-09-30T23:59:00Z",
-      "date_modified": "2026-09-30T23:59:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
       ]
     },
     {
@@ -4207,52 +4522,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/bbe0fac3e5a8955d",
-      "url": "https://repost.aws/articles/ARvQo9X9EqROqf-thQJzD2pQ/resolving-eks-pod-ip-exhaustion-caused-by-vpc-cni-warm-pool-defaults",
-      "title": "Resolving EKS Pod IP exhaustion caused by VPC CNI warm pool defaults",
-      "content_text": "Learn why default Amazon Virtual Private Cloud (Amazon VPC) CNI warm pool settings silently exhaust Amazon EKS Pod subnet IP addresses and how to resolve the issue with warm pool optimization and enhanced subnet discovery.",
-      "date_published": "2026-09-10T17:52:58Z",
-      "date_modified": "2026-09-10T17:52:58Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/04a90b692b18a3f5",
-      "url": "https://repost.aws/articles/ARrg2PaV5DQLG4HbBbowRNmg/why-doesn-t-my-amazon-documentdb-storage-shrink-after-i-delete-documents",
-      "title": "Why doesn't my Amazon DocumentDB storage shrink after I delete documents?",
-      "content_text": "I deleted documents from my Amazon DocumentDB (with MongoDB compatibility) cluster, but the storage size (VolumeBytesUsed) did not decrease. I want to understand why the storage is not being reclaimed and how to reduce my cluster's storage consumption.",
-      "date_published": "2026-09-10T17:41:18Z",
-      "date_modified": "2026-09-10T17:41:18Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/453fa7d179f0245c",
       "url": "https://aws.amazon.com/blogs/opensource/introducing-pizza-bot-an-open-source-inbox-for-ai-agents-that-work-in-the-background/",
       "title": "Introducing Pizza Bot, an open source inbox for AI agents that work in the background",
@@ -4271,75 +4540,6 @@
       "attachments": [
         {
           "url": "https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/09/09/pizza-bot-figure-1.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/2b81470d749bb704",
-      "url": "https://repost.aws/articles/ARNtYRWIq3TkGGoAmjcejtaw/why-am-i-seeing-high-iops-or-increased-i-o-cost-on-my-amazon-documentdb-cluster",
-      "title": "Why am I seeing high IOPS or increased I/O cost on my Amazon DocumentDB cluster?",
-      "content_text": "*I notice high IOPS or unexpectedly high I/O costs on my Amazon DocumentDB cluster. I want to identify the root cause and reduce unnecessary I/O operations.*",
-      "date_published": "2026-09-10T14:11:23Z",
-      "date_modified": "2026-09-10T14:11:23Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/98ce683d3b618127",
-      "url": "https://repost.aws/articles/ARNs1DCNUjSf2_-U6-0v859Q/move-file-data-at-scale-aws-datasync-enhanced-mode-with-amazon-efs-and-fsx-for-lustre",
-      "title": "Move file data at scale: AWS DataSync Enhanced mode with Amazon EFS and FSx for Lustre",
-      "content_text": "Semiconductor and high-tech HPC uses FSx for Lustre as high-throughput scratch for simulation and EDA. Enhanced-mode DataSync moves large design and simulation datasets reliably at scale between Amazon EFS, FSx for Lustre, and object stores. Typical uses:\n\n- Staging EDA/simulation input datasets into FSx for Lustre scratch\n- Migrating design data between file systems and object storage\n- Repatriating verification/simulation results from Lustre to durable storage",
-      "date_published": "2026-09-10T05:17:05Z",
-      "date_modified": "2026-09-10T05:17:05Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/85f553a08b52c388",
-      "url": "https://repost.aws/articles/ARnY_SfysfQduAZL_b1MueZQ/running-blackwell-class-gpu-hpc-on-aws-parallel-computing-service-pcs-with-p6e-gb200-ultraservers-and-slurm",
-      "title": "Running Blackwell-class GPU HPC on AWS Parallel Computing Service (PCS) with P6e-GB200 UltraServers and Slurm",
-      "content_text": "This pattern is a direct fit for semiconductor and high-tech HPC: EDA verification, physical/logic simulation, and large-scale AI training all run on Slurm and increasingly need Blackwell-class GPUs. AWS PCS gives EDA/HPC teams the familiar Slurm experience without operating the controller, while P6e-GB200 UltraServers supply rack-scale GPU capacity.",
-      "date_published": "2026-09-10T05:11:19Z",
-      "date_modified": "2026-09-10T05:11:19Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
       ]
@@ -4368,29 +4568,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/8d8a07d490bbc7e5",
-      "url": "https://repost.aws/articles/ARzu2OPWTbShG3J_5ZNov7HQ/aws-finops-agent-four-questions-that-turn-a-vague-prompt-into-a-reliable-report",
-      "title": "AWS FinOps Agent: Four Questions That Turn a Vague Prompt Into a Reliable Report",
-      "content_text": "This article gives you a repeatable structure for writing AWS FinOps Agent instructions for spend summaries and cost anomaly investigations, in HTML, PDF, or PPT. Every effective instruction we tested has four parts: what to compute, how to break it down, what threshold bounds it, and who it's for. Scheduled instructions decay in two specific, observable ways over time. This article shows both failure modes with real before/after output, and gives you one instruction clause that catches",
-      "date_published": "2026-09-09T21:03:16Z",
-      "date_modified": "2026-09-09T21:03:16Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/9f7613cb82508792",
       "url": "https://github.com/aws/aws-cli/releases/tag/2.36.42",
       "title": "AWS CLI 2.36.42",
@@ -4414,75 +4591,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/a087d4dabefb7fb5",
-      "url": "https://repost.aws/articles/ARBTcM3jl0TLmglSE7eQUerw/deep-dive-on-ecs-capacityproviderreservation-metric",
-      "title": "Deep Dive on ECS - CapacityProviderReservation metric",
-      "content_text": "The purpose of this article is to help to further understand how CapacityProviderReservation metric works",
-      "date_published": "2026-09-09T16:02:32Z",
-      "date_modified": "2026-09-09T16:02:32Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/bea1be389e1d4151",
-      "url": "https://repost.aws/articles/ARtz-fbc28TrWJwQUJGaL7qw/cost-optimization-and-governance-for-centralized-traffic-inspection-with-transit-gateway-and-network-firewall",
-      "title": "Cost optimization and governance for centralized traffic inspection with Transit Gateway and Network Firewall",
-      "content_text": "Centralized traffic inspection with Transit Gateway and Network Firewall often inspects far more than necessary, and per-GB charges dominate at scale. This post shows how three Transit Gateway features (native firewall attachment, Policy-Based Routing, and metering policies) work together to inspect only what truly needs it and charge the rest back to the owners who drive it.",
-      "date_published": "2026-09-09T08:36:36Z",
-      "date_modified": "2026-09-09T08:36:36Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/2fa451cc1bc4289d",
-      "url": "https://repost.aws/articles/ARa4bCKj5WQ3i61tGkEL0jPQ/use-claude-desktop-with-amazon-bedrock",
-      "title": "Use Claude Desktop with Amazon Bedrock",
-      "content_text": "Configure Claude app to use Amazon Bedrock",
-      "date_published": "2026-09-09T07:01:28Z",
-      "date_modified": "2026-09-09T07:01:28Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/60d19951ff18a46c",
       "url": "https://aws.amazon.com/blogs/opensource/build-full-stack-aws-applications-in-minutes-with-ai-powered-scaffolding/",
       "title": "Build full-stack AWS applications in minutes with AI-powered scaffolding",
@@ -4501,29 +4609,6 @@
       "attachments": [
         {
           "url": "https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/09/08/nx-plugin-homepage-agentic-app-1.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/30ee29d0c7e1349f",
-      "url": "https://repost.aws/articles/ARUL1hdoI-QbWP42aoUw1EiQ/catching-a-stalled-redshift-zero-etl-integration-that-integrationlag-won-t-show",
-      "title": "Catching a stalled Redshift zero-ETL integration that IntegrationLag won't show",
-      "content_text": "This article explains a monitoring gap in Redshift zero-ETL replication: the IntegrationLag CloudWatch metric measures how far behind replication is, but it does not signal when replication has stopped, so a stalled integration can go unnoticed while downstream reports run against stale data. It introduces the two metrics added in Redshift patch 204, IntegrationLatestDetectedChange and IntegrationLatestAppliedChange, and shows how to read them as a pair to tell a stall apart from an idle source",
-      "date_published": "2026-09-08T21:00:08Z",
-      "date_modified": "2026-09-08T21:00:08Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
       ]
@@ -4570,98 +4655,6 @@
       "attachments": [
         {
           "url": "https://d2908q01vomqb2.cloudfront.net/0716d9708d321ffb6a00818614779e779925365c/2026/09/03/2026-smithy-standalone-types.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/7f53941a4c560f3f",
-      "url": "https://repost.aws/articles/ARDCuDbAyIRWCfsg7Hq_ypFQ/deploy-litellm-based-multi-provider-generative-ai-gateway-on-aws-solution",
-      "title": "Deploy LiteLLM based Multi-Provider Generative AI Gateway on AWS solution",
-      "content_text": "Step by step guide to deploy LiteLLM based LLM Gateway to AWS",
-      "date_published": "2026-09-08T14:30:18Z",
-      "date_modified": "2026-09-08T14:30:18Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/811342b392f4a0da",
-      "url": "https://repost.aws/articles/ARnzCnUdsKTBi35w1A5r2Gcw/automating-service-quota-increases-for-newly-vended-aws-accounts",
-      "title": "Automating service quota increases for newly vended AWS accounts",
-      "content_text": "How to pre-approve service quotas for newly vended AWS accounts, so teams stop filing the same increase cases. Covers Service Quotas organization request templates (native, no code) and the four limits that decide whether they are enough — then Terraform and boto3 snippets for the API route: the resource, the multi-Region trap that fails silently, global-quota handling, the GetServiceQuota pre-check, IAM, and where it goes in AFT.",
-      "date_published": "2026-09-08T09:02:19Z",
-      "date_modified": "2026-09-08T09:02:19Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/07d5eee3ae8f7b3f",
-      "url": "https://repost.aws/articles/ARg8GtUq77SPCjZCgxrO_lPg/master-and-internal-user-accounts-reset-on-amazon-opensearch-service-why-snapshots-don-t-restore-them-and-what-to-prepare",
-      "title": "Master and internal user accounts reset on Amazon OpenSearch Service: why snapshots don't restore them, and what to prepare",
-      "content_text": "On an Amazon OpenSearch Service domain with fine-grained access control, the master user password may stop working and your internal users and role mappings may disappear. Hourly automated snapshots do not bring this data back, because the official restore procedure excludes the security system index that holds it. This article explains why, what recovery is possible, and what to prepare beforehand. It is intended for operators of such domains.",
-      "date_published": "2026-09-08T02:54:46Z",
-      "date_modified": "2026-09-08T02:54:46Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/341c829e443e9075",
-      "url": "https://repost.aws/articles/ARL8Ju3yYHTtuVAq9hhfl2ZQ/how-to-delete-amazon-connect-queues-in-bulk-using-the-aws-cli",
-      "title": "How to delete Amazon Connect queues in bulk using the AWS CLI",
-      "content_text": "A step-by-step guide for Amazon Connect administrators to delete one or more queues programmatically using the AWS CLI. It covers the full dependency-resolution workflow needed to avoid the ResourceInUseException error: disassociating routing profiles, replacing default outbound queues, removing quick connect associations, and deleting queue-type quick connects that reference the target queue.",
-      "date_published": "2026-09-08T02:26:37Z",
-      "date_modified": "2026-09-08T02:26:37Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
       ]

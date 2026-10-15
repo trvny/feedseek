@@ -8,6 +8,75 @@
   "icon": "https://feeds.trfny.com/favicon?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/b383c147896f6392",
+      "url": "https://huggingface.co/posts/yanghaojin/464380177447232",
+      "title": "Dear all,",
+      "content_text": "Dear all, we are happy to share that gbx v0.8.0, our local inference engine for Apple Silicon, runs the 105 GB Qwen3.8-Flash-Next on a 48 GB MacBook Pro by streaming MoE experts from the SSD. When the model fits in memory, it decodes up to 50% faster than omlx, Ollama and mlx-lm on the same Mac, with output identical token for token. Full write-up: https://medium.com/@semamediadata/running-a-105-gb-qwen-on-a-48-gb-macbook-pro-f116fe493a49 Download gbx: https://github.com/GreenBitAI/gbx-lm/releases Models: https://huggingface.co/collections/GreenBitAI/greenbitai-for-apple-silicon",
+      "date_published": "2026-10-15T04:05:32Z",
+      "date_modified": "2026-10-15T04:05:32Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/648317e60d94eb5528a0aa75/clpZxEYAnL5HaXNIi9N0G.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/648317e60d94eb5528a0aa75/clpZxEYAnL5HaXNIi9N0G.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/b2017948ae41045f",
+      "url": "https://huggingface.co/posts/DedeProGames/230258338060020",
+      "title": "Meet Supra2.5-Ultra-Preview-001. 230M parameters, ~40.4B training tokens.",
+      "content_text": "Meet Supra2.5-Ultra-Preview-001. 230M parameters, ~40.4B training tokens. SupraLabs has released the first preview of its Supra2.5-Ultra family: a compact, Llama-style base model for text completion and small-model experimentation. What's inside? • 230M parameters • 32 transformer layers • 2,048-token context window • Grouped Query Attention: 12 attention heads, 4 KV heads • 49,152-token vocabulary • SwiGLU activation, RoPE and tied embeddings • BF16 weights and Hugging Face Transformers support • Apache 2.0 license Training The model was trained on approximately 40.4B tokens from FineWeb-Edu, DCLM-Baseline and FineMath using a single A100 SXM. Reported zero-shot results • HellaSwag: 37.18%",
+      "date_published": "2026-10-15T04:05:32Z",
+      "date_modified": "2026-10-15T04:05:32Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/230258338060020.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/230258338060020.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/af824640bee79b98",
+      "url": "https://huggingface.co/posts/Jiaqi-hkust/175094734928654",
+      "title": "We open-sourced Game-Creation-Agents — an agentic system that turns a one-line game idea into a playable browser game. 🎮",
+      "content_text": "We open-sourced Game-Creation-Agents — an agentic system that turns a one-line game idea into a playable browser game. 🎮 Why it matters: - It lowers the barrier: you don’t need a full studio or deep engine skills to start. - It compresses prototyping from weeks to hours. - It lets creators test more ideas, faster, and focus on what’s actually fun. - It brings game creation closer to a conversation — and makes it accessible to more people. This isn’t just about generating code. It’s about giving more people the power to bring their ideas to life. Try it: https://github.com/Tencent/Game-Creation-Agents #AI #GameDev #OpenSource",
+      "date_published": "2026-10-15T04:05:32Z",
+      "date_modified": "2026-10-15T04:05:32Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Jiaqi-hkust/175094734928654.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Jiaqi-hkust/175094734928654.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/769ef60d56842c59",
       "url": "https://huggingface.co/posts/aryan-sabi/215251158855654",
       "title": "tl;dr: new qwen finetune that simultaneously pushes the frontiers of small model capability and reasoning efficiency.",
@@ -4723,29 +4792,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/c3b187f319504fce",
-      "url": "https://huggingface.co/posts/SeaWolf-AI/394803173780722",
-      "title": "Ask a language model how confident it is and you get an AUC of 0.5000. Exactly a coin flip. We measured it across 2,018 items.",
-      "content_text": "Ask a language model how confident it is and you get an AUC of 0.5000. Exactly a coin flip. We measured it across 2,018 items. FINAL-Bench/gate-tetris https://huggingface.co/blog/FINAL-Bench/ztc Collection: https://huggingface.co/collections/FINAL-Bench/ztc-models-jev-ecosystems Zero-Token Confidence (ZTC) reads it. One forward pass over the model's hidden state returns a calibrated probability that the answer is correct. Zero generated tokens. It sits at the top of the shared board. Same 2,018 items, same harness for every entry: ZTC on Darwin-397B 0.7394, JEV 0.7335, ZTC-Judge-27B 0.7255, a surface baseline that reads only answer length and formatting 0.7036, Lynx 8B 0.5157, the model's ow",
-      "date_published": "2026-09-20T22:40:54Z",
-      "date_modified": "2026-09-20T22:40:54Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/9oi7Xl3e8Hgp2hbK9FtvI.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-uploads.huggingface.co/production/uploads/6905bc786cb49b1f11d32728/9oi7Xl3e8Hgp2hbK9FtvI.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/ae803b8cc674f867",
       "url": "https://huggingface.co/posts/snkii/313606035865585",
       "title": "Sori-1B-MCQ — a 1B audio-language model that answers your multiple-choice questions about what it hears: one of your options, a probability for each, and a confidence. Inspired by TypeSafe's System One model, Jev.",
@@ -4764,52 +4810,6 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/snkii/313606035865585.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/5867bdf141c4923b",
-      "url": "https://huggingface.co/posts/Banaxi-Tech/117942966324202",
-      "title": "We've released",
-      "content_text": "We've released @ BananaMindBot . Most things you do on HuggingFace, BananaMindBot can do. Fast Mention @ BananaMindBot on a model, dataset, Space discussion, paper, blog comment, or top-level post and it'll reply there. It's powered by North Code Mini (Qwen3.8 27B, with GPT OSS 120B as fallback). A few things it can do: Search for models and datasets Look up users and orgs and see what they've published Read model cards, configs, dataset files, blog posts, and org profiles Answer questions about what it finds Write and run its own code in a locked-down sandbox when it needs to verify something Check things like a model's real parameter count from the safetensors headers instead of just repea",
-      "date_published": "2026-09-20T19:01:28Z",
-      "date_modified": "2026-09-20T19:01:28Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Banaxi-Tech/117942966324202.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Banaxi-Tech/117942966324202.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/599a05bfed8eb388",
-      "url": "https://huggingface.co/posts/KlondikeDev/410518481317901",
-      "title": "Important Boris-2 news:",
-      "content_text": "Important Boris-2 news: Boris-2 is 30B out of 200B tokens in, and it is severely behind its competitors in training. We have determined the bug to be a configuration error. Boris-2 has been in training for ~1 week, and was projected to finish on November 3rd, 2026. We are unfortunately going to restart training, with proper configuration. The new projected finish date is ~15-18th of November. We apologize for the delay.",
-      "date_published": "2026-09-20T11:46:29Z",
-      "date_modified": "2026-09-20T11:46:29Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/KlondikeDev/410518481317901.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/KlondikeDev/410518481317901.png",
           "mime_type": "image/png"
         }
       ]
