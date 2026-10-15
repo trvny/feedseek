@@ -51,19 +51,19 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](ht
 ## 📰 Mininewsy
 
 <!--README_FEED:START-->
-- [PREVIEW: Reigning European Champions PSG Set for Etihad Clash with Man City](https://sports.yahoo.com/articles/preview-reigning-european-champions-psg-212500451.html)
-- [Russo and Wiegman hail ruthless England performance as Lionesses progress to face Ukraine for place at World Cup](https://sports.yahoo.com/articles/russo-wiegman-hail-ruthless-england-212500852.html)
-- [“I’m Not Going to Lie” Bulldogs DB Admits He Would Want Pass Interference Called Against Georgia](https://sports.yahoo.com/articles/m-not-going-lie-bulldogs-212452679.html)
-- [Karun Nair's unbeaten 81 keeps Karnataka afloat after top-order collapse against Andhra](https://sports.yahoo.com/articles/karun-nairs-unbeaten-81-keeps-212400094.html)
-- [Goal crisis & in drop zone - so why is Spurs' £60m striker stuck in U21s?](https://sports.yahoo.com/articles/goal-crisis-drop-zone-why-203922875.html)
-- [Two Key Takeaways After Texans’ First Win of the Season vs Titans in Week 5](https://sports.yahoo.com/articles/two-key-takeaways-texans-first-212012317.html)
+- [Chwila nieuwagi na ulicy Matejki. Policja ukarała 39-latkę - Przelom.pl](https://news.google.com/atom/articles/CBMiqAFBVV95cUxOYWVucmkycVFvSGk3cS0ydXc2dXFtelNHY3VNMU5RRU42RlpRbjNvYndldjVIenJXU1c4V0o1eC00MWtsMkc2LUZNLW9XRUx3VzItYV9VV28xeXE0RHMyQTR6NUlzVzZnVXl3Z2NoT0ZLenNmRnBQUVVkdktaOGp2clROQ1U4cjZEWGdmaFpLODNYSUdLOUZhby02aTFkanBCSHNkNll3M2o?oc=5)
+- [kanarek-companion created review 5537758476 on PR #170 in travnie/Kanarek](https://github.com/travnie/Kanarek/pull/170?feedseek_event=17342195699#pullrequestreview-5537758476)
+- [gptomek created review 5537630750 on PR #170 in travnie/Kanarek](https://github.com/travnie/Kanarek/pull/170?feedseek_event=17341748350#pullrequestreview-5537630750)
+- [Volvo Cars expands automated driving partnership with Nvidia](https://www.reuters.com/business/autos-transportation/volvo-cars-expands-automated-driving-partnership-with-nvidia-2026-10-15/)
+- [Kolej wróci na trasę Trzebinia–Wadowice? Jest nowa deklaracja i ważny ruch PKP PLK - Przelom.pl](https://news.google.com/atom/articles/CBMivgFBVV95cUxQM3J3Y2VQblVnQ3NPR1hsdEVuSmNKd0JURWNIQkRyNkZsa2lWNHVIQWNTX3NZY3ZJWURvMm0xZ1lzYlRjM0gzNEY0aHYyNlF1MmNST3lmS2ExX3M2cnFPSFZCcHhyU1ZVYW1oNXZ5ZDNJVGluN0xWQTllZUhleURpNVBHMTZrSHJqcTI1NmRZVnhkUnNXc1JrZkxwV1VFTElOcERCdWpqbDdaWU5CVjdsX2VubEVDbEpsdS0tb1dR?oc=5)
+- [gptomek created review 5537371072 on PR #168 in travnie/Kanarek](https://github.com/travnie/Kanarek/pull/168?feedseek_event=17340832619#pullrequestreview-5537371072)
 <!--README_FEED:END-->
 
 ## 💬 Cytat z szuflady
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝If you gain, you gain all. If you lose, you lose nothing. Wager then, without hesitation, that He exists. — Blaise Pascal❞</i>
+<i>❝“Perl: The only language that looks the same before and after RSA encryption.”— Keith Bostic❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
