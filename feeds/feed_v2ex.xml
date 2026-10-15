@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-15T10:12:53.231770+00:00</updated>
+  <updated>2026-10-15T12:02:53.108933+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,35 +15,34 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/a94f8b268a656b19</id>
-    <title>DeepSeek 对上午的故障赔付赠金我拿了 33 块钱</title>
-    <updated>2026-10-15T10:03:14+00:00</updated>
-    <content>DeepSeek 对上午的故障赔付赠金我拿了 33 块钱</content>
-    <link href="https://www.v2ex.com/t/1249115#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/5b40cc962de09af0</id>
+    <title>请各位安利节点啊</title>
+    <updated>2026-10-15T12:01:48+00:00</updated>
+    <content>年底要换节点了，普通消费人群，能看视频 500 兆封顶，白天不卡顿就好，价格当然越便宜越好。 麻烦各位个人安利一下，拒广告</content>
+    <link href="https://www.v2ex.com/t/1249138#reply0" rel="alternate"/>
     <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-15T10:03:14+00:00</published>
+    <published>2026-10-15T12:01:48+00:00</published>
     <media:group>
-      <media:content url="https://i.imgur.com/eZw3BsQ.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.imgur.com/eZw3BsQ.png"/>
+      <media:content url="https://cdn.v2ex.com/avatar/6e67/691b/11704_large.png?m=1666943490" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/6e67/691b/11704_large.png?m=1666943490"/>
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://i.imgur.com/eZw3BsQ.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/6e67/691b/11704_large.png?m=1666943490" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/a8982639d2c2a47f</id>
-    <title>要经常给文章批量配图，把生图 → 传图床 → 回链串成了一条命令（附一个 PicList 的冷用法）</title>
-    <updated>2026-10-15T10:02:08+00:00</updated>
-    <content>最近要给一批文章配封面和插图，如果是 md 文档里面一张张上传，有点麻烦，如果还需要一张张在网页里生图、下载、再拖进图床、复制链接贴回文章，更烦。于是用了一套一条命令跑完的流程，记录一下，顺便遇到一个 Clash 的坑。 目标很简单： 一条命令 = 生成图片 → 存本地 → 上传图床 → 吐回一个公开 CDN 链接 ，直接贴进文章。 生图这步 我手上有个 GPT Image 2.5 的生图接口，是异步任务那种：POST 一个 prompt 拿到 taskId ，再轮询到 success ，拿结果图地址下载下来。这步没什么好说的，大部分生图 API 都是这个套路（ createTask + 轮询，或者挂 webhook ）。 传图床这步 我一直用 PicList （ PicGo 那一类图床工具）管各个图床的配置。它除了 GUI 拖拽， 还常驻一个本地 HTTP 服务 ，默认 127.0.0.1:36677 。直接 POST 一个本地文件路径给它，它就按你当前选的图床上传，返回公开链接： curl -X POST http://127.0.0.1:36677/upload \
-  -H "</content>
-    <link href="https://www.v2ex.com/t/1249113#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/4263f2c466edffd5</id>
+    <title>做了一个 Durable Agent Harness 支持持久化任务崩溃恢复与断点续跑</title>
+    <updated>2026-10-15T11:41:17+00:00</updated>
+    <content>EverAgent 是一个面向长时间 AI 任务的可持久化、可恢复 Agent Harness 。 EverAgent 将 Agent 的执行生命周期纳入持久化 Harness：对话、模型轮次、工具调用、排队输入、checkpoint 和 Agent 状态都会先提交到 SQLite ，再由 TUI 和 Web 任务控制台呈现。 欢迎 star: https://github.com/oujingzhou/everagent 它主要解决什么问题？ 假设一个 AI Agent 需要： 分析代码库。 修改多个文件。 执行测试。 根据测试结果修复问题。 最后生成总结。 普通的进程内 Agent 循环容易遇到以下问题： 进程崩溃 ：对话和执行进度可能只存在于内存中。 任务中断 ：重新启动后难以准确判断之前执行到了哪一步。 重复执行 ：恢复时可能重复调用模型或工具。 状态不一致 ：对话记录、工具结果和任务状态可能分别更新。 EverAgent 从执行层解决这些问题。它不只是保存聊天记录，而是持久化任务本身的完整执行生命周期。 核心能力 持久化对话和执行状态 EverAgent 将对话、Agent </content>
+    <link href="https://www.v2ex.com/t/1249133#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-15T10:02:08+00:00</published>
+    <published>2026-10-15T11:41:17+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/c6fe10dfe32a51a5d0b7093e80fb9a35?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/c6fe10dfe32a51a5d0b7093e80fb9a35?s=73&amp;d=retro"/>
+      <media:content url="https://cdn.v2ex.com/gravatar/3b70dbd2a269565faab4293e47c740ec?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/3b70dbd2a269565faab4293e47c740ec?s=73&amp;d=retro"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/c6fe10dfe32a51a5d0b7093e80fb9a35?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/3b70dbd2a269565faab4293e47c740ec?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/25a1681c737336c0</id>
