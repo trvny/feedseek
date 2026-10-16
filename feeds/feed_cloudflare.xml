@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-15T21:41:46.269789+00:00</updated>
+  <updated>2026-10-16T00:41:05.364823+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,16 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e59951b564b815f0</id>
+    <title>Audit Logs v2 ingestion is missing multiple Cloudflare products</title>
+    <updated>2026-10-16T00:36:52+00:00</updated>
+    <content>Oct 16 , 00:36 UTC Resolved - This incident has been resolved. Oct 13 , 11:45 UTC Monitoring - We are continuing to monitor for any further issues. Oct 13 , 10:14 UTC Identified - Since 2026-10-12 at 16:57:24 UTC, audit logs from multiple Cloudflare products are not ingested into the audit logs v2 database anymore. V1 audit logs are not affected</content>
+    <link href="https://www.cloudflarestatus.com/incidents/hpmrg8d5vwr6" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-16T00:36:52+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/709a610c66446d05</id>
     <title>Pages.dev sites experiencing availability issues in Norway</title>
@@ -383,6 +393,21 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4383bbf5099d17ad</id>
+    <title>Access, Cloudflare One - Account context in Access deny redirects</title>
+    <updated>2026-10-14T00:00:00+00:00</updated>
+    <content>App-aware Cloudflare Access deny redirects include an account_id query parameter when account context is available. Custom block pages can use it to identify the account that owns the application represented by kid . For example, a custom redirect can include: https://denied.example.com/?kid=&lt;APP_AUD&gt;&amp;account_id=&lt;ACCOUNT_ID&gt;&amp;original_url=app.example.com%2Fadmin The account ID helps block-page integrations look up applications through account-scoped APIs. It is context, not proof of authenticatio</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-14T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ddd1ebaeb376653</id>
     <title>Network Performance Issues in LAX</title>
     <updated>2026-10-13T22:44:56+00:00</updated>
@@ -450,16 +475,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <link href="https://www.cloudflarestatus.com/incidents/gqm2xrm9wk8t" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-13T14:56:50+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e59951b564b815f0</id>
-    <title>Audit Logs v2 ingestion is missing multiple Cloudflare products</title>
-    <updated>2026-10-13T11:45:43+00:00</updated>
-    <content>Oct 13 , 11:45 UTC Monitoring - We are continuing to monitor for any further issues. Oct 13 , 10:14 UTC Identified - Since 2026-10-12 at 16:57:24 UTC, audit logs from multiple Cloudflare products are not ingested into the audit logs v2 database anymore. V1 audit logs are not affected</content>
-    <link href="https://www.cloudflarestatus.com/incidents/hpmrg8d5vwr6" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-13T11:45:43+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
@@ -1397,21 +1412,6 @@ The issue has been identified and fully mitigated, and network performance has r
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3XMA3KN5CDQCSF0YHZ0WFBH.01M3XMA452ZT41JBXKRPY1HH3F.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6877981f80727e3c</id>
-    <title>AI Gateway, Web Search API - Introducing Web Search API</title>
-    <updated>2026-10-02T13:00:00+00:00</updated>
-    <content>Web Search API is now available in beta. Web Search API lets your AI agents and applications search the Internet and ground their responses in live information, instead of guessing URLs or relying on a model's training cutoff. At launch, you can choose between three search providers: Ceramic.ai, Exa, and Linkup . All three support Zero Data Retention for requests made through Cloudflare, and all have committed to Cloudflare's verified bot crawling standards. Web Search API runs through AI Gatewa</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-02T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/og.png?v=1deaa8fb09156b56" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/og.png?v=1deaa8fb09156b56"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/og.png?v=1deaa8fb09156b56" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9c3a3363878d1e8c</id>
