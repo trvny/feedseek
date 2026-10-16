@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-16T18:20:52.737621+00:00</updated>
+  <updated>2026-10-16T21:40:16.035624+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,38 +15,34 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/c788d5fde7082fc1</id>
-    <title>关于换新光猫后造成的 DNS 劫持</title>
-    <updated>2026-10-16T17:31:37+00:00</updated>
-    <content>两周之前刚换了一个新的 2.5g 光猫,型号是 F7005TV3,当时刚买回来的时候就直接让 AI 用 Telnet 直接把 TR069 干掉了,然后填写宽带识别和密码然后创建桥接连上光纤就直接用软路由拨号上网了,没出什么问题。过了几个小时就出现了国内明文 DNS 查询被劫持到了光猫的注册页面,网络显示感叹号,反复跳转光猫注册页面,结果 TR069 被删了根本没办法注册,后面让 AI 去改成已注册也没用,然后后面直接把国内的网络全改成 doh ，但是光猫连那一个网络探测包访问的网址都进行了劫持，导致 doh 都没办法完全避免 DNS 劫持,最后我就直接让 AI 把里面那些东西全删光了才解决了,实在不理解运营商为什么要在光猫里面整这种恶心人的东西
-然后具体是删了这三个
-redictv3:重定向与 DNS 劫持
-ipredictd:原厂运维与监控诊断
-appmgr:守护进程</content>
-    <link href="https://www.v2ex.com/t/1249499#reply0" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/e3d61d539971715f</id>
+    <title>SSD 到底能用几年？闪迪给了个公式，顺便说说服务器上怎么看盘快不快写坏了</title>
+    <updated>2026-10-16T20:31:19+00:00</updated>
+    <content>闪迪最近发了篇科普，说正常使用下大多数 SSD 能用 5 到 10 年，很多更久，寿命主要看写了多少数据。里面有个公式挺好用，整理一下，再补一点服务器上的经验。 三个数 指标 意思 TBW 总写入量，这块盘一共能写多少 TB DWPD 保修期内每天能把整盘写满几遍，企业盘常标这个 MTBF 平均无故障时间，说的是整盘可靠性，不是闪存磨损 TBW 和 DWPD 可以互换：TBW ≈ DWPD × 容量（ TB ）× 365 × 保修年数。 闪迪给的公式 预计寿命（年）= TBW ÷（每天写入的 TB 数 × 365 ） 例子：600 TBW 的盘，每天写 20GB ，理论上约 82 年。家用基本写不坏，一般等不到就换机了。 闪迪的建议：更新固件、开 TRIM 、留 10%–20% 空间（方便磨损均衡），SSD 不用碎片整理。 服务器上不一样（下面是我们自己的经验） 数据库、日志、缓存盘，每天写入可能是容量的好几倍。比如一块 1.92TB 、1 DWPD 的盘，每天写 4TB 的话，标称寿命按比例算就剩两年多。所以服务器选盘先看写入量，再选读密集（约 1 DWPD ）还是混合负载（约 3 </content>
+    <link href="https://www.v2ex.com/t/1249503#reply2" rel="alternate"/>
     <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-16T17:31:37+00:00</published>
+    <published>2026-10-16T20:31:19+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895"/>
+      <media:content url="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791519300" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791519300"/>
     </media:group>
     <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791519300" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/cef4ce15bda00ae1</id>
-    <title>分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录</title>
-    <updated>2026-10-16T15:09:22+00:00</updated>
-    <content>最近整理并发布了一个 Python 音频转文字命令行工具，主要用于将音频文件转换成文本或字幕文件。 项目支持本地 Whisper 模型，也可以使用 OpenAI 语音 API，方便根据自己的环境和需求选择转录方式。 目前支持的功能包括： 使用 Whisper 进行本地语音转录 支持 OpenAI 语音 API 支持导出 TXT、SRT、VTT、TSV、JSON 等格式 可选使用 DeepL 进行转录文本翻译 安装方式： pip install "cykk-audio-transcriber[all]" 使用示例： audiototext interview.mp3 --model small --output-formats txt,srt 项目需要 Python 3.11+ 和 FFmpeg，采用 MIT 开源许可证。 相关链接： GitHub： https://github.com/cykk/audiototext-pypi PyPI： https://pypi.org/project/cykk-audio-transcriber/ Zenodo： https://zenodo.o</content>
-    <link href="https://www.v2ex.com/t/1249490#reply1" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/fd13cb980f7dc9be</id>
+    <title>做了个 macOS 原生 Emby 观影助手： TMDB 搜索找片、片单浏览、入库核对与外部播放</title>
+    <updated>2026-10-16T19:33:33+00:00</updated>
+    <content>有没有人也想把 豆瓣电影 Top 250 、IMDb Top 250 ，或者各大电影节的获奖作品收集齐 ？ 我自己就有这个需求。麻烦的往往是逐部核对：榜单里有哪些，自己的 Emby 已经收了哪些，还缺哪些？同一部电影可能出现在好几个榜单里，片名又有不同译法；榜单更新后，还得重新查一遍。片单一多，手工对比就很费时间。 为此，我自己会定期抓取、整理并更新一批影视榜单，再维护成 TMDB 片单，主要包括： 经典与口碑榜 ：豆瓣电影 Top 250 、IMDb 电影／剧集 Top 250 。 电影奖项与电影节 ：奥斯卡最佳影片、戛纳金棕榈、英国电影学院奖最佳影片、金球奖、独立精神奖、柏林金熊、威尼斯金狮、多伦多人民选择奖等对应获奖片单。 影迷与策展片单 ：Sight &amp; Sound 、AFI 、Letterboxd 、Roger Ebert ，以及 TSPDT 千佳、《人生必看 1001 部电影》、Criterion Collection 等。 分类与热门榜 ：豆瓣电影 28 大分类、电视剧地区与类型榜单，以及豆瓣、TMDB 的口碑、热门和趋势榜。 有了片单，我又做了这个 macOS 原生工具</content>
+    <link href="https://www.v2ex.com/t/1249501#reply0" rel="alternate"/>
     <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-16T15:09:22+00:00</published>
+    <published>2026-10-16T19:33:33+00:00</published>
     <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/ea4b0c1c268ff92ea5ef66f1be8b8898?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/ea4b0c1c268ff92ea5ef66f1be8b8898?s=73&amp;d=retro"/>
+      <media:content url="https://raw.githubusercontent.com/ffinly/emby-companion/main/assets/images/poster-wall.zh-CN.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://raw.githubusercontent.com/ffinly/emby-companion/main/assets/images/poster-wall.zh-CN.png"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/ea4b0c1c268ff92ea5ef66f1be8b8898?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+    <link rel="enclosure" href="https://raw.githubusercontent.com/ffinly/emby-companion/main/assets/images/poster-wall.zh-CN.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/f05d21fe04e7223f</id>
@@ -2417,6 +2413,25 @@ Anthropic's Safeguards Team
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/77d8/76c5/841300_xlarge.png?m=1787297962" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/5d986897309f3701</id>
+    <title>tcptun-kotlin 上架 play 失败，现在开源了。</title>
+    <updated>2026-09-07T02:45:08+00:00</updated>
+    <content>&lt;p&gt;play 的 vpn 应用 必须 是组织才能发，个人账号不行。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/sskycn/tcptun-kotlin" rel="nofollow"&gt;https://github.com/sskycn/tcptun-kotlin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;v0.5 版 只支持 tcptun 自己的 native 协议, 需要配合 tcptun-go v0.5.x 使用。&lt;/p&gt;
+&lt;p&gt;计划实现：网络回家功能 和 站点到站点网络功能。&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1239970" rel="alternate"/>
+    <category term="V2EX Android (sskycn)" label="V2EX Android (sskycn)"/>
+    <published>2026-09-07T02:45:08+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397"/>
+    </media:group>
+    <dc:creator>V2EX Android (sskycn)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/da6fbaaa00ac66f7</id>
     <title>有 v 友使用 Morphe 魔改 app 吗？</title>
     <updated>2026-09-07T00:52:20+00:00</updated>
@@ -3157,23 +3172,6 @@ Google Play 对新应用有封闭测试要求：希望体验官加入测试计�
     </media:group>
     <dc:creator>V2EX Claude (tingshijie520)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/1468759c7923feeb9dc058a6f457ac12?s=73&amp;d=retro" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/3dc72c4774961c46</id>
-    <title>google play 的 12 人 14 天的测试，是每发布一个新的 app 都需要这样搞一轮吗？</title>
-    <updated>2026-08-19T14:01:14+00:00</updated>
-    <content>&lt;p&gt;这里新的 app 是指完全不同的 app ，不是已经测试过的发新版本。&lt;/p&gt;
-&lt;p&gt;问 gpt 和网上看好像是每个新的 app 都要，有没有人清楚是什么情况？&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1235718" rel="alternate"/>
-    <category term="V2EX Android (sskycn)" label="V2EX Android (sskycn)"/>
-    <published>2026-08-19T14:01:14+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397"/>
-    </media:group>
-    <dc:creator>V2EX Android (sskycn)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/51d9/fe87/117741_xlarge.png?m=1789865397" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/907a0647cdb707f2</id>
