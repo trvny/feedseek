@@ -32,6 +32,7 @@ SOURCES = [
     ("RubyGems Blog", "https://blog.rubygems.org/atom.xml", 40),
     ("RubyInstaller", "https://rubyinstaller.org/feed.xml", 40),
     ("JetBrains Blog", "https://blog.jetbrains.com/feed/", 40),
+    ("Ionic Framework Blog", "https://ionic.io/blog/tag/framework/feed", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
     ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
     ("Standard C++", "https://isocpp.org/blog/rss", 40),
