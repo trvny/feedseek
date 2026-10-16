@@ -11,54 +11,80 @@
   "icon": "https://feeds.trfny.com/favicon?domain=www.v2ex.com&sz=256",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2335cf424590eb2e",
-      "url": "https://www.v2ex.com/t/1249473#reply0",
-      "title": "新做了个小程序，叫一句话小岛，简简单单",
-      "content_text": "每天一句话，可画图导出，欢迎大家来玩",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/c788d5fde7082fc1",
+      "url": "https://www.v2ex.com/t/1249499#reply0",
+      "title": "关于换新光猫后造成的 DNS 劫持",
+      "content_text": "两周之前刚换了一个新的 2.5g 光猫,型号是 F7005TV3,当时刚买回来的时候就直接让 AI 用 Telnet 直接把 TR069 干掉了,然后填写宽带识别和密码然后创建桥接连上光纤就直接用软路由拨号上网了,没出什么问题。过了几个小时就出现了国内明文 DNS 查询被劫持到了光猫的注册页面,网络显示感叹号,反复跳转光猫注册页面,结果 TR069 被删了根本没办法注册,后面让 AI 去改成已注册也没用,然后后面直接把国内的网络全改成 doh ，但是光猫连那一个网络探测包访问的网址都进行了劫持，导致 doh 都没办法完全避免 DNS 劫持,最后我就直接让 AI 把里面那些东西全删光了才解决了,实在不理解运营商为什么要在光猫里面整这种恶心人的东西\n然后具体是删了这三个\nredictv3:重定向与 DNS 劫持\nipredictd:原厂运维与监控诊断\nappmgr:守护进程",
       "_feedseek": {
         "textKind": "content"
       },
-      "date_published": "2026-10-16T13:23:54Z",
-      "date_modified": "2026-10-16T13:23:54Z",
-      "authors": [
-        {
-          "name": "V2EX Creative"
-        }
-      ],
-      "image": "https://picui.ogmua.cn/s1/2026/10/16/6ad22559390b3.webp",
-      "tags": [
-        "V2EX Creative"
-      ],
-      "attachments": [
-        {
-          "url": "https://picui.ogmua.cn/s1/2026/10/16/6ad22559390b3.webp",
-          "mime_type": "image/webp"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/d61c9c718549d5a1",
-      "url": "https://www.v2ex.com/t/1249471#reply0",
-      "title": "做了一款网页打飞机肉鸽《Shmup Rogue》（带 6 位机娘立绘）",
-      "content_text": "把雷电和土豆兄弟缝起来了 6 个武器槽位支持升阶合成，还有 16 种属性流派 免安装，点开即玩，手机 / 键盘 / 鼠标 / 手柄都支持，随开随打 https://shmup.org",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-10-16T13:17:26Z",
-      "date_modified": "2026-10-16T13:17:26Z",
+      "date_published": "2026-10-16T17:31:37Z",
+      "date_modified": "2026-10-16T17:31:37Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/avatar/6016/c49e/22864_xlarge.png?m=1792149451",
+      "image": "https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/avatar/6016/c49e/22864_xlarge.png?m=1792149451",
+          "url": "https://cdn.v2ex.com/avatar/a830/1e31/824756_xlarge.png?m=1785846895",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/cef4ce15bda00ae1",
+      "url": "https://www.v2ex.com/t/1249490#reply1",
+      "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
+      "content_text": "最近整理并发布了一个 Python 音频转文字命令行工具，主要用于将音频文件转换成文本或字幕文件。 项目支持本地 Whisper 模型，也可以使用 OpenAI 语音 API，方便根据自己的环境和需求选择转录方式。 目前支持的功能包括： 使用 Whisper 进行本地语音转录 支持 OpenAI 语音 API 支持导出 TXT、SRT、VTT、TSV、JSON 等格式 可选使用 DeepL 进行转录文本翻译 安装方式： pip install \"cykk-audio-transcriber[all]\" 使用示例： audiototext interview.mp3 --model small --output-formats txt,srt 项目需要 Python 3.11+ 和 FFmpeg，采用 MIT 开源许可证。 相关链接： GitHub： https://github.com/cykk/audiototext-pypi PyPI： https://pypi.org/project/cykk-audio-transcriber/ Zenodo： https://zenodo.o",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-16T15:09:22Z",
+      "date_modified": "2026-10-16T15:09:22Z",
+      "authors": [
+        {
+          "name": "V2EX Creative"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/ea4b0c1c268ff92ea5ef66f1be8b8898?s=73&d=retro",
+      "tags": [
+        "V2EX Creative"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/ea4b0c1c268ff92ea5ef66f1be8b8898?s=73&d=retro",
+          "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/f05d21fe04e7223f",
+      "url": "https://www.v2ex.com/t/1249482",
+      "title": "提供 claude 托管服务有市场吗？",
+      "content_html": "<p>认识很多新加坡，马来西亚 美国人；提供 mac mini 托管服务，中国人 ssh 连接过去用  收托管服务费，这个模式如何呢  会有人来买吗</p>",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-16T14:26:04Z",
+      "date_modified": "2026-10-16T14:26:04Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (changexiaozhang)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/67503e22a8c7d30df62fc290cf336bfe?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (changexiaozhang)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/67503e22a8c7d30df62fc290cf336bfe?s=73&d=retro",
+          "mime_type": "image/jpeg"
         }
       ]
     },
@@ -3152,6 +3178,32 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/77d8/76c5/841300_xlarge.png?m=1787297962",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/da6fbaaa00ac66f7",
+      "url": "https://www.v2ex.com/t/1239901",
+      "title": "有 v 友使用 Morphe 魔改 app 吗？",
+      "content_html": "<p>今天在 Reddit 上发现无意中发现了这个 APP ，发现可以魔改很多 APP 比如 YouTube ，YouTube Music ，X ，Reddit 等等</p>\n<p>想问一下 V 友们有使用过的吗？主要担心的是安全性：</p>\n<ol>\n<li>它自身的安全性（这个应该还好，是开源的）</li>\n<li>魔改后的 APP 会被官方封控吗？因为我看到有些人说 魔改之后的 X 会被 X 官方认为是非官方的 APP.</li>\n</ol>",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-09-07T00:52:20Z",
+      "date_modified": "2026-09-07T00:52:20Z",
+      "authors": [
+        {
+          "name": "V2EX Android (xueshi)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/avatar/d95b/6d57/26655_large.png?m=1791460358",
+      "tags": [
+        "V2EX Android (xueshi)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/avatar/d95b/6d57/26655_large.png?m=1791460358",
           "mime_type": "image/png"
         }
       ]
@@ -7622,32 +7674,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/27dfa96cace8ea31",
-      "url": "https://www.v2ex.com/t/1126953",
-      "title": "Reddit 怎么一发产品相关贴子就被封号（reddit 产品冷启动）？",
-      "content_html": "难道必须要几百个 karma 才能发产品相关帖子？我看有些外国人没有几个 karma 就能发产品贴，之前养了好几个号（号龄 2 个月+），而且是在目标 sub 板块蹲了几天，积累了 7,8 个 comment karma ，还尝试发过普通帖子，也没被封。结果今天试了一下发产品帖子一下子就被封了<br /><br />V 友们有什么 reddit 冷启动 tips 不🙏",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2025-04-21T03:38:56Z",
-      "date_modified": "2025-04-21T03:38:56Z",
-      "authors": [
-        {
-          "name": "V2EX Reddit (Jenqyang)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/5c35/056c/576606_xlarge.png?m=1652946999",
-      "tags": [
-        "V2EX Reddit (Jenqyang)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/5c35/056c/576606_xlarge.png?m=1652946999",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/v2ex/0d97fc9ce266ea82",
       "url": "https://www.v2ex.com/t/1117012",
       "title": "请问 reddit 上面如何快速获得 karma?",
@@ -7747,32 +7773,6 @@
       "attachments": [
         {
           "url": "https://cdn.v2ex.com/avatar/7160/fb27/17449_xlarge.png?m=1774257036",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/ef8095242d58171a",
-      "url": "https://www.v2ex.com/t/730480",
-      "title": "哈哈哈😄，秀一下我设计的 reddit 形象",
-      "content_html": "<p><img alt=\"\" class=\"embedded_image\" loading=\"lazy\" referrerpolicy=\"no-referrer\" rel=\"noreferrer\" src=\"http://jakesoft.oss-cn-shanghai.aliyuncs.com/Screen%20Shot%202020-11-30%20at%2010.07.56%20AM.png\"/></p>",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2020-11-30T02:12:58Z",
-      "date_modified": "2020-11-30T02:12:58Z",
-      "authors": [
-        {
-          "name": "V2EX Reddit (JJstyle)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/c04e/36e7/419004_large.png?m=1624845860",
-      "tags": [
-        "V2EX Reddit (JJstyle)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/c04e/36e7/419004_large.png?m=1624845860",
           "mime_type": "image/png"
         }
       ]
