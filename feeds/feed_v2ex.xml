@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-16T21:40:16.035624+00:00</updated>
+  <updated>2026-10-17T00:47:12.852808+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -2411,6 +2411,71 @@ Anthropic's Safeguards Team
     </media:group>
     <dc:creator>V2EX Claude (OTCxiaoxiaoo)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/77d8/76c5/841300_xlarge.png?m=1787297962" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/e38c7abc94455f0c</id>
+    <title>求助｜一加 13 国行刷 OOS16 后气压计没了，有没有同样情况的？</title>
+    <updated>2026-09-07T03:31:49+00:00</updated>
+    <content>&lt;p&gt;最近发现我的一加 13 气压计显示“&lt;strong&gt;不支持&lt;/strong&gt;”，折腾了一圈还是没搞清楚到底是&lt;strong&gt;国行硬件本身没有&lt;/strong&gt;，还是&lt;strong&gt;刷 OxygenOS 之后底层适配出了问题&lt;/strong&gt;，所以来求助一下，看有没有大佬或者原生 ColorOS 用户能帮忙确认。&lt;/p&gt;
+&lt;p&gt;我的机器是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一加 13 国行 PJZ110&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;已刷 &lt;strong&gt;CPH2653 全球版 OxygenOS 16&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;已 Root&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;先用 Device Info 看了一下，&lt;code&gt;PRESSURE&lt;/code&gt; 直接显示“不支持”。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="device info 显示不支持" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://files.seeusercontent.com/2026/09/07/ffH2/20260907112929849.png"/&gt;&lt;/p&gt;
+&lt;p&gt;然后查系统：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;dumpsys sensorservice | grep -i pressure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;无输出&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;pm list features | grep -i barometer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也是无输出
+其他传感器都正常，比如 BMI26x 加速度计/陀螺仪、AK0991x 磁力计、光线、接近、RGB 、计步这些都有，但 &lt;code&gt;SensorService&lt;/code&gt; 里就是没有：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;android.sensor.pressure(6)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设备这边的信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;soc_id = 618
+hw_platform = MTP
+machine = SUN
+ro.boot.prjname = 23821
+ro.product.model = CPH2653
+ro.product.vendor.model = CPH2653
+ro.product.vendor.device = OP5D55L1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;继续往下查，Vendor 里其实是有气压计相关配置的：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;/vendor/etc/sensors/config/pakala_lps22df_0.json
+/vendor/etc/sensors/config/bonito_lps22df_0.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中 &lt;code&gt;pakala_lps22df_0.json&lt;/code&gt; 和我现在的平台是匹配的：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;soc_id = 618
+hw_platform = MTP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Persist Sensor Registry 里面也确实已经生成了：&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;lps22df_0
+lps22df_0.pressure
+lps22df_0_platform
+bmp5_0
+bmp5_0.pressure
+bmp5_0_platform
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是最终 Android 还是没有暴露 &lt;code&gt;android.sensor.pressure&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;目前我主要怀疑两种情况：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;国行 PJZ110 本身就没有国际版那颗气压计，或者硬件 BOM 不一样；&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;国行硬件其实有气压计，但是刷 CPH2653 OxygenOS 后，SSC / Sensor DSP / 板级配置没适配好。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;现在最想确认的就是：&lt;strong&gt;原生 ColorOS 的国行一加 13 （ PJZ110 ）到底有没有 Pressure / Barometer ？&lt;/strong&gt;&lt;/p&gt;</content>
+    <link href="https://www.v2ex.com/t/1240006" rel="alternate"/>
+    <category term="V2EX Android (coreJK)" label="V2EX Android (coreJK)"/>
+    <published>2026-09-07T03:31:49+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/51f9f89af340304c3d4fe9dbcfd91ebf?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/51f9f89af340304c3d4fe9dbcfd91ebf?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Android (coreJK)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/51f9f89af340304c3d4fe9dbcfd91ebf?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/5d986897309f3701</id>
@@ -5758,22 +5823,6 @@ proxy-groups:
     </media:group>
     <dc:creator>V2EX Reddit (1up)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/7b34/03f7/9338_large.png?m=1656903962" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/0d97fc9ce266ea82</id>
-    <title>请问 reddit 上面如何快速获得 karma?</title>
-    <updated>2025-03-09T02:58:16+00:00</updated>
-    <content>&lt;p&gt;子板块和话题都可以，谢谢&lt;/p&gt;
-</content>
-    <link href="https://www.v2ex.com/t/1117012" rel="alternate"/>
-    <category term="V2EX Reddit (Dean33)" label="V2EX Reddit (Dean33)"/>
-    <published>2025-03-09T02:58:16+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/gravatar/6fd6315d5b31fc2aeab93f5ef7e223d8?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/gravatar/6fd6315d5b31fc2aeab93f5ef7e223d8?s=73&amp;d=retro"/>
-    </media:group>
-    <dc:creator>V2EX Reddit (Dean33)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/6fd6315d5b31fc2aeab93f5ef7e223d8?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/29b0eb5ffc19cac7</id>
