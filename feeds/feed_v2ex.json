@@ -11,54 +11,54 @@
   "icon": "https://feeds.trfny.com/favicon?domain=www.v2ex.com&sz=256",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e3d61d539971715f",
-      "url": "https://www.v2ex.com/t/1249503#reply2",
-      "title": "SSD 到底能用几年？闪迪给了个公式，顺便说说服务器上怎么看盘快不快写坏了",
-      "content_text": "闪迪最近发了篇科普，说正常使用下大多数 SSD 能用 5 到 10 年，很多更久，寿命主要看写了多少数据。里面有个公式挺好用，整理一下，再补一点服务器上的经验。 三个数 指标 意思 TBW 总写入量，这块盘一共能写多少 TB DWPD 保修期内每天能把整盘写满几遍，企业盘常标这个 MTBF 平均无故障时间，说的是整盘可靠性，不是闪存磨损 TBW 和 DWPD 可以互换：TBW ≈ DWPD × 容量（ TB ）× 365 × 保修年数。 闪迪给的公式 预计寿命（年）= TBW ÷（每天写入的 TB 数 × 365 ） 例子：600 TBW 的盘，每天写 20GB ，理论上约 82 年。家用基本写不坏，一般等不到就换机了。 闪迪的建议：更新固件、开 TRIM 、留 10%–20% 空间（方便磨损均衡），SSD 不用碎片整理。 服务器上不一样（下面是我们自己的经验） 数据库、日志、缓存盘，每天写入可能是容量的好几倍。比如一块 1.92TB 、1 DWPD 的盘，每天写 4TB 的话，标称寿命按比例算就剩两年多。所以服务器选盘先看写入量，再选读密集（约 1 DWPD ）还是混合负载（约 3",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/380f66697e121f93",
+      "url": "https://www.v2ex.com/t/1249578#reply3",
+      "title": "我做了一个 AI 生图生视频渠道比价和路由平台： Yir.AI， 朋友请进，听我娓娓道来这个产品的前世今生",
+      "content_text": "最开始我在做 AI 生图生视频工具站，项目发展不错，后来在“接上游 API”这件事上踩了很多坑，最后把它单独做成了一个产品。 我一开始只接了 KIE 。 用着用着发现生图不太稳定，价格也不便宜，于是又接了 APIMart 。后来 APIMart 也会抽风，只好再接官方 API 兜底。 三家的接口和参数都不一样。同样是出一张图，有的叫 size 填 1024x1024 ，有的叫 aspect_ratio 加 resolution: 1K ；错误码也不一样。模型少的时候还能忍，等接的模型越来越多，这块就开始越来越麻烦：复杂度是 渠道数 × 模型数，每加一个模型要对 n 家，每加一家渠道要对 m 个模型。 跟做同类产品的朋友交流发现大家都在重复写这堆适配代码。那就干脆把它抽出来，作为一个独立服务来做，就是现在的 Yir.AI 。 第一件事是统一参数。 我把市面上各家生图生视频渠道的 API 全部梳理了一遍，对外只用一套参数，参数怎么映射、哪家不支持某个选项怎么取舍，都在 Yir 内部处理。这就实现了业务代码不改，随意切到任意一家渠道，不会被某一家绑死。完全解决了只接单一渠道时，上游故障，我们",
       "_feedseek": {
         "textKind": "content"
       },
-      "date_published": "2026-10-16T20:31:19Z",
-      "date_modified": "2026-10-16T20:31:19Z",
-      "authors": [
-        {
-          "name": "V2EX Play"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791519300",
-      "tags": [
-        "V2EX Play"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/avatar/7556/6124/316009_xlarge.png?m=1791519300",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/fd13cb980f7dc9be",
-      "url": "https://www.v2ex.com/t/1249501#reply0",
-      "title": "做了个 macOS 原生 Emby 观影助手： TMDB 搜索找片、片单浏览、入库核对与外部播放",
-      "content_text": "有没有人也想把 豆瓣电影 Top 250 、IMDb Top 250 ，或者各大电影节的获奖作品收集齐 ？ 我自己就有这个需求。麻烦的往往是逐部核对：榜单里有哪些，自己的 Emby 已经收了哪些，还缺哪些？同一部电影可能出现在好几个榜单里，片名又有不同译法；榜单更新后，还得重新查一遍。片单一多，手工对比就很费时间。 为此，我自己会定期抓取、整理并更新一批影视榜单，再维护成 TMDB 片单，主要包括： 经典与口碑榜 ：豆瓣电影 Top 250 、IMDb 电影／剧集 Top 250 。 电影奖项与电影节 ：奥斯卡最佳影片、戛纳金棕榈、英国电影学院奖最佳影片、金球奖、独立精神奖、柏林金熊、威尼斯金狮、多伦多人民选择奖等对应获奖片单。 影迷与策展片单 ：Sight & Sound 、AFI 、Letterboxd 、Roger Ebert ，以及 TSPDT 千佳、《人生必看 1001 部电影》、Criterion Collection 等。 分类与热门榜 ：豆瓣电影 28 大分类、电视剧地区与类型榜单，以及豆瓣、TMDB 的口碑、热门和趋势榜。 有了片单，我又做了这个 macOS 原生工具",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-10-16T19:33:33Z",
-      "date_modified": "2026-10-16T19:33:33Z",
+      "date_published": "2026-10-17T06:34:21Z",
+      "date_modified": "2026-10-17T06:34:21Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://raw.githubusercontent.com/ffinly/emby-companion/main/assets/images/poster-wall.zh-CN.png",
+      "image": "https://public.yir.ai/marketing/2026-10/ScreenShot_gpt_image_2-5.png",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://raw.githubusercontent.com/ffinly/emby-companion/main/assets/images/poster-wall.zh-CN.png",
+          "url": "https://public.yir.ai/marketing/2026-10/ScreenShot_gpt_image_2-5.png",
           "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/4b6e4dfe37b612e6",
+      "url": "https://www.v2ex.com/t/1249550#reply1",
+      "title": "发现了一个去 AI 味的好东西",
+      "content_text": "我也是偶然间发现的一个微信小程序，我自测了几次，朱雀的 AI 味检测都是 0 ，不敢私藏，必须贡献给你们。 微信小程序搜：有个好工具",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-17T03:52:18Z",
+      "date_modified": "2026-10-17T03:52:18Z",
+      "authors": [
+        {
+          "name": "V2EX Play"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/5c4fe67939543570cfebd8f784fe90ed?s=73&d=retro",
+      "tags": [
+        "V2EX Play"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/5c4fe67939543570cfebd8f784fe90ed?s=73&d=retro",
+          "mime_type": "image/jpeg"
         }
       ]
     },
