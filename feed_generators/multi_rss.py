@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime, timezone
 
 import requests
@@ -370,17 +371,18 @@ def _run_refresh_sources(sources, refresh_sources):
 
 
 def _scrape_run_native_sources(
-    sources, refresh_sources, cached, known_links, *, keep_html=False
+    sources, refresh_sources, cached, known_links, *, keep_html=False,
+    source_workers=1,
 ):
-    """Collect native feeds, separating metadata refreshes from add-only items."""
+    """Collect native feeds in source order; optionally fetch in parallel."""
     cached_dates = {
         normalize_link(entry["link"]): entry.get("date")
         for entry in cached
         if entry.get("link") and entry.get("date") is not None
     }
-    refresh_articles = []
-    add_only_articles = []
-    for label, url, cap in sources:
+
+    def scrape_source(source):
+        label, url, cap = source
         logger.info("Scraping %s ...", label)
         refreshing = label in refresh_sources
         source_known_links = known_links
@@ -396,6 +398,17 @@ def _scrape_run_native_sources(
             keep_html=keep_html,
             cached_dates=cached_dates,
         )
+        return refreshing, scraped
+
+    if source_workers > 1 and len(sources) > 1:
+        with ThreadPoolExecutor(max_workers=min(source_workers, len(sources))) as pool:
+            batches = list(pool.map(scrape_source, sources))
+    else:
+        batches = [scrape_source(source) for source in sources]
+
+    refresh_articles = []
+    add_only_articles = []
+    for refreshing, scraped in batches:
         target = refresh_articles if refreshing else add_only_articles
         target.extend(scraped)
     return refresh_articles, add_only_articles
@@ -465,6 +478,7 @@ def run(
     blog_url,
     author,
     sources=(),
+    source_workers=1,
     refresh_sources=None,
     extra_scrapers=(),
     keep_html=False,
@@ -512,6 +526,7 @@ def run(
         cached,
         known_links,
         keep_html=keep_html,
+        source_workers=source_workers,
     )
     add_only_articles.extend(_scrape_run_extra_sources(extra_scrapers, known_links))
 
