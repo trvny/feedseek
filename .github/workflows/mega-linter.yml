@@ -83,6 +83,36 @@ jobs:
         continue-on-error: true
         run: uv run --locked python -m unittest discover -s tests
 
+      - name: Bootstrap new feed artifacts for PR validation
+        if: github.event_name == 'pull_request' && steps.paths.outputs.artifacts == 'true'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          uv run --locked python - <<'PY'
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          sys.path.insert(0, str(Path("feed_generators").resolve()))
+          from models import load_feed_registry
+          from run_all_feeds import run_feed
+
+          base_yaml = subprocess.check_output(
+              ["git", "show", f"{os.environ['BASE_SHA']}:feeds.yaml"], text=True
+          )
+          previous = yaml.safe_load(base_yaml)["feeds"]
+          for name, config in load_feed_registry().items():
+              if name in previous or not config.enabled:
+                  continue
+              if not (Path("feeds") / f"feed_{name}.xml").exists():
+                  print(f"Bootstrapping new feed: {name}", flush=True)
+                  if not run_feed(name, config, full=True):
+                      raise SystemExit(1)
+          PY
+
       - name: Validate feed artifacts
         if: steps.paths.outputs.artifacts == 'true'
         id: feed_artifacts
