@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-109 feedów · 874 źródła
+110 feedów · 881 źródeł
 
 ## Spis grup
 
@@ -551,6 +551,17 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.commoninja.com&sz=16) Blog — <https://www.commoninja.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.hashicorp.com&sz=16) Blog — <https://www.hashicorp.com/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=developer.hashicorp.com&sz=16) Changelog — <https://developer.hashicorp.com/hcp/docs/changelog>
+
+### ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Foundry
+`foundry` · [feed_foundry.xml](../feeds/feed_foundry.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Foundry Blog — <https://foundryco.com/feed/>
+- ![](https://www.google.com/s2/favicons?domain=www.csoonline.com&sz=16) CSO — <https://www.csoonline.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=www.cio.com&sz=16) CIO — <https://www.cio.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=www.pcworld.com&sz=16) PCWorld — <https://www.pcworld.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=www.computerworld.com&sz=16) Computerworld — <https://www.computerworld.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=www.infoworld.com&sz=16) InfoWorld — <https://www.infoworld.com/feed>
+- ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Sitemap — <https://foundryco.com/sitemap/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.hackerone.com&sz=16) HackerOne Blog & Newsroom
 `hackerone` · [feed_hackerone.xml](../feeds/feed_hackerone.xml)
