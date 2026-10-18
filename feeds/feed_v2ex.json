@@ -11,53 +11,79 @@
   "icon": "https://feeds.trfny.com/favicon?domain=www.v2ex.com&sz=256",
   "items": [
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e816ffeb88364e53",
-      "url": "https://www.v2ex.com/t/1249788#reply0",
-      "title": "不同 Agent 上下文压缩的实现对比",
-      "content_text": "https://lixiucheng.com/agents-compact/ 总结 代码阅读角度来说：Crush > Pi > OpenCode 压缩模块实现：OpenCode > Pi > Crush OpenCode 支持模型原生的 compact 和相对简明扼要的提示词，理论上来说是三款中最棒的。 这一段时间的代码看下来，就单个任务执行（提出问题 → Agent 工作 → 给出结果）的角度来说，发现 Agent 只是一层很薄的，之前长期惊叹于 Agent 的效果，以为是很复杂的东西。 核心干活的部分只包括上下文管理、工具调用这两个部分，模型才是最终的任务执行效果的关键，Agent 能控制的只是这两个核心模块别出大问题。当然从产品方面，Agent 工具需要考虑的东西还是蛮多的（模型服务商的接入，长期记忆，UI & UX……）。",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/938d3a579389775a",
+      "url": "https://www.v2ex.com/t/1249826#reply1",
+      "title": "浙江地区移动悦享专线没有公网 IP 以及合同中写的 IPV6/64 地址没有",
+      "content_text": "前几个月开了一条悦享专线，套餐是 500/200M ，业务名称是“悦享专线动态 IP 版 500M 包年产品”。 开完以后就遇到 2 个问题： 1.我以为这个“动态 IP”指的是“公网 IP”就开了，没想到开完以后是大内网 IP （合同里面写明了只分配私网 IP ，我以为这个是格式条款） 2.合同里面写着“企业尊享号码：IPV6 地址段规格及数量:/64@1“，但实际开通后没有，只有 PoPPE 拨号的动态 v6 ，前缀长度/60 ，2409:8a28 开头，和家宽同段（我之前和别的代理商打听过，说浙江悦享专线还给一段静态 v6 ） 我对公网 v4 是不奢望了，还是想拿一段静态 v6 地址。所以想问一下神通广大的 v 友，有没有遇到类似情况的，这种会是客户经理开通的时候少开了 v6 的业务吗",
       "_feedseek": {
         "textKind": "content"
       },
-      "date_published": "2026-10-18T10:56:33Z",
-      "date_modified": "2026-10-18T10:56:33Z",
+      "date_published": "2026-10-18T14:57:25Z",
+      "date_modified": "2026-10-18T14:57:25Z",
       "authors": [
         {
           "name": "V2EX Play"
         }
       ],
-      "image": "https://cdn.v2ex.com/gravatar/df376cf9b6a04bd3754fb248f5801015?s=73&d=retro",
+      "image": "http://img.llilii.cn/oooo/QQ20261018-225510.png",
       "tags": [
         "V2EX Play"
       ],
       "attachments": [
         {
-          "url": "https://cdn.v2ex.com/gravatar/df376cf9b6a04bd3754fb248f5801015?s=73&d=retro",
-          "mime_type": "image/jpeg"
+          "url": "http://img.llilii.cn/oooo/QQ20261018-225510.png",
+          "mime_type": "image/png"
         }
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/2116691abd01d906",
-      "url": "https://www.v2ex.com/t/1249785#reply0",
-      "title": "[开源/安卓] 勿追踪：利用无障碍权限自动去除安卓应用分享链接中的追踪参数",
-      "content_text": "一句简介 用户点击分享按钮后应用产生悬浮窗，点击悬浮窗后，应用利用无障碍权限点击分享链接，解析后去除链接中的应用参数后进入二次分享面板。 应用简介 已完成功能： 支持以在用户点击分享按键后自动点击分享链接解析，或等待用户点击悬浮窗 二次分享面板支持悬浮窗或跳转应用内分享 支持去除图片中二维码的追踪链接（利用 ML Kit 识别并重绘） 自定义的规则导入 应用特性 一般追踪链接都会携带含有分享用户的隐私参数，用于大数据关联。同时，部分应用设计不良，追踪链接可以通过参数反查到分享用户（可参考 Must Be Cool ）。因此，应用专为注重隐私保护的用户设计。 然而，由于部分国内应用分享封闭，不提供系统分享功能，现有的去除追踪链接软件使用不方便，只有利用无障碍功能才能自动化分享链条，避免用户每次都需要复制链接后，打开相关 APP ，再去除追踪链接后再分享。 应用接入微信*和 QQ SDK ，可以以类似于原软件的卡片分享形式分享到 QQ 和微信。 截图预览 官方网站 *：受限于应用未上架和未备案，当前应用分享到微信限制为 100 次/天。 下载方式 免登录网盘下载： https://1813",
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/e298fec647803e6a",
+      "url": "https://www.v2ex.com/t/1249820#reply0",
+      "title": "原生 ios 和 macos 斗鱼直播 app",
+      "content_text": "之前一直在用 GitHub - xiaoyaocz/dart_simple_live: 简简单单的看直播 · GitHub 最近发现看着看着莫名其妙老是自己断线，由于自己现在是 apple 全家桶，索性让 ai 改了一个 Swift 原生的版本，然后只保留了斗鱼渠道。支持查看录像的功能，而且完美的保留了弹幕+AI 时间轴。自己让 ai 打包哈，大佬不敢放 Realsee 我也不敢放。 https://github.com/Rladmsrl/SwiftPeek",
       "_feedseek": {
         "textKind": "content"
       },
-      "date_published": "2026-10-18T10:24:16Z",
-      "date_modified": "2026-10-18T10:24:16Z",
+      "date_published": "2026-10-18T14:28:13Z",
+      "date_modified": "2026-10-18T14:28:13Z",
       "authors": [
         {
           "name": "V2EX Creative"
         }
       ],
-      "image": "https://img.imgdd.com/d8d2d09f-2123-4747-83f3-8871154da58a.jpg",
+      "image": "https://cdn.v2ex.com/avatar/d470/2f37/102538_large.png?m=1788109509",
       "tags": [
         "V2EX Creative"
       ],
       "attachments": [
         {
-          "url": "https://img.imgdd.com/d8d2d09f-2123-4747-83f3-8871154da58a.jpg",
+          "url": "https://cdn.v2ex.com/avatar/d470/2f37/102538_large.png?m=1788109509",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/v2ex/90832e825824c5c3",
+      "url": "https://www.v2ex.com/t/1249817",
+      "title": "claude 把我的账号解封了，钱也退了",
+      "content_html": "<p>claude Pro 账号使用一年后续费，不到一个月，把我续费的账号封了，申诉后，时隔两个月，8-16 号给我解封了，钱也退了，按天扣除了一些费用；我另一个号就没那么幸运了，发邮件不给解封</p>",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-18T14:16:45Z",
+      "date_modified": "2026-10-18T14:16:45Z",
+      "authors": [
+        {
+          "name": "V2EX Claude (jikoya)"
+        }
+      ],
+      "image": "https://cdn.v2ex.com/gravatar/693cab90b3b780b30a7f32e37c342f5f?s=73&d=retro",
+      "tags": [
+        "V2EX Claude (jikoya)"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn.v2ex.com/gravatar/693cab90b3b780b30a7f32e37c342f5f?s=73&d=retro",
           "mime_type": "image/jpeg"
         }
       ]
@@ -4037,32 +4063,6 @@
         {
           "url": "https://cdn.v2ex.com/avatar/c7b2/de40/674540_xlarge.png?m=1774410372",
           "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/v2ex/7cffc6e5825a7688",
-      "url": "https://www.v2ex.com/t/1237034",
-      "title": "claude 用 google play 订阅教程",
-      "content_html": "<p>老号用了一年多，刚续费不到一个月被封了，计划用 google play+招商万事达卡订阅新号，有 v 友 有 google play+招商万事达 订阅的教程吗？</p>",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-08-25T04:37:21Z",
-      "date_modified": "2026-08-25T04:37:21Z",
-      "authors": [
-        {
-          "name": "V2EX Claude (jikoya)"
-        }
-      ],
-      "image": "https://cdn.v2ex.com/gravatar/693cab90b3b780b30a7f32e37c342f5f?s=73&d=retro",
-      "tags": [
-        "V2EX Claude (jikoya)"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn.v2ex.com/gravatar/693cab90b3b780b30a7f32e37c342f5f?s=73&d=retro",
-          "mime_type": "image/jpeg"
         }
       ]
     },

@@ -11,6 +11,58 @@
   "icon": "https://feeds.trfny.com/favicon?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/0660205f7b5cb6a0",
+      "url": "https://huggingface.co/posts/yanghaojin/383914275245733",
+      "title": "DeepSeek-V4.1-Flash-1017, running locally on a Mac",
+      "content_text": "DeepSeek-V4.1-Flash-1017, running locally on a Mac Our 4-bit paged build is up: GreenBitAI/DeepSeek-V4.1-Flash-1017-4bit-paged On one M3 Ultra Mac Studio with gbx: • ~22 tok/s standard decode • ~44 tok/s on code with DeepSeek's official draft head (1.99×) • ~33 tok/s on chat with the draft head Why run 1017: DeepSeek reports 77.0 on DeepSWE v1.1 (up from 74.2) and 42.3 on Terminal-Bench 4.0 (up from 31.2), with shorter outputs ( https://api-docs.deepseek.com/news/news261017 ). It reads text and images, and plugs straight into Claude Code and Codex; the setup is in the model card. The paged format also loads on Macs with less memory, and on an NVIDIA DGX Spark with experts paged from the SSD;",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-18T16:06:48Z",
+      "date_modified": "2026-10-18T16:06:48Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/648317e60d94eb5528a0aa75/ffHTtNI3otVu9F1Cz7V5A.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/648317e60d94eb5528a0aa75/ffHTtNI3otVu9F1Cz7V5A.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/dff17f1a9220793c",
+      "url": "https://huggingface.co/posts/eaddario/338053639168570",
+      "title": "Experimental global target bits‑per‑weight quantization of IFM/K2-Horizon-7B and IFM/K2-Horizon-MoVA-36B-A4B.",
+      "content_text": "Experimental global target bits‑per‑weight quantization of IFM/K2-Horizon-7B and IFM/K2-Horizon-MoVA-36B-A4B. Unlike standard llama.cpp quantization that rely on fixed type heuristics (e.g., Q4_K_M), the Target BPW approach automatically optimizes per-tensor precision where it matters the most, and produces high quality models that meet a precise global size target. Key Advantages: - VRAM Maximization: Can generate high quality models sized exactly to fit hardware constraints (e.g., fitting the model into exactly 24GB VRAM). - Data-Driven Precision: Quantization mix is determined by actual weight error sensitivity rather than hardcoded rules, often yielding better PPL/KLD size trade-offs. Fu",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-18T16:06:48Z",
+      "date_modified": "2026-10-18T16:06:48Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/eaddario/338053639168570.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/eaddario/338053639168570.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/5a9aaf7bfa8fe2b1",
       "url": "https://huggingface.co/posts/Parveshiiii/429611155781858",
       "title": "Give your LLM a window to the web 🔎",
@@ -812,6 +864,32 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.19366.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/9aa0f13df80fc42e",
+      "url": "https://huggingface.co/papers/2610.20341",
+      "title": "InfiniSplat v2: Analyzing and Improving Feed-Forward 3DGS from Any Views",
+      "content_text": "InfiniSplat v2 improves feed-forward 3D Gaussian reconstruction by decoupling geometry and attribute prediction, aligning Gaussians with ground-truth poses, and using large-angle supervision to enhance novel-view rendering quality.",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-14T00:00:00Z",
+      "date_modified": "2026-10-14T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.20341/gradient.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.20341/gradient.png",
           "mime_type": "image/png"
         }
       ]
@@ -5445,32 +5523,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/abe2d8029eb63fdc",
-      "url": "https://huggingface.co/posts/SeaWolf-AI/441568022116234",
-      "title": "The cost of a judging gate is usually quoted as a number. This puts it on a Tetris board.",
-      "content_text": "The cost of a judging gate is usually quoted as a number. This puts it on a Tetris board. Three boards get the same piece order, and on every move the same proposal and the same noise — a paired comparison. The gate decides one thing: keep this move, or draw again. Each board gets the same 60 seconds of gate time. The text-writing gates get through 15–22 moves. The generation-free gate gets through 40–50. The boards that stop simply run out of clock. It does not win on accuracy: on the same 2,018-question LODO set, JEV scores AUC 0.7350 against ZTC-Judge-27B's 0.7289. The separation is elsewhere. Clock — 2.1 s vs 0.0615 s per call, and on a 200-candidate agent screen one judging call measure",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-23T07:57:24Z",
-      "date_modified": "2026-09-23T07:57:24Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SeaWolf-AI/441568022116234.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/SeaWolf-AI/441568022116234.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/5ad5a75e7a3a5779",
       "url": "https://huggingface.co/posts/BananaMindBot/983458754251032",
       "title": "BananaMind SLM Digest - 2026-09-22",
@@ -5492,32 +5544,6 @@
       "attachments": [
         {
           "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/BananaMindBot/983458754251032.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/f92437885a3f57f9",
-      "url": "https://huggingface.co/posts/OppaAI/364949380974269",
-      "title": "Benchmark test: Jev vs. Laya-ONNX (multilingual) vs. Harrier OSS 270M embedder 🔬",
-      "content_text": "Benchmark test: Jev vs. Laya-ONNX (multilingual) vs. Harrier OSS 270M embedder 🔬 My AI wAIfu (Jetson Orin Nano 8GB) uses Harrier OSS 270M for semantic routing in 2 places. It reads vectors of router prompts (English only) and calculates cosine similarity: - Quaternary routing: greeting, local chat (no websearch), web chat (needs websearch), or agentic chat - Agentic routing: which tools in my AI's capability list to use Benchmarked the 2 most hyped decision models — Jev and Laya (ONNX, multilingual) — against Harrier OSS 270M. Setup: 221 quaternary + 58 capability-trigger examples, leave-one-out eval, argmax, no thresholds. Results: → Harrier-270M (local, cosine): 94.6% / 93.1% accuracy, 17m",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-23T00:54:45Z",
-      "date_modified": "2026-09-23T00:54:45Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-uploads.huggingface.co/production/uploads/681c02a257cfafb5eafbfffe/HJR6GtgKl6GtQLPnDhbCs.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-uploads.huggingface.co/production/uploads/681c02a257cfafb5eafbfffe/HJR6GtgKl6GtQLPnDhbCs.png",
           "mime_type": "image/png"
         }
       ]
@@ -5960,32 +5986,6 @@
       "attachments": [
         {
           "url": "https://huggingface.co/blog/assets/tokenizers-v1/thumbnail.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/3b179cc7ef9645ae",
-      "url": "https://huggingface.co/papers/2609.23796",
-      "title": "Mira-Scene: Pixel-Aligned Layouts for Generative 3D Scene",
-      "content_text": "Single-image 3D object generation can now produce high-fidelity assets, yet accurately placing them into a coherent scene layout remains an open challenge. A central difficulty lies in how object layout is represented. Holistic methods absorb placement into a scene-level generation process, sacrificing object-level detail. Compositional methods preserve object fidelity by decoupling geometry from layout, but typically parameterize layout as sparse, unbounded pose variables that are difficult to learn and generalize poorly under scarce scene-level supervision.We present Mira-Scene, a compositional 3D scene reconstruction framework that replaces sparse pose regression with dense, bounded corre",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-20T00:00:00Z",
-      "date_modified": "2026-09-20T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.23796.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.23796.png",
           "mime_type": "image/png"
         }
       ]
