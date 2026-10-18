@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-18T05:03:31.535800+00:00</updated>
+  <updated>2026-10-18T11:38:28.690963+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/5a9aaf7bfa8fe2b1</id>
+    <title>Give your LLM a window to the web 🔎</title>
+    <updated>2026-10-18T11:38:27.902712+00:00</updated>
+    <content>Give your LLM a window to the web 🔎 I built Seekify, a Python tool that turns web search into clean, LLM-ready input for free. Collecting sources for an LLM workflow usually means juggling search APIs, scraping pages, and cleaning up messy text. Seekify handles that in one place: - No search API key needed - Structured results with titles, URLs, and snippets - Optional page text extraction so your model gets real content, not just links Search the web, collect sources, and feed them straight into your pipeline, so you spend less time gathering data and more time building. It's open source, and I'd love your feedback, ideas, and contributions. 👉 https://github.com/Parveshiiii/Seekify If it's </content>
+    <link href="https://huggingface.co/posts/Parveshiiii/429611155781858" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-18T11:38:27.902712+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/677fcdf29b9a9863eba3f29f/u_xZX7l3qnHTQsqetSYZJ.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/677fcdf29b9a9863eba3f29f/u_xZX7l3qnHTQsqetSYZJ.webp"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/677fcdf29b9a9863eba3f29f/u_xZX7l3qnHTQsqetSYZJ.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/dda8d93e28b729de</id>
+    <title>Introducing Live Subtitles, a Windows tray app that captions anything your PC is playing, live and fully local. It runs NVIDIA's Parakeet-unified 0.6B on your GPU, puts words on screen about 0.36 s after they're spoken, and uses less than one CPU core while it does it.</title>
+    <updated>2026-10-18T11:38:27.902712+00:00</updated>
+    <content>Introducing Live Subtitles, a Windows tray app that captions anything your PC is playing, live and fully local. It runs NVIDIA's Parakeet-unified 0.6B on your GPU, puts words on screen about 0.36 s after they're spoken, and uses less than one CPU core while it does it. I built a benchmark for it out of real TV, podcasts, earnings calls and a short film. It scored 13.8% WER there vs 17.0% for Nemotron streaming, with better punctuation. Once a caption is on screen it never gets rewritten or jumps lines, and the overlay disappears when nobody's talking. No NVIDIA GPU? It falls back to Nemotron on the CPU, which also covers 30 other languages. It can also write SRT/ASS/VTT files for videos on d</content>
+    <link href="https://huggingface.co/posts/Nymbo/187512537451428" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-18T11:38:27.902712+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Nymbo/187512537451428.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Nymbo/187512537451428.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Nymbo/187512537451428.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/a5030bc532db4984</id>
     <title>🚀 Introducing Kiyo-230M-Instruct — my compact English &amp; Portuguese chat model!</title>
@@ -3208,36 +3238,6 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2609.28654.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/6517a58aef413fe1</id>
-    <title>Meet KaLM-Jev — your local, Jev-style judgment engine, available in Nano, Small, and Large.</title>
-    <updated>2026-09-22T21:38:20.686012+00:00</updated>
-    <content>Meet KaLM-Jev — your local, Jev-style judgment engine, available in Nano, Small, and Large. Building an agent or automation workflow? Sometimes all you need is a choice, a score, or a signal that a condition holds. Built on KaLM-Reranker-R2, KaLM-Jev turns these decisions into structured outputs through three primitives: 🔀 Choice — select among candidates, with a probability distribution. 📊 Score — return a continuous score over your defined levels. 🔍 Noul — evaluate conditions independently, so multiple conditions can hold at once. Think support-ticket routing, bug severity scoring, human-escalation detection, or candidate tool selection for agents. 🖥️ Run locally with downloaded weights 📦 </content>
-    <link href="https://huggingface.co/posts/Yuki131/482844265699062" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-22T21:38:20.686012+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Yuki131/482844265699062.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Yuki131/482844265699062.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Yuki131/482844265699062.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/6418dd4baf327a2b</id>
-    <title>🇹🇷 **A 1B Turkish OCR model vs. Baidu OCR.**</title>
-    <updated>2026-09-22T12:01:25.028853+00:00</updated>
-    <content>🇹🇷 **A 1B Turkish OCR model vs. Baidu OCR.** We ran both models on the **same Turkish enterprise documents**. The result: **Werea-DocOCR-1B → 99.9** **Baidu Unlimited-OCR → 47.9** Same documents. Same evaluation. And Werea-DocOCR is only **1B parameters**. It was built specifically for difficult Turkish enterprise documents: 📄 invoices 📑 contracts 🏦 bank receipts 💼 payroll 🚗 vehicle documents 📋 SGK-style tables 📱 scanned &amp; phone-captured documents But benchmarks aren't enough. **Give me a Turkish document that you think will break it.** We'll test the hardest ones and publish the failures. 🤗 Model: Werea-co/Werea-DocOCR-1B 📚 Dataset: Werea-co/werea-tr-doc-ocr-enterprise-v2 🇹🇷 Built in Türkiy</content>
-    <link href="https://huggingface.co/posts/GoktugD/153891834720681" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-09-22T12:01:25.028853+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/153891834720681.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/153891834720681.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/GoktugD/153891834720681.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/f67436d420853d2a</id>

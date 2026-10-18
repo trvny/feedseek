@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
   <id>https://www.v2ex.com/</id>
   <title>V2EX</title>
-  <updated>2026-10-18T05:04:53.982169+00:00</updated>
+  <updated>2026-10-18T11:39:53.355315+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -15,19 +15,52 @@
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.v2ex.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined V2EX feed: sspai.com, the Creative and Play tabs, and the Claude / Android / Reddit node JSON feeds. (Hot tab excluded — the upstream feed is broken.)</subtitle>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/6d23a004b1bb1c74</id>
-    <title>做了一个 X 的第三方客户端， Liquid Glass，全流程翻译</title>
-    <updated>2026-10-18T04:56:00+00:00</updated>
-    <content>最近做了一个 iOS 上的 X 的第三方客户端，叫 Blink，想让日常浏览和阅读更舒服一点。 支持文字、图片、视频（不需要字幕）、网页的实时翻译。支持接入第三方大模型。 我们希望，语言和工具少挡一点路，将信息流动的摩擦降到最低，让大家感受到久违的地球村的感受。 将注意力放在真正重要的事情上。 世界本该是平的。 放一张界面截图： TestFlight： https://testflight.apple.com/join/MtRpthjp 还在持续完善，欢迎试用，也欢迎反馈问题和建议。</content>
-    <link href="https://www.v2ex.com/t/1249743#reply0" rel="alternate"/>
-    <category term="V2EX Creative" label="V2EX Creative"/>
-    <published>2026-10-18T04:56:00+00:00</published>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/e816ffeb88364e53</id>
+    <title>不同 Agent 上下文压缩的实现对比</title>
+    <updated>2026-10-18T10:56:33+00:00</updated>
+    <content>https://lixiucheng.com/agents-compact/ 总结 代码阅读角度来说：Crush &gt; Pi &gt; OpenCode 压缩模块实现：OpenCode &gt; Pi &gt; Crush OpenCode 支持模型原生的 compact 和相对简明扼要的提示词，理论上来说是三款中最棒的。 这一段时间的代码看下来，就单个任务执行（提出问题 → Agent 工作 → 给出结果）的角度来说，发现 Agent 只是一层很薄的，之前长期惊叹于 Agent 的效果，以为是很复杂的东西。 核心干活的部分只包括上下文管理、工具调用这两个部分，模型才是最终的任务执行效果的关键，Agent 能控制的只是这两个核心模块别出大问题。当然从产品方面，Agent 工具需要考虑的东西还是蛮多的（模型服务商的接入，长期记忆，UI &amp; UX……）。</content>
+    <link href="https://www.v2ex.com/t/1249788#reply0" rel="alternate"/>
+    <category term="V2EX Play" label="V2EX Play"/>
+    <published>2026-10-18T10:56:33+00:00</published>
     <media:group>
-      <media:content url="https://i.ibb.co/8qGxJbh/Picsew-20261018124046.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.ibb.co/8qGxJbh/Picsew-20261018124046.png"/>
+      <media:content url="https://cdn.v2ex.com/gravatar/df376cf9b6a04bd3754fb248f5801015?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/df376cf9b6a04bd3754fb248f5801015?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Play</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/df376cf9b6a04bd3754fb248f5801015?s=73&amp;d=retro" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/2116691abd01d906</id>
+    <title>[开源/安卓] 勿追踪：利用无障碍权限自动去除安卓应用分享链接中的追踪参数</title>
+    <updated>2026-10-18T10:24:16+00:00</updated>
+    <content>一句简介 用户点击分享按钮后应用产生悬浮窗，点击悬浮窗后，应用利用无障碍权限点击分享链接，解析后去除链接中的应用参数后进入二次分享面板。 应用简介 已完成功能： 支持以在用户点击分享按键后自动点击分享链接解析，或等待用户点击悬浮窗 二次分享面板支持悬浮窗或跳转应用内分享 支持去除图片中二维码的追踪链接（利用 ML Kit 识别并重绘） 自定义的规则导入 应用特性 一般追踪链接都会携带含有分享用户的隐私参数，用于大数据关联。同时，部分应用设计不良，追踪链接可以通过参数反查到分享用户（可参考 Must Be Cool ）。因此，应用专为注重隐私保护的用户设计。 然而，由于部分国内应用分享封闭，不提供系统分享功能，现有的去除追踪链接软件使用不方便，只有利用无障碍功能才能自动化分享链条，避免用户每次都需要复制链接后，打开相关 APP ，再去除追踪链接后再分享。 应用接入微信*和 QQ SDK ，可以以类似于原软件的卡片分享形式分享到 QQ 和微信。 截图预览 官方网站 *：受限于应用未上架和未备案，当前应用分享到微信限制为 100 次/天。 下载方式 免登录网盘下载： https://1813</content>
+    <link href="https://www.v2ex.com/t/1249785#reply0" rel="alternate"/>
+    <category term="V2EX Creative" label="V2EX Creative"/>
+    <published>2026-10-18T10:24:16+00:00</published>
+    <media:group>
+      <media:content url="https://img.imgdd.com/d8d2d09f-2123-4747-83f3-8871154da58a.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://img.imgdd.com/d8d2d09f-2123-4747-83f3-8871154da58a.jpg"/>
     </media:group>
     <dc:creator>V2EX Creative</dc:creator>
-    <link rel="enclosure" href="https://i.ibb.co/8qGxJbh/Picsew-20261018124046.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://img.imgdd.com/d8d2d09f-2123-4747-83f3-8871154da58a.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/v2ex/be6ea7ecac68850b</id>
+    <title>直接远程让 Claude 来干活了，无 Claude 订阅，自制简易远程 Web 会话工具 cc-session</title>
+    <updated>2026-10-18T06:41:33+00:00</updated>
+    <content>&lt;p&gt;没买 Claude 订阅，没有 remote 功能，手搓了个简易远程 web 会话工具，后端用 GPT / GLM。&lt;/p&gt;
+&lt;p&gt;项目：&lt;a href="https://github.com/ciknight/cc-session" rel="nofollow"&gt;ciknight/cc-session&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="截图" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://img.cdn1.vip/i/6ad4696e54488_1792305518.webp"/&gt;&lt;/p&gt;
+</content>
+    <link href="https://www.v2ex.com/t/1249752" rel="alternate"/>
+    <category term="V2EX Claude (whnzy)" label="V2EX Claude (whnzy)"/>
+    <published>2026-10-18T06:41:33+00:00</published>
+    <media:group>
+      <media:content url="https://cdn.v2ex.com/gravatar/0ea669a5442bfc3aad4280fa34118645?s=73&amp;d=retro" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://cdn.v2ex.com/gravatar/0ea669a5442bfc3aad4280fa34118645?s=73&amp;d=retro"/>
+    </media:group>
+    <dc:creator>V2EX Claude (whnzy)</dc:creator>
+    <link rel="enclosure" href="https://cdn.v2ex.com/gravatar/0ea669a5442bfc3aad4280fa34118645?s=73&amp;d=retro" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/b74b62c29ae21979</id>
@@ -108,21 +141,6 @@
     </media:group>
     <dc:creator>V2EX Claude (alhdliox)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/e0fd/0067/768990_xlarge.png?m=1790329290" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/73683daef02381dc</id>
-    <title>发明这个闲鱼暗语中枢的人真是个天才</title>
-    <updated>2026-10-18T03:41:58+00:00</updated>
-    <content>闲鱼号称是国内的最大的暗网平台，但是风控也越来越严重，封禁的词也越来越多。这个网站把最新的可用的交易的暗语都整理和更新出来了。如果是买家的话，就可以直接用这里的暗语去找到自己想交易的东西。如果是卖家的话，就可以发布新的暗语来帮助达成交易。然后会有一个实时的反馈，当前的暗语是否有效。</content>
-    <link href="https://www.v2ex.com/t/1249724#reply8" rel="alternate"/>
-    <category term="V2EX Play" label="V2EX Play"/>
-    <published>2026-10-18T03:41:58+00:00</published>
-    <media:group>
-      <media:content url="https://i.v2ex.co/858R16HO.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://i.v2ex.co/858R16HO.png"/>
-    </media:group>
-    <dc:creator>V2EX Play</dc:creator>
-    <link rel="enclosure" href="https://i.v2ex.co/858R16HO.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/v2ex/f05d21fe04e7223f</id>
@@ -5903,20 +5921,5 @@ proxy-groups:
     </media:group>
     <dc:creator>V2EX Reddit (1up)</dc:creator>
     <link rel="enclosure" href="https://cdn.v2ex.com/avatar/7b34/03f7/9338_large.png?m=1656903962" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/v2ex/29b0eb5ffc19cac7</id>
-    <title>Reddit 有中文插件或中文安装包吗？</title>
-    <updated>2023-09-15T14:53:33+00:00</updated>
-    <content>今天下了 Reddit ，想发发动态为自己的 App 推广，但不支持中文，看着难受，所以想问问大家，不胜感激😊</content>
-    <link href="https://www.v2ex.com/t/974285" rel="alternate"/>
-    <category term="V2EX Reddit (92Developer)" label="V2EX Reddit (92Developer)"/>
-    <published>2023-09-15T14:53:33+00:00</published>
-    <media:group>
-      <media:content url="https://cdn.v2ex.com/avatar/a8c5/ba9e/603191_xlarge.png?m=1767170764" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn.v2ex.com/avatar/a8c5/ba9e/603191_xlarge.png?m=1767170764"/>
-    </media:group>
-    <dc:creator>V2EX Reddit (92Developer)</dc:creator>
-    <link rel="enclosure" href="https://cdn.v2ex.com/avatar/a8c5/ba9e/603191_xlarge.png?m=1767170764" type="image/png" length="0"/>
   </entry>
 </feed>
