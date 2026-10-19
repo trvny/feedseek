@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-10-19T13:51:36.354704+00:00</updated>
+  <updated>2026-10-19T20:09:53.531134+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,66 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7f5e39439a48dfb4</id>
+    <title>Amazon CloudWatch Omni is now available in additional AWS Regions</title>
+    <updated>2026-10-19T19:10:00+00:00</updated>
+    <content>AWS announces that Amazon CloudWatch Omni is now available in eight additional AWS Regions. CloudWatch Omni is an AI-powered observability experience, organized around your teams and the applications they run, that helps you observe and troubleshoot your applications and agents in one place. It combines the interoperability of OpenTelemetry with the scale and reliability of CloudWatch, and meets you where you work — a standalone web experience with single sign-on (SSO), or a local IDE extension.</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-cloudwatch-omni-8-regions/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-19T19:10:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/76e138061a029630</id>
+    <title>AWS CLI 2.38.2</title>
+    <updated>2026-10-19T18:12:19+00:00</updated>
+    <content>api-change:codedeploy: Adds support for suspending Amazon EC2 Auto Scaling processes during CodeDeploy EC2 in-place deployments. Use ec2DeploymentOptions to choose which processes are suspended and resumed. api-change:opensearch: Amazon OpenSearch Service adds a new TLS security policy to support FIPS policy and post-quantum cryptography api-change:emr-containers: Documentation update release for AWS service api-change:dynamodb: Enable account endpoint generation for existing CN and GovCloud regions api-change:xray: Adds support for encrypting the Transaction Search spans log group with a customer managed AWS KMS key. Pass the key ARN in the new CloudWatchLogsConfiguration.SpansLogGroupKmsKeyId field of UpdateTraceSegmentDestination. X-Ray applies the key when it creates the log group. api-change:guardduty: Adding a new Expected Bucket Owner optional field for GuardDuty publishing destination APIs bugfix:sso: Bind auth code callback server to 127.0.0.1 instead of listening on all interfaces api-change:iotwireless: Documentation update release for AWS service api-change:amplify: Documentation update release for AWS service api-change:workspaces: Adds optional imageValidationMode enum to ImportCustomWorkspaceImageRequest. This allows customers to opt-in to having prevalidation run in the service account instead of customer account. api-change:bedrock-agent-runtime: Adds support for applying a Retrieval Instruction, optionally by version, to AgenticRetrieveStream requests for Amazon Bedrock Knowledge Bases, and reports the applied instruction and version on the trace. api-change:grafana: Documentation update release for AWS service api-change:codecommit: Documentation update release for AWS service api-change:socialmessaging: Adding support for WhatsApp Direct Send. api-change:ecs: Adds support for configurable envoy application log levels. Customers can now debug network connectivity issues with their task's sidecar envoys. bugfix:agent-toolkit: aws agent-toolkit update-skill --all now continues updating the remaining skills when one skill fails to update, printing the error to stderr. bugfix:logs tail: Flush output after each event in logs tail so --follow streams events when stdout is not a terminal. Fixes `#10719 &lt;https://github.com/aws/aws-cli/issues/10719&gt;`__ api-change:codestar-notifications: Documentation update release for AWS service api-change:logs: Amazon CloudWatch Logs now supports filtering DescribeDeliverySources by resourceArns, DescribeDeliveryDestinations by names, and DescribeDeliveries by deliverySourceNames. api-change:bedrock-agent: Adds Retrieval Instructions for Amazon Bedrock Knowledge Bases. Create, get, update, delete, list, and version customer-authored instructions that guide how a knowledge base retrieves and answers, with content review before use. enhancement:update: Verify the signature of the install script downloaded by aws update before running it, and add a --skip-signature-verification opt-out. api-change:dataz</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.38.2" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-10-19T18:12:19+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/25f5449ddd781df8ad023701db67a4188f33b781b1815b2bb83341c6b3d9b3e4/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/25f5449ddd781df8ad023701db67a4188f33b781b1815b2bb83341c6b3d9b3e4/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/25f5449ddd781df8ad023701db67a4188f33b781b1815b2bb83341c6b3d9b3e4/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a0be44971e485655</id>
+    <title>EC2 Image Builder now integrates with ASG for faster image builds</title>
+    <updated>2026-10-19T17:30:00+00:00</updated>
+    <content>EC2 Image Builder now supports using existing instances from an Auto Scaling Group (ASG) for building images, enabling faster builds by eliminating the time spent in launching and bootstrapping new instances and reusing already running EC2 instances. With this feature, you can provide an ASG in your Image Builder infrastructure configuration. Instead of launching a new instance at the build time, Image Builder selects an already-running instance from this ASG, applies your build components, and </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-image-builder-asg-faster-builds/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-19T17:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/77d230c5ce0a226c</id>
+    <title>Amazon GuardDuty adds optional threat detection rules for Runtime Monitoring</title>
+    <updated>2026-10-19T16:01:00+00:00</updated>
+    <content>Amazon GuardDuty now supports optional detection rules for Runtime Monitoring. You can enable more than 50 Runtime Monitoring rules that help detect process, file, and network activity that might be routine in one environment but a sign of compromise in another, such as modifying sudoers files or disabling audit logging. The new rules provide detections for Amazon EC2 instances, Amazon EKS, and Amazon ECS on both EC2 and AWS Fargate, and span 13 finding types mapped to MITRE ATT&amp;CK® tactics incl</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-runtime-optional-detection-rules/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-19T16:01:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/8b2fe0bdc5abdebd</id>
+    <title>AWS Weekly Roundup: AWS Lambda Web Functions, Amazon S3 on the Vercel Marketplace, and more (October 19, 2026)</title>
+    <updated>2026-10-19T15:34:59+00:00</updated>
+    <content>Nothing last week added a new kind of compute. What it did instead was shorten the distance between the code you already have and that code being live. AWS Lambda learned to run a plain HTTP server with no adapter in front of it, and Amazon S3 became something you can provision from inside the […]</content>
+    <link href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-lambda-web-functions-amazon-s3-on-the-vercel-marketplace-and-more-october-19-2026/" rel="alternate"/>
+    <category term="AWS News Blog" label="AWS News Blog"/>
+    <published>2026-10-19T15:34:59+00:00</published>
+    <media:group>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png" type="image/png" medium="image" height="400" width="800"/>
+      <media:thumbnail url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png" height="400" width="800"/>
+    </media:group>
+    <dc:creator>AWS News Blog</dc:creator>
+    <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/d555bb3731314f09</id>
     <title>How does OOM Avoidance work in Amazon Aurora MySQL, and how do I configure, test, and monitor it?</title>
@@ -29,6 +89,16 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/6990dc1c81594213</id>
+    <title>AWS Partner Central adds Solution Matching Engine performance insights</title>
+    <updated>2026-10-17T03:00:00+00:00</updated>
+    <content>AWS Partner Central now gives AWS Partners more visibility into how the Solution Matching Engine (SME) contributes to their co-sell pipeline. The Solution Matching Engine performance section in Partner Analytics helps partners understand how SME performs for their company and AWS Marketplace listings. Partners can view recommendations, SME-attributed opportunities, their share of AWS-originated opportunities, stall rate, and pipeline attributed to SME. They can filter by recommendation type or A</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/solution-matching-engine-performance" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-17T03:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/fd3a781485c3aa39</id>
@@ -1697,46 +1767,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/d7f65effe12414a1</id>
-    <title>AWS IAM Identity Center now supports network access controls for Identity Store</title>
-    <updated>2026-10-05T21:00:00+00:00</updated>
-    <content>AWS IAM Identity Center helps you configure the single sign-on experience for your workforce to AWS accounts and applications. IAM Identity Center now supports network access controls for Identity Store, which stores your users and groups. You can restrict access to the Identity Store API and the SCIM API based on the network that requests originate from. Your custom applications and user provisioning workflows use the Identity Store API to manage and look up users and groups, and your external </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-identity-store-network-controls/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-05T21:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e48b9c5a71f0f9f0</id>
-    <title>Amazon EC2 Hpc8a instances are now available in Asia Pacific (Singapore)</title>
-    <updated>2026-10-05T20:33:00+00:00</updated>
-    <content>Starting today, Amazon EC2 Hpc8a instances are available in Asia Pacific (Singapore) region. These instances are powered by 5th Gen AMD EPYC processors (formerly code named Turin). With a maximum frequency of 4.5GHz, Hpc8a instances deliver up to 40% higher performance and up to 25% better price performance compared to Hpc7a instances, helping customers accelerate compute-intensive workloads while optimizing costs. Compared to Hpc7a instances, Hpc8a instances also provide up to 42% higher memory</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ec2-hpc8a-asia-pacific/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-05T20:33:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/740d74a43cf5e277</id>
-    <title>AWS Control Tower AFT now supports plan-only customization runs</title>
-    <updated>2026-10-05T19:31:00+00:00</updated>
-    <content>AWS Control Tower Account Factory for Terraform (AFT) now supports plan-only customization runs, giving administrators the ability to preview Terraform changes before applying them across their managed accounts. AFT is an open-source Terraform module that automates account provisioning and customization in AWS Control Tower environments. Previously, invoking customizations always triggered a full Terraform apply with no way to preview changes, making it difficult to validate expected outcomes or</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/aws-control-tower-aft/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-05T19:31:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/13cd62b82cd2ed3a</id>
-    <title>AWS Continuum for Penetration Testing now supports continuous penetration testing integrated directly into your CI/CD pipeline</title>
-    <updated>2026-10-05T18:32:00+00:00</updated>
-    <content>AWS Continuum for Penetration Testing now integrates continuous penetration testing directly into your CI/CD pipeline (public preview) AWS Continuum for Penetration Testing (formerly AWS Security Agent) already provides continuous, on-demand penetration testing without the need to contract third-party pentest vendors. Now, in public preview, Continuum for Penetration Testing shifts security testing even further left by integrating directly into your existing CI/CD systems, making penetration tes</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-penetration-testing/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-05T18:32:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/672f2c5fd2cdf8b6</id>
     <title>AWS Weekly Roundup: Amazon Bedrock Managed Agents powered by OpenAI, Q3 service availability updates, Kiro workflows, and more (October 5, 2026)</title>
     <updated>2026-10-05T15:41:19+00:00</updated>
@@ -3362,21 +3392,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link href="https://github.com/aws/aws-cli/releases/tag/2.36.28" rel="alternate"/>
     <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
     <published>2026-08-20T18:12:51+00:00</published>
-    <media:group>
-      <media:content url="https://opengraph.githubassets.com/583f8c845f002bb12fac4491535c40dcdc8e6bbbcaea6f6089da16130e8dcf0a/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
-      <media:thumbnail url="https://opengraph.githubassets.com/583f8c845f002bb12fac4491535c40dcdc8e6bbbcaea6f6089da16130e8dcf0a/aws/aws-cli" height="600" width="1200"/>
-    </media:group>
-    <dc:creator>AWS CLI v2 Changelog</dc:creator>
-    <link rel="enclosure" href="https://opengraph.githubassets.com/583f8c845f002bb12fac4491535c40dcdc8e6bbbcaea6f6089da16130e8dcf0a/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/52f3a36aafed6f0a</id>
-    <title>AWS CLI 2.36.27</title>
-    <updated>2026-08-19T18:41:05+00:00</updated>
-    <content>api-change:vpc-lattice: Amazon VPC Lattice now supports modification of private DNS options on Service Network VPC Associations api-change:eks: Adds support for EKS cluster certificate authorities (CA) api-change:redshift: Amazon Redshift enhanced System Table retention that allows customers to store their system table data directly in S3 Tables in customer's account instead of Redshift Managed Storage api-change:account-access: Adds throttling exceptions to operation outputs that were previously inconsistent with other operations. api-change:bedrock-agentcore: AgentCore Memory now supports Flexible Namespaces and Non-Conversational Payloads in CreateEvent API api-change:medialive: AWS Elemental MediaLive now supports video cropping and output positioning. Use cropRectangle and outputPositionRectangle to position the encoded video within the output frame, with the surrounding area filled with black. api-change:bedrock-agentcore-control: AgentCore Memory now supports Flexible Namespaces api-change:batch: AWS Batch now supports managing CloudWatch Container Insights on compute environments via CreateComputeEnvironment and UpdateComputeEnvironment. api-change:redshift-serverless: Amazon Redshift Enhanced System Table Retention that allows customers to store their system table data directly in S3 Tables in customer's account instead of Redshift Managed Storage</content>
-    <link href="https://github.com/aws/aws-cli/releases/tag/2.36.27" rel="alternate"/>
-    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
-    <published>2026-08-19T18:41:05+00:00</published>
     <media:group>
       <media:content url="https://opengraph.githubassets.com/583f8c845f002bb12fac4491535c40dcdc8e6bbbcaea6f6089da16130e8dcf0a/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
       <media:thumbnail url="https://opengraph.githubassets.com/583f8c845f002bb12fac4491535c40dcdc8e6bbbcaea6f6089da16130e8dcf0a/aws/aws-cli" height="600" width="1200"/>
