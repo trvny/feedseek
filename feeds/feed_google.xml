@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-20T17:29:35.226131+00:00</updated>
+  <updated>2026-10-20T21:50:25.415352+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,44 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence</id>
+    <title>Get hands-free personalized help on the road with Gemini</title>
+    <updated>2026-10-20T20:00:00+00:00</updated>
+    <content type="html">Center of image is a photo of a 1st-person point of view of driving a car. On the circumference of the circle are the Gemini logo and various prompts. The bottom of the image has the text "Personal Intelligence hits the road".</content>
+    <link href="https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-20T20:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/PersonalIntelligence_auto_hero.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/PersonalIntelligence_auto_hero.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/PersonalIntelligence_auto_hero.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity</id>
+    <title>Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity</title>
+    <updated>2026-10-20T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Whether you are iterating on a quick bug fix or planning a complex migration, different tasks call for different models.&lt;/p&gt;&lt;p&gt;In keeping with Google Cloud's commitment to an open ecosystem and to give developers the right model for every job, &lt;b&gt;Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity for Google Cloud customers.&lt;/b&gt; Claude Opus 5.5 is built for complex work while Claude Sonnet 5.5 is a faster, lower-cost complement.&lt;/p&gt;&lt;p&gt;Once enabled by an administrator, developers can select Claude Opus 5.5 and Sonnet 5.5 directly from the model picker. Administrators can also select Google’s Gemini models, including Gemini 3.8 Flash and Gemini 4 Argon. The models apply across Antigravity 2.0, Antigravity CLI and our recently released &lt;a href="https://antigravity.google/docs/ide/extensions/" target="_blank"&gt;Antigravity IDE extensions&lt;/a&gt; for VS Code, JetBrains IntelliJ, and Visual Studio. This lets you choose the right model for the job, under a unified enterprise billing and security boundary.&lt;/p&gt;&lt;p&gt;In this post, we’ll share two engineering patterns for building in Antigravity using these models. To view the entire list of models supported in Antigravity across subscriptions, see our documentation &lt;a href="https://antigravity.google/docs/models/" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;Multi-model engineering patterns in Antigravity&lt;/h3&gt;&lt;p&gt;Having multiple model families available inside the same agent harness unlocks practical multi-model workflows that improve code quality while controlling latency and cost.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Pattern 1: Cross-model verification ("LLM-as-a-Judge") in loop and graph workflows&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;When building agentic loops or multi-step graph workflows, using the same model to both write code and review its own output can reinforce model-specific blind spots. Pairing two distinct model families, one as the implementer and another as the validator (judge), provides independent verification before moving to the next stage of a workflow.&lt;/p&gt;&lt;p&gt;In Antigravity, you can run this pattern either interactively or via automated subagents:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Plan and implement with Model A:&lt;/b&gt; Start in planning mode using &lt;code&gt;Claude Opus 5.5&lt;/code&gt; or &lt;code&gt;Gemini 4 Argon&lt;/code&gt; to design and implement a multi-file change.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Validate with Model B:&lt;/b&gt; Before committing or advancing the loop, switch models, or invoke a one-shot &lt;code&gt;/model&lt;/code&gt; check in the CLI, to have a different model family critique the implementation against your test suite and requirements.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;&lt;b&gt;Pattern 2: Pairing reasoning models with Flash subagents&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Complex engineering tasks often combine a few high-reasoning decisions with dozens of high-volume, mechanical lookups (searching files, grepping logs, checking lint output, or classifying test failures). Running every lookup on a frontier model can increase both latency and spend.&lt;/p&gt;&lt;p&gt;Antigravity's Subagent customization system (&lt;code&gt;.agents/agents/*.md&lt;/code&gt;) lets you assign specific model tiers (&lt;code&gt;inherit&lt;/code&gt;, &lt;code&gt;flash&lt;/code&gt;, or &lt;code&gt;pro&lt;/code&gt;) to specialized subagents. When your primary session is running a more powerful model.&lt;/p&gt;&lt;p&gt;Subagents configured with &lt;code&gt;model: inherit&lt;/code&gt; use your active session model for deep reasoning subtasks.&lt;/p&gt;&lt;p&gt;Subagents configured with &lt;code&gt;model: flash&lt;/code&gt; offload high-speed search, classification, and triage work to Gemini Flash models.&lt;/p&gt;&lt;p&gt;For example, you can define a fast log-triage subagent in &lt;code&gt;.agents/agents/test-triager.md&lt;/code&gt;:&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;---\r\nname: test-triager\r\ndescription: Runs unit tests, classifies failures, and returns a concise summary of failing assertions.\r\nmodel: flash\r\ntools:\r\n  - read\r\n  - edit\r\n---\r\n\r\nRun the requested test targets, classify any failures by root cause (compilation error, assertion failure, or timeout), and return a structured summary to the parent agent.&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f624d826e10&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;And a cross-model code reviewer subagent in &lt;code&gt;.agents/agents/gemini-judge.md&lt;/code&gt;:&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;---\r\nname:cross-model-judge\r\ndescription: Independent LLM-as-a-judge verifier that audits diffs and edge cases using Gemini Pro.\r\nmodel: pro\r\ntools:\r\n  - read\r\n---\r\n\r\nReview the current workspace diff against the user&amp;#x27;s requirements. Check for regressions, missing edge-case tests, and security issues. Output a pass/fail verdict with specific line references.&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f624d758ed0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;With this setup, you can delegate rapid test-and-classify loops to &lt;code&gt;test-triager&lt;/code&gt; and trigger &lt;code&gt;cross-model-judge&lt;/code&gt; to validate the final diff, combining the strengths of each model in a single workflow.&lt;/p&gt;&lt;h3&gt;Getting started&lt;/h3&gt;&lt;p&gt;Claude Opus 5.5 and Claude Sonnet 5.5 are available now for Google Cloud customers using Antigravity:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Administrators (Gemini for business):&lt;/b&gt; Third-party partner models do not draw from the pooled Gemini Enterprise Standard and Plus edition monthly token quota. Instead, usage is billed on a pay-as-you-go basis through your existing Google Cloud Billing account, so overages must be enabled. Visit “Gemini Enterprise” &amp;gt; “Settings” &amp;gt; “AI developer tools” in the Google Cloud Console to configure overage billing, spend limits and authorize partner models for your organization. See &lt;a href="https://cloud.google.com/gemini/enterprise/docs/ai-developer-tools-settings"&gt;Configure AI developer tools settings&lt;/a&gt; for step-by-step instructions.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Administrators (Gemini platform):&lt;/b&gt; You can also enable partner models if you are using Antigravity through the API in Gemini platform. Enable Claude models in Model Garden and complete the standard Anthropic terms.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Developers:&lt;/b&gt; Update to the latest version of Antigravity 2.0, the Antigravity CLI, or the Antigravity IDE extensions, and open the model picker (or run &lt;code&gt;/model&lt;/code&gt;) to select the right model for your task. To learn more about enterprise governance and multi-agent configuration, visit the &lt;a href="https://antigravity.google/docs/enterprise/" target="_blank"&gt;Google Antigravity Enterprise documentation&lt;/a&gt;. You can switch the active model between turns in the same conversation thread while preserving workspace state, open artifacts, and terminal context.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Note: Lightweight first-party Gemini models continue to run in the background to handle high-frequency client-side coordination, such as context management and summaries. They consume first-party tokens and can incur charges.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-2600x2600.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-2600x2600.jpg" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners</id>
     <title>New Gemini tools for small business owners</title>
@@ -548,6 +586,244 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Industry_headers_2.max-600x600.png"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Industry_headers_2.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#October_20_2026</id>
+    <title>Cloud Release Notes — October 20, 2026</title>
+    <updated>2026-10-20T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Apigee X&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;On October 20th, 2026, we began maintenance updates of Apigee instances &lt;a href="https://docs.cloud.google.com/apigee/docs/api-platform/system-administration/maintenance-windows"&gt;configured for maintenance windows&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you set a preferred window for maintenance for your instance, and your instance version is
+below &lt;strong&gt;1-18-0-apigee-6&lt;/strong&gt;, your instance will be updated to &lt;strong&gt;1-18-0-apigee-6&lt;/strong&gt; within the
+next seven to 21 days. A notification containing the expected date of upgrade will be sent within the next two business days.&lt;/p&gt;
+&lt;aside class="note"&gt;Note: Instances that meet either of the following two criteria will &lt;b&gt;not&lt;/b&gt; be updated:
+&lt;ul&gt;
+&lt;li&gt;Your instance has a DNS misconfiguration, as described in &lt;a href="https://docs.cloud.google.com/apigee/docs/release/known-issues"&gt;Known Issue 445936920&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Your instance uses an Apigee Java Library that has been removed, as described in &lt;a href="https://docs.cloud.google.com/apigee/docs/release/release-notes#October_16_2025"&gt;Apigee release notes dated October 16, 2025&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/aside&gt;
+&lt;p&gt;For more information on participating in scheduled maintenance windows, see &lt;a href="https://docs.cloud.google.com/apigee/docs/api-platform/system-administration/maintenance"&gt;Maintenance overview&lt;/a&gt; and &lt;a href="https://docs.cloud.google.com/apigee/docs/api-platform/system-administration/maintenance-windows"&gt;Manage Apigee instance maintenance windows&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Cloud SDK&lt;/h2&gt;
+&lt;h3&gt;Breaking&lt;/h3&gt;
+&lt;h2 id="59000_2026-10-20"&gt;590.0.0 (2026-10-20)&lt;/h2&gt;
+&lt;h3 id="breaking_changes"&gt;Breaking Changes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;(Google Cloud CLI)&lt;/strong&gt; Removed the &lt;code&gt;gcloud-man-pages&lt;/code&gt; component. Use &lt;code&gt;--help&lt;/code&gt; for full command documentation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(App Engine)&lt;/strong&gt; Removed the &lt;code&gt;app-engine-grpc&lt;/code&gt; component from the Google Cloud CLI.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(Cloud Build)&lt;/strong&gt; Removed the Cloud Build Local Builder component (&lt;code&gt;cloud-build-local&lt;/code&gt;) from the Google Cloud CLI.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="google_cloud_cli"&gt;Google Cloud CLI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated bundled Python on Linux and Windows, and in the Alpine-based Docker
+images, to pyOpenSSL 26.4.0 and cryptography 50.0.1. 32-bit Windows uses
+pyOpenSSL 26.2.0 and cryptography 48.0.1, the newest releases that support it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ai"&gt;AI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated &lt;code&gt;gcloud beta ai endpoints deploy-model&lt;/code&gt; to request automatic resources for Gemini deployments on GDC connected endpoints.
+&lt;ul&gt;
+&lt;li&gt;If no replica counts are specified, the minimum replica count defaults to 1 only for &lt;code&gt;gemini-2.5-flash&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Specifying flags that apply only to dedicated resources, such as &lt;code&gt;--machine-type&lt;/code&gt; or &lt;code&gt;--accelerator&lt;/code&gt;, now prints a warning and deploys with dedicated resources.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="agent_identity"&gt;Agent Identity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;gcloud beta agent-identity auth-providers resolve-authorization&lt;/code&gt;
+command.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="alloydb"&gt;AlloyDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--enable-public-dns&lt;/code&gt; flag to &lt;code&gt;gcloud beta alloydb instances create|update&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="apigee"&gt;Apigee&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed an issue where &lt;code&gt;gcloud apigee&lt;/code&gt; commands would fail with an
+&lt;code&gt;UnauthorizedRequestError&lt;/code&gt; for users who authenticate using Mutual TLS (mTLS).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="app_engine"&gt;App Engine&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated &lt;code&gt;gcloud beta app migrate-to-run&lt;/code&gt; to default to the App Engine
+application's region instead of &lt;code&gt;us-central1&lt;/code&gt; when neither &lt;code&gt;--region&lt;/code&gt; nor
+the &lt;code&gt;run/region&lt;/code&gt; property is set.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="biglake"&gt;BigLake&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Promoted &lt;code&gt;--federated-catalog-identity-mode&lt;/code&gt; for &lt;code&gt;gcloud biglake iceberg
+catalogs create&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;--federated-catalog-identity-mode&lt;/code&gt; for &lt;code&gt;gcloud biglake iceberg
+catalogs update&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;--metadata-service-directory-name&lt;/code&gt; for &lt;code&gt;gcloud biglake iceberg
+catalogs create&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;--metadata-service-directory-name&lt;/code&gt; for &lt;code&gt;gcloud biglake iceberg
+catalogs update&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;federated&lt;/code&gt; value for &lt;code&gt;--catalog-type&lt;/code&gt; flag of &lt;code&gt;gcloud biglake iceberg
+catalogs create&lt;/code&gt; is now supported.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="certificate_authority_service"&gt;Certificate Authority Service&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--filter&lt;/code&gt; flag to &lt;code&gt;gcloud privateca subordinates list&lt;/code&gt;. The flag is
+able to allow filtering results based on specified boolean expression.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_bigtable"&gt;Cloud Bigtable&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Build with 1.26.4 to resolve CVE-2026-39820.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_bigtable_emulator"&gt;Cloud Bigtable Emulator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Rebuild cbt-emulator for CVE-2026-39820.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_dataflow"&gt;Cloud Dataflow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Promoted &lt;code&gt;gcloud dataflow config-store-settings&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_dataplex"&gt;Cloud Dataplex&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed &lt;code&gt;gcloud dataplex dbt metadata-jobs create&lt;/code&gt; so that dbt resources whose
+names contain a dot, such as tests on a model with a decimal version, are no
+longer rejected by the import job.&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;gcloud dataplex dbt metadata-jobs create&lt;/code&gt; so that two dbt resources
+that map to the same Dataplex entry ID no longer fail the whole import job.
+The first is imported and a warning names the other.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_iam"&gt;Cloud IAM&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--vendor-type&lt;/code&gt; flag to &lt;code&gt;gcloud iam workforce-pools providers create-oidc&lt;/code&gt;, &lt;code&gt;create-saml&lt;/code&gt;, &lt;code&gt;update-oidc&lt;/code&gt;, and &lt;code&gt;update-saml&lt;/code&gt; commands.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_resource_manager"&gt;Cloud Resource Manager&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Promoted &lt;code&gt;gcloud resource-manager capability-configs&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;gcloud resource-manager boundary-configs&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;gcloud resource-manager boundaries&lt;/code&gt; to GA.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_run"&gt;Cloud Run&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--dry-run&lt;/code&gt; flag to &lt;code&gt;gcloud beta run domain-mappings create&lt;/code&gt; to
+validate a domain mapping, including whether the domain is available,
+without creating it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_sql"&gt;Cloud SQL&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;POSTGRES_19&lt;/code&gt; to &lt;code&gt;--database-version&lt;/code&gt; flag of &lt;code&gt;gcloud sql instances create&lt;/code&gt; and &lt;code&gt;gcloud sql instances patch&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;--no-replication-lag-max-seconds-for-recreate&lt;/code&gt; flag to &lt;code&gt;gcloud beta sql instances patch&lt;/code&gt; to disable recreating a lagging MySQL read replica.&lt;/li&gt;
+&lt;li&gt;Updated 'cloud-sql-proxy' packaged component to use 2.26.2 of the Cloud SQL Proxy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_spanner"&gt;Cloud Spanner&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Improved error output when &lt;code&gt;gcloud spanner cli&lt;/code&gt; runs an incompatible
+&lt;code&gt;spanner-cli&lt;/code&gt; binary found on &lt;code&gt;PATH&lt;/code&gt; instead of the &lt;code&gt;spanner-cli&lt;/code&gt;
+component; users are now directed to install the component.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="cloud_workstations"&gt;Cloud Workstations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;enable-automatic-failover&lt;/code&gt; to &lt;code&gt;--boost-config&lt;/code&gt; flag in &lt;code&gt;gcloud beta workstations configs create&lt;/code&gt; and &lt;code&gt;gcloud beta workstations configs update&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="compute_engine"&gt;Compute Engine&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;compute instance-templates export&lt;/code&gt; command to all release tracks.&lt;/li&gt;
+&lt;li&gt;Removed WORKLOAD_IDENTITY choise in &lt;code&gt;--identity-type&lt;/code&gt; flag.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;--instance-flexibility-policy&lt;/code&gt; flag and min CPU platform and disk
+overrides to GA for &lt;code&gt;gcloud compute instance-groups managed create&lt;/code&gt; and
+&lt;code&gt;update&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;compute instance-templates import&lt;/code&gt; command to all release tracks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="database_migration"&gt;Database Migration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--failback&lt;/code&gt; flag to &lt;code&gt;gcloud database-migration migration-jobs
+promote&lt;/code&gt; command to promote a migration job from destination back to source
+during the FAILBACK phase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="gke_hub"&gt;GKE Hub&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Promoted &lt;code&gt;--view&lt;/code&gt;, &lt;code&gt;--memberships&lt;/code&gt;, &lt;code&gt;--filter&lt;/code&gt;, and &lt;code&gt;--sort-by&lt;/code&gt; flags on
+&lt;code&gt;gcloud container fleet|hub config-management describe&lt;/code&gt; command to &lt;code&gt;GA&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Updated &lt;code&gt;gcloud container fleet|hub memberships register&lt;/code&gt; to allow skipping the Connect agent installation on non-GKE clusters via the &lt;code&gt;--no-install-connect-agent&lt;/code&gt; flag.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="kubernetes_engine"&gt;Kubernetes Engine&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the &lt;code&gt;reservedSystemCpus&lt;/code&gt; kubelet config option to the &lt;code&gt;gcloud
+container clusters create&lt;/code&gt;, &lt;code&gt;gcloud container node-pools create&lt;/code&gt;, and
+&lt;code&gt;gcloud container node-pools update&lt;/code&gt; commands. This option specifies the
+list of CPUs reserved for host system services.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ltsc2025&lt;/code&gt; option to &lt;code&gt;--windows-os-version&lt;/code&gt; flag of &lt;code&gt;gcloud container
+node-pools create&lt;/code&gt; and &lt;code&gt;gcloud container node-pools update&lt;/code&gt; to create or
+update Windows node pools using the Windows Server 2025 (LTSC2025) image.&lt;/li&gt;
+&lt;li&gt;Updated default kubectl to 1.35.9.&lt;/li&gt;
+&lt;li&gt;Additional kubectl versions:
+&lt;ul&gt;
+&lt;li&gt;1.31.14&lt;/li&gt;
+&lt;li&gt;1.32.13&lt;/li&gt;
+&lt;li&gt;1.33.13&lt;/li&gt;
+&lt;li&gt;1.34.12&lt;/li&gt;
+&lt;li&gt;1.35.9&lt;/li&gt;
+&lt;li&gt;1.36.5&lt;/li&gt;
+&lt;li&gt;1.37.1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Allowed &lt;code&gt;--num-nodes=0&lt;/code&gt; for &lt;code&gt;gcloud container clusters create&lt;/code&gt; to create
+a cluster without a default node pool on GKE versions that support it.
+Flags that only configure the default node pool, such as &lt;code&gt;--machine-type&lt;/code&gt;
+and &lt;code&gt;--enable-autoscaling&lt;/code&gt;, can't be used with &lt;code&gt;--num-nodes=0&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="network_connectivity"&gt;Network Connectivity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;--purpose&lt;/code&gt; flag to &lt;code&gt;gcloud network-connectivity internal-ranges
+create&lt;/code&gt; to specify the purpose of the internal range.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="network_security"&gt;Network Security&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Promoted &lt;code&gt;--wildfire-analysis-profile&lt;/code&gt; flag of
+&lt;code&gt;gcloud network-security security-profile-groups create&lt;/code&gt; and
+&lt;code&gt;gcloud network-security security-profile-groups update&lt;/code&gt; commands to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;gcloud network-security security-profiles wildfire-analysis&lt;/code&gt;
+command group and its &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;describe&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt;
+commands to GA.&lt;/li&gt;
+&lt;li&gt;Promoted &lt;code&gt;add-submission-rule&lt;/code&gt;, &lt;code&gt;delete-submission-rule&lt;/code&gt;,
+&lt;code&gt;add-inline-cloud-analysis-rule&lt;/code&gt; and &lt;code&gt;delete-inline-cloud-analysis-rule&lt;/code&gt;
+commands of &lt;code&gt;gcloud network-security security-profiles wildfire-analysis&lt;/code&gt;
+to GA.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="service_extensions"&gt;Service Extensions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new set of commands for &lt;code&gt;gcloud service-extensions extension-bindings&lt;/code&gt; (alpha and beta).&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;gcloud beta service-extensions cdn-edge-extensions&lt;/code&gt; command group to manage &lt;code&gt;CdnEdgeExtension&lt;/code&gt; resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Subscribe to these release notes at &lt;a href="https://groups.google.com/forum/#!forum/google-cloud-sdk-announce"&gt;https://groups.google.com/forum/#!forum/google-cloud-sdk-announce&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Kubernetes Engine&lt;/h2&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;p&gt;This is an update to the release note regarding the Cloud Storage FUSE CSI
+driver issue published on
+&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/release-notes#October_02_2026"&gt;October 2, 2026&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This issue has been resolved. You can upgrade your cluster control plane to the
+following versions to fix the issue for &lt;code&gt;ubuntu_containerd&lt;/code&gt; and older
+&lt;code&gt;cos_containerd&lt;/code&gt; node pools:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.36.5-gke.1032000 or later&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1.37.1-gke.1552000 or later&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Specific 1.36.4 mitigation patches: 1.36.4-gke.1247001, 1.36.4-gke.1247002,
+1.36.4-gke.1391001, 1.36.4-gke.1391003, 1.36.4-gke.1495001,
+1.36.4-gke.1495003, 1.36.4-gke.2046001, 1.36.4-gke.2202002&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#October_20_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-10-20T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developer.android.com/blog/posts/remote-compose-gaming-widgets</id>
+    <title>Remote Compose Gaming Widgets</title>
+    <updated>2026-10-20T00:00:00+00:00</updated>
+    <content type="html">Did you know you can build an interactive Android gaming widget? This blog post series will show you how with a new alpha library called Remote Compose.</content>
+    <link href="https://developer.android.com/blog/posts/remote-compose-gaming-widgets" rel="alternate"/>
+    <category term="Android Developers"/>
+    <published>2026-10-20T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developer.android.com/static/blog/assets/header_068afa9a28_Z2Se4i.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://developer.android.com/static/blog/assets/header_068afa9a28_Z2Se4i.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://developer.android.com/static/blog/assets/header_068afa9a28_Z2Se4i.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/10/teacher-led-gemini-notebook-in-google-Classroom-now-offers-insight-summaries-for-educators-and-updated-sharing-settings-for-admins-including-trusted-domains.html</id>
@@ -32591,82 +32867,5 @@ package.&lt;/p&gt;
       <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAJkGwDddEzkmeCeURfMrpj2PPrNGej525Q3mH4rIOD7Ek4KNhP89U6sr0-oXsgrNNuIevnTTFn8K7aLAcT38QyeYZLP4LkqAvuYa1LwG11gPa7VG4OnUujEiG8Y-nmKI-vzNBXNgn0nGZPQ1Y82nEglBpISpeRHmHgBqShHEHrFfNzdA58TCYmUKNjg0/s72-c/The%20Gemini%20desktop%20app%20is%20now%20available%20for%20Windows.png"/>
     </media:group>
     <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAJkGwDddEzkmeCeURfMrpj2PPrNGej525Q3mH4rIOD7Ek4KNhP89U6sr0-oXsgrNNuIevnTTFn8K7aLAcT38QyeYZLP4LkqAvuYa1LwG11gPa7VG4OnUujEiG8Y-nmKI-vzNBXNgn0nGZPQ1Y82nEglBpISpeRHmHgBqShHEHrFfNzdA58TCYmUKNjg0/s72-c/The%20Gemini%20desktop%20app%20is%20now%20available%20for%20Windows.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/technology/xr-ar/three-google-supported-projects-premiere-during-the-83rd-venice-international-film-festival</id>
-    <title>Three Google supported projects premiere during the 83rd Venice International Film Festival.</title>
-    <updated>2026-09-11T11:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/venice_film_fest_social.max-600x600.format-webp.webp" /&gt;Google shares details on three projects that use technology to push the boundaries of human creativity that premiered during the 83rd Venice Film Festival.</content>
-    <link href="https://blog.google/innovation-and-ai/technology/xr-ar/three-google-supported-projects-premiere-during-the-83rd-venice-international-film-festival" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-11T11:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/venice_film_fest_social.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/venice_film_fest_social.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/venice_film_fest_social.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/inside-google-cloud/highlights-from-the-goldman-sachs-communicopia-and-technology-conference</id>
-    <title>3 Highlights from Thomas Kurian’s Keynote at the Goldman Sachs Communicopia &amp; Technology Conference</title>
-    <updated>2026-09-11T09:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;On Tuesday, September 8, Thomas Kurian participated in the Goldman Sachs Tech Conference, providing an update on Google Cloud’s business and strategy. Here are the highlights:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Full Stack Approach:&lt;/b&gt; Google Cloud is the only provider to offer solutions across the entire AI stack, which expands our total addressable market, differentiates our products from the point of view of performance, cost and quality; and enables us to diversify our revenue streams as the market grows. We have 17 product lines with more than $1 billion in revenues and our customers on average exceeded their commitments by more than 50%. We have also seen more than 2x quarter-over-quarter and year-over-year growth in the number and value of $100 million to $1 billion deals. And we have more than 300 customers each with $100 million-plus contractual commitments.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Benefits of Google Cloud’s AI Infrastructure:&lt;/b&gt; Our AI Infrastructure is built on highly differentiated products in a large expanding market which helps us lower cost and improve performance and margins for our AI models. We have a 2-year AI server payback period, and TPUs have a much faster expected payback period than GPUs. The majority of our AI infrastructure total contract value is from committed five-year contracts.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Benefits of Google Cloud’s broad AI solutions:&lt;/b&gt; We have seen strong adoption of Gemini Enterprise, which provides customers with insight across their businesses in a highly cost efficient manner with enterprise control and governance. We have also seen that Google Cloud customers that use our AI products use 1.8 times as many products as those who do not.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;For more information, please refer to the &lt;a href="https://s206.q4cdn.com/479360582/files/doc_events/2026/Sep/08/Thomas-Kurian-Goldman-Sachs-Slides-09-08-26.pdf" target="_blank"&gt;slide presentation&lt;/a&gt; and &lt;a href="https://abc.xyz/investor/events/event-details/2026/Thomas-Kurian-CEO-of-Google-Cloud-at-the-Goldman-Sachs-Communacopia--Technology-Conference-on-Sep-8-2026-2026-GCjPPdDfmS/default.aspx" target="_blank"&gt;transcript&lt;/a&gt; from the event. This blog post includes statements that could be considered forward-looking. These statements involve a number of risks and uncertainties that could cause actual results to differ materially. Any forward-looking statements in the presentation are based on assumptions as of September 8, 2026, and Alphabet undertakes no obligation to update them.&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/inside-google-cloud/highlights-from-the-goldman-sachs-communicopia-and-technology-conference" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-11T09:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/20_-_Inside_Google_Cloud_9ZmxduF.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/20_-_Inside_Google_Cloud_9ZmxduF.max-2600x2600.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/20_-_Inside_Google_Cloud_9ZmxduF.max-2600x2600.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://googlecloudpresscorner.com/2026-09-11-Avid-and-Google-Cloud-Expand-Strategic-Partnership-to-Deliver-Browser-Based-Media-Composer-and-Agentic-Creative-Workflows</id>
-    <title>Avid and Google Cloud Expand Strategic Partnership to Deliver Browser-Based Media Composer and Agentic Creative Workflows</title>
-    <updated>2026-09-11T08:00:00+00:00</updated>
-    <link href="https://googlecloudpresscorner.com/2026-09-11-Avid-and-Google-Cloud-Expand-Strategic-Partnership-to-Deliver-Browser-Based-Media-Composer-and-Agentic-Creative-Workflows" rel="alternate"/>
-    <category term="Google Cloud Press"/>
-    <published>2026-09-11T08:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://mmx.prnewswire.com/media/MS1986093/Avid_Google_PR-V4-1-1.jpg?id=OA2942260&amp;p=thumbnail" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://mmx.prnewswire.com/media/MS1986093/Avid_Google_PR-V4-1-1.jpg?id=OA2942260&amp;p=thumbnail"/>
-    </media:group>
-    <link rel="enclosure" href="https://mmx.prnewswire.com/media/MS1986093/Avid_Google_PR-V4-1-1.jpg?id=OA2942260&amp;p=thumbnail" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://developers.google.com/workspace/release-notes#September_11_2026</id>
-    <title>Workspace Release Notes — September 11, 2026</title>
-    <updated>2026-09-11T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Google Meet&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Meet API&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Generally Available&lt;/strong&gt;: The &lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members"&gt;&lt;code&gt;spaces.members&lt;/code&gt;&lt;/a&gt;
-resource is now generally available. You can use the Meet API to manage meeting
-space members and assign co-host roles before or during a meeting.&lt;/p&gt;
-&lt;p&gt;The following methods are available on the &lt;code&gt;spaces.members&lt;/code&gt; resource:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/create"&gt;&lt;code&gt;create&lt;/code&gt;&lt;/a&gt;:
-Adds a member to a meeting space.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/delete"&gt;&lt;code&gt;delete&lt;/code&gt;&lt;/a&gt;:
-Removes a member from a meeting space.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/get"&gt;&lt;code&gt;get&lt;/code&gt;&lt;/a&gt;:
-Retrieves details about a member.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/list"&gt;&lt;code&gt;list&lt;/code&gt;&lt;/a&gt;:
-Lists members in a meeting space.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/patch"&gt;&lt;code&gt;patch&lt;/code&gt;&lt;/a&gt;:
-Updates a member's role.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/workspace/meet/api/reference/rest/v2/spaces.members/batchUpdate"&gt;&lt;code&gt;batchUpdate&lt;/code&gt;&lt;/a&gt;:
-Updates multiple members' roles in a single request.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For details, see &lt;a href="https://developers.google.com/workspace/meet/api/guides/meeting-space-members"&gt;Manage meeting space
-members&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://developers.google.com/workspace/release-notes#September_11_2026" rel="alternate"/>
-    <category term="Workspace Release Notes"/>
-    <published>2026-09-11T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.gstatic.com/devrel-devsite/prod/veec7311b6c5f99ef32994eb65aab7022195f72bfa4f3d934bdc7556da7fa7c3b/developers/images/opengraph/white.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/veec7311b6c5f99ef32994eb65aab7022195f72bfa4f3d934bdc7556da7fa7c3b/developers/images/opengraph/white.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/veec7311b6c5f99ef32994eb65aab7022195f72bfa4f3d934bdc7556da7fa7c3b/developers/images/opengraph/white.png" type="image/png" length="0"/>
   </entry>
 </feed>
