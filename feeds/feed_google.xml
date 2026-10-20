@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-20T05:12:46.451660+00:00</updated>
+  <updated>2026-10-20T12:02:02.013870+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,499 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference</id>
+    <title>Announcing llm-d 1.0: Open distributed inference for agents on Google Cloud TPUs and GPUs</title>
+    <updated>2026-10-20T11:30:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Today at the PyTorch Conference, we released llm-d 1.0, an open-source, Kubernetes-native stack for distributed LLM inference. Co-founded by Google with Red Hat, IBM and others, we worked with a community of more than 500 contributors over 25 organizations on this Cloud Native Computing Foundation (CNCF) Sandbox project, bringing together two important communities: PyTorch, where vLLM and SGLang serve models, and Kubernetes, where distributed systems run and scale in production.&lt;/p&gt;&lt;p&gt;llm-d 1.0 arrives at a time when agents are changing the nature of inference. A year ago, most inference traffic was chat: one prompt in, one response out. Today, workloads are shifting to multi-step agents and reinforcement learning (RL) rollouts that fan out across tools, share long prefixes, and arrive in bursts. Serving them on a single machine — or behind a generic round-robin load balancer — breaks down fast. Replicas recompute the same prompts, accelerator memory fills up with duplicate state, and one bursty agent loop can stall interactive users.&lt;/p&gt;&lt;p&gt;llm-d solves this for teams serving their own models by turning a cluster of model servers into a coordinated serving pool. During the PyTorch Conference keynote, we showed this in action with 1,000 sandboxed agents on &lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/bringing-you-agent-sandbox-on-gke-and-agent-substrate"&gt;Agent Substrate on GKE&lt;/a&gt; hitting a single llm-d endpoint across vLLM, SGLang, and a mixed fleet of Google Cloud TPUs and GPUs. As traffic scaled across the three stages below, cache-aware routing and tiered KV cache kept each agent's steps on the replicas holding its context, while flow control queued bursty agent loops so interactive requests stayed fast.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1 - Figure 1 - llm-d 1.0 distributed inference architecture" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Figure_1_-_llm-d_1.0_distributed_infer.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Figure 1: Evolution of distributed inference from round-robin load balancing to cache-aware routing, tiered KV cache, and priority flow control in llm-d 1.0&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;What 1.0 provides&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;llm-d already delivered prefix- and load-aware routing, KV cache offloading, prefill/decode disaggregation, wide expert parallelism and batch inference across Google Cloud TPUs and GPUs. These capabilities provide:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Multi-tenant quality of service.&lt;/b&gt; Priority and fairness-aware routing via llm-d flow control, helping latency-sensitive requests and bursty agent workloads share a fleet to meet SLOs without starving one another.&lt;/li&gt;&lt;li&gt;&lt;b&gt;A stable foundation.&lt;/b&gt; v1 APIs and a hardened request path, validated on multiple clouds and accelerator types.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Safer upgrades.&lt;/b&gt; Router high availability and zero-downtime updates, alongside &lt;a href="https://llm-d.ai/docs/dev/architecture/model-server-orchestration/disaggregatedset" target="_blank"&gt;DisaggregatedSet&lt;/a&gt;, which orchestrates prefill/decode-aware rolling updates without dropping context or disrupting active sessions.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Agent-aware serving.&lt;/b&gt; Session-aware routing, turn-priority scheduling, and native Responses API state, helping agents reuse context across turns.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Expanded TPU integration&lt;/b&gt;. Native PyTorch model serving with TorchTPU co-operative time-slicing to raise throughput and utilization across Google Cloud TPU fleets.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The components are designed so that you can compose them into your own bespoke production environment. Keep your engine, model and cluster, and adopt only the serving components and configurations you need.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;llm-d under the hood&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Across the areas below, Google engineers worked with the llm-d community to connect upstream Kubernetes primitives, PyTorch serving engines, and accelerator-aware scheduling into a composable stack.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2 - Figure 2 - llm-d 1.0 and TorchTPU stack on GKE" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_-_Figure_2_-_llm-d_1.0_and_TorchTPU_stac.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Figure 2: Multi-node llm-d orchestration and single-node TorchTPU model engines on Google Kubernetes Engine and Google TPUs&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;&lt;b&gt;One endpoint, many accelerators&lt;/b&gt;&lt;/p&gt;&lt;p&gt;An agent fleet is not one workload. Interactive turns need low latency, background loops and reinforcement learning (RL) rollouts need high throughput, and demand swings by the minute. llm-d puts your accelerator pools behind a single endpoint, with one router, one KV cache index, and one flow-control policy in front of the whole fleet. Agents call a single API; the router picks the replica for each step and keeps a session's context on the replicas that already hold it. Adding capacity, mixing accelerator generations, or moving a model to a different pool becomes a platform change, not an agent rewrite. &lt;a href="https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/" target="_blank"&gt;TorchTPU&lt;/a&gt; brings Google Cloud TPUs into that fleet, running PyTorch models natively inside upstream vLLM and SGLang without model rewrites. For more, see the &lt;a href="https://llm-d.ai/docs/dev/infrastructure/providers/gke#tpu-configuration" target="_blank"&gt;llm-d on Google Kubernetes Engine (GKE) TPU guide&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Routing that remembers context&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The llm-d router builds on Gateway API Inference, the Kubernetes project for inference-optimized routing that we launched. On GKE, &lt;a href="https://cloud.google.com/kubernetes-engine/docs/concepts/about-gke-inference-gateway#llm-d-router"&gt;GKE Inference Gateway&lt;/a&gt; runs the llm-d router as a managed service, simplifying installation and management and &lt;a href="https://cloud.google.com/kubernetes-engine/docs/how-to/setup-multicluster-inference-gateway"&gt;extending routing across regions&lt;/a&gt;. The router tracks the replicas holding each cached prefix and weighs load and predicted latency when it picks one. When accelerator memory fills up, rather than dropping it, llm-d uses vLLM’s OffloadingConnector, Mooncake, or SGLang’s HiCache to move KV cache to host memory and then to SSD or Google Cloud Managed Lustre. This setup helps prevent prefix-eviction storms under heavy, multi-turn, and long-context conversational loads across mixed TPU and GPU fleets.&lt;/p&gt;&lt;p&gt;On an agentic coding workload on Ironwood TPU (TPU 7x), prefix-aware routing plus host memory offload cut median time-to-first-token (TTFT) by more than 85% and raised total throughput 2.4x versus a plain Kubernetes Service, as of October 2026 (&lt;a href="https://github.com/llm-d/llm-d/blob/main/guides/models/qwen3-coder-480b/README.md" target="_blank"&gt;source&lt;/a&gt;).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Disaggregation that upgrades safely&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Prefill is compute-heavy and decode is memory-bound, so running both on the same replicas makes each wait on the other. llm-d runs prefill, decode, and multimodal encode as separate pools, with wide expert parallelism spreading large mixture-of-experts models across nodes. In 1.0, &lt;a href="https://llm-d.ai/docs/dev/architecture/model-server-orchestration/disaggregatedset" target="_blank"&gt;DisaggregatedSet&lt;/a&gt; — built on LeaderWorkerSet, the Kubernetes API for multi-host inference that we started — manages these pools as one unit. Rolling updates move prefill and decode together on matching versions while each phase scales independently. For more, see the &lt;a href="https://llm-d.ai/docs/well-lit-paths/foundations/pd-disaggregation" target="_blank"&gt;disaggregated serving guide&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Async inference that runs alongside real-time inference&lt;/b&gt;&lt;/p&gt;&lt;p&gt;For latency-tolerant traffic, llm-d 1.0 introduces &lt;a href="https://github.com/llm-d/llm-d-async" target="_blank"&gt;llm-d-async-processor&lt;/a&gt;, which pulls requests from queues like Google Cloud Pub/Sub or Redis and routes them alongside real-time traffic. Using queue and pool-dispatch gates, the processor checks available capacity and enforces strict priority lanes and quotas so background jobs run in slack capacity without starving interactive users.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Time-slicing to put idle RL capacity to work&lt;/b&gt;&lt;/p&gt;&lt;p&gt;During RL training, accelerators often sit idle 40% to 60% of the time during rollout generation or weight updates. llm-d now supports &lt;a href="https://github.com/llm-d-incubation/llm-d-rl-time-slicing" target="_blank"&gt;Google Cloud TPU and GPU time-slicing&lt;/a&gt; to interleave async inference into those quiet cycles, raising aggregate accelerator duty cycles from a ~40% baseline to &amp;gt;70% (&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/introducing-co-operative-time-slicing-for-rl-in-llm-d"&gt;source&lt;/a&gt;).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Benchmarks you can trust&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tuning a distributed inference stack across routers, KV cache tiers, and prefill/decode pools takes repeatable measurement under realistic multi-turn load. &lt;a href="https://prism.llm-d.ai/" target="_blank"&gt;Prism&lt;/a&gt; is llm-d’s open-source analysis dashboard for exploring published benchmarks across llm-d’s well-lit paths, backed by standardized &lt;a href="https://github.com/llm-d/llm-d-benchmark" target="_blank"&gt;llm-d-benchmark&lt;/a&gt; recipes and &lt;a href="https://github.com/kubernetes-sigs/inference-perf" target="_blank"&gt;inference-perf&lt;/a&gt; workloads. Inspect the exact configurations behind the numbers, or upload runs from your own cluster to compare throughput, latency, and cost curves side by side.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Running llm-d 1.0 on Google Cloud&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;llm-d builds on Kubernetes components you may already run: Gateway API, LeaderWorkerSet, Dynamic Resource Allocation, Prometheus, and OpenTelemetry. Running llm-d on Google Cloud brings these pieces together with managed infrastructure:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="https://cloud.google.com/kubernetes-engine/docs/concepts/about-gke-inference-gateway#llm-d-router"&gt;&lt;b&gt;GKE Inference Gateway&lt;/b&gt;&lt;/a&gt; is the llm-d router operating in Gateway Mode, a managed GKE Gateway that handles the L7 proxy and load balancing and calls the llm-d Endpoint Picker on every request, simplifying installation and management so you don't run the proxy yourself. More importantly, GKE Inference Gateway is how you scale llm-d &lt;a href="https://cloud.google.com/kubernetes-engine/docs/how-to/setup-multicluster-inference-gateway"&gt;across clusters and regions&lt;/a&gt; with global failover and Model Armor safety checks.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Autoscaling on inference signals&lt;/b&gt;. KEDA and Horizontal Pod Autoscaler (HPA) scale pools based on queue depth, saturation, and predicted latency, while Kueue enforces per-model quota on shared accelerators.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mixed accelerator node pools&lt;/b&gt;. Google Cloud TPU and GPU pools run behind the same llm-d endpoint, deployed with verified Helm charts.&lt;/li&gt;&lt;li&gt;&lt;b&gt;KV cache offloading across layers&lt;/b&gt;. Google Cloud Managed Lustre provides a shared remote tier beneath local TPU and GPU HBM and host CPU RAM so long-context workloads run without exhausting accelerator memory.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;b&gt;In production&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;This GKE llm-d stack carries production traffic, and it has been tested at fleet scale:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Gemini platform (formerly Vertex AI) serves production traffic through GKE Inference Gateway, doubling its prefix cache hit rate from 35% to 70%, cutting TTFT by more than 35% for coding agents and cutting P95 TTFT by more than 50% under bursty chat traffic (&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/how-gke-inference-gateway-improved-latency-for-vertex-ai"&gt;source&lt;/a&gt;).&lt;/li&gt;&lt;li&gt;In a published benchmark across a 17,000-node multi-region GKE deployment serving a mixture-of-experts model in the US and Europe, multi-cluster GKE Inference Gateway and the llm-d router scaled throughput 2.9x across three clusters with a 99.9% success rate and less than 1% routing overhead (&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/gpu-and-tpu-utilization-with-multi-cluster-gke-inference-gateway"&gt;source&lt;/a&gt;).&lt;/li&gt;&lt;li&gt;In a published benchmark on A3 Mega cluster serving a 70B-parameter model, llm-d with multi-connector KV cache offloading to Google Cloud Managed Lustre in addition to Host CPU RAM, delivered an approximately 40% improvement in TTFT and a 30% reduction in end-to-end latency responding to 50k-token prompts compared to CPU RAM offload only, while reducing GPU-hour requirements by nearly 60% (&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/scaling-llm-inference-multi-node-kv-cache-offloading-with-gke-managed-lustre"&gt;source&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Organizations running llm-d on Google Cloud are putting these same capabilities to work in different ways, for instance prefix-aware routing to raise cache hit rates, open interfaces that fit an existing service mesh, and flow control to hold latency for priority tiers when traffic spikes.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;“&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At Snap, we are integrating llm-d into our production AI infrastructure to facilitate high-performance inference at scale. By employing prefix-cache-aware routing, we have&lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt; achieved prefix cache hit rates ranging up to 75-80%&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;. We appreciate the open-source nature of llm-d, as it enables seamless integration with our Envoy-based Service Mesh.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;- &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Vinay Kola&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, Senior Manager, Software Engineering, Snap Inc.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At ZenteiQ, we use GKE Inference Gateway powered by llm-d to accelerate synthetic data generation for our sovereign Scientific Foundation Models. By leveraging load-aware and prefix-cache-aware routing, we have achieved over &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;4× higher aggregate inference throughput&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, increasing daily generated token capacity from &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;1.47 billion to 5.97 billion tokens per 1,000 TPU v6e accelerators&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;. The open-source foundation of llm-d, integrated with GKE, enables us to efficiently serve multiple model families at scale without developing and maintaining a custom inference scheduler.” &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;- &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Prof. Sashikumaar Ganesan&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, Founder, Zenteiq.ai&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Serving frontier models across interactive applications and high-volume APIs means handling steep traffic spikes without letting bursty workloads degrade latency for priority customers. With llm-d's prefix-cache-aware routing, flow control and disaggregated serving support we can &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;enforce strict priority bands across our commercial tiers&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, automatically holding or shedding lower-priority requests when pools saturate so&lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt; paid traffic meets our latency SLOs&lt;/strong&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;. Mistral is a proud supporter of open-source software, and we will continue to contribute back to llm-d and DisaggregatedSet projects.”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; - &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Mathis Felardos, Lucas Fernandes-Martins and Nikhil Thomas,&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Mistral, Inference Engineers and llm-d contributors&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;Teams serving their own models have been asking for an open stack they can take apart and adapt to their own infrastructure, with the cache-aware routing, traffic control, and upgrade controls required in production. llm-d 1.0 gives them that and a community to build with.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Get started&lt;/b&gt;&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;Check out the full demo of llm-d with TPUs at the Google Cloud booth during the PyTorch Conference.&lt;/li&gt;&lt;li&gt;Deploy llm-d 1.0 on GKE with the verified Helm charts. See the &lt;a href="https://llm-d.ai/docs/infrastructure/providers/gke" target="_blank"&gt;llm-d on GKE documentation&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Start with prefix-aware routing in front of your existing vLLM deployment, then add flow control, KV cache &lt;a href="https://llm-d.ai/docs/well-lit-paths/foundations/tiered-prefix-cache" target="_blank"&gt;offload&lt;/a&gt; (&lt;a href="https://github.com/llm-d/llm-d/tree/main/guides/tiered-prefix-cache/modelserver/gpu/sglang" target="_blank"&gt;SGlang&lt;/a&gt;, &lt;a href="https://github.com/llm-d/llm-d/tree/main/guides/tiered-prefix-cache/modelserver/gpu/vllm" target="_blank"&gt;vLLM&lt;/a&gt;) and disaggregation.&lt;/li&gt;&lt;li&gt;Compare results on &lt;a href="https://prism.llm-d.ai/" target="_blank"&gt;Prism&lt;/a&gt; and contribute on &lt;a href="https://github.com/llm-d/llm-d" target="_blank"&gt;GitHub&lt;/a&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T11:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Figure_1_-_llm-d_1.0_distributed_infer.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Figure_1_-_llm-d_1.0_distributed_infer.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_-_Figure_1_-_llm-d_1.0_distributed_infer.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus</id>
+    <title>TorchTPU is now open source: Run native PyTorch on TPUs</title>
+    <updated>2026-10-20T11:30:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Today at PyTorch Conference 2026, we announced a range of new products and integrations designed to help you run PyTorch effectively on Google Cloud or in your own infrastructure. Notably, TorchTPU, our native PyTorch stack for Google TPUs, is now available as open source on GitHub. With TorchTPU, TPUs join GPUs and CPUs as a native option for PyTorch. You can now train, serve, and deploy models on TPUs using the tools you already rely on, including vLLM, SGLang, llm-d, TorchTitan, Ray, TorchRec, Hugging Face, LiteRT. Ultimately, this provides our customers choice across a broad range of workload-optimized computing options including TPUs, GPUs, and CPUs, with a consistent, open software and operational model across the full portfolio.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Run PyTorch code natively on TPUs&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Co-developed with the PyTorch team at Meta, &lt;a href="https://github.com/google-pytorch/torch_tpu" target="_blank"&gt;TorchTPU&lt;/a&gt; lets you run existing PyTorch workloads on TPUs with minimal code changes, using the familiar APIs. TorchTPU lets you debug your models with eager mode, then transition to production-level performance via torch.compile to optimize TPU utilization and reduce memory overhead. By supporting standard PyTorch APIs, advanced diagnostics, and native distributed primitives out of the box, TorchTPU unlocks high performance and operational efficiency from day one.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At Meta, advancing the frontier of AI requires immense compute scale and deep hardware diversity&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;We cannot be constrained by a single hardware architecture. TorchTPU is a massive step forward — allowing us to co-develop hardware flexibly with the core machine learning systems team while supporting major LLM, Ads, and Recommendation systems workloads on key production use cases. It enables us to deploy our PyTorch workloads to Google TPUs, provide direct feedback to the engineering teams, and build the ecosystem flexibility everyone needs.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;"- Jana van Greunen, Director of PyTorch Engineering, Meta&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;We also partnered with Hugging Face so that popular open-weight models across the Hugging Face Hub run natively on TorchTPU. In Transformers v5, deploying models to TPUs is now as simple as passing &lt;code&gt;device_map="tpu"&lt;/code&gt;. The Diffusers library runs natively on TPUs with support for eager mode, torch.compile, and tensor parallelism to scale large generative models across multiple accelerators. To maintain consistent reliability, we also built dedicated CI/CD pipelines for continuous nightly testing of the Hugging Face Transformers suite on TPU infrastructure.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Hugging Face is committed to being an open, neutral platform where AI builders can choose the models, frameworks and hardware that work best for them. Hardware diversity is essential to making open-source AI accessible to everyone. Our collaboration with Google to bring native TorchTPU support to our core libraries, including Transformers, puts that commitment into practice. Together, we’re making it easier for the community to run popular models from the Hub efficiently on Google Cloud TPUs using familiar PyTorch workflows. Giving developers more choice in how and where they build helps the entire open-source ecosystem grow.”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; - Jeff Boudier, VP Product, Hugging Face&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=u4n558Ul6w0"&gt;
+
+      
+        &lt;img alt="Watch Introducing TorchTPU: Native PyTorch on Google Cloud TPUs to learn more" src="//img.youtube.com/vi/u4n558Ul6w0/maxresdefault.jpg" /&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=u4n558Ul6w0"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Optimizing inference&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;As reasoning and agentic models scale, inference cost and latency become the primary bottlenecks in production. We’ve integrated TorchTPU into widely used open-source serving engines and paired them with Kubernetes-native fleet routing across TPUs and GPUs to help you optimize throughput per dollar.&lt;/p&gt;&lt;p&gt;This foundation allows developers to scale workloads across diverse hardware while minimizing the friction of platform-specific tuning. To bring these framework-level enhancements to life in production, we have collaborated with leading open-source communities and industry partners. In the sections below, we explore how these partnerships are driving breakthrough efficiency across high-throughput serving with vLLM, structured agentic execution with SGLang, and large-scale distributed fleet orchestration with llm-d.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;div&gt;
+&lt;div class="Draftail-block--unstyled"&gt;
+&lt;h4 class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"&gt;&lt;span style="text-decoration: underline;"&gt;vLLM: High-throughput serving and memory efficiency&lt;/span&gt;&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div class="Draftail-block--unstyled"&gt;
+&lt;div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"&gt;&lt;span&gt;Developed in partnership with Inferact, the native PyTorch &lt;/span&gt;&lt;a class="TooltipEntity" href="https://github.com/vllm-project/vllm-torchtpu" rel="noopener" target="_blank"&gt;&lt;span&gt;vLLM&lt;/span&gt;&lt;/a&gt;&lt;span&gt; backend on TorchTPU enables developers to deploy open-weight models directly on TPUs with optimized, production-ready serving features and custom Pallas kernels. This integration supports continuous batching, quantization, and multi-chip parallelism on TPU hardware, while preserving upstream worker models, schedulers, and API servers to improve cost-performance ratios, without requiring changes to existing inference stacks.&lt;/span&gt;&lt;/div&gt;
+&lt;div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Our mission at Inferact has always been to make high-performance inference accessible, reliable, and cost-effective across the entire AI ecosystem. We are thrilled to partner on the launch of TorchTPU and bring first-class support for vLLM to TPUs. By bridging PyTorch’s optimized TPU capabilities directly into vLLM, developers can immediately run production workloads on TPUs with the high throughput, low latency, and memory efficiency they expect from our stack.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" - Simon Mo, CEO and co-founder, Inferact&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;SGLang: Accelerating agentic and structured workloads&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Developed in partnership with RadixArk, our native PyTorch backend for &lt;/span&gt;&lt;a href="https://github.com/sgl-project/sglang-torchtpu/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;SGLang&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; accelerates highly structured and agentic workloads on TPUs. SGLang uses RadixAttention to reuse KV cache across requests, allowing repeated prompt prefixes to skip recomputation entirely. SGLang-TorchTPU preserves upstream worker models, schedulers, and API servers, using a disaggregation transfer backend that also acts as the I/O backend for HiCache to optimize latency and throughput for complex multi-step generation.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At RadixArk, TorchTPU has supercharged our development velocity as we roll out SGLang support across diverse silicon. It’s given us a painless path to native TPU acceleration, passing massive efficiency gains and flexible compute choices directly down to our customers.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" - Banghua Zhu, CTO and co-founder, RadixArk&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;llm-d for distributed LLM inference&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To run inference engines across large fleets, we are releasing llm-d 1.0 with Red Hat, IBM, and a community of more than 500 contributors and 25 organizations. As a Cloud Native Computing Foundation (CNCF) Sandbox project, llm-d connects two open-source communities: PyTorch, where vLLM and SGLang serve models, and Kubernetes, where distributed systems run and scale in production. The llm-d router sends each request to the replica that already holds its context, using prefix-cache-aware routing. It also splits compute-heavy prefill from memory-heavy decode. llm-d 1.0 makes that ready for production with multi-tenant flow control, router high availability, stable v1 APIs, and session-aware routing for agents. On Google Kubernetes Engine (GKE), you can have the choice of running on either GPUs or Google TPUs, with a common llm-d endpoint, and choose the hardware that fits each workload.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;"&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At Zenteiq, we use GKE Inference Gateway powered by llm-d to accelerate synthetic data generation for our sovereign Scientific Foundation Models. By leveraging load-aware and prefix-cache-aware routing, we have achieved over 4× higher aggregate inference throughput, increasing daily generated token capacity from 1.47 billion to 5.97 billion tokens per 1,000 TPU v6e accelerators. The open-source foundation of llm-d, integrated with GKE, enables us to efficiently serve multiple model families at scale without developing and maintaining a custom inference scheduler.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" - Prof. Sashikumaar Ganesan, Founder, Zenteiq.ai&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Training at scale&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scaling PyTorch training across thousands of accelerators requires fault-tolerant, compile-aware distributed frameworks. We have integrated TorchTPU into the PyTorch community’s core training, reinforcement learning (RL), and orchestration frameworks.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TorchTitan: Distributed high performance training at scale&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/google-pytorch/torchtitan" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TorchTitan&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is the PyTorch-native reference implementation for scalable distributed training and features a production-grade integration with TorchTPU. By connecting to PyTorch's &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;torch.compile&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and TorchTitan’s compile friendly SimpleFSDP, specialized Pallas kernels, and graph-level optimizations, developers can build and train models on TPUs with high efficiency at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;TorchTitan provides recipes for pre-training large dense models (such as Llama 3 70B/405B, Qwen 3 8B/32B, and MuseGlimmer 30B), Mixture-of-Experts (MoE) such as Qwen 3 235B, and diffusion transformers (such as FLUX.1 12B), and has been validated running with up to 8000 Ironwood TPUs (TPU v7x). Beyond initial pre-training, TorchTitan serves as the scalable trainer inside post-training pipelines like VeRL for Group Relative Policy Optimization (GRPO) and RL alignment.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;To test large-scale efficiency on demanding open architectures, TorchTPU’s training paths via TorchTitan demonstrated up to 52% Model Flops Utilization (MFU) on Qwen 3 8B, showing near-linear scaling and stability across up to 8,192 Ironwood TPUs.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;VeRL: Scalable post-training and reinforcement learning in preview&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;RL is a foundational technique for frontier labs that are advancing model capabilities, as well as for enterprises customizing models for domain-specific tasks. Yet, orchestrating distributed RL workloads remains one of the most complex challenges in modern AI infrastructure. Bridging that gap, &lt;/span&gt;&lt;a href="https://github.com/verl-project/verl/tree/main/examples/tpu/grpo" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;VeRL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; has quickly become one of the most popular RL frameworks, supporting everything from verifiable math and coding rewards, to multi-turn agentic tool use at massive scale. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To help expand hardware choice for this thriving community, we upstreamed a TPU backend and an end-to-end reference recipe to VeRL. Built on a disaggregated trainer-sampler architecture designed to maximize training efficiency, our GRPO reference recipe on mathematical reasoning datasets demonstrates how developers can deploy VeRL workloads on TPUs while preserving their existing, hardware-agnostic model and algorithm code. &lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Ray: Orchestrating heterogenous compute&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’ve also added native TorchTPU support to &lt;/span&gt;&lt;a href="https://github.com/ray-project/ray" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Ray&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, enabling you to orchestrate PyTorch data processing, training, RL, and serving across CPUs, GPUs, and TPUs within a single workflow. With a few lines of resource configuration, you can schedule each stage of a heterogeneous AI pipeline onto the accelerator best suited for the job.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;“&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;At Ray Summit we talked about the PARK stack, PyTorch, AI models, Ray, and Kubernetes, because that's what teams are building production AI on today. TorchTPU embeds Google TPUs directly in that industry-standard stack. We've also worked closely with the Google team to support TPUs as a first-class accelerator in Ray. Coupled with native PyTorch support, teams can now seamlessly develop, scale, and monitor their workloads on TPUs.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;" - Edward Oakes, Chief Architect, Anyscale&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Deployment flexibility and operational efficiency&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;True portability requires standardizing deployment tools across different hardware profiles, including edge devices and cloud accelerators.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LiteRT joins the PyTorch Ecosystem&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Many PyTorch models need to run on phones, laptops, browsers, and embedded devices. Today, &lt;/span&gt;&lt;a href="https://github.com/google-ai-edge/litert" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LiteRT&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (formerly TensorFlow Lite), Google's high-performance on-device AI inference, joins the PyTorch ecosystem. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With &lt;/span&gt;&lt;a href="https://github.com/google-ai-edge/litert-torch" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LiteRT-Torch&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, you convert a PyTorch model with a single &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;litert-torch.convert()&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; call. It builds on&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt; torch.export()&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; and Core ATen operators, so your model code stays in PyTorch. For LLMs, LiteRT Torch exports Hugging Face Transformer models to run with &lt;/span&gt;&lt;a href="https://github.com/google-ai-edge/LiteRT-LM" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LiteRT-LM&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. The converted models run on Android, iOS, macOS, Windows, Linux, web, and IoT devices, with hardware acceleration across CPUs (via XNNPack), GPUs (via open source &lt;/span&gt;&lt;a href="https://developers.googleblog.com/ml-drift-next-gen-gpu-aiml-inference-at-the-edge/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;ML Drift&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;), and NPUs from major chipsets provided through a single API. &lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TPU agent suite in early preview&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To expand Pytorch adoption on TPUs, we are announcing that the &lt;/span&gt;&lt;a href="https://github.com/google-pytorch/tpu-agent-suite" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TPU agent suite&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is in preview on GitHub. Integrating through plug-ins with several coding harness-model combinations, the TPU agent suite helps automate onboarding, diagnostics, user questions, and inference performance tuning for many PyTorch models. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=hK3xqW_HrP0"&gt;
+
+      
+        &lt;img alt="Watch Introducing the TPU agent suite (preview): Open-source agents for PyTorch on Cloud TPU to learn more" src="//img.youtube.com/vi/hK3xqW_HrP0/maxresdefault.jpg" /&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=hK3xqW_HrP0"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Get started with PyTorch on Google Cloud&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Together, these releases reinforce our commitment to making the Google TPU software ecosystem an open, developer-friendly environment for the PyTorch community. By bringing native TPU support upstream into the PyTorch stack across TorchTPU, Hugging Face, vLLM, SGLang, llm-d, TorchTitan, VeRL, and Ray — and contributing LiteRT to the PyTorch Ecosystem — we are giving you the flexibility to build, adapt, and scale AI on your terms.&lt;/p&gt;&lt;p&gt;Visit the &lt;a href="https://cloud.google.com/tpu/docs/pytorch-on-tpu"&gt;Google Cloud documentation&lt;/a&gt; to get started running PyTorch on TPUs today.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T11:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://img.youtube.com/vi/u4n558Ul6w0/maxresdefault.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://img.youtube.com/vi/u4n558Ul6w0/maxresdefault.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://img.youtube.com/vi/u4n558Ul6w0/maxresdefault.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://googlecloudpresscorner.com/2026-10-20-Clutch-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services</id>
+    <title>Clutch Accelerates Enterprise AI Transformation with Google Cloud’s Gemini for Government Services</title>
+    <updated>2026-10-20T10:07:00+00:00</updated>
+    <link href="https://googlecloudpresscorner.com/2026-10-20-Clutch-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services" rel="alternate"/>
+    <category term="Google Cloud Press"/>
+    <published>2026-10-20T10:07:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.googlecloudpresscorner.com/image/edited_ClutchGov.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/edited_ClutchGov.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/edited_ClutchGov.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://googlecloudpresscorner.com/2026-10-20-Daston-Corporation-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services</id>
+    <title>Daston Corporation Accelerates Enterprise AI Transformation with Google Cloud’s Gemini for Government Services</title>
+    <updated>2026-10-20T10:06:00+00:00</updated>
+    <content type="html">Premier Google Cloud Partner expands public sector solutions to automate complex workflows, enhance zero-trust security, and elevate citizen engagement.</content>
+    <link href="https://googlecloudpresscorner.com/2026-10-20-Daston-Corporation-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services" rel="alternate"/>
+    <category term="Google Cloud Press"/>
+    <published>2026-10-20T10:06:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.googlecloudpresscorner.com/image/edited_Daston.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/edited_Daston.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/edited_Daston.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://googlecloudpresscorner.com/2026-10-20-Egen-Named-a-Launch-Partner-for-Google-Clouds-Gemini-for-Government-Services</id>
+    <title>Egen Named a Launch Partner for Google Cloud’s Gemini for Government Services</title>
+    <updated>2026-10-20T10:05:00+00:00</updated>
+    <content type="html">Egen brings proven expertise and offerings to help the public sector simplify workflows and improve services.</content>
+    <link href="https://googlecloudpresscorner.com/2026-10-20-Egen-Named-a-Launch-Partner-for-Google-Clouds-Gemini-for-Government-Services" rel="alternate"/>
+    <category term="Google Cloud Press"/>
+    <published>2026-10-20T10:05:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.googlecloudpresscorner.com/image/edited_Egen.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/edited_Egen.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/edited_Egen.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://googlecloudpresscorner.com/2026-10-20-Onix-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services</id>
+    <title>Onix Accelerates Enterprise AI Transformation with Google Cloud’s Gemini for Government Services</title>
+    <updated>2026-10-20T10:03:00+00:00</updated>
+    <content type="html">New AI capabilities help government organizations automate workflows, accelerate decisions, and deliver better services</content>
+    <link href="https://googlecloudpresscorner.com/2026-10-20-Onix-Accelerates-Enterprise-AI-Transformation-with-Google-Clouds-Gemini-for-Government-Services" rel="alternate"/>
+    <category term="Google Cloud Press"/>
+    <published>2026-10-20T10:03:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.googlecloudpresscorner.com/image/edited_Onix-Logo.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/edited_Onix-Logo.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/edited_Onix-Logo.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://googlecloudpresscorner.com/2026-10-20-Slalom-Customers-Get-Access-to-New-Google-Cloud-Gemini-Accelerators-for-Government-Services</id>
+    <title>Slalom Customers Get Access to New Google Cloud Gemini Accelerators for Government Services</title>
+    <updated>2026-10-20T10:01:00+00:00</updated>
+    <link href="https://googlecloudpresscorner.com/2026-10-20-Slalom-Customers-Get-Access-to-New-Google-Cloud-Gemini-Accelerators-for-Government-Services" rel="alternate"/>
+    <category term="Google Cloud Press"/>
+    <published>2026-10-20T10:01:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.googlecloudpresscorner.com/image/edited_Slalom.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.googlecloudpresscorner.com/image/edited_Slalom.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.googlecloudpresscorner.com/image/edited_Slalom.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/hybrid-cloud/new-innovations-in-google-distributed-cloud</id>
+    <title>Enabling the next era of sovereign AI: The latest Google Distributed Cloud innovations</title>
+    <updated>2026-10-20T10:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Agentic systems are quickly moving from pilots to production in the enterprise. But if your organization operates under stringent data sovereignty, defense, intelligence, or critical infrastructure mandates, sending sensitive data to a public cloud often isn’t an option — and building your own AI stack inside a disconnected perimeter can take months. Your missions demand frontier models, hardened security, and high performance, deployed directly where your most sensitive data lives.&lt;/p&gt;&lt;p&gt;The latest innovations in Google Distributed Cloud (GDC) air-gapped represent a huge leap forward for organizations struggling with these challenges, and they no longer need to make this tradeoff. Enterprise search capabilities with Gemini, support for open weight models, turnkey ISV applications, next-generation accelerated infrastructure, and support for new partners are all now available to be directly deployed in your sovereign, air-gapped environments.&lt;/p&gt;&lt;p&gt;Here’s a high-level look at the major capabilities launching across three pillars: Sovereign AI and enterprise search, next-generation infrastructure, and a growing ISV partner ecosystem.&lt;/p&gt;&lt;h3&gt;GDC technology stack: Infra, frontier models, data and applications&lt;/h3&gt;&lt;p&gt;The GDC technology stack turns isolated infrastructure into a modern agentic innovation platform, combining foundational and open model flexibility, intuitive out-of-the-box user experiences, and high-performance data processing.&lt;br /&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_2n8CczN.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Overview of GDC architecture and capabilities&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;We are excited to bring the following innovations to GDC:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Gemini on GDC enterprise search:&lt;/b&gt; In air-gapped environments, analysts and knowledge workers spend critical hours manually sifting through compartmentalized documents, intercepted audio, and sensor video. Agentic systems can streamline those processes, but building those capabilities often requires months of custom development. With &lt;a href="https://cloud.google.com/blog/topics/hybrid-cloud/managed-rag-search-inside-the-sovereign-perimeter-gemini-on-gdc-enterprise-search"&gt;enterprise search capabilities in Gemini on GDC&lt;/a&gt; (available in preview), organizations gain a turnkey conversational interface, so they can query, prompt, and summarize vast repositories of data near-instantaneously. Unlike text-only open-source alternatives, this managed architecture delivers native &lt;b&gt;multi-modality support via Gemini embedding models&lt;/b&gt;, combining high-throughput scaling and low-latency inference performance for text, audio, and video modalities. Built-in retrieval-augmented generation (RAG) keeps indexing and interactions strictly within your sovereign perimeter, accelerating insights without compromising security.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Expanded frontier and open-weight models:&lt;/b&gt; Google Cloud is one of the &lt;b&gt;first hyperscalers to bring a frontier model like Gemini to air-gapped deployments&lt;/b&gt;. Now generally available on GDC air-gapped, &lt;b&gt;Gemini 3.5 Flash&lt;/b&gt; delivers ultra-low-latency reasoning, multimodal understanding, and long-context capabilities entirely within your air-gapped boundary, allowing users to process large volumes of field intelligence, from reports to imagery and recordings, quickly. GDC also now supports leading open models like &lt;b&gt;Gemma&lt;/b&gt; and &lt;b&gt;Mistral&lt;/b&gt;, giving you architectural and workload choice, giving you the flexibility to match the right model to each workload on the same governed platform.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Next-generation IaaS powering GDC&lt;/h3&gt;&lt;p&gt;To run modern agentic systems and memory-intensive enterprise workloads on the same infrastructure, you need an uncompromising foundation. GDC air-gapped features a new, elevated Infrastructure-as-a-Service (IaaS) stack across compute, networking, and security, so you can run AI and traditional workloads side by side with the performance and protection they need.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Next-gen high-performance agentic infrastructure:&lt;/b&gt; &lt;b&gt;NVIDIA HGX B300 systems based on the NVIDIA Blackwell Ultra architecture&lt;/b&gt; are now generally available on GDC air-gapped, giving you the local compute to serve Gemini and open models — and the agents built on them — at production scale. Paired with VM networking that now &lt;b&gt;supports up to 32 Gbps per VM&lt;/b&gt; (up from 25 Gbps), you can move data to your GPUs faster and reduce bottlenecks in your inference pipelines.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Resilient, enterprise-grade networking:&lt;/b&gt; Fully managed &lt;b&gt;Cloud DNS, now generally available on GDC&lt;/b&gt;, lets your platform teams manage DNS records with the same Kubernetes APIs and command line they already use — with no third-party DNS infrastructure to deploy, patch, and maintain inside the air gap. And hardware-offloaded &lt;b&gt;IPsec encryption protects node-to-node traffic at up to 100 Gbps&lt;/b&gt;, helping you meet encryption-in-transit requirements without taking CPU away from your applications.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SecOps enabled by Elastic:&lt;/b&gt; As agentic workloads scale, you need machine-speed security to defend your distributed environments. Through our deep integration with &lt;a href="https://www.elastic.co/blog/elastic-security-integration-with-google-distributed-cloud" target="_blank"&gt;&lt;b&gt;Elastic Security&lt;/b&gt;&lt;/a&gt;, we are modernizing threat detection and response (SIEM and EDR) on GDC air-gapped. Together, Elastic Security and GDC air-gapped provide automated case management, behavioral analytics, and agentic-driven telemetry correlation, so you can accelerate your mean time to response (MTTR).&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Expanding the sovereign ISV partner ecosystem&lt;/h3&gt;&lt;p&gt;Your missions depend on more than infrastructure — they run on the data platforms, developer tools, and collaboration apps your teams already know. That’s why we’re bringing more of that software to run natively on GDC, so you can adopt AI without leaving familiar tools behind. Today, we’re expanding the GDC partner marketplace with independent software vendors (ISVs) including &lt;b&gt;Teradata, Solo.io, and Mattermost&lt;/b&gt;:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.teradata.com/insights/ai-and-machine-learning/analytics-meets-sovereign-infrastructure" target="_blank"&gt;&lt;b&gt;Teradata&lt;/b&gt;&lt;/a&gt; extends industry-standard enterprise data analytics and warehouse intelligence to the distributed edge, so you can run complex analytical pipelines right next to local AI inference — and act on insights without moving data outside your perimeter.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Enterprises in highly regulated and air-gapped environments are eager to harness the transformative power of generative AI, but they cannot compromise on data privacy or analytical rigor. By bringing Teradata to Google Distributed Cloud, we are enabling our joint customers to run complex analytical workloads and AI inferencing right where their data resides. Together with Google Cloud, we are breaking down barriers between sovereign cloud infrastructure and enterprise-grade intelligence." - &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Sumeet Arora, Chief Product Officer, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Teradata &lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.solo.io/blog/from-sovereign-models-to-sovereign-agents-kagent-and-agentgateway-on-google-distributed-cloud" target="_blank"&gt;&lt;b&gt;Solo.io&lt;/b&gt;&lt;/a&gt; brings API management, service mesh, and agentic networking — including kagent and agentgateway — to sovereign deployments, so you can securely connect and govern microservices and AI agents across isolated clusters, including which tools and other agents each agent can reach.&lt;/li&gt;&lt;li&gt;&lt;a href="https://docs.mattermost.com/" target="_blank"&gt;&lt;b&gt;Mattermost&lt;/b&gt;&lt;/a&gt; delivers secure collaboration and mission-critical operations workflows for defense and public sector teams, so your people can coordinate in real time entirely inside the air gap — including AI-assisted summaries and translation using models running locally on GDC.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Building the future of sovereign cloud&lt;/h3&gt;&lt;p&gt;With these capabilities, sovereignty no longer has to slow down your AI ambitions. By bringing Gemini and open-weight models, multimodal enterprise search, high-performance infrastructure, built-in security, and a growing ISV ecosystem together inside your air-gapped perimeter, GDC helps you turn your most sensitive data into actionable insights, while you maintain compliance, security, and control.&lt;/p&gt;&lt;p&gt;Ready to get started?&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Read our &lt;a href="https://cloud.google.com/blog/topics/hybrid-cloud/managed-rag-search-inside-the-sovereign-perimeter-gemini-on-gdc-enterprise-search"&gt;technical deep dive&lt;/a&gt; on Gemini on GDC enterprise search.&lt;/li&gt;&lt;li&gt;Explore the &lt;a href="https://docs.cloud.google.com/distributed-cloud/hosted/docs/latest/gdcag"&gt;GDC air-gapped documentation&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Contact your GDC representative to schedule a demo.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/hybrid-cloud/new-innovations-in-google-distributed-cloud" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T10:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_2n8CczN.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_2n8CczN.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_2n8CczN.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/hybrid-cloud/managed-rag-search-inside-the-sovereign-perimeter-gemini-on-gdc-enterprise-search</id>
+    <title>Managed RAG search inside the sovereign perimeter: Gemini on GDC enterprise search</title>
+    <updated>2026-10-20T10:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;National security agencies and other sovereign and highly regulated organizations handle incredibly sensitive data such as classified reports, field manuals, and sensitive multi-modal datasets. Search and multimodal intelligence that’s available in the public cloud can help teams manage and analyze that data, but due to strict data sovereignty mandates, that data cannot leave the customer premises.&lt;/p&gt;&lt;p&gt;The alternative has been to deploy custom agentic search inside a secure, disconnected perimeter, but until now, that meant months building and maintaining custom infrastructure — stitching together models, building speech-to-text and optical character recognition (OCR) pipelines, configuring vector databases, and managing a bespoke user interface.&lt;/p&gt;&lt;p&gt;Today, we're excited to announce enterprise search capabilities with Gemini on &lt;a href="https://cloud.google.com/distributed-cloud"&gt;Google Distributed Cloud (GDC)&lt;/a&gt; air-gapped to help solve the above challenges. In preview, this fully managed retrieval-augmented generation (RAG) search experience runs entirely inside your physical security perimeter, with no connection to the public internet or to Google Cloud's global infrastructure. Your teams can now upload their files into a conversation and ask Gemini to find information about it, summarize it, compare it, or translate it. Every answer cites its sources, and conversations persist between sessions.&lt;/p&gt;&lt;p&gt;Enterprise search capabilities on GDC enable your teams to search across siloed data and unlock powerful insights. With these capabilities, you can now:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Go from hundreds of pages to a cited answer:&lt;/b&gt; Ask questions across long manuals, reports, and policies, and see exactly which files each answer came from.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Work across languages:&lt;/b&gt; Ask in one language and get answers grounded in documents written in another, or have Gemini translate them.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ask one question across many formats:&lt;/b&gt; Combine audio recordings, video clips, images, and spreadsheets with no separate transcription or OCR steps.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Pick up where you left off:&lt;/b&gt; Conversations and files persist between sessions, so you don’t have to start from scratch on long-running work.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Keep access need-to-know:&lt;/b&gt; Each user's chats and files are private to that user, and access follows the identity provider groups you already manage.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Users can work with PDF, Microsoft Word, PowerPoint, and Excel files, plus TXT, HTML, PNG and JPEG images, WAV audio, and MP4 video. Each file can be up to 100 MB, and each chat up to 500 MB.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Core architectural layers: under the hood&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Let's follow a user query through each layer of the stack: signing in, ingesting files, generating the response with Gemini, and storing the session. Every step happens on the organization's air-gapped network.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_90BLzo5.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;&lt;b&gt;Identity and access&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Users sign in through their organization's identity provider. Administrators map the service's user role to identity provider groups, and only members of those groups can access the application. Each user's chats and uploaded files are private to that user.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Document ingestion and embedding&lt;/b&gt;&lt;/p&gt;&lt;p&gt;When a user uploads a file, it goes straight to the app's object storage bucket. The backend records the file's metadata in the app's managed PostgreSQL database, which is optimized for search. The backend then splits the file into chunks, such as groups of PDF pages or tiles of an image, and writes them to the bucket. A Gemini embedding model running natively within the GDC deployment converts each chunk into a vector, which the backend stores in the app's PostgreSQL database.&lt;/p&gt;&lt;p&gt;When the user asks a question, the state-of-the-art (SOTA) Gemini model running entirely on GDC inside the customer’s data center first rewrites the question with context from the conversation. The backend then embeds the rewritten question with the same model and searches the vector database.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Model serving&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image2_4I3U8T4.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;p&gt;The backend then combines the question, the conversation history, and the best-matching data into a single multimodal prompt and sends it to a Gemini endpoint running on NVIDIA B300 GPUs in that same GDC deployment. Gemini is natively multimodal — it accepts text, images, audio, and video as input, so it can reason across data coming from different file types in a single context, and doesn't require separate speech-to-text and OCR models. The answer then streams back to the user with citations to the source files.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Persistence&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Lastly, the persistence layer keeps each conversation's state. Each question and answer is stored in the system’s database and uploaded files stay in object storage, so users can reopen an earlier session and pick up where they left off.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Built for classified and sovereign environments&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;With Gemini and enterprise search on GDC, prompts, responses, uploaded documents, and embeddings never leave your organization's air-gapped network, and every model runs locally. Data is encrypted at rest with AES-256 disk encryption using locally managed HSM keys, and in transit with TLS using FIPS-approved algorithms. Local IAM integration with granular role-based access control (RBAC) governs access to resources. &lt;a href="https://cloud.google.com/blog/topics/public-sector/google-distributed-cloud-gdc-gdc-air-gapped-appliance-achieve-dod-impact-level-6-il6-authorization"&gt;GDC air-gapped has U.S. DoD IL6 accreditation&lt;/a&gt; and is designed to support strict requirements in alignment with FedRAMP High security controls.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Code execution: Compliance and security&lt;/b&gt;&lt;/p&gt;&lt;p&gt;To deliver precise, deterministic answers from structured spreadsheet data (such as CSV and XLSX files), Gemini enterprise search leverages the Gemini inference stack's local code-execution engine.&lt;/p&gt;&lt;p&gt;When handling analytical queries — such as computing the average salary across departments — Gemini dynamically generates Python code and runs it securely within &lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke"&gt;Agent Substrate&lt;/a&gt;, an open-source execution runtime built for large-scale agent orchestration.&lt;/p&gt;&lt;p&gt;To mitigate security risks inherent to executing LLM-generated code, Agent Substrate enforces strict network isolation and runs workloads inside &lt;a href="https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime"&gt;gVisor sandboxes&lt;/a&gt;, helping ensure strong isolation boundaries without sacrificing inference performance.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Bringing frontier models to the sovereign data center&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;You no longer have to choose between uncompromising security and cutting-edge multimodal intelligence. Enterprise search, Gemini 3.5 Flash and databases optimized for search run together inside the GDC air-gapped perimeter with no dependency on the internet to bring the best autonomous capabilities to the sovereign cloud.&lt;/p&gt;&lt;p&gt;Explore the &lt;a href="https://docs.cloud.google.com/distributed-cloud/hosted/docs/latest/gdcag/gemini-app/gemini-app-overview"&gt;GDC air-gapped documentation&lt;/a&gt; and contact your GDC representative to learn how you can best leverage these search capabilities in your sovereign cloud.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/hybrid-cloud/managed-rag-search-inside-the-sovereign-perimeter-gemini-on-gdc-enterprise-search" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T10:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_90BLzo5.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_90BLzo5.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_90BLzo5.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/public-sector/announcements-and-highlights-from-google-public-sector-summit-2026</id>
+    <title>Announcements and highlights from Google Public Sector Summit 2026</title>
+    <updated>2026-10-20T10:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Today we are bringing together mission leaders and builders from across the public sector at the&lt;a href="https://events.govexec.com/google-public-sector-summit/" target="_blank"&gt; Google Public Sector Summit&lt;/a&gt; in Washington D.C. to explore a critical intersection: &lt;i&gt;Where mission meets moonshot.&lt;/i&gt; Through our hands-on programming, we will offer inspiration as well as pragmatic steps for turning moonshot aspirations into secure, scaled, real-world outcomes.&lt;/p&gt;&lt;p&gt;From mapping the human genome to putting a human on the moon, public sector organizations have been at the helm of some of humanity’s most historic breakthroughs. Right now, public sector leaders are being asked to move faster than ever, amidst more complexity and uncertainty, often with fewer resources than the mission demands. To better understand these challenges and opportunities, we surveyed several hundred leaders from across the public sector with &lt;a href="https://cloud.google.com/resources/content/scalingagentspublicsectoreport?e=48754805"&gt;theCUBE and ECI Research&lt;/a&gt;. According to the findings, while &lt;b&gt;96.3%&lt;/b&gt; of agencies have deployed agents in some form, only &lt;b&gt;9%&lt;/b&gt; have achieved agency-wide adoption. The bottleneck isn’t a lack of vision or ambition—it is the systemic friction of legacy data silos and integration complexity. That is why so many organizations turn to Google; we deliver powerful technology that reduces the toil of getting started, minimizes the friction of integration, and provides the secure foundation for scale.&lt;/p&gt;&lt;p&gt;To that end, we are excited to share several new announcements and capabilities to support your missions and moonshots in the agentic era.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Introducing the Gemini agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We recently announced the &lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026?e=48754805"&gt;Gemini agent&lt;/a&gt;: your new single, universal agent for work. It can have all of your organizational context and can be used for everything from knowledge work to answering questions, and from content creation to coding, all from a single prompt box. At your direction, it can plan the work, use skills and tools, connect to your systems, and bring back something finished — inside the documents, the inbox, and the developer environments you already work in and give it permissions for. With your guidance, the agent chooses the best model for the job, employs built-in cost controls, and most importantly, reflects the security, administration, and governance controls established by your organization.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Introducing Gemini for government services&lt;/b&gt;&lt;/p&gt;&lt;p&gt;This morning we launched &lt;a href="https://cloud.google.com/gemini-enterprise/gov"&gt;Gemini for government services&lt;/a&gt; in private preview, a purpose-built platform engineered for the security, governance, and workflow complexity of public sector missions. Built around the core promise of delivering "less paperwork, more public service," it provides an integrated, fully governed environment configured for rapid deployment across federal, state, and local agencies. By combining pre-built partner agents, secure connectors, and deterministic skills, the platform enables civil servants to securely link Gemini directly to existing case management, ERP, and agency collaboration systems of record without migrating their agencies’ sensitive data. Civil servants are empowered to automate repetitive, high-stakes tasks—such as public records requests, document intake validation, expense auditing, and policy research—all grounded in authoritative federal regulatory sources with verifiable citations. Learn more about Gemini for government services in our &lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services"&gt;blog post&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Introducing Wiz agents in Wiz for Gov&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The Wiz Red, Green, and Blue agents &lt;a href="http://wiz.io/blog/wiz-for-gov-agents-fedramp" target="_blank"&gt;are now available&lt;/a&gt; within Wiz for Gov, Wiz’s FedRAMP Class D (High) certified environment. The expansion of the agent trio into Wiz for Gov accelerates remediation for critical public sector priorities, including Post-Quantum Cryptography (PQC). The Green Agent can assist in driving PQC readiness through a new risk type dedicated to weak cryptography that investigates whether an asset is quantum-vulnerable and assesses potential Harvest Now, Decrypt Later (HNDL) exposure. By leveraging the cryptographic visibility from code to runtime gained through the Wiz AI-APP, the Wiz Green Agent is able to help weigh real-world external reachability against data sensitivity enabling delivery of continuously updated, PQC-resistant fixes directly into developer workflows.&lt;/p&gt;&lt;p&gt;Wiz has also invested in several other initiatives intended to benefit the public sector. &lt;a href="https://www.wiz.io/scan-for-good" target="_blank"&gt;Scan for Good&lt;/a&gt;, a program launched jointly by Wiz and Google DeepMind, uses the Wiz Red Agent and Gemini 4 Argon, alongside Gemini 3.8 Flash Cyber, to provide no-cost security assessments designed to uncover high-risk vulnerabilities and exposures across eligible public services, critical infrastructure, and other under-resourced organizations. Wiz is also expanding capabilities for organizations navigating the new FedRAMP Vulnerability Detection and Response (VDR) and Vulnerability Evaluation and Reporting (VER) rulesets. This includes operationalizing critical FedRAMP metrics, including Potential Agency Impact (PAIN), and validating likely exploitability (LEV) and internet reachability (IRV). These enhancements will assist organizations seeking to achieve or maintain FedRAMP certification with the automated reporting and prioritized risk assessment required.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Bringing enterprise search capabilities to Gemini on Google Distributed Cloud&lt;/b&gt;&lt;/p&gt;&lt;p&gt;For defense, intelligence, and national security agencies operating in classified environments, the challenge is not just analyzing vast volumes of sensitive data, it is doing so without compromising perimeter security. To help turn classified information into actionable intelligence, we are &lt;a href="https://cloud.google.com/blog/topics/hybrid-cloud/new-innovations-in-google-distributed-cloud"&gt;bringing enterprise search capabilities to Gemini on Google Distributed Cloud for air-gapped deployments&lt;/a&gt;. With this new capability, users gain an intuitive conversational interface to query, synthesize, and summarize records at machine speed, completely disconnected from the public internet. This launch brings Gemini 3.5 Flash models to on-premises air-gapped deployments, expands model flexibility with open models like Gemma, and delivers massive local compute through generally available NVIDIA Blackwell B300 GPUs.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Driving mission impact, together&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Through partnership and powerful technology, organizations across the public sector are transforming how services are delivered, accelerating research and science, strengthening national security, improving healthcare delivery, and enhancing student outcomes. These organizations aren’t waiting for the future; they are actively building it right now.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://america.gov/" target="_blank"&gt;&lt;b&gt;America.gov&lt;/b&gt;&lt;/a&gt; is offering a streamlined "front door" that simplifies access to federal services online. Google is proud to be named a technology partner in this vital initiative, leveraging Gemini to help millions of Americans access critical public resources with greater speed and ease.&lt;/li&gt;&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/public-sector/gps-suny-launch-ai-enabled-platform-to-accelerate-university-research?e=48754805"&gt;&lt;b&gt;SUNY&lt;/b&gt;&lt;/a&gt; is tackling challenges with direct impact for communities across New York and beyond. Together, we are ​​empowering researchers of all technical backgrounds to easily access and benefit from Google Cloud's advanced capabilities—bringing storage, high-powered computing, Gemini Enterprise, and more than 200 trusted models together into a seamless, centralized ecosystem.&lt;/li&gt;&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/public-sector/accelerating-frontiers-of-scientific-discovery-40-million-dollar-commitment-genesis-mission?e=48754805"&gt;&lt;b&gt;The Department of Energy&lt;/b&gt;&lt;/a&gt; is accelerating breakthroughs in energy dominance, discovery science, and national security through the Genesis Mission. Gemini will support the full breadth of work - from the research bench to specialized user facilities – building a secure foundation that the DOE mission can depend on.&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.army.mil/article/294805/army_launches_flagship_strategic_capital_initiative_with_fedex_dataworks_to_modernize_logistics_infrastructure" target="_blank"&gt;&lt;b&gt;The U.S. Army&lt;/b&gt;&lt;/a&gt; is leading a sweeping modernization of its logistics infrastructure including non-tactical logistics networks, supply chain procedures, and organic industrial base sites. The Army's Strategic Capital Initiative will pair Google's secure cloud and FedEx's logistics expertise to build a more intelligent and connected supply chain network that helps reduce delivery times and ensures personnel receive the critical equipment where and when they need it.&lt;/li&gt;&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/public-sector/gemini-for-government-build-custom-ai-agents-for-unclassified-work-on-genaimil?e=48754805"&gt;&lt;b&gt;The Department of War&lt;/b&gt;&lt;/a&gt; is supercharging daily operations and workflows with Gemini, giving 3 million personnel across the department access to a secure enterprise-grade platform. With Agent Designer, GenAI.mil users are quickly able to build their own agents using natural language to help streamline repetitive, multi-step tasks such as document creation and document reviews.&lt;/li&gt;&lt;li&gt;&lt;a href="https://case.edu/utech/about/utech-news/cwru-partners-google-expand-campus-wide-ai-access-gemini-enterprise" target="_blank"&gt;&lt;b&gt;Case Western Reserve University&lt;/b&gt;&lt;/a&gt; is improving learning outcomes and accelerating research breakthroughs. They are leveraging Gemini for education campus-wide, transforming the experience of every scientist, staff member, and student. Tomorrow, they’re opening a new hub for discovery and innovation that leverages Google technology, and connects Google engineers with 300 university researchers across campus.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Google Public Sector: Your mission partner&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The agentic era will not be defined by what technology can do, but by what we choose to build with it. So let’s meet this moment, let's re-imagine what’s possible, and let’s create impact — together.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="https://cloudonair.withgoogle.com/events/google-public-sector-summit-2026?utm_source=linkedin&amp;amp;utm_medium=paidsocial&amp;amp;utm_campaign=FY26-Q4-northam-PUB10000039-onlineevent-er-ps-summit-on-demand-2026&amp;amp;utm_content=-&amp;amp;utm_term=-" target="_blank"&gt;Register early for Google Public Sector Summit On-Demand&lt;/a&gt; to be notified when the event’s content is published.&lt;/li&gt;&lt;li&gt;Learn how &lt;a href="http://goo.gle/gemini-for-gov" target="_blank"&gt;Gemini for government services&lt;/a&gt; can help transform critical workflows and advance your mission.&lt;/li&gt;&lt;li&gt;Request &lt;a href="https://www.wiz.io/demo" target="_blank"&gt;a demo&lt;/a&gt; to see how the Wiz Agents can help your agency meet today’s security demands at machine speed.&lt;/li&gt;&lt;li&gt;Catch the highlights from Google Public Sector Summit on &lt;a href="https://www.linkedin.com/showcase/google-public-sector/" target="_blank"&gt;our Linkedin page&lt;/a&gt;, schedule a &lt;a href="https://cloud.google.com/contact/form?direct=true&amp;amp;e=48754805"&gt;1:1 consultation&lt;/a&gt; with a Google team member or reach us at geminiforgov@google.com.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/public-sector/announcements-and-highlights-from-google-public-sector-summit-2026" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T10:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/GPS_Blog_Image_Header_2436x1200.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/GPS_Blog_Image_Header_2436x1200.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/GPS_Blog_Image_Header_2436x1200.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services</id>
+    <title>Introducing Gemini for government services</title>
+    <updated>2026-10-20T10:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;Earlier this month at Gemini at Work, we introduced the Gemini agent: a single, universal agent for work. It answers your questions, handles your knowledge work, creates your images and media, and writes and runs code. You give it objectives, not instructions, and come back to finished work. It plans the work, uses skills and tools, connects to your systems, and has the security, administration, and governance your organization requires.&lt;/p&gt;&lt;p&gt;Every industry runs on knowledge a general model does not have. Government work runs on statute, regulation, and agency guidance, across siloed legacy systems, under strict requirements for data sovereignty, compliance, and confidentiality. Too often that leaves civil servants on data entry and manual document review instead of the services citizens depend on.&lt;/p&gt;&lt;p&gt;Today we're bringing the Gemini agent to public service with Gemini for government services in preview, part of our new suite of purpose-built industry solutions. It adds skills built around government work, connections to the systems agencies already run, and specialized partner agents, with governance running underneath it all.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=ZapIlMXcBLo"&gt;
+
+      
+        
+
+        &lt;div class="article-video__aspect-image"&gt;
+          &lt;span class="h-u-visually-hidden"&gt;Bringing Gemini to government services&lt;/span&gt;
+        &lt;/div&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+      &lt;figcaption class="article-video__caption h-c-page"&gt;
+        
+          &lt;h4 class="h-c-headline h-c-headline--four h-u-font-weight-medium h-u-mt-std"&gt;Bringing Gemini to government services&lt;/h4&gt;
+        
+        
+      &lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=ZapIlMXcBLo"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph"&gt;&lt;h3&gt;&lt;b&gt;Five components of Gemini for government services&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Developed alongside agency leaders, Gemini for government services provides an integrated, fully governed environment configured for rapid deployment across federal, state, and local agencies with five core components:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Skills for government work:&lt;/b&gt; Skills are reusable instructions and context, written by domain experts, that teach Gemini to run a specific task. Each one applies the statute, regulation, and agency guidance that govern that task, so an agency's standard operating procedures carry into the work Gemini supports.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Connectors to agency systems:&lt;/b&gt; Secure connectors link Gemini to the case management, ERP, HR, and collaboration systems agencies already run, along with authoritative federal data sources. Gemini queries each system in place, so no data is migrated, and access follows the identity and permission controls the agency already has.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Partner agents:&lt;/b&gt; Skills and connectors come together in agents, including pre-built agents from public sector software providers that agencies can deploy right away. They handle tasks like FOIA discovery and batch redaction under the same central governance, with a person approving each consequential step.&lt;/li&gt;&lt;li&gt;&lt;b&gt;A governed control plane:&lt;/b&gt; Security and compliance teams get one place to set and enforce policy across every agent, including VPC Service Controls, CMEK, and Assured Workloads. Outputs are grounded in source documents, with citations, so reviewers can check where each answer came from.&lt;/li&gt;&lt;li&gt;&lt;b&gt;An open partner ecosystem:&lt;/b&gt; Every agency works under a different statute and runs a different mix of systems. System integrators and public sector ISVs help agencies customize Gemini, connect it to what they already have, and scale it without lock-in.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;&lt;b&gt;Skills for government workflows&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Gemini for government services helps automate and accelerate complex government operations, including:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Policy and regulatory research&lt;/b&gt;: Ask an operational or eligibility question and get an answer drawn from the CFR, the Federal Register, state administrative codes, and internal manuals, with page and paragraph citations. Where federal and state rules both apply, Gemini shows which one governs to empower agency decision makers.&lt;/li&gt;&lt;li&gt;&lt;b&gt;FOIA record discovery&lt;/b&gt;: Gemini searches SharePoint, Drive, and email archives for records responsive to a FOIA or state Sunshine Law request. It organizes them into a review set for the records officer and agency counsel, shortening discovery that often takes weeks.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Redaction for public release&lt;/b&gt;: Gemini finds sensitive constituent data across a batch of documents, groups the findings so reviewers can clear them in passes, and proposes redactions labeled by statutory exemption. After a reviewer confirms, it produces the exemption log and audit-ready copies.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Vendor bid evaluation&lt;/b&gt;: Gemini checks multi-volume bids against RFP requirements, FAR guidelines, minimum mandatory criteria, and evaluation rubrics, and returns scoring justifications with citations. Contracting officers get a documented basis for each award decision.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Grant and program expense audits&lt;/b&gt;: Gemini checks invoices, receipts, purchase orders, and ledger entries against 2 CFR 200 Uniform Guidance and the terms of the award. It flags unallowable costs, missing documentation, and funding discrepancies with line-item citations, so problems surface while there's still time to fix them.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Document validation at intake&lt;/b&gt;: Gemini classifies and validates pay stubs, W-2s, utility bills, and leases when they arrive, checks the numbers for consistency, and flags missing signatures. Defects are caught before the application enters the queue, not weeks into the case.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Plain-language notices&lt;/b&gt;: Gemini turns policy memos and agency guidance into public notices, aligned to the Plain Writing Act of 2010, USDA-FNS standards, and Title VI language access guidance.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;b&gt;Open ecosystem of connectors across the government technology stack&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Gemini for government services connects directly to core agency systems via secure &lt;a href="https://cloud.google.com/gemini-enterprise/connectors"&gt;connectors&lt;/a&gt;. Access is bound by existing role-based access controls, record-level permissions, and the trusted data controls inherited from each system — and nothing is migrated to make the connection work.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Federal regulatory and public data:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Federal Register:&lt;/b&gt; Tracks legislative actions, regulations, and executive orders as they post, so state and local teams see federal changes as they land.&lt;/li&gt;&lt;li&gt;&lt;b&gt;regulations.gov:&lt;/b&gt; Tracks federal rulemaking dockets, public comments, and statutory agency response deadlines, keeping policy analysts ahead of incoming mandates.&lt;/li&gt;&lt;li&gt;&lt;b&gt;eCFR (Electronic Code of Federal Regulations):&lt;/b&gt; Grounds answers in the governing regulation, with citations down to the paragraph.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Agency systems of record:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Oracle E-Business Suite:&lt;/b&gt; Gives agents permission-bound access to procurement, payables, and ledger transactions for expense auditing and award reconciliation.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Oracle PeopleSoft:&lt;/b&gt; Connects HR and personnel records under existing role-based controls, so workforce questions are answered from the system of record.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Salesforce:&lt;/b&gt; Connects constituent case records, service requests, and interaction history, letting agents work a case in context without exporting it.&lt;/li&gt;&lt;li&gt;&lt;b&gt;ServiceNow:&lt;/b&gt; Automates IT, CRM, security, employee experience, and workflow records, so agents can track incidents, requests, and approval chains inside existing routing rules.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Productivity and collaboration:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Google Workspace:&lt;/b&gt; Connects with Google Docs, Gmail, Drive, and Sheets to analyze case communications and agency correspondence and surface internal files while enforcing agency access controls.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Microsoft 365 and SharePoint:&lt;/b&gt; Integrates with Word, Outlook, and SharePoint to triage inquiries and ground responses in mail and intranet repositories without breaking workflow context.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;b&gt;Third-party agents and implementation partners&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Every agency operates differently. Through our open platform, agencies can deploy pre-built partner agents or work with system integrators to scale custom capabilities:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;SZNS Solutions FOIA and public records discovery agent:&lt;/b&gt; Turns a plain-language request, a piece of correspondence, or a formal citizen inquiry into a scoped search across enterprise archives — bounded by custodian and date range, so a records officer narrows the set before any data moves. It exports responsive material into secure agency repositories and tracks delivery status, giving each request an auditable trail from intake to release.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SZNS Solutions document redaction agent:&lt;/b&gt; Works inside connected repositories — SharePoint and Drive among them — finding sensitive citizen data across a batch and grouping the findings so a reviewer clears them in passes rather than page by page. Each proposed redaction carries its statutory exemption, and once the reviewer confirms, the agent exports permanently redacted, audit-ready copies back to the system of record, with the processing never leaving the agency's cloud perimeter.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Systems integrators &amp;amp; tech partners:&lt;/b&gt; Strategic partnerships with &lt;b&gt;Accenture Federal Services, Clutch, Dark Wolf, Daston, Deloitte, Egen, Game Plan Tech, Knexus, Onix, Resultant, SAIC, Slalom, and SZNS Solutions&lt;/b&gt; so agencies can customize, integrate, and scale these capabilities without vendor lock-in.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;b&gt;Developed alongside federal, state, and local government agencies&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;We are working closely with select federal and state agencies, including the State of Missouri and the U.S. Department of Health and Human Services to ensure these capabilities work in day-to-day agency operations.&lt;/p&gt;&lt;p&gt;&lt;i&gt;"Our citizens expect the government to move at the speed of modern life, not the speed of paperwork. By automating routine work in our workflows, we're delivering faster, better services to Missourians."&lt;/i&gt; -&lt;b&gt; Tim Marczewski, Director of AI and Innovation, State of Missouri Office of Administration.&lt;/b&gt;&lt;/p&gt;&lt;h3&gt;&lt;b&gt;Built on an enterprise-grade foundation&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;Gemini for government services runs on Google Cloud's secure foundation, and can be deployed using the Assured Workloads FedRAMP High Data Boundary, enforcing U.S. data residency and personnel controls. It works within the authorities, retention rules, and approval chains your agency already has.&lt;/p&gt;&lt;p&gt;Agency records, constituent data, institutional documents, custom agents, and model outputs stay private to your organization, and are never used to train or fine-tune Google's foundation models without your permission. Because we operate the full stack, from infrastructure and models through the application layer, we can tune performance and cost together — routing high-volume document parsing and routine records sweeps to fast, low-cost models and reserving high-reasoning models for complex policy analysis, so expanding what your teams can take on does not mean expanding spend at the same rate.&lt;/p&gt;&lt;h3&gt;&lt;b&gt;This is just the beginning&lt;/b&gt;&lt;/h3&gt;&lt;p&gt;The launch of Gemini for government services represents another defining step in delivering on our promise to bring the best of Gemini to every professional, for every workflow, natively tailored to the way they work.&lt;/p&gt;&lt;p&gt;&lt;a href="https://cloud.google.com/gemini-enterprise/gov"&gt;Gemini for government services&lt;/a&gt; is available in &lt;b&gt;preview&lt;/b&gt; today, joining our purpose-built solutions for industries. We invite leaders at every level of government to explore how &lt;a href="https://cloud.google.com/gemini-enterprise"&gt;Gemini&lt;/a&gt; can transform their most critical workflows.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-20T10:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Industry_headers_2.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Industry_headers_2.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Industry_headers_2.max-600x600.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/10/teacher-led-gemini-notebook-in-google-Classroom-now-offers-insight-summaries-for-educators-and-updated-sharing-settings-for-admins-including-trusted-domains.html</id>
     <title>Teacher-led Gemini Notebook in Google Classroom now offers insight summaries for educators and updated sharing settings for admins, including trusted domains</title>
@@ -32302,239 +32795,5 @@ direct queue assignment.&lt;/p&gt;&lt;/li&gt;
       <media:thumbnail url="https://storage.googleapis.com/gweb-research2023-media/original_images/ToolGrad1_teaser.png"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-research2023-media/original_images/ToolGrad1_teaser.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents</id>
-    <title>Introducing the Google Cloud Developer Plugin for AI Coding Agents</title>
-    <updated>2026-09-10T19:53:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Agent skills fit well alongside documentation and remote MCP servers as ways of enabling the success of your AI workflows. They reduce context window usage for certain use cases, and they're straightforward to install. However, you might have noticed that managing individual skills can be unwieldy, or that some skills are most useful when they act alongside other skills or MCP servers toward the same goal. That's where plugins come in to help.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we're thrilled to announce a new Google Cloud plugin for AI coding agents! Designed as installable bundles, agent plugins equip the AI agent of your choice with skills and tools to be more effective on Google Cloud.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Solving the tool coupling problem&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As you expand your usage of coding agents, you might find that they become significantly more capable when they use related skills in tandem or with complementary context and tooling. For example, an agent analyzing infrastructure is more effective when combining domain knowledge, workflow recommendations, and the ability to interact with a live environment together.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Plugins solve this coupling challenge by packaging related capabilities into cohesive, installable bundles. This allows you to take advantage of both broad foundational capabilities and deep, product-specific tools without managing complex dependencies. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For this release, we've started with a foundational plugin that supports agent functionality for all Google Cloud users, focusing on making it easier for agents to retrieve Google Cloud-related skills, make use of official documentation, and handle programmatic interactions with Google Cloud.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Built on an open standard&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We've also built our plugin in compliance with the &lt;/span&gt;&lt;a href="https://g.dev/cloud/agent-plugins-specification" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Plugins specification&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, an open, vendor-neutral standard for packaging Agent Skills and Model Context Protocol (MCP) servers into portable, interoperable units. Rather than requiring developers to maintain different configurations and wrappers for every AI assistant, the Agent Plugins standard provides a unified manifest and directory structure.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our Google Cloud plugin adopts this standard to ensure that developers across a variety of AI coding environments get consistent, high-quality access to tools that help them succeed with Google Cloud. That includes not only the plugins we talk about today, but all other plugins published to the Google Agent Skills repository as well.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let's take a look at the flagship plugin that we've just published in the Google Agent Skills repository: &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;. This plugin exists to help agents successfully navigate the fundamentals of interacting with Google Cloud: things like authentication, authorization, managing projects, and guardrails for gcloud CLI operations. This plugin also bundles configuration for the &lt;/span&gt;&lt;a href="https://g.dev/cloud/dk-mcp-connect" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Developer Knowledge MCP server&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, which gives agents up-to-date grounding in Google's official developer documentation.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Plugin in action: Project onboarding and identity authentication&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To see how this plugin works, consider a situation where you're bootstrapping a new project as part of working on a script. With the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; plugin installed, you can prompt your agent:&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;I'm brand new to this platform, and I need to get an account and a first project with billing set up. Then, I need my local machine authenticated so a script that I'm writing can call the APIs as a service identity instead of as me.&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Environment awareness:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The agent silently runs background checks against your live environment for prerequisites like CLI availability and potential existing projects or organizations.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Review:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The agent considers IAM best practices to avoid risks that might be assumed as part of the prompt, like accidental key leaks or git commits.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Interaction with guardrails:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The agent outlines a workflow roadmap and offers to act on those steps before modifying any resources.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="screenshot_plugin_blog_post" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/screenshot_plugin_blog_post.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Installing Google Cloud plugins&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because Google Cloud plugins are available from the open &lt;/span&gt;&lt;a href="https://g.dev/cloud/agent-plugins" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Agent Skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; repository and adhere to the standard Agent Plugins layout, adding them to your environment is straightforward. For example, here's how you'd install the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; plugin:&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Antigravity CLI&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Install the plugin directly via the CLI using its path in the Google Agent Skills repository:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;agy plugin install https://github.com/google/skills/plugins/cloud/google-cloud-developer&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fd9183c0580&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Claude Code&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Add the Google plugins marketplace, then install the plugin:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;claude plugin marketplace add google/skills\r\nclaude plugin install google-cloud-developer@google-plugins&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fd9183c0940&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Codex CLI&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Add the Google plugins marketplace, then install the plugin:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;codex plugin marketplace add google/skills\r\ncodex plugin add google-cloud-developer@google-plugins&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fd9183c08b0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Next Steps&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you're already a Google Cloud user, try the above installation steps to set up your agent for success. We think you'll like what you see! For those who want a more guided approach, our new &lt;/span&gt;&lt;a href="https://g.dev/cloud/agent-plugins-codelab-agy" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;codelab&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; will walk you through the installation and initial exploration of the plugin in Antigravity.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you're new to Google Cloud, you can also get started with instructions &lt;/span&gt;&lt;a href="https://g.dev/cloud/dev-setup" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;in our documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to set yourself up for local development.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The most curious readers can also take a deeper look at the plugins and agent skills available to use today in the &lt;/span&gt;&lt;a href="https://g.dev/cloud/agent-plugins" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Agent Skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; repository.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-10T19:53:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-plugins-blog-cover.max-600x600.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-plugins-blog-cover.max-600x600.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/agent-plugins-blog-cover.max-600x600.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-sheets-is-now-available-on-Android-devices.html</id>
-    <title>Gemini in Google Sheets is now available on Android devices</title>
-    <updated>2026-09-10T18:32:26+00:00</updated>
-    <content type="html">&lt;p&gt;Building upon the power of &lt;a href="https://support.google.com/docs/answer/14218565?hl=en" target="_blank"&gt;Gemini in Sheets on the web&lt;/a&gt;, we’re excited to announce that you can now use Gemini in Google Sheets on your Android device to quickly analyze and understand your data while on the go.&lt;/p&gt;&lt;p&gt;Simply tap on the Gemini spark icon, and you can ask questions about your data, generate analytical insights, and create charts. To help you get started, we've included suggested prompts such as “Summarize this table,” and “Analyze for insights.”&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi15SrQzG9Q_6jv3KDGWvuPEFDMFa_IVbHuP82z_saNzdRPJY3c9SYZZqIWG3WTvXIlfsTKc6mgNG3Xjt5NSskWEr4X5aTTBjs5sLYzmKio_Lkim5QQmdtmvqTU62n0yG1Cx0nJNwE9UsIv_ZhQ346Hn9sZggPL5sOXLhnf-MNFlrAZCvazUZqcmNyLH7w/s1834/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%201.png" style="margin-left: auto; margin-right: auto;"&gt;&lt;img border="0" height="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi15SrQzG9Q_6jv3KDGWvuPEFDMFa_IVbHuP82z_saNzdRPJY3c9SYZZqIWG3WTvXIlfsTKc6mgNG3Xjt5NSskWEr4X5aTTBjs5sLYzmKio_Lkim5QQmdtmvqTU62n0yG1Cx0nJNwE9UsIv_ZhQ346Hn9sZggPL5sOXLhnf-MNFlrAZCvazUZqcmNyLH7w/w288-h640/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%201.png" width="288" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMGR8O5wY2h6TL1G_pCmrAk_sRofnG0LchHCf3nQ414pJQbsc-AppCdnY9RQptRNGA6oZ0A8wkCLVOjoG_A7_IfWnfRPcC4X2cadXJt4iJ7KMz_4kt8q1E6PPRLCY35KNwcu8cw2_jMnsMBEN1KXlEV8q48WJfzcaXKWOPOY4BbHr3dRJqXSBt6YTAIdA/s1834/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%202.png" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img border="0" height="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMGR8O5wY2h6TL1G_pCmrAk_sRofnG0LchHCf3nQ414pJQbsc-AppCdnY9RQptRNGA6oZ0A8wkCLVOjoG_A7_IfWnfRPcC4X2cadXJt4iJ7KMz_4kt8q1E6PPRLCY35KNwcu8cw2_jMnsMBEN1KXlEV8q48WJfzcaXKWOPOY4BbHr3dRJqXSBt6YTAIdA/w288-h640/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%202.png" width="288" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;br /&gt;&lt;/div&gt;&lt;p&gt;&lt;i&gt;(Please note: Mobile capabilities are currently focused on data analysis and insights. To perform &lt;a href="https://workspaceupdates.googleblog.com/2026/04/build-and-edit-complex-spreadsheets-with-Gemini-in-Google-Sheets.html" target="_blank"&gt;complex edits&lt;/a&gt;, formatting actions, or generate formulas, please use Gemini in Google Sheets on the web).&lt;/i&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins:&lt;/b&gt; There is no specific admin control for this mobile feature beyond the general Gemini for Google Workspace enablement at the domain/OU level. Visit the Help Center to &lt;a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/manage-access-to-gemini-features-in-workspace-services" target="_blank"&gt;learn more about managing Gemini access&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users:&lt;/b&gt; This feature will be available by default for eligible users. To access it, open a compatible spreadsheet on your Android device and tap the &lt;b&gt;Ask Gemini&lt;/b&gt; icon. Visit the Help Center to learn more about &lt;a href="https://support.google.com/docs/answer/14247395" target="_blank"&gt;using Gemini in Google Sheets&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) started on September 9, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Business: &lt;/b&gt;Business Standard and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Enterprise: &lt;/b&gt;Enterprise Standard and Plus&lt;/li&gt;&lt;li&gt;&lt;b&gt;Education:&lt;/b&gt; Google AI Pro for Education&lt;/li&gt;&lt;li&gt;&lt;b&gt;Consumer:&lt;/b&gt; Google AI Pro and Ultra&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Help: &lt;a href="https://support.google.com/docs/answer/14247395" target="_blank"&gt;Collaborate with Gemini in Google Sheets&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/08/gemini-in-google-sheets-is-now-available-on-Android-devices.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-09-10T18:32:26+00:00</published>
-    <media:group>
-      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi15SrQzG9Q_6jv3KDGWvuPEFDMFa_IVbHuP82z_saNzdRPJY3c9SYZZqIWG3WTvXIlfsTKc6mgNG3Xjt5NSskWEr4X5aTTBjs5sLYzmKio_Lkim5QQmdtmvqTU62n0yG1Cx0nJNwE9UsIv_ZhQ346Hn9sZggPL5sOXLhnf-MNFlrAZCvazUZqcmNyLH7w/s72-w288-h640-c/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%201.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi15SrQzG9Q_6jv3KDGWvuPEFDMFa_IVbHuP82z_saNzdRPJY3c9SYZZqIWG3WTvXIlfsTKc6mgNG3Xjt5NSskWEr4X5aTTBjs5sLYzmKio_Lkim5QQmdtmvqTU62n0yG1Cx0nJNwE9UsIv_ZhQ346Hn9sZggPL5sOXLhnf-MNFlrAZCvazUZqcmNyLH7w/s72-w288-h640-c/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%201.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi15SrQzG9Q_6jv3KDGWvuPEFDMFa_IVbHuP82z_saNzdRPJY3c9SYZZqIWG3WTvXIlfsTKc6mgNG3Xjt5NSskWEr4X5aTTBjs5sLYzmKio_Lkim5QQmdtmvqTU62n0yG1Cx0nJNwE9UsIv_ZhQ346Hn9sZggPL5sOXLhnf-MNFlrAZCvazUZqcmNyLH7w/s72-w288-h640-c/Gemini%20in%20Google%20Sheets%20is%20now%20available%20on%20Android%20devices%20-%206177%20-%201.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/09/manage-external-sharing-for-gemini-notebook-in-the-Admin-console.html</id>
-    <title>Manage external sharing for Gemini Notebook in the Admin console</title>
-    <updated>2026-09-10T18:27:38+00:00</updated>
-    <content type="html">&lt;p&gt;Google Workspace administrators can now enable external sharing for Gemini Notebook using granular controls in the Admin console. Previously, administrators only had a single high-level toggle to turn Gemini Notebook completely on or off for their entire organization. This update introduces four sharing options, allowing administrators to empower their organization’s sharing workflows. These settings can be enabled at the domain, organizational unit (OU), or group level, providing some flexibility for distinct sets of users.&lt;/p&gt;&lt;p&gt;The options include:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Off: &lt;/b&gt;Users cannot share notebooks with anyone outside the domain. This is the default setting.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Trusted Domains: &lt;/b&gt;Users can share notebooks externally, but sharing is strictly restricted to email addresses within a specified allowlist of trusted domains.&lt;/li&gt;&lt;li&gt;&lt;b&gt;On:&lt;/b&gt; Users can share notebooks with any external email address.&lt;/li&gt;&lt;li&gt;&lt;b&gt;On with public notebook sharing: &lt;/b&gt;Users can create and share public notebooks with anyone with a link. Individual emails do not need to be added as a sharee.&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/a/AVvXsEgPz1RaIboBdTKWOrNAYO2a91b5097cSoKDsJZL57_rXeBjYXy5F8BeDnsmKQfxnOA5lt3Eww_MQJqY5Aq12-9iGYWkaZSOgsXS_Rp-Ph1NLh5Gq9o4FBYHCxTU9Odh4VrSvUN9tGsY65rK5nAJvpanrhPpwWCfyJjTziaRsqhpQoDXyVWs9ZLq1C4KzVY" style="margin-left: 1em; margin-right: 1em;"&gt;&lt;img alt="" src="https://blogger.googleusercontent.com/img/a/AVvXsEgPz1RaIboBdTKWOrNAYO2a91b5097cSoKDsJZL57_rXeBjYXy5F8BeDnsmKQfxnOA5lt3Eww_MQJqY5Aq12-9iGYWkaZSOgsXS_Rp-Ph1NLh5Gq9o4FBYHCxTU9Odh4VrSvUN9tGsY65rK5nAJvpanrhPpwWCfyJjTziaRsqhpQoDXyVWs9ZLq1C4KzVY=s1600" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins:&lt;/b&gt; This feature will be OFF by default and can be controlled at the domain, OU, and group level. Visit the Help Center to learn more about &lt;a href="https://workspace.devsite.corp.google.com/admin/gemini/manage-notebooklm-sharing-settings" target="_blank"&gt;managing Gemini Notebook sharing settings&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users: &lt;/b&gt;There is no end user setting for this feature. Visit the Help Center to &lt;a href="https://support.google.com/notebooklm/answer/16206563" target="_blank"&gt;learn more about Gemini Notebook, including how to share notebooks&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release and Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility)&amp;nbsp; starting on September 10, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Available to all Google Workspace customers&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Workspace Admin Help: &lt;a href="https://workspace.devsite.corp.google.com/admin/gemini/manage-notebooklm-sharing-settings" target="_blank"&gt;Manage Gemini Notebook sharing settings&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Gemini Notebook Help: &lt;a href="https://support.google.com/notebooklm/answer/16206563" target="_blank"&gt;Create a notebook in Gemini Notebook&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/09/manage-external-sharing-for-gemini-notebook-in-the-Admin-console.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-09-10T18:27:38+00:00</published>
-    <media:group>
-      <media:content url="https://blogger.googleusercontent.com/img/a/AVvXsEgPz1RaIboBdTKWOrNAYO2a91b5097cSoKDsJZL57_rXeBjYXy5F8BeDnsmKQfxnOA5lt3Eww_MQJqY5Aq12-9iGYWkaZSOgsXS_Rp-Ph1NLh5Gq9o4FBYHCxTU9Odh4VrSvUN9tGsY65rK5nAJvpanrhPpwWCfyJjTziaRsqhpQoDXyVWs9ZLq1C4KzVY=s72-c" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://blogger.googleusercontent.com/img/a/AVvXsEgPz1RaIboBdTKWOrNAYO2a91b5097cSoKDsJZL57_rXeBjYXy5F8BeDnsmKQfxnOA5lt3Eww_MQJqY5Aq12-9iGYWkaZSOgsXS_Rp-Ph1NLh5Gq9o4FBYHCxTU9Odh4VrSvUN9tGsY65rK5nAJvpanrhPpwWCfyJjTziaRsqhpQoDXyVWs9ZLq1C4KzVY=s72-c"/>
-    </media:group>
-    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/a/AVvXsEgPz1RaIboBdTKWOrNAYO2a91b5097cSoKDsJZL57_rXeBjYXy5F8BeDnsmKQfxnOA5lt3Eww_MQJqY5Aq12-9iGYWkaZSOgsXS_Rp-Ph1NLh5Gq9o4FBYHCxTU9Odh4VrSvUN9tGsY65rK5nAJvpanrhPpwWCfyJjTziaRsqhpQoDXyVWs9ZLq1C4KzVY=s72-c" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/09/doubled-cell-limits-in-google-sheets-now-generally-available.html</id>
-    <title>Doubled cell limits in Google Sheets now generally available</title>
-    <updated>2026-09-10T18:21:19+00:00</updated>
-    <content type="html">&lt;p&gt;We’re committed to continuously improving Sheets to ensure it is a powerful, responsive, and scalable spreadsheet tool for your needs. To that end, we’ve increased the cell limit in Google Sheets from up to 10 million cells to &lt;b&gt;up to 20 million cells&lt;/b&gt;. This limit applies to new, existing, and imported files.&lt;/p&gt;&lt;p&gt;Whether you are building a new spreadsheet from scratch, expanding an existing workbook, or importing large datasets from Microsoft Excel (.xlsx) or CSV files, Google Sheets now supports up to 20 million cells per spreadsheet.&lt;/p&gt;&lt;p&gt;Coming soon, we also plan to increase the file byte size limit for imported spreadsheets, making it easier to bring extensive datasets from other spreadsheet formats directly into Google Sheets.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Getting started&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;b&gt;Admins: &lt;/b&gt;There is no admin control for this feature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;End users: &lt;/b&gt;There is no end-user setting for this feature. The expanded limit will apply automatically when creating, expanding, or importing spreadsheets.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Rollout pace&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Rapid Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on September 10, 2026&amp;nbsp;&lt;/li&gt;&lt;li&gt;&lt;a href="https://support.google.com/a/answer/172177" target="_blank"&gt;Scheduled Release domains:&lt;/a&gt; Gradual rollout (up to 15 days for feature visibility) starting on September 28, 2026&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Availability&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Available to all Google Workspace customers, Workspace Individual subscribers, and users with personal Google accounts&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Resources&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="text-align: left;"&gt;&lt;li&gt;Google Help Center: &lt;a href="https://support.google.com/drive/answer/37603?hl=en" target="_blank"&gt;Files you can store in Google Drive&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Google Workspace Updates Blog: &lt;a href="https://workspaceupdates.googleblog.com/2026/04/faster-performance-and-doubled-cell-limits-in-Google-Sheets.html" target="_blank"&gt;Faster performance and doubled cell limits in Google Sheets&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/09/doubled-cell-limits-in-google-sheets-now-generally-available.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-09-10T18:21:19+00:00</published>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans-expansion-september-2026</id>
-    <title>Dreambeans: Daily stories, brewed just for you, now available to all accounts in the U.S.</title>
-    <updated>2026-09-10T18:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Dreambeans_social.max-600x600.format-webp.webp" /&gt;In June, Google Labs introduced Dreambeans, an experiment that creates personalized daily collections of stories. Now, Dreambeans is available to all accounts in the U.S…</content>
-    <link href="https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans-expansion-september-2026" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-10T18:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Dreambeans_social.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Dreambeans_social.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Dreambeans_social.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/platforms/android/switch-password-managers</id>
-    <title>Switching password managers is easy and safe on Android</title>
-    <updated>2026-09-10T16:00:00+00:00</updated>
-    <content type="html">Android bot showing how to switch password managers</content>
-    <link href="https://blog.google/products-and-platforms/platforms/android/switch-password-managers" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-10T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_Image_4.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_Image_4.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_Image_4.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows</id>
-    <title>The Gemini app is now available for Windows</title>
-    <updated>2026-09-10T16:00:00+00:00</updated>
-    <content type="html">Gemini is now on windows</content>
-    <link href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-10T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_for_Desktop_Thumbnail_20.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_for_Desktop_Thumbnail_20.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_for_Desktop_Thumbnail_20.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/search/running-race-training-tips</id>
-    <title>3 ways to prep for your next big race with Search</title>
-    <updated>2026-09-10T16:00:00+00:00</updated>
-    <content type="html">Illustration on a blue background of technicolor runners with a magnifying glass and Gemini spark overlaid</content>
-    <link href="https://blog.google/products-and-platforms/products/search/running-race-training-tips" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-10T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Race_Running_Tips.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Race_Running_Tips.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Search_Race_Running_Tips.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://googlecloudpresscorner.com/2026-09-10-Morgan-State-University-and-Google-Public-Sector-Collaborate-to-Build-Next-Generation-AI-Campus</id>
-    <title>Morgan State University and Google Public Sector Collaborate to Build Next-Generation AI Campus</title>
-    <updated>2026-09-10T14:00:00+00:00</updated>
-    <link href="https://googlecloudpresscorner.com/2026-09-10-Morgan-State-University-and-Google-Public-Sector-Collaborate-to-Build-Next-Generation-AI-Campus" rel="alternate"/>
-    <category term="Google Cloud Press"/>
-    <published>2026-09-10T14:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://mmx.prnewswire.com/media/MS1985025/Morgan-State-University.jpg?id=OA2939187&amp;p=thumbnail" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://mmx.prnewswire.com/media/MS1985025/Morgan-State-University.jpg?id=OA2939187&amp;p=thumbnail"/>
-    </media:group>
-    <link rel="enclosure" href="https://mmx.prnewswire.com/media/MS1985025/Morgan-State-University.jpg?id=OA2939187&amp;p=thumbnail" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products/ads-commerce/data-strength-updates</id>
-    <title>Drive profitable growth with new data and measurement tools</title>
-    <updated>2026-09-10T13:00:00+00:00</updated>
-    <content type="html">"Data + Causality + Better decisions = Profitable growth"</content>
-    <link href="https://blog.google/products/ads-commerce/data-strength-updates" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-10T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Header_EnnLoZX.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Header_EnnLoZX.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Header_EnnLoZX.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/intl/pl-pl/nowosci-firmie/rozwijamy-wspolprace-z-mimuw-nowe-mozliwosci-dla-studentow</id>
-    <title>Rozwijamy współpracę z MIMUW. Nowe możliwości dla studentów</title>
-    <updated>2026-09-10T11:00:00+00:00</updated>
-    <content type="html">Grafika przedstawiająca logotypy Google i MIMUW</content>
-    <link href="https://blog.google/intl/pl-pl/nowosci-firmie/rozwijamy-wspolprace-z-mimuw-nowe-mozliwosci-dla-studentow" rel="alternate"/>
-    <category term="Google Poland"/>
-    <published>2026-09-10T11:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Generated_Image_y0cvzvy0.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Generated_Image_y0cvzvy0.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Generated_Image_y0cvzvy0.max-600x600.format-webp.webp" type="image/webp" length="0"/>
   </entry>
 </feed>
