@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-20T12:00:57.826280+00:00</updated>
+  <updated>2026-10-20T17:28:34.468786+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c5209e141bd8f95d</id>
+    <title>Introducing tsrs: A port of TypeScript to Rust</title>
+    <updated>2026-10-20T13:00:00+00:00</updated>
+    <content>Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.</content>
+    <link href="https://blog.cloudflare.com/typescript-rust-port/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-20T13:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M5C82VPWPDDZ7P6P0G4H7KB3.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M5C82VPWPDDZ7P6P0G4H7KB3.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M5C82VPWPDDZ7P6P0G4H7KB3.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ce8ea3e5fab08426</id>
     <title>Cloudflare Zero Trust connectivity</title>
@@ -70,6 +85,21 @@ Edge functionality, including Access logins and Cloudflare Secure Web</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-20-warp-linux-ga/og.png?v=036af8cac8c5acf0" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/8f7eb472ec873516</id>
+    <title>Agents, Workers - Think agents now use a @cloudflare/computer workspace</title>
+    <updated>2026-10-20T00:00:00+00:00</updated>
+    <content>Think and Agent Skills now use the workspace from @cloudflare/computer ↗︎ as well as the filesystem tools. A JavaScript execution environment can be configured by adding the JavaScriptWorkerBackend . @cloudflare/shell is deprecated, and so is Think's createExecuteTool . These will no longer be developed nor supported from today onwards. import { Think } from "@cloudflare/think" ; import { Workspace } from "@cloudflare/computer" ; import { WorkerJavaScriptBackend } from "@cloudflare/computer/back</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-20-think-computer-workspace/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-20T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-20-think-computer-workspace/og.png?v=e94db53990dc8111" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-20-think-computer-workspace/og.png?v=e94db53990dc8111"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-20-think-computer-workspace/og.png?v=e94db53990dc8111" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/797f7c8accc0f0a9</id>
@@ -1258,21 +1288,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4EN399YDFNQMGM5VG6EHTNS.01M4EN39V1RNGJ3FBS356QEAB5.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4f6d88785f0bc0ab</id>
-    <title>Cloudflare Fundamentals - Improved HTTP/3 client cancellation reporting</title>
-    <updated>2026-10-09T00:00:00+00:00</updated>
-    <content>Cloudflare has improved how it handles and reports client-cancelled HTTP/3 requests across Free, Pro, Business, and Enterprise plans. Customers now get a clearer view of client behavior in Cloudflare analytics and, where available, logs. Previously, Cloudflare did not always stop an HTTP/3 request when the client cancelled its request stream. Some cancellations were already recorded as 499 , while others continued to the origin and showed the eventual upstream status. Cloudflare now stops affect</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-09-http3-499-reporting-improvement/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-09T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-09-http3-499-reporting-improvement/og.png?v=5ee459f01b9b0d99" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-09-http3-499-reporting-improvement/og.png?v=5ee459f01b9b0d99"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-09-http3-499-reporting-improvement/og.png?v=5ee459f01b9b0d99" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/e2e3497fa1c27697</id>
     <title>Cloudflare Fundamentals - More efficient Markdown for Agents conversion</title>
     <updated>2026-10-09T00:00:00+00:00</updated>
@@ -1985,21 +2000,6 @@ We are working to analyse and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3Q3ZZ59Z3P49M2FX7R7F4WQ.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e8804878ea476e15</id>
-    <title>Enforce positive security with Cloudflare Application Profiles</title>
-    <updated>2026-09-29T13:00:00+00:00</updated>
-    <content>Cloudflare learns the structure of your HTTP requests and identifies deviations. You can add a positive security layer that helps reduce attack surface as AI makes it easier for attackers to generate and vary payloads.</content>
-    <link href="https://blog.cloudflare.com/application-profiles/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-29T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3B09CMJMHVJCVMPMCFARRCT.01M3B09DCPG1A08FA7FTWA6PR9.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3B09CMJMHVJCVMPMCFARRCT.01M3B09DCPG1A08FA7FTWA6PR9.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3B09CMJMHVJCVMPMCFARRCT.01M3B09DCPG1A08FA7FTWA6PR9.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/95fc72b00fe8283d</id>
