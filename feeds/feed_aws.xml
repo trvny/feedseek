@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-10-22T17:33:04.284980+00:00</updated>
+  <updated>2026-10-22T21:53:24.639082+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,96 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f45aa9c83d4e6cca</id>
+    <title>AWS Continuum for code vulnerabilities is now generally available</title>
+    <updated>2026-10-22T20:33:10+00:00</updated>
+    <content>AWS Continuum for code vulnerabilities is a new security service that uses AI to automatically find, validate, and prioritize code vulnerabilities in your environment, then delivers ready-to-review fixes as pull requests replacing what previously took hours of manual investigation and days of cross-team coordination.</content>
+    <link href="https://aws.amazon.com/blogs/aws/aws-continuum-for-code-vulnerabilities-is-now-generally-available/" rel="alternate"/>
+    <category term="AWS News Blog" label="AWS News Blog"/>
+    <published>2026-10-22T20:33:10+00:00</published>
+    <media:group>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/19/1218373720644947-1.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/19/1218373720644947-1.png"/>
+    </media:group>
+    <dc:creator>AWS News Blog</dc:creator>
+    <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/19/1218373720644947-1.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/35adb2bb9042713b</id>
+    <title>Best Practices for Using Iceberg Materialized Views in Amazon Redshift</title>
+    <updated>2026-10-22T18:40:01.433000+00:00</updated>
+    <content>On October 5, 2026, Amazon Redshift added support for Apache Iceberg materialized views. An Iceberg materialized view pre-computes expensive joins and aggregations once and stores the result as an open Iceberg table that any compatible engine can read. This article covers when to use them, how refresh works, and the security, maintenance, and monitoring practices that keep them reliable.</content>
+    <link href="https://repost.aws/articles/ARbJ-QBuMwTn-Nml9dFjGTqQ/best-practices-for-using-iceberg-materialized-views-in-amazon-redshift" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-10-22T18:40:01.433000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5c0e338a0cf2c391</id>
+    <title>Amazon OpenSearch Serverless now supports a 5-second default refresh interval</title>
+    <updated>2026-10-22T18:34:00+00:00</updated>
+    <content>Starting today, Amazon OpenSearch Serverless reduces the default refresh interval to 5 seconds for both search and vector collections. The refresh interval controls how quickly newly ingested documents become available for search. By lowering the default from 10 seconds to 5 seconds, newly written data becomes searchable faster, giving applications quicker read-after-write visibility automatically, with no configuration changes and no action required on your part. This improvement applies to the</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-opensearch-serverless-supports-5-second-refresh-interval/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-22T18:34:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/54797777c2ae8b6f</id>
+    <title>AWS CLI 2.38.5</title>
+    <updated>2026-10-22T18:09:41+00:00</updated>
+    <content>api-change:networkmanager: AWS Cloud WAN now provides managed one-to-one NAT directly on it's core network attachments, through integration with Regional Private NAT Gateway. Use UpdateAttachmentNatConfiguration to enable NAT and configure NAT rules, and ListAttachmentNatConfigurations to view them. enhancement:Python: Upgraded the Python interpreter that is bundled with AWS CLI v2 installers to version 3.14.8. api-change:lambda: AWS Lambda durable functions now supports payloads up to 1 MB for checkpoints, callback completion, and error details. api-change:connect: Adds support for customer queryable replication errors. api-change:kafkaconnect: Amazon MSK Connect now supports pausing and resuming connectors via the asynchronous PauseConnector and ResumeConnector APIs. Paused connectors keep their configuration and committed offsets and resume where they left off. Each call returns an operation ARN to track with DescribeConnectorOperation. api-change:continuum: Releasing Continuum for Code Vulnerabilities APIs for SDKs api-change:opensearchserverless: Adds APIs to create, get, list, and cancel ingestion jobs, and to create, get, list, and delete ingestion streams, for ingesting data from Amazon S3 into OpenSearch Serverless collections. api-change:ivs-realtime: Adds RevokeConnectionToken operation for Amazon IVS Real-Time Streaming. enhancement:OpenSSL: Update bundled OpenSSL version to 3.5.9 for all installers. api-change:bedrock-agentcore-control: Adds model-based routing and fallback to AgentCore Gateway rules. Rules can match the requested model, route to a specific model, and fall back across inference targets with an optional circuit breaker. Adds multi-dimensional rating scales for AgentCore Evaluations LLM-as-a-Judge evaluators. api-change:glue: Add support for large worker types in AWS Glue enhancement:configure: Adds Devin (Cognition) to the AI coding agents supported by aws configure agent-toolkit. api-change:ec2: AWS Transit Gateway now provides managed one-to-one NAT directly on its attachments, through integration with Regional Private NAT Gateway. Use ModifyTransitGatewayAttachmentNatConfiguration to enable NAT and configure NAT rules, and GetTransitGatewayAttachmentNatConfiguration to view them. enhancement:arguments: Suggest similar option names when an unrecognized option is passed to a command api-change:bedrock-agentcore: Adds the dimension name to evaluation results and batch evaluation summaries. For multi-dimensional LLM-as-a-Judge evaluators, each result and summary now identifies which dimension it corresponds to. api-change:elementalinference: Elemental Inference now supports feed scheduling, letting you apply feed configuration changes at a time you choose instead of building your own automation.</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.38.5" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-10-22T18:09:41+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/0835f47b66e735e92c4ee79db1e547a9f52ebe1fafb9da1e90a92af865b1d841/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/0835f47b66e735e92c4ee79db1e547a9f52ebe1fafb9da1e90a92af865b1d841/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/0835f47b66e735e92c4ee79db1e547a9f52ebe1fafb9da1e90a92af865b1d841/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d92ad8c3fff4b78a</id>
+    <title>Sharing AWS DevOps Agent findings with AWS Incident Detection and Response</title>
+    <updated>2026-10-22T18:08:59.102000+00:00</updated>
+    <content>Learn how to automatically share AWS DevOps Agent investigation findings onto the AWS Incident Detection and Response support case. The on-call engineer and the AWS Support Incident Management Engineer then work the same finding, instead of relaying it by hand during the bridge call.</content>
+    <link href="https://repost.aws/articles/ARB4zGcBqUSeOhdvpBJ6Oo0w/sharing-aws-devops-agent-findings-with-aws-incident-detection-and-response" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-10-22T18:08:59.102000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/af5b8a8a3d53c8df</id>
+    <title>AWS CloudFormation now simplifies stack update rollback operations</title>
+    <updated>2026-10-22T17:30:00+00:00</updated>
+    <content>AWS CloudFormation now makes it simpler to complete an update rollback and get back to deploying. An update rollback returns your stack to a known good state. Starting today, if some resources cannot roll back automatically, force rollback enables you to complete the rollback it in a single operation. It works across every CloudFormation workflow, from the AWS CLI , and SDKs to AWS CDK and AI agents. With force rollback, CloudFormation completes the update rollback and returns your stack to a de</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-cloudformation-cdk/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-22T17:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/16e66a666855e420</id>
+    <title>Amazon SageMaker AI announces training session APIs for serverless model customization</title>
+    <updated>2026-10-22T16:30:00+00:00</updated>
+    <content>Amazon SageMaker AI serverless model customization now supports training session APIs, giving customers full control over their post-training algorithm without provisioning or managing GPU infrastructure. Managed techniques, including SFT, DPO, and other reinforcement learning methods, let customers pick a technique and a model and have SageMaker AI run the training. With training session APIs, teams get to write the training loop, whether that's reproducing SFT or DPO on their own terms or impl</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/training-session-apis-on-sagemaker-ai" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-22T16:30:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/574f39c3054abf82</id>
     <title>Open Responses Joins AAIF with AWS Support</title>
@@ -47,6 +137,26 @@
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-sagemaker-muse-qwen-ministral/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-22T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/14ef6caf22300752</id>
+    <title>AWS Lambda MicroVMs is now available in 4 additional AWS regions</title>
+    <updated>2026-10-22T07:06:00+00:00</updated>
+    <content>AWS Lambda MicroVMs is now available in 4 additional AWS Regions: Asia Pacific (Hong Kong), Asia Pacific (Malaysia), Asia Pacific (Thailand), and Europe (Spain). With this launch, you can use Lambda MicroVMs in a total of 14 AWS Regions. Lambda MicroVMs is a serverless compute primitive that provides VM-level isolation, near-instant launch and resume speeds, and state preservation for executing user or AI generated code.  Developers can use Lambda MicroVMs to give each user or job their own isol</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/lambda-microvms-4-additional-regions" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-22T07:06:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/257bad3ecd18b864</id>
+    <title>Amazon Quick Now Available in the AWS Singapore Region</title>
+    <updated>2026-10-22T07:00:00+00:00</updated>
+    <content>Amazon Quick is now available in the AWS Asia Pacific (Singapore) region (ap-southeast-1). This launch allows customers in Singapore to access the full power of Amazon Quick while meeting local requirements for data sovereignty. Amazon Quick provides business users an agentic teammate that quickly answers questions at work and turns those answers into actions. With Amazon Quick, every user is empowered to make better decisions faster and take actions without switching applications using AI they </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-quick-now-available-in-the-aws-singapore-region/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-22T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
@@ -120,6 +230,16 @@
     <link rel="enclosure" href="https://opengraph.githubassets.com/a987c6d5d874459c7c3a1622e858bd4429e9e1ebf1330962f293dd436b069014/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5e1be2874df64343</id>
+    <title>AWS Service Reference Information now supports global condition keys, service names, and data plane classification</title>
+    <updated>2026-10-21T18:00:00+00:00</updated>
+    <content>AWS is expanding programmatic service reference information to help you automate IAM policy management and keep your policies aligned with the latest service updates. The service reference now includes all aws:-prefixed global condition keys in a single machine-readable file, a ServiceName field mapping service identifiers to human-readable names, and an IsDataPlane property identifying which actions are data plane operations. You can automate retrieval of this information to eliminate manual ef</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-service-reference-information-global-condition-keys-service-names-data-plane/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-21T18:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/bdc876489932d5e8</id>
     <title>Define the Process Before You Add the Agent: Why Health Maturity Level 3 Comes First</title>
     <updated>2026-10-21T17:36:18.749000+00:00</updated>
@@ -145,16 +265,6 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/c913245650b40199</id>
-    <title>Amazon Aurora and Amazon RDS now support On-Demand Capacity Reservations</title>
-    <updated>2026-10-21T17:00:00+00:00</updated>
-    <content>Starting today, you can reserve compute capacity for your Amazon Aurora and Amazon RDS DB instances in one or more Availability Zones for as long as you need it. Reserving capacity helps ensure that DB instance create, restore, scale-compute, and start operations don't fail because of insufficient capacity. On-Demand Capacity Reservations are designed for workloads that need assurance that specific DB instance capacity will be available when they need it for business-critical events, such as mig</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-aurora-rds-on-demand-capacity-reservations/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-21T17:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/1e985113ea8ef8e8</id>
     <title>Amazon Cognito extends multi-Region replication to AWS GovCloud (US) Regions</title>
     <updated>2026-10-21T17:00:00+00:00</updated>
@@ -165,13 +275,13 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/7ba1dd60be0e018c</id>
-    <title>Beam model by Reflection is now available on Amazon SageMaker JumpStart and AWS Trainium</title>
-    <updated>2026-10-21T15:00:00+00:00</updated>
-    <content>Beam, the first open weight model offered by US-based Reflection, is now available in Amazon SageMaker JumpStart, the model hub in Amazon SageMaker AI. According to Beam, they operate at the frontier of open weight models in its class, with strong performance across reasoning, coding, and agentic benchmarks. Beam is for teams who build on and with an open weight model, not just call one. Customers who want to adapt a frontier model to their own domain can fine-tune it, inspect and modify its wei</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/01/reflection-beam-on-sagemaker-jumpstart-and-aws-trainium/" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/aws/c913245650b40199</id>
+    <title>Amazon Aurora and Amazon RDS now support On-Demand Capacity Reservations</title>
+    <updated>2026-10-21T17:00:00+00:00</updated>
+    <content>Starting today, you can reserve compute capacity for your Amazon Aurora and Amazon RDS DB instances in one or more Availability Zones for as long as you need it. Reserving capacity helps ensure that DB instance create, restore, scale-compute, and start operations don't fail because of insufficient capacity. On-Demand Capacity Reservations are designed for workloads that need assurance that specific DB instance capacity will be available when they need it for business-critical events, such as mig</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-aurora-rds-on-demand-capacity-reservations/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-21T15:00:00+00:00</published>
+    <published>2026-10-21T17:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
@@ -180,6 +290,16 @@
     <updated>2026-10-21T15:00:00+00:00</updated>
     <content>AWS Neuron 2.33 is now available, introducing TorchNeuron, the native PyTorch backend for AWS Trainium, in public beta. You can run models written with the standard PyTorch APIs on Amazon EC2 Trn2 and Trn3 instances, in eager mode or with torch.compile. This release also introduces Neuron Observer in public beta, which detects Trainium health issues in under a second and identifies the affected node or device. The vLLM Neuron plugin upgrades to vLLM 0.29.0, and the vLLM Omni Neuron plugin for Wa</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-announce-neuron-2-33-0" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-21T15:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7ba1dd60be0e018c</id>
+    <title>Beam model by Reflection is now available on Amazon SageMaker JumpStart and AWS Trainium</title>
+    <updated>2026-10-21T15:00:00+00:00</updated>
+    <content>Beam, the first open weight model offered by US-based Reflection, is now available in Amazon SageMaker JumpStart, the model hub in Amazon SageMaker AI. According to Beam, they operate at the frontier of open weight models in its class, with strong performance across reasoning, coding, and agentic benchmarks. Beam is for teams who build on and with an open weight model, not just call one. Customers who want to adapt a frontier model to their own domain can fine-tune it, inspect and modify its wei</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/01/reflection-beam-on-sagemaker-jumpstart-and-aws-trainium/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-21T15:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -220,11 +340,11 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/21cb30e1aa57e335</id>
-    <title>AWS Transform now builds new networks and modernizes security groups</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/611ad96c7c2a1c0c</id>
+    <title>AWS Network Firewall now supports Route 53 Resolved IP Validation</title>
     <updated>2026-10-21T08:00:00+00:00</updated>
-    <content>AWS Transform for migrations now gives you three ways to bring your network to AWS. In addition to migrating and modernizing your existing network, you can build a new network from scratch or convert your on-premises access rules into optimized security groups and deploy them into existing VPCs. Whichever path you choose, you arrive on AWS with a secure and scalable network foundation. On-premises networks accumulate years of definitions and access rules that you may not want to carry to AWS as-</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-new-networks/" rel="alternate"/>
+    <content>AWS Network Firewall now supports IP validation, extending domain-based filtering beyond HTTP/HTTPS to protocols such as SFTP and SSH. This new capability validates that a connection's destination IP address was resolved through your VPC's Amazon Route 53 VPC Resolver, closing security gaps where clients could bypass domain rules. This feature enables Network Firewall customers to implement domain filtering rules for any protocol, not just HTTP/HTTPS, providing more flexible security policies th</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/network-firewall-route-53-ip-validation/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-21T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -240,11 +360,11 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/611ad96c7c2a1c0c</id>
-    <title>AWS Network Firewall now supports Route 53 Resolved IP Validation</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/21cb30e1aa57e335</id>
+    <title>AWS Transform now builds new networks and modernizes security groups</title>
     <updated>2026-10-21T08:00:00+00:00</updated>
-    <content>AWS Network Firewall now supports IP validation, extending domain-based filtering beyond HTTP/HTTPS to protocols such as SFTP and SSH. This new capability validates that a connection's destination IP address was resolved through your VPC's Amazon Route 53 VPC Resolver, closing security gaps where clients could bypass domain rules. This feature enables Network Firewall customers to implement domain filtering rules for any protocol, not just HTTP/HTTPS, providing more flexible security policies th</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/network-firewall-route-53-ip-validation/" rel="alternate"/>
+    <content>AWS Transform for migrations now gives you three ways to bring your network to AWS. In addition to migrating and modernizing your existing network, you can build a new network from scratch or convert your on-premises access rules into optimized security groups and deploy them into existing VPCs. Whichever path you choose, you arrive on AWS with a secure and scalable network foundation. On-premises networks accumulate years of definitions and access rules that you may not want to carry to AWS as-</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-new-networks/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-21T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -395,41 +515,11 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/7bb555544517024e</id>
-    <title>Amazon CloudWatch Alarms now supports tags in alarm actions payload</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/c373f5423d8a8a82</id>
+    <title>Amazon Bedrock Advanced Prompt Optimization now supports prompt shortening</title>
     <updated>2026-10-20T08:00:00+00:00</updated>
-    <content>Today, Amazon CloudWatch announces support for including alarm tags in action payloads and Amazon EventBridge events, enabling customers to route and filter alarm notifications by tag without additional lookups. When enabled on an alarm, CloudWatch adds the alarm tags to the messages it sends to Amazon SNS, AWS Lambda, and Amazon EventBridge each time the alarm changes state. This option is designed for customers who route many alarms through a shared notification pipeline and need to identify t</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-cloudwatch-tags-on-alarm-actions-payload" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-20T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4485948172c71ce5</id>
-    <title>AWS Transform for migrations expands support for existing landing zones</title>
-    <updated>2026-10-20T08:00:00+00:00</updated>
-    <content>AWS Transform now supports more types of existing AWS environments when building landing zones for your migration, including AWS Control Tower landing zones and landing zones built with AWS Organizations. AWS Transform runs a foundation gap analysis of your current environment against AWS best practices and expands your landing zone on top of what's already in your target accounts, so your team can start migrating sooner. AWS Transform also now supports an Infrastructure as Code (IaC)-only mode </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-migrations-landing-zones/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-20T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e7b846e0e76020db</id>
-    <title>AWS Partner Central launches Program Navigator, Case Study Generator, and streamlined specialization review</title>
-    <updated>2026-10-20T08:00:00+00:00</updated>
-    <content>AWS Partner Central now features Program Navigator, a unified experience that lets partners discover, apply for, and track AWS Specialization program applications in one place. Partners can browse specialization designations, view requirements and benefits, and submit applications through a guided, step-by-step workflow. The new Case Study Generator in AWS Partner Central gives partners a redesigned creation experience with three starting paths: build a case study directly with AI assistance, im</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/partner-central-program-navigator/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-20T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/dd62c292938ad909</id>
-    <title>AWS IAM Identity Center simplifies identity source changes from Active Directory</title>
-    <updated>2026-10-20T08:00:00+00:00</updated>
-    <content>AWS IAM Identity Center now retains your workforce identities and their assignments when you change your identity source from Active Directory to an external identity provider (IdP), such as Okta or Microsoft Entra ID, or to the Identity Center directory. Specifically, it preserves your users, groups, group memberships, permission set assignments, and application assignments. Previously, this change required you to recreate them in IAM Identity Center. IAM Identity Center helps you connect your </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/iam-identity-center-chg-id-src-from-ad/" rel="alternate"/>
+    <content>Amazon Bedrock Advanced Prompt Optimization now supports prompt shortening, an optional setting that reduces the length of your prompt while maintaining or improving your evaluation scores. Advanced Prompt Optimization optimizes prompts for any model on Amazon Bedrock against your own evaluation criteria. Until now, optimization focused on quality alone. Optimized prompts were often longer than the original. Longer prompts raise input token costs and can increase time to first token, which matte</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/bedrock-prompt-optimization-shortening/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-20T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -445,11 +535,41 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/c373f5423d8a8a82</id>
-    <title>Amazon Bedrock Advanced Prompt Optimization now supports prompt shortening</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/dd62c292938ad909</id>
+    <title>AWS IAM Identity Center simplifies identity source changes from Active Directory</title>
     <updated>2026-10-20T08:00:00+00:00</updated>
-    <content>Amazon Bedrock Advanced Prompt Optimization now supports prompt shortening, an optional setting that reduces the length of your prompt while maintaining or improving your evaluation scores. Advanced Prompt Optimization optimizes prompts for any model on Amazon Bedrock against your own evaluation criteria. Until now, optimization focused on quality alone. Optimized prompts were often longer than the original. Longer prompts raise input token costs and can increase time to first token, which matte</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/bedrock-prompt-optimization-shortening/" rel="alternate"/>
+    <content>AWS IAM Identity Center now retains your workforce identities and their assignments when you change your identity source from Active Directory to an external identity provider (IdP), such as Okta or Microsoft Entra ID, or to the Identity Center directory. Specifically, it preserves your users, groups, group memberships, permission set assignments, and application assignments. Previously, this change required you to recreate them in IAM Identity Center. IAM Identity Center helps you connect your </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/iam-identity-center-chg-id-src-from-ad/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-20T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/e7b846e0e76020db</id>
+    <title>AWS Partner Central launches Program Navigator, Case Study Generator, and streamlined specialization review</title>
+    <updated>2026-10-20T08:00:00+00:00</updated>
+    <content>AWS Partner Central now features Program Navigator, a unified experience that lets partners discover, apply for, and track AWS Specialization program applications in one place. Partners can browse specialization designations, view requirements and benefits, and submit applications through a guided, step-by-step workflow. The new Case Study Generator in AWS Partner Central gives partners a redesigned creation experience with three starting paths: build a case study directly with AI assistance, im</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/partner-central-program-navigator/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-20T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/4485948172c71ce5</id>
+    <title>AWS Transform for migrations expands support for existing landing zones</title>
+    <updated>2026-10-20T08:00:00+00:00</updated>
+    <content>AWS Transform now supports more types of existing AWS environments when building landing zones for your migration, including AWS Control Tower landing zones and landing zones built with AWS Organizations. AWS Transform runs a foundation gap analysis of your current environment against AWS best practices and expands your landing zone on top of what's already in your target accounts, so your team can start migrating sooner. AWS Transform also now supports an Infrastructure as Code (IaC)-only mode </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-migrations-landing-zones/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-20T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7bb555544517024e</id>
+    <title>Amazon CloudWatch Alarms now supports tags in alarm actions payload</title>
+    <updated>2026-10-20T08:00:00+00:00</updated>
+    <content>Today, Amazon CloudWatch announces support for including alarm tags in action payloads and Amazon EventBridge events, enabling customers to route and filter alarm notifications by tag without additional lookups. When enabled on an alarm, CloudWatch adds the alarm tags to the messages it sends to Amazon SNS, AWS Lambda, and Amazon EventBridge each time the alarm changes state. This option is designed for customers who route many alarms through a shared notification pipeline and need to identify t</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-cloudwatch-tags-on-alarm-actions-payload" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-20T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -545,21 +665,21 @@
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4f86c6704786240d</id>
-    <title>AWS Elemental MediaConnect Router now supports high bitrate mode</title>
-    <updated>2026-10-19T08:00:00+00:00</updated>
-    <content>AWS Elemental MediaConnect Router now supports high bitrate modes with two new tiers: 250 Mbps and 500 Mbps. This allows professional broadcasters that need higher bitrates to transport high-value content without compromising quality or reliability. This enhancement enables industry-standard workflows such as VSF TR-07 compliant transport stream distribution for broadcast contribution, content distribution, and remote production. High bitrate mode supports up to two redundant sources for reliabi</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/mediaconnect-router-high-bitrate/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-19T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/6a0f4a6567c3a5a0</id>
     <title>AWS IAM Identity Center now supports optimistic locking for users and groups in its identity store</title>
     <updated>2026-10-19T08:00:00+00:00</updated>
     <content>IAM Identity Center helps you configure the single sign-on experience of your workforce to AWS accounts and applications. You can now use optimistic locking for users and groups in the identity store, so that update and delete requests succeed only if the user or group hasn't changed since you last read it. This helps when multiple administrators or automated workflows modify the same user or group at nearly the same time, where previously one write could silently overwrite another. Each user an</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/iam-identity-store-optimistic-locking/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-19T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/4f86c6704786240d</id>
+    <title>AWS Elemental MediaConnect Router now supports high bitrate mode</title>
+    <updated>2026-10-19T08:00:00+00:00</updated>
+    <content>AWS Elemental MediaConnect Router now supports high bitrate modes with two new tiers: 250 Mbps and 500 Mbps. This allows professional broadcasters that need higher bitrates to transport high-value content without compromising quality or reliability. This enhancement enables industry-standard workflows such as VSF TR-07 compliant transport stream distribution for broadcast contribution, content distribution, and remote production. High bitrate mode supports up to two redundant sources for reliabi</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/mediaconnect-router-high-bitrate/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-19T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -661,16 +781,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/1ed286c13c8ee886</id>
-    <title>Amazon Braket now in scope for FedRAMP Class C</title>
-    <updated>2026-10-16T08:00:00+00:00</updated>
-    <content>Amazon Braket is now in scope for FedRAMP Class C in AWS US Regions where Braket is available. The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring of cloud products and services. With FedRAMP Class C authorization, government customers and the organizations that serve them can use Amazon Braket to explore quantum computing within an authorized boundar</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/braket-fedramp-class-c/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-16T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/f7e1e76972d44433</id>
     <title>Second-generation AWS Outposts racks now supported in the AWS Mexico (Central) Region</title>
     <updated>2026-10-16T08:00:00+00:00</updated>
@@ -681,21 +791,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/94af057d4f3f969f</id>
-    <title>AWS End User Messaging adds registration improvements for faster, higher-quality submissions</title>
-    <updated>2026-10-16T07:00:00+00:00</updated>
-    <content>AWS End User Messaging now makes it easier to complete messaging registrations correctly the first time, with clearer guidance, explicit field requirements, and help avoiding the most common rejection reasons. Registrations ask for compliance evidence such as opt-in proof and sample messages, and submissions are often delayed or denied when that evidence is incomplete or a required field is missed. These improvements give you worked examples, surface exactly which fields you must provide, and wa</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-adds-registration-improvements-for-faster-higher-quality-submissions" rel="alternate"/>
+    <id>tag:trvny.github.io,2024:feedseek/aws/1ed286c13c8ee886</id>
+    <title>Amazon Braket now in scope for FedRAMP Class C</title>
+    <updated>2026-10-16T08:00:00+00:00</updated>
+    <content>Amazon Braket is now in scope for FedRAMP Class C in AWS US Regions where Braket is available. The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring of cloud products and services. With FedRAMP Class C authorization, government customers and the organizations that serve them can use Amazon Braket to explore quantum computing within an authorized boundar</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/braket-fedramp-class-c/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-16T07:00:00+00:00</published>
+    <published>2026-10-16T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/a8058c4263ebfd21</id>
-    <title>AWS End User Messaging now supports Brand Profiles</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/ee9df6a6bcbcaf27</id>
+    <title>AWS End User Messaging adds a guided wizard for RCS registration videos</title>
     <updated>2026-10-16T07:00:00+00:00</updated>
-    <content>Today, AWS End User Messaging announces Brand Profiles, which let you store your brand and company information once and reuse it across your messaging registrations. To send messages on SMS, RCS, and WhatsApp, you register your brand with carriers and messaging providers, and today you fill in the same company details, address, contact information, and use case by hand on every form, for each channel and country. That repeated entry slows every new registration, and a typo or other error can get</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-now-supports-brand-profiles" rel="alternate"/>
+    <content>Today, AWS End User Messaging adds a wizard that orchestrates the entire video capture for your RCS agent registration. RCS registrations in multiple countries, including the United States, require a screen recording that demonstrates your messaging experience. To record it, you have to send a specific sequence of messages to a test device, and until now you scripted those messages yourself, which easily introduced errors and made a mismatched or incomplete video one of the hardest parts of regi</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-adds-guided-wizard-rcs-registration-videos" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-16T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -711,11 +821,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/ee9df6a6bcbcaf27</id>
-    <title>AWS End User Messaging adds a guided wizard for RCS registration videos</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/a8058c4263ebfd21</id>
+    <title>AWS End User Messaging now supports Brand Profiles</title>
     <updated>2026-10-16T07:00:00+00:00</updated>
-    <content>Today, AWS End User Messaging adds a wizard that orchestrates the entire video capture for your RCS agent registration. RCS registrations in multiple countries, including the United States, require a screen recording that demonstrates your messaging experience. To record it, you have to send a specific sequence of messages to a test device, and until now you scripted those messages yourself, which easily introduced errors and made a mismatched or incomplete video one of the hardest parts of regi</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-adds-guided-wizard-rcs-registration-videos" rel="alternate"/>
+    <content>Today, AWS End User Messaging announces Brand Profiles, which let you store your brand and company information once and reuse it across your messaging registrations. To send messages on SMS, RCS, and WhatsApp, you register your brand with carriers and messaging providers, and today you fill in the same company details, address, contact information, and use case by hand on every form, for each channel and country. That repeated entry slows every new registration, and a typo or other error can get</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-now-supports-brand-profiles" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-16T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/94af057d4f3f969f</id>
+    <title>AWS End User Messaging adds registration improvements for faster, higher-quality submissions</title>
+    <updated>2026-10-16T07:00:00+00:00</updated>
+    <content>AWS End User Messaging now makes it easier to complete messaging registrations correctly the first time, with clearer guidance, explicit field requirements, and help avoiding the most common rejection reasons. Registrations ask for compliance evidence such as opt-in proof and sample messages, and submissions are often delayed or denied when that evidence is incomplete or a required field is missed. These improvements give you worked examples, surface exactly which fields you must provide, and wa</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-end-user-messaging-adds-registration-improvements-for-faster-higher-quality-submissions" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-16T07:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -891,21 +1011,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/224c20a163df38ac</id>
-    <title>PostgreSQL 19 RC1 is now available in Amazon RDS Database Preview Environment</title>
-    <updated>2026-10-15T16:00:00+00:00</updated>
-    <content>Starting today, Amazon RDS for PostgreSQL 19 Release Candidate 1 (RC1) is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of PostgreSQL 19 on Amazon RDS for PostgreSQL. PostgreSQL 19 RC1 focuses on stability, with bug fixes and improvements from the Beta 4 testing period. This release improves error handling for complex text-search expressions, hardens parallel autovacuum, and improves reliability of GIN index maintenance. Refer to the PostgreS</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/postgresql-19-rc1-amazon-rds-database-preview-environment/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-15T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/6aff5bab7ec282dc</id>
     <title>Amazon CloudFront announces dual-stack support for VPC origins</title>
     <updated>2026-10-15T16:00:00+00:00</updated>
     <content>Amazon CloudFront now supports end-to-end IPv6 delivery to origins inside your Amazon Virtual Private Cloud (Amazon VPC), with the new dual-stack VPC origins. With VPC origins, customers keep their Application Load Balancers (ALB), Network Load Balancers (NLB), and EC2 instances in private subnets that only their CloudFront distributions can reach. With dual-stack support, customers can now send IPv6 traffic all the way to these private origins to meet their IPv6 architecture and regulatory requ</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/cloudfront-vpc-origin-dualstack/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-15T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/224c20a163df38ac</id>
+    <title>PostgreSQL 19 RC1 is now available in Amazon RDS Database Preview Environment</title>
+    <updated>2026-10-15T16:00:00+00:00</updated>
+    <content>Starting today, Amazon RDS for PostgreSQL 19 Release Candidate 1 (RC1) is available in the Amazon RDS Database Preview Environment , allowing you to evaluate the pre-release of PostgreSQL 19 on Amazon RDS for PostgreSQL. PostgreSQL 19 RC1 focuses on stability, with bug fixes and improvements from the Beta 4 testing period. This release improves error handling for complex text-search expressions, hardens parallel autovacuum, and improves reliability of GIN index maintenance. Refer to the PostgreS</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/postgresql-19-rc1-amazon-rds-database-preview-environment/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-15T16:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -946,21 +1066,11 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/9fe4cd47a9b08d4b</id>
-    <title>AWS Security Hub CSPM now supports the Cyber Risk Institute profile version 2.2</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d84c7fdfe8a62389</id>
+    <title>Oracle Database@AWS supports aggregate and default routes for ODB peering</title>
     <updated>2026-10-15T08:00:00+00:00</updated>
-    <content>AWS Security Hub CSPM now supports automated security checks that align with the Cyber Risk Institute (CRI) profile. The CRI Profile is a cybersecurity framework developed by the Cyber Risk Institute, a non-profit coalition of financial institutions and trade associations. The framework harmonizes cybersecurity and regulatory expectations that apply to the financial services sector into a common set of requirements, so that an organization can assess itself once and report against multiple regul</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/security-hub-cspm-cri-profile-v22/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-15T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/ce918879bc4af9e8</id>
-    <title>Amazon Managed Service for Prometheus Collector now available in Asia Pacific (New Zealand) Region</title>
-    <updated>2026-10-15T08:00:00+00:00</updated>
-    <content>Amazon Managed Service for Prometheus collector, a fully-managed agentless collector for Prometheus metrics, is now available in Asia Pacific (New Zealand). Customers in New Zealand can now run their Prometheus-compatible monitoring workloads in-region, with lower latency for local workloads and the ability to keep their data in-country. Amazon Managed Service for Prometheus collector discovers and collects Prometheus metrics from your container workloads without the need to run and operate coll</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/ams-prometheus-collector-apac-nz/" rel="alternate"/>
+    <content>Oracle Database@AWS (ODB) now supports advertising aggregate routes and a default route (0.0.0.0/0) when configuring ODB peering between applications in an Amazon VPC and databases in an ODB network. This simplifies network operations as customers extend new VPCs or on-premises networks to reach their databases, without updating the advertised CIDRs for each network that needs connectivity to the ODB network. Previously, customers had to advertise each network reaching the ODB network as a separ</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/oracle-database-aws-aggregate-routes-odb/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-15T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -976,11 +1086,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/d84c7fdfe8a62389</id>
-    <title>Oracle Database@AWS supports aggregate and default routes for ODB peering</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/ce918879bc4af9e8</id>
+    <title>Amazon Managed Service for Prometheus Collector now available in Asia Pacific (New Zealand) Region</title>
     <updated>2026-10-15T08:00:00+00:00</updated>
-    <content>Oracle Database@AWS (ODB) now supports advertising aggregate routes and a default route (0.0.0.0/0) when configuring ODB peering between applications in an Amazon VPC and databases in an ODB network. This simplifies network operations as customers extend new VPCs or on-premises networks to reach their databases, without updating the advertised CIDRs for each network that needs connectivity to the ODB network. Previously, customers had to advertise each network reaching the ODB network as a separ</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/oracle-database-aws-aggregate-routes-odb/" rel="alternate"/>
+    <content>Amazon Managed Service for Prometheus collector, a fully-managed agentless collector for Prometheus metrics, is now available in Asia Pacific (New Zealand). Customers in New Zealand can now run their Prometheus-compatible monitoring workloads in-region, with lower latency for local workloads and the ability to keep their data in-country. Amazon Managed Service for Prometheus collector discovers and collects Prometheus metrics from your container workloads without the need to run and operate coll</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/ams-prometheus-collector-apac-nz/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-15T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/9fe4cd47a9b08d4b</id>
+    <title>AWS Security Hub CSPM now supports the Cyber Risk Institute profile version 2.2</title>
+    <updated>2026-10-15T08:00:00+00:00</updated>
+    <content>AWS Security Hub CSPM now supports automated security checks that align with the Cyber Risk Institute (CRI) profile. The CRI Profile is a cybersecurity framework developed by the Cyber Risk Institute, a non-profit coalition of financial institutions and trade associations. The framework harmonizes cybersecurity and regulatory expectations that apply to the financial services sector into a common set of requirements, so that an organization can assess itself once and report against multiple regul</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/security-hub-cspm-cri-profile-v22/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-15T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1322,21 +1442,11 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/d21fbf22912a0907</id>
-    <title>AWS Transfer Family console supports SVG logos and ICO favicons for web apps</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/de656e8b5fcaa1a6</id>
+    <title>AWS Backup now supports Amazon FSx file systems in the Asia Pacific (New Zealand) Region</title>
     <updated>2026-10-14T08:00:00+00:00</updated>
-    <content>The AWS Transfer Family console now supports SVG files for logos and ICO files for favicons in web apps, with upload limits increased to 2 MB. This gives you more flexibility to use existing branding assets when customizing your web app. Previously, the console accepted only JPG and PNG files and limited logo uploads to 50 KB and favicon uploads to 20 KB. The console automatically resizes images and converts them to JPG or PNG before saving them. Existing API upload limits and format requirement</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-svg-ico-favicons/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-14T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b9ff5abb20cea54f</id>
-    <title>AWS Transfer Family now supports AWS Secrets Manager storage for SFTP server host keys</title>
-    <updated>2026-10-14T08:00:00+00:00</updated>
-    <content>AWS Transfer Family now lets you store SFTP server host keys in AWS Secrets Manager in your own AWS account. This gives you greater control over your server identity and helps simplify server migrations and failover. Previously, Transfer Family stored host keys within the service, so you could not retrieve the associated private key material. With this launch, you can choose Secrets Manager as the storage type when creating a server or importing a host key. You can then retrieve the private key </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-secrets-host-keys/" rel="alternate"/>
+    <content>AWS Backup now supports Amazon FSx for Lustre, Amazon FSx for NetApp ONTAP, Amazon FSx for OpenZFS, and Amazon FSx for Windows File Server in the Asia Pacific (New Zealand) Region. With this launch, you can use AWS Backup to centrally automate and manage data protection for your Amazon FSx file systems in the Asia Pacific (New Zealand) Region, alongside your other supported AWS resources. You can create policy-based backup plans to schedule backups and apply retention rules, store backups in enc</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-backup-fsx-asia-pacific-new-zealand/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-14T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1352,11 +1462,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/de656e8b5fcaa1a6</id>
-    <title>AWS Backup now supports Amazon FSx file systems in the Asia Pacific (New Zealand) Region</title>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b9ff5abb20cea54f</id>
+    <title>AWS Transfer Family now supports AWS Secrets Manager storage for SFTP server host keys</title>
     <updated>2026-10-14T08:00:00+00:00</updated>
-    <content>AWS Backup now supports Amazon FSx for Lustre, Amazon FSx for NetApp ONTAP, Amazon FSx for OpenZFS, and Amazon FSx for Windows File Server in the Asia Pacific (New Zealand) Region. With this launch, you can use AWS Backup to centrally automate and manage data protection for your Amazon FSx file systems in the Asia Pacific (New Zealand) Region, alongside your other supported AWS resources. You can create policy-based backup plans to schedule backups and apply retention rules, store backups in enc</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-backup-fsx-asia-pacific-new-zealand/" rel="alternate"/>
+    <content>AWS Transfer Family now lets you store SFTP server host keys in AWS Secrets Manager in your own AWS account. This gives you greater control over your server identity and helps simplify server migrations and failover. Previously, Transfer Family stored host keys within the service, so you could not retrieve the associated private key material. With this launch, you can choose Secrets Manager as the storage type when creating a server or importing a host key. You can then retrieve the private key </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-secrets-host-keys/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-14T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d21fbf22912a0907</id>
+    <title>AWS Transfer Family console supports SVG logos and ICO favicons for web apps</title>
+    <updated>2026-10-14T08:00:00+00:00</updated>
+    <content>The AWS Transfer Family console now supports SVG files for logos and ICO files for favicons in web apps, with upload limits increased to 2 MB. This gives you more flexibility to use existing branding assets when customizing your web app. Previously, the console accepted only JPG and PNG files and limited logo uploads to 50 KB and favicon uploads to 20 KB. The console automatically resizes images and converts them to JPG or PNG before saving them. Existing API upload limits and format requirement</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-svg-ico-favicons/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-14T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1392,21 +1512,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/9476b0ae7a4b9ba5</id>
-    <title>Amazon ECS adds LiveTaskCount and removes the charge for RunningTaskCount metric</title>
-    <updated>2026-10-13T22:00:00+00:00</updated>
-    <content>Today, Amazon Elastic Container Service (Amazon ECS) announces LiveTaskCount, a new ECS service metric that reports how many tasks are actively running in your service, available to all customers at no additional charge. Additionally, the existing RunningTaskCount metric in Amazon CloudWatch Container Insights no longer incurs a charge. LiveTaskCount reports the number of actively running ECS tasks across all desired states (ACTIVATING, RUNNING, and DEACTIVATING), including tasks still running w</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/ecs-service-metrics/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-13T22:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/2e5c2e5cbf1b57be</id>
     <title>AWS Lambda durable functions increases durable operation and checkpoint payload limits</title>
     <updated>2026-10-13T22:00:00+00:00</updated>
     <content>Starting today, AWS Lambda durable functions increases the maximum number of durable operations per execution from 3,000 to 30,000, and the maximum checkpoint payload size from 256 KB to 1 MB. Higher operation limits let you safely do more work in a single execution including expanding iterative loops, polling for longer time periods, and building more complex rollback paths that run when a step fails. At 1 MB, checkpoint payloads match the maximum payload size of asynchronous Lambda invocations</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-lambda-durable-gen-limit-increase/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-13T22:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/9476b0ae7a4b9ba5</id>
+    <title>Amazon ECS adds LiveTaskCount and removes the charge for RunningTaskCount metric</title>
+    <updated>2026-10-13T22:00:00+00:00</updated>
+    <content>Today, Amazon Elastic Container Service (Amazon ECS) announces LiveTaskCount, a new ECS service metric that reports how many tasks are actively running in your service, available to all customers at no additional charge. Additionally, the existing RunningTaskCount metric in Amazon CloudWatch Container Insights no longer incurs a charge. LiveTaskCount reports the number of actively running ECS tasks across all desired states (ACTIVATING, RUNNING, and DEACTIVATING), including tasks still running w</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/ecs-service-metrics/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-13T22:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1517,21 +1637,21 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/7863e8f402b4ff23</id>
-    <title>AWS DataSync Enhanced mode now supports FSx for OpenZFS, NFS 4.2, and object metadata controls</title>
-    <updated>2026-10-13T08:00:00+00:00</updated>
-    <content>AWS DataSync Enhanced mode now supports Amazon FSx for OpenZFS as a source or destination location, NFS version 4.2 for on-premises NFS servers and FSx for OpenZFS file systems, and a new ObjectMetadata option for object storage transfers. Previously, customers transferring data to or from FSx for OpenZFS were limited to Basic mode. NFS 4.2 lets you transfer data from NFS servers on the latest version without reconfiguring them to an older protocol version. The ObjectMetadata option gives you co</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/datasync-enhanced-openzfs-nfs42-metadata/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-13T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/3c0abbf09c4d35ec</id>
     <title>Amazon Route 53 now supports registrations, transfers, and renewals for Premium Domains</title>
     <updated>2026-10-13T08:00:00+00:00</updated>
     <content>Amazon Route 53 Domains now supports Premium Domain Names. Customers can now search for, register, transfer, renew, and restore registry premium names directly through Route 53. Most domain registries set aside a selection of "premium" domains - names that are short, memorable, or in high demand. Previously, Route 53 Domains did not support these premium names, which meant customers who wanted them had to register and manage them through other registrars, fragmenting their portfolios across mult</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/route-53-premium-domains/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-13T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/7863e8f402b4ff23</id>
+    <title>AWS DataSync Enhanced mode now supports FSx for OpenZFS, NFS 4.2, and object metadata controls</title>
+    <updated>2026-10-13T08:00:00+00:00</updated>
+    <content>AWS DataSync Enhanced mode now supports Amazon FSx for OpenZFS as a source or destination location, NFS version 4.2 for on-premises NFS servers and FSx for OpenZFS file systems, and a new ObjectMetadata option for object storage transfers. Previously, customers transferring data to or from FSx for OpenZFS were limited to Basic mode. NFS 4.2 lets you transfer data from NFS servers on the latest version without reconfiguring them to an older protocol version. The ObjectMetadata option gives you co</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/datasync-enhanced-openzfs-nfs42-metadata/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-13T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1602,36 +1722,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/10/09/01979_AWS_Lambda_Web_Functions-horizontal-1-1120x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/d4f20b4fef9e9a1b</id>
-    <title>Amazon EC2 G7 instances now available in Europe (Frankfurt) and Europe (Stockholm) Regions</title>
-    <updated>2026-10-12T22:30:00+00:00</updated>
-    <content>Amazon Elastic Compute Cloud (Amazon EC2) G7 instances powered by NVIDIA RTX PRO 4500 Blackwell Server Edition GPUs are now available in Europe (Frankfurt) and Europe (Stockholm) Regions. G7 instances deliver up to 4.6x AI inference performance and up to 2.1 graphics performance compared to G6 instances. G7 instances also deliver faster performance for GPU-accelerated data analytics workloads. Customers can use G7 instances for deploying AI models for language translation, video and image analys</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-g7-european-regions/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T22:30:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e075ff8603c306a2</id>
-    <title>Amazon Connect Customer now prefills step-by-step guides for after contact work</title>
-    <updated>2026-10-12T22:28:00+00:00</updated>
-    <content>Amazon Connect Customer can now fill in the step-by-step guides that agents complete after a contact, using information extracted from customer conversations, such as booking identifiers, claim numbers, and conversation summaries. Managers can set which information populates each form field. Agents can review and submit rather than manually typing in each field, saving time and improving data accuracy during after contact work. Contact center agents spend time after each contact entering frequen</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/connect-customer-prefills-guides-acw" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T22:28:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/f8ded03b29715dbe</id>
-    <title>AWS Lambda announces Lambda Web Functions</title>
-    <updated>2026-10-12T19:30:00+00:00</updated>
-    <content>AWS Lambda announces Lambda Web Functions, a new serverless compute primitive where your code handles HTTP requests directly. Your code listens on a port and handles requests as it would on any HTTP server. You use frameworks you already know, such as Express or Hono, with no adapters or custom configuration. This enables you to serve workloads such as AI inference endpoints, server-side rendered (SSR) web apps, streaming API endpoints, microservices, and webhooks. You pay for active CPU time an</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-lambda-web-functions/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T19:30:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/72745bd5d54d1588</id>
     <title>AWS CLI 2.37.13</title>
     <updated>2026-10-12T18:07:19+00:00</updated>
@@ -1645,36 +1735,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/90d2af7dd78718c4891fd4889221796ac3a6f803f687ea89b9cf8f8d21604b0f/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/aff79a50d0a8b471</id>
-    <title>Announcing consumption-based pricing for short-term memory in Amazon Bedrock AgentCore</title>
-    <updated>2026-10-12T16:00:00+00:00</updated>
-    <content>Announcing consumption-based pricing for short-term memory in Amazon Bedrock AgentCore Amazon Bedrock AgentCore memory now prices short-term memory (STM) based on the data your agents ingest, retrieve, and store, replacing the previous flat rate per event. AgentCore memory gives agents in-session context through short-term memory and persistent knowledge across sessions through long-term memory. With consumption-based pricing, developers building agents that write frequent, small events pay in p</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-memory-consumption-based-pricing" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e970c81ddc22ed03</id>
-    <title>Amazon S3 Express One Zone is now available in 4 additional AWS Regions</title>
-    <updated>2026-10-12T08:00:00+00:00</updated>
-    <content>The Amazon S3 Express One Zone storage class is now available in 4 additional AWS Regions: Europe (London), Asia Pacific (Jakarta), Asia Pacific (Hong Kong), and Africa (Cape Town). Amazon S3 Express One Zone is a high-performance, single-Availability Zone storage class purpose-built to deliver consistent single-digit millisecond data access for your most frequently accessed data and latency-sensitive applications. S3 Express One Zone delivers data access speed up to 10x faster and request costs</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/s3-express-one-zone-4-additional-regions/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/87de56c78085fcbc</id>
-    <title>AWS Transfer Family supports custom ports for public SFTP servers</title>
-    <updated>2026-10-12T08:00:00+00:00</updated>
-    <content>AWS Transfer Family now lets you configure custom ports on public SFTP servers and choose a communication mode for each port. You can support clients that require different ports or start SFTP connections differently on a single server. Previously, public SFTP servers accepted connections only on port 22 and used server-first communication. With this launch, you can configure up to three ports (22, or any port from 2000 to 65535), allowing you to use the port numbers your business or network req</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-ports-sftp/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/b117b33666c8df4c</id>
@@ -2834,38 +2894,6 @@ modernization project.</content>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/bc71b237f8ed0dc1</id>
-    <title>Investigating repeated Kafka Streams rebalances on Amazon MSK when no member joined or left (probing rebalances)</title>
-    <updated>2026-09-18T10:29:18.150000+00:00</updated>
-    <content>On Amazon MSK, a Kafka Streams application can rebalance at a regular interval even though no instance joined or left. These are usually probing rebalances.
-This article covers where to get the client and broker logs on MSK, the log lines that confirm it, the defaults and lower bounds of probing.rebalance.interval.ms, acceptable.recovery.lag and max.warmup.replicas, why two of them must change together, and why the RebalanceInProgress metric does not answer this question.</content>
-    <link href="https://repost.aws/articles/ARga03qTsPRpCQa2D8AbeDsg/investigating-repeated-kafka-streams-rebalances-on-amazon-msk-when-no-member-joined-or-left-probing-rebalances" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-09-18T10:29:18.150000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4681ec00c5fb86ba</id>
-    <title>Why transaction.timeout.ms shows 10000 instead of 60000 in a Kafka Streams EOS application</title>
-    <updated>2026-09-18T09:18:52+00:00</updated>
-    <content>With processing.guarantee=exactly_once_v2, Kafka Streams overrides the producer transaction.timeout.ms to 10,000 ms (not the documented 60,000 ms) and commit.interval.ms to 100 ms. This article shows which values actually apply, why Streams changes them, how to confirm the effective values from the startup log, and
-the two constraints when you override them: startup fails if transaction.timeout.ms is below commit.interval.ms, and the broker's transaction.max.timeout.ms is the upper bound.</content>
-    <link href="https://repost.aws/articles/ARlwvBJx7pR66Uh6GbRSlz1Q/why-transaction-timeout-ms-shows-10000-instead-of-60000-in-a-kafka-streams-eos-application" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-09-18T09:18:52+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/96377e586d40a5bc</id>
     <title>New low-cost burstable Amazon EC2 T8i instances are generally available</title>
     <updated>2026-09-17T21:11:48+00:00</updated>
@@ -3374,21 +3402,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     </media:group>
     <dc:creator>AWS News Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/08/19/2026-amazon-ec2-20th-thumbx250.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/39f56cc040720327</id>
-    <title>AWS CLI 2.36.30</title>
-    <updated>2026-08-24T18:19:29+00:00</updated>
-    <content>api-change:connect: This release adds the ExtractedInformation segment to the ListRealtimeContactAnalysisSegmentsV2 API, enabling customers to retrieve information extracted from real-time contact analysis. bugfix:Source: Fix source builds failing when the interpreter's bundled pip differs from the pip in the build environment api-change:connect-contact-lens: This release adds the ExtractedInformation segment to the ListRealtimeContactAnalysisSegments API, enabling customers to retrieve information extracted from real-time contact analysis. api-change:launch-wizard: Added accountConstraints and patternType to GetWorkload, ListWorkloads, GetWorkloadDeploymentPattern and ListWorkloadDeploymentPatterns for Launch Wizard api-change:dsql: Corrected the validation pattern on the ServiceName response field in the GetVpcEndpointServiceName API to match the values Amazon Aurora DSQL actually returns. api-change:securityagent: Adding private and self-signed certificate configuration support for penetration tests api-change:kafka: Amazon MSK Replicator now supports OAuth authentication when connecting to external Apache Kafka clusters, enabling customers to replicate data from clusters that require OAuth for client authentication. This new capability is supported in all AWS Regions where MSK Express brokers are available. api-change:timestream-influxdb: Service-managed parameter groups now only apply optimized defaults to DB Clusters automatically. New field effectiveDbParameterGroupIdentifier surfaces the parameter group actually applied. api-change:bedrock: Adds support for specifying an inference profile ID or ARN, or an application inference profile ARN as the target model in CreateAdvancedPromptOptimizationJob. api-change:elementalinference: Added support for the GetFixture API, enabling customers to retrieve the details of a fixture from its fixture ID, and added the access role ARN to the CreateFeed, GetFeed, and UpdateFeed responses. api-change:batch: Doc Update, Add note that UpdatePolicy applies only to EC2 managed compute environments</content>
-    <link href="https://github.com/aws/aws-cli/releases/tag/2.36.30" rel="alternate"/>
-    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
-    <published>2026-08-24T18:19:29+00:00</published>
-    <media:group>
-      <media:content url="https://opengraph.githubassets.com/1bf99bf8cece0fdc605b1fa651f8f420583cfbd078f2d8387be6b5668b03766e/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
-      <media:thumbnail url="https://opengraph.githubassets.com/1bf99bf8cece0fdc605b1fa651f8f420583cfbd078f2d8387be6b5668b03766e/aws/aws-cli" height="600" width="1200"/>
-    </media:group>
-    <dc:creator>AWS CLI v2 Changelog</dc:creator>
-    <link rel="enclosure" href="https://opengraph.githubassets.com/1bf99bf8cece0fdc605b1fa651f8f420583cfbd078f2d8387be6b5668b03766e/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/25e408c97709813a</id>
