@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-10-22T05:16:36.277485+00:00</updated>
+  <updated>2026-10-22T12:18:03.410579+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/923304f8c4c5f386</id>
+    <title>Consumer lag on only a few partitions of an Amazon MSK topic: how to tell producer key skew from consumer evictions</title>
+    <updated>2026-10-22T06:57:22.397000+00:00</updated>
+    <content>During a traffic peak, lag can build on only a few partitions while the rest stay near zero. Teams often suspect hot keys and add partitions or replace the topic, but the same pattern appears when a consumer misses its session timeout and is removed from the group. This article shows how to compare partition ingest with log-end offsets, how to confirm evictions with MSK metrics and logs, and why a 10-second session.timeout.ms with GC pauses causes them.</content>
+    <link href="https://repost.aws/articles/ARfg-gIwd1TfC1ozSsdYRGAA/consumer-lag-on-only-a-few-partitions-of-an-amazon-msk-topic-how-to-tell-producer-key-skew-from-consumer-evictions" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-10-22T06:57:22.397000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/9fb91a6ab2bb220a</id>
+    <title>OpenSearch Ingestion sink fails with "[security_exception] authentication/authorization failure" and creates a duplicate index template: checking IAM, fine-grained access control, and index_type</title>
+    <updated>2026-10-22T06:49:49.799000+00:00</updated>
+    <content>After an index template or pipeline change, an OpenSearch Ingestion sink can loop on "Failed to initialize OpenSearch sink" with a generic security_exception at existsIndexTemplate, and later create a second index template. Mapping the role to all_access hides the cause. This article explains, from the Data Prepper and OpenSearch Java client source, why the message is generic and how to check the three causes: IAM HEAD, fine-grained access control template actions, and index_type.</content>
+    <link href="https://repost.aws/articles/ARKWas26oDSuGlOdlg4TiOfQ/opensearch-ingestion-sink-fails-with-security-exception-authentication-authorization-failure-and-creates-a-duplicate-index-template-checking-iam-fine-grained-access-control-and-index-type" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-10-22T06:49:49.799000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/a8420aeec35a738d</id>
     <title>How to verify your Amazon Bedrock Marketplace private-offer discount is applied using Cost Explorer</title>
@@ -170,6 +200,16 @@
     <updated>2026-10-21T08:00:00+00:00</updated>
     <content>Today, Amazon SageMaker AI announces the ability to configure the sequence length used during your serverless model customization job. Amazon SageMaker AI serverless model customization supports fine-tuning for many open-weight models, including models from popular families including gpt-oss, Gemma, Llama, Nemotron, and Qwen. Previously, each fine-tuning recipe ran at a fixed sequence length that customers could not modify. Customers sometimes need to modify these parameters to achieve better re</content>
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/sagemaker-custom-sequence-lengths/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-21T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/21cb30e1aa57e335</id>
+    <title>AWS Transform now builds new networks and modernizes security groups</title>
+    <updated>2026-10-21T08:00:00+00:00</updated>
+    <content>AWS Transform for migrations now gives you three ways to bring your network to AWS. In addition to migrating and modernizing your existing network, you can build a new network from scratch or convert your on-premises access rules into optimized security groups and deploy them into existing VPCs. Whichever path you choose, you arrive on AWS with a secure and scalable network foundation. On-premises networks accumulate years of definitions and access rules that you may not want to carry to AWS as-</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-new-networks/" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-10-21T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
@@ -1602,16 +1642,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/014d1734481283f1</id>
-    <title>Amazon ElastiCache for Valkey introduces ElastiCache Insights</title>
-    <updated>2026-10-12T07:00:00+00:00</updated>
-    <content>Amazon ElastiCache for Valkey now features ElastiCache Insights, a pre-built dashboard in Amazon CloudWatch for your node-based clusters. ElastiCache Insights brings cluster health, memory, compute, network, command throughput, latency, keyspace, and errors into a single view sourced from a set of OpenTelemetry metrics that ElastiCache publishes automatically. You can use ElastiCache Insights to check the health of your cache workloads across a Region at a glance, detect when a node nears its me</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-elasticache-valkey-elasticache-insights/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-12T07:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/f7ed48620bf8fd94</id>
     <title>Amazon EMR now supports native data quality checks in Apache Spark jobs</title>
     <updated>2026-10-12T07:00:00+00:00</updated>
@@ -2821,21 +2851,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e63dd7fa6e909a0e</id>
-    <title>Protect your time-series data: customer-managed backup and restore for Amazon Timestream for InfluxDB</title>
-    <updated>2026-09-18T04:10:19.372000+00:00</updated>
-    <content>Semiconductor and high-tech operations generate large volumes of time-series telemetry - HPC/GPU cluster metrics, lab and test-equipment readings, and fab/line sensor data. Losing that history undermines yield analysis, reliability tracking, and capacity planning. Customer-managed backups protect this data with tiered retention and self-service restore.</content>
-    <link href="https://repost.aws/articles/ARhZyW4pZ-SGmiWVD9xrj7wQ/protect-your-time-series-data-customer-managed-backup-and-restore-for-amazon-timestream-for-influxdb" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-09-18T04:10:19.372000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/96377e586d40a5bc</id>
     <title>New low-cost burstable Amazon EC2 T8i instances are generally available</title>
     <updated>2026-09-17T21:11:48+00:00</updated>
@@ -2909,25 +2924,6 @@ the two constraints when you override them: startup fails if transaction.timeout
     </media:group>
     <dc:creator>AWS News Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/08/19/image-01-1024x648.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/e2df55e02b41d25a</id>
-    <title>Protect your Amazon S3 data: backup and recovery with AWS Backup, plus malware scanning with GuardDuty</title>
-    <updated>2026-09-16T01:33:49.502000+00:00</updated>
-    <content>For semiconductor teams, design IP and ingested third-party/vendor datasets are both high-value and high-risk. AWS Backup protects design-data buckets with point-in-time and long-retention recovery, while GuardDuty malware scanning checks datasets ingested from untrusted sources before entering design and simulation pipelines.
-
-- Point-in-time (35-day) plus long-retention protection for design-data buckets
-- Malware scanning of ingested datasets before use
-- Cross-region DR copies for IP storage</content>
-    <link href="https://repost.aws/articles/ARKOrWxVBVQpqzlSLOMMusQA/protect-your-amazon-s3-data-backup-and-recovery-with-aws-backup-plus-malware-scanning-with-guardduty" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-09-16T01:33:49.502000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/7de660444b106f83</id>

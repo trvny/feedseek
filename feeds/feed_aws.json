@@ -11,6 +11,58 @@
   "icon": "https://feeds.trfny.com/favicon?domain=aws.amazon.com&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/923304f8c4c5f386",
+      "url": "https://repost.aws/articles/ARfg-gIwd1TfC1ozSsdYRGAA/consumer-lag-on-only-a-few-partitions-of-an-amazon-msk-topic-how-to-tell-producer-key-skew-from-consumer-evictions",
+      "title": "Consumer lag on only a few partitions of an Amazon MSK topic: how to tell producer key skew from consumer evictions",
+      "content_text": "During a traffic peak, lag can build on only a few partitions while the rest stay near zero. Teams often suspect hot keys and add partitions or replace the topic, but the same pattern appears when a consumer misses its session timeout and is removed from the group. This article shows how to compare partition ingest with log-end offsets, how to confirm evictions with MSK metrics and logs, and why a 10-second session.timeout.ms with GC pauses causes them.",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-22T06:57:22Z",
+      "date_modified": "2026-10-22T06:57:22Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/9fb91a6ab2bb220a",
+      "url": "https://repost.aws/articles/ARKWas26oDSuGlOdlg4TiOfQ/opensearch-ingestion-sink-fails-with-security-exception-authentication-authorization-failure-and-creates-a-duplicate-index-template-checking-iam-fine-grained-access-control-and-index-type",
+      "title": "OpenSearch Ingestion sink fails with \"[security_exception] authentication/authorization failure\" and creates a duplicate index template: checking IAM, fine-grained access control, and index_type",
+      "content_text": "After an index template or pipeline change, an OpenSearch Ingestion sink can loop on \"Failed to initialize OpenSearch sink\" with a generic security_exception at existsIndexTemplate, and later create a second index template. Mapping the role to all_access hides the cause. This article explains, from the Data Prepper and OpenSearch Java client source, why the message is generic and how to check the three causes: IAM HEAD, fine-grained access control template actions, and index_type.",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-22T06:49:49Z",
+      "date_modified": "2026-10-22T06:49:49Z",
+      "authors": [
+        {
+          "name": "AWS re:Post Articles"
+        }
+      ],
+      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+      "tags": [
+        "AWS re:Post Articles"
+      ],
+      "attachments": [
+        {
+          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/a8420aeec35a738d",
       "url": "https://repost.aws/articles/ARttb6s9yGSRyYdFjS18xWRg/how-to-verify-your-amazon-bedrock-marketplace-private-offer-discount-is-applied-using-cost-explorer",
       "title": "How to verify your Amazon Bedrock Marketplace private-offer discount is applied using Cost Explorer",
@@ -290,6 +342,25 @@
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/sagemaker-custom-sequence-lengths/",
       "title": "Amazon SageMaker AI now supports custom sequence lengths for serverless model customization jobs",
       "content_text": "Today, Amazon SageMaker AI announces the ability to configure the sequence length used during your serverless model customization job. Amazon SageMaker AI serverless model customization supports fine-tuning for many open-weight models, including models from popular families including gpt-oss, Gemma, Llama, Nemotron, and Qwen. Previously, each fine-tuning recipe ran at a fixed sequence length that customers could not modify. Customers sometimes need to modify these parameters to achieve better re",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-21T08:00:00Z",
+      "date_modified": "2026-10-21T08:00:00Z",
+      "authors": [
+        {
+          "name": "AWS What's New"
+        }
+      ],
+      "tags": [
+        "AWS What's New"
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/aws/21cb30e1aa57e335",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transform-new-networks/",
+      "title": "AWS Transform now builds new networks and modernizes security groups",
+      "content_text": "AWS Transform for migrations now gives you three ways to bring your network to AWS. In addition to migrating and modernizing your existing network, you can build a new network from scratch or convert your on-premises access rules into optimized security groups and deploy them into existing VPCs. Whichever path you choose, you arrive on AWS with a secure and scalable network foundation. On-premises networks accumulate years of definitions and access rules that you may not want to carry to AWS as-",
       "_feedseek": {
         "textKind": "content"
       },
@@ -2920,25 +2991,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/014d1734481283f1",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-elasticache-valkey-elasticache-insights/",
-      "title": "Amazon ElastiCache for Valkey introduces ElastiCache Insights",
-      "content_text": "Amazon ElastiCache for Valkey now features ElastiCache Insights, a pre-built dashboard in Amazon CloudWatch for your node-based clusters. ElastiCache Insights brings cluster health, memory, compute, network, command throughput, latency, keyspace, and errors into a single view sourced from a set of OpenTelemetry metrics that ElastiCache publishes automatically. You can use ElastiCache Insights to check the health of your cache workloads across a Region at a glance, detect when a node nears its me",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-10-12T07:00:00Z",
-      "date_modified": "2026-10-12T07:00:00Z",
-      "authors": [
-        {
-          "name": "AWS What's New"
-        }
-      ],
-      "tags": [
-        "AWS What's New"
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/f7ed48620bf8fd94",
       "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-emr-data-quality-spark/",
       "title": "Amazon EMR now supports native data quality checks in Apache Spark jobs",
@@ -5031,32 +5083,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/e63dd7fa6e909a0e",
-      "url": "https://repost.aws/articles/ARhZyW4pZ-SGmiWVD9xrj7wQ/protect-your-time-series-data-customer-managed-backup-and-restore-for-amazon-timestream-for-influxdb",
-      "title": "Protect your time-series data: customer-managed backup and restore for Amazon Timestream for InfluxDB",
-      "content_text": "Semiconductor and high-tech operations generate large volumes of time-series telemetry - HPC/GPU cluster metrics, lab and test-equipment readings, and fab/line sensor data. Losing that history undermines yield analysis, reliability tracking, and capacity planning. Customer-managed backups protect this data with tiered retention and self-service restore.",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-18T04:10:19Z",
-      "date_modified": "2026-09-18T04:10:19Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/aws/96377e586d40a5bc",
       "url": "https://aws.amazon.com/blogs/aws/new-low-cost-burstable-amazon-ec2-t8i-instances-are-generally-available/",
       "title": "New low-cost burstable Amazon EC2 T8i instances are generally available",
@@ -5182,32 +5208,6 @@
       "attachments": [
         {
           "url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/08/19/image-01-1024x648.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/aws/e2df55e02b41d25a",
-      "url": "https://repost.aws/articles/ARKOrWxVBVQpqzlSLOMMusQA/protect-your-amazon-s3-data-backup-and-recovery-with-aws-backup-plus-malware-scanning-with-guardduty",
-      "title": "Protect your Amazon S3 data: backup and recovery with AWS Backup, plus malware scanning with GuardDuty",
-      "content_text": "For semiconductor teams, design IP and ingested third-party/vendor datasets are both high-value and high-risk. AWS Backup protects design-data buckets with point-in-time and long-retention recovery, while GuardDuty malware scanning checks datasets ingested from untrusted sources before entering design and simulation pipelines.\n\n- Point-in-time (35-day) plus long-retention protection for design-data buckets\n- Malware scanning of ingested datasets before use\n- Cross-region DR copies for IP storage",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-16T01:33:49Z",
-      "date_modified": "2026-09-16T01:33:49Z",
-      "authors": [
-        {
-          "name": "AWS re:Post Articles"
-        }
-      ],
-      "image": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
-      "tags": [
-        "AWS re:Post Articles"
-      ],
-      "attachments": [
-        {
-          "url": "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png",
           "mime_type": "image/png"
         }
       ]
