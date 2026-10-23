@@ -299,23 +299,27 @@ The collection/browse pages also referenced (`/news/collection/featured/`, `/new
 4chan has no native per-board feed, but it exposes a documented read-only
 JSON API (`a.4cdn.org/{board}/catalog.json`) that returns every OP thread on a
 board with its subject, comment, and timestamps. **One combined feed** pulls
-the newest threads from a hand-picked set of worksafe topical boards — `/news/`,
-`/g/`, `/o/`, `/tv/`, `/v/`, `/mu/`, `/vip/` — and folds in the official
-WordPress blog (blog.4chan.org) as a native RSS source. Each entry carries a
-per-source `<category>` label and its title is prefixed with the board.
+the newest threads from a hand-picked set of topical boards — worksafe
+`/news/`, `/g/`, `/o/`, `/tv/`, `/v/`, `/mu/`, `/vip/` and adult
+`/b/`, `/gif/`, `/s/`, `/hc/`, `/h/`, `/e/`, `/u/`, `/y/`, `/d/`,
+`/aco/`, `/hm/` — and folds in the official WordPress blog
+(blog.4chan.org) as a native RSS source. Each entry carries a per-source
+`<category>` label; adult-board entries and titles are marked `[NSFW]`.
 
 Threads are ranked by OP **creation** time rather than bump time, so the feed
 does not churn every run as old threads get bumped; history accumulates in the
-cache across runs. Comment HTML is stripped to plain text and truncated. Each
-board and the blog are fetched in isolation, so one dead source never sinks the
-run.
+cache across runs. Comment HTML is stripped to plain text and truncated. Shared
+image backfilling is explicitly disabled for this feed: **no OP pictures,
+thumbnails or videos are automatically embedded**, including media metadata
+advertised by the thread page. Each board and the blog are fetched in isolation,
+so one dead source never sinks the run.
 
-The boards `/b/`, `/trash/`, `/int/`, `/bant/`, `/t/`, and `/s4s/` are
-deliberately excluded: the first four are NSFW or flame/nationalism boards
-dominated by explicit content and slurs, `/t/` exists to share warez, and
-`/s4s/` is low-signal shitposting — none belong in an automated feed that
-republishes their text. Add the codes to `BOARDS` in `fourchan.py` to include
-them.
+The source contains unmoderated public user content and **may contain graphic
+adult language**; `[NSFW]` is a content notice, not an endorsement. The public
+feed remains bounded and text-only. The boards `/trash/`, `/int/`, `/bant/`,
+`/t/` and `/s4s/` remain excluded because of noise, flame/nationalism and
+warez-heavy content. The maintained board allowlist lives in
+`feed_generators/fourchan.py`; source docs are generated from it.
 
 ## About the Cloudflare feed
 

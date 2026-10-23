@@ -164,6 +164,7 @@ def main(full: bool = False) -> bool:
         cache_filter=_keep_allowed_source,
         max_entries=200,
         per_source_cap=PUBLISHED_SOURCE_CAP,
+        image_backfill=False,
         full=full,
     )
 
