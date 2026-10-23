@@ -318,17 +318,26 @@ async function loadJson(url) {
   return /** @type {Promise<JsonObject>} */ (response.json());
 }
 
-/** Prefer the model-oriented sidecar, while keeping old revision ids fetchable.
+/** New revisions publish Model Feeds at .json; older revisions have a separate
+ * .model.json sidecar or only a legacy JSON Feed.
  * @param {string} revision
  * @param {string} sourceKey
  */
 async function loadRevisionFeed(revision, sourceKey) {
   const prefix = `${RAW_FEEDS_BASE}/${revision}/feeds/feed_${sourceKey}`;
-  try {
-    return { feed: await loadJson(`${prefix}.model.json`), modelFeed: true };
-  } catch {
-    return { feed: await loadJson(`${prefix}.json`), modelFeed: false };
+  const feed = await loadJson(`${prefix}.json`);
+  if (feed?.format === "feedseek-model-feed") {
+    return { feed, modelFeed: true };
   }
+  try {
+    const model = await loadJson(`${prefix}.model.json`);
+    if (model?.format === "feedseek-model-feed") {
+      return { feed: model, modelFeed: true };
+    }
+  } catch {
+    // Model Feed sidecars did not exist in the earliest revisions.
+  }
+  return { feed, modelFeed: false };
 }
 
 /** @param {JsonObject} data @param {{query?: string, since?: string|null, sources?: string[], limit?: number}} [options] */

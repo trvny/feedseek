@@ -12,9 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 import validate_feeds
 from models import FeedConfig
 from validate_feeds import (
-    JSON_FEED_VERSION,
     _entry_date,
-    validate_json_sidecar,
     validate_model_sidecar,
 )
 
@@ -69,78 +67,11 @@ class RegistryCoverageTests(unittest.TestCase):
         self.assertEqual(results[0]["status"], "MISSING")
 
 
-class JsonFeedContractTests(unittest.TestCase):
-    def write_feed(self, doc):
-        tmp = tempfile.TemporaryDirectory()
-        self.addCleanup(tmp.cleanup)
-        path = Path(tmp.name) / "feed_demo.json"
-        path.write_text(json.dumps(doc), encoding="utf-8")
-        return path
-
-    @staticmethod
-    def valid_doc():
-        return {
-            "version": JSON_FEED_VERSION,
-            "title": "Demo",
-            "items": [
-                {"id": "one", "content_text": "First"},
-                {"id": "two", "content_html": "<p>Second</p>"},
-            ],
-        }
-
-    def test_valid_json_feed_matches_xml_count(self):
-        result = validate_json_sidecar(
-            self.write_feed(self.valid_doc()), expected_count=2
-        )
-        self.assertEqual(result["status"], "OK")
-
-    def test_wrong_version_is_fatal_quality_error(self):
-        doc = self.valid_doc()
-        doc["version"] = "https://jsonfeed.org/version/1"
-        result = validate_json_sidecar(self.write_feed(doc), expected_count=2)
-        self.assertEqual(result["status"], "JSON_ERROR")
-
-    def test_json_item_count_must_match_xml(self):
-        result = validate_json_sidecar(
-            self.write_feed(self.valid_doc()), expected_count=3
-        )
-        self.assertEqual(result["status"], "JSON_ERROR")
-        self.assertIn("differs from XML", result["message"])
-
-    def test_duplicate_ids_are_rejected(self):
-        doc = self.valid_doc()
-        doc["items"][1]["id"] = "one"
-        result = validate_json_sidecar(self.write_feed(doc), expected_count=2)
-        self.assertEqual(result["status"], "JSON_ERROR")
-
-    def test_source_dependent_metadata_is_not_required(self):
-        doc = {
-            "version": JSON_FEED_VERSION,
-            "title": "Sparse but valid",
-            "items": [{"id": "one", "content_text": ""}],
-        }
-        result = validate_json_sidecar(self.write_feed(doc), expected_count=1)
-        self.assertEqual(result["status"], "OK")
-
-    def test_non_utf8_json_is_reported_as_quality_error(self):
-        tmp = tempfile.TemporaryDirectory()
-        self.addCleanup(tmp.cleanup)
-        path = Path(tmp.name) / "feed_demo.json"
-        path.write_bytes(b"\xff\xfe")
-
-        result = validate_json_sidecar(path, expected_count=1)
-        self.assertEqual(result["status"], "JSON_ERROR")
-        self.assertIn("parse/read error", result["message"])
-
-
-
-
-
 class ModelFeedContractTests(unittest.TestCase):
     def write_feed(self, doc):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
-        path = Path(tmp.name) / "feed_demo.model.json"
+        path = Path(tmp.name) / "feed_demo.json"
         path.write_text(json.dumps(doc), encoding="utf-8")
         return path
 
@@ -166,6 +97,22 @@ class ModelFeedContractTests(unittest.TestCase):
                 },
             ],
         }
+
+    def test_standard_json_feed_is_rejected(self):
+        doc = self.valid_doc()
+        doc["format"] = "https://jsonfeed.org/version/1.1"
+        result = validate_model_sidecar(self.write_feed(doc), expected_count=2)
+        self.assertEqual(result["status"], "MODEL_ERROR")
+
+    def test_duplicate_ids_are_rejected(self):
+        doc = self.valid_doc()
+        doc["items"][1]["id"] = "one"
+        result = validate_model_sidecar(self.write_feed(doc), expected_count=2)
+        self.assertEqual(result["status"], "MODEL_ERROR")
+
+    def test_item_count_matches_xml(self):
+        result = validate_model_sidecar(self.write_feed(self.valid_doc()), expected_count=3)
+        self.assertEqual(result["status"], "MODEL_ERROR")
 
     def test_valid_model_feed_matches_xml_count(self):
         result = validate_model_sidecar(

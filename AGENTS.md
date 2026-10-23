@@ -10,7 +10,7 @@
 
 - Feedseek improves RSS, Atom and JSON Feed as publishing protocols, not only as fallback for sites without feeds.
 - Native feed is upstream source, not automatically final product. Reuse when reliable; normalize, enrich or repair when Feedseek can make output more complete, stable, expressive or interoperable.
-- Prefer protocol-native semantics over ad-hoc payloads: durable entry identity, canonical links, truthful publication/update dates, useful metadata, provenance/categories, content/media and equivalent JSON Feed sidecars where supported.
+- Prefer protocol-native semantics over ad-hoc payloads: durable entry identity, canonical links, truthful publication/update dates, useful metadata, provenance/categories, content/media and one plaintext-oriented JSON Model Feed per XML feed.
 - Preserve upstream meaning. Add fidelity and interoperability; do not invent editorial content or silently rewrite source facts.
 - Hard quality contract stays universal and structural. Source-dependent richness (e.g. images, authors, categories, dates) is best-effort when upstream supports it.
 

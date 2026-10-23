@@ -892,16 +892,10 @@ def sort_posts_for_feed(posts: list[dict[str, Any]], date_field: str = "date") -
 
 
 def _save_feed_pair(fg: FeedGenerator, feed_name: str, *, feed_format: str) -> Path:
-    """Publish XML + JSON Feed + Model Feed as one last-known-good set.
-
-    Keep a tiny rollback journal for all three artifacts. If either derived
-    sidecar fails, the previous publication set is restored instead of leaving
-    a fresh XML/JSON file paired with a stale model-oriented representation.
-    """
+    """Publish XML and model-oriented JSON as one last-known-good pair."""
     output_file = get_feeds_dir() / f"feed_{feed_name}.xml"
     json_file = output_file.with_suffix(".json")
-    model_file = output_file.with_name(f"feed_{feed_name}.model.json")
-    artifacts = (output_file, json_file, model_file)
+    artifacts = (output_file, json_file)
     previous = {
         path: path.read_bytes() if path.exists() else None for path in artifacts
     }
@@ -926,27 +920,23 @@ def _save_feed_pair(fg: FeedGenerator, feed_name: str, *, feed_format: str) -> P
 
 
 def save_atom_feed(fg: FeedGenerator, feed_name: str) -> Path:
-    """Write the first-class Atom + JSON Feed + Model Feed set."""
+    """Write Atom and its single model-oriented JSON sibling."""
     return _save_feed_pair(fg, feed_name, feed_format="atom")
 
 
 def save_rss_feed(fg: FeedGenerator, feed_name: str) -> Path:
-    """Write the first-class RSS + JSON Feed + Model Feed set."""
+    """Write RSS and its single model-oriented JSON sibling."""
     return _save_feed_pair(fg, feed_name, feed_format="rss")
 
 
 def _write_sidecars(xml_path: Path, feed_name: str) -> None:
-    """Write standard JSON Feed and the derived model-oriented sibling."""
-    from jsonfeed import write_json_feed
+    """Write one plaintext-focused JSON representation of the published XML."""
     from model_feed import write_model_feed
 
-    json_path = write_json_feed(
+    model_path = write_model_feed(
         xml_path, feed_name, entry_image=feedparser_entry_image
     )
-    logger.info("Saved JSON feed to %s", json_path)
-
-    model_path = write_model_feed(json_path, feed_name)
-    logger.info("Saved Model Feed to %s", model_path)
+    logger.info("Saved model-oriented JSON feed to %s", model_path)
 
 
 # ---------------------------------------------------------------------------

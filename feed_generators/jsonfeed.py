@@ -1,30 +1,14 @@
-"""JSON Feed 1.1 sidecar writer.
+"""Internal XML-to-dict projection preserving feed metadata for Model Feeds.
 
-Every feed this project publishes as ``feeds/feed_<name>.xml`` also gets a
-``feeds/feed_<name>.json`` sibling in JSON Feed 1.1 format
-(https://jsonfeed.org/version/1.1). It is written from the just-produced XML
-so the published Atom/RSS file stays the single source of truth — whatever the
-generator emitted (MRSS media, dc:creator, tag-URI ids) is mirrored, not
-re-derived. XML readers can still ignore the .json, but both representations are
-first-class publication artifacts.
-
-The private ``_feedseek`` extension records where the selected text came
-from. It follows JSON Feed's extension naming rules and points readers to its
-human-readable documentation. Dedicated Feedseek Model Feeds use that hint
-without changing the standard JSON Feed content fields.
-
-Called from ``utils.save_atom_feed`` / ``utils.save_rss_feed``. If sidecar
-serialization fails after XML rendering, the shared writer restores the previous
-publication set so scheduled updates remain last-known-good.
+Not a separate published JSON Feed 1.1 artifact.
 """
 
 import calendar
-import json
 from datetime import datetime, timezone
 from pathlib import Path
 
 from html_text import looks_like_html
-from utils import REPO_SLUG, large_icon, write_atomically
+from utils import REPO_SLUG, large_icon
 
 JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 
@@ -154,12 +138,3 @@ def build_json_feed(xml_path: Path, feed_name: str, entry_image=None) -> dict:
 
     doc["items"] = items
     return doc
-
-
-def write_json_feed(xml_path: Path, feed_name: str, entry_image=None) -> Path:
-    """Write feeds/feed_<name>.json next to the given XML path. Returns the path."""
-    doc = build_json_feed(xml_path, feed_name, entry_image=entry_image)
-    out = xml_path.with_suffix(".json")
-    payload = json.dumps(doc, ensure_ascii=False, indent=2) + "\n"
-    write_atomically(out, lambda target: target.write_text(payload, encoding="utf-8"))
-    return out

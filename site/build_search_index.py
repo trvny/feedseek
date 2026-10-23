@@ -202,8 +202,6 @@ def item_date(item: dict) -> datetime | None:
 
 def feed_key(path: Path) -> str:
     name = path.name
-    if name.startswith("feed_") and name.endswith(".model.json"):
-        return name[len("feed_") : -len(".model.json")]
     if name.startswith("feed_") and name.endswith(".json"):
         return name[len("feed_") : -len(".json")]
     return path.stem.removeprefix("feed_")
@@ -214,7 +212,7 @@ def load_feed(path: Path) -> dict:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise ValueError(f"Could not read valid JSON Feed from {path}") from exc
-    if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+    if not isinstance(data, dict) or data.get("format") != "feedseek-model-feed" or not isinstance(data.get("items"), list):
         raise ValueError(f"Invalid JSON Feed structure in {path}")
     return data
 
@@ -226,11 +224,8 @@ def enabled_feed_paths() -> tuple[list[Path], list[str]]:
     for key, config in registry.items():
         if not config.enabled:
             continue
-        model_path = FEEDS_DIR / f"feed_{key}.model.json"
         json_path = FEEDS_DIR / f"feed_{key}.json"
-        if model_path.is_file():
-            paths.append(model_path)
-        elif json_path.is_file():
+        if json_path.is_file():
             paths.append(json_path)
         else:
             missing.append(key)
@@ -337,23 +332,10 @@ def build_index(
         try:
             feed = load_feed(path)
         except ValueError:
-            fallback = (
-                path.with_name(path.name.removesuffix(".model.json") + ".json")
-                if path.name.endswith(".model.json")
-                else None
+            skipped_feeds.append(
+                {"source_key": key, "reason": "invalid_model_feed"}
             )
-            if fallback is None or not fallback.is_file():
-                skipped_feeds.append(
-                    {"source_key": key, "reason": "invalid_json_feed"}
-                )
-                continue
-            try:
-                feed = load_feed(fallback)
-            except ValueError:
-                skipped_feeds.append(
-                    {"source_key": key, "reason": "invalid_json_feed"}
-                )
-                continue
+            continue
 
         feed_count += 1
         feed_title = (

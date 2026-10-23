@@ -14,7 +14,7 @@ from lxml import etree as ET
 from urllib3.util import Timeout
 
 import multi_rss
-from jsonfeed import write_json_feed
+from model_feed import write_model_feed
 from utils import feedparser_entry_image, get_feeds_dir, write_atomically
 
 FEED_NAME = "weather"
@@ -149,7 +149,7 @@ def save_mirrored_atom(payload: bytes) -> None:
     previous_json = json_output.read_bytes() if json_output.exists() else None
     write_atomically(output, lambda target: target.write_bytes(payload))
     try:
-        write_json_feed(output, FEED_NAME, entry_image=feedparser_entry_image)
+        write_model_feed(output, FEED_NAME, entry_image=feedparser_entry_image)
         doc = clean_json_feed(json.loads(json_output.read_text(encoding="utf-8")))
         rendered = json.dumps(doc, ensure_ascii=False, indent=2) + "\n"
         write_atomically(

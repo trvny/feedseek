@@ -23,7 +23,7 @@ from pathlib import Path
 from models import FeedConfig, load_feed_registry
 from normalize_feed_self_links import normalize_feed_self_links
 from utils import CACHE_RESTORE_ENV, write_atomically
-from validate_feeds import validate_feed, validate_json_sidecar, validate_model_sidecar
+from validate_feeds import validate_feed, validate_model_sidecar
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -59,12 +59,11 @@ CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 CACHE_RESTORE_MARKER = ".r2-restored"
 
 
-def _pair_paths(feed_name: str) -> tuple[Path, Path, Path]:
+def _pair_paths(feed_name: str) -> tuple[Path, Path]:
     xml_path = FEEDS_DIR / f"feed_{feed_name}.xml"
     return (
         xml_path,
         xml_path.with_suffix(".json"),
-        xml_path.with_name(f"feed_{feed_name}.model.json"),
     )
 
 
@@ -97,7 +96,7 @@ def _restore_feed_pair(snapshot: dict[Path, bytes | None]) -> None:
 
 def _feed_pair_is_valid(feed_name: str) -> bool:
     """Check one generated publication set before accepting child success."""
-    xml_path, json_path, model_path = _pair_paths(feed_name)
+    xml_path, json_path = _pair_paths(feed_name)
     if not xml_path.exists():
         logger.error("Generator %s returned success without an XML artifact", feed_name)
         return False
@@ -105,21 +104,11 @@ def _feed_pair_is_valid(feed_name: str) -> bool:
     if xml_result["status"] in {"ERROR", "EMPTY"}:
         logger.error("Generator %s produced invalid XML: %s", feed_name, xml_result["message"])
         return False
-    json_result = validate_json_sidecar(
+    json_result = validate_model_sidecar(
         json_path, expected_count=xml_result["item_count"]
     )
     if json_result["status"] != "OK":
-        logger.error("Generator %s produced invalid JSON Feed: %s", feed_name, json_result["message"])
-        return False
-    model_result = validate_model_sidecar(
-        model_path, expected_count=xml_result["item_count"]
-    )
-    if model_result["status"] != "OK":
-        logger.error(
-            "Generator %s produced invalid Model Feed: %s",
-            feed_name,
-            model_result["message"],
-        )
+        logger.error("Generator %s produced invalid Model Feed: %s", feed_name, json_result["message"])
         return False
     return True
 
@@ -196,7 +185,7 @@ def run_feed(feed_name: str, config: FeedConfig, full: bool = False) -> bool:
             feed_name,
             feed_snapshot,
             cache_snapshot,
-            "Generator %s failed the XML + JSON + Model Feed check",
+            "Generator %s failed the XML + model-oriented JSON check",
             feed_name,
         )
 

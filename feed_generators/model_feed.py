@@ -1,19 +1,4 @@
-"""Feedseek Model Feed writer.
-
-Model Feeds are compact, plaintext-oriented JSON sidecars derived from the
-standard JSON Feed 1.1 publication artifact. They are intentionally optimized
-for model/agent consumption rather than RSS reader compatibility.
-
-Schema v1 keeps only citation- and reasoning-relevant fields:
-- durable id and canonical URL,
-- title plus normalized plaintext,
-- text_kind (content, summary, or title),
-- publication/update timestamps,
-- authors, tags, and an optional representative image.
-
-The standard JSON Feed remains the maintained machine-readable source. Model
-Feeds are a deterministic adapter over it, not a second editorial pipeline.
-"""
+"""Single LLM-friendly JSON representation of Feedseek XML feeds."""
 
 from __future__ import annotations
 
@@ -21,13 +6,14 @@ import json
 from pathlib import Path
 
 from html_text import plain_text
-from utils import REPO_SLUG, write_atomically
+from jsonfeed import build_json_feed
+from utils import REPO_SLUG, feedparser_entry_image, write_atomically
 
 MODEL_FEED_FORMAT = "feedseek-model-feed"
 MODEL_FEED_VERSION = 1
 _MODEL_FEED_URL_TMPL = (
     f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
-    "feed_{name}.model.json"
+    "feed_{name}.json"
 )
 
 def _text_kind(item: dict) -> str:
@@ -73,7 +59,7 @@ def build_model_feed(json_feed: dict, feed_name: str) -> dict:
         "source_key": feed_name,
         "title": str(json_feed.get("title") or feed_name),
         "feed_url": _MODEL_FEED_URL_TMPL.format(name=feed_name),
-        "source_feed": str(json_feed.get("feed_url") or ""),
+        "source_feed": f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{feed_name}.xml",
     }
     for key in ("home_page_url", "description"):
         value = json_feed.get(key)
@@ -136,35 +122,28 @@ def build_model_feed(json_feed: dict, feed_name: str) -> dict:
     return doc
 
 
-def load_json_feed(path: Path) -> dict:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict) or not isinstance(data.get("items"), list):
-        raise ValueError(f"Invalid JSON Feed document: {path}")
-    return data
-
-
 def write_model_feed(
-    json_path: Path,
+    xml_path: Path,
     feed_name: str,
     *,
+    entry_image=None,
     output_path: Path | None = None,
 ) -> Path:
-    """Write a deterministic ``feed_<name>.model.json`` sidecar."""
-    doc = build_model_feed(load_json_feed(json_path), feed_name)
-    out = output_path or json_path.with_name(f"feed_{feed_name}.model.json")
+    """Project an XML publication into its one public model-oriented JSON file."""
+    intermediate = build_json_feed(xml_path, feed_name, entry_image=entry_image)
+    doc = build_model_feed(intermediate, feed_name)
+    out = output_path or xml_path.with_suffix(".json")
     payload = json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n"
     write_atomically(out, lambda target: target.write_text(payload, encoding="utf-8"))
     return out
 
 
 def write_all_model_feeds(feeds_dir: Path) -> int:
-    """Regenerate model sidecars for every standard JSON Feed in a directory."""
+    """Refresh every XML feed's one model-oriented JSON sibling."""
     count = 0
-    for json_path in sorted(feeds_dir.glob("feed_*.json")):
-        if json_path.name.endswith(".model.json"):
-            continue
-        feed_name = json_path.stem.removeprefix("feed_")
-        write_model_feed(json_path, feed_name)
+    for xml_path in sorted(feeds_dir.glob("feed_*.xml")):
+        feed_name = xml_path.stem.removeprefix("feed_")
+        write_model_feed(xml_path, feed_name, entry_image=feedparser_entry_image)
         count += 1
     return count
 
@@ -172,7 +151,7 @@ def write_all_model_feeds(feeds_dir: Path) -> int:
 def main() -> None:
     feeds_dir = Path(__file__).resolve().parents[1] / "feeds"
     count = write_all_model_feeds(feeds_dir)
-    print(f"Built {count} Feedseek Model Feed sidecars in {feeds_dir}")
+    print(f"Built {count} LLM-friendly JSON feeds in {feeds_dir}")
 
 
 if __name__ == "__main__":
