@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-110 feedów · 881 źródeł
+110 feedów · 892 źródła
 
 ## Spis grup
 
@@ -864,6 +864,17 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /v/ Video Games — <https://boards.4chan.org/v/>
 - ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /mu/ Music — <https://boards.4chan.org/mu/>
 - ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /vip/ VIP — <https://boards.4chan.org/vip/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /b/ Random [NSFW] — <https://boards.4chan.org/b/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /gif/ Adult GIF [NSFW] — <https://boards.4chan.org/gif/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /s/ Sexy Beautiful Women [NSFW] — <https://boards.4chan.org/s/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /hc/ Hardcore [NSFW] — <https://boards.4chan.org/hc/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /h/ Hentai [NSFW] — <https://boards.4chan.org/h/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /e/ Ecchi [NSFW] — <https://boards.4chan.org/e/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /u/ Yuri [NSFW] — <https://boards.4chan.org/u/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /y/ Yaoi [NSFW] — <https://boards.4chan.org/y/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /d/ Hentai Alternative [NSFW] — <https://boards.4chan.org/d/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /aco/ Adult Cartoons [NSFW] — <https://boards.4chan.org/aco/>
+- ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /hm/ Handsome Men [NSFW] — <https://boards.4chan.org/hm/>
 - ![](https://www.google.com/s2/favicons?domain=a.4cdn.org&sz=16) API base — <https://a.4cdn.org>
 - ![](https://www.google.com/s2/favicons?domain=blog.4chan.org&sz=16) Blog — <https://blog.4chan.org/rss>
 - ![](https://www.google.com/s2/favicons?domain=www.4chan.org&sz=16) Site — <https://www.4chan.org/>
