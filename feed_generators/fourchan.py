@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a combined Atom feed from selected worksafe 4chan boards.
+"""Generate a combined Atom feed from curated 4chan boards, including NSFW boards.
 
 The official read-only JSON API supplies current OP threads for substantive
 worksafe boards. Explicit, warez-heavy, nationalism/flame, and low-signal boards
