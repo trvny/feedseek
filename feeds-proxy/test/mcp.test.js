@@ -235,14 +235,15 @@ test("recent rejects non-RFC and impossible cutoffs before fetching", async () =
   }
 });
 
-test("fetch prefers the revision-pinned Model Feed", async () => {
+test("fetch uses plaintext Model Feed at the current JSON URL", async () => {
   await withFetch(
     async (url) => {
       assert.equal(
         String(url),
-        `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
+        `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
       );
       return new Response(JSON.stringify({
+        format: "feedseek-model-feed",
         title: "OpenAI",
         items: [{
           id: "tag:example",
@@ -295,8 +296,53 @@ test("fetch falls back to JSON Feed for pre-Model-Feed revisions", async () => {
     },
   );
   assert.deepEqual(seen, [
-    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
     `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
+  ]);
+});
+
+test("fetch supports older revisions with separate Model Feed sidecars", async () => {
+  const seen = [];
+  await withFetch(
+    async (url) => {
+      seen.push(String(url));
+      if (String(url).endsWith(".model.json")) {
+        return new Response(JSON.stringify({
+          format: "feedseek-model-feed",
+          title: "OpenAI",
+          items: [{
+            id: "tag:example",
+            title: "Old model story",
+            url: "https://example.com/old-model",
+            text: "Original normalized text",
+            text_kind: "summary",
+          }],
+        }), { status: 200 });
+      }
+      return new Response(JSON.stringify({
+        version: "https://jsonfeed.org/version/1.1",
+        title: "OpenAI",
+        items: [{
+          id: "tag:example",
+          title: "Old story",
+          url: "https://example.com/old",
+          content_html: "<p>Legacy content</p>",
+        }],
+      }), { status: 200 });
+    },
+    async () => {
+      const body = await (
+        await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
+      ).json();
+      const result = body.result.structuredContent;
+      assert.equal(result.text, "Original normalized text");
+      assert.equal(result.url, "https://example.com/old-model");
+      assert.equal(result.metadata.text_kind, "summary");
+    },
+  );
+  assert.deepEqual(seen, [
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
   ]);
 });
 

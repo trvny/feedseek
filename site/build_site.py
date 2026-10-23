@@ -41,7 +41,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "feed_generators"))
 
-from model_feed import write_model_feed  # noqa: E402
+from validate_feeds import validate_model_sidecar  # noqa: E402
 from models import load_published_feeds  # noqa: E402
 from utils import favicon_proxy  # noqa: E402
 
@@ -307,8 +307,8 @@ def collect_feeds() -> list[dict]:
     return feeds
 
 
-def require_json_sidecars(feeds: list[dict]) -> None:
-    """Require the first-class JSON Feed sibling for every published XML feed."""
+def require_model_sidecars(feeds: list[dict]) -> None:
+    """Require a valid Model Feed at each public JSON URL."""
     missing = [
         (FEEDS_DIR / str(feed["filename"])).with_suffix(".json").name
         for feed in feeds
@@ -316,7 +316,12 @@ def require_json_sidecars(feeds: list[dict]) -> None:
     ]
     if missing:
         joined = ", ".join(missing)
-        raise SystemExit(f"Missing required JSON Feed sidecar(s): {joined}")
+        raise SystemExit(f"Missing required Model Feed(s): {joined}")
+    for feed in feeds:
+        path = (FEEDS_DIR / str(feed["filename"])).with_suffix(".json")
+        result = validate_model_sidecar(path)
+        if result["status"] != "OK":
+            raise SystemExit(f"Invalid Model Feed {path.name}: {result["message"]}")
 
 
 def render_card(feed: dict, base: str) -> str:
@@ -375,8 +380,8 @@ def render_autodiscovery(feeds: list[dict], base: str) -> str:
         json_name = str(f["filename"]).rsplit(".", 1)[0] + ".json"
         json_href = html.escape(base + json_name, quote=True)
         lines.append(
-            '  <link rel="alternate" type="application/feed+json" '
-            f'title="{title} (JSON Feed)" href="{json_href}">'
+            '  <link rel="alternate" type="application/json" '
+            f'title="{title} (Model Feed)" href="{json_href}">'
         )
     return "\n".join(lines)
 
@@ -387,8 +392,8 @@ def build_index(feeds: list[dict], base: str) -> str:
     autodiscovery = render_autodiscovery(feeds, base)
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     desc = (
-        f"{count} self-updating, enhanced Atom/RSS feeds with JSON Feed 1.1 and "
-        "dedicated Model Feed sidecars, built from native feeds, APIs and the web, "
+        f"{count} self-updating, enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds, "
+        "built from native feeds, APIs and the web, "
         "regenerated every 2 hours."
     )
     schema = json.dumps(
@@ -595,7 +600,7 @@ def build_index(feeds: list[dict], base: str) -> str:
     <details class="answer-guide" id="about-feedseek">
       <summary>About Feedseek · feeds, updates and subscriptions</summary>
       <h2>What does Feedseek publish?</h2>
-      <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has a standard JSON Feed sidecar plus a compact Model Feed with normalized plaintext for LLMs and agents.</p>
+      <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has one compact JSON Model Feed with normalized plaintext for LLMs and agents.</p>
       <h2>How often are the feeds updated?</h2>
       <p>Published feeds are regenerated every two hours. Individual entries retain their source meaning and stable identities; an upstream feed may be normalized rather than copied unchanged.</p>
       <h2>How can I follow the feeds?</h2>
@@ -785,7 +790,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
     lines = [
         "# Feeds",
         "",
-        f"> Self-updating, enhanced Atom/RSS feeds with JSON Feed 1.1 and dedicated Model Feed sidecars: "
+        f"> Self-updating, enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds: "
         f"{count} feeds built from native feeds, APIs and the web, regenerated every 2 hours.",
         "",
         "## Resources",
@@ -812,6 +817,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         if desc:
             entry += f": {markdown_inline(desc)}"
         lines.append(entry)
+        lines.append(f"  - [Model Feed (JSON)]({base}{Path(f['filename']).stem}.json)")
     lines.append("")
     return "\n".join(lines)
 
@@ -821,7 +827,7 @@ def build_index_markdown(feeds: list[dict], base: str) -> str:
     lines = [
         "# Feedseek",
         "",
-        f"> Directory of {count} self-updating enhanced Atom/RSS feeds with JSON Feed 1.1 and Model Feed sidecars.",
+        f"> Directory of {count} self-updating enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds.",
         "",
         "Feedseek improves and normalizes feeds from native feeds, APIs and web sources, then regenerates the public set every two hours.",
         "",
@@ -879,7 +885,7 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
         "",
         "## Feed directory",
         "",
-        "Feedseek publishes enhanced Atom/RSS feeds with JSON Feed 1.1 sidecars and dedicated Model Feed sidecars, plus an OPML bundle and a browser Reader. Model Feeds contain normalized plaintext and explicit text-kind metadata for LLMs and agents. Sources may begin as native feeds, APIs or web pages; the project normalizes and improves them rather than treating an existing native feed as automatically final.",
+        "Feedseek publishes enhanced Atom/RSS feeds with one LLM-friendly JSON Model Feed per XML feed, plus an OPML bundle and a browser Reader. Model Feeds contain normalized plaintext and explicit text-kind metadata for LLMs and agents. Sources may begin as native feeds, APIs or web pages; the project normalizes and improves them rather than treating an existing native feed as automatically final.",
         "",
         "## Reader",
         "",
@@ -892,14 +898,12 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
         url = base + feed["filename"]
         stem = str(feed["filename"]).rsplit(".", 1)[0]
         json_url = base + stem + ".json"
-        model_url = base + stem + ".model.json"
         desc = feed["subtitle"] or feed["source"] or "Enhanced Feedseek feed"
         lines.extend([
             f"### {markdown_inline(feed['title'])}",
             "",
             f"- Feed: {url}",
-            f"- JSON Feed: {json_url}",
-            f"- Model Feed: {model_url}",
+            f"- LLM-friendly JSON Model Feed: {json_url}",
             f"- Description: {markdown_inline(desc)}",
             "",
         ])
@@ -941,7 +945,7 @@ def main() -> None:
     feeds = collect_feeds()
     if not feeds:
         raise SystemExit("No feeds found in feeds/ — nothing to publish.")
-    require_json_sidecars(feeds)
+    require_model_sidecars(feeds)
 
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
@@ -949,25 +953,9 @@ def main() -> None:
 
     for f in feeds:
         shutil.copy2(FEEDS_DIR / f["filename"], OUT_DIR / f["filename"])
-        # The preflight above guarantees every published XML has its
-        # first-class JSON Feed 1.1 sibling.
         xml_sibling = FEEDS_DIR / f["filename"]
         json_sibling = xml_sibling.with_suffix(".json")
         shutil.copy2(json_sibling, OUT_DIR / json_sibling.name)
-
-        # Model Feeds are normally committed by the generator. During the
-        # initial rollout or after an isolated source failure, derive a public
-        # copy from the standard JSON Feed so LLM-facing links never dangle.
-        model_sibling = xml_sibling.with_name(f"{xml_sibling.stem}.model.json")
-        model_output = OUT_DIR / model_sibling.name
-        if model_sibling.is_file():
-            shutil.copy2(model_sibling, model_output)
-        else:
-            write_model_feed(
-                json_sibling,
-                short_name(xml_sibling),
-                output_path=model_output,
-            )
 
     # Real favicon files (not just the inline data: URI in <link rel="icon">)
     # so tools that fetch /favicon.svg or /favicon.ico directly (QR code

@@ -83,7 +83,7 @@ jobs:
           ANYCRAP_API_KEY: ${{ secrets.ANYCRAP_API_KEY }}
         run: uv run --locked feed_generators/run_all_feeds.py
 
-      - name: Generate Model Feed sidecars
+      - name: Refresh LLM-friendly JSON feeds
         id: model_feeds
         continue-on-error: true
         working-directory: .
@@ -93,8 +93,6 @@ jobs:
         id: validate
         continue-on-error: true
         working-directory: .
-        env:
-          FEEDSEEK_REQUIRE_MODEL_FEEDS: "1"
         run: uv run --locked feed_generators/validate_feeds.py
 
       - name: Regenerate docs/sources.md

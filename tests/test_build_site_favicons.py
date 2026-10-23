@@ -176,7 +176,7 @@ class SiteFaviconTests(unittest.TestCase):
 
         self.assertIn('type="application/atom+xml"', links)
         self.assertIn('href="https://feeds.example/feed_test.xml"', links)
-        self.assertIn('type="application/feed+json"', links)
+        self.assertIn('type="application/json"', links)
         self.assertIn('href="https://feeds.example/feed_test.json"', links)
 
     def test_llms_full_links_dedicated_model_feed(self):
@@ -188,7 +188,7 @@ class SiteFaviconTests(unittest.TestCase):
         }
         rendered = build_site.build_llms_full([feed], "https://feeds.example/")
         self.assertIn(
-            "- Model Feed: https://feeds.example/feed_test.model.json",
+            "- LLM-friendly JSON Model Feed: https://feeds.example/feed_test.json",
             rendered,
         )
 
@@ -258,7 +258,7 @@ class SiteFaviconTests(unittest.TestCase):
             self.addCleanup(setattr, build_site, "FEEDS_DIR", original)
 
             with self.assertRaisesRegex(SystemExit, "feed_test.json"):
-                build_site.require_json_sidecars(
+                build_site.require_model_sidecars(
                     [{"filename": "feed_test.xml", "title": "Test"}]
                 )
 
@@ -266,12 +266,12 @@ class SiteFaviconTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
             (directory / "feed_test.xml").write_text("<feed />", encoding="utf-8")
-            (directory / "feed_test.json").write_text("{}", encoding="utf-8")
+            (directory / "feed_test.json").write_text(json.dumps({"format": "feedseek-model-feed", "version": 1, "title": "Test", "items": []}), encoding="utf-8")
             original = build_site.FEEDS_DIR
             build_site.FEEDS_DIR = directory
             self.addCleanup(setattr, build_site, "FEEDS_DIR", original)
 
-            build_site.require_json_sidecars(
+            build_site.require_model_sidecars(
                 [{"filename": "feed_test.xml", "title": "Test"}]
             )
 

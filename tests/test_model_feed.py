@@ -202,35 +202,26 @@ class ModelFeedTests(unittest.TestCase):
         )
         self.assertEqual(doc["items"][0]["text"], "Story Reuters")
 
-    def test_backfill_ignores_existing_model_sidecars(self):
+    def test_xml_is_written_as_the_only_model_json_feed(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / "feed_demo.json").write_text(
-                json.dumps(
-                    {
-                        "version": "https://jsonfeed.org/version/1.1",
-                        "title": "Demo",
-                        "items": [
-                            {
-                                "id": "one",
-                                "title": "One",
-                                "content_text": "Hello",
-                            }
-                        ],
-                    }
-                ),
+            (root / "feed_demo.xml").write_text(
+                """<feed xmlns="http://www.w3.org/2005/Atom">
+                <id>https://example.com/</id><title>Demo</title>
+                <updated>2026-10-23T00:00:00Z</updated>
+                <entry><id>one</id><title>One</title>
+                <updated>2026-10-23T00:00:00Z</updated>
+                <summary>Hello &amp; world</summary></entry>
+                </feed>""",
                 encoding="utf-8",
             )
-            (root / "feed_existing.model.json").write_text("{}", encoding="utf-8")
-
-            count = write_all_model_feeds(root)
-
-            self.assertEqual(count, 1)
-            generated = json.loads(
-                (root / "feed_demo.model.json").read_text(encoding="utf-8")
-            )
+            self.assertEqual(write_all_model_feeds(root), 1)
+            generated = json.loads((root / "feed_demo.json").read_text(encoding="utf-8"))
             self.assertEqual(generated["format"], MODEL_FEED_FORMAT)
-            self.assertEqual(generated["items"][0]["text"], "Hello")
+            self.assertEqual(generated["items"][0]["text"], "Hello & world")
+            self.assertTrue(generated["feed_url"].endswith("/feed_demo.json"))
+            self.assertTrue(generated["source_feed"].endswith("/feed_demo.xml"))
+            self.assertFalse((root / "feed_demo.model.json").exists())
 
 
 if __name__ == "__main__":

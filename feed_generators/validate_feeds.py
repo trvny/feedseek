@@ -1,16 +1,4 @@
-"""Validate generated XML + JSON Feed artifacts and registry coverage.
-
-The hard publication contract is deliberately structural, not editorial:
-
-* every enabled entry in ``feeds.yaml`` has a generated XML artifact,
-* XML parses and contains at least one item,
-* every XML artifact has a valid JSON Feed 1.1 sidecar with matching item count,
-* JSON items have durable non-empty IDs and a content field.
-
-Publication-date staleness remains advisory because a quiet or dateless source
-is not necessarily broken. Rich metadata such as images, authors and categories
-is source-dependent and therefore intentionally outside the universal gate.
-"""
+"""Validate XML plus one model-oriented JSON feed per enabled source."""
 
 from __future__ import annotations
 
@@ -28,11 +16,9 @@ from models import load_feed_registry
 STALE_FLOOR_DAYS = 30
 STALE_GAP_MULTIPLIER = 3.0
 MIN_HISTORY = 5
-JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 
 ROOT = Path(__file__).parent.parent
 FEEDS_DIR = ROOT / "feeds"
-REQUIRE_MODEL_FEEDS = os.environ.get("FEEDSEEK_REQUIRE_MODEL_FEEDS") == "1"
 
 
 def _local(tag: str) -> str:
@@ -169,68 +155,6 @@ def validate_feed(feed_path: Path) -> dict:
     )
 
 
-def _json_error(path: Path, message: str, *, count: int = 0) -> dict:
-    return _result(path.name, "JSON_ERROR", message, count=count)
-
-
-def _validate_json_items(path: Path, items: list) -> dict | None:
-    """Return the first universal item-contract violation, if any."""
-    seen_ids: set[str] = set()
-    for index, item in enumerate(items, start=1):
-        if not isinstance(item, dict):
-            return _json_error(path, f"item {index} is not an object")
-        item_id = item.get("id")
-        if not isinstance(item_id, str) or not item_id.strip():
-            return _json_error(path, f"item {index} has no non-empty id")
-        if item_id in seen_ids:
-            return _json_error(path, f"duplicate item id: {item_id}")
-        seen_ids.add(item_id)
-        content_fields = ("content_html", "content_text")
-        if not any(
-            isinstance(item.get(key), str) for key in content_fields if key in item
-        ):
-            return _json_error(path, f"item {index} has no content_html/content_text")
-    return None
-
-
-def _validate_json_document(
-    path: Path, doc: object, *, expected_count: int | None
-) -> dict:
-    """Validate structure after JSON parsing has succeeded."""
-    if not isinstance(doc, dict):
-        return _json_error(path, "top level is not an object")
-    if doc.get("version") != JSON_FEED_VERSION:
-        return _json_error(path, "missing or unsupported JSON Feed 1.1 version")
-    if not isinstance(doc.get("title"), str) or not doc["title"].strip():
-        return _json_error(path, "missing non-empty title")
-
-    items = doc.get("items")
-    if not isinstance(items, list):
-        return _json_error(path, "missing top-level items array")
-    if expected_count is not None and len(items) != expected_count:
-        return _json_error(
-            path,
-            f"item count differs from XML ({len(items)} != {expected_count})",
-            count=len(items),
-        )
-
-    item_error = _validate_json_items(path, items)
-    if item_error is not None:
-        return item_error
-    return _result(path.name, "OK", f"{len(items)} items", count=len(items))
-
-
-def validate_json_sidecar(path: Path, *, expected_count: int | None = None) -> dict:
-    """Validate the universal JSON Feed 1.1 publication contract."""
-    if not path.exists():
-        return _result(path.name, "JSON_MISSING", "JSON Feed sidecar is missing")
-    try:
-        doc = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
-        return _json_error(path, f"JSON parse/read error: {exc}")
-    return _validate_json_document(path, doc, expected_count=expected_count)
-
-
 def _model_error(path: Path, message: str, *, count: int = 0) -> dict:
     return _result(path.name, "MODEL_ERROR", message, count=count)
 
@@ -301,15 +225,10 @@ def _registry_coverage() -> tuple[list[dict], set[Path]]:
         results.append(xml_result)
         expected_count = xml_result["item_count"] if xml_result["item_count"] else None
         results.append(
-            validate_json_sidecar(
+            validate_model_sidecar(
                 xml_path.with_suffix(".json"), expected_count=expected_count
             )
         )
-        model_path = xml_path.with_name(f"{xml_path.stem}.model.json")
-        if model_path.exists() or REQUIRE_MODEL_FEEDS:
-            results.append(
-                validate_model_sidecar(model_path, expected_count=expected_count)
-            )
 
     for name in skipped:
         results.append(_result(name, "CONFIG_ERROR", "invalid feeds.yaml entry"))
@@ -356,8 +275,6 @@ def main() -> int:
         "EMPTY",
         "MISSING",
         "CONFIG_ERROR",
-        "JSON_MISSING",
-        "JSON_ERROR",
         "MODEL_MISSING",
         "MODEL_ERROR",
     }
@@ -366,7 +283,7 @@ def main() -> int:
     if stale:
         print(f"\nWARNINGS: {len(stale)} stale feed(s)")
     if not fatal:
-        print("\nAll enabled feeds satisfy the XML + JSON Feed publication contract.")
+        print("\nAll enabled feeds satisfy the XML + Model Feed publication contract.")
 
     _write_step_summary(results)
     return 1 if fatal else 0
