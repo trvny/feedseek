@@ -50,6 +50,7 @@ class FourchanCapTests(unittest.TestCase):
         kwargs = mocked_run.call_args.kwargs
         self.assertEqual(kwargs["per_source_cap"], {"": 20})
         self.assertEqual(kwargs["max_entries"], 200)
+        self.assertIs(kwargs["image_backfill"], False)
 
 
 if __name__ == "__main__":
