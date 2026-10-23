@@ -11,6 +11,84 @@
   "icon": "https://feeds.trfny.com/favicon?domain=huggingface.co&sz=256",
   "items": [
     {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/881393e361d31435",
+      "url": "https://huggingface.co/posts/IsValorum/770257586931587",
+      "title": "Navigating the APEX-I and VAL-APEX Quantization Ecosystem on Hugging Face",
+      "content_text": "Navigating the APEX-I and VAL-APEX Quantization Ecosystem on Hugging Face As the catalog approaches 400,000 total downloads across 69 releases, all models are now structured into dedicated official collections on Hugging Face. Our goal remains consistent: eliminate the compromise between memory overflow and cognitive collapse on consumer hardware (especially 16 GB VRAM GPUs like the RTX 4080, RTX 4070 Ti Super, and RX 7800 XT). Instead of uniform block quantization, all APEX builds use per-tensor mixed precision guided by 4-moment Importance Matrix statistics: - MiniPlus Tier (approx. 14 to 14.8 GiB): Strict 0% 2-bit policy. All MoE routed experts locked at minimum IQ3_XXS with Q4_K/Q6_K att",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-23T00:54:02Z",
+      "date_modified": "2026-10-23T00:54:02Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/6a837830ca6a77e4d62e3d9b/zeTqBnOSl-wXkkhtiA7Lm.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/6a837830ca6a77e4d62e3d9b/zeTqBnOSl-wXkkhtiA7Lm.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/3ef39430438a0eb9",
+      "url": "https://huggingface.co/posts/Gjusev/697580549790958",
+      "title": "MK-SH-V: A 260M Visual Decision Model",
+      "content_text": "MK-SH-V: A 260M Visual Decision Model I've released MK-SH-V, an open-source visual decision model built on H Company's NeoMME-260M. Instead of generating text, it scores candidate answers from screenshots and documents, returning probabilities, a decision or an abstention. Key results: 82.6% GUI accuracy, compared with 73.1% for a 4B zero-shot VLM. +29.4 percentage points in real-image accuracy after incorporating real training data. 86% coverage* with a 95% selective-risk upper bound below 5% on held-out synthetic data. The limitations are documented too. Receipt accuracy remains weak, and calibrated abstention does not yet generalize reliably to real images. The entire experimental process",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-23T00:54:02Z",
+      "date_modified": "2026-10-23T00:54:02Z",
+      "authors": [
+        {
+          "name": "Hugging Face Posts"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Gjusev/697580549790958.png",
+      "tags": [
+        "Hugging Face Posts"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Gjusev/697580549790958.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/95eb6975ad245049",
+      "url": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+      "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+      "content_text": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-22T22:24:34Z",
+      "date_modified": "2026-10-22T22:24:34Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "image": "https://cdn-uploads.huggingface.co/production/uploads/64b8491203124195cd795cad/oS8I8qx7iBS8EcNIXR3q9.png",
+      "tags": [
+        "Hugging Face Blog"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-uploads.huggingface.co/production/uploads/64b8491203124195cd795cad/oS8I8qx7iBS8EcNIXR3q9.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/6e7c2a65e35d1a9c",
       "url": "https://huggingface.co/posts/yanghaojin/833800751727868",
       "title": "Ternary Bonsai 2 27B: 2.7× faster on a Mac, 5.9 GB on DGX Spark ⚡",
@@ -1493,32 +1571,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/c651cfdb72fb8c0f",
-      "url": "https://huggingface.co/papers/2610.23279",
-      "title": "Xiaomi-Lens-0 Technical Report",
-      "content_text": "Xiaomi-Lens-0 is a 4B multimodal model that predicts masks from internal visual representations to improve fine-grained region reasoning and referring comprehension.",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-10-16T00:00:00Z",
-      "date_modified": "2026-10-16T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.23279/gradient.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.23279/gradient.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/849b423196d125cc",
       "url": "https://huggingface.co/blog/reflection-beam",
       "title": "Welcome Beam: a 501B open model you can own, customize, and scale",
@@ -1541,6 +1593,32 @@
         {
           "url": "https://huggingface.co/blog/assets/reflection-beam/thumbnail.jpg",
           "mime_type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/c651cfdb72fb8c0f",
+      "url": "https://huggingface.co/papers/2610.23279",
+      "title": "Xiaomi-Lens-0 Technical Report",
+      "content_text": "Xiaomi-Lens-0 is a 4B multimodal model that predicts masks from internal visual representations to improve fine-grained region reasoning and referring comprehension.",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-16T00:00:00Z",
+      "date_modified": "2026-10-16T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.23279/gradient.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.23279/gradient.png",
+          "mime_type": "image/png"
         }
       ]
     },
@@ -1857,32 +1935,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/45fea1ed3d41279a",
-      "url": "https://huggingface.co/papers/2610.22732",
-      "title": "TokenEconomizer: Experience-Driven Black-Box Cost Control for Coding Agents",
-      "content_text": "TokenEconomizer reduces recurring token costs of coding agents across sequential real-world tasks by pruning irrelevant tools, injecting micro-skills, and interrupting failure loops.",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-10-15T00:00:00Z",
-      "date_modified": "2026-10-15T00:00:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Trending Papers"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.22732.png",
-      "tags": [
-        "Hugging Face Trending Papers"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.22732.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/3733c75a28bf26df",
       "url": "https://huggingface.co/blog/flux-3",
       "title": "Welcome FLUX.3 Image Klein in Diffusers",
@@ -1904,6 +1956,32 @@
       "attachments": [
         {
           "url": "https://huggingface.co/blog/assets/flux3/thumbnail.png",
+          "mime_type": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "tag:trvny.github.io,2024:feedseek/huggingface/45fea1ed3d41279a",
+      "url": "https://huggingface.co/papers/2610.22732",
+      "title": "TokenEconomizer: Experience-Driven Black-Box Cost Control for Coding Agents",
+      "content_text": "TokenEconomizer reduces recurring token costs of coding agents across sequential real-world tasks by pruning irrelevant tools, injecting micro-skills, and interrupting failure loops.",
+      "_feedseek": {
+        "textKind": "content"
+      },
+      "date_published": "2026-10-15T00:00:00Z",
+      "date_modified": "2026-10-15T00:00:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Trending Papers"
+        }
+      ],
+      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.22732.png",
+      "tags": [
+        "Hugging Face Trending Papers"
+      ],
+      "attachments": [
+        {
+          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.22732.png",
           "mime_type": "image/png"
         }
       ]
@@ -6069,32 +6147,6 @@
       ]
     },
     {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/a301fd3bc750d108",
-      "url": "https://huggingface.co/posts/Hoglet-33/570014208346738",
-      "title": "Hey everyone! I got sidetracked from my main projects and decided to test out the BananaAll app and see if I could make a small model not regress too much during SFT. Here is what happened:",
-      "content_text": "Hey everyone! I got sidetracked from my main projects and decided to test out the BananaAll app and see if I could make a small model not regress too much during SFT. Here is what happened: The base model I chose was BananaMind/BananaMind-2.1-Pico-Preview , and the dataset I used was SupraLabs/SupraThink-Dataset-500x I trained for 5 whole steps using a LoRA adapter. Results: A model that scores better on some benchmarks and worse on others, and still lacks most general capabilities. You can find the model here: Hoglet-33/Hogleto Credits: - Thank you to @ Banaxi-Tech for the BananaAll app (works perfectly on Windows and CPU) - GPT-6 Sol for knowing how to merge some confusing files created by",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-28T05:47:30Z",
-      "date_modified": "2026-09-28T05:47:30Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Hoglet-33/570014208346738.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Hoglet-33/570014208346738.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
       "id": "tag:trvny.github.io,2024:feedseek/huggingface/67e12dc556651cc7",
       "url": "https://huggingface.co/posts/BoldingBuilds/730034791911887",
       "title": "I tested every uncensored Ternary Bonsai 2 27B on the Hub, all 11 builds from 6 uploaders, including my own. Same prompts, same judge, same GPUs, every file pinned by sha256.",
@@ -6142,32 +6194,6 @@
       "attachments": [
         {
           "url": "https://huggingface.co/blog/assets/datasets-filters/thumbnail.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/192582a770c3922f",
-      "url": "https://huggingface.co/posts/Banaxi-Tech/496573104164184",
-      "title": "We're releasing a MAJOR update to the BananaAll SLM Super App.",
-      "content_text": "We're releasing a MAJOR update to the BananaAll SLM Super App. If you want to use a custom architecture, previously you had to go trough reviewing the code yourself, now add an Openrouter API key and review it with GPT 6 Luna in one button. A review cost be half a cent so anyone can try it. This is one of the main features. Now ROCm, AMD and Windows, Mac support. Colab and Molab support. Detailed list of features: Get improved Windows Python detection and support paths for compatible AMD ROCm, Intel XPU, and Apple MPS setups. Choose local training or export a self-contained Python script for Colab or Molab. Notebook runs produce a downloadable model ZIP. Start pretraining with an existing mo",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-09-27T23:22:17Z",
-      "date_modified": "2026-09-27T23:22:17Z",
-      "authors": [
-        {
-          "name": "Hugging Face Posts"
-        }
-      ],
-      "image": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Banaxi-Tech/496573104164184.png",
-      "tags": [
-        "Hugging Face Posts"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Banaxi-Tech/496573104164184.png",
           "mime_type": "image/png"
         }
       ]
@@ -7780,32 +7806,6 @@
       "attachments": [
         {
           "url": "https://huggingface.co/blog/assets/eee_commevals/eee_commevals_banner.png",
-          "mime_type": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "tag:trvny.github.io,2024:feedseek/huggingface/91d16542fa1f3b29",
-      "url": "https://huggingface.co/blog/allenai/discoformer",
-      "title": "DiScoFormer: One transformer for density and score, across distributions",
-      "content_text": "DiScoFormer: One transformer for density and score, across distributions",
-      "_feedseek": {
-        "textKind": "content"
-      },
-      "date_published": "2026-06-29T18:02:48Z",
-      "date_modified": "2026-06-29T18:02:48Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "image": "https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/AnOX0pzQm-Hep_CLFOVM7.png",
-      "tags": [
-        "Hugging Face Blog"
-      ],
-      "attachments": [
-        {
-          "url": "https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/AnOX0pzQm-Hep_CLFOVM7.png",
           "mime_type": "image/png"
         }
       ]
