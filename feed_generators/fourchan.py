@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Generate a combined Atom feed from curated 4chan boards, including NSFW boards.
 
-The official read-only JSON API supplies current OP threads for substantive
-worksafe boards. Explicit, warez-heavy, nationalism/flame, and low-signal boards
-are deliberately excluded from this public feed. The official 4chan blog is
-included through its native RSS feed.
+The official read-only JSON API supplies current OP threads from curated
+worksafe and adult boards. Adult boards are explicitly labeled [NSFW]; their
+post text is stripped of HTML, and no user-submitted images or videos are
+embedded. The official blog is included through its native RSS feed.
 """
 
 from __future__ import annotations
@@ -28,9 +28,9 @@ SITE_URL = "https://www.4chan.org/"
 API_BASE = "https://a.4cdn.org"
 BOARDS_BASE = "https://boards.4chan.org"
 
-# Substantive worksafe topical boards only. Do not add /b/, /trash/, /s4s/,
-# /t/, /int/, or /bant/ to the public feed.
-BOARDS = [
+# Keep a bounded, explicitly curated registry instead of consuming every
+# board in boards.json on each update. Adult boards are opt-in and marked.
+WORKSAFE_BOARDS = [
     ("news", "/news/ News"),
     ("g", "/g/ Technology"),
     ("o", "/o/ Auto"),
@@ -39,6 +39,21 @@ BOARDS = [
     ("mu", "/mu/ Music"),
     ("vip", "/vip/ VIP"),
 ]
+NSFW_BOARDS = [
+    ("b", "/b/ Random [NSFW]"),
+    ("gif", "/gif/ Adult GIF [NSFW]"),
+    ("s", "/s/ Sexy Beautiful Women [NSFW]"),
+    ("hc", "/hc/ Hardcore [NSFW]"),
+    ("h", "/h/ Hentai [NSFW]"),
+    ("e", "/e/ Ecchi [NSFW]"),
+    ("u", "/u/ Yuri [NSFW]"),
+    ("y", "/y/ Yaoi [NSFW]"),
+    ("d", "/d/ Hentai Alternative [NSFW]"),
+    ("aco", "/aco/ Adult Cartoons [NSFW]"),
+    ("hm", "/hm/ Handsome Men [NSFW]"),
+]
+NSFW_BOARD_CODES = frozenset(board for board, _ in NSFW_BOARDS)
+BOARDS = WORKSAFE_BOARDS + NSFW_BOARDS
 
 
 def doc_sources():
@@ -106,7 +121,9 @@ def scrape_board(board: str, label: str, known_links: set) -> list:
             )
             entries.append(
                 {
-                    "title": sanitize_xml(f"{label}: {headline}"),
+                    "title": sanitize_xml(
+                        f"{'[NSFW] ' if board in NSFW_BOARD_CODES else ''}{label}: {headline}"
+                    ),
                     "link": link,
                     "date": published,
                     "description": sanitize_xml((body or subject or headline)[:DESC_LIMIT]),
@@ -134,11 +151,11 @@ def main(full: bool = False) -> bool:
         feed_name=FEED_NAME,
         title="4chan",
         subtitle=(
-            "Newest threads from selected worksafe 4chan boards "
-            "(news, g, o, tv, v, mu, vip) via the read-only JSON API, "
-            "plus the official 4chan blog. Board posts are user-generated "
-            "and unmoderated; each title is prefixed with its board, with at "
-            "most 20 published entries from any one source."
+            "Newest threads from selected 4chan worksafe and adult boards "
+            "via the official read-only JSON API, plus the 4chan blog. "
+            "Adult-board headlines are marked [NSFW]. Content is "
+            "unmoderated user text, without embedded post images or videos; "
+            "at most 20 published entries per source."
         ),
         blog_url=SITE_URL,
         author="4chan",
