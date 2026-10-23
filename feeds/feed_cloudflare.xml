@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-23T13:46:03.595211+00:00</updated>
+  <updated>2026-10-23T18:40:08.882359+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,56 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/94660a1aa166d4df</id>
+    <title>Origin Range Requests: Serving large files without range-request tuning</title>
+    <updated>2026-10-23T18:22:59+00:00</updated>
+    <content>Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency in half.</content>
+    <link href="https://blog.cloudflare.com/origin-range-requests/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-23T18:22:59+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M5MZP89Y10XGACD5T6G2F398.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M5MZP89Y10XGACD5T6G2F398.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M5MZP89Y10XGACD5T6G2F398.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4e37c5377b38280b</id>
+    <title>Network connectivity issues affecting services in North America</title>
+    <updated>2026-10-23T18:18:42+00:00</updated>
+    <content>Oct 23 , 18:18 UTC Monitoring - Our network team has rerouted traffic around the impacted paths and we are no longer seeing packet drops. Our connectivity provider reports that its service has been restored, but some links are still being brought back, so we are keeping our traffic management changes in place. Oct 23 , 17:33 UTC Identified - The team is continuing to perform traffic engineering actions to route around impacted paths. The team will continue performing traffic engineering actions </content>
+    <link href="https://www.cloudflarestatus.com/incidents/sufgcbe8rrwt" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-23T18:18:42+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c3aa2fd898c5c711</id>
+    <title>Bringing post-quantum cryptography to geographically fenced key management</title>
+    <updated>2026-10-23T18:06:56+00:00</updated>
+    <content>Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decryption keys from harvest now, decrypt later attacks. Learn how we redesigned our cryptography stack to support strict data sovereignty in a post-quantum world.</content>
+    <link href="https://blog.cloudflare.com/post-quantum-geo-key-manager/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-10-23T18:06:56+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M5MYF3Y4CXM47ZAN16JYM04W.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M5MYF3Y4CXM47ZAN16JYM04W.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M5MYF3Y4CXM47ZAN16JYM04W.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6127e03eb8b6e772</id>
+    <title>Delayed, missed, and duplicated Workers Cron Triggers</title>
+    <updated>2026-10-23T15:27:34+00:00</updated>
+    <content>Oct 23 , 15:27 UTC Investigating - We are investigating reports that some Workers Cron Triggers are running late, being skipped, or running more than once. Affected customers may see scheduled Workers invocations that do not run on time or run more than once. We will post an update as we learn more.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/3ts1mfzs0khz" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-23T15:27:34+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/c73a61d4b02ab368</id>
     <title>Delayed audit log delivery for WARP and Zero Trust services</title>
@@ -65,6 +115,22 @@ We have identified the cause as a capacity problem in a shared internal data pip
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=557,format=webp/_astro/radar-homepage-redesign.DJcX0rdO.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1bc9b372f3c81ee9</id>
+    <title>D1 - D1 database undelete requests limited to the last 7 days</title>
+    <updated>2026-10-23T00:00:00+00:00</updated>
+    <content>The D1 undelete API now only accepts requests for databases that were deleted within the last 7 days.
+Requests to undelete a database that was deleted more than 7 days ago will fail and return an error. If you delete a D1 database by mistake, send the undelete request as soon as possible, and no later than 7 days after deletion. For more information, refer to the undelete D1 database API reference .</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-23T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/93facad928b13202</id>
@@ -260,6 +326,21 @@ We have identified the cause as a capacity problem in a shared internal data pip
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-22-emergency-waf-release-free/og.png?v=f3aae34401f90614" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a0d5256f42b6b0a3</id>
+    <title>Sandboxes - Sandbox SDK 0.12.14 updates trusted certificates after the eMudhra compromise</title>
+    <updated>2026-10-22T00:00:00+00:00</updated>
+    <content>The private keys of eight eMudhra intermediate certificate authorities ↗︎ can be recovered, so anyone can forge a certificate for any hostname that chains to them. Sandbox SDK images before 0.12.14 trust these certificates. An HTTPS connection that leaves the container directly, such as one from mountBucket() , backups, gitCheckout() , tunnels, or code that runs in the sandbox, can be intercepted with a forged certificate. What you need to do Sandbox SDK 0.x Update immediately. Install @cloudfla</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-22T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/og.png?v=25a96bb2bc7447a6" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/og.png?v=25a96bb2bc7447a6"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/og.png?v=25a96bb2bc7447a6" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/4dcac85bd1303bc4</id>
@@ -1302,36 +1383,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/856c56bf44cf481b</id>
-    <title>Agents, Workers - Cloudflare API MCP server sends Workers Issues as MCP Events</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>Workers Issues provides built-in error monitoring for Cloudflare Workers. It detects production failures and groups related failures into issues without an SDK or application wrapper. The Cloudflare API MCP server now sends these issues as MCP Events ↗︎ , the first event it exposes. MCP clients discover cloudflare.alert.workers_observability_real_time_issue with events/list and subscribe with events/subscribe , scoped to an account or a single Worker. When Issues detects a new or recurring issue</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-cloudflare-mcp-events/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-cloudflare-mcp-events/og.png?v=8dc2e71b898502be" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-cloudflare-mcp-events/og.png?v=8dc2e71b898502be"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-cloudflare-mcp-events/og.png?v=8dc2e71b898502be" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a9dcabd6f6b579d9</id>
-    <title>Agents - New persistent browser tool in the Agents SDK, with tabs and logins that last between turns</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>The Cloudflare Agents SDK now provides a browserTool that gives your agent a Browser Run browser it can return to on later turns. Your agent can open a website, inspect a page, and come back to it with its tabs, cookies, and login session intact while the browser session remains alive. When you give browserTool to your agent, the model writes code that drives the browser through the Chrome DevTools Protocol (CDP) . Screenshots return as images that an image-capable model can inspect and your UI </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-persistent-browser/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-persistent-browser/og.png?v=eac81663592e4bcb" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-persistent-browser/og.png?v=eac81663592e4bcb"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-persistent-browser/og.png?v=eac81663592e4bcb" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5dd78fbcbf2d01e3</id>
     <title>Cloudflare Web Analytics - Deeper Core Web Vitals Diagnostics: LCP &amp; INP Sub-Part Metrics in Real User Monitoring</title>
     <updated>2026-10-13T00:00:00+00:00</updated>
@@ -1605,26 +1656,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M490CTJ7YDMNAYZRST2FH35F.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/132d4187b03fda05</id>
-    <title>Network routing issue</title>
-    <updated>2026-10-06T15:33:32+00:00</updated>
-    <content>Oct 6 , 15:33 UTC Resolved - This incident has been resolved. Oct 6 , 14:34 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 14:15 UTC Identified - We are continuing to work on a fix for the issue. Oct 6 , 13:34 UTC Investigating - Cloudflare is aware of an issue with network routing to Microsoft Azure, which is causing errors for requests directed to origins hosted on that service. The team is actively working on remediation.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/ryvhi2suec0d" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-06T15:33:32+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/007478a2cc655c7f</id>
-    <title>RSA Keyless SSL handshake issues</title>
-    <updated>2026-10-06T09:06:33+00:00</updated>
-    <content>Oct 6 , 09:06 UTC Resolved - This incident has been resolved. Oct 6 , 08:55 UTC Monitoring - We are continuing to monitor for any further issues. Oct 6 , 08:22 UTC Identified - Cloudflare is aware of and is investigating an issue with Keyless SSL, which results in TLS handshake failures, only affecting RSA Keyless SSL with specific key backend configurations.  We are working to resolve this. Updates to follow.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/6mlprt9v5si5" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-06T09:06:33+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/0536bfa8ec7237b6</id>
@@ -1955,36 +1986,6 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3RZ3WTX78RCB7KKEB1T8J44.01M3RZ3XRZSENAMJGQMGNWZDHZ.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a96597048e57b969</id>
-    <title>Simplifying domains for people and agents</title>
-    <updated>2026-09-30T13:00:00+00:00</updated>
-    <content>Cloudflare Registrar’s new search delivers fast, transparent results across 420+ extensions using Workers, Durable Objects, and WebSockets. Its expanded API and cf CLI also let agents search, register, and transfer domains.</content>
-    <link href="https://blog.cloudflare.com/simplifying-domains/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-30T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3QWRFBJBT102QWDWVC9917P.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3QWRFBJBT102QWDWVC9917P.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3QWRFBJBT102QWDWVC9917P.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/054701a320cd76db</id>
-    <title>Monetization Gateway beta: charge AI agents for consumption with HTTP 402</title>
-    <updated>2026-09-30T13:00:00+00:00</updated>
-    <content>Cloudflare’s AI Gateway, Ceramic.ai, Stocktwits, and more are using the Cloudflare Monetization Gateway today to charge agents for access to tokens, APIs, and MCP tools. U.S.-based sellers can now apply for access to the closed beta.</content>
-    <link href="https://blog.cloudflare.com/monetization-gateway-beta/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-09-30T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M3QKS7979PTKRYVR2CN111JZ.01M3QKS7ZDZ74AXKMWXG7F3C2K.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M3QKS7979PTKRYVR2CN111JZ.01M3QKS7ZDZ74AXKMWXG7F3C2K.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3QKS7979PTKRYVR2CN111JZ.01M3QKS7ZDZ74AXKMWXG7F3C2K.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/bb78f7e3096b440f</id>
