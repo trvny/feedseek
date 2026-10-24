@@ -12,6 +12,7 @@ import europa  # noqa: E402
 import github  # noqa: E402
 import google  # noqa: E402
 import huggingface  # noqa: E402
+import js_node  # noqa: E402
 import microsoft  # noqa: E402
 import medium  # noqa: E402
 import netflix  # noqa: E402
@@ -25,6 +26,17 @@ import spotify  # noqa: E402
 
 
 class RequestedFeedSourcesTests(unittest.TestCase):
+    def test_js_node_aggregates_unified_and_mdx_rss_once(self):
+        sources = {(label, url): cap for label, url, cap in js_node.SOURCES}
+        expected = {
+            ("unified", "https://unifiedjs.com/rss.xml"),
+            ("MDX", "https://mdxjs.com/rss.xml"),
+        }
+        self.assertEqual({source for source in sources if source in expected}, expected)
+        for label, url in expected:
+            self.assertEqual(sources[(label, url)], 30)
+            self.assertEqual(sum(src_url == url for _, src_url, _ in js_node.SOURCES), 1)
+
     def test_anthropic_research_is_aggregated(self):
         urls = {source[1] for source in anthropic.SOURCES}
         self.assertIn("https://www.anthropic.com/research", urls)
