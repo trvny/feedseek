@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.audacityteam.org/blog/</id>
   <title>Audacity®</title>
-  <updated>2026-10-24T16:12:29.331876+00:00</updated>
+  <updated>2026-10-24T18:57:21.298136+00:00</updated>
   <author>
     <name>Audacity / MuseHub</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=www.audacityteam.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=www.audacityteam.org&amp;sz=64</webfeeds:icon>
   <subtitle>Audacity blog and forum updates, plus MuseHub news and newly listed audio tools.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/audacity/c8d5dd381351881b</id>
+    <title>Using effect on split out region deletes clip splits into the original clip</title>
+    <updated>2026-10-24T18:13:18+00:00</updated>
+    <content>Audacity 4.0.1: select a segment, label, and split into a new chunk or region apply certain effect (for example delay or vocoder or tremelo but NOT reverb) when applied the effect dissolves the labeled clip chunk or region that was split out from the full clip, back into the whole original clip and it is no longer a separate clip. i haven’t tested all the onboard effects, just noticed this when testdriving 4. reverb worked normally but delay dessolved the clip borders and the region effect was t</content>
+    <link href="https://forum.audacityteam.org/t/using-effect-on-split-out-region-deletes-clip-splits-into-the-original-clip/154670" rel="alternate"/>
+    <category term="Audacity Forum" label="Audacity Forum"/>
+    <published>2026-10-24T18:13:18+00:00</published>
+    <media:group>
+      <media:content url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png"/>
+    </media:group>
+    <dc:creator>Audacity Forum</dc:creator>
+    <link rel="enclosure" href="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/audacity/e55c1087debdd567</id>
+    <title>Audacity 4 clip gain controls</title>
+    <updated>2026-10-24T17:37:50+00:00</updated>
+    <content>is there a way to manually set the clip point gain by typing it in? eg if i want to copy/paste to keep returning to -50db or +2db etc, at different points, after setting the points. i can make clip gain points - and delete them by double-clicking (which i learned from this forum, ty users) - but i can’t type in a db level and i can’t get very granular by manipulating the point levels themselves, especially in the minus range: past -49db bc it goes to infinity pretty near that level even if i mak</content>
+    <link href="https://forum.audacityteam.org/t/audacity-4-clip-gain-controls/154668" rel="alternate"/>
+    <category term="Audacity Forum" label="Audacity Forum"/>
+    <published>2026-10-24T17:37:50+00:00</published>
+    <media:group>
+      <media:content url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png"/>
+    </media:group>
+    <dc:creator>Audacity Forum</dc:creator>
+    <link rel="enclosure" href="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/audacity/33fa9e8eb76b55cc</id>
     <title>Do you know courses with a teacher/instructor for Audacity?</title>
@@ -2437,36 +2467,6 @@
     <link href="https://forum.audacityteam.org/t/feature-request-bring-back-variable-playback-speed/154337" rel="alternate"/>
     <category term="Audacity Forum" label="Audacity Forum"/>
     <published>2026-09-28T14:46:52+00:00</published>
-    <media:group>
-      <media:content url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png"/>
-    </media:group>
-    <dc:creator>Audacity Forum</dc:creator>
-    <link rel="enclosure" href="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/audacity/0d1b1361279aff6c</id>
-    <title>Audacity 4.0: Metadata not written to exported MP3 file</title>
-    <updated>2026-09-28T08:43:43+00:00</updated>
-    <content>Hello, I am using Audacity 4.0 on Windows 11. When I export my project as MP3, the metadata I enter is not saved in the file. What I do: File &gt; Export Audio Format: MP3 Files, Stereo, 44100 Hz, Standard quality (170-210 kbps) Click “Edit metadata” Fill in Track title, Artist name, Album title, Track number, Year and Comments Click “Apply”, then “Close” Click “Export” Result: The MP3 file is created and plays fine, but all metadata fields are empty. I checked in Windows Explorer (Properties &gt; Det</content>
-    <link href="https://forum.audacityteam.org/t/audacity-4-0-metadata-not-written-to-exported-mp3-file/154330" rel="alternate"/>
-    <category term="Audacity Forum" label="Audacity Forum"/>
-    <published>2026-09-28T08:43:43+00:00</published>
-    <media:group>
-      <media:content url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png"/>
-    </media:group>
-    <dc:creator>Audacity Forum</dc:creator>
-    <link rel="enclosure" href="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/audacity/a9fbd25355564696</id>
-    <title>EchoBoy RealTime Effect not applied on the exported WAV file</title>
-    <updated>2026-09-28T06:46:20+00:00</updated>
-    <content>I’m using the 30 days trial of the EchoBoy sound effect. Everything works fine but when I export my project to WAV and listen to it, it’s all dry, without the effects. 1 post - 1 participant Read full topic</content>
-    <link href="https://forum.audacityteam.org/t/echoboy-realtime-effect-not-applied-on-the-exported-wav-file/154327" rel="alternate"/>
-    <category term="Audacity Forum" label="Audacity Forum"/>
-    <published>2026-09-28T06:46:20+00:00</published>
     <media:group>
       <media:content url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://forum.audacityteam.org/uploads/default/original/1X/81a69b20bcd548215067cfaceccc8a10bfa2d176.png"/>
