@@ -4,7 +4,7 @@ no feed at all.
 
 Native feeds (multi_rss SOURCES): Node.js blog, pnpm blog, jsDelivr blog,
 Bun, Deno, NodeSource blog, Total.js blog, Vite blog, Next.js blog, the Vue
-Point (Vue.js blog), Svelte blog, React blog, JavaScript Weekly, ReactLibs,
+Point (Vue.js blog), Svelte blog, React blog, unified and MDX, JavaScript Weekly, ReactLibs,
 Bootstrap blog, jQuery blog, V8, PWABuilder blog. Two status feeds get their
 own low cap (they're incident logs, not editorial content): npm status and
 jsDelivr status.
@@ -52,6 +52,8 @@ SOURCES = [
     ("Vue Point", "https://blog.vuejs.org/feed.rss", 40),
     ("Svelte Blog", "https://svelte.dev/blog/rss.xml", 40),
     ("React Blog", "https://react.dev/rss.xml", 30),
+    ("unified", "https://unifiedjs.com/rss.xml", 30),
+    ("MDX", "https://mdxjs.com/rss.xml", 30),
     ("JavaScript Weekly", "https://javascriptweekly.com/rss/", 20),
     ("ReactLibs", "https://reactlibs.dev/rss.xml", 30),
     ("Bootstrap Blog", "https://blog.getbootstrap.com/feed.xml", 20),
@@ -157,8 +159,8 @@ def main(full=False):
         title="JS | Node",
         subtitle="Combined JS/Node.js runtime & tooling feed: Node.js, pnpm, "
                  "jsDelivr (blog + status), Bun, Deno, NodeSource, Total.js, "
-                 "Vite, Next.js, Vue, Svelte, React, JavaScript Weekly, "
-                 "ReactLibs, Bootstrap, jQuery, V8, PWABuilder, npm status, "
+                 "Vite, Next.js, Vue, Svelte, React, unified, MDX, "
+                 "JavaScript Weekly, ReactLibs, Bootstrap, jQuery, V8, PWABuilder, npm status, "
                  "npmx, and the OpenJS Foundation blog.",
         blog_url="https://nodejs.org/",
         author="various",
