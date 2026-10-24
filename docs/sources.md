@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-110 feedów · 892 źródła
+110 feedów · 894 źródła
 
 ## Spis grup
 
@@ -1063,6 +1063,8 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=blog.vuejs.org&sz=16) Vue Point — <https://blog.vuejs.org/feed.rss>
 - ![](https://www.google.com/s2/favicons?domain=svelte.dev&sz=16) Svelte Blog — <https://svelte.dev/blog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=react.dev&sz=16) React Blog — <https://react.dev/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=unifiedjs.com&sz=16) unified — <https://unifiedjs.com/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=mdxjs.com&sz=16) MDX — <https://mdxjs.com/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=javascriptweekly.com&sz=16) JavaScript Weekly — <https://javascriptweekly.com/rss/>
 - ![](https://www.google.com/s2/favicons?domain=reactlibs.dev&sz=16) ReactLibs — <https://reactlibs.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.getbootstrap.com&sz=16) Bootstrap Blog — <https://blog.getbootstrap.com/feed.xml>
