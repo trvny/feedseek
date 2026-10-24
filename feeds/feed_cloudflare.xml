@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-23T23:25:29.005047+00:00</updated>
+  <updated>2026-10-24T04:57:35.736289+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -131,6 +131,21 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/583e63756885b8b9</id>
+    <title>Workers - Pin your npm version in Workers Builds with packageManager</title>
+    <updated>2026-10-23T00:00:00+00:00</updated>
+    <content>You can now choose the npm version that Workers Builds uses by setting the packageManager field in your package.json . Before the build installs dependencies, it installs the npm version you set, so a lockfile written by a newer npm version installs the same way in your build as it does locally. package.json json { "packageManager" : "npm@11.19.1" } The packageManager field also sets the version of Yarn, pnpm, and Bun. Use an exact version, such as npm@11.19.1 , not a range. Workers Builds does </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-23T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/93facad928b13202</id>
@@ -1381,21 +1396,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-13T14:56:50+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5dd78fbcbf2d01e3</id>
-    <title>Cloudflare Web Analytics - Deeper Core Web Vitals Diagnostics: LCP &amp; INP Sub-Part Metrics in Real User Monitoring</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>The Core Web Vitals tell you whether a page is slow but beyond perceived load time, layout instability, or responsiveness they do not guide you to the problematic area directly. To help you with this, Real User Monitoring (RUM) in Web Analytics now breaks Largest Contentful Paint (LCP) and Interaction to Next Paint (INP) into their respective sub-parts. It also splits connection time into TCP and TLS. You can see this visualised in the dashboard or query it through the GraphQL Analytics API. LCP</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-core-web-vital-subparts/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1704,height=384,format=webp/_astro/dash-web_analytics-lcp-sub-parts.CSpKXT00.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1704,height=384,format=webp/_astro/dash-web_analytics-lcp-sub-parts.CSpKXT00.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1704,height=384,format=webp/_astro/dash-web_analytics-lcp-sub-parts.CSpKXT00.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/477baeeb73cdd3c8</id>
