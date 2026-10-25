@@ -64,6 +64,8 @@ test("reader is an app-only entrypoint with a fixed self-contained resource", as
   const tools = (await (await call("tools/list")).json()).result.tools;
   const reader = tools.find((tool) => tool.name === "feedseek_reader_open");
   assert.deepEqual(reader._meta.ui.visibility, ["app"]);
+  assert.equal(reader.icons[0].src, "https://trvny.github.io/feedseek/icons/android-chrome-192x192.png");
+  assert.equal(reader.icons[0].mimeType, "image/png");
   assert.deepEqual(reader._meta["openai/ui"].entrypoints, [{ type: "global" }, { type: "thread" }]);
   const uri = reader._meta.ui.resourceUri;
   const resource = (await (await call("resources/read", { uri })).json()).result.contents[0];
@@ -124,6 +126,7 @@ test("supports modern server discovery", async () => {
   assert.equal(body.result.resultType, "complete");
   assert.ok(body.result.supportedVersions.includes("2026-07-28"));
   assert.equal(body.result.cacheScope, "public");
+  assert.equal(body.result._meta["io.modelcontextprotocol/serverInfo"].icons[0].src, "https://trvny.github.io/feedseek/icons/android-chrome-192x192.png");
 });
 
 test("modern tools/list includes cache metadata", async () => {
