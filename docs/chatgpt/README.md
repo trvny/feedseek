@@ -63,11 +63,11 @@ undated entries. Feeds explicitly disabled in `feeds.yaml` are not indexed. Sear
 that aggregate with one upstream request.
 
 Each result id also carries the exact Git commit used to build the index. `fetch` reads the
-selected JSON Feed at that immutable revision, so a feed update cannot invalidate a result
+selected Model Feed JSON at that immutable revision, so a feed update cannot invalidate a result
 between `search` and `fetch`. This also avoids per-request fan-out over the registry.
 
 Publication and modification timestamps are both considered for recency; the newer valid
-timestamp wins. Current search/index generation prefers dedicated `*.model.json` sidecars with normalized plaintext and `text_kind` metadata. Older revision-pinned results remain fetchable through the standard JSON Feed fallback, where HTML-only entries are converted to decoded plain text while literal angle-bracket text in `content_text` is preserved.
+timestamp wins. Current search/index generation consumes `feed_<name>.json`, the sole published Model Feed JSON beside each XML feed, with normalized plaintext and `text_kind` metadata. Historical revision-pinned JSON Feed 1.1 results remain fetchable through a compatibility fallback; HTML-only entries become decoded plain text, and literal angle-bracket text in `content_text` is preserved.
 
 ## Security and privacy
 
