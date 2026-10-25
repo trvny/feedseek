@@ -9,6 +9,7 @@ self-contained ``public/`` directory containing:
   * ``sitemap.xml``  - for search engines
   * ``robots.txt``   - allows crawling, points at the sitemap
   * ``llms.txt``     - llmstxt.org file: LLM-friendly directory of the feeds
+  * ``model-feeds.json`` - small machine-readable catalog of published Model Feed URLs
   * ``subscriptions.opml`` and ``reader/`` - the portable browser reader bundle
   * ``webmcp.js``    - host-agnostic WebMCP tools for the registry and reader
   * ``.nojekyll``    - stop GitHub Pages running the files through Jekyll
@@ -326,6 +327,7 @@ def require_model_sidecars(feeds: list[dict]) -> None:
 
 def render_card(feed: dict, base: str) -> str:
     url = base + feed["filename"]
+    model_url = base + Path(str(feed["filename"])).with_suffix(".json").name
     dom = domain_of(feed["source"])
     title = html.escape(feed["title"])
     subtitle = html.escape(feed["subtitle"]) or "&nbsp;"
@@ -361,6 +363,7 @@ def render_card(feed: dict, base: str) -> str:
           <span class="card__meta">{meta}</span>
           <span class="card__actions">
             <a class="btn" href="{html.escape(url, quote=True)}">Subscribe</a>
+            <a class="btn btn--ghost" data-model-feed href="{html.escape(model_url, quote=True)}">Model JSON</a>
             <button class="btn btn--ghost" type="button" data-copy="{html.escape(url, quote=True)}">Copy URL</button>
           </span>
         </footer>
@@ -384,6 +387,41 @@ def render_autodiscovery(feeds: list[dict], base: str) -> str:
             f'title="{title} (Model Feed)" href="{json_href}">'
         )
     return "\n".join(lines)
+
+
+
+def build_model_feed_catalog(feeds: list[dict], base: str) -> str:
+    """Small public link manifest derived from the same selected feeds as the page.
+
+    Contains URLs and provenance only, never copied article bodies. The published
+    Model Feeds remain the sole source of article content.
+    """
+    entries = []
+    for feed in feeds:
+        filename = str(feed["filename"])
+        updated = feed.get("updated")
+        updated_at = (
+            updated.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+            if isinstance(updated, datetime)
+            else None
+        )
+        entries.append({
+            "key": short_name(Path(filename)),
+            "title": str(feed["title"]),
+            "description": str(feed.get("subtitle") or ""),
+            "source_url": str(feed.get("source") or ""),
+            "feed_url": base + filename,
+            "model_feed_url": base + Path(filename).with_suffix(".json").name,
+            "entry_count": int(feed.get("entries") or 0),
+            "updated_at": updated_at,
+        })
+    return json.dumps({
+        "format": "feedseek-model-feed-catalog",
+        "version": 1,
+        "site_url": base,
+        "feed_count": len(entries),
+        "feeds": entries,
+    }, ensure_ascii=False, indent=2) + "\n"
 
 
 def build_index(feeds: list[dict], base: str) -> str:
@@ -426,6 +464,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <link rel="author" href="https://github.com/trvny">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
+  <link rel="alternate" type="application/json" href="{html.escape(base + "model-feeds.json", quote=True)}" title="Feedseek Model Feed catalog">
   <link rel="describedby" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
 {ICON_LINKS}
   <meta property="og:type" content="website">
@@ -543,7 +582,7 @@ def build_index(feeds: list[dict], base: str) -> str:
       margin-top: 2px; padding-top: 13px; border-top: 1px dashed var(--line);
     }}
     .card__meta {{ font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-soft); letter-spacing: .02em; }}
-    .card__actions {{ margin-left: auto; display: flex; gap: 8px; }}
+    .card__actions {{ margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px; }}
     .btn {{
       font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
       padding: 6px 12px; border-radius: var(--radius); text-decoration: none; cursor: pointer;
@@ -600,7 +639,7 @@ def build_index(feeds: list[dict], base: str) -> str:
     <details class="answer-guide" id="about-feedseek">
       <summary>About Feedseek · feeds, updates and subscriptions</summary>
       <h2>What does Feedseek publish?</h2>
-      <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has one compact JSON Model Feed with normalized plaintext for LLMs and agents.</p>
+      <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has one compact JSON Model Feed with normalized plaintext for LLMs and agents. <a href="model-feeds.json">Browse the JSON catalog</a>.</p>
       <h2>How often are the feeds updated?</h2>
       <p>Published feeds are regenerated every two hours. Individual entries retain their source meaning and stable identities; an upstream feed may be normalized rather than copied unchanged.</p>
       <h2>How can I follow the feeds?</h2>
@@ -698,12 +737,14 @@ def build_sitemap(feeds: list[dict], base: str) -> str:
     urls = [f"  <url><loc>{html.escape(base)}</loc><lastmod>{today}</lastmod></url>"]
     # Include the separately indexable Reader, not only the directory and feeds.
     urls.append(f"  <url><loc>{html.escape(base + 'reader/')}</loc></url>")
+    urls.append(f"  <url><loc>{html.escape(base + 'model-feeds.json')}</loc></url>")
     for f in feeds:
         lastmod = (f["updated"] or datetime.now(timezone.utc)).strftime("%Y-%m-%d")
-        urls.append(
-            f"  <url><loc>{html.escape(base + f['filename'])}</loc>"
-            f"<lastmod>{lastmod}</lastmod></url>"
-        )
+        for filename in (str(f["filename"]), Path(str(f["filename"])).with_suffix(".json").name):
+            urls.append(
+                f"  <url><loc>{html.escape(base + filename)}</loc>"
+                f"<lastmod>{lastmod}</lastmod></url>"
+            )
     body = "\n".join(urls)
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -796,6 +837,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "## Resources",
         "",
         "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
+        f"- [Model Feed catalog (JSON)]({base}model-feeds.json): Compact source registry and direct Model Feed URLs for agents and apps",
         f"- [All feeds (OPML)]({base}subscriptions.opml): One-shot import of every published feed",
         f"- [Feed directory (sitemap)]({base}sitemap.xml): Machine-readable list of every feed URL",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
@@ -835,6 +877,7 @@ def build_index_markdown(feeds: list[dict], base: str) -> str:
         "",
         f"- [Browser directory]({base})",
         f"- [Reader]({base}reader/)",
+        f"- [Model Feed catalog (JSON)]({base}model-feeds.json)",
         f"- [All feeds as OPML]({base}subscriptions.opml)",
         f"- [Concise LLM guide]({base}llms.txt)",
         f"- [Full LLM guide]({base}llms-full.txt)",
@@ -912,6 +955,7 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
         "",
         f"- [Markdown directory]({base}index.md)",
         f"- [Markdown Reader]({base}reader/index.md)",
+        f"- [Model Feed catalog (JSON)]({base}model-feeds.json)",
         f"- [OPML]({base}subscriptions.opml)",
         f"- [Sitemap]({base}sitemap.xml)",
         "- [Repository](https://github.com/trvny/feedseek)",
@@ -977,6 +1021,7 @@ def main() -> None:
     (OUT_DIR / "site.webmanifest").write_text(WEBMANIFEST, encoding="utf-8")
     shutil.copy2(SITE_DIR / "webmcp.js", OUT_DIR / "webmcp.js")
     (OUT_DIR / "subscriptions.opml").write_text(build_opml(feeds, base), encoding="utf-8")
+    (OUT_DIR / "model-feeds.json").write_text(build_model_feed_catalog(feeds, base), encoding="utf-8")
     copy_reader_bundle(base)
 
     (OUT_DIR / "index.html").write_text(build_index(feeds, base), encoding="utf-8")

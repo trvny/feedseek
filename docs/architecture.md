@@ -12,7 +12,7 @@ fetch / parse / normalize / deduplicate
    │
    ├──▶ feeds/feed_<name>.xml + feed_<name>.json
    ├──▶ cache/                 last-known state
-   └──▶ site/                  GitHub Pages + reader
+   └──▶ site/                  GitHub Pages + reader + generated model-feeds.json
              │
              ▼
      trvny.github.io/feedseek/
@@ -30,6 +30,8 @@ The defaults are intentionally conservative:
 ## Feed quality contract
 
 The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published.
+
+The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps derived from the same `feeds.yaml`-selected feed set. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
 
 Everything that depends on upstream richness stays adaptive. Images, authors, categories, provenance, summaries and publication/update dates should be preserved or enriched whenever the source gives enough evidence, but their absence alone does not fail a feed. A weather endpoint, a changelog and a newsroom should not be forced through the same editorial cookie cutter. When metadata is present, shared helpers should normalize it without inventing facts.
 

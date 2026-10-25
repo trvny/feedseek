@@ -3,6 +3,8 @@ import importlib.util
 import json
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
 from pathlib import Path
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "site" / "build_site.py"
@@ -178,6 +180,84 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn('href="https://feeds.example/feed_test.xml"', links)
         self.assertIn('type="application/json"', links)
         self.assertIn('href="https://feeds.example/feed_test.json"', links)
+
+    def test_model_catalog_uses_only_existing_feed_urls_and_normalized_metadata(self):
+        feeds = [
+            {
+                "filename": "feed_alpha.xml",
+                "title": "Alpha",
+                "subtitle": "Plaintext headlines",
+                "source": "https://source.example/news",
+                "entries": 2,
+                "updated": datetime(2026, 10, 25, 20, 30, tzinfo=timezone.utc),
+            },
+            {
+                "filename": "feed_beta.xml",
+                "title": "Béta",
+                "subtitle": "",
+                "source": "",
+                "entries": 0,
+                "updated": None,
+            },
+        ]
+        result = json.loads(
+            build_site.build_model_feed_catalog(feeds, "https://trvny.github.io/feedseek/")
+        )
+        self.assertEqual(result["format"], "feedseek-model-feed-catalog")
+        self.assertEqual(result["version"], 1)
+        self.assertEqual(result["feed_count"], 2)
+        self.assertEqual(result["site_url"], "https://trvny.github.io/feedseek/")
+        self.assertEqual([entry["key"] for entry in result["feeds"]], ["alpha", "beta"])
+        self.assertEqual(
+            result["feeds"][0]["model_feed_url"],
+            "https://trvny.github.io/feedseek/feed_alpha.json",
+        )
+        self.assertEqual(
+            result["feeds"][0]["feed_url"],
+            "https://trvny.github.io/feedseek/feed_alpha.xml",
+        )
+        self.assertEqual(result["feeds"][0]["entry_count"], 2)
+        self.assertEqual(result["feeds"][0]["updated_at"], "2026-10-25T20:30:00Z")
+        self.assertEqual(result["feeds"][1]["updated_at"], None)
+        self.assertEqual(result["feeds"][1]["title"], "Béta")
+        self.assertNotIn("items", result["feeds"][0])  # No second content store.
+
+    def test_machine_discovery_lists_catalog_and_model_json_urls(self):
+        feeds = [{
+            "filename": "feed_alpha.xml",
+            "title": "Alpha",
+            "subtitle": "Test source",
+            "source": "https://source.example/",
+            "updated": datetime(2026, 10, 25, tzinfo=timezone.utc),
+            "entries": 3,
+            "icon": "",
+            "logo": "",
+            "format": "atom",
+        }]
+        base = "https://feeds.example/"
+        index = build_site.build_index(feeds, base)
+        self.assertIn('href="https://feeds.example/model-feeds.json"', index)
+        self.assertIn('data-model-feed href="https://feeds.example/feed_alpha.json"', index)
+        self.assertIn('href="model-feeds.json"', index)
+        llms = build_site.build_llms_txt(feeds, base)
+        self.assertIn("[Model Feed catalog (JSON)](https://feeds.example/model-feeds.json)", llms)
+        self.assertIn("https://feeds.example/feed_alpha.json", llms)
+        self.assertIn("model-feeds.json", build_site.build_index_markdown(feeds, base))
+        self.assertIn("model-feeds.json", build_site.build_llms_full(feeds, base))
+        doc = ET.fromstring(build_site.build_sitemap(feeds, base))
+        urls = [el.text for el in doc.findall(".//{*}loc")]
+        self.assertEqual(
+            urls,
+            [
+                base,
+                base + "reader/",
+                base + "model-feeds.json",
+                base + "feed_alpha.xml",
+                base + "feed_alpha.json",
+            ],
+        )
+        webmcp = (MODULE_PATH.parent / "webmcp.js").read_text(encoding="utf-8")
+        self.assertIn('modelFeedUrl: card.querySelector(".card__actions a[data-model-feed]")', webmcp)
 
     def test_llms_full_links_dedicated_model_feed(self):
         feed = {

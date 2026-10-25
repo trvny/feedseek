@@ -58,6 +58,7 @@
       title: text(card.querySelector(".card__title")),
       source: card.querySelector(".src")?.href || "",
       feedUrl: card.querySelector(".card__actions a.btn")?.href || "",
+      modelFeedUrl: card.querySelector(".card__actions a[data-model-feed]")?.href || "",
       summary: text(card.querySelector(".card__sub")),
       meta: text(card.querySelector(".card__meta")),
     });
