@@ -497,7 +497,7 @@ def run(
     source_tags=None,
     image_backfill=True,
 ):
-    """Scrape, merge, dedupe, cache, and write XML plus JSON Feed sidecar.
+    """Scrape, merge, dedupe, cache, and write XML plus Model Feed JSON.
 
     Native RSS/Atom sources refresh cached metadata by default because their
     listing feed is already fetched on every run. Pass ``refresh_sources=()``

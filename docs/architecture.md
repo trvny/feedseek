@@ -1,6 +1,6 @@
 # Feedseek internals
 
-Feedseek turns native feeds, public APIs and carefully selected web pages into stable, enriched RSS/Atom output plus JSON Feed 1.1 and dedicated Model Feed sidecars. Native feeds are treated as upstream material rather than an automatic final form: the pipeline may normalize, repair or enrich them when that improves fidelity, stability or interoperability. The public README stays focused on using the project; implementation details live here.
+Feedseek turns native feeds, public APIs and carefully selected web pages into stable, enriched RSS/Atom output plus one LLM-friendly Model Feed JSON file per XML feed. Native feeds are treated as upstream material rather than an automatic final form: the pipeline may normalize, repair or enrich them when that improves fidelity, stability or interoperability. The public README stays focused on using the project; implementation details live here.
 
 ## Pipeline
 
@@ -10,7 +10,7 @@ feeds.yaml
    ▼
 fetch / parse / normalize / deduplicate
    │
-   ├──▶ feeds/*.xml + *.json + *.model.json
+   ├──▶ feeds/feed_<name>.xml + feed_<name>.json
    ├──▶ cache/                 last-known state
    └──▶ site/                  GitHub Pages + reader
              │
@@ -29,7 +29,7 @@ The defaults are intentionally conservative:
 
 ## Feed quality contract
 
-The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and a valid JSON Feed 1.1 sidecar with the same item count. JSON items need unique non-empty IDs and a protocol content field. The shared writer also derives a compact `*.model.json` Model Feed from that JSON Feed. Model Feed v1 keeps canonical identity, normalized plaintext, `text_kind`, dates, provenance-friendly authors/tags and optional imagery while dropping reader-specific markup. These are generated representations of the same publication, not separate editorial sources.
+The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published.
 
 Everything that depends on upstream richness stays adaptive. Images, authors, categories, provenance, summaries and publication/update dates should be preserved or enriched whenever the source gives enough evidence, but their absence alone does not fail a feed. A weather endpoint, a changelog and a newsroom should not be forced through the same editorial cookie cutter. When metadata is present, shared helpers should normalize it without inventing facts.
 
@@ -69,11 +69,11 @@ In CI, feed `rel="self"` URLs are derived from `GITHUB_REPOSITORY`, so repositor
 
 ## Adding a feed
 
-1. Create `feed_generators/<name>.py` exposing `main(full: bool)` and publish through the shared writer, which maintains the XML + JSON Feed + Model Feed publication set.
+1. Create `feed_generators/<name>.py` exposing `main(full: bool)` and publish through the shared writer, which maintains the XML + single Model Feed JSON publication pair.
 2. Register it in `feeds.yaml`.
 3. Reuse shared HTTP, normalization, cache and feed helpers instead of creating local copies.
 4. Add the source/feed row to the registry table in `README.md`; tests keep that table aligned with `feeds.yaml`.
-5. Update the feed-count badges in both READMEs and the `registry-count` marker in `README_pl.md`; tests compare all three with `feeds.yaml`.
+5. Keep the source-count badges in all three language READMEs and the `registry-count` marker in `README_pl.md` aligned with `feeds.yaml`; tests enforce the current registry count.
 6. Add it to `feeds.yaml` → `published_feeds` when it should appear on the public site.
 7. Optionally add a per-feed Make target when a convenient dedicated or `*_full` command is useful.
 8. Run the relevant tests and `make validate`.
@@ -87,7 +87,7 @@ In CI, feed `rel="self"` URLs are derived from `GITHUB_REPOSITORY`, so repositor
 ├── .github/workflows/update-feeds.yml   # generate + validate + publish every 2 h
 ├── feeds.yaml                           # source registry
 ├── feed_generators/                     # maintained generators + shared helpers
-├── feeds/                               # generated RSS/Atom + JSON + Model Feed output
+├── feeds/                               # generated RSS/Atom + one Model Feed JSON per source
 ├── cache/                               # incremental state / last-known data
 ├── site/                                # GitHub Pages site and reader
 ├── feeds-proxy/                         # supporting Cloudflare Worker
