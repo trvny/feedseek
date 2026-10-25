@@ -1,0 +1,57 @@
+name: Feedseek Site CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "tests/test_build_site_favicons.py"
+      - "feed_generators/models.py"
+      - "feed_generators/validate_feeds.py"
+      - "feeds.yaml"
+      - ".github/workflows/site-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "tests/test_build_site_favicons.py"
+      - "feed_generators/models.py"
+      - "feed_generators/validate_feeds.py"
+      - "feeds.yaml"
+      - ".github/workflows/site-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: feedseek-site-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          enable-cache: false
+          python-version: "3.14"
+
+      - name: Test site discovery and publication contracts
+        run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
+
+      - name: Build GitHub Pages artifact without deploying
+        env:
+          SITE_URL: https://trvny.github.io/feedseek/
+        run: uv run --locked site/build_site.py
+
+      - name: Check generated public catalog
+        run: |
+          test -s public/model-feeds.json
+          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
+          grep -Fq 'model-feeds.json' public/llms.txt
