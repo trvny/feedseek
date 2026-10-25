@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-24T22:42:04.767964+00:00</updated>
+  <updated>2026-10-25T05:11:04.577939+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds.trfny.com/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6f59a20d7b8d7405</id>
+    <title>WAF - WAF Release - 2026-10-25 - Emergency - Cloudflare Managed Ruleset</title>
+    <updated>2026-10-25T00:00:00+00:00</updated>
+    <content>This emergency release will add two rules related to the Brotli vulnerability CVE-2026-111497 to the Cloudflare Managed Ruleset. Both rules will be enabled by default with their action set to Log , providing visibility into matching requests so customers can evaluate the impact before choosing to block them. Rule behavior Brotli rule: Matches incoming requests that declare Brotli request-body encoding ( Content-Encoding: br ), including legitimate clients submitting Brotli-encoded request bodies</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-25T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/og.png?v=0940de90a6b6929e" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/og.png?v=0940de90a6b6929e"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/og.png?v=0940de90a6b6929e" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/069caf5d9f082c6d</id>
     <title>Increased error rate in Workflow Operations</title>
@@ -1406,21 +1421,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-13T14:56:50+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/477baeeb73cdd3c8</id>
-    <title>Workers, BYOIP, Bots - Workers subrequests now preserve context for BYOIP destinations</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>Cloudflare now preserves Workers context when a subrequest targets a Cloudflare-proxied hostname using Bring Your Own IP (BYOIP) . These requests are identified as Cloudflare-to-Cloudflare traffic instead of external Internet traffic. Previously, some BYOIP subrequests could lose Workers context and original client signals. This could cause security rules to behave unexpectedly, Bot Management to evaluate an internal Cloudflare connection instead of the original client, or affected requests to r</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/og.png?v=e7ff9c1dc304c39f" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/og.png?v=e7ff9c1dc304c39f"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/og.png?v=e7ff9c1dc304c39f" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/cb2966f1ec4861da</id>
