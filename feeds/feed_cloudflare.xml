@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-26T08:04:37.522390+00:00</updated>
+  <updated>2026-10-26T15:25:43.546704+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/66b54a1afabf4e82</id>
+    <title>Agents, Workers - Code that agents run with @cloudflare/computer can now pause and resume</title>
+    <updated>2026-10-26T00:00:00+00:00</updated>
+    <content>@cloudflare/computer ↗︎ gives your agent a workspace to run code in. From v0.7.0, that code can resume after a deploy or crash, and pause on an external action, for example to approve a tool call. Resume interrupted runs Set onInterrupt: "replay" on WorkerJavaScriptBackend , or on a single run. import { DurableObject } from "cloudflare:workers" ; import { Workspace } from "@cloudflare/computer" ; import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript" ; export c</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-26-computer-durable-javascript/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-26T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=292,format=svg/_astro/computer-approval-flow.CNEabsLO.svg" type="image/svg+xml" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=292,format=svg/_astro/computer-approval-flow.CNEabsLO.svg"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=292,format=svg/_astro/computer-approval-flow.CNEabsLO.svg" type="image/svg+xml" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1465a62f4821debd</id>
+    <title>DNS - Advanced Nameservers use a nameserver type</title>
+    <updated>2026-10-26T00:00:00+00:00</updated>
+    <content>Starting today, the DNS settings endpoints gradually begin to represent Advanced Nameservers with nameservers.type: "cloudflare.advanced" . The rollout is expected to take seven days. Previously, the API used the "foundation_dns": true setting for this configuration. Before the rollout reaches an account, the endpoints continue to return nameservers.type: "cloudflare.standard" for Advanced Nameservers. The endpoints accept nameservers.type: "cloudflare.advanced" in PATCH requests for entitled ac</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-26-foundation-dns-nameserver-type/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-26T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-26-foundation-dns-nameserver-type/og.png?v=a4362872a7730b41" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-26-foundation-dns-nameserver-type/og.png?v=a4362872a7730b41"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-26-foundation-dns-nameserver-type/og.png?v=a4362872a7730b41" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/6f59a20d7b8d7405</id>
     <title>WAF - WAF Release - 2026-10-25 - Emergency - Cloudflare Managed Ruleset</title>
@@ -1421,36 +1451,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-13T14:56:50+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cb2966f1ec4861da</id>
-    <title>Gateway, Cloudflare One - Request Gateway DNS64 through DNS locations and EDNS</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>You can now request DNS64 through Cloudflare Gateway DNS location settings or Extension Mechanisms for DNS (EDNS) options. DNS64 synthesizes AAAA records from A records for IPv6-only networks. These networks require network address translation from IPv6 to IPv4 (NAT64). Turn on Enable DNS64 for a location, or include an empty EDNS option 65051 in individual queries. Both mechanisms support UDP, TCP, DNS over TLS (DoT), and DNS over HTTPS (DoH). For example, request DNS64 through EDNS with dig : </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-gateway-dns64-opt-in/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-gateway-dns64-opt-in/og.png?v=fd21eaea767ef30e" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-gateway-dns64-opt-in/og.png?v=fd21eaea767ef30e"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-gateway-dns64-opt-in/og.png?v=fd21eaea767ef30e" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/06b05f8535a1705d</id>
-    <title>Audit Logs - Audit Logs v2 now captures view actions</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>Audit Logs v2 now records view actions for supported endpoints, providing visibility into read activity across Cloudflare products. These actions correspond to GET requests and provide additional context for security investigations and forensic analysis. The Audit Logs v2 dashboard excludes view actions by default to reduce noise. Remove the default Action type is not view filter to include them, or set Action type to view to show only view actions. View actions are always available through the </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-13-audit-logs-v2-view-actions/og.png?v=53cee99dcafe08f1" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/28c0beeef943cce6</id>
