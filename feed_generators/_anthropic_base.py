@@ -7,6 +7,7 @@ Covers Anthropic's core article streams:
     - Anthropic Newsroom      https://www.anthropic.com/news
     - Anthropic Research      https://www.anthropic.com/research
     - Anthropic Engineering   https://www.anthropic.com/engineering
+    - Alignment research      https://www.anthropic.com/research/team/alignment
 
 The listing pages render article cards in static HTML (no JS), so a plain
 ``requests`` fetch is enough. Titles and summaries are read from each article's
@@ -26,6 +27,7 @@ from feedgen.feed import FeedGenerator
 from utils import (
     add_entry_media,
     fetch_page,
+    normalize_link,
     sanitize_xml,
     setup_feed_extensions,
     setup_feed_links,
@@ -42,6 +44,7 @@ SOURCES = [
     ("Anthropic Newsroom", "https://www.anthropic.com/news", "https://www.anthropic.com", "/news/"),
     ("Anthropic Research", "https://www.anthropic.com/research", "https://www.anthropic.com", "/research/"),
     ("Anthropic Engineering", "https://www.anthropic.com/engineering", "https://www.anthropic.com", "/engineering/"),
+    ("Anthropic Alignment Research", "https://www.anthropic.com/research/team/alignment", "https://www.anthropic.com", "/research/"),
 ]
 
 # The research listing also links team/index pages, which are not articles.
@@ -120,23 +123,44 @@ def scrape_source(label, listing_url, base, prefix, known_links):
         return entries
 
     seen = set()
+    seen_normalized = set()
+    known_normalized = {normalize_link(link) for link in known_links}
+    recognized = 0
     for a in soup.find_all("a", href=True):
         href = a["href"]
         if not href.startswith(prefix) or href == prefix or href in seen:
             continue
         if prefix == "/research/" and RESEARCH_SKIP.match(href):
             continue
-        seen.add(href)
-
         text = a.get_text(" ", strip=True)
         m = DATE_RE.search(text)
+        if not m and label == "Anthropic Alignment Research":
+            # Team publication rows can keep the date beside the article link.
+            for parent in list(a.parents)[:4]:
+                if parent.name in {"main", "body", "html"}:
+                    break
+                # Do not borrow a date from a wrapper of several papers.
+                article_links = [
+                    link for link in parent.find_all("a", href=True)
+                    if link["href"].startswith("/research/")
+                    and not RESEARCH_SKIP.match(link["href"])
+                ]
+                if len(article_links) != 1:
+                    break
+                m = DATE_RE.search(parent.get_text(" ", strip=True))
+                if m:
+                    break
         if not m:  # cards without a date aren't real articles
             continue
         date_obj = parse_date(m.group(1))
         link = href if href.startswith("http") else base + href
+        key = normalize_link(link)
+        recognized += 1
 
-        if link in known_links:
-            continue  # already cached, no need to refetch metadata
+        if key in known_normalized or key in seen_normalized:
+            continue  # cached or already seen in another listing / URL variant
+        seen.add(href)
+        seen_normalized.add(key)
 
         meta = fetch_article_meta(link)
         title = sanitize_xml(meta["title"] or title_from_slug(href))
@@ -150,6 +174,8 @@ def scrape_source(label, listing_url, base, prefix, known_links):
             "image": meta.get("image"),
         })
         logger.info("  [%s] %s", label, title)
+    if label == "Anthropic Alignment Research" and not recognized:
+        logger.warning("Alignment team index yielded no dated article links: %s", listing_url)
     return entries
 
 
@@ -218,11 +244,14 @@ def scrape_red(known_links):
 def scrape_all(known_links):
     """Collect new entries from every source, skipping already-cached links."""
     new_entries = []
+    seen_links = set(known_links)
     for label, listing, base, prefix in SOURCES:
         logger.info("Scraping %s ...", label)
-        new_entries += scrape_source(label, listing, base, prefix, known_links)
+        articles = scrape_source(label, listing, base, prefix, seen_links)
+        new_entries.extend(articles)
+        seen_links.update(article["link"] for article in articles)
     logger.info("Scraping %s ...", RED_LABEL)
-    new_entries += scrape_red(known_links)
+    new_entries += scrape_red(seen_links)
     return new_entries
 
 
