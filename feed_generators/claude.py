@@ -6,6 +6,7 @@ Aggregates the various Claude product update sources into one **Atom** feed
 written to ``feeds/feed_claude.xml``:
 
     - Claude Blog                 https://claude.com/blog
+    - Claude Developer            https://claude.dev/rss.xml                 (native RSS)
     - Claude Code                  https://code.claude.com/docs/en/whats-new/rss.xml   (native RSS)
                                    https://code.claude.com/docs/en/changelog/rss.xml   (native RSS)
     - Claude Platform feed
@@ -65,6 +66,7 @@ CLAUDE_BLOG_BASE = "https://claude.com"
 # keeps its own distinct title (e.g. "Week 22" vs "2.1.160") and link, so they
 # stay separate entries; only the category label is shared.
 RSS_SOURCES = [
+    ("Claude Developer", "https://claude.dev/rss.xml"),
     ("Claude Code", "https://code.claude.com/docs/en/whats-new/rss.xml"),
     ("Claude Code", "https://code.claude.com/docs/en/changelog/rss.xml"),
     ("Claude Cowork", "https://claude.com/docs/cowork/changelog/rss.xml"),
@@ -207,7 +209,11 @@ def scrape_rss(label, rss_url, known_links):
         logger.warning("Could not fetch %s: %s", rss_url, e)
         return entries
 
-    for item in soup.find_all("item"):
+    items = soup.find_all("item")
+    if label == "Claude Developer" and not items:
+        logger.warning("Claude Developer RSS has no items: %s", rss_url)
+
+    for item in items:
         link_el = item.find("link")
         link = link_el.get_text(strip=True) if link_el else rss_url
         if not link or link in known_links:
@@ -405,8 +411,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://claude.com/{feed_name}")
     fg.title("Claude")
     fg.subtitle(
-        "Claude product updates: the Claude blog, Claude Code (what's-new and "
-        "changelog), Claude Apps release notes, Claude Platform release "
+        "Claude product updates: Claude Blog and claude.dev, Claude Code "
+        "(what's-new and changelog), Claude Apps release notes, Claude Platform release "
         "notes and system prompts, and the Claude status incident history."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)

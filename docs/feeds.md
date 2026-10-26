@@ -19,6 +19,24 @@ The shared `multi_rss` pipeline tags entries with their publication, refreshes
 native metadata, deduplicates overlaps and keeps a rolling cache. Each source
 fails independently; no empty scrape overwrites an existing feed.
 
+## About Anthropic Alignment and claude.dev
+
+The `anthropic` aggregate already covers the main
+[Research](https://www.anthropic.com/research) and
+[Engineering](https://www.anthropic.com/engineering) listings. Its additional
+[Alignment team index](https://www.anthropic.com/research/team/alignment)
+provides a narrower view that can expose older papers absent from the current
+Research listing. These are **not** separate versions of the articles: the
+collectors share seen article URLs within each run, so overlapping publications
+are fetched and published once, preferring the broad Research source label.
+The existing `alignment.anthropic.com` research blog remains independent.
+
+The `claude` aggregate includes the official
+[claude.dev developer blog](https://claude.dev/) via its native
+[`rss.xml`](https://claude.dev/rss.xml), alongside Claude product, Code and
+Platform updates. Already-seen article URLs are ignored via the existing
+rolling cache and normal feed deduplication.
+
 ## About the AccuWeather News feed
 
 **One combined feed** from three AccuWeather surfaces. News covers every editorial category (weather-news, space-news, climate, health-wellness, leisure-recreation, blogs-webinars, severe-weather, weather-forecasts, travel, sports, and more): the category landing pages are client-rendered, but AccuWeather publishes a Google-News sitemap at `/sitemaps_v2/articles/news/` carrying the ~40 most recent articles with their title and publication date, and the category is read from the `/en/<category>/` URL segment. Corporate press releases come from the native WordPress RSS at `name.accuweather.com/corporate/feed/` (the canonical `corporate.accuweather.com/feed/` is currently empty, so the populated `name.` mirror is used). The API change log is scraped from `apidev.accuweather.com/developers/change-log`, where each change is an `<h2 id=...>` titled "Month YYYY — summary" (the month/year gives the date, the id is the anchor). Entries carry per-source/category `<category>` labels and are deduplicated by URL. The public site 403s a plain User-Agent, so fetches use curl_cffi Chrome impersonation. Not a source, deliberately: `cms.accuweather.com` (the WordPress backend) is gated behind Microsoft auth, so the public Google-News sitemap is used for news instead.
