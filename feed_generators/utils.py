@@ -952,6 +952,7 @@ def _write_sidecars(xml_path: Path, feed_name: str) -> None:
 # ---------------------------------------------------------------------------
 
 from urllib.parse import (  # noqa: E402
+    parse_qs,
     parse_qsl,
     urlencode,
     urljoin,
