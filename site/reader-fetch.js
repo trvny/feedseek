@@ -1,6 +1,6 @@
 (() => {
   const nativeFetch = window.fetch.bind(window);
-  const FAVICON_PROXY_ORIGIN = "https://feeds.trfny.com/favicon";
+  const FAVICON_PROXY_ORIGIN = "https://feeds-proxy.travny.workers.dev/favicon";
 
   function faviconCandidates(iconUrl, siteUrl, size = 32) {
     const httpUrl = value => {
@@ -14,10 +14,19 @@
 
     const icon = httpUrl(iconUrl);
     const site = httpUrl(siteUrl);
-    const domain = site?.hostname || icon?.hostname || "";
+    const isManagedResolver = icon?.pathname === "/favicon"
+      && ["feeds-proxy.travny.workers.dev", "feeds.trfny.com"].includes(icon.hostname);
+    const domain = site?.hostname || (isManagedResolver ? icon.searchParams.get("domain") : icon?.hostname) || "";
     if (!domain) return icon ? [icon.href] : [];
 
     const managed = new URL(FAVICON_PROXY_ORIGIN);
+    if (isManagedResolver) {
+      // Keep source-provided assets and provider preferences during migration.
+      for (const key of ["url", "provider"]) {
+        const value = icon.searchParams.get(key);
+        if (value) managed.searchParams.set(key, value);
+      }
+    }
     managed.searchParams.set("domain", domain);
     managed.searchParams.set("sz", String(size));
 
@@ -29,13 +38,10 @@
     const preferredExplicit = icon
       && icon.href !== rootGuess
       && !isOldResolver
-      && !(icon.hostname === "feeds.trfny.com" && icon.pathname === "/favicon");
+      && !isManagedResolver;
 
     const candidates = [];
     if (preferredExplicit) candidates.push(icon.href);
-    if (icon?.hostname === "feeds.trfny.com" && icon.pathname === "/favicon") {
-      candidates.push(icon.href);
-    }
     candidates.push(managed.href);
     if (icon) candidates.push(icon.href);
     return [...new Set(candidates)];
