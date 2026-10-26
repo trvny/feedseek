@@ -580,11 +580,12 @@ def _managed_explicit_icon(blog_url: str, icon: str, size: int = 64) -> str:
     domain = _favicon_domain(blog_url)
     if any(icon.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)):
         query = parse_qs(urlsplit(icon).query)
+        managed_domain = (query.get("domain") or [domain])[0] or domain
         explicit = (query.get("url") or [None])[0]
         if explicit and not explicit.startswith("https://"):
             explicit = None
         provider = "duckduckgo" if (query.get("provider") or [""])[0] == "duckduckgo" else "google"
-        return favicon_proxy(domain, sz=size, provider=provider, url=explicit) if domain else icon
+        return favicon_proxy(managed_domain, sz=size, provider=provider, url=explicit) if managed_domain else icon
     if domain and icon.startswith("https://"):
         return favicon_proxy(domain, sz=size, url=icon)
     return icon

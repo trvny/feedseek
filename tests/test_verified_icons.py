@@ -47,6 +47,21 @@ class ManagedIconTests(unittest.TestCase):
         self.assertNotIn("feeds.trfny.com", query["url"][0])
 
 
+    def test_legacy_managed_icon_preserves_override_domain(self):
+        from utils import _managed_explicit_icon
+
+        icon = (
+            "https://feeds.trfny.com/favicon?domain=en.wikiquote.org"
+            "&sz=64&provider=duckduckgo"
+        )
+        migrated = _managed_explicit_icon(
+            "https://gist.github.com/trvny/example", icon
+        )
+        query = parse_qs(urlsplit(migrated).query)
+        self.assertEqual(query["domain"], ["en.wikiquote.org"])
+        self.assertEqual(query["provider"], ["duckduckgo"])
+        self.assertTrue(migrated.startswith(FAVICON_PROXY_ORIGIN))
+
     def test_default_icon_uses_feedseek_resolver(self):
         icon = favicon_url("https://example.com/blog")
         parts = urlsplit(icon)
