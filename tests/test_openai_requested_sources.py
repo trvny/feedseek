@@ -15,6 +15,7 @@ class OpenAIRequestedSourcesTests(unittest.TestCase):
         pl_urls = {source[1] for source in openai.PL_INDEX_SOURCES}
 
         self.assertIn("https://openai.com/products/release-notes/rss.xml", rss_urls)
+        self.assertIn("https://developers.openai.com/api/docs/bots/rss.xml", rss_urls)
         self.assertIn("https://openai.com/pl-PL/news/", pl_urls)
         self.assertIn("https://openai.com/pl-PL/research/index/", pl_urls)
         self.assertEqual(openai.DEVELOPER_BLOG_URL, "https://developers.openai.com/blog")
@@ -27,6 +28,11 @@ class OpenAIRequestedSourcesTests(unittest.TestCase):
             openai.CHATGPT_WHATS_NEW_URL,
             "https://learn.chatgpt.com/docs/whats-new",
         )
+
+    def test_api_bots_native_rss_is_included_once(self):
+        url = "https://developers.openai.com/api/docs/bots/rss.xml"
+        sources = [(label, cap) for label, feed_url, cap in openai.RSS_SOURCES if feed_url == url]
+        self.assertEqual(sources, [("OpenAI API Bots", None)])
 
     def test_polish_index_keeps_localized_link_and_polish_date(self):
         html = """
