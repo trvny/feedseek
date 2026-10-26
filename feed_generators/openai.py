@@ -11,6 +11,7 @@ Aggregates OpenAI's product/update sources into one **Atom** feed written to
     - OpenAI Engineering     https://openai.com/news/engineering/rss.xml        (native RSS)
     - OpenAI Release notes   https://openai.com/products/release-notes/rss.xml  (native RSS)
     - OpenAI Developers      https://developers.openai.com/rss.xml              (native RSS)
+    - OpenAI API Bots        https://developers.openai.com/api/docs/bots/rss.xml (native RSS)
     - OpenAI Developer Blog  https://developers.openai.com/blog                 (HTML)
     - OpenAI Alignment       https://alignment.openai.com/                      (native RSS)
     - Misalignment reports   https://alignment.openai.com/misalignment-reports/  (HTML)
@@ -96,6 +97,7 @@ RSS_SOURCES = [
     ("OpenAI Engineering", "https://openai.com/news/engineering/rss.xml", None),
     ("OpenAI Release notes", "https://openai.com/products/release-notes/rss.xml", 80),
     ("OpenAI Developers", "https://developers.openai.com/rss.xml", None),
+    ("OpenAI API Bots", "https://developers.openai.com/api/docs/bots/rss.xml", None),
     ("OpenAI Alignment", urljoin(ALIGNMENT_URL, "rss.xml"), 80),
     ("OpenAI Codex", "https://developers.openai.com/codex/changelog/rss.xml", None),
 ]
@@ -1035,7 +1037,7 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.title("OpenAI")
     fg.subtitle(
         "OpenAI updates: News and Research (EN/PL), Engineering, Release notes, "
-        "Developer Blog, Alignment, Deployment Safety, Status, ChatGPT, and changelogs."
+        "Developer Blog, API Bots, Alignment, Deployment Safety, Status, ChatGPT, and changelogs."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
