@@ -138,6 +138,29 @@ test("managed favicon migration preserves explicit asset and provider", () => {
   assert.equal(new URL(noSite[0]).searchParams.get("domain"), "wykop.pl");
 });
 
+test("managed favicon domain override wins over the feed homepage", () => {
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
+  const { faviconCandidates } = window.FeedseekReaderUtils;
+  const origins = [
+    "https://feeds.trfny.com/favicon",
+    "https://feeds-proxy.travny.workers.dev/favicon",
+  ];
+
+  for (const origin of origins) {
+    const managed = origin + "?domain=en.wikiquote.org&sz=64&provider=duckduckgo";
+    const [candidate] = faviconCandidates(
+      managed,
+      "https://gist.github.com/trvny/quotes",
+      32,
+    );
+    const url = new URL(candidate);
+    assert.equal(url.origin, "https://feeds-proxy.travny.workers.dev");
+    assert.equal(url.searchParams.get("domain"), "en.wikiquote.org");
+    assert.equal(url.searchParams.get("provider"), "duckduckgo");
+    assert.equal(url.searchParams.get("sz"), "32");
+  }
+});
+
 test("keeps same-origin proxy bypass unchanged", async () => {
   const seen = [];
   const nativeFetch = input => {

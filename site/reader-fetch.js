@@ -16,7 +16,8 @@
     const site = httpUrl(siteUrl);
     const isManagedResolver = icon?.pathname === "/favicon"
       && ["feeds-proxy.travny.workers.dev", "feeds.trfny.com"].includes(icon.hostname);
-    const domain = site?.hostname || (isManagedResolver ? icon.searchParams.get("domain") : icon?.hostname) || "";
+    const domain = (isManagedResolver ? icon.searchParams.get("domain") : null)
+      || site?.hostname || icon?.hostname || "";
     if (!domain) return icon ? [icon.href] : [];
 
     const managed = new URL(FAVICON_PROXY_ORIGIN);
