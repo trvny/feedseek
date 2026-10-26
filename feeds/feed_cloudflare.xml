@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-26T15:25:43.546704+00:00</updated>
+  <updated>2026-10-26T21:10:16.129117+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -16,7 +16,7 @@
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/66b54a1afabf4e82</id>
-    <title>Agents, Workers - Code that agents run with @cloudflare/computer can now pause and resume</title>
+    <title>Agents, Workers - Cloudflare Computer now helps agents recover from interruptions and wait for approval</title>
     <updated>2026-10-26T00:00:00+00:00</updated>
     <content>@cloudflare/computer ↗︎ gives your agent a workspace to run code in. From v0.7.0, that code can resume after a deploy or crash, and pause on an external action, for example to approve a tool call. Resume interrupted runs Set onInterrupt: "replay" on WorkerJavaScriptBackend , or on a single run. import { DurableObject } from "cloudflare:workers" ; import { Workspace } from "@cloudflare/computer" ; import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript" ; export c</content>
     <link href="https://developers.cloudflare.com/changelog/post/2026-10-26-computer-durable-javascript/" rel="alternate"/>
@@ -43,6 +43,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-26-foundation-dns-nameserver-type/og.png?v=a4362872a7730b41" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3e638b1176645974</id>
+    <title>Workers - Workers tracing — new spanContext(), setStatus(), and updateName() APIs</title>
+    <updated>2026-10-26T00:00:00+00:00</updated>
+    <content>Custom spans in Workers now support three more methods from the OpenTelemetry span API. span.spanContext() returns the span's traceId , spanId , and traceFlags . The IDs match the trace and span IDs in Workers Observability and in exported traces, so you can log them or return them to clients to correlate a request with its trace. span.setStatus(status) sets the span status to "unset" , "ok" , or "error" , with an optional message for errors. Span status is included in traces exported to OpenTel</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-26-span-context-status-update-name/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-26T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-26-span-context-status-update-name/og.png?v=4c6c84b699a1a4e6" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-26-span-context-status-update-name/og.png?v=4c6c84b699a1a4e6"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-26-span-context-status-update-name/og.png?v=4c6c84b699a1a4e6" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/6f59a20d7b8d7405</id>
@@ -201,6 +216,21 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a635a78a9b1393f7</id>
+    <title>Workers, Pages - Workers Builds and Pages build images reject compromised eMudhra certificates</title>
+    <updated>2026-10-23T00:00:00+00:00</updated>
+    <content>The private keys of eight eMudhra intermediate certificate authorities ↗︎ can be recovered, so anyone can forge a certificate for any hostname that chains to them. The Workers Builds and Pages build images now reject these certificates when your build clones your repository, installs dependencies, or makes HTTPS requests. The updated images include patched CA certificates, Node.js 22.23.4 and 24.22.1, Bun 1.4.4, and pip 26.2.2. Build commands also run with environment variables that point older </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-build-images-emudhra-certificates/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-23T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-build-images-emudhra-certificates/og.png?v=9e33cac5870290b3" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-build-images-emudhra-certificates/og.png?v=9e33cac5870290b3"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-build-images-emudhra-certificates/og.png?v=9e33cac5870290b3" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/93facad928b13202</id>
@@ -1291,36 +1321,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-14T03:30:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1adee982e63bb252</id>
-    <title>DNS - Configure Advanced Custom Nameservers with nameserver sets (beta)</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>Nameserver sets are now available in beta to Enterprise accounts. A nameserver set groups two to five custom nameserver names with Cloudflare-assigned IP addresses. You can assign the set to zones in the same account. Enterprise customers using Cloudflare DNS can create Advanced Custom Nameserver sets. These sets distribute addresses across Advanced anycast network groups to improve resiliency. Compared to legacy custom_ns sets, modern nameserver sets offer several advantages: Sets are reusable </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-nameserver-sets/og.png?v=66b5ecbfed8def11" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5bfc515103166030</id>
-    <title>WAF - WAF Release - 2026-10-14 - Emergency</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks. Key Findings Key Findings Generic Rules - Remote Code Execution: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-emergency-waf-release/og.png?v=c61c53a754f8a898" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/e5d484cbc6ab5649</id>
