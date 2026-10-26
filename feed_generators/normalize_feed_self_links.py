@@ -107,10 +107,10 @@ def _source_domain(source_url: str) -> str:
         return ""
 
 
-def _managed_icon_options(icon_url: str, source_url: str) -> tuple[str | None, str]:
-    """Preserve an explicit asset/provider while moving metadata behind Feedseek."""
+def _managed_icon_options(icon_url: str, source_url: str) -> tuple[str | None, str, str | None]:
+    """Preserve explicit asset, provider and domain from managed favicon metadata."""
     if not icon_url:
-        return None, "google"
+        return None, "google", None
 
     if any(icon_url.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)):
         query = parse_qs(urlsplit(icon_url).query)
@@ -123,12 +123,13 @@ def _managed_icon_options(icon_url: str, source_url: str) -> tuple[str | None, s
         )
         if explicit and not explicit.startswith("https://"):
             explicit = None
-        return explicit, provider
+        domain_override = (query.get("domain") or [None])[0]
+        return explicit, provider, domain_override
 
     if "icons.duckduckgo.com/ip3/" in icon_url:
-        return None, "duckduckgo"
+        return None, "duckduckgo", None
     if "google.com/s2/favicons" in icon_url:
-        return None, "google"
+        return None, "google", None
 
     try:
         source = urlsplit(source_url)
@@ -137,8 +138,8 @@ def _managed_icon_options(icon_url: str, source_url: str) -> tuple[str | None, s
         root_guess = ""
 
     if icon_url.startswith("https://") and icon_url != root_guess:
-        return icon_url, "google"
-    return None, "google"
+        return icon_url, "google", None
+    return None, "google", None
 
 
 def _managed_icon_pair(content: str) -> tuple[str, str] | None:
@@ -156,10 +157,10 @@ def _managed_icon_pair(content: str) -> tuple[str, str] | None:
     old_icon = html_lib.unescape(
         (icon_match or logo_match).group("value") if (icon_match or logo_match) else ""
     ).strip()
-    explicit, provider = _managed_icon_options(old_icon, source_url)
+    explicit, provider, domain_override = _managed_icon_options(old_icon, source_url)
 
     icon = favicon_proxy(
-        domain,
+        domain_override or domain,
         sz=64,
         provider=provider,
         url=explicit,

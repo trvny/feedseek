@@ -159,6 +159,45 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
             self.assertEqual(changed, [])
             self.assertEqual(feed.read_text(encoding="utf-8"), first)
 
+    def test_preserves_managed_icon_domain_override_across_normalization(self):
+        for origin in (
+            "https://feeds.trfny.com/favicon",
+            FAVICON_PROXY_ORIGIN,
+        ):
+            with self.subTest(origin=origin), tempfile.TemporaryDirectory() as tmp:
+                feeds_dir = Path(tmp)
+                feed = feeds_dir / "feed_daily_quote.xml"
+                sidecar = feeds_dir / "feed_daily_quote.json"
+                feed.write_text(
+                    f"""<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://gist.github.com/trvny/quotes</id>
+  <title>Daily Quote</title>
+  <link href="https://gist.github.com/trvny/quotes" rel="alternate"/>
+  <icon>{origin}?domain=en.wikiquote.org&amp;sz=64&amp;provider=duckduckgo</icon>
+  <logo>{origin}?domain=en.wikiquote.org&amp;sz=256&amp;provider=duckduckgo</logo>
+</feed>
+""",
+                    encoding="utf-8",
+                )
+                sidecar.write_text('{"items": []}', encoding="utf-8")
+
+                self.assertEqual(normalize_feed_self_links(feeds_dir), [feed])
+                first = feed.read_text(encoding="utf-8")
+                icon = _tag_value(first, "icon")
+                logo = _tag_value(first, "logo")
+                self.assertTrue(icon.startswith(FAVICON_PROXY_ORIGIN))
+                self.assertEqual(
+                    parse_qs(urlsplit(icon).query),
+                    {"domain": ["en.wikiquote.org"], "sz": ["64"], "provider": ["duckduckgo"]},
+                )
+                self.assertEqual(parse_qs(urlsplit(logo).query)["domain"], ["en.wikiquote.org"])
+                self.assertEqual(parse_qs(urlsplit(logo).query)["sz"], ["256"])
+                payload = json.loads(sidecar.read_text(encoding="utf-8"))
+                self.assertEqual(payload["favicon"], icon)
+                self.assertEqual(payload["icon"], logo)
+                self.assertEqual(normalize_feed_self_links(feeds_dir), [])
+                self.assertEqual(feed.read_text(encoding="utf-8"), first)
+
     def test_managed_icon_is_idempotent(self):
         with tempfile.TemporaryDirectory() as tmp:
             feeds_dir = Path(tmp)
