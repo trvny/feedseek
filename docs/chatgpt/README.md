@@ -4,7 +4,7 @@ Feedseek exposes its public feed data as a small read-only remote MCP app for Ch
 The production endpoint is:
 
 ```text
-https://feeds.trfny.com/mcp
+https://feeds-proxy.travny.workers.dev/mcp
 ```
 
 ## Tools
@@ -48,7 +48,7 @@ site/build_search_index.py
 GitHub Pages: feedseek-search-index.json
           |
           v
-feeds.trfny.com/mcp
+feeds-proxy.travny.workers.dev/mcp
           |
           +--> search / recent
           |
@@ -108,7 +108,7 @@ Use these values when filling the current OpenAI submission form:
 | Display name | `Feedseek` |
 | Category | `NEWS` |
 | MCP type | Universal |
-| MCP server | `https://feeds.trfny.com/mcp` |
+| MCP server | `https://feeds-proxy.travny.workers.dev/mcp` |
 | Authentication | None; public read-only data |
 | Homepage | `https://trvny.github.io/feedseek/` |
 | Source | `https://github.com/trvny/feedseek` |
@@ -122,10 +122,10 @@ Before submission:
 
 1. Confirm the submitting OpenAI Platform organization has **Apps Management: Write** and
    select a verified individual or business identity whose public details match the listing.
-2. Enter `https://feeds.trfny.com/mcp`, choose no authentication, then select **Scan Tools**.
+2. Enter `https://feeds-proxy.travny.workers.dev/mcp`, choose no authentication, then select **Scan Tools**.
 3. If the portal requests domain verification, copy its exact token into the production
    Cloudflare Worker variable `OPENAI_APPS_CHALLENGE`. The Worker serves that value verbatim at
-   `https://feeds.trfny.com/.well-known/openai-apps-challenge`; without a configured token the
+   `https://feeds-proxy.travny.workers.dev/.well-known/openai-apps-challenge`; without a configured token the
    route returns 404. Verify the URL, then retry domain verification in the portal.
 4. Verify the production MCP endpoint and the public support/privacy/terms links over HTTPS.
 5. Use the five positive and three negative cases from `docs/chatgpt/chatgpt-app-submission.json`,

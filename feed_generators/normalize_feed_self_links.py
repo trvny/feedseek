@@ -18,6 +18,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from utils import (
     FAVICON_PROXY_ORIGIN,
+    LEGACY_FAVICON_PROXY_ORIGINS,
     REPO_SLUG,
     favicon_proxy,
     large_icon,
@@ -111,7 +112,7 @@ def _managed_icon_options(icon_url: str, source_url: str) -> tuple[str | None, s
     if not icon_url:
         return None, "google"
 
-    if icon_url.startswith(FAVICON_PROXY_ORIGIN):
+    if any(icon_url.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)):
         query = parse_qs(urlsplit(icon_url).query)
         explicit_values = query.get("url")
         explicit: str | None = explicit_values[0] if explicit_values else None

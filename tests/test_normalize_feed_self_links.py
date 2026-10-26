@@ -179,6 +179,8 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
             self.assertEqual(changed, [feed])
             first = feed.read_text(encoding="utf-8")
             self.assertIn("xmlns:webfeeds=", first)
+            self.assertIn("https://feeds-proxy.travny.workers.dev/favicon?", first)
+            self.assertNotIn("https://feeds.trfny.com/favicon?", first)
             self.assertIn("<webfeeds:icon>", first)
             self.assertIn("<webfeeds:logo>", first)
 

@@ -92,7 +92,7 @@ test("reader favicon candidates prefer explicit feed assets, then managed resolv
     32,
   ));
   assert.equal(wykop[0], "https://wykop.pl/static/img/favicons/favicon.png");
-  assert.match(wykop[1], /^https:\/\/feeds\.trfny\.com\/favicon\?/);
+  assert.match(wykop[1], /^https:\/\/feeds-proxy\.travny\.workers\.dev\/favicon\?/);
   assert.match(wykop[1], /domain=wykop\.pl/);
 
   const newsify = Array.from(faviconCandidates(
@@ -100,11 +100,11 @@ test("reader favicon candidates prefer explicit feed assets, then managed resolv
     "https://newsify.today/polish/PL",
     32,
   ));
-  assert.match(newsify[0], /^https:\/\/feeds\.trfny\.com\/favicon\?/);
+  assert.match(newsify[0], /^https:\/\/feeds-proxy\.travny\.workers\.dev\/favicon\?/);
   assert.equal(newsify.at(-1), "https://newsify.today/favicon.ico");
 });
 
-test("reader favicon candidates keep already managed feed icons first", () => {
+test("reader favicon candidates move legacy managed icons to Workers URL", () => {
   const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { faviconCandidates } = window.FeedseekReaderUtils;
   const managed = "https://feeds.trfny.com/favicon?domain=jbzd.com.pl&sz=64";
@@ -115,9 +115,27 @@ test("reader favicon candidates keep already managed feed icons first", () => {
     32,
   ));
 
-  assert.equal(candidates[0], managed);
-  assert.match(candidates[1], /domain=jbzd\.com\.pl/);
-  assert.match(candidates[1], /sz=32/);
+  assert.match(candidates[0], /^https:\/\/feeds-proxy\.travny\.workers\.dev\/favicon\?/);
+  assert.match(candidates[0], /domain=jbzd\.com\.pl/);
+  assert.match(candidates[0], /sz=32/);
+  assert.equal(candidates[1], managed);
+});
+
+test("managed favicon migration preserves explicit asset and provider", () => {
+  const window = makeContext(() => Promise.resolve(new Response("ok")));
+  const { faviconCandidates } = window.FeedseekReaderUtils;
+  const legacy = "https://feeds.trfny.com/favicon?domain=wykop.pl&sz=64&provider=duckduckgo&url=https%3A%2F%2Fwykop.pl%2Ffavicon.png";
+  const [migrated, fallback] = faviconCandidates(legacy, "https://wykop.pl/", 32);
+  const url = new URL(migrated);
+  assert.equal(url.origin, "https://feeds-proxy.travny.workers.dev");
+  assert.equal(url.searchParams.get("url"), "https://wykop.pl/favicon.png");
+  assert.equal(url.searchParams.get("provider"), "duckduckgo");
+  assert.equal(url.searchParams.get("domain"), "wykop.pl");
+  assert.equal(url.searchParams.get("sz"), "32");
+  assert.equal(fallback, legacy);
+
+  const noSite = faviconCandidates(legacy, "", 32);
+  assert.equal(new URL(noSite[0]).searchParams.get("domain"), "wykop.pl");
 });
 
 test("keeps same-origin proxy bypass unchanged", async () => {

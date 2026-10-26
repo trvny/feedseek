@@ -14,8 +14,8 @@ SAMPLE = """<?xml version="1.0" encoding="utf-8"?>
   <title>Pogoda — Kościelec (Chrzanów)</title>
   <id>tag:travny,2026:weather:koscielec</id>
   <updated>2026-09-03T08:00:58Z</updated>
-  <link rel="self" href="https://weather.trfny.com/feed.atom"/>
-  <link rel="alternate" href="https://weather.trfny.com/"/>
+  <link rel="self" href="https://weather.travny.workers.dev/feed.atom"/>
+  <link rel="alternate" href="https://weather.travny.workers.dev/"/>
   <author><name>travny weather aggregator</name></author>
   <entry>
     <title>Kościelec: zachmurzenie, 18.6°C</title>
@@ -57,7 +57,7 @@ class WeatherFeedTests(unittest.TestCase):
   <title type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><strong>Pogoda</strong></div></title>
   <id>tag:travny,2026:weather:koscielec</id>
   <updated>2026-09-03T08:00:58Z</updated>
-  <link rel="self" href="https://weather.trfny.com/feed.atom"/>
+  <link rel="self" href="https://weather.travny.workers.dev/feed.atom"/>
   <entry>
     <title type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Kościelec <strong>18.6°C</strong></div></title>
     <id>tag:travny,2026:weather:koscielec:current:1</id>
@@ -72,7 +72,7 @@ class WeatherFeedTests(unittest.TestCase):
   <title>Pogoda</title>
   <id>tag:travny,2026:weather:koscielec</id>
   <updated>2026-09-03T08:00:58Z</updated>
-  <link rel="self" href="https://weather.trfny.com/feed.atom"/>
+  <link rel="self" href="https://weather.travny.workers.dev/feed.atom"/>
   <entry>
     <title>Kościelec</title>
     <id>&xxe;</id>
@@ -115,7 +115,7 @@ class WeatherFeedTests(unittest.TestCase):
     def test_redirect_target_allows_only_same_https_host(self):
         self.assertEqual(
             weather._redirect_target(weather.SOURCE_URL, "/feed-v2.atom"),
-            "https://weather.trfny.com/feed-v2.atom",
+            "https://weather.travny.workers.dev/feed-v2.atom",
         )
         self.assertIsNone(
             weather._redirect_target(weather.SOURCE_URL, "https://example.com/feed.atom")

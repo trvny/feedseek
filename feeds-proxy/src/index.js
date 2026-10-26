@@ -13,7 +13,7 @@ const MAX_RESPONSE_BYTES = 2 * 1024 * 1024;
 const MAX_FAVICON_BYTES = 512 * 1024;
 const FAVICON_ACCEPT = "image/avif, image/webp, image/png, image/svg+xml, image/*, */*;q=0.1";
 const BODYLESS_STATUSES = new Set([101, 204, 205, 304]);
-const PROXY_ORIGIN = "https://feeds.trfny.com";
+const PROXY_ORIGIN = "https://feeds-proxy.travny.workers.dev";
 const ROBOTS = "User-agent: *\nAllow: /index.md\nAllow: /llms.txt\nAllow: /llms-full.txt\nDisallow: /\n";
 const INDEX_MD = `# Feedseek fetch proxy\n\n> Constrained HTTPS fetch helper used by the Feedseek Reader.\n\nThe proxy accepts a public HTTPS target through the \`url\` query parameter. It blocks private-looking hosts, non-HTTPS targets, unsafe redirects and oversized responses.\n\n- [Feedseek](https://trvny.github.io/feedseek/)\n- [Concise LLM guide](${PROXY_ORIGIN}/llms.txt)\n- [Full LLM guide](${PROXY_ORIGIN}/llms-full.txt)\n- [Source](https://github.com/trvny/feedseek/tree/main/feeds-proxy)\n`;
 const LLMS = `# Feedseek fetch proxy\n\n> Constrained public HTTPS fetch helper for Feedseek's browser Reader.\n\n## Resources\n\n- [Proxy overview](${PROXY_ORIGIN}/index.md): Markdown description and security boundaries.\n- [Feedseek site](https://trvny.github.io/feedseek/index.md): main feed directory.\n- [Full proxy guide](${PROXY_ORIGIN}/llms-full.txt): complete proxy documentation.\n- [Source](https://github.com/trvny/feedseek/tree/main/feeds-proxy): implementation and tests.\n`;

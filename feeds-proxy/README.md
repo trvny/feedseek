@@ -9,7 +9,7 @@ headers. Not tied to feedseek or kanarek specifically — either one, or
 anything else in the account, can point at it.
 
 The same Worker also exposes Feedseek's read-only remote MCP endpoint at
-`POST https://feeds.trfny.com/mcp`. The MCP route is composed in `src/app.js`
+`POST https://feeds-proxy.travny.workers.dev/mcp`. The MCP route is composed in `src/app.js`
 so the existing constrained proxy implementation remains independent.
 
 ## Behavior
@@ -33,7 +33,8 @@ npm run deploy
 ```
 
 Live at `feeds-proxy.travny.workers.dev`; the Feedseek MCP endpoint uses the
-`feeds.trfny.com` custom domain.
+`feeds-proxy.travny.workers.dev` Workers subdomain (the legacy
+`feeds.trfny.com` hostname remains an optional compatibility alias).
 
 
 ## Endpoints

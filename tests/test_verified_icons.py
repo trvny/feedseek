@@ -27,6 +27,26 @@ def feed_with(feed_name, blog_url, icon=None):
 
 
 class ManagedIconTests(unittest.TestCase):
+    def test_managed_icon_uses_workers_subdomain(self):
+        self.assertEqual(
+            FAVICON_PROXY_ORIGIN, "https://feeds-proxy.travny.workers.dev/favicon"
+        )
+
+    def test_legacy_managed_explicit_icon_keeps_original_asset_and_provider(self):
+        from utils import _managed_explicit_icon
+
+        legacy = (
+            "https://feeds.trfny.com/favicon?domain=wykop.pl&sz=64"
+            "&provider=duckduckgo&url=https%3A%2F%2Fwykop.pl%2Ffavicon.png"
+        )
+        migrated = _managed_explicit_icon("https://wykop.pl/", legacy)
+        query = parse_qs(urlsplit(migrated).query)
+        self.assertTrue(migrated.startswith(FAVICON_PROXY_ORIGIN))
+        self.assertEqual(query["url"], ["https://wykop.pl/favicon.png"])
+        self.assertEqual(query["provider"], ["duckduckgo"])
+        self.assertNotIn("feeds.trfny.com", query["url"][0])
+
+
     def test_default_icon_uses_feedseek_resolver(self):
         icon = favicon_url("https://example.com/blog")
         parts = urlsplit(icon)
