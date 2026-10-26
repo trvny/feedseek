@@ -534,7 +534,8 @@ def merge_entries(
 # ---------------------------------------------------------------------------
 
 
-FAVICON_PROXY_ORIGIN = "https://feeds.trfny.com/favicon"
+FAVICON_PROXY_ORIGIN = "https://feeds-proxy.travny.workers.dev/favicon"
+LEGACY_FAVICON_PROXY_ORIGINS = ("https://feeds.trfny.com/favicon",)
 
 
 def _favicon_domain(blog_url: str) -> str:
@@ -576,9 +577,14 @@ def favicon_url(blog_url: str) -> str:
 
 def _managed_explicit_icon(blog_url: str, icon: str, size: int = 64) -> str:
     """Wrap a source-provided icon in the same resolver used by every feed."""
-    if icon.startswith(FAVICON_PROXY_ORIGIN):
-        return large_icon(icon, size)
     domain = _favicon_domain(blog_url)
+    if any(icon.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)):
+        query = parse_qs(urlsplit(icon).query)
+        explicit = (query.get("url") or [None])[0]
+        if explicit and not explicit.startswith("https://"):
+            explicit = None
+        provider = "duckduckgo" if (query.get("provider") or [""])[0] == "duckduckgo" else "google"
+        return favicon_proxy(domain, sz=size, provider=provider, url=explicit) if domain else icon
     if domain and icon.startswith("https://"):
         return favicon_proxy(domain, sz=size, url=icon)
     return icon
@@ -588,7 +594,7 @@ def large_icon(icon_url: str, size: int = 256) -> str:
     """Return a display-sized variant when the icon service supports sz."""
     if not icon_url:
         return icon_url
-    if icon_url.startswith(FAVICON_PROXY_ORIGIN) or "google.com/s2/favicons" in icon_url:
+    if any(icon_url.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)) or "google.com/s2/favicons" in icon_url:
         return re.sub(r"([?&]sz=)\d+", rf"\g<1>{size}", icon_url)
     return icon_url
 
@@ -608,6 +614,7 @@ def setup_feed_links(
         rel="self",
     )
     fg.link(href=blog_url, rel="alternate")
+    fg.generator("Feedseek", uri="https://github.com/trvny/feedseek")
     resolved = _managed_explicit_icon(blog_url, icon) if icon else favicon_url(blog_url)
     fg.icon(resolved)
     fg.logo(large_icon(resolved))
@@ -900,6 +907,7 @@ def _save_feed_pair(fg: FeedGenerator, feed_name: str, *, feed_format: str) -> P
         path: path.read_bytes() if path.exists() else None for path in artifacts
     }
 
+    fg.generator("Feedseek", uri="https://github.com/trvny/feedseek")
     writer = fg.atom_file if feed_format == "atom" else fg.rss_file
     writer(str(output_file), pretty=True)
     logger.info("Saved %s feed to %s", feed_format.upper(), output_file)

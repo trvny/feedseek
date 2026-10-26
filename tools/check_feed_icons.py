@@ -104,7 +104,7 @@ def main() -> int:
             print(f"  ZLE   {name:26s} {note}")
             print(f"        {icon or '(nic nie zadeklarowano)'}")
         print(
-            "\nNaprawa: sprawdz feeds.trfny.com/favicon i ewentualny jawny icon= "
+            "\nNaprawa: sprawdz feeds-proxy.travny.workers.dev/favicon i ewentualny jawny icon= "
             "w generatorze; wszystkie feedy powinny isc przez wspolny resolver."
         )
         return 1

@@ -18,7 +18,7 @@ from model_feed import write_model_feed
 from utils import feedparser_entry_image, get_feeds_dir, write_atomically
 
 FEED_NAME = "weather"
-SOURCE_URL = "https://weather.trfny.com/feed.atom"
+SOURCE_URL = "https://weather.travny.workers.dev/feed.atom"
 _PUBLISHED_URL = (
     "https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_weather.xml"
 )
