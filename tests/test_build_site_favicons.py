@@ -222,6 +222,31 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertEqual(result["feeds"][1]["title"], "Béta")
         self.assertNotIn("items", result["feeds"][0])  # No second content store.
 
+    def test_sitemap_omits_unverified_build_timestamps(self):
+        base = "https://trvny.github.io/feedseek/"
+        feeds = [
+            {
+                "filename": "feed_dated.xml",
+                "updated": datetime(2026, 10, 25, 20, 30, tzinfo=timezone.utc),
+            },
+            {"filename": "feed_unknown.xml", "updated": None},
+        ]
+        root = ET.fromstring(build_site.build_sitemap(feeds, base))
+        urls = root.findall("{*}url")
+        self.assertEqual(
+            [url.findtext("{*}loc") for url in urls],
+            [
+                base,
+                base + "reader/",
+                base + "model-feeds.json",
+                base + "feed_dated.xml",
+                base + "feed_dated.json",
+                base + "feed_unknown.xml",
+                base + "feed_unknown.json",
+            ],
+        )
+        self.assertFalse(root.findall(".//{*}lastmod"), "Rebuild dates are not verified content changes")
+
     def test_machine_discovery_lists_catalog_and_model_json_urls(self):
         feeds = [{
             "filename": "feed_alpha.xml",
