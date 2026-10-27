@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.python.org/</id>
   <title>Python</title>
-  <updated>2026-10-27T08:21:06.927954+00:00</updated>
+  <updated>2026-10-27T14:54:51.837860+00:00</updated>
   <author>
     <name>the Python community</name>
   </author>
@@ -14,6 +14,85 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=www.python.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=www.python.org&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Python ecosystem feed: PyPI (blog + updates), Python Status, Planet Python, python.org downloads, Python Central, PEPs, PyTorch, PyDevTools, Anaconda, pip/build/cibuildwheel releases, and Pydantic.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/ebbafebb750b5f6e</id>
+    <title>whowins 0.1.1</title>
+    <updated>2026-10-27T14:50:32+00:00</updated>
+    <content>Position, Role or Label? A Controlled Study of Instruction Conflicts in LLM Agents</content>
+    <link href="https://pypi.org/project/whowins/0.1.1/" rel="alternate"/>
+    <category term="PyPI Updates" label="PyPI Updates"/>
+    <published>2026-10-27T14:50:32+00:00</published>
+    <dc:creator>PyPI Updates</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/37edb1f1d387aa8b</id>
+    <title>au1h 0.1.0</title>
+    <updated>2026-10-27T14:50:24+00:00</updated>
+    <content>Verify au1h tokens and read au1h gateway headers. FastAPI helpers included.</content>
+    <link href="https://pypi.org/project/au1h/0.1.0/" rel="alternate"/>
+    <category term="PyPI Updates" label="PyPI Updates"/>
+    <published>2026-10-27T14:50:24+00:00</published>
+    <dc:creator>PyPI Updates</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/fd36a24f2b11cbc2</id>
+    <title>saengra 0.2.3</title>
+    <updated>2026-10-27T14:50:16+00:00</updated>
+    <content>Reactive graph database with pattern matching</content>
+    <link href="https://pypi.org/project/saengra/0.2.3/" rel="alternate"/>
+    <category term="PyPI Updates" label="PyPI Updates"/>
+    <published>2026-10-27T14:50:16+00:00</published>
+    <dc:creator>PyPI Updates</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/245ba619c352683c</id>
+    <title>elevenlabs-mcp-server 0.1.2</title>
+    <updated>2026-10-27T14:50:04+00:00</updated>
+    <content>A Model Context Protocol server providing ElevenLabs text-to-speech integration</content>
+    <link href="https://pypi.org/project/elevenlabs-mcp-server/0.1.2/" rel="alternate"/>
+    <category term="PyPI Updates" label="PyPI Updates"/>
+    <published>2026-10-27T14:50:04+00:00</published>
+    <dc:creator>PyPI Updates</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/982a7ec4a1151f75</id>
+    <title>aoa-maxitor 2.3.0</title>
+    <updated>2026-10-27T14:49:49+00:00</updated>
+    <content>AOA system visualizer: bundled React SPA + FastAPI backend.</content>
+    <link href="https://pypi.org/project/aoa-maxitor/2.3.0/" rel="alternate"/>
+    <category term="PyPI Updates" label="PyPI Updates"/>
+    <published>2026-10-27T14:49:49+00:00</published>
+    <dc:creator>PyPI Updates</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/d5def26daadb180a</id>
+    <title>Conda</title>
+    <updated>2026-10-27T13:55:44+00:00</updated>
+    <content>Conda is a language-agnostic, cross-platform package and environment manager. Where pip installs Python packages from PyPI , conda resolves dependencies across Python, R, C/C++, Fortran, and other languages in a single dependency graph. Note Conda is the package manager. Anaconda is a distribution that bundles conda with 600+ pre-installed packages. See Understanding the Conda/Anaconda Ecosystem for how conda, Miniconda, Miniforge, and Anaconda relate.</content>
+    <link href="https://pydevtools.com/handbook/reference/conda/" rel="alternate"/>
+    <category term="PyDevTools" label="PyDevTools"/>
+    <published>2026-10-27T13:55:44+00:00</published>
+    <media:group>
+      <media:content url="https://pydevtools.com/images/social-share-default.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://pydevtools.com/images/social-share-default.png"/>
+    </media:group>
+    <dc:creator>PyDevTools</dc:creator>
+    <link rel="enclosure" href="https://pydevtools.com/images/social-share-default.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/python/b28ff161177abaaf</id>
+    <title>PyPy: The Shift of Theseus — Toy Bit Provenance Abstract Domain</title>
+    <updated>2026-10-27T06:04:49+00:00</updated>
+    <content>The Knownbits Toy abstract domain that I wrote about earlier is great for
+all kinds of bit manipulation rewrites. However, it is not particularly good at
+recognizing where bits move around in a sequence of instructions. It has a
+notion of "this bit is 0 or 1 or unknown" but no notion of "this bit is the
+same as this other bit". This prevents it from optimizing something like this: x = ... a = x &amp; 0x0f b = x &lt;&lt; 60 c = b &gt;&gt; 60 result = a &amp; c Here a and c compute the same value, so it can be optimi</content>
+    <link href="https://www.pypy.org/posts/2026/10/toy-bit-provenance.html" rel="alternate"/>
+    <category term="Planet Python" label="Planet Python"/>
+    <published>2026-10-27T06:04:49+00:00</published>
+    <dc:creator>Planet Python</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/python/7c11f99e2eae48dc</id>
     <title>yb 0.1.27</title>
@@ -80,69 +159,19 @@
     <link rel="enclosure" href="https://grahamdumpleton.me/assets/images/graham-blog-banner.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/20b60ef7d4ab19ef</id>
-    <title>InsurAutoML 0.2.8</title>
-    <updated>2026-10-26T23:02:32+00:00</updated>
-    <content>Automated Machine Learning/AutoML pipeline.</content>
-    <link href="https://pypi.org/project/insurautoml/0.2.8/" rel="alternate"/>
-    <category term="PyPI Updates" label="PyPI Updates"/>
-    <published>2026-10-26T23:02:32+00:00</published>
+    <id>tag:trvny.github.io,2024:feedseek/python/94c0cb3dbb7cf154</id>
+    <title>PEP 851: Add list.discard()</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>Add list.discard(x), which removes the first item equal to x if one is present and does nothing otherwise, returning whether an item was removed. It is the non-raising counterpart to list.remove(), as set.discard() is to set.remove().</content>
+    <link href="https://peps.python.org/pep-0851/" rel="alternate"/>
+    <category term="PEPs" label="PEPs"/>
+    <published>2026-10-27T00:00:00+00:00</published>
     <media:group>
-      <media:content url="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" medium="image" height="630" width="1200"/>
-      <media:thumbnail url="https://pypi.org/static/images/og-card.00947198.webp" height="630" width="1200"/>
+      <media:content url="https://peps.python.org/_static/og-image.png" type="image/png" medium="image" height="200" width="200"/>
+      <media:thumbnail url="https://peps.python.org/_static/og-image.png" height="200" width="200"/>
     </media:group>
-    <dc:creator>PyPI Updates</dc:creator>
-    <link rel="enclosure" href="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/0ded198dc023bd9c</id>
-    <title>symbols-mcp 3.14.780</title>
-    <updated>2026-10-26T23:02:11+00:00</updated>
-    <content>Symbols.app MCP — docs, code generation, publishing, CLI/SDK reference</content>
-    <link href="https://pypi.org/project/symbols-mcp/3.14.780/" rel="alternate"/>
-    <category term="PyPI Updates" label="PyPI Updates"/>
-    <published>2026-10-26T23:02:11+00:00</published>
-    <media:group>
-      <media:content url="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" medium="image" height="630" width="1200"/>
-      <media:thumbnail url="https://pypi.org/static/images/og-card.00947198.webp" height="630" width="1200"/>
-    </media:group>
-    <dc:creator>PyPI Updates</dc:creator>
-    <link rel="enclosure" href="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/c7f0e33e66295b47</id>
-    <title>uk-legal-mcp 0.8.5</title>
-    <updated>2026-10-26T23:01:56+00:00</updated>
-    <content>UK legal research MCP server — case law, legislation, parliament, bills, votes, committees, citations, HMRC</content>
-    <link href="https://pypi.org/project/uk-legal-mcp/0.8.5/" rel="alternate"/>
-    <category term="PyPI Updates" label="PyPI Updates"/>
-    <published>2026-10-26T23:01:56+00:00</published>
-    <media:group>
-      <media:content url="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" medium="image" height="630" width="1200"/>
-      <media:thumbnail url="https://pypi.org/static/images/og-card.00947198.webp" height="630" width="1200"/>
-    </media:group>
-    <dc:creator>PyPI Updates</dc:creator>
-    <link rel="enclosure" href="https://pypi.org/static/images/og-card.00947198.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/5349de6df54311a8</id>
-    <title>ground-control-cli 0.33.0</title>
-    <updated>2026-10-26T23:01:45+00:00</updated>
-    <content>What runs on a developer's machine: the command line and the agent's plugin.</content>
-    <link href="https://pypi.org/project/ground-control-cli/0.33.0/" rel="alternate"/>
-    <category term="PyPI Updates" label="PyPI Updates"/>
-    <published>2026-10-26T23:01:45+00:00</published>
-    <dc:creator>PyPI Updates</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/92dc1c2d7eda5243</id>
-    <title>licos-agent-runtime 0.6.27</title>
-    <updated>2026-10-26T23:01:44+00:00</updated>
-    <content>LICOS Python agent runtime for LangGraph/LangChain projects</content>
-    <link href="https://pypi.org/project/licos-agent-runtime/0.6.27/" rel="alternate"/>
-    <category term="PyPI Updates" label="PyPI Updates"/>
-    <published>2026-10-26T23:01:44+00:00</published>
-    <dc:creator>PyPI Updates</dc:creator>
+    <dc:creator>PEPs</dc:creator>
+    <link rel="enclosure" href="https://peps.python.org/_static/og-image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/python/5e666d05733e428c</id>
@@ -742,27 +771,6 @@ Introduced in Python 3.15, it gives access to two different profilers: a samplin
     </media:group>
     <dc:creator>Planet Python</dc:creator>
     <link rel="enclosure" href="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/psf/grants/report-2006-10/psf-logo.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/01fb57238a22ad71</id>
-    <title>Peter Hoffmann: Loading 33,000 Peaks on Demand with a z10 Tile Grid</title>
-    <updated>2026-10-22T00:00:00+00:00</updated>
-    <content>biwak.info is my mobile-first map of Alpine huts and
-bivouacs. Recently I wanted to add peaks: tap anywhere near a summit and get its
-name, elevation, prominence, a photo and the Wikipedia link. The data for that
-comes from OpenStreetMap and Wikidata: 33,437 named peaks between Nice and
-Vienna. As a single peaks.json file this is 15.4 MB (1.8 MB gzipped). That's fine for
-a desktop, but on a phone with one bar of signal in a valley it is not, and most
-of it is never used: you look at one valley, </content>
-    <link href="https://peter-hoffmann.com/2026/loading-peaks-on-demand-with-a-z10-tile-grid.html" rel="alternate"/>
-    <category term="Planet Python" label="Planet Python"/>
-    <published>2026-10-22T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://peter-hoffmann.com/static/2026/biwak-peaks-z10-grid.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://peter-hoffmann.com/static/2026/biwak-peaks-z10-grid.webp"/>
-    </media:group>
-    <dc:creator>Planet Python</dc:creator>
-    <link rel="enclosure" href="https://peter-hoffmann.com/static/2026/biwak-peaks-z10-grid.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/python/02ec9fb03e629b65</id>
@@ -2190,21 +2198,6 @@ of it is never used: you look at one valley, </content>
     <link rel="enclosure" href="https://pydevtools.com/images/social-share-default.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/d5def26daadb180a</id>
-    <title>Conda</title>
-    <updated>2026-09-07T15:04:11+00:00</updated>
-    <content>Conda is a language-agnostic, cross-platform package and environment manager. Where pip installs Python packages from PyPI , conda resolves dependencies across Python, R, C/C++, Fortran, and other languages in a single dependency graph. Note Conda is the package manager. Anaconda is a distribution that bundles conda with 600+ pre-installed packages. See Understanding the Conda/Anaconda Ecosystem for how conda, Miniconda, Miniforge, and Anaconda relate.</content>
-    <link href="https://pydevtools.com/handbook/reference/conda/" rel="alternate"/>
-    <category term="PyDevTools" label="PyDevTools"/>
-    <published>2026-09-07T15:04:11+00:00</published>
-    <media:group>
-      <media:content url="https://pydevtools.com/images/social-share-default.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://pydevtools.com/images/social-share-default.png"/>
-    </media:group>
-    <dc:creator>PyDevTools</dc:creator>
-    <link rel="enclosure" href="https://pydevtools.com/images/social-share-default.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/python/2178ec26784f685b</id>
     <title>flake8: Python Linter</title>
     <updated>2026-09-07T15:04:11+00:00</updated>
@@ -3423,21 +3416,6 @@ talks are available. PyCon US Security Track Hala Ali on generating SBOMs direct
     </media:group>
     <dc:creator>build (pypa)</dc:creator>
     <link rel="enclosure" href="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/python/9c56aa1eb1aca4a5</id>
-    <title>PEP 833: Freezing the HTML simple repository API</title>
-    <updated>2026-04-21T00:00:00+00:00</updated>
-    <content>This PEP proposes freezing the standard HTML representation of the simple repository API, as originally specified in PEP 503 and updated over subsequent PEPs.</content>
-    <link href="https://peps.python.org/pep-0833/" rel="alternate"/>
-    <category term="PEPs" label="PEPs"/>
-    <published>2026-04-21T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://peps.python.org/_static/og-image.png" type="image/png" medium="image" height="200" width="200"/>
-      <media:thumbnail url="https://peps.python.org/_static/og-image.png" height="200" width="200"/>
-    </media:group>
-    <dc:creator>PEPs</dc:creator>
-    <link rel="enclosure" href="https://peps.python.org/_static/og-image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/python/d2c347eca1e56bb6</id>

@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-10-27T08:21:07.096830+00:00</updated>
+  <updated>2026-10-27T14:54:36.515278+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,71 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/0bc5ead1608539fe</id>
+    <title>Instant Client 23.3 (macOS arm64): heap corruption (ORA-21500 &amp;#x2F; internal heap error 17147 &amp;#x2F; SIGSEGV) on the second VECTOR-to-</title>
+    <updated>2026-10-27T13:53:55.445888+00:00</updated>
+    <content>Instant Client 23.3 (macOS arm64): heap corruption (ORA-21500 / internal heap error 17147 / SIGSEGV) on the second VECTOR-to-text read in a process ## Summary With Oracle Instant Client 23.3.0.23.9 for macOS arm64, fetching the temporary CLOB returned by `SELECT VECTOR_SERIALIZE(v RETURNING CLOB) FROM t` a second time in the same process and reading it with `OCILobRead2()` (streaming/callback mode) kills the process: - exit code 1, client trace: `Internal heap ERROR 17147` with stack `kghfre &lt;- </content>
+    <link href="https://forums.oracle.com/ords/apexds/post/instant-client-23-3-macos-arm64-heap-corruption-ora-21500-i-1162" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T13:53:55.445888+00:00</published>
+    <dc:creator>Oracle Developer Community</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/4087bf1ae48869d2</id>
+    <title>OCILobRead2 streaming read of VECTOR_SERIALIZE(... RETURNING CLOB) stops early (8,150 bytes) — Instant Client 23.26.1 (Linux</title>
+    <updated>2026-10-27T13:52:42.395778+00:00</updated>
+    <content>## Summary `SELECT VECTOR_SERIALIZE(v RETURNING CLOB) FROM t` returns a temporary CLOB whose `OCILobGetLength2()` is correct (16,783 characters for a 1024-dimension FLOAT32 vector), but reading it with `OCILobRead2()` in **piecewise/streaming** mode returns only part of the data and reports success: | `OCILobRead2` mode | `VECTOR_SERIALIZE(...) RETURNING CLOB` | plain temporary CLOB of the same length ||---|---|---|| `OCI_FIRST_PIECE` + callback, buffer ≥ LOB | **1 callback, 8,150 bytes**, rc `O</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/ocilobread2-streaming-read-of-vector-serialize-returning-cl-1769" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T13:52:42.395778+00:00</published>
+    <dc:creator>Oracle Developer Community</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/ea7cbd3b525002d0</id>
+    <title>Restrict Manual Absence Plan Adjustments Above Ceiling After Enrollment</title>
+    <updated>2026-10-27T13:07:59.169527+00:00</updated>
+    <content>Manual adjustments should be considered only prior to plan enrollment. Once an employee is enrolled, any manual adjustment that increases the accrual balance beyond the plan ceiling limit must be prevented. The accrual formula should validate the post-adjustment balance and restrict adjustments exceeding the defined ceiling limit, Has anyone implemented this requirement using an Accrual Fast Formula or any other configuration? Is there a way to identify manual adjustments and validate the result</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/restrict-manual-absence-plan-adjustments-above-ceiling-afte-3684" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T13:07:59.169527+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/3c7a5a4fd35dae52</id>
+    <title>Data Modeler 24.3.1 – Synchronize with Data Dictionary generates incorrect DDL for domain-based column check constraints on e</title>
+    <updated>2026-10-27T12:20:23.878244+00:00</updated>
+    <content>Product: Oracle SQL Developer Data Modeler 24.3.1.351.0831 (standalone, bundled JDK 17.0.13), Windows x64 Database: Oracle Database [doplnit verzi] Summary When Synchronize Data Dictionary with Model or Synchronize Model with Data Dictionary generates DDL for a column check constraint inherited from a domain, the output differs from the DDL generated for the same column in a new table: An extra space is inserted after the opening parenthesis: CHECK ( … instead of CHECK (… . The %column% placehol</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/data-modeler-24-3-1-synchronize-with-data-dictionary-genera-0241" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T12:20:23.878244+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/0685b764ed04f945</id>
+    <title>ORA-29024</title>
+    <updated>2026-10-27T12:05:38.975910+00:00</updated>
+    <content>"There is a certificate validation failure (ORA-29024) when trying to print reports using UTL_HTTP / Print Server. Please update the database Oracle Wallet or fix the Print Server SSL certificate on the server side."</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/ora-29024-7580" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T12:05:38.975910+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/bd1f05936786d736</id>
     <title>Quality Outreach Heads-up - JDK 28: Value Classes</title>
@@ -376,9 +441,9 @@
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/c9bf499e25da2670</id>
-    <title>Oracle Announces Deep Trust AI Architecture to Help Enterprises Innovate with Confidence</title>
+    <title>Oracle 推出 Deep Trust AI 架構，助力企業安心推進 AI 創新</title>
     <updated>2026-10-26T12:00:00+00:00</updated>
-    <content>Oracle Announces Deep Trust AI Architecture to Help Enterprises Innovate with Confidence</content>
+    <content>Oracle 推出 Deep Trust AI 架構，助力企業安心推進 AI 創新</content>
     <link href="https://www.oracle.com/news/announcement/ai-world-oracle-announces-deep-trust-ai-architecture-to-help-enterprises-innovate-with-confidence-2026-10-26/" rel="alternate"/>
     <category term="Oracle Press Releases" label="Oracle Press Releases"/>
     <published>2026-10-26T12:00:00+00:00</published>
@@ -405,21 +470,6 @@
     <link rel="enclosure" href="https://www.oracle.com/a/pr/img/og-social-autonomous-ai-lakehouse.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/b71cabdd80ec666c</id>
-    <title>HTTP request failed</title>
-    <updated>2026-10-26T09:25:37.583795+00:00</updated>
-    <content>when i try to print any report or export to pdf or excel .. not support in apex live is_internal_error: true apex_error_code: APEX.UNHANDLED_ERROR original message: Error processing request. ora_sqlcode: -29273 ora_sqlerrm: ORA-29273: HTTP request failedORA-06512: at "APEX_260200.WWV_FLOW_REPORT_QUERY", line 938 ORA-06512: at "APEX_260200.WWV_FLOW_WEB_SERVICES", line 1077 ORA-06512: at "APEX_260200.WWV_FLOW_WEB_SERVICES_INVOKER", line 1007 ORA-06512: at "APEX_260200.WWV_FLOW_WEB_SERVICES_INVOKER</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/http-request-failed-3590" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-26T09:25:37.583795+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/00a05abf2460f25a</id>
     <title>Managed Karpenter for OCI Kubernetes Engine Preview</title>
     <updated>2026-10-26T09:00:00+00:00</updated>
@@ -433,66 +483,6 @@
     </media:group>
     <dc:creator>Oracle Cloud Infrastructure</dc:creator>
     <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/managedkarpenter.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/01d3ae9935d70efd</id>
-    <title>Link inside file NOTICES.txt is broken</title>
-    <updated>2026-10-26T08:44:31.059846+00:00</updated>
-    <content>Just a quick comment to report that this link in file NOTICES.txt, inside the zip archive for SQLcl 26.3.0.260.1620: https://www.oracle.com/tools/sqlcl/sqlcl-relnotes-26.3.0.html is broken, if I try to open the page I get this:</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/link-inside-file-notices-txt-is-broken-3031" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-26T08:44:31.059846+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/rfDgQEcJ-5481-jrBeUwoI" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/rfDgQEcJ-5481-jrBeUwoI"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/rfDgQEcJ-5481-jrBeUwoI" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/60ebf8231cea1088</id>
-    <title>Best Design Pattern: Implementing Column-Prefix and Range-Based Data Security on Large Tables (&amp;gt;1M Rows)</title>
-    <updated>2026-10-25T23:56:10.931546+00:00</updated>
-    <content>Hello Everyone, I am looking for design recommendations on the best way to implement a generic, reusable data security architecture in Oracle. The Objective I need to create a generic security mechanism (such as a generic view or security context) that maps user security roles to transaction tables. The primary filtering key is the ACCOUNT column. User Roles &amp; Access Definitions We have four distinct security tiers: Security Code Access Level Filter Criteria HX Everything Unrestricted access (1=</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/best-design-pattern-implementing-column-prefix-and-range-ba-1898" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-25T23:56:10.931546+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/398d6deaceb96c41</id>
-    <title>APEX 26.1.5 Bug: APEXlang import fails with ORA-02290 (WWV_FLOW_TASK_DEF_PT_CK_V_TYPE) in create_task_def_participant</title>
-    <updated>2026-10-25T13:27:58.247932+00:00</updated>
-    <content>Title: APEX 26.1.5 Bug: APEXlang import fails with ORA-02290 (WWV_FLOW_TASK_DEF_PT_CK_V_TYPE) in create_task_def_participant, while apex validate passes Environment - APEX 26.1.5 (from the export header), Autonomous Database 23ai on OCI - Import: App Builder, Import Application, type APEXlang, exported from 26.1, imported into the same workspace with "Change Application ID" - apex validate on the unzipped folder, SQLcl 26.2 and 26.3.0: "Validation successful" Problem The installer fails with: OR</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/apex-26-1-5-bug-apexlang-import-fails-with-ora-02290-wwv-fl-0648" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-25T13:27:58.247932+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/71d51e11a68fe67d</id>
-    <title>Sorting problem</title>
-    <updated>2026-10-25T11:55:07.499323+00:00</updated>
-    <content>Hi, When running the following statement it displays the rows in wrong order, also the classic report is displaying it the same way! any clue why and what could be done to fix it. running APEX 20.2.0.00.20. Thanks DOC_NO  VARCHAR2(10) Select DOC_NO from X table order by DOC_NO ASC VP261 VP2610 VP26100 VP26101 VP26102 VP26103 VP26104 VP26105 VP26106 VP26107 VP26108 VP26109 VP2611 VP26110 VP26111 VP26112 VP26113 VP26114 VP26115 VP26116 VP26117 VP26118 VP26119 VP2612 VP26120</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/sorting-problem-6358" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-25T11:55:07.499323+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/1c7c260bd7a6162f</id>
