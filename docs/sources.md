@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-110 feedów · 895 źródeł
+110 feedów · 897 źródeł
 
 ## Spis grup
 
@@ -137,6 +137,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Newsroom — <https://www.anthropic.com/news>
 - ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Research — <https://www.anthropic.com/research>
 - ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Engineering — <https://www.anthropic.com/engineering>
+- ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Alignment Research — <https://www.anthropic.com/research/team/alignment>
 - ![](https://www.google.com/s2/favicons?domain=red.anthropic.com&sz=16) Anthropic Red — <https://red.anthropic.com/>
 - ![](https://www.google.com/s2/favicons?domain=alignment.anthropic.com&sz=16) Anthropic Alignment Science — <https://alignment.anthropic.com/>
 - ![](https://www.google.com/s2/favicons?domain=transformer-circuits.pub&sz=16) Anthropic Interpretability — <https://transformer-circuits.pub/feed.xml>
@@ -146,6 +147,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=platform.claude.com&sz=16) platform.claude.com (system-prompts) — <https://platform.claude.com/docs/en/release-notes/system-prompts>
 - ![](https://www.google.com/s2/favicons?domain=platform.claude.com&sz=16) platform.claude.com — <https://platform.claude.com/docs/en/release-notes/system-prompts.md>
+- ![](https://www.google.com/s2/favicons?domain=claude.dev&sz=16) Claude Developer — <https://claude.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=code.claude.com&sz=16) Claude Code — <https://code.claude.com/docs/en/whats-new/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=code.claude.com&sz=16) Claude Code — <https://code.claude.com/docs/en/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=claude.com&sz=16) Claude Cowork — <https://claude.com/docs/cowork/changelog/rss.xml>

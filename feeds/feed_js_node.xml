@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://nodejs.org/</id>
   <title>JS | Node</title>
-  <updated>2026-10-26T21:11:43.680190+00:00</updated>
+  <updated>2026-10-27T01:37:49.526481+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=nodejs.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=nodejs.org&amp;sz=64</webfeeds:icon>
   <subtitle>Combined JS/Node.js runtime &amp; tooling feed: Node.js, pnpm, jsDelivr (blog + status), Bun, Deno, NodeSource, Total.js, Vite, Next.js, Vue, Svelte, React, unified, MDX, JavaScript Weekly, ReactLibs, Bootstrap, jQuery, V8, PWABuilder, npm status, npmx, and the OpenJS Foundation blog.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/js_node/c4044040f13313d9</id>
+    <title>pnpm 12.16.0</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>This release adds a global --env-file flag, updates to a symlinked pnpm-lock.yaml, and pnpm setup --no-modify-path. It also fixes two security issues, in zstd decompression and in signing.</content>
+    <link href="https://pnpm.io/blog/releases/12.16.0" rel="alternate"/>
+    <category term="pnpm Blog" label="pnpm Blog"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
+    </media:group>
+    <dc:creator>pnpm Blog</dc:creator>
+    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/js_node/883e3c0a0a0dc6f6</id>
+    <title>pnpm 11.28.9</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>This release fixes a crash on registry responses with too many content encodings (GHSA-xjj6-f33q-929c) and sizes the install worker pool by the container's CPU quota. A repeat pnpm install now acts on more setting changes.</content>
+    <link href="https://pnpm.io/blog/releases/11.28.9" rel="alternate"/>
+    <category term="pnpm Blog" label="pnpm Blog"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
+    </media:group>
+    <dc:creator>pnpm Blog</dc:creator>
+    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/js_node/7486b0558db9da82</id>
     <title>Node.js Security Vulnerabilities</title>
@@ -540,21 +570,6 @@
     <link rel="enclosure" href="https://h8dxkfmaphn8o0p3.public.blob.vercel-storage.com/static/blog/next-16-4/twitter-card.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/js_node/00ff12746090141a</id>
-    <title>pnpm 12.10.0</title>
-    <updated>2026-10-06T00:00:00+00:00</updated>
-    <content>This release adds an experimental loaded node linker, lets pnpm-lock.yaml record resolution settings, and reads cached registry metadata faster. It also carries several security fixes, including one that stops a dependency version from writing files outside the global virtual store.</content>
-    <link href="https://pnpm.io/blog/releases/12.10.0" rel="alternate"/>
-    <category term="pnpm Blog" label="pnpm Blog"/>
-    <published>2026-10-06T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
-    </media:group>
-    <dc:creator>pnpm Blog</dc:creator>
-    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/js_node/78325fd85a5e52da</id>
     <title>pnpm 11.28.5</title>
     <updated>2026-10-06T00:00:00+00:00</updated>
@@ -598,21 +613,6 @@
     </media:group>
     <dc:creator>JavaScript Weekly</dc:creator>
     <link rel="enclosure" href="https://res.cloudinary.com/cpress/image/upload/w_1280,e_sharpen:60,q_auto/hnza9nriyhgnntkp2aa7.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/js_node/2a1827ce6a0f2655</id>
-    <title>pnpm 11.28.4</title>
-    <updated>2026-10-03T00:00:00+00:00</updated>
-    <content>pnpm 11.28.4 fixes two ways credentials could leak, makes pnpm install --frozen-lockfile accept several lockfiles it rejected, warns when an optional dependency cannot be fetched, and stops pnpm self-update from installing a second pnpm next to a Homebrew one.</content>
-    <link href="https://pnpm.io/blog/releases/11.28.4" rel="alternate"/>
-    <category term="pnpm Blog" label="pnpm Blog"/>
-    <published>2026-10-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://pnpm.io/img/ogimage.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://pnpm.io/img/ogimage.png"/>
-    </media:group>
-    <dc:creator>pnpm Blog</dc:creator>
-    <link rel="enclosure" href="https://pnpm.io/img/ogimage.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/js_node/2e4a0e06369f43b7</id>
