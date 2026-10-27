@@ -733,18 +733,15 @@ def build_index(feeds: list[dict], base: str) -> str:
 
 
 def build_sitemap(feeds: list[dict], base: str) -> str:
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    urls = [f"  <url><loc>{html.escape(base)}</loc><lastmod>{today}</lastmod></url>"]
+    # Build timestamps and feed Atom <updated> values can reflect routine rebuilds,
+    # not verified substantive changes. Omit lastmod until trustworthy dates exist.
+    urls = [f"  <url><loc>{html.escape(base)}</loc></url>"]
     # Include the separately indexable Reader, not only the directory and feeds.
     urls.append(f"  <url><loc>{html.escape(base + 'reader/')}</loc></url>")
     urls.append(f"  <url><loc>{html.escape(base + 'model-feeds.json')}</loc></url>")
     for f in feeds:
-        lastmod = (f["updated"] or datetime.now(timezone.utc)).strftime("%Y-%m-%d")
         for filename in (str(f["filename"]), Path(str(f["filename"])).with_suffix(".json").name):
-            urls.append(
-                f"  <url><loc>{html.escape(base + filename)}</loc>"
-                f"<lastmod>{lastmod}</lastmod></url>"
-            )
+            urls.append(f"  <url><loc>{html.escape(base + filename)}</loc></url>")
     body = "\n".join(urls)
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
