@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-10-27T14:54:36.515278+00:00</updated>
+  <updated>2026-10-27T20:56:57.618156+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,201 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/3ecbbe5072a5eab5</id>
+    <title>Bug: APEX 26.1.5+: Error notification link does not scroll to an empty Checkbox Group (setFocus does nothing)</title>
+    <updated>2026-10-27T20:35:56.471966+00:00</updated>
+    <content>Problem A validation fails on a Checkbox Group item that is required and has nothing checked. The page notification shows the error as a link. Clicking that link should scroll to the item and focus it, the same way it does for a Text Field or Textarea. For a Checkbox Group, nothing happens. The window stays where it is, and focus stays on the notification. The item template makes no difference. I see the same result with "Required - Floating" and "Required - Above". Steps to reproduce 1. Import </content>
+    <link href="https://forums.oracle.com/ords/apexds/post/bug-apex-26-1-5-error-notification-link-does-not-scroll-to-4357" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T20:35:56.471966+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/f0ddb1351ebc172b</id>
+    <title>Java Update</title>
+    <updated>2026-10-27T18:22:19.706675+00:00</updated>
+    <content>Hi, We are working with JDE, but we have received a notification regarding Java vulnerabilities in relation to PHP; we would like to know if you can assist us with the following: 1.We are currently running JD Edwards release 9.2 with Tools Release 9.2.5.6 and Java version 1.8.0_361. We are aware of some announcements from Oracle regarding Java and PHP, and we would like to know whether Java version 1.8.0_511 addresses CVE-2026-114820 and CVE-2026-91403. https://www.oracle.com/security-alerts/ale</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/java-update-1089" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T18:22:19.706675+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/460a06db8cda7844</id>
+    <title>Oracle ADF Dynamic af:table with af:forEach columns becomes very slow after first click (shows &amp;quot;Fetching Data&amp;quot;)</title>
+    <updated>2026-10-27T16:38:23.583734+00:00</updated>
+    <content>Studio Edition Version 12.2.1.4.0 Hi All, I have a dashboard with summary counts. When a user clicks a count (Created, Failed, Loaded, In Progress, etc.), I display the corresponding records in a detail table. To avoid maintaining 8 separate tables, I'm using a single dynamic af:table with af:forEach to generate columns dynamically based on the selected View Object. The first click works fine and data loads quickly. However, when I click another count, the page shows "Fetching Data..." for a lon</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/oracle-adf-dynamic-af-table-with-af-foreach-columns-becomes-6360" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-27T16:38:23.583734+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/OhwgCRxo-3591-kSrfqmeK" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/OhwgCRxo-3591-kSrfqmeK"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/OhwgCRxo-3591-kSrfqmeK" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/dfcd16ae71d8a37d</id>
+    <title>OCI Networking Advances: Powering AI, Global Content Delivery, and App Security</title>
+    <updated>2026-10-27T16:00:00+00:00</updated>
+    <content>Networking is the core of cloud performance. It connects accelerators to data, applications to services, and businesses to customers. The speed of these connections directly dictates the value of your infrastructure investment. As AI workloads scale, fast processors aren’t enough. Accelerators require a network that can sustain massive parallel flows, mitigate congestion, and survive hardware […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/oci-networking-advances-powering-ai" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Screenshot-2026-10-26-at-12.24.07-PM.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Screenshot-2026-10-26-at-12.24.07-PM.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Screenshot-2026-10-26-at-12.24.07-PM.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/d33f91e35c372b27</id>
+    <title>Announcing General Availability of Positron Atlas on Oracle Cloud Infrastructure: Enabling the Next Generation of Price-Performance Inference at Scale</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>As AI adoption accelerates, enterprises are increasingly focused on the cost and efficiency of running models in production. Delivering high-throughput, low-latency inference while managing power consumption and infrastructure costs has become a critical challenge. Oracle Cloud Infrastructure (OCI) is expanding its AI compute portfolio with Positron Atlas, a purpose-built inference platform designed to deliver efficient, […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/positron-atlas-oci-ai-inference" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Positron-1.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Positron-1.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Positron-1.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/e95887cf1b1bb04b</id>
+    <title>Announcing General Availability of OCI Compute with NVIDIA Vera CPUs</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>As AI applications evolve toward agentic systems that reason, execute code, and invoke tools, CPU performance is becoming increasingly critical. While GPUs accelerate model inference, CPUs handle orchestration, tool execution, and data retrieval between model interactions. As these workloads scale, CPU performance directly impacts agent responsiveness and overall AI system efficiency. Today, Oracle Cloud Infrastructure […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/nvidia-vera-cpus-oci" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/1619eb6661b06f4f</id>
+    <title>Oracle Cloud Infrastructure and AMD Helios™ Build an Open Foundation for AI at Scale</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>Rack-scale GPU acceleration, E7 CPU Compute, and programmable networking support the demands of production AI  An AI service is only as dependable as the infrastructure behind it. As organizations serve more users, support longer contexts, and deploy agents that retrieve information and execute tools, GPU performance depends increasingly on the system around it. Compute, memory, […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/amd-helios-oci-ai-infrastructure" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Helios-Rack-Left-Angle.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Helios-Rack-Left-Angle.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Helios-Rack-Left-Angle.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/d94c69667e06c0d2</id>
+    <title>Announcing General Availability of NVIDIA Vera Rubin NVL72 and Vera CPUs on OCI; Introducing Rubin NVL8 GPUs on OCI, and New Agentic AI Solutions</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>Oracle and NVIDIA are expanding full stack collaboration with the General Availability of NVIDIA Vera Rubin NVL72, and NVIDIA Vera CPUs on Oracle Cloud Infrastructure (OCI); and introducing NVIDIA Rubin NVL8 GPUs on OCI, as well as multiple PaaS and SaaS capabilities that bring accelerated computing to enterprise AI applications and Oracle Database.  Announcing General […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/nvidia-vera-rubin-vera-cpus-oci" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Picture4.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/b7d0a1420e3c9f13</id>
+    <title>Is That Really You? Verify the Human Behind Sensitive Actions and AI Agent Approvals with Identity Assurance</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>Trusting the human behind the action An employee can sign in with valid credentials and deliver good work, yet not be the person the organization believes it hired. In Oct 2026, U.S. Department of Justice announced charges over North Korean remote IT workers infiltrating over 70 U.S. companies and generating ~$3 million in revenue. Such impersonations can expose […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/introducing-iam-identity-assurance" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/identity-assurance.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/identity-assurance.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/identity-assurance.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/aa11d2fe86401b10</id>
+    <title>First Principles: Oracle Acceleron Networking for AI at Scale</title>
+    <updated>2026-10-27T15:30:00+00:00</updated>
+    <content>Introduction   High-Performance workloads such as AI/ML and Oracle database push the boundaries of network scale, reliability and performance.  In addition to these expectations from customer workloads, cloud providers need to also ensure strong security, low cost, and power efficiency.  As the scale of workloads increase, even the low probability failures become more common.  Furthermore, the […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/first-principles-networking-for-ai-scale" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-Blog-Thumbnail-Oracle-Acceleron-Multiplanar-Network-Architecture-03-fINAL.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-Blog-Thumbnail-Oracle-Acceleron-Multiplanar-Network-Architecture-03-fINAL.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-Blog-Thumbnail-Oracle-Acceleron-Multiplanar-Network-Architecture-03-fINAL.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/accef139130066eb</id>
+    <title>Announcing Oracle App Composer: Go from ideas to governed applications</title>
+    <updated>2026-10-27T15:00:00+00:00</updated>
+    <content>AI tools now let employees build apps without writing code, but helping teams across the company benefit from those apps requires a governed way to run, share, and support them. A finance employee might build a small app to track invoice exceptions. It makes their day easier: they can see what needs attention and spend […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/announcing-oracle-app-composer" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-1-1-scaled.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-1-1-scaled.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-1-1-scaled.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/2687721f91fe758b</id>
+    <title>Introducing Oracle AI Media Models on OCI in Preview</title>
+    <updated>2026-10-27T15:00:00+00:00</updated>
+    <content>At Oracle AI World 2026, Oracle introduced Oracle AI Media Models, bringing video generation, image generation, and image editing to select customers through a Beta program. Developed by Oracle, the media foundation models are trained from scratch on rights-cleared data using Oracle Cloud Infrastructure’s hyper-scale clusters optimized for multimodal and generative AI. Alongside these models, […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/oracle-ai-media-models" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T15:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/dod_disn_cap_boundary___oracle_cloud_for_government_.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/dod_disn_cap_boundary___oracle_cloud_for_government_.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/dod_disn_cap_boundary___oracle_cloud_for_government_.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/f6b545e3264ad351</id>
+    <title>First Principles: Building AI Agents on OCI</title>
+    <updated>2026-10-27T14:00:00+00:00</updated>
+    <content>An AI model can suggest a fix for a failed deployment. Inspecting the system, running a test, and showing that the fix worked require an execution system around that model. It must connect reasoning to actions, preserve progress, control access, and establish what actually happened. OCI Enterprise AI brings together services for model inference, hosting […]</content>
+    <link href="https://blogs.oracle.com/cloud-infrastructure/first-principles-building-ai-agents-on-oci" rel="alternate"/>
+    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
+    <published>2026-10-27T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-THUMBNAIL-Building-AI-Agents-on-OCI-01.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-THUMBNAIL-Building-AI-Agents-on-OCI-01.png"/>
+    </media:group>
+    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
+    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/First-Principles-THUMBNAIL-Building-AI-Agents-on-OCI-01.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/0bc5ead1608539fe</id>
     <title>Instant Client 23.3 (macOS arm64): heap corruption (ORA-21500 &amp;#x2F; internal heap error 17147 &amp;#x2F; SIGSEGV) on the second VECTOR-to-</title>
@@ -273,51 +468,6 @@
     </media:group>
     <dc:creator>Oracle Developer Community</dc:creator>
     <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/add8b4b338483b38</id>
-    <title>Formatter failure</title>
-    <updated>2026-10-26T12:57:44.146158+00:00</updated>
-    <content>Version 26.3.0 I have a package body (2k lines) that is now failing to format. The package does compile. The following is reported in the output: [10/26/26, 12:51:58.925] [DBToolsServerApp(25120)] [DEBUG] 2026-10-26T12:51:58.926Z DEBUG Cartesian product evaluation: failed to find attribute joined to [pkg].Independent Attributes: [node, pkg]java.lang.AssertionError: Cartesian product evaluation: failed to find attribute joined to [pkg].Independent Attributes: [node, pkg]at oracle.dbtools.common.a</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/formatter-failure-6756" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-26T12:57:44.146158+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/3a3fc2064580c642</id>
-    <title>Array DML corrupts CLOB parameters in multi-row SaveChanges (regression in 10.23.26400)</title>
-    <updated>2026-10-26T12:26:19.505621+00:00</updated>
-    <content>`Oracle.EntityFrameworkCore` **10.23.26400** corrupts CLOB parameter values when a single `SaveChanges` produces an insert batch of **two or more rows** of the same entity type. The corruption is visible because the target column carries an `IS JSON (STRICT)` check constraint, which Oracle then rejects. Every row of the batch is rejected, not only one. Version **10.23.26301** does not show the problem with identical code and data, so this is a regression introduced in 10.23.26400 Please see mark</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/array-dml-corrupts-clob-parameters-in-multi-row-savechanges-5083" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-26T12:26:19.505621+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/60d66cb44908a5de</id>
-    <title>PL&amp;#x2F;SQL formatter: adds blank lines following conditional compilation statements</title>
-    <updated>2026-10-26T12:17:39.161432+00:00</updated>
-    <content>Identifier: oracle.sql-developer Version: 26.3.0 Given the following PL/SQL package specification: CREATE OR REPLACE PACKAGE dummy_pkg IS  FUNCTION about RETURN VARCHAR2;   $IF cc_flags.cc_addressbase_premium_installation OR cc_flags.cc_addressbase_plus_installation $THEN  PROCEDURE replace_adjacent_postcodes;  $ENDEND dummy_pkg; Each time I format the document, an extra line appears after the $IF statement. It's hard to replicate; for example, if the function (or procedure) definition above the</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/pl-sql-formatter-adds-blank-lines-following-conditional-sta-8572" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-26T12:17:39.161432+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/3f03fc75e03f0632</id>
@@ -965,21 +1115,6 @@
     <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/cross_tenancy_database_recovery_featured.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/4ea45399f8fa7ec6</id>
-    <title>Performance Impact of AMD SEV with Secure Nested Paging on OCI Confidential VMs</title>
-    <updated>2026-10-14T17:00:00+00:00</updated>
-    <content>What is Confidential Computing? Confidential Computing helps protect data in use by encrypting and isolating in-memory data while workloads run. On OCI, Confidential Computing enabled Instances use AMD SEV (Secure Encrypted Virtualization) with Secure Nested Paging and rely on keys generated at Instance creation and held in the AMD Secure Processor. The AMD Secure Processor […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/amd-sev-snp-performance-on-oci-confidential-vms" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-14T17:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/rc24-ai-world-amd-1.avif" type="image/avif" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/rc24-ai-world-amd-1.avif"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/rc24-ai-world-amd-1.avif" type="image/avif" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/e79db213e9c3c69c</id>
     <title>Context Assembly for Multi-Tenant Agent Memory: Budgets, Selection, and Tool Calls with MCP</title>
     <updated>2026-10-14T16:43:13+00:00</updated>
@@ -995,51 +1130,6 @@
     <link rel="enclosure" href="https://blogs.oracle.com/developers/wp-content/uploads/sites/129/2026/10/Context-Assembly-for-Multi-Tenant-Agent-Memory-scaled.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/33c0280ed8704396</id>
-    <title>Explore quantum computing with Oracle and register for a free preview</title>
-    <updated>2026-10-14T16:00:00+00:00</updated>
-    <content>Quantum computing is opening new possibilities for tackling computational problems that are difficult for classical systems alone. From simulating molecules and materials to exploring complex optimization problems, financial models, and new approaches to AI, organizations are beginning to investigate where quantum computing could complement today’s computing infrastructure. Oracle and Quantinuum recently announced a strategic partnership […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/explore-quantum-computing-oracle-free-preview" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-14T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Preview-Screen.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Preview-Screen.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Preview-Screen.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/d9433a7df61cad75</id>
-    <title>World Standards Day: Why Standards Matter</title>
-    <updated>2026-10-14T16:00:00+00:00</updated>
-    <content>Every year on October 14, the International Electrotechnical Commission (IEC), International Organization for Standardization (ISO), and International Telecommunication Union (ITU) celebrate World Standards Day. The day recognizes the thousands of experts worldwide who work together to develop voluntary technical agreements that become international standards. For Oracle, standards are a foundation for innovation. They help technologies work […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/world-standards-day-why-standards-matter" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-14T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/World-Standards-Day-Blog.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/World-Standards-Day-Blog.jpg"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/World-Standards-Day-Blog.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/3631b6b2833b4a58</id>
-    <title>Introducing Dynamic Resource Virtual Machines</title>
-    <updated>2026-10-14T01:00:00+00:00</updated>
-    <content>Application resource demand changes over time with traffic, business activity, scheduled processing, and other workload patterns. Customers typically configure compute and memory capacity to support periods of peak demand. When demand is lower, the same workloads can remain overprovisioned because their configured capacity stays the same while actual resource use declines. Rightsizing can reduce unused […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/introducing-dynamic-resource-vms" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-14T01:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/industries-high-technology-shutterstock-2030685833-scaled.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/industries-high-technology-shutterstock-2030685833-scaled.jpg"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2025/10/industries-high-technology-shutterstock-2030685833-scaled.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/6a56fc729463e9a4</id>
     <title>Everyday JSON in Java</title>
     <updated>2026-10-14T00:00:00+00:00</updated>
@@ -1053,66 +1143,6 @@
     </media:group>
     <dc:creator>Inside Java</dc:creator>
     <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/f6fcc7c8300f35ce</id>
-    <title>From Managing Agents to Engineering Workflows: Building Loops and Graphs on OCI OKE</title>
-    <updated>2026-10-13T20:00:00+00:00</updated>
-    <content>As an agent fleet grows to 100, 1,000, and beyond, manually assigning work and checking progress agent by agent becomes impractical. We need to move up a level: define how the work should proceed, then let the platform coordinate execution. Loops describe how results are refined; graphs define dependencies and reveal work that can run […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/loops-and-graphs-engineering-on-oci-oke" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-13T20:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-20-scaled.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-20-scaled.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/image-20-scaled.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/c311624df8088814</id>
-    <title>Preserving AWS S3 Lifecycle Intent When Migrating to OCI Object Storage</title>
-    <updated>2026-10-13T19:00:00+00:00</updated>
-    <content>Moving data from Amazon S3 to Oracle Cloud Infrastructure (OCI) Object Storage is technically straightforward, but preserving the lifecycle behavior associated with that data requires deliberate design. In Amazon S3 general purpose buckets, lifecycle filters can scope rules by key prefix, object tags, or a combination of both. OCI Object Storage supports tags on bucket […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/aws-s3-lifecyle-intent-to-oci-object-storage" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-13T19:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/s3-to-oci-lifecycle-featured-image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/s3-to-oci-lifecycle-featured-image.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/s3-to-oci-lifecycle-featured-image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/2cda8394c0224997</id>
-    <title>Bring Palo Alto NGFW to life on OCI</title>
-    <updated>2026-10-13T17:00:00+00:00</updated>
-    <content>Deploying a firewall in the cloud is the easy part. The real work starts when traffic has to flow through it, whether it’s moving between subnets and virtual cloud networks (VCNs), reaching the internet, or connecting to remote locations. This eight-workshop Oracle LiveLabs series takes you from your first Palo Alto Networks VM-Series next-generation firewall […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/bring-palo-alto-ngfw-to-life-on-oci" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-13T17:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Bring-Palo-Alto-NGFW-to-life-on-OCI-Featured-Image-v2-scaled.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Bring-Palo-Alto-NGFW-to-life-on-OCI-Featured-Image-v2-scaled.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/Bring-Palo-Alto-NGFW-to-life-on-OCI-Featured-Image-v2-scaled.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/242e278e5e83dd19</id>
-    <title>Explore OCI IoT Platform in Two New LiveLabs</title>
-    <updated>2026-10-13T14:00:00+00:00</updated>
-    <content>Two new hands-on workshops in Oracle LiveLabs guide you through Oracle Cloud Infrastructure Internet of Things Platform (OCI IoT Platform), from setting up your tenancy and defining digital twin models and instances to viewing normalized device data. Designed to be completed consecutively, the labs provide a practical foundation for developing applications and agentic solutions that […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/oci-iot-platform-livelabs" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-13T14:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/OCI_IoT_LiveLabs_Thumbnail_v2.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/OCI_IoT_LiveLabs_Thumbnail_v2.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/OCI_IoT_LiveLabs_Thumbnail_v2.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/37b3edda7b8e518e</id>
@@ -1143,36 +1173,6 @@
     </media:group>
     <dc:creator>Oracle Press Releases</dc:creator>
     <link rel="enclosure" href="https://www.oracle.com/a/pr/img/og-social-economic-impact.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/a2a5107245b4d81d</id>
-    <title>When One Signal Is Not Enough: How AI Is Changing Security Investigations</title>
-    <updated>2026-10-12T21:00:00+00:00</updated>
-    <content>AI is changing the pace of security. AI-assisted threats can move faster and vary their behavior, while security teams work through enormous amounts of activity across the applications and systems that run your business. Relevant events may be separated by time and recorded in different places, so one alert may not explain what is happening. […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/how-ai-is-changing-security-investigations" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-12T21:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/AI-scaled.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/AI-scaled.png"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/10/AI-scaled.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/fae51b912a7e01ef</id>
-    <title>Replicate OCI Streaming across regions with MirrorMaker 2</title>
-    <updated>2026-10-12T15:00:00+00:00</updated>
-    <content>OCI Streaming is a managed event streaming service for high-volume event data. it is highly available within an OCI region: In multi-availability-domain regions, stream data is replicated across availability domains; in single-availability-domain regions, data is replicated across fault domains. Reference: OCI Streaming Service. However some workloads need a recovery target in another region. Common business use […]</content>
-    <link href="https://blogs.oracle.com/cloud-infrastructure/oci-streaming-cross-region-replication-mm2" rel="alternate"/>
-    <category term="Oracle Cloud Infrastructure" label="Oracle Cloud Infrastructure"/>
-    <published>2026-10-12T15:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/mirrorMaker-no-connect-harness1-1.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/mirrorMaker-no-connect-harness1-1.jpg"/>
-    </media:group>
-    <dc:creator>Oracle Cloud Infrastructure</dc:creator>
-    <link rel="enclosure" href="https://blogs.oracle.com/cloud-infrastructure/wp-content/uploads/sites/83/2026/09/mirrorMaker-no-connect-harness1-1.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/08235831ab95d4df</id>

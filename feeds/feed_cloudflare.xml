@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-27T14:52:30.988251+00:00</updated>
+  <updated>2026-10-27T20:55:02.270968+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -15,21 +15,49 @@
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/20a8ccb4a26b5de8</id>
+    <title>Issues with AI Security for Apps</title>
+    <updated>2026-10-27T17:09:41+00:00</updated>
+    <content>Oct 27 , 17:09 UTC Resolved - This incident has been resolved. Oct 27 , 16:41 UTC Monitoring - We are continuing to monitor for any further issues. Oct 27 , 16:34 UTC Identified - We are continuing to work on a fix for the issue. Oct 27 , 16:31 UTC Investigating - We are currently investigating an issue that is causing intermittent failures in unsafe topic detection within AI Security for Apps.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/03gc4o049emd" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-27T17:09:41+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/9f763cf95a774909</id>
+    <title>Cloudflare Stream performance issues impacting certain Live Broadcasts and On-Demand Uploads</title>
+    <updated>2026-10-27T17:02:14+00:00</updated>
+    <content>Oct 27 , 17:02 UTC Resolved - This incident has been resolved. Oct 27 , 16:38 UTC Monitoring - The issue has been identified and a mitigation has been implemented. Team is continuing to monitor. Oct 27 , 16:10 UTC Investigating - Cloudflare Stream is investigating degraded playback of certain live broadcasts originating from Western Europe and long processing times for on-demand video uploads.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/mbq512v9oe4s" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-27T17:02:14+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5d0a10e033c06c23</id>
+    <title>Cache Purging Delays Affecting Requests Routed Through EEUR</title>
+    <updated>2026-10-27T16:14:34+00:00</updated>
+    <content>Oct 27 , 16:14 UTC Resolved - This incident has been resolved. Oct 27 , 16:02 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 27 , 15:10 UTC Investigating - Some single-file cache purge requests (purge by URL) submitted through the Dashboard or API and routed through our EEUR purge queues are experiencing delays of up to 30 minutes. Cache invalidation for these requests may be delayed across our global network. This also affects Always Online.
+We are working to</content>
+    <link href="https://www.cloudflarestatus.com/incidents/8s6pn9rvof3l" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-27T16:14:34+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/368cc2896ce38338</id>
     <title>ERR_TIMED_OUT and ERR_EMPTY_RESPONSE being observed by Cloudflare Customers</title>
-    <updated>2026-10-27T14:38:20+00:00</updated>
-    <content>Oct 27 , 14:38 UTC Identified - Cloudflare has identified an issue affecting customers whose traffic passes through an external vendor firewall.  Customers may observe:
-
+    <updated>2026-10-27T15:12:03+00:00</updated>
+    <content>Oct 27 , 15:12 UTC Resolved - This incident has been resolved. Oct 27 , 14:52 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 27 , 14:38 UTC Identified - Cloudflare has identified an issue affecting customers whose traffic passes through an external vendor firewall.  Customers may observe:
 
 ERR_TIMED_OUT on standard HTTPS websites
 ERR_EMPTY_RESPONSE on non-standard HTTPS ports (e.g., 8443)
-Cloudflare's network and edge are functioning normally. These failures occur at the firewall inspection layer. 
 
-
-We're investigating to confirm the root cause and possible fixes. Oct 27 , 13:20 UTC Identified - Cloudflare has i</content>
+We're investigating to confirm the root cause and possible fixes. Oct 2</content>
     <link href="https://www.cloudflarestatus.com/incidents/dk2obcyw2aew" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-27T14:38:20+00:00</published>
+    <published>2026-10-27T15:12:03+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
@@ -81,6 +109,51 @@ We're investigating to confirm the root cause and possible fixes. Oct 27 , 13:20
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-27T08:17:26+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3c02b4d9ae1863c2</id>
+    <title>Cloudflare One, Access - Fully customize user-facing Access pages</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>Cloudflare Access now supports HTML and Liquid templates for login, identity-denied, forbidden, and command-line approval pages. Custom templates allow you to control the branding and appearance of each supported page. Liquid variables allow you to provide custom instructions to users or provide a clear reason why they were blocked. Create templates in the Cloudflare One dashboard, validate them in the editor, and assign them to applications or set account defaults. For supported page types, tem</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-27-access-custom-pages/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e61a6b5d14d7b95d</id>
+    <title>Analytics - SQL API introspection: `include_attributes` parameter</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>The SQL API introspection endpoint has a new include_attributes query parameter. Setting it to true discovers the keys of a dataset's attributes JSON column, and their types, from the preceding seven days of your account's data. Discovered keys are returned in the dataset's attributes response field. Some datasets store additional key-value data in an attributes JSON column, which you query with exact-key lookups such as attributes['http.method'] . The previous way to discover these keys, includ</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b07ec47a44d0e203</id>
+    <title>Workflows, Workers - Restrict Workflows to a jurisdiction</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <content>You can now restrict a Workflow to a jurisdiction . Its instances only run and store data within that jurisdiction, which helps you comply with data localization regulations such as GDPR ↗︎ or FedRAMP ↗︎ . Set jurisdiction on a workflows binding, or on a Workflow declared in exports : { "workflows" : [ { "name" : "my-workflow" , "binding" : "MY_WORKFLOW" , "class_name" : "MyWorkflow" , "jurisdiction" : "eu" , }, ], } [[ workflows ]] name = "my-workflow" binding = "MY_WORKFLOW" class_name = "MyWo</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-27-workflow-jurisdictions/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-27-workflow-jurisdictions/og.png?v=862a66864b138a4d" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-27-workflow-jurisdictions/og.png?v=862a66864b138a4d"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-27-workflow-jurisdictions/og.png?v=862a66864b138a4d" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/bfdba109b967dc22</id>
@@ -679,6 +752,21 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/og.png?v=249aeb6f014e129b" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/dd6de1c2697c2c31</id>
+    <title>logpush, Logs - Account-scoped HTTP request logs in Logpush</title>
+    <updated>2026-10-21T00:00:00+00:00</updated>
+    <content>Cloudflare Logpush now supports HTTP request logs as an account-scoped dataset . Use one job to deliver logs for every zone in an account instead of maintaining a separate job for each zone. Create the job at the account level in the Cloudflare dashboard or through the Logpush API. The ZoneName field identifies the source zone in each log entry. Custom fields remain configured per zone. An account-scoped job honors the custom fields configuration for each zone but does not support account-wide c</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-21-account-scoped-http-requests/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-21T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-21-account-scoped-http-requests/og.png?v=9efa318b65fff6ce" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-21-account-scoped-http-requests/og.png?v=9efa318b65fff6ce"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-21-account-scoped-http-requests/og.png?v=9efa318b65fff6ce" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/797f7c8accc0f0a9</id>
@@ -1406,66 +1494,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e5d484cbc6ab5649</id>
-    <title>Rules - Remove surrounding bytes with trim functions</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>Cloudflare Rules supports three new functions for removing surrounding bytes. Use them to remove whitespace before comparing request values. All HTTP products support these functions on all plans: trim() removes bytes from both ends. trim_start() removes bytes from the start. trim_end() removes bytes from the end. By default, these functions remove ASCII whitespace. An optional constant string specifies a custom set of bytes. If the input value is nil, these functions return nil. For example, th</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-trim-functions/og.png?v=b9a0cf30bdd926b4" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/87c6d8b7f6a62461</id>
-    <title>Cloudflare One, Access - Infrastructure applications support a configurable session duration</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>Infrastructure applications now have a configurable session duration with a default value of 24 hours. You can set the session duration when creating or editing an infrastructure application in the dashboard or via the API. When the session duration elapses, any active SSH connections through that application will be closed, and users will need to reconnect. Previously, infrastructure applications did not enforce a session duration limit. Sessions could persist beyond 24 hours in some cases, but</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-infrastructure-ssh-session-duration/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2824,height=522,format=webp/_astro/infrastructure-ssh-session-duration.DI7ApX89.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4383bbf5099d17ad</id>
-    <title>Access, Cloudflare One - Account context in Access deny redirects</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>App-aware Cloudflare Access deny redirects include an account_id query parameter when account context is available. Custom block pages can use it to identify the account that owns the application represented by kid . For example, a custom redirect can include: https://denied.example.com/?kid=&lt;APP_AUD&gt;&amp;account_id=&lt;ACCOUNT_ID&gt;&amp;original_url=app.example.com%2Fadmin The account ID helps block-page integrations look up applications through account-scoped APIs. It is context, not proof of authenticatio</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-deny-redirect-account-id/og.png?v=306f8dad7958eacd" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/444bb509df15b0bb</id>
-    <title>Workers - Workers Builds now uses newer versions of Node.js, Python, Go, Bun, and more</title>
-    <updated>2026-10-14T00:00:00+00:00</updated>
-    <content>Your builds now run on newer versions of Node.js, Python, Ruby, Go, Bun, Yarn, and Python package managers by default, so you get the latest fixes and features without changing your build configuration. Runtimes Runtime Previous version New version Override with Node.js 24.18.0 24.21.0 NODE_VERSION Python 3.13.3 3.14.8 PYTHON_VERSION Ruby 3.4.7 3.4.11 RUBY_VERSION Go 1.24.3 1.27.2 GO_VERSION Tools and package managers Tool Previous version New version Override with Bun 1.2.15 1.4.3 BUN_VERSION Y</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-14T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/og.png?v=ff59e3bb740fa62c" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/og.png?v=ff59e3bb740fa62c"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/og.png?v=ff59e3bb740fa62c" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5ddd1ebaeb376653</id>
     <title>Network Performance Issues in LAX</title>
     <updated>2026-10-13T22:44:56+00:00</updated>
@@ -1583,40 +1611,6 @@ This incident has been resolved.</content>
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4HA4PM499GF25H969ZFXCA3.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3630ca24223985b0</id>
-    <title>Cloudflare Workers API</title>
-    <updated>2026-10-12T14:05:20+00:00</updated>
-    <content>Oct 12 , 14:05 UTC Resolved - This incident has been resolved. Oct 12 , 13:42 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 12 , 13:32 UTC Investigating - Cloudflare is investigating 504s errors when interacting with Workers API and Workers configuration in the dashboard. Customers might experience some unavailability on Workers endpoints, particularly when deploying a script. 
-
-Workers that are already running in production are not affected. More updates to </content>
-    <link href="https://www.cloudflarestatus.com/incidents/l9hx816r7e6h" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-12T14:05:20+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/686ce406b83196be</id>
-    <title>Cloudflare DNS Resolver 1.1.1.1 and Gateway DNS are having issues in SIN</title>
-    <updated>2026-10-09T19:30:32+00:00</updated>
-    <content>Oct 9 , 19:30 UTC Resolved - This incident has been resolved. Oct 9 , 16:03 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 9 , 14:42 UTC Investigating - We are continuing to investigate this issue. Oct 9 , 14:41 UTC Investigating - Cloudflare is aware of, and investigating, an issue which potentially impacts multiple users in Singapore that use the 1.1.1.1 public resolver or Gateway DNS. Further detail will be provided as more information becomes available.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/4knp3pzs3qvx" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-09T19:30:32+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/58f0d97c2b330383</id>
-    <title>Network Performance Issues in Queretaro</title>
-    <updated>2026-10-09T19:10:37+00:00</updated>
-    <content>Oct 9 , 19:10 UTC Resolved - This incident has been resolved. Oct 9 , 18:51 UTC Monitoring - We have identified the cause of this issue and have applied a fix. We are currently monitoring the results. Oct 9 , 18:50 UTC Investigating - Cloudflare is investigating issues with Network Performance in our Queretaro (QRO) facility.
-
-We are working to analyze and mitigate this problem. More updates to follow shortly.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/60w284knplry" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-09T19:10:37+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/6229f18e6ef43997</id>
