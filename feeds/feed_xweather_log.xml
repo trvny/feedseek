@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.xweather.com/</id>
   <title>Xweather Log</title>
-  <updated>2026-10-27T20:58:00.314315+00:00</updated>
+  <updated>2026-10-27T23:22:29.826657+00:00</updated>
   <author>
     <name>Xweather</name>
   </author>
@@ -14,6 +14,30 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=www.xweather.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=www.xweather.com&amp;sz=64</webfeeds:icon>
   <subtitle>Xweather blog posts and product changelogs in one feed.</subtitle>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#160</id>
+    <title>Phrases API 1.6.0</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Added the tz request parameter to specify the caller’s current location using a full IANA time zone string, e.g., Europe/Helsinki . Added the tz_display request parameter to specify which time zones to include in the response: the requested location, the caller’s location, or both. Improved time zone labeling and date ranges, including suppressing duplicate time zone references when both zones share the same UTC offset throughout the requested period. Other general backend improvements</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#160" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/mcp-server/changelog#130</id>
+    <title>MCP Server 1.3.0</title>
+    <updated>2026-10-27T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather MCP Server</name>
+    </author>
+    <content type="text">Added xweather_get_forecast_hail_threats for hail threats affecting a location over the next 60 minutes. Added xweather_get_historical_hail for hourly historical hail data. Updated xweather_get_forecast_weather to return the full 15-day daily forecast horizon by default and added optional wind gust and wind direction fields. Improved wind direction accuracy in xweather_get_daily_weather_summaries and added optional wind direction fields in degrees. Improved reliability and handling of periods with no strikes in xweather_get_historical_lightning_strikes . Added API key authentication via URL path. Other general backend improvements</content>
+    <link href="https://www.xweather.com/docs/mcp-server/changelog#130" rel="alternate"/>
+    <category term="MCP Server"/>
+    <published>2026-10-27T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://www.xweather.com/docs/weather-api/changelog#1450</id>
     <title>Weather API 1.45.0</title>
@@ -37,6 +61,30 @@
     <link href="https://www.xweather.com/blog/vaisala-xweather-collaborates-with-nvidia-to-deliver-ai-powered-early-warning-for-high-impact-weather" rel="alternate"/>
     <category term="Press releases"/>
     <published>2026-10-21T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#151</id>
+    <title>Phrases API 1.5.1</title>
+    <updated>2026-10-12T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Improved backend reliability and service configuration.</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#151" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2026-10-12T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#150</id>
+    <title>Phrases API 1.5.0</title>
+    <updated>2026-10-08T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Updated the backend runtime and dependencies.</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#150" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2026-10-08T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://www.xweather.com/docs/mapsgl/changelog#1102</id>
@@ -652,6 +700,30 @@ intervals change. Fix contour interpolation when smoothing scales are applied so
     <published>2025-07-09T00:00:00+00:00</published>
   </entry>
   <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#140</id>
+    <title>Phrases API 1.4.0</title>
+    <updated>2025-06-24T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Added the Briefings endpoint with support for POST requests.</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#140" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2025-06-24T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#131</id>
+    <title>Phrases API 1.3.1</title>
+    <updated>2025-06-19T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Added energy_solar and energy_wind activities for renewable energy impacts. Added PM10 unit handling in micrograms per cubic meter (µg/m³).</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#131" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2025-06-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
     <id>https://www.xweather.com/docs/weather-api/changelog#1403</id>
     <title>Weather API 1.40.3</title>
     <updated>2025-06-09T00:00:00+00:00</updated>
@@ -662,6 +734,18 @@ intervals change. Fix contour interpolation when smoothing scales are applied so
     <link href="https://www.xweather.com/docs/weather-api/changelog#1403" rel="alternate"/>
     <category term="Weather API"/>
     <published>2025-06-09T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#130</id>
+    <title>Phrases API 1.3.0</title>
+    <updated>2025-06-05T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Added the Forecasts endpoint with daily and day/night forecasts up to 15 days ahead and support for from and to parameters. Added forecast intervals from 1hr to 72hr , with up to 25 forecast periods. Simplified Conditions requests with the forecast_24h parameter to optionally include a 24-hour forecast. Defaults to false . Improved support for longer forecast responses.</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#130" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2025-06-05T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://www.xweather.com/docs/weather-api/changelog#1402</id>
@@ -710,6 +794,30 @@ intervals change. Fix contour interpolation when smoothing scales are applied so
     <link href="https://www.xweather.com/docs/weather-api/changelog#1401" rel="alternate"/>
     <category term="Weather API"/>
     <published>2025-04-21T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#120</id>
+    <title>Phrases API 1.2.0</title>
+    <updated>2025-04-09T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Improved location accuracy for Impacts requests using coordinates. Added the include_location request parameter to control whether the location name appears in the response. Standardized the units parameter options to metric , imperial , and both .</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#120" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2025-04-09T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://www.xweather.com/docs/phrases-api/changelog#110</id>
+    <title>Phrases API 1.1.0</title>
+    <updated>2025-04-07T00:00:00+00:00</updated>
+    <author>
+      <name>Xweather Phrases API</name>
+    </author>
+    <content type="text">Updated weather alert responses to list alerts from most severe to least severe.</content>
+    <link href="https://www.xweather.com/docs/phrases-api/changelog#110" rel="alternate"/>
+    <category term="Phrases API"/>
+    <published>2025-04-07T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://www.xweather.com/docs/mapsgl/changelog#166</id>
@@ -2906,17 +3014,5 @@ intervals change. Fix contour interpolation when smoothing scales are applied so
     <link href="https://www.xweather.com/docs/android-sdk/changelog#096" rel="alternate"/>
     <category term="Android SDK"/>
     <published>2014-05-09T00:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://www.xweather.com/docs/android-sdk/changelog#095</id>
-    <title>Android SDK 0.9.5</title>
-    <updated>2014-04-21T00:00:00+00:00</updated>
-    <author>
-      <name>Xweather Android SDK</name>
-    </author>
-    <content type="text">Initial Public Beta Release</content>
-    <link href="https://www.xweather.com/docs/android-sdk/changelog#095" rel="alternate"/>
-    <category term="Android SDK"/>
-    <published>2014-04-21T00:00:00+00:00</published>
   </entry>
 </feed>
