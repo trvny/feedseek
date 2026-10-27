@@ -90,6 +90,10 @@ feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows upda
 feeds_commoninja: ## Generate only the standalone Common Ninja blog feed
 	$(PY) feed_generators/commoninja.py --full
 
+.PHONY: test
+test: ## Run repository unit tests with locked dependencies (no feed refresh)
+	$(PY) python -m unittest discover -s tests
+
 .PHONY: validate
 validate: ## Validate all generated feeds
 	$(PY) feed_generators/validate_feeds.py

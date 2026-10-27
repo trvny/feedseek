@@ -54,6 +54,7 @@ Requires [uv](https://docs.astral.sh/uv/) or an equivalent Python environment us
 
 ```bash
 make install        # install dependencies
+make test           # run unit tests without regenerating feeds
 make feeds          # generate all feeds incrementally
 make feeds-full     # rebuild from scratch, ignoring the cache
 make validate       # validate generated feeds
@@ -63,11 +64,42 @@ For the direct commands used by the repository checks:
 
 ```bash
 uv sync --locked
-uv run --locked python -m unittest discover -s tests
+make test
 uv run --locked feed_generators/validate_feeds.py
 ```
 
 In CI, feed `rel="self"` URLs are derived from `GITHUB_REPOSITORY`, so repository renames do not require hard-coded URL edits.
+
+## Distribution boundary
+
+The current `pyproject.toml` intentionally sets `[tool.uv] package = false`.
+It manages an **application/repository workspace**, not an installable PyPI
+distribution. Keeping `uv.lock` and `make test` reproducible benefits everyday
+maintenance even if no external package is released.
+
+Before making a distributable Python package, first ensure that its supported
+entry points run from outside the repository checkout, with an explicit way to
+find a caller-supplied `feeds.yaml` and output directory. Today
+`feed_generators/models.py` resolves the registry relative to the checkout,
+and site builders load code by adding `feed_generators/` to `sys.path`.
+Packaging must not silently change scheduled behavior by moving those files.
+
+Keep the existing ownership boundaries:
+
+- `feed_generators/` plus its shared normalization and registry tools are
+  candidates for a reusable **generator CLI/library**, once paths and resources
+  are made portable and tested.
+- `feeds.yaml` is the maintained source registry. Generated `feeds/`,
+  `public/`, and local `cache/` are **runtime artifacts**, not wheel contents.
+- `site/` is the GitHub Pages/reader publisher; `feeds-proxy/` is a separate
+  Cloudflare Worker. Neither needs to be repackaged into the Python CLI.
+- The private R2 snapshot is the authoritative incremental cache. A pip/uv
+  installation must never rebuild or overwrite it automatically.
+
+An independent packaging smoke test should eventually install the wheel in a
+clean environment and invoke the supported CLI from another working directory,
+using a temporary registry and destination. Until such a test exists, leave
+`package = false` in place and treat publishing as a separate decision.
 
 ## Adding a feed
 
