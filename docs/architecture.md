@@ -39,7 +39,7 @@ Everything that depends on upstream richness stays adaptive. Images, authors, ca
 
 ## Reader coverage
 
-The browser Reader identifies entries by their feed URL plus Atom ID or RSS GUID, falling back to the article URL when no ID is present. Distinct changelog versions, forecasts and observations may share one source-page URL and remain separate entries.
+The browser Reader identifies entries by subscription feed URL and label plus Atom ID or RSS GUID, with a separate article-URL fallback when no ID is present. Distinct changelog versions, forecasts and observations may share one source-page URL and remain separate entries.
 
 The browser Reader retains every usable, deduplicated entry returned by its subscriptions. Source filtering runs before display pagination: 250 entries per view, with **Show more** for the rest. The counter reports displayed and available entries. Responses above 16 MiB or 10,000 entries fail that feed's refresh, preserving its last loaded entries. Offline snapshots keep up to 5,000 recent entries and shrink further when browser storage is full; refresh reloads the feeds.
 

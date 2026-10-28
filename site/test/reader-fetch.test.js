@@ -234,6 +234,18 @@ test("keeps cached items only for feeds that failed", () => {
   assert.equal(merged.items[1].source, "Same title");
 });
 
+test("subscription aliases preserve their own failed cache without restoring successful aliases", () => {
+  const { mergeRefreshResults } = makeContext(() => {}).FeedseekReaderUtils;
+  const feeds = ["First", "Second"].map(title => ({ title, xmlUrl: "https://feed.test/shared" }));
+  const cached = feeds.map(feed => ({ source: feed.title, feedUrl: feed.xmlUrl, id: "old", url: "https://article.test/old" }));
+  const fresh = { source: "First", feedUrl: feeds[0].xmlUrl, id: "new", url: "https://article.test/new" };
+  const failed = { status: "rejected", reason: new Error("offline") };
+  const mixed = mergeRefreshResults(feeds, [{ status: "fulfilled", value: [fresh] }, failed], cached);
+  assert.deepEqual(Array.from(mixed.items, item => [item.source, item.id]), [["First", "new"], ["Second", "old"]]);
+  const offline = mergeRefreshResults(feeds, [failed, failed], cached);
+  assert.deepEqual(Array.from(offline.items, item => item.source), ["First", "Second"]);
+});
+
 test("does not keep cached items for unsubscribed feeds", () => {
   const window = makeContext(() => Promise.resolve(new Response("ok")));
   const { mergeRefreshResults } = window.FeedseekReaderUtils;

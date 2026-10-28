@@ -122,6 +122,23 @@ test("shared page URLs keep distinct entry IDs and independent source membership
   assert.equal(r.articles().length, 1);
 });
 
+test("subscription aliases and explicit IDs remain distinct from URL fallbacks", async () => {
+  const { feeds, entries } = fixture([3]);
+  const items = entries.get(feeds[0].xmlUrl);
+  items[0].id = "https://article.test/fallback";
+  items[0].url = "https://article.test/explicit";
+  items[1].id = "";
+  items[1].url = items[0].id;
+  items[2].id = "last";
+  feeds.push({ ...feeds[0], title: "Alias" });
+  const r = await makeReader(feeds, entries);
+  r.context.loadFeed = async feed => items.map(item => ({ ...item, source: feed.title }));
+  await vm.runInContext("run()", r.context);
+  assert.equal(vm.runInContext("ITEMS.length", r.context), 6);
+  r.filter("Alias");
+  assert.equal(r.articles().length, 3);
+});
+
 test("Atom IDs and RSS GUIDs survive parsing when entries reuse a page URL", async () => {
   const { feeds, entries } = fixture([1]);
   const r = await makeReader(feeds, entries);

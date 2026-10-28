@@ -219,7 +219,7 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
     const ts=d ? Date.parse(d) : NaN;
     const title=txt(n,'title')||'(untitled)';
     const url=safeHttpUrl(lnk(n),feedUrl);
-    const id=txt(n,'id','guid')||url;
+    const id=txt(n,'id','guid');
     let desc=clean(txt(n,'description','summary','content','encoded'));
     if(desc && desc.toLowerCase()===title.toLowerCase()) desc='';
     return {id, source, feedUrl, feedIcon, feedSite, title, desc, url,
@@ -362,7 +362,7 @@ async function run(){
     const nextItems=merged.items, nextFailed=merged.failed;
     const seen=new Set();
     const deduped=nextItems.filter(i=>{
-      const key=JSON.stringify([i.feedUrl||i.source,i.id||i.url]);
+      const key=JSON.stringify([i.feedUrl||i.source,i.source,i.id?'id':'url',i.id||i.url]);
       if(seen.has(key)) return false;
       seen.add(key); return true;
     }).sort((a,b)=>b.ts-a.ts);
