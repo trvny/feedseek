@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-28T08:56:38.855117+00:00</updated>
+  <updated>2026-10-28T16:48:32.969007+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -35,6 +35,36 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-28T03:28:57+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cc0e93649796a6d4</id>
+    <title>Agents, Browser Run - Agents SDK: Preview dev servers in the browser without public URLs</title>
+    <updated>2026-10-28T00:00:00+00:00</updated>
+    <content>Agents that build websites need to check their work in a real browser. Internal hostnames let your agent's browser preview a dev server running in a container without exposing that server to the public Internet. With internal hostnames, the persistent browser in the Cloudflare Agents SDK can open sites that only your agent serves. Give the browser hostnames such as preview.internal , and its requests to them go to your agent instead of the Internet. The model can check a dev server in its sandbo</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-28-browser-internal-hostnames/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=524,format=svg/_astro/browser-internal-hostnames.FAVHfafR.svg" type="image/svg+xml" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=524,format=svg/_astro/browser-internal-hostnames.FAVHfafR.svg"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=524,format=svg/_astro/browser-internal-hostnames.FAVHfafR.svg" type="image/svg+xml" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3866c926088a0714</id>
+    <title>Workers, Cloudflare CLI - Serve Workers Static Assets from a URL path prefix</title>
+    <updated>2026-10-28T00:00:00+00:00</updated>
+    <content>Workers Static Assets can now serve assets from a URL path prefix without changing their directory structure. Set assets.base_path in Wrangler, or worker.assets.basePath in cloudflare.config.ts . Use Wrangler 4.148.0 ↗︎ or later. With cloudflare.config.ts , use cf 1.0.0-beta.13 ↗︎ or later. For example, this configuration serves your built assets from /blog/ : Select your preferred CLI Wrangler CF Changes examples on this page to use the selected CLI. { "$schema" : "./node_modules/wrangler/confi</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-28-static-assets-base-path/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-28-static-assets-base-path/og.png?v=ed4e43585739a15e" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-28-static-assets-base-path/og.png?v=ed4e43585739a15e"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-28-static-assets-base-path/og.png?v=ed4e43585739a15e" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/d4cd75d2910bdd1a</id>
@@ -1339,36 +1369,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-15T06:46:30+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b17d447f00c16895</id>
-    <title>Cloudflare One, Gateway - Application Library now supports custom applications</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>Starting today, you can create custom applications in the Application Library and reference them in Gateway DNS, Network, and HTTP policies. You can define an application with hostnames, IP subnets, or both. Then, optionally add TCP or UDP ports or port ranges to restrict HTTP and Network matching. This release also improves search and filtering in the Application Library, updates the interfaces, data, and metrics used to review applications, and makes it easier to select and manage applications</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-app-library-custom-applications/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1928,height=1108,format=webp/_astro/custom-application-create.hLzR_NQZ.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1928,height=1108,format=webp/_astro/custom-application-create.hLzR_NQZ.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1928,height=1108,format=webp/_astro/custom-application-create.hLzR_NQZ.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d875cdd3b2e81824</id>
-    <title>Cloudflare One - Validate data loss prevention matches with Cloudflare Workers</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>Data loss prevention (DLP) custom pattern entries can use Cloudflare Workers in your account to validate matches with organization-specific logic. Your Worker can adjust a match's confidence or reject the match. For setup steps and the Worker contract, refer to Validate data loss prevention matches with Cloudflare Workers .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-dlp-custom-validation-workers/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-15-dlp-custom-validation-workers/og.png?v=4cd78289bb5e97d1" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-15-dlp-custom-validation-workers/og.png?v=4cd78289bb5e97d1"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-15-dlp-custom-validation-workers/og.png?v=4cd78289bb5e97d1" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/b162823ac329e6a6</id>
