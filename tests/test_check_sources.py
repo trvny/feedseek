@@ -30,15 +30,13 @@ class SourceProbeTests(unittest.TestCase):
     def test_rejected_access_is_not_reported_healthy(self):
         for status, reason in ((401, "authentication required"), (403, "access blocked"), (429, "rate limited")):
             with self.subTest(status=status):
-                ok, note = self.probe(status, status)
-                self.assertFalse(ok)
-                self.assertIn(reason, note)
-                self.assertIn("source not verified", note)
+                self.assertEqual(
+                    self.probe(status, status),
+                    (False, f"HTTP {status} ({reason}; source not verified)"),
+                )
 
     def test_failed_fallback_uses_primary_status_when_unavailable(self):
-        ok, note = self.probe(403, None)
-        self.assertFalse(ok)
-        self.assertIn("HTTP 403", note)
+        self.assertEqual(self.probe(403, None), (False, "HTTP 403 (access blocked; source not verified)"))
 
     def test_a_later_server_error_does_not_inherit_an_earlier_block_as_success(self):
         self.assertEqual(self.probe(403, 503), (False, "HTTP 503"))

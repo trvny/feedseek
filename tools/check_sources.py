@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Probe every source docs/sources.md lists and report the ones that are gone.
+"""Probe every source docs/sources.md lists and report the ones needing attention.
 
 The document is derived from the generators now, so it is always an accurate
 list of what they *intend* to read. It says nothing about whether those URLs
@@ -9,10 +9,12 @@ sources, and the dead one just quietly stops contributing. Combined feeds hide
 this best, which is exactly where most sources live.
 
     python tools/check_sources.py                 # every source, grouped by feed
-    python tools/check_sources.py --broken        # only what needs fixing
+    python tools/check_sources.py --broken        # only sources needing attention
     python tools/check_sources.py --feed lemmy    # one feed
 
-Exits 1 when something is broken, so it works as a manual gate.
+Needing attention = dead, erroring, or still blocked (401/403/429) after the
+curl_cffi retry, i.e. unverified rather than proven dead. Exits 1 when any
+source needs attention, so it works as a manual gate.
 
 Deliberately not part of validate_feeds.py: it needs the network and talks to
 507+ third-party hosts, so wiring it into the scheduled run would let someone
@@ -95,7 +97,7 @@ def probe(url: str) -> tuple[bool, str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--broken", action="store_true", help="list only what is broken")
+    parser.add_argument("--broken", action="store_true", help="list only sources needing attention (dead, erroring or unverified)")
     parser.add_argument("--feed", help="check a single feed by registry name")
     args = parser.parse_args()
 
