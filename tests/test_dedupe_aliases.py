@@ -50,6 +50,19 @@ class DedupeAliasTests(unittest.TestCase):
         result = dedupe_entries(
             [
                 first,
+                # Title duplicate with its own URL: discarded, but its URL must alias `first`.
+                {"link": "https://example.test/alt", "title": "First", "date": DATE},
+                # Matches only through that URL alias.
+                {"link": "https://example.test/alt", "title": "Unrelated", "date": DATE},
+            ]
+        )
+        self.assertEqual(result, [first])
+
+    def test_discarded_variants_still_register_title_aliases(self):
+        first = {"link": "https://example.test/one", "title": "First", "date": DATE}
+        result = dedupe_entries(
+            [
+                first,
                 {"link": first["link"], "title": "Alternative", "date": DATE},
                 {"link": "https://example.test/two", "title": "Alternative", "date": DATE},
             ]
