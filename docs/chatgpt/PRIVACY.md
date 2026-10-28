@@ -1,6 +1,6 @@
 # Feedseek Privacy Policy
 
-_Last updated: October 1, 2026_
+_Last updated: October 28, 2026_
 
 This policy applies to the public Feedseek service, including the Feedseek ChatGPT app and its MCP endpoint.
 
@@ -16,11 +16,18 @@ Feedseek does not intentionally store ChatGPT conversation content, user prompts
 
 The service is hosted using third-party infrastructure, including Cloudflare and GitHub. Those providers may process ordinary network and request metadata needed to operate, secure, and deliver the service under their own policies.
 
-The Reader panel keeps filters and selected public entries in temporary in-memory
-UI state. It does not use browser storage. Clicking **Use selection** shares the
-selected public entry IDs, URLs and compact summaries with the current ChatGPT
-conversation through the host's model-context API. Closing the panel discards its
-local selection; context already shared with ChatGPT follows ChatGPT's retention rules.
+The Reader panel keeps filters and selected public entries in memory. When the
+ChatGPT host exposes widget-state APIs, it also saves filter values, selected
+public entry IDs, titles, URLs, source names, compact summaries and uncertain-send
+state through those APIs. The host may restore that state when the panel reopens;
+closing the panel does not guarantee deletion of host-managed state. The panel
+does not use browser storage or a Feedseek server-side user database.
+
+Clicking **Use selection** shares selected entry details with the current ChatGPT
+conversation through the host's model-context API. Where supported, the separate
+**Send to chat** button sends the selected public details as a user-role message
+after an explicit click. Host-managed widget state, messages and shared context
+follow ChatGPT's retention rules.
 
 ## Public source content
 
@@ -32,7 +39,7 @@ Feedseek does not sell personal data. The app does not intentionally share user-
 
 ## Security
 
-The ChatGPT app exposes read-only tools. It cannot create, modify, delete, send, publish, purchase, or otherwise change external state. Tool inputs are validated server-side, and retrieved feed content is treated as untrusted external content.
+The ChatGPT app exposes read-only tools. It cannot create, modify, delete, publish, purchase, or otherwise change external state, and cannot send email or other communications outside the ChatGPT conversation. The only send action is the Reader panel's **Send to chat**, which posts selected public entry details into the current conversation as a user-role message after an explicit click. Tool inputs are validated server-side, and retrieved feed content is treated as untrusted external content.
 
 ## Changes
 
