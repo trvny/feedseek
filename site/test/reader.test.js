@@ -84,6 +84,7 @@ function fixture(counts) {
     const feed = { title: `Source ${source}`, xmlUrl: `https://feed.test/${source}.xml` };
     feeds.push(feed);
     entries.set(feed.xmlUrl, Array.from({ length: count }, (_, i) => ({
+      id: `entry-${source}-${i}`,
       source: feed.title, feedUrl: feed.xmlUrl, title: `Article ${source}/${i}`,
       url: `https://article.test/${source}/${i}`, ts: source * 10000 + i,
     })));
@@ -103,6 +104,48 @@ test("refresh retains and snapshots all sources before filtering and pagination"
   assert.equal(r.articles().length, 10);
   assert.equal(r.articles()[0].href, "https://article.test/0/9");
   assert.match(r.nodes.get("#count").textContent, /^10 items/);
+});
+
+test("shared page URLs keep distinct entry IDs and independent source memberships", async () => {
+  const { feeds, entries } = fixture([3, 1]);
+  const first = entries.get(feeds[0].xmlUrl);
+  first.forEach(item => { item.url = "https://article.test/changelog"; });
+  first[2].id = first[0].id;
+  const other = entries.get(feeds[1].xmlUrl)[0];
+  other.url = first[0].url;
+  other.id = first[0].id;
+  const r = await makeReader(feeds, entries);
+  assert.equal(vm.runInContext("ITEMS.length", r.context), 3);
+  r.filter("Source 0");
+  assert.equal(r.articles().length, 2);
+  r.filter("Source 1");
+  assert.equal(r.articles().length, 1);
+});
+
+test("Atom IDs and RSS GUIDs survive parsing when entries reuse a page URL", async () => {
+  const { feeds, entries } = fixture([1]);
+  const r = await makeReader(feeds, entries);
+  for (const [rootName, idTag] of [["feed", "id"], ["rss", "guid"]]) {
+    r.context.DOMParser = class {
+      parseFromString() {
+        return {
+          documentElement: { tagName: rootName, children: [] },
+          querySelector: () => null,
+          querySelectorAll: () => ["first", "second"].map(id => ({
+            children: [
+              { tagName: idTag, textContent: id },
+              { tagName: "title", textContent: id },
+              { tagName: "link", textContent: "https://article.test/changelog", getAttribute: () => null },
+            ],
+            getElementsByTagName: () => [],
+          })),
+        };
+      }
+    };
+    const parsed = vm.runInContext('parseFeed("xml", "Feed", "https://feed.test/feed")', r.context);
+    assert.deepEqual(Array.from(parsed, item => item.id), ["first", "second"]);
+    assert.equal(parsed[0].url, parsed[1].url);
+  }
 });
 
 test("Show more reaches the complete source and resets on source changes and refresh", async () => {
