@@ -83,12 +83,14 @@ def probe(url: str) -> tuple[bool, str]:
 
     retried = _impersonated_status(url)
     if retried == 200:
-        return True, "200 (tylko przez curl_cffi)"
-    if retried in (401, 403, 429) or status in (401, 403, 429):
-        return True, f"HTTP {retried or status} (blokada bota, generator to obchodzi)"
+        return True, "200 (curl_cffi fallback)"
+    final_status = retried if retried is not None else status
+    if final_status in (401, 403, 429):
+        reason = {401: "authentication required", 403: "access blocked", 429: "rate limited"}[final_status]
+        return False, f"HTTP {final_status} ({reason}; source not verified)"
     if status is None and retried is None:
         return False, note
-    return False, f"HTTP {retried or status}"
+    return False, f"HTTP {final_status}"
 
 
 def main() -> int:
@@ -109,7 +111,7 @@ def main() -> int:
     # One probe per distinct URL: feeds share sources more often than you would
     # think, and a Google News query appears under half a dozen names.
     unique = sorted({url for pairs in by_feed.values() for _, url in pairs})
-    print(f"sprawdzam {len(unique)} unikalnych zrodel z {len(by_feed)} feedow ...\n")
+    print(f"Checking {len(unique)} unique sources across {len(by_feed)} feeds ...\n")
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         verdicts = dict(zip(unique, pool.map(probe, unique)))
 
@@ -121,13 +123,13 @@ def main() -> int:
         tally["martwe"] += len(broken)
         broken_total += len(broken)
         if broken:
-            print(f"{feed} ({len(broken)} z {len(pairs)}):")
+            print(f"{feed} ({len(broken)} of {len(pairs)} need attention):")
             for label, url, note in broken:
                 print(f"    {note:34s} {label} - {url}")
         elif not args.broken:
-            print(f"{feed}: wszystkie {len(pairs)} zrodel odpowiadaja")
+            print(f"{feed}: all {len(pairs)} sources returned HTTP 200")
 
-    print(f"\n{tally['martwe']} z {tally['zrodla']} zrodel nie odpowiada")
+    print(f"\n{tally['martwe']} of {tally['zrodla']} sources need attention")
     return 1 if broken_total else 0
 
 
