@@ -115,12 +115,15 @@ class ModelFeedIndexTests(unittest.TestCase):
             env = {**os.environ, "GIT_CONFIG_GLOBAL": str(base / "gitconfig")}
 
             def run(cwd, *args):
-                return subprocess.run(args, cwd=cwd, env=env, check=True, capture_output=True, text=True)
+                result = subprocess.run(args, cwd=cwd, env=env, check=False, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, f"{args}:\n{result.stdout}\n{result.stderr}")
+                return result
 
             run(base, "git", "config", "--global", "user.name", "Index test")
             run(base, "git", "config", "--global", "user.email", "index@example.test")
             run(base, "git", "init", "--bare", "--initial-branch=main", str(origin))
             run(base, "git", "init", "--initial-branch=main", str(seed))
+            shutil.copyfile(root / ".gitignore", seed / ".gitignore")
             (seed / "feeds").mkdir()
             (seed / "docs").mkdir()
             (seed / "docs/sources.md").write_text("Sources\n")
@@ -131,9 +134,11 @@ class ModelFeedIndexTests(unittest.TestCase):
             run(seed, sys.executable, "feed_generators/docs_model_feeds.py")
             run(seed, "git", "add", ".")
             run(seed, "git", "commit", "-m", "Initial feed")
+            self.assertNotIn("__pycache__", run(seed, "git", "ls-files").stdout)
             run(seed, "git", "remote", "add", "origin", str(origin))
             run(seed, "git", "push", "-u", "origin", "main")
             run(base, "git", "clone", str(origin), str(job))
+            os.utime(job / "feed_generators/utils.py", (1, 1))
 
             self.write_feed(job / "feeds", "alpha", "Alpha", 2)
             run(job, sys.executable, "feed_generators/docs_model_feeds.py")
