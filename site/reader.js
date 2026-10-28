@@ -218,10 +218,11 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
     const d=txt(n,'pubdate','published','updated','date');
     const ts=d ? Date.parse(d) : NaN;
     const title=txt(n,'title')||'(untitled)';
+    const url=safeHttpUrl(lnk(n),feedUrl);
+    const id=txt(n,'id','guid');
     let desc=clean(txt(n,'description','summary','content','encoded'));
     if(desc && desc.toLowerCase()===title.toLowerCase()) desc='';
-    return {source, feedUrl, feedIcon, feedSite, title, desc,
-            url:safeHttpUrl(lnk(n),feedUrl),
+    return {id, source, feedUrl, feedIcon, feedSite, title, desc, url,
             ts:isNaN(ts)?0:ts, img:mediaImg(n,feedUrl)};
   }).filter(i=>i.title && i.url);
 }
@@ -360,7 +361,11 @@ async function run(){
     const merged=window.FeedseekReaderUtils.mergeRefreshResults(feeds,results,ITEMS);
     const nextItems=merged.items, nextFailed=merged.failed;
     const seen=new Set();
-    const deduped=nextItems.filter(i=>!seen.has(i.url)&&seen.add(i.url)).sort((a,b)=>b.ts-a.ts);
+    const deduped=nextItems.filter(i=>{
+      const key=JSON.stringify([i.feedUrl||i.source,i.source,i.id?'id':'url',i.id||i.url]);
+      if(seen.has(key)) return false;
+      seen.add(key); return true;
+    }).sort((a,b)=>b.ts-a.ts);
     ITEMS=deduped;
     visibleCount=PAGE_SIZE;
     FAILED=nextFailed;

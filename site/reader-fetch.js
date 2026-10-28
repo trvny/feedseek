@@ -117,8 +117,12 @@
   function mergeRefreshResults(feeds, results, previousItems) {
     const items = [];
     const failed = [];
-    const failedUrls = new Set();
-    const titlesByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed.title]));
+    const failedSubscriptions = new Set();
+    const feedsByUrl = new Map();
+    for (const feed of feeds) {
+      if (!feedsByUrl.has(feed.xmlUrl)) feedsByUrl.set(feed.xmlUrl, []);
+      feedsByUrl.get(feed.xmlUrl).push(feed);
+    }
     const cachedItems = migrateLegacyFeedMetadata(previousItems, feeds);
 
     results.forEach((result, index) => {
@@ -126,13 +130,16 @@
       if (result.status === "fulfilled") items.push(...result.value);
       else {
         failed.push(feed.title);
-        failedUrls.add(feed.xmlUrl);
+        failedSubscriptions.add(JSON.stringify([feed.xmlUrl, feed.title]));
       }
     });
 
     for (const item of cachedItems) {
-      if (!failedUrls.has(item.feedUrl)) continue;
-      items.push({ ...item, source: titlesByUrl.get(item.feedUrl) || item.source });
+      const subscriptions = feedsByUrl.get(item.feedUrl) || [];
+      const subscription = subscriptions.find(feed => feed.title === item.source)
+        || (subscriptions.length === 1 ? subscriptions[0] : null);
+      if (!subscription || !failedSubscriptions.has(JSON.stringify([subscription.xmlUrl, subscription.title]))) continue;
+      items.push({ ...item, source: subscription.title });
     }
 
     return { items, failed };
