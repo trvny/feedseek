@@ -123,12 +123,20 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add feeds docs/sources.md
+          git add feeds docs/sources.md docs/model-feeds.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m 'Update feeds'
-            git push || { git pull --rebase && git push; }
+            if ! git push; then
+              git pull --rebase
+              uv run --locked feed_generators/docs_model_feeds.py
+              git add docs/model-feeds.md
+              if ! git diff --staged --quiet; then
+                git commit -m 'Refresh Model Feed index'
+              fi
+              git push
+            fi
           fi
 
       - name: Apply feed health gate
