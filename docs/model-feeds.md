@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 24851 entries.
+111 Model Feeds · 24855 entries.
 
 ## Access
 
@@ -40,10 +40,10 @@
 | `daily_digest` | Daily Digest | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_digest.json) |
 | `daily_quote` | Daily Quote | 124 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
 | `datime` | DaTime | 167 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
-| `dji` | DJI | 45 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
+| `dji` | DJI | 48 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
 | `docker` | Docker | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_docker.json) |
 | `download-soundtracks` | Download Soundtracks | 250 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_download-soundtracks.json) |
-| `dwutygodnik` | Dwutygodnik | 182 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dwutygodnik.json) |
+| `dwutygodnik` | Dwutygodnik | 183 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dwutygodnik.json) |
 | `ea` | Electronic Arts | 90 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ea.json) |
 | `esa` | ESA | 250 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_esa.json) |
 | `euronews` | Euronews | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_euronews.json) |
