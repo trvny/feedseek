@@ -3,6 +3,26 @@
 Per-feed background: why each non-trivial feed exists, where the data comes
 from, and the trade-offs involved.
 
+## About the Figma feed
+
+**One combined feed** from [Figma Newsroom](https://www.figma.com/newsroom/?lang=pl-pl),
+[Shortcut / Figma Blog](https://www.figma.com/blog/) and
+[Figma release notes](https://www.figma.com/release-notes/).
+The blog and release notes publish native Atom feeds at
+`/blog/feed/atom.xml` and `/release-notes/feed/atom.xml`; those remain the
+primary sources with upstream publication dates and descriptions. The newsroom
+landing page is additionally checked for dated article cards. Its entries
+usually link to articles already present in the blog, so links are normalized
+and deduplicated rather than creating a second copy. Undated cards, unrelated
+navigation and future announcements are excluded.
+
+Cached Newsroom articles linking to `/blog/` are promoted to the Blog source
+for native metadata refresh, while preserving their stable entry identity.
+Native media is retained, but generic image backfill is disabled so untrusted
+article links are not fetched for images. Each upstream failure is isolated
+by the shared `multi_rss` pipeline, and existing cache history is retained. The localized newsroom URL is the requested
+landing page, not a promise that every source publishes Polish-language text.
+
 ## About the Foundry feed
 
 **One combined feed** for Foundry/IDG's [Foundry](https://foundryco.com/sitemap/)
