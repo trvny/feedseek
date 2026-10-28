@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-28T19:03:19.323454+00:00</updated>
+  <updated>2026-10-28T21:24:41.220241+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,16 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5672fca42bc8c99e</id>
+    <title>Increased latency and error rate for R2 in ENAM</title>
+    <updated>2026-10-28T21:12:24+00:00</updated>
+    <content>Oct 28 , 21:12 UTC Resolved - This incident has been resolved. Oct 28 , 21:01 UTC Identified - Cloudflare is investigating increased error rates and latency for R2 in ENAM region.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/h6fgl47h6iht" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-28T21:12:24+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/f3fa7b0e7e9b910b</id>
     <title>Network Performance Issues in Ashburn, IAD</title>
@@ -65,6 +75,51 @@ We are working to analyze and mitigate this problem. More updates to follow shor
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-28-static-assets-base-path/og.png?v=ed4e43585739a15e" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/43d04c2a05360a00</id>
+    <title>Access, Cloudflare One - Filter MCP tool-call analytics by response status</title>
+    <updated>2026-10-28T00:00:00+00:00</updated>
+    <content>MCP tool-call analytics support a response_status query parameter on the account, portal, and server timeseries endpoints. Use success , error , or cached to count one status, or all to include every status. The default is success . Previously, counts included failed and cached calls. If you need the previous all-status counts, set response_status=all explicitly: GET /accounts/{account_id}/access/ai-controls/mcp/analytics/tool-calls/timeseries?response_status=all The response includes the select</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-28-mcp-analytics-response-status/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-28-mcp-analytics-response-status/og.png?v=75100fb53beb9da1" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-28-mcp-analytics-response-status/og.png?v=75100fb53beb9da1"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-28-mcp-analytics-response-status/og.png?v=75100fb53beb9da1" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6cb50f014eadb40c</id>
+    <title>China Network, Challenges, Bots - China-native Challenge Pages for the China Network</title>
+    <updated>2026-10-28T00:00:00+00:00</updated>
+    <content>Challenge Pages served through the Cloudflare China Network now use Turnstile widgets hosted in Mainland China. This means that visitors in Mainland China can complete challenges faster and more reliably because widgets no longer need to make cross-border requests. You do not need to take any action: this change applies automatically when a China Network zone presents a Challenge Page. Visitors served by Cloudflare's global network will continue to receive the global Challenge Page experience. F</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-28-china-native-challenge-pages/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-28-china-native-challenge-pages/og.png?v=ee7a6f1dfbb6a253" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-28-china-native-challenge-pages/og.png?v=ee7a6f1dfbb6a253"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-28-china-native-challenge-pages/og.png?v=ee7a6f1dfbb6a253" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d87024b3a8245c46</id>
+    <title>Workers - Workers Builds now retains builds and build logs for 90 days</title>
+    <updated>2026-10-28T00:00:00+00:00</updated>
+    <content>Workers Builds now retains each build and its build logs for 90 days after the build finishes. You can find them under View build history in your Worker's Deployments tab, or through the Workers Builds API . After 90 days, a build and its logs are removed. The versions and deployments it created stay in your Worker's version history , so you can still roll back to them. If you need a build's logs for longer, you can download them with the Get build logs API endpoint. For more information, refer </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-28-workers-builds-90-day-retention/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-28T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-28-workers-builds-90-day-retention/og.png?v=f107583f8cc29334" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-28-workers-builds-90-day-retention/og.png?v=f107583f8cc29334"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-28-workers-builds-90-day-retention/og.png?v=f107583f8cc29334" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/d4cd75d2910bdd1a</id>
@@ -1371,51 +1426,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b162823ac329e6a6</id>
-    <title>Cloudflare One, Workers, Gateway - Gateway and Workers integration is now in public beta</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>Cloudflare Gateway now integrates with Cloudflare Workers in public beta on all Zero Trust plans. You can use the Forward action in Gateway HTTP policies to run your own code on matching, permitted traffic without managing a separate proxy. The Forward action lets you transform HTTP requests and responses, return a coaching page, or run background tasks such as Slack notifications and R2 captures. Your Worker receives the request and Gateway context , including connection metadata, user identity</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-gateway-workers-public-beta/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=1053,format=webp/_astro/gateway-workers-forward.CFUFJAE0.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=1053,format=webp/_astro/gateway-workers-forward.CFUFJAE0.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=1053,format=webp/_astro/gateway-workers-forward.CFUFJAE0.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/7513f8e3b211aa71</id>
-    <title>Stream - Ultra-low latency live with WebRTC is now Generally Available in Stream</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>Stream WebRTC support ↗︎ lets you deliver high quality live video to thousands of concurrent viewers in milliseconds. WebRTC is compatible with native Web APIs and standard protocols, so creators can go live from a browser ↗︎ without needing a separate broadcast application. This powers platforms to build custom experiences with deep feature integration for creators as well as viewers. Here's how to get started with a Stream live input and a browser. Usage-based billing for WebRTC begins today, </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-stream-live-webrtc-ga/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-15-stream-live-webrtc-ga/og.png?v=a4143ff597e4b496" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-15-stream-live-webrtc-ga/og.png?v=a4143ff597e4b496"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-15-stream-live-webrtc-ga/og.png?v=a4143ff597e4b496" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/0355f6d83f797980</id>
-    <title>Workers, Pages - GitHub repository picker reflects your access</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>When you connect a GitHub repository to Workers Builds or Pages, Cloudflare may ask you to authenticate or reauthenticate with GitHub. The repository picker then shows only the organizations and repositories that your GitHub user can access. Existing repository connections remain connected. Builds from those connections continue without requiring reauthentication. For more information, refer to the Workers Builds GitHub integration and Pages GitHub integration .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-user-scoped-github-repositories/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-15-user-scoped-github-repositories/og.png?v=0132d07af8a206a1" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-15-user-scoped-github-repositories/og.png?v=0132d07af8a206a1"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-15-user-scoped-github-repositories/og.png?v=0132d07af8a206a1" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/7af7756affd992cb</id>
     <title>Cloudflare WAN, Magic Transit, Cloudflare One - BGP route filtering for IPsec and GRE tunnels</title>
     <updated>2026-10-15T00:00:00+00:00</updated>
@@ -1584,16 +1594,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4RYXQ3HHM0NCXGK8DBW1JR3.01M4RYXQR4R5Q48PG2RZ86HSR5.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/535257903992ff8e</id>
-    <title>Network performance issues in Ashburn, US (IAD)</title>
-    <updated>2026-10-13T14:56:50+00:00</updated>
-    <content>Oct 13 , 14:56 UTC Resolved - This incident has been resolved. Oct 13 , 10:42 UTC Monitoring - Vendor has updated to say that their maintenance window will be extended till 13:00 UTC. Customers should continue to expect normal network behaviour and performance through the maintenance window. Oct 13 , 06:57 UTC Monitoring - Impact observed 06:33 - 06:41 UTC when we observe the vendor restoring the impacted capacity. We believe they temporarily affected all remaining capacity during the restoratio</content>
-    <link href="https://www.cloudflarestatus.com/incidents/gqm2xrm9wk8t" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-13T14:56:50+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ae4b5b752a8d5310</id>

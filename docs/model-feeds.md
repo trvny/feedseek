@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-110 Model Feeds · 24688 entries.
+111 Model Feeds · 24851 entries.
 
 ## Access
 
@@ -49,6 +49,7 @@
 | `euronews` | Euronews | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_euronews.json) |
 | `europa` | Europa | 350 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_europa.json) |
 | `ffmpeg` | FFmpeg | 62 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ffmpeg.json) |
+| `figma` | Figma | 160 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
 | `foobar2000` | foobar2000 | 403 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foobar2000.json) |
 | `foundry` | Foundry | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_geopolitics.json) |
@@ -70,7 +71,7 @@
 | `medium` | Medium | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_medium.json) |
 | `memedroid` | Memedroid | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_memedroid.json) |
 | `meta_newsroom` | Meta Newsroom | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_meta_newsroom.json) |
-| `microsoft` | Microsoft | 367 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
+| `microsoft` | Microsoft | 369 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft_updates.json) |
 | `mit` | MIT News | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mit.json) |
 | `molt` | Molt | 72 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
@@ -117,7 +118,7 @@
 | `usgov` | US.gov | 366 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_usgov.json) |
 | `v2ex` | V2EX | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_v2ex.json) |
 | `visualcrossing` | Visual Crossing | 45 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing.json) |
-| `visualcrossing_blog` | Visual Crossing Resources | 55 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing_blog.json) |
+| `visualcrossing_blog` | Visual Crossing Resources | 56 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing_blog.json) |
 | `weather` | Pogoda — Kościelec (Chrzanów) | 60 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_weather.json) |
 | `wikipedia_pl` | Wikipedia (PL) | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_wikipedia_pl.json) |
 | `wotd` | Word of the Day | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_wotd.json) |

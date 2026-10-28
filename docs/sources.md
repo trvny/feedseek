@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-110 feedów · 897 źródeł
+111 feedów · 900 źródeł
 
 ## Spis grup
 
@@ -489,6 +489,13 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (when:14d site:canva.com/newsroom) — <https://news.google.com/rss/search?q=when:14d+site:canva.com/newsroom&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (site:canva.com/newsroom) — <https://news.google.com/rss/search?q=site:canva.com/newsroom&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=www.canva.com&sz=16) Blog — <https://www.canva.com/newsroom/news/>
+
+### ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma
+`figma` · [feed_figma.xml](../feeds/feed_figma.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Newsroom — <https://www.figma.com/newsroom/?lang=pl-pl>
+- ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Blog — <https://www.figma.com/blog/feed/atom.xml>
+- ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Release Notes — <https://www.figma.com/release-notes/feed/atom.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.youtube&sz=16) YouTube Blog
 `youtube` · [feed_youtube.xml](../feeds/feed_youtube.xml)
