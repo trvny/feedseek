@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Probe every source docs/sources.md lists and report the ones that are gone.
+"""Probe every source docs/sources.md lists and report the ones needing attention.
 
 The document is derived from the generators now, so it is always an accurate
 list of what they *intend* to read. It says nothing about whether those URLs
@@ -9,10 +9,12 @@ sources, and the dead one just quietly stops contributing. Combined feeds hide
 this best, which is exactly where most sources live.
 
     python tools/check_sources.py                 # every source, grouped by feed
-    python tools/check_sources.py --broken        # only what needs fixing
+    python tools/check_sources.py --broken        # only sources needing attention
     python tools/check_sources.py --feed lemmy    # one feed
 
-Exits 1 when something is broken, so it works as a manual gate.
+Needing attention = dead, erroring, or still blocked (401/403/429) after the
+curl_cffi retry, i.e. unverified rather than proven dead. Exits 1 when any
+source needs attention, so it works as a manual gate.
 
 Deliberately not part of validate_feeds.py: it needs the network and talks to
 507+ third-party hosts, so wiring it into the scheduled run would let someone
@@ -83,17 +85,19 @@ def probe(url: str) -> tuple[bool, str]:
 
     retried = _impersonated_status(url)
     if retried == 200:
-        return True, "200 (tylko przez curl_cffi)"
-    if retried in (401, 403, 429) or status in (401, 403, 429):
-        return True, f"HTTP {retried or status} (blokada bota, generator to obchodzi)"
+        return True, "200 (curl_cffi fallback)"
+    final_status = retried if retried is not None else status
+    if final_status in (401, 403, 429):
+        reason = {401: "authentication required", 403: "access blocked", 429: "rate limited"}[final_status]
+        return False, f"HTTP {final_status} ({reason}; source not verified)"
     if status is None and retried is None:
         return False, note
-    return False, f"HTTP {retried or status}"
+    return False, f"HTTP {final_status}"
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--broken", action="store_true", help="list only what is broken")
+    parser.add_argument("--broken", action="store_true", help="list only sources needing attention (dead, erroring or unverified)")
     parser.add_argument("--feed", help="check a single feed by registry name")
     args = parser.parse_args()
 
@@ -109,7 +113,7 @@ def main() -> int:
     # One probe per distinct URL: feeds share sources more often than you would
     # think, and a Google News query appears under half a dozen names.
     unique = sorted({url for pairs in by_feed.values() for _, url in pairs})
-    print(f"sprawdzam {len(unique)} unikalnych zrodel z {len(by_feed)} feedow ...\n")
+    print(f"Checking {len(unique)} unique sources across {len(by_feed)} feeds ...\n")
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         verdicts = dict(zip(unique, pool.map(probe, unique)))
 
@@ -121,13 +125,13 @@ def main() -> int:
         tally["martwe"] += len(broken)
         broken_total += len(broken)
         if broken:
-            print(f"{feed} ({len(broken)} z {len(pairs)}):")
+            print(f"{feed} ({len(broken)} of {len(pairs)} need attention):")
             for label, url, note in broken:
                 print(f"    {note:34s} {label} - {url}")
         elif not args.broken:
-            print(f"{feed}: wszystkie {len(pairs)} zrodel odpowiadaja")
+            print(f"{feed}: all {len(pairs)} sources returned HTTP 200")
 
-    print(f"\n{tally['martwe']} z {tally['zrodla']} zrodel nie odpowiada")
+    print(f"\n{tally['martwe']} of {tally['zrodla']} sources need attention")
     return 1 if broken_total else 0
 
 
