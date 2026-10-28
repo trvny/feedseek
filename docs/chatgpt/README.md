@@ -30,9 +30,12 @@ conversation's model context. It does not send a message or create a subscriptio
 Source suggestions come from entries already loaded into the panel; other known
 source keys can be typed directly. Coverage limits and skipped sources remain visible.
 
-Selections live only in the panel and survive filter changes until cleared or the
-panel closes. Article text is rendered as plain text. No external runtime assets,
-browser storage, account or new data store are required. Conversational clients
+Selections survive filter changes until cleared. On ChatGPT hosts exposing widget
+state, the panel saves filters, selected public entry details and uncertain send
+status through that host API; the host may restore them when the panel reopens.
+**Send to chat** appears only when the host advertises that capability and sends
+the selection only after a click. Article text is rendered as plain text. No external
+runtime assets, browser storage, account or server-side user store are required. Conversational clients
 continue to use `search`, `fetch` and `recent` independently of the UI. Host support
 for extension entrypoints varies; refresh the app's tool scan after deployment.
 
@@ -81,7 +84,7 @@ timestamp wins. Current search/index generation consumes `feed_<name>.json`, the
 - The existing constrained fetch proxy remains unchanged; `/mcp` is routed separately.
 - The public app policy is maintained in [`PRIVACY.md`](PRIVACY.md); service terms are in
   [`TERMS.md`](TERMS.md), and user-facing support information is in
-  [`../SUPPORT.md`](../SUPPORT.md).
+  [`SUPPORT.md`](SUPPORT.md).
 
 ## ChatGPT testing and installation
 
@@ -112,7 +115,7 @@ Use these values when filling the current OpenAI submission form:
 | Authentication | None; public read-only data |
 | Homepage | `https://trvny.github.io/feedseek/` |
 | Source | `https://github.com/trvny/feedseek` |
-| Support | `https://github.com/trvny/feedseek/blob/main/docs/SUPPORT.md` |
+| Support | `https://github.com/trvny/feedseek/blob/main/docs/chatgpt/SUPPORT.md` |
 | Privacy policy | `https://github.com/trvny/feedseek/blob/main/docs/chatgpt/PRIVACY.md` |
 | Terms | `https://github.com/trvny/feedseek/blob/main/docs/chatgpt/TERMS.md` |
 | App icon | `assets/icons/android-chrome-512x512.png` |
