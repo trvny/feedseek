@@ -69,6 +69,32 @@
     return results;
   }
 
+  async function readTextLimited(response, maxBytes) {
+    if (Number(response.headers.get("content-length")) > maxBytes) {
+      await response.body?.cancel();
+      throw new Error("feed exceeds byte limit");
+    }
+    if (!response.body) return "";
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    const chunks = [];
+    let bytes = 0;
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        bytes += value.byteLength;
+        if (bytes > maxBytes) throw new Error("feed exceeds byte limit");
+        chunks.push(decoder.decode(value, { stream: true }));
+      }
+      chunks.push(decoder.decode());
+      return chunks.join("");
+    } finally {
+      await reader.cancel();
+      reader.releaseLock();
+    }
+  }
+
   function migrateLegacyFeedMetadata(items, feeds) {
     const feedsByUrl = new Map(feeds.map(feed => [feed.xmlUrl, feed]));
     const feedsByTitle = new Map();
@@ -116,6 +142,7 @@
     allSettledLimited,
     faviconCandidates,
     mergeRefreshResults,
+    readTextLimited,
   };
 
   function configuredProxy() {

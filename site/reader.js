@@ -4,7 +4,10 @@ const NS = 'fs:';
 const FEED_TIMEOUT_MS = 15000;
 const OPML_TIMEOUT_MS = 15000;
 const FEED_CONCURRENCY = 12;
-const ITEM_LIMIT = 250;
+const PAGE_SIZE = 250;
+const MAX_FEED_BYTES = 16 * 1024 * 1024;
+const MAX_FEED_ITEMS = 10000;
+const SNAPSHOT_LIMIT = 5000;
 const RSS_FALLBACK = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Crect%20width='24'%20height='24'%20rx='5'%20fill='%23d6541a'/%3E%3Ccircle%20cx='7'%20cy='17'%20r='2'%20fill='%23fff'/%3E%3Cpath%20d='M5%2011a8%208%200%200%201%208%208h2.6A10.6%2010.6%200%200%200%205%208.4z'%20fill='%23fff'/%3E%3Cpath%20d='M5%205a14%2014%200%200%201%2014%2014h2.6A16.6%2016.6%200%200%200%205%202.4z'%20fill='%23fff'/%3E%3C/svg%3E";
 const FAVS_MAX = 500;
 
@@ -70,11 +73,14 @@ function loadSnap(){
 }
 function saveSnap(items){
   if(!items.length){ ls.del('snap'); return; }
-  let remaining = items;
-  while(remaining.length){
-    const payload = JSON.stringify({_v:SCHEMA_V, t:Date.now(), items:remaining});
-    if(ls.set('snap', payload)) return;
-    remaining = remaining.slice(0, Math.floor(remaining.length/2));
+  const limit=Math.min(items.length,SNAPSHOT_LIMIT), t=Date.now();
+  const write=count=>ls.set('snap',JSON.stringify({_v:SCHEMA_V,t,items:items.slice(0,count)}));
+  if(write(limit)) return;
+  let low=1, high=limit-1;
+  while(low<=high){
+    const count=Math.floor((low+high)/2);
+    if(write(count)) low=count+1;
+    else high=count-1;
   }
 }
 
@@ -123,6 +129,7 @@ function makeFav(iconUrl, siteUrl){
 // ── feed parsing ───────────────────────────
 const $ = s => document.querySelector(s);
 let ITEMS = [], FILTER = null, FAILED = [], SOURCES = [], LOADED = 0, FEEDS = [];
+let visibleCount = PAGE_SIZE;
 let STATUS_ERROR = '', activeRun = null, runVersion = 0;
 
 function safeHttpUrl(value, base=document.baseURI){
@@ -205,7 +212,9 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
     }
   }
 
-  return [...doc.querySelectorAll('item, entry')].map(n=>{
+  const entries=doc.querySelectorAll('item, entry');
+  if(entries.length>MAX_FEED_ITEMS) throw new Error('feed exceeds entry limit');
+  return [...entries].map(n=>{
     const d=txt(n,'pubdate','published','updated','date');
     const ts=d ? Date.parse(d) : NaN;
     const title=txt(n,'title')||'(untitled)';
@@ -282,7 +291,7 @@ async function fetchText(url, options={}, timeoutMs=FEED_TIMEOUT_MS){
   try{
     const r=await fetch(url,{...options,signal:controller.signal});
     if(!r.ok) throw new Error(String(r.status));
-    return await r.text();
+    return await window.FeedseekReaderUtils.readTextLimited(r,MAX_FEED_BYTES);
   }finally{
     clearTimeout(timer);
     if(parent) parent.removeEventListener('abort',abort);
@@ -291,23 +300,6 @@ async function fetchText(url, options={}, timeoutMs=FEED_TIMEOUT_MS){
 async function loadFeed(f, signal){
   const xml=await fetchText(prox(f.xmlUrl),{redirect:'follow',signal},FEED_TIMEOUT_MS);
   return parseFeed(xml,f.title,f.xmlUrl,f.htmlUrl||'',f.icon||'');
-}
-function fairLimit(items, limit){
-  if(items.length<=limit) return items;
-  const chosen=[], seenSources=new Set(), chosenUrls=new Set();
-  for(const item of items){
-    if(!seenSources.has(item.source)){
-      chosen.push(item); seenSources.add(item.source); chosenUrls.add(item.url);
-      if(chosen.length===limit) return chosen;
-    }
-  }
-  for(const item of items){
-    if(!chosenUrls.has(item.url)){
-      chosen.push(item); chosenUrls.add(item.url);
-      if(chosen.length===limit) break;
-    }
-  }
-  return chosen.sort((a,b)=>b.ts-a.ts);
 }
 function setProgress(done,total,version){
   if(version===runVersion) $('#prog').style.width=(done/total*100)+'%';
@@ -369,9 +361,8 @@ async function run(){
     const nextItems=merged.items, nextFailed=merged.failed;
     const seen=new Set();
     const deduped=nextItems.filter(i=>!seen.has(i.url)&&seen.add(i.url)).sort((a,b)=>b.ts-a.ts);
-    const limited=fairLimit(deduped,ITEM_LIMIT);
-
-    ITEMS=limited;
+    ITEMS=deduped;
+    visibleCount=PAGE_SIZE;
     FAILED=nextFailed;
     SOURCES=[...new Set(ITEMS.map(i=>i.source))].sort();
     LOADED=feeds.length-nextFailed.length;
@@ -419,9 +410,11 @@ function render(){
   $('#chips').replaceChildren(chipFrag);
 
   const shown=FILTER?ITEMS.filter(i=>i.source===FILTER):ITEMS;
-  $('#count').textContent=`${shown.length} items · ${LOADED||sources.length} feeds`+(FAILED.length?` · ${FAILED.length} failed`:'');
+  const page=shown.slice(0,visibleCount);
+  const itemCount=page.length<shown.length?`${page.length} of ${shown.length}`:String(shown.length);
+  $('#count').textContent=`${itemCount} items · ${LOADED||sources.length} feeds`+(FAILED.length?` · ${FAILED.length} failed`:'');
   const listFrag=document.createDocumentFragment();
-  for(const item of shown){
+  for(const item of page){
     const url=safeHttpUrl(item.url); if(!url) continue;
     const link=document.createElement('a');
     link.className='item'; link.href=url; link.target='_blank'; link.rel='noopener';
@@ -443,6 +436,12 @@ function render(){
     }
     listFrag.appendChild(link);
   }
+  if(page.length<shown.length){
+    const more=document.createElement('button');
+    more.type='button'; more.className='load-more';
+    more.textContent=`Show ${Math.min(PAGE_SIZE,shown.length-page.length)} more`;
+    listFrag.appendChild(more);
+  }
   if(!shown.length && STATUS_ERROR){
     const msg=document.createElement('div'); msg.className='msg'; msg.textContent=STATUS_ERROR; listFrag.appendChild(msg);
   }else if(STATUS_ERROR){
@@ -462,7 +461,15 @@ function render(){
 // ── events ─────────────────────────
 document.addEventListener('click',e=>{
   const c=e.target.closest('.chip');
-  if(c){ FILTER=c.dataset.source==='All'?null:c.dataset.source; render(); }
+  if(c){
+    const next=c.dataset.source==='All'?null:c.dataset.source;
+    if(next!==FILTER){ FILTER=next; visibleCount=PAGE_SIZE; render(); }
+  }
+  if(e.target.closest('.load-more')){
+    const before=document.querySelectorAll('#list .item').length;
+    visibleCount+=PAGE_SIZE; render();
+    document.querySelectorAll('#list .item')[before]?.focus();
+  }
 });
 $('#refresh').onclick=()=>void run();
 $('#gear').onclick=()=>{
