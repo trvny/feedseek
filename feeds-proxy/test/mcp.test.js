@@ -60,6 +60,52 @@ const indexPayload = {
   ],
 };
 
+test("MCP rejects oversized declared request bodies before parsing", async () => {
+  const response = await mcpResponse(new Request("https://proxy.test/mcp", {
+    method: "POST",
+    headers: { "content-length": String(64 * 1024 + 1) },
+    body: "{}",
+  }));
+  assert.equal(response.status, 413);
+  assert.equal((await response.json()).error.code, -32600);
+});
+
+test("MCP cancels oversized streamed requests without trusting Content-Length", async () => {
+  let cancelled = false;
+  const body = new ReadableStream({
+    start(controller) { controller.enqueue(new Uint8Array(64 * 1024 + 1)); },
+    cancel() { cancelled = true; },
+  });
+  const response = await mcpResponse(new Request("https://proxy.test/mcp", {
+    method: "POST", body, duplex: "half",
+  }));
+  assert.equal(response.status, 413);
+  assert.equal(cancelled, true);
+});
+
+test("MCP accepts valid JSON-RPC requests at the size boundary", async () => {
+  const message = { jsonrpc: "2.0", id: 1, method: "ping", padding: "" };
+  message.padding = "a".repeat(64 * 1024 - JSON.stringify(message).length);
+  const body = JSON.stringify(message);
+  const response = await mcpResponse(new Request("https://proxy.test/mcp", {
+    method: "POST", body, headers: { "content-length": String(body.length) },
+  }));
+  assert.equal(body.length, 64 * 1024);
+  assert.equal(response.status, 200);
+  assert.ok((await response.json()).result);
+});
+
+test("MCP reports oversized upstream JSON as a tool error", async () => {
+  await withFetch(() => Promise.resolve(new Response("{}", {
+    headers: { "content-length": String(16 * 1024 * 1024 + 1) },
+  })), async () => {
+    const response = await call("tools/call", { name: "recent", arguments: {} });
+    const result = (await response.json()).result;
+    assert.equal(result.isError, true);
+    assert.match(result.content[0].text, /response too large/);
+  });
+});
+
 test("reader is an app-only entrypoint with a fixed self-contained resource", async () => {
   const tools = (await (await call("tools/list")).json()).result.tools;
   const reader = tools.find((tool) => tool.name === "feedseek_reader_open");

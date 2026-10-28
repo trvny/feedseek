@@ -81,6 +81,7 @@ timestamp wins. Current search/index generation consumes `feed_<name>.json`, the
 - Opaque result ids encode only the immutable Feedseek revision, source key and upstream
   item id needed for deterministic lookup.
 - Tool arguments are validated server-side instead of relying on client validation.
+- MCP request bodies are capped at 64 KiB before parsing; upstream index/feed JSON is capped at 16 MiB. Both limits also apply when Content-Length is absent.
 - The existing constrained fetch proxy remains unchanged; `/mcp` is routed separately.
 - The public app policy is maintained in [`PRIVACY.md`](PRIVACY.md); service terms are in
   [`TERMS.md`](TERMS.md), and user-facing support information is in
