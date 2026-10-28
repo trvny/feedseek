@@ -35,6 +35,12 @@ The Pages build also emits `model-feeds.json`, a small catalog of public URLs, s
 
 Everything that depends on upstream richness stays adaptive. Images, authors, categories, provenance, summaries and publication/update dates should be preserved or enriched whenever the source gives enough evidence, but their absence alone does not fail a feed. A weather endpoint, a changelog and a newsroom should not be forced through the same editorial cookie cutter. When metadata is present, shared helpers should normalize it without inventing facts.
 
+## Reader coverage
+
+The browser Reader retains every usable, deduplicated entry returned by its subscriptions. Source filtering runs before display pagination: 250 entries per view, with **Show more** for the rest. The counter reports displayed and available entries. Responses above 16 MiB or 10,000 entries fail that feed's refresh, preserving its last loaded entries. Offline snapshots keep up to 5,000 recent entries and shrink further when browser storage is full; refresh reloads the feeds.
+
+Browser WebMCP tools read the currently displayed page and share its source filter. The separate [remote MCP app](chatgpt/README.md) uses a recent index: up to 5,000 entries from 14 days, reserving up to five qualifying entries per source when capped. Neither MCP search nor its reader panel uses the browser Reader's pagination. Direct Model Feed JSON files contain the full published feed history, beyond the recent MCP index.
+
 ## Link and image enrichment
 
 Before a generator writes its feed it can call `enrich_entries()` from `feed_generators/enrich.py`.

@@ -9,6 +9,7 @@ function makeContext(nativeFetch, cfg = {}) {
   const window = { fetch: nativeFetch };
   const context = vm.createContext({
     Request,
+    TextDecoder,
     URL,
     document: { baseURI: "https://reader.test/reader.html" },
     location: { origin: "https://reader.test" },
@@ -39,6 +40,38 @@ test("limits feed tasks while preserving input order", async () => {
     assert.equal(result.status, "fulfilled");
     assert.equal(result.value, index * 2);
   });
+});
+
+test("bounded response reading preserves UTF-8 across streamed chunks", async () => {
+  const { readTextLimited } = makeContext(() => {}).FeedseekReaderUtils;
+  const bytes = new TextEncoder().encode("A€B");
+  const response = new Response(new ReadableStream({
+    start(controller) {
+      controller.enqueue(bytes.slice(0, 2));
+      controller.enqueue(bytes.slice(2));
+      controller.close();
+    },
+  }));
+  assert.equal(await readTextLimited(response, bytes.length), "A€B");
+});
+
+test("bounded response reading rejects oversized bodies even without Content-Length", async () => {
+  const { readTextLimited } = makeContext(() => {}).FeedseekReaderUtils;
+  let cancelled = false;
+  const response = new Response(new ReadableStream({
+    start(controller) { controller.enqueue(new Uint8Array(11)); },
+    cancel() { cancelled = true; },
+  }));
+  await assert.rejects(readTextLimited(response, 10), /byte limit/);
+  assert.equal(cancelled, true);
+});
+
+test("bounded response reading rejects a large declared body before reading", async () => {
+  const { readTextLimited } = makeContext(() => {}).FeedseekReaderUtils;
+  await assert.rejects(
+    readTextLimited(new Response("short", { headers: { "Content-Length": "100" } }), 10),
+    /byte limit/,
+  );
 });
 
 test("does not start queued tasks until a worker slot is free", async () => {
