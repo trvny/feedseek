@@ -39,7 +39,7 @@ Feedseek does not sell personal data. The app does not intentionally share user-
 
 ## Security
 
-The ChatGPT app exposes read-only tools. It cannot create, modify, delete, send, publish, purchase, or otherwise change external state. Tool inputs are validated server-side, and retrieved feed content is treated as untrusted external content.
+The ChatGPT app exposes read-only tools. It cannot create, modify, delete, publish, purchase, or otherwise change external state, and cannot send email or other communications outside the ChatGPT conversation. The only send action is the Reader panel's **Send to chat**, which posts selected public entry details into the current conversation as a user-role message after an explicit click. Tool inputs are validated server-side, and retrieved feed content is treated as untrusted external content.
 
 ## Changes
 
