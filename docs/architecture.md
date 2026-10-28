@@ -33,6 +33,8 @@ The publication gate has a small universal core. Every enabled feed must produce
 
 The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps derived from the same `feeds.yaml`-selected feed set. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
 
+The repository's [Model Feed index](model-feeds.md) covers every existing `feeds/feed_*.json`, including feeds outside the curated website selection. `feed_generators/model_feed.py` refreshes it after generating JSON sidecars; Update Feeds commits it with those artifacts. Regenerate the index alone with `uv run --locked feed_generators/docs_model_feeds.py`; add `--check` to detect drift.
+
 Everything that depends on upstream richness stays adaptive. Images, authors, categories, provenance, summaries and publication/update dates should be preserved or enriched whenever the source gives enough evidence, but their absence alone does not fail a feed. A weather endpoint, a changelog and a newsroom should not be forced through the same editorial cookie cutter. When metadata is present, shared helpers should normalize it without inventing facts.
 
 ## Reader coverage

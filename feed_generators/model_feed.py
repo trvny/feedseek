@@ -11,10 +11,8 @@ from utils import REPO_SLUG, feedparser_entry_image, write_atomically
 
 MODEL_FEED_FORMAT = "feedseek-model-feed"
 MODEL_FEED_VERSION = 1
-_MODEL_FEED_URL_TMPL = (
-    f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
-    "feed_{name}.json"
-)
+_MODEL_FEED_URL_TMPL = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/" "feed_{name}.json"
+
 
 def _text_kind(item: dict) -> str:
     extension = item.get("_feedseek")
@@ -97,18 +95,14 @@ def build_model_feed(json_feed: dict, feed_name: str) -> dict:
             names = [
                 author.get("name")
                 for author in authors
-                if isinstance(author, dict)
-                and isinstance(author.get("name"), str)
-                and author["name"].strip()
+                if isinstance(author, dict) and isinstance(author.get("name"), str) and author["name"].strip()
             ]
             if names:
                 item["authors"] = names
 
         tags = raw.get("tags")
         if isinstance(tags, list):
-            clean_tags = [
-                tag for tag in tags if isinstance(tag, str) and tag.strip()
-            ]
+            clean_tags = [tag for tag in tags if isinstance(tag, str) and tag.strip()]
             if clean_tags:
                 item["tags"] = clean_tags
 
@@ -149,8 +143,11 @@ def write_all_model_feeds(feeds_dir: Path) -> int:
 
 
 def main() -> None:
+    from docs_model_feeds import write_index
+
     feeds_dir = Path(__file__).resolve().parents[1] / "feeds"
     count = write_all_model_feeds(feeds_dir)
+    write_index(feeds_dir, feeds_dir.parent / "docs" / "model-feeds.md")
     print(f"Built {count} LLM-friendly JSON feeds in {feeds_dir}")
 
 

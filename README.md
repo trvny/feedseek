@@ -154,6 +154,7 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 - [Per-feed sources and design trade-offs](docs/feeds.md)
 - [Cache behavior and maintenance](docs/cache.md)
 - [Generated source inventory](docs/sources.md)
+- [Generated index of every Model Feed JSON](docs/model-feeds.md)
 
 The Android reader/player for these feeds lives in **[travnie/kanarek](https://github.com/travnie/kanarek)**.
 
