@@ -1019,6 +1019,8 @@ def dedupe_entries(entries, id_field="link", title_field="title", date_field="da
     reuse the same title. First occurrence wins and order is preserved; a later
     duplicate that carries a date replaces a kept one that lacks it.
     """
+    from entry_identity import ENTRY_ID_FIELD
+
     seen_url, seen_title, result, removed = {}, {}, [], 0
     for entry in entries:
         ukey = normalize_link(entry.get(id_field, ""))
@@ -1036,7 +1038,14 @@ def dedupe_entries(entries, id_field="link", title_field="title", date_field="da
         else:
             removed += 1
             if result[idx].get(date_field) is None and entry.get(date_field) is not None:
-                result[idx] = entry
+                replacement = dict(entry)
+                if result[idx].get(ENTRY_ID_FIELD):
+                    replacement[ENTRY_ID_FIELD] = result[idx][ENTRY_ID_FIELD]
+                result[idx] = replacement
+            if ukey:
+                seen_url.setdefault(ukey, idx)
+            if tkey:
+                seen_title.setdefault(tkey, idx)
     if removed:
         logger.info("Deduplicated %s entries", removed)
     return result
