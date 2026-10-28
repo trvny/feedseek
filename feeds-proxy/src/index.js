@@ -115,14 +115,17 @@ async function fetchWithRedirects(initialUrl, options = {}) {
 }
 
 /**
- * @param {Response} response
+ * @param {Response | Request} response
  * @param {number} [maxBytes]
  */
 async function readLimited(response, maxBytes = MAX_RESPONSE_BYTES) {
-  if (BODYLESS_STATUSES.has(response.status) || !response.body) return null;
+  if ((response instanceof Response && BODYLESS_STATUSES.has(response.status)) || !response.body) return null;
 
   const declared = Number(response.headers.get("content-length") || 0);
-  if (declared > maxBytes) throw new Error("response too large");
+  if (declared > maxBytes) {
+    await response.body.cancel("response too large");
+    throw new RangeError("response too large");
+  }
 
   const reader = response.body.getReader();
   /** @type {Uint8Array[]} */
@@ -137,7 +140,7 @@ async function readLimited(response, maxBytes = MAX_RESPONSE_BYTES) {
       size += value.byteLength;
       if (size > maxBytes) {
         await reader.cancel("response too large");
-        throw new Error("response too large");
+        throw new RangeError("response too large");
       }
       chunks.push(value);
     }
@@ -432,3 +435,5 @@ export default {
     return proxyResponse(requestUrl);
   },
 };
+
+export { readLimited };

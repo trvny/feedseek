@@ -1,4 +1,5 @@
 import { READER_HTML, READER_URI } from "./reader.js";
+import { readLimited } from "./index.js";
 
 const INDEX_URL = "https://trvny.github.io/feedseek/feedseek-search-index.json";
 const FEEDSEEK_ICON_URL = "https://trvny.github.io/feedseek/icons/android-chrome-192x192.png";
@@ -14,6 +15,8 @@ const LATEST_PROTOCOL = "2026-07-28";
 const MAX_SEARCH_RESULTS = 50;
 const MAX_RECENT_RESULTS = 100;
 const CACHE_TTL_MS = 300000;
+const MAX_RPC_BYTES = 64 * 1024;
+const MAX_UPSTREAM_JSON_BYTES = 16 * 1024 * 1024;
 
 /** @typedef {Record<string, any>} JsonObject */
 /**
@@ -323,7 +326,8 @@ async function loadJson(url) {
     signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) throw new Error(`Feedseek upstream returned ${response.status}`);
-  return /** @type {Promise<JsonObject>} */ (response.json());
+  const body = await readLimited(response, MAX_UPSTREAM_JSON_BYTES);
+  return /** @type {JsonObject} */ (JSON.parse(new TextDecoder().decode(body || new Uint8Array())));
 }
 
 /** New revisions publish Model Feeds at .json; older revisions have a separate
@@ -745,8 +749,12 @@ export async function mcpResponse(request) {
   /** @type {JsonObject} */
   let message;
   try {
-    message = /** @type {JsonObject} */ (await request.json());
-  } catch {
+    const body = await readLimited(request, MAX_RPC_BYTES);
+    message = /** @type {JsonObject} */ (JSON.parse(new TextDecoder().decode(body || new Uint8Array())));
+  } catch (error) {
+    if (error instanceof RangeError) {
+      return rpcError(null, -32600, "Request body exceeds 64 KiB", LATEST_PROTOCOL, 413);
+    }
     return rpcError(null, -32700, "Parse error", LATEST_PROTOCOL, 400);
   }
   if (!message || message.jsonrpc !== "2.0" || typeof message.method !== "string") {
