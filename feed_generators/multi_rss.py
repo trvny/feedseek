@@ -13,6 +13,7 @@ import re
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -124,9 +125,16 @@ _POLISH_MONTHS = {
 }
 
 
+# Drupal pl locale, e.g. PAP Mediaroom: "czw., 10/29/2026 - 15:24" (no offset).
+_POLISH_WEEKDAY = re.compile(r"^\s*(?:pon|wt|śr|sr|czw|pt|sob|niedz|nd)\.?,\s*", re.IGNORECASE)
+_WARSAW = ZoneInfo("Europe/Warsaw")
+
+
 def _normalize_localized_date(date_str):
     if not isinstance(date_str, str):
         return date_str
+    date_str = _POLISH_WEEKDAY.sub("", date_str)
+    date_str = re.sub(r"(\d)\s+-\s+(\d)", r"\1 \2", date_str)
     for localized, english in _POLISH_MONTHS.items():
         date_str = re.sub(rf"\b{localized}\b", english, date_str, flags=re.IGNORECASE)
     return date_str
@@ -137,7 +145,9 @@ def parse_date(date_str):
     try:
         dt = date_parser.parse(_normalize_localized_date(date_str))
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=UTC)
+            # Polish-localized stamps are site-local wall time.
+            polish = isinstance(date_str, str) and _POLISH_WEEKDAY.match(date_str)
+            dt = dt.replace(tzinfo=_WARSAW if polish else UTC)
         return dt.astimezone(UTC)
     except (ValueError, TypeError, OverflowError) as exc:
         logger.warning("Could not parse date %r: %s", date_str, exc)
