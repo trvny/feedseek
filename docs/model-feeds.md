@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 24855 entries.
+111 Model Feeds · 24864 entries.
 
 ## Access
 
@@ -22,7 +22,7 @@
 | `9gag` | 9GAG | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_9gag.json) |
 | `accuweather` | AccuWeather News | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_accuweather.json) |
 | `aibridge` | AI-bridge | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aibridge.json) |
-| `alibaba` | Alibaba | 202 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
+| `alibaba` | Alibaba | 208 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
 | `anthropic` | Anthropic | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_anthropic.json) |
 | `apple` | Apple | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_apple.json) |
 | `arxiv` | arXiv | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_arxiv.json) |
@@ -38,7 +38,7 @@
 | `cloudflare` | Cloudflare | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cloudflare.json) |
 | `czworka` | PR4 Czwórka | 911 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_czworka.json) |
 | `daily_digest` | Daily Digest | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_digest.json) |
-| `daily_quote` | Daily Quote | 124 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
+| `daily_quote` | Daily Quote | 125 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
 | `datime` | DaTime | 167 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
 | `dji` | DJI | 48 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
 | `docker` | Docker | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_docker.json) |
@@ -49,7 +49,7 @@
 | `euronews` | Euronews | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_euronews.json) |
 | `europa` | Europa | 350 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_europa.json) |
 | `ffmpeg` | FFmpeg | 62 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ffmpeg.json) |
-| `figma` | Figma | 160 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
+| `figma` | Figma | 161 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
 | `foobar2000` | foobar2000 | 403 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foobar2000.json) |
 | `foundry` | Foundry | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_geopolitics.json) |
@@ -59,7 +59,7 @@
 | `google` | Google Blogs | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_google.json) |
 | `govpl_news` | Gov.pl | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_govpl_news.json) |
 | `hackerone` | HackerOne Blog & Newsroom | 37 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hackerone.json) |
-| `hp` | HP Newsroom | 184 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hp.json) |
+| `hp` | HP Newsroom | 185 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hp.json) |
 | `huggingface` | Hugging Face | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_huggingface.json) |
 | `imgw` | IMGW | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_imgw.json) |
 | `jbzd` | Jbzd.com.pl | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_jbzd.json) |
