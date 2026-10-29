@@ -29,7 +29,7 @@ The defaults are intentionally conservative:
 
 ## Feed quality contract
 
-The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published.
+The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published. The public contract is [`schemas/model-feed.v1.schema.json`](schemas/model-feed.v1.schema.json); consumer-facing access is in [agents.md](agents.md).
 
 The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps derived from the same `feeds.yaml`-selected feed set. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
 
@@ -140,6 +140,8 @@ using a temporary registry and destination. Until such a test exists, leave
     ├── architecture.md                  # this file
     ├── feeds.md                         # per-feed background and trade-offs
     ├── sources.md                       # generated source inventory
+    ├── agents.md                        # LLM/agent surfaces: MCP, WebMCP, llms.txt
+    ├── schemas/                         # Model Feed JSON Schema
     └── cache.md                         # cache behavior and maintenance
 ```
 

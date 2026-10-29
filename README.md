@@ -156,6 +156,7 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 - [Cache behavior and maintenance](docs/cache.md)
 - [Generated source inventory](docs/sources.md)
 - [Generated index of every Model Feed JSON](docs/model-feeds.md)
+- [LLM & agent access: remote MCP server, WebMCP, llms.txt, Model Feed JSON Schema](docs/agents.md)
 
 The Android reader/player for these feeds lives in **[travnie/kanarek](https://github.com/travnie/kanarek)**.
 

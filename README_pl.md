@@ -41,6 +41,7 @@ Pełna tabela źródeł i bezpośrednich plików feedów znajduje się w [angiel
 - [Źródła i kompromisy poszczególnych feedów](docs/feeds.md)
 - [Działanie i utrzymanie cache](docs/cache.md)
 - [Wygenerowany indeks źródeł](docs/sources.md)
+- [Dostęp dla LLM i agentów: zdalny serwer MCP, WebMCP, llms.txt, JSON Schema Model Feed](docs/agents.md)
 
 Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](https://github.com/travnie/kanarek)**.
 
