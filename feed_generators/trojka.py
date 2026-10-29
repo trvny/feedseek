@@ -39,7 +39,7 @@ ICON_URL = "https://trojka.polskieradio.pl/assets/favicon-32x32.png"
 # the home page and section pages, shipped as Next.js RSC flight data.
 LISTING_PATHS = ("/", "/spoleczenstwo", "/kultura", "/muzyka", "/film")
 _RSC_PUSH_RE = re.compile(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)', re.DOTALL)
-_ARTICLE_START_RE = re.compile(r'\{"alt":')
+_RSC_ROW_RE = re.compile(r"^[0-9a-f]+:")
 
 
 def _rsc_payload(html: str) -> str:
@@ -49,16 +49,30 @@ def _rsc_payload(html: str) -> str:
     return "".join(json.loads(f'"{chunk}"') for chunk in chunks)
 
 
+def _walk(node):
+    if isinstance(node, dict):
+        yield node
+        for value in node.values():
+            yield from _walk(value)
+    elif isinstance(node, list):
+        for value in node:
+            yield from _walk(value)
+
+
 def _article_objects(payload: str):
-    """Yield article cards: JSON objects carrying id, href, title and publishDate."""
-    decoder = json.JSONDecoder()
-    for match in _ARTICLE_START_RE.finditer(payload):
-        try:
-            obj, _ = decoder.raw_decode(payload, match.start())
-        except ValueError:
+    """Yield article cards from flight rows ("<hex id>:<json>"): any object with
+    id, href and publishDate, wherever it nests and whatever its key order."""
+    for row in payload.split("\n"):
+        match = _RSC_ROW_RE.match(row)
+        if not match:
             continue
-        if isinstance(obj, dict) and obj.get("publishDate") and obj.get("href") and obj.get("id"):
-            yield obj
+        try:
+            tree = json.loads(row[match.end():])
+        except ValueError:
+            continue  # text/hint rows (T…, I[…], HL[…])
+        for obj in _walk(tree):
+            if obj.get("publishDate") and obj.get("href") and obj.get("id"):
+                yield obj
 
 
 def _article_link(href: str) -> str | None:

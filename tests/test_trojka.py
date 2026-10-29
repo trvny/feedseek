@@ -46,6 +46,12 @@ class TrojkaRscTests(unittest.TestCase):
         self.assertEqual(len(trojka.parse_posts(html, seen)), 1)
         self.assertEqual(trojka.parse_posts(_page(_card()), seen), [])
 
+    def test_key_order_and_nesting_do_not_matter(self):
+        card = dict(reversed(list(_card().items())))  # "alt" last, not first
+        payload = '1:"$Sreact.fragment"\n2:{"section":{"rows":[' + json.dumps(card) + "]}}\n"
+        html = f"<script>self.__next_f.push([1,{json.dumps(payload)}])</script>"
+        self.assertEqual([post["title"] for post in trojka.parse_posts(html)], ["Tytuł"])
+
     def test_missing_flight_data_is_an_error(self):
         with self.assertRaises(ValueError):
             trojka.parse_posts("<html></html>")
