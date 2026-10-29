@@ -781,7 +781,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 ### ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) PR3 Trójka
 `trojka` · [feed_trojka.xml](../feeds/feed_trojka.xml)
 
-- ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) Blog — <https://trojka.polskieradio.pl/czytaj-wiecej>
+- ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) Blog — <https://trojka.polskieradio.pl>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) PR4 Czwórka
 `czworka` · [feed_czworka.xml](../feeds/feed_czworka.xml)
