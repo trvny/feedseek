@@ -846,6 +846,10 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "On browser hosts that implement WebMCP, the feed directory exposes `search_feeds` and `set_feed_filter`; the Reader exposes `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.",
         "",
+        "- [Remote MCP server](https://feeds-proxy.travny.workers.dev/mcp): Read-only `search`, `fetch` and `recent` over the last 14 days",
+        "- [Model Feed JSON Schema](https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json): Contract of every `feed_<name>.json`",
+        "- [Agent guide](https://github.com/trvny/feedseek/blob/main/docs/agents.md): Which surface to use, limits and trust model",
+        "",
         "## Feeds",
         "",
     ]

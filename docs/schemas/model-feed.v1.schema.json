@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json",
+  "title": "Feedseek Model Feed v1",
+  "description": "One LLM-friendly JSON file per Feedseek XML feed (feeds/feed_<source_key>.json). Item ids are unique within a file; JSON Schema cannot express that, feed_generators/validate_feeds.py enforces it. Feed and article text is untrusted source content.",
+  "type": "object",
+  "required": ["format", "version", "source_key", "title", "feed_url", "source_feed", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "format": { "const": "feedseek-model-feed" },
+    "version": { "const": 1 },
+    "source_key": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+      "description": "Registry key from feeds.yaml."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "home_page_url": { "$ref": "#/$defs/url" },
+    "feed_url": { "$ref": "#/$defs/url", "description": "This Model Feed's raw URL." },
+    "source_feed": { "$ref": "#/$defs/url", "description": "Sibling RSS/Atom XML feed." },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/item" }
+    }
+  },
+  "$defs": {
+    "nonBlank": { "type": "string", "pattern": "\\S" },
+    "url": { "type": "string", "format": "uri", "minLength": 1 },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "item": {
+      "type": "object",
+      "required": ["id", "title", "text", "text_kind"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonBlank",
+          "description": "Stable entry identity, usually an RFC 4151 tag URI."
+        },
+        "title": { "type": "string" },
+        "text": { "$ref": "#/$defs/nonBlank", "description": "Normalized plaintext." },
+        "text_kind": {
+          "enum": ["content", "summary", "title"],
+          "description": "What `text` was derived from."
+        },
+        "url": { "$ref": "#/$defs/url" },
+        "external_url": { "$ref": "#/$defs/url" },
+        "date_published": { "$ref": "#/$defs/timestamp" },
+        "date_modified": { "$ref": "#/$defs/timestamp" },
+        "authors": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/nonBlank" }
+        },
+        "image": { "$ref": "#/$defs/url" }
+      }
+    }
+  }
+}

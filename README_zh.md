@@ -43,6 +43,7 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 - [各 feed 的来源与设计取舍](docs/feeds.md)
 - [缓存行为与维护](docs/cache.md)
 - [自动生成的来源清单](docs/sources.md)
+- [LLM 与智能体接入：远程 MCP 服务器、WebMCP、llms.txt、Model Feed JSON Schema](docs/agents.md)
 
 这些 feed 对应的 Android 阅读器/播放器位于 **[travnie/kanarek](https://github.com/travnie/kanarek)**。
 
