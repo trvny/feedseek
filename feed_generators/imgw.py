@@ -40,6 +40,7 @@ import time
 from datetime import UTC, datetime
 from zoneinfo import ZoneInfo
 
+import requests
 from feedgen.feed import FeedGenerator
 from utils import (
     fetch_page,
@@ -75,12 +76,29 @@ PL_TZ = ZoneInfo("Europe/Warsaw")
 MAX_ENTRIES = 150
 
 
+def _is_empty_warning_list(response) -> bool:
+    """IMGW answers 404 {"status": false, "message": "Brak ostrzeżeń ..."} when nothing is active."""
+    if response is None or response.status_code != 404:
+        return False
+    try:
+        body = response.json()
+    except ValueError:
+        return False
+    return isinstance(body, dict) and body.get("status") is False
+
+
 def fetch_json(path: str, retries: int = 3, backoff: float = 2.0):
     """Fetch ``BASE_URL + path`` and parse JSON; return None on failure."""
     url = f"{BASE_URL}{path}"
     for attempt in range(1, retries + 1):
         try:
             return json.loads(fetch_page(url))
+        except requests.HTTPError as e:
+            if _is_empty_warning_list(e.response):
+                return []
+            logger.warning("IMGW fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
+            if attempt < retries:
+                time.sleep(backoff * attempt)
         except Exception as e:
             logger.warning("IMGW fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:

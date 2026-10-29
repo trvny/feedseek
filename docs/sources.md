@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-111 feedów · 900 źródeł
+111 feedów · 899 źródeł
 
 ## Spis grup
 
@@ -50,7 +50,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=zdrowie.pap.pl&sz=16) PAP Zdrowie — <https://zdrowie.pap.pl/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=samorzad.pap.pl&sz=16) Serwis Samorzadowy — <https://samorzad.pap.pl/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=biznes.pap.pl&sz=16) PAP Biznes — <https://biznes.pap.pl/rss>
-- ![](https://www.google.com/s2/favicons?domain=europapnews.pap.pl&sz=16) EuroPAP News — <https://europapnews.pap.pl/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=europapnews.pap.pl&sz=16) EuroPAP News — <https://europapnews.pap.pl/taxonomy/term/3/feed>
 - ![](https://www.google.com/s2/favicons?domain=dzieje.pl&sz=16) Dzieje.pl — <https://dzieje.pl/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.tvp.pl&sz=16) TVP
@@ -77,7 +77,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 ### ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) Reuters
 `reuters` · [feed_reuters.xml](../feeds/feed_reuters.xml)
 
-- ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (when:7d allinurl:reuters.com) — <https://news.google.com/rss/search?q=when:7d+allinurl:reuters.com&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (when:7d site:reuters.com) — <https://news.google.com/rss/search?q=when:7d+site:reuters.com&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (reuters.com) — <https://news.google.com/rss/search?q=reuters.com&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=www.reuters.com&sz=16) Blog — <https://www.reuters.com/>

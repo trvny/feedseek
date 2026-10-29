@@ -82,6 +82,8 @@ SOURCES = {
     "jester": f"{VIEWBITS_API}/jester?mode=today",
     "headlines": f"{VIEWBITS_API}/headlines?limit={HEADLINE_LIMIT}",
 }
+# One entry per UTC day, guid "<key>:<YYYY-MM-DD>".
+DAILY_SOURCES = frozenset({"quote", "fact", "lifehack", "fortune", "jester"})
 ON_THIS_DAY_URL = f"{VIEWBITS_API}/onthisday?m={{month}}&d={{day}}"
 ON_THIS_DAY_GROUPS = (
     ("Events", "On This Day", "on_this_day_event"),
@@ -656,7 +658,14 @@ ADAPTERS = {
 def collect_entries(full=False):
     """Fetch and normalize all sources. Per-source failures are logged and skipped."""
     entries = []
+    # Keyless ViewBits allows 5 calls/30 s; refetching the five "mode=today"
+    # endpoints every run starved headlines/on_this_day into 429s.
+    day = f"{_today_utc():%Y-%m-%d}"
+    known = set() if full else _cached_guids()
     for key, url in SOURCES.items():
+        if key in DAILY_SOURCES and f"{key}:{day}" in known:
+            logger.info("%s: today's entry is already cached; not fetching", key)
+            continue
         data = fetch_json(url)
         if data is None:
             logger.warning("Source '%s' unavailable; continuing", key)
@@ -673,8 +682,9 @@ def collect_entries(full=False):
     try:
         today = _today_utc()
         url = ON_THIS_DAY_URL.format(month=today.month, day=today.day)
-        data = fetch_json(url)
-        if data is None:
+        if f"onthisday:{ON_THIS_DAY_GROUPS[0][2]}:{day}" in known:
+            logger.info("on_this_day: today's entry is already cached; not fetching")
+        elif (data := fetch_json(url)) is None:
             logger.warning("Source 'on_this_day' unavailable; continuing")
         else:
             new = adapt_on_this_day(data)
@@ -697,8 +707,6 @@ def collect_entries(full=False):
     # already cached and fetching it again would spend calls on somebody's free
     # API for a result merge_entries throws away. A full rebuild ignores the
     # cache like every other source.
-    day = f"{_today_utc():%Y-%m-%d}"
-    known = set() if full else _cached_guids()
     for label, adapter in (
         ("critter", adapt_critter),
         ("anycrap", adapt_anycrap),

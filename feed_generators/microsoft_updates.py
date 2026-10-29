@@ -104,6 +104,8 @@ _HISTORY_DATE_RE = re.compile(
     r"^((?:January|February|March|April|May|June|July|August|September|October|November|December)"
     r"\s+\d{1,2},\s+\d{4})"
 )
+_KB_HREF_RE = re.compile(r"(?:\bkb|/help/)(\d{6,8})\b", re.IGNORECASE)
+_KB_TITLE_RE = re.compile(r"\bKB(\d{6,8})\b")
 _MC_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})(?:\s+(\d{2}:\d{2}))?")
 _H2_DATE_ID_RE = re.compile(
     r"^(january|february|march|april|may|june|july|august|september|october|november|december)"
@@ -123,7 +125,10 @@ def _scrape_update_history(label, url, known_links):
         return entries
     soup = BeautifulSoup(html, "html.parser")
 
-    links = soup.select("a.supLeftNavLink, .supLeftNavArticle a, a[href*='/help/']")
+    # learnRenderLeftNavLink: /servicing/os/... layout (mid-2026), relative hrefs.
+    links = soup.select(
+        "a.learnRenderLeftNavLink, a.supLeftNavLink, .supLeftNavArticle a, a[href*='/help/']"
+    )
     count, seen = 0, set()
     for link in links:
         if count >= HISTORY_INTAKE_CAP:
@@ -131,9 +136,14 @@ def _scrape_update_history(label, url, known_links):
         try:
             title = link.get_text(" ", strip=True)
             href = link.get("href", "")
-            if not title or "KB" not in title or "OS Build" not in title or "/help/" not in href:
+            if not title or "KB" not in title or "OS Build" not in title:
                 continue
-            full_link = href if href.startswith("http") else SUPPORT_BASE + href
+            # Href first: titles carry upstream typos ("KB55134134").
+            kb = _KB_HREF_RE.search(href) or _KB_TITLE_RE.search(title)
+            if not kb:
+                continue
+            # /en-us/help/<n> 301s to the current page; stable across layout moves.
+            full_link = f"{SUPPORT_BASE}/en-us/help/{kb.group(1)}"
             if full_link in seen:
                 continue
             seen.add(full_link)

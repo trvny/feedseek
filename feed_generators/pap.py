@@ -28,7 +28,8 @@ SOURCES = [
     ("PAP Zdrowie", "https://zdrowie.pap.pl/rss.xml", 40),
     ("Serwis Samorzadowy", "https://samorzad.pap.pl/rss.xml", 40),
     ("PAP Biznes", "https://biznes.pap.pl/rss", 40),
-    ("EuroPAP News", "https://europapnews.pap.pl/rss.xml", 40),
+    # /rss.xml = Drupal promoted-to-front feed, frozen since 2021; term 3 = Aktualności.
+    ("EuroPAP News", "https://europapnews.pap.pl/taxonomy/term/3/feed", 40),
     ("Dzieje.pl", "https://dzieje.pl/rss.xml", 40),
 ]
 
