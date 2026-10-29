@@ -22,7 +22,7 @@ Raw GitHub URLs track `main`; swap `main` for a commit SHA for a reproducible sn
 One `feed_<key>.json` per XML feed, format `feedseek-model-feed`, version `1`.
 
 - Contract: [`schemas/model-feed.v1.schema.json`](schemas/model-feed.v1.schema.json) (JSON Schema 2020-12). Raw: `https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json`.
-- Feed: `source_key`, `title`, `feed_url`, `source_feed` (XML sibling), optional `description`, `home_page_url`, `items[]`.
+- Feed: `source_key`, `title`, `feed_url`, `source_feed` (XML sibling), `items[]`; optional `description`, `home_page_url`.
 - Item: stable `id` (usually RFC 4151 tag URI, unique per file), `title`, plaintext `text`, `text_kind` (`content`, `summary` or `title` = what `text` came from). Optional when upstream provides them: `url`, `external_url`, `date_published`, `date_modified` (RFC 3339), `authors[]`, `tags[]`, `image`.
 - `text_kind: title` means no body or summary existed upstream; do not treat it as article content.
 
