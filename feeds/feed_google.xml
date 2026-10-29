@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-29T13:39:03.122623+00:00</updated>
+  <updated>2026-10-29T19:50:01.767838+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,436 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly</id>
+    <title>You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini.</title>
+    <updated>2026-10-29T16:15:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/fileGen2.0-thumbnail-resize.max-600x600.format-webp.webp" /&gt;Generate, edit, and preview PDFs or Docs directly in Gemini. Use the new full-screen editor to refine your files today. See what's new in Gemini.</content>
+    <link href="https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-29T16:15:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/fileGen2.0-thumbnail-resize.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/fileGen2.0-thumbnail-resize.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/fileGen2.0-thumbnail-resize.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/data-analytics/expanded-semantic-model-support-in-knowledge-catalog</id>
+    <title>Grounding agents in one context graph connecting semantic models you already trust</title>
+    <updated>2026-10-29T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Picture the scene: Before an executive business review, your VP of Sales asks an AI assistant, &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"What was net revenue for our top enterprise accounts last quarter?"&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; In seconds, the agent returns a polished chart! Unfortunately, the numbers don't match the finance report. Why? Because the agent counted cancelled orders as revenue and pulled from an unvalidated staging table.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The agent didn't fail because of the model, or because it couldn't translate a user question into a query. It failed because &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;it didn't understand your business&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. The real kicker is that understanding usually already exists in the form of a semantic model in a Looker, dbt, Snowflake, Databricks, or SAP system. But because each definition stays locked inside its own tool, every agent guesses at it… and often gets it wrong. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This is where &lt;/span&gt;&lt;a href="https://cloud.google.com/products/knowledge-catalog"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Knowledge Catalog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; comes in. It brings the semantic models from all of those tools into one context graph, so every agent works from the same trusted definitions. And when two tools define the same metric differently, both definitions appear with their provenance, so data stewards can reconcile the conflict before it reaches end users.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we're announcing the general availability of expanded semantic model support. Knowledge Catalog now natively ingests semantic models and metric definitions from Looker LookML, BigQuery Graph (including BigQuery measures), dbt MetricFlow, Snowflake Semantic Views, Databricks Metric Views, and SAP Core Schema Notation (CSN), and connects them with schema, lineage, data profiles, business glossary and other key metadata in a single context graph, without moving data or rewriting business logic in a new language. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By grounding your AI agents in those models, they get the same business definitions your analysts rely on, so their answers line up with the numbers your business trusts. In fact, based on internal benchmarks, grounding agents in Knowledge Catalog makes them nearly 4X more accurate, with up to 33% lower latency, and using up to 75% fewer tokens.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The unified context graph enables you to:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Reuse the semantic models you already trust:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Knowledge Catalog grounds &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-knowledge-catalog#configure-knowledge-catalog"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;agent, BigQuery Conversational Analytics, and your custom agents in the metrics, filters, and join paths your teams have already defined, wherever they live.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Go beyond hand-curated definitions with self-learned context: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Knowledge Catalog pairs the well-defined metrics and KPI definitions in your semantic models with relevant context it extracts from unstructured knowledge sources, such as operational playbooks, meeting notes, chat threads, code, and more. Powered by Gemini, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/knowledge-catalog-self-learning-context-enrichment-for-ai-agents?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;self-learning enrichment&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; continuously finds missing or outdated context and turns it into governed, reusable context sets, ensuring your agents' context stays current as definitions change, without relying only on manual curation.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Pair business logic with enterprise trust: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Even the right formula produces the wrong answer when it runs on stale or uncertified data. That's why Knowledge Catalog can connect semantic definition to data quality scores, freshness signals, and lineage, so an agent knows what it can trust before it writes a line of SQL.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1. Side-by-side comparison" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1._Side-by-side_comparison_z1p0n9c.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Side-by-side comparison of the same question in Gemini without Knowledge Catalog (left) and grounded in Knowledge Catalog (right). Highlights the grounded agent (right) giving an accurate response with less token and lower latency, compared to the agent without Knowledge Catalog (left) hallucinating and using more tokens with higher latency.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;One context graph across your data estate&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The context graph that Knowledge Catalog creates is a connected map of your data and semantic estate: tables, semantic models, glossary terms, and data products are nodes; lineage, associations, schema keys, joins mined from real query history, and the join paths declared in your semantic models are the edges. Ingested semantics land in that same graph, next to pre-existing governance and usage signals, so an agent moves from business concept to trusted formula and verified join paths in one traversal. Each source adds its own perspective on your business:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/looker/docs/looker-core-dataplex"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Looker LookML&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Indexes models, explores, views, and dashboards using Live sync from Looker Core, capturing compiled metric SQL, fan-out-safe join conditions, mandatory filters, and lineage from source tables to executive dashboards.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/metadata-overview#supported-sources"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery Graph&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Indexes native property-graph definitions, node and edge tables, graph measures, and business synonyms, so agents reason over connected entities with Graph Query Language (GQL) traversals instead of brittle multi-table self-joins.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/dbt-transfer"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;dbt MetricFlow&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Links source objects to dbt models and MetricFlow metrics, alongside dbt data quality test results, filters, saved queries, freshness SLAs, and downstream exposures.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/snowflake-horizon-transfer"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Snowflake Semantic Views via Horizon Catalog&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Pairs federated BigQuery or Google Cloud Lakehouse tables with Snowflake Horizon metadata, bringing in Semantic View dimensions, facts, metric formulas, relationships, and synonyms, plus Data Metric Function quality scorecards and PII masking tags.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/databricks-unity-transfer"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Databricks Metric Views via Unity Catalog&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Ingests metric view definitions, measure formulas, scoping filters, and join cardinalities from Unity Catalog, alongside table certification badges and Lakehouse Monitoring profiling results.&lt;/span&gt;&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/manage-sap-bdc-metadata"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;SAP Core Schema Notation (CSN) via SAP Business Data Cloud (BDC)&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; (GA):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Captures business labels, dimension and cube modeling patterns, default aggregations, currency and unit bindings, key and composite join associations, and data sensitivity flags when SAP BDC Data Products are federated through Google Cloud Lakehouse.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because every source lands as a node or an edge in the same graph, a LookML join, a dbt exposure, a Snowflake relationship, or an SAP association are traversable side by side, with links tying each one back to the physical tables it depends on. And nothing is silently overwritten: overlapping definitions stay side by side, each labeled with its source, giving data stewards the full picture they need to settle on a single version.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2. Context Graphs_compressed" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/2._Context_Graphs.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Navigating semantic models, join paths, and lineage on the context graph in Knowledge Studio.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You can explore and govern all of this in &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/knowledge-studio"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Knowledge Studio&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (preview), your command center to explore and manage your context. Explore your context graph, including your semantic definitions, using natural language prompts and traverse connection paths using the context graph canvas. Then, once you've validated the right assets and definitions, you can package them into reusable &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/context-sets"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;context sets&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; that map to specific use cases and domains in your organization, which Gemini and custom agents can consume in production.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Get started&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let’s get back to that net revenue question. With Knowledge Catalog, the VP of Sales’ agent issues a single context query to discover the trusted asset, applying the exact metric formula and filters that your domain experts defined, all while respecting join keys across systems, and confirming that the underlying data passed its quality checks. Better yet, the numbers in the report are correct!&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To get started, explore your context graph in &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs/knowledge-studio"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Knowledge Studio&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and visit the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/knowledge-catalog/docs"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Knowledge Catalog documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to connect to more sources.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/data-analytics/expanded-semantic-model-support-in-knowledge-catalog" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-29T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1._Side-by-side_comparison_z1p0n9c.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1._Side-by-side_comparison_z1p0n9c.gif"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1._Side-by-side_comparison_z1p0n9c.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/data-analytics/querying-databricks-iceberg-tables-with-google-clouds-lakehouse</id>
+    <title>Querying Databricks Apache Iceberg Tables with the borderless Lakehouse</title>
+    <updated>2026-10-29T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Enterprise organizations often leverage multiple data platforms, including Databricks, to execute heavy Apache Spark jobs alongside BigQuery to power highly concurrent analytics workloads. Historically, bridging these systems often meant building complex pipelines to copy data between environments. This approach increases storage costs, introduces latency, and fragments security controls.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;With Google Cloud’s borderless Lakehouse, you can now query Databricks-managed Apache Iceberg tables straight from BigQuery. This zero-copy approach removes the need to duplicate data: BigQuery reads the same files Databricks writes, and new changes appear after Lakehouse's next scheduled metadata refresh (as often as every 5 minutes).&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_9nWgq7s.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;How Lakehouse and Databricks work together&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Managed Iceberg tables automatically generates Iceberg-compatible metadata alongside native Delta logs. Data engineering teams can store Parquet files once in Google Cloud Storage (GCS) using Databricks. Rather than loading this information into BigQuery, Lakehouse reads the Iceberg metadata directly, applying BigQuery’s vectorized engine directly to open-format files in GCS.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Although Google Cloud Storage (GCS) serves as the primary storage layer in the above example, Lakehouse extends this borderless federation directly to external cloud environments like Amazon S3 and Azure Blob Storage. By pairing the open Apache Iceberg REST Catalog with cross-cloud connections, Lakehouse lets BigQuery query data across clouds without moving it. Each federated catalog lives in a Google Cloud location you choose, ideally the region closest to your data. This lets BigQuery read open-format Parquet files where they live, delivering multi-cloud analytics without replication pipelines. Remote-cloud egress charges still apply, but Cross-Cloud Interconnect (AWS) and Lakehouse caching can reduce them.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Beyond simply querying external data, Lakehouse framework establishes true read and write (R/W) interoperability across engines. Because the platform is built on an open Apache Iceberg foundation, data teams can effortlessly execute multi-statement SQL commands directly inside BigQuery.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Centralized security and governance&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Handling access controls across disparate systems can introduce vulnerabilities. Lakehouse addresses this through delegated access. Administrators can configure a BigQuery Cloud Resource Connection tied to a service account that manages IAM rights for GCS buckets. Granting users access to the Lakehouse table entity lets you enforce BigQuery controls including row-level, column-level security, and dynamic data masking on external Iceberg tables while Databricks handles ingestion.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Catalog federation and credential vending&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Previously, connecting these platforms meant manually configuring BigQuery queries to point at static metadata paths. Modern setups leverage the open Apache Iceberg REST Catalog API. Databricks Unity Catalog functions as the central metadata layer, allowing a BigQuery administrator to establish a Lakehouse runtime catalog with a federated connection. When running a query, Lakehouse contacts Unity Catalog for current table state, and short-lived tokens are issued through credential vending to grant BigQuery temporary read access to GCS.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Partition pruning&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;BigQuery uses each table's Iceberg metadata to plan the query, then reads only the relevant data files in place. Iceberg's hidden partitioning lets you filter on logical columns, such as timestamps, without knowing the directory layout. Note that Databricks managed Iceberg tables don't support partition transforms; Databricks recommends liquid clustering instead.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Filters in a standard WHERE clause let BigQuery use the Iceberg manifests to skip partitions that can't match. Compare partition columns with literal values so pruning can apply. These manifests maintain detailed column-level statistical bounds, enabling BigQuery to bypass irrelevant manifest records and unneeded Parquet files immediately. Consequently, queries scan only necessary byte ranges, accelerating query execution while significantly reducing on-demand slot consumption and storage scan costs.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Fast queries with Iceberg metadata and Lakehouse caching&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Iceberg manifests already identify which data files to read, so BigQuery doesn't need a metadata cache for Iceberg tables. For cross-cloud tables, such as those in Amazon S3, Lakehouse caching (Preview) keeps retrieved data blocks in Google Cloud so repeat queries read them locally. BigQuery reads the Iceberg manifest files directly when it plans each query; there's no metadata caching to enable. This dynamic partition pruning bypasses unneeded files, significantly reducing runtime and bytes scanned.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Maintenance and lifecycle management&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Modern lakehouses demand active upkeep; without routine care, performance degrades into an inefficient repository. Fortunately, both BigQuery and Databricks supply native capabilities to preserve table hygiene and accelerate analytical workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Keeping your tables optimized&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;To maintain optimal query performance, active maintenance of your lakehouse storage footprint remains necessary.&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Trigger regular compaction pipelines via Databricks APIs to merge tiny Parquet files into larger, optimized layouts and use Predictive Optimization.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Execute the Databricks VACUUM command to clear unreferenced files outside active snapshots, avoiding extra GCS storage costs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Compaction and the small file problem&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Frequent write operations, continuous ingestion jobs, and streaming workloads continuously produce thousands of small Parquet files. This fragmentation creates a storage bottleneck that can limit BigQuery’s reading efficiency. Establishing thousands of network connections to GCS and processing metadata footers across numerous tiny files consumes significant compute time, diminishing the performance advantages of vectorized query execution.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Running routine compaction within Iceberg resolves these inefficiencies. Databricks manages this automatically using Liquid Clustering which dynamically adjusts file layouts based on access patterns or through native table management utilities.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;To compact small files manually on Databricks, run OPTIMIZE:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;-- Run on Databricks to compact small files\r\n-- On Databricks:\r\nOPTIMIZE customer_events;\r\n-- For Iceberg tables you manage outside Databricks:\r\nCALL my_catalog.system.rewrite_data_files(\r\ntable =&amp;gt; &amp;#x27;default.customer_events&amp;#x27;,\r\nstrategy =&amp;gt; &amp;#x27;binpack&amp;#x27;,\r\noptions =&amp;gt; map(\r\n&amp;#x27;target-file-size-bytes&amp;#x27;,\r\n&amp;#x27;268435456&amp;#x27;,\r\n&amp;#x27;min-file-size-bytes&amp;#x27;,\r\n&amp;#x27;67108864&amp;#x27;\r\n)\r\n);&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fbecc854690&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Executing this command aggregates scattered file segments into larger, structured blocks typically between 256MB and 512MB that can help improve BigQuery’s scan throughput. The binpack approach operates rapidly by prioritizing total file size balancing, though alternative sorting strategies can organize dataset ordering along specific column keys.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Managing orphan files and snapshot retention (VACUUM)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Every transactional update, record modification, and table compaction creates fresh snapshots within Iceberg to preserve dataset integrity. Over time, historical Parquet objects detached from active table states become orphaned. Although these legacy files facilitate time-travel analytics, neglecting them can drive up GCS storage charges over time.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Data teams can use the Databricks VACUUM operation to scan and purge abandoned storage files.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;ALTER TABLE customer_events SET TBLPROPERTIES (&amp;#x27;delta.deletedFileRetentionDuration&amp;#x27; = &amp;#x27;7 days&amp;#x27;);\r\nVACUUM customer_events FULL;&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fbece8c0150&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Standard configurations apply a mandatory seven-day threshold (deletedFileRetentionDuration) before executing VACUUM routines. Preserving this delay prevents active analytical jobs from encountering missing file errors while keeping historical recovery options available. Scheduling routine VACUUM jobs, or letting predictive optimization run them, removes unreferenced data files and, for tables with Iceberg reads, old Iceberg metadata. That keeps storage costs low and performance high across your lakehouse.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Conclusion&lt;/strong&gt;&lt;/h4&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Connecting Databricks Apache Iceberg datasets to Lakehouse can help you activate your data with BigQuery. By separating processing from underlying storage, embracing open formats, and using standard REST APIs with credential vending, you can run scalable engineering workloads and concurrent analytics without migrating data or sacrificing performance&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Pairing Databricks Iceberg reads (UniForm) with Lakehouse federation, Lakehouse caching, and regular OPTIMIZE and VACUUM maintenance helps you build an efficient, zero-copy lakehouse. This approach can help lower storage spend, avoids fragile pipeline maintenance, and prepares your data environment for modern analytics and emerging AI workloads.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;Constructing a unified architecture no longer requires moving data files across platforms. You can begin querying Databricks Iceberg tables by registering them with the Lakehouse runtime catalog today for bi-directional federation. Learn more by reading our &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/lakehouse/docs/set-up-cross-cloud-connection-databricks"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to get started.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/data-analytics/querying-databricks-iceberg-tables-with-google-clouds-lakehouse" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-29T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_9nWgq7s.max-1000x1000.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_9nWgq7s.max-1000x1000.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_9nWgq7s.max-1000x1000.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-introducing-new-tier-for-google-cloud-vrp</id>
+    <title>Cloud CISO Perspectives: Introducing new $250,000 tier for Google Cloud VRP (Q&amp;A)</title>
+    <updated>2026-10-29T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Welcome to the second Cloud CISO Perspectives for October 2026. Today, Chris Betz talks with Michael Cote, our vulnerability rewards program lead, about the new tier of our Cloud VRP program and the current state of vulnerability rewards.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As with all Cloud CISO Perspectives, the contents of this newsletter are posted to the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. If you’re reading this on the website and you’d like to receive the email version, you can &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;subscribe here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Get vital board insights with Google Cloud&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fbecc52fc90&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Visit the hub&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://cloud.google.com/solutions/security/board-of-directors?utm_source=cgc-site&amp;amp;utm_medium=et&amp;amp;utm_campaign=FY26-Q2-GLOBAL-GCP39634-email-dl-dgcsm-CISOP-NL-177159&amp;amp;utm_content=-&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, None)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Why we've created a new $250,000 tier for Google Cloud VRP (Q&amp;amp;A)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;By Chris Betz, CISO, Google Cloud&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_PYRwidS.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;The Google Cloud Vulnerability Reward Program (VRP) partners with the global security research community to help elevate cloud security for all by encouraging the discovery of critical software vulnerabilities. In an era when automated research has made it more challenging to verify authentic vulnerabilities, we have a critical need to boost high-level, human-led research that can transcend automated-only discovery.&lt;/p&gt;&lt;p&gt;Today, we are expanding our top reward tier with a &lt;a href="https://bughunters.google.com/"&gt;new $250,000 Root-in-Cloud reward&lt;/a&gt;, specifically designed to recognize high-impact architectural research. Identifying tenant-isolation bypasses and complex cross-service logic flaws requires human creativity, intuition, and rigorous systems analysis combined with the power of agentic systems.&lt;/p&gt;&lt;p&gt;To earn this premier reward, you must demonstrate full administrative control, the equivalent of “roles/owner” or complete IAM control, over arbitrary Google Cloud organizations or projects with no prior access or special project setup.&lt;/p&gt;&lt;p&gt;The exploit path can not depend on:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Pre-existing access or footholds in the victim project.&lt;/li&gt;&lt;li&gt;Leaked, phished, or stolen credentials.&lt;/li&gt;&lt;li&gt;User interaction or social engineering.&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong&gt;&lt;span style="vertical-align: baseline;"&gt;Proof-of-root: Clear, cryptographic validation&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To make testing safe, clear, and reproducible, without impacting production environments, we have defined &lt;/span&gt;&lt;a href="https://bughunters.google.com/about/rules/google-friends/cloud-vulnerability-reward-program-rules" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;technical criteria for validating root-in-cloud access&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Additionally, valid vulnerability reports demonstrating remote code execution (RCE) in underlying Google production infrastructure (Borg) or achieving root-in-prod will automatically be evaluated by the Google Cloud VRP panel for root-in-cloud eligibility.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because code execution in Borg has the potential to impact service availability or cross-tenant data, researchers must halt all probing immediately upon achieving any execution in Borg. Escalation, extracting production credentials, and lateral movement are not allowed and will result in researcher disqualification. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The Google Cloud VRP panel will analyze the initial entry point, execution context, and attack surface to determine whether full arbitrary tenant or project takeover is achievable from that position, and award the bounty accordingly. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This new bounty tier reflects how security research continues to evolve, and the importance of continuing to recognize the most innovative and valuable security research. As part of those efforts, Google Security held its annual Escal8 conference in Singapore last week, and I had the opportunity to discuss the changing landscape with Michael Cote, Google Cloud’s vulnerability reward program lead. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;The following transcript has been lightly edited.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Chris Betz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: You are at Escal8 in Singapore announcing the new $250,000 Root-in-Cloud tier for our VRP. Why introduce this tier now, and what kind of research are you hoping to spark?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Michael Cote&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: This is a recognition of how the field of security research has changed over the past year. We value quality submissions from anyone, and we’ve seen that the combination of human creativity and agentic power is much richer than either on its own.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While automated scanners generate a high volume of low-impact noise, first-time researchers who pair human intuition with agentic tools are finding, on average, more interesting bugs than novices did two years ago. With the new Root-in-Cloud tier, we want to challenge the community and increasingly reward the complex, high-impact findings — like tenant-isolation bypasses and cross-service logic flaws — that require deep architectural intuition alongside agentic tools, because getting that information is essential to protecting our customers.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Chris Betz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Google Threat Intelligence Group (GTIG) recently shared research showing that &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;monthly CVE disclosures have doubled&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; as agentic tools mature. From your seat leading the Cloud VRP, how has automation technology impacted the reports we’ve received? &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Michael Cote&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: It has transformed our intake volume, though not in the way many people assume. While the number of valid vulnerability reports submitted to the Google Cloud VRP has remained stable over the last 18 months, the total number of reports has grown tremendously. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Automation has helped democratize vulnerability discovery, and the barrier to entry has been rapidly flattening, something even our top researchers noted at Escal8. Because we’re seeing more researchers and more first-timers with interesting bugs, that creates pressure on more experienced researchers to move faster and bring more impactful findings — although their experience continues to be a key differentiator in success.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Chris Betz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: I’ve been working with the research community for more than 20 years. One of the things I appreciate most is how much the community values making the world more secure. Bounty programs let us recognize this valuable work. How do you see the community changing as we move further into the agentic era? &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Michael Cote&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: That shared commitment to making the world more secure is still the heart of this community, which is why the pressure to move faster is something we have to watch closely. As our GTIG colleagues found, the sharpest rise in the number of exploited vulnerabilities comes from &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;n-days, not zero-days&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Open source accounts have suggested that threat actors are using LLMs to rapidly turn newly-public vulnerability details into working exploits. When triage teams are already working through a surge in report volume, disclosing an unmitigated vulnerability well ahead of the standard 90-day coordinated disclosure window gives attackers the exact knowledge and time window they need to target customers.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With the influx of new submissions, I worry about a growing pressure to rush to publish. Something that concerns me because we’re already seeing early indications of it. Because LLMs lower the barrier to finding bugs in source-available software, researchers worry that waiting to verify risks will allow someone else to be first to publish. Even more concerning, that same competitive pressure can tempt even established security companies to disclose unmitigated vulnerabilities without coordination, and that rush puts our users directly at risk.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://projectzero.google/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Project Zero&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; helped establish the industry’s 90-plus-30-day responsible disclosure policy, and autonomous detection and exploitation capabilities make following coordinated disclosure more important than ever. In the long run, rushing to be first works against a security company's own self-interest. Novel discoveries may bring temporary visibility, but customers will ultimately choose not to work with organizations that put them and the broader ecosystem at risk. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Chris Betz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: When you offer a $250,000 bounty, how do you make sure researchers can validate their findings without putting customer environments or service availability at risk?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Michael Cote&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: High incentives require clear, safe rules of engagement. We never want researchers testing exploits against real customer projects. Instead, we created a deterministic proof-of-root mechanism using a designated service account. Researchers can cryptographically prove unauthorized access against that identity.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’ve also updated our &lt;/span&gt;&lt;a href="https://bughunters.google.com/about/rules/google-friends/cloud-vulnerability-reward-program-rules#root-in-cloud-technical-validation" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;program rules&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to establish strict boundaries around underlying production infrastructure. If researchers think they are close to a breakthrough but are uncertain where the boundary lies, we encourage them to reach out. We are always more than happy to work with them to ensure they are recognized and rewarded for the value of their research without taking steps that would invalidate the bounty.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Chris Betz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: What should enterprise CISOs take away from these trends? Especially those who run their own vulnerability management pipelines and partner with external researchers, what advice would you offer for navigating this AI inflection point?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Michael Cote&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: First, prepare your vulnerability triage workflows for agent-generated submissions. To keep valid reports from getting stuck in a backlog, security teams need ways to separate plausible-sounding hallucinations from real security risks.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Second, compress your remediation timelines once a vulnerability becomes public. Defensive patching and mitigations have to move faster because autonomous technology compresses the time from disclosure to working exploits.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Finally, hold your security partners and vendors to high standards of coordinated disclosure. It’s important that our industry continues to &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-ai-vendors-should-share-vulnerability-research-heres-why/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;normalize agentic vulnerability research&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, but we must do so responsibly. Let’s continue to keep user safety at the center of everything we do.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For more information on the Google Cloud VRP, including detailed endpoint specifications, JSON payloads, and CLI examples, please check out our &lt;/span&gt;&lt;a href="https://bughunters.google.com/about/rules/google-friends/cloud-vulnerability-reward-program-rules#root-in-cloud-technical-validation" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;rules page&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Join the Google Cloud CISO Community&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fbec3662f90&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Learn more&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://rsvp.withgoogle.com/events/google-cloud-ciso-community-interest-form-2026?utm_source=cgc-blog&amp;amp;utm_medium=blog&amp;amp;utm_campaign=FY25-Q1-global-GCP30328-physicalevent-er-dgcsm-parent-CISO-community-2025&amp;amp;utm_content=cisop_&amp;amp;utm_term=-&amp;#x27;), (&amp;#x27;image&amp;#x27;, None)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;In case you missed it&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here are the latest updates, products, services, and resources from our security teams so far this month: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How Google Does It: Using agents to help find, track, and fix vulnerabilities&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Threat actors can now find software flaws faster than ever. To maintain an agile, responsive defense, we now use agentic systems with existing foundations. &lt;/span&gt;&lt;a href="https://cloud.google.com/transform/how-google-does-it-using-agents-help-find-track-and-fix-vulnerabilities"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How to use agents to stop insider threats&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: As agents find their place across the enterprise, we want to be sure that they neither become an insider threat nor enable people to become one. &lt;/span&gt;&lt;a href="https://cloud.google.com/transform/how-to-use-agents-to-stop-insider-threats"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Responding to core PHP vulnerabilities CVE-2026-109618 and CVE-2026-10961&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Follow these recommendations to minimize remote code execution risks in PHP from two critical vulnerabilities in the core PHP language runtime. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/responding-to-core-php-vulnerabilities-cve-2026-109618-cve-2026-109619"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Wiz Sensor for GKE: Turnkey threat detection for Kubernetes&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Introducing the Wiz Runtime Sensor add-on for Google Kubernetes Engine in preview, helping to manage deployment, lifecycle, credential security, and governance. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/wiz-sensor-for-gke-turnkey-threat-detection-for-kubernetes"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Scale agents securely with IAM Helper Agent skills and MCP tools&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Today we’re introducing IAM Helper, a suite of intelligent, agent-facing building blocks that can automate complex, end-to-end IAM workflows. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Introducing new scalable perimeter options with VPC Service Controls&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Today, we're excited to announce key enhancements to VPC Service Controls that make perimeters easier to create, maintain, and scale. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/introducing-new-scalable-perimeter-options-with-vpc-service-controls"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Confidential G4 GPUs are now generally available&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Confidential Computing on G4 now provides hardware-based security in AI Hypercomputer to deliver dynamic performance without compromising privacy. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/confidential-g4-gpus-are-ga"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Supply chain zero days: Closing the gap between publication and detection&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Learn how Wiz’s supply chain pipeline identifies compromised packages at publication, helping teams detect zero-day supply chain compromises in Wiz Defend before a CVE is published. &lt;/span&gt;&lt;a href="https://www.wiz.io/blog/detect-supply-chain-zero-days-at-publication" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Please visit the Google Cloud blog for more security stories &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;published this month&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;Learn something new&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fbec3662710&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Watch now&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;https://www.youtube.com/watch?v=Wpo-5ke9uvQ&amp;#x27;), (&amp;#x27;image&amp;#x27;, None)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Threat Intelligence news&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Investigating ephemeral supply chain tampering&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: For the first time, Google Threat Intelligence Group (GTIG) and Mandiant have encountered a software supply chain compromise that was implemented with very short tampering windows that were active for only five to 10 minutes, and effectively evading traditional point-in-time triage and automated file scanning. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/hardening-code-pipelines-and-ci-cd-infrastructure"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;ARMORY CASTLE exploits BeyondTrust&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: During an incident response engagement, Mandiant identified evidence that ARMORY CASTLE, a suspected PRC-nexus espionage threat actor, exploited a vulnerability impacting BeyondTrust Remote Support appliances. Organizations should prepare for potential widespread exploitation following this disclosure, as ARMORY CASTLE and other threat actors have historically conducted broad, opportunistic exploitation once the vulnerability becomes public. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-beyondtrust"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Vulnerability discovery and exploitation trends in the AI era&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: To counter the increased risk from rapid vulnerability discovery and exploitation, organizations should transition from unprioritized mass-patching to threat intelligence-driven triage, combining targeted edge-defense with automated, agentic remediation. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Defending against active exploitation of Citrix NetScaler ADC and Gateway appliances&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Mandiant Consulting and Google Threat Intelligence Group (GTIG) identified active, in-the-wild exploitation of a zero-day vulnerability affecting Citrix NetScaler ADC and NetScaler Gateway appliances. Here’s our containment and remediation guidance. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/defending-against-active-exploitation-of-citrix-netscaler-adc-and-gateway-appliances"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Read more&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Please visit the Google Cloud blog for more threat intelligence stories &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;published this month&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Now hear this: Podcasts from Google Cloud &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Security Podcast: Patching browsers with AI, agents, Rust, and your tabs&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Jasika Bawa and Doug Turner of Chrome Security explore how Google Chrome now uses AI agents to autonomously identify and patch security vulnerabilities at an unprecedented scale, significantly accelerating the browser's update cadence. &lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=pCXT8lQqg_U" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Listen here&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Security Podcast: All about Project Atlas, Wiz's AI vulnerability research&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Nir Orfeld, head of vulnerability research, Wiz, discusses how his team uses multi-agent AI systems for discovering high-impact zero-day vulnerabilities in cloud infrastructure. &lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=qRJJ9ekpuVg" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Listen here&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Security Podcast: How Google eliminates classes of vulnerabilities at scale&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;:&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; How do you build the foundations for a secure Google-scale enterprise that stays secure even if an AI is writing the code and nobody has time to review it? Christoph Kern, principal security engineer, Google, explores what secure-by-design really means in the AI era. &lt;/span&gt;&lt;a href="https://www.youtube.com/watch?v=43imRRfgLgc" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Listen here&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To have our Cloud CISO Perspectives post delivered twice a month to your inbox, &lt;/span&gt;&lt;a href="https://cloud.google.com/resources/google-cloud-ciso-newsletter-signup"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;sign up for our newsletter&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. We’ll be back in a few weeks with more security-related updates from Google Cloud.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-introducing-new-tier-for-google-cloud-vrp" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-29T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Cloud_CISO_Perspectives_header_4_Blue.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026</id>
+    <title>Celebrate Halloween with these tricks in Google Photos.</title>
+    <updated>2026-10-29T16:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePhotosDropsOct_Static.max-600x600.format-webp.webp" /&gt;Use Ask Photos to find past costumes and edit spooky backgrounds in Google Photos. Try these festive tricks to perfect your Halloween snaps today.</content>
+    <link href="https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-29T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePhotosDropsOct_Static.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePhotosDropsOct_Static.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePhotosDropsOct_Static.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks</id>
+    <title>Gemini Notebook makes hundreds of textbooks available to help students learn even more.</title>
+    <updated>2026-10-29T16:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Notebook_EI_Textbooks.max-600x600.format-webp.webp" /&gt;Add textbooks from OpenStax and S Chand to Google Gemini Notebook. Generate custom study guides and quizzes now. See the available catalog.</content>
+    <link href="https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-29T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Notebook_EI_Textbooks.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Notebook_EI_Textbooks.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Notebook_EI_Textbooks.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
   <entry>
     <id>https://blog.google/innovation-and-ai/technology/health/google-ai-for-healthcare-professionals-certificate</id>
     <title>Equipping healthcare professionals with practical AI skills</title>
@@ -27,6 +457,20 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Trailer_Thumbnail_Sohini_Gn2Gz2.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Trailer_Thumbnail_Sohini_Gn2Gz2.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini</id>
+    <title>How to use Gemini to update your resume</title>
+    <updated>2026-10-29T11:33:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/IO25_GeminiApp.max-600x600.format-webp.webp" /&gt;Turn raw notes into high-impact, ATS-friendly resume bullets using Gemini. Follow these four steps to polish your professional profile. Get the details.</content>
+    <link href="https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-29T11:33:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/IO25_GeminiApp.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/IO25_GeminiApp.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/IO25_GeminiApp.max-600x600.format-webp.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
     <id>https://googlecloudpresscorner.com/2026-10-29-NIQ-and-Google-Partner-to-Advance-Agentic-Commerce</id>
@@ -54,6 +498,125 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Edu_Impact_Studies_herosocial.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Edu_Impact_Studies_herosocial.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/release-notes#October_29_2026</id>
+    <title>Workspace Release Notes — October 29, 2026</title>
+    <updated>2026-10-29T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Chat API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Generally Available:&lt;/strong&gt; Subscriptions to all Google Chat events in a Google
+Workspace organization, known as customer-level subscriptions, are now
+generally available.&lt;/p&gt;
+&lt;p&gt;Using customer-level subscriptions, Google Chat apps can monitor space and user
+events across an entire Google Workspace organization without the app being a
+member of every space.&lt;/p&gt;
+&lt;p&gt;Customer-level subscriptions support the following authorization scopes, which
+require service account configuration and administrator approval:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.spaces.readonly&lt;/code&gt;:
+To see space metadata.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.memberships.readonly&lt;/code&gt;:
+To see all space memberships.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.messages.readonly&lt;/code&gt;:
+To see all messages and reactions.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly&lt;/code&gt;:
+To see read states of all users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see
+&lt;a href="https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription"&gt;Subscribe to all Google Chat events in a Workspace organization&lt;/a&gt;
+and
+&lt;a href="https://developers.google.com/workspace/events/guides/events-chat#customer-limitations"&gt;Customer subscription limitations and delivery behaviors&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Workspace Events API&lt;/h2&gt;
+&lt;strong class="release-note-product-version-title"&gt;&lt;/strong&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Generally Available:&lt;/strong&gt; Subscriptions to all Google Chat events in a Google
+Workspace organization, known as customer-level subscriptions, are now
+generally available.&lt;/p&gt;
+&lt;p&gt;Using customer-level subscriptions, Google Chat apps can monitor space and user
+events across an entire Google Workspace organization without the app being a
+member of every space.&lt;/p&gt;
+&lt;p&gt;Customer-level subscriptions support the following authorization scopes, which
+require service account configuration and administrator approval:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.spaces.readonly&lt;/code&gt;:
+To see space metadata.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.memberships.readonly&lt;/code&gt;:
+To see all space memberships.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.messages.readonly&lt;/code&gt;:
+To see all messages and reactions.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly&lt;/code&gt;:
+To see read states of all users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To learn more, see
+&lt;a href="https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription"&gt;Subscribe to all Google Chat events in a Workspace organization&lt;/a&gt;
+and
+&lt;a href="https://developers.google.com/workspace/events/guides/events-chat#customer-limitations"&gt;Customer subscription limitations and delivery behaviors&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/release-notes#October_29_2026" rel="alternate"/>
+    <category term="Workspace Release Notes"/>
+    <published>2026-10-29T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/vc1b996b07630b7fba08b3b2fd258fb35e39e5d8dfeab71af65465d9a2fbe5870/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/vc1b996b07630b7fba08b3b2fd258fb35e39e5d8dfeab71af65465d9a2fbe5870/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/vc1b996b07630b7fba08b3b2fd258fb35e39e5d8dfeab71af65465d9a2fbe5870/developers/images/opengraph/white.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#October_29_2026</id>
+    <title>Cloud Release Notes — October 29, 2026</title>
+    <updated>2026-10-29T07:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Anti Money Laundering AI&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;New minor engine version released for the retail line of business within the &lt;code&gt;v004.011&lt;/code&gt; version line (&lt;code&gt;aml-retail.default.v004.011.202610-000&lt;/code&gt;). This version extends support for the major engine version and includes no significant changes compared to the previous minor version.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Dataflow&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;Dataflow has added the following features to tune horizontal
+autoscaling for Streaming Engine jobs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Latency tiers: You can configure the backlog threshold by choosing a latency
+tier (&lt;code&gt;low_latency&lt;/code&gt;, &lt;code&gt;medium_latency&lt;/code&gt;, or &lt;code&gt;high_latency&lt;/code&gt;), allowing you to
+configure the autoscaler's sensitivity to backlog duration and balance latency
+requirements with resource costs. For more information, see
+&lt;a href="https://docs.cloud.google.com/dataflow/docs/guides/tune-horizontal-autoscaling#latency-tier"&gt;Set the latency tier&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Autoscaling schedules: You can configure recurring autoscaling schedules
+to automatically apply parameter overrides—such as minimum and maximum
+workers, worker utilization hints, or latency tiers—during specific time
+windows. For more information, see
+&lt;a href="https://docs.cloud.google.com/dataflow/docs/guides/tune-horizontal-autoscaling#scheduled-autoscaling"&gt;Schedule autoscaling changes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can configure these features when you create a job or update them while the
+job is running.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Model Armor&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;Model Armor is available in Brazil (&lt;code&gt;southamerica-east1&lt;/code&gt;). This region
+provides data residency compliance for at-rest, in-use, and in-transit data with
+&lt;a href="https://docs.cloud.google.com/model-armor/feature-availability-by-region#limited-support"&gt;limited feature support&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;southamerica-east1&lt;/code&gt; region supports the following filters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prompt injection and jailbreak detection&lt;/li&gt;
+&lt;li&gt;Responsible AI&lt;/li&gt;
+&lt;li&gt;Sensitive Data Protection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href="https://docs.cloud.google.com/model-armor/locations"&gt;Locations&lt;/a&gt;,
+&lt;a href="https://docs.cloud.google.com/model-armor/data-residency"&gt;Data residency and endpoints&lt;/a&gt;, and
+&lt;a href="https://docs.cloud.google.com/model-armor/feature-availability-by-region#supported-by-region"&gt;Supported features by region&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;SAP on Google Cloud&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;ABAP SDK for Google Cloud version 1.15 (On-premises or any cloud edition)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Version 1.15 of the on-premises or any cloud edition of the ABAP SDK for Google
+Cloud is generally available (GA). This version enhances binary data handling to
+let you download archived &lt;code&gt;.msg&lt;/code&gt; files and other binary formats without applying
+character decoding when you use Cloud Storage as a content repository for SAP.&lt;/p&gt;
+&lt;p&gt;For more information, see
+&lt;a href="https://docs.cloud.google.com/sap/docs/abap-sdk/on-premises-or-any-cloud/whats-new#version-1-15"&gt;What's new with the on-premises or any cloud edition of the ABAP SDK for Google Cloud&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#October_29_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-10-29T07:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://blog.google/innovation-and-ai/technology/health/google-for-health-summit-singapore</id>
@@ -12093,6 +12656,19 @@ Certificate Manager and Compute Engine SSL certificates.&lt;/p&gt;
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Play_Discover.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Play_Discover.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://deepmind.google/blog/gemini-4-argon-for-robotics</id>
+    <title>Gemini 4 Argon for Robotics</title>
+    <updated>2026-10-13T16:01:58+00:00</updated>
+    <link href="https://deepmind.google/blog/gemini-4-argon-for-robotics" rel="alternate"/>
+    <category term="Google DeepMind"/>
+    <published>2026-10-13T16:01:58+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/argon__robotics__hero.2e16d0ba.fill-1200x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/argon__robotics__hero.2e16d0ba.fill-1200x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/argon__robotics__hero.2e16d0ba.fill-1200x600.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://deepmind.google/blog/introducing-gemini-4-argon</id>
@@ -33096,727 +33672,5 @@ This feature is
       <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png"/>
     </media:group>
     <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://antigravity.google/changelog#1.2.7-2026-09-19-version-1-2-7</id>
-    <title>Antigravity 1.2.7 — Version 1.2.7</title>
-    <updated>2026-09-19T00:00:00+00:00</updated>
-    <content type="text">Version 1.2.7</content>
-    <link href="https://antigravity.google/changelog#1.2.7-2026-09-19-version-1-2-7" rel="alternate"/>
-    <category term="Antigravity Changelog"/>
-    <published>2026-09-19T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://antigravity.google/changelog#2.15.1-2026-09-19-version-2-15-1</id>
-    <title>Antigravity 2.15.1 — Version 2.15.1</title>
-    <updated>2026-09-19T00:00:00+00:00</updated>
-    <content type="text">Version 2.15.1</content>
-    <link href="https://antigravity.google/changelog#2.15.1-2026-09-19-version-2-15-1" rel="alternate"/>
-    <category term="Antigravity Changelog"/>
-    <published>2026-09-19T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://antigravity.google/assets/image/sitecards/sitecard-changelog.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workspaceupdates.googleblog.com/2026/09/weekly-recap-09-18-2026.html</id>
-    <title>Google Workspace Weekly Recap - September 18, 2026</title>
-    <updated>2026-09-18T18:38:09+00:00</updated>
-    <content type="html">&lt;h3 style="text-align: left;"&gt;Set up sharing boundaries for Google Drive with unified data protection rules&lt;/h3&gt;&lt;p&gt;We’re introducing a new capability that allows Google Workspace administrators to configure audience sharing and sensitivity-based data conditions in a single, unified rule. This unified rule flow helps organizations elevate their security posture to proactively mitigate insider risks, prevent data exfiltration, and safely unblock collaboration for high-sensitivity environments.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/set-up-sharing-boundaries-for-google-Drive-with-unified-data-protection-rules.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Gmail Search’s AI Overviews now available globally&lt;/h3&gt;&lt;p&gt;Starting today, we are expanding access to AI Overviews in Gmail search to global users (with paid plans) who have their Gmail language set as English. Previously, this was only available to users in the US with their language set as English.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/gmail-searchs-ai-overviews-now-available-globally.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Connect to more tools with Gemini in Google Workspace&lt;/h3&gt;&lt;p&gt;Users will now be able to use Gemini in Workspace to directly interact with Asana, Atlassian Rovo, HubSpot, Intuit Mailchimp, Intuit QuickBooks, Monday, and Salesforce through Model Context Protocol (MCP) integrations. This will enable them to access information directly without needing to switch tabs, download files, or interrupt workflows across our Google Workspace apps including Sheets, Gmail, Drive, Docs, Chat, and more.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/connect-to-more-tools-with-gemini-in-Google-Workspace.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Connect to Google Meet hardware with room codes now generally available&lt;/h3&gt;&lt;p&gt;Google Meet users can now connect to nearby conference room hardware by entering a 5-character room code on their personal device. Building on the recent Connect Room launch that uses proximity-based detection to identify nearby hardware, this update provides a reliable manual fallback when ultrasound is unavailable or disabled.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/connect-to-google-meet-hardware-with-room-codes-now-generally-available.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Data regions support for Google Apps Script now generally available&lt;/h3&gt;&lt;p&gt;Data regions are critical for helping organizations meet internal compliance, legal, regulatory, and data sovereignty obligations by controlling the geographic location of covered data at rest and through data processing. Expanding these controls to Apps Script allows organizations—including those in highly regulated industries and the public sector—to build, deploy, and automate enterprise workflows with confidence that their script data and executions remain within designated geographic boundaries.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/data-regions-support-for-google-apps-script-now-generally-available.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;View conference room and meeting location details directly on the Google Meet homepage&lt;/h3&gt;&lt;p&gt;Starting today, we’re enhancing the Meet homepage experience by displaying conference room and physical meeting locations directly on upcoming meeting cards. For in-office users this update allows them to see where they need to go directly on their Meet landing page, streamlining their workflow before and between meetings.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/view-conference-room-and-meeting-location-details-directly-on-the-Google-Meet-homepage.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Introducing Expert Intelligence in Gemini Notebook&lt;/h3&gt;&lt;p&gt;We’re introducing Expert Intelligence, a cross Google initiative that helps users engage with trusted sources through Google AI products, starting with Gemini Notebook. Featuring more than 100,000 books from major publishers, employees and students can now incorporate insights from leading authors, publications, and domain experts directly into Gemini Notebook.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/introducing-expert-intelligence-in-Gemini-Notebook.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Automate workflows with custom starters and steps, third-party integrations, and webhooks in Workspace Studio&lt;/h3&gt;&lt;p&gt;To expand the capabilities of Workspace Studio and help teams build powerful, custom automations, we are introducing four new features for flows in Workspace Studio: custom starters, custom steps, third-party (3P) integrations, and webhooks. These new capabilities empower users to seamlessly connect custom Google Apps Script functions, integrate third-party services, and trigger external webhooks directly within flows in Workspace Studio.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/automate-workflows-with-custom-starters-and-steps-third-party-integrations-and-webhooks-in-Workspace-Studio.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;Notebooks in Gemini: a dedicated workspace for focused, organized work, now for schools and organizations&lt;/h3&gt;&lt;p&gt;In April, we announced notebooks in Gemini as a dedicated, focused space for individual users to organize their projects and conversations. Now, students of all ages, educators, and professionals can access notebooks to keep conversations about a topic organized in one place.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/notebooks-in-gemini-dedicated-workspace-for-focused-organized-work-now-for-schools-and-organizations.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;h3 style="text-align: left;"&gt;New back-to-school features and learning tools available in Gemini Notebook&lt;/h3&gt;&lt;p&gt;We’re introducing several updates to Gemini Notebook that give users a more personalized and powerful learning experience.&amp;nbsp;| &lt;a href="https://workspaceupdates.googleblog.com/2026/09/new-back-to-school-features-and-learning-tools-available-in-Gemini-Notebook.html" target="_blank"&gt;Learn more&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style="font-size: x-small;"&gt;The announcements above were published on the Workspace Updates blog over the last week. Please refer to the original blog posts for complete details.&lt;/span&gt;&lt;/p&gt;</content>
-    <link href="https://workspaceupdates.googleblog.com/2026/09/weekly-recap-09-18-2026.html" rel="alternate"/>
-    <category term="Workspace Updates"/>
-    <published>2026-09-18T18:38:09+00:00</published>
-  </entry>
-  <entry>
-    <id>https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics</id>
-    <title>MilleMiglia: A realistic instance generator for middle-mile logistics</title>
-    <updated>2026-09-18T17:46:09+00:00</updated>
-    <content type="html">Algorithms &amp; Theory</content>
-    <link href="https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics" rel="alternate"/>
-    <category term="Google Research"/>
-    <published>2026-09-18T17:46:09+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-research2023-media/original_images/middle-mile_logistics2-LifeOfShipment.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-research2023-media/original_images/middle-mile_logistics2-LifeOfShipment.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-research2023-media/original_images/middle-mile_logistics2-LifeOfShipment.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/databases/native-bm25-search-in-alloydb-and-cloud-sql</id>
-    <title>Announcing Native BM25 Ranking in AlloyDB and Cloud SQL</title>
-    <updated>2026-09-18T16:30:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Vector search is a critical component of generative AI, retrieval-augmented generation (RAG), and data agent architectures, but sometimes vector search alone isn't enough. While vector embeddings are incredible at understanding conceptual meaning, they stumble on specific alphanumeric IDs and exact product SKU numbers. To build truly robust search and AI applications, you may need the combination of semantic vector search and traditional exact keyword full-text search — what we call hybrid search.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In search, Best Matching 25, or BM25, is a key algorithm used to estimate how relevant a document is to a given query. Until today, if you wanted BM25 ranking with AlloyDB or Cloud SQL, you needed to add an additional full-text search backend. This introduced data silos, sync lags, and operational complexity. Today, we are eliminating the friction of maintaining a separate full-text search backend altogether, with the preview of the native BM25 index in AlloyDB and Cloud SQL for PostgreSQL 17+, made possible through the open-source &lt;/span&gt;&lt;a href="https://github.com/timescale/pg_textsearch" rel="noopener" target="_blank"&gt;&lt;code style="text-decoration: underline; vertical-align: baseline;"&gt;pg_textsearch&lt;/code&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; extension&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; created by TigerData.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Now, with a unified hybrid search backend, you &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;no longer need to provision, manage, or pay for separate systems to get state-of-the-art full-text retrieval. It all happens directly inside your database, where your operational data lives, delivering: &lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Industry-standard keyword ranking:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Powered by TigerData's &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pg_textsearch&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, bring lightning-fast, C-optimized BM25 scoring directly to your Postgres tables.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;No complexity, total consistency:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Eliminate the data duplication, ETL pipelines, and synchronization lag that you get when you maintain multiple backends for vector and full-text retrieval.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Supercharged semantic search (AlloyDB exclusive):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Get up to 6x and 10x faster vector search queries (when compared to standard PostgreSQL) with ScaNN and HNSW index types.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Why &lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;pg_textsearch&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;?&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you’ve used PostgreSQL's built-in&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ts_rank&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for full-text search at any meaningful scale, you already know its limitations. Ranking quality degrades as your corpus grows. There’s no support for inverse document frequency, so common words carry the same weight as rare ones. There’s no term-frequency saturation, so a document that mentions "database" 50 times outranks one that mentions it once. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;BM25 is the information retrieval gold standard, providing inverse document frequency (rarer terms matter more), term frequency saturation (repetition doesn't dominate), and document length normalization. You can learn more in this &lt;/span&gt;&lt;a href="https://www.tigerdata.com/blog/pg-textsearch-bm25-full-text-search-postgres" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog post&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; by TigerData about how they built a BM25 search engine on PostgreSQL pages. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Full-text search example&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s how to get started with BM25 full-text search on both AlloyDB and Cloud SQL. Consider a sample table, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;cymbal_products&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, that contains the unique identifier &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;uniq_id&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, a &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;product_name&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; column, a &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;product_description&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; column containing a text description of each product, and a generated &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;product_embedding&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; column. &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cymbal_products&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;contains information on various&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; retail products, including indoor and outdoor plants.&lt;/span&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Index creation&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To use BM25, enable the &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;pg_textsearch&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; extension.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;-- Install pg_textsearch extension\r\nCREATE EXTENSION pg_textsearch;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3a9ff90&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Create the index on the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;product_description&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; column from the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cymbal_products&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; table.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;-- Create the native BM25 index on the content column\r\nCREATE INDEX idx_docs_bm25 \r\nON cymbal_products \r\nUSING bm25 (product_description) \r\nWITH (text_config=&amp;#x27;english&amp;#x27;);&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c38e4650&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A BM25 full-text search query can be executed using the &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;&amp;lt;@&amp;gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; special operator.  In the snippet below, we search for  ‘cherry tree’. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;-- Full text search query\r\nSELECT product_name, product_description &amp;lt;@&amp;gt; &amp;#x27;cherry tree&amp;#x27; AS bm25_score \r\nFROM cymbal_products\r\nORDER BY bm25_score \r\nLIMIT 5;&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3906510&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Sample output is shown below. A more negative score indicates a stronger relevance match. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_WmFinfJ.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;AlloyDB hybrid search example&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Setting up a hybrid search system in AlloyDB is simple. You can create both your vector and keyword indexes on the same table and merge the results seamlessly using the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/run-hybrid-vector-similarity-search#hybrid-search"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;hybrid search user-defined function (UDF&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;).&lt;/span&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Vector index creation&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here is how to create a ScaNN vector search index: &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;-- Install vector extension\r\nCREATE EXTENSION vector;\r\n\r\n-- Install scann extension\r\nCREATE EXTENSION IF NOT EXISTS alloydb_scann;\r\n\r\n-- Create scann vector search index \r\nCREATE INDEX cymbal_products_embeddings_scann ON cymbal_products USING scann(product_embedding cosine);&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3907e50&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Hybrid search&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AlloyDB provides an out-of-the-box hybrid search UDF that makes &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;it&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;very simple to run hybrid search queries. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;The UDF merges the ranked results from each search component into a single, unified list using the Reciprocal Rank Fusion (RRF) algorithm. This query utilizes the UDF to perform a vector search for ‘trees that grow taller than houses’ and a keyword search for ‘California’ in the product description.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;CREATE EXTENSION google_ml_integration;\r\n\r\nSELECT *\r\nFROM ai.hybrid_search(\r\n  search_inputs =&amp;gt; ARRAY[\r\n      \&amp;#x27;{\r\n        &amp;quot;data_type&amp;quot;: &amp;quot;vector&amp;quot;,\r\n        &amp;quot;weight&amp;quot;: 0.5,\r\n        &amp;quot;table_name&amp;quot;: &amp;quot;cymbal_products&amp;quot;,\r\n        &amp;quot;key_column&amp;quot;: &amp;quot;uniq_id&amp;quot;,\r\n        &amp;quot;vec_column&amp;quot;: &amp;quot;product_embedding&amp;quot;,\r\n        &amp;quot;distance_operator&amp;quot;: &amp;quot;public.&amp;lt;=&amp;gt;&amp;quot;,\r\n        &amp;quot;limit&amp;quot;: 10,\r\n        &amp;quot;query_vector&amp;quot;: &amp;quot;ai.embedding(\&amp;#x27;\&amp;#x27;text-embedding-005\&amp;#x27;\&amp;#x27;, \&amp;#x27;\&amp;#x27;trees that grow taller than houses\&amp;#x27;\&amp;#x27;)::vector&amp;quot;\r\n      }\&amp;#x27;::JSONB,\r\n      \&amp;#x27;{\r\n        &amp;quot;data_type&amp;quot;: &amp;quot;text&amp;quot;,\r\n        &amp;quot;weight&amp;quot;: 0.5,\r\n        &amp;quot;table_name&amp;quot;: &amp;quot;cymbal_products&amp;quot;,\r\n        &amp;quot;key_column&amp;quot;: &amp;quot;uniq_id&amp;quot;,\r\n        &amp;quot;text_column&amp;quot;: &amp;quot;product_description&amp;quot;,\r\n        &amp;quot;limit&amp;quot;: 10,\r\n        &amp;quot;ranking_function&amp;quot;: &amp;quot;&amp;lt;@&amp;gt;&amp;quot;,\r\n        &amp;quot;query_text_input&amp;quot;: &amp;quot;California&amp;quot;\r\n      }\&amp;#x27;::JSONB\r\n  ],\r\n);&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3b549d0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As shown in the sample output below, results are ranked in descending order of their RRF scores.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_pnhsphx.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here, hybrid search bridges the gap between semantic intuition and exact keyword matching. While vector embeddings excel at grasping conceptual queries, like "trees that grow taller than houses", traditional full-text search provides the pinpoint precision needed for strict identifiers like "California." By fusing the two, AlloyDB helps ensure your application prioritizes highly specific, locally relevant results like ‘California Sycamore’ right at the top of the list.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud SQL hybrid search example&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In Cloud SQL, you can create both your vector and keyword indexes on the same table and merge the results seamlessly using Common Table Expressions (CTEs) and coalescing the RRF score, as shown below. &lt;/span&gt;&lt;/p&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Vector index creation &lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here is how to create an HNSW index in Cloud SQL.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;-- Install vector extension\r\nCREATE EXTENSION vector;\r\n\r\n-- Create an HNSW index on the embedding column for fast approximate nearest neighbor search\r\nCREATE INDEX product_hnsw_idx ON cymbal_products USING hnsw(product_embedding vector_cosine_ops);&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3adcc90&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Hybrid search &lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here is the hybrid search query.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;CREATE EXTENSION google_ml_integration;\r\n\r\n-- BM25 keyword results\r\nWITH keyword_results AS (\r\n  SELECT uniq_id, product_name, \r\n         ROW_NUMBER() OVER (ORDER BY product_description &amp;lt;@&amp;gt; &amp;#x27;California&amp;#x27;) AS rank_kw\r\n  FROM cymbal_products\r\n  ORDER BY product_description &amp;lt;@&amp;gt; &amp;#x27;California&amp;#x27;\r\n  LIMIT 10\r\n),\r\n-- Semantic vector results\r\nsemantic_results AS (\r\n  SELECT uniq_id, product_name, \r\n         ROW_NUMBER() OVER (ORDER BY product_embedding &amp;lt;=&amp;gt; google_ml.embedding(&amp;#x27;text-embedding-005&amp;#x27;, &amp;#x27;trees that grow taller than houses&amp;#x27;)::vector) AS rank_vec\r\n  FROM cymbal_products\r\n  ORDER BY product_embedding &amp;lt;=&amp;gt; google_ml.embedding(&amp;#x27;text-embedding-005&amp;#x27;, &amp;#x27;trees that grow taller than houses&amp;#x27;)::vector\r\n  LIMIT 10\r\n)\r\n-- Reciprocal Rank Fusion (RRF) to merge and score both lists\r\nSELECT COALESCE(k.uniq_id, s.uniq_id) AS uniq_id,\r\n       COALESCE(k.product_name, s.product_name) AS product_name,\r\n       COALESCE(1.0 / (60 + k.rank_kw), 0) + COALESCE(1.0 / (60 + s.rank_vec), 0) AS rrf_score\r\nFROM keyword_results k\r\nFULL OUTER JOIN semantic_results s ON k.uniq_id = s.uniq_id\r\nORDER BY rrf_score DESC\r\nLIMIT 5;&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65e808bad0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The resulting output is identical to the AlloyDB hybrid search results shown above.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Watch it in action&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Watch how this all comes together in this demo video. &lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-video"&gt;
-
-
-
-&lt;div class="article-module article-video "&gt;
-  &lt;figure&gt;
-    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=-JxQb-kjFHk"&gt;
-
-      
-        
-
-        &lt;div class="article-video__aspect-image"&gt;
-          &lt;span class="h-u-visually-hidden"&gt;Introducing BM25 on AlloyDB &amp;amp; Cloud SQL&lt;/span&gt;
-        &lt;/div&gt;
-      
-      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
-        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
-      &lt;/svg&gt;
-    &lt;/a&gt;
-
-    
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;div class="h-c-modal--video"&gt;
-   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=-JxQb-kjFHk"&gt;
-   &lt;/a&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Relevant resources &lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We are incredibly excited to work with TigerData and cannot wait to see how you leverage native BM25 support to build faster, smarter, and simpler AI applications. Turn on the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;pg_textsearch &lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;extension today, and experience the ultimate hybrid search engine experience with AlloyDB and Cloud SQL.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Want to get started?&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Check out”&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AlloyDB resources &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;New to AlloyDB? Discover AlloyDB with a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/free-trial-cluster"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;30-day free trial&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/choose-index-strategy"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Choose a vector index in AlloyDB AI&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/create-bm25-index"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB BM25 documentation &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://docs.cloud.google.com/alloydb/docs/ai/run-hybrid-vector-similarity-search#hybrid-search"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB hybrid search UDF documentation&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Cloud SQL resources &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://docs.cloud.google.com/sql/docs/postgres/pg-textsearch"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud SQL BM25 documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://www.tigerdata.com/blog/pg-textsearch-bm25-full-text-search-postgres" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TigerData pg_textsearch Release Page&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/databases/native-bm25-search-in-alloydb-and-cloud-sql" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:30:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_WmFinfJ.max-1000x1000.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_WmFinfJ.max-1000x1000.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_WmFinfJ.max-1000x1000.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/data-analytics/borderless-lakehouse-cross-cloud-caching-and-connections</id>
-    <title>Accelerating the borderless Lakehouse: Announcing preview of cross-cloud caching</title>
-    <updated>2026-09-18T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we are excited to announce enhancements to the &lt;/span&gt;&lt;a href="https://cloud.google.com/solutions/data-lakehouse?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;borderless Lakehouse&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;,&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; our answer to how data engineers, data scientists, and increasingly, AI agents, can query governed data directly where it lives.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To reason accurately and automate complex enterprise workflows, agents and data consumers of all types need fast, unified access to an organization's complete data estate, joining customer records, transaction logs, and operational telemetry across clouds. However, modern enterprise data is rarely confined to a single location; data estates often span Amazon S3, Azure Data Lake Storage (ADLS), Google Cloud Storage, operational databases, and SaaS platforms like Salesforce, SAP, and Workday. Historically, uniting these distributed datasets required brittle ETL pipelines, duplicated storage, and prohibitive cross-cloud data transfer costs.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/introducing-the-borderless-lakehouse?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;We introduced the &lt;/span&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;borderless Lakehouse&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; earlier this year to let organizations query and activate data in place across clouds. By adopting the Apache Iceberg REST catalog specification, we federate directly to catalogs such as Databricks Unity Catalog, AWS Glue, and Snowflake Horizon. We also introduced &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Partner Cross-Cloud Interconnect &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;to establish high-bandwidth, private links to other cloud providers, lowering per-gigabyte transfer costs compared to the public internet. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we are taking multi-cloud efficiency a step further by optimizing &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;how much data needs to be transferred across the wire in the first place&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We are excited to announce two new features to help further reduce costs of querying cross-cloud data.  First, the preview of &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/lakehouse/docs/about-borderless-lakehouse#intelligent-caching"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;cross-cloud caching&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for Lakehouse transparently accelerates cross-cloud queries in BigQuery and cuts remote transfer costs by caching frequently accessed data locally in Google Cloud. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Combining standard Iceberg columnar compression with cross-cloud caching means you often only need to transfer under 5% of the data you process across clouds,&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; which helps lower the Total Cost of Ownership (TCO) to make cross-cloud analytics and AI viable at enterprise scale. In addition, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery cross-cloud connections&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; are also available in preview to query non-Iceberg data in other clouds and accelerate workloads.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;How cross-cloud caching works&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Cross-cloud caching meets enterprise performance and security requirements with no knobs to turn or storage to manage to accelerate your queries. Some of the mechanisms used under the hood are:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Sub-file block granularity:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Instead of transferring entire multi-gigabyte files across clouds when a query touches only a few columns, cross-cloud caching operates at the sub-file block level for columnar formats like Apache Parquet. BigQuery caches only the specific column chunks and dictionary pages projected by the query. On a cache miss, BigQuery fetches the needed data from the remote cloud to answer the query, and saves a local copy in the cache for future queries, drastically cutting network transfer and latency on repeated workloads.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Default encryption at rest:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Cached data blocks are encrypted at rest by default using Google-managed encryption keys (GMEK) so that temporary cache storage maintains the same enterprise-grade security posture as native BigQuery storage without extra overhead.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Tenant and regional isolation:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Cache entries are strictly partitioned by project and catalog boundaries to help prevent cross-tenant data exposure. Lakehouse anchors both the local cache and query execution strictly to the configured Google Cloud region (e.g., &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;us-east4&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) to support compliance with regional data residency requirements when querying remote clouds.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Freshness checks:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Multi-cloud caching often forces a trade-off between speed and freshness. To avoid stale reads, BigQuery fetches remote object metadata before using cached data to ensure the data hasn’t changed and the user still has access. Any upstream table modification prompts BigQuery to fetch new files, while unreferenced cached blocks expire automatically, delivering local query speed with single-source-of-truth accuracy.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For more details on caching mechanics, statistics counters, and regional considerations, see the Lakehouse &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/lakehouse/docs/about-borderless-lakehouse#intelligent-caching"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;intelligent caching documentation&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Cross-cloud caching in action&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;So how does this work in day-to-day operations? Consider an e-commerce team querying a 10 TiB Iceberg sales table (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;aws_lakehouse_catalog.sales.web_sales&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) in Amazon S3, federated into Lakehouse from Databricks Unity Catalog. During evening promotional drops (8:00–9:00 PM), analysts query historical transactions to identify which storefronts drive peak volume and revenue among high-intent demographics:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;SELECT w.web_name, hd.hd_buy_potential, COUNT(*) AS total_transactions, ROUND(SUM(ws.ws_sales_price), 2) AS total_sales\r\nFROM `aws_lakehouse_catalog.sales.web_sales` ws\r\n-- Joins household_demographics, time_dim (8:00-9:00 PM), and web_site.\r\nGROUP BY w.web_name, hd.hd_buy_potential;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c39d1b50&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Initial execution: Cold columnar retrieval&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;On this initial cold run, the local cache is empty (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;cacheBytesRead: "0"&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;). BigQuery applies partition pruning and column projection to transfer only the required Parquet byte ranges from Amazon S3 over Partner Cross-Cloud Interconnect:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;{\r\n  &amp;quot;totalBytesProcessed&amp;quot;: &amp;quot;230343464114&amp;quot;,\r\n  &amp;quot;objectStorageStats&amp;quot;: [\r\n{&amp;quot;cloudProvider&amp;quot;: &amp;quot;AWS&amp;quot;, \r\n&amp;quot;objectStorageBytesRead&amp;quot;: &amp;quot;25834740486&amp;quot;, \r\n&amp;quot;cacheBytesRead&amp;quot;: &amp;quot;0&amp;quot;}]\r\n}&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3f05a50&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Logical data processed:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; BigQuery processes &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;214.5 GiB&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; across the 10 TiB dataset.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Standard Iceberg compression efficiency:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; BigQuery reads &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;24.1 GiB&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; from S3 thanks to standard Iceberg columnar compression with Zstandard (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;zstd&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) — an &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;8.9:1 compression ratio&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. As these sub-file Parquet blocks arrive in Google Cloud, BigQuery populates the regional cache.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Follow-on exploration: Adding a dimension&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In practice, analysts and agents rarely run the exact same query twice in a row. To drill deeper into fulfillment methods, the analyst modifies the query by adding the shipping method dimension (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;sm.sm_type&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;):&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;SELECT w.web_name, sm.sm_type, hd.hd_buy_potential, COUNT(*) AS total_transactions, ROUND(SUM(ws.ws_sales_price), 2) AS total_sales\r\nFROM `aws_lakehouse_catalog.sales.web_sales` ws\r\nJOIN `aws_lakehouse_catalog.sales.ship_mode` sm ON ws.ws_ship_mode_sk = sm.sm_ship_mode_sk\r\n-- Reuses existing joins on household_demographics, time_dim, and web_site.\r\nGROUP BY w.web_name, sm.sm_type, hd.hd_buy_potential;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3972490&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Job statistics for this follow-on query show:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-code"&gt;&lt;dl&gt;
-    &lt;dt&gt;code_block&lt;/dt&gt;
-    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;{\r\n  &amp;quot;totalBytesProcessed&amp;quot;: &amp;quot;287928766472&amp;quot;,\r\n  &amp;quot;objectStorageStats&amp;quot;: [\r\n{&amp;quot;cloudProvider&amp;quot;: &amp;quot;AWS&amp;quot;, \r\n&amp;quot;objectStorageBytesRead&amp;quot;: &amp;quot;1426587648&amp;quot;, \r\n&amp;quot;cacheBytesRead&amp;quot;: &amp;quot;25834740486&amp;quot;}]\r\n}&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f65c3973650&amp;gt;)])]&amp;gt;&lt;/dd&gt;
-&lt;/dl&gt;&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;94.8% cache hit rate:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; BigQuery serves &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;24.1 GiB&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; of previously queried columns directly from local cache.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Granular remote retrieval:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; BigQuery transfers only &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;1.33 GiB&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; from S3 for the new &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ws_ship_mode_sk&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; column and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ship_mode&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; table.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Sub-file flexibility:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Modifying a query reuses cached column chunks and transfers only newly required bytes.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Compounding efficiency at enterprise scale&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When thinking about TCO of cross-cloud queries, the top two factors to account for are:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Compression ratio: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;when using default compression algorithms (Zstandard/zstd) on Iceberg, columnar data is highly compressible. If you assume that your data achieves a compression ratio of 8:1, it means every 1 TiB of logical data processed only requires ~128 GiB of data to move over the network.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cache hit rates: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;when data is retrieved from cache rather than across the network because it was recently accessed, a network transit is avoided. Assuming 80% of your data results in a cache hit it means for every 100 GiB of physical data accessed only 20 GiB moves over the network.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Taking both factors and assumptions into account, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;for every 1 TiB of data your organization processes, you only need to transfer ~26 GiB across the network (under 3% of total data processed)&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Combining this reduction with Partner Cross-Cloud Interconnect lowers TCO enough to make cross-cloud analytics and AI cost-effective at petabyte scale.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery cross-cloud connections now in preview&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Alongside cross-cloud caching, the preview of &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery cross-cloud connections&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; lets organizations connect BigQuery directly to open-format data in Amazon S3 and Azure Storage. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Understanding when to use catalog federation versus cross-cloud connections is straightforward:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;BigQuery cross-cloud connections (for raw files):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; For standalone files (CSV, JSON, ad-hoc Parquet) without an Iceberg catalog, cross-cloud connections let you create BigQuery external tables referencing remote bucket paths directly.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Lakehouse catalog federation (for Iceberg):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; For Iceberg data managed by catalogs like Databricks Unity, AWS Glue, or Snowflake Horizon, Lakehouse automatically synchronizes schemas and table snapshots to simplify the user experience and ensure users are always querying the latest data.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Cross-cloud connections serve as the modern architectural evolution by using standard BigQuery compute workers in Google Cloud regions rather than compute workers in other clouds. This approach helps unlock &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;global region availability&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and provides &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;full BigQuery feature parity &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;— including with BigQuery AI and Gemini on remote files.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The cross-cloud caching capabilities for Lakehouse applies to data queried from BigQuery cross-cloud connections as well as Lakehouse catalog federation. To learn how to create connections and query external bucket paths, see the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/bigquery/docs/cross-cloud-connections"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery cross-cloud connections setup documentation&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/data-analytics/borderless-lakehouse-cross-cloud-caching-and-connections" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/consulting/upskill-your-ai-using-daily-micro-habits</id>
-    <title>How to upskill enterprise AI builders by using daily micro habits</title>
-    <updated>2026-09-18T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As enterprises invest in generative AI, tech leaders keep seeing the same pattern: Developers test AI tools for a week, hit setup problems, and then drift back to the backlog. Nothing ships.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The real gap is enablement. In this landmark &lt;/span&gt;&lt;a href="https://hbr.org/2019/02/making-learning-a-part-of-everyday-work" rel="noopener" target="_blank"&gt;&lt;span style="font-style: italic; text-decoration: underline; vertical-align: baseline;"&gt;Harvard Business Review&lt;/span&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; article&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Josh Bersin and Marc Zao-Sanders noted that knowledge workers carve out just five minutes a day for formal learning. Most enterprise training programs still lean on week-long classroom bootcamps, multi-week certification tracks, and passive video lectures, none of which fit into the time developers actually have. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With the &lt;/span&gt;&lt;a href="https://cloud.google.com/events/build-with-gemini-2026"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Build with Gemini&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; event series underway, Google Cloud Consulting is seeing more leaders rethink AI enablement by building quick, daily practice into their teams' routines. In this post, we'll walk through a four-pillar approach and the lessons from our global developer challenges to share what micro-habit upskilling looks like.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Moving from workshops to daily practice&lt;/span&gt;&lt;/h3&gt;
-&lt;div align="left"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p style="text-align: center;"&gt;&lt;strong style="vertical-align: baseline;"&gt;The traditional method…&lt;/strong&gt;&lt;/p&gt;
-&lt;/th&gt;
-&lt;th scope="col" style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p style="text-align: center;"&gt;&lt;strong style="vertical-align: baseline;"&gt;…now becomes&lt;/strong&gt;&lt;/p&gt;
-&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Multi-week, semi-annual classroom bootcamps&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Five-minute hands-on exercises&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Local workstation configuration and credential setup&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Pre-configured browser-based sandboxes&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Mandatory attendance and compliance checks&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Daily streaks, badges, and team challenges&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Multiple-choice quiz completion&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Deployable agent tools and reusable code &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Rolling out a model like this comes down to keeping each task small and manageable. Here's how we structure that work across engineering teams:&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Make micro-learning a habit.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Offer short objectives that each cover one skill, like connecting a model to a database schema or validating structured output, in place of full-day training blocks.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Give teams browser-based sandboxes.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Setup is where most training stalls, so remove it. With a pre-configured, managed cloud environment, developers open a tab and are writing code within minutes, with no credentials to request and nothing to install or maintain on their own machines.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Build in daily streaks.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Milestones, shared wins, and teammates comparing solutions turn practice into a normal part of the workday.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;End every session with something that runs.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Each exercise should leave behind a working component, and over time those components accumulate into a shared library of code and prompts the whole team can pull from.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Lessons from the Advent of Agents program&lt;/span&gt;&lt;/h3&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="image" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image_aG6dSR4.gif" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When Google Cloud launched &lt;/span&gt;&lt;a href="https://adventofagents.com/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Advent of Agents&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, a daily agent-building program for developers, we wanted to test one question: what happens when you remove setup and scheduling from technical enablement?&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Each day, developers got one short, real-world agent exercise they could run right in the browser, with no half-day to block off and no setup guide to read first. &lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;150,000+ developers participated across global teams.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;859,000+ hands-on code executions in browser-based environments.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;31% of participants returned daily, more than triple the &lt;/span&gt;&lt;a href="https://blog.vocaliv.com/course-completion-rate-benchmarks-by-industry/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;10% industry average&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for self-paced tech, and significantly exceeding the standard 5%–15% MOOC benchmark&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;32,000+ participants built working agent components.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;The above data was accessed via Advent of Agents Google Analytics metrics.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Keeping each exercise under five minutes and pre-wiring the sandboxes removed the two things that usually stall workplace training: setup time and scheduling. The numbers suggest developers will make time to learn when the exercise fits into the day they already have.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Putting micro-enablement into practice&lt;/span&gt;&lt;/h3&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_loKECqr.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI enablement doesn't have to pause your sprints. It takes a consistent habit of practice and the tools that let teams build alongside their regular work.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Experience live building.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Bring your engineering teams to a &lt;/span&gt;&lt;a href="https://cloud.google.com/events/build-with-gemini-2026"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Build with Gemini&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; workshop. The events are complimentary and run different tracks according to technical depth, from no-code for business leaders to code-first for developers, with live hands-on labs supported by Google Cloud experts.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Build skills with GEAR.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Enroll your technical and business teams in the &lt;/span&gt;&lt;a href="https://developers.google.com/program/gear" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise Agent Ready (GEAR)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; program. Membership is free and includes monthly learning credits on &lt;/span&gt;&lt;a href="https://www.skills.google/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, hands-on labs, and skill badges, with learning paths for developers, line-of-business leaders, and IT decision-makers.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Start small, build often&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Developing AI skills starts with a change in routine. Short, daily, hands-on exercises let developers learn by doing, and the working code they produce along the way becomes the team's starting library for production work.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Give your developers a few minutes a day and a sandbox that's ready when they are. Start with one exercise this week and see how small, daily habits can build AI capability across your organization.&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://cloud.google.com/events/build-with-gemini-2026"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Join a Build with Gemini workshop&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Sign up today for interactive labs and practical training for developing secure AI agents.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://developers.google.com/program/gear" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Start building with GEAR&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Join GEAR and discover how to deploy enterprise-grade agents with hands-on learning and guidance.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://www.skills.google/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Explore free courses on Google Skills&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Build in-demand AI expertise at your own pace.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/consulting/upskill-your-ai-using-daily-micro-habits" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image_aG6dSR4.gif" type="image/gif" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image_aG6dSR4.gif"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/image_aG6dSR4.gif" type="image/gif" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/developers-practitioners/the-devfest-community-workshop-experience-building-real-agents-together</id>
-    <title>The DevFest Community Workshop Experience: Building Real Agents Together</title>
-    <updated>2026-09-18T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This week we kicked off the DevFest season in North America at Google Hudson Square in New York City with 80 engineers packed into the room. Typical technical workshops hand you a finished repo, tell you to blindly paste blocks of code into your terminal, and hope nothing crashes. You walk away with green checkmarks, but your brain stays on autopilot.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We've introduced a completely different experience called &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Workbench&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Workbench focuses on understanding core ideas and architectural models rather than obsessing over syntax and code snippets. Instead of getting bogged down in boilerplate, engineers spent the day grappling with the actual mental models behind graph engineering, self-evolving architectures, and automated self-patching harnesses.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;A glimpse into the Workshop Experience&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At the DevFest Community Workshop, we spent one intense day building long-running, self-evolving multi-agent systems powered by Google's agentic stack. Ricky Robinett, Senior Director of Developer Marketing, kicked off the day by diagnosing why so many engineering teams hit a wall with agents. Ricky broke down why prompt engineering fails as a safety mechanism: English is just a probabilistic suggestion, not an execution boundary. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Right after Ricky, Rachel Francois, Google Developer Groups (GDG) North America Program Lead, took the stage alongside GDG Brooklyn organizers to welcome the community and spotlight the power of local developer chapters. They set the tone for the entire day, reminding everyone that building durable software works best as a team sport where engineers share real-world patterns and build local networks that outlast any single framework.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Getting hands on with labs&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Annie Wang &amp;amp; Christina Lin, Americas DevRel Team members, led the morning lab that put those runtime ideas to work. Attendees explored Google's Agent Development Kit (ADK), Veo 3.1, Memory Bank on Gemini Enterprise Agent Platform, and RAG Engine on Gemini Enterprise Agent Platform. Through Workbench, developers grasped the principle of separating state from active compute for long running tasks. Workflows paused cleanly mid-execution, waited out asynchronous human approvals, and resumed without running up idle compute costs.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;After lunch, Logan Hennessy, Americas Developer Relations Engineer (DRE), and Kartik Derasari, Google Developer Expert (GDE), led a lab using auction history as insight for better bidding strategy. Attendees worked through the architecture by integrating BigQuery data into autonomous data engineering pipelines, reasoning about deterministic bidding logic and adding eval-gated, self-patching harnesses that catch spend anomalies and update runtime execution safely.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Between lab blocks, we ran fast-paced speed quizzes where developers raced to lock in their answers as quickly as possible. Screens flashed, fingers flew across keyboards, and seconds made the difference between topping the leaderboard or dropping five spots. Nothing beats watching a room full of serious engineers completely lose their cool over a live quiz leaderboard.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Join a DevFest Community Workshop this fall&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;New York was only round one. We are taking this exact experience on tour to five more cities this fall. Find your city and grab your seat before spots fill up:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://rsvp.withgoogle.com/events/devfest-extended-sunnyvale" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Sunnyvale on September 30&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://rsvp.withgoogle.com/events/devfest-extended-dc" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Washington DC on October 6&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://goo.gle/devfest-extended-atlanta" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Atlanta on October 30&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (as a part of DevFest Atlanta)&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://rsvp.withgoogle.com/events/devfest-extended-seattle" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Seattle on November 4&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;a href="https://rsvp.withgoogle.com/events/devfest-extended-boston" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Boston on November 10&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/developers-practitioners/the-devfest-community-workshop-experience-building-real-agents-together" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/devfest-community-workshop-experience-hero.max-600x600.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/devfest-community-workshop-experience-hero.max-600x600.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/devfest-community-workshop-experience-hero.max-600x600.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/public-sector/reimagining-service-delivery-in-the-agentic-era-with-google-public-sector</id>
-    <title>Reimagining service delivery in the agentic era with Google Public Sector</title>
-    <updated>2026-09-18T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;State and local governments are driven by a shared mission to provide responsive, equitable, and accessible services. However, achieving this goal is often hindered by legacy technical debt, disconnected data, and heavy administrative burdens that slow down mission delivery.&lt;/p&gt;&lt;p&gt;This systemic fragmentation creates costly operational bottlenecks across the public sector, including:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Legacy data silos:&lt;/b&gt; Crucial caseworker information frequently resides in isolated repositories managed by separate departments.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Manual bottlenecks:&lt;/b&gt; Agency personnel spend a significant amount of time managing routine data entry and manual documentation.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Stakeholder and end-user friction:&lt;/b&gt; Users are often required to submit identical verification documents multiple times across different platforms because legacy systems cannot interoperate.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Today, agents can help break down silos, automate routine and manual tasks, and enable agency employees to focus on high value public services, and the deeply human work they were called to do.&lt;/p&gt;&lt;h2&gt;&lt;b&gt;AI is the number one priority for state CIOs&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Across the public sector, AI has rapidly evolved from an experiment to a core part of the strategy. Reflecting on this shift, the National Association of State Chief Information Officers (NASCIO) State CIO &lt;a href="https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/" target="_blank"&gt;top 10 annual&lt;/a&gt; report recently ranked AI as the number one priority for state CIOs for the first time. This reprioritization matters deeply for the future of state and local governance: as state agencies face mounting administrative backlogs, aging infrastructure, and shifting public expectations, CIOs recognize that intelligent automation is the central mechanism to increase staff capacity, streamline caseworker workflows, and deliver more responsive, equitable services to local residents.&lt;/p&gt;&lt;p&gt;As agencies move from AI pilots and experiments to full-scale adoption, the central question for many agencies becomes: How do we leverage AI to bridge the gap between existing legacy investments and modern service delivery?&lt;/p&gt;&lt;h2&gt;&lt;b&gt;Leveraging AI for mission impact&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;Google provides an integrated AI stack designed to remove the friction of manual systems integration, with a focus on speed, scale, and cost-efficiency. Let’s take a closer look at some public sector organizations who are partnering with Google Public Sector and putting AI to work:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.govexec.com/sponsors/2026/06/smarter-cities-safer-communities-how-state-and-local-government-leaders-are-advancing-public-services-ai/413852/?oref=featured-insights" target="_blank"&gt;&lt;b&gt;Utah Department of Transportation (UDOT)&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; Faced the monumental task of identifying and mapping more than 52,000 property parcels. Originally estimated to take 33.5 years of manual labor to complete, UDOT built a unified data platform on BigQuery, &lt;b&gt;completing the entire project in less than one year&lt;/b&gt; and freeing engineers to &lt;b&gt;focus on roadway safety&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.govtech.com/gov-experience/hartford-conn-integrates-ai-for-translation-services" target="_blank"&gt;&lt;b&gt;City of Hartford&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; Set a national benchmark for inclusive governance by using AI to provide &lt;b&gt;real-time, two-way translation in 80 languages&lt;/b&gt; across all public city meetings, expanding participation while &lt;b&gt;achieving $1.3 million in structural cost savings&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;a href="https://cloud.google.com/customers/chattanooga"&gt;&lt;b&gt;City of Chattanooga&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; Centralized municipal crash and incident data using Google Cloud's AI and analytics tools, enabling city planners and public safety teams to &lt;b&gt;identify high-risk corridors, optimize traffic signal timing, and prioritize infrastructure investments&lt;/b&gt; to &lt;b&gt;make streets safer for residents&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.govtech.com/artificial-intelligence/indiana-government-integrates-more-ai-into-operations" target="_blank"&gt;&lt;b&gt;Indiana Department of Transportation (INDOT)&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; INDOT deployed Google Cloud’s AI and document analysis models to automate compliance auditing across dense procurement contract repositories and scale smart road infrastructure. Meeting tight 30-day compliance mandates without pulling licensed engineers from active field projects, the solution&lt;b&gt; saved 360 hours&lt;/b&gt; of senior engineering labor while &lt;b&gt;automating roadway asset detection&lt;/b&gt; to ensure safer, well-maintained highways for residents statewide.&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=SHI_E1vMRws" target="_blank"&gt;&lt;b&gt;City of Los Angeles&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; Facing the massive operational demand of hosting global events—including the 2026 World Cup, 2027 Super Bowl, and 2028 Olympic and Paralympic Games—the city is embedding Gemini directly into daily workflows across &lt;b&gt;45 departments&lt;/b&gt; and &lt;b&gt;27,500 employees&lt;/b&gt;. Serving as a force multiplier for municipal staff, the platform automates complex administrative tasks to amplify workforce capacity, accelerating service delivery and expanding multilingual support for over&lt;b&gt; 15 million expected visitors&lt;/b&gt; and &lt;b&gt;four million residents&lt;/b&gt; speaking more than&lt;b&gt; 224 languages&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=BKHxnvPav3w" target="_blank"&gt;&lt;b&gt;Maryland State&lt;/b&gt;&lt;/a&gt;&lt;b&gt;:&lt;/b&gt; The state partnered with Google Public Sector to empower its &lt;b&gt;40,000-strong workforce&lt;/b&gt; using Gemini and Gemini Notebook within a secure, privacy-first cloud foundation. By lowering cognitive load and &lt;b&gt;automating repetitive administrative tasks&lt;/b&gt;, agency teams built and deployed a clean water management application in just &lt;b&gt;five weeks&lt;/b&gt;-&lt;b&gt;saving thousands of staff hours&lt;/b&gt; and &lt;b&gt;accelerating environmental oversight&lt;/b&gt; to deliver more responsive, sustainable public services to Maryland residents statewide.&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;&lt;b&gt;Accelerate your AI journey with Google Public Sector&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;The agentic era is all about augmenting human capacity and empowering leaders and builders who make public service possible. Organizations across the public sector are leveraging Google Cloud’s integrated AI stack to redefine how they serve their stakeholders, empower their workforce, and advance their mission. At Google Public Sector, we are excited to partner with pioneering organizations as we build a more resilient, responsive, and connected government, together.&lt;/p&gt;&lt;p&gt;Join us at our &lt;a href="https://events.govexec.com/google-public-sector-summit/" target="_blank"&gt;Google Public Sector Summit&lt;/a&gt; on October 20 to hear from public sector leaders who are leveraging AI to re-imagine service delivery in the agentic era.&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/public-sector/reimagining-service-delivery-in-the-agentic-era-with-google-public-sector" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/GettyImages-1387176996_PNG_-_60_resolution_m.max-600x600.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/GettyImages-1387176996_PNG_-_60_resolution_m.max-600x600.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/GettyImages-1387176996_PNG_-_60_resolution_m.max-600x600.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure</id>
-    <title>Changing the game: How Google uses agentic AI to secure hundreds of millions of lines of code</title>
-    <updated>2026-09-18T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI is accelerating software development at an unprecedented pace. But as code generation scales, so do the challenges of securing the code, especially emerging AI-based vulnerability exploitations. To meet these challenges, the Google AI and Infrastructure team is transforming how we approach security. In this article, we discuss new AI-native agentic methods that we’ve developed that systematically embed high-precision, pervasive vulnerability scanning and patching directly into Google’s software development lifecycle. By continuously scanning every code change across hundreds of millions of lines of code that we deploy onto our infrastructure, we are preventing hundreds of vulnerabilities per month from ever reaching our code base or production, defending our global network, AI infrastructure and our users. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Solution architecture and implementation &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_DMfXM9r.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Pervasive pre-submit agentic scanning: security as part of ongoing software development&lt;/p&gt;&lt;/figcaption&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Traditionally, the technology industry relies on large one-off security scans that are slow and lack sufficient context. As a result, they often find vulnerabilities too late. Our approach instead focuses on pre-submit scanning, where we evaluate each code check-in (across every layer of the stack) in real-time using AI agents. By integrating the pre-submit scan into the tools developers already use, security becomes a continuous routine process, similar to rule checkers, readability reviews or other software development tools. Also, from an AI perspective, scanning each individual code change requires much less context than performing a large one-off scan, significantly improving the scan’s effectiveness. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;The importance of localized threat models&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For this initiative, w&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;e evolved &lt;/span&gt;&lt;a href="https://github.com/google/mantis" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Mantis&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, our open-source multi-agent review harness, to increase the precision of our security agents by matching them with a cohort of robust localized threat mode&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;ls. Rather than relying on static decoupled documents, the threat models use live codebase metadata. The scanning agent improves its accuracy further using a dependence call graph across packages and libraries to expand and refine its threat model context. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Making threat models part of our ongoing vulnerability scanning encourages developers to continuously update threats and dependencies, keeping the models up-to-date. Using localized and precise threat model data translates to dramatic accuracy improvements, bringing our false-positive rates down to 3% in some cases.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Specialized triage agents speed up development&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Vulnerability scanning as part of code check-in requires it to respond quickly to the developer or agents generating the code, so as not to impede engineering productivity. To get responses with low latency, we run a two-step validation process. First, we run a quick lightweight scan that validates its findings against a specialized triage agent. This agent programmatically checks the actual structure of the code (using abstract syntax tree parsing, call-graph traversal, and pre-indexed domain safety rules) to prove that the vulnerable path is actually reachable by an attacker. This agent gets over 92% precision and completes its work in less than a minute. Then, a post-submit scan as part of nightly integration testing serves as a second layer of defense, using off-peak cycles to test for vulnerabilities that may have been introduced across multiple changes. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Bug fix agents close the loop&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Finding vulnerabilities is only half the battle. The last component of our solution is an automated bug-fix agent that uses the scan results and generated proofs (snippet of code that demonstrates how the vulnerability is exercised) to autonomously construct precise fixes that are consistent with our internal coding standards. The agent submits the fixes for human review as part of the original change request’s review, further reducing the time between detection and resolution. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Learnings and call to action &lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Embedding continuous scanning directly into the software development lifecycle has been a game changer at Google; its suggestions are widely adopted, and it’s prevented a multitude of vulnerabilities from being introduced into the codebase. But any organization wishing to improve security can adopt a similar AI-native approach, following these principles: &lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Keep systems separate:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; To prevent bias, keep the harnesses, rules, and context for each of your development, scanning, triage agents separate. Pair lightweight AI scans with deterministic, structural validation to drive down latency and improve accuracy. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Use context wisely: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Feed your agents your existing threat models. Precise context is the answer to reducing false positives, and up-to-date threat models set a high floor on a team's security posture by improving the rate of true positives in presubmit scanning.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Build a good harness:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; While the choice of the underlying model is important, using a multi-agent harness can have substantial impact, by helping compensate for variability in model choice. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Automate the fix:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Use agents to also propose human-in-the-loop fixes, to further reduce time-to-resolution. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you want to get started on your own AI-native security transformation, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/getting-started-with-the-mantis-harness-to-find-and-fix-bugs?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Mantis&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is now available as open source for you to use and benefit from. You can also &lt;/span&gt;&lt;a href="https://cloud.google.com/learn/security/mandiant-academy-courses/fcs?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;learn more about the fundamentals of cybersecurity&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and the other platforms that power this agentic pipeline: Google Cloud, Gemini Enterprise Agent Platform and Gemini models running on Trillium and Ironwood TPUs. And you can get inspiration from how agentic vulnerability scanning and remediation defends Google Cloud customers as an integral part of &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-cloud-security-uses-ai-internally"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud’s secure software development lifecycle (SDLC) effort&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/systems/using-ai-agents-to-secure-google-infrastructure" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-18T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_DMfXM9r.max-1000x1000.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_DMfXM9r.max-1000x1000.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_DMfXM9r.max-1000x1000.png" type="image/png" length="0"/>
   </entry>
 </feed>

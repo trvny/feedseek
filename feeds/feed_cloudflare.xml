@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-10-29T13:37:40.113603+00:00</updated>
+  <updated>2026-10-29T19:48:41.355187+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,26 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4acf7a06fa88a456</id>
+    <title>Increased Errors for Durable Objects and Downstream Services in Eastern North America (ENAM)</title>
+    <updated>2026-10-29T16:50:03+00:00</updated>
+    <content>Oct 29 , 16:50 UTC Resolved - This incident has been resolved. Oct 29 , 16:37 UTC Monitoring - We are continuing to monitor for any further issues. Oct 29 , 16:00 UTC Identified - Cloudflare has identified the cause of increased errors affecting Durable Objects and downstream services in the Eastern North America (ENAM) region. We are working to implement a fix.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/10m2bxjztzwh" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-29T16:50:03+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/13df8bfc47730bd5</id>
+    <title>Increased Durable Objects, D1 and Workflows Error Rates</title>
+    <updated>2026-10-29T16:33:43+00:00</updated>
+    <content>Oct 29 , 16:33 UTC Resolved - This incident has been resolved. Oct 29 , 16:33 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 29 , 14:16 UTC Investigating - Cloudflare is investigating an issue where customers are experiencing elevated errors for operations on Increased Durable Objects, D1 and Workflows.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/r4mz367vddi7" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-10-29T16:33:43+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/470f90e2de1e50cc</id>
     <title>Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants</title>
@@ -79,6 +99,21 @@ This incident has been resolved.</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-29T00:35:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c88512845c87d4c4</id>
+    <title>Agents - Agents SDK: Agent Skills are files in your agent's Workspace</title>
+    <updated>2026-10-29T00:00:00+00:00</updated>
+    <content>Agent Skills in the Cloudflare Agents SDK are now files. Write a folder with a SKILL.md into your agent's Computer ↗︎ Workspace, under /workspace/.agents/skills/ , and the agent can use it on its next turn. You do not need a build step or a deploy, and the agent can write its own skills. src/server.js js import { Think, skills } from "@cloudflare/think" ; export class MyAgent extends Think { getSkills () { return [ skills. workspace ( this .workspace), // /workspace/.agents/skills skills. r2 ( t</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-10-29-agent-skills-from-files/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-10-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-29-agent-skills-from-files/og.png?v=b5001e5223f0940c" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-29-agent-skills-from-files/og.png?v=b5001e5223f0940c"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-29-agent-skills-from-files/og.png?v=b5001e5223f0940c" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/f3fa7b0e7e9b910b</id>
@@ -1507,21 +1542,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/760b614ea14f72a0</id>
-    <title>Workers AI, Realtime - Pipecat PhoneLLM Mini now available on Workers AI</title>
-    <updated>2026-10-15T00:00:00+00:00</updated>
-    <content>@cf/daily-co/phonellm-mini-alpha-2 , a model from the Pipecat ↗︎ team at Daily, is now available on Workers AI . PhoneLLM is built for voice agents and other realtime AI applications, where a model has to reply quickly and call the right tool mid-conversation. In a voice agent, the language model sits between speech-to-text and text-to-speech, so every second it takes adds to the caller's wait. Developers usually choose between a fast model without reasoning mode, which can miss instructions or </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-15-phonellm-mini-workers-ai/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/icons/agents/claude/light.svg" type="image/svg+xml" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/icons/agents/claude/light.svg"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/icons/agents/claude/light.svg" type="image/svg+xml" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/aad24f89887b4ec0</id>
     <title>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</title>
     <updated>2026-10-14T20:24:19+00:00</updated>
@@ -1560,26 +1580,6 @@ We are actively working to mitigate impact for affected customers by adjusting t
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4VK1DV41VQ8EZCK68R7E0CS.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f0ac8835e7f4646b</id>
-    <title>Increased HTTP Errors in London (LHR)</title>
-    <updated>2026-10-14T07:51:00+00:00</updated>
-    <content>Oct 14 , 07:51 UTC Resolved - Cloudflare is aware of, and has resolved, an increased level of HTTP errors in London (LHR), between 07:43 UTC and 07:51 UTC. Services have resumed normal operation after this time.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/ak3kgdz2nyog" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-14T07:51:00+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/9347fb08e979a2da</id>
-    <title>Elevated number of 5XX errors in PDX</title>
-    <updated>2026-10-14T06:45:43+00:00</updated>
-    <content>Oct 14 , 06:45 UTC Resolved - Mitigations have been put in place to prevent recurrence. Oct 14 , 04:54 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 14 , 04:40 UTC Investigating - Cloudflare is investigating increased numbers of 5XX errors in PDX. We are working to analyse and mitigate this problem. More updates to follow shortly.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/7hicc5bfkvx3" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-14T06:45:43+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/6ec21beb693fd297</id>
