@@ -116,7 +116,7 @@ def fetch_text(url, retries=3, backoff=2.0, headers=None):
     """Fetch a URL's text body with retries; return None on failure (never raise)."""
     for attempt in range(1, retries + 1):
         try:
-            return fetch_page(url, headers=headers)
+            return fetch_page(url, headers=headers, browser_fallback=True)
         except Exception as e:
             logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
