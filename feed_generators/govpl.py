@@ -1,4 +1,4 @@
-from datetime import UTC
+from datetime import UTC, datetime
 
 """Gov.pl news feed generator.
 
@@ -28,8 +28,9 @@ article link, and a DD.MM.YYYY date. So a single scraper handles all sources.
 
 curl_cffi Chrome impersonation is used because gov.pl TLS-fingerprints plain
 clients. The article lead (og:description) lives on the article page, so it is
-fetched once per *new* link only; cached links are never re-fetched. Each
-source is wrapped so one failure is skipped, never fatal.
+fetched once per *new* link only. Listing dates refresh cached entries; cached
+future dates get a bounded article-page recheck. Each source is wrapped so one
+failure is skipped, never fatal.
 
 prezydent.pl is the one exception: it sits behind a full Cloudflare *managed
 challenge* (the "Just a moment..." JS interstitial), so it cannot be fetched
@@ -48,6 +49,7 @@ import argparse
 import re
 import sys
 import time
+from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
@@ -76,6 +78,7 @@ FEED_NAME = "govpl_news"
 BLOG_URL = "https://www.gov.pl/"
 BASE = "https://www.gov.pl"
 MAX_ENTRIES = 150
+MAX_DATE_RECHECKS = 5
 
 # label, listing URL
 SOURCES = [
@@ -170,7 +173,7 @@ def fetch_lead(url):
     return lead, image
 
 
-def collect_source(label, listing_url, known_links):
+def collect_source(label, listing_url, cached_by_link):
     html = fetch_text(listing_url)
     if not html:
         logger.warning("[%s] fetch failed -- skipping this source", label)
@@ -196,8 +199,12 @@ def collect_source(label, listing_url, known_links):
             m = DATE_RE.search(li.get_text(" ", strip=True))
             date_obj = parse_date(m.group(1)) if m else None
 
-            if link in known_links:
-                continue  # cached; no per-article fetch
+            if link in cached_by_link:
+                if date_obj is not None:
+                    if cached_by_link[link].get("date") != date_obj:
+                        logger.info("Refreshed cached publication date for %s: %s", link, date_obj)
+                    cached_by_link[link]["date"] = date_obj
+                continue
             lead, image = fetch_lead(link)
             description = clean_description(lead, fallback=title)
             time.sleep(SLEEP_BETWEEN)
@@ -215,6 +222,44 @@ def collect_source(label, listing_url, known_links):
             logger.warning("[%s] skipped a malformed item: %s", label, e)
     logger.info("[%s] collected %d new entries", label, len(entries))
     return entries
+
+
+def refresh_future_dates(cached, *, now=None):
+    """Recheck suspicious cached dates against the article's publication field."""
+    now = now or datetime.now(UTC)
+    candidates = []
+    for entry in cached:
+        date = entry.get("date")
+        if date is None or date <= now:
+            continue
+        link = entry.get("link", "")
+        try:
+            target = urlsplit(link)
+        except ValueError:
+            continue
+        if target.scheme != "https" or target.netloc != "www.gov.pl" or not target.path.startswith("/web/"):
+            continue
+        candidates.append(entry)
+    if not candidates:
+        return
+    # Rotate each two-hour pipeline interval; persistent source errors cannot starve later entries.
+    start = int(now.timestamp()) // 7200 % len(candidates)
+    batch = (candidates[start:] + candidates[:start])[:MAX_DATE_RECHECKS]
+    for entry in batch:
+        link = entry["link"]
+        try:
+            page = fetch_text(link, retries=1)
+            if not page:
+                continue
+            date_el = BeautifulSoup(page, "html.parser").select_one(".event-date")
+            text = date_el.get_text(strip=True) if date_el else ""
+            corrected = parse_date(text) if DATE_RE.fullmatch(text) else None
+            if corrected is not None:
+                if corrected != entry["date"]:
+                    logger.info("Refreshed cached publication date for %s: %s", link, corrected)
+                entry["date"] = corrected
+        except Exception as error:
+            logger.warning("Date recheck failed for %s: %s", link, error)
 
 
 def collect_prezydent(known_links):
@@ -316,23 +361,23 @@ def collect_native_rss(label, url, known_links):
     return entries
 
 
-def collect_all(known_links):
+def collect_all(cached_by_link):
     entries = []
     for label, url in SOURCES:
         logger.info("Scraping %s ...", label)
         try:
-            entries += collect_source(label, url, known_links)
+            entries += collect_source(label, url, cached_by_link)
         except Exception as e:
             logger.warning("[%s] unexpected error: %s", label, e)
     for label, url in NATIVE_RSS:
         logger.info("Fetching native RSS: %s ...", label)
         try:
-            entries += collect_native_rss(label, url, known_links)
+            entries += collect_native_rss(label, url, cached_by_link)
         except Exception as e:
             logger.warning("[%s] unexpected error: %s", label, e)
     logger.info("Scraping Prezydent RP (Google News) ...")
     try:
-        entries += collect_prezydent(known_links)
+        entries += collect_prezydent(cached_by_link)
     except Exception as e:
         logger.warning("[Prezydent RP] unexpected error: %s", e)
     return entries
@@ -373,8 +418,9 @@ def main(full=False):
         cache = load_cache(FEED_NAME)
         cached = deserialize_entries(cache.get("entries", []), date_field="date")
 
-    known_links = {e["link"] for e in cached}
-    new_articles = collect_all(known_links)
+    cached_by_link = {e["link"]: e for e in cached}
+    new_articles = collect_all(cached_by_link)
+    refresh_future_dates(cached)
 
     if not new_articles and not cached:
         logger.warning("No articles collected -- skipping write to avoid an empty feed")
