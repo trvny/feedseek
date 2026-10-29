@@ -39,7 +39,7 @@ ICON_URL = "https://trojka.polskieradio.pl/assets/favicon-32x32.png"
 # the home page and section pages, shipped as Next.js RSC flight data.
 LISTING_PATHS = ("/", "/spoleczenstwo", "/kultura", "/muzyka", "/film")
 _RSC_PUSH_RE = re.compile(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)', re.DOTALL)
-_RSC_ROW_RE = re.compile(r"^[0-9a-f]+:")
+_RSC_ROW_RE = re.compile(r"^[0-9a-f]+:", re.IGNORECASE)
 
 
 def _rsc_payload(html: str) -> str:
