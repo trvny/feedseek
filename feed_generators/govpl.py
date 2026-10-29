@@ -118,10 +118,14 @@ PREZYDENT_CRUMB_RE = re.compile(r"\s*\\+\s*(Aktualno\u015bci|Multimedia|Wydarzen
 
 
 def fetch_text(url, retries=3, backoff=2.0):
-    """Fetch via curl_cffi Chrome impersonation; None on failure (never raise)."""
+    """Fetch via curl_cffi Chrome impersonation (plain for Google News); None on failure."""
     try:
         from curl_cffi import requests as creq
     except ImportError:
+        creq = None
+    # Google News answers Chrome-impersonated TLS with a 503 "Sorry" page;
+    # plain requests gets the RSS.
+    if url.startswith("https://news.google.com/"):
         creq = None
     for attempt in range(1, retries + 1):
         try:

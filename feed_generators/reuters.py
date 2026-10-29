@@ -44,11 +44,10 @@ logger = setup_logging()
 FEED_NAME = "reuters"
 BLOG_URL = "https://www.reuters.com/"
 
-# Google News RSS proxies, restricted to reuters.com articles. `allinurl:` keeps
-# results to Reuters' own domain. We try a few query variants in order so a
-# transient block or empty window on one doesn't sink the whole run.
+# Google News RSS proxies, restricted to reuters.com articles. Query variants
+# tried in order so a transient block or empty window on one doesn't sink the
+# run. (`allinurl:` returns zero items since 2026; dropped.)
 SOURCE_URLS = [
-    "https://news.google.com/rss/search?q=when:7d+allinurl:reuters.com&hl=en-US&gl=US&ceid=US:en",
     "https://news.google.com/rss/search?q=when:7d+site:reuters.com&hl=en-US&gl=US&ceid=US:en",
     "https://news.google.com/rss/search?q=reuters.com&hl=en-US&gl=US&ceid=US:en",
 ]

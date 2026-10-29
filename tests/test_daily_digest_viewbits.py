@@ -120,5 +120,22 @@ class DailyDigestViewBitsTests(unittest.TestCase):
         )
 
 
+    @patch.object(daily_digest, "adapt_anycrap", return_value=[])
+    @patch.object(daily_digest, "adapt_critter", return_value=[])
+    @patch.object(daily_digest, "adapt_holidays", return_value=[])
+    @patch.object(daily_digest, "_today_utc", return_value=FIXED_NOW)
+    def test_collect_entries_skips_daily_sources_cached_today(self, *_mocks):
+        cached = {f"{key}:2026-07-30" for key in daily_digest.DAILY_SOURCES}
+        cached.add("onthisday:on_this_day_event:2026-07-30")
+        with (
+            patch.object(daily_digest, "_cached_guids", return_value=cached),
+            patch.object(daily_digest, "fetch_json", return_value=[]) as fetch_json,
+        ):
+            daily_digest.collect_entries()
+
+        requested = [call.args[0] for call in fetch_json.call_args_list]
+        self.assertEqual(requested, [daily_digest.SOURCES["headlines"]])
+
+
 if __name__ == "__main__":
     unittest.main()
