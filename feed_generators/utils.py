@@ -899,6 +899,35 @@ def sort_posts_for_feed(posts: list[dict[str, Any]], date_field: str = "date") -
     return with_date + without_date
 
 
+def _preserve_unchanged_feed_date(fg: FeedGenerator, previous: bytes | None, feed_format: str) -> None:
+    """Retain the channel clock only when the remaining XML is unchanged."""
+    if previous is None:
+        return
+    from lxml import etree
+
+    atom = feed_format == "atom"
+    render = fg.atom_str if atom else fg.rss_str
+    date_path = "{http://www.w3.org/2005/Atom}updated" if atom else "channel/lastBuildDate"
+    root_tag = "{http://www.w3.org/2005/Atom}feed" if atom else "rss"
+    try:
+        parser = etree.XMLParser(resolve_entities=False, no_network=True)
+        old = etree.fromstring(previous, parser)
+        current = etree.fromstring(render(pretty=True), parser)
+        if old.tag != root_tag or current.tag != root_tag:
+            return
+        old_date, current_date = old.find(date_path), current.find(date_path)
+        if old_date is None or current_date is None or not old_date.text:
+            return
+        current_date.text = old_date.text
+        if etree.tostring(old, method="c14n") != etree.tostring(current, method="c14n"):
+            return
+        setter = fg.updated if atom else fg.lastBuildDate
+        setter(old_date.text)
+    except (etree.XMLSyntaxError, etree.C14NError, ValueError, TypeError, OverflowError):
+        # Missing or invalid previous metadata must not block a fresh publication.
+        return
+
+
 def _save_feed_pair(fg: FeedGenerator, feed_name: str, *, feed_format: str) -> Path:
     """Publish XML and model-oriented JSON as one last-known-good pair."""
     output_file = get_feeds_dir() / f"feed_{feed_name}.xml"
@@ -910,7 +939,13 @@ def _save_feed_pair(fg: FeedGenerator, feed_name: str, *, feed_format: str) -> P
 
     fg.generator("Feedseek", uri="https://github.com/trvny/feedseek")
     writer = fg.atom_file if feed_format == "atom" else fg.rss_file
-    writer(str(output_file), pretty=True)
+    date_setter = fg.updated if feed_format == "atom" else fg.lastBuildDate
+    generated_date = date_setter()
+    try:
+        _preserve_unchanged_feed_date(fg, previous[output_file], feed_format)
+        writer(str(output_file), pretty=True)
+    finally:
+        date_setter(generated_date)
     logger.info("Saved %s feed to %s", feed_format.upper(), output_file)
     try:
         _write_sidecars(output_file, feed_name)
