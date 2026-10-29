@@ -77,7 +77,7 @@ def fetch_feed(url, retries=3, backoff=2.0):
     """Fetch an RSS feed body, retrying transient failures. None on failure."""
     for attempt in range(1, retries + 1):
         try:
-            xml = fetch_page(url, headers=FETCH_HEADERS)
+            xml = fetch_page(url, headers=FETCH_HEADERS, browser_fallback=True)
             if "<item" in xml or "<entry" in xml:
                 return xml
             logger.warning("No items in response from %s (attempt %s)", url, attempt)

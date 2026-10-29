@@ -98,9 +98,25 @@ def get_cache_file(feed_name: str) -> Path:
 # ---------------------------------------------------------------------------
 
 
-def fetch_page(url: str, timeout: int = 30, headers: dict | None = None) -> str:
-    """Fetch a URL and return its text body, raising on HTTP errors."""
+def fetch_page(
+    url: str,
+    timeout: int = 30,
+    headers: dict | None = None,
+    *,
+    browser_fallback: bool = False,
+) -> str:
+    """Fetch a URL and return its text body, raising on HTTP errors.
+
+    ``browser_fallback``: on 403, retry once with curl_cffi Chrome TLS (same
+    impersonation multi_rss and many generators use) for TLS-fingerprint walls.
+    """
     response = requests.get(url, headers=headers or DEFAULT_HEADERS, timeout=timeout)
+    if browser_fallback and response.status_code == 403:
+        from curl_cffi import requests as creq
+
+        retry = creq.get(url, impersonate="chrome", timeout=timeout)
+        retry.raise_for_status()
+        return retry.text
     response.raise_for_status()
     return response.text
 
