@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 25015 entries.
+111 Model Feeds · 25018 entries.
 
 ## Access
 
@@ -39,7 +39,7 @@
 | `cloudflare` | Cloudflare | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cloudflare.json) |
 | `czworka` | PR4 Czwórka | 915 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_czworka.json) |
 | `daily_digest` | Daily Digest | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_digest.json) |
-| `daily_quote` | Daily Quote | 125 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
+| `daily_quote` | Daily Quote | 126 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
 | `datime` | DaTime | 170 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
 | `dji` | DJI | 48 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
 | `docker` | Docker | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_docker.json) |
@@ -72,7 +72,7 @@
 | `medium` | Medium | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_medium.json) |
 | `memedroid` | Memedroid | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_memedroid.json) |
 | `meta_newsroom` | Meta Newsroom | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_meta_newsroom.json) |
-| `microsoft` | Microsoft | 371 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
+| `microsoft` | Microsoft | 372 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft_updates.json) |
 | `mit` | MIT News | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mit.json) |
 | `molt` | Molt | 73 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
@@ -110,7 +110,7 @@
 | `tencent` | Tencent | 189 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tencent.json) |
 | `theysaidso` | Quotes, Sayings and Jokes of the Day | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_theysaidso.json) |
 | `toyota_global` | Toyota Global | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_toyota_global.json) |
-| `trojka` | PR3 Trójka | 1774 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
+| `trojka` | PR3 Trójka | 1775 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
 | `tvp` | TVP | 275 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tvp.json) |
 | `uber` | Uber Newsroom | 84 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_uber.json) |
 | `ubuntu` | Ubuntu | 141 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ubuntu.json) |

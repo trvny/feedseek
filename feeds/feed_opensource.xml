@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://creativecommons.org/blog/</id>
   <title>Open Source</title>
-  <updated>2026-10-29T20:16:13.603443+00:00</updated>
+  <updated>2026-10-30T00:15:05.775110+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -14,6 +14,36 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=creativecommons.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=creativecommons.org&amp;sz=64</webfeeds:icon>
   <subtitle>Open-source, open-licensing, and open-standards updates from Creative Commons, the Open Source Initiative, the Linux Foundation, SPDX, the Open Geospatial Consortium, the RFC Editor, IETF status, Posit Open Source, and the Open Graph protocol.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/opensource/097644c71e043479</id>
+    <title>All Together Now: Concurrent Async in Shiny for Python</title>
+    <updated>2026-10-29T00:03:00+00:00</updated>
+    <content>Shiny for Python 1.9 overhauls how the reactive system runs async code, and now uses a concurrency model similar to Shiny for R. This post explains what changed, and shows how much faster an app gets when it awaits slow work. The key changes: A slow await in one session no longer blocks other sessions , so individual users of an app no longer wait for each other. Async outputs in the same session now run concurrently , so a page’s slow outputs run in parallel rather than serially. reactive.lock(</content>
+    <link href="https://opensource.posit.co/blog/2026-10-29_shiny-python-concurrent-async/" rel="alternate"/>
+    <category term="Posit Open Source" label="Posit Open Source"/>
+    <published>2026-10-29T00:03:00+00:00</published>
+    <media:group>
+      <media:content url="https://opensource.posit.co/blog/2026-10-29_shiny-python-concurrent-async/feature.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://opensource.posit.co/blog/2026-10-29_shiny-python-concurrent-async/feature.gif"/>
+    </media:group>
+    <dc:creator>Posit Open Source</dc:creator>
+    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-10-29_shiny-python-concurrent-async/feature.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/opensource/07573aa26410f660</id>
+    <title>Shiny for Python 1.9</title>
+    <updated>2026-10-29T00:02:00+00:00</updated>
+    <content>We’re pleased to announce that Shiny for Python v1.9 is now on PyPI! pip install -U shiny The highlights: Async effects and outputs now run concurrently , so one slow await no longer holds up other sessions or other outputs, ui.sidebar(role=) makes a sidebar an ARIA landmark that screen reader users can jump to, Express download buttons take an icon and other attributes, with no ui.hold() needed, and UI updates from background tasks now reach the browser right away. This release has a few breaki</content>
+    <link href="https://opensource.posit.co/blog/2026-10-29_shiny-python-1-9/" rel="alternate"/>
+    <category term="Posit Open Source" label="Posit Open Source"/>
+    <published>2026-10-29T00:02:00+00:00</published>
+    <media:group>
+      <media:content url="https://opensource.posit.co/blog/2026-10-29_shiny-python-1-9/feature.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://opensource.posit.co/blog/2026-10-29_shiny-python-1-9/feature.gif"/>
+    </media:group>
+    <dc:creator>Posit Open Source</dc:creator>
+    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-10-29_shiny-python-1-9/feature.gif" type="image/gif" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/fd317d5418565089</id>
     <title>Posit Assistant is cost-efficient</title>
@@ -28,6 +58,21 @@
     </media:group>
     <dc:creator>Posit Open Source</dc:creator>
     <link rel="enclosure" href="https://opensource.posit.co/blog/2026-10-29_ai-newsletter/hero.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/opensource/11ea6494ba1be50f</id>
+    <title>RFC 10075: The SNAC Router Flag in ICMPv6 Router Advertisement Messages</title>
+    <updated>2026-10-29T00:00:00+00:00</updated>
+    <content>This document defines a new flag, the SNAC Router flag, in the Router Advertisement message that can be used to distinguish configuration information sent by Stub Network Auto-Configuring (SNAC) routers from information sent by transit routers.</content>
+    <link href="https://www.rfc-editor.org/info/rfc10075/" rel="alternate"/>
+    <category term="RFC Editor" label="RFC Editor"/>
+    <published>2026-10-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10075.png" type="image/png" medium="image" height="630" width="1200"/>
+      <media:thumbnail url="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10075.png" height="630" width="1200"/>
+    </media:group>
+    <dc:creator>RFC Editor</dc:creator>
+    <link rel="enclosure" href="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10075.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/00aed189f75171a0</id>
@@ -1549,21 +1594,6 @@ There is also a Python version of orbital that works on scikit-learn pipelines. 
     <link rel="enclosure" href="https://creativecommons.org/wp-content/uploads/2026/08/beads-1024x537.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/opensource/8874bffa446b82a4</id>
-    <title>AI Newsletter: You probably don't want to fine-tune</title>
-    <updated>2026-09-04T00:00:00+00:00</updated>
-    <content>Subscribe to the AI Newsletter! The AI newsletter is published as an RSS feed. Follow it in your favorite reader: Subscribe via RSS Want the newsletter as an email? Paste the feed URL, https://opensource.posit.co/tags/ai-newsletter/index.xml , into a free RSS-to-email service such as Blogtrottr , Feedrabbit , or Follow.it , and each new issue will arrive in your inbox. Note This week, we are busy preparing for posit::conf, so we’re running an abbreviated version of a post Simon published on his </content>
-    <link href="https://opensource.posit.co/blog/2026-09-04_ai-newsletter/" rel="alternate"/>
-    <category term="Posit Open Source" label="Posit Open Source"/>
-    <published>2026-09-04T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://opensource.posit.co/blog/2026-09-04_ai-newsletter/images/hero.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://opensource.posit.co/blog/2026-09-04_ai-newsletter/images/hero.png"/>
-    </media:group>
-    <dc:creator>Posit Open Source</dc:creator>
-    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-09-04_ai-newsletter/images/hero.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/e8229acdb3d80ff8</id>
     <title>Guidance on Using CC Licenses in an AI Ecosystem</title>
     <updated>2026-09-03T16:39:44+00:00</updated>
@@ -1592,22 +1622,6 @@ There is also a Python version of orbital that works on scikit-learn pipelines. 
     </media:group>
     <dc:creator>OGC</dc:creator>
     <link rel="enclosure" href="https://www.ogc.org/wp-content/uploads/2026/09/OGC-Announces-Publication-of-the-LAZ-1.4-Community-Standard-v2-1024x296.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/opensource/2c7bcebb88c4c90a</id>
-    <title>vitals 0.4.0</title>
-    <updated>2026-09-03T00:00:00+00:00</updated>
-    <content>I’m as amped as Ella Langley’s Gibson to share that vitals 0.4.0 is now on CRAN! vitals implements a large language model evaluation toolkit for R, and this release contains several exciting features. To install the newest release, run the following in R: install.packages ( "vitals" ) The package includes two new helpers, claude_code() and codex() , which allow
-you to compare your own ellmer-built agents with leading coding agents. This release also ships another new helper, vitals_log_read() , </content>
-    <link href="https://opensource.posit.co/blog/2026-09-03_vitals-0-4-0/" rel="alternate"/>
-    <category term="Posit Open Source" label="Posit Open Source"/>
-    <published>2026-09-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://opensource.posit.co/blog/2026-09-03_vitals-0-4-0/featured.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://opensource.posit.co/blog/2026-09-03_vitals-0-4-0/featured.png"/>
-    </media:group>
-    <dc:creator>Posit Open Source</dc:creator>
-    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-09-03_vitals-0-4-0/featured.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/e52f48769b92d071</id>
@@ -1698,21 +1712,6 @@ you to compare your own ellmer-built agents with leading coding agents. This rel
     </media:group>
     <dc:creator>RFC Editor</dc:creator>
     <link rel="enclosure" href="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10035.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/opensource/c8d0b1c69251d459</id>
-    <title>RFC 10036: Incremental Forwarding of HTTP Messages</title>
-    <updated>2026-08-21T00:00:00+00:00</updated>
-    <content>This document specifies the "Incremental" HTTP header field, which instructs HTTP intermediaries to forward the HTTP message incrementally.</content>
-    <link href="https://www.rfc-editor.org/info/rfc10036/" rel="alternate"/>
-    <category term="RFC Editor" label="RFC Editor"/>
-    <published>2026-08-21T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10036.png" type="image/png" medium="image" height="630" width="1200"/>
-      <media:thumbnail url="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10036.png" height="630" width="1200"/>
-    </media:group>
-    <dc:creator>RFC Editor</dc:creator>
-    <link rel="enclosure" href="https://www.rfc-editor.org/api/v1/meta-thumbnail/rfc10036.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/a6f7cb49d30a44f3</id>
