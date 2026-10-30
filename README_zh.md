@@ -55,18 +55,18 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 
 <!--README_FEED:START-->
 - [Star History Monthly October 2026 | Execution](https://www.star-history.com/blog/execution)
-- [Product of the Day — Digital Electronic Cigarette](https://anycrap.shop/product/digital-electronic-cigarette)
-- [Dog Fact of the Day](https://dogapi.dog/)
-- [Joke of the Day](https://www.jokeindex.com/)
-- [Fortune Cookie of the Day](https://www.geckoandfly.com/16647/20-wise-chinese-fortune-cookie-sayings/)
-- [Life Hack of the Day](https://www.tumblr.com/1000-life-hacks)
+- [Remont się kończy, a piesi będą dalej ryzykować? Radni walczą o brakujący chodnik w Libiążu - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiogFBVV95cUxONncyYU05SWZkVURkNDE5Sk9wZk1uMmNrN1VCUmRralZJTTZkbTlCUnFHbDN0UExxRGxoY3A3QUdUTVRGRENVWUV1dFFVM01uY3VUbTJhc0NubExOazctNUxDVTlaYXo0d3NKMnNkekY4SkRRa3VHTU5ZdHpxQ1Z5VFFVNFpybVlUWkkwX2NqWi0wNFFpWjRWdUlkYWg1M19TVWc?oc=5)
+- [The Elder Scrolls VI pokażą już za chwilę? Data i tytuł wydają się pewne](https://antyweb.pl/the-elder-scrolls-vi-pokaza-juz-za-chwile-data-i-tytul-wydaja-sie-pewne)
+- [Za te funkcje w przeglądarce kilka lat temu dałbym wszystko](https://antyweb.pl/za-te-funkcje-w-przegladarce-kilka-lat-temu-dalbym-wszystko)
+- [Twój telewizor Samsung może cię podsłuchiwać? Niepokojące ustalenia badacza](https://antyweb.pl/masz-ten-telewizor-uwazaj-na-podsluch)
+- [Ile kosztują chryzantemy w Jaworznie? Sprawdziliśmy przed dniem Wszystkich Świętych. - jaw.pl](https://news.google.com/atom/articles/CBMiZ0FVX3lxTE1MN3lCRTZ0MXFVV0FiSzd0aEFDSnFHTTlYQ0p4VnR6Mm9wNExnQUdsMEdJS2JhRUNDNlNKbzNfdkhyUlpsNUtYaC03UjhMSmlWYUJGaUhxWklPQVZwNFJIWDcxT0xRN00?oc=5)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝Excellence is to do a common thing in an uncommon way. — Booker Washington❞</i>
+<i>❝In Windows 98, minimized windows are actually moved far away outside the average monitor’s resolution.❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
