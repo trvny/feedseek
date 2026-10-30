@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-10-30T13:27:52.034591+00:00</updated>
+  <updated>2026-10-30T19:39:17.116884+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,397 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response</id>
+    <title>We’ve received our first response from the Project Suncatcher prototype satellite.</title>
+    <updated>2026-10-30T17:00:00+00:00</updated>
+    <content type="html">Video showing the Project Suncatcher team explaining the project and reacting to the TPU-generated haiku</content>
+    <link href="https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-30T17:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://i.ytimg.com/vi_webp/epqzfAi16us/maxresdefault.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://i.ytimg.com/vi_webp/epqzfAi16us/maxresdefault.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://i.ytimg.com/vi_webp/epqzfAi16us/maxresdefault.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available</id>
+    <title>Innovate on your own business terms: Google Cloud spend caps now generally available</title>
+    <updated>2026-10-30T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we’re announcing that spend caps on Google Cloud Budgets are generally available. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With this release, we’re delivering ways to protect your workloads from runaway costs without risking resource deletion. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;More importantly, we’re introducing three major updates, directly inspired by your feedback since the initial preview, &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;to bring programmability, real-time visibility, and automated guardrails to your cost-control playbook.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;How the new spend caps can help your business &lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We have significantly enhanced the usability and power of spend caps in three ways: &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Automation through spend caps API&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Managing guardrails manually across hundreds of projects is a major operational challenge. To address this, we have launched the spend caps API, which can be accessed from the existing Cloud Billing Budgets API. You can now programmatically enforce your financial boundaries for eligible services within each project, without additional overhead. You can automatically lift, update, or delete caps on the fly and instantly apply a spend cap whenever a developer spins up a new sandbox project.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Real-time visibility with live cost reports: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Spend caps for AI services trigger within minutes of usage using estimated, live costs. When a cap triggers, you need to know exactly why and when the limit was breached. You can now view these faster, estimated costs directly inside your Cost Reports. Instead of waiting hours for standard billing pipelines to settle net costs, you get the exact financial snapshots that triggered the enforcement, giving you the immediate context needed to run a precise root-cause analysis.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="Live Costs - Hi Res Mock" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/Live_Costs_-_Hi_Res_Mock.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;3. Automated guardrails for your monthly resets: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Before, once a spend cap was triggered, the usage block remained locked until you manually lifted it in the UI. Today, we are introducing automated monthly resets. You no longer need to worry about manually lifting caps every month. Enforced spend caps will automatically reset, and blocked services will seamlessly resume at the beginning of the next month. However, if your governance policies require a strict manual audit before resuming operations, the manual override option continues to exist exactly as before. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Best practices for deploying spend caps&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As you roll out spend caps across your organization, keep these operational tips in mind:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Target non-production environments first&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Start by applying strict, low-dollar spend caps to your developer sandboxes, testing clusters, and experimental AI agent playgrounds.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Configure alerts wisely&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Default alerts are automatically sent to billing administrators and project owners at 50%, 80%, and 100% of the cap. Make sure the right folks are set up in these roles. This ensures your team is never caught off guard when a budget is nearing depletion. Spend caps permissions can also be added to custom roles, if needed.  &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Understand fixed vs on-demand costs&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Spend caps halt pay-as-you-go and CUD-covered requests once the budget threshold is hit. However, Provisioned Throughput is never halted; requests using reserved capacity will continue to run, and serve traffic normally.&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Refresher on GCP’s dual-pronged defense playbook&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Spend Caps work seamlessly alongside our native Early Anomalies Detection to provide a closed-loop defense for your cloud spend. Read our previous &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/cost-management/new-early-anomalies-and-spend-caps-on-google-cloud-budgets"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for a detailed explanation on how to use these tools to effortlessly set up a GCP defense playbook. &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Playbook step&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Feature&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Focus&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Core action&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Key benefit&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Step 1&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Early anomalies&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Predictive monitoring&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Analyzes early cost signals daily to alert you of directional spend variances&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Spot anomalous cost spikes early and pinpoint the exact SKU driving the trend&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Step 2&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Spend caps&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Financial enforcement&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Programmatically pauses usage for a specific project/service once a budget is breached&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Absolute protection against runaway spend without deleting resources&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Get started today&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Spend caps are now ready to support your workloads at scale. Read our &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for more details and navigate to the &lt;/span&gt;&lt;a href="https://pantheon.corp.google.com/billing/budgets?e=13802955&amp;amp;mods=prod_coliseum" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Budgets and Alerts&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; page in your Google Cloud Billing Console, to set your first spend cap. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To integrate programmatic guardrails into your deployment workflows, check out our newly published spend caps API &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/billing/docs/how-to/budget-api-spend-cap"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-30T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Live_Costs_-_Hi_Res_Mock.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Live_Costs_-_Hi_Res_Mock.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Live_Costs_-_Hi_Res_Mock.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/networking/the-three-layer-gke-network-mystery</id>
+    <title>When the Kubernetes API went silent: A three-layer networking mystery</title>
+    <updated>2026-10-30T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Every support engineer has a case that stays with them. The one that comes up at team lunches. The one where, even after it's resolved, you find yourself staring at a packet capture at midnight just to make sure you &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;really&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; understand what happened. This is that case.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;It started in January 2026 with a support ticket that read deceptively simply: pods are intermittently failing to reach the Kubernetes API server. The error was a familiar-looking timeout. The customer had already ruled out their own operators. What none of us knew yet was that we were looking at three separate bugs — in three different layers of the stack — all conspiring to produce the same symptom at the same time.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By the time it was over, around 800 developers had been blocked from deploying to production for weeks on end, and GKE clusters across europe-west had ground to a halt. In a race to fix the problem, we involved engineers across Google Kubernetes Engine (GKE), Private Service Connect, networking, hostnet, kernel, and the Linux upstream community, who together tracked down not one but three distinct root causes. And the final fix landed not as a config change or a feature flag, but as a patch to the Linux kernel itself.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This is the story of how we got there.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Part one: The alarm bell that wouldn't stop&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The customer ran a large multi-cluster GKE environment in Google Cloud's europe-west region. Their clusters used Private Service Connect — Google Cloud's mechanism for exposing the GKE control plane privately — and had a rich ecosystem of system-level workloads: Twistlock security scanners, External Secrets Operator for secrets management, Cilium for network policy, as well as several internal Kubernetes operators.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The first errors appeared in one of its user acceptance testing (UAT) clusters in europe-west, and a few days later in a second cluster in the same region. They looked like this:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Application logs — pods across multiple namespaces&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;TimeoutError: Connect call failed (&amp;#x27;1.2.3.4&amp;#x27;, 443)\r\ndial tcp 1.2.3.4:443: i/o timeout\r\n\r\n# 1.2.3.4 is the cluster&amp;#x27;s internal VIP for the kube-apiserver,\r\n# routed through Private Service Connect&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d59d0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Initially the errors were intermittent — spikes in the logs, not a hard outage. The customer suspected their own code. Their team had recently deployed a custom operator built with the &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;kopf&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; framework, and it was the first thing they looked at. But the logs showed the errors had started eight days before the operator was ever deployed. When they shut it down completely, the timeouts kept coming.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-pull_quote"&gt;&lt;div class="uni-pull-quote h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;div class="uni-pull-quote__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+      &lt;div class="uni-pull-quote__inner-wrapper h-c-copy h-c-copy"&gt;
+        &lt;q class="uni-pull-quote__text"&gt;The issue persists even after completely scaling down the External Secrets Operator. The errors are appearing from customer workloads, and system-level pods we haven&amp;#x27;t touched.&lt;/q&gt;
+
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;The growing list of suspects&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When a case like this arrives, the first instinct is to ask: what changed? The customer's timeline gave us several candidates, and we worked through them methodically.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The custom operator (kopf):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Ruled out immediately — errors predated deployment by a week and continued after shutdown.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;External Secrets Operator:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Removed entirely on customer request. Timeouts continued in customer workloads that relied on Kubernetes control plane (KCP) connectivity, and cluster-internal system pods.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Security agents:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Uninstalled. Same result. We were now watching &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;system-level Kubernetes components&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; fail to reach their own control plane.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;conntrack table exhaustion:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; One theory was that too many half-open connections were filling the OS connection tracking table on the control plane nodes. We checked. The conntrack table was at roughly 50% capacity — of a default maximum of 1.3M entries. Not even close to exhaustion.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Control plane overload:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; We scaled up the KCP VM size. kube-apiserver latencies looked healthy. No improvement on the timeout side.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What made this case genuinely strange was the scope. We confirmed the timeouts were happening across five different clusters, affecting DaemonSets, Deployments, and system pods alike. External clients — developer laptops, GitHub Actions runners — were also hitting the same wall. This was not a broken workload. This was something wrong with the path between &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;everything&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and the API server.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;The timeline so far&lt;/span&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Day 1:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; First I/O timeout errors appear (One of the UAT clusters in europe-west3. Intermittent, easy to dismiss.)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Day 10:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Errors become persistent (Frequency increases significantly. The issue is no longer dismissible.)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Day 15:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Case escalated — P0 bug filed (Multiple clusters confirmed affected. ~800 developers blocked. Production releases are frozen. Formal escalation begins.)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Day 20:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; All obvious suspects ruled out (Custom operator, security agents, conntrack exhaustion, control plane resizing — all cleared.)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Day 22:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Packet captures collected (Captures taken simultaneously at the control-plane node NIC and from inside the kube-api container. The investigation enters its most critical phase.)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With the obvious suspects cleared, and the scope undeniably wide, we did what you do when the application layer has nothing left to say: We went to the packets.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Part two: Tracing the ghost in the wire&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To understand what the packet captures revealed, you first need to understand the architecture that a GKE pod traverses when it makes an API call. In a Private Service Connect-based GKE cluster, the path is deceptively long for something that looks like a local connection.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/updated_architecture_official_icon.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;(Note for formatting: Consider including the Pod → kube-apiserver flow diagram here: Pod -&amp;gt; Worker Node -&amp;gt; PSC NAT+Proxy -&amp;gt; ILB -&amp;gt; KCP VM NIC -&amp;gt; kube-apiserver)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The key component here is Private Service Connect. When a pod dials &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;1.2.3.4:443&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, it is not actually going directly to the control plane; that IP is a virtual endpoint. The connection is intercepted by Google's networking fabric, NAT'd through a Private Service Connect endpoint, passed through an internal passthrough Network Load Balancer, and ultimately delivered to the KCP VM, where Envoy acts as a local proxy in front of the actual kube-apiserver process.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Private Service Connect adds a proxy protocol header to each new connection, so the kube-apiserver can see the real client IP. &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;This will turn out to be important later.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;What the packets revealed&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When we captured simultaneously at the KCP VM's NIC (the PIGv interface, Google's programmable virtual NIC) and from inside the kube-apiserver container, we saw something striking.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;SYN packets from the pods &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;were&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; arriving at the KCP VM's NIC. They were getting that far. But instead of receiving a SYN-ACK in response — the expected second step of a TCP handshake — the client was getting back an out-of-place ACK. Not an RST. Not silence. An ACK that logically belonged to a different, earlier connection.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Wireshark, the network protocol analyzer, was flagging these streams with a label that initially seemed innocuous: "TCP Port numbers reused."&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Wireshark — packet stream showing the failed handshake&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;Time      Source        Port  →  Destination   Port  Info\r\n09:13:41  10.0.13.77    53426 →  10.117.0.2    443   [SYN] Seq=0 Win=42600\r\n09:13:41  10.117.0.2    443   →  10.0.13.77    53426 [SYN, ACK] Seq=0 Ack=1 Win=64768\r\n   ...    (data exchange, connection completes)\r\n09:13:42  10.117.0.2    443   →  10.0.13.77    53426 [TCP Retransmission]\r\n09:13:42  10.117.0.2    443   →  10.0.13.77    53426 [TCP Retransmission]\r\n   ...    (many retransmissions of the same ACK)\r\n\r\n# 2 minutes later, same port 53426 is reused for a new connection\r\n09:13:44  10.0.13.77    53426 →  10.117.0.2    443   [SYN] Seq=1498 ← NEW connection\r\n           (expected: SYN-ACK)\r\n           (received: ACK Seq=1498 Ack=1025 — belongs to PREVIOUS stream)\r\n09:13:44  10.0.13.77    53426 →  10.117.0.2    443   [SYN] Retransmit...\r\n09:13:44  10.0.13.77    53426 →  10.117.0.2    443   [SYN] Retransmit...\r\n                                                    → eventually: i/o timeout&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d4750&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The pattern was clear. Something was causing the KCP VM to respond to a fresh SYN with an ACK that belonged to a &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;different connection that had ended minutes ago&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. The old connection had used the same source port (53426 in the example above), and the KCP VM had never fully let go of it.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"The KCP server sends FIN,ACK; client responds with FIN,ACK and then ACK. But KCP receives ACK before FIN,ACK. KCP server never ACKs the FIN,ACK — continuous retransmission of ACK. RST does not clear state."&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong style="vertical-align: baseline;"&gt;The "Invalid ACK" spike&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While one thread of the investigation was analyzing packet captures, a.k.a., pcaps, another team was digging into internal metrics for the Private Service Connect infrastructure — specifically the user space packet switch (USPS), Google's software switching layer that handles NAT and proxy protocol header injection for Private Service Connect connections.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;They found something alarming in the metrics for Andromeda, Google's networking fabric. A counter called "Proxy protocol drop: invalid ACK packet" had been flat for months — and then, in February 2026, it spiked sharply upward to several drops per second across the affected europe-west regions.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That date matched a USPS version rollout. This version included a change which was a fix for a &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;different&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; bug but something about it had changed the behavior of how Private Service Connect handled a specific class of packet.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong style="vertical-align: baseline;"&gt;Challenge ACKs: The RFC 5961 mechanism&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To understand the next piece of the puzzle, we need to talk about a TCP security mechanism called the challenge ACK, defined in RFC 5961.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Imagine a TCP connection has closed — gone through the FIN/ACK dance and terminated. The server-side (here, the KCP VM) may still briefly remember the connection's sequence numbers in its TCP state machine. Now imagine that shortly afterward, a new client connection arrives on the same source port and destination port (the same 5-tuple). From the kernel's perspective, this &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;could&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; be a stale packet from the old connection, or it could be an attacker trying to inject data into what the kernel thinks is still an open session.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;RFC 5961 says: when you receive a SYN that matches an existing or recently-closed connection's remembered state, don't accept it blindly. Send a challenge ACK — an acknowledgment that carries the &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;last known sequence number&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; of the old connection. If the new client is legitimate, it will see this unexpected ACK, recognize the connection is stale, and send a RST to clear the state. The server then accepts the next SYN normally.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The challenge ACK flow — how it's supposed to work&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;# Step 1: New client sends SYN on a reused port\r\nClient  →  Server:  SYN  (seq=X, same 5-tuple as an old connection)\r\n\r\n# Step 2: Server is in FIN_WAIT_2, sends challenge ACK\r\nServer  →  Client:  ACK  (ack=old_seq — &amp;quot;is this really you?&amp;quot;)\r\n\r\n# Step 3: Client recognizes the stale state, resets it\r\nClient  →  Server:  RST\r\n\r\n# Step 4: State is cleared. Server accepts the next SYN normally.\r\nClient  →  Server:  SYN  (new connection)\r\nServer  →  Client:  SYN-ACK  ← handshake succeeds&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d6a50&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This mechanism works perfectly — &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;when the challenge ACK is allowed through&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. But that was exactly what the new USPS change was blocking.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;The culprit: A well-intentioned fix&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The change in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;USPS&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; had been designed to fix a legitimate security issue in Private Service Connect's proxy protocol handling. Part of its effect was to drop packets it classified as "invalid ACKs" during the connection handshake phase — specifically, ACKs that arrived before the initial SYN-ACK had been sent, which in normal circumstances would be anomalous.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Unfortunately, challenge ACKs look exactly like this: They arrive from the server before the new handshake has completed, in response to a SYN. From the USPS's new perspective, they looked like invalid packets. They were dropped silently.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Why this broke GKE specifically: Private Service Connect uses NAT to share a single public endpoint across many client pods. This means many different pods — running on different nodes, from different namespaces — can all end up using the same source port after NAT, creating a high rate of 5-tuple collisions. The challenge ACK mechanism was being triggered far more often than it would be in a normal direct-connection scenario. The USPS fix hadn't &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;introduced&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; challenge ACKs — they had always been there. It had introduced the &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;dropping&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; of them, which broke a flow that GKE's TCP stack had silently depended on to clear stale state.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Mitigation: Rolling back the change&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In February, we rolled back the &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;USPS change&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, restoring the old behavior where challenge ACKs were passed through instead of dropped. The rate of "Proxy protocol drop: invalid ACK packet" dropped back toward baseline almost immediately.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By early March , 2026, the customer confirmed that all affected clusters had recovered. No more timeout errors.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;But the rollback wasn't a fix. It was a band-aid. It restored the behavior the system had &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;accidentally depended on&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. The deeper question — why was the KCP VM in FIN_WAIT_2 for over two minutes in the first place? — was still completely unanswered.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That question led to Part 3. And it's where things got genuinely strange.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Part three: Three bugs, one crime scene&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The mitigation bought us time, but it left a question hanging in the air: Why did the KCP VM keep connections in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;FIN_WAIT_2&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; for so long? A well-behaved TCP stack processes a FIN, acknowledges it, and closes the connection. The KCP VM was failing to do this, leaving half-open connections that persisted for more than two minutes — long enough for the port to be reused by Private Service Connect's NAT layer, long enough to cause the challenge ACK scenario we'd uncovered.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To answer this, we needed to understand not just one bug, but three distinct failure modes that had intersected at the worst possible moment.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Bug #1: Packet reordering at the PIGv&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The first piece was discovered through careful analysis of simultaneous captures at two points: the KCP VM's host NIC (inside the physical host running the VM) versus the PIGv — the virtual NIC as seen by the VM.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;At the host NIC level, packets arrived in perfect order. But by the time they crossed through USPS and appeared at the PIGv, they had been subtly reordered.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This happens because of how Private Service Connect's &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;miss-thread processing&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; works. When Private Service Connect intercepts a new flow it hasn't seen before (a "miss"), it processes that packet through a slower path that adds the proxy protocol header and sets up NAT state. Subsequent packets in the same flow take a fast path. The consequence: a FIN or RST packet belonging to a flow in mid-close might arrive slightly out of order relative to the ACKs that followed it.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What the KCP VM actually received (reordered sequence)&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;# What should have happened:\r\nClient  →  Server: FIN, ACK  (client initiates close)\r\nServer  →  Client: ACK       (server acknowledges client FIN)\r\nServer  →  Client: FIN, ACK  (server initiates its own close)\r\nClient  →  Server: ACK       (client acknowledges server FIN)\r\n                             → Connection fully closed. Both sides free.\r\n\r\n# What the KCP VM actually received (reordered by PIGv/USPS):\r\nClient  →  Server: ACK        (arrives first — out of order)\r\nClient  →  Server: FIN, ACK   (arrives second, but kernel sees ACK first)\r\nServer  →  Client: FIN, ACK   (server sends close, enters FIN_WAIT_1)\r\nClient  →  Server: FIN, ACK   (old, now-reordered FIN from client)\r\n                             → Server should ACK this. But it doesn&amp;#x27;t...&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d5a50&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The reordering put the client's FIN after the server had already sent its own FIN. The server entered FIN_WAIT_1, then FIN_WAIT_2 after seeing the client's ACK of the server's FIN. But then the client's &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;own&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; FIN arrived — and the server's kernel ignored it.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Bug #2: Envoy's half-close and the frozen timer&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Why couldn't the operating system clean up on its own? There is a Linux kernel parameter called &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_fin_timeout&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; that governs exactly this: how long a socket in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;FIN_WAIT_2&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; waits before being forcibly closed. On the KCP VM, this was set to 60 seconds.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;But &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_fin_timeout&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; only applies to &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;orphaned&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; sockets — sockets that no process is currently holding open. Envoy, the proxy that sits in front of kube-apiserver on the KCP VM, was performing a half-close: it called &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;shutdown(SHUT_WR)&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, which closes the write side of the connection but keeps the socket open so it can still receive data. This is perfectly valid TCP behavior and is how graceful half-duplex termination is supposed to work.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The side effect: As long as Envoy held the socket with &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;SHUT_WR&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;, the kernel did not consider it orphaned. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_fin_timeout&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; never started. The socket sat in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;FIN_WAIT_2&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; indefinitely, waiting for a client FIN it would never be able to process correctly.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Kernel socket state — captured via netstat just before a new connection&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;Proto  Local Address         Foreign Address       State\r\ntcp    10.128.0.5:443        10.0.13.77:53426      FIN_WAIT_2\r\n# This socket has been in FIN_WAIT_2 for &amp;gt; 120 seconds.\r\n# tcp_fin_timeout=60 has not fired because the socket is not orphaned.\r\n# Envoy holds it open with SHUT_WR.\r\n\r\n# 2 minutes later, Private Service Connect NAT reuses port 53426 for a new pod connection.\r\n# The kernel sees the new SYN on this 5-tuple and sends a challenge ACK.\r\n# USPS drops the challenge ACK. → i/o timeout.&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d5fd0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;Bug #3: The Linux kernel's silent failure&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;But there was still a missing piece. Even with the reordered FIN, a healthy kernel should still process a received FIN in &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;FIN_WAIT_2&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; and move to &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;TIME_WAIT&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. The socket should eventually close. Why wasn't it?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This led us deep into the Linux TCP state-machine implementation. When the reordered client FIN arrived at the KCP VM, the kernel's &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_ack()&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; function was called to process it. And here, in kernel version 6.1 (which underpinned the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/container-optimized-os/docs"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Container-Optimized OS&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (COS) running on the KCP VMs), there was a bug.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;RFC 5961 added stricter validation for acceptable ACK numbers — specifically, an ACK could be considered valid even if it was slightly "old" (within a sequence number window), to handle network reordering. But in kernel 6.1, there was a code path where &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_ack()&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; returned zero — indicating "this packet was not fully processed" — when it encountered an ACK that was old but within the RFC 5961 acceptable window. The caller of &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;tcp_ack()&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; in the FIN processing path checked this return value, saw zero, and did… nothing. The FIN was received and silently discarded.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The Linux kernel commit that fixed it (upstream)&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;commit 795a7dfbc3d9\r\nAuthor: Eric Dumazet &amp;lt;edumazet@google.com&amp;gt;\r\nnet: tcp: accept old ack during closing\r\n\r\ntcp_ack() returns 0 when ack is old but acceptable wrt rfc5961.\r\nIn FIN_WAIT_2, this caused tcp_fin() to never be called for a\r\nvalid received FIN, leaving the connection stuck indefinitely.\r\n\r\nFixed: properly handle old-but-acceptable ACKs during connection close.\r\nIntroduced in 6.1, fixed in 6.9.7. LTS backports: 6.6.y and 6.1.y.&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7fac9b5d7810&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The bug had existed since kernel 6.1 and was already fixed in kernel 6.9.7 — but GKE's KCP VMs were running COS builds based on 6.1 and 6.6. The fix needed to be backported and shipped as a COS image update.&lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;How the three bugs combined&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Individually, none of these three issues would have caused an outage of this magnitude. It took all three acting together to create the failure:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Bug #1 alone:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Packet reordering is mildly disruptive, but the kernel would normally still eventually process the FIN and clean up, just slower than ideal.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Bug #2 alone: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Envoy's half-close is perfectly correct behavior. It only becomes a problem if the FIN is never properly processed.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Bug #3 alone:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The kernel's failure to process old-but-acceptable ACKs would cause some connections to linger, but the impact would be limited without the port-reuse pressure from Private Service Connect NAT.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;All three together:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Reordering causes the FIN to arrive out of sequence; the kernel bug prevents it from being processed; Envoy's SHUT_WR prevents the timeout from firing; the socket stays in FIN_WAIT_2 indefinitely. Private Service Connect NAT reuses the port. challenge ACK is sent. The USPS fix drops it. Connection fails.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;span style="vertical-align: baseline;"&gt;The resolution: A three-pronged fix&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Resolving this required action at three different levels, coordinated across multiple teams over several weeks:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Immediate mitigation (Feb, 2026):  &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Rollback of change in USPS. Restored the previous behavior where challenge ACKs were forwarded rather than dropped. Customer clusters recovered by early March.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Correctness fix:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A replacement change to handle the challenge ACK scenario properly in the Private Service Connect proxy protocol layer, rather than simply restoring the old drop behavior. A PacketDrill test was added to the test suite to prevent regression.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Root cause fix — Linux kernel patch:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Upstream patch ("net: tcp: accept old ack during closing"), authored by Eric Dumazet. Merged into Linux 6.9.7. Backported to 6.6.y and 6.1.y LTS branches. — shipping in GKE 1.33.5 and later. The bug is fully resolved at the OS level for all GKE versions running these COS images.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;What made this case different&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Most networking cases resolve at one layer. You find the misconfigured firewall rule, the exhausted connection pool, the miscalculated MTU. You fix it and move on. This one was different because the symptom — &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;i/o timeout&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; on a connection that never completed — was the same whether you were looking at the Private Service Connect layer, the kernel's TCP state machine, or Envoy's connection management. Every layer had a plausible explanation, and every explanation was incomplete.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What finally cracked it was the discipline of simultaneous packet capture at multiple points in the path. Without captures at the host NIC, the PIGv, and inside the container at the same time, we would never have seen the reordering. Without correlating those pcaps to the USPS metric spike on February 18, we would never have found the dropped challenge ACKs. And without reproducing the issue in a lab environment, we would never have found the kernel bug that made the FIN_WAIT_2 state permanent.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The other thing that made this work was the team. Over the course of two weeks, engineers from seven or eight different specialties contributed: GKE networking, Private Service Connect infrastructure, Hostnet, Andromeda, KCP, and ultimately the kernel community. No single person could have held all of this in their head. The case notes, the shared bug tracker, the meticulously collected pcaps — they were the connective tissue that let a distributed team work as one.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In the end, the customer got back to production. The kernel got a better bug fix. And the rest of us got a very good story about why packet reordering, half-closed sockets, and a well-intentioned security patch should never be allowed in the same room at the same time.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;sub&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;This blog is based on real case data from an anonymized customer support engagement and internal bugs. The Linux kernel fix referenced is commit &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;795a7dfbc3d9&lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;, authored by Eric Dumazet. Special thanks to the engineers across GKE, Private Service Connect, Hostnet, Andromeda, COS, and the Linux networking community whose work made this resolution possible.&lt;/span&gt;&lt;/sub&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/networking/the-three-layer-gke-network-mystery" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-10-30T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/updated_architecture_official_icon.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/updated_architecture_official_icon.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/updated_architecture_official_icon.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://blog.google/innovation-and-ai/technology/safety-security/google-security-checkup</id>
+    <title>See who has access to your Gmail inbox in 2 minutes.</title>
+    <updated>2026-10-30T16:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Security-Checkup-Thumbnail_Phon.max-600x600.format-webp.webp" /&gt;Run a quick Google Security Checkup and protect your email with three quick and easy steps.</content>
+    <link href="https://blog.google/innovation-and-ai/technology/safety-security/google-security-checkup" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-10-30T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Security-Checkup-Thumbnail_Phon.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Security-Checkup-Thumbnail_Phon.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Security-Checkup-Thumbnail_Phon.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
   <entry>
     <id>https://cloud.google.com/blog/topics/training-certifications/new-gemini-courses-for-financial-services-and-legal-teams</id>
     <title>New Gemini courses for financial services and legal teams</title>
@@ -183,6 +574,29 @@ Gateway and SOAR playbooks
       <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
     </media:group>
     <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/search/blog/2026/10/ai-training-control</id>
+    <title>Supporting a shared AI training control for websites</title>
+    <updated>2026-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;
+      Today, we're announcing our plans to support
+  a shared AI training control
+  in robots.txt. This will help websites express their AI training preferences across multiple AI
+  providers in a single step and is based on work from the AIPREF working group at the Internet
+  Engineering Task Force (IETF). This builds on our long history of providing website owners with
+  clear controls, including through
+  Google-Extended,
+  the AI training control we've offered since 2023.
+      &lt;/p&gt;</content>
+    <link href="https://developers.google.com/search/blog/2026/10/ai-training-control" rel="alternate"/>
+    <category term="Search Central"/>
+    <published>2026-10-30T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.google.com/static/search/blog/images/social-share-blog.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.google.com/static/search/blog/images/social-share-blog.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://developers.google.com/static/search/blog/images/social-share-blog.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://ai.google.dev/gemini-api/docs/changelog#10-30-2026</id>
@@ -33412,318 +33826,5 @@ or G4 (NVIDIA RTX PRO 6000) machine series before the EOS date, see
       <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/containers-kubernetes/gpu-and-tpu-utilization-with-multi-cluster-gke-inference-gateway</id>
-    <title>Global AI routing with &lt;1% overhead on multi-cluster GKE Inference Gateway</title>
-    <updated>2026-09-21T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Demand for AI infrastructure is at an all-time high. Global accelerator shortages mean engineering teams can rarely get all the compute they need from just one data center — capacity comes a cluster here, a cluster there, often an ocean apart. At the same time, workloads are getting hungrier: Today’s long-running agentic workloads often have context windows of 100k to 800k+ tokens, which consume accelerator memory faster than any previous generation of AI traffic.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this environment, the goal is to maximize "intelligence per dollar." Fragmented, poorly balanced infrastructure is rarely up to the task though, allowing expensive accelerators to sit idle, while requests queue up somewhere else.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To close that gap, we built a layered routing architecture that makes globally scattered capacity behave like a single pool behind a single entry point. At the edge, the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/multi-cluster-gke-inference-gateway-helps-scale-ai-workloads"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;multi-cluster GKE Inference Gateway&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; focuses on global, multi-region traffic distribution and high availability. Beneath that, the LLM-d router handles the complex, memory-aware scheduling algorithms that keep utilization high. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This architecture is deliberately runtime-, model-, and accelerator-agnostic — it works across serving frameworks, model families, and GPU or TPU hardware. To make the results concrete rather than abstract, we recently benchmarked managing production-level global request routing at scale across a multi-region GKE deployment of 17,000 compute nodes spread across the US and Europe. The deployment served a leading Mixture of Experts (MoE) foundation model using SGLang. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The results: Scaling to three clusters achieved a near-linear throughput boost while maintaining a 99.9% success rate under heavy multi-client concurrency. Additionally, routing traffic through the multi-cluster GKE Inference Gateway added less than 1% overhead, delivering 99.5% of the throughput of a direct, local cluster call.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Read on to learn how it works, more on the benchmark results, and what it means for your own distributed inference deployment.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Three regions, one endpoint&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The deployment spanned three GKE clusters in three geographic regions: us-east5 (the config cluster), us-west8, and europe-west4. However, from the client’s perspective, none of that geography exists. Requests hit a single global virtual IP, and the gateway decides — in real time — which cluster should serve each one&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What makes that decision smart rather than blind is telemetry. Instead of traditional round-robin routing at the network layer, the multi-cluster load balancer is configured to route traffic based on live application signals. Specifically, the Endpoint Picker Proxy (EPP) reads the KV-cache token utilization natively exposed by the underlying inference engines and emits it as a metric for the load balancer. When the load balancer sees a region running hot based on this emitted metric, it spills traffic to the next healthy region.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_Ab2Qxsv.max-1000x1000.jpg" /&gt;
-        
-        &lt;/a&gt;
-      
-        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Multi-cluster GKE Inference Gateway topology. The config cluster holds routing configuration but sits outside the request path; each target cluster runs its own EPP and reports KV-cache utilization back to the load balancer.&lt;/p&gt;&lt;/figcaption&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Distributed LLM engines also operate differently than standard web apps. In a typical inference engine's distributed mode (such as tensor parallelism across multiple nodes), only the master (rank-0) pod serves the API. GKE already handles local routing using standard Service selectors and LeaderWorkerSet (LWS) to direct traffic exclusively to leader pods. The multi-cluster Inference Gateway also integrates with this foundation: It routes global traffic to the correct regional services, helping your cross-region load balancing respects your underlying multi-node topologies out of the box.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The net effect: Three isolated regional data centers start behaving like one cohesive global accelerator fleet, with failover and load balancing driven by what the models are actually doing. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Measuring the routing overhead &lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The first question every team asks about a global routing tier is almost always, ‘How much throughput am I giving up for cross-region capability?’ &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The benchmarks answer this directly: Deploying the multi-cluster GKE Inference Gateway to maximize your accelerator fleet doesn't have to come at the cost of throughput. Routing traffic through the Gateway added less than 1% overhead, delivering 99.5% of the throughput of a direct, local cluster call.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_EHxlS3Z.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;That’s the whole trade-off. All the benefits of global load balancing, essentially for free.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Linear scaling across regions &lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;A&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; bigger test is scale. In our test, growing the fleet from one cluster to three, spanning the US and Europe, while every client request originated from a single region (us-east5), put real pressure on the Gateway: If it couldn’t distribute load efficiently across those distances, throughput would flatten as hardware was added. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Instead, throughput multiplied almost exactly in line with capacity: &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;div align="left"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;
-&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table style="width: 99.3473%;"&gt;&lt;colgroup&gt;&lt;col style="width: 43.2125%;" /&gt;&lt;col style="width: 20.0334%;" /&gt;&lt;col style="width: 20.0334%;" /&gt;&lt;col style="width: 16.8876%;" /&gt;&lt;/colgroup&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Fleet topology &lt;/strong&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Request &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;throughput&lt;/strong&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Token &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;throughput&lt;/strong&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Success &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;rate&lt;/strong&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1 cluster (us-east5-a) &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;0.72 req/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2,898 tok/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;99.87%&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2 clusters (+ us-west8-a) &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1.40 req/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;6,380 tok/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;99.95%&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;3 clusters (+ europe-west4- b) &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2.10 req/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;8,457 tok/s &lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="vertical-align: top; border: 1px solid #000000; padding: 16px;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;99.90%&lt;/span&gt;&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;div class="block-image_full_width"&gt;
-
-
-
-
-
-
-  
-    &lt;div class="article-module h-c-page"&gt;
-      &lt;div class="h-c-grid"&gt;
-  
-
-    &lt;figure class="article-image--large
-      
-      
-        h-c-grid__col
-        h-c-grid__col--6 h-c-grid__col--offset-3
-        
-        
-      "&gt;
-
-      
-      
-        
-        &lt;img alt="3" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/3_iKOndNB.max-1000x1000.png" /&gt;
-        
-        &lt;/a&gt;
-      
-    &lt;/figure&gt;
-
-  
-      &lt;/div&gt;
-    &lt;/div&gt;
-  
-
-
-
-
-&lt;/div&gt;
-&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scaling to three clusters achieved a near-linear throughput boost while maintaining a 99.9% success rate under heavy multi-client concurrency.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Memory-aware routing in action &lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Round-robin load balancing is inadequate for serving LLMs because it treats every request as equal. They aren’t. Heavy prompts saturate GPU compute cores, long generations stress memory bandwidth, and long-context conversations quietly eat VRAM until the engine can’t schedule anything new. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here, the pressure on memory bandwidth came from the routing signal chosen for this deployment. By mapping Inference Engine's native token-usage metric onto the Gateway’s KV-cache signal, the routing plane gained a real-time view of memory pressure across the entire 17,000 fleet. (Depending on the workload, the Gateway can route on other signals too, like queue depth or running concurrency.) &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Under live production loads, as the primary region climbed toward its high-bandwidth memory (HBM) limits, the Gateway detected the saturation the moment the cluster crossed its 40% KV-cache utilization threshold; it then automatically began routing the overflow to the next healthy region. No operator intervention was needed. The complexity of running in multiple regions simply never reached the user. &lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;The payoff&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By routing traffic based on live KV-cache utilization, this GKE Inference Gateway setup effectively pools globally scattered compute capacity into one unified engine. For this deployment, the result was a near-linear throughput boost across three global regions, with virtually zero routing overhead.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This translates directly into maximizing 'intelligence per dollar,' extracting near-perfect proportional performance out of every accelerator you add to your fleet, rather than letting capital go to waste.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;What this means for your team &lt;/strong&gt;&lt;/h3&gt;
-&lt;p style="text-align: justify;"&gt;&lt;span style="vertical-align: baseline;"&gt;If you’re planning your own distributed inference deployment, five lessons from this work stand out:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Smarter load balancing pays for itself&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Round-robin routing wastes expensive GPU capacity because it can’t see memory or compute pressure. Routing on real-time application signals turns fragmented regional clusters into one efficient fleet — the difference between stranded hardware and 90%+ utilization of scarce compute.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Agentic workloads change the bottleneck&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Long-running agents with extreme context windows exhaust memory long before there’s no more compute. If your routing layer can’t see memory pressure, your compute will strand compute behind full VRAM. Make KV-cache utilization a first-class routing signal.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;AI traffic breaks web-era assumptions&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Traditional load balancers are tuned for sub-second transactions; LLM requests can run for minutes. Plan connection limits and timeouts for AI-scale latency early, or expect aborted connections in production.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Your routing layer must integrate with native serving patterns&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. Distributed LLM engines have master-worker topologies where only certain pods can serve traffic. By pairing your Gateway with native Kubernetes constructs like LeaderWorkerSet (LWS), your global routing respects local pod topologies out of the box, saving your team from building custom proxy infrastructure.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p style="text-align: justify;"&gt;&lt;strong style="vertical-align: baseline;"&gt;For large foundation model builders, bet on an open, portable stack.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Teams operating at frontier scale face the most acute capacity fragmentation, forcing them to hunt for compute resources across whichever regions have availability capacity. An open, portable inference stack such as LLM-d on GKE lets you absorb that capacity wherever it lands, rather than hard-wiring your serving architecture to any single cluster, region, or bespoke infrastructure.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Next steps &lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Ready to maximize your distributed accelerator efficiency and set up global cross-region load balancing with multi-cluster GKE Inference Gateway? &lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Deploy it yourself: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/setup-multicluster-inference-gateway"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Set up the multi-cluster GKE Inference Gateway&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Understand the architecture: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-multi-cluster-inference-gateway"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;About multi-cluster GKE Inference Gateway&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Learn about the cross-region spillover behavior featured in this post: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-elastic-cross-region-high-availability"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;About elastic cross-region high availability&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;and &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/how-to/configure-elastic-cross-region-high-availability"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Configure elastic cross-region high availability&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/containers-kubernetes/gpu-and-tpu-utilization-with-multi-cluster-gke-inference-gateway" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-21T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_Ab2Qxsv.max-1000x1000.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_Ab2Qxsv.max-1000x1000.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_Ab2Qxsv.max-1000x1000.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/products/education/digital-promise</id>
-    <title>Expanding free AI training for educators</title>
-    <updated>2026-09-21T16:00:00+00:00</updated>
-    <content type="html">Badges in blue, red, orange, green with gradients representing Google AI Educator Series</content>
-    <link href="https://blog.google/products-and-platforms/products/education/digital-promise" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-21T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/28525___EDNA_Blog_header_01.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/28525___EDNA_Blog_header_01.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/28525___EDNA_Blog_header_01.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook</id>
-    <title>Googlebook: The laptop your Android phone has been waiting for</title>
-    <updated>2026-09-21T13:00:00+00:00</updated>
-    <content type="html">Video shows the new Googlebook.</content>
-    <link href="https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-21T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/googlebook_thumbnail.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/googlebook_thumbnail.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/googlebook_thumbnail.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook</id>
-    <title>Premium materials and striking design set Googlebook apart</title>
-    <updated>2026-09-21T13:00:00+00:00</updated>
-    <content type="html">Googlebook options</content>
-    <link href="https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-21T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/30_Googlebook_lineup_video_ALT_.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/30_Googlebook_lineup_video_ALT_.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/30_Googlebook_lineup_video_ALT_.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence</id>
-    <title>Googlebook’s built-in intelligence reinvents the way you use your laptop</title>
-    <updated>2026-09-21T13:00:00+00:00</updated>
-    <content type="html">A Googlebook with text reading: "Designed for Gemini Intelligence"</content>
-    <link href="https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-21T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/intelligence_hero.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/intelligence_hero.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/intelligence_hero.max-600x600.format-webp.webp" type="image/webp" length="0"/>
   </entry>
 </feed>
