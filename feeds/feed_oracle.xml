@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-10-30T06:22:09.964962+00:00</updated>
+  <updated>2026-10-30T13:28:32.090549+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,66 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/c9054de9a7a59bc5</id>
+    <title>SQLcl DIFF does not detect changes in packages</title>
+    <updated>2026-10-30T11:34:01.538346+00:00</updated>
+    <content>I'm running sqlcl version 26.3.0.260.1620. I'm trying to get the diff between my dev and prod schemas that are on two different servers (same Oracle 26ai version). I use the command diff -source dev_connection -target prod_connection -parallel-exports -artifact-out diff -verbose -log The log show that prod is missing a package but no SQL is generated. On DEV the package specs and body are valid. Any clues? Regards, Alessandro</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/sqlcl-diff-does-not-detect-changes-in-packages-4203" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-30T11:34:01.538346+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/c7871a8391ee6f27</id>
+    <title>SQLcl 26.3 DIFF unsupported -types option</title>
+    <updated>2026-10-30T11:30:17.343857+00:00</updated>
+    <content>I'm running sqlcl version 26.3.0.260.1620 According to the official Oracle documentation, the DIFF command has a -types option that allows to filter which objects will be evaluated. If I try it, I get '-types' at column 63: Option not recognized Is the documentation wrong? Regards, Alessandro</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/sqlcl-26-3-diff-unsupported-types-option-6034" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-30T11:30:17.343857+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/696646cc21d26a5b</id>
+    <title>Oracle.EntityFrameworkCore 10.23.26400 drops semicolon in trigger statements</title>
+    <updated>2026-10-30T08:59:19.388536+00:00</updated>
+    <content>For multiline CREATE TRIGGER statements, the trailing semicolon is stripped, leaving the created trigger invalid. CREATE TRIGGER ... END; -- Stored as END → INVALID CREATE OR REPLACE TRIGGER ... END; -- Stored as END; → VALID Single-line CREATE TRIGGER statements work though. It appears to be a parsing/normalization bug in Oracle’s EF provider involving the multiline statement. Direct ODP.NET preserves the semicolon in both forms.</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/oracle-entityframeworkcore-10-23-26400-drops-semicolon-in-t-1910" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-30T08:59:19.388536+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/7757e3201b71eeb2</id>
+    <title>JDK 27 G1/Parallel/Serial GC changes</title>
+    <updated>2026-10-30T00:00:00+00:00</updated>
+    <content>Now that the JDK 27 has been released, I thought it would be time to discuss interesting changes in OpenJDK’s stop-the-world collectors in the HotSpot VM once more.</content>
+    <link href="https://inside.java/2026/10/30/jdk27-gc-changes/" rel="alternate"/>
+    <category term="Inside Java" label="Inside Java"/>
+    <published>2026-10-30T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg"/>
+    </media:group>
+    <dc:creator>Inside Java</dc:creator>
+    <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/945d7f9882bcf629</id>
     <title>Dynamic Classic report Background color</title>
@@ -240,36 +300,6 @@
     <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/355d5594125aab60</id>
-    <title>APEX Theme customisation via Backend data</title>
-    <updated>2026-10-28T09:54:10.773493+00:00</updated>
-    <content>How to make this theme customiasble via Backend config Because the application is a combination of VBCS and APEX and it is only supported in VBCS need to make consistent in apex too , In backend wehave the primary color secondary color text color etc , Is there any possibility to make that in apex?</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/apex-theme-customisation-via-backend-data-5885" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-28T09:54:10.773493+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/YZivAfQD-6126-CpQrfUIE" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/YZivAfQD-6126-CpQrfUIE"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/YZivAfQD-6126-CpQrfUIE" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/17a1292be4e45c84</id>
-    <title>How to view large PST file without Outlook?</title>
-    <updated>2026-10-28T05:59:11.200815+00:00</updated>
-    <content>You can view large PST file without Outlook by using dedicated PST viewer tool. As without Outlook it can be challenging, especially when you need to access old emails, attachments, or archived mailbox data. MailsDaddy Free PST Viewer allows you to open and view PST files without installing Microsoft Outlook. It helps you browse mailbox folders, read emails, and access attachments without importing the PST file into Outlook. This can be useful when Outlook is unavailable or you need to check an </content>
-    <link href="https://forums.oracle.com/ords/apexds/post/how-to-view-large-pst-file-without-outlook-7534" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-28T05:59:11.200815+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/86f63187475a7e07</id>
     <title>Java Secure Coding Guidelines</title>
     <updated>2026-10-28T00:00:00+00:00</updated>
@@ -283,21 +313,6 @@
     </media:group>
     <dc:creator>Inside Java</dc:creator>
     <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/3ecbbe5072a5eab5</id>
-    <title>Bug: APEX 26.1.5+: Error notification link does not scroll to an empty Checkbox Group (setFocus does nothing)</title>
-    <updated>2026-10-27T20:35:56.471966+00:00</updated>
-    <content>Problem A validation fails on a Checkbox Group item that is required and has nothing checked. The page notification shows the error as a link. Clicking that link should scroll to the item and focus it, the same way it does for a Text Field or Textarea. For a Checkbox Group, nothing happens. The window stays where it is, and focus stays on the notification. The item template makes no difference. I see the same result with "Required - Floating" and "Required - Above". Steps to reproduce 1. Import </content>
-    <link href="https://forums.oracle.com/ords/apexds/post/bug-apex-26-1-5-error-notification-link-does-not-scroll-to-4357" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-27T20:35:56.471966+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/f300809075de59ab</id>
@@ -1513,21 +1528,6 @@
     </media:group>
     <dc:creator>Inside Java</dc:creator>
     <link rel="enclosure" href="https://inside.java/resources/code--RWufeMNS6f2Qg95awttrZ0nyJXg8mWC0lBheGokwU.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/ff91befc17894d46</id>
-    <title>JEP targeted to JDK 28: 539: Strict Field Initialization in the JVM (Preview)</title>
-    <updated>2026-09-26T00:00:00+00:00</updated>
-    <content>The following JEP is targeted to JDK 28: 539: Strict Field Initialization in the JVM (Preview)</content>
-    <link href="https://inside.java/2026/09/26/jep539-target-jdk28/" rel="alternate"/>
-    <category term="Inside Java" label="Inside Java"/>
-    <published>2026-09-26T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg"/>
-    </media:group>
-    <dc:creator>Inside Java</dc:creator>
-    <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/c329d4a5918a4b19</id>
