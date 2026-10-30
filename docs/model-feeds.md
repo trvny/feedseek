@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 25018 entries.
+111 Model Feeds · 25020 entries.
 
 ## Access
 
@@ -32,7 +32,7 @@
 | `aws` | AWS | 319 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aws.json) |
 | `baidubaike` | Baidu Baike 热搜词条 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_baidubaike.json) |
 | `beatport_top100` | Beatport Top 100 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_beatport_top100.json) |
-| `bethesda` | Bethesda News | 99 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_bethesda.json) |
+| `bethesda` | Bethesda News | 101 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_bethesda.json) |
 | `canva` | Canva | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_canva.json) |
 | `cheezburger` | Cheezburger Network | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cheezburger.json) |
 | `claude` | Claude | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_claude.json) |
@@ -50,7 +50,7 @@
 | `euronews` | Euronews | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_euronews.json) |
 | `europa` | Europa | 350 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_europa.json) |
 | `ffmpeg` | FFmpeg | 62 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ffmpeg.json) |
-| `figma` | Figma | 162 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
+| `figma` | Figma | 163 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
 | `foobar2000` | foobar2000 | 405 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foobar2000.json) |
 | `foundry` | Foundry | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_geopolitics.json) |
@@ -75,7 +75,7 @@
 | `microsoft` | Microsoft | 372 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft_updates.json) |
 | `mit` | MIT News | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mit.json) |
-| `molt` | Molt | 73 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
+| `molt` | Molt | 72 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
 | `mozilla` | Mozilla | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mozilla.json) |
 | `nasa` | NASA | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_nasa.json) |
 | `netflix` | Netflix | 250 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_netflix.json) |
