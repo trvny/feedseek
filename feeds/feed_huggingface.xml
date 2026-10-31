@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-10-30T19:39:12.439584+00:00</updated>
+  <updated>2026-10-31T00:01:43.070111+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,51 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/bbf31f4cc7f2bdee</id>
+    <title>Can a network whose trunk is only XOR, table lookups and integer adds learn Connect Four?</title>
+    <updated>2026-10-31T00:01:41.849563+00:00</updated>
+    <content>Can a network whose trunk is only XOR, table lookups and integer adds learn Connect Four? Partly. I trained a GF(2⁸) integer model (8.4M params, CPU-only) on 320k games labelled by a negamax search teacher. What it learned: • agrees with the teacher on 59.6% of training / 41.0% of board-disjoint holdout positions • beats a random player 85.2% of the time What it didn't: • loses to a 1-ply "win now / block now" rule (wins 37.2%) • loses to 2-ply lookahead (wins 24.3%) Agreeing with a teacher is not the same as playing well, and this release measures both. Caveat up front: the float32 read-out is 99.6% of the parameters. The trunk is float-free; the full model isn't yet. The repo also document</content>
+    <link href="https://huggingface.co/posts/Chris4K/960737671792255" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-31T00:01:41.849563+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/6424a2fbf1d18f46decb7f01/1clbaa0lA0dQ5t4IGXcHy.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/6424a2fbf1d18f46decb7f01/1clbaa0lA0dQ5t4IGXcHy.gif"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/6424a2fbf1d18f46decb7f01/1clbaa0lA0dQ5t4IGXcHy.gif" type="image/gif" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/83496e1aaff17b10</id>
+    <title>Hi everyone! I want to share a few updates about GRM development.</title>
+    <updated>2026-10-31T00:01:41.849563+00:00</updated>
+    <content>Hi everyone! I want to share a few updates about GRM development. *GRM-3.4 has been canceled* Although GRM-3.4 showed strong reasoning and coding capabilities, testing revealed several issues. It tended to overthink, and its code often contained errors that GRM-3.2-Sky handled correctly. Its tool use also needed improvement, and its terminal performance did not reach the level we were aiming for. We repeatedly saw it rewrite files from scratch instead of using editing tools, and use shell commands to create or modify files when dedicated tools were available. *Looking ahead to GRM-3.6* GRM-3.6 is a possible next generation for the GRM models. We are still deciding whether it will be a single</content>
+    <link href="https://huggingface.co/posts/DedeProGames/637425901257000" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-31T00:01:41.849563+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/637425901257000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/637425901257000.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/DedeProGames/637425901257000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/1334aea995f60bc9</id>
+    <title>Evaluating ASR beyond short clips: our Numo Indic Speech releases provide longer-form transcribed audio across four languages:</title>
+    <updated>2026-10-31T00:01:41.849563+00:00</updated>
+    <content>Evaluating ASR beyond short clips: our Numo Indic Speech releases provide longer-form transcribed audio across four languages: Hindi: 46.6s average duration Telugu: 33.3s Tamil: 32.7s Bengali: 46.5s For comparison, Common Voice 26.0 averages roughly 4–6 seconds across these languages. These longer recordings support research into segmentation, context retention, streaming, and endpointing behavior. The four datasets are available under controlled access. Check them out: psdn-ai/numo-indic-speech</content>
+    <link href="https://huggingface.co/posts/ksrupaakula/619732339503896" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-10-31T00:01:41.849563+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/690ce98aea3eb3eefc72a00a/WuW2QSPH4aNEpQ3KxZPWB.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/690ce98aea3eb3eefc72a00a/WuW2QSPH4aNEpQ3KxZPWB.webp"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/690ce98aea3eb3eefc72a00a/WuW2QSPH4aNEpQ3KxZPWB.webp" type="image/webp" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/c772da7a8c3b04b3</id>
     <title>HAPPY HALLOWEEN EVERYONE - With Halloween O/S in Qwen 3.8 27B and Gemma 4 31B... fully abliterated/heretic'ed and uncensored.</title>
@@ -208,6 +253,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.39633.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/83164272268bd766</id>
+    <title>Read, Allocate, Route: Role-Coupled Tokenization for Pixel-Space Generative Transformers</title>
+    <updated>2026-10-29T00:00:00+00:00</updated>
+    <content>SpecSlot improves pixel-space generative Transformers by using localized spectral slots and restricted global attention to increase image detail without raising computational cost.</content>
+    <link href="https://huggingface.co/papers/2610.40647" rel="alternate"/>
+    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
+    <published>2026-10-29T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.40647.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.40647.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Trending Papers</dc:creator>
+    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.40647.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/37004752be9be2cd</id>
@@ -915,21 +975,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.33135/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/6430909168b58685</id>
-    <title>Does Your Model Run on AWS Trainium? Look It Up</title>
-    <updated>2026-10-23T00:00:00+00:00</updated>
-    <content>Does Your Model Run on AWS Trainium? Look It Up</content>
-    <link href="https://huggingface.co/blog/torch-neuronx-model-support" rel="alternate"/>
-    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
-    <published>2026-10-23T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg"/>
-    </media:group>
-    <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/a44fc5b5ba32a003</id>
     <title>World-in-Context: Interactive Video World Modeling with In-Context Conditioning</title>
     <updated>2026-10-23T00:00:00+00:00</updated>
@@ -943,6 +988,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.33169/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/6430909168b58685</id>
+    <title>Does Your Model Run on AWS Trainium? Look It Up</title>
+    <updated>2026-10-23T00:00:00+00:00</updated>
+    <content>Does Your Model Run on AWS Trainium? Look It Up</content>
+    <link href="https://huggingface.co/blog/torch-neuronx-model-support" rel="alternate"/>
+    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
+    <published>2026-10-23T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg"/>
+    </media:group>
+    <dc:creator>Hugging Face Blog</dc:creator>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/torch-neuronx-model-support/thumbnail.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/95eb6975ad245049</id>
@@ -1410,21 +1470,6 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.28630/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/3eb18e5ff7f2a0ef</id>
-    <title>MPS in PyTorch 2.15</title>
-    <updated>2026-10-20T00:00:00+00:00</updated>
-    <content>MPS in PyTorch 2.15</content>
-    <link href="https://huggingface.co/blog/mps-pytorch-2-15" rel="alternate"/>
-    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
-    <published>2026-10-20T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/c3c375455b4762ce</id>
     <title>EvaOmni: An Evidence-Grounded Benchmark for Audio-Visual Reasoning</title>
     <updated>2026-10-20T00:00:00+00:00</updated>
@@ -1440,19 +1485,19 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.28444.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/84cd8d44e9825e73</id>
-    <title>Hugging Face ❤️ TorchTPU: TPUs, Natively</title>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/3eb18e5ff7f2a0ef</id>
+    <title>MPS in PyTorch 2.15</title>
     <updated>2026-10-20T00:00:00+00:00</updated>
-    <content>Hugging Face ❤️ TorchTPU: TPUs, Natively</content>
-    <link href="https://huggingface.co/blog/hf-torchtpu" rel="alternate"/>
+    <content>MPS in PyTorch 2.15</content>
+    <link href="https://huggingface.co/blog/mps-pytorch-2-15" rel="alternate"/>
     <category term="Hugging Face Blog" label="Hugging Face Blog"/>
     <published>2026-10-20T00:00:00+00:00</published>
     <media:group>
-      <media:content url="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png"/>
+      <media:content url="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png"/>
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/mps-pytorch-2-15/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/e1a0dd5580ed4f25</id>
@@ -1470,19 +1515,19 @@
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.28522.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/2596ff929aeef557</id>
-    <title>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</title>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/84cd8d44e9825e73</id>
+    <title>Hugging Face ❤️ TorchTPU: TPUs, Natively</title>
     <updated>2026-10-20T00:00:00+00:00</updated>
-    <content>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</content>
-    <link href="https://huggingface.co/blog/anylanguagemodel-1-0" rel="alternate"/>
+    <content>Hugging Face ❤️ TorchTPU: TPUs, Natively</content>
+    <link href="https://huggingface.co/blog/hf-torchtpu" rel="alternate"/>
     <category term="Hugging Face Blog" label="Hugging Face Blog"/>
     <published>2026-10-20T00:00:00+00:00</published>
     <media:group>
-      <media:content url="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png"/>
+      <media:content url="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png"/>
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
-    <link rel="enclosure" href="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/hf-torchtpu/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/c931af3845e23367</id>
@@ -1498,6 +1543,21 @@
     </media:group>
     <dc:creator>Hugging Face Trending Papers</dc:creator>
     <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.28577/gradient.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/2596ff929aeef557</id>
+    <title>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</title>
+    <updated>2026-10-20T00:00:00+00:00</updated>
+    <content>AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms</content>
+    <link href="https://huggingface.co/blog/anylanguagemodel-1-0" rel="alternate"/>
+    <category term="Hugging Face Blog" label="Hugging Face Blog"/>
+    <published>2026-10-20T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png"/>
+    </media:group>
+    <dc:creator>Hugging Face Blog</dc:creator>
+    <link rel="enclosure" href="https://huggingface.co/blog/assets/anylanguagemodel-1-0/banner.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/da99ff5289ab6c3e</id>
@@ -3270,36 +3330,6 @@
     <link rel="enclosure" href="https://huggingface.co/blog/assets/building-with-ml-intern/thumbnail.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/1780135497074fa5</id>
-    <title>Robotics is now the second most downloaded dataset category on the Hub, after text generation.</title>
-    <updated>2026-10-07T23:18:05.228553+00:00</updated>
-    <content>Robotics is now the second most downloaded dataset category on the Hub, after text generation. Robotics datasets got 13.7M downloads in September, ahead of text classification and question answering. Two years ago the category ranked 23rd. One in 7 new datasets is now robotics, mostly LeRobot recordings: typically a few dozen demos, about half of them on low-cost SO-100/SO-101 arms. I found this after adding datasets and Spaces to Model Pulse, which rebuilds daily history from @ cfahlgren1 's hub-stats snapshots. Two more findings: - In 2022, 36% of authors who list training data cited classic NLP sets like IMDb, SQuAD and GLUE. In 2026 it's 2.4%. Reasoning traces distilled from models like </content>
-    <link href="https://huggingface.co/posts/tardellirs/570535147315877" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-10-07T23:18:05.228553+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/9BYesyB_wlOhNiLHuu4kq.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/9BYesyB_wlOhNiLHuu4kq.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/9BYesyB_wlOhNiLHuu4kq.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/76cfa717b669a395</id>
-    <title>20K parameters can tell a story. 🚀</title>
-    <updated>2026-10-07T17:33:21.186133+00:00</updated>
-    <content>20K parameters can tell a story. 🚀 🤗 We trained a ~20k-parameter Transformer that can actually write stories! raincandy-u/MacroStories → ~50× smaller than the 1M-parameter TinyStories model → ~3,000× smaller than AlexNet → 81 KB in FP32 yayyy the whole model. ૮ ˶ᵔ ᵕ ᵔ˶ ა She has a 32-dimensional hidden state, a 378-token vocabulary, and just one decoder block — recurrently applied 4 times with shared weights. Despite having only 19,969 parameters, she can maintain a simple narrative across 100–300 words: establish a goal, encounter a problem, take relevant actions, and reach an outcome. She runs extremely fast on CPU — no GPU required. The entire model is tiny enough to load almost instantly</content>
-    <link href="https://huggingface.co/posts/raincandy-u/920842721053752" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-10-07T17:33:21.186133+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/raincandy-u/920842721053752.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/raincandy-u/920842721053752.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/raincandy-u/920842721053752.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/0825a4897dea2e82</id>
     <title>Multimodal open d1 decision models for the edge</title>
     <updated>2026-10-07T16:54:33+00:00</updated>
@@ -3343,21 +3373,6 @@
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/67b8b0096c3182e96bf6cea1/zB6BNaB-3tiCCsnOo7gik.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/b1d40f29059f5253</id>
-    <title>Most deepfake audio detectors are quietly cheating.</title>
-    <updated>2026-10-07T09:11:48.130316+00:00</updated>
-    <content>Most deepfake audio detectors are quietly cheating. They don’t really listen to the speech — they just look at how long the embedding vector is. Once they figure that out, accuracy looks great on paper and falls apart in the wild. AIRealNet-Audio was built to stop that shortcut. It forces every feature onto the unit hypersphere (twice) so the model can only use direction, not magnitude. Trained on speech from 100+ different TTS and voice-cloning systems, plus real human recordings under heavy compression and noise. The result is a detector that actually has to learn the artifacts instead of gaming the feature space. Model: Modotte/AIRealNet-Audio</content>
-    <link href="https://huggingface.co/posts/Parveshiiii/884729567210768" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-10-07T09:11:48.130316+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Parveshiiii/884729567210768.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Parveshiiii/884729567210768.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/posts/Parveshiiii/884729567210768.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/f0f47f577ce2846c</id>
@@ -3628,21 +3643,6 @@
     </media:group>
     <dc:creator>Hugging Face Blog</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/68642da9885da181fde1ad70/8kSzlHLOdu5hchCtPnK8D.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/5b32d40c65515ec8</id>
-    <title>4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes</title>
-    <updated>2026-10-02T00:00:00+00:00</updated>
-    <content>We introduce 4DCodeBench, a benchmark for 4D inverse graphics through code generation, in which agents reconstruct dynamic scenes from video as executable graphics programs. To accomplish this, agents must translate visual observations into compact representations of scene structure and dynamics, by implementing abstractions such as physical simulations to reproduce complex behavior. To evaluate this capability, we curate a set of real-world videos and construct synthetic scenes spanning diverse physical phenomena, including deformation, fluid flow, and fracture. We perform extensive benchmarking of frontier models, finding that strong static reconstruction capabilities do not yet translate </content>
-    <link href="https://huggingface.co/papers/2610.03715" rel="alternate"/>
-    <category term="Hugging Face Trending Papers" label="Hugging Face Trending Papers"/>
-    <published>2026-10-02T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.03715/gradient.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.03715/gradient.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Trending Papers</dc:creator>
-    <link rel="enclosure" href="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2610.03715/gradient.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/0bf00b70dbd762e2</id>
