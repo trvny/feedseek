@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-10-31T13:01:16.080990+00:00</updated>
+  <updated>2026-10-31T18:44:00.876195+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/44e9be9b4cfdbabc</id>
+    <title>An uppercase JDBC column label fails on lowercase column name in the database</title>
+    <updated>2026-10-31T16:19:53.844097+00:00</updated>
+    <content>I am reading a sensor value through JDBC in a tree-model query. The returned label is reading, but using same label in uppercase with a ResultSet getter fails. The Minimal data on Apache loTDB 2.0.10 is: CREATE DATABASE root.calibration_cards;CREATE TIMESERIES root.calibration_cards.sensor_a.pressure  WITH DATATYPE=DOUBLE,ENCODING=PLAIN;INSERT INTO root.calibration_cards.sensor_a(time,pressure) VALUES (1000,1.6); I ran this query with the 2.0.10 JDBC driver: SELECT pressure AS readingFROM root.c</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/an-uppercase-jdbc-column-label-fails-on-lowercase-column-na-4928" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-10-31T16:19:53.844097+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/dfff76d3bd8c16bb</id>
     <title>Best Tools and Analytics Software</title>
@@ -262,21 +277,6 @@
     <link href="https://forums.oracle.com/ords/apexds/post/is-there-a-roadmap-for-an-oci-equivalent-to-azure-app-servi-9168" rel="alternate"/>
     <category term="Oracle Developer Community" label="Oracle Developer Community"/>
     <published>2026-10-28T17:13:50.444147+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/aeb0c54f7c5f6189</id>
-    <title>Generic WHERE clause generator for a partition name</title>
-    <updated>2026-10-28T16:05:16.011406+00:00</updated>
-    <content>Hello Devs, Recently I worked an assignment which was to generate a generic "WHERE" clause provided the name of table, owner name and the actual partition name. Reason, we wanted to run a generic function in Oracle, which takes in the partition value and returns the where clause using the internal high value so that if the same table exists, assuming in Snowflake, we can just use this where clause and fetch the data in SF, which was replicated from Oracle. I have written the below blocks, one fo</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/generic-where-clause-generator-for-a-partition-name-2767" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-28T16:05:16.011406+00:00</published>
     <media:group>
       <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
