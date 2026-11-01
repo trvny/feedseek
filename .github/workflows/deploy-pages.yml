@@ -7,24 +7,74 @@ on:
       - "site/**"
       - "assets/**"
       - "feeds.yaml"
+      - "tests/test_build_site_favicons.py"
+      - "feed_generators/models.py"
+      - "feed_generators/validate_feeds.py"
       - ".github/workflows/deploy-pages.yml"
   # zizmor: ignore[dangerous-triggers] deploy-after-build on our own workflow; checks out default ref, no untrusted PR code
   workflow_run:
     workflows: ["Update Feeds"]
     types: [completed]
+  pull_request:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "assets/**"
+      - "feeds.yaml"
+      - "tests/test_build_site_favicons.py"
+      - "feed_generators/models.py"
+      - "feed_generators/validate_feeds.py"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  # PR checks must not cancel production deploys.
+  group: pages-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'deploy' }}
   cancel-in-progress: true
 
 jobs:
+  check-pr:
+    name: PR site checks
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          enable-cache: false
+          python-version: "3.14"
+
+      - name: Test site contracts
+        run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
+
+      - name: Build site
+        env:
+          SITE_URL: https://trvny.github.io/feedseek/
+        run: |
+          uv run --locked site/build_site.py
+          uv run --locked site/build_search_index.py
+          uv run --locked site/make_favicon.py
+
+      - name: Check generated catalog
+        run: |
+          test -s public/model-feeds.json
+          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
+          grep -Fq 'model-feeds.json' public/llms.txt
+
   build-deploy:
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     # Update Feeds publishes successful partial output before applying its health gate,
     # so deploy after every completed run and always build from the current default branch.
     runs-on: ubuntu-slim
@@ -52,6 +102,10 @@ jobs:
         id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
+      - name: Test site contracts
+        if: github.event_name != 'workflow_run'
+        run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
+
       - name: Build site
         working-directory: .
         env:
@@ -60,6 +114,12 @@ jobs:
           uv run --locked site/build_site.py
           uv run --locked site/build_search_index.py
           uv run --locked site/make_favicon.py
+
+      - name: Check generated catalog
+        run: |
+          test -s public/model-feeds.json
+          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
+          grep -Fq 'model-feeds.json' public/llms.txt
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
