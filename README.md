@@ -167,19 +167,19 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 ## 📰 Mini news
 
 <!--README_FEED:START-->
-- [Star History Monthly October 2026 | Execution](https://www.star-history.com/blog/execution)
-- [Remont się kończy, a piesi będą dalej ryzykować? Radni walczą o brakujący chodnik w Libiążu - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMiogFBVV95cUxONncyYU05SWZkVURkNDE5Sk9wZk1uMmNrN1VCUmRralZJTTZkbTlCUnFHbDN0UExxRGxoY3A3QUdUTVRGRENVWUV1dFFVM01uY3VUbTJhc0NubExOazctNUxDVTlaYXo0d3NKMnNkekY4SkRRa3VHTU5ZdHpxQ1Z5VFFVNFpybVlUWkkwX2NqWi0wNFFpWjRWdUlkYWg1M19TVWc?oc=5)
-- [The Elder Scrolls VI pokażą już za chwilę? Data i tytuł wydają się pewne](https://antyweb.pl/the-elder-scrolls-vi-pokaza-juz-za-chwile-data-i-tytul-wydaja-sie-pewne)
-- [Za te funkcje w przeglądarce kilka lat temu dałbym wszystko](https://antyweb.pl/za-te-funkcje-w-przegladarce-kilka-lat-temu-dalbym-wszystko)
-- [Twój telewizor Samsung może cię podsłuchiwać? Niepokojące ustalenia badacza](https://antyweb.pl/masz-ten-telewizor-uwazaj-na-podsluch)
-- [Ile kosztują chryzantemy w Jaworznie? Sprawdziliśmy przed dniem Wszystkich Świętych. - jaw.pl](https://news.google.com/atom/articles/CBMiZ0FVX3lxTE1MN3lCRTZ0MXFVV0FiSzd0aEFDSnFHTTlYQ0p4VnR6Mm9wNExnQUdsMEdJS2JhRUNDNlNKbzNfdkhyUlpsNUtYaC03UjhMSmlWYUJGaUhxWklPQVZwNFJIWDcxT0xRN00?oc=5)
+- [List do redakcji w sprawie masztu przy Wilczej: Mieszkańcy pytają o bezpieczeństwo i ład przestrzenny - jaw.pl](https://news.google.com/atom/articles/CBMiakFVX3lxTE9xSnExYml4LU9INmxrQnNOZ0QwNS1YLTdJMGFtRkp0dVBIMFlLVDI2anhfQXR6cmNXVlYzUHNMT253MHE0SG81eXhVRzVVZGdETm5RRW5MeDhpMkNJNFVEMWNqRTR3TFVzZ3c?oc=5)
+- [Russia’s Shadow Fleet Turns to Nets and Rubber Tires for Makeshift Drone Armor](https://www.wsj.com/world/russias-shadow-fleet-turns-to-nets-and-rubber-tires-for-makeshift-drone-armor-95e817a1)
+- [The Slate vs Ford Fathom debate might be settled by this one key tech feature](https://www.engadget.com/2300238/slate-vs-ford-fathom-android-auto-carplay-support/)
+- [What the Cameras Saw | Post Mortem](https://www.cbsnews.com/video/103126-48-hours-post-mortem-episode-2/)
+- [U.S. plans to deport Afghans back to their home country through Pakistan, documents show](https://abcnews.com/US/wireStory/us-plans-deport-afghans-back-home-country-pakistan-137741097)
+- [Judge ends Trump's attempts to sue Wall Street Journal over Epstein reporting](https://www.reuters.com/world/us-judge-dismisses-trumps-lawsuit-against-wall-street-journal-with-prejudice-2026-10-31/)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝In Windows 98, minimized windows are actually moved far away outside the average monitor’s resolution.❞</i>
+<i>❝To the people that have said I'm too small, I'm not fast enough, I don't have what it takes, I'm not strong enough. THANK YOU. — Muhammad Ali❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
