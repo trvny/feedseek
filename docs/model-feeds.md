@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 25082 entries.
+111 Model Feeds · 25084 entries.
 
 ## Access
 
@@ -60,7 +60,7 @@
 | `google` | Google Blogs | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_google.json) |
 | `govpl_news` | Gov.pl | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_govpl_news.json) |
 | `hackerone` | HackerOne Blog & Newsroom | 37 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hackerone.json) |
-| `hp` | HP Newsroom | 188 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hp.json) |
+| `hp` | HP Newsroom | 190 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_hp.json) |
 | `huggingface` | Hugging Face | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_huggingface.json) |
 | `imgw` | IMGW | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_imgw.json) |
 | `jbzd` | Jbzd.com.pl | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_jbzd.json) |
