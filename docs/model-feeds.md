@@ -28,7 +28,7 @@
 | `apple` | Apple | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_apple.json) |
 | `arxiv` | arXiv | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_arxiv.json) |
 | `audacity` | Audacity® | 240 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audacity.json) |
-| `audio` | Audio.com.pl | 179 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audio.json) |
+| `audio` | Audio.com.pl | 180 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audio.json) |
 | `aws` | AWS | 319 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aws.json) |
 | `baidubaike` | Baidu Baike 热搜词条 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_baidubaike.json) |
 | `beatport_top100` | Beatport Top 100 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_beatport_top100.json) |
@@ -75,7 +75,7 @@
 | `microsoft` | Microsoft | 373 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft_updates.json) |
 | `mit` | MIT News | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mit.json) |
-| `molt` | Molt | 73 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
+| `molt` | Molt | 72 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_molt.json) |
 | `mozilla` | Mozilla | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_mozilla.json) |
 | `nasa` | NASA | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_nasa.json) |
 | `netflix` | Netflix | 250 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_netflix.json) |
