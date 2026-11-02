@@ -220,8 +220,13 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
   const entries=doc.querySelectorAll('item, entry');
   if(entries.length>MAX_FEED_ITEMS) throw new Error('feed exceeds entry limit');
   return [...entries].map(n=>{
-    const d=txt(n,'pubdate','published','updated','date');
-    const ts=d ? Date.parse(d) : NaN;
+    let ts=NaN;
+    for(const name of ['pubdate','published','date','updated']){
+      const value=txt(n,name);
+      if(!value) continue;
+      ts=Date.parse(value);
+      if(!Number.isNaN(ts)) break;
+    }
     const title=txt(n,'title')||'(untitled)';
     const url=safeHttpUrl(lnk(n),feedUrl);
     const id=txt(n,'id','guid');
@@ -233,6 +238,7 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
 }
 function rel(ts){
   if(!ts) return '';
+  if(ts>Date.now()) return new Date(ts).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
   const s=Math.max(0,(Date.now()-ts)/1000);
   if(s<3600) return Math.max(1,Math.round(s/60))+'m';
   if(s<86400) return Math.round(s/3600)+'h';

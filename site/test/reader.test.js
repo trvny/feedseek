@@ -268,6 +268,95 @@ test("Atom IDs and RSS GUIDs survive parsing when entries reuse a page URL", asy
   }
 });
 
+test("publication dates take precedence over update dates regardless of XML order", async () => {
+  const { feeds, entries } = fixture([1]);
+  const r = await makeReader(feeds, entries);
+  r.context.DOMParser = class {
+    parseFromString() {
+      return {
+        documentElement: { tagName: "feed", children: [] },
+        querySelector: () => null,
+        querySelectorAll: () => [{
+          children: [
+            { tagName: "updated", textContent: "2026-11-01T12:00:00Z" },
+            { tagName: "published", textContent: "2026-10-01T12:00:00Z" },
+            { tagName: "title", textContent: "Article" },
+            { tagName: "link", textContent: "https://article.test/story", getAttribute: () => null },
+          ],
+          getElementsByTagName: () => [],
+        }],
+      };
+    }
+  };
+  const parsed = vm.runInContext('parseFeed("xml", "Feed", "https://feed.test/feed")', r.context);
+  assert.equal(parsed[0].ts, Date.parse("2026-10-01T12:00:00Z"));
+});
+
+test("a dc:date takes precedence over an updated timestamp", async () => {
+  const { feeds, entries } = fixture([1]);
+  const reader = await makeReader(feeds, entries);
+  reader.context.DOMParser = class {
+    parseFromString() {
+      return {
+        documentElement: { tagName: "feed", children: [] },
+        querySelector: () => null,
+        querySelectorAll: () => [{
+          children: [
+            { tagName: "updated", textContent: "2026-11-01T12:00:00Z" },
+            { tagName: "dc:date", textContent: "2026-10-01T12:00:00Z" },
+            { tagName: "title", textContent: "Article" },
+            { tagName: "link", textContent: "https://article.test/story", getAttribute: () => null },
+          ],
+          getElementsByTagName: () => [],
+        }],
+      };
+    }
+  };
+  const parsed = vm.runInContext('parseFeed("xml", "Feed", "https://feed.test/feed")', reader.context);
+  assert.equal(parsed[0].ts, Date.parse("2026-10-01T12:00:00Z"));
+});
+
+test("invalid dates fall back to the first parseable timestamp", async () => {
+  const { feeds, entries } = fixture([1]);
+  const reader = await makeReader(feeds, entries);
+  reader.context.DOMParser = class {
+    parseFromString() {
+      return {
+        documentElement: { tagName: "feed", children: [] },
+        querySelector: () => null,
+        querySelectorAll: () => [{
+          children: [
+            { tagName: "published", textContent: "invalid date" },
+            { tagName: "dc:date", textContent: "also invalid" },
+            { tagName: "updated", textContent: "2026-11-01T12:00:00Z" },
+            { tagName: "title", textContent: "Article" },
+            { tagName: "link", textContent: "https://article.test/story", getAttribute: () => null },
+          ],
+          getElementsByTagName: () => [],
+        }, {
+          children: [
+            { tagName: "published", textContent: "invalid date" },
+            { tagName: "updated", textContent: "also invalid" },
+            { tagName: "title", textContent: "Undated article" },
+            { tagName: "link", textContent: "https://article.test/undated", getAttribute: () => null },
+          ],
+          getElementsByTagName: () => [],
+        }],
+      };
+    }
+  };
+  const parsed = vm.runInContext('parseFeed("xml", "Feed", "https://feed.test/feed")', reader.context);
+  assert.equal(parsed[0].ts, Date.parse("2026-11-01T12:00:00Z"));
+  assert.equal(parsed[1].ts, 0);
+});
+
+test("future dates display their actual date instead of a false one-minute age", async () => {
+  const { feeds, entries } = fixture([1]);
+  const r = await makeReader(feeds, entries);
+  const future = Date.now() + 30 * 86400000;
+  assert.equal(r.context.rel(future), new Date(future).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }));
+});
+
 test("Show more reaches the complete source and resets on source changes and refresh", async () => {
   const { feeds, entries } = fixture([600, 10]);
   const r = await makeReader(feeds, entries);
