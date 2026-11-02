@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blogs.oracle.com/</id>
   <title>Oracle</title>
-  <updated>2026-11-02T01:47:29.674694+00:00</updated>
+  <updated>2026-11-02T09:55:07.251387+00:00</updated>
   <author>
     <name>Oracle</name>
   </author>
@@ -14,6 +14,76 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blogs.oracle.com&amp;sz=64</webfeeds:icon>
   <subtitle>Oracle company and developer news: Java, Linux, OCI, virtualization, community, press releases and Inside Java.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/dace98f062e5d9bc</id>
+    <title>オラクル、Fusion Clawを搭載したサプライチェーン向けFusion Agentic Applicationsを発表</title>
+    <updated>2026-11-02T12:00:08+00:00</updated>
+    <content>オラクル、Fusion Clawを搭載したサプライチェーン向けFusion Agentic Applicationsを発表</content>
+    <link href="https://www.oracle.com/news/announcement/ai-world-oracle-introduces-claw-powered-fusion-agentic-applications-for-supply-chain-2026-10-26/" rel="alternate"/>
+    <category term="Oracle Press Releases" label="Oracle Press Releases"/>
+    <published>2026-11-02T12:00:08+00:00</published>
+    <media:group>
+      <media:content url="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg"/>
+    </media:group>
+    <dc:creator>Oracle Press Releases</dc:creator>
+    <link rel="enclosure" href="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/02140a284efcab72</id>
+    <title>Redundant ORDER BY after unique PK disables ordered FETCH stopkey (full-table SORT)</title>
+    <updated>2026-11-02T08:50:07.182071+00:00</updated>
+    <content>1. Minimal reproduce step CREATE TABLE t0 (c0 NUMBER(10) NOT NULL, part NUMBER(10) NOT NULL, PRIMARY KEY (c0));INSERT /*+ APPEND */ INTO t0 (c0, part) SELECT LEVEL, LEVEL FROM dual CONNECT BY LEVEL &lt;= 1000000;COMMIT;BEGIN DBMS_STATS.GATHER_TABLE_STATS(USER, 'T0'); END;/-- (A) good SELECT /*+ GATHER_PLAN_STATISTICS */ c0 FROM t0 ORDER BY c0 FETCH FIRST 1 ROW ONLY; SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(NULL, NULL, 'ALLSTATS LAST')); -- (B) same order (c0 is unique), much worse SELECT /*+ G</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/redundant-order-by-after-unique-pk-disables-ordered-fetch-s-1074" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-11-02T08:50:07.182071+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/WYSXpJkh-7763-TmYIpSxL" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/WYSXpJkh-7763-TmYIpSxL"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/WYSXpJkh-7763-TmYIpSxL" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/48ffda8a52c72525</id>
+    <title>Introduction</title>
+    <updated>2026-11-02T05:55:00.302837+00:00</updated>
+    <content>Hi this is james parakar and here i am sharing the information of the latest tools which helps you to ease your task like data mighration. connect with me for latest and trending software information.</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/introduction-5305" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-11-02T05:55:00.302837+00:00</published>
+    <dc:creator>Oracle Developer Community</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/8548c11dcef78380</id>
+    <title>Which software can I use to view Outlook PST files without installing Microsoft Outlook?</title>
+    <updated>2026-11-02T05:51:15.562531+00:00</updated>
+    <content>If you want to access Outlook PST files without installing Microsoft Outlook, a dedicated PST viewer is a convenient option. MailsDaddy Free PST Viewer allows you to open and read PST files, including emails, attachments, contacts, calendars, notes, and tasks. It supports ANSI and Unicode PST formats while maintaining the original folder hierarchy. Its read-only viewing approach is useful for inspecting archived emails, backup files, and orphaned PST data without directly modifying the original </content>
+    <link href="https://forums.oracle.com/ords/apexds/post/which-software-can-i-use-to-view-outlook-pst-files-without-7631" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-11-02T05:51:15.562531+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/app/app-logo.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/oracle/f093fbe9f16be23a</id>
+    <title>FreeSQL 26ai Schema Account Locked – ORA-28000</title>
+    <updated>2026-11-02T05:22:34.879161+00:00</updated>
+    <content>Hello Oracle FreeSQL Support Team, I am using an Oracle FreeSQL 26ai schema for my MCA project. My schema account has suddenly become locked. Whenever I try to connect through Python or Oracle SQL Developer for VS Code, I receive this error: ORA-28000: The account is locked; login denied. I have already regenerated my schema password, but the issue still persists. I want to recover my existing schema account because it contains important project tables and data. Could you please help me unlock m</content>
+    <link href="https://forums.oracle.com/ords/apexds/post/freesql-26ai-schema-account-locked-ora-28000-0406" rel="alternate"/>
+    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
+    <published>2026-11-02T05:22:34.879161+00:00</published>
+    <media:group>
+      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
+    </media:group>
+    <dc:creator>Oracle Developer Community</dc:creator>
+    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/9070fe88f0ee18fc</id>
     <title>Urgent: Request to Recover Oracle APEX Workspace HRIDOY</title>
@@ -180,21 +250,6 @@
     <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/696646cc21d26a5b</id>
-    <title>Oracle.EntityFrameworkCore 10.23.26400 drops semicolon in trigger statements</title>
-    <updated>2026-10-30T08:59:19.388536+00:00</updated>
-    <content>For multiline CREATE TRIGGER statements, the trailing semicolon is stripped, leaving the created trigger invalid. CREATE TRIGGER ... END; -- Stored as END → INVALID CREATE OR REPLACE TRIGGER ... END; -- Stored as END; → VALID Single-line CREATE TRIGGER statements work though. It appears to be a parsing/normalization bug in Oracle’s EF provider involving the multiline statement. Direct ODP.NET preserves the semicolon in both forms.</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/oracle-entityframeworkcore-10-23-26400-drops-semicolon-in-t-1910" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-30T08:59:19.388536+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/7757e3201b71eeb2</id>
     <title>JDK 27 G1/Parallel/Serial GC changes</title>
     <updated>2026-10-30T00:00:00+00:00</updated>
@@ -208,51 +263,6 @@
     </media:group>
     <dc:creator>Inside Java</dc:creator>
     <link rel="enclosure" href="https://inside.java/resources/social-image--nAgZMYNGE8fqdi2dNsobXsdOYjHge7YemY2jQDyJc0.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/945d7f9882bcf629</id>
-    <title>Dynamic Classic report Background color</title>
-    <updated>2026-10-29T13:44:20.263271+00:00</updated>
-    <content>This is one classic report where break formatting is applied , I need to apply 3 different background color for the report based on the break condition If event - INSERTED then Yellow , event - UPDATED then blue Event DELETED then red , If this is possible then please mention the detailed steps to achieve this</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/dynamic-classic-report-background-color-6986" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-29T13:44:20.263271+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/wTHAzFDL-1159-tqRzmRAR" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/wTHAzFDL-1159-tqRzmRAR"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/fHgLfjJN7Y4OcC4l1HAYBv1WbzNUFyBVbdskDpzsTB24rPRljl7aFbukqzMSe7Ke/n/axciphqpnohg/b/forums-prod-www/o/attachments/wTHAzFDL-1159-tqRzmRAR" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/98c4e53f4f78defd</id>
-    <title>import connections for Oracle SQL Dev 26.2</title>
-    <updated>2026-10-29T12:55:44.370916+00:00</updated>
-    <content>Hi, I would like to export my existing Oracle SQL Dev 26.2 connections (and passwords) and import them in to SQLDev for VS Code 26.3 is this possible?.</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/import-connections-for-oracle-sql-dev-26-2-2173" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-29T12:55:44.370916+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/adaf851aa4290a21</id>
-    <title>schema browser - data tab</title>
-    <updated>2026-10-29T12:53:11.334948+00:00</updated>
-    <content>in 26.3 I would like to save the column selection and order in the schema browsers data tab, is this possible ? Thanks.</content>
-    <link href="https://forums.oracle.com/ords/apexds/post/schema-browser-data-tab-4529" rel="alternate"/>
-    <category term="Oracle Developer Community" label="Oracle Developer Community"/>
-    <published>2026-10-29T12:53:11.334948+00:00</published>
-    <media:group>
-      <media:content url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png"/>
-    </media:group>
-    <dc:creator>Oracle Developer Community</dc:creator>
-    <link rel="enclosure" href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/DTkSAAUFd1o5D-QaQ7malcebZfzSq_lo4SxTP9fHpnUmcaiEaZIE8jVLZNCxfgIj/n/axciphqpnohg/b/forums-prod-app/o/300000/static/domain/devforum.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/b76a86604d993d63</id>
@@ -748,21 +758,6 @@
     </media:group>
     <dc:creator>Oracle Press Releases</dc:creator>
     <link rel="enclosure" href="https://www.oracle.com/a/pr/img/og-social-outcome-driven-ai.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/oracle/dace98f062e5d9bc</id>
-    <title>Oracle Introduces Claw-Powered Fusion Agentic Applications for Supply Chain</title>
-    <updated>2026-10-26T12:00:08+00:00</updated>
-    <content>Oracle Introduces Claw-Powered Fusion Agentic Applications for Supply Chain</content>
-    <link href="https://www.oracle.com/news/announcement/ai-world-oracle-introduces-claw-powered-fusion-agentic-applications-for-supply-chain-2026-10-26/" rel="alternate"/>
-    <category term="Oracle Press Releases" label="Oracle Press Releases"/>
-    <published>2026-10-26T12:00:08+00:00</published>
-    <media:group>
-      <media:content url="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg"/>
-    </media:group>
-    <dc:creator>Oracle Press Releases</dc:creator>
-    <link rel="enclosure" href="https://www.oracle.com/a/pr/img/og-social-claw-supply-chain.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/oracle/96d3a59067ad18b7</id>

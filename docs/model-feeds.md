@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 25086 entries.
+111 Model Feeds · 25100 entries.
 
 ## Access
 
@@ -23,12 +23,12 @@
 | `9gag` | 9GAG | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_9gag.json) |
 | `accuweather` | AccuWeather News | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_accuweather.json) |
 | `aibridge` | AI-bridge | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aibridge.json) |
-| `alibaba` | Alibaba | 221 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
+| `alibaba` | Alibaba | 230 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
 | `anthropic` | Anthropic | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_anthropic.json) |
 | `apple` | Apple | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_apple.json) |
 | `arxiv` | arXiv | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_arxiv.json) |
 | `audacity` | Audacity® | 240 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audacity.json) |
-| `audio` | Audio.com.pl | 180 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audio.json) |
+| `audio` | Audio.com.pl | 181 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_audio.json) |
 | `aws` | AWS | 319 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aws.json) |
 | `baidubaike` | Baidu Baike 热搜词条 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_baidubaike.json) |
 | `beatport_top100` | Beatport Top 100 | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_beatport_top100.json) |
@@ -37,10 +37,10 @@
 | `cheezburger` | Cheezburger Network | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cheezburger.json) |
 | `claude` | Claude | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_claude.json) |
 | `cloudflare` | Cloudflare | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cloudflare.json) |
-| `czworka` | PR4 Czwórka | 919 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_czworka.json) |
+| `czworka` | PR4 Czwórka | 921 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_czworka.json) |
 | `daily_digest` | Daily Digest | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_digest.json) |
 | `daily_quote` | Daily Quote | 129 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
-| `datime` | DaTime | 170 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
+| `datime` | DaTime | 169 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
 | `dji` | DJI | 48 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
 | `docker` | Docker | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_docker.json) |
 | `download-soundtracks` | Download Soundtracks | 250 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_download-soundtracks.json) |
@@ -110,7 +110,7 @@
 | `tencent` | Tencent | 190 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tencent.json) |
 | `theysaidso` | Quotes, Sayings and Jokes of the Day | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_theysaidso.json) |
 | `toyota_global` | Toyota Global | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_toyota_global.json) |
-| `trojka` | PR3 Trójka | 1804 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
+| `trojka` | PR3 Trójka | 1807 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
 | `tvp` | TVP | 275 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tvp.json) |
 | `uber` | Uber Newsroom | 87 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_uber.json) |
 | `ubuntu` | Ubuntu | 142 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ubuntu.json) |
