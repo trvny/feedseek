@@ -9,8 +9,8 @@ entry identities, WebMCP behavior, and locally stored subscriptions and settings
   settings; Cancel and closing the dialog discard pending changes. Preserve OPML
   import/export, existing overlays and recovery from failed refreshes.
 - Fix settings layout overflow on narrow screens. Make feed management searchable.
-- Add favorite sources and optional groups without changing subscriptions; keep
-  existing source filtering and All available.
+- Consider optional source groups alongside the existing pinned sources; keep
+  subscriptions and source filtering intact.
 - Add article search, read/unread state and a local read-later list. Use stable
   feed identity plus entry ID; preserve distinct entries that share a URL.
 - Investigate implausible upstream dates, including DJI ViewPoints. Preserve
