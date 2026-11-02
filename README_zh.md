@@ -54,19 +54,19 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 ## 📰 小新闻
 
 <!--README_FEED:START-->
-- [List do redakcji w sprawie masztu przy Wilczej: Mieszkańcy pytają o bezpieczeństwo i ład przestrzenny - jaw.pl](https://news.google.com/atom/articles/CBMiakFVX3lxTE9xSnExYml4LU9INmxrQnNOZ0QwNS1YLTdJMGFtRkp0dVBIMFlLVDI2anhfQXR6cmNXVlYzUHNMT253MHE0SG81eXhVRzVVZGdETm5RRW5MeDhpMkNJNFVEMWNqRTR3TFVzZ3c?oc=5)
-- [Russia’s Shadow Fleet Turns to Nets and Rubber Tires for Makeshift Drone Armor](https://www.wsj.com/world/russias-shadow-fleet-turns-to-nets-and-rubber-tires-for-makeshift-drone-armor-95e817a1)
-- [The Slate vs Ford Fathom debate might be settled by this one key tech feature](https://www.engadget.com/2300238/slate-vs-ford-fathom-android-auto-carplay-support/)
-- [What the Cameras Saw | Post Mortem](https://www.cbsnews.com/video/103126-48-hours-post-mortem-episode-2/)
-- [U.S. plans to deport Afghans back to their home country through Pakistan, documents show](https://abcnews.com/US/wireStory/us-plans-deport-afghans-back-home-country-pakistan-137741097)
-- [Judge ends Trump's attempts to sue Wall Street Journal over Epstein reporting](https://www.reuters.com/world/us-judge-dismisses-trumps-lawsuit-against-wall-street-journal-with-prejudice-2026-10-31/)
+- [Flash floods trigger evacuations in Arizona and Colorado amid heavy rains in southwest](https://abcnews.com/US/wireStory/flash-floods-trigger-evacuations-arizona-colorado-amid-heavy-137753110)
+- [CBS News adds South Carolina as battleground state; still Leans Republican](https://www.cbsnews.com/video/cbs-news-adds-south-carolina-as-battleground-state-still-leans-republican/)
+- [Transcript: David Becker on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/david-becker-election-law-face-the-nation-transcript-11-01-2026/)
+- [Transcript: Pennsylvania Gov. Josh Shapiro on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/josh-shapiro-pennsylvania-governor-11-01-2026/)
+- [Transcript: Rep. Mike Lawler on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/mike-lawler-new-york-republican-face-the-nation-transcript-11-01-2026/)
+- [UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda](https://www.theguardian.com/world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝To the people that have said I'm too small, I'm not fast enough, I don't have what it takes, I'm not strong enough. THANK YOU. — Muhammad Ali❞</i>
+<i>❝The first electronic computer ENIAC weighed more than 27 tons and took up 1800 square feet.❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
