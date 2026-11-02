@@ -15,7 +15,7 @@
 
 [Polski](README_pl.md) · **English** · [简体中文](README_zh.md)  
 
-[**📡 Feeds**](https://trvny.github.io/feedseek/) · [**📖 Reader**](https://trvny.github.io/feedseek/reader/) · [**🗂 Registry**](feeds.yaml) · [**🧭 Internals**](docs/)  
+[**📡 Feeds**](https://trvny.github.io/feedseek/) · [**📖 Reader**](https://trvny.github.io/feedseek/reader/) · [**🗂 Registry**](feeds.yaml) · [**🤖 LLMs**](docs/model-feeds.md) · [**🧭 Internals**](docs/)
 
 </div>
 
