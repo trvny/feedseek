@@ -11,6 +11,7 @@ class Element {
   style = {};
   dataset = {};
   textContent = "";
+  value = "";
   constructor(tagName) { this.tagName = tagName; }
   get childNodes() { return this.children; }
   appendChild(child) {
@@ -25,9 +26,9 @@ class Element {
   closest(selector) { return selector === `.${this.className}` ? this : null; }
 }
 
-async function makeReader(feeds, entries, snapshotQuota = Infinity) {
+async function makeReader(feeds, entries, snapshotQuota = Infinity, initialStorage = null) {
   const nodes = new Map();
-  const storage = new Map([["fs:cfg", JSON.stringify({ favs: false, thumbs: false })]]);
+  const storage = initialStorage || new Map([["fs:cfg", JSON.stringify({ favs: false, thumbs: false })]]);
   const listeners = {};
   const document = {
     baseURI: "https://reader.test/reader/",
@@ -73,6 +74,7 @@ async function makeReader(feeds, entries, snapshotQuota = Infinity) {
     const chip = new Element("button");
     chip.className = "chip";
     chip.dataset.source = source;
+    if (source === "All") chip.dataset.all = "true";
     click(chip);
   };
   return { context, storage, nodes, articles, click, filter };
@@ -104,6 +106,107 @@ test("refresh retains and snapshots all sources before filtering and pagination"
   assert.equal(r.articles().length, 10);
   assert.equal(r.articles()[0].href, "https://article.test/0/9");
   assert.match(r.nodes.get("#count").textContent, /^10 items/);
+});
+
+test("source search narrows chips without changing subscriptions or the selected source", async () => {
+  const { feeds, entries } = fixture([2, 3, 4]);
+  const r = await makeReader(feeds, entries);
+  r.filter("Source 0");
+  const search = r.nodes.get("#sourceSearch");
+  search.value = "source 2";
+  search.oninput();
+  const chips = r.nodes.get("#chips").children;
+  assert.deepEqual(chips.filter(row => !row.hidden).map(row => row.dataset.source), ["All", "Source 0", "Source 2"]);
+  assert.equal(r.articles().length, 2);
+  r.filter("Source 2");
+  assert.equal(r.articles().length, 4);
+  assert.equal(vm.runInContext("FEEDS.length", r.context), 3);
+  search.value = "";
+  search.oninput();
+  assert.equal(r.nodes.get("#chips").children.filter(chip => !chip.hidden).length, 4);
+});
+
+test("pinned sources stay first after reload without changing subscriptions or the selected source", async () => {
+  const { feeds, entries } = fixture([2, 3, 4]);
+  const r = await makeReader(feeds, entries);
+  r.filter("Source 0");
+  const source2 = r.nodes.get("#chips").children.find(row => row.dataset.source === "Source 2");
+  r.click(source2.children[1]);
+  assert.deepEqual(r.nodes.get("#chips").children.map(row => row.dataset.source), ["All", "Source 2", "Source 0", "Source 1"]);
+  assert.equal(r.articles().length, 2);
+  assert.equal(vm.runInContext("FEEDS.length", r.context), 3);
+  assert.deepEqual(JSON.parse(r.storage.get("fs:sourceFavorites")), [feeds[2].xmlUrl]);
+  const reloaded = await makeReader(feeds, entries, Infinity, r.storage);
+  assert.equal(reloaded.nodes.get("#chips").children[1].dataset.source, "Source 2");
+  reloaded.click(reloaded.nodes.get("#chips").children[1].children[1]);
+  assert.deepEqual(JSON.parse(reloaded.storage.get("fs:sourceFavorites")), []);
+});
+
+test("pin survives source rename and migrates existing name-based favorites", async () => {
+  const { feeds, entries } = fixture([1, 1]);
+  const storage = new Map([["fs:cfg", JSON.stringify({ favs: false, thumbs: false })], ["fs:sourceFavorites", JSON.stringify(["Source 1"])]]);
+  const first = await makeReader(feeds, entries, Infinity, storage);
+  assert.equal(first.nodes.get("#chips").children[1].dataset.source, "Source 1");
+  assert.deepEqual(JSON.parse(storage.get("fs:sourceFavorites")), [feeds[1].xmlUrl]);
+  feeds[1].title = "Renamed source";
+  entries.get(feeds[1].xmlUrl).forEach(item => { item.source = feeds[1].title; });
+  const reloaded = await makeReader(feeds, entries, Infinity, storage);
+  assert.equal(reloaded.nodes.get("#chips").children[1].dataset.source, "Renamed source");
+  assert.equal(reloaded.nodes.get("#chips").children[1].children[1].textContent, "★");
+});
+
+test("legacy name-based favorites migrate for feeds with no current items", async () => {
+  const { feeds, entries } = fixture([1, 1]);
+  entries.set(feeds[1].xmlUrl, []);
+  const storage = new Map([["fs:cfg", JSON.stringify({ favs: false, thumbs: false })], ["fs:sourceFavorites", JSON.stringify(["Source 1"])]]);
+  await makeReader(feeds, entries, Infinity, storage);
+  assert.deepEqual(JSON.parse(storage.get("fs:sourceFavorites")), [feeds[1].xmlUrl]);
+  feeds[1].title = "Renamed source";
+  entries.set(feeds[1].xmlUrl, [{
+    id: "entry-1-0", source: feeds[1].title, feedUrl: feeds[1].xmlUrl, title: "Article 1/0",
+    url: "https://article.test/1/0", ts: 10000,
+  }]);
+  const reloaded = await makeReader(feeds, entries, Infinity, storage);
+  assert.equal(reloaded.nodes.get("#chips").children[1].dataset.source, "Renamed source");
+  assert.equal(reloaded.nodes.get("#chips").children[1].children[1].textContent, "★");
+});
+
+test("failed pin writes leave the previous selection intact and show an error", async () => {
+  const { feeds, entries } = fixture([1, 1]);
+  const reader = await makeReader(feeds, entries);
+  reader.filter("Source 0");
+  const setItem = reader.context.localStorage.setItem;
+  reader.context.localStorage.setItem = (key, value) => {
+    if (key === "fs:sourceFavorites") throw new Error("Quota exceeded");
+    setItem(key, value);
+  };
+  reader.click(reader.nodes.get("#chips").children[2].children[1]);
+  assert.equal(reader.nodes.get("#chips").children[2].children[1].textContent, "☆");
+  assert.equal(reader.nodes.get("#sourceSelection").textContent, "Source 0");
+  assert.equal(reader.articles().length, 1);
+  assert.match(reader.nodes.get("#sourceError").textContent, /Could not save/);
+  assert.equal(reader.storage.has("fs:sourceFavorites"), false);
+  reader.context.localStorage.setItem = setItem;
+  reader.click(reader.nodes.get("#chips").children[2].children[1]);
+  assert.equal(reader.nodes.get("#sourceError").textContent, "");
+  assert.deepEqual(JSON.parse(reader.storage.get("fs:sourceFavorites")), [feeds[1].xmlUrl]);
+});
+
+test("a source named All is distinct from the All filter and can be pinned", async () => {
+  const { feeds, entries } = fixture([2, 1]);
+  feeds[0].title = "All";
+  entries.get(feeds[0].xmlUrl).forEach(item => { item.source = "All"; });
+  const reader = await makeReader(feeds, entries);
+  const allSource = reader.nodes.get("#chips").children.find(row => row.dataset.source === "All" && !row.dataset.all);
+  assert.equal(allSource.children[0].textContent, "All (source)");
+  reader.click(allSource.children[1]);
+  assert.deepEqual(JSON.parse(reader.storage.get("fs:sourceFavorites")), [feeds[0].xmlUrl]);
+  const pinned = reader.nodes.get("#chips").children.find(row => row.dataset.source === "All" && !row.dataset.all);
+  reader.click(pinned.children[0]);
+  assert.equal(reader.articles().length, 2);
+  assert.equal(reader.nodes.get("#sourceSelection").textContent, "All (source)");
+  reader.click(reader.nodes.get("#chips").children[0].children[0]);
+  assert.equal(reader.articles().length, 3);
 });
 
 test("shared page URLs keep distinct entry IDs and independent source memberships", async () => {
