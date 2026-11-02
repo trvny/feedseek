@@ -30,6 +30,8 @@ jobs:
           persist-credentials: false
 
       - name: Instruction Rot
+        id: instruction_rot
+        continue-on-error: true
         uses: trvny/.github/.github/actions/instruction-rot@9d3b98f7ceafd52aae0c707c1c667a1a8dedac0a
         with:
           base-sha: ${{ github.event.pull_request.base.sha || github.event.before }}
@@ -177,3 +179,7 @@ jobs:
             echo "MegaLinter reported blocking errors"
             exit 1
           fi
+
+      - name: Gate Instruction Rot
+        if: always() && steps.instruction_rot.outcome == 'failure'
+        run: exit 1
