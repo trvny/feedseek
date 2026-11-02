@@ -131,6 +131,11 @@ const $ = s => document.querySelector(s);
 let ITEMS = [], FILTER = null, FAILED = [], SOURCES = [], LOADED = 0, FEEDS = [];
 let visibleCount = PAGE_SIZE;
 let STATUS_ERROR = '', activeRun = null, runVersion = 0;
+let sourceFavorites = [];
+try{
+  const saved=JSON.parse(ls.get('sourceFavorites')||'[]');
+  if(Array.isArray(saved)) sourceFavorites=saved.filter(value=>typeof value==='string');
+}catch{ sourceFavorites=[]; }
 
 function safeHttpUrl(value, base=document.baseURI){
   const raw=String(value??'').trim();
@@ -400,19 +405,70 @@ function setMessage(text){
   msg.textContent=text;
   $('#list').replaceChildren(msg);
 }
+function filterSourceChips(){
+  const query=$('#sourceSearch').value.trim().toLocaleLowerCase();
+  for(const row of $('#chips').children){
+    row.hidden=row.dataset.all!=='true' && row.dataset.source!==FILTER &&
+      !row.dataset.source.toLocaleLowerCase().includes(query);
+  }
+}
+function sourceUrlMap(){
+  const map=new Map();
+  const add=(source,url)=>{
+    if(!source||!url) return;
+    if(!map.has(source)) map.set(source,new Set());
+    map.get(source).add(url);
+  };
+  FEEDS.forEach(feed=>add(feed.title,feed.xmlUrl));
+  ITEMS.forEach(item=>add(item.source,item.feedUrl));
+  return map;
+}
+function renderSources(sources){
+  const urlsBySource=sourceUrlMap();
+  const migrated=new Set();
+  for(const favorite of sourceFavorites){
+    const urls=urlsBySource.get(favorite);
+    if(urls?.size) urls.forEach(url=>migrated.add(url));
+    else migrated.add(favorite);
+  }
+  if([...migrated].some(value=>!sourceFavorites.includes(value)) &&
+     ls.set('sourceFavorites',JSON.stringify([...migrated]))) sourceFavorites=[...migrated];
+  const favorites=new Set(sourceFavorites);
+  const pinned=source=>favorites.has(source)||[...(urlsBySource.get(source)||[])].some(url=>favorites.has(url));
+  const ordered=[...sources].sort((a,b)=>Number(pinned(b))-Number(pinned(a))||a.localeCompare(b));
+  const chipFrag=document.createDocumentFragment();
+  for(const entry of [null,...ordered]){
+    const all=entry===null, source=all?'All':entry;
+    const row=document.createElement('div');
+    row.className='source-row'; row.dataset.source=source;
+    if(all) row.dataset.all='true';
+    const button=document.createElement('button');
+    button.type='button';
+    const selected=all?FILTER===null:FILTER===source;
+    button.className='chip'+(selected?' on':'');
+    button.dataset.source=source;
+    if(all) button.dataset.all='true';
+    button.textContent=!all&&source==='All'?'All (source)':source;
+    button.setAttribute('aria-pressed',String(selected));
+    row.appendChild(button);
+    if(!all){
+      const star=document.createElement('button');
+      star.type='button'; star.className='source-star'; star.dataset.source=source;
+      star.textContent=pinned(source)?'★':'☆';
+      star.setAttribute('aria-pressed',String(pinned(source)));
+      star.setAttribute('aria-label',`${pinned(source)?'Unpin':'Pin'} ${source}`);
+      row.appendChild(star);
+    }
+    chipFrag.appendChild(row);
+  }
+  $('#chips').replaceChildren(chipFrag);
+  $('#sourceSelection').textContent=FILTER==='All'?'All (source)':FILTER||'All';
+  filterSourceChips();
+}
 function render(){
   const sources=SOURCES.length?SOURCES:[...new Set(ITEMS.map(i=>i.source))].sort();
   if(FILTER && !sources.includes(FILTER)) FILTER=null;
-
-  const chipFrag=document.createDocumentFragment();
-  for(const source of ['All',...sources]){
-    const button=document.createElement('button');
-    button.className='chip'+(((FILTER===null&&source==='All')||FILTER===source)?' on':'');
-    button.dataset.source=source;
-    button.textContent=source;
-    chipFrag.appendChild(button);
-  }
-  $('#chips').replaceChildren(chipFrag);
+  renderSources(sources);
 
   const shown=FILTER?ITEMS.filter(i=>i.source===FILTER):ITEMS;
   const page=shown.slice(0,visibleCount);
@@ -465,10 +521,32 @@ function render(){
 
 // ── events ─────────────────────────
 document.addEventListener('click',e=>{
+  const star=e.target.closest('.source-star');
+  if(star){
+    const source=star.dataset.source;
+    const urls=[...(sourceUrlMap().get(source)||[])], keys=urls.length?urls:[source];
+    const isPinned=sourceFavorites.includes(source)||keys.some(key=>sourceFavorites.includes(key));
+    const next=isPinned?sourceFavorites.filter(value=>value!==source&&!keys.includes(value))
+      : [...new Set([...sourceFavorites,...keys])];
+    if(!ls.set('sourceFavorites',JSON.stringify(next))){
+      $('#sourceError').textContent='Could not save pinned sources. Check browser storage and try again.';
+      return;
+    }
+    sourceFavorites=next;
+    $('#sourceError').textContent='';
+    const sources=SOURCES.length?SOURCES:[...new Set(ITEMS.map(i=>i.source))].sort();
+    renderSources(sources);
+    for(const row of $('#chips').children){
+      if(row.dataset.all!=='true' && row.dataset.source===source){ row.children[1]?.focus(); break; }
+    }
+    return;
+  }
   const c=e.target.closest('.chip');
   if(c){
-    const next=c.dataset.source==='All'?null:c.dataset.source;
+    const next=c.dataset.all==='true'?null:c.dataset.source;
     if(next!==FILTER){ FILTER=next; visibleCount=PAGE_SIZE; render(); }
+    $('#sourcePicker').open=false;
+    $('#sourceSummary').focus();
   }
   if(e.target.closest('.load-more')){
     const before=document.querySelectorAll('#list .item').length;
@@ -477,6 +555,7 @@ document.addEventListener('click',e=>{
   }
 });
 $('#refresh').onclick=()=>void run();
+$('#sourceSearch').oninput=filterSourceChips;
 $('#gear').onclick=()=>{
   $('#proxy').value=cfg.proxy;
   $('#opml').value=cfg.opml;

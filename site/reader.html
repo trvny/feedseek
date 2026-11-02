@@ -38,12 +38,28 @@
   .bar button{background:none;border:none;color:var(--mut);font-size:20px;
     padding:4px 6px;cursor:pointer}
   .bar button:disabled{opacity:.45;cursor:default}
-  .chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;
-    scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
-  .chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);
-    color:var(--mut);border-radius:999px;padding:5px 12px;font-size:13px;
-    white-space:nowrap;cursor:pointer}
+  .source-picker{position:relative;margin-top:10px;width:min(100%,360px)}
+  .source-picker summary{cursor:pointer;list-style:none;padding:8px 10px;border:1px solid var(--line);
+    border-radius:8px;background:var(--card);font-size:14px}
+  .source-picker summary::-webkit-details-marker{display:none}
+  .source-picker summary::after{content:'▾';float:right;color:var(--mut)}
+  .source-panel{position:absolute;top:calc(100% + 4px);left:0;width:100%;padding:10px;
+    border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:0 12px 30px #0009}
+  .source-search{display:block;width:100%;margin:0;padding:8px 10px;
+    border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;font-size:14px}
+  .source-search:focus-visible,.source-picker summary:focus-visible,.chip:focus-visible,.source-star:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px}
+  .chips{max-height:min(50vh,360px);overflow:auto;padding-top:6px}
+  .source-row{display:flex;gap:4px;align-items:center}
+  .source-row[hidden]{display:none}
+  .chip{flex:1;min-width:0;border:1px solid transparent;background:transparent;text-align:left;
+    color:var(--fg);border-radius:6px;padding:8px 10px;font-size:14px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
   .chip.on{background:var(--accent-dim);border-color:var(--accent);color:var(--fg)}
+  .source-star{flex:0 0 40px;min-height:40px;border:0;background:transparent;color:var(--mut);
+    font-size:20px;cursor:pointer}.source-star[aria-pressed="true"]{color:var(--accent)}
+  .source-error{color:var(--fg);font-size:13px;margin:6px 2px}
+  .source-error:empty{display:none}
   main{padding:8px 16px 40px;max-width:760px;margin:0 auto}
   .item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
   .itxt{flex:1;min-width:0}
@@ -99,7 +115,14 @@
     <button id="refresh" title="Refresh" aria-label="Refresh">↻</button>
     <button id="gear" title="Settings" aria-label="Settings">⚙</button>
   </div>
-  <div class="chips" id="chips"></div>
+  <details class="source-picker" id="sourcePicker">
+    <summary id="sourceSummary">Sources: <span id="sourceSelection">All</span></summary>
+    <div class="source-panel">
+      <input class="source-search" id="sourceSearch" type="search" placeholder="Find a source…" aria-label="Find a source" autocomplete="off">
+      <div class="source-error" id="sourceError" role="status"></div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </details>
 </header>
 <main id="list"><div class="msg">Loading…</div></main>
 
