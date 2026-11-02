@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://huggingface.co</id>
   <title>Hugging Face</title>
-  <updated>2026-11-01T20:47:03.381064+00:00</updated>
+  <updated>2026-11-02T01:46:49.891963+00:00</updated>
   <author>
     <name>Hugging Face</name>
   </author>
@@ -14,6 +14,21 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=huggingface.co&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=huggingface.co&amp;sz=64</webfeeds:icon>
   <subtitle>Hugging Face Blog, community Posts, and Trending Papers in one feed.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/huggingface/7e4ab8a7e52d5118</id>
+    <title>I really like the LocalLLaMA/typed-decisions benchmark, so I built a small Space to make its leaderboard easier to explore:</title>
+    <updated>2026-11-02T01:46:48.996346+00:00</updated>
+    <content>I really like the LocalLLaMA/typed-decisions benchmark, so I built a small Space to make its leaderboard easier to explore: tardellirs/typed-decisions-explorer It reads the dataset card on every visit, so new submissions show up as soon as they are merged. It has a sortable ranking and two Pareto charts: accuracy × size and accuracy × latency. A few things it makes easy to see in the zero-shot table today: - Only three models are within noise of the top: Quyet-1.0-Large (0.791), meraGPT Decider 1 and Baseten Mammoth 1 (0.768). - The smallest model above Jev 1.13 (0.727) is d3-mini, at 4B. - The fastest local run above Jev is FastBrain-9B: 50 ms on an RTX PRO 6000. - 15 of 41 models score abo</content>
+    <link href="https://huggingface.co/posts/tardellirs/145368791310880" rel="alternate"/>
+    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
+    <published>2026-11-02T01:46:48.996346+00:00</published>
+    <media:group>
+      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/1XdCYyOlDotHOflYJN1HE.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/1XdCYyOlDotHOflYJN1HE.gif"/>
+    </media:group>
+    <dc:creator>Hugging Face Posts</dc:creator>
+    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/687570c1602bdfd2d11cba3d/1XdCYyOlDotHOflYJN1HE.gif" type="image/gif" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/f4b4b1f99d372c58</id>
     <title>One neural network. Five mathematical operations. Different learning times.</title>
@@ -3058,21 +3073,6 @@
     </media:group>
     <dc:creator>Hugging Face Posts</dc:creator>
     <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/646a36113eb2bab0419a6b9a/Lt5RwgSuJUYAK78PzDJBb.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/huggingface/03108d6fbcb5cd02</id>
-    <title>We just open-sourced THX-01, a 322M decision model.</title>
-    <updated>2026-10-10T01:54:47.219623+00:00</updated>
-    <content>We just open-sourced THX-01, a 322M decision model. Most AI decisions in production are classification in disguise: which team gets this ticket, is this email phishing, what's the total on this invoice. Calling a large LLM for each one is slow, expensive, and its confidence means nothing. THX-01 is built for exactly these decisions. You send it a message or document plus typed questions, and in one forward pass (~10 ms) it returns: - an answer to every question, with a calibrated probability for each option - exact numbers stated in the document, or null if the number isn't there - verbatim quotes and the passages that support each answer On our 4-language support-ticket benchmark it matches</content>
-    <link href="https://huggingface.co/posts/doofz/580137154471351" rel="alternate"/>
-    <category term="Hugging Face Posts" label="Hugging Face Posts"/>
-    <published>2026-10-10T01:54:47.219623+00:00</published>
-    <media:group>
-      <media:content url="https://cdn-uploads.huggingface.co/production/uploads/646a36113eb2bab0419a6b9a/fPjdmnAXDa8AlQKZZmGjb.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://cdn-uploads.huggingface.co/production/uploads/646a36113eb2bab0419a6b9a/fPjdmnAXDa8AlQKZZmGjb.png"/>
-    </media:group>
-    <dc:creator>Hugging Face Posts</dc:creator>
-    <link rel="enclosure" href="https://cdn-uploads.huggingface.co/production/uploads/646a36113eb2bab0419a6b9a/fPjdmnAXDa8AlQKZZmGjb.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/huggingface/43ef54e74d276082</id>
