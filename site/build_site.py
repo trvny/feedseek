@@ -24,6 +24,7 @@ finally to the trvny/feedseek default for local runs.
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import os
@@ -967,7 +968,15 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
 
 def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
-    return reader_html.replace("https://trvny.github.io/feedseek/reader/", f"{base}reader/")
+    reader_html = reader_html.replace("https://trvny.github.io/feedseek/reader/", f"{base}reader/")
+    for url, asset in (
+        ("reader-fetch.js", "reader-fetch.js"),
+        ("reader.js", "reader.js"),
+        ("../webmcp.js", "webmcp.js"),
+    ):
+        version = hashlib.sha256((SITE_DIR / asset).read_bytes()).hexdigest()[:12]
+        reader_html = reader_html.replace(f'src="{url}"', f'src="{url}?v={version}"')
+    return reader_html
 
 
 def copy_reader_bundle(base: str) -> None:
