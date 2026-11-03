@@ -13,11 +13,14 @@ SPEC.loader.exec_module(build_site)
 class SiteRobotsTests(unittest.TestCase):
     def test_travny_crawler_additions_are_explicitly_allowed(self):
         robots = build_site.build_robots("https://example.com/")
+        groups = [block.splitlines() for block in robots.split("\n\n") if block.strip()]
         for agent in ("anthropic-ai", "BingBot", "DuckAssistBot"):
             with self.subTest(agent=agent):
-                self.assertEqual(robots.count(f"User-agent: {agent}\n"), 1)
+                matching = [group for group in groups if f"User-agent: {agent}" in group]
+                self.assertEqual(len(matching), 1)
+                self.assertIn("Allow: /", matching[0])
+                self.assertNotIn("Disallow: /", matching[0])
         self.assertIn("User-agent: *\n", robots)
-        self.assertIn("Allow: /\n", robots)
         self.assertIn("Sitemap: https://example.com/sitemap.xml\n", robots)
 
 
