@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-111 Model Feeds · 25133 entries.
+111 Model Feeds · 25138 entries.
 
 ## Access
 
@@ -23,7 +23,7 @@
 | `9gag` | 9GAG | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_9gag.json) |
 | `accuweather` | AccuWeather News | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_accuweather.json) |
 | `aibridge` | AI-bridge | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_aibridge.json) |
-| `alibaba` | Alibaba | 231 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
+| `alibaba` | Alibaba | 232 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_alibaba.json) |
 | `anthropic` | Anthropic | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_anthropic.json) |
 | `apple` | Apple | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_apple.json) |
 | `arxiv` | arXiv | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_arxiv.json) |
@@ -39,7 +39,7 @@
 | `cloudflare` | Cloudflare | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_cloudflare.json) |
 | `czworka` | PR4 Czwórka | 923 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_czworka.json) |
 | `daily_digest` | Daily Digest | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_digest.json) |
-| `daily_quote` | Daily Quote | 129 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
+| `daily_quote` | Daily Quote | 130 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_daily_quote.json) |
 | `datime` | DaTime | 169 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_datime.json) |
 | `dji` | DJI | 48 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_dji.json) |
 | `docker` | Docker | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_docker.json) |
@@ -107,7 +107,7 @@
 | `spidersweb` | Spider's Web | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_spidersweb.json) |
 | `spotify` | Spotify | 147 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_spotify.json) |
 | `steam` | Steam | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_steam.json) |
-| `tencent` | Tencent | 190 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tencent.json) |
+| `tencent` | Tencent | 192 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tencent.json) |
 | `theysaidso` | Quotes, Sayings and Jokes of the Day | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_theysaidso.json) |
 | `toyota_global` | Toyota Global | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_toyota_global.json) |
 | `trojka` | PR3 Trójka | 1826 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
@@ -119,7 +119,7 @@
 | `usgov` | US.gov | 366 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_usgov.json) |
 | `v2ex` | V2EX | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_v2ex.json) |
 | `visualcrossing` | Visual Crossing | 45 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing.json) |
-| `visualcrossing_blog` | Visual Crossing Resources | 56 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing_blog.json) |
+| `visualcrossing_blog` | Visual Crossing Resources | 57 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_visualcrossing_blog.json) |
 | `weather` | Pogoda — Kościelec (Chrzanów) | 60 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_weather.json) |
 | `wikipedia_pl` | Wikipedia (PL) | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_wikipedia_pl.json) |
 | `wotd` | Word of the Day | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_wotd.json) |

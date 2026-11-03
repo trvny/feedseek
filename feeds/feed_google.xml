@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-11-02T20:30:44.310009+00:00</updated>
+  <updated>2026-11-03T02:37:12.009522+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,157 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/developers-practitioners/google-cloud-developer-plugin-now-available-in-antigravity-marketplace</id>
+    <title>Google Cloud Developer plugin now available in Antigravity Marketplace</title>
+    <updated>2026-11-02T18:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Building cloud solutions with autonomous AI agents should feel fast, safe, and reliable. Without cloud-specific context, coding agents often struggle. They might invent deprecated SDK syntax, guess invalid command flags, or attempt operations without the required Identity and Access Management (IAM) permissions. Even worse, an unguided agent can enable billable APIs or provision cloud resources without your explicit permission.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Starting today, you can install the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; plugin directly from the Antigravity Marketplace in the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Build with Google&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; section. This plugin equips Antigravity with foundational skills, safety guardrails, and live documentation grounding for building on Google Cloud. If you've never installed a plugin using the marketplace before, you can refer to the &lt;/span&gt;&lt;a href="https://antigravity.google/docs/marketplace/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Antigravity documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Configuration is straightforward. The bundled Developer Knowledge Model Context Protocol (MCP) server is pre-authorized by default. You don't need to configure API keys, exchange OAuth tokens, or edit any configuration files. You install the plugin, and your agent connects to official Google developer documentation immediately.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In this post, we'll walk through what's included in the plugin, how to install it with one click, and how it grounds your agent in live Google Cloud documentation.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Why use the Google Cloud Developer plugin?&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Coding agents often rely on static training data. Cloud platforms update quickly, and models can produce code with outdated client libraries or invalid parameters.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; plugin solves this issue. It bundles curated skills, intelligent routing rules, and the Developer Knowledge MCP server into a single portable package.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin provides three key benefits:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Live documentation grounding&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: The agent queries official Google Cloud documentation over streamable HTTP.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Safety and cost guardrails&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: The agent enforces least-privilege IAM patterns and it requires your consent before it enables billable APIs or modifying cloud infrastructure.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Environment awareness&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: The agent inspects your local environment, detects existing CLI configurations, and designs safe execution roadmaps before it runs commands.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;What's included in the plugin&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin pairs core baseline skills and live documentation grounding with an intelligent skill routing architecture. Rather than limiting your agent to a fixed set of capabilities, it acts as an extensible gateway that discovers and pulls specialized skills from Google on demand.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Bundled agent skills&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The bundled skills provide essential day-one guardrails, live documentation grounding, and the dynamic discovery engine that unlocks the broader catalog:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://github.com/google/skills/tree/main/plugins/cloud/google-cloud-developer/skills/finding-google-skills" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;code&gt;finding-google-skills&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Powers flexible skill routing by discovering and loading skills on demand from the &lt;/span&gt;&lt;a href="https://g.dev/ai/skills" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;code&gt;google/skills&lt;/code&gt; repository on GitHub&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Rather than requiring you to research, install, and manage individual skills, it dynamically retrieves the exact instructions your agent needs for specialized tasks in real time.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code&gt;&lt;a href="https://github.com/google/skills/tree/main/plugins/cloud/google-cloud-developer/skills/retrieving-developer-knowledge" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;retrieving-developer-knowledge&lt;/strong&gt;&lt;/a&gt;&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: Provides answers and code samples that are grounded in official Google documentation across Google Cloud, Firebase, Android, Web, and Gemini.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://github.com/google/skills/tree/main/plugins/cloud/google-cloud-developer/skills/gcloud" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;code&gt;gcloud&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Enforces execution guardrails, validates syntax, and applies safety checks to Google Cloud CLI (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gcloud&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) commands. It blocks accidental destructive operations and it keeps you in control.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code&gt;&lt;a href="https://github.com/google/skills/tree/main/plugins/cloud/google-cloud-developer/skills/google-cloud-recipe-auth" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;google-cloud-recipe-auth&lt;/strong&gt;&lt;/a&gt;&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: Steers your agent toward secure authentication patterns. It enforces service identities and Application Default Credentials (ADC) while it blocks risky practices like downloading service account JSON keys.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;code&gt;&lt;a href="https://github.com/google/skills/tree/main/plugins/cloud/google-cloud-developer/skills/google-cloud-recipe-onboarding" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;google-cloud-recipe-onboarding&lt;/strong&gt;&lt;/a&gt;&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;: Guides initial project setup, account onboarding, and billing verification. It audits project states before it attempts to activate services.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Pre-authorized Developer Knowledge MCP server&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin connects your agent to the &lt;/span&gt;&lt;a href="https://developers.google.com/knowledge/mcp" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Developer Knowledge MCP server&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Typically, adding an MCP server requires manual API key handling. With the Antigravity Marketplace integration in the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;Build with Google&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; catalog, this MCP server is pre-authorized: Antigravity manages the authentication transparently. Your agent connects to Google's documentation server immediately after installation.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Smart routing rules: on-demand capability expansion&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin includes &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-discovery.md&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, an active routing rule that works together with the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;finding-google-skills&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; bundled skill. When your prompt touches specialized topics, the routing rule directs the agent to fetch the relevant skills from the public catalog as needed.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This dynamic routing keeps your agent fast and token-efficient. Instead of preloading dozens of niche skills that clutter the context window, your agent pulls in deep, specialized guidance only when your task requires it.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Install the plugin with one click&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You can install the plugin through the Antigravity Marketplace UI or through your terminal.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="google-cloud-developer-plugin-now-available-in-antigravity-marketplace-agy-install" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/google-cloud-developer-plugin-now-available-in-antigravity-marketplace-agy.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you prefer the command line, install the plugin with a single command:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;agy plugin install google-cloud-developer&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f1896867bd0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The CLI registers the skills and connects the Developer Knowledge MCP server immediately. You can also explore the plugin and skills directly on &lt;/span&gt;&lt;a href="https://g.dev/ai/skills" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GitHub&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin in action: Querying live documentation&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;After the plugin is installed, your agent automatically grounds its answers in current documentation. You don't need to prompt it with special syntax. Consider a practical query:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;"Based on the documentation what is the main difference between GKE and Cloud Run? When should I use one over the other?"&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Without the plugin, an agent might guess or provide outdated information. With the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;google-cloud-developer&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; plugin active, the agent queries the pre-authorized Developer Knowledge MCP server:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="google-cloud-developer-plugin-now-available-in-antigravity-marketplace-mcp-usage" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/google-cloud-developer-plugin-now-available-in-antigravity-marketplace-mcp.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The agent produces a clean, verified answer based on official documentation.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Connect with me&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;I'd love to hear how you use the plugin in your daily workflow. Share your feedback and questions with me on &lt;/span&gt;&lt;a href="https://www.linkedin.com/in/remigiusz-samborski/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;LinkedIn&lt;/span&gt;&lt;/a&gt;, &lt;a href="https://x.com/RemikSamborski" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;X&lt;/span&gt;&lt;/a&gt;, or &lt;a href="https://bsky.app/profile/rsamborski.bsky.social" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Bluesky&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/developers-practitioners/google-cloud-developer-plugin-now-available-in-antigravity-marketplace" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-02T18:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/google-cloud-developer-plugin-now-available-.max-600x600.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/google-cloud-developer-plugin-now-available-.max-600x600.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/google-cloud-developer-plugin-now-available-.max-600x600.jpg" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/11/create-a-custom-avatar-google-vids.html</id>
     <title>Upload an image to create a custom avatar in Google Vids</title>
@@ -288,6 +439,665 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Messages_Phone_by_Google.max-600x600.format-webp_58gh6qw.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Messages_Phone_by_Google.max-600x600.format-webp_58gh6qw.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month</id>
+    <title>What Google Cloud announced in AI this month</title>
+    <updated>2026-11-02T16:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph"&gt;&lt;p&gt;&lt;b&gt;&lt;i&gt;Editor’s note&lt;/i&gt;&lt;/b&gt;&lt;i&gt;: Want to keep up with the latest from Google Cloud? Check back here for a monthly recap of our latest updates, announcements, resources, events, learning opportunities, and more.&lt;/i&gt;&lt;/p&gt;&lt;hr /&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This October, we took massive leaps forward in delivering flexible, open, and powerful enterprise AI solutions. From bringing Gemini 4 Argon to Google Cloud to expanding choice and flexibility, we’re giving organizations the tools they need to bring complex, multi-agent AI workflows into production safely.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s a quick look at the major milestones, expert insights, and practical developer guides to read through and save. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 4 Argon available on Google Cloud, built to help solve your business’ hardest problems: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;We trained Argon to work with both depth and precision, which allows it to maintain context across long, multi-step tasks which are reinforced with strong domain expertise along the way. Whether your team is running complex software builds, handling detailed financial and legal work, or deploying cybersecurity tools like CodeMender, Argon helps your teams maintain focus from start to finish. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Expanding Claude availability and deployment choice on Google Cloud:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; We announced the general availability of an Anthropic-managed deployment option for Claude Models on Google Cloud. This gives teams more choice in how they run their models, helping them consolidate AI workloads on Google Cloud alongside our existingGoogle-managed deployment option. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud expands model choice and flexibility, bringing OpenAI models to customers:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Google Cloud is now the only hyperscale cloud provider offering access to all three leading closed source LLMs, alongside more than 200 first-party, third-party, and open models on a unified enterprise AI platform. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; In keeping with Google Cloud's commitment to an open ecosystem and to give developers the right model for every job, Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity for Google Cloud customers. Claude Opus 5.5 is built for complex work while Claude Sonnet 5.5 is a faster, lower-cost complement.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Introducing Gemini for government services:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Today we're bringing the Gemini agent to public service with Gemini for government services in preview, part of our new suite of purpose-built industry solutions. It adds skills built around government work, connections to the systems agencies already run, and specialized partner agents, with governance running underneath it all. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Robotics Embodied Reasoning 2 is now available on Google Cloud:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; For the first time, organizations can pair Google DeepMind’s latest embodied reasoning model for robotics with the enterprise-grade security, multi-agent orchestration, and end-to-end lifecycle management of Google Cloud — making it easier to simulate, evaluate, and deploy safe, adaptive physical AI at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick) &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/startups-advancing-robotics-with-google-ai-google-deep-mind-seven-examples?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;A new gear: How startups are advancing robotics with Google AI: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;We marked a major milestone in physical AI with the launch of Gemini Robotics Embodied Reasoning 2 (ER 2) on the Gemini platform and AI Studio, bringing Google DeepMind’s frontier multimodal reasoning and long-horizon task planning for robotics to Google Cloud. Read more from Darren Mowry, VP of Global Startups and Investor Ecosystem at Google, about the exciting work these startups are undertaking. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/devs-guide-to-mcp-apps-in-gemini?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Developer’s guide to implementing MCP apps in Gemini:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Enterprise assistants still respond mostly in text. However, that can break down for visual, multi-step work, where every adjustment costs another slow chat turn. This guide takes you through implementation in Gemini. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Four evaluation engineering lessons learned from building agent plugins&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Here are four eval lessons we learned from building the new plugin that you can apply to your own builds. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/consulting/three-ways-to-audit-your-llm-evaluators?e=0"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Who judges the judge? Three helpful ways to audit your LLM evaluators:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; In this post, we explore what’s holding enterprises back from strong evals, and share an easy three-pillar method you can use to improve your quality. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-aside"&gt;&lt;dl&gt;
+    &lt;dt&gt;aside_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;title&amp;#x27;, &amp;#x27;$300 in free credit to try Google Cloud AI and ML&amp;#x27;), (&amp;#x27;body&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f18953850d0&amp;gt;), (&amp;#x27;btn_text&amp;#x27;, &amp;#x27;Start building for free&amp;#x27;), (&amp;#x27;href&amp;#x27;, &amp;#x27;http://console.cloud.google.com/freetrial?redirectPath=/vertex-ai/&amp;#x27;), (&amp;#x27;image&amp;#x27;, None)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;September&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This September, we brought you new how-to guides, model updates, and security innovations to help you find-and-fix. From Gemini 3.8 Live with Live Avatar to Mantis, there’s no shortage of new ways to apply AI to your work. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Notably, we announced Gemini 4 Argon, our next era of frontier intelligence. Gemini 4 Argon delivers frontier performance in complex workflows across real-world software engineering, enterprise knowledge work like legal and finance, and cybersecurity defense. You can learn more &lt;/span&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-8-live-with-live-avatar-is-now-generally-available?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 3.8 Live with Live Avatar is now generally available: &lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Following our announcement of Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, Gemini 3.8 Live with Live Avatar is now generally available in Gemini Enterprise. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=oVG-5BF-dWo"&gt;
+
+      
+        
+
+        &lt;div class="article-video__aspect-image"&gt;
+          &lt;span class="h-u-visually-hidden"&gt;Gemini 3.8 Live with Live Avatar&lt;/span&gt;
+        &lt;/div&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=oVG-5BF-dWo"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/getting-started-with-the-mantis-harness-to-find-and-fix-bugs?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Getting started with Mantis, our open-source bug finding-and-fixing harness:&lt;/strong&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Available to all as an open-source framework, Mantis is part of Google’s internal approach to find and fix vulnerabilities at machine-speed. It creates a more effective scalable, context-aware repository analysis. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick) &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/formula-e-goodwood-record-setting-edge-computing-gemma-ai?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Racers, start your agents: Formula E brings realtime AI to the edge:&lt;/strong&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Chasing records at the Goodwood Hillclimb, Formula E used Gemini Enterprise, Gemma, and a Pixel phone bolted to the dash to push the envelope of AI and edge computing. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=ww1OVrqe3R4"&gt;
+
+      
+        
+
+        &lt;div class="article-video__aspect-image"&gt;
+          &lt;span class="h-u-visually-hidden"&gt;Formula E&lt;/span&gt;
+        &lt;/div&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=ww1OVrqe3R4"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Best practices guide for customizing Gemini models via Reinforcement Learning (RL):&lt;/strong&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;In this guide, we will walk through practical best practices for using RL fine-tuning service. We'll start with a short tour of the RL training loop, how to decide if and when to use RL, and introduce how to get the most value from this approach.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Empower your agents with the Google Cloud CLI remote MCP server:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Powered by the popular gcloud and bq (BigQuery) command-line tools, this new server gives AI agents immediate, broad access to command-line operations for managing Google Cloud infrastructure and working with advanced BigQuery workflows securely and seamlessly. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/graph-workflows-in-adk-everything-you-need-to-know?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Graph Workflows in ADK: Everything you need to know:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Using a refund workflow in ADK, we'll cover fan-out and fan-in, deterministic and agent routers, human-in-the-loop pauses, parallel workers, and dynamic orchestration— along with when to use a static graph or let Python decide what runs next.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;August&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This month, we focused on making AI highly practical for your business, including its associated costs. This meant tailoring our models for specialized industries – starting with Financial Services and Legal –  and helping you keep your budgets under control. Let’s dive in! &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/flexible-billing-and-cost-controls-for-agents-on-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;FinOps for the AI era: New flexible billing and cost controls for agents:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; To help you get better return on AI, we announced expanded billing flexibility and new cost management tools for agent workloads across Gemini Enterprise and developer tools like Google Antigravity in Gemini Enterprise and Android Studio. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-for-financial-services?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise for Financial Services&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: We’re bringing Google’s agentic AI directly into the workflows of capital markets and corporate banking.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-for-legal?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise for Legal&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Gemini Enterprise for Legal provides an integrated, fully governed environment configured for rapid deployment across firms and corporate legal departments. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-google-antigravity-for-enterprise-customers?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Expanding Google Antigravity for enterprise customers: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Antigravity is available now as part of eligible Gemini Enterprise app subscriptions, including out-of-the-box administrative and spend controls.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick): &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/tokenomics-why-smart-teams-spend-more-on-ai-on-purpose?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Tokenomics: Why smart teams spend more on AI, on purpose&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Hear from Eric Lam, Head of Value, Delta, Google Cloud Consulting about how disciplined organizations are moving past reactive sticker shock over AI bills and embracing tokenomics. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/meet-the-researcher-fighting-ai-hallucinations-at-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Meet the researcher fighting AI hallucinations at Google Cloud&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Cyrus is a senior research scientist at Google. Lately, his focus has shifted to large language models, specifically a persistent issue known as hallucination, which is when an artificial intelligence model lacks the correct facts but confidently invents an answer anyway.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/gemini-enterprise-optimize-ai-token-spend?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;What sports cars can teach us about optimizing AI spend:&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; More tokens doesn't always mean better AI. Read our conversation with Mike Clark, Director of Product Management for Gemini Enterprise Agent Platform, on how to balance horsepower with efficiency and get the highest return out of every dollar you spend on AI.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use: &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Looking for a steer on your foundation or inspiration for your next project? Take a look at some of our favorite how-to guides from August: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/10-questions-for-your-startup-developers?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;10 questions every startup should answer before moving to production with their AI prototype&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: These ten are scoped to the prototype-to-production transition itself. Each question ends with a short, runnable snippet you can copy into your own project today. Adjacent decisions that matter just as much but aren't specific to that move, your data layer and RAG architecture, CI/CD, network design, are deliberately out of frame here.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/your-chance-to-start-building-ai-agents-from-the-absolute-basics?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Your chance to start building AI agents from the absolute basics&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Agent Valley is a free, 5-week live learning series designed to take you from scratch to building your very own hands-on agent systems. And instead of staring at boring terminal lines, you’ll be building and playing inside a tiny, low-poly virtual world!&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built. &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;July&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Since launching the Gemini Enterprise Agent Platform a few months ago, we’ve watched businesses move from basic experiments to serious, production-grade builds. We want to make it even easier — and more secure — for you to scale those systems.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Along with a batch of new platform updates, this month we’ve put together 13 practical demos and 20 diagnostic questions to help your engineering teams align on a strong architectural blueprint. Let’s dive in! &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise-agent-platform?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;What’s new in Gemini Enterprise Agent Platform&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: In this helpful recap, we announced some of our most popular capabilities are available for everyone, from Agent Runtime to Agent Identity.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/find-and-fix-software-vulnerabilities-with-codemender?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Now in preview: Find and fix software vulnerabilities with CodeMender&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: As adversarial AI threats accelerate attacks on code, security teams must counter them with machine-speed defenses that can automate code remediation and fight AI with AI. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;You can learn more about CodeMender and review the documentation&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/codemender"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/alphaevolve-is-available-for-everyone?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Solve harder problems with AlphaEvolve, now available to everyone on Google Cloud&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: AlphaEvolve is a code optimization and discovery agent built on top of Gemini that helps solve the hardest algorithmic problems and achieve breakthroughs for your business and research. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick): &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If automation requires delegation, then delegation requires trust. But letting an AI agent run on its own is a big leap for any business. While the productivity gains are clear, the fear of losing control is very real. This month, we sat down with our experts to discuss how leaders can navigate this shift by focusing on transparency, predictability, and setting clear boundaries for how agents handle weird data exceptions.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s our picks for the month to learn more.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/scale-ai-by-trading-control-for-trust?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;How leaders can scale AI by trading control for trust (Q&amp;amp;A)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: We sat down with Michael Gerstenhaber, VP of Product Management for Gemini Enterprise, to discuss why the future of AI is about defining safe boundaries.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/what-makes-an-ai-agent-trustworthy-data-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;What makes an AI agent trustworthy&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Context is fast becoming one of the most valuable assets a company owns. Prajakta Damle, Senior Director, Product Management, shares what it takes to get trustworthy AI right. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use: &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;What if you’re looking for a steer on your basic foundation, inspiration for recipes, or some inspiration? Take a look at some of our favorite how-to guides from July: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Automate your agent development lifecycle using any coding agent&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Stuck prototyping? With Agents CLI skills, you can go through the different phases of the entire agent lifecycle without ever leaving your coding agent.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/why-ai-apps-fail-in-production?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Why AI apps fail in production (And how Google solved it)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Only 5% of AI prototypes make it to production, and the other 95% fall into the validation abyss. How can you move confidently into production? &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/13-demos-on-gemini-enterprise-agent-platform?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;13 hands-on demos to build on Gemini Enterprise Agent Platform&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Not sure where to start with Agent Platform? Here’s 13 ways you can stir up some creativity. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;June&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Our main focus in June was helping your teams build, scale, and secure AI. Today, we’re sharing a fresh roundup of updates designed to help you run smarter, more secure applications while keeping everything under your control. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We even shared a cool virtual shopping demo at Cannes to show how retailers can make product discovery more exciting. Let’s dive in! &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Introducing the Open Knowledge Format&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: We introduced the Open Knowledge Format (OKF), an open specification that formalizes the LLM-wiki pattern into a portable, interoperable format. This is a vendor-neutral, agent- and human-friendly standard for representing the metadata, context, and curated knowledge that modern AI systems need.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/powering-the-next-era-of-confidential-ai?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Collaboration with Apple on its expanded Private Cloud Compute (PCC) systems&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Our collaboration with Apple is built on a foundation of deep commitment to privacy that leverages Google Cloud's security and privacy technologies. At the heart of this collaboration is our Confidential Computing portfolio and our Titanium security architecture.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/cloud-fable-5-on-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Claude Fable 5: Available on Google Cloud: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Claude Fable 5, Anthropic’s latest frontier model, is now generally available on Google Cloud. This launch is the latest proof point of our ongoing commitment to bring the industry's latest models straight to our Agent Platform. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/gemini-enterprise-is-helping-restyle-the-retail-playbook?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud Atelier: How Gemini Enterprise is helping restyle the retail playbook&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: This year at Cannes, we showcased Cloud Atelier — a destination-based, virtual shopping experience that highlights how retail brands can turn this classic dilemma into an exciting moment of product discovery. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick): &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-cloud-security-uses-ai-internally?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;How Google Cloud Security uses AI internally&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: To counter machine-speed, AI-driven threats, we’ve worked hard to transition Google Cloud’s security posture to an autonomous, proactive model. By embedding specialized AI agents directly into our software development lifecycle (SDLC), we’ve created automated guardrails that protect code at a scale and speed unreachable by human teams — and we’re taking steps to make those same guardrails widely available.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-the-4-lessons-that-guided-ai-threat-defense?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;The 4 lessons that guided AI Threat Defense&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: We introduced Chris Betz as the new CISO of Google Cloud. For his first Cloud CISO Perspectives, Chris shares four key lessons we learned about using AI to the defender’s advantage while building AI Threat Defense.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use: &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/transform/5-lessons-from-red-teaming-ai-applications?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;5 lessons from red teaming AI applications: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;To help you build AI securely, Mandiant has developed a proactive, risk-based approach centered on the Good AI Assessment (GAIA) Top 10, outlined in our new report, Secure Development of Generative AI Applications: A Proactive Approach. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/how-to-measure-the-business-value-of-generative-ai?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;How to unlock true ROI in software development – a deep dive into the latest DORA research: &lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;To help you evaluate the costs and business benefits of AI, we recently shared the DORA: ROI of AI-assisted software development report. This research offers a practical approach to help your team work through early adoption challenges, align engineering plans, and drive business growth.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/agent-factory-recap-100x-engineering-with-ai-agents-in-google-antigravity-20?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Factory Recap: 100X engineering with AI agents in Google Antigravity 2.0&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: In this episode of the Agent Factory, Shir Meir Lador, Head of AI Engineering, Google Cloud Developer Relations, sat down with Rody Davis, one of Google’s top agentic engineers. They dive into the massive shift from traditional IDEs to agent-first platforms, the reality of code reviews in an AI-driven world, and how to use "skills" to perform at a 100X level.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built. &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;May&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We’ve had a busy month! Between announcing Gemini Spark and Gemini 3.5 at Google I/O – and unveiling Google AI Threat Defense, our latest AI-powered cybersecurity solution, we had a lot to share with Google Cloud customers. Keeping up with the latest news takes time, so we gathered the most important announcements, thought leadership, and technical guides in one place to help you quickly catch up.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To learn more about our I/O announcements, here’s &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/innovations-from-google-io-26-on-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;everything you need to know&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for Google Cloud customers, and &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/startups/startup-news-from-io-and-what-it-means-to-founders?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;top news for startups&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Top announcements&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Introducing Google AI Threat Defense to help you outpace the adversary: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Google Cloud is introducing a comprehensive AI-powered cybersecurity solution — Google AI Threat Defense — an always-on autonomous security platform. Learn more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/introducing-google-ai-threat-defense?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini 3.5:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Our latest family of models combines frontier intelligence with action – starting with Gemini 3.5 Flash. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini Omni:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Our new model is a leap forward in world understanding, multimodality, and editing, letting you generate any output from any input, starting with video. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Antigravity: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Google Antigravity’s expanded capabilities and new integration with Agent Platform bring agentic development to your entire organization.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Gemini Spark: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;For Gemini Enterprise and Workspace customers, Gemini Spark is your 24/7 personal AI agent that helps you work more efficiently by autonomously taking action on your behalf, under your direction. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Workspace: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Google Pics, our new image generation and editing tool, and new voice features in Gmail, Docs and Keep, help reimagine how you work.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Managed Agents API on Agent Platform:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Allows developers to build and run custom agents inside secure, Google-hosted environments that seamlessly integrate with Agent Platform.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;CodeMender:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; A powerful AI security agent provided through Agent Platform, CodeMender can help find and fix vulnerabilities in your code.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Nano Banana 2 and Nano Banana Pro are generally available: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Available today via Gemini Enterprise Agent Platform, organizations are already putting the models to work. Learn more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/nano-banana-2-and-nano-banana-pro-are-generally-available?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Thought leadership (editor’s pick): &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud CISO Perspectives: How Google + Wiz changes multicloud strategy for CISOs: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Vinod D’Souza, director, Office of the CISO, shares highlights from his RSA Conference fireside chat with Anthony Belfiore, chief strategy officer, Wiz. While threat actors have seen gains from the adversarial misuse of AI, Google and Wiz are tackling these challenges head-on by combining Wiz's deep cloud telemetry with Google's world-class AI and quantum research to help CISOs and their organizations meet the needs of the agentic enterprise era. Read more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-wiz-changes-multicloud-strategy-for-cisos?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use: &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;What Google I/O '26 means for developing agents on Google Cloud: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Dig deep into how Gemini Enterprise Agent Platform and the new developer tools shared at I/O fit together, unpack the spectrum of choice for building, and share what we’d actually try first. Learn more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/io26-news-for-agent-developers-on-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Five must-have guides to move agents into production with Gemini Enterprise Agent Platform:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Here is a look back at our five-part series covering the architecture patterns and best practices you need to move your agents into production. Learn more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/five-guides-to-building-and-scaling-production-ready-ai-agents?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;How to build an AI-ready security program for the public sector:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; From industrial control systems to decades-old municipal databases, here’s our CISO guidance to prep AI-ready security programs for the public sector. Learn more &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-to-build-an-ai-ready-security-program-for-the-public-sector"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built. &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;April&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We hosted &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/google-cloud-next/welcome-to-google-cloud-next25?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Next&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in Las Vegas on April 22, announcing incredible innovations from Gemini Enterprise Agent Platform to our eight-generation TPUs. We also expanded the Gemini Enterprise app in collaborative ways – now, with new features like Projects, you can work side-by-side with your agents and colleagues. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;If you missed the livestream, take a look at our &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/google-cloud-next/next26-day-1-recap"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Day 1 recap&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. It’s been incredible to see how customers have been applying AI in thousands of ways — so far, we’ve counted &lt;/span&gt;&lt;a href="https://cloud.google.com/transform/101-real-world-generative-ai-use-cases-from-industry-leaders?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;more than 1,300 examples&lt;/span&gt;&lt;/a&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Top announcements&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;1. Gemini Enterprise Agent Platform: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Our new, comprehensive platform to build, scale, govern, and optimize agents. Moving forward, all Vertex AI services and roadmap evolutions will be delivered exclusively through the Agent Platform, rather than as a standalone service, to power the next generation of agent development. &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;The platform is designed around four core pillars — &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;build, scale, govern, and optimize&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; —&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;that allow teams to collaborate seamlessly. Learn more about Agent Platform &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1 gemini enterprise agent platform" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_0_gemini_enterprise_agent_platform.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;2. Gemini Enterprise&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;app&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; has all the key components to let teams discover, create, share, and run AI agents in a single environment. At Next ‘26, we introduced &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;several new capabilities&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in the Gemini Enterprise app:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Agent Designer &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;uses the same no-code agent designer experience of Agent Platform and lets employees build sophisticated schedule- and trigger-based agents using any enterprise connector. It gives you a virtual flowchart of your agent, allowing you to inspect, test, and approve workflows, ensuring total transparency for executing critical business processes.  &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Long-running agents &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;are&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;designed to execute complex business processes. They can work autonomously in secure cloud sandboxes, giving agents the ability to orchestrate business logic, write code to build custom tools, and complete multi-step work like reconciliation activities or sales prospect sequencing — without needing constant prompting. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Inbox in Gemini Enterprise &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;provides a central location to monitor, guide, and help manage all of your agent activity, including your long-running agents. Notifications are intuitively categorized into actionable groups like "Needs your input," "Errors," and "Completed.” &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Projects &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;create a dedicated space where the agent’s memory is confined to the files and conversations your team adds. By connecting it to data sources including Google Drive, NotebookLM, and Google Group Chats, the agent becomes an expert on a specific topic and can provide team members daily briefings or status updates without digging through months of documents.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Skills &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;create simple shortcuts using an “@” mention for repetitive tasks such as applying brand guidelines, formatting a report, and accessing specific data.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Canvas &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;gives our customers an interactive editor &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;directly within Gemini Enterprise. It allows teams to easily create and edit Docs and Slides, and even export to Microsoft 365 files, within the same experience. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Agent Gallery &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;provides access to &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/partner-built-agents-available-in-gemini-enterprise?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;third-party agents&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;from partners like Adobe, Atlassian, Lovable, and ServiceNow, and is adding more third-party connectors for Asana, Mailchimp, Workday, and more. These integrations enable your agents to retrieve data and execute tasks with your systems-of-record. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;3. AI Hypercomputer: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Designed specifically for demanding AI workloads, our AI Hypercomputer is an advanced, purpose-built architecture that unites performance-optimized hardware for compute, storage, networking, open software and machine learning frameworks — as well as flexible consumption models — into a single, integrated system. We are &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;announcing&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; innovations at every layer of the AI Hypercomputer:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;TPU 8t, optimized for training, &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;uses breakthrough Inter-Chip Interconnect (ICI) technology to scale up to 9,600 TPUs and 2 PB of shared, high-bandwidth memory in a single superpod. It achieves 3x the processing power of Ironwood and delivers up to 2x more performance/Watt. &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;TPU 8i, optimized for inference, &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;uses our new Boardfly topology to directly connect 1,152 TPUs in a single pod. It features 3x more on-chip SRAM compared to previous versions to host larger KV caches entirely on-silicon and integrates a specialized Collectives Acceleration Engine. Taken together, TPU 8i delivers 80% better performance per dollar for inference than the prior generation, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;enabling millions of concurrent agents to run cost-effectively&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;4. The Agentic Data Cloud: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;A new data architecture built for the speed and scale of agentic AI. The Agentic Data Cloud delivers an AI-native architecture, allowing agents to perceive, reason, and act on your behalf in real-time, including: &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Cross-Cloud Lakehouse, &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;standardized on Apache Iceberg, is our Lakehouse that enables you to leave your data in AWS or Azure (coming later this year) while querying it instantly — without the friction of vendor lock-in or the cost of data movement&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Knowledge Catalog &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;constructs a unified, dynamic context graph of your entire business enabling you to ground agents in all of your business data and semantics. With Smart Storage and the Object Context API, files in Google Cloud Storage are instantly tagged and enriched with metadata before an agent touches them. Then our Knowledge Engine uses Gemini to autonomously tag, define logic and instantly map complex relationships across your entire enterprise, providing the semantic definition your agents have been missing. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;5. Protecting the agentic enterprise: Security built for the AI era.&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Our full-stack AI approach, from the chips to the models, gives you a competitive advantage with better integration and velocity to help protect customers. Not only can Google action insights from the world’s largest threat observatory and Mandiant frontline experts, but we also bring cutting-edge insights and breakthroughs from Google DeepMind, to help make your platforms more secure.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Agentic defense&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Three new agents in Google Security Operations can help &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;hunt threats&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;engineer detections&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;provide context on third parties&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;. You can build your own security agents with &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;remote Google Cloud model context protocol (MCP) server support&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; for Google Security Operations, now generally available. You can also access the MCP server client directly from the Google Security Operations &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;chat interface&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, available in preview.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Protecting AI and cloud apps across any infrastructure with Wiz&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Newly expanded AI coverage helps build secure agents across clouds and AI studios. New AI-Bill of Materials in development tools can help secure AI-generated code and mitigate the &lt;/span&gt;&lt;a href="https://cloud.google.com/transform/these-4-ai-governance-tips-help-counter-shadow-agents"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;risk of shadow AI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;a href="https://wiz.io/blog/wiz-at-google-cloud-next" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Learn more&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Securing agents and the agentic web&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Model Armor can integrate with Agent Gateway, and new Agent Identities provide more layers of defense against shadow AI. &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/introducing-google-cloud-fraud-defense-the-next-evolution-of-recaptcha"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Fraud Defense&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, the next evolution of reCAPTCHA, offers agent-specific capabilities that can help secure the agentic web as well as the entire user and customer journey.   &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Trusted Cloud&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: We’re simplifying permissions with modern IAM, and advancing Google Cloud security with new capabilities in Security Command Center plus new innovations in data and network security.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;New partner-supported workflows for Google Security Operations&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: This new robust cohort of &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/next26-announcing-new-partner-supported-workflows-for-google-security-operations"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;partner integrations&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; includes partners developing their own agentic security operations centers (SOCs).&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You can catch up on all our &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/next26-redefining-security-for-the-ai-era-with-google-cloud-and-wiz"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;security announcements from Next ‘26 here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;News you can use &lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-1-flash-tts-on-google-cloud?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;strong&gt;Guide to prompting Gemini 3.1 Flash TTS (text-to-speech)&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;The new TTS model introduces a high level of controllability by allowing you to steer the delivery using more than 200 audio tags. We'll share how to get strong results from the model, whether you are building accessible gaming soundtracks, banking systems, or audiobooks. Learn more about the model &lt;/span&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-lyria-3-pro?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;strong&gt;Ultimate prompting guide for Lyria 3 models&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: &lt;/span&gt;&lt;a href="https://deepmind.google/models/lyria/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Lyria 3&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Google's family of music-generation models, is designed to give you granular control over vocals, instrumentation, and arrangement. So we spent weeks testing against every musical genre and use case we could imagine. We put together this guide to share exactly what we learned and how you can get the best results.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/build-a-robust-and-cost-effective-gen-ai-strategy?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;strong&gt;How to find the sweet spot between cost and performance&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: This guide will walk you through Google Cloud's flexible gen AI infrastructure options, showing you how to find that sweet spot on the efficient frontier between cost and performance. We'll start with the foundational pay-as-you-go (PayGo) models and then explore how to layer on more specialized options to build a robust and cost-effective gen AI strategy.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/essential-ai-and-cloud-security-now-on-by-default"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;strong&gt;Essential AI and cloud security now on by default&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: To support the next generation of AI innovators, we are offering on by default essential AI security and cloud security in Security Command Center Standard. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/securing-ai-inference-on-gke-with-model-armor"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Securing AI inference on GKE with Model Armor&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Here’s how to secure AI inference on Google Kubernetes Engine with Model Armor and high-performance storage.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-rsac-26-ai-security-and-workforce-of-the-future"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;&lt;strong&gt;Cloud CISO Perspectives: AI, security, and the workforce of the future&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: You can’t bring traditional security to an AI fight, so how do we defend against AI-powered attacks, boost defenders with AI, and secure AI use? Drop in on this RSA Conference fireside chat between Francis deSouza, Google Cloud COO and President, Security Products, and Nick Godfrey, senior director, Office of the CISO.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;March&lt;/span&gt;&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;March was a busy month for our AI teams. We launched Gemini Embedding 2, rolled out a highly cost-effective Veo 3.1 Lite model, and officially welcomed the Wiz team to Google Cloud to help redefine security in the AI era. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Alongside these launches, we created comprehensive guides to help you get the most out of these models, from prompting formulas for Nano Banana 2, to practical advice for optimizing your TPU training. Here’s a quick look at the latest news and resources to help your team build what’s next.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Top hits: &lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Embedding 2: Our first natively multimodal embedding model:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Gemini Embedding 2 is our first natively multimodal embedding model that maps text, images, video, audio and documents into a single embedding space, enabling multimodal retrieval and classification across different types of media — and it’s available now in public preview.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Build with Veo 3.1 Lite, our most cost-effective video generation model&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;This model empowers developers to build high-volume video applications, at less than 50% of the cost of Veo 3.1 Fast, but with the same speed. This rounds out the Veo 3.1 model family, giving developers flexibility based on needs. For Cloud customers, it’s now &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/veo-3-1-lite-and-a-new-veo-upscaling-capability-on-vertex-ai?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;available on Vertex AI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s a fun bonus: Check out our &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-veo-3-1?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;ultimate prompting guide for Veo 3.1&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to get started.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-video"&gt;
+
+
+
+&lt;div class="article-module article-video "&gt;
+  &lt;figure&gt;
+    &lt;a class="h-c-video h-c-video--marquee" href="https://youtube.com/watch?v=1BySW9YaSME"&gt;
+
+      
+        
+
+        &lt;div class="article-video__aspect-image"&gt;
+          &lt;span class="h-u-visually-hidden"&gt;Veo 3.1 Lite&lt;/span&gt;
+        &lt;/div&gt;
+      
+      &lt;svg class="h-c-video__play h-c-icon h-c-icon--color-white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;use xlink:href="#mi-youtube-icon" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/a&gt;
+
+    
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div class="h-c-modal--video"&gt;
+   &lt;a class="glue-yt-video" href="https://youtube.com/watch?v=1BySW9YaSME"&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/google-completes-acquisition-of-wiz?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Welcoming Wiz to Google Cloud: Redefining security for the AI era: &lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;Google has completed its acquisition of Wiz, a leading cloud and AI security platform. The Wiz team will join Google Cloud, and we will retain the Wiz brand. With the addition of Wiz, we will provide customers with a comprehensive platform to secure their cloud and hybrid environments, as well as accelerate threat prevention, detection, and response.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini 3.1 Flash Live: Making audio AI more natural and reliable: &lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;We’ve improved 3.1 Flash Live’s overall quality, making it more reliable for developers and enterprises to build voice-first agents that can complete complex tasks at scale. On ComplexFuncBench Audio, a benchmark that captures multi-step function calling with various constraints, it leads with a score of 90.8% compared to our previous model.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;News you can use: &lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;The ultimate Nano Banana prompting guide:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;This is a must-read for anyone working with Nano Banana. We spent weeks testing Nano Banana 2 and Nano Banana Pro against every use case we could imagine to test its limits. We put together this guide to share exactly what we learned and how you can get the best results. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Here’s an example formula: [Reference images] + [Relationship instruction] + [New scenario]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_hJWjDOO.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/compute/training-large-models-on-ironwood-tpus?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;A developer’s guide to training with Ironwood TPUs&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;In this guide, we hear from Lillian Yu, CPA, CA , Product Strategy and Operation, and Liat Berry, Product Manager, on five strategies within the JAX and MaxText ecosystems designed to help developers refine training efficiency and hit peak performance on Ironwood hardware.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/how-to-build-ai-agents-with-google-managed-mcp-servers?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;How to build production-ready AI agents with Google-managed MCP servers&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;In this guide, we anchor on a specific example. Cityscape is a demo agent built with Google's Application Development Kit (ADK) that turns a simple text prompt — like "Generate a cityscape for Kyoto" — into a unique, AI-generated city image. Check out the guide to learn more. &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built. &lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;February&lt;/span&gt;&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In February, we’re giving developers more reasoning power with Gemini 3.1 Pro and Claude 4.6, and faster creative scaling with Nano Banana 2. We’re also opening up new training programs and step-by-step guides to help you tackle the hardest parts of the AI lifecycle, from capacity planning to mounting defenses against AI-powered attacks.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here’s a rundown of our latest news, tools, and resources to help you build what’s next.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Top hits&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/bringing-nano-banana-2-to-enterprise"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Pro-level image generation gets faster and more accessible with Nano Banana 2&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; To build creative that stands out, you need models that naturally integrate into your workflows and scale with ease. Check out &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/bringing-nano-banana-2-to-enterprise"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;our blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to see how this comes to life (and how customers are putting the model to work).&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/2_3KCMDRE.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-1-pro-on-gemini-cli-gemini-enterprise-and-vertex-ai"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Introducing Gemini 3.1 Pro on Google Cloud:&lt;/strong&gt;&lt;/a&gt; &lt;span style="vertical-align: baseline;"&gt;Gemini 3.1 Pro is a clear step forward in reasoning, designed to solve tougher problems, giving you the reasoning depth your business needs. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Gemini 3.1 Pro is available starting today in preview in &lt;/span&gt;&lt;a href="https://cloud.google.com/vertex-ai"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Vertex AI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://cloud.google.com/gemini-enterprise"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. Developers can access the model in preview via the Gemini API in &lt;/span&gt;&lt;a href="https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google AI Studio&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://developer.android.com/studio" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Android Studio&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://antigravity.google/blog/gemini-3-1-in-google-antigravity" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Antigravity&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://geminicli.com/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini CLI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-vertex-ai-with-claude-opus-4-6"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Announcing Claude Opus 4.6 and Claude Sonnet 4.6 on Vertex AI:&lt;/strong&gt;&lt;/a&gt; &lt;span style="vertical-align: baseline;"&gt;Now generally available on Vertex AI, explore our &lt;/span&gt;&lt;a href="https://github.com/GoogleCloudPlatform/vertex-ai-samples/blob/main/notebooks/official/generative_ai/anthropic_claude_intro.ipynb" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;sample notebook&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to get started and visit our &lt;/span&gt;&lt;a href="https://cloud.google.com/vertex-ai/generative-ai/pricing#claude-models"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for comprehensive pricing and regional availability details.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-new-ai-threats-report-distillation-experimentation-integration"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;New AI threats report: Distillation, experimentation, and integration&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: John Hultquist, chief analyst, Google Threat Intelligence Group, details what security leaders should know from our newest AI threat report on experimentation, integration, and distillation attacks.&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;News you can use&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/a-devs-guide-to-production-ready-ai-agents"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;A developer's guide to production-ready AI agents&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;To help developers work through these challenges, we've published a collection of guides covering the full agent lifecycle. These resources first appeared during Kaggle’s &lt;/span&gt;&lt;a href="https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;5 days of AI Agents Intensive&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and they’ve proven so popular and useful, we wanted to make sure a wider audience had access, as well. &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/gear-program-now-available"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise Agent Ready (GEAR) program now available:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;We opened the Gemini Enterprise Agent Ready (GEAR) learning program to everyone. As a new specialized pathway within the Google Developer Program, GEAR empowers developers and pros to build and deploy enterprise-grade agents with Google AI.&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/ai-machine-learning/provisioned-throughput-on-vertex-ai"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Your guide to Provisioned Throughput (PT) on Vertex AI:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Check out this deep-dive blog designed to show you the resources available to you today on Vertex AI, and how you can get started capacity planning. &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/transform/how-ai-can-boost-defenders-from-defense-in-depth-to-cyber-kill-chain-qa"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;How AI can boost defenders, from defense in depth to the cyber kill chain (Q&amp;amp;A)&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;We know that defenders are also developing powerful AI tools, but what’s still unknown is what it could mean for enterprise software ownership if companies have to constantly mount AI-directed defenses at AI-powered attacks?&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built. &lt;/span&gt;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;hr /&gt;
+&lt;h2 style="text-align: center;"&gt;&lt;span style="vertical-align: baseline;"&gt;Janurary&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We used to have to learn the language of computers. In 2026, they’re learning ours.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We kicked off the year by exploring the future of agentic commerce, where AI agents navigate the web to find and buy products for us. Our leaders call this the "&lt;/span&gt;&lt;a href="https://cloud.google.com/transform/the-invisible-shelf-retail-cpg-agentic-commerce-how-to?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;invisible shelf&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;" — a world where commerce isn't tied to a specific website. To make this reality scalable, we announced the Universal Commerce Protocol (UCP), a shared language that allows agents and retailers to understand each other. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We brought that same fluency to our creative and technical tools:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Updates to Veo 3.1 allow creators to use simple inputs — like reference images — to generate precise, mobile-ready video.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Natural language queries: With Comments to SQL in BigQuery, we’re removing the language barrier to data. Engineers can now write queries by describing their intent in natural language, prioritizing the question over the code.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Let’s dive in.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Top hits &lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;1. &lt;a href="https://www.googlecloudpresscorner.com/2026-01-11-Google-Cloud-Brings-Shopping-and-Customer-Service-Together-with-Gemini-Enterprise-for-Customer-Experience" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Gemini Enterprise for Customer Experience (CX):&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Specifically built for agentic retail, this platform transforms fragmented search, commerce and service touch points into one seamless journey — whether you need a shopping assistant, a support bot, agentic search or help with merchandising. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;2. &lt;a href="https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;We announced Universal Commerce Protocol (UCP):&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;A new open standard for agentic commerce that works across the entire shopping journey — from discovery and buying to post-purchase support. UCP establishes a common language for agents and systems to operate together across consumer surfaces, businesses and payment providers. So instead of requiring unique connections for every individual agent, UCP enables all agents to interact easily. UCP is built to work across verticals and is compatible with existing industry protocols like Agent2Agent (A2A), Agent Payments Protocol (AP2) and Model Context Protocol (MCP).&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;3. &lt;a href="https://blog.google/innovation-and-ai/technology/ai/veo-3-1-ingredients-to-video/" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;We updated Veo 3.1, including improvements to Ingredients to Video and Portrait mode:&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Veo is getting more expressive, with improvements that help you create more fun, creative, high-quality videos based on ingredient images, built directly for the mobile format. This includes:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Improvements to Veo 3.1 Ingredients to Video, our capability that lets you create videos based on reference images. &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Native vertical outputs for Ingredients to Video (portrait mode) to power mobile-first, short-form video creation.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;State-of-the-art upscaling to 1080p and 4K resolution 1 for high-fidelity production workflows.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;These updates are launching in the Gemini app, YouTube, Flow, Google Vids, the Gemini API and Vertex AI.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;4. &lt;a href="https://cloud.google.com/blog/products/data-analytics/vibe-querying-with-comments-to-sql-in-bigquery?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Vibe querying with comments-to-SQL:&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; Crafting complex SQL queries can be challenging. Often, engineers simply want to express their data needs in plain English directly within their SQL workflow. That’s why we’re introducing Comments to SQL in BigQuery. This feature makes writing queries using natural language – ‘vibe querying’ – a reality. Learn more in the &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/vibe-querying-with-comments-to-sql-in-bigquery?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;blog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;News you &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;can&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; use&lt;/span&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/mastering-gemini-cli-your-complete-guide-from-installation-to-advanced-use-cases?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Mastering Gemini CLI: Your complete guide from installation to advanced use-cases&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;We’ve teamed up with DeepLearning.ai and are excited to announce a free course – Gemini CLI: Code &amp;amp; Create with an Open-Source Agent. This course isn’t just for developers; we dive into practical use cases for various tasks such as data analysis, content creation, and personalized learning.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/how-google-sres-use-gemini-cli-to-solve-real-world-outages?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;How Google SREs use Gemini CLI to solve real-world outages&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;In this article, we’ll delve into real scenarios that Google SREs are solving today using Gemini 3 (our latest foundation model) and Gemini CLI—the go-to tool for bringing agentic capabilities to the terminal.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/topics/developers-practitioners/getting-started-with-gemini-3-deploy-your-first-gemini-3-app-to-google-cloud-run?e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Getting started with Gemini 3: Deploy your first Gemini 3 app to Google Cloud Run&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;In this blog, we will show you how to vibe code your first app—which leverages the Gemini 3 Flash Preview model and deploy it as a publicly accessible URL on Google Cloud Run. Google AI Studio lets you go from idea to app quickly by using natural language to generate fully functional apps using the power of Gemini 3.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-practical-guidance-building-with-SAIF"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Practical guidance: Building with the Secure AI Framework (SAIF) on Google Cloud&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; We know that security and data privacy are the top concern for executives when evaluating AI providers, and security is the top use case for AI agents in a majority of industries. To help you build AI boldly and responsibly, here’s our guide to developing AI with the Secure AI Framework (SAIF) on Google Cloud. &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/transform/truths-about-ai-hacking-every-ciso-needs-to-know-qa"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;The truths about AI hacking that every CISO needs to know (Q&amp;amp;A)&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; How will AI boost threat actors? And what can chief information security officers do about it? Google’s Heather Adkins, vice-president, Security Engineering, explores how securing the enterprise is about to change.&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Stay tuned for monthly updates on Google Cloud’s AI announcements, news, and best practices. For a deeper dive into the latest from Google Cloud customers, read our monthly recap, &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cool stuff customers built.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-related_article_tout"&gt;
+
+
+
+
+
+&lt;div class="uni-related-article-tout h-c-page"&gt;
+  &lt;section class="h-c-grid"&gt;
+    &lt;a class="uni-related-article-tout__wrapper h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+        h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3 uni-click-tracker" href="https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month-2025/"&gt;
+      &lt;div class="uni-related-article-tout__inner-wrapper"&gt;
+        &lt;p class="uni-related-article-tout__eyebrow h-c-eyebrow"&gt;Related Article&lt;/p&gt;
+
+        &lt;div class="uni-related-article-tout__content-wrapper"&gt;
+          &lt;div class="uni-related-article-tout__image-wrapper"&gt;
+            &lt;div class="uni-related-article-tout__image"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="uni-related-article-tout__content"&gt;
+            &lt;h4 class="uni-related-article-tout__header h-has-bottom-margin"&gt;What Google Cloud announced in AI this month - 2025&lt;/h4&gt;
+            &lt;p class="uni-related-article-tout__body"&gt;Learn about the latest announcements, innovations, and guides when it comes to Google Cloud AI.&lt;/p&gt;
+            &lt;div class="cta module-cta h-c-copy  uni-related-article-tout__cta muted"&gt;
+              &lt;span class="nowrap"&gt;Read Article
+                &lt;svg class="icon h-c-icon" xmlns="http://www.w3.org/2000/svg"&gt;
+                  &lt;use xlink:href="#mi-arrow-forward" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+              &lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-02T16:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/AI_this_month.max-600x600.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/AI_this_month.max-600x600.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/AI_this_month.max-600x600.jpg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>https://cloud.google.com/blog/topics/threat-intelligence/shutting-the-door-on-the-xcpe-botnet</id>
@@ -38620,61 +39430,5 @@ is generally available
       <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6Koor2AdTz0XJCbwAcUyKxl37Kv9dHbwtcubgEDBY-YQYiR9IPXBy6zlBy631CnI0gcRZTN0qpo-ZMCa9ENIfsjbkc4SHN_VkXMnsBiVtiJB7gE1AgGL4tUvkq7ClohzRZJcK66UXVgPT9Nb2VP9zESYLBoiG7bNZgJKvNd1pXNNwRIHg2NUhnAQ4Bag/s72-c/Introducing%20the%20new%20Confluence%20integration%20with%20Google%20Chat%20%20-%206598.gif"/>
     </media:group>
     <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6Koor2AdTz0XJCbwAcUyKxl37Kv9dHbwtcubgEDBY-YQYiR9IPXBy6zlBy631CnI0gcRZTN0qpo-ZMCa9ENIfsjbkc4SHN_VkXMnsBiVtiJB7gE1AgGL4tUvkq7ClohzRZJcK66UXVgPT9Nb2VP9zESYLBoiG7bNZgJKvNd1pXNNwRIHg2NUhnAQ4Bag/s72-c/Introducing%20the%20new%20Confluence%20integration%20with%20Google%20Chat%20%20-%206598.gif" type="image/gif" length="0"/>
-  </entry>
-  <entry>
-    <id>https://android-developers.googleblog.com/2026/09/adaptive-development-scale-app-googlebook.html</id>
-    <title>Land your apps on Googlebook with adaptive development</title>
-    <updated>2026-09-22T17:00:00+00:00</updated>
-    <content type="html">&lt;div&gt;
-  &lt;img alt="Thumbnail" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ23jouRlBYpndeQfXUDihEq7NUP1buhHRy3jQVXEGXVpu2msSEIn_ZeAAkQKGz9paMkDxqCj7Dawksp37nHL8-qZKct_EXy_e85FiC6Nxb8GK0aK3ft5fhn42jPeV_zFD9Vcc9LFer6KgG8O93v2K9ls7cnrzbMQgtHp0piPBY5W12zGff_q-A4UYxQg/s2048/Googlebook-Blog-Meta.png" /&gt;
-&lt;/div&gt;&lt;i&gt;Posted by Fahd Imtiaz, Senior Product Manager, and Loryn Hairston, Product Marketing Manager, Android Developer&lt;/i&gt;&lt;div&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfLRB38OvEhm72pSbg4wGf2fnJLWzBB2Yw038LaxiLXjPCpZVne0wYb9RmcdhrKoyIiZK1yFk_7Efau8mIVj7BnX0G5D2c_erOJJkj2aLf1ZJgILwUrr5dsNPq0eUFQ0aw_b1AEigurimG3l4OHeCZLhpuYwpyt-EW8-OULcmFpeiSNpi9oEl-NK5GgDw/s4209/Googlebook-Blog-Header.png" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfLRB38OvEhm72pSbg4wGf2fnJLWzBB2Yw038LaxiLXjPCpZVne0wYb9RmcdhrKoyIiZK1yFk_7Efau8mIVj7BnX0G5D2c_erOJJkj2aLf1ZJgILwUrr5dsNPq0eUFQ0aw_b1AEigurimG3l4OHeCZLhpuYwpyt-EW8-OULcmFpeiSNpi9oEl-NK5GgDw/s1600/Googlebook-Blog-Header.png" /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;&lt;i&gt;&lt;br /&gt;&lt;/i&gt;&lt;p&gt;&lt;a href="https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"&gt;Googlebook&lt;/a&gt; introduces a new category of laptops built on a shared Android foundation. High-performance hardware from partners such as HP, Dell, Lenovo, Acer, and Asus, combines mobile convenience with desktop power. Googlebook offers high-resolution OLED touchscreens, dedicated keyboards, and precision trackpads with all-day battery life and OS-level Gemini Intelligence. With Googlebook, users can transition fluidly from quick interactions on their phones to rich, immersive sessions on their laptop.&lt;/p&gt;
-
-&lt;p&gt;Bringing your app to Googlebook opens up valuable opportunities for you across the Android ecosystem. Google Play highlights optimized titles with dedicated badging, enhanced search, and featured spots across curated store homepages.&amp;nbsp;&lt;span style="vertical-align: baseline;"&gt;Delivering this level of quality also prepares your app for the &lt;a href="https://developer.android.com/distribute/aep"&gt;Apps Experience Program&lt;/a&gt;, where you can enroll to unlock a new program rate card designed to drive business growth&lt;span face="Google Sans, sans-serif"&gt;&lt;span style="font-size: 11pt;"&gt;. &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;Even better, when users set up their new Googlebook using their Android phone, optimized apps are prominently highlighted for easy transfer, giving your app day-one presence on their new device.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJfwuotfvMYWUE0UOID2TwrM_8jH0lMmrH7AT9OgeAgcfK_gRKMsVaZOGp1XmM7aXv6AbTFCtZ1xdfukBGdtaLKz8SJ-6QiQw5KllN11AOLAt2ZOXkG_WSoiVwRtLVSyEktK1oGKmqJDP_pw8mMJPzSRzsYf4nG2-Z3qrFYfmiIZI47Uqm_5mJ2f9GDQs/s1600/desktop%20optimized.png" /&gt;&lt;i&gt;Optimized for desktop badging and dedicated collections on Google Play.&lt;/i&gt;&lt;/div&gt;&lt;p&gt;The best part? You don't need to build a separate app from the ground up to take advantage of this reach. Adaptive development is how modern Android apps naturally scale across large displays, new device postures, and emerging form factors. If your app already embraces adaptive layouts, it is primed for Googlebooks. By building on your existing foundation of adaptive UI, window size classes, and multi-input support, you can deliver an optimized experience.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5lxUMzqCo7xbkIO0UP5Iw4qxCfrEUtzBVyn8qa6Mrn2zNfyaacjB9D0mQJD840SaKjpAs_4xYiGA_h8yzNftqy78POYCgdYt6hLi9_kigXluM-4fd7osp4X2bgQ3AjGWwXzRVyZ9tsqVKcbGkYxLt3ZzkAqRBG1_fQC8qVGRFqHB5c5lTM2bTUB-X1Z4/s1600/image5.png" /&gt;&lt;/div&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;Adaptive layouts reorganizing mobile views into a multi-pane experience.&lt;/i&gt;&lt;/div&gt;&lt;h2&gt;Anchor your app in desktop fundamentals&lt;/h2&gt;
-
-&lt;p&gt;On a laptop, your app operates within a desktop environment where user expectations shift toward higher information density, precision input, and active multitasking. Following desktop development and design guidance provides the principles needed to make the most of this experience. Instead of simply stretching mobile interfaces across a wide screen, an adaptive layout reorganizes content into functional groupings.&lt;/p&gt;
-
-&lt;p&gt;Adopt a multi-pane architecture to allow your UI to expand, reflow, or reveal richer detail as window boundaries change. With &lt;a href="https://developer.android.com/guide/navigation/navigation-3"&gt;Navigation 3&lt;/a&gt;, you can implement adaptive scene strategies to coordinate multi-pane layouts directly from your back stack. Use &lt;a href="https://developer.android.com/guide/navigation/navigation-3/recipes/scenes-listdetail" target="_blank"&gt;ListDetailSceneStrategy&lt;/a&gt; and &lt;a href="https://developer.android.com/guide/navigation/navigation-3/recipes/material-supportingpane"&gt;SupportingPaneSceneStrategy&lt;/a&gt; to enable side-by-side layouts when expanded window space is available. &lt;a href="https://developer.android.com/guide/navigation/navigation-3/scenes/scene-decorators?hl=en"&gt;Scene decorators&lt;/a&gt; let you wrap screens with persistent desktop navigation rails. Pair these patterns with layout primitives like &lt;a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/grid"&gt;Grid&lt;/a&gt; and &lt;a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/flexbox"&gt;FlexBox&lt;/a&gt;, and soon alongside experimental &lt;a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/mediaQuery.composable"&gt;MediaQuery&lt;/a&gt; and &lt;a href="https://developer.android.com/develop/ui/compose/styles" target="_blank"&gt;Styles APIs&lt;/a&gt;, to organize complex content and adjust visual styles dynamically for desktop displays.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlgpxHlgjAeffj4tRAeVsJEcUIrZhyphenhyphenNxciS0VzHCMFvxDZlV2U1jxXOG7RtLH0KVOcLWp0XSiOy13Si2ruHARlSfwXbk77foPnLEQqaJrkGet9xOdmIlz9UiDqNl_E-SIEIS_uiknlpn6ha-WU14BxTLde-EghU3ZWAOTmsl-kVkQ-PLUh8sVIjdrUO_s/s1600/image2.png" /&gt;&lt;/div&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;Representations of width-based window size classes.&lt;/i&gt;&lt;/div&gt;&lt;p&gt;In free-form desktop windowing, app windows can be resized dynamically at any time. Your layout decisions should respond directly to the available window space using &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/get-started-with-adaptive-apps" target="_blank"&gt;window size classes&lt;/a&gt; rather than the physical display dimensions.&lt;/p&gt;
-
-&lt;p&gt;Desktop design also accounts for ergonomic viewing distances and precise pointer targets. Adjust your type scale for comfortable viewing across larger displays, set layout max widths to keep line lengths readable, and define explicit click targets to prevent misclicks. Explore complete design patterns in our &lt;a href="https://developer.android.com/design/ui/desktop/guides/foundations/design-principles" target="_blank"&gt;design principles guide&lt;/a&gt; and discover real world inspiration in the &lt;a href="https://developer.android.com/design/ui/gallery?keywords=form_desktop" target="_blank"&gt;desktop design gallery&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Deliver differentiated experiences for Googlebooks&lt;/h2&gt;
-
-&lt;p&gt;Once your core layout is adaptive, you can enrich your app with differentiated features that take full advantage of a desktop environment. Everyday productivity in these setups relies on versatile input methods. Jetpack Compose natively supports physical keyboard navigation and pointer selection. Elevate your app’s usability by integrating &lt;a href="https://developer.android.com/guide/topics/large-screens/cursors?hl=en"&gt;contextual cursors&lt;/a&gt; that provide visual feedback for text entry, pane resizing, and tool selection. Implement right click context menus and hover states; make your shortcuts discoverable through the &lt;a href="https://developer.android.com/develop/ui/compose/touch-input/keyboard-input/keyboard-shortcuts-helper"&gt;Keyboard Shortcuts Helper&lt;/a&gt;.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRYrwcshvW1nG-yI5kp_7vfOAq7iu3i9VYmfKctHOvIv5Ges-5s4cHQ7SMK68rGQ-8fVHIKMnPY6CxuX_XAkTfe1KjL5lX0t62bgHijiXQFlecXA5ib8wpbbF1y6xvd02HspU8R04XnAgOxqi2tt6UbpWb-udWE_jXcp8wBBVqxZXeL9-Fz9c664sOHXA/s1600/image4.png" /&gt;&lt;/div&gt;&lt;div style="text-align: center;"&gt;&lt;i&gt;Task switcher displaying multiple open windows and app instances.&lt;/i&gt;&lt;/div&gt;&lt;p&gt;On Googlebook, apps run in free-form windows where users can tackle multiple tasks simultaneously. Unlock side-by-side workflows by enabling &lt;a href="https://developer.android.com/develop/adaptive-apps/guides/support-multi-window-mode?hl=en#multi-instance"&gt;multi-instance support&lt;/a&gt;, giving users the ability to launch independent windows for comparing content or managing multiple documents. Pair this with &lt;a href="https://developer.android.com/develop/ui/compose/touch-input/user-interactions/drag-and-drop"&gt;drag and drop&lt;/a&gt; to let users move text, images, and files fluidly between windows or even drop items onto an empty workspace to spin up a new task.&lt;/p&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIC__-We3XTIy4hr2_Z0Jn3vWrtTZ2g8H5lcDLhzOfqq_w1K-fuQJGpWa3qskRLkQXA_csNkRTFtx_d32DWlRMwzvXP8O99RI7JVcLXfMAogrhF-Xxz1uqb2OAENDII0QZr3FNbKK57xtgs-DbBz4HIdSO0gLAmqxOgRqRLv2dcGVr2B7o_9s_J7_qZQ0/s1600/image3.png" /&gt;&lt;i&gt;Multi-window multitasking with cross-window drag and drop.&lt;/i&gt;&lt;/div&gt;&lt;p&gt;Go all in and customize your window frame. In desktop windowing, apps include a caption &lt;a href="https://developer.android.com/develop/ui/compose/components/app-bars" target="_blank"&gt;header bar that you can style&lt;/a&gt; with custom backgrounds, search bars, or tabs while respecting system window controls.&lt;/p&gt;
-
-&lt;p&gt;Beyond individual app windows, &lt;a href="https://developer.android.com/develop/better-together/continue-on" target="_blank"&gt;Continue On&lt;/a&gt; keeps experiences connected across phones, tablets, and Googlebooks with bidirectional handoff that lets users start a task on one screen and pick up seamlessly on another. Passing state through &lt;a href="https://developer.android.com/develop/better-together/continue-on/enable-support"&gt;HandoffActivityData&lt;/a&gt; preserves context such as document position or active tabs, with optional web fallbacks to ensure smooth transitions.&lt;/p&gt;
-
-&lt;p&gt;Complement this by surfacing actionable information at a glance with customizable &lt;a href="https://developer.android.com/design/ui/widget" target="_blank"&gt;widgets&lt;/a&gt;. And, as you refine your app experience, benchmark against our comprehensive &lt;a href="https://developer.android.com/develop/adaptive-apps/quality-guidelines/adaptive-app-quality/experiences/desktop" target="_blank"&gt;desktop app quality guidelines&lt;/a&gt;.&lt;/p&gt;Developers are already bringing these patterns to life across the ecosystem. When bringing Notability to Googlebook, prior investments in tablets and foldables gave the team an immediate head start. Because their layout already relied on window size classes and adaptive scene strategies, their canvas and toolbars reflowed naturally during window resizing, while existing keyboard and trackpad support carried straight over.&lt;br /&gt;&lt;br /&gt;"We had already been targeting first-class experiences for tablets and foldables," explains Ryan Shea, Android Engineering Manager at Notability. "So by the time Googlebook came along, scaling Notability up to a laptop-class experience was mostly turning a dial we had already built. That left us free to spend our time on the things that only make sense on a bigger screen or with the newer APIs, like Continue On, which hands a note off from your phone to the laptop, and optimizing the side-by-side app experience for studying."
-
-&lt;h2&gt;Accelerate your workflow with dedicated tooling&lt;/h2&gt;
-
-&lt;p&gt;Testing and optimizing your app for Googlebook fits naturally into your existing development workflow.&lt;/p&gt;
-
-&lt;p&gt;With the desktop emulator in Android Studio, you can run a virtual desktop environment directly on your workstation to test free-form window resizing, verify multi-instance interactions, and debug mouse, trackpad, and keyboard interactions. Download &lt;a href="https://developer.android.com/studio/preview" target="_blank"&gt;Android Studio Canary&lt;/a&gt; to set up your virtual device today.&lt;/p&gt;
-
-&lt;p&gt;Help speed up your layout modernization with AI-assisted development. The &lt;a href="https://github.com/android/skills/tree/main/jetpack-compose/adaptive" target="_blank"&gt;adaptive skill&lt;/a&gt; gives your AI agents the necessary context to help refactor mobile layouts into responsive Compose containers automatically. Install the skill directly through the &lt;a href="https://developer.android.com/tools/agents/android-cli" target="_blank"&gt;Android CLI&lt;/a&gt; to streamline your implementation.&lt;/p&gt;
-
-&lt;h2&gt;Realize new possibilities on Googlebook&lt;/h2&gt;&lt;div class="separator" style="clear: both; text-align: center;"&gt;&lt;img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeSiM3C8pGztxTnMAnKxlm5Nh5Kp8KtTX5_oGiOsHgoeJ_M3ddi4N38RlsRf-En_kUBThmxUSWYVt-mz8QmqokiaJ34Oot4MWqbsibqymd2L5cfnNHEqjrFM70toIf1_0pMYDKyhzNh30EmBpliW2xCFqBBJPFLkHD2tYCnhiyjuI0QxduPqFcUG7-F40/s1600/Untitled%20design%20(2).png" /&gt;&lt;i&gt;The Googlebook family of laptops from ecosystem partners.&lt;/i&gt;&lt;/div&gt;&lt;p&gt;The Googlebook lineup marks an exciting new chapter for the Android ecosystem, giving your apps a premium platform to deliver richer, more capable experiences. By building adaptively, a single codebase ensures your app looks and performs optimally across phones, foldables, tablets, and Googlebooks while unlocking elevated visibility and badging across Google Play. Explore documentation at our &lt;a href="https://developer.android.com/adaptive-apps" target="_blank"&gt;Googlebook developer hub&lt;/a&gt;, review the &lt;a href="https://developer.android.com/design/ui/desktop" target="_blank"&gt;desktop design guide&lt;/a&gt;, and start building for Googlebook today!&lt;/p&gt;&lt;/div&gt;</content>
-    <link href="https://android-developers.googleblog.com/2026/09/adaptive-development-scale-app-googlebook.html" rel="alternate"/>
-    <category term="Android Developers"/>
-    <published>2026-09-22T17:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ23jouRlBYpndeQfXUDihEq7NUP1buhHRy3jQVXEGXVpu2msSEIn_ZeAAkQKGz9paMkDxqCj7Dawksp37nHL8-qZKct_EXy_e85FiC6Nxb8GK0aK3ft5fhn42jPeV_zFD9Vcc9LFer6KgG8O93v2K9ls7cnrzbMQgtHp0piPBY5W12zGff_q-A4UYxQg/s72-c/Googlebook-Blog-Meta.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ23jouRlBYpndeQfXUDihEq7NUP1buhHRy3jQVXEGXVpu2msSEIn_ZeAAkQKGz9paMkDxqCj7Dawksp37nHL8-qZKct_EXy_e85FiC6Nxb8GK0aK3ft5fhn42jPeV_zFD9Vcc9LFer6KgG8O93v2K9ls7cnrzbMQgtHp0piPBY5W12zGff_q-A4UYxQg/s72-c/Googlebook-Blog-Meta.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ23jouRlBYpndeQfXUDihEq7NUP1buhHRy3jQVXEGXVpu2msSEIn_ZeAAkQKGz9paMkDxqCj7Dawksp37nHL8-qZKct_EXy_e85FiC6Nxb8GK0aK3ft5fhn42jPeV_zFD9Vcc9LFer6KgG8O93v2K9ls7cnrzbMQgtHp0piPBY5W12zGff_q-A4UYxQg/s72-c/Googlebook-Blog-Meta.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/company-news/outreach-and-initiatives/grow-with-google/itu-ai-skills-training</id>
-    <title>Investing in global talent and AI literacy</title>
-    <updated>2026-09-22T16:00:00+00:00</updated>
-    <content type="html">A woman typing at a computer in a computer lab</content>
-    <link href="https://blog.google/company-news/outreach-and-initiatives/grow-with-google/itu-ai-skills-training" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-22T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero.max-600x600.format-webp_kjXizmz.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero.max-600x600.format-webp_kjXizmz.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero.max-600x600.format-webp_kjXizmz.webp" type="image/webp" length="0"/>
   </entry>
 </feed>

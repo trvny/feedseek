@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-02T20:29:56.950418+00:00</updated>
+  <updated>2026-11-03T02:36:05.013742+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,18 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c51e12839e036357</id>
+    <title>Cloudflare Gateway DNS-over-TLS Connectivity Issues over IPv4</title>
+    <updated>2026-11-03T00:34:13+00:00</updated>
+    <content>Nov 3 , 00:34 UTC Resolved - This incident has been resolved. Nov 3 , 00:23 UTC Monitoring - Our team has been able to identify and apply an effective fix for this issue. We are currently monitoring the results. Nov 2 , 22:12 UTC Investigating - Cloudflare is investigating an issue affecting Cloudflare Gateway DNS-over-TLS (DoT) connections over IPv4. Affected customers may experience connection timeouts and failed DNS resolution.
+
+This issue is limited to DoT over IPv4. DoT over IPv6, DNS-over-</content>
+    <link href="https://www.cloudflarestatus.com/incidents/3bv9locsg7ln" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-03T00:34:13+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ac01484d5d643b37</id>
     <title>Worker Deployments Delayed</title>
@@ -99,6 +111,21 @@ Remediation is in progress.</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-02-request-signal-default/og.png?v=14ffe6503dfa4c6f" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/7c21c60a694491de</id>
+    <title>Cloudflare One, Access - Organize and authorize Access service tokens with tags</title>
+    <updated>2026-11-02T00:00:00+00:00</updated>
+    <content>You can now assign key-value tags to Access service tokens and use those tags to organize credentials or control application access. Each token supports up to five tags, such as environment: production or team: payments . Add or edit tags when you create or update a token in the dashboard or service token API. You can search and filter by tag on the Service Tokens page. Tags also appear in Resource Tagging , where you can query them alongside other tagged resources. The Service Token Tag policy </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-02-service-token-tags/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-02T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-02-service-token-tags/og.png?v=6af16137e58319ad" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-02-service-token-tags/og.png?v=6af16137e58319ad"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-02-service-token-tags/og.png?v=6af16137e58319ad" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/2e1b4785f9df4f26</id>
@@ -1269,21 +1296,6 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M5AYSA5Z4MMJ6XYBSMECP05T.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/591849af67502f98</id>
-    <title>Basin SQL, Basin - Basin SQL supports OFFSET</title>
-    <updated>2026-10-21T00:00:00+00:00</updated>
-    <content>Basin SQL is a serverless, distributed SQL engine for querying Apache Iceberg tables in Basin Catalog. It now supports OFFSET , which lets you skip a specified number of rows when retrieving query results. Use LIMIT to set the page size and OFFSET to skip earlier rows. With a page size of 100, use OFFSET 0 for the first page, OFFSET 100 for the second, and increase the offset by 100 for each later page. Add ORDER BY on a unique column to keep the row order consistent. For example, this query ret</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-21T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/og.png?v=249aeb6f014e129b" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/og.png?v=249aeb6f014e129b"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/og.png?v=249aeb6f014e129b" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/dd6de1c2697c2c31</id>
     <title>logpush, Logs - Account-scoped HTTP request logs in Logpush</title>
     <updated>2026-10-21T00:00:00+00:00</updated>
@@ -1579,16 +1591,6 @@ We are working to understand the full impact and mitigate this problem. More upd
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M4YQC03MMFYZ10P30YWNWGG4.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ee3e0cfff92678d6</id>
-    <title>Increased Errors for Durable Objects and Downstream Services in Western Europe</title>
-    <updated>2026-10-15T10:02:23+00:00</updated>
-    <content>Oct 15 , 10:02 UTC Resolved - This incident has been resolved. Oct 15 , 09:18 UTC Monitoring - Cloudflare is investigating issues causing an increase of errors for Durable Objects and downstream services in Western Europe from 09:00 UTC. This is currently recovering. More updates to follow shortly.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/wvzqdm21spz0" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-15T10:02:23+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/aad24f89887b4ec0</id>
