@@ -14,7 +14,16 @@ class SiteRobotsTests(unittest.TestCase):
     def test_travny_crawler_additions_are_explicitly_allowed(self):
         robots = build_site.build_robots("https://example.com/")
         groups = [block.splitlines() for block in robots.split("\n\n") if block.strip()]
-        for agent in ("anthropic-ai", "BingBot", "DuckAssistBot"):
+        for agent in (
+            "anthropic-ai",
+            "BingBot",
+            "DuckAssistBot",
+            "Googlebot",
+            "Google-InspectionTool",
+            "DuckDuckBot",
+            "MistralAI-Index",
+            "MistralAI-User",
+        ):
             with self.subTest(agent=agent):
                 matching = [group for group in groups if f"User-agent: {agent}" in group]
                 self.assertEqual(len(matching), 1)
