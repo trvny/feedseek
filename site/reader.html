@@ -11,6 +11,7 @@
 <link rel="alternate" type="text/markdown" href="index.md" title="Feedseek Reader Markdown">
 <link rel="describedby" href="../llms.txt" title="Feedseek llms.txt">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Feedseek Reader","url":"https://trvny.github.io/feedseek/reader/","applicationCategory":"NewsApplication","operatingSystem":"Any","inLanguage":"en","description":"Browser reader for Feedseek enhanced Atom/RSS feeds with source filtering and local reader state.","isAccessibleForFree":true,"creator":{"@id":"https://travny.pages.dev/#creator"},"isPartOf":{"@id":"https://travny.pages.dev/#website"},"isBasedOn":"https://github.com/trvny/feedseek"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Feedseek","item":"https://trvny.github.io/feedseek/"},{"@type":"ListItem","position":2,"name":"Reader","item":"https://trvny.github.io/feedseek/reader/"}]}</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
@@ -35,6 +36,8 @@
   .bar h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.02em}
   .bar h1 b{color:var(--accent)}
   .bar .n{color:var(--mut);font-size:13px;margin-right:auto}
+  .crumb{font-size:12px;color:var(--mut);padding:8px 0 0}
+  .crumb a{color:var(--accent)}
   .bar button{background:none;border:none;color:var(--mut);font-size:20px;
     padding:4px 6px;cursor:pointer}
   .bar button:disabled{opacity:.45;cursor:default}
@@ -109,6 +112,7 @@
 <body>
 <div class="bar2" id="prog"></div>
 <header>
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../">Feedseek</a><span aria-hidden="true"> / </span><span aria-current="page">Reader</span></nav>
   <div class="bar">
     <h1>feed<b>·</b>seek</h1>
     <span class="n" id="count"></span>

@@ -117,11 +117,11 @@ def load_published_feeds() -> list[tuple[str, str]] | None:
             unknown = set(item) - {"name", "title"}
             if unknown:
                 raise ValueError(f"published_feeds entry {index} has unknown fields: {sorted(unknown)}")
-            name = item.get("name")
-            title = item.get("title", "")
-            if not isinstance(name, str) or not isinstance(title, str):
+            raw_name = item.get("name")
+            raw_title = item.get("title", "")
+            if not isinstance(raw_name, str) or not isinstance(raw_title, str):
                 raise ValueError(f"published_feeds entry {index} must use string name/title values")
-            name, title = name.strip(), title.strip()
+            name, title = raw_name.strip(), raw_title.strip()
         else:
             raise ValueError(f"published_feeds entry {index} must be a string or mapping")
 

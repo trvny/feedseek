@@ -44,6 +44,21 @@ feeds:
             with self.assertRaisesRegex(ValueError, "unknown feed: missing"):
                 load_published_feeds()
 
+    def test_published_feeds_rejects_non_string_mapping_values(self):
+        selections = [
+            "- name: null\n  title: News",
+            "- name: 42\n  title: News",
+            "- name: reuters\n  title: 123",
+        ]
+        for entry in selections:
+            with self.subTest(entry=entry):
+                formatted = entry.replace("\n", "\n  ")
+                registry = f"published_feeds:\n  {formatted}\nfeeds:\n  reuters: {{}}\n"
+                with (
+                    patch("builtins.open", mock_open(read_data=registry)),
+                    self.assertRaisesRegex(ValueError, "must use string name/title values"),
+                ):
+                    load_published_feeds()
 
     def test_non_mapping_feed_configs_are_skipped(self):
         registry = """\
