@@ -968,7 +968,7 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
 
 def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
-    reader_html = reader_html.replace("https://trvny.github.io/feedseek/reader/", f"{base}reader/")
+    reader_html = reader_html.replace("https://trvny.github.io/feedseek/", base)
     for url, asset in (
         ("reader-fetch.js", "reader-fetch.js"),
         ("reader.js", "reader.js"),

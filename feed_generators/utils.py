@@ -597,7 +597,7 @@ def _managed_explicit_icon(blog_url: str, icon: str, size: int = 64) -> str:
     if any(icon.startswith(origin) for origin in (FAVICON_PROXY_ORIGIN, *LEGACY_FAVICON_PROXY_ORIGINS)):
         query = parse_qs(urlsplit(icon).query)
         managed_domain = (query.get("domain") or [domain])[0] or domain
-        explicit = (query.get("url") or [None])[0]
+        explicit: str | None = next(iter(query.get("url", [])), None)
         if explicit and not explicit.startswith("https://"):
             explicit = None
         provider = "duckduckgo" if (query.get("provider") or [""])[0] == "duckduckgo" else "google"

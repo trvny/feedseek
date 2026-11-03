@@ -62,6 +62,15 @@ class ManagedIconTests(unittest.TestCase):
         self.assertEqual(query["provider"], ["duckduckgo"])
         self.assertTrue(migrated.startswith(FAVICON_PROXY_ORIGIN))
 
+    def test_managed_icon_drops_non_https_explicit_url(self):
+        from utils import _managed_explicit_icon
+
+        icon = favicon_proxy("example.com", url="http://example.com/favicon.ico")
+        managed = _managed_explicit_icon("https://example.com/", icon)
+        query = parse_qs(urlsplit(managed).query)
+        self.assertEqual(query["domain"], ["example.com"])
+        self.assertNotIn("url", query)
+
     def test_default_icon_uses_feedseek_resolver(self):
         icon = favicon_url("https://example.com/blog")
         parts = urlsplit(icon)
