@@ -18,18 +18,48 @@ class SiteRobotsTests(unittest.TestCase):
             "anthropic-ai",
             "BingBot",
             "DuckAssistBot",
+            "GPTBot",
+            "PerplexityBot",
+            "Perplexity-User",
+            "KimiBot",
+            "Kimi-SearchBot",
+            "Kimi-User",
+            "Meta-WebIndexer",
+            "Meta-ExternalFetcher",
+            "Meta-ExternalAgent",
             "Googlebot",
+            "Googlebot-News",
+            "Googlebot-Image",
+            "Googlebot-Video",
+            "GoogleOther",
+            "GoogleOther-Image",
+            "GoogleOther-Video",
             "Google-InspectionTool",
             "DuckDuckBot",
+            "YandexBot",
+            "YandexFavicons",
+            "CCBot",
+            "SemanticScholarBot",
             "MistralAI-Index",
             "MistralAI-Training",
             "MistralAI-User",
         ):
             with self.subTest(agent=agent):
-                matching = [group for group in groups if f"User-agent: {agent}" in group]
+                matching = [
+                    group
+                    for group in groups
+                    if any(line.casefold() == f"user-agent: {agent.casefold()}" for line in group)
+                ]
                 self.assertEqual(len(matching), 1)
                 self.assertIn("Allow: /", matching[0])
                 self.assertNotIn("Disallow: /", matching[0])
+        declared = [
+            line.partition(":")[2].strip().casefold()
+            for group in groups
+            for line in group
+            if line.casefold().startswith("user-agent:")
+        ]
+        self.assertEqual(len(declared), len(set(declared)))
         self.assertIn("User-agent: *\n", robots)
         self.assertIn("Sitemap: https://example.com/sitemap.xml\n", robots)
 
