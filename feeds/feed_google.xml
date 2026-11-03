@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-11-03T18:01:33.180111+00:00</updated>
+  <updated>2026-11-03T23:38:20.539586+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,125 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/topics/financial-services/how-nammu21-automates-syndicated-loans-on-google-cloud-universal-ledger</id>
+    <title>How Nammu21 automates syndicated loans on Google Cloud Universal Ledger</title>
+    <updated>2026-11-03T18:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The syndicated loan and private credit markets, both critical components of corporate finance, have long been constrained by manual processes, leading to multi-week settlements, valuation opacity, and trade friction. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To solve these long-standing challenges, fintech innovator &lt;/span&gt;&lt;a href="https://www.nammu21.com/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Nammu21&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; partnered with Google Cloud on a new proof-of-concept. Using its AI-powered platform to structure legal agreements and instantiate them as smart contracts on the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/universal-ledger"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Universal Ledger (GCUL)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Nammu21 automates the entire loan lifecycle, paving the way for improved settlement times and greater market efficiency.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Digitizing the loan market&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While loan markets provide billions in capital to businesses worldwide, their underlying infrastructure has not kept pace with the speed of digital finance. This landscape requires continuous coordination across facility agents, borrowers, and diverse lender syndicates, while also managing highly customized credit agreements with dynamic tranches and complex covenants. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In particular, relying on fragmented, manual interpretation of legal text often results in significant operational drag and data silos. According to the &lt;/span&gt;&lt;a href="https://blog.lma.eu.com/challenging-the-timeline-issue-no-4/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Loan Market Association&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, secondary market settlement times for par/near par loans in Q4 2024 still averaged 42 days, with a median of 27 days. These notoriously slow timelines tie up capital, increase counterparty risk, and create a heavy reconciliation burden for participants.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Nammu21 transforms bespoke credit documents into programmable assets at scale by rendering each facility's governing terms as a Digital Credit Instrument (DCI). The DCI maps every term — including conditions, consents, eligibility criteria, and operational mechanics that determine what is permitted under a facility — directly back to its originating legal provision. These elements are then expressed as executable behaviours against a loan's live state. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To instantiate these instruments, the proof-of-concept utilizes the secure, high-performance execution environment of GCUL, an institutional-grade, permissioned distributed ledger that helps automate complex financial workflows to deliver near-instant transaction finality and predictable costs without the volatility or security concerns of public blockchains.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;A purpose-built stack for digital credit&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Combined with Nammu21’s data intelligence, GCUL provides the foundational infrastructure for converting legal document logic into live, programmable contracts. Designed to handle the privacy, scale, and multi-party coordination required by institutional finance, GCUL provides a permissioned, high-performance distributed ledger that delivers deterministic, instant transaction finality for high-value financial settlements.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Programmable contracts on GCUL are written in &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, GCUL's domain-optimized programming language. As a strict, statically-typed subset of Python, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; is designed to be safe, readable, and auditable, making it ideal for processing complex financial logic.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;For regulated financial institutions, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; offers distinct operational advantages over other ledger programming models. The language simplifies development by removing the need for complex memory management or workarounds to meet highly restrictive call stack limits, allowing engineers to focus on the financial logic itself. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;GCUL also provides robust, built-in permissioning, requiring explicit user authorization before a contract can store data on their behalf. This solves the "unsolicited asset" problem — common on public networks — where unwanted tokens can be sent to an organization's wallet, creating compliance and accounting issues. With GCUL, institutions can maintain full control over which assets they interact with to support their high-value, highly regulated use cases.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Nammu21 serves a dual role in this architecture. First, the platform renders the DCI programmatically from the original legal agreement without manual document reading to establish the terms. Next, it derives &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; contracts that define the structure of the obligation and govern the loan on GCUL, using the DCI to supply the terms that determine what the loan documents permit, require and block.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Technical architecture: The loan lifecycle on GCUL&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Nammu21’s loan implementation on GCUL demonstrates the value of creating a single, immutable source of truth. The proof-of-concept modeled a $1.945 billion Term Loan B — one segment of a broader multi-facility transaction — where the agent bank, borrower, transferor, and transferee all worked off a permissioned view of the same on-ledger rendering.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The lifecycle begins when an agent bank selects a specific credit agreement transformed by Nammu21. The platform instantly provides the structured terms from the document, which are used to instantiate a unique &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; contract on GCUL, establishing a verifiable, on-ledger digital twin of that specific loan facility.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1-facility-tokenization" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1-facility-tokenization.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Next, the agent bank initiates the onboarding of the borrower and lenders. This multilateral action requires that each participant review the request and then provide explicit consent by approving the onboarding invitation from their own interface. Once all parties are onboarded, the agent bank records an immutable hash of the loan's key terms on-ledger, attesting that the on-ledger data matches the canonical off-ledger records.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Subsequent lifecycle events, such as secondary market transfers or repayments, are also managed as multi-step, automated workflows governed by a consent-driven model. For example, a transfer of a loan position requires new lender, borrower, and agent bank consent  before it can be executed atomically on the ledger. All payment flows, from interest payments to loan close-outs, settle directly on GCUL using tokenized commercial bank money, eliminating the need for external payment rails.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2-assignment-transfer-legend" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2-assignment-transfer-legend.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Transacting with familiar, regulated money on a programmable ledger provides an architecture purpose-built for institutional finance, grounded in three core pillars:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;1. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Compliance via gated execution: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Nammu21’s &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;gculpy&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; contracts instantiated with governing terms, validate every action against the terms transformed from the agreement before execution, mitigating potential covenant breaches or invalid transfers upfront while eliminating the risk of silent failures. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;2. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Role-based privacy:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; GCUL enforces strict, role-based access, ensuring that trading strategies, positions, and sensitive loan data remain confidential and are visible only to the necessary counterparties in a transaction.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;3. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Settlement finality: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Every on-ledger action completes near-instantly and anchors on canonical data derived from the original credit agreement, replacing provisional, reconciliation-heavy models with real-time, trusted verification.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;The business impact of moving on-ledger&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This proof-of-concept illustrates a structural shift in how credit markets can operate. When each facility's governing terms are rendered as a DCI and executed on GCUL, the operational mechanics of lending markets change fundamentally, rather than incrementally. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Values can be reconciled bilaterally, but governance logic cannot – and the market’s current friction stems directly from each party's independent interpretation of the rules. Resolving this issue on-ledger is what enables settlement times to compress, back-office overhead to shrink, and counterparty risk to be mitigated by design rather than by manual checking. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This same architecture can be applied wherever credit terms are bespoke and manually interpreted. By freeing up capital that would otherwise be trapped in lengthy settlement cycles, new liquidity is unlocked and a more dynamic and efficient secondary loan market can emerge.&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;The team would also like to thank Someera Khokhar, Jordan Shelley, and Saskia A. Aalders at Nammu21 and Googlers Ishan Singh, Kathryn Stavish, Tom Chudy, and Stathis Onasoglou for their contributions.&lt;/span&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/topics/financial-services/how-nammu21-automates-syndicated-loans-on-google-cloud-universal-ledger" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-03T18:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/nammu21-automating-sydicated-loans-header.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/nammu21-automating-sydicated-loans-header.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/nammu21-automating-sydicated-loans-header.max-600x600.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity</id>
     <title>Agentic cheminformatics with Google Antigravity</title>
@@ -229,6 +348,61 @@
       <media:thumbnail url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtf7djNawrxBIcCu_S2okK1yo9Q40X63t3skICQHNym0ki76WwP8QlM9YHAyobBDT6H_Z1XYkwjxrsndG5P6oNozq6nKZstoG4qL5KdWT5SvUIujw8y2awit1oPUMsdlKDe4TISexPZXi4vxx1l_9q68Fjy4ZNCxTzFk7XCkeYeeU8GbftYIfHe_A8syA/s72-c/Display%20Custom%20Policy%20in%20the%20Green%20Room%20before%20Google%20Meet%20Calls%20-%207092.png"/>
     </media:group>
     <link rel="enclosure" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtf7djNawrxBIcCu_S2okK1yo9Q40X63t3skICQHNym0ki76WwP8QlM9YHAyobBDT6H_Z1XYkwjxrsndG5P6oNozq6nKZstoG4qL5KdWT5SvUIujw8y2awit1oPUMsdlKDe4TISexPZXi4vxx1l_9q68Fjy4ZNCxTzFk7XCkeYeeU8GbftYIfHe_A8syA/s72-c/Display%20Custom%20Policy%20in%20the%20Green%20Room%20before%20Google%20Meet%20Calls%20-%207092.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/calendar/docs/release-notes#November_03_2026</id>
+    <title>Calendar API — November 03, 2026</title>
+    <updated>2026-11-03T08:00:00+00:00</updated>
+    <content type="html">&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Generally Available:&lt;/strong&gt; You can now read and update a Google Workspace user's
+working hours on their primary calendar using the new &lt;code&gt;workingHours&lt;/code&gt; property on
+the &lt;code&gt;Calendars&lt;/code&gt; resource.&lt;/p&gt;
+&lt;p&gt;To learn more, see the &lt;a href="https://developers.google.com/workspace/calendar/api/v3/reference/calendars"&gt;&lt;code&gt;Calendars&lt;/code&gt; resource
+documentation&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/calendar/docs/release-notes#November_03_2026" rel="alternate"/>
+    <category term="Calendar API"/>
+    <published>2026-11-03T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://developers.google.com/workspace/release-notes#November_03_2026</id>
+    <title>Workspace Release Notes — November 03, 2026</title>
+    <updated>2026-11-03T08:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Chat API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Generally Available:&lt;/strong&gt; You can now add citations and footer sources to Google
+Chat text messages.&lt;/p&gt;
+&lt;p&gt;You can provide sources in two ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inline citations&lt;/strong&gt;: Interactive cards that appear when users hold the
+pointer over specific parts of your message text.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Footer sources&lt;/strong&gt;: A list of sources displayed at the bottom of the
+message as footer links.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Citations are supported when the message's &lt;code&gt;markupSyntax&lt;/code&gt; is set to
+&lt;code&gt;MARKUP_SYNTAX_MARKDOWN&lt;/code&gt; and when messages are created asynchronously using the
+Google Chat API.&lt;/p&gt;
+&lt;p&gt;For more information, see &lt;a href="https://developers.google.com/workspace/chat/format-messages#messages-citations"&gt;Add citations to a text
+message&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Calendar API&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Generally Available:&lt;/strong&gt; You can now read and update a Google Workspace user's
+working hours on their primary calendar using the new &lt;code&gt;workingHours&lt;/code&gt; property on
+the &lt;code&gt;Calendars&lt;/code&gt; resource.&lt;/p&gt;
+&lt;p&gt;To learn more, see the &lt;a href="https://developers.google.com/workspace/calendar/api/v3/reference/calendars"&gt;&lt;code&gt;Calendars&lt;/code&gt; resource
+documentation&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://developers.google.com/workspace/release-notes#November_03_2026" rel="alternate"/>
+    <category term="Workspace Release Notes"/>
+    <published>2026-11-03T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.gstatic.com/devrel-devsite/prod/veed85ba0e3651062c793a40796e84fb34afbf8489308d45f92d5448e587e3f03/developers/images/opengraph/white.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://docs.cloud.google.com/release-notes#November_03_2026</id>
@@ -38262,46 +38436,5 @@ region&lt;/a&gt;.&lt;/p&gt;</content>
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/hero_pic.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/hero_pic.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech</id>
-    <title>Gemini 3.8 text-to-speech says hello</title>
-    <updated>2026-09-23T15:25:14+00:00</updated>
-    <link href="https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-09-23T15:25:14+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard__light.width-1300.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard__light.width-1300.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard__light.width-1300.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech</id>
-    <title>Gemini 3.8 text-to-speech says hello</title>
-    <updated>2026-09-23T15:15:00+00:00</updated>
-    <content type="html">a text card image reading "Introducing Gemini 3.8 Flash TTS and 3.8 Flash-Lite TTS"</content>
-    <link href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-23T15:15:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-audio__keyword__metacard.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/company-news/outreach-and-initiatives/creating-opportunity/hispanic-heritage-month-2026</id>
-    <title>We’re honoring Latino culture this Hispanic Heritage Month.</title>
-    <updated>2026-09-23T15:00:00+00:00</updated>
-    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/500-x200-363840.gif" /&gt;Celebrate Hispanic Heritage Month with Google’s Latin Pop Doodle and curated Google TV collections. See how we honor Latino culture today.</content>
-    <link href="https://blog.google/company-news/outreach-and-initiatives/creating-opportunity/hispanic-heritage-month-2026" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-23T15:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/500-x200-363840.gif" type="image/gif" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/500-x200-363840.gif"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/500-x200-363840.gif" type="image/gif" length="0"/>
   </entry>
 </feed>
