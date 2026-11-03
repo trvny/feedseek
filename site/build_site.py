@@ -766,6 +766,7 @@ def build_robots(base: str) -> str:
         "User-agent: PerplexityBot\n"
         "User-agent: Perplexity-User\n"
         "User-agent: MistralAI-Index\n"
+        "User-agent: MistralAI-Training\n"
         "User-agent: MistralAI-User\n"
         "User-agent: Googlebot\n"
         "User-agent: Google-InspectionTool\n"

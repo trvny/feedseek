@@ -22,6 +22,7 @@ class SiteRobotsTests(unittest.TestCase):
             "Google-InspectionTool",
             "DuckDuckBot",
             "MistralAI-Index",
+            "MistralAI-Training",
             "MistralAI-User",
         ):
             with self.subTest(agent=agent):
