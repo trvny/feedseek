@@ -9,8 +9,7 @@ on:
       - "feeds.yaml"
       - "site/**"
       - "assets/**"
-      - "feed_generators/models.py"
-      - "feed_generators/validate_feeds.py"
+      - "feed_generators/**"
   schedule:
     - cron: "37 */2 * * *" # co 2 godziny
   workflow_dispatch:
@@ -123,31 +122,6 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: uv run --locked tools/backup_r2_cache.py
 
-      # Publish the freshly generated, validated pair without creating a Git commit.
-      - name: Configure GitHub Pages
-        id: pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
-
-      - name: Build live Pages site
-        env:
-          SITE_URL: ${{ steps.pages.outputs.base_url }}
-        run: |
-          uv run --locked site/build_site.py
-          uv run --locked site/build_search_index.py
-          uv run --locked site/make_favicon.py
-
-      - name: Check live Model Feed catalog
-        run: |
-          test -s public/model-feeds.json
-          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
-          grep -Fq 'model-feeds.json' public/llms.txt
-
-      - name: Upload live Pages artifact
-        id: pages_upload
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
-        with:
-          path: public
-
       # Raw GitHub URLs keep working from main, but Git stores fewer snapshots.
       - name: Decide whether Git snapshot is due
         id: snapshot
@@ -175,7 +149,7 @@ jobs:
           now="$(date -u +%s)"
           last_epoch="$(date -u -d "$last" +%s)"
           age_seconds=$(( now - last_epoch ))
-          if (( age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600 )); then
+          if (( age_seconds < 0 || age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600 )); then
             echo "due=true" >> "$GITHUB_OUTPUT"
             echo "Git snapshot due (last: $last)"
           else
@@ -191,7 +165,6 @@ jobs:
           steps.model_feeds.outcome == 'success' &&
           steps.validate.outcome == 'success' &&
           steps.backup.outcome == 'success' &&
-          steps.pages_upload.outcome == 'success' &&
           steps.snapshot.outputs.due == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -211,6 +184,32 @@ jobs:
               git push
             fi
           fi
+
+      # Publish the freshly generated, validated pair without creating a Git commit.
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+
+      - name: Build live Pages site
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          FEEDSEEK_INDEX_PIN_COMMITTED: "1"
+        run: |
+          uv run --locked site/build_site.py
+          uv run --locked site/build_search_index.py
+          uv run --locked site/make_favicon.py
+
+      - name: Check live Model Feed catalog
+        run: |
+          test -s public/model-feeds.json
+          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
+          grep -Fq 'model-feeds.json' public/llms.txt
+
+      - name: Upload live Pages artifact
+        id: pages_upload
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: public
 
       - name: Apply feed health gate
         if: always()

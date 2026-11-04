@@ -22,7 +22,7 @@ permissions:
 concurrency:
   # PR checks must not cancel production deploys.
   group: pages-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'deploy' }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check-pr:

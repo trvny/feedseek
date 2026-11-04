@@ -37,12 +37,16 @@ results still deploy if a separate generator fails its final health gate. This k
 sibling) current without a fresh pack of generated blobs in `main`. The Pages
 build also points Atom self links and Model Feed URLs at the live Pages copy,
 while the files tracked in Git keep their existing raw-GitHub URLs.
+The remote MCP search index is rebuilt from the precise Git snapshot commit,
+not from newer uncommitted feeds, so its immutable search result IDs remain
+fetchable. MCP search freshness therefore follows the Git snapshot cadence.
 
 The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
-Scheduled runs normally commit these no more often than every six hours (an
-API lookup failure fails open and can snapshot sooner); manual runs and
-configuration/site pushes snapshot immediately. Consequently, raw-GitHub URLs
+Scheduled runs snapshot after the last feed commit reaches six hours old, at
+the next successful scheduled run (potentially later); an API lookup failure
+fails open and can snapshot sooner. Manual runs and matching configuration,
+generator, workflow or site pushes snapshot immediately. Consequently, raw-GitHub URLs
 remain valid but may lag GitHub Pages. Pages is the preferred live subscription
 endpoint. A snapshot is never pushed before successful validation and R2 backup.
 

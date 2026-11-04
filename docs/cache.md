@@ -14,9 +14,10 @@ untracked. The durable source of truth is the private Cloudflare R2 object
 4. Generate and validate feeds. Upload the new cache snapshot first.
 5. Publish the live Pages artifact from the validated workspace whenever its
    publication gate passes, even if an unrelated generator later fails.
-6. Commit a `feeds/` snapshot to `main` on manual or source changes; scheduled
-   runs normally commit at six-hour intervals. An unavailable GitHub API
-   lookup fails open to preserve raw-GitHub freshness.
+6. Commit a `feeds/` snapshot on manual runs and matching pushes (`feeds.yaml`,
+   generator, workflow or site code). Scheduled runs snapshot once their last
+   feed commit is at least six hours old, so actual intervals can be longer
+   than six hours; an unavailable GitHub API lookup fails open.
 
 `make feeds`, `make feed NAME=...` and compatibility Make targets perform the
 restore automatically. Direct incremental generators require the same one-shot
