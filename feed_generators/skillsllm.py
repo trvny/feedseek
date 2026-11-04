@@ -139,6 +139,7 @@ LMSTUDIO_API_CHANGELOG_URL = "https://lmstudio.ai/docs/developer/api-changelog"
 LMSTUDIO_CHANGELOG_URL = "https://lmstudio.ai/changelog/lmstudio"
 MANUFACT_BLOG_URL = "https://manufact.com/blog"
 AGENTID_BLOG_URL = "https://www.agentid.com/blog"
+AGENTID_MAX = 20
 MANUFACT_CHANGELOG_URL = "https://docs.manufact.com/dashboard/changelog"
 MCP_USE_TYPESCRIPT_CHANGELOG_RSS_URL = (
     "https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml"
@@ -398,7 +399,7 @@ _AGENTID_SOURCE = {
 }
 
 
-def agentid_article_links(html, known_links=None):
+def agentid_article_links(html, known_links=None, limit=AGENTID_MAX):
     """Discover AgentID posts, excluding the index, filters and duplicate links."""
     known_links = known_links or set()
     soup = BeautifulSoup(html, "html.parser")
@@ -410,7 +411,7 @@ def agentid_article_links(html, known_links=None):
             continue
         seen.add(link)
         links.append(link)
-    return links[:20]
+    return links if limit is None else links[:limit]
 
 
 def collect_agentid_blog(known_links, ledger):
@@ -420,16 +421,19 @@ def collect_agentid_blog(known_links, ledger):
         logger.warning("[AgentID Blog] index unavailable; continuing")
         return []
 
-    # A successful listing prunes stale failures, but cached posts must not
-    # exhaust the per-run candidate budget before unseen posts are considered.
-    if agentid_article_links(index):
+    # Apply candidate budget only after excluding cached and exhausted links.
+    links = agentid_article_links(index, limit=None)
+    if links:
         ledger.listed("AgentID Blog")
-    links = agentid_article_links(index, known_links)
 
     entries = []
+    attempted = 0
     for link in links:
         if link in known_links or ledger.exhausted("AgentID Blog", link):
             continue
+        if attempted >= AGENTID_MAX:
+            break
+        attempted += 1
         try:
             entry = fetch_detail(link, None, _AGENTID_SOURCE)
             if entry is not None:
