@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 from multi_rss import get_html, parse_date, run
-from utils import sanitize_xml, setup_logging, stable_fallback_date
+from utils import fetch_page, sanitize_xml, setup_logging, stable_fallback_date
 
 logger = setup_logging()
 
@@ -47,7 +47,7 @@ DEV_TOP_MONTH_URL = "https://dev.to/top/month"
 DEV_TOP_MONTH_API_URL = "https://dev.to/api/articles?top=30&per_page=30"
 DEV_TOP_MONTH_MAX = 30
 JUSTJOIN_BLOG_URL = "https://justjoin.it/blog/"
-JUSTJOIN_MAX = 15
+JUSTJOIN_MAX = 10
 _JUSTJOIN_POST_RE = re.compile(r"^https://justjoin\.it/blog/[^/?#]+/?$", re.I)
 _JUSTJOIN_DATE_RE = re.compile(
     r"\b\d{1,2}\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|"
@@ -188,6 +188,15 @@ def scrape_dev_top_month(known_links):
     return entries
 
 
+def get_justjoin_html(url):
+    """Bound requests to keep slow post pages from stalling development."""
+    try:
+        return fetch_page(url, timeout=8, browser_fallback=True)
+    except Exception as exc:
+        logger.warning("  [Just Geek IT] fetch failed %s: %s", url, exc)
+        return None
+
+
 def justjoin_article_links(html, known_links=None):
     """Discover Just Geek IT article URLs, excluding categories and duplicates."""
     known_links = known_links or set()
@@ -205,14 +214,14 @@ def justjoin_article_links(html, known_links=None):
 
 def scrape_justjoin_blog(known_links):
     """Extract post metadata from Just Geek IT, skipping unavailable detail pages."""
-    index = get_html(JUSTJOIN_BLOG_URL)
+    index = get_justjoin_html(JUSTJOIN_BLOG_URL)
     if not index:
         logger.warning("  [Just Geek IT] blog index unavailable")
         return []
 
     entries = []
     for link in justjoin_article_links(index, known_links):
-        html = get_html(link)
+        html = get_justjoin_html(link)
         if not html:
             continue
         soup = BeautifulSoup(html, "html.parser")
