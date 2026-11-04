@@ -71,7 +71,8 @@ jobs:
     name: Check whether live Pages already deployed
     if: >-
       github.event_name == 'workflow_run' &&
-      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      contains(fromJSON('["push","schedule","workflow_dispatch"]'), github.event.workflow_run.event) &&
       github.event.workflow_run.conclusion == 'failure'
     runs-on: ubuntu-slim
     permissions:
@@ -84,9 +85,31 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           set -euo pipefail
+          # Do not replace a newer successful or in-flight publication.
+          if ! latest="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/update-feeds.yml/runs?branch=main&per_page=1" --jq '.workflow_runs[0].id // empty')"; then
+            echo "::warning::Unable to check newer generator runs; skip stale fallback"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ ! "$latest" =~ ^[0-9]+$ ]] || (( latest > SOURCE_RUN_ID )); then
+            echo "A newer refresh exists (or the run list is invalid); skip fallback"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if ! current="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')"; then
+            echo "::warning::Unable to verify current main; skip stale fallback"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ "$current" != "$SOURCE_SHA" ]]; then
+            echo "Main advanced since the failing refresh; skip stale fallback"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if ! conclusions="$(gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID/jobs" --jq '.jobs[] | select(.name == "Deploy fresh feeds to GitHub Pages") | .conclusion')"; then
             echo "::warning::Could not confirm live deployment; skip potentially stale fallback"
             echo "allowed=false" >> "$GITHUB_OUTPUT"

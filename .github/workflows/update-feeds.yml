@@ -15,8 +15,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: update-feeds
-  # A delayed GitHub cron must not abort an R2 restore/generation in progress.
+  group: update-feeds-${{ github.ref }}
+  # Serialize main refreshes; branch dispatches must not delay production.
   cancel-in-progress: false
 
 permissions: {}
@@ -138,24 +138,31 @@ jobs:
           fi
 
           # One path-filtered API read; avoid fetching the large Git history.
-          if ! last="$(gh api "repos/$GITHUB_REPOSITORY/commits?path=feeds&per_page=1" --jq '.[0].commit.committer.date // empty')"; then
+          if ! last="$(gh api "repos/$GITHUB_REPOSITORY/commits?path=feeds&per_page=1" --jq 'if length == 0 then "" else (.[0].sha + " " + .[0].commit.committer.date) end')"; then
             echo "::warning::Could not read last feed commit; fail open to keep raw URLs fresh"
             echo "due=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if [[ -z "$last" ]]; then
+          read -r last_sha last_date <<< "$last"
+          if [[ -z "$last_sha" || -z "$last_date" ]]; then
             echo "due=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          # A coalesced push can be replaced by a late schedule. Preserve its snapshot.
+          if [[ "$GITHUB_SHA" != "$last_sha" ]]; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            echo "Main changed since the last feed snapshot; refreshing raw URLs"
+            exit 0
+          fi
           now="$(date -u +%s)"
-          last_epoch="$(date -u -d "$last" +%s)"
+          last_epoch="$(date -u -d "$last_date" +%s)"
           age_seconds=$(( now - last_epoch ))
           if (( age_seconds < 0 || age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600 )); then
             echo "due=true" >> "$GITHUB_OUTPUT"
-            echo "Git snapshot due (last: $last)"
+            echo "Git snapshot due (last: $last_date)"
           else
             echo "due=false" >> "$GITHUB_OUTPUT"
-            echo "Live Pages updated; Git snapshot deferred (last: $last)"
+            echo "Live Pages updated; Git snapshot deferred (last: $last_date)"
           fi
 
       - name: Commit and push successful updates
