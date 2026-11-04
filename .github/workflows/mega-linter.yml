@@ -97,7 +97,7 @@ jobs:
 
       - name: Install uv and Python
         if: steps.paths.outputs.tests == 'true' || steps.paths.outputs.artifacts == 'true'
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           enable-cache: true
           cache-python: true
@@ -153,7 +153,7 @@ jobs:
       - name: MegaLinter
         id: megalinter
         continue-on-error: true
-        uses: oxsecurity/megalinter/flavors/python@9949bad031045f366be2467e00e8371a7328a2e2 # v10
+        uses: oxsecurity/megalinter/flavors/python@f2fe8c1cba37091848df3e524066c8c23ef353ed # v10
         env:
           MEGALINTER_CONFIG: .github/linters/.mega-linter.yml
           VALIDATE_ALL_CODEBASE: >-
