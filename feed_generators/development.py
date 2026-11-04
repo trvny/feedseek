@@ -188,8 +188,6 @@ def scrape_dev_top_month(known_links):
     return entries
 
 
-
-
 def justjoin_article_links(html, known_links=None):
     """Discover Just Geek IT article URLs, excluding categories and duplicates."""
     known_links = known_links or set()
@@ -221,15 +219,18 @@ def scrape_justjoin_blog(known_links):
         heading = soup.find("h1")
         title_meta = soup.find("meta", attrs={"property": "og:title"})
         title = (
-            heading.get_text(" ", strip=True) if heading else
-            title_meta.get("content", "") if title_meta else ""
+            heading.get_text(" ", strip=True)
+            if heading
+            else title_meta.get("content", "") if title_meta else ""
         )
         title = sanitize_xml(title)
         if not title:
             continue
 
         desc_meta = soup.find("meta", attrs={"name": "description"})
-        description = sanitize_xml(desc_meta.get("content", "").strip()) if desc_meta else ""
+        description = (
+            sanitize_xml(desc_meta.get("content", "").strip()) if desc_meta else ""
+        )
         published = soup.find("meta", attrs={"property": "article:published_time"})
         timestamp = published.get("content") if published else None
         if not timestamp:
@@ -244,7 +245,8 @@ def scrape_justjoin_blog(known_links):
             {
                 "title": title,
                 "link": link,
-                "date": (parse_date(timestamp) if timestamp else None) or stable_fallback_date(link),
+                "date": (parse_date(timestamp) if timestamp else None)
+                or stable_fallback_date(link),
                 "description": description or title,
                 "source": "Just Geek IT",
                 "image": image_meta.get("content") if image_meta else None,
@@ -252,6 +254,7 @@ def scrape_justjoin_blog(known_links):
         )
     logger.info("  [Just Geek IT] found %d article(s)", len(entries))
     return entries
+
 
 def main(full=False):
     return run(
