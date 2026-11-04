@@ -115,7 +115,6 @@ class AgentIdentitySourcesTests(unittest.TestCase):
         index += '<a href="/blog/new-post">New</a>'
         previous = {"AgentID Blog": {url: skillsllm.MAX_FETCH_ATTEMPTS for url in old}}
         ledger = skillsllm.AttemptLedger(previous)
-        detail = "<html><head><title>Fresh AgentID Article</title></head></html>"
 
         with patch.object(skillsllm, "fetch_url", return_value=index):
             with patch.object(skillsllm, "fetch_detail", return_value={
