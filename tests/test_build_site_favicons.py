@@ -409,13 +409,14 @@ class LiveFeedMetadataTests(unittest.TestCase):
                 "items": [{"id": "one", "text": "Some text"}],
             }
             sibling = source.with_suffix(".json")
-            sibling.write_text(json.dumps(model), encoding="utf-8")
+            raw_json = json.dumps(model)
+            sibling.write_text(raw_json, encoding="utf-8")
             base = "https://trvny.github.io/feedseek/"
 
             build_site.copy_public_feed_pair(source, public, base)
 
             self.assertEqual(source.read_text(encoding="utf-8"), xml)
-            self.assertEqual(json.loads(sibling.read_text(encoding="utf-8")), model)
+            self.assertEqual(sibling.read_text(encoding="utf-8"), raw_json)
             staged = (public / source.name).read_text(encoding="utf-8")
             self.assertIn(f'href="{base}feed_test.xml" rel="self"', staged)
             self.assertNotIn(raw, staged)
