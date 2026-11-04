@@ -93,15 +93,20 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("steps.snapshot.outputs.due == 'true'", commit)
         self.assertIn("steps.backup.outcome == 'success'", commit)
 
-    def test_only_update_feeds_auto_deploys_production(self):
+    def test_failed_push_can_rebuild_from_git_only_when_live_deploy_skipped(self):
         deploy = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
             encoding="utf-8"
         )
-        self.assertNotIn("workflow_run:", deploy)
         self.assertNotIn("  push:", deploy)
         self.assertIn("  workflow_dispatch:", deploy)
-        self.assertIn("github.event_name == 'workflow_dispatch'", deploy)
+        self.assertIn('workflows: ["Update Feeds"]', deploy)
+        self.assertIn("github.event.workflow_run.event == 'push'", deploy)
+        self.assertIn("github.event.workflow_run.conclusion == 'failure'", deploy)
+        self.assertIn("needs.check-fallback.outputs.allowed == 'true'", deploy)
+        self.assertIn('select(.name == "Deploy fresh feeds to GitHub Pages")', deploy)
+        self.assertIn("grep -qx success", deploy)
         self.assertIn("group: feedseek-pages-deploy", deploy)
+        self.assertIn("github.event_name == 'pull_request'", deploy)
 
 if __name__ == "__main__":
     unittest.main()
