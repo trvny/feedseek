@@ -109,6 +109,29 @@ class AgentIdentitySourcesTests(unittest.TestCase):
             entries = skillsllm.collect_agentid_blog(old, skillsllm.AttemptLedger())
         self.assertEqual([item["title"] for item in entries], ["New AgentID Post"])
 
+    def test_agentid_exhausted_urls_do_not_starve_new_posts(self):
+        old = [f"https://www.agentid.com/blog/dead-{n}" for n in range(25)]
+        index = "".join(f'<a href="/blog/dead-{n}">Dead</a>' for n in range(25))
+        index += '<a href="/blog/new-post">New</a>'
+        previous = {"AgentID Blog": {url: skillsllm.MAX_FETCH_ATTEMPTS for url in old}}
+        ledger = skillsllm.AttemptLedger(previous)
+        detail = "<html><head><title>Fresh AgentID Article</title></head></html>"
+
+        with patch.object(skillsllm, "fetch_url", return_value=index):
+            with patch.object(skillsllm, "fetch_detail", return_value={
+                "title": "Fresh AgentID Article",
+                "link": "https://www.agentid.com/blog/new-post",
+                "date": skillsllm.stable_fallback_date("https://www.agentid.com/blog/new-post"),
+                "description": "Fresh AgentID Article",
+                "source": "AgentID Blog",
+                "category": "agentid",
+                "image": None,
+            }) as fetch:
+                entries = skillsllm.collect_agentid_blog(set(), ledger)
+                fetch.assert_called_once()
+        self.assertEqual([entry["title"] for entry in entries], ["Fresh AgentID Article"])
+        self.assertEqual(ledger.skipped, 25)
+
     def test_agentid_index_outage_keeps_failure_ledger(self):
         url = "https://www.agentid.com/blog/broken-post"
         ledger = skillsllm.AttemptLedger({"AgentID Blog": {url: 2}})
