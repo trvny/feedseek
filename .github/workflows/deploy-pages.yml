@@ -45,6 +45,9 @@ jobs:
       - name: Test site contracts
         run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
 
+      - name: Test publishing workflow contracts
+        run: uv run --locked python -m unittest discover -s tests -p 'test_update_feeds_workflow.py'
+
       - name: Build site
         env:
           SITE_URL: https://trvny.github.io/feedseek/

@@ -80,6 +80,9 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         commit = commit.split("- name: Apply feed health gate", 1)[0]
         self.assertIn('FEEDSEEK_GIT_SNAPSHOT_HOURS: "6"', workflow)
         self.assertIn('"$GITHUB_EVENT_NAME" != "schedule"', snapshot)
+        triggers = workflow.split("concurrency:", 1)[0]
+        self.assertIn("  push:", triggers)
+        self.assertIn("  workflow_dispatch:", triggers)
         self.assertIn("commits?path=feeds&per_page=1", snapshot)
         self.assertIn("echo \"due=true\"", snapshot)
         self.assertIn("steps.snapshot.outputs.due == 'true'", commit)
