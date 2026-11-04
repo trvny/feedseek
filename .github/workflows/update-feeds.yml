@@ -19,9 +19,7 @@ concurrency:
   group: update-feeds
   cancel-in-progress: true
 
-permissions:
-  contents: write
-  pages: read
+permissions: {}
 
 env:
   FEEDSEEK_CACHE_BUCKET: feedseek-cache
@@ -31,6 +29,9 @@ env:
 
 jobs:
   update-feeds:
+    permissions:
+      contents: write
+      pages: read
     runs-on: ubuntu-latest
     timeout-minutes: 69
     outputs:
