@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/update-feeds.yml"
+      - "feeds.yaml"
   schedule:
     - cron: "37 */2 * * *" # co 2 godziny
   workflow_dispatch:
