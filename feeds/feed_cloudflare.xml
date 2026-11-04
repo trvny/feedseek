@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-04T17:20:12.044583+00:00</updated>
+  <updated>2026-11-04T18:24:06.729563+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -63,6 +63,36 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=723,format=webp/_astro/personal-agent-policies.BgzIAR6T.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/05c25192d09f9933</id>
+    <title>AI Gateway - Route across a pool of models with model aliases</title>
+    <updated>2026-11-04T00:00:00+00:00</updated>
+    <content>AI Gateway now supports model aliases. A model alias is a pool of models that your application calls by one name, such as custom/support-fast . AI Gateway tries the models in the order you set and falls back to the next one if a request fails, or uses smart routing to choose a model for each request. Because your application only references the alias, you can swap models or change the routing algorithm on your gateway without redeploying. Create and manage aliases on your gateway's Routing page,</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-04-model-aliases/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-04T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-04-model-aliases/og.png?v=14e1fe116aa96905" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-04-model-aliases/og.png?v=14e1fe116aa96905"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-04-model-aliases/og.png?v=14e1fe116aa96905" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/204c1bbcd0b368ca</id>
+    <title>Browser Isolation, Cloudflare One - Block data entry with Browser Isolation without losing search, copy, and zoom (beta)</title>
+    <updated>2026-11-04T00:00:00+00:00</updated>
+    <content>Isolation policies now support a third keyboard option in beta: Allow read-only actions . Previously, the keyboard setting was binary — allow all input or block everything. With Allow read-only actions , you can block data entry while preserving the built-in browser actions your users depend on. In Allow read-only actions mode, users can still find in page, select all, copy, print, and zoom. All other keyboard input is blocked from reaching the isolated page. Copy and print remain subject to the</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-04-granular-keyboard-controls/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-04T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-04-granular-keyboard-controls/og.png?v=42c1e4e804e57eee" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-04-granular-keyboard-controls/og.png?v=42c1e4e804e57eee"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-04-granular-keyboard-controls/og.png?v=42c1e4e804e57eee" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/58789cad42d8ee7e</id>
@@ -1194,21 +1224,6 @@ We have identified the cause as a capacity problem in a shared internal data pip
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/a77aff1ffab38bfa</id>
-    <title>Flagship - Target Flagship feature flags with structured evaluation context</title>
-    <updated>2026-10-23T00:00:00+00:00</updated>
-    <content>Flagship supports nested objects, arrays, and null in evaluation context. Pass user profiles and tag lists directly, then target nested attributes without flattening your application data. For example, pass a profile and tags when evaluating a flag through the Workers binding: const enabled = await env. FLAGS . getBooleanValue ( "new-checkout" , false , { targetingKey: "user-42" , profile: { plan: "enterprise" }, tags: [ "beta" , "early-access" ], }); const enabled = await env. FLAGS . getBoolea</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-structured-evaluation-context/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-23T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-structured-evaluation-context/og.png?v=b7d5ff0284d957ca" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-structured-evaluation-context/og.png?v=b7d5ff0284d957ca"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-structured-evaluation-context/og.png?v=b7d5ff0284d957ca" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/75f2d272e0bc62fe</id>
     <title>Radar - Redesigned Cloudflare Radar homepage</title>
     <updated>2026-10-23T00:00:00+00:00</updated>
@@ -1308,21 +1323,6 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-22T15:41:44+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/952ff24320912747</id>
-    <title>Cloudflare One Client - Cloudflare One Client for Windows (version 2026.9.1555.1)</title>
-    <updated>2026-10-22T13:08:10+00:00</updated>
-    <content>A new Beta release for the Windows Cloudflare One Client is now available on the beta releases downloads page . This release includes the following highlights: Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them wit</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-22T13:08:10+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/og.png?v=e36a8c5497e8ccb5" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/og.png?v=e36a8c5497e8ccb5"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/og.png?v=e36a8c5497e8ccb5" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9873cb1e1a068dca</id>
