@@ -7,6 +7,8 @@ Aggregates xAI's update sources into one **Atom** feed written to
 
     - xAI News               https://x.ai/news                          (HTML)
     - xAI Console changelog  https://x.ai/api/changelog                 (HTML)
+    - Grok Bot changelog     https://x.ai/changelog/bot/rss.xml        (RSS)
+    - Tesla Blog             https://www.tesla.com/blog                (HTML)
     - Grok Build changelog   https://x.ai/build/changelog               (HTML)
     - xAI API release notes  https://docs.x.ai/developers/release-notes (Mintlify .md)
     - Grok release notes     https://grok.com/release-notes             (HTML)
@@ -60,6 +62,7 @@ from utils import (
     sort_posts_for_feed,
     stable_fallback_date,
 )
+from multi_rss import scrape_feed
 from x_changelog import BLOG_URL as X_API_CHANGELOG_URL
 from x_changelog import fetch_text as fetch_x_api_changelog
 from x_changelog import parse_items as parse_x_api_items
@@ -72,6 +75,8 @@ BLOG_URL = "https://x.ai/news"
 NEWS_URL = "https://x.ai/news"
 NEWS_BASE = "https://x.ai"
 CONSOLE_CHANGELOG_URL = "https://x.ai/api/changelog"
+GROK_BOT_RSS_URL = "https://x.ai/changelog/bot/rss.xml"
+TESLA_BLOG_URL = "https://www.tesla.com/blog"
 BUILD_CHANGELOG_URL = "https://x.ai/build/changelog"
 RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes"
 RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
@@ -416,6 +421,91 @@ def scrape_release_notes(known_links, today=None):
     return entries
 
 
+
+# --------------------------------------------------------------------------- #
+# Grok Bot RSS and Tesla Blog
+# --------------------------------------------------------------------------- #
+
+
+def scrape_grok_bot_changelog(known_links):
+    """Use the official changelog RSS instead of parsing the release page."""
+    return scrape_feed(
+        "Grok Bot changelog", GROK_BOT_RSS_URL, known_links, cap=60
+    )
+
+
+def _parse_tesla_blog(html):
+    """Read dated Tesla news cards without inventing missing publication dates."""
+    soup = BeautifulSoup(html or "", "html.parser")
+    entries = []
+    seen = set()
+
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(TESLA_BLOG_URL, anchor.get("href", "")).split("#", 1)[0]
+        parsed = urlparse(link)
+        if parsed.netloc not in {"www.tesla.com", "tesla.com"}:
+            continue
+        if not parsed.path.startswith("/blog/") or link in seen:
+            continue
+
+        for card in [anchor, *list(anchor.parents)[:5]]:
+            if card.name in {"main", "body", "html"}:
+                break
+            post_links = {
+                urlparse(urljoin(TESLA_BLOG_URL, a.get("href", ""))).path
+                for a in card.find_all("a", href=True)
+                if urlparse(urljoin(TESLA_BLOG_URL, a.get("href", ""))).path.startswith("/blog/")
+            }
+            if len(post_links) > 1:
+                break
+            card_text = card.get_text(" ", strip=True)
+            if len(card_text) > 2500:
+                break
+            match = DATE_RE.search(card_text)
+            if not match:
+                continue
+            date_obj = parse_date(match.group(1))
+            if date_obj is None:
+                break
+            heading = card.find(["h2", "h3", "h4", "h5"])
+            title = heading.get_text(" ", strip=True) if heading else ""
+            if not title or title.casefold() == "continue reading":
+                title = title_from_slug(parsed.path)
+            title = sanitize_xml(re.sub(r"\s+", " ", title).strip())
+            if not title:
+                break
+            summary = next(
+                (
+                    sanitize_xml(text)[:DESC_LIMIT]
+                    for paragraph in card.find_all("p")
+                    if (text := paragraph.get_text(" ", strip=True))
+                    and not DATE_RE.search(text)
+                ),
+                title,
+            )
+            entries.append({
+                "title": title,
+                "link": link,
+                "date": date_obj,
+                "description": summary or title,
+                "source": "Tesla Blog",
+            })
+            seen.add(link)
+            break
+
+    return entries
+
+
+def scrape_tesla_blog(known_links):
+    html = _get_html(TESLA_BLOG_URL)
+    if html is None:
+        return []
+    candidates = _parse_tesla_blog(html)
+    if not candidates:
+        logger.warning("  [Tesla Blog] no posts matched; layout may have changed")
+    return [entry for entry in candidates if entry["link"] not in known_links]
+
+
 # --------------------------------------------------------------------------- #
 # X Blog / Engineering
 # --------------------------------------------------------------------------- #
@@ -631,6 +721,10 @@ def scrape_all(known_links):
     new_entries += scrape_news(known_links)
     logger.info("Scraping xAI Console changelog ...")
     new_entries += scrape_console_changelog(known_links)
+    logger.info("Scraping Grok Bot changelog RSS ...")
+    new_entries += scrape_grok_bot_changelog(known_links)
+    logger.info("Scraping Tesla Blog ...")
+    new_entries += scrape_tesla_blog(known_links)
     logger.info("Scraping Grok Build changelog ...")
     new_entries += scrape_build_changelog(known_links)
     logger.info("Scraping xAI API release notes ...")
@@ -653,8 +747,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://x.ai/{feed_name}")
     fg.title("xAI")
     fg.subtitle(
-        "xAI and Grok product updates, Console and Build changelogs, plus "
-        "X Blog, X Engineering, and the X developer API changelog."
+        "xAI and Grok product updates, Console, Build and Bot changelogs, "
+        "Tesla Blog, X Blog, X Engineering, and X API updates."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
@@ -684,6 +778,19 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     return fg
 
 
+def _select_feed_items(entries):
+    """Keep latest updates plus a small share for infrequent Tesla posts."""
+    selected = entries[-MAX_ENTRIES:]
+    selected_links = {entry["link"] for entry in selected}
+    reserved = [
+        entry for entry in entries
+        if entry.get("source") == "Tesla Blog" and entry["link"] not in selected_links
+    ][-5:]
+    if reserved:
+        selected = selected[len(reserved):] + reserved
+    return sort_posts_for_feed(selected, date_field="date")
+
+
 def main(full=False):
     if full:
         logger.info("Full reset requested — ignoring existing cache")
@@ -707,7 +814,7 @@ def main(full=False):
 
     # Keep full (deduplicated) history in the cache so already-seen links are
     # never re-evaluated on later runs; only the rendered feed is capped.
-    feed_items = merged[-MAX_ENTRIES:] if len(merged) > MAX_ENTRIES else merged
+    feed_items = _select_feed_items(merged)
     # Before the cache write: feed_items shares its dicts with merged, so a
     # resolved image is saved and never looked up again.
     enrich_entries(feed_items)
