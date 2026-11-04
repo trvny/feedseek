@@ -27,6 +27,25 @@ The defaults are intentionally conservative:
 - deduplicate by normalized URL/title where sources overlap;
 - keep generated `feeds/` and `cache/` data separate from maintained generator code.
 
+## Publication cadence and Git history
+
+The scheduled generator still runs every two hours. Every healthy run backs up
+incremental state to R2, then builds and deploys GitHub Pages **directly from
+the generated files**, even when no Git commit is made. This keeps
+`https://trvny.github.io/feedseek/feed_<name>.xml` and its Model Feed JSON
+sibling current without a fresh pack of generated blobs in `main`.
+
+The same `feeds/` files remain committed as backward-compatible snapshots for
+existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
+Scheduled runs commit these no more often than every six hours; manual runs and
+configuration/site pushes snapshot immediately. Consequently, raw-GitHub URLs
+remain valid but may lag GitHub Pages. Pages is the preferred live subscription
+endpoint. A snapshot is never pushed before successful validation and R2 backup.
+
+`Deploy Pages` remains a manual Git-snapshot fallback; normal live deployment
+happens in `Update Feeds`. This arrangement reduces future Git history growth
+without rewriting past commits, disrupting PRs or moving the source registry.
+
 ## Feed quality contract
 
 The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published. The public contract is [`schemas/model-feed.v1.schema.json`](schemas/model-feed.v1.schema.json); consumer-facing access is in [agents.md](agents.md).

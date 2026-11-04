@@ -5,7 +5,12 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/update-feeds.yml"
+      - ".github/workflows/deploy-pages.yml"
       - "feeds.yaml"
+      - "site/**"
+      - "assets/**"
+      - "feed_generators/models.py"
+      - "feed_generators/validate_feeds.py"
   schedule:
     - cron: "37 */2 * * *" # co 2 godziny
   workflow_dispatch:
@@ -16,11 +21,13 @@ concurrency:
 
 permissions:
   contents: write
+  pages: read
 
 env:
   FEEDSEEK_CACHE_BUCKET: feedseek-cache
   FEEDSEEK_CACHE_KEY: snapshots/cache.tar.gz
   FEEDSEEK_CACHE_MAX_BYTES: 134217728
+  FEEDSEEK_GIT_SNAPSHOT_HOURS: "6"
 
 jobs:
   update-feeds:
@@ -113,6 +120,66 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: uv run --locked tools/backup_r2_cache.py
 
+      # Publish the freshly generated, validated pair without creating a Git commit.
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+
+      - name: Build live Pages site
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          uv run --locked site/build_site.py
+          uv run --locked site/build_search_index.py
+          uv run --locked site/make_favicon.py
+
+      - name: Check live Model Feed catalog
+        run: |
+          test -s public/model-feeds.json
+          uv run --locked python -m json.tool public/model-feeds.json > /dev/null
+          grep -Fq 'model-feeds.json' public/llms.txt
+
+      - name: Upload live Pages artifact
+        id: pages_upload
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: public
+
+      # Raw GitHub URLs keep working from main, but Git stores fewer snapshots.
+      - name: Decide whether Git snapshot is due
+        id: snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_EVENT_NAME" != "schedule" ]]; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            echo "Non-scheduled refresh: snapshot immediately"
+            exit 0
+          fi
+
+          # One path-filtered API read; avoid fetching the large Git history.
+          if ! last="$(gh api "repos/$GITHUB_REPOSITORY/commits?path=feeds&per_page=1" --jq '.[0].commit.committer.date // empty')"; then
+            echo "::warning::Could not read last feed commit; fail open to keep raw URLs fresh"
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ -z "$last" ]]; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          now="$(date -u +%s)"
+          last_epoch="$(date -u -d "$last" +%s)"
+          age_seconds=$(( now - last_epoch ))
+          if (( age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600 )); then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            echo "Git snapshot due (last: $last)"
+          else
+            echo "due=false" >> "$GITHUB_OUTPUT"
+            echo "Live Pages updated; Git snapshot deferred (last: $last)"
+          fi
+
       - name: Commit and push successful updates
         if: >-
           always() &&
@@ -120,7 +187,9 @@ jobs:
           github.ref == 'refs/heads/main' &&
           steps.model_feeds.outcome == 'success' &&
           steps.validate.outcome == 'success' &&
-          steps.backup.outcome == 'success'
+          steps.backup.outcome == 'success' &&
+          steps.pages_upload.outcome == 'success' &&
+          steps.snapshot.outputs.due == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -153,3 +222,23 @@ jobs:
             echo "Feed, Model Feed, or validation generation reported failures; updates publish only after the full publication set passes."
             exit 1
           fi
+
+  deploy-generated-pages:
+    name: Deploy fresh feeds to GitHub Pages
+    needs: update-feeds
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    concurrency:
+      group: feedseek-pages-deploy
+      cancel-in-progress: false
+    steps:
+      - name: Deploy live artifact
+        id: deploy
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5

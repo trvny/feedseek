@@ -1,20 +1,8 @@
 name: Deploy Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "site/**"
-      - "assets/**"
-      - "feeds.yaml"
-      - "tests/test_build_site_favicons.py"
-      - "feed_generators/models.py"
-      - "feed_generators/validate_feeds.py"
-      - ".github/workflows/deploy-pages.yml"
-  # zizmor: ignore[dangerous-triggers] deploy-after-build on our own workflow; checks out default ref, no untrusted PR code
-  workflow_run:
-    workflows: ["Update Feeds"]
-    types: [completed]
+  # Automatic production deploys come from Update Feeds with live, validated files.
+  # Manual rebuild remains a fallback using the last Git snapshot.
   pull_request:
     branches: [main]
     paths:
@@ -25,6 +13,8 @@ on:
       - "feed_generators/models.py"
       - "feed_generators/validate_feeds.py"
       - ".github/workflows/deploy-pages.yml"
+      - ".github/workflows/update-feeds.yml"
+      - "tests/test_update_feeds_workflow.py"
   workflow_dispatch:
 
 permissions:
@@ -70,13 +60,15 @@ jobs:
           grep -Fq 'model-feeds.json' public/llms.txt
 
   build-deploy:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'workflow_dispatch'
+    concurrency:
+      group: feedseek-pages-deploy
+      cancel-in-progress: false
     permissions:
       contents: read
       pages: write
       id-token: write
-    # Update Feeds publishes successful partial output before applying its health gate,
-    # so deploy after every completed run and always build from the current default branch.
+    # Emergency rebuild from the last committed snapshot, not the live R2 state.
     runs-on: ubuntu-slim
     timeout-minutes: 20
     environment:
@@ -103,7 +95,6 @@ jobs:
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
       - name: Test site contracts
-        if: github.event_name != 'workflow_run'
         run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
 
       - name: Build site
