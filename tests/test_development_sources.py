@@ -174,7 +174,7 @@ class DevelopmentSourceTests(unittest.TestCase):
         </body></html>
         """
         with patch.object(
-            development, "get_html",
+            development, "get_justjoin_html",
             side_effect=lambda url: {
                 development.JUSTJOIN_BLOG_URL: index,
                 link: detail,
@@ -189,8 +189,24 @@ class DevelopmentSourceTests(unittest.TestCase):
         self.assertEqual(result[0]["date"].isoformat(), "2026-08-06T00:00:00+00:00")
         self.assertEqual(result[0]["image"], "https://justjoin.it/cover.jpg")
 
+    def test_justjoin_fetches_have_bounded_timeout(self):
+        with patch.object(development, "fetch_page", return_value="post") as fetch:
+            self.assertEqual(
+                development.get_justjoin_html("https://justjoin.it/blog/example"),
+                "post",
+            )
+        fetch.assert_called_once_with(
+            "https://justjoin.it/blog/example", timeout=8, browser_fallback=True
+        )
+
+    def test_justjoin_fetch_error_is_isolated(self):
+        with patch.object(development, "fetch_page", side_effect=TimeoutError):
+            self.assertIsNone(
+                development.get_justjoin_html("https://justjoin.it/blog/example")
+            )
+
     def test_justjoin_failed_index_is_isolated(self):
-        with patch.object(development, "get_html", return_value=None):
+        with patch.object(development, "get_justjoin_html", return_value=None):
             self.assertEqual(development.scrape_justjoin_blog(set()), [])
 
 
