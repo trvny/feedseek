@@ -52,19 +52,19 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](ht
 ## 📰 Mininewsy
 
 <!--README_FEED:START-->
-- [Flash floods trigger evacuations in Arizona and Colorado amid heavy rains in southwest](https://abcnews.com/US/wireStory/flash-floods-trigger-evacuations-arizona-colorado-amid-heavy-137753110)
-- [CBS News adds South Carolina as battleground state; still Leans Republican](https://www.cbsnews.com/video/cbs-news-adds-south-carolina-as-battleground-state-still-leans-republican/)
-- [Transcript: David Becker on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/david-becker-election-law-face-the-nation-transcript-11-01-2026/)
-- [Transcript: Pennsylvania Gov. Josh Shapiro on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/josh-shapiro-pennsylvania-governor-11-01-2026/)
-- [Transcript: Rep. Mike Lawler on "Face the Nation with Margaret Brennan," Nov. 1, 2026](https://www.cbsnews.com/news/mike-lawler-new-york-republican-face-the-nation-transcript-11-01-2026/)
-- [UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda](https://www.theguardian.com/world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda)
+- [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
+- [“\(The success\) is by committee. I'll say it over and …](https://sports.yahoo.com/articles/success-committee-ill-over-232757875.html)
+- [Welsh injury adds to Swans' misery at Portsmouth](https://sports.yahoo.com/articles/welsh-injury-adds-swans-misery-232701543.html)
+- [History made. Liberty High player commits to Nebraska for flag football](https://sports.yahoo.com/articles/history-made-liberty-high-player-232552298.html)
+- [Ohio high school football powerhouse wins court ruling, but playoff future uncertain](https://sports.yahoo.com/articles/ohio-high-school-football-powerhouse-232522260.html)
+- [Details emerge following crash that killed 2 Texas Lutheran football players](https://sports.yahoo.com/articles/details-emerge-following-crash-killed-230600327.html)
 <!--README_FEED:END-->
 
 ## 💬 Cytat z szuflady
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝The first electronic computer ENIAC weighed more than 27 tons and took up 1800 square feet.❞</i>
+<i>❝“The goal is to turn data into information, and information into insight.”— Carly Fiorina❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
