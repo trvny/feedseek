@@ -25,7 +25,7 @@ class AgentIdentitySourcesTests(unittest.TestCase):
         html = """
         <main>
           <a href="/blog">All posts</a>
-          <a href="/blog/introducing-agentid"><h2>Introducing AgentID</h2></a>
+          <a href="introducing-agentid"><h2>Introducing AgentID</h2></a>
           <a href="/blog/introducing-agentid?ref=home">Repeated post</a>
           <a href="https://www.agentid.com/blog/agentid-for-descope#details">Descope</a>
           <a href="/blog/category/identity">Filter</a>
@@ -56,7 +56,7 @@ class AgentIdentitySourcesTests(unittest.TestCase):
             "https://www.agentid.com/blog/introducing-agentid": detail,
         }
         with patch.object(skillsllm, "fetch_url", side_effect=pages.get):
-            entries = skillsllm.collect_agentid_blog(set())
+            entries = skillsllm.collect_agentid_blog(set(), skillsllm.AttemptLedger())
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0]["title"], "Introducing AgentID")
         self.assertEqual(entries[0]["source"], "AgentID Blog")
@@ -65,6 +65,37 @@ class AgentIdentitySourcesTests(unittest.TestCase):
             entries[0]["date"].isoformat(), "2026-10-06T10:00:00+00:00"
         )
         self.assertEqual(entries[0]["description"], "Agent sign-in with OIDC")
+
+    def test_agentid_broken_page_stops_after_retry_budget(self):
+        index = '<a href="broken-post">Broken</a>'
+        link = "https://www.agentid.com/blog/broken-post"
+        ledger = skillsllm.AttemptLedger()
+        with patch.object(skillsllm, "fetch_url", return_value=index):
+            with patch.object(skillsllm, "fetch_detail", return_value=None) as detail:
+                self.assertEqual(skillsllm.collect_agentid_blog(set(), ledger), [])
+                detail.assert_called_once()
+
+        for count in range(1, skillsllm.MAX_FETCH_ATTEMPTS):
+            ledger = skillsllm.AttemptLedger(ledger.current)
+            with patch.object(skillsllm, "fetch_url", return_value=index):
+                with patch.object(skillsllm, "fetch_detail", return_value=None) as detail:
+                    self.assertEqual(skillsllm.collect_agentid_blog(set(), ledger), [])
+                    detail.assert_called_once()
+
+        exhausted = skillsllm.AttemptLedger(ledger.current)
+        with patch.object(skillsllm, "fetch_url", return_value=index):
+            with patch.object(skillsllm, "fetch_detail") as detail:
+                self.assertEqual(skillsllm.collect_agentid_blog(set(), exhausted), [])
+                detail.assert_not_called()
+        self.assertEqual(exhausted.skipped, 1)
+        self.assertEqual(exhausted.current["AgentID Blog"][link], skillsllm.MAX_FETCH_ATTEMPTS)
+
+    def test_agentid_index_outage_keeps_failure_ledger(self):
+        url = "https://www.agentid.com/blog/broken-post"
+        ledger = skillsllm.AttemptLedger({"AgentID Blog": {url: 2}})
+        with patch.object(skillsllm, "fetch_url", return_value=None):
+            self.assertEqual(skillsllm.collect_agentid_blog(set(), ledger), [])
+        self.assertEqual(ledger.current["AgentID Blog"][url], 2)
 
     def test_agentid_unavailable_index_returns_no_entries(self):
         with patch.object(skillsllm, "fetch_url", return_value=None):
