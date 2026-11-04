@@ -104,6 +104,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("steps.backup.outcome == 'success'", commit)
 
     def test_failed_main_refresh_can_rebuild_only_when_no_newer_run(self):
+        """Reject stale fallback deployments after newer refreshes."""
         deploy = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
             encoding="utf-8"
         )
