@@ -404,7 +404,7 @@ def agentid_article_links(html, known_links=None):
     soup = BeautifulSoup(html, "html.parser")
     links, seen = [], set()
     for anchor in soup.find_all("a", href=True):
-        link = urljoin(AGENTID_BLOG_URL, anchor["href"])
+        link = urljoin(f"{AGENTID_BLOG_URL}/", anchor["href"])
         link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
         if not _AGENTID_POST_RE.fullmatch(link) or link in known_links or link in seen:
             continue
@@ -413,20 +413,29 @@ def agentid_article_links(html, known_links=None):
     return links[:20]
 
 
-def collect_agentid_blog(known_links):
-    """Fetch AgentID post metadata; preserve cached entries during outages."""
+def collect_agentid_blog(known_links, ledger):
+    """Fetch AgentID post metadata with bounded retries for broken pages."""
     index = fetch_url(AGENTID_BLOG_URL)
     if index is None:
         logger.warning("[AgentID Blog] index unavailable; continuing")
         return []
 
+    links = agentid_article_links(index)
+    if links:
+        ledger.listed("AgentID Blog")
+
     entries = []
-    for link in agentid_article_links(index, known_links):
+    for link in links:
+        if link in known_links or ledger.exhausted("AgentID Blog", link):
+            continue
         try:
             entry = fetch_detail(link, None, _AGENTID_SOURCE)
             if entry is not None:
                 entries.append(entry)
+            else:
+                ledger.failed("AgentID Blog", link)
         except Exception as exc:
+            ledger.failed("AgentID Blog", link)
             logger.warning("[AgentID Blog] skipping %s: %s", link, exc)
     logger.info("[AgentID Blog] fetched %d new article(s)", len(entries))
     return entries
@@ -1549,7 +1558,7 @@ def main(full=False):
     manufact_entries = collect_manufact(known_links)
     mcpso_entries = collect_mcpso(known_links)
     orcarouter_entries = collect_orcarouter_blog(known_links)
-    agentid_entries = collect_agentid_blog(known_links)
+    agentid_entries = collect_agentid_blog(known_links, ledger)
     mcpblog_entries = collect_mcpservers_blog(known_links, ledger)
     aihubmix_entries = collect_aihubmix_blog(
         known_links, ledger, fetch_url, fetch_detail
