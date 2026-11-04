@@ -10,7 +10,10 @@ WORKFLOWS = Path(__file__).resolve().parents[1] / ".github" / "workflows"
 
 
 class CheckoutScopeTests(unittest.TestCase):
-    def workflow(self, name: str) -> str:
+    """Guard CI checkout boundaries and baseline comparisons."""
+
+    @staticmethod
+    def workflow(name: str) -> str:
         return (WORKFLOWS / name).read_text(encoding="utf-8")
 
     def test_megalinter_has_bounded_history_and_exact_comparison_baselines(self):
