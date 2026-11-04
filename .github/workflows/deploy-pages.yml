@@ -77,6 +77,7 @@ jobs:
     runs-on: ubuntu-slim
     permissions:
       actions: read
+      contents: read
     outputs:
       allowed: ${{ steps.inspect.outputs.allowed }}
     steps:

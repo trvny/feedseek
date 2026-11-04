@@ -114,6 +114,9 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn('github.event.workflow_run.head_branch == \'main\'', deploy)
         self.assertIn('"push","schedule","workflow_dispatch"', deploy)
         self.assertIn("latest > SOURCE_RUN_ID", deploy)
+        fallback_job = deploy.split("  check-fallback:", 1)[1].split("  build-deploy:", 1)[0]
+        self.assertIn("actions: read", fallback_job)
+        self.assertIn("contents: read", fallback_job)
         self.assertIn('"$current" != "$SOURCE_SHA"', deploy)
         self.assertIn("github.event.workflow_run.conclusion == 'failure'", deploy)
         self.assertIn("needs.check-fallback.outputs.allowed == 'true'", deploy)
