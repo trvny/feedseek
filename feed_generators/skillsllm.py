@@ -28,6 +28,7 @@ Native RSS/Atom feeds (feedparser):
   * Mintlify Blog           https://www.mintlify.com/feed.xml
   * LM Studio Blog          https://lmstudio.ai/rss.xml
   * mcp-use TypeScript      https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml
+  * AgentMail Changelog     https://docs.agentmail.to/changelog.rss
 
 Sitemap discovery + per-page detail fetch (no native feed; pages server-render
 real ``<title>`` / ``<meta description>`` and sometimes ``article:published_time``):
@@ -46,6 +47,7 @@ Server-rendered listing scrape (no native feed):
   * OrcaRouter Blog     https://www.orcarouter.ai/blog
   * Manufact Blog       https://manufact.com/blog
   * Manufact Changelog  https://docs.manufact.com/dashboard/changelog
+  * AgentID Blog        https://www.agentid.com/blog
 
 Index asset-slug discovery + detail fetch (no feed, no sitemap):
   * MCP Servers Blog    https://blog.mcpservers.org  (/posts/<slug>, slugs from
@@ -91,6 +93,7 @@ import re
 import sys
 import time
 from datetime import UTC, datetime
+from urllib.parse import urljoin
 
 import feedparser
 from _skillsllm_aihubmix import AIHUBMIX_DOC_SOURCES, collect_aihubmix_blog
@@ -135,6 +138,8 @@ LMSTUDIO_BLOG_URL = "https://lmstudio.ai/blog"
 LMSTUDIO_API_CHANGELOG_URL = "https://lmstudio.ai/docs/developer/api-changelog"
 LMSTUDIO_CHANGELOG_URL = "https://lmstudio.ai/changelog/lmstudio"
 MANUFACT_BLOG_URL = "https://manufact.com/blog"
+AGENTID_BLOG_URL = "https://www.agentid.com/blog"
+AGENTID_MAX = 20
 MANUFACT_CHANGELOG_URL = "https://docs.manufact.com/dashboard/changelog"
 MCP_USE_TYPESCRIPT_CHANGELOG_RSS_URL = (
     "https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml"
@@ -259,6 +264,7 @@ SOURCES = [
 # discovery. (label, url, category)
 NATIVE_FEEDS = [
     ("Devin Desktop", DEVIN_DESKTOP_RSS_URL, "devin-desktop", 40),
+    ("AgentMail Changelog", "https://docs.agentmail.to/changelog.rss", "agentmail-changelog", 40),
     ("MindStudio", "https://www.mindstudio.ai/rss.xml", "mindstudio", 40),
     (
         "Mintlify Changelog",
@@ -354,6 +360,7 @@ def doc_sources():
         ("MCP.so Feed", MCPSO_FEED_URL),
         ("MCP.so Blog", MCPSO_BLOG_URL),
         ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
+        ("AgentID Blog", AGENTID_BLOG_URL),
     ] + list(AIHUBMIX_DOC_SOURCES)
 
 
@@ -381,6 +388,63 @@ ORCAROUTER_BASE = "https://www.orcarouter.ai"
 ORCAROUTER_BLOG_URL = f"{ORCAROUTER_BASE}/blog"
 _ORCAROUTER_POST_RE = re.compile(r"^/blog/[a-z0-9][a-z0-9-]*/?$")
 _ORCAROUTER_DATE_RE = re.compile(r"\b[A-Z][a-z]{2} \d{1,2}, \d{4}\b")
+
+
+
+_AGENTID_POST_RE = re.compile(r"^https://www\.agentid\.com/blog/[a-z0-9][a-z0-9-]*/?$", re.I)
+_AGENTID_SOURCE = {
+    "label": "AgentID Blog",
+    "title_suffixes": (" | AgentID", " - AgentID"),
+    "category": lambda loc: "agentid",
+}
+
+
+def agentid_article_links(html, known_links=None, limit=AGENTID_MAX):
+    """Discover AgentID posts, excluding the index, filters and duplicate links."""
+    known_links = known_links or set()
+    soup = BeautifulSoup(html, "html.parser")
+    links, seen = [], set()
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(f"{AGENTID_BLOG_URL}/", anchor["href"])
+        link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
+        if not _AGENTID_POST_RE.fullmatch(link) or link in known_links or link in seen:
+            continue
+        seen.add(link)
+        links.append(link)
+    return links if limit is None else links[:limit]
+
+
+def collect_agentid_blog(known_links, ledger):
+    """Fetch AgentID post metadata with bounded retries for broken pages."""
+    index = fetch_url(AGENTID_BLOG_URL)
+    if index is None:
+        logger.warning("[AgentID Blog] index unavailable; continuing")
+        return []
+
+    # Apply candidate budget only after excluding cached and exhausted links.
+    links = agentid_article_links(index, limit=None)
+    if links:
+        ledger.listed("AgentID Blog")
+
+    entries = []
+    attempted = 0
+    for link in links:
+        if link in known_links or ledger.exhausted("AgentID Blog", link):
+            continue
+        if attempted >= AGENTID_MAX:
+            break
+        attempted += 1
+        try:
+            entry = fetch_detail(link, None, _AGENTID_SOURCE)
+            if entry is not None:
+                entries.append(entry)
+            else:
+                ledger.failed("AgentID Blog", link)
+        except Exception as exc:
+            ledger.failed("AgentID Blog", link)
+            logger.warning("[AgentID Blog] skipping %s: %s", link, exc)
+    logger.info("[AgentID Blog] fetched %d new article(s)", len(entries))
+    return entries
 
 
 # Locale-neutral LobeHub feeds replaced the former /pl/ endpoints. Drop only
@@ -1500,6 +1564,7 @@ def main(full=False):
     manufact_entries = collect_manufact(known_links)
     mcpso_entries = collect_mcpso(known_links)
     orcarouter_entries = collect_orcarouter_blog(known_links)
+    agentid_entries = collect_agentid_blog(known_links, ledger)
     mcpblog_entries = collect_mcpservers_blog(known_links, ledger)
     aihubmix_entries = collect_aihubmix_blog(
         known_links, ledger, fetch_url, fetch_detail
@@ -1518,6 +1583,7 @@ def main(full=False):
         and not manufact_entries
         and not mcpso_entries
         and not orcarouter_entries
+        and not agentid_entries
         and not mcpblog_entries
         and not aihubmix_entries
         and not glama_rn_entries
@@ -1537,6 +1603,7 @@ def main(full=False):
         + manufact_entries
         + mcpso_entries
         + orcarouter_entries
+        + agentid_entries
         + mcpblog_entries
         + aihubmix_entries
         + glama_rn_entries
