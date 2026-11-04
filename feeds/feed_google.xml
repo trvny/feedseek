@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-11-04T18:25:07.748237+00:00</updated>
+  <updated>2026-11-04T22:57:25.609347+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -1036,6 +1036,191 @@
       <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Mercari_Blog_header_2436x1200px-2.max-600x600.png"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Mercari_Blog_header_2436x1200px-2.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#November_04_2026</id>
+    <title>Cloud Release Notes — November 04, 2026</title>
+    <updated>2026-11-04T08:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;AlloyDB for PostgreSQL&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;Direct Iceberg access in AlloyDB for PostgreSQL is available for PostgreSQL 18
+and later (&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;in Preview&lt;/a&gt;).
+This feature lets you query Apache Iceberg tables in Cloud Storage or Lakehouse
+runtime catalog and accelerate analytical queries using the AlloyDB columnar
+engine.&lt;/p&gt;
+&lt;p&gt;For more information, see
+&lt;a href="https://docs.cloud.google.com/alloydb/docs/access-iceberg-data-from-alloydb"&gt;Access Iceberg data from
+AlloyDB&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;Syncing data from BigQuery into AlloyDB is generally available
+(&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;GA&lt;/a&gt;). This feature
+lets you copy or mirror analytical tables from BigQuery into AlloyDB for
+low-latency operational access using the &lt;code&gt;alloydb_sync&lt;/code&gt; extension.&lt;/p&gt;
+&lt;p&gt;For more information, see
+&lt;a href="https://docs.cloud.google.com/alloydb/docs/sync-bigquery-data-to-alloydb"&gt;Sync BigQuery data to AlloyDB&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;AlloyDB Express is available in
+&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;Preview&lt;/a&gt; for
+PostgreSQL 18. Optimized for rapid prototyping and for workflows that use AI
+coding agents, this configuration provides the following features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fast provisioning&lt;/li&gt;
+&lt;li&gt;Scale-to-zero compute when idle&lt;/li&gt;
+&lt;li&gt;A monthly free tier for the first 12 months of usage&lt;/li&gt;
+&lt;li&gt;One-click upgrades to AlloyDB for PostgreSQL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see
+&lt;a href="https://docs.cloud.google.com/alloydb/docs/express-overview"&gt;AlloyDB Express overview&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Apigee Operator for kubernetes&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;On November 4, 2026, we released an updated version of Apigee.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;The Apigee Operator for Kubernetes version 1.1.2 is now available.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Security&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bug ID&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;521387476, 521388685, 521389473, 521389648, 521390401, 521390431, 521418315, 521467563, 521470029, 521523106, 521532318, 522502328, 522502515, 522502723, 522508097, 522515015, 522515987, 523406508, 524990439, 525000385, 525013469, 545525835, 545535262, 545546643, 545547894, 545594793, 545595426, 545604082, 545605504, 545613200, 545619209, 546865118, 549708263, 572097689, 572100132&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Security fixes for Netty in the Apigee Operator for Kubernetes.&lt;/strong&gt; &lt;p&gt;Upgraded Netty to 4.1.137.Final. This addresses the following vulnerabilities:&lt;ul&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-33870"&gt;CVE-2026-33870&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-33871"&gt;CVE-2026-33871&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-41417"&gt;CVE-2026-41417&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42578"&gt;CVE-2026-42578&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42579"&gt;CVE-2026-42579&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42580"&gt;CVE-2026-42580&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42581"&gt;CVE-2026-42581&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42583"&gt;CVE-2026-42583&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42584"&gt;CVE-2026-42584&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42585"&gt;CVE-2026-42585&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-42587"&gt;CVE-2026-42587&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-44249"&gt;CVE-2026-44249&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-45416"&gt;CVE-2026-45416&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-45673"&gt;CVE-2026-45673&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-45674"&gt;CVE-2026-45674&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-47244"&gt;CVE-2026-47244&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-47691"&gt;CVE-2026-47691&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-48043"&gt;CVE-2026-48043&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-50010"&gt;CVE-2026-50010&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-50020"&gt;CVE-2026-50020&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-50560"&gt;CVE-2026-50560&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-55831"&gt;CVE-2026-55831&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-55833"&gt;CVE-2026-55833&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-56745"&gt;CVE-2026-56745&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-56746"&gt;CVE-2026-56746&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-56819"&gt;CVE-2026-56819&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59898"&gt;CVE-2026-59898&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59899"&gt;CVE-2026-59899&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59900"&gt;CVE-2026-59900&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59901"&gt;CVE-2026-59901&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59903"&gt;CVE-2026-59903&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59921"&gt;CVE-2026-59921&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-73508"&gt;CVE-2026-73508&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-75595"&gt;CVE-2026-75595&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-75596"&gt;CVE-2026-75596&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;527492626, 527495614, 527497578, 527498733, 545553137, 572096453, 572096754, 572096884, 572097054, 572097090, 572097183, 572098198, 572098299, 572099894, 572100881, 578504005&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Security fixes for Jackson in the Apigee Operator for Kubernetes.&lt;/strong&gt; &lt;p&gt;Upgraded Jackson to 2.21.7. This addresses the following vulnerabilities:&lt;ul&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-18401"&gt;CVE-2026-18401&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-19032"&gt;CVE-2026-19032&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54512"&gt;CVE-2026-54512&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54513"&gt;CVE-2026-54513&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54514"&gt;CVE-2026-54514&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-54515"&gt;CVE-2026-54515&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59888"&gt;CVE-2026-59888&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-59889"&gt;CVE-2026-59889&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-68494"&gt;CVE-2026-68494&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-68497"&gt;CVE-2026-68497&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-77310"&gt;CVE-2026-77310&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-83557"&gt;CVE-2026-83557&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-89407"&gt;CVE-2026-89407&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-89425"&gt;CVE-2026-89425&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-91776"&gt;CVE-2026-91776&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-91777"&gt;CVE-2026-91777&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;521477919, 545546100, 545555197, 545603496, 545608493&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Security fixes for Jetty in the Apigee Operator for Kubernetes.&lt;/strong&gt; &lt;p&gt;Upgraded Jetty to 12.0.36. This addresses the following vulnerabilities:&lt;ul&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2025-11143"&gt;CVE-2025-11143&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1605"&gt;CVE-2026-1605&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-2332"&gt;CVE-2026-2332&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-6790"&gt;CVE-2026-6790&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-8384"&gt;CVE-2026-8384&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-10050"&gt;CVE-2026-10050&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-10051"&gt;CVE-2026-10051&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;522503039&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Security fixes for Vert.x in the Apigee Operator for Kubernetes.&lt;/strong&gt; &lt;p&gt;Upgraded Vert.x to 4.5.35. This addresses the following vulnerabilities:&lt;ul&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1002"&gt;CVE-2026-1002&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-6860"&gt;CVE-2026-6860&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;579151884&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Security fixes for Guava in the Apigee Operator for Kubernetes.&lt;/strong&gt; &lt;p&gt;Upgraded Guava to 33.7.2-jre. This addresses the following vulnerabilities:&lt;ul&gt;&lt;li&gt;&lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-102554"&gt;CVE-2026-102554&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 class="release-note-product-title"&gt;Gemini Enterprise&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Gemini Enterprise: Switch between teams in the mobile app&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You can switch between multiple teams in the Gemini Enterprise mobile app
+without logging out and rescanning the QR code. (Teams were previously called
+instances.)&lt;/p&gt;
+&lt;p&gt;When you open a team for the first time, the mobile app saves it to your teams
+list. Additionally, you can rename teams in the list and you can remove teams
+from your list.&lt;/p&gt;
+&lt;p&gt;This feature is generally available (GA). For more information, see
+&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/use-the-mobile-app#teams"&gt;Teams&lt;/a&gt; in &lt;em&gt;Use the mobile
+app&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Distributed Cloud (software only) for VMware&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;Google Distributed Cloud (software only) for VMware 1.35.700-gke.124 is now available
+for download. To upgrade, see &lt;a href="https://docs.cloud.google.com/kubernetes-engine/distributed-cloud/vmware/docs/how-to/upgrading.md"&gt;Upgrade clusters&lt;/a&gt;.
+Google Distributed Cloud 1.35.700-gke.124 runs on Kubernetes v1.35.8-gke.100.&lt;/p&gt;
+&lt;p&gt;If you use a third-party storage vendor, check the listing of our
+previously-qualified &lt;a href="https://docs.cloud.google.com/kubernetes-engine/enterprise/docs/resources/partner-storage"&gt;storage partners&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After a release, it takes approximately 7 to 14 days for the version to become
+available for use with GKE On-Prem API clients: the Google Cloud console, the
+gcloud CLI, and Terraform.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;The following changes were added in 1.35.700-gke.124:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated system components and container base images to remove the distrusted
+eMudhra (emSign) and AAA Certificate Services root CAs and reject compromised
+eMudhra intermediate CAs.
+&lt;/li&gt;
+&lt;li&gt;Upgraded Container-Optimized OS (COS) to milestone 121
+(&lt;code&gt;cos-121-18867-652-7&lt;/code&gt;), which removes the distrusted eMudhra (emSign) and
+AAA Certificate Services root CAs.
+&lt;/li&gt;
+&lt;li&gt;Updated the Ubuntu 24.04 node and admin workstation base image to
+&lt;code&gt;ubuntu-gke-op-2404-1-34-v20261024&lt;/code&gt; to remove the distrusted eMudhra
+(emSign) root CAs (USN-8944-1).
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;p&gt;The following issues were fixed in 1.35.700-gke.124:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed vulnerabilities listed in &lt;a href="https://docs.cloud.google.com/kubernetes-engine/distributed-cloud/vmware/docs/vulnerabilities"&gt;Vulnerability fixes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed an issue where &lt;code&gt;audit-proxy&lt;/code&gt; retried audit log exports indefinitely on
+permanent errors, generating excessive audit logging traffic.
+&lt;/li&gt;
+&lt;li&gt;Fixed an issue where the Kubernetes preflight health check scanned all
+namespaces in the admin cluster instead of the target cluster's namespace,
+causing cluster upgrades to fail if an unrelated cluster had stale
+reconciling resources.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="release-note-product-title"&gt;Google Distributed Cloud (software only) for bare metal&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;Google Distributed Cloud (software only) for bare metal 1.35.700-gke.124 is now available for
+download. To upgrade, see &lt;a href="how-to/upgrade"&gt;Upgrade clusters&lt;/a&gt;.
+Google Distributed Cloud for bare metal
+1.35.700-gke.124 runs on Kubernetes v1.35.8-gke.100.&lt;/p&gt;
+&lt;p&gt;After a release, it takes approximately 7 to 14 days for the version to become
+available for installations or upgrades with the GKE On-Prem API clients: the
+Google Cloud console, the gcloud CLI, and Terraform.&lt;/p&gt;
+&lt;p&gt;If you use a third-party storage vendor, check the listing of our
+previously-qualified &lt;a href="https://docs.cloud.google.com/kubernetes-engine/enterprise/docs/resources/partner-storage"&gt;storage partners&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;The following changes were added in 1.35.700-gke.124:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated system components and container base images to remove the distrusted
+eMudhra (emSign) and AAA Certificate Services root CAs and reject compromised
+eMudhra intermediate CAs.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;p&gt;The following issues were fixed in 1.35.700-gke.124:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed vulnerabilities listed in &lt;a href="https://docs.cloud.google.com/kubernetes-engine/distributed-cloud/bare-metal/docs/vulnerabilities"&gt;Vulnerability fixes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed an issue where removing a node from a cluster left behind its local
+&lt;code&gt;PersistentVolume&lt;/code&gt; resources instead of garbage collecting them. This fix
+applies to Google Distributed Cloud for bare metal local &lt;code&gt;PersistentVolume&lt;/code&gt; resources
+created after upgrading to 1.35.700-gke.124; existing orphaned
+&lt;code&gt;PersistentVolume&lt;/code&gt; resources must be deleted manually.
+&lt;/li&gt;
+&lt;li&gt;Fixed an issue where resetting or removing a control plane node could remove
+the wrong &lt;code&gt;etcd&lt;/code&gt; or &lt;code&gt;etcd-events&lt;/code&gt; member if another control plane node's IP
+address shared the same prefix (for example, &lt;code&gt;10.201.0.2&lt;/code&gt; and &lt;code&gt;10.201.0.26&lt;/code&gt;),
+causing the affected node to become &lt;code&gt;NotReady&lt;/code&gt; and stalling cluster upgrades.
+&lt;/li&gt;
+&lt;li&gt;Improved &lt;code&gt;containerd&lt;/code&gt; resilience against state corruption if a node reboots
+while unpacking container images.
+&lt;/li&gt;
+&lt;li&gt;Fixed an issue where the periodic configuration drift health check failed with
+a &lt;code&gt;version not supported&lt;/code&gt; error while a cluster upgrade or rollback was in
+progress.
+&lt;/li&gt;
+&lt;li&gt;Fixed an issue where &lt;code&gt;audit-proxy&lt;/code&gt; retried audit log exports indefinitely on
+permanent errors, generating excessive audit logging traffic.
+&lt;/li&gt;
+&lt;li&gt;Fixed an issue where the Kubernetes preflight health check scanned all
+namespaces in the admin cluster instead of the target cluster's namespace,
+causing cluster upgrades to fail if an unrelated cluster had stale
+reconciling resources.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="release-note-product-title"&gt;Google SecOps&lt;/h2&gt;
+&lt;h3&gt;Announcement&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Consolidated Settings and Navigation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Consolidated Settings and Navigation&lt;/strong&gt; feature is now in public preview. It replaces the separate SIEM Settings and SOAR Settings menus with a single Settings menu, grouped into Administration, Access Management, Investigation, Detection and Data Management, and also updates the left navigation menu. Each settings page is shown only to users with the correct permissions. Cloud IAM, Viewer and Editor users can now view certain SOAR settings pages in read-only mode. Note that the Google SecOps documentation has been updated to reflect the new navigational changes.
+For more information, see &lt;a href="https://docs.cloud.google.com/chronicle/docs/secops/navigate-the-secops-platform"&gt;Navigate the Google SecOps platform&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#November_04_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-11-04T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://developer.android.com/blog/posts/build-for-every-screen-jetpack-compose-updates</id>
@@ -38760,19 +38945,5 @@ region&lt;/a&gt;.&lt;/p&gt;</content>
       <media:thumbnail url="https://developers.google.com/static/search/images/home-social-share-lockup.jpg"/>
     </media:group>
     <link rel="enclosure" href="https://developers.google.com/static/search/images/home-social-share-lockup.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://developer.android.com/blog/posts/build-your-way-use-any-ai-agent-of-your-choice-in-android-studio</id>
-    <title>Build your way: Use any AI agent of your choice in Android Studio</title>
-    <updated>2026-09-24T00:00:00+00:00</updated>
-    <content type="html">Last year, Android Studio opened up to any AI model. Today, we’re taking the next step by introducing support for your choice of coding agents.</content>
-    <link href="https://developer.android.com/blog/posts/build-your-way-use-any-ai-agent-of-your-choice-in-android-studio" rel="alternate"/>
-    <category term="Android Developers"/>
-    <published>2026-09-24T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developer.android.com/static/blog/assets/BYOA_Backup_Strapi_1_5c3f94f766_sEPWb.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://developer.android.com/static/blog/assets/BYOA_Backup_Strapi_1_5c3f94f766_sEPWb.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://developer.android.com/static/blog/assets/BYOA_Backup_Strapi_1_5c3f94f766_sEPWb.webp" type="image/webp" length="0"/>
   </entry>
 </feed>

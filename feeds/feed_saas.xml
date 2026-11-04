@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.hashicorp.com/blog#saas</id>
   <title>SaaS vendors</title>
-  <updated>2026-11-04T18:26:37.025408+00:00</updated>
+  <updated>2026-11-04T22:59:31.918656+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -27,6 +27,85 @@
       <media:thumbnail url="https://images.ctfassets.net/lzny33ho1g45/1yB55KkctBPlYi9okoXbAw/c54021a84c3dd00d7cf7ae7857e85f84/zapier-vs-tray-hero.jpg"/>
     </media:group>
     <link rel="enclosure" href="https://images.ctfassets.net/lzny33ho1g45/1yB55KkctBPlYi9okoXbAw/c54021a84c3dd00d7cf7ae7857e85f84/zapier-vs-tray-hero.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/changelog/spec-9</id>
+    <title>Spec 9: single orchestrator</title>
+    <updated>2026-11-04T22:47:11+00:00</updated>
+    <content>Opt-in spec 9 runs (WORKFLOW_SPEC_VERSION=9). One orchestrator invocation per run makes every decision, step and wait events become plain appends, and an in-band fence keeps overlapping orchestrator invocations from both writing. The reference for users opting in, World authors, and maintainers.</content>
+    <link href="https://workflow-sdk.dev/docs/changelog/spec-9" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-04T22:47:11+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/changelog/spec-9/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/spec-9/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/spec-9/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/configuration/runtime-tuning</id>
+    <title>Runtime tuning</title>
+    <updated>2026-11-04T22:47:11+00:00</updated>
+    <content>Runtime environment variables for replay, inline execution, queue delivery, compression, tracing, and advanced limits.</content>
+    <link href="https://workflow-sdk.dev/docs/configuration/runtime-tuning" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-04T22:47:11+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/configuration/worlds</id>
+    <title>Worlds</title>
+    <updated>2026-11-04T20:45:21+00:00</updated>
+    <content>Configure the Workflow backend that stores runs and delivers queue messages.</content>
+    <link href="https://workflow-sdk.dev/docs/configuration/worlds" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-04T20:45:21+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/configuration/worlds/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/configuration/worlds/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/configuration/worlds/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/changelog/eager-processing</id>
+    <title>Eager processing of steps and incremental event replay</title>
+    <updated>2026-11-04T20:45:21+00:00</updated>
+    <content>Combine workflow event replay and step bundles to do work inline where possible, only deferring to the queue for parallelism.</content>
+    <link href="https://workflow-sdk.dev/docs/changelog/eager-processing" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-04T20:45:21+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/changelog/eager-processing/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/eager-processing/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/eager-processing/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://www.behance.net/gallery/257932071/GEOTHERMAL-LAYERS-Iceland</id>
+    <title>GEOTHERMAL LAYERS ? Iceland</title>
+    <updated>2026-11-04T20:30:05+00:00</updated>
+    <content>Abstract aerial studies of Icelandic geothermal terrain, where pale blue water, mineral crusts and altered clay form delicate channels, cracks and layered textures across the volcanic ground.</content>
+    <link href="https://www.behance.net/gallery/257932071/GEOTHERMAL-LAYERS-Iceland" rel="alternate"/>
+    <category term="Behance Blog" label="Behance Blog"/>
+    <published>2026-11-04T20:30:05+00:00</published>
+  </entry>
+  <entry>
+    <id>https://vercel.com/changelog/atomic-start-hooks-in-the-workflow-sdk</id>
+    <title>Workflow SDK adds idempotent starts</title>
+    <updated>2026-11-04T18:55:00+00:00</updated>
+    <content>The Workflow SDK's start() function can now admit a run and claim a hook in one atomic step. Duplicate workflow starts fail safely. The atomic start replaces the previous getHookByToken()-then-start() pattern, whose gap between the lookup and the start left a documented duplicate-start race.Subscribe to messages inside the runThe claimed Hook exists from the moment the run is admitted, so resumeHook works even before the run begins executing, and early payloads are buffered and delivered in orde</content>
+    <link href="https://vercel.com/changelog/atomic-start-hooks-in-the-workflow-sdk" rel="alternate"/>
+    <category term="Vercel" label="Vercel"/>
+    <published>2026-11-04T18:55:00+00:00</published>
+    <media:group>
+      <media:content url="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/1t2DaV8IVnp7ibDYvEqXvN/3292f4d1cf23f6e6bbf4e12d1a2c9923/image__65_.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/1t2DaV8IVnp7ibDYvEqXvN/3292f4d1cf23f6e6bbf4e12d1a2c9923/image__65_.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/1t2DaV8IVnp7ibDYvEqXvN/3292f4d1cf23f6e6bbf4e12d1a2c9923/image__65_.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://workflow-sdk.dev/docs/whats-new</id>
@@ -219,6 +298,30 @@ Authenticity: Hand-signed and numbered on the front</content>
     <link rel="enclosure" href="https://a.storyblok.com/f/322249/3052x2048/cb0d379d03/mcp_audit_logging_what_cisos_must_track.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
+    <id>https://www.netlify.com/changelog/2026-11-04-json-schema-for-netlify-toml/</id>
+    <title>Catch netlify.toml errors before you deploy with the new JSON schema</title>
+    <updated>2026-11-04T00:00:00+00:00</updated>
+    <content>Netlify now publishes a JSON schema for netlify.toml, so you can catch configuration errors in your editor instead of in a failed deploy. The schema describes the supported properties, the values they accept, and what they do, shortening the feedback loop for discovering and fixing mistakes.
+
+To use it, add a $schema key at the top of your netlify.toml:
+
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+If you write code yours</content>
+    <link href="https://www.netlify.com/changelog/2026-11-04-json-schema-for-netlify-toml/" rel="alternate"/>
+    <category term="Netlify Changelog" label="Netlify Changelog"/>
+    <published>2026-11-04T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.netlify.com/images/og-image-default.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.netlify.com/images/og-image-default.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.netlify.com/images/og-image-default.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>https://www.home-assistant.io/blog/2026/11/04/release-202611/</id>
     <title>2026.11: A lot in store!</title>
     <updated>2026-11-04T00:00:00+00:00</updated>
@@ -259,6 +362,146 @@ Authenticity: Hand-signed and numbered on the front</content>
       <media:thumbnail url="https://workflow-sdk.dev/og/configuration/cli-and-web-ui/image.png"/>
     </media:group>
     <link rel="enclosure" href="https://workflow-sdk.dev/og/configuration/cli-and-web-ui/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/changelog/lazy-event-creation</id>
+    <title>Lazy inline step start</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>Defer step_created for the inline step and fold it into a single step_started, saving one world round-trip per inline step.</content>
+    <link href="https://workflow-sdk.dev/docs/changelog/lazy-event-creation" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/changelog/turbo-mode</id>
+    <title>Turbo mode (fast first invocation)</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>Fast-path the first delivery of the first invocation by backgrounding run_started, skipping the initial event-log load, and forcing optimistic inline start. A no-op for everything else.</content>
+    <link href="https://workflow-sdk.dev/docs/changelog/turbo-mode" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons</id>
+    <title>Comparisons</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to other durable execution, workflow, and AI-agent frameworks: Temporal, Cloudflare Workflows, AWS Step Functions, AWS Bedrock AgentCore, Inngest, and trigger.dev.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-agentcore</id>
+    <title>Workflow SDK vs AWS Bedrock AgentCore</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to AWS Bedrock AgentCore, a durable-execution framework versus an AI-agent hosting platform. They solve different problems.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-agentcore" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-step-functions</id>
+    <title>Workflow SDK vs AWS Step Functions</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to AWS Step Functions, including plain TypeScript control flow versus declarative Amazon States Language JSON and a concept-mapping migration guide.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-step-functions" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-cloudflare-workflows</id>
+    <title>Workflow SDK vs Cloudflare Workflows</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to Cloudflare Workflows. Both are durable replay engines, but they handle versioning, encryption, portability, and global distribution differently.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-cloudflare-workflows" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-inngest</id>
+    <title>Workflow SDK vs Inngest</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to Inngest, event-driven durable functions that run on your own infrastructure over HTTP, with a concept-mapping migration guide.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-inngest" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-temporal</id>
+    <title>Workflow SDK vs Temporal</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to Temporal: execution model, where workers run, versioning, AI agents, pricing, and a concept-mapping migration guide.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-temporal" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-trigger-dev</id>
+    <title>Workflow SDK vs trigger.dev</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>How the Workflow SDK compares to trigger.dev, including deterministic event-log replay versus CRIU process checkpoint/restore and a concept-mapping migration guide.</content>
+    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-trigger-dev" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://workflow-sdk.dev/docs/foundations/cancellation</id>
+    <title>Cancellation</title>
+    <updated>2026-11-03T20:20:02+00:00</updated>
+    <content>Cancel long-running steps cooperatively using AbortSignal, or cancel entire workflow runs.</content>
+    <link href="https://workflow-sdk.dev/docs/foundations/cancellation" rel="alternate"/>
+    <category term="Workflow SDK" label="Workflow SDK"/>
+    <published>2026-11-03T20:20:02+00:00</published>
+    <media:group>
+      <media:content url="https://workflow-sdk.dev/og/foundations/cancellation/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://workflow-sdk.dev/og/foundations/cancellation/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://workflow-sdk.dev/og/foundations/cancellation/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://www.behance.net/gallery/257845701/Automotive-Expressions-2</id>
@@ -432,202 +675,6 @@ From animated layouts and transitions to titles and lower thirds, the toolkit br
     <published>2026-11-03T03:00:05+00:00</published>
   </entry>
   <entry>
-    <id>https://workflow-sdk.dev/docs/changelog/eager-processing</id>
-    <title>Eager processing of steps and incremental event replay</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Combine workflow event replay and step bundles to do work inline where possible, only deferring to the queue for parallelism.</content>
-    <link href="https://workflow-sdk.dev/docs/changelog/eager-processing" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/changelog/eager-processing/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/eager-processing/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/eager-processing/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/changelog</id>
-    <title>Changelog</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Latest updates and new features in Workflow SDK.</content>
-    <link href="https://workflow-sdk.dev/docs/changelog" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/changelog/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/changelog/lazy-event-creation</id>
-    <title>Lazy inline step start</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Defer step_created for the inline step and fold it into a single step_started, saving one world round-trip per inline step.</content>
-    <link href="https://workflow-sdk.dev/docs/changelog/lazy-event-creation" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/lazy-event-creation/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/changelog/spec-9</id>
-    <title>Spec 9: single orchestrator</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Opt-in spec 9 runs (WORKFLOW_SPEC_VERSION=9). One orchestrator invocation per run makes every decision, step and wait events become plain appends, and an in-band fence keeps overlapping orchestrator invocations from both writing. The reference for users opting in, World authors, and maintainers.</content>
-    <link href="https://workflow-sdk.dev/docs/changelog/spec-9" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/changelog/spec-9/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/spec-9/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/spec-9/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/changelog/turbo-mode</id>
-    <title>Turbo mode (fast first invocation)</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Fast-path the first delivery of the first invocation by backgrounding run_started, skipping the initial event-log load, and forcing optimistic inline start. A no-op for everything else.</content>
-    <link href="https://workflow-sdk.dev/docs/changelog/turbo-mode" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/changelog/turbo-mode/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons</id>
-    <title>Comparisons</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to other durable execution, workflow, and AI-agent frameworks: Temporal, Cloudflare Workflows, AWS Step Functions, AWS Bedrock AgentCore, Inngest, and trigger.dev.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-agentcore</id>
-    <title>Workflow SDK vs AWS Bedrock AgentCore</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to AWS Bedrock AgentCore, a durable-execution framework versus an AI-agent hosting platform. They solve different problems.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-agentcore" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-agentcore/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-step-functions</id>
-    <title>Workflow SDK vs AWS Step Functions</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to AWS Step Functions, including plain TypeScript control flow versus declarative Amazon States Language JSON and a concept-mapping migration guide.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-aws-step-functions" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-aws-step-functions/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-cloudflare-workflows</id>
-    <title>Workflow SDK vs Cloudflare Workflows</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to Cloudflare Workflows. Both are durable replay engines, but they handle versioning, encryption, portability, and global distribution differently.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-cloudflare-workflows" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-cloudflare-workflows/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-inngest</id>
-    <title>Workflow SDK vs Inngest</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to Inngest, event-driven durable functions that run on your own infrastructure over HTTP, with a concept-mapping migration guide.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-inngest" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-inngest/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-temporal</id>
-    <title>Workflow SDK vs Temporal</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to Temporal: execution model, where workers run, versioning, AI agents, pricing, and a concept-mapping migration guide.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-temporal" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-temporal/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-trigger-dev</id>
-    <title>Workflow SDK vs trigger.dev</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>How the Workflow SDK compares to trigger.dev, including deterministic event-log replay versus CRIU process checkpoint/restore and a concept-mapping migration guide.</content>
-    <link href="https://workflow-sdk.dev/docs/comparisons/workflow-sdk-vs-trigger-dev" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/comparisons/workflow-sdk-vs-trigger-dev/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/configuration/runtime-tuning</id>
-    <title>Runtime tuning</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Runtime environment variables for replay, inline execution, queue delivery, compression, tracing, and advanced limits.</content>
-    <link href="https://workflow-sdk.dev/docs/configuration/runtime-tuning" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/configuration/runtime-tuning/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://workflow-sdk.dev/docs/foundations/cancellation</id>
-    <title>Cancellation</title>
-    <updated>2026-11-03T00:43:11+00:00</updated>
-    <content>Cancel long-running steps cooperatively using AbortSignal, or cancel entire workflow runs.</content>
-    <link href="https://workflow-sdk.dev/docs/foundations/cancellation" rel="alternate"/>
-    <category term="Workflow SDK" label="Workflow SDK"/>
-    <published>2026-11-03T00:43:11+00:00</published>
-    <media:group>
-      <media:content url="https://workflow-sdk.dev/og/foundations/cancellation/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://workflow-sdk.dev/og/foundations/cancellation/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://workflow-sdk.dev/og/foundations/cancellation/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>https://www.home-assistant.io/blog/2026/11/03/naming-things-in-home-assistant/</id>
     <title>Naming things in Home Assistant, shaped by your feedback</title>
     <updated>2026-11-03T00:00:01+00:00</updated>
@@ -684,6 +731,24 @@ From animated layouts and transitions to titles and lower thirds, the toolkit br
     <link rel="enclosure" href="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/iajKgHHs29vQXYUZMuMOy/061c4066e956c6ecb840b3a697cd97d2/image__100_.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>https://www.netlify.com/changelog/2026-11-03-nextjs-security-vulnerabilities/</id>
+    <title>Security Update: Multiple vulnerabilities in Next.js (November 2026)</title>
+    <updated>2026-11-03T00:00:00+00:00</updated>
+    <content>The Next.js team has disclosed seven security vulnerabilities in Next.js, patched on November 3, 2026 in 16.4.5 and 15.5.29. The issues span cached data leaking between users, exposure of HttpOnly cookies, cache poisoning, and cross-client response injection. Several of them do not affect apps hosted on Netlify. Here's what Netlify customers need to know.
+
+Summary
+
+Some of these vulnerabilities affect Next.js sites hosted on Netlify (details in Impact on Netlify), so if you run Next.js on Netlif</content>
+    <link href="https://www.netlify.com/changelog/2026-11-03-nextjs-security-vulnerabilities/" rel="alternate"/>
+    <category term="Netlify Changelog" label="Netlify Changelog"/>
+    <published>2026-11-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://www.netlify.com/images/og-image-default.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.netlify.com/images/og-image-default.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://www.netlify.com/images/og-image-default.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
     <id>https://blog.apify.com/fabian-maume-product-hunt-veteran/</id>
     <title>76 launches later, Fabian would skip the SaaS and ship an Actor</title>
     <updated>2026-11-03T00:00:00+00:00</updated>
@@ -698,15 +763,15 @@ From animated layouts and transitions to titles and lower thirds, the toolkit br
     <link rel="enclosure" href="https://storage.ghost.io/c/f2/6e/f26ec999-9a90-4aee-a0d4-9b3ca2bb668f/content/images/2026/11/fabian-maume-life-at-apify-cover-14.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
-    <id>https://www.netlify.com/changelog/2026-11-03-nextjs-security-vulnerabilities/</id>
-    <title>Security Update: Multiple vulnerabilities in Next.js (November 2026)</title>
+    <id>https://www.netlify.com/changelog/2026-11-03-new-email-requirements-for-form-notifications/</id>
+    <title>New Email Requirements for Form Notifications</title>
     <updated>2026-11-03T00:00:00+00:00</updated>
-    <content>The Next.js team has disclosed seven security vulnerabilities in Next.js, patched on November 3, 2026 in 16.4.5 and 15.5.29. The issues span cached data leaking between users, exposure of HttpOnly cookies, cache poisoning, and cross-client response injection. Several of them do not affect apps hosted on Netlify. Here's what Netlify customers need to know.
+    <content>If you do not have an Enterprise plan or Legacy Business plan, form notification emails must now belong to a member of your Netlify team.
 
-Summary
+When you set up a form notification that sends form submission details to an email address, you must use an email address connected to a member of your Netlify team.  This requirement also applies when you edit an existing form notification that sends updates to an email address.
 
-Some of these vulnerabilities affect Next.js sites hosted on Netlify (details in Impact on Netlify), so if you run Next.js on Netlif</content>
-    <link href="https://www.netlify.com/changelog/2026-11-03-nextjs-security-vulnerabilities/" rel="alternate"/>
+If you already have an email address set up for form notifications that isn’t c</content>
+    <link href="https://www.netlify.com/changelog/2026-11-03-new-email-requirements-for-form-notifications/" rel="alternate"/>
     <category term="Netlify Changelog" label="Netlify Changelog"/>
     <published>2026-11-03T00:00:00+00:00</published>
     <media:group>
@@ -730,22 +795,20 @@ Some of these vulnerabilities affect Next.js sites hosted on Netlify (details in
     <link rel="enclosure" href="https://storage.ghost.io/c/f2/6e/f26ec999-9a90-4aee-a0d4-9b3ca2bb668f/content/images/size/w1200/2026/11/llm-grounding-feature-8.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
-    <id>https://www.netlify.com/changelog/2026-11-03-new-email-requirements-for-form-notifications/</id>
-    <title>New Email Requirements for Form Notifications</title>
+    <id>https://www.netlify.com/changelog/2026-11-03-check-netlify-deploys-from-mcp/</id>
+    <title>Check your Netlify deploys without leaving the conversation</title>
     <updated>2026-11-03T00:00:00+00:00</updated>
-    <content>If you do not have an Enterprise plan or Legacy Business plan, form notification emails must now belong to a member of your Netlify team.
+    <content>You can now check on your deploys right where you’re working. Netlify MCP gives you a visual overview of your project’s deploys in ChatGPT and other clients that support MCP Apps, so you don’t need to switch to the Netlify dashboard to see whether your latest deploy went live or why it failed.
 
-When you set up a form notification that sends form submission details to an email address, you must use an email address connected to a member of your Netlify team.  This requirement also applies when you edit an existing form notification that sends updates to an email address.
-
-If you already have an email address set up for form notifications that isn’t c</content>
-    <link href="https://www.netlify.com/changelog/2026-11-03-new-email-requirements-for-form-notifications/" rel="alternate"/>
+Netlify Deploys card in an MCP client showing five recent deploys for a project, each with a ready status, the deploy context and branch, the creation time, and links to visit the deploy or open it in Net</content>
+    <link href="https://www.netlify.com/changelog/2026-11-03-check-netlify-deploys-from-mcp/" rel="alternate"/>
     <category term="Netlify Changelog" label="Netlify Changelog"/>
     <published>2026-11-03T00:00:00+00:00</published>
     <media:group>
-      <media:content url="https://www.netlify.com/images/og-image-default.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://www.netlify.com/images/og-image-default.png"/>
+      <media:content url="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png"/>
     </media:group>
-    <link rel="enclosure" href="https://www.netlify.com/images/og-image-default.png" type="image/png" length="0"/>
+    <link rel="enclosure" href="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://blog.apify.com/outreacher-linkedin-to-lemlist/</id>
@@ -776,36 +839,6 @@ If you already have an email address set up for form notifications that isn’t 
     <link rel="enclosure" href="https://voyager.postman.com/uploads/postman-unfurl-postman-ai-2026-09-29-1830.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
-    <id>https://www.netlify.com/changelog/2026-11-03-check-netlify-deploys-from-mcp/</id>
-    <title>Check your Netlify deploys without leaving the conversation</title>
-    <updated>2026-11-03T00:00:00+00:00</updated>
-    <content>You can now check on your deploys right where you’re working. Netlify MCP gives you a visual overview of your project’s deploys in ChatGPT and other clients that support MCP Apps, so you don’t need to switch to the Netlify dashboard to see whether your latest deploy went live or why it failed.
-
-Netlify Deploys card in an MCP client showing five recent deploys for a project, each with a ready status, the deploy context and branch, the creation time, and links to visit the deploy or open it in Net</content>
-    <link href="https://www.netlify.com/changelog/2026-11-03-check-netlify-deploys-from-mcp/" rel="alternate"/>
-    <category term="Netlify Changelog" label="Netlify Changelog"/>
-    <published>2026-11-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://www.netlify.com/images/changelog/netlify-mcp-deploys-card.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://abnormal.ai/newsroom/press-releases/abnormal-ai-makes-ai-governance-available-as-a-standalone-product</id>
-    <title>Abnormal AI Makes AI Governance Available as a Standalone Product</title>
-    <updated>2026-11-03T00:00:00+00:00</updated>
-    <content>Abnormal AI Makes AI Governance Available as a Standalone Product</content>
-    <link href="https://abnormal.ai/newsroom/press-releases/abnormal-ai-makes-ai-governance-available-as-a-standalone-product" rel="alternate"/>
-    <category term="Abnormal Newsroom" label="Abnormal Newsroom"/>
-    <published>2026-11-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>https://www.netlify.com/changelog/2026-11-03-agents-can-send-netlify-feedback/</id>
     <title>Your agent can now tell Netlify when it gets stuck</title>
     <updated>2026-11-03T00:00:00+00:00</updated>
@@ -824,6 +857,20 @@ The tool works wherever you use Netlify MCP, including our connectors and plugin
       <media:thumbnail url="https://www.netlify.com/images/og-image-default.png"/>
     </media:group>
     <link rel="enclosure" href="https://www.netlify.com/images/og-image-default.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://abnormal.ai/newsroom/press-releases/abnormal-ai-makes-ai-governance-available-as-a-standalone-product</id>
+    <title>Abnormal AI Makes AI Governance Available as a Standalone Product</title>
+    <updated>2026-11-03T00:00:00+00:00</updated>
+    <content>Abnormal AI Makes AI Governance Available as a Standalone Product</content>
+    <link href="https://abnormal.ai/newsroom/press-releases/abnormal-ai-makes-ai-governance-available-as-a-standalone-product" rel="alternate"/>
+    <category term="Abnormal Newsroom" label="Abnormal Newsroom"/>
+    <published>2026-11-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4f7e73c4f33b733d/6ae9faffa9851d7c0f0bbdf2/MKT1859_Cover_PR_AI_Governance_product_announcement.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://abnormal.ai/blog/standalone-ai-governance</id>
@@ -1094,20 +1141,6 @@ Read more</content>
     <published>2026-11-02T03:00:10+00:00</published>
   </entry>
   <entry>
-    <id>https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway</id>
-    <title>LongCat 2.5 now available on AI Gateway</title>
-    <updated>2026-11-02T00:00:00+00:00</updated>
-    <content>LongCat 2.5 from Meituan is now available on AI Gateway. This model combines native visual understanding with coding and multi-step tool use for agents working across complex codebases and full-project builds.Meituan highlights improvements in visual programming, creative design, and 3D tasks, alongside longer agent workflows that carry engineering work from planning through execution. The model supports text and image inputs with a 1M-token context window for code, documents, and extended task </content>
-    <link href="https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway" rel="alternate"/>
-    <category term="Vercel" label="Vercel"/>
-    <published>2026-11-02T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/6WQIKLdQjTUdVMoa3e4YYL/22b64ff5c5dcaa4e8eb810a5af26aca8/image.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/6WQIKLdQjTUdVMoa3e4YYL/22b64ff5c5dcaa4e8eb810a5af26aca8/image.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/6WQIKLdQjTUdVMoa3e4YYL/22b64ff5c5dcaa4e8eb810a5af26aca8/image.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>https://neuraltrust.ai/blog/claude-code-skills</id>
     <title>Claude Code Skills: The Complete Guide Claude Code skills explained: what SKILL.md is, where skills live, how to write one, which to install and how to secure them against attacks. Roger Howroyd</title>
     <updated>2026-11-02T00:00:00+00:00</updated>
@@ -1190,15 +1223,6 @@ Read more</content>
       <media:thumbnail url="https://www.fastly.com/cimages/ocb1q9kflo7k/1UfTfeN01lL2r1S0c4CTrF/84a56e8b3b9e7e7f68bbeea1b99163b2/Fastly_-_Main_Meta_Image.png?auto=avif&amp;canvas=1200:630&amp;width=1200&amp;height=630" height="630" width="1200"/>
     </media:group>
     <link rel="enclosure" href="https://www.fastly.com/cimages/ocb1q9kflo7k/1UfTfeN01lL2r1S0c4CTrF/84a56e8b3b9e7e7f68bbeea1b99163b2/Fastly_-_Main_Meta_Image.png?auto=avif&amp;canvas=1200:630&amp;width=1200&amp;height=630" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://www.behance.net/gallery/257866603/Tiger-Tiger</id>
-    <title>Tiger Tiger</title>
-    <updated>2026-11-01T23:00:08+00:00</updated>
-    <content>Tiger illustration</content>
-    <link href="https://www.behance.net/gallery/257866603/Tiger-Tiger" rel="alternate"/>
-    <category term="Behance Blog" label="Behance Blog"/>
-    <published>2026-11-01T23:00:08+00:00</published>
   </entry>
   <entry>
     <id>https://www.astralcodexten.com/p/your-book-review-the-history-and</id>
@@ -2080,6 +2104,11 @@ Read more</content>
     <link href="https://chat-sdk.dev/docs/platform-adapters" rel="alternate"/>
     <category term="Chat SDK" label="Chat SDK"/>
     <published>2026-10-27T14:40:13+00:00</published>
+    <media:group>
+      <media:content url="https://chat-sdk.dev/og/platform-adapters/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://chat-sdk.dev/og/platform-adapters/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://chat-sdk.dev/og/platform-adapters/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://chat-sdk.dev/docs/posting-messages</id>
@@ -2089,6 +2118,11 @@ Read more</content>
     <link href="https://chat-sdk.dev/docs/posting-messages" rel="alternate"/>
     <category term="Chat SDK" label="Chat SDK"/>
     <published>2026-10-27T14:40:13+00:00</published>
+    <media:group>
+      <media:content url="https://chat-sdk.dev/og/posting-messages/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://chat-sdk.dev/og/posting-messages/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://chat-sdk.dev/og/posting-messages/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://chat-sdk.dev/docs/usage</id>
@@ -2098,6 +2132,11 @@ Read more</content>
     <link href="https://chat-sdk.dev/docs/usage" rel="alternate"/>
     <category term="Chat SDK" label="Chat SDK"/>
     <published>2026-10-27T14:40:13+00:00</published>
+    <media:group>
+      <media:content url="https://chat-sdk.dev/og/usage/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://chat-sdk.dev/og/usage/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://chat-sdk.dev/og/usage/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://chat-sdk.dev/docs/vercel-connect</id>
@@ -2107,6 +2146,11 @@ Read more</content>
     <link href="https://chat-sdk.dev/docs/vercel-connect" rel="alternate"/>
     <category term="Chat SDK" label="Chat SDK"/>
     <published>2026-10-27T14:40:13+00:00</published>
+    <media:group>
+      <media:content url="https://chat-sdk.dev/og/vercel-connect/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://chat-sdk.dev/og/vercel-connect/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://chat-sdk.dev/og/vercel-connect/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://chat-sdk.dev/docs/ai/ai-sdk-tools</id>
@@ -2116,6 +2160,11 @@ Read more</content>
     <link href="https://chat-sdk.dev/docs/ai/ai-sdk-tools" rel="alternate"/>
     <category term="Chat SDK" label="Chat SDK"/>
     <published>2026-10-27T14:40:13+00:00</published>
+    <media:group>
+      <media:content url="https://chat-sdk.dev/og/ai/ai-sdk-tools/image.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://chat-sdk.dev/og/ai/ai-sdk-tools/image.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://chat-sdk.dev/og/ai/ai-sdk-tools/image.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://chat-sdk.dev/docs/ai/types</id>
@@ -4016,20 +4065,6 @@ If you run Next.js on Netlify, we strongly recommend upgrading next to 15.5.28 o
     <link rel="enclosure" href="https://www.home-assistant.io/images/blog/2026-10-ledvance/art.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
-    <id>https://abnormal.ai/blog/detect-ai-agent-swarms</id>
-    <title>What the Hugging Face Breach Reveals About Detecting Agent Swarms</title>
-    <updated>2026-10-13T00:00:00+00:00</updated>
-    <content>What the Hugging Face Breach Reveals About Detecting Agent Swarms</content>
-    <link href="https://abnormal.ai/blog/detect-ai-agent-swarms" rel="alternate"/>
-    <category term="Abnormal Blog" label="Abnormal Blog"/>
-    <published>2026-10-13T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>https://www.netlify.com/changelog/mistral-large-4-agent-runners/</id>
     <title>Mistral Large 4 now available in Agent Runners</title>
     <updated>2026-10-13T00:00:00+00:00</updated>
@@ -4044,6 +4079,20 @@ Select it from the model picker to try it today. Learn more in docs.</content>
       <media:thumbnail url="https://www.netlify.com/images/og-image-default.png"/>
     </media:group>
     <link rel="enclosure" href="https://www.netlify.com/images/og-image-default.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://abnormal.ai/blog/detect-ai-agent-swarms</id>
+    <title>What the Hugging Face Breach Reveals About Detecting Agent Swarms</title>
+    <updated>2026-10-13T00:00:00+00:00</updated>
+    <content>What the Hugging Face Breach Reveals About Detecting Agent Swarms</content>
+    <link href="https://abnormal.ai/blog/detect-ai-agent-swarms" rel="alternate"/>
+    <category term="Abnormal Blog" label="Abnormal Blog"/>
+    <published>2026-10-13T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt92d3f112f63f6d35/6ace787375da6107b03d3a7a/Hugging_Face_Breach_Open_Graph.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://www.netlify.com/changelog/2026-10-13-tanstack-start-1-0/</id>
@@ -4355,35 +4404,6 @@ Use the OpenAI SDK directly in your Netlify Functions without </content>
     <link rel="enclosure" href="https://substackcdn.com/image/fetch/$s_!Ksee!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26f61ee3-a086-4f98-8ea0-5380f734e27e_1200x655.jpeg" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>https://www.netlify.com/changelog/2026-10-07-subscribe-to-netlify-events-from-chatgpt/</id>
-    <title>Subscribe to Netlify events from ChatGPT</title>
-    <updated>2026-10-07T00:00:00+00:00</updated>
-    <content>You can now subscribe to Netlify events from ChatGPT and set up automations that respond to what’s happening on your sites.
-
-Instead of checking the Netlify dashboard or waiting on an email, you can have ChatGPT act as soon as something happens. Events you can subscribe to include: A deploy succeeded A build failed A form submission came in For more events to subscribe to, check out our deploy events.
-
-Combine events with Netlify plugin and MCP server
-
-Events get more useful when you pair them w</content>
-    <link href="https://www.netlify.com/changelog/2026-10-07-subscribe-to-netlify-events-from-chatgpt/" rel="alternate"/>
-    <category term="Netlify Changelog" label="Netlify Changelog"/>
-    <published>2026-10-07T00:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://abnormal.ai/blog/behavioral-approach-securing-ai</id>
-    <title>The Solution for CISOs: Abnormal AI’s Behavioral Approach to Securing the AI Enterprise</title>
-    <updated>2026-10-07T00:00:00+00:00</updated>
-    <content>The Solution for CISOs: Abnormal AI’s Behavioral Approach to Securing the AI Enterprise</content>
-    <link href="https://abnormal.ai/blog/behavioral-approach-securing-ai" rel="alternate"/>
-    <category term="Abnormal Blog" label="Abnormal Blog"/>
-    <published>2026-10-07T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>https://www.netlify.com/changelog/claude-haiku-5-5-ai-gateway-agent-runners/</id>
     <title>Claude Haiku 5.5 now available in AI Gateway and Agent Runners</title>
     <updated>2026-10-07T00:00:00+00:00</updated>
@@ -4400,6 +4420,20 @@ export default async () =&gt; {
     <link href="https://www.netlify.com/changelog/claude-haiku-5-5-ai-gateway-agent-runners/" rel="alternate"/>
     <category term="Netlify Changelog" label="Netlify Changelog"/>
     <published>2026-10-07T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://abnormal.ai/blog/behavioral-approach-securing-ai</id>
+    <title>The Solution for CISOs: Abnormal AI’s Behavioral Approach to Securing the AI Enterprise</title>
+    <updated>2026-10-07T00:00:00+00:00</updated>
+    <content>The Solution for CISOs: Abnormal AI’s Behavioral Approach to Securing the AI Enterprise</content>
+    <link href="https://abnormal.ai/blog/behavioral-approach-securing-ai" rel="alternate"/>
+    <category term="Abnormal Blog" label="Abnormal Blog"/>
+    <published>2026-10-07T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://images.contentstack.io/v3/assets/blt7299c7d8ec45054b/blt4988b4535e02bae9/6ac68572c6656687bf7d5837/MKT1791b_AI_Sec_Blog_02_Open_Graph.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>https://www.fastly.com/blog/high-performance-by-default-why-speed-shouldnt-setup-step/</id>

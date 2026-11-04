@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-11-04T18:23:53.139883+00:00</updated>
+  <updated>2026-11-04T22:56:06.167453+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,106 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/41a61d92beec3501</id>
+    <title>Replacing legacy EDI middleware, Part 1: convert X12 to fixed-width flat files with AWS B2B Data Interchange and AWS Glue</title>
+    <updated>2026-11-04T22:12:03.531000+00:00</updated>
+    <content>The article gives builders a reference architecture for converting inbound X12 documents into fixed-width flat files, using AWS B2B Data Interchange, Amazon EventBridge, AWS Step Functions, and AWS Glue. It also gives them a checklist of the setup details that most often stop the pipeline from working, so they can get it right the first time. Part 1 covers the architecture, setup, field-formatting rules, and validation before cutover. Part 2 follows an example file through the pipeline from star</content>
+    <link href="https://repost.aws/articles/ARC7T3avD0THSalhzVTtvlcg/replacing-legacy-edi-middleware-part-1-convert-x12-to-fixed-width-flat-files-with-aws-b2b-data-interchange-and-aws-glue" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-04T22:12:03.531000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f50fbf8e10aec053</id>
+    <title>Amazon ECS Managed Daemons can now collect json-file logs from application containers on Amazon ECS Managed Instances</title>
+    <updated>2026-11-04T21:29:00+00:00</updated>
+    <content>Amazon Elastic Container Service (Amazon ECS) introduces json-file log driver support for Amazon ECS Managed Instances and log driver volumes for Amazon ECS Managed Daemons. Together, these features let you collect application logs with the observability agent of your choice and forward them to any destination you choose. With this launch, your application containers on ECS Managed Instances can write their logs as local files in standard Docker json-file format, which most observability agents </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-ecs-managed-instances-json-file-log-driver/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T21:29:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/56e95ec0cb3f774f</id>
+    <title>AWS CLI 2.39.4</title>
+    <updated>2026-11-04T20:12:23+00:00</updated>
+    <content>api-change:marketplace-discovery: GetListing and SearchListings APIs now return G2 and PeerSpot review sources in review summaries. api-change:connect-contact-lens: Rules TBAC GA (Contact Lens V1) - Adds an optional ListFilter (CategoriesAttributeFilter with OrConditions, AndCondition and TagCondition) to ListRealtimeContactAnalysisSegments. This filters matched categories by rule tags. It also adds an optional RuleId to CategoryDetails in the response. enhancement:crt: Stop adding a Content-Length: 0 header to GetObject requests made by the CRT transfer client. api-change:rolesanywhere: Adds the crlDpRevocationEnabled field to enable automatic revocation checking using CRL distribution points in X.509 certificates. api-change:workspaces: Add Ubuntu 24.04, Ubuntu 26.04, RHEL 9, RHEL10, Rocky 9 and Rocky 10 to OperatingSystemName and documentation update for WorkspaceProperties Protocols. api-change:ecs: Amazon ECS Managed Instances now supports the json-file log driver in task definitions. Daemon task definition volumes also support logDriverVolumeConfiguration, letting managed daemons read those logs. api-change:mwaa-serverless: Adding support to Environment Variables in MWAA Serverless api-change:ec2: Add the Unsupported SupportabilityScore to GetCapacityManagerSupportabilityScores. api-change:emr: Added StepAdditionalInfo on DescribeStep and ListSteps to surface YARN application IDs for steps. api-change:taxsettings: Adds Colombia additional information (responsibility codes, taxpayer type code, and RUT issue date) and a rejection reason (statusReason) to tax registration responses, and adds Argentina and Uruguay tax registration types. bugfix:auth: Require HTTPS when using bearer token authorization bugfix:crt: Apply --cli-connect-timeout to the CRT S3 transfer client api-change:lookoutequipment: Amazon Lookout for Equipment reached end of support on October 7, 2026. All Lookout for Equipment APIs are now marked as deprecated. api-change:mgn: This release adds Migration Planning artifacts as a source environment for network migration definitions, and an optional clientToken on CreateNetworkMigrationDefinition so that retried requests don't create duplicate definitions. api-change:polly: Amazon Polly now supports tagging lexicons. Use the new TagResource, UntagResource and ListTagsForResource APIs, or add tags when creating a lexicon with PutLexicon, to organize lexicons and control access with tag-based (ABAC) IAM policies. api-change:rds: Adding support for copying and tagging option groups with cross-Region DB snapshot copies, in the same account or across accounts. enhancement:crt: Fail CRT multipart downloads when ETag validation shows the object changed since it was listed or looked up, matching the classic transfer client. api-change:connect: Adds support for retrieving associated cases in contact responses. The Contact object now includes a Cases field containing case IDs and reference numbers linked to the contact. enhancement:crt: Av</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.39.4" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-11-04T20:12:23+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/68b33c043b57f20ea477eeddb679e7b84eac78bfec3107807a72951c82373867/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/68b33c043b57f20ea477eeddb679e7b84eac78bfec3107807a72951c82373867/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/68b33c043b57f20ea477eeddb679e7b84eac78bfec3107807a72951c82373867/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d93698a33ca3f9e6</id>
+    <title>Amazon DocumentDB (with MongoDB compatibility) is now available in the Asia Pacific (Taipei) and Asia Pacific (New Zealand) Regions</title>
+    <updated>2026-11-04T19:00:00+00:00</updated>
+    <content>Amazon DocumentDB (with MongoDB compatibility) is now available in the Asia Pacific (Taipei) and Asia Pacific (New Zealand) Regions, adding to the list of available Regions where you can use Amazon DocumentDB. Amazon DocumentDB is a fully managed, native JSON database that makes it simple and cost-effective to operate critical document workloads at virtually any scale without managing infrastructure. Amazon DocumentDB is designed to give you the scalability and durability you need when operating</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-documentdb-mongodb-compatibility-asia-pacific-taipei-new-zealand-regions/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T19:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/0909e96d552b3e54</id>
+    <title>Automating incident detection and investigation with AWS DevOps Agent</title>
+    <updated>2026-11-04T18:45:02.966000+00:00</updated>
+    <content>This article shows you how to use AWS DevOps Agent to automate incident detection, team alerts, and AI-powered investigation.</content>
+    <link href="https://repost.aws/articles/ARFwZl6mf8QOm0_Pav2rCj-A/automating-incident-detection-and-investigation-with-aws-devops-agent" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-04T18:45:02.966000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/202ccc4a1d1acbe0</id>
+    <title>Amazon RDS for Oracle now supports copying option groups during cross-Region snapshot copy</title>
+    <updated>2026-11-04T18:40:00+00:00</updated>
+    <content>Amazon RDS for Oracle now lets you copy the option group associated with a DB snapshot when you copy that snapshot to another AWS Region. Amazon RDS for Oracle uses option groups to enable and configure features that make it simple to manage your databases. Option groups are specific to the AWS Region where you create them. Previously, customers wanting to replicate RDS backups that had option groups to a different AWS Region had to copy the snapshot without the option group and then recreate th</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-rds-oracle-cross-region-snapshot-copy-option-group/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T18:40:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/3c25bffb2e9a52ca</id>
+    <title>Use AWS Trusted Advisor Fault Tolerance and Service Limit Checks as a Readiness Gate Before a Production Cutover</title>
+    <updated>2026-11-04T18:25:47.259000+00:00</updated>
+    <content>This article shows how to turn AWS Trusted Advisor fault tolerance and service limit checks into a go/no-go gate for a migration cutover, go-live or planned peak event, and what the gate cannot tell you.</content>
+    <link href="https://repost.aws/articles/AR_WdW_53pQdq84QZ4fdAKpQ/use-aws-trusted-advisor-fault-tolerance-and-service-limit-checks-as-a-readiness-gate-before-a-production-cutover" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-04T18:25:47.259000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/5aacd6adf41b9306</id>
+    <title>Amazon Connect Customer now shows associated cases in contact records</title>
+    <updated>2026-11-04T17:00:00+00:00</updated>
+    <content>Amazon Connect Customer now includes case IDs and reference numbers in contact records, helping supervisors and analysts understand which customer issues drive contact volume. Cases track issues, such as refund requests or billing disputes, across interactions and teams. Supervisors can now identify the cases associated with an interaction directly on the Contact Details page without searching individual cases. Analysts can access the same information through the DescribeContact API and contact </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-connect-cases-contact-records/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T17:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/be4e1015637a49d9</id>
     <title>AWS announces AWS Interconnect - last mile preview with Equinix</title>
@@ -53,6 +153,46 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/cd2ead90f83096b1</id>
+    <title>RHEL 10, Rocky 10 and Ubuntu 26.04 Bundles for WorkSpaces</title>
+    <updated>2026-11-04T08:00:00+00:00</updated>
+    <content>AWS announces new Linux bundles for Amazon WorkSpaces Personal, including Rocky Linux 10, Red Hat Enterprise Linux 10, and Ubuntu 26.04 LTS. With these bundles, you can launch WorkSpaces on the latest enterprise Linux operating systems and use newer software packages that are only available in these releases. These new bundles feature modern Wayland display technology, giving you access to the latest Linux desktop capabilities. The new OS options also bring stronger security and longer support l</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/rhel-10-rocky-10-ubuntu-26-04-workspaces/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/76792e66a66e28a7</id>
+    <title>AWS DataSync Enhanced mode supports OpenID Connect (OIDC) for Google Cloud and Microsoft Azure</title>
+    <updated>2026-11-04T08:00:00+00:00</updated>
+    <content>AWS DataSync Enhanced mode now supports OpenID Connect (OIDC) authentication for Google Cloud Storage and Microsoft Azure Blob Storage locations. DataSync uses an AWS Identity and Access Management (IAM) role to get short-lived credentials from Google Cloud or Microsoft Entra ID and refreshes them automatically so your transfers run without interruption. You can now use DataSync to access your Google Cloud Storage and Azure Blob Storage without long-term credentials such as hash-based message au</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/datasync-enhanced-oidc-google-azure/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/eb5f46f667618e12</id>
+    <title>Amazon EC2 and VPC now display related resources for all resource types</title>
+    <updated>2026-11-04T08:00:00+00:00</updated>
+    <content>Amazon Elastic Compute Cloud (Amazon EC2), Amazon Virtual Private Cloud (Amazon VPC), and AWS Global View now display related resources for all resource types in their consoles. Previously, only security groups had an option to view related resources. Now you can see relationships for all EC2 and VPC resource types, including EC2 instances, Amazon Elastic Block Store (Amazon EBS) volumes, Launch Templates, Auto Scaling groups, subnets, route tables, and more. The Related Resources tab has also b</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/ec2-vpc-related-resources-all-types/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/f13c6cb4be5fd8c9</id>
+    <title>New features for Amazon EC2 Capacity Manager</title>
+    <updated>2026-11-04T07:00:00+00:00</updated>
+    <content>Amazon EC2 Capacity Manager now offers real-time supportability checks and capacity fulfillment metrics. Real-time supportability checks help customers find capacity by scoring how well each instance type and Availability Zone can support a request, without launching or reserving instances. Capacity fulfillment metrics show how much capacity was delivered against the amount requested. Global enterprises that run thousands of workloads across hundreds of accounts often spread each one across mult</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/ec2-capacity-manager-supportability-and-fulfillment/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T07:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/a65c554d70709ed8</id>
@@ -1643,16 +1783,6 @@ post-quantum key establishment.</content>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/5c0e338a0cf2c391</id>
-    <title>Amazon OpenSearch Serverless now supports a 5-second default refresh interval</title>
-    <updated>2026-10-22T18:34:00+00:00</updated>
-    <content>Starting today, Amazon OpenSearch Serverless reduces the default refresh interval to 5 seconds for both search and vector collections. The refresh interval controls how quickly newly ingested documents become available for search. By lowering the default from 10 seconds to 5 seconds, newly written data becomes searchable faster, giving applications quicker read-after-write visibility automatically, with no configuration changes and no action required on your part. This improvement applies to the</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-opensearch-serverless-supports-5-second-refresh-interval/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T18:34:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/54797777c2ae8b6f</id>
     <title>AWS CLI 2.38.5</title>
     <updated>2026-10-22T18:09:41+00:00</updated>
@@ -1683,26 +1813,6 @@ post-quantum key establishment.</content>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/af5b8a8a3d53c8df</id>
-    <title>AWS CloudFormation now simplifies stack update rollback operations</title>
-    <updated>2026-10-22T17:30:00+00:00</updated>
-    <content>AWS CloudFormation now makes it simpler to complete an update rollback and get back to deploying. An update rollback returns your stack to a known good state. Starting today, if some resources cannot roll back automatically, force rollback enables you to complete the rollback in a single operation. It works across every CloudFormation workflow, from the AWS CLI , and SDKs to AWS CDK and AI agents. With force rollback, CloudFormation completes the update rollback and returns your stack to a deplo</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-cloudformation-cdk/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T17:30:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/16e66a666855e420</id>
-    <title>Amazon SageMaker AI announces training session APIs for serverless model customization</title>
-    <updated>2026-10-22T16:30:00+00:00</updated>
-    <content>Amazon SageMaker AI serverless model customization now supports training session APIs, giving customers full control over their post-training algorithm without provisioning or managing GPU infrastructure. Managed techniques, including SFT, DPO, and other reinforcement learning methods, let customers pick a technique and a model and have SageMaker AI run the training. With training session APIs, teams get to write the training loop, whether that's reproducing SFT or DPO on their own terms or impl</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/training-session-apis-on-sagemaker-ai" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T16:30:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/574f39c3054abf82</id>
     <title>Open Responses Joins AAIF with AWS Support</title>
     <updated>2026-10-22T16:12:54+00:00</updated>
@@ -1716,56 +1826,6 @@ post-quantum key establishment.</content>
     </media:group>
     <dc:creator>AWS Open Source Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/10/22/Screenshot-2026-10-21-at-10.55.27 AM-1-1146x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/971a85e3c58b1616</id>
-    <title>AWS Direct Connect announces 100G expansion in Bangalore, India</title>
-    <updated>2026-10-22T16:00:00+00:00</updated>
-    <content>Today, AWS announced the expansion of 100 Gbps dedicated connections at the existing AWS Direct Connect location in the Netmagic DC2 data center near Bangalore, India. You can now establish private, direct network access to all public AWS Regions (except those in China), AWS GovCloud Regions, and AWS Local Zones from this location. The Direct Connect service enables you to establish a private, physical network connection between AWS and your data center, office, or colocation environment. These </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-direct-connect-100g-bangalore/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/0888710f43bc728c</id>
-    <title>Amazon MSK Connect now supports pausing and resuming connectors</title>
-    <updated>2026-10-22T15:00:00+00:00</updated>
-    <content>Amazon MSK Connect (Amazon Managed Streaming for Apache Kafka Connect) now supports pausing and resuming connectors, letting you temporarily pause a connector from processing records and resume it later. This is useful when you need to stop data flow during maintenance on a source database or a sink target, or to pause processing while you investigate an upstream or downstream issue. Amazon MSK Connect is a fully managed service that allows you to deploy, monitor, and scale Apache Kafka Connect </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-msk-connect-pause-resume" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T15:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/6a15e6754d93ddf8</id>
-    <title>AWS announces AWS Interconnect - last mile preview with Megaport</title>
-    <updated>2026-10-22T12:00:00+00:00</updated>
-    <content>AWS launches AWS Interconnect - last mile preview with Megaport, a fully managed connectivity offering that allows customers to connect their branch offices, data centers, and remote locations to AWS with just a few clicks, eliminating the friction and complexity of network setup. As a milestone collaboration between AWS and Megaport, AWS Interconnect - last mile combines AWS cloud innovation with Megaport operating one of the world's largest Software Defined Networks (SDN), with 1,200+ enabled </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-announces-AWS-interconnect-last-mile-megaport-preview/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T12:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/3339e6ea4f91a36f</id>
-    <title>AgentCore Gateway now supports Bedrock InvokeModel APIs and model fallback</title>
-    <updated>2026-10-22T08:00:00+00:00</updated>
-    <content>Amazon Bedrock AgentCore Gateway now supports the Amazon Bedrock InvokeModel and InvokeModelWithResponseStream APIs on its inference endpoint, along with model fallback routing for inference traffic. With InvokeModel support, you can point your existing Amazon Bedrock SDK integration at the gateway and reach any model provider through one governed endpoint, without rewriting client code for each provider. With model fallback, the gateway automatically routes a request to an alternative model or </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-invokemodel-fallback/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/cd7570b1be48b717</id>
-    <title>Amazon SageMaker AI now supports serverless model customization for Muse Glimmer, Qwen 3.8 and Ministral 3 models</title>
-    <updated>2026-10-22T08:00:00+00:00</updated>
-    <content>Amazon SageMaker AI now supports serverless model customization for Muse Glimmer, Qwen3.8 27B, and Ministral 3 3B, 8B, and 14B models. In addition to deploying these models on SageMaker AI, you can now adapt them to your specific domains and workflows, using supervised fine-tuning (SFT), direct preference optimization (DPO), and reinforcement fine-tuning (RFT) techniques. You can also adapt these models with either low-rank adaptation (LoRA) or full fine-tuning techniques. This launch adds these</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-sagemaker-muse-qwen-ministral/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/923304f8c4c5f386</id>
@@ -2535,21 +2595,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <link rel="enclosure" href="https://opengraph.githubassets.com/73996151fbad70cc01c9b7c93a0a2ea61ccf8dfe4e7492d3d853d59837251f26/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/895ad0e721e205cb</id>
-    <title>Accessing Unredacted Secure Logging Records in Amazon Redshift with the DEBUG Permission</title>
-    <updated>2026-10-08T03:11:45.014000+00:00</updated>
-    <content>Amazon Redshift secure logging redacts sensitive values in system table records when a query accesses data protected by federated permissions with fine-grained access control (FGAC). Redaction protects the data producer, but it also blocks auditors and administrators who need these records to troubleshoot queries and meet compliance requirements. This article shows database administrators and auditors how to use the DEBUG permission to give specific identities unredacted records.</content>
-    <link href="https://repost.aws/articles/AR2EALjvWERp2kQCETr1uU2w/accessing-unredacted-secure-logging-records-in-amazon-redshift-with-the-debug-permission" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-08T03:11:45.014000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/0ede3be8a6769954</id>
     <title>Introducing Strands Box: AI agent sandboxes powered by Dogwood</title>
     <updated>2026-10-07T17:36:46+00:00</updated>
@@ -2563,36 +2608,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS Open Source Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/10/06/box-core-diagram.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/f463b2d222fed9ac</id>
-    <title>A Data-Driven Gateway for Routing ServiceNow Incidents Across Multiple AWS DevOps Agent Spaces</title>
-    <updated>2026-10-07T02:40:37.147000+00:00</updated>
-    <content>Large enterprises often run one centralized ServiceNow instance while giving each business unit its own AWS DevOps Agent Space. ServiceNow can route to multiple spaces natively, but that means one Business Rule per BU. This article shows an optional gateway (API Gateway, Lambda, DynamoDB) that keeps routing in one table, sends unmatched tickets to a quarantine queue, and logs every routing decision, for teams managing 8–15+ BUs.</content>
-    <link href="https://repost.aws/articles/ARMEZgjodKQp-PpYJA_jAePQ/a-data-driven-gateway-for-routing-servicenow-incidents-across-multiple-aws-devops-agent-spaces" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-07T02:40:37.147000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/7ae22fec5bcb1377</id>
-    <title>Planning and validating NVIDIA device plugin upgrades on Amazon EKS</title>
-    <updated>2026-10-07T01:46:45.583000+00:00</updated>
-    <content>This article shows you how to safely upgrade the NVIDIA device plugin on Amazon Elastic Kubernetes Service (Amazon EKS) graphics processing unit (GPU) node groups that run the Kubernetes static CPU management policy.</content>
-    <link href="https://repost.aws/articles/AR-9nou3r2TkiTH2SZcTvnjA/planning-and-validating-nvidia-device-plugin-upgrades-on-amazon-eks" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-07T01:46:45.583000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/baad658c18569e05</id>
@@ -3358,21 +3373,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/579bcf0b466cb66869736479f50b04690d162ba4d7016486e39dae6cc27906f5/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/9165eff706e2d471</id>
-    <title>AWS CLI 2.36.36</title>
-    <updated>2026-08-31T22:10:39+00:00</updated>
-    <content>api-change:agent-registry: Release HTTP and AGUI descriptors to the dataplane model</content>
-    <link href="https://github.com/aws/aws-cli/releases/tag/2.36.36" rel="alternate"/>
-    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
-    <published>2026-08-31T22:10:39+00:00</published>
-    <media:group>
-      <media:content url="https://opengraph.githubassets.com/da15c71fd60a5e3b58c27f4f7d881c438b9375dc9856d81e9e7accd32a533ee8/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
-      <media:thumbnail url="https://opengraph.githubassets.com/da15c71fd60a5e3b58c27f4f7d881c438b9375dc9856d81e9e7accd32a533ee8/aws/aws-cli" height="600" width="1200"/>
-    </media:group>
-    <dc:creator>AWS CLI v2 Changelog</dc:creator>
-    <link rel="enclosure" href="https://opengraph.githubassets.com/da15c71fd60a5e3b58c27f4f7d881c438b9375dc9856d81e9e7accd32a533ee8/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/d959127de7d9e45c</id>
