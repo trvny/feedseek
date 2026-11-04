@@ -53,18 +53,18 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](ht
 
 <!--README_FEED:START-->
 - [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
-- [“\(The success\) is by committee. I'll say it over and …](https://sports.yahoo.com/articles/success-committee-ill-over-232757875.html)
-- [Welsh injury adds to Swans' misery at Portsmouth](https://sports.yahoo.com/articles/welsh-injury-adds-swans-misery-232701543.html)
-- [History made. Liberty High player commits to Nebraska for flag football](https://sports.yahoo.com/articles/history-made-liberty-high-player-232552298.html)
-- [Ohio high school football powerhouse wins court ruling, but playoff future uncertain](https://sports.yahoo.com/articles/ohio-high-school-football-powerhouse-232522260.html)
-- [Details emerge following crash that killed 2 Texas Lutheran football players](https://sports.yahoo.com/articles/details-emerge-following-crash-killed-230600327.html)
+- [Bridging the Gap Between Climate Mobility Modeling and Policy Action](https://carnegieendowment.org/research/2026/11/bridging-the-gap-between-climate-mobility-modeling-and-policy-action)
+- [The Long War: Rethinking Defence Strategy in Prolonged Conflict](https://www.rusi.org/news-and-comment/video-commentary/long-war-rethinking-defence-strategy-prolonged-conflict)
+- [COP31 and the Future of Climate Clubs](https://carnegieendowment.org/emissary/2026/11/cop31-climate-clubs-us-withdraw)
+- [Jaworzno przygotowuje się do zimy. Ponad 800 ton soli i 16 pojazdów w gotowości - jaw.pl](https://news.google.com/atom/articles/CBMiY0FVX3lxTE9qOWcybGgxQVpOMjJIMVpja0RQVkUySnVHXzNCZk9SRGFZY2M1R2RBUFhRRjVTanJlZndONkFUNEhsZHFfVWlVU2pUOFBaaVFTZjVvMWdrdGxjNmxUTHcxOWtfVQ?oc=5)
+- [Qualcomm's smartphone chip sales miss estimates, shares fall](https://www.reuters.com/business/media-telecom/qualcomm-forecasts-upbeat-sales-strength-non-smartphone-segments-2026-11-04/)
 <!--README_FEED:END-->
 
 ## 💬 Cytat z szuflady
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝“The goal is to turn data into information, and information into insight.”— Carly Fiorina❞</i>
+<i>❝The first ever hard disk drive was made in 1979, and could hold only 5MB of data.❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
