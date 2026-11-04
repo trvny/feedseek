@@ -420,9 +420,11 @@ def collect_agentid_blog(known_links, ledger):
         logger.warning("[AgentID Blog] index unavailable; continuing")
         return []
 
-    links = agentid_article_links(index)
-    if links:
+    # A successful listing prunes stale failures, but cached posts must not
+    # exhaust the per-run candidate budget before unseen posts are considered.
+    if agentid_article_links(index):
         ledger.listed("AgentID Blog")
+    links = agentid_article_links(index, known_links)
 
     entries = []
     for link in links:
