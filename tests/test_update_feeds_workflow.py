@@ -60,15 +60,17 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("needs: update-feeds", workflow)
         self.assertIn("pages_ready:", workflow)
         self.assertIn("needs.update-feeds.outputs.pages_ready == 'true'", workflow)
-        self.assertIn("always()", workflow.split("  deploy-generated-pages:", 1)[1])
+        deploy_condition = workflow.split("  deploy-generated-pages:", 1)[1].split("    runs-on:", 1)[0]
+        self.assertIn("always()", deploy_condition)
         self.assertLess(
             workflow.index("- name: Back up Feedseek cache to R2"),
             workflow.index("- name: Build live Pages site"),
         )
         self.assertLess(
-            workflow.index("- name: Upload live Pages artifact"),
             workflow.index("- name: Commit and push successful updates"),
+            workflow.index("- name: Build live Pages site"),
         )
+        self.assertIn("FEEDSEEK_INDEX_PIN_COMMITTED: \"1\"", workflow)
         self.assertIn("pages: write", workflow)
         self.assertIn("id-token: write", workflow)
 
@@ -85,8 +87,11 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("  workflow_dispatch:", triggers)
         self.assertIn("commits?path=feeds&per_page=1", snapshot)
         self.assertIn("echo \"due=true\"", snapshot)
+        self.assertIn("age_seconds < 0", snapshot)
+        self.assertIn("age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600", snapshot)
+        self.assertIn("echo \"due=false\"", snapshot)
         self.assertIn("steps.snapshot.outputs.due == 'true'", commit)
-        self.assertIn("steps.pages_upload.outcome == 'success'", commit)
+        self.assertIn("steps.backup.outcome == 'success'", commit)
 
     def test_only_update_feeds_auto_deploys_production(self):
         deploy = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
