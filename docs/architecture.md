@@ -45,8 +45,8 @@ The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
 Scheduled runs snapshot after the last feed commit reaches six hours old, at
 the next successful scheduled run (potentially later); an API lookup failure
-fails open and can snapshot sooner. Manual runs and matching configuration,
-generator, workflow or site pushes snapshot immediately. Consequently, raw-GitHub URLs
+fails open and can snapshot sooner. Manual runs on `main` and matching
+configuration, generator, workflow or site pushes to `main` snapshot immediately. Consequently, raw-GitHub URLs
 remain valid but may lag GitHub Pages. Pages is the preferred live subscription
 endpoint. A snapshot is never pushed before successful validation and R2 backup.
 
