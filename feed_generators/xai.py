@@ -763,6 +763,19 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     return fg
 
 
+def _select_feed_items(entries):
+    """Keep latest updates plus a small share for infrequent Tesla posts."""
+    selected = entries[-MAX_ENTRIES:]
+    selected_links = {entry["link"] for entry in selected}
+    reserved = [
+        entry for entry in entries
+        if entry.get("source") == "Tesla Blog" and entry["link"] not in selected_links
+    ][-5:]
+    if reserved:
+        selected = selected[len(reserved):] + reserved
+    return sort_posts_for_feed(selected, date_field="date")
+
+
 def main(full=False):
     if full:
         logger.info("Full reset requested — ignoring existing cache")
@@ -786,7 +799,7 @@ def main(full=False):
 
     # Keep full (deduplicated) history in the cache so already-seen links are
     # never re-evaluated on later runs; only the rendered feed is capped.
-    feed_items = merged[-MAX_ENTRIES:] if len(merged) > MAX_ENTRIES else merged
+    feed_items = _select_feed_items(merged)
     # Before the cache write: feed_items shares its dicts with merged, so a
     # resolved image is saved and never looked up again.
     enrich_entries(feed_items)

@@ -2,12 +2,13 @@
 
 import sys
 import unittest
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 from tiktok import _parse_newsroom_listing, _parse_profile_html, doc_sources  # noqa: E402
-from xai import GROK_BOT_RSS_URL, _parse_tesla_blog  # noqa: E402
+from xai import GROK_BOT_RSS_URL, _parse_tesla_blog, _select_feed_items  # noqa: E402
 
 
 class NewSourceTests(unittest.TestCase):
@@ -25,6 +26,20 @@ class NewSourceTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["title"], "Standardizing Automotive Connectivity")
         self.assertEqual(items[0]["date"].year, 2024)
+
+    def test_infrequent_tesla_posts_are_visible(self):
+        base = datetime(2026, 1, 1, tzinfo=UTC)
+        entries = [
+            {"link": f"https://x.ai/news/{i}", "date": base + timedelta(days=i), "source": "xAI News"}
+            for i in range(205)
+        ]
+        entries.extend([
+            {"link": f"https://www.tesla.com/blog/{i}", "date": datetime(2024, 1, i + 1, tzinfo=UTC), "source": "Tesla Blog"}
+            for i in range(5)
+        ])
+        result = _select_feed_items(sorted(entries, key=lambda entry: entry["date"]))
+        self.assertEqual(len(result), 200)
+        self.assertEqual(sum(entry["source"] == "Tesla Blog" for entry in result), 5)
 
     def test_tesla_does_not_invent_dates(self):
         self.assertEqual(
