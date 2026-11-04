@@ -381,5 +381,71 @@ class SiteFaviconTests(unittest.TestCase):
             )
 
 
+
+class LiveFeedMetadataTests(unittest.TestCase):
+    def test_pages_self_urls_are_live_and_git_files_remain_unchanged(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            feed_dir = root / "feeds"
+            public = root / "public"
+            feed_dir.mkdir()
+            public.mkdir()
+            source = feed_dir / "feed_test.xml"
+            raw = (
+                f"https://raw.githubusercontent.com/{build_site.REPO_SLUG}"
+                "/main/feeds/feed_test.xml"
+            )
+            xml = f"""<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="{raw}" rel="self"/>
+</feed>
+"""
+            source.write_text(xml, encoding="utf-8")
+            model = {
+                "format": "feedseek-model-feed",
+                "version": 1,
+                "feed_url": raw.replace(".xml", ".json"),
+                "source_feed": raw,
+                "items": [{"id": "one", "text": "Some text"}],
+            }
+            sibling = source.with_suffix(".json")
+            sibling.write_text(json.dumps(model), encoding="utf-8")
+            base = "https://trvny.github.io/feedseek/"
+
+            build_site.copy_public_feed_pair(source, public, base)
+
+            self.assertEqual(source.read_text(encoding="utf-8"), xml)
+            self.assertEqual(json.loads(sibling.read_text(encoding="utf-8")), model)
+            staged = (public / source.name).read_text(encoding="utf-8")
+            self.assertIn(f'href="{base}feed_test.xml" rel="self"', staged)
+            self.assertNotIn(raw, staged)
+            staged_json = json.loads((public / "feed_test.json").read_text(encoding="utf-8"))
+            self.assertEqual(staged_json["feed_url"], base + "feed_test.json")
+            self.assertEqual(staged_json["source_feed"], base + "feed_test.xml")
+            self.assertEqual(staged_json["items"], model["items"])
+
+    def test_self_link_attribute_order_can_be_reversed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "feed_test.xml"
+            raw = (
+                f"https://raw.githubusercontent.com/{build_site.REPO_SLUG}"
+                "/main/feeds/feed_test.xml"
+            )
+            source.write_text(
+                f'<feed><link rel="self" href="{raw}"/></feed>', encoding="utf-8"
+            )
+            source.with_suffix(".json").write_text("{}", encoding="utf-8")
+            public = root / "public"
+            public.mkdir()
+
+            build_site.copy_public_feed_pair(source, public, "https://example.test/live/")
+
+            self.assertIn(
+                'rel="self" href="https://example.test/live/feed_test.xml"',
+                (public / source.name).read_text(encoding="utf-8"),
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -34,7 +34,9 @@ up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
 results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for feeds in `published_feeds` (including
 `https://trvny.github.io/feedseek/feed_<name>.xml` and its Model Feed JSON
-sibling) current without a fresh pack of generated blobs in `main`.
+sibling) current without a fresh pack of generated blobs in `main`. The Pages
+build also points Atom self links and Model Feed URLs at the live Pages copy,
+while the files tracked in Git keep their existing raw-GitHub URLs.
 
 The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
