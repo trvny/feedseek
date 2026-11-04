@@ -45,7 +45,7 @@ sys.path.insert(0, str(ROOT / "feed_generators"))
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
 from models import load_published_feeds  # noqa: E402
-from utils import favicon_proxy  # noqa: E402
+from utils import REPO_SLUG, favicon_proxy  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
@@ -1019,6 +1019,32 @@ def copy_reader_bundle(base: str) -> None:
     shutil.copytree(OUT_DIR / "icons", reader_out / "icons", dirs_exist_ok=True)
 
 
+def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
+    """Stage Pages URLs without changing the tracked XML/JSON pair."""
+    raw_base = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
+    raw_xml = raw_base + source.name
+    public_xml = base + source.name
+
+    xml = source.read_text(encoding="utf-8")
+    for old, new in (
+        (f'href="{raw_xml}" rel="self"', f'href="{public_xml}" rel="self"'),
+        (f'rel="self" href="{raw_xml}"', f'rel="self" href="{public_xml}"'),
+    ):
+        xml = xml.replace(old, new)
+    (destination / source.name).write_text(xml, encoding="utf-8")
+
+    sibling = source.with_suffix(".json")
+    model_feed = json.loads(sibling.read_text(encoding="utf-8"))
+    if not isinstance(model_feed, dict):
+        raise ValueError(f"{sibling.name}: expected object")
+    model_feed["feed_url"] = base + sibling.name
+    model_feed["source_feed"] = public_xml
+    (destination / sibling.name).write_text(
+        json.dumps(model_feed, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> None:
     base = site_base_url()
     feeds = collect_feeds()
@@ -1031,10 +1057,7 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True)
 
     for f in feeds:
-        shutil.copy2(FEEDS_DIR / f["filename"], OUT_DIR / f["filename"])
-        xml_sibling = FEEDS_DIR / f["filename"]
-        json_sibling = xml_sibling.with_suffix(".json")
-        shutil.copy2(json_sibling, OUT_DIR / json_sibling.name)
+        copy_public_feed_pair(FEEDS_DIR / f["filename"], OUT_DIR, base)
 
     # Real favicon files (not just the inline data: URI in <link rel="icon">)
     # so tools that fetch /favicon.svg or /favicon.ico directly (QR code
