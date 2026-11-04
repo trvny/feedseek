@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-03T23:37:37.703005+00:00</updated>
+  <updated>2026-11-04T08:18:22.920385+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,16 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/c104a264aafb4843</id>
+    <title>Cloudflare Pages Upload Issue</title>
+    <updated>2026-11-04T06:35:00+00:00</updated>
+    <content>Nov 4 , 06:35 UTC Resolved - Between 2026/10/26 - 2026/11/4, some customers trying to upload static Pages assets from the Cloudflare Dashboard may have experienced issues creating a Pages project.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/me060q7dbayp" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-04T06:35:00+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/fe9786014e7bc67f</id>
     <title>Bots - Granular access controls for the top Personal Agents</title>
@@ -184,6 +194,36 @@ This issue is limited to DoT over IPv4. DoT over IPv6, DNS-over-</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-03-waf-release/og.png?v=1cc380af82f997a6" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/39577b3667af5772</id>
+    <title>AI Gateway - New AI Gateways require authentication</title>
+    <updated>2026-11-03T00:00:00+00:00</updated>
+    <content>New AI Gateways now require authentication to prevent unauthorized requests. Once authentication is on, you cannot turn it off through the dashboard or API. When you create a new AI Gateway through the API, authentication is on by default. You can leave out the authentication field or set it to true . If you set it to false , the API returns HTTP 400 . When you update an existing gateway, leaving out authentication keeps its current setting. If you try to turn off authentication after it is on, </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-03-required-authentication/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-03-required-authentication/og.png?v=b39ba96004ad0565" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-03-required-authentication/og.png?v=b39ba96004ad0565"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-03-required-authentication/og.png?v=b39ba96004ad0565" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3acd69bfe426817c</id>
+    <title>Radar - Zero Wire, a hub for investigating critical Internet vulnerabilities</title>
+    <updated>2026-11-03T00:00:00+00:00</updated>
+    <content>Cloudflare Radar now includes Zero Wire ↗︎ , a hub for investigating critical Internet vulnerabilities and threats. Each briefing separates confirmed facts from open questions, lists remediation steps, and shows what Cloudflare observes about the threat. Briefings Briefings are grouped by urgency. Needs attention covers active incidents, new guidance, or unresolved scope that security teams should review now. Reference keeps stable briefings available, even if not every affected system has been </content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-03-radar-zero-wire/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-03T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2250,height=2080,format=webp/_astro/radar-zero-wire-list.D0WVtObi.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2250,height=2080,format=webp/_astro/radar-zero-wire-list.D0WVtObi.webp"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2250,height=2080,format=webp/_astro/radar-zero-wire-list.D0WVtObi.webp" type="image/webp" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ac01484d5d643b37</id>
@@ -1255,36 +1295,6 @@ Requests to undelete a database that was deleted more than 7 days ago will fail 
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/afa9d741c0ad42db</id>
-    <title>Cloudflare Fundamentals, Cloudflare One, Cloudflare Tunnel for SASE, Cloudflare Tunnel - Granular Tunnel Read And Monitor role is generally available</title>
-    <updated>2026-10-22T00:00:00+00:00</updated>
-    <content>The Cloudflare Tunnel - Granular Connector cloudflared Read And Monitor role is now generally available. You can grant a member read access and log streaming for specific Cloudflare Tunnel instances without granting write access or access to every Tunnel in your account. This role includes the same access as Cloudflare Tunnel - Granular Connector cloudflared Read : viewing selected Tunnels, their IP and hostname routes, and connector host details. It also grants remote log streaming , so support</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-22T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/og.png?v=695e0f6677d35490" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/og.png?v=695e0f6677d35490"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/og.png?v=695e0f6677d35490" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/3ab521a4263f031c</id>
-    <title>WAF - WAF Release - 2026-10-22 - Emergency - Cloudflare Managed Ruleset</title>
-    <updated>2026-10-22T00:00:00+00:00</updated>
-    <content>This emergency release updates the names and metadata of seven existing rules in the Cloudflare Managed Ruleset to identify CVE-2026-109618 and CVE-2026-109619. Detection logic and rule actions remain unchanged. Ruleset Rule ID Legacy Rule ID Description Previous Action New Action Comments Cloudflare Managed Ruleset ...c438d5dd N/A PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) Block N/A Rule metadata description refined. Detection unchanged. Cloudflare Managed Ruleset ...0a</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-22-emergency-waf-release-cfmr/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-22T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-22-emergency-waf-release-cfmr/og.png?v=0ac5f1571474b61e" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-22-emergency-waf-release-cfmr/og.png?v=0ac5f1571474b61e"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-22-emergency-waf-release-cfmr/og.png?v=0ac5f1571474b61e" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5e1964c97eb6af4a</id>
     <title>WAF - WAF Release - 2026-10-22 - Emergency - Cloudflare Free Ruleset</title>
     <updated>2026-10-22T00:00:00+00:00</updated>
@@ -1554,16 +1564,6 @@ We are working to understand the full impact and mitigate this problem. More upd
     <link href="https://www.cloudflarestatus.com/incidents/xh6wdjrte1ez" rel="alternate"/>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-16T09:59:03+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ff12c3a93993f0e6</id>
-    <title>Network Performance Issues in Thailand</title>
-    <updated>2026-10-16T07:30:00+00:00</updated>
-    <content>Oct 16 , 07:30 UTC Resolved - Cloudflare investigated and resolved issues with network performance in Bangkok, Thailand. There may have been elevated response times and an increase in 5xx errors between 06:48 and 07:30 UTC. This has been resolved and normal operations have resumed.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/vt8q2vjyx9vd" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-16T07:30:00+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>

@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-111 feedów · 899 źródeł
+112 feedów · 904 źródła
 
 ## Spis grup
 
@@ -183,8 +183,10 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Blog — <https://x.ai/news>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Build changelog — <https://x.ai/build/changelog>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Console changelog — <https://x.ai/api/changelog>
+- ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) GROK bot — <https://x.ai/changelog/bot/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=grok.com&sz=16) GROK release notes — <https://grok.com/release-notes>
 - ![](https://www.google.com/s2/favicons?domain=docs.x.ai&sz=16) Release notes md — <https://docs.x.ai/developers/release-notes.md>
+- ![](https://www.google.com/s2/favicons?domain=www.tesla.com&sz=16) Tesla blog — <https://www.tesla.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=docs.x.com&sz=16) X api changelog — <https://docs.x.com/changelog>
 - ![](https://www.google.com/s2/favicons?domain=blog.x.com&sz=16) X engineering — <https://blog.x.com/engineering/en_us>
 
@@ -1299,6 +1301,13 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=www.biblegateway.com&sz=16) Biblegateway votd — <https://www.biblegateway.com/votd/get/?format=atom>
 - ![](https://www.google.com/s2/favicons?domain=theysaidso.com&sz=16) QOD — <https://theysaidso.com/qod/feed>
 - ![](https://www.google.com/s2/favicons?domain=quotes.rest&sz=16) VOD — <https://quotes.rest/bible/vod.json>
+
+### ![](https://www.google.com/s2/favicons?domain=newsroom.tiktok.com&sz=16) TikTok
+`tiktok` · [feed_tiktok.xml](../feeds/feed_tiktok.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=newsroom.tiktok.com&sz=16) TikTok Newsroom — <https://newsroom.tiktok.com/?lang=en>
+- ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok — <https://www.tiktok.com/@tiktok>
+- ![](https://www.google.com/s2/favicons?domain=rsshub.app&sz=16) TikTok @tiktok — <https://rsshub.app/tiktok/user/@tiktok>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.uber.com&sz=16) Uber Newsroom
 `uber` · [feed_uber.xml](../feeds/feed_uber.xml)
