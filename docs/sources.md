@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-112 feedów · 904 źródła
+113 feedów · 931 źródeł
 
 ## Spis grup
 
@@ -240,10 +240,12 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Feed — <https://mcp.so/feed>
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
+- ![](https://www.google.com/s2/favicons?domain=www.agentid.com&sz=16) AgentID Blog — <https://www.agentid.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=aihubmix.com&sz=16) AIHubMix Blog (PL) — <https://aihubmix.com/blog/pl>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Docs Blog (EN) — <https://docs.aihubmix.com/en/blogs>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Changelog — <https://docs.aihubmix.com/en/update/News>
 - ![](https://www.google.com/s2/favicons?domain=docs.devin.ai&sz=16) Devin Desktop — <https://docs.devin.ai/desktop/changelog/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=docs.agentmail.to&sz=16) AgentMail Changelog — <https://docs.agentmail.to/changelog.rss>
 - ![](https://www.google.com/s2/favicons?domain=www.mindstudio.ai&sz=16) MindStudio — <https://www.mindstudio.ai/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Changelog — <https://www.mintlify.com/docs/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.mintlify.com&sz=16) Mintlify Blog — <https://www.mintlify.com/feed.xml>
@@ -274,6 +276,35 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mem0.ai&sz=16) MEM0 sitemap — <https://mem0.ai/sitemap.xml>
 
 ## 💻 Tech / vendorzy oprogramowania
+
+### ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Development
+`development` · [feed_development.xml](../feeds/feed_development.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Rust Blog — <https://blog.rust-lang.org/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Inside Rust — <https://blog.rust-lang.org/inside-rust/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=testdriven.io&sz=16) TestDriven.io — <https://testdriven.io/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=changelog.com&sz=16) Changelog News — <https://changelog.com/news/feed>
+- ![](https://www.google.com/s2/favicons?domain=scripting.com&sz=16) Scripting News — <http://scripting.com/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=developmentseed.org&sz=16) Development Seed — <https://developmentseed.org/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=blog.codinghorror.com&sz=16) Coding Horror — <https://blog.codinghorror.com/rss/>
+- ![](https://www.google.com/s2/favicons?domain=paolino.me&sz=16) Carmine Paolino — <https://paolino.me/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=blog.rubygems.org&sz=16) RubyGems Blog — <https://blog.rubygems.org/atom.xml>
+- ![](https://www.google.com/s2/favicons?domain=rubyinstaller.org&sz=16) RubyInstaller — <https://rubyinstaller.org/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=blog.jetbrains.com&sz=16) JetBrains Blog — <https://blog.jetbrains.com/feed/>
+- ![](https://www.google.com/s2/favicons?domain=reactnative.dev&sz=16) React Native Blog — <https://reactnative.dev/blog/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=ionic.io&sz=16) Ionic Framework Blog — <https://ionic.io/blog/tag/framework/feed>
+- ![](https://www.google.com/s2/favicons?domain=web.dev&sz=16) web.dev Blog — <https://web.dev/blog/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=blog.jupyter.org&sz=16) Jupyter Blog — <https://blog.jupyter.org/feed>
+- ![](https://www.google.com/s2/favicons?domain=isocpp.org&sz=16) Standard C++ — <https://isocpp.org/blog/rss>
+- ![](https://www.google.com/s2/favicons?domain=www.djangoproject.com&sz=16) Django Weblog — <https://www.djangoproject.com/rss/weblog/>
+- ![](https://www.google.com/s2/favicons?domain=django-news.com&sz=16) Django News — <https://django-news.com/rss>
+- ![](https://www.google.com/s2/favicons?domain=djangopackages.org&sz=16) Django Packages latest — <https://djangopackages.org/feeds/packages/latest/atom/>
+- ![](https://www.google.com/s2/favicons?domain=www.djangoproject.com&sz=16) Django Community — <https://www.djangoproject.com/rss/community/blogs/>
+- ![](https://www.google.com/s2/favicons?domain=dev.to&sz=16) DEV top month — <https://dev.to/api/articles?top=30&per_page=30>
+- ![](https://www.google.com/s2/favicons?domain=dev.to&sz=16) DEV top month — <https://dev.to/top/month>
+- ![](https://www.google.com/s2/favicons?domain=djangopackages.org&sz=16) Django packages changelog — <https://djangopackages.org/changelog/>
+- ![](https://www.google.com/s2/favicons?domain=justjoin.it&sz=16) Justjoin blog — <https://justjoin.it/blog/>
+- ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) RUST releases — <https://blog.rust-lang.org/releases/>
 
 ### ![](https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=16) Microsoft
 `microsoft` · [feed_microsoft.xml](../feeds/feed_microsoft.xml)
