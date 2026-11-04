@@ -13,7 +13,7 @@ from datetime import UTC, datetime
 from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
-from multi_rss import get_html, parse_date, run
+from multi_rss import get_html, logger, parse_date, run
 from utils import sanitize_xml
 
 FEED_NAME = "tiktok"
@@ -52,6 +52,16 @@ def _parse_newsroom_listing(html):
             continue
 
         for card in [anchor, *list(anchor.parents)[:5]]:
+            if card.name in {"main", "body", "html"}:
+                break
+            post_paths = {
+                urlparse(urljoin(NEWSROOM_URL, a.get("href", ""))).path.rstrip("/")
+                for a in card.find_all("a", href=True)
+                if urlparse(urljoin(NEWSROOM_URL, a.get("href", ""))).netloc == "newsroom.tiktok.com"
+                and "-" in urlparse(urljoin(NEWSROOM_URL, a.get("href", ""))).path.rsplit("/", 1)[-1]
+            }
+            if len(post_paths) > 1:
+                break
             text = card.get_text(" ", strip=True)
             if len(text) > 4500:
                 break
@@ -67,7 +77,7 @@ def _parse_newsroom_listing(html):
             if not title:
                 title = anchor.get_text(" ", strip=True)
             title = sanitize_xml(re.sub(r"\s+", " ", title).strip())
-            if len(title) < 12 or title.casefold() in {"read more", "learn more"}:
+            if not title or title.casefold() in {"read", "read more", "learn more"}:
                 break
 
             paragraph = card.find("p")
@@ -92,10 +102,10 @@ def scrape_newsroom(known_links):
     html = get_html(NEWSROOM_URL)
     if not html:
         return []
-    return [
-        entry for entry in _parse_newsroom_listing(html)
-        if entry["link"] not in known_links
-    ]
+    candidates = _parse_newsroom_listing(html)
+    if not candidates:
+        logger.warning("  [TikTok Newsroom] no dated cards matched; layout may have changed")
+    return [entry for entry in candidates if entry["link"] not in known_links]
 
 
 def _profile_items(data):
@@ -183,6 +193,7 @@ def main(full=False):
         extra_scrapers=(scrape_newsroom, scrape_profile),
         max_entries=200,
         per_source_cap=100,
+        dedupe_title_field=None,
         full=full,
     )
 

@@ -449,6 +449,15 @@ def _parse_tesla_blog(html):
             continue
 
         for card in [anchor, *list(anchor.parents)[:5]]:
+            if card.name in {"main", "body", "html"}:
+                break
+            post_links = {
+                urlparse(urljoin(TESLA_BLOG_URL, a.get("href", ""))).path
+                for a in card.find_all("a", href=True)
+                if urlparse(urljoin(TESLA_BLOG_URL, a.get("href", ""))).path.startswith("/blog/")
+            }
+            if len(post_links) > 1:
+                break
             card_text = card.get_text(" ", strip=True)
             if len(card_text) > 2500:
                 break
@@ -465,10 +474,14 @@ def _parse_tesla_blog(html):
             title = sanitize_xml(re.sub(r"\s+", " ", title).strip())
             if not title:
                 break
-            paragraph = card.find("p")
-            summary = (
-                sanitize_xml(paragraph.get_text(" ", strip=True))[:DESC_LIMIT]
-                if paragraph else title
+            summary = next(
+                (
+                    sanitize_xml(text)[:DESC_LIMIT]
+                    for paragraph in card.find_all("p")
+                    if (text := paragraph.get_text(" ", strip=True))
+                    and not DATE_RE.search(text)
+                ),
+                title,
             )
             entries.append({
                 "title": title,
@@ -487,8 +500,10 @@ def scrape_tesla_blog(known_links):
     html = _get_html(TESLA_BLOG_URL)
     if html is None:
         return []
-    entries = _parse_tesla_blog(html)
-    return [entry for entry in entries if entry["link"] not in known_links]
+    candidates = _parse_tesla_blog(html)
+    if not candidates:
+        logger.warning("  [Tesla Blog] no posts matched; layout may have changed")
+    return [entry for entry in candidates if entry["link"] not in known_links]
 
 
 # --------------------------------------------------------------------------- #
