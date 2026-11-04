@@ -16,6 +16,11 @@ on:
       - ".github/workflows/update-feeds.yml"
       - "tests/test_update_feeds_workflow.py"
   workflow_dispatch:
+  # Only for a failed source/site push. Do not overwrite a successful live deploy.
+  # zizmor: ignore[dangerous-triggers] trusted default-branch checkout, no PR code
+  workflow_run:
+    workflows: ["Update Feeds"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -62,8 +67,45 @@ jobs:
           uv run --locked python -m json.tool public/model-feeds.json > /dev/null
           grep -Fq 'model-feeds.json' public/llms.txt
 
+  check-fallback:
+    name: Check whether live Pages already deployed
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-slim
+    permissions:
+      actions: read
+    outputs:
+      allowed: ${{ steps.inspect.outputs.allowed }}
+    steps:
+      - name: Check generator workflow jobs
+        id: inspect
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! conclusions="$(gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID/jobs" --jq '.jobs[] | select(.name == "Deploy fresh feeds to GitHub Pages") | .conclusion')"; then
+            echo "::warning::Could not confirm live deployment; skip potentially stale fallback"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if grep -qx success <<< "$conclusions"; then
+            echo "Live Pages already deployed; keep the fresher artifact"
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "No successful live deploy; publish the trusted Git snapshot fallback"
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build-deploy:
-    if: github.event_name == 'workflow_dispatch'
+    needs: check-fallback
+    if: >-
+      always() &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event_name == 'workflow_run' && needs.check-fallback.outputs.allowed == 'true'))
     concurrency:
       group: feedseek-pages-deploy
       cancel-in-progress: false

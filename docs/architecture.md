@@ -51,7 +51,10 @@ remain valid but may lag GitHub Pages. Pages is the preferred live subscription
 endpoint. A snapshot is never pushed before successful validation and R2 backup.
 
 `Deploy Pages` remains a manual Git-snapshot fallback; normal live deployment
-happens in `Update Feeds`. This arrangement reduces future Git history growth
+happens in `Update Feeds`. When a trusted push run fails before deploying,
+`Deploy Pages` can automatically rebuild from the committed snapshot, but only
+after checking that no successful live Pages deployment occurred in that run.
+This avoids overwriting healthy partial publications with older artifacts. This arrangement reduces future Git history growth
 without rewriting past commits, disrupting PRs or moving the source registry.
 
 ## Feed quality contract
