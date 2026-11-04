@@ -33,6 +33,8 @@ jobs:
   update-feeds:
     runs-on: ubuntu-latest
     timeout-minutes: 69
+    outputs:
+      pages_ready: ${{ steps.pages_upload.outcome == 'success' && steps.backup.outcome == 'success' && steps.model_feeds.outcome == 'success' && steps.validate.outcome == 'success' }}
     steps:
       - name: Checkout repository
         # zizmor: ignore[artipacked] this job commits & pushes feeds back, so it needs persisted creds
@@ -226,7 +228,11 @@ jobs:
   deploy-generated-pages:
     name: Deploy fresh feeds to GitHub Pages
     needs: update-feeds
-    if: github.ref == 'refs/heads/main'
+    # Keep successful partial publications even when a generator health gate fails.
+    if: >-
+      always() &&
+      github.ref == 'refs/heads/main' &&
+      needs.update-feeds.outputs.pages_ready == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read

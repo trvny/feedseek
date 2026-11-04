@@ -12,7 +12,8 @@ untracked. The durable source of truth is the private Cloudflare R2 object
 3. Replace the local cache tree with the validated snapshot; never merge it
    with potentially stale local data.
 4. Generate and validate feeds. Upload the new cache snapshot first.
-5. Publish the live Pages artifact from the validated workspace every successful run.
+5. Publish the live Pages artifact from the validated workspace whenever its
+   publication gate passes, even if an unrelated generator later fails.
 6. Commit a `feeds/` snapshot to `main` on manual or source changes, otherwise
    no more often than every six hours (subject to scheduled-run timing).
 
