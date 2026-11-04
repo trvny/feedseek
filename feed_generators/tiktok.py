@@ -1,7 +1,7 @@
 """TikTok feed: official Newsroom and public @tiktok videos.
 
 Newsroom is parsed from dated official listing cards. Profile videos come from
-public page hydration when available and a best-effort RSSHub fallback. One
+public page hydration when available and the official embed as a fallback. One
 blocked TikTok surface never prevents updating other sources.
 """
 
@@ -19,11 +19,7 @@ from utils import sanitize_xml
 FEED_NAME = "tiktok"
 NEWSROOM_URL = "https://newsroom.tiktok.com/?lang=en"
 PROFILE_URL = "https://www.tiktok.com/@tiktok"
-PROFILE_RSS_URL = "https://rsshub.app/tiktok/user/@tiktok"
-
-SOURCES = [
-    ("TikTok @tiktok", PROFILE_RSS_URL, 30),
-]
+PROFILE_EMBED_URL = "https://www.tiktok.com/embed/@tiktok"
 
 DATE_RE = re.compile(
     r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
@@ -128,10 +124,40 @@ def _profile_items(data):
             yield from _profile_items(item)
 
 
-def _parse_profile_html(html):
-    soup = BeautifulSoup(html or "", "html.parser")
+def _profile_entries(items):
+    """Normalize official video metadata into stable feed entries."""
     entries = []
     seen = set()
+    for item in items:
+        video_id = str(item.get("id") or "")
+        if not VIDEO_ID_RE.fullmatch(video_id) or video_id in seen:
+            continue
+        author = item.get("author")
+        if isinstance(author, dict):
+            author = author.get("uniqueId")
+        if author and str(author).casefold().lstrip("@") != "tiktok":
+            continue
+        try:
+            published = datetime.fromtimestamp(int(item["createTime"]), tz=UTC)
+        except (ValueError, TypeError, OverflowError, KeyError):
+            continue
+        link = f"https://www.tiktok.com/@tiktok/video/{video_id}"
+        description = str(item.get("desc") or "").strip()
+        title = sanitize_xml(description)[:280] or f"TikTok video {video_id}"
+        entries.append({
+            "title": title,
+            "link": link,
+            "date": published,
+            "description": sanitize_xml(description or title)[:500],
+            "source": "TikTok @tiktok",
+        })
+        seen.add(video_id)
+    return entries
+
+
+def _parse_profile_html(html):
+    soup = BeautifulSoup(html or "", "html.parser")
+    items = []
     for script in soup.find_all(
         "script", id=["SIGI_STATE", "__UNIVERSAL_DATA_FOR_REHYDRATION__"]
     ):
@@ -139,46 +165,69 @@ def _parse_profile_html(html):
             data = json.loads(script.string or script.get_text())
         except (ValueError, TypeError):
             continue
-        for item in _profile_items(data):
-            video_id = str(item.get("id") or "")
-            if not VIDEO_ID_RE.fullmatch(video_id) or video_id in seen:
+        items.extend(_profile_items(data))
+    return _profile_entries(items)
+
+
+def _parse_embed_profile_html(html):
+    """Read TikTok's official creator embed state, without third-party RSS."""
+    soup = BeautifulSoup(html or "", "html.parser")
+    script = soup.find("script", id="__FRONTITY_CONNECT_STATE__")
+    if script is None:
+        return []
+    try:
+        state = json.loads(script.string or script.get_text())
+    except (ValueError, TypeError):
+        return []
+    if not isinstance(state, dict):
+        return []
+    source = state.get("source")
+    if not isinstance(source, dict):
+        return []
+    data = source.get("data")
+    if not isinstance(data, dict):
+        return []
+
+    items = []
+    for profile in data.values():
+        if not isinstance(profile, dict):
+            continue
+        user = profile.get("userInfo") or {}
+        if not isinstance(user, dict) or str(user.get("uniqueId") or "").casefold() != "tiktok":
+            continue
+        for video in profile.get("videoList") or []:
+            if not isinstance(video, dict):
                 continue
-            author = item.get("author")
-            if isinstance(author, dict):
-                author = author.get("uniqueId")
-            if author and str(author).casefold().lstrip("@") != "tiktok":
+            video_id = str(video.get("id") or "")
+            if not VIDEO_ID_RE.fullmatch(video_id):
                 continue
-            try:
-                published = datetime.fromtimestamp(int(item["createTime"]), tz=UTC)
-            except (ValueError, TypeError, OverflowError, KeyError):
-                continue
-            link = f"https://www.tiktok.com/@tiktok/video/{video_id}"
-            title = sanitize_xml((item.get("desc") or "").strip())[:280] or f"TikTok video {video_id}"
-            entries.append({
-                "title": title,
-                "link": link,
-                "date": published,
-                "description": sanitize_xml(item.get("desc") or title)[:500],
-                "source": "TikTok @tiktok",
+            items.append({
+                "id": video_id,
+                "author": video.get("authorUniqueId") or user["uniqueId"],
+                "createTime": int(video_id) >> 32,
+                "desc": video.get("desc") or "",
             })
-            seen.add(video_id)
-    return entries
+    return _profile_entries(items)
 
 
 def scrape_profile(known_links):
     html = get_html(PROFILE_URL)
-    if not html:
-        return []
-    return [
-        entry for entry in _parse_profile_html(html)
-        if entry["link"] not in known_links
-    ]
+    candidates = _parse_profile_html(html) if html else []
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
+    if not entries:
+        embed_html = get_html(PROFILE_EMBED_URL)
+        fallback = _parse_embed_profile_html(embed_html) if embed_html else []
+        entries = [entry for entry in fallback if entry["link"] not in known_links]
+    if not entries and not candidates:
+        logger.warning("  [TikTok @tiktok] no public videos found; profile access may be blocked")
+    return entries
 
 
 def doc_sources():
     return [
         ("TikTok Newsroom", NEWSROOM_URL),
         ("TikTok @tiktok", PROFILE_URL),
+        ("TikTok @tiktok embed", PROFILE_EMBED_URL),
     ]
 
 
@@ -189,7 +238,6 @@ def main(full=False):
         subtitle="Official TikTok Newsroom articles and public @tiktok videos.",
         blog_url=NEWSROOM_URL,
         author="TikTok",
-        sources=SOURCES,
         extra_scrapers=(scrape_newsroom, scrape_profile),
         max_entries=200,
         per_source_cap=100,
