@@ -29,9 +29,10 @@ The defaults are intentionally conservative:
 
 ## Publication cadence and Git history
 
-The scheduled generator still runs every two hours. Every healthy run backs up
-incremental state to R2, then builds and deploys GitHub Pages **directly from
-the generated files**, even when no Git commit is made. This keeps
+The scheduled generator still runs every two hours. Every publishable run backs
+up incremental state to R2, then builds and deploys GitHub Pages **directly
+from the generated files**, even when no Git commit is made. Validated partial
+results still deploy if a separate generator fails its final health gate. This keeps
 `https://trvny.github.io/feedseek/feed_<name>.xml` and its Model Feed JSON
 sibling current without a fresh pack of generated blobs in `main`.
 

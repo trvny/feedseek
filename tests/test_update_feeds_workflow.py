@@ -58,6 +58,9 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("uses: actions/upload-pages-artifact@", workflow)
         self.assertIn("uses: actions/deploy-pages@", workflow)
         self.assertIn("needs: update-feeds", workflow)
+        self.assertIn("pages_ready:", workflow)
+        self.assertIn("needs.update-feeds.outputs.pages_ready == 'true'", workflow)
+        self.assertIn("always()", workflow.split("  deploy-generated-pages:", 1)[1])
         self.assertLess(
             workflow.index("- name: Back up Feedseek cache to R2"),
             workflow.index("- name: Build live Pages site"),
