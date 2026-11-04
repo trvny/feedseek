@@ -17,12 +17,14 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("!cancelled()", block)
 
     def test_delayed_schedule_never_cancels_running_cache_work(self):
+        """Production refreshes must serialize without cancelling R2 work."""
         workflow = self.workflow()
         block = workflow.split("concurrency:", 1)[1].split("permissions:", 1)[0]
         self.assertIn("group: update-feeds-${{ github.ref }}", block)
         self.assertIn("cancel-in-progress: false", block)
 
     def test_r2_restore_is_required_before_generation(self):
+        """Fresh R2 state must be restored before generating feeds."""
         workflow = self.workflow()
         restore = workflow.split("- name: Restore Feedseek cache from R2", 1)[1]
         restore = restore.split("- name: Run feed tests", 1)[0]
