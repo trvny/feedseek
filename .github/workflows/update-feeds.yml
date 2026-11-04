@@ -16,7 +16,8 @@ on:
 
 concurrency:
   group: update-feeds
-  cancel-in-progress: true
+  # A delayed GitHub cron must not abort an R2 restore/generation in progress.
+  cancel-in-progress: false
 
 permissions: {}
 

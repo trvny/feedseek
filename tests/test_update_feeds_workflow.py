@@ -16,6 +16,12 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("steps.validate.outcome == 'success'", block)
         self.assertIn("!cancelled()", block)
 
+    def test_delayed_schedule_never_cancels_running_cache_work(self):
+        workflow = self.workflow()
+        block = workflow.split("concurrency:", 1)[1].split("permissions:", 1)[0]
+        self.assertIn("group: update-feeds", block)
+        self.assertIn("cancel-in-progress: false", block)
+
     def test_r2_restore_is_required_before_generation(self):
         workflow = self.workflow()
         restore = workflow.split("- name: Restore Feedseek cache from R2", 1)[1]
