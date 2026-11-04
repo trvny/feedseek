@@ -8,7 +8,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from tiktok import _parse_newsroom_listing, _parse_profile_html, doc_sources, main  # noqa: E402
+from tiktok import (  # noqa: E402
+    _parse_embed_profile_html,
+    _parse_newsroom_listing,
+    _parse_profile_html,
+    doc_sources,
+    main,
+)
 from xai import GROK_BOT_RSS_URL, _parse_tesla_blog, _select_feed_items  # noqa: E402
 
 
@@ -126,6 +132,48 @@ class NewSourceTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["source"], "TikTok @tiktok")
         self.assertEqual(items[0]["date"].year, 2024)
+
+    def test_embed_profile_fallback_uses_video_snowflake_date(self):
+        html = """
+        <script id="__FRONTITY_CONNECT_STATE__" type="application/json">
+        {"source":{"data":{"/embed/@tiktok":{
+          "userInfo":{"uniqueId":"tiktok"},
+          "videoList":[{"id":"7399999999999999999",
+                        "authorUniqueId":"tiktok",
+                        "desc":"Embedded official TikTok video"}]
+        }}}}
+        </script>"""
+        items = _parse_embed_profile_html(html)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["date"].year, 2024)
+        self.assertEqual(
+            items[0]["link"], "https://www.tiktok.com/@tiktok/video/7399999999999999999"
+        )
+
+    def test_embed_profile_ignores_other_creators(self):
+        html = """
+        <script id="__FRONTITY_CONNECT_STATE__">
+        {"source":{"data":{"/embed/@other":{
+          "userInfo":{"uniqueId":"other"},
+          "videoList":[{"id":"7399999999999999999","desc":"Someone else"}]
+        }}}}
+        </script>"""
+        self.assertEqual(_parse_embed_profile_html(html), [])
+
+    def test_profile_uses_embed_when_primary_page_has_no_videos(self):
+        from tiktok import scrape_profile
+        with patch("tiktok.get_html", side_effect=[
+            "<html><body>Profile blocked</body></html>",
+            """<script id="__FRONTITY_CONNECT_STATE__">
+            {"source":{"data":{"/embed/@tiktok":{
+              "userInfo":{"uniqueId":"tiktok"},
+              "videoList":[{"id":"7399999999999999999","desc":"One video"}]
+            }}}}
+            </script>""",
+        ]) as fetch:
+            items = scrape_profile(set())
+        self.assertEqual(len(items), 1)
+        self.assertEqual(fetch.call_count, 2)
 
     def test_docs_use_official_tiktok_sources(self):
         self.assertEqual(
