@@ -1,8 +1,4 @@
-"""Dormant combined development feed for Rust, Django, and related sources.
-
-This module is intentionally not registered in ``feeds.yaml`` yet. It can be
-expanded and verified before Feedseek starts publishing it.
-"""
+"""Combined development feed for Rust, Django and developer communities."""
 
 import argparse
 import json
@@ -12,7 +8,7 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 from multi_rss import get_html, parse_date, run
-from utils import sanitize_xml, setup_logging, stable_fallback_date
+from utils import fetch_page, sanitize_xml, setup_logging, stable_fallback_date
 
 logger = setup_logging()
 
@@ -32,6 +28,7 @@ SOURCES = [
     ("RubyGems Blog", "https://blog.rubygems.org/atom.xml", 40),
     ("RubyInstaller", "https://rubyinstaller.org/feed.xml", 40),
     ("JetBrains Blog", "https://blog.jetbrains.com/feed/", 40),
+    ("React Native Blog", "https://reactnative.dev/blog/rss.xml", 40),
     ("Ionic Framework Blog", "https://ionic.io/blog/tag/framework/feed", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
     ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
@@ -49,6 +46,13 @@ DJANGO_PACKAGES_CHANGELOG_MAX = 20
 DEV_TOP_MONTH_URL = "https://dev.to/top/month"
 DEV_TOP_MONTH_API_URL = "https://dev.to/api/articles?top=30&per_page=30"
 DEV_TOP_MONTH_MAX = 30
+JUSTJOIN_BLOG_URL = "https://justjoin.it/blog/"
+JUSTJOIN_MAX = 10
+_JUSTJOIN_POST_RE = re.compile(r"^https://justjoin\.it/blog/[^/?#]+/?$", re.I)
+_JUSTJOIN_DATE_RE = re.compile(
+    r"\b\d{1,2}\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|"
+    r"sierpnia|września|października|listopada|grudnia)\s+20\d{2}\b", re.I
+)
 
 _RUST_RELEASE_DATE = re.compile(r"/(20\d{2})/(\d{2})/(\d{2})/")
 
@@ -184,6 +188,83 @@ def scrape_dev_top_month(known_links):
     return entries
 
 
+def get_justjoin_html(url):
+    """Bound requests to keep slow post pages from stalling development."""
+    try:
+        return fetch_page(url, timeout=8, browser_fallback=True)
+    except Exception as exc:
+        logger.warning("  [Just Geek IT] fetch failed %s: %s", url, exc)
+        return None
+
+
+def justjoin_article_links(html, known_links=None):
+    """Discover Just Geek IT article URLs, excluding categories and duplicates."""
+    known_links = known_links or set()
+    soup = BeautifulSoup(html, "html.parser")
+    links, seen = [], set()
+    for anchor in soup.find_all("a", href=True):
+        link = urljoin(JUSTJOIN_BLOG_URL, anchor["href"])
+        link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
+        if not _JUSTJOIN_POST_RE.fullmatch(link) or link in known_links or link in seen:
+            continue
+        seen.add(link)
+        links.append(link)
+    return links[:JUSTJOIN_MAX]
+
+
+def scrape_justjoin_blog(known_links):
+    """Extract post metadata from Just Geek IT, skipping unavailable detail pages."""
+    index = get_justjoin_html(JUSTJOIN_BLOG_URL)
+    if not index:
+        logger.warning("  [Just Geek IT] blog index unavailable")
+        return []
+
+    entries = []
+    for link in justjoin_article_links(index, known_links):
+        html = get_justjoin_html(link)
+        if not html:
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        heading = soup.find("h1")
+        title_meta = soup.find("meta", attrs={"property": "og:title"})
+        title = (
+            heading.get_text(" ", strip=True)
+            if heading
+            else title_meta.get("content", "") if title_meta else ""
+        )
+        title = sanitize_xml(title)
+        if not title:
+            continue
+
+        desc_meta = soup.find("meta", attrs={"name": "description"})
+        description = (
+            sanitize_xml(desc_meta.get("content", "").strip()) if desc_meta else ""
+        )
+        published = soup.find("meta", attrs={"property": "article:published_time"})
+        timestamp = published.get("content") if published else None
+        if not timestamp:
+            time_tag = soup.find("time", datetime=True)
+            timestamp = time_tag["datetime"] if time_tag else None
+        if not timestamp:
+            date_match = _JUSTJOIN_DATE_RE.search(soup.get_text(" ", strip=True)[:4000])
+            timestamp = date_match.group(0) if date_match else None
+
+        image_meta = soup.find("meta", attrs={"property": "og:image"})
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": (parse_date(timestamp) if timestamp else None)
+                or stable_fallback_date(link),
+                "description": description or title,
+                "source": "Just Geek IT",
+                "image": image_meta.get("content") if image_meta else None,
+            }
+        )
+    logger.info("  [Just Geek IT] found %d article(s)", len(entries))
+    return entries
+
+
 def main(full=False):
     return run(
         feed_name=FEED_NAME,
@@ -196,8 +277,10 @@ def main(full=False):
             scrape_rust_releases,
             scrape_django_packages_changelog,
             scrape_dev_top_month,
+            scrape_justjoin_blog,
         ],
         max_entries=300,
+        source_workers=6,
         full=full,
     )
 

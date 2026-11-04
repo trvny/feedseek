@@ -139,5 +139,77 @@ class DevelopmentSourceTests(unittest.TestCase):
         self.assertEqual(entries[0]["image"], "https://example.com/cover.png")
 
 
+    def test_react_native_native_rss_is_registered(self):
+        sources = {label: url for label, url, _ in development.SOURCES}
+        self.assertEqual(
+            sources["React Native Blog"], "https://reactnative.dev/blog/rss.xml"
+        )
+
+    def test_justjoin_discovery_excludes_navigation_duplicates_and_other_hosts(self):
+        index = """
+        <a href="/blog/">Index</a>
+        <a href="/blog/testowanie-api">Testowanie API</a>
+        <a href="/blog/testowanie-api?utm_source=home">Duplicate</a>
+        <a href="/blog/sztuczna-inteligencja">AI</a>
+        <a href="/blog/category/ai">Category</a>
+        <a href="https://example.com/blog/external">External</a>
+        """
+        self.assertEqual(
+            development.justjoin_article_links(
+                index, {"https://justjoin.it/blog/sztuczna-inteligencja"}
+            ),
+            ["https://justjoin.it/blog/testowanie-api"],
+        )
+
+    def test_justjoin_post_retains_real_polish_date_and_metadata(self):
+        link = "https://justjoin.it/blog/konkurs-ugotit"
+        index = '<a href="/blog/konkurs-ugotit">Read more</a>'
+        detail = """
+        <html><head>
+          <meta name="description" content="A developer hackathon">
+          <meta property="og:image" content="https://justjoin.it/cover.jpg">
+        </head><body>
+          <h1>UGotIT developer challenge</h1>
+          <main><span>6 sierpnia 2026 Artykuł sponsorowany</span></main>
+        </body></html>
+        """
+        with patch.object(
+            development, "get_justjoin_html",
+            side_effect=lambda url: {
+                development.JUSTJOIN_BLOG_URL: index,
+                link: detail,
+            }.get(url),
+        ):
+            result = development.scrape_justjoin_blog(set())
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["link"], link)
+        self.assertEqual(result[0]["source"], "Just Geek IT")
+        self.assertEqual(result[0]["title"], "UGotIT developer challenge")
+        self.assertEqual(result[0]["description"], "A developer hackathon")
+        self.assertEqual(result[0]["date"].isoformat(), "2026-08-06T00:00:00+00:00")
+        self.assertEqual(result[0]["image"], "https://justjoin.it/cover.jpg")
+
+    def test_justjoin_fetches_have_bounded_timeout(self):
+        with patch.object(development, "fetch_page", return_value="post") as fetch:
+            self.assertEqual(
+                development.get_justjoin_html("https://justjoin.it/blog/example"),
+                "post",
+            )
+        fetch.assert_called_once_with(
+            "https://justjoin.it/blog/example", timeout=8, browser_fallback=True
+        )
+
+    def test_justjoin_fetch_error_is_isolated(self):
+        with patch.object(development, "fetch_page", side_effect=TimeoutError):
+            self.assertIsNone(
+                development.get_justjoin_html("https://justjoin.it/blog/example")
+            )
+
+    def test_justjoin_failed_index_is_isolated(self):
+        with patch.object(development, "get_justjoin_html", return_value=None):
+            self.assertEqual(development.scrape_justjoin_blog(set()), [])
+
+
+
 if __name__ == "__main__":
     unittest.main()
