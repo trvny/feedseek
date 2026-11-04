@@ -44,16 +44,19 @@ fetchable. MCP search freshness therefore follows the Git snapshot cadence.
 The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
 Scheduled runs snapshot after the last feed commit reaches six hours old, at
-the next successful scheduled run (potentially later); an API lookup failure
-fails open and can snapshot sooner. Manual runs on `main` and matching
+the next successful scheduled run (potentially later); if the source tree has
+advanced since the last feed commit, a scheduled run snapshots immediately too.
+This preserves push semantics when GitHub coalesces pending runs. An API lookup
+failure fails open and can snapshot sooner. Manual runs on `main` and matching
 configuration, generator, workflow or site pushes to `main` snapshot immediately. Consequently, raw-GitHub URLs
 remain valid but may lag GitHub Pages. Pages is the preferred live subscription
 endpoint. A snapshot is never pushed before successful validation and R2 backup.
 
 `Deploy Pages` remains a manual Git-snapshot fallback; normal live deployment
-happens in `Update Feeds`. When a trusted push run fails before deploying,
+happens in `Update Feeds`. When a trusted main-branch refresh fails before deploying,
 `Deploy Pages` can automatically rebuild from the committed snapshot, but only
-after checking that no successful live Pages deployment occurred in that run.
+after checking that no successful live Pages deployment occurred in that run,
+no newer refresh exists and main has not advanced.
 This avoids overwriting healthy partial publications with older artifacts. This arrangement reduces future Git history growth
 without rewriting past commits, disrupting PRs or moving the source registry.
 

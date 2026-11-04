@@ -19,7 +19,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
     def test_delayed_schedule_never_cancels_running_cache_work(self):
         workflow = self.workflow()
         block = workflow.split("concurrency:", 1)[1].split("permissions:", 1)[0]
-        self.assertIn("group: update-feeds", block)
+        self.assertIn("group: update-feeds-${{ github.ref }}", block)
         self.assertIn("cancel-in-progress: false", block)
 
     def test_r2_restore_is_required_before_generation(self):
@@ -92,6 +92,8 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("  push:", triggers)
         self.assertIn("  workflow_dispatch:", triggers)
         self.assertIn("commits?path=feeds&per_page=1", snapshot)
+        self.assertIn("last_sha", snapshot)
+        self.assertIn('"$GITHUB_SHA" != "$last_sha"', snapshot)
         self.assertIn("echo \"due=true\"", snapshot)
         self.assertIn("age_seconds < 0", snapshot)
         self.assertIn("age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600", snapshot)
@@ -99,14 +101,17 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("steps.snapshot.outputs.due == 'true'", commit)
         self.assertIn("steps.backup.outcome == 'success'", commit)
 
-    def test_failed_push_can_rebuild_from_git_only_when_live_deploy_skipped(self):
+    def test_failed_main_refresh_can_rebuild_only_when_no_newer_run(self):
         deploy = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
             encoding="utf-8"
         )
         self.assertNotIn("  push:", deploy)
         self.assertIn("  workflow_dispatch:", deploy)
         self.assertIn('workflows: ["Update Feeds"]', deploy)
-        self.assertIn("github.event.workflow_run.event == 'push'", deploy)
+        self.assertIn('github.event.workflow_run.head_branch == \'main\'', deploy)
+        self.assertIn('"push","schedule","workflow_dispatch"', deploy)
+        self.assertIn("latest > SOURCE_RUN_ID", deploy)
+        self.assertIn('"$current" != "$SOURCE_SHA"', deploy)
         self.assertIn("github.event.workflow_run.conclusion == 'failure'", deploy)
         self.assertIn("needs.check-fallback.outputs.allowed == 'true'", deploy)
         self.assertIn('select(.name == "Deploy fresh feeds to GitHub Pages")', deploy)
