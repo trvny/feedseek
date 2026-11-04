@@ -12,6 +12,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -232,6 +233,33 @@ def enabled_feed_paths() -> tuple[list[Path], list[str]]:
     return paths, missing
 
 
+
+def committed_feed_paths(target_dir: Path, revision: str) -> tuple[list[Path], list[str]]:
+    """Pin MCP index data to the exact Git revision encoded in fetch IDs."""
+    paths: list[Path] = []
+    missing: list[str] = []
+    for key, config in load_feed_registry().items():
+        if not config.enabled:
+            continue
+        source = f"feeds/feed_{key}.json"
+        result = subprocess.run(
+            ["git", "show", f"{revision}:{source}"],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if result.returncode != 0:
+            missing.append(key)
+            continue
+        path = target_dir / f"feed_{key}.json"
+        path.write_bytes(result.stdout)
+        paths.append(path)
+    if not paths:
+        raise RuntimeError("No committed Model Feeds available for the MCP index")
+    return paths, missing
+
+
 def resolve_revision() -> str:
     explicit = os.environ.get("FEEDSEEK_REVISION", "").strip()
     if explicit:
@@ -420,12 +448,17 @@ def build_index(
 
 def main() -> None:
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    feed_paths, missing = enabled_feed_paths()
-    payload = build_index(
-        feed_paths,
-        revision=resolve_revision(),
-        missing_feed_keys=missing,
-    )
+    revision = resolve_revision()
+    with TemporaryDirectory() as tmp:
+        if os.environ.get("FEEDSEEK_INDEX_PIN_COMMITTED") == "1":
+            feed_paths, missing = committed_feed_paths(Path(tmp), revision)
+        else:
+            feed_paths, missing = enabled_feed_paths()
+        payload = build_index(
+            feed_paths,
+            revision=revision,
+            missing_feed_keys=missing,
+        )
     OUT_PATH.write_text(
         json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
         encoding="utf-8",
