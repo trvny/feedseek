@@ -32,13 +32,14 @@ The defaults are intentionally conservative:
 The scheduled generator still runs every two hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
-results still deploy if a separate generator fails its final health gate. This keeps
+results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for feeds in `published_feeds` (including
 `https://trvny.github.io/feedseek/feed_<name>.xml` and its Model Feed JSON
-sibling current without a fresh pack of generated blobs in `main`.
+sibling) current without a fresh pack of generated blobs in `main`.
 
 The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
-Scheduled runs commit these no more often than every six hours; manual runs and
+Scheduled runs normally commit these no more often than every six hours (an
+API lookup failure fails open and can snapshot sooner); manual runs and
 configuration/site pushes snapshot immediately. Consequently, raw-GitHub URLs
 remain valid but may lag GitHub Pages. Pages is the preferred live subscription
 endpoint. A snapshot is never pushed before successful validation and R2 backup.
