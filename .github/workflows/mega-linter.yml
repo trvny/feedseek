@@ -26,8 +26,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          fetch-depth: 0
+          # PR merge parent available; do not download the entire generated-feed history.
+          fetch-depth: 2
           persist-credentials: false
+
+      - name: Fetch missing comparison commits
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          for sha in "$BASE_SHA" "$HEAD_SHA"; do
+            if [[ -z "$sha" || "$sha" =~ ^0+$ ]] || git cat-file -e "$sha^{commit}" 2>/dev/null; then
+              continue
+            fi
+            if ! git fetch --no-tags --depth=1 origin "$sha"; then
+              # A deleted push baseline is safe to handle by checking all instructions.
+              if [[ "$GITHUB_EVENT_NAME" == "push" && "$sha" == "$BASE_SHA" ]]; then
+                echo "::warning::Push baseline unavailable; Instruction Rot checks all tracked instructions"
+                continue
+              fi
+              echo "::error::Missing PR comparison commit: $sha"
+              exit 1
+            fi
+          done
 
       - name: Instruction Rot
         id: instruction_rot
@@ -49,19 +72,19 @@ jobs:
             tests=true
             artifacts=true
           else
-            merge_base="$(git merge-base "$BASE_SHA" HEAD)"
-            if ! git diff --quiet "$merge_base" HEAD -- \
+            # Compare the exact PR base to GitHub's test merge commit.
+            if ! git diff --quiet "$BASE_SHA" HEAD -- \
               Makefile pyproject.toml uv.lock feeds.yaml \
               feed_generators/ tests/ tools/ site/ docs/ \
               README.md README_pl.md; then
               tests=true
               artifacts=true
             fi
-            if ! git diff --quiet "$merge_base" HEAD -- \
+            if ! git diff --quiet "$BASE_SHA" HEAD -- \
               feeds/ cache/; then
               artifacts=true
             fi
-            if ! git diff --quiet "$merge_base" HEAD -- \
+            if ! git diff --quiet "$BASE_SHA" HEAD -- \
               .github/workflows/mega-linter.yml \
               .github/linters/; then
               tests=true
