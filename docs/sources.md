@@ -1307,7 +1307,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 - ![](https://www.google.com/s2/favicons?domain=newsroom.tiktok.com&sz=16) TikTok Newsroom — <https://newsroom.tiktok.com/?lang=en>
 - ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok — <https://www.tiktok.com/@tiktok>
-- ![](https://www.google.com/s2/favicons?domain=rsshub.app&sz=16) TikTok @tiktok — <https://rsshub.app/tiktok/user/@tiktok>
+- ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok embed — <https://www.tiktok.com/embed/@tiktok>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.uber.com&sz=16) Uber Newsroom
 `uber` · [feed_uber.xml](../feeds/feed_uber.xml)
