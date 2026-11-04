@@ -90,6 +90,25 @@ class AgentIdentitySourcesTests(unittest.TestCase):
         self.assertEqual(exhausted.skipped, 1)
         self.assertEqual(exhausted.current["AgentID Blog"][link], skillsllm.MAX_FETCH_ATTEMPTS)
 
+    def test_agentid_cached_links_do_not_consume_new_post_budget(self):
+        old = {f"https://www.agentid.com/blog/old-{n}" for n in range(25)}
+        anchors = "".join(
+            f'<a href="/blog/old-{n}">Old</a>' for n in range(25)
+        )
+        anchors += '<a href="/blog/new-post">New</a>'
+        post = "<html><head><title>New AgentID Post</title></head></html>"
+
+        def fake_fetch(url):
+            if url == skillsllm.AGENTID_BLOG_URL:
+                return anchors
+            if url == "https://www.agentid.com/blog/new-post":
+                return post
+            raise AssertionError(f"unexpected fetch: {url}")
+
+        with patch.object(skillsllm, "fetch_url", side_effect=fake_fetch):
+            entries = skillsllm.collect_agentid_blog(old, skillsllm.AttemptLedger())
+        self.assertEqual([item["title"] for item in entries], ["New AgentID Post"])
+
     def test_agentid_index_outage_keeps_failure_ledger(self):
         url = "https://www.agentid.com/blog/broken-post"
         ledger = skillsllm.AttemptLedger({"AgentID Blog": {url: 2}})
@@ -99,7 +118,7 @@ class AgentIdentitySourcesTests(unittest.TestCase):
 
     def test_agentid_unavailable_index_returns_no_entries(self):
         with patch.object(skillsllm, "fetch_url", return_value=None):
-            self.assertEqual(skillsllm.collect_agentid_blog(set()), [])
+            self.assertEqual(skillsllm.collect_agentid_blog(set(), skillsllm.AttemptLedger()), [])
 
 
 if __name__ == "__main__":
