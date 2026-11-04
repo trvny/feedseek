@@ -122,7 +122,9 @@ def _parse_profile_html(html):
     soup = BeautifulSoup(html or "", "html.parser")
     entries = []
     seen = set()
-    for script in soup.find_all("script", id={"SIGI_STATE", "__UNIVERSAL_DATA_FOR_REHYDRATION__"}):
+    for script in soup.find_all(
+        "script", id=["SIGI_STATE", "__UNIVERSAL_DATA_FOR_REHYDRATION__"]
+    ):
         try:
             data = json.loads(script.string or script.get_text())
         except (ValueError, TypeError):
