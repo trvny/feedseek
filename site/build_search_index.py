@@ -236,6 +236,9 @@ def enabled_feed_paths() -> tuple[list[Path], list[str]]:
 
 def committed_feed_paths(target_dir: Path, revision: str) -> tuple[list[Path], list[str]]:
     """Pin MCP index data to the exact Git revision encoded in fetch IDs."""
+    git = shutil.which("git")
+    if not git:
+        raise RuntimeError("Git is required for revision-pinned Model Feeds")
     paths: list[Path] = []
     missing: list[str] = []
     for key, config in load_feed_registry().items():
@@ -243,7 +246,7 @@ def committed_feed_paths(target_dir: Path, revision: str) -> tuple[list[Path], l
             continue
         source = f"feeds/feed_{key}.json"
         result = subprocess.run(
-            ["git", "show", f"{revision}:{source}"],
+            [git, "show", f"{revision}:{source}"],
             cwd=ROOT,
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,

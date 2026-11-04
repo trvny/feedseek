@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -308,11 +309,13 @@ class SearchIndexTests(unittest.TestCase):
                     }
                 ],
             )
-            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
-            subprocess.run(["git", "add", "feeds"], cwd=root, check=True)
+            git = shutil.which("git")
+            self.assertIsNotNone(git)
+            subprocess.run([git, "init", "-q"], cwd=root, check=True)
+            subprocess.run([git, "add", "feeds"], cwd=root, check=True)
             subprocess.run(
                 [
-                    "git", "-c", "user.name=Test",
+                    git, "-c", "user.name=Test",
                     "-c", "user.email=test@example.com",
                     "commit", "-qm", "Snapshot",
                 ],
@@ -320,7 +323,7 @@ class SearchIndexTests(unittest.TestCase):
                 check=True,
             )
             revision = subprocess.check_output(
-                ["git", "rev-parse", "HEAD"], cwd=root, text=True
+                [git, "rev-parse", "HEAD"], cwd=root, text=True
             ).strip()
             self.write_feed(
                 str(feeds),
