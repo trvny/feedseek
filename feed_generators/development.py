@@ -48,10 +48,10 @@ DEV_TOP_MONTH_API_URL = "https://dev.to/api/articles?top=30&per_page=30"
 DEV_TOP_MONTH_MAX = 30
 JUSTJOIN_BLOG_URL = "https://justjoin.it/blog/"
 JUSTJOIN_MAX = 15
-_JUSTJOIN_POST_RE = re.compile(r"^https://justjoin\\.it/blog/[^/?#]+/?$", re.I)
+_JUSTJOIN_POST_RE = re.compile(r"^https://justjoin\.it/blog/[^/?#]+/?$", re.I)
 _JUSTJOIN_DATE_RE = re.compile(
-    r"\\b\\d{1,2}\\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|"
-    r"sierpnia|września|października|listopada|grudnia)\\s+20\\d{2}\\b", re.I
+    r"\b\d{1,2}\s+(?:stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|"
+    r"sierpnia|września|października|listopada|grudnia)\s+20\d{2}\b", re.I
 )
 
 _RUST_RELEASE_DATE = re.compile(r"/(20\d{2})/(\d{2})/(\d{2})/")
@@ -244,7 +244,7 @@ def scrape_justjoin_blog(known_links):
             {
                 "title": title,
                 "link": link,
-                "date": parse_date(timestamp) if timestamp else stable_fallback_date(link),
+                "date": (parse_date(timestamp) if timestamp else None) or stable_fallback_date(link),
                 "description": description or title,
                 "source": "Just Geek IT",
                 "image": image_meta.get("content") if image_meta else None,
