@@ -390,7 +390,7 @@ _ORCAROUTER_DATE_RE = re.compile(r"\b[A-Z][a-z]{2} \d{1,2}, \d{4}\b")
 
 
 
-_AGENTID_POST_RE = re.compile(r"^https://www\\.agentid\\.com/blog/[a-z0-9][a-z0-9-]*/?$", re.I)
+_AGENTID_POST_RE = re.compile(r"^https://www\.agentid\.com/blog/[a-z0-9][a-z0-9-]*/?$", re.I)
 _AGENTID_SOURCE = {
     "label": "AgentID Blog",
     "title_suffixes": (" | AgentID", " - AgentID"),
@@ -404,7 +404,8 @@ def agentid_article_links(html, known_links=None):
     soup = BeautifulSoup(html, "html.parser")
     links, seen = [], set()
     for anchor in soup.find_all("a", href=True):
-        link = urljoin(AGENTID_BLOG_URL, anchor["href"]).split("#", 1)[0].split("?", 1)[0].rstrip("/")
+        link = urljoin(AGENTID_BLOG_URL, anchor["href"])
+        link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
         if not _AGENTID_POST_RE.fullmatch(link) or link in known_links or link in seen:
             continue
         seen.add(link)
