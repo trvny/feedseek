@@ -3,6 +3,8 @@
 import unittest
 from pathlib import Path
 
+import yaml
+
 
 WORKFLOWS = Path(__file__).resolve().parents[1] / ".github" / "workflows"
 
@@ -25,15 +27,26 @@ class CheckoutScopeTests(unittest.TestCase):
         self.assertNotIn("git merge-base", workflow)
         self.assertIn("github.event.pull_request.head.sha || github.sha", workflow)
 
+    def checkout_options(self, name: str) -> dict:
+        workflow = yaml.safe_load(self.workflow(name))
+        checkouts = [
+            step
+            for job in workflow["jobs"].values()
+            for step in job["steps"]
+            if "actions/checkout@" in step.get("uses", "")
+        ]
+        self.assertEqual(len(checkouts), 1)
+        return checkouts[0]["with"]
+
     def test_reader_ci_needs_only_site(self):
-        workflow = self.workflow("reader-ci.yml")
-        self.assertIn("sparse-checkout: |\n            site", workflow)
-        self.assertIn("persist-credentials: false", workflow)
+        options = self.checkout_options("reader-ci.yml")
+        self.assertEqual(options["sparse-checkout"].splitlines(), ["site"])
+        self.assertIs(options["persist-credentials"], False)
 
     def test_worker_ci_needs_only_feeds_proxy(self):
-        workflow = self.workflow("worker-ci.yml")
-        self.assertIn("sparse-checkout: |\n            feeds-proxy", workflow)
-        self.assertIn("persist-credentials: false", workflow)
+        options = self.checkout_options("worker-ci.yml")
+        self.assertEqual(options["sparse-checkout"].splitlines(), ["feeds-proxy"])
+        self.assertIs(options["persist-credentials"], False)
 
 
 if __name__ == "__main__":
