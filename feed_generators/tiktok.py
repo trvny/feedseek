@@ -179,7 +179,12 @@ def _parse_embed_profile_html(html):
         state = json.loads(script.string or script.get_text())
     except (ValueError, TypeError):
         return []
-    data = state.get("source", {}).get("data", {})
+    if not isinstance(state, dict):
+        return []
+    source = state.get("source")
+    if not isinstance(source, dict):
+        return []
+    data = source.get("data")
     if not isinstance(data, dict):
         return []
 
@@ -207,19 +212,22 @@ def _parse_embed_profile_html(html):
 
 def scrape_profile(known_links):
     html = get_html(PROFILE_URL)
-    entries = _parse_profile_html(html) if html else []
+    candidates = _parse_profile_html(html) if html else []
+    entries = [entry for entry in candidates if entry["link"] not in known_links]
     if not entries:
         embed_html = get_html(PROFILE_EMBED_URL)
-        entries = _parse_embed_profile_html(embed_html) if embed_html else []
-    if not entries:
+        fallback = _parse_embed_profile_html(embed_html) if embed_html else []
+        entries = [entry for entry in fallback if entry["link"] not in known_links]
+    if not entries and not candidates:
         logger.warning("  [TikTok @tiktok] no public videos found; profile access may be blocked")
-    return [entry for entry in entries if entry["link"] not in known_links]
+    return entries
 
 
 def doc_sources():
     return [
         ("TikTok Newsroom", NEWSROOM_URL),
         ("TikTok @tiktok", PROFILE_URL),
+        ("TikTok @tiktok embed", PROFILE_EMBED_URL),
     ]
 
 
