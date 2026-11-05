@@ -996,6 +996,7 @@ def build_reader_html(base: str) -> str:
     reader_html = reader_html.replace("https://trvny.github.io/feedseek/", base)
     for url, asset in (
         ("reader-fetch.js", "reader-fetch.js"),
+        ("reader-cache.js", "reader-cache.js"),
         ("reader.js", "reader.js"),
         ("../webmcp.js", "webmcp.js"),
     ):
@@ -1009,7 +1010,7 @@ def copy_reader_bundle(base: str) -> None:
     reader_out = OUT_DIR / "reader"
     reader_out.mkdir(exist_ok=True)
     (reader_out / "index.html").write_text(build_reader_html(base), encoding="utf-8")
-    for source in ("reader-fetch.js", "reader.js"):
+    for source in ("reader-fetch.js", "reader-cache.js", "reader.js"):
         shutil.copy2(SITE_DIR / source, reader_out / source)
     (reader_out / "index.md").write_text(build_reader_markdown(base), encoding="utf-8")
     for name in ("favicon.svg", "favicon.ico", "site.webmanifest"):
