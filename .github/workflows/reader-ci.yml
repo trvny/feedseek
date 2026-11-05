@@ -6,6 +6,7 @@ on:
     paths:
       - "site/reader.js"
       - "site/reader-fetch.js"
+      - "site/reader-cache.js"
       - "site/reader.html"
       - "site/webmcp.js"
       - "site/test/**"
@@ -15,6 +16,7 @@ on:
     paths:
       - "site/reader.js"
       - "site/reader-fetch.js"
+      - "site/reader-cache.js"
       - "site/reader.html"
       - "site/webmcp.js"
       - "site/test/**"
@@ -47,5 +49,6 @@ jobs:
         run: |
           node --check site/reader.js
           node --check site/reader-fetch.js
+          node --check site/reader-cache.js
           node --check site/webmcp.js
           node --test site/test/*.test.js
