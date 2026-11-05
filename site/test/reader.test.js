@@ -68,6 +68,7 @@ async function makeReader(feeds, entries, snapshotQuota = Infinity, initialStora
   vm.runInContext(utils, context);
   vm.runInContext(cache, context);
   vm.runInContext(reader, context);
+  const nativeLoadFeed = vm.runInContext("loadFeed", context);
   context.loadFeed = async feed => entries.get(feed.xmlUrl);
   await vm.runInContext("startupPromise", context);
   const articles = () => nodes.get("#list").children.filter(n => n.className === "item");
@@ -79,7 +80,7 @@ async function makeReader(feeds, entries, snapshotQuota = Infinity, initialStora
     if (source === "All") chip.dataset.all = "true";
     click(chip);
   };
-  return { context, storage, nodes, articles, click, filter };
+  return { context, storage, nodes, articles, click, filter, nativeLoadFeed };
 }
 
 function fixture(counts) {
@@ -449,4 +450,78 @@ test("unsubscribed sources are excluded from retained history", async () => {
   await vm.runInContext("run()", r.context);
   assert.equal(vm.runInContext("ITEMS.length", r.context), 2);
   assert.equal(JSON.parse(r.storage.get("fs:snap")).items.length, 2);
+});
+
+test("Reader prefers published Model Feed JSON instead of refetching XML", async () => {
+  const xmlUrl = "https://reader.test/feed_demo.xml";
+  const jsonUrl = "https://reader.test/feed_demo.json";
+  const feed = { title: "Demo alias", xmlUrl, icon: "https://example.test/icon.png" };
+  const r = await makeReader([feed], new Map([[xmlUrl, []]]));
+  const calls = [];
+  r.context.fetch = async url => {
+    calls.push(url);
+    if (url !== jsonUrl) throw new Error("unexpected network request");
+    return new Response(JSON.stringify({
+      format: "feedseek-model-feed", version: 1, source_key: "demo",
+      title: "Demo", feed_url: jsonUrl, source_feed: xmlUrl,
+      items: [{ id: "urn:one", title: "Article", text: "Article summary",
+        text_kind: "summary", url: "https://example.test/article" }],
+    }));
+  };
+  const items = await r.nativeLoadFeed(feed, undefined, jsonUrl);
+  assert.equal(items.length, 1);
+  assert.equal(items[0].source, "Demo alias");
+  assert.equal(items[0].desc, "Article summary");
+  assert.deepEqual(calls, [jsonUrl]);
+});
+
+test("Reader falls back to XML for malformed or mismatched Model Feed JSON", async () => {
+  const xmlUrl = "https://reader.test/feed_demo.xml";
+  const jsonUrl = "https://reader.test/feed_demo.json";
+  const feed = { title: "Demo", xmlUrl };
+  const r = await makeReader([feed], new Map([[xmlUrl, []]]));
+  const calls = [];
+  r.context.fetch = async url => {
+    calls.push(url);
+    return new Response(url === jsonUrl
+      ? JSON.stringify({ format: "not-feedseek", items: [] })
+      : "<rss><channel/></rss>");
+  };
+  r.context.parseFeed = (_xml, source, feedUrl) =>
+    [{ source, feedUrl, title: "XML fallback", url: "https://example.test/xml" }];
+  const items = await r.nativeLoadFeed(feed, undefined, jsonUrl);
+  assert.equal(items[0].title, "XML fallback");
+  assert.deepEqual(calls, [jsonUrl, xmlUrl]);
+});
+
+test("Reader selects JSON only for same-origin feeds in published catalog", async () => {
+  const xmlUrl = "https://reader.test/feed_demo.xml";
+  const jsonUrl = "https://reader.test/feed_demo.json";
+  const foreign = "https://other.test/rss.xml";
+  const feeds = [{ title: "Demo", xmlUrl }, { title: "Foreign", xmlUrl: foreign }];
+  const entries = new Map(feeds.map(f => [f.xmlUrl, [{
+    id: f.title, source: f.title, feedUrl: f.xmlUrl, title: f.title,
+    url: "https://article.test/" + f.title, ts: 1,
+  }]]));
+  const r = await makeReader(feeds, entries);
+  const calls = [];
+  const opml = '<opml><body>' + feeds.map(f =>
+    '<outline title="' + f.title + '" xmlUrl="' + f.xmlUrl + '"/>'
+  ).join("") + '</body></opml>';
+  r.context.fetch = async url => new Response(
+    url === "https://reader.test/model-feeds.json"
+      ? JSON.stringify({
+        format: "feedseek-model-feed-catalog", version: 1, feeds: [
+          { feed_url: xmlUrl, model_feed_url: jsonUrl },
+          { feed_url: foreign, model_feed_url: "https://other.test/rss.json" },
+        ],
+      })
+      : opml
+  );
+  r.context.loadFeed = async (feed, _signal, modelUrl) => {
+    calls.push([feed.xmlUrl, modelUrl]);
+    return entries.get(feed.xmlUrl);
+  };
+  await vm.runInContext("run()", r.context);
+  assert.deepEqual(calls, [[xmlUrl, jsonUrl], [foreign, undefined]]);
 });
