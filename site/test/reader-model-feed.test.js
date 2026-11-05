@@ -48,7 +48,7 @@ test("published same-origin catalog authorizes JSON without guessing URLs", () =
     ],
   };
   const found = modelFeedUrls(catalog, "https://reader.test/reader/");
-  assert.deepEqual([...found], [[xmlUrl, jsonUrl]]);
+  assert.deepEqual(Array.from(found, ([xml, json]) => [xml, json]), [[xmlUrl, jsonUrl]]);
   assert.equal(modelFeedUrls({ ...catalog, version: 2 }, "https://reader.test").size, 0);
   assert.equal(modelFeedUrls(null, "https://reader.test").size, 0);
 });
