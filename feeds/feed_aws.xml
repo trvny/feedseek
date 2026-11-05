@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-11-05T14:57:04.042632+00:00</updated>
+  <updated>2026-11-05T21:11:55.220725+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,121 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/3c79d6aa1bbf5246</id>
+    <title>Why can't I change the audio language, track name, or DEFAULT flag in my MediaPackage manifest?</title>
+    <updated>2026-11-05T19:46:55.406000+00:00</updated>
+    <content>Customers find no MediaPackage setting to fix an audio language reading "und", a DEFAULT flag on the wrong rendition, or extra CMAF audio renditions. Most manifest attributes are carried through from the input, so the value was set upstream and the packager config holds nothing to change. The hidden cost: teams scope a full re-encode when the wrong value often sits in a text file beside the media. Readers learn which of three routes produced the attribute, and where each fix belongs.</content>
+    <link href="https://repost.aws/articles/ARNKwBPQCuTc6eV0Ehmik8Vg/why-can-t-i-change-the-audio-language-track-name-or-default-flag-in-my-mediapackage-manifest" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T19:46:55.406000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/3e99520746f34070</id>
+    <title>Why is my AWS Elemental MediaPackage segment duration longer than the value I configured?</title>
+    <updated>2026-11-05T19:22:18.111000+00:00</updated>
+    <content>Customers set a segment duration in MediaPackage and get longer segments, or find lowering it does nothing. The value is a minimum that rounds up to whole GOPs, documented in the MediaLive guide but easy to miss since the cause sits upstream. The undocumented cost: rounding raises EXT-X-TARGETDURATION, which RFC 8216 forbids changing once published, so standard HLS pays permanent live-edge latency. Readers learn to predict the real duration and fix it at the right service.</content>
+    <link href="https://repost.aws/articles/ARjdn7P9p-RrGFRiyx5H0NTQ/why-is-my-aws-elemental-mediapackage-segment-duration-longer-than-the-value-i-configured" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T19:22:18.111000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/4f078bdf3d912f19</id>
+    <title>AWS CLI 2.39.5</title>
+    <updated>2026-11-05T19:11:59+00:00</updated>
+    <content>enhancement:s3: Add --tags parameter to s3 cp, s3 mv, and s3 sync commands to set tags on objects when transferring from a local path to S3. api-change:appintegrations: This release adds a LastModifiedRegion field to GetApplication and ListApplications so customers can see which Region an application was last modified in. api-change:wafv2: AWS WAF customers who monetize AI traffic on Web ACLs can now configure payments through connected accounts (Stripe). api-change:qconnect: Adds support for real-time agent assistance and self-service with Amazon Connect Global Resiliency, including cross-Region replication of supported AI agent resources and configurations. api-change:lambda-microvms: AWS Lambda MicroVMs now support the x86-64 CPU architecture, which you can select in addition to ARM64 (Graviton) when launching a MicroVM. api-change:glue: AWS Glue Spark ETL jobs can now auto-upgrade to the latest version. Set GlueVersion to Auto, then track progress with the AutoVersionStatus field in GetJob. Use StartJobUpgradeAnalysis to approve or decline an upgrade, GetJobUpgradeAnalysis to view details, and StopJobUpgradeAnalysis to stop it. bugfix:update: On Windows, clear the inherited PSModulePath regardless of its case before verifying the install script signature, so aws update no longer fails when run from PowerShell 7. api-change:route53domains: Route 53 Domains now supports restoring domains. This release adds the RestoreDomain API to self-serve domain restoration. api-change:sagemaker: Fixed the ImageDeleted and ImageVersionDeleted waiters to succeed on the ResourceNotFound error returned by DescribeImage and DescribeImageVersion bugfix:codedeploy: Tighten file permissions for the on-premises instance configuration file written by aws deploy install api-change:quicksight: Amazon QuickSight adds APIs to view account service role settings and switch to or replace a customer-managed IAM role. api-change:bedrock-agent-runtime: Amazon Bedrock Managed Knowledge Base now supports an optional mediaId parameter in GetDocumentContent that you can use to retrieve images embedded in source documents. api-change:securityagent: Adds support for IAM Identity Center groups as Agent Space members. CreateMembership, DeleteMembership, and ListMemberships now accept the GROUP member type. ListMemberships can filter by USER, GROUP, or ALL, and returns group display name and description. api-change:agent-registry-control: Adds support for OAuth2 Authorization Server Metadata (RFC 8414) discovery URLs in custom JWT authorizer. api-change:account-access-runtime: Adds SDK support for Account Access user portal operations, enabling users to list out and get credentials for role assignments configured in AWS IAM Account Access Manager. api-change:bedrock-agentcore-control: Adds support for OAuth2 Authorization Server Metadata (RFC 8414) discovery URLs in custom JWT authorizer and OAuth2 credential provider configurations. api-change:logs: Adds account-level retention polici</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.39.5" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-11-05T19:11:59+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/898aad6ad6d1defcd500e75672741c841d391d74ac0ba24ce76245c775debbf8/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/898aad6ad6d1defcd500e75672741c841d391d74ac0ba24ce76245c775debbf8/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/898aad6ad6d1defcd500e75672741c841d391d74ac0ba24ce76245c775debbf8/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/e68f9a8a0f29b609</id>
+    <title>Amazon DynamoDB now supports bulk put items</title>
+    <updated>2026-11-05T18:00:00+00:00</updated>
+    <content>Today, AWS announces the general availability of bulk put items for Amazon DynamoDB, a fully managed feature that writes data from Amazon S3 into your existing DynamoDB tables. Many DynamoDB applications use data that other systems produce and store in Amazon S3. Writing this data into existing DynamoDB tables has typically meant building custom pipelines and managing table capacity. With bulk put items, developers and data engineers can write this data without impacting existing workloads or bu</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-dynamodb-now-supports-bulk-put-items/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T18:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/1f77f1827b4f7a0e</id>
+    <title>Amazon Cognito announces 99.99% Service Level Agreement for the Plus feature plan</title>
+    <updated>2026-11-05T18:00:00+00:00</updated>
+    <content>Starting November 1, 2026, the Amazon Cognito Service Level Agreement (SLA) commits to a Monthly Uptime Percentage of 99.99% for user pools on the Plus feature plan, up from 99.9%. User pools already on Plus are automatically covered by the new Service Commitment. User pools on Essentials and Lite stay at the 99.9% Service Commitment with no change to their terms. To qualify for the 99.99% Service Commitment, you can switch a user pool to the Plus feature plan using the AWS Management Console, A</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-cognito-sla-update/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T18:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/463a0cc5ef311bd1</id>
+    <title>IAM Roles Anywhere now supports automatic certificate revocation checking</title>
+    <updated>2026-11-05T17:38:00+00:00</updated>
+    <content>AWS Identity and Access Management (IAM) Roles Anywhere now supports automatic revocation checking using certificate revocation list (CRL) distribution points (CDPs). This helps keep revocation checks in sync with your certificate authority (CA) and can help improve your security posture. When you enable this capability on a trust anchor, IAM Roles Anywhere reads the CDP URLs embedded in authenticating certificates, downloads the corresponding CRLs, and denies credential requests that use revoke</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/iam-roles-anywhere-cdp/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T17:38:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/86c172aa3ac3e5b6</id>
+    <title>How do I choose between the bedrock-runtime and bedrock-mantle endpoints in Amazon Bedrock?</title>
+    <updated>2026-11-05T16:37:15.345000+00:00</updated>
+    <content>You are building on models hosted in Amazon Bedrock and ready to send inference requests. Bedrock offers two endpoints, `bedrock-runtime` and `bedrock-mantle`, and many models are available on both. This article explains how they relate, what differs, and how to choose.</content>
+    <link href="https://repost.aws/articles/ARAMRF8ylaQKWxJ7CnWpyTzw/how-do-i-choose-between-the-bedrock-runtime-and-bedrock-mantle-endpoints-in-amazon-bedrock" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T16:37:15.345000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b066d4cbe19943e6</id>
+    <title>Introducing presigned URL downloads in the AWS SDK for Java 2.x</title>
+    <updated>2026-11-05T15:43:21+00:00</updated>
+    <content>Until now, the AWS SDK for Java 2.x could generate presigned URLs through S3Presigner but could not consume one to download an object. Developers had to fall back to a low-level HTTP client, forgoing the SDK’s built-in retries, metrics, and checksum validation. Starting with version 2.48.0, you can download Amazon Simple Storage Service (Amazon S3) […]</content>
+    <link href="https://aws.amazon.com/blogs/developer/introducing-presigned-url-downloads-in-the-aws-sdk-for-java-2-x/" rel="alternate"/>
+    <category term="AWS Developer Tools Blog" label="AWS Developer Tools Blog"/>
+    <published>2026-11-05T15:43:21+00:00</published>
+    <media:group>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png" type="image/png" medium="image" height="385" width="768"/>
+      <media:thumbnail url="https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png" height="385" width="768"/>
+    </media:group>
+    <dc:creator>AWS Developer Tools Blog</dc:creator>
+    <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/0b605df82b09d6fd</id>
+    <title>AWS Security Hub Network Scanning now available in AWS GovCloud (US)</title>
+    <updated>2026-11-05T09:00:00+00:00</updated>
+    <content>AWS Security Hub Network Scanning feature is now supported in AWS GovCloud (US). Network Scanning probes your resources from the internet to detect actual reachability, not just what could be reachable based on security group rules and route tables. It discovers public IP addresses, virtual machines, and load balancers across your AWS environments, identifies reachable ports, and determines what services are running behind them. This complements Security Hub's existing network reachability findi</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/security-hub-network-scanning-govcloud/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T09:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/6ac0422ae708e1cf</id>
     <title>Resolve "redirect_uri_mismatch" when you authorize an AWS Glue Salesforce OAuth connection with AWS Management Console multi-session support turned on</title>
@@ -28,6 +143,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/8c2e06a3b29b53f4</id>
+    <title>Amazon SageMaker AI Studio Now Supports IAM Identity Center Multi-Region Replication</title>
+    <updated>2026-11-05T08:00:00+00:00</updated>
+    <content>Amazon SageMaker AI now supports IAM Identity Center (IdC) multi-region replication, enabling you to deploy SageMaker AI Studio domains in different regions from your IdC instance's primary region. Previously, the primary IdC instance had to reside in the same region as the SageMaker AI Studio domain; now customers can replicate their primary IdC instance into the region where they wish to use SageMaker AI Studio domains. This capability helps customers maintain compliance while utilizing centra</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-sagemaker-ai-studio-iam/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/1bc1fa2a5cd8b120</id>
@@ -60,6 +185,16 @@
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/041b5540f3b59d56</id>
+    <title>﻿﻿AWS Systems Manager Parameter Store now allows organization and validation with built-in data types</title>
+    <updated>2026-11-05T05:00:00+00:00</updated>
+    <content>AWS Systems Manager Parameter Store now supports 13 new parameter data types that automatically validate parameter values when you create or update a parameter. With built-in validation, you can stop malformed configuration values, such as an invalid IP address, AWS account ID, or JSON document, before your applications read them, without writing your own validation logic. These types allow you to better organize your parameters across your workloads. You can filter by type when calling the Desc</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/aws-ssm-parameter-store-allows-organization-validation-with-new-data-types/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-05T05:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/096a6a1486b3f6c3</id>
     <title>Amazon S3 Tables now offer managed migration of Apache Hive tables to Apache Iceberg</title>
     <updated>2026-11-04T23:34:52+00:00</updated>
@@ -73,6 +208,16 @@
     </media:group>
     <dc:creator>AWS News Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/20/2026-s3-tables-hive-to-iceberg-1.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/0ed156669e4228bb</id>
+    <title>Amazon MWAA now supports cost allocation tags</title>
+    <updated>2026-11-04T23:00:00+00:00</updated>
+    <content>Amazon Managed Workflows for Apache Airflow (Amazon MWAA) now supports cost allocation tags . Tags you apply to an Amazon MWAA environment now propagate to the compute that runs it, including workers, schedulers, and web servers. You can then track Amazon MWAA spend by tag in AWS Cost Explorer and AWS Cost and Usage Reports. With this launch, platform teams can show back or charge back Airflow costs to the team, project, or cost center that owns each environment. You can use cost allocation tags</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-mwaa-cost-allocation-tags/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T23:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/41a61d92beec3501</id>
@@ -653,6 +798,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/12dba1c8c38f21d9</id>
+    <title>Amazon OpenSearch Service optimized engine now supports logs and traces</title>
+    <updated>2026-11-01T17:00:00+00:00</updated>
+    <content>Today, the Amazon OpenSearch Service optimized engine adds support for agent traces, including OpenTelemetry traces. Your traces and logs now live in the same place. You can follow a request or an agent session from start to finish, find the step that failed or slowed down, and check the related logs without switching tools. The optimized engine maps OpenTelemetry logs and traces to object, nested, and flat object fields, with support for multi-valued arrays. Span events, span links, prompts, an</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-service-support-traces" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-01T17:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/a46eb575d1e4ea4e</id>
@@ -1643,16 +1798,6 @@ post-quantum key establishment.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/3474793a2bfa83c2</id>
-    <title>AWS Glue Data Catalog now supports OAuth for Apache Iceberg REST Catalog APIs</title>
-    <updated>2026-10-26T04:00:00+00:00</updated>
-    <content>AWS Glue Data Catalog now supports OAuth 2.0 bearer token authentication for Apache Iceberg REST Catalog (IRC) APIs using AWS Sign-In. The Apache Iceberg REST Catalog specification defines OAuth 2.0 as its standard authentication mechanism, and query engines such as Apache Spark, Trino, and Apache Flink implement it natively. These engines and external integration partners can now authenticate to the Glue Data Catalog Iceberg endpoint using standard OAuth 2.0 bearer tokens, in addition to AWS Si</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/glue-catalog-oauth-iceberg-rest/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-26T04:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/a05867ed298c48ff</id>
     <title>From Cloud Spend to Business Outcomes: Building Unit Cost KPIs Framework</title>
     <updated>2026-10-24T17:39:54.912000+00:00</updated>
@@ -1681,16 +1826,6 @@ post-quantum key establishment.</content>
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/2b629097210adec7</id>
-    <title>Web Search on Amazon Bedrock now supports domain filtering and user location controls</title>
-    <updated>2026-10-23T21:04:00+00:00</updated>
-    <content>Web Search on Amazon Bedrock now supports two new controls that give you more precision over the results that ground a model's response: domain filtering and user location. Both are configured directly on the web_search tool in your existing OpenAI Responses API request. With domain filtering, you can restrict Web Search results to a set of domains you choose. Using the filters parameter, you specify up to 100 allowed_domains to limit results to trusted sources, or up to 100 blocked_domains to e</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/bedrock-web-search-domain-user-location/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T21:04:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/074df7e704890b8a</id>
@@ -1738,16 +1873,6 @@ post-quantum key establishment.</content>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/0e15fa33c58127b7</id>
-    <title>Amazon Connect Customer Global Resiliency now supports persistent chat across linked AWS Regions</title>
-    <updated>2026-10-23T17:00:00+00:00</updated>
-    <content>Amazon Connect Customer Global Resiliency now provides customers a mechanism to deliver long, persistent chat experiences across linked AWS Regions. With this capability, end users can resume previous conversations with full context, metadata, and transcripts carried over across Regions, eliminating the need for end users to repeat information and allowing agents to provide personalized service with access to the entire conversation history across AWS Regions. For example, an end user can start </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-connect-global-resiliency-persistent-chat" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T17:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/2bb93defa1f0f26f</id>
     <title>Introducing Infinity: a runtime for extreme agent concurrency</title>
     <updated>2026-10-23T16:58:32+00:00</updated>
@@ -1761,56 +1886,6 @@ post-quantum key establishment.</content>
     </media:group>
     <dc:creator>AWS Open Source Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2026/10/21/Fig1infinity.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/046a889e1f503983</id>
-    <title>AWS Transit Gateway and AWS Cloud WAN now support 1:1 NAT</title>
-    <updated>2026-10-23T15:43:00+00:00</updated>
-    <content>AWS Transit Gateway and AWS Cloud WAN now provide managed one-to-one network address translation (NAT) directly on their attachments, through integration with Regional Private NAT Gateway. This enables customers to connect private networks that share the same IP address ranges without renumbering either network, deploying a NAT appliance, or writing return-traffic rules. Networks with overlapping Classless Inter-Domain Routing (CIDR) blocks have long been unable to communicate, a common blocker </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aws-transit-gateway-cloud-wan-1-1-nat/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T15:43:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/1506d29f3f9190e4</id>
-    <title>Amazon Corretto October 2026 Quarterly Updates</title>
-    <updated>2026-10-23T14:00:00+00:00</updated>
-    <content>On October 22, 2026 Amazon announced quarterly security and critical updates for Amazon Corretto Long-Term Supported (LTS) versions of OpenJDK. Corretto 27.0.1.0.10, 25.0.5.0.9, 21.0.13.0.10, 17.0.21.0.10, 11.0.33.0.9, and 8u512 are now available for download . Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK. Visit the Corretto home page to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also get the updates </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-corretto-october-2026-quarterly-updates" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T14:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/6216b390252af43d</id>
-    <title>Amazon MWAA now available in Mexico (Central) Region</title>
-    <updated>2026-10-23T08:00:00+00:00</updated>
-    <content>Amazon Managed Workflows for Apache Airflow (Amazon MWAA) Provisioned environments are now available in the Mexico (Central) Region (mx-central-1). Amazon MWAA Serverless was already available in this Region, and customers can now also use Amazon MWAA Provisioned environments for their Apache Airflow workflows. Amazon MWAA is a managed orchestration service for Apache Airflow that makes it easier for customers to set up and operate end-to-end data pipelines in the cloud at scale. Customers can c</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-mwaa-mexico-central/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/c9670a74f842a3d0</id>
-    <title>Amazon EMR on EKS reduces EMR charge by 30 percent</title>
-    <updated>2026-10-23T08:00:00+00:00</updated>
-    <content>Amazon EMR announces a reduction of 30 percent in the EMR charge added to EKS when running EMR on EKS. This price decrease applies to both the per-vCPU-hour charge and the per-GB-hour charge, while the underlying Amazon EKS charges remain unchanged. All EMR workloads running on the EKS deployment option benefit from this change. Now, you can run Apache Spark workloads on Amazon Elastic Kubernetes Service (EKS) at a lower cost, and the new price automatically applies to your EMR on EKS workloads </content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/emr-eks-reduces-emr-charge-30-percent/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-23T08:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/fcc804046aa0d282</id>
-    <title>Amazon Connect Customer now supports customizing the Customer Profiles app on the agent workspace</title>
-    <updated>2026-10-22T21:10:00+00:00</updated>
-    <content>Amazon Connect Customer Profiles now allows administrators to customize which customer data that agents see in the agent workspace, and how it is displayed, using layouts they build in Profile Explorer. Customer Profiles provides agents with a real-time, unified view of each customer during interactions, combining contact history with customer data from multiple sources. Agents who handle different kinds of requests need different customer data in front of them. Within Profile Explorer, administ</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/connect-customer-customize-cp" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T21:10:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/f45aa9c83d4e6cca</id>
@@ -2533,51 +2608,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/90d2af7dd78718c4891fd4889221796ac3a6f803f687ea89b9cf8f8d21604b0f/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b117b33666c8df4c</id>
-    <title>How do I protect sensitive data in API Gateway execution logs without disabling data tracing?</title>
-    <updated>2026-10-11T14:34:24.543000+00:00</updated>
-    <content>I want to mask sensitive data such as API keys, tokens, and personally identifiable information (PII) in my Amazon API Gateway execution logs in Amazon CloudWatch Logs (CloudWatch Logs) without turning off data tracing.</content>
-    <link href="https://repost.aws/articles/ARi89psiLCTjScUnVy-RVjDA/how-do-i-protect-sensitive-data-in-api-gateway-execution-logs-without-disabling-data-tracing" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-11T14:34:24.543000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/428fbb37a9af8036</id>
-    <title>How do I troubleshoot 403 Forbidden, SSL certificate, and connection timeout errors with private API Gateway custom domain names?</title>
-    <updated>2026-10-10T11:17:49.600000+00:00</updated>
-    <content>When you set up a private custom domain name for Amazon API Gateway, connectivity issues can arise from misconfigurations in resource policies, VPC endpoint settings, domain associations, or DNS mappings. This article helps you identify and resolve the most common errors you encounter with private REST API custom domain names: 403 Forbidden responses, SSL certificate (SNI) errors, and connection timeouts. Follow the tasks in order to isolate and fix the root cause.</content>
-    <link href="https://repost.aws/articles/ARcWmaAnKhRse0KHxZ4V4fVA/how-do-i-troubleshoot-403-forbidden-ssl-certificate-and-connection-timeout-errors-with-private-api-gateway-custom-domain-names" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-10T11:17:49.600000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/9a0866b6f9e29328</id>
-    <title>How do I plan for and migrate my AWS Lambda function when a runtime is deprecated or reaches end of support?</title>
-    <updated>2026-10-10T10:09:45.615000+00:00</updated>
-    <content>This article helps AWS customers who received a Lambda runtime deprecation or end-of-support notification. It explains what deprecation means for existing functions, how to find all affected functions across accounts and regions using AWS Health Dashboard, Trusted Advisor, AWS CLI, and AWS Config, and provides a step-by-step migration workflow. It covers identifying breaking changes per language (Python, Node.js, Java, .NET), rebuilding Lambda Layers for new OS versions, safe testing strategies.</content>
-    <link href="https://repost.aws/articles/AR8R_atZ1VQN-raCF2bTYvfQ/how-do-i-plan-for-and-migrate-my-aws-lambda-function-when-a-runtime-is-deprecated-or-reaches-end-of-support" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-10T10:09:45.615000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/7f3f84cf216fbe98</id>
@@ -3373,21 +3403,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS Developer Tools Blog</dc:creator>
     <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/0716d9708d321ffb6a00818614779e779925365c/2026/08/20/introducing-the-s3-powershell-drive-in-aws-tools-for-powershell.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/4f84126d4ace0210</id>
-    <title>AWS CLI 2.36.37</title>
-    <updated>2026-09-01T18:09:52+00:00</updated>
-    <content>api-change:lightsail: This release adds support for the Amazon Lightsail GetProfile API, which returns the profile for the specified account. api-change:mediaconvert: Adds support for AAC passthrough. Adds ManifestCues option to support HLS manifest Cue marker passthrough. Adds playback device compatibility mode for DASH H.265 outputs. Adds TTML caption styling options. Adds interlace mode support for XAVC HD Intra CBG profile. api-change:marketplace-discovery: GetOfferTerms now returns renewalTerm for offers with pre-authorized renewals, exposing maxRenewals, lockoutPeriod, adjustmentDeadline, priceIncrease (fixed percentage or percentage range), and termTemplates (renewal payment schedules). Enables buyers to view renewal pricing and terms. api-change:taxsettings: France and Monaco Additional Info changes api-change:lambda: AWS Lambda now provides configurable control over S3 direct access, allowing you to explicitly enable or disable how functions stream file reads directly from S3 buckets. This gives you flexibility to tune data access behavior based on your workload requirements, independent of memory size. api-change:guardduty: Amazon GuardDuty now supports custom detection rules, including APIs to manage rule associations and organization-level configurations. api-change:kinesis: Amazon Kinesis Data Streams now supports a dry run feature for data-plane APIs to validate the permissions and request parameters. If all checks complete successfully, the API returns a 'DryRunOperationException', confirming the request would have succeeded without the 'DryRun' parameter. api-change:marketplace-agreement: This release adds renewal support for AWS Marketplace private offers. Agreements report whether they renew and, if not, why. Renewal terms add price increases, renewal limits, renewal decision deadlines, and payment schedule templates. SearchAgreements adds filters. api-change:iotsitewise: AWS IoT SiteWise Scenario Discovery now supports mounting Amazon S3 data directly into pipeline task containers via S3 Access Points, and configuring additional ephemeral storage per task. Mount configurations can be overridden at execution time. See the API guide for details. api-change:bedrock-agentcore-control: Online evaluation configurations now support up to 25 evaluators. CloudWatch Logs data sources for online evaluation now support up to 10 log groups. api-change:sesv2: Added support for managing SMIME signing certificates for email identities, including associating, listing, and disassociating certificates. Added the UpdateConfigurationSet operation to configure message security options such as signing scheme.</content>
-    <link href="https://github.com/aws/aws-cli/releases/tag/2.36.37" rel="alternate"/>
-    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
-    <published>2026-09-01T18:09:52+00:00</published>
-    <media:group>
-      <media:content url="https://opengraph.githubassets.com/579bcf0b466cb66869736479f50b04690d162ba4d7016486e39dae6cc27906f5/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
-      <media:thumbnail url="https://opengraph.githubassets.com/579bcf0b466cb66869736479f50b04690d162ba4d7016486e39dae6cc27906f5/aws/aws-cli" height="600" width="1200"/>
-    </media:group>
-    <dc:creator>AWS CLI v2 Changelog</dc:creator>
-    <link rel="enclosure" href="https://opengraph.githubassets.com/579bcf0b466cb66869736479f50b04690d162ba4d7016486e39dae6cc27906f5/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/d959127de7d9e45c</id>

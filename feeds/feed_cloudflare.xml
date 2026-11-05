@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-05T14:57:19.672015+00:00</updated>
+  <updated>2026-11-05T21:12:11.863503+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -15,6 +15,42 @@
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/5cbc7eb37feb1141</id>
+    <title>Workers Builds Issues</title>
+    <updated>2026-11-05T20:20:10+00:00</updated>
+    <content>Nov 5 , 20:20 UTC Resolved - Queue times have returned to normal. Nov 5 , 19:55 UTC Monitoring - Builds are being processed and we're working through backlog Nov 5 , 19:51 UTC Identified - Cloudflare is aware of and investigating an issue with Cloudflare Workers Builds which potentially impacts multiple customers. Further detail will be provided as more information becomes available.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/yaa0witbl2me" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-05T20:20:10+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/f64889a7b3b60236</id>
+    <title>Agents aren’t humans (but they kinda are)</title>
+    <updated>2026-11-05T17:03:04+00:00</updated>
+    <content>AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, and managing this automated traffic.</content>
+    <link href="https://blog.cloudflare.com/trusted-agent-delegation/" rel="alternate"/>
+    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
+    <published>2026-11-05T17:03:04+00:00</published>
+    <media:group>
+      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01M6HXVQ0MH26TMB3HFFHA31DK.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01M6HXVQ0MH26TMB3HFFHA31DK.png"/>
+    </media:group>
+    <dc:creator>Cloudflare Blog</dc:creator>
+    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M6HXVQ0MH26TMB3HFFHA31DK.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/cab5107ada7f2aa6</id>
+    <title>Network disruption across multiple colocations in India</title>
+    <updated>2026-11-05T16:16:48+00:00</updated>
+    <content>Nov 5 , 16:16 UTC Resolved - This incident has been resolved. Nov 5 , 15:37 UTC Identified - We have identified 9 impacted colocations, all in India, and have removed them from our network. 
+We are working on identifying the underlying issues and bringing them back online. Nov 5 , 15:05 UTC Investigating - Network disruption across multiple colocations in India, impacting Cloudflare services in region</content>
+    <link href="https://www.cloudflarestatus.com/incidents/1i6fnludjh1m" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-05T16:16:48+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/da94f0463e83c881</id>
     <title>Increased Errors for Durable Objects in Western Europe</title>
     <updated>2026-11-05T13:23:55+00:00</updated>
@@ -24,6 +60,21 @@ The issue has been resolved and we are monitoring the results.</content>
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-11-05T13:23:55+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/de7b63e11047539d</id>
+    <title>Durable Objects, Workers - Automatic retries for Durable Object calls</title>
+    <updated>2026-11-05T00:00:00+00:00</updated>
+    <content>The runtime now retries fetch() and RPC calls to a Durable Object when they fail with a retryable error before reaching it. This applies whether the caller is a Worker or another Durable Object. Short disruptions, such as brief network interruptions, no longer need a retry loop in your code. By default, the runtime retries a call up to four times, and starts no retry more than 10 seconds after the initial call starts. It does not retry errors thrown by your Durable Object code, or errors with .o</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-05-durable-objects-automatic-retries/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-05T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-05-durable-objects-automatic-retries/og.png?v=d938aa3240f2e37a" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-05-durable-objects-automatic-retries/og.png?v=d938aa3240f2e37a"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-05-durable-objects-automatic-retries/og.png?v=d938aa3240f2e37a" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/8298b1bd51eb024a</id>
@@ -1265,21 +1316,6 @@ We have identified the cause as a capacity problem in a shared internal data pip
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/583e63756885b8b9</id>
-    <title>Workers - Pin your npm version in Workers Builds with packageManager</title>
-    <updated>2026-10-23T00:00:00+00:00</updated>
-    <content>You can now choose the npm version that Workers Builds uses by setting the packageManager field in your package.json . Before the build installs dependencies, it installs the npm version you set, so a lockfile written by a newer npm version installs the same way in your build as it does locally. package.json json { "packageManager" : "npm@11.19.1" } The packageManager field also sets the version of Yarn, pnpm, and Bun. Use an exact version, such as npm@11.19.1 , not a range. Workers Builds does </content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-23T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/og.png?v=43fe03b597df4474" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/a635a78a9b1393f7</id>
     <title>Workers, Pages - Workers Builds and Pages build images reject compromised eMudhra certificates</title>
     <updated>2026-10-23T00:00:00+00:00</updated>
@@ -1541,26 +1577,6 @@ Edge functionality, including Access logins and Cloudflare Secure Web</content>
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M537RBT01XNYZ0RR0CP9PS55.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/71837db0d1b4f0a8</id>
-    <title>Network Performance Issues in Virginia and Ohio United States</title>
-    <updated>2026-10-18T08:50:00+00:00</updated>
-    <content>Oct 18 , 08:50 UTC Resolved - Due to unexpected  prefix withdrawals on peering links in IAD and CMH (Ashburn, Virginia and Columbus, Ohio, in the United States) on an external provider, customers experienced increased latency and timeouts from 08:00 to 08:50 UTC. Services have fully normalized following the restoration of prefix advertisements.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/wpvuoqdcmu2k" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-18T08:50:00+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4d38f46a92c0715e</id>
-    <title>Cloudflare Fedramp Dashboard and Access</title>
-    <updated>2026-10-16T19:09:00+00:00</updated>
-    <content>Oct 16 , 19:09 UTC Resolved - This incident has been resolved. Oct 16 , 19:02 UTC Monitoring - A fix has been implemented and we are monitoring the results. Oct 16 , 18:47 UTC Identified - The issue has been identified and a fix is being implemented. Oct 16 , 18:15 UTC Investigating - Cloudflare is investigating issues with accessing the Cloudflare Fedramp Dashboard and related Cloudflare Access services. Logging into dashboards and applications protected by Fedramp Access is impacted. These iss</content>
-    <link href="https://www.cloudflarestatus.com/incidents/qwx5xtl8mv7d" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-16T19:09:00+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/90fc70b282736535</id>
@@ -1996,21 +2012,6 @@ Edge functionality, including Access logins and Cloudflare Secure Web</content>
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M3TES95GDNHB8645HHYQHR1G.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/d7ce28a37810558a</id>
-    <title>Support for modern cryptographic algorithms in Workers</title>
-    <updated>2026-10-01T13:00:00+00:00</updated>
-    <content>Cloudflare Workers is adding opt-in support for post-quantum-resistant algorithms ML-KEM and ML-DSA. You can try it today.</content>
-    <link href="https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/" rel="alternate"/>
-    <category term="Cloudflare Blog" label="Cloudflare Blog"/>
-    <published>2026-10-01T13:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png"/>
-    </media:group>
-    <dc:creator>Cloudflare Blog</dc:creator>
-    <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01KYQH7SRKMQZ9Z5K1ZQ41N12X.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/9c8ac316e1020baf</id>
