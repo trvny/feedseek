@@ -3,14 +3,12 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
-
 import github
 
 
 class GitHubSourceTests(unittest.TestCase):
     def test_requested_engineering_sources_are_wired_in(self):
         source_urls = {label: url for label, url, _ in github.SOURCES}
-
         self.assertEqual(
             source_urls["Mergify Changelog"],
             "https://docs.mergify.com/changelog/rss.xml",
@@ -18,14 +16,10 @@ class GitHubSourceTests(unittest.TestCase):
         self.assertNotIn("Devin Desktop", source_urls)
         self.assertEqual(
             github.EXTRA_SCRAPERS,
-            (
-                github.scrape_beeware_news,
-                github.scrape_star_history_blog,
-                github.scrape_travnie_activity,
-            ),
+            (github.scrape_beeware_news, github.scrape_star_history_blog),
         )
-        self.assertFalse(github._active_cache_entry({"source": "Devin Desktop"}))
-        self.assertFalse(github._active_cache_entry({"source": "Devin Release Notes"}))
+        for retired in ("Devin Desktop", "Devin Release Notes", "travnie GitHub Activity"):
+            self.assertFalse(github._active_cache_entry({"source": retired}))
         self.assertTrue(github._active_cache_entry({"source": "GitHub Changelog"}))
 
 

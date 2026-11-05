@@ -232,7 +232,11 @@ function parseFeed(xml, source, feedUrl, opmlSite='', opmlIcon=''){
     const id=txt(n,'id','guid');
     let desc=clean(txt(n,'description','summary','content','encoded'));
     if(desc && desc.toLowerCase()===title.toLowerCase()) desc='';
-    return {id, source, feedUrl, feedIcon, feedSite, title, desc, url,
+    const categories=[...n.children].filter(c=>c.tagName.toLowerCase().replace(/^.*:/, "")==="category")
+      .map(c=>c.getAttribute("label")||c.getAttribute("term")||c.textContent.trim()).filter(Boolean);
+    const authorNode=[...n.children].find(c=>c.tagName.toLowerCase().replace(/^.*:/, "")==="author");
+    const author=authorNode ? (txt(authorNode,"name")||authorNode.textContent.trim()) : "";
+    return {id, source, feedUrl, feedIcon, feedSite, title, desc, url, author, categories,
             ts:isNaN(ts)?0:ts, img:mediaImg(n,feedUrl)};
   }).filter(i=>i.title && i.url);
 }
@@ -484,15 +488,24 @@ function render(){
   for(const item of page){
     const url=safeHttpUrl(item.url); if(!url) continue;
     const link=document.createElement('a');
-    link.className='item'; link.href=url; link.target='_blank'; link.rel='noopener';
+    const personal=/\/feed_github_personal\.xml(?:$|\?)/.test(item.feedUrl||'');
+    const meme=/\/feed_memy\.xml(?:$|\?)/.test(item.feedUrl||'');
+    link.className='item'+(personal?' item-github-personal':'')+(meme?' item-meme':'');
+    link.href=url; link.target='_blank'; link.rel='noopener';
     const text=document.createElement('div'); text.className='itxt';
     const source=document.createElement('div'); source.className='src';
     const fav=makeFav(item.feedIcon,item.feedSite||item.feedUrl); if(fav) source.appendChild(fav);
     source.appendChild(document.createTextNode(item.source||'feed'));
+    if(personal){
+      const kind=(item.categories||[]).find(c=>/^(Pull request|Issue|Release|Discussion|Repository)$/.test(c));
+      if(kind){ const tag=document.createElement('span'); tag.className='kind'; tag.textContent=kind; source.appendChild(tag); }
+    }
     const title=document.createElement('div'); title.className='t'; title.textContent=item.title||'(untitled)';
     text.append(source,title);
     if(item.desc){ const desc=document.createElement('div'); desc.className='desc'; desc.textContent=item.desc; text.appendChild(desc); }
-    const meta=document.createElement('div'); meta.className='meta'; meta.textContent=rel(item.ts); text.appendChild(meta);
+    const meta=document.createElement('div'); meta.className='meta';
+    meta.textContent=personal&&item.author?[item.author,rel(item.ts)].filter(Boolean).join(' · '):rel(item.ts);
+    text.appendChild(meta);
     link.appendChild(text);
     if(cfg.thumbs && item.img){
       const imgUrl=safeHttpUrl(item.img,url);
