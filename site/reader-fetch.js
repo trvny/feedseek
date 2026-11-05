@@ -145,8 +145,94 @@
     return { items, failed };
   }
 
+
+  // Only the same-origin published catalog opts a feed into Model Feed reads.
+  function modelFeedUrls(catalog, siteBase) {
+    const urls = new Map();
+    if (catalog?.format !== "feedseek-model-feed-catalog" ||
+        catalog.version !== 1 || !Array.isArray(catalog.feeds)) return urls;
+    let origin;
+    try { origin = new URL(siteBase).origin; }
+    catch { return urls; }
+
+    for (const entry of catalog.feeds) {
+      if (!entry || typeof entry.feed_url !== "string" ||
+          typeof entry.model_feed_url !== "string") continue;
+      try {
+        const xml = new URL(entry.feed_url);
+        const json = new URL(entry.model_feed_url);
+        if (xml.origin !== origin || json.origin !== origin ||
+            !xml.pathname.endsWith(".xml") || !json.pathname.endsWith(".json") ||
+            xml.username || xml.password || json.username || json.password) continue;
+        if (!urls.has(xml.href)) urls.set(xml.href, json.href);
+      } catch {
+        // Ignore malformed catalog rows. Ordinary XML remains available.
+      }
+    }
+    return urls;
+  }
+
+  function parseModelFeed(payload, feed, expectedJsonUrl, maxItems = 10000) {
+    const doc = JSON.parse(payload);
+    if (!doc || doc.format !== "feedseek-model-feed" || doc.version !== 1 ||
+        !Array.isArray(doc.items) || !doc.items.length || doc.items.length > maxItems) {
+      throw new Error("unsupported Model Feed");
+    }
+
+    function httpUrl(value) {
+      if (typeof value !== "string" || !value.trim()) return "";
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+      } catch { return ""; }
+    }
+
+    if (httpUrl(doc.source_feed) !== httpUrl(feed.xmlUrl) ||
+        httpUrl(doc.feed_url) !== httpUrl(expectedJsonUrl)) {
+      throw new Error("Model Feed source mismatch");
+    }
+
+    const feedSite = httpUrl(doc.home_page_url) || httpUrl(feed.htmlUrl);
+    const feedIcon = httpUrl(feed.icon);
+    const items = [];
+    for (const raw of doc.items) {
+      if (!raw || typeof raw.id !== "string" || !raw.id.trim() ||
+          typeof raw.title !== "string" || typeof raw.text !== "string" ||
+          !["content", "summary", "title"].includes(raw.text_kind)) {
+        throw new Error("invalid Model Feed entry");
+      }
+      const url = httpUrl(raw.url) || httpUrl(raw.external_url);
+      if (!url) continue; // Valid model-only entries can lack an article URL.
+      const title = raw.title.trim() || "(untitled)";
+      let desc = raw.text_kind === "title" ? "" : raw.text.replace(/\\s+/gu, " ").trim();
+      // Reader previews do not need the complete article body retained by the JSON.
+      desc = desc.slice(0, 2048);
+      if (desc.toLowerCase() === title.toLowerCase()) desc = "";
+      let ts = 0;
+      for (const value of [raw.date_published, raw.date_modified]) {
+        if (typeof value !== "string") continue;
+        const parsed = Date.parse(value);
+        if (Number.isFinite(parsed)) { ts = parsed; break; }
+      }
+      const author = Array.isArray(raw.authors)
+        ? raw.authors.find(name => typeof name === "string" && name.trim()) || ""
+        : "";
+      const categories = Array.isArray(raw.tags)
+        ? raw.tags.filter(tag => typeof tag === "string" && tag.trim())
+        : [];
+      items.push({
+        id: raw.id, source: feed.title, feedUrl: feed.xmlUrl, feedIcon, feedSite,
+        title, desc, url, author, categories, ts, img: httpUrl(raw.image),
+      });
+    }
+    if (!items.length) throw new Error("Model Feed has no linked entries");
+    return items;
+  }
+
   window.FeedseekReaderUtils = {
     allSettledLimited,
+    modelFeedUrls,
+    parseModelFeed,
     faviconCandidates,
     mergeRefreshResults,
     readTextLimited,
