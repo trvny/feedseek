@@ -1,5 +1,4 @@
 // ── constants ────────────────────────────
-const SCHEMA_V = 1;
 const NS = 'fs:';
 const FEED_TIMEOUT_MS = 15000;
 const OPML_TIMEOUT_MS = 15000;
@@ -7,7 +6,6 @@ const FEED_CONCURRENCY = 12;
 const PAGE_SIZE = 250;
 const MAX_FEED_BYTES = 16 * 1024 * 1024;
 const MAX_FEED_ITEMS = 10000;
-const SNAPSHOT_LIMIT = 5000;
 const RSS_FALLBACK = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Crect%20width='24'%20height='24'%20rx='5'%20fill='%23d6541a'/%3E%3Ccircle%20cx='7'%20cy='17'%20r='2'%20fill='%23fff'/%3E%3Cpath%20d='M5%2011a8%208%200%200%201%208%208h2.6A10.6%2010.6%200%200%200%205%208.4z'%20fill='%23fff'/%3E%3Cpath%20d='M5%205a14%2014%200%200%201%2014%2014h2.6A16.6%2016.6%200%200%200%205%202.4z'%20fill='%23fff'/%3E%3C/svg%3E";
 const FAVS_MAX = 500;
 
@@ -62,27 +60,6 @@ function loadOverlay(){
 }
 function saveOverlay(){ ls.set('overlay', JSON.stringify({removed:overlay.removed, added:overlay.added})); }
 let overlay = loadOverlay();
-
-// ── snapshot (feed cache) ────────────────────────
-function loadSnap(){
-  try{
-    const s = JSON.parse(ls.get('snap')||'null');
-    if(!s || s._v !== SCHEMA_V || !Array.isArray(s.items)) return null;
-    return s;
-  }catch(e){ return null; }
-}
-function saveSnap(items){
-  if(!items.length){ ls.del('snap'); return; }
-  const limit=Math.min(items.length,SNAPSHOT_LIMIT), t=Date.now();
-  const write=count=>ls.set('snap',JSON.stringify({_v:SCHEMA_V,t,items:items.slice(0,count)}));
-  if(write(limit)) return;
-  let low=1, high=limit-1;
-  while(low<=high){
-    const count=Math.floor((low+high)/2);
-    if(write(count)) low=count+1;
-    else high=count-1;
-  }
-}
 
 // ── favicon cache ──────────────────────────
 let favsCache = {};
@@ -377,15 +354,15 @@ async function run(){
       if(seen.has(key)) return false;
       seen.add(key); return true;
     }).sort((a,b)=>b.ts-a.ts);
-    ITEMS=deduped;
+    ITEMS=window.FeedseekReaderCache.mergeHistory(feeds,deduped,ITEMS);
     visibleCount=PAGE_SIZE;
     FAILED=nextFailed;
     SOURCES=[...new Set(ITEMS.map(i=>i.source))].sort();
     LOADED=feeds.length-nextFailed.length;
     FEEDS=feeds;
     if(FILTER && !SOURCES.includes(FILTER)) FILTER=null;
-    saveSnap(ITEMS);
     render();
+    await window.FeedseekReaderCache.save(ITEMS);
   }catch(e){
     if(version===runVersion && !controller.signal.aborted){
       console.error(e);
@@ -653,6 +630,8 @@ $('#save').onclick=()=>{
 };
 
 // ── init ──────────────────────────
-const snap=loadSnap();
-if(snap && snap.items.length){ ITEMS=snap.items; render(); }
-void run();
+const startupPromise=(async()=>{
+  const items=await window.FeedseekReaderCache.load();
+  if(items.length){ ITEMS=items; render(); }
+  await run();
+})();
