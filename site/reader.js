@@ -2,6 +2,7 @@
 const NS = 'fs:';
 const FEED_TIMEOUT_MS = 15000;
 const OPML_TIMEOUT_MS = 15000;
+const MODEL_CATALOG_TIMEOUT_MS = 5000;
 const FEED_CONCURRENCY = 12;
 const PAGE_SIZE = 250;
 const MAX_FEED_BYTES = 16 * 1024 * 1024;
@@ -290,7 +291,16 @@ async function fetchText(url, options={}, timeoutMs=FEED_TIMEOUT_MS){
     if(parent) parent.removeEventListener('abort',abort);
   }
 }
-async function loadFeed(f, signal){
+async function loadFeed(f, signal, modelUrl=''){
+  if(modelUrl){
+    try{
+      const json=await fetchText(modelUrl,{redirect:'follow',signal},FEED_TIMEOUT_MS);
+      return window.FeedseekReaderUtils.parseModelFeed(json,f,modelUrl,MAX_FEED_ITEMS);
+    }catch(error){
+      if(signal?.aborted) throw error;
+      console.warn('Model Feed unavailable; using XML',f.xmlUrl,error);
+    }
+  }
   const xml=await fetchText(prox(f.xmlUrl),{redirect:'follow',signal},FEED_TIMEOUT_MS);
   return parseFeed(xml,f.title,f.xmlUrl,f.htmlUrl||'',f.icon||'');
 }
@@ -302,6 +312,12 @@ async function run(){
   if(activeRun) activeRun.abort();
   const controller=new AbortController();
   activeRun=controller;
+  const catalogRequest=fetchText(
+    new URL('../model-feeds.json',document.baseURI).href,
+    {cache:'no-cache',signal:controller.signal},
+    MODEL_CATALOG_TIMEOUT_MS,
+  ).then(text=>window.FeedseekReaderUtils.modelFeedUrls(JSON.parse(text),document.baseURI))
+    .catch(()=>new Map());
   STATUS_ERROR='';
   $('#refresh').disabled=true;
   $('#refresh').setAttribute('aria-busy','true');
@@ -343,9 +359,11 @@ async function run(){
       return;
     }
 
+    const modelUrls=await catalogRequest;
+    if(version!==runVersion || controller.signal.aborted) return;
     let done=0;
     const results=await window.FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
-      try{ return await loadFeed(f,controller.signal); }
+      try{ return await loadFeed(f,controller.signal,modelUrls.get(f.xmlUrl)); }
       finally{ done++; setProgress(done,feeds.length,version); }
     });
     if(version!==runVersion || controller.signal.aborted) return;

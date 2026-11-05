@@ -204,7 +204,7 @@
       const url = httpUrl(raw.url) || httpUrl(raw.external_url);
       if (!url) continue; // Valid model-only entries can lack an article URL.
       const title = raw.title.trim() || "(untitled)";
-      let desc = raw.text_kind === "title" ? "" : raw.text.replace(/\\s+/gu, " ").trim();
+      let desc = raw.text_kind === "title" ? "" : raw.text.replace(/\s+/gu, " ").trim();
       // Reader previews do not need the complete article body retained by the JSON.
       desc = desc.slice(0, 2048);
       if (desc.toLowerCase() === title.toLowerCase()) desc = "";
