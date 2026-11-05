@@ -18,12 +18,15 @@ class ReaderAssetVersionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             site_dir = Path(tmp)
             (site_dir / "reader.html").write_text(
-                '<script src="reader-fetch.js"></script><script src="reader.js"></script>'
+                '<script src="reader-fetch.js"></script><script src="reader-cache.js"></script>'
+                '<script src="reader.js"></script>'
                 '<script src="../webmcp.js"></script>',
                 encoding="utf-8",
             )
             fetch_script = site_dir / "reader-fetch.js"
             fetch_script.write_bytes(b"fetch v1")
+            cache_script = site_dir / "reader-cache.js"
+            cache_script.write_bytes(b"cache v1")
             script = site_dir / "reader.js"
             script.write_bytes(b"reader v1")
             webmcp_script = site_dir / "webmcp.js"
@@ -33,11 +36,14 @@ class ReaderAssetVersionTests(unittest.TestCase):
                 script.write_bytes(b"reader v2")
                 second = build_site.build_reader_html("https://example.test/")
                 fetch_script.write_bytes(b"fetch v2")
+                cache_script.write_bytes(b"cache v2")
                 webmcp_script.write_bytes(b"webmcp v2")
                 third = build_site.build_reader_html("https://example.test/")
 
             fetch_version = hashlib.sha256(b"fetch v1").hexdigest()[:12]
             new_fetch_version = hashlib.sha256(b"fetch v2").hexdigest()[:12]
+            cache_version = hashlib.sha256(b"cache v1").hexdigest()[:12]
+            new_cache_version = hashlib.sha256(b"cache v2").hexdigest()[:12]
             old_version = hashlib.sha256(b"reader v1").hexdigest()[:12]
             new_version = hashlib.sha256(b"reader v2").hexdigest()[:12]
             webmcp_version = hashlib.sha256(b"webmcp v1").hexdigest()[:12]
@@ -45,6 +51,9 @@ class ReaderAssetVersionTests(unittest.TestCase):
             self.assertIn(f'src="reader-fetch.js?v={fetch_version}"', first)
             self.assertIn(f'src="reader-fetch.js?v={fetch_version}"', second)
             self.assertIn(f'src="reader-fetch.js?v={new_fetch_version}"', third)
+            self.assertIn(f'src="reader-cache.js?v={cache_version}"', first)
+            self.assertIn(f'src="reader-cache.js?v={cache_version}"', second)
+            self.assertIn(f'src="reader-cache.js?v={new_cache_version}"', third)
             self.assertIn(f'src="reader.js?v={old_version}"', first)
             self.assertIn(f'src="reader.js?v={new_version}"', second)
             self.assertIn(f'src="reader.js?v={new_version}"', third)
