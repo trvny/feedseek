@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://creativecommons.org/blog/</id>
   <title>Open Source</title>
-  <updated>2026-11-05T09:39:04.322059+00:00</updated>
+  <updated>2026-11-05T14:20:26.473986+00:00</updated>
   <author>
     <name>various</name>
   </author>
@@ -14,6 +14,39 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=creativecommons.org&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=creativecommons.org&amp;sz=64</webfeeds:icon>
   <subtitle>Open-source, open-licensing, and open-standards updates from Creative Commons, the Open Source Initiative, the Linux Foundation, SPDX, the Open Geospatial Consortium, the RFC Editor, IETF status, Posit Open Source, and the Open Graph protocol.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/opensource/92e02fe675de2c9b</id>
+    <title>LF Networking Announces Keynote Lineup for Global ONE Summit 2026, December 10-11, 2026 in Tokyo</title>
+    <updated>2026-11-05T14:00:01+00:00</updated>
+    <content>Global industry leaders to explore AI-native networking, agentic AI infrastructure and edge AI in the world of open collaboration</content>
+    <link href="https://www.linuxfoundation.org/press/lf-networking-announces-keynote-lineup-for-global-one-summit-2026-december-10-11-2026-in-tokyo" rel="alternate"/>
+    <category term="Linux Foundation Press" label="Linux Foundation Press"/>
+    <published>2026-11-05T14:00:01+00:00</published>
+    <media:group>
+      <media:content url="https://www.linuxfoundation.org/hubfs/Keynotes%20announced.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://www.linuxfoundation.org/hubfs/Keynotes%20announced.png"/>
+    </media:group>
+    <dc:creator>Linux Foundation Press</dc:creator>
+    <link rel="enclosure" href="https://www.linuxfoundation.org/hubfs/Keynotes%20announced.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/opensource/6ffd454328575723</id>
+    <title>mizu: thread-speed parallel R and Python over shared memory</title>
+    <updated>2026-11-05T00:00:00+00:00</updated>
+    <content>Resampling is an expensive part of modelling work.
+Fit the same model hundreds of times over, so you attempt to do them in parallel over a pool of workers.
+However the speedup you get is usually much less than you’d hoped for. The reason lies in how a process pool distributes and coordinates work: each task is serialized, copied through a socket and deserialized on the other side, and each result comes back the same way.
+When tasks are small, this overhead can exceed the computation itself, and </content>
+    <link href="https://opensource.posit.co/blog/2026-11-05_mizu-0-1-0/" rel="alternate"/>
+    <category term="Posit Open Source" label="Posit Open Source"/>
+    <published>2026-11-05T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://opensource.posit.co/blog/2026-11-05_mizu-0-1-0/featured.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://opensource.posit.co/blog/2026-11-05_mizu-0-1-0/featured.gif"/>
+    </media:group>
+    <dc:creator>Posit Open Source</dc:creator>
+    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-11-05_mizu-0-1-0/featured.gif" type="image/gif" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/a3dfe2cb722b8143</id>
     <title>Bring your own agent to Positron with the Positron MCP</title>
@@ -1469,39 +1502,6 @@ As a result, querychat gets chat features like history and file attachments basi
     </media:group>
     <dc:creator>Linux Foundation</dc:creator>
     <link rel="enclosure" href="https://www.linuxfoundation.org/hubfs/LF%20Energy%20Research.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/opensource/1d1b79ea64ba1d4a</id>
-    <title>Agentic AI Foundation Welcomes the Gates Foundation to Help Expand the Benefits of Agentic AI Globally</title>
-    <updated>2026-09-15T04:00:00+00:00</updated>
-    <content>Collaboration will bring the needs of underserved communities into the open ecosystem shaping agentic AI</content>
-    <link href="https://www.linuxfoundation.org/press/agentic-ai-foundation-welcomes-the-gates-foundation-to-help-expand-the-benefits-of-agentic-ai-globally" rel="alternate"/>
-    <category term="Linux Foundation Press" label="Linux Foundation Press"/>
-    <published>2026-09-15T04:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://www.linuxfoundation.org/hubfs/Press%20Release%201.svg" type="image/svg+xml" medium="image"/>
-      <media:thumbnail url="https://www.linuxfoundation.org/hubfs/Press%20Release%201.svg"/>
-    </media:group>
-    <dc:creator>Linux Foundation Press</dc:creator>
-    <link rel="enclosure" href="https://www.linuxfoundation.org/hubfs/Press%20Release%201.svg" type="image/svg+xml" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/opensource/983d94d6e4dd39fc</id>
-    <title>Complete chat applications in shinychat: R 0.5.0 and Python 0.7.1</title>
-    <updated>2026-09-15T00:00:00+00:00</updated>
-    <content>We’re excited to announce shinychat v0.5.0 for R and shinychat v0.7.1 for Python .
-This release brings the pieces of a complete chat application together around the conversation itself. shinychat is a toolkit for building complete, conversation-centered chat applications with Shiny.
-The R package pairs with ellmer , and the Python package pairs with chatlas .
-Install the latest releases from CRAN or PyPI: R Python install.packages ( "shinychat" ) pip install -U shinychat We cover a lot in this p</content>
-    <link href="https://opensource.posit.co/blog/2026-09-15_shinychat-r-0.5.0-python-0.7.1/" rel="alternate"/>
-    <category term="Posit Open Source" label="Posit Open Source"/>
-    <published>2026-09-15T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://opensource.posit.co/blog/2026-09-15_shinychat-r-0.5.0-python-0.7.1/images/og-header.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://opensource.posit.co/blog/2026-09-15_shinychat-r-0.5.0-python-0.7.1/images/og-header.png"/>
-    </media:group>
-    <dc:creator>Posit Open Source</dc:creator>
-    <link rel="enclosure" href="https://opensource.posit.co/blog/2026-09-15_shinychat-r-0.5.0-python-0.7.1/images/og-header.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/opensource/cce0150a58b96a97</id>

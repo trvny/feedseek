@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-114 feedów · 934 źródła
+115 feedów · 934 źródła
 
 ## Spis grup
 
@@ -392,7 +392,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=beeware.org&sz=16) BeeWare News — <https://beeware.org/news/>
 - ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History — <https://www.star-history.com/>
 - ![](https://www.google.com/s2/favicons?domain=www.star-history.com&sz=16) Star History Blog — <https://www.star-history.com/blog/>
-- ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) travnie GitHub Activity — <https://github.com/orgs/travnie>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Changelog — <https://github.blog/changelog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Engineering — <https://github.blog/engineering/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Security — <https://github.blog/security/feed/>
@@ -418,7 +417,12 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mshibanami.github.io&sz=16) GitHub Trending — <https://mshibanami.github.io/GitHubTrendingRSS/monthly/all.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/week/rss.xml>
-- ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) Travnie public events — <https://api.github.com/orgs/travnie/events?per_page=100>
+
+### ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) trvny + travnie · GitHub
+`github_personal` · [feed_github_personal.xml](../feeds/feed_github_personal.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) trvny public activity — <https://api.github.com/users/trvny/events/public>
+- ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) travnie public activity — <https://api.github.com/orgs/travnie/events>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.mozilla.org&sz=16) Mozilla
 `mozilla` · [feed_mozilla.xml](../feeds/feed_mozilla.xml)

@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-11-05T09:38:17.595193+00:00</updated>
+  <updated>2026-11-05T14:19:22.663980+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,227 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://blog.google/company-news/outreach-and-initiatives/grow-with-google/national-veterans-small-business-week-2026</id>
+    <title>Check out our free livestream during National Veterans Small Business Week.</title>
+    <updated>2026-11-05T14:00:00+00:00</updated>
+    <content type="html">&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Check_out_our_free_livestream_d.max-600x600.format-webp.webp" /&gt;Join our November 2026 YouTube livestream for National Veterans Small Business Week. Master AI skills with Gemini and get 1:1 coaching. Register today.</content>
+    <link href="https://blog.google/company-news/outreach-and-initiatives/grow-with-google/national-veterans-small-business-week-2026" rel="alternate"/>
+    <category term="The Keyword"/>
+    <published>2026-11-05T14:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Check_out_our_free_livestream_d.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Check_out_our_free_livestream_d.max-600x600.format-webp.webp"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Check_out_our_free_livestream_d.max-600x600.format-webp.webp" type="image/webp" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf</id>
+    <title>Powering open infrastructure for autonomous agents</title>
+    <updated>2026-11-05T12:30:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As AI shifts &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;from human scale to agent scale&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;from systems of record to systems of action&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;from simple requests to complex agentic workflows&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, the workload underneath your platform changes completely. An agent works in a continuous, stateful loop: It proposes an action, spins up subagents, executes code or tool calls inside a sandbox, and feeds the results back into the model for the next turn. Running that loop at scale requires the same open foundation and neutral governance that Kubernetes and the Cloud Native Computing Foundation (CNCF) brought to containers in the 2010s.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we are announcing the donation of &lt;/span&gt;&lt;a href="http://ate.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://gvisor.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;gVisor&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://openrl.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;OpenRL&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, three open source projects that started at Google, to the CNCF following their acceptance last month into the CNCF Sandbox. To bring this open stack into managed production and accelerate it across TPUs and GPUs, we are also announcing that &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Agent Substrate has reached its 1.0 milestone and is now generally available as&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/ai-ml/about-agent-substrate"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate on GKE&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Each project is now working through CNCF Sandbox onboarding with community maintainers and independent build infrastructure, and gVisor is on a path toward Incubation. These releases deliver an open stack that runs on any Kubernetes cluster, on any cloud, across CPUs, GPUs, or TPUs, by:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Scaling isolated agent environments without idle compute overhead with&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="http://ate.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;(now 1.0 and GA on GKE):&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Agents execute code or tests for a few seconds, then &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;wait&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; on model turns, external APIs, or human input. Keeping a dedicated container alive during those pauses ties up memory and compute. Agent Substrate decouples stateful agent sessions and identities from active compute, snapshotting idle agents to storage and restoring them in under 500 milliseconds to run millions of sandboxes at 10x container density.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Isolating untrusted code within a sandbox with&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://gvisor.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;gVisor&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Agents routinely generate and &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;run&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; unreviewed code and external packages, making standard containers that share a host Linux kernel a security risk. gVisor isolates generated code inside a lightweight userspace application kernel at container packing density on any Linux node.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Distributing post training and serving efficiently with&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://openrl.dev" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;OpenRL&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;: Training agents with reinforcement learning (RL) gives builders an open loop to &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;learn&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; across millions of parallel sandboxed rollouts. OpenRL orchestrates self-hosted RL post-training loops in plain Python on Kubernetes.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Scale fully isolated agent environments with Substrate&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Agents need isolated compute resources and strict access boundaries, yet spend most of their time waiting: executing code for a few seconds, then pausing while a model reasons or a human responds. They need a discrete identity and central enforcement point to ensure the agent only accesses authorized tools and services without holding sensitive keys. In standard Kubernetes, giving every active agent its own Pod locks up memory and CPU while the agent sits idle, forces the control plane to track millions of persistent objects it was never designed to hold, and ties identities directly to Pods. At the same time, identities are intrinsically tied to Kubernetes Pods, adding exponential complexity for controlling access and secrets.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Agent Substrate solves this by separating the stateful agent from the underlying compute:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Actors&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; hold each agent's memory, files, and discrete identity.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Workers&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; are reusable execution sandboxes drawn from a warm Kubernetes pool.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Gateways&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; enforce inbound and outbound access control and inject secrets based on Actor identity, keeping sensitive keys out of the agent environment.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When an agent pauses to wait on a model turn or tool call, Agent Substrate snapshots the agent’s memory and files to storage and immediately returns the Worker to the warm pool. When the next request arrives, Agent Substrate restores the Actor onto any available Worker in &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;under 500 milliseconds&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; and picks up right where it left off. Think of it as a hotel room rather than a house: you don't keep a room when you leave town, and a new room is ready when you come back.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_s5MbWZe.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Agent Substrate decouples stateful Actors and policy Gateways from a warm pool of Kubernetes Workers, restoring idle sessions in under 500 milliseconds.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Since public development started in May 2026, the Agent Substrate project has grown to more than 100 contributors. Early design partners like &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Nous Research are building Hermes Enterprise on it&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and it already powers other CNCF projects like &lt;/span&gt;&lt;a href="https://kagent.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;kagent&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Further, reaching the &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;1.0 milestone&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; shows that Agent Substrate can accept production workloads across millions of sandboxes, achieving &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;10x the density&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; of standard container runtimes, and performing more than &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;500 suspend and resume activations per second&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Underneath, you can choose &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud Hypervisor microVMs&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; or &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;gVisor&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; as your isolation boundary without changing how you manage agent lifecycles. Because Agent Substrate runs standard OCI containers, it works out of the box with Agent Development Kit (ADK) agents, stateful coding environments, and productivity agents.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With today's &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;general availability of&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/ai-ml/about-agent-substrate"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate on GKE&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, you can run this runtime as a managed capability on Google Cloud or deploy the open-source code on any Kubernetes cluster. For teams that want a dedicated microVM compute service through an API without having to manage clusters, Agent Substrate complements &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Compute Engine&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, our Titanium microVM service that features fast hibernation and parallel environment-forking for evaluation and RL pipelines.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spiritt.ai/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;SPIRITT&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; is building their SPIRITT Workspace, a platform where agents run real work autonomously while humans collaborate to steer the vision, on top of Agent Substrate on GKE. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;”At SPIRITT, every customer gets an autonomous AI workspace where an agent, or a whole swarm of agents, builds, runs, and ships real work across the organization, from code and development cycles to marketing and operations. Agent Substrate on GKE gives us the security isolation to let agents execute code safely, the extensibility to plug in our own runtime, and the density to run every customer's agents economically at scale."&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; - Tamir Magen, CEO, SPIRITT&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Isolate untrusted agent code with gVisor&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When agents shift from systems of record to systems of action, they run generated shell commands and unreviewed packages. Standard containers share the host Linux kernel with every other workload on the node, which is a risky bet for untrusted code. Hardware microVMs offer a strong boundary, and Agent Substrate supports them natively. Many teams also need strong isolation that runs at container density across any standard Linux instance, even when bare metal or nested virtualization isn't available.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gvisor.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;gVisor&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; provides that isolation through a lightweight application kernel written in Go. Sitting between the container and the host OS, gVisor intercepts and handles application system calls in userspace so untrusted code never talks directly to the host kernel. Open sourced by Google in 2018, gVisor runs millions of sandboxes every day underneath GKE Sandbox and Cloud Run. Outside Google, &lt;/span&gt;&lt;a href="https://www.anthropic.com/engineering/how-we-contain-claude" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Anthropic&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://openai.com/index/securing-research-infrastructure-for-advanced-ai/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;OpenAI&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; use it to contain code execution, &lt;/span&gt;&lt;a href="https://modal.com/docs/guide/security" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Modal&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://www.snowflake.com/en/blog/engineering/rebuild-snowpark-execution-sandbox-with-gvisor/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Snowflake&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; run their execution sandboxes on it, and &lt;/span&gt;&lt;a href="https://gvisor.dev/blog/2021/12/02/running-gvisor-in-production-at-scale-in-ant/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Ant Group&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://gvisor.dev/blog/2026/04/23/scaling-agentic-rl-sandboxes-to-the-millions-with-gvisor-at-tencent/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Tencent&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; run it in production at scale.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Three capabilities make gVisor a natural fit for agent fleets:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Container density and flexible memory:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Unlike VMs that preallocate fixed blocks of RAM, gVisor keeps a container process model where memory scales up and down with the workload, packing more agents onto every node and lowering your cost per agent.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Native GPU, TPU, and snapshot support:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; gVisor supports &lt;/span&gt;&lt;a href="https://gvisor.dev/docs/user_guide/gpu/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GPUs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://gvisor.dev/docs/user_guide/tpu/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TPUs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://gvisor.dev/docs/user_guide/checkpoint_restore/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;checkpoint/restore&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; natively, so agents can access accelerators inside the sandbox and pause when idle.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Runs anywhere Linux runs:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Because it doesn't require nested virtualization, gVisor deploys identically across any cloud or local Linux node. &lt;/span&gt;&lt;a href="https://northflank.com/blog/gpu-sandboxes" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Northflank&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, for example, uses gVisor to sandbox GPU workloads when nested virtualization isn't available.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Donating gVisor to the CNCF clears a longstanding performance barrier for the community. Sandboxed infrastructure providers, including Google, all carry host kernel patches that bring gVisor's I/O performance close to that of native Linux, but upstream Linux maintainers declined to merge them while the project was owned by a single vendor. Moving to neutral CNCF governance opens the path to upstreaming those kernel optimizations, so every builder gets near native performance out of the box. With this move, &lt;/span&gt;&lt;a href="https://gvisor.dev/blog/2026/10/02/gvisor-cncf/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Ant Group, Modal, and Tines have committed to join gVisor's maintainers&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, with OpenAI, Tencent, and NVIDIA continuing their contributions.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Scale RL post training on Kubernetes with OpenRL&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The sandbox that runs your agent in production is the exact same environment you need to train an agent with reinforcement learning. Today, most frontier capability gains come from RL post-training: running millions of multiturn rollouts inside real tools, scoring the outcomes, and updating model weights. Building that loop yourself usually means forking a monolithic RL framework and debugging distributed weight transfers before you ever touch your training algorithm.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://openrl.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;OpenRL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; brings a clean, self-hosted Python post-training loop directly to your Kubernetes cluster, with:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Simple Python primitives:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Write your training loop using four clean primitives (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;sample&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;forward_backward&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;optim_step&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;save_state&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;) through a Tinker compatible API while keeping your weights and data on your own cluster. Existing &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;tinker-cookbook&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; recipes run unchanged, supporting both LoRA adapters and full parameter fine-tuning.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Pluggable engines and Kubernetes scheduling:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; OpenRL uses Kubernetes Dynamic Resource Allocation (DRA) to partition your accelerator pool and orchestrate RL work on the shared pool. Its pluggable architecture uses standard engines, including &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;PyTorch&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;/&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;AutoModel&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for training and &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;vLLM&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; for sampling, with Gemma and Qwen validated out of the box, and with TPU support on the roadmap.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;OpenRL also pairs with &lt;/span&gt;&lt;a href="https://llm-d.ai" rel="noopener" target="_blank"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;llm-d&lt;/strong&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, the CNCF distributed inference and RL project founded by Red Hat, Google Cloud, IBM Research, CoreWeave, and NVIDIA that &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;recently reached 1.0&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, to keep your accelerators busy across both phases of RL. Here, llm-d provides:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Prefix-aware rollout routing:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The &lt;/span&gt;&lt;a href="https://llm-d.ai/docs/dev/architecture/router" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;llm-d router&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; routes multiturn rollouts to samplers that already hold matching KV cache prefixes, cutting redundant prefill compute.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;GPU time-slicing between training and sampling:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; In RL training, samplers and trainers take turns, leaving one set of chips idle while the other works. OpenRL uses &lt;/span&gt;&lt;a href="https://github.com/llm-d-incubation/llm-d-rl-time-slicing" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;llm-d time-slicing&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to share the same physical GPUs between sampling and training, reclaiming idle accelerator cycles the same way Agent Substrate reclaims idle CPU and RAM.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_oAroVYF.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;OpenRL drives plain Python RL loops on Kubernetes, running episodes inside Agent Substrate sandboxes while llm-d routes rollouts and time slices accelerators.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;OpenRL is the newest layer of this stack by a wide margin. It started in February as a research preview, and we are bringing it to the CNCF early on purpose. Its north star is one recipe for any model on any accelerator, and no single company can get there alone. To get there, you need the people building accelerators (NVIDIA, AMD, Intel, and TPUs), inference engines (&lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;llm-d&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;vLLM&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;SGLang&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;), training frameworks, and open-weight models starting with Gemma and Qwen. Setting up neutral CNCF governance before the design hardens makes room for everyone to build it together.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Why the CNCF, and why now&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Improving the security and efficiency of AI agents takes joint design across the runtime, scheduler, compiler, and silicon. The past year made the need for affordable, isolated sandboxing and open post-training infrastructure exceedingly clear. Donating Agent Substrate, gVisor, and OpenRL to the CNCF reaffirms Google’s commitment to open collaboration and co-investment. Vendor-neutral ownership lets cloud providers, hardware vendors, and independent software companies participate in the future growth of agentic workloads equally. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We believe that these donations will accelerate the development and adoption of agentic workloads through these projects similarly to what we saw with Kubernetes.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Come find us at KubeCon&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Join us at &lt;/span&gt;&lt;a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;KubeCon + CloudNativeCon North America&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; in Salt Lake City (November 9 to 12) across our sessions and at the Google Cloud booth to learn more about Agent Substrate, OpenRL, and gVisor. You will also hear soon from community partners including Modal, Anyscale, and Tecton on what this open stack means for their agentic workloads. In the meantime, here is where to start:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Follow the CNCF Sandbox applications:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; gVisor &lt;/span&gt;&lt;a href="https://github.com/cncf/sandbox/issues/521" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;#521&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Agent Substrate &lt;/span&gt;&lt;a href="https://github.com/cncf/sandbox/issues/523" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;#523&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and OpenRL &lt;/span&gt;&lt;a href="https://github.com/cncf/sandbox/issues/518" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;#518&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, alongside cohort peer KubeRay &lt;/span&gt;&lt;a href="https://github.com/cncf/sandbox/issues/525" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;#525&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Kick the tires:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="http://ate.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;ate.dev&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://gvisor.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;gvisor.dev&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://openrl.dev" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;openrl.dev&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Run agents on GKE today:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/ai-ml/about-agent-substrate"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate on GKE&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/kubernetes-engine/docs/concepts/sandbox-pods"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE Sandbox&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Read the deep dives:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Substrate on GKE&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://gvisor.dev/blog/2026/10/02/gvisor-cncf/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;gVisor's move to the CNCF&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://opensource.googleblog.com/2026/06/introducing-openrl-a-self-hosted-post-training-api-for-fine-tuning-llms.html" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Introducing OpenRL&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-05T12:30:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_s5MbWZe.max-1000x1000.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_s5MbWZe.max-1000x1000.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_s5MbWZe.max-1000x1000.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#November_05_2026</id>
+    <title>Cloud Release Notes — November 05, 2026</title>
+    <updated>2026-11-05T08:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Model Armor&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;You can enable or disable the child sexual abuse material (CSAM) filter in
+Model Armor templates and floor settings, and configure granular
+confidence levels (&lt;code&gt;High&lt;/code&gt;, &lt;code&gt;Medium and above&lt;/code&gt;, and &lt;code&gt;Low and above&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;For more information, see &lt;a href="https://docs.cloud.google.com/model-armor/overview#ma-csam-detection"&gt;Model Armor
+filters&lt;/a&gt; and &lt;a href="https://docs.cloud.google.com/model-armor/manage-templates#configure-detections"&gt;Create and manage
+templates&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#November_05_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-11-05T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas</id>
     <title>Agile Deliberation: How AI helps humans define the gray areas</title>
@@ -38889,61 +39110,5 @@ Google Cloud projects.&lt;/p&gt;
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/OHIO_Action_Anthony_003v_Crop_V.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/OHIO_Action_Anthony_003v_Crop_V.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://blog.google/company-news/outreach-and-initiatives/arts-culture/the-talking-museum-museum-memory</id>
-    <title>Turning cultural artifacts into interactive learning companions</title>
-    <updated>2026-09-24T10:00:00+00:00</updated>
-    <content type="html">A split image showing "Museum Memory" in white text over faint classical statues on a pink background, next to "The Talking Museum" alongside an astronaut with a soundwave speech bubble on a light beige background.</content>
-    <link href="https://blog.google/company-news/outreach-and-initiatives/arts-culture/the-talking-museum-museum-memory" rel="alternate"/>
-    <category term="The Keyword"/>
-    <published>2026-09-24T10:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Talking_MuseumsMuseumMemory_Her.max-600x600.format-webp.webp" type="image/webp" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Talking_MuseumsMuseumMemory_Her.max-600x600.format-webp.webp"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Talking_MuseumsMuseumMemory_Her.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://docs.cloud.google.com/release-notes#September_24_2026</id>
-    <title>Cloud Release Notes — September 24, 2026</title>
-    <updated>2026-09-24T07:00:00+00:00</updated>
-    <content type="html">&lt;h2 class="release-note-product-title"&gt;Model Armor&lt;/h2&gt;
-&lt;h3&gt;Feature&lt;/h3&gt;
-&lt;p&gt;You can use the following filters in Melbourne (&lt;code&gt;australia-southeast2&lt;/code&gt;)
-with &lt;a href="https://docs.cloud.google.com/model-armor/manage-templates#set-data-residency-compliance"&gt;data residency enforcement enabled&lt;/a&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Prompt injection and jailbreak detection&lt;/li&gt;
-&lt;li&gt;Responsible AI&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For information about available Model Armor features for each
-region, see &lt;a href="https://docs.cloud.google.com/model-armor/feature-availability-by-region#supported-by-region"&gt;Supported features by
-region&lt;/a&gt;.&lt;/p&gt;</content>
-    <link href="https://docs.cloud.google.com/release-notes#September_24_2026" rel="alternate"/>
-    <category term="Cloud Release Notes"/>
-    <published>2026-09-24T07:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://developers.google.com/search/updates#september-2026</id>
-    <title>Added creator property and updated interactionStatistic in VideoObject structured data</title>
-    <updated>2026-09-24T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;
-          &lt;b&gt;What&lt;/b&gt;: Added the &lt;code&gt;creator&lt;/code&gt; property (noting support for &lt;code&gt;author&lt;/code&gt;) and updated &lt;code&gt;interactionStatistic&lt;/code&gt; to document supported interaction types in the &lt;a href="https://developers.google.com/search/docs/appearance/structured-data/video"&gt;VideoObject structured data documentation&lt;/a&gt;.
-        &lt;/p&gt;&lt;p&gt;
-          &lt;b&gt;Why&lt;/b&gt;: To document support for the &lt;code&gt;creator&lt;/code&gt; and &lt;code&gt;author&lt;/code&gt; properties, and clarify supported interaction types for &lt;code&gt;interactionStatistic&lt;/code&gt; in VideoObject structured data.
-        &lt;/p&gt;</content>
-    <link href="https://developers.google.com/search/updates#september-2026" rel="alternate"/>
-    <category term="Search Central Docs"/>
-    <published>2026-09-24T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.google.com/static/search/images/home-social-share-lockup.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://developers.google.com/static/search/images/home-social-share-lockup.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://developers.google.com/static/search/images/home-social-share-lockup.jpg" type="image/jpeg" length="0"/>
   </entry>
 </feed>
