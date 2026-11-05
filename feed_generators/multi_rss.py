@@ -325,6 +325,12 @@ def generate_atom_feed(
             if tag:
                 fe.category(term=tag, label=tag)
         fe.description(article.get("description") or article["title"])
+        entry_author = article.get("author")
+        if isinstance(entry_author, str) and entry_author.strip():
+            fe.author({"name": entry_author.strip()})
+        for category in article.get("categories") or []:
+            if isinstance(category, str) and category.strip():
+                fe.category(term=category.strip(), label=category.strip())
         add_entry_media(
             fe,
             article.get("image"),
