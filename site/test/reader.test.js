@@ -5,6 +5,7 @@ import vm from "node:vm";
 
 const reader = await readFile(new URL("../reader.js", import.meta.url), "utf8");
 const utils = await readFile(new URL("../reader-fetch.js", import.meta.url), "utf8");
+const cache = await readFile(new URL("../reader-cache.js", import.meta.url), "utf8");
 
 class Element {
   children = [];
@@ -65,9 +66,10 @@ async function makeReader(feeds, entries, snapshotQuota = Infinity, initialStora
   });
   context.fetch = (...args) => window.fetch(...args);
   vm.runInContext(utils, context);
+  vm.runInContext(cache, context);
   vm.runInContext(reader, context);
   context.loadFeed = async feed => entries.get(feed.xmlUrl);
-  await vm.runInContext("run()", context);
+  await vm.runInContext("startupPromise", context);
   const articles = () => nodes.get("#list").children.filter(n => n.className === "item");
   const click = element => listeners.click({ target: element });
   const filter = source => {
@@ -426,4 +428,25 @@ test("oversized entry lists fail before materializing individual articles", asyn
     () => vm.runInContext('parseFeed("xml", "Large", "https://feed.test/large")', r.context),
     /entry limit/,
   );
+});
+
+test("refresh retains earlier articles from subscribed sources", async () => {
+  const { feeds, entries } = fixture([3, 1]);
+  const r = await makeReader(feeds, entries);
+  const old = entries.get(feeds[0].xmlUrl);
+  entries.set(feeds[0].xmlUrl, [{ ...old[2], id: "newer", title: "Newer", ts: 20000 }]);
+  await vm.runInContext("run()", r.context);
+  r.filter("Source 0");
+  assert.equal(r.articles().length, 4);
+  assert.equal(vm.runInContext("ITEMS.filter(i => i.source === 'Source 0').length", r.context), 4);
+  assert.equal(JSON.parse(r.storage.get("fs:snap")).items.length, 5);
+});
+
+test("unsubscribed sources are excluded from retained history", async () => {
+  const { feeds, entries } = fixture([2, 2]);
+  const r = await makeReader(feeds, entries);
+  vm.runInContext("overlay.removed.push('https://feed.test/0.xml')", r.context);
+  await vm.runInContext("run()", r.context);
+  assert.equal(vm.runInContext("ITEMS.length", r.context), 2);
+  assert.equal(JSON.parse(r.storage.get("fs:snap")).items.length, 2);
 });
