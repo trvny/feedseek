@@ -35,7 +35,7 @@ class GitHubPersonalTests(unittest.TestCase):
         self.assertNotEqual(opened["link"], merged["link"])
         self.assertEqual(merged["categories"], ["Pull request", "merged", "trvny/example"])
         self.assertEqual(merged["author"], "trvny")
-        self.assertTrue(merged["image"].startswith("https://avatars.githubusercontent.com"))
+        self.assertEqual(merged["image"], "https://avatars.githubusercontent.com/u/123?v=4")
         self.assertIn("Useful", merged["description"])
 
     def test_skips_pushes_closed_unmerged_prs_and_comments(self):
