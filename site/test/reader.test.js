@@ -549,10 +549,12 @@ test("foreign-only subscriptions refresh without requesting the local Model Feed
   assert.deepEqual(loaded, feeds.map(f => [f.xmlUrl, undefined]));
 });
 
-test("foreign feed loads while a local Model Feed catalog is still pending", async () => {
-  const local = { title: "Local", xmlUrl: "https://reader.test/feed_local.xml" };
+test("foreign feed loads while the first 12 local feeds wait for the catalog", async () => {
+  const localFeeds = Array.from({ length: 12 }, (_, i) => ({
+    title: "Local " + i, xmlUrl: "https://reader.test/feed_local_" + i + ".xml",
+  }));
   const foreign = { title: "Foreign", xmlUrl: "https://outside.test/rss.xml" };
-  const feeds = [local, foreign];
+  const feeds = [...localFeeds, foreign];
   const entries = new Map(feeds.map(f => [f.xmlUrl, [{
     id: f.title, source: f.title, feedUrl: f.xmlUrl,
     title: f.title, url: "https://article.test/" + f.title, ts: 1,
@@ -594,12 +596,16 @@ test("foreign feed loads while a local Model Feed catalog is still pending", asy
     clearTimeout(timer);
     resolveCatalog(new Response(JSON.stringify({
       format: "feedseek-model-feed-catalog", version: 1,
-      feeds: [{ feed_url: local.xmlUrl, model_feed_url: "https://reader.test/feed_local.json" }],
+      feeds: localFeeds.map((feed, i) => ({
+        feed_url: feed.xmlUrl, model_feed_url: "https://reader.test/feed_local_" + i + ".json",
+      })),
     })));
     await refresh;
   }
-  assert.deepEqual(loaded, [
+  assert.equal(loaded.length, 13);
+  assert.equal(loaded[0][0], foreign.xmlUrl);
+  assert.deepEqual(new Map(loaded), new Map([
     [foreign.xmlUrl, undefined],
-    [local.xmlUrl, "https://reader.test/feed_local.json"],
-  ]);
+    ...localFeeds.map((feed, i) => [feed.xmlUrl, "https://reader.test/feed_local_" + i + ".json"]),
+  ]));
 });

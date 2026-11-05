@@ -353,24 +353,29 @@ async function run(){
       return;
     }
 
-    // Foreign subscriptions must not wait for a catalog they cannot use.
+    // Queue foreign feeds first so local catalog waits never occupy every slot.
     const readerOrigin=new URL(document.baseURI).origin;
-    let catalogRequest;
-    const modelUrlFor=async feed=>{
-      if(new URL(feed.xmlUrl).origin!==readerOrigin) return undefined;
-      catalogRequest??=fetchText(
+    const jobs=feeds.map((feed,index)=>({
+      feed,index,local:new URL(feed.xmlUrl).origin===readerOrigin,
+    }));
+    const catalogRequest=jobs.some(job=>job.local)
+      ? fetchText(
         new URL('../model-feeds.json',document.baseURI).href,
         {cache:'no-cache',signal:controller.signal},
         MODEL_CATALOG_TIMEOUT_MS,
       ).then(text=>window.FeedseekReaderUtils.modelFeedUrls(JSON.parse(text),document.baseURI))
-        .catch(()=>new Map());
-      return (await catalogRequest).get(feed.xmlUrl);
-    };
+        .catch(()=>new Map())
+      : Promise.resolve(new Map());
+    jobs.sort((a,b)=>Number(a.local)-Number(b.local));
     let done=0;
-    const results=await window.FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
-      try{ return await loadFeed(f,controller.signal,await modelUrlFor(f)); }
-      finally{ done++; setProgress(done,feeds.length,version); }
+    const settled=await window.FeedseekReaderUtils.allSettledLimited(jobs,FEED_CONCURRENCY,async job=>{
+      try{
+        const modelUrl=job.local?(await catalogRequest).get(job.feed.xmlUrl):undefined;
+        return await loadFeed(job.feed,controller.signal,modelUrl);
+      }finally{ done++; setProgress(done,feeds.length,version); }
     });
+    const results=new Array(feeds.length);
+    jobs.forEach((job,i)=>{ results[job.index]=settled[i]; });
     if(version!==runVersion || controller.signal.aborted) return;
 
     const merged=window.FeedseekReaderUtils.mergeRefreshResults(feeds,results,ITEMS);
