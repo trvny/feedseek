@@ -30,6 +30,16 @@ class CheckoutScopeTests(unittest.TestCase):
         self.assertNotIn("git merge-base", workflow)
         self.assertIn("github.event.pull_request.head.sha || github.sha", workflow)
 
+    def test_pr_bootstrap_includes_missing_main_branch_feeds(self):
+        """PR validation must not race a newly merged feed's first snapshot."""
+        workflow = self.workflow("mega-linter.yml")
+        bootstrap = workflow.split("- name: Bootstrap missing feed artifacts", 1)[1]
+        bootstrap = bootstrap.split("- name: Validate feed artifacts", 1)[0]
+        self.assertIn("for name, config in load_feed_registry().items():", bootstrap)
+        self.assertIn("not xml.exists() or not sidecar.exists()", bootstrap)
+        self.assertIn("run_feed(name, config, full=True)", bootstrap)
+        self.assertNotIn("name in previous", bootstrap)
+
     def checkout_options(self, name: str) -> dict:
         workflow = yaml.safe_load(self.workflow(name))
         checkouts = [
