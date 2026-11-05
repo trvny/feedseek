@@ -6,6 +6,7 @@ permalinks and available media rather than guessing publication dates.
 import argparse
 import re
 import sys
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup
@@ -22,23 +23,31 @@ SITES = (
     ("Kwejk.pl", KWEJK_URL, re.compile(r"^/obrazek/\d+/[^/]+\.html$")),
 )
 MAX_PER_SITE = 25
-_IMAGE_KEYS = ("data-original", "data-src", "data-lazy-src", "src", "poster")
+_IMAGE_KEYS = ("data-original", "data-src", "data-lazy-src", "src")
 
 
 def _image(card, base):
     """First usable attached image, ignoring empty placeholders and data URIs."""
     for img in card.select("picture source, img, video"):
-        candidates = [
+        if img.name == "source" and (img.get("type") or "").startswith("video/"):
+            continue
+        candidates = ([img.get("poster")] if img.name == "video" else [
             img.get(key) for key in _IMAGE_KEYS
-        ] + [img.get("srcset"), img.get("data-srcset")]
+        ] + [img.get("srcset"), img.get("data-srcset")])
         for raw in candidates:
             if not raw:
                 continue
             candidate = str(raw).split(",", 1)[0].strip().split(" ", 1)[0]
             if not candidate or candidate.startswith(("data:", "blob:")):
                 continue
-            url = urljoin(base, candidate)
-            if urlsplit(url).scheme == "https":
+            try:
+                url = urljoin(base, candidate)
+                parts = urlsplit(url)
+            except ValueError:
+                continue
+            if parts.scheme == "https" and not parts.path.lower().endswith(
+                (".mp4", ".webm", ".mov", ".m3u8")
+            ):
                 return url
     return None
 
@@ -63,8 +72,11 @@ def parse_listing(html, label, base, path_pattern, known_links):
     seen = set()
     for anchor in soup.select("a[href]"):
         raw = anchor.get("href", "")
-        url = urljoin(base, raw)
-        parts = urlsplit(url)
+        try:
+            url = urljoin(base, raw)
+            parts = urlsplit(url)
+        except ValueError:
+            continue
         if parts.scheme != "https" or parts.netloc.lower() not in {
             urlsplit(base).netloc, "www." + urlsplit(base).netloc
         }:
@@ -103,10 +115,22 @@ def parse_listing(html, label, base, path_pattern, known_links):
 def scrape_meme_sites(known_links):
     entries = []
     for label, url, pattern in SITES:
-        html = get_html(url)
-        if not html:
+        try:
+            html = get_html(url)
+            if not html:
+                continue
+            found = parse_listing(html, label, url, pattern, known_links)
+        except (ValueError, TypeError) as exc:
+            from multi_rss import logger
+            logger.warning("Could not parse %s: %s", label, exc)
             continue
-        entries.extend(parse_listing(html, label, url, pattern, known_links))
+        first_seen = datetime.now(timezone.utc)
+        for index, entry in enumerate(found):
+            if entry["date"] is None:
+                # Order the listing newest-first without claiming upload dates.
+                entry["date"] = first_seen - timedelta(seconds=index)
+                entry["date_kind"] = "first_seen"
+        entries.extend(found)
     return entries
 
 
@@ -123,7 +147,7 @@ def main(full=False):
         author="Memy.pl · Jeja.pl · Kwejk.pl",
         extra_scrapers=[scrape_meme_sites],
         max_entries=300,
-        per_source_cap={"": 100},
+        per_source_cap={label: 100 for label, _, _ in SITES},
         language="pl",
         dedupe_title_field=None,
         full=full,

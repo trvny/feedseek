@@ -332,7 +332,12 @@ def generate_atom_feed(
             height=article.get("image_height"),
         )
         if article.get("date"):
-            fe.published(article["date"])
+            # Discovery time can supply required Atom updated without inventing
+            # an upstream publication date. Model Feed then has no published_at.
+            if article.get("date_kind") != "first_seen":
+                fe.published(article["date"])
+            else:
+                fe.category(term="first-seen", label="First seen")
             fe.updated(article["date"])
 
     logger.info("Generated Atom feed")
