@@ -96,9 +96,14 @@
       tx.onabort = () => reject(tx.error || new Error("IndexedDB transaction aborted"));
       tx.onerror = () => reject(tx.error || new Error("IndexedDB transaction failed"));
       const store = tx.objectStore(STORE);
-      store.clear();
-      for (const item of snapshot) {
-        store.put({ key: entryKey(item), ts: Number(item.ts) || 0, item });
+      try {
+        store.clear();
+        for (const item of snapshot) {
+          store.put({ key: entryKey(item), ts: Number(item.ts) || 0, item });
+        }
+      } catch (error) {
+        tx.abort();
+        reject(error);
       }
     });
   }
