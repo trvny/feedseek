@@ -68,7 +68,8 @@ class MemeAggregateTests(unittest.TestCase):
     def test_first_seen_is_updated_not_fake_published(self):
         from multi_rss import generate_atom_feed
         with patch.object(memy, "get_html", side_effect=[
-            '<article><h2><a href="/mem/1/new">New</a></h2></article>', None, None,
+            '<article><h2><a href="/mem/1/new">New</a></h2>'
+            '<img src="https://memy.pl/image/1.jpg"></article>', None, None,
         ]):
             items = memy.scrape_meme_sites(set())
         self.assertEqual(items[0]["date_kind"], "first_seen")
@@ -79,6 +80,8 @@ class MemeAggregateTests(unittest.TestCase):
         self.assertIn("<updated>", xml)
         self.assertNotIn("<published>", xml)
         self.assertIn("first-seen", xml)
+        self.assertIn("media:thumbnail", xml)
+        self.assertIn("https://memy.pl/image/1.jpg", xml)
 
     def test_pipeline_exports_atom_and_mrss_images(self):
         with patch.object(memy, "run", return_value=True) as run:
