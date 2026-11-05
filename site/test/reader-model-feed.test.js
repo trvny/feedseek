@@ -109,3 +109,13 @@ test("broken publication timestamps fall back to modification date", () => {
   const [item] = parseModelFeed(JSON.stringify(input), subscription, jsonUrl);
   assert.equal(item.ts, Date.parse("2026-11-04T08:00:00Z"));
 });
+
+test("Reader preview remains bounded while public Model Feed retains full text", () => {
+  const { parseModelFeed } = utils();
+  const body = "word ".repeat(2000);
+  const input = document([{ id: "huge", title: "Huge", text: body,
+    text_kind: "content", url: "https://example.test/huge" }]);
+  const [item] = parseModelFeed(JSON.stringify(input), subscription, jsonUrl);
+  assert.equal(item.desc.length, 2048);
+  assert.equal(input.items[0].text.length, body.length);
+});
