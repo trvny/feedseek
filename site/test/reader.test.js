@@ -523,7 +523,7 @@ test("Reader selects JSON only for same-origin feeds in published catalog", asyn
     return entries.get(feed.xmlUrl);
   };
   await vm.runInContext("run()", r.context);
-  assert.deepEqual(calls, [[xmlUrl, jsonUrl], [foreign, undefined]]);
+  assert.deepEqual(new Map(calls), new Map([[xmlUrl, jsonUrl], [foreign, undefined]]));
 });
 
 
@@ -546,7 +546,7 @@ test("foreign-only subscriptions refresh without requesting the local Model Feed
   };
   await vm.runInContext("run()", r.context);
   assert.deepEqual(calls, ["https://reader.test/subscriptions.opml"]);
-  assert.deepEqual(loaded, feeds.map(f => [f.xmlUrl, ""]));
+  assert.deepEqual(loaded, feeds.map(f => [f.xmlUrl, undefined]));
 });
 
 test("foreign feed loads while a local Model Feed catalog is still pending", async () => {
@@ -589,7 +589,7 @@ test("foreign feed loads while a local Model Feed catalog is still pending", asy
       }),
     ]);
     assert.equal(catalogCalls, 1);
-    assert.deepEqual(loaded, [[foreign.xmlUrl, ""]]);
+    assert.deepEqual(loaded, [[foreign.xmlUrl, undefined]]);
   } finally {
     clearTimeout(timer);
     resolveCatalog(new Response(JSON.stringify({
@@ -599,7 +599,7 @@ test("foreign feed loads while a local Model Feed catalog is still pending", asy
     await refresh;
   }
   assert.deepEqual(loaded, [
-    [foreign.xmlUrl, ""],
+    [foreign.xmlUrl, undefined],
     [local.xmlUrl, "https://reader.test/feed_local.json"],
   ]);
 });

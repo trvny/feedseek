@@ -357,14 +357,14 @@ async function run(){
     const readerOrigin=new URL(document.baseURI).origin;
     let catalogRequest;
     const modelUrlFor=async feed=>{
-      if(new URL(feed.xmlUrl).origin!==readerOrigin) return '';
+      if(new URL(feed.xmlUrl).origin!==readerOrigin) return undefined;
       catalogRequest??=fetchText(
         new URL('../model-feeds.json',document.baseURI).href,
         {cache:'no-cache',signal:controller.signal},
         MODEL_CATALOG_TIMEOUT_MS,
       ).then(text=>window.FeedseekReaderUtils.modelFeedUrls(JSON.parse(text),document.baseURI))
         .catch(()=>new Map());
-      return (await catalogRequest).get(feed.xmlUrl)||'';
+      return (await catalogRequest).get(feed.xmlUrl);
     };
     let done=0;
     const results=await window.FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
