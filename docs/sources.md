@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-113 feedów · 931 źródeł
+114 feedów · 934 źródła
 
 ## Spis grup
 
@@ -885,6 +885,13 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 `memedroid` · [feed_memedroid.xml](../feeds/feed_memedroid.xml)
 
 - ![](https://www.google.com/s2/favicons?domain=www.memedroid.com&sz=16) Home — <https://www.memedroid.com/>
+
+### ![](https://www.google.com/s2/favicons?domain=memy.pl&sz=16) Memy
+`memy` · [feed_memy.xml](../feeds/feed_memy.xml)
+
+- ![](https://www.google.com/s2/favicons?domain=memy.pl&sz=16) Memy.pl — <https://memy.pl/>
+- ![](https://www.google.com/s2/favicons?domain=memy.jeja.pl&sz=16) Jeja.pl — <https://memy.jeja.pl/>
+- ![](https://www.google.com/s2/favicons?domain=kwejk.pl&sz=16) Kwejk.pl — <https://kwejk.pl/>
 
 ### ![](https://www.google.com/s2/favicons?domain=9gag.com&sz=16) 9GAG
 `9gag` · [feed_9gag.xml](../feeds/feed_9gag.xml)

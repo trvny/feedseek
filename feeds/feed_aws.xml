@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-11-04T22:56:06.167453+00:00</updated>
+  <updated>2026-11-05T09:36:56.927517+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,66 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/6ac0422ae708e1cf</id>
+    <title>Resolve "redirect_uri_mismatch" when you authorize an AWS Glue Salesforce OAuth connection with AWS Management Console multi-session support turned on</title>
+    <updated>2026-11-05T08:50:30.935000+00:00</updated>
+    <content>With AWS Management Console multi-session support turned on, authorizing an AWS Glue Salesforce connection (OAuth 2.0 Authorization Code flow) sends the redirect URI https://3rdp.oauth.console.api.aws instead of the regional gluestudio/oauth URL. If only the regional callback URL is registered in the Salesforce Connected App, Salesforce returns redirect_uri_mismatch. This article explains the cause and how to fix it by registering both callback URLs.</content>
+    <link href="https://repost.aws/articles/AROAVrcWgyRaC1MCSmVpDBtg/resolve-redirect-uri-mismatch-when-you-authorize-an-aws-glue-salesforce-oauth-connection-with-aws-management-console-multi-session-support-turned-on" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T08:50:30.935000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/1bc1fa2a5cd8b120</id>
+    <title>How do I set up write access for an Amazon Redshift datashare across warehouses?</title>
+    <updated>2026-11-05T07:35:58.272000+00:00</updated>
+    <content>This article provides guidance on setting up write access for Amazon Redshift datashares, granting INSERT, UPDATE, and DELETE permissions to consumers, and troubleshooting common errors for same-account and cross-account data sharing between Amazon Redshift provisioned clusters and Amazon Redshift Serverless workgroups.</content>
+    <link href="https://repost.aws/articles/ARB-DA4XccSfGJPbWS6g3G7g/how-do-i-set-up-write-access-for-an-amazon-redshift-datashare-across-warehouses" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T07:35:58.272000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/dd880bd70c4bb465</id>
+    <title>How do I fix cross-Region Iceberg reads in AWS Glue 5.0 jobs that use Lake Formation fine-grained access control?</title>
+    <updated>2026-11-05T06:36:15.029000+00:00</updated>
+    <content>AWS Glue 5.0 jobs with Lake Formation fine-grained access control (FGAC) fail when they read an Apache Iceberg table in another AWS Region, with "Iceberg client.region and aws.region cannot be different" or "Spark FGAC experienced an internal error". This article shows the configuration that works.</content>
+    <link href="https://repost.aws/articles/ARubsnTLDeRfuTI-s0nOtctg/how-do-i-fix-cross-region-iceberg-reads-in-aws-glue-5-0-jobs-that-use-lake-formation-fine-grained-access-control" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-05T06:36:15.029000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/096a6a1486b3f6c3</id>
+    <title>Amazon S3 Tables now offer managed migration of Apache Hive tables to Apache Iceberg</title>
+    <updated>2026-11-04T23:34:52+00:00</updated>
+    <content>You can now migrate existing Apache Hive datasets in Amazon S3 to fully managed Apache Iceberg tables in Amazon S3 Tables, with no pipelines to build or compute to provision, while production workloads keep running.</content>
+    <link href="https://aws.amazon.com/blogs/aws/amazon-s3-tables-now-offer-managed-migration-of-apache-hive-tables-to-apache-iceberg/" rel="alternate"/>
+    <category term="AWS News Blog" label="AWS News Blog"/>
+    <published>2026-11-04T23:34:52+00:00</published>
+    <media:group>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/20/2026-s3-tables-hive-to-iceberg-1.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/20/2026-s3-tables-hive-to-iceberg-1.jpg"/>
+    </media:group>
+    <dc:creator>AWS News Blog</dc:creator>
+    <link rel="enclosure" href="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/09/20/2026-s3-tables-hive-to-iceberg-1.jpg" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/41a61d92beec3501</id>
     <title>Replacing legacy EDI middleware, Part 1: convert X12 to fixed-width flat files with AWS B2B Data Interchange and AWS Glue</title>
@@ -153,6 +213,16 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/e07d91c7544dd092</id>
+    <title>Amazon S3 Tables now provide a simple, cost-effective path for data lake modernization</title>
+    <updated>2026-11-04T08:00:00+00:00</updated>
+    <content>Amazon S3 Tables now offer managed migration of your Apache Hive tables to Apache Iceberg. Iceberg adds ACID transactions, schema evolution, and time travel to your data lake, but moving off Hive usually means building a migration pipeline for each table, which can take weeks. You can now let S3 Tables manage your migration, resulting in query-ready Iceberg tables that stay optimized as data grows. S3 Tables validate, convert, and copy your data while production workloads keep running. To lower </content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-s3-tables-managed-migration-hive-to-iceberg/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-04T08:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/cd2ead90f83096b1</id>
@@ -1743,16 +1813,6 @@ post-quantum key establishment.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/033ceabe23dca034</id>
-    <title>Amazon OpenSearch Service introduces intelligent ingestion for logs and documents in Amazon S3</title>
-    <updated>2026-10-22T20:54:00+00:00</updated>
-    <content>Amazon OpenSearch Serverless now offers intelligent ingestion, a fully managed feature that turns logs and documents stored in Amazon S3 into searchable content in Amazon OpenSearch Serverless (NextGen) collections . With intelligent ingestion, you can set up ingestion with a few clicks in the AWS Management Console or a single API call, with no ingestion infrastructure to manage. Intelligent ingestion supports observability logs and structured data in JSON, NDJSON, and JSON array formats, and u</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-opensearch-intelligent-ingestion-logs-documents-s3" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-22T20:54:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/f45aa9c83d4e6cca</id>
     <title>AWS Continuum for code vulnerabilities is now generally available</title>
     <updated>2026-10-22T20:33:10+00:00</updated>
@@ -2520,21 +2580,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/febf5e4a538ac0f5</id>
-    <title>Why aren't my failed Lambda asynchronous invocation events reaching my on-failure destination or dead-letter queue?</title>
-    <updated>2026-10-09T19:07:24.656000+00:00</updated>
-    <content>I configured an on-failure destination, an on-success destination, or a dead-letter queue (DLQ) for my AWS Lambda function that's invoked asynchronously. Records don't arrive, records arrive that I don't expect, or I see the DestinationDeliveryFailures, DeadLetterErrors, or AsyncEventsDropped metric in Amazon CloudWatch.</content>
-    <link href="https://repost.aws/articles/ARuvuaND0aS_Wq2gvhFv3I0w/why-aren-t-my-failed-lambda-asynchronous-invocation-events-reaching-my-on-failure-destination-or-dead-letter-queue" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-09T19:07:24.656000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/7f3f84cf216fbe98</id>
     <title>AWS CLI 2.37.12</title>
     <updated>2026-10-09T18:09:23+00:00</updated>
@@ -2548,36 +2593,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/250b03c37257dc59654366063da7387acbc31da6d10e4eafe7d2cf307d02331e/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/1b710e2ffa1659e8</id>
-    <title>AWS Backup pricing and billing FAQ: 16 common questions answered</title>
-    <updated>2026-10-09T11:37:17.431000+00:00</updated>
-    <content>This FAQ answers 16 common questions about AWS Backup pricing and billing, including where charges appear, how to see cost by vault and plan, who pays for cross-account and cross-Region copies, why charges continue after deletion, and why daily costs look higher in February. Each answer links to current AWS documentation.</content>
-    <link href="https://repost.aws/articles/ARPHqTIOjGS3yHOgOcnsoYzQ/aws-backup-pricing-and-billing-faq-16-common-questions-answered" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-09T11:37:17.431000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/d5768e2be68470f4</id>
-    <title>How do I overcome API Gateway Integration Timeout Constraints with Response Streaming</title>
-    <updated>2026-10-09T03:36:32.523000+00:00</updated>
-    <content>I want to Configure response streaming Amazon API Gateway REST API to avoid the 29-second integration timeout constraint and support backend operations for up to 15 minutes.</content>
-    <link href="https://repost.aws/articles/ARMM7uZe_5S0ywxn3TPbE1HA/how-do-i-overcome-api-gateway-integration-timeout-constraints-with-response-streaming" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-09T03:36:32.523000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/6f150b39305ea8d9</id>

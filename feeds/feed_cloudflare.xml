@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-04T22:56:20.596944+00:00</updated>
+  <updated>2026-11-05T09:37:07.923820+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -108,6 +108,21 @@
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-04-private-lb-session-affinity/og.png?v=e8bc822ff4652562" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/ca0a0dbee0394a1b</id>
+    <title>Cloudflare Network Firewall - New managed rule to help mitigate CVE-2026-98432.</title>
+    <updated>2026-11-04T00:00:00+00:00</updated>
+    <content>Cloudflare Network Firewall has a new managed rule to help mitigate the Linux IPv4 TCP use-after-free vulnerability ( CVE-2026-98432 ↗︎ ): Rule name: Block CVE-2026-98432 traffic Rule ID: 6a4df2bf984946a88c74b07349557e83 The rule is disabled by default . To use it: Go to Networking &gt; Firewall Policies &gt; Managed Rulesets . Enable the rule with action Log first. Review traffic that matches the rule. If the matching traffic is not expected for your environment, change the action to Block . For more</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-04-cve-2026-98432-managed-rule/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-04T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-04-cve-2026-98432-managed-rule/og.png?v=44413efb3b86ea8f" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-04-cve-2026-98432-managed-rule/og.png?v=44413efb3b86ea8f"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-04-cve-2026-98432-managed-rule/og.png?v=44413efb3b86ea8f" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/58789cad42d8ee7e</id>
@@ -1237,22 +1252,6 @@ We have identified the cause as a capacity problem in a shared internal data pip
     <category term="Cloudflare Status" label="Cloudflare Status"/>
     <published>2026-10-23T00:09:09+00:00</published>
     <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/1bc9b372f3c81ee9</id>
-    <title>D1 - D1 database undelete requests limited to the last 7 days</title>
-    <updated>2026-10-23T00:00:00+00:00</updated>
-    <content>The D1 undelete API now only accepts requests for databases that were deleted within the last 7 days.
-Requests to undelete a database that was deleted more than 7 days ago will fail and return an error. If you delete a D1 database by mistake, send the undelete request as soon as possible, and no later than 7 days after deletion. For more information, refer to the undelete D1 database API reference .</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-23T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/og.png?v=50896c05e5cb708f" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/583e63756885b8b9</id>
