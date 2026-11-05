@@ -312,12 +312,6 @@ async function run(){
   if(activeRun) activeRun.abort();
   const controller=new AbortController();
   activeRun=controller;
-  const catalogRequest=fetchText(
-    new URL('../model-feeds.json',document.baseURI).href,
-    {cache:'no-cache',signal:controller.signal},
-    MODEL_CATALOG_TIMEOUT_MS,
-  ).then(text=>window.FeedseekReaderUtils.modelFeedUrls(JSON.parse(text),document.baseURI))
-    .catch(()=>new Map());
   STATUS_ERROR='';
   $('#refresh').disabled=true;
   $('#refresh').setAttribute('aria-busy','true');
@@ -359,11 +353,22 @@ async function run(){
       return;
     }
 
-    const modelUrls=await catalogRequest;
-    if(version!==runVersion || controller.signal.aborted) return;
+    // Foreign subscriptions must not wait for a catalog they cannot use.
+    const readerOrigin=new URL(document.baseURI).origin;
+    let catalogRequest;
+    const modelUrlFor=async feed=>{
+      if(new URL(feed.xmlUrl).origin!==readerOrigin) return '';
+      catalogRequest??=fetchText(
+        new URL('../model-feeds.json',document.baseURI).href,
+        {cache:'no-cache',signal:controller.signal},
+        MODEL_CATALOG_TIMEOUT_MS,
+      ).then(text=>window.FeedseekReaderUtils.modelFeedUrls(JSON.parse(text),document.baseURI))
+        .catch(()=>new Map());
+      return (await catalogRequest).get(feed.xmlUrl)||'';
+    };
     let done=0;
     const results=await window.FeedseekReaderUtils.allSettledLimited(feeds,FEED_CONCURRENCY,async f=>{
-      try{ return await loadFeed(f,controller.signal,modelUrls.get(f.xmlUrl)); }
+      try{ return await loadFeed(f,controller.signal,await modelUrlFor(f)); }
       finally{ done++; setProgress(done,feeds.length,version); }
     });
     if(version!==runVersion || controller.signal.aborted) return;

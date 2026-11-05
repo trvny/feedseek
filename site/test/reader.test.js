@@ -525,3 +525,81 @@ test("Reader selects JSON only for same-origin feeds in published catalog", asyn
   await vm.runInContext("run()", r.context);
   assert.deepEqual(calls, [[xmlUrl, jsonUrl], [foreign, undefined]]);
 });
+
+
+test("foreign-only subscriptions refresh without requesting the local Model Feed catalog", async () => {
+  const { feeds, entries } = fixture([2, 1]);
+  const r = await makeReader(feeds, entries);
+  const calls = [];
+  const opml = '<opml><body>' + feeds.map(f =>
+    '<outline title="' + f.title + '" xmlUrl="' + f.xmlUrl + '"/>'
+  ).join("") + '</body></opml>';
+  r.context.fetch = async url => {
+    calls.push(url);
+    if (url.endsWith("model-feeds.json")) throw new Error("catalog must not be requested");
+    return new Response(opml);
+  };
+  const loaded = [];
+  r.context.loadFeed = async (feed, _signal, modelUrl) => {
+    loaded.push([feed.xmlUrl, modelUrl]);
+    return entries.get(feed.xmlUrl);
+  };
+  await vm.runInContext("run()", r.context);
+  assert.deepEqual(calls, ["https://reader.test/subscriptions.opml"]);
+  assert.deepEqual(loaded, feeds.map(f => [f.xmlUrl, ""]));
+});
+
+test("foreign feed loads while a local Model Feed catalog is still pending", async () => {
+  const local = { title: "Local", xmlUrl: "https://reader.test/feed_local.xml" };
+  const foreign = { title: "Foreign", xmlUrl: "https://outside.test/rss.xml" };
+  const feeds = [local, foreign];
+  const entries = new Map(feeds.map(f => [f.xmlUrl, [{
+    id: f.title, source: f.title, feedUrl: f.xmlUrl,
+    title: f.title, url: "https://article.test/" + f.title, ts: 1,
+  }]]));
+  const r = await makeReader(feeds, entries);
+  const opml = '<opml><body>' + feeds.map(f =>
+    '<outline title="' + f.title + '" xmlUrl="' + f.xmlUrl + '"/>'
+  ).join("") + '</body></opml>';
+  let resolveCatalog;
+  const pendingCatalog = new Promise(resolve => { resolveCatalog = resolve; });
+  let catalogCalls = 0;
+  r.context.fetch = async url => {
+    if (url === "https://reader.test/model-feeds.json") {
+      catalogCalls++;
+      return pendingCatalog;
+    }
+    return new Response(opml);
+  };
+  let foreignStarted;
+  const foreignRead = new Promise(resolve => { foreignStarted = resolve; });
+  const loaded = [];
+  r.context.loadFeed = async (feed, _signal, modelUrl) => {
+    loaded.push([feed.xmlUrl, modelUrl]);
+    if (feed.xmlUrl === foreign.xmlUrl) foreignStarted();
+    return entries.get(feed.xmlUrl);
+  };
+  const refresh = vm.runInContext("run()", r.context);
+  let timer;
+  try {
+    await Promise.race([
+      foreignRead,
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error("foreign feed blocked by catalog")), 1000);
+      }),
+    ]);
+    assert.equal(catalogCalls, 1);
+    assert.deepEqual(loaded, [[foreign.xmlUrl, ""]]);
+  } finally {
+    clearTimeout(timer);
+    resolveCatalog(new Response(JSON.stringify({
+      format: "feedseek-model-feed-catalog", version: 1,
+      feeds: [{ feed_url: local.xmlUrl, model_feed_url: "https://reader.test/feed_local.json" }],
+    })));
+    await refresh;
+  }
+  assert.deepEqual(loaded, [
+    [foreign.xmlUrl, ""],
+    [local.xmlUrl, "https://reader.test/feed_local.json"],
+  ]);
+});
