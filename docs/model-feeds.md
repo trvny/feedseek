@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-115 Model Feeds · 25677 entries.
+115 Model Feeds · 25684 entries.
 
 ## Access
 
@@ -51,12 +51,12 @@
 | `euronews` | Euronews | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_euronews.json) |
 | `europa` | Europa | 350 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_europa.json) |
 | `ffmpeg` | FFmpeg | 62 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ffmpeg.json) |
-| `figma` | Figma | 173 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
+| `figma` | Figma | 174 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_figma.json) |
 | `foobar2000` | foobar2000 | 406 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foobar2000.json) |
 | `foundry` | Foundry | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_geopolitics.json) |
 | `github` | GitHub | 400 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_github.json) |
-| `github_personal` | trvny + travnie · GitHub | 12 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_github_personal.json) |
+| `github_personal` | trvny + travnie · GitHub | 13 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_github_personal.json) |
 | `gitlab` | GitLab | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_gitlab.json) |
 | `gog` | GOG | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_gog.json) |
 | `google` | Google Blogs | 500 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_google.json) |
@@ -73,7 +73,7 @@
 | `lichess` | Lichess | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_lichess.json) |
 | `medium` | Medium | 200 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_medium.json) |
 | `memedroid` | Memedroid | 150 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_memedroid.json) |
-| `memy` | Memy | 75 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_memy.json) |
+| `memy` | Memy | 79 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_memy.json) |
 | `meta_newsroom` | Meta Newsroom | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_meta_newsroom.json) |
 | `microsoft` | Microsoft | 375 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_microsoft_updates.json) |
@@ -114,7 +114,7 @@
 | `theysaidso` | Quotes, Sayings and Jokes of the Day | 300 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_theysaidso.json) |
 | `tiktok` | TikTok | 13 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tiktok.json) |
 | `toyota_global` | Toyota Global | 100 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_toyota_global.json) |
-| `trojka` | PR3 Trójka | 1878 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
+| `trojka` | PR3 Trójka | 1879 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_trojka.json) |
 | `tvp` | TVP | 275 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_tvp.json) |
 | `uber` | Uber Newsroom | 87 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_uber.json) |
 | `ubuntu` | Ubuntu | 144 | [JSON](https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_ubuntu.json) |
