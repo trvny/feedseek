@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.google/</id>
   <title>Google Blogs</title>
-  <updated>2026-11-06T12:25:11.525888+00:00</updated>
+  <updated>2026-11-06T19:40:37.202218+00:00</updated>
   <author>
     <name>Google</name>
   </author>
@@ -14,6 +14,830 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.google&amp;sz=64</webfeeds:icon>
   <subtitle>Combined feed of Google's official blogs (The Keyword, Developers, Android, Chrome, Research, DeepMind, Cloud, and more)</subtitle>
+  <entry>
+    <id>https://cloud.google.com/blog/products/compute/storage-optimized-z4m-machine-series-are-ga</id>
+    <title>Introducing Z4M: storage-optimized compute for AI/ML and parallel file systems</title>
+    <updated>2026-11-06T17:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we’re excited to announce the general availability of our next-generation &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/storage-optimized-machines"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Storage-optimized Z4M machine&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; series in Google Compute Engine, available as both Virtual Machine (VM) and bare-metal instances. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We built Z4M to provide storage for AI/ML training and inference workloads such as checkpointing, distributed key-value (KV) cache and parallel file systems — workloads that handle huge data volumes and require massive parallel data processing, as well as high storage and networking throughput. Low latency access to data is equally critical to keep GPUs and TPUs fully utilized. Powered by the fifth-generation Intel Xeon Scalable processors and paired with the latest enhancements in &lt;/span&gt;&lt;a href="https://cloud.google.com/titanium?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Titanium&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Z4M provides up to 168,000 GiB of Local SSD (LSSD) storage coupled with up to 400 Gbps of Cloud Remote Direct Memory Access (RDMA) networking. RDMA improves the performance of these demanding workloads by reducing data-access latency by up to 60% compared to TCP networking, so you can increase your applications’ throughput while right-sizing your cloud investment. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Z4M VMs and bare-metal instances&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The Z4M VM portfolio lets you scale your infrastructure and clusters to meet workload requirements by providing a large total LSSD capacity as well as 875 GiB of LSSD capacity per vCPU. Further, Z4M bare-metal instances give you direct access to the physical hardware without a virtualization layer, reducing latency for workloads such as custom hypervisors and workloads with specific licensing needs. Z4M bare-metal instances are also ideal for agentic AI workloads, enabling developers to run isolated sandboxes at scale, including with Agent Substrate. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In addition to 168,000 GiB of LSSD storage, Z4M VMs and bare metal instances offer up to 192 vCPUs and up to 1,536 GiB of memory for at-scale data processing. Z4M instances are based on &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/local-ssd"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Titanium SSDs&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, which &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;offload local storage processing from CPU resources&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; to deliver real-time data processing, low-latency, high-throughput storage performance and &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;enhanced storage security. Z4M delivers up to 15.6M random-read IOPS and up to 75,600 MiB/s sequential-read throughput, improving the LSSD storage performance and throughput compared to Z3 by up to 70% and 110% respectively. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Cloud RDMA and direct storage access &lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Z4M provides low-latency access to the storage layer using 400 Gbps of&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;a href="https://docs.cloud.google.com/vpc/docs/rdma-network-profiles"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;RDMA&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;-enabled standard networking.This helps keep GPUs and TPUs fully utilized even when processing large multimodal datasets, by transferring massive amounts of data at line rate using &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/topics/ai-infrastructure/google-cloud-infrastructure-at-nvidia-gtc-berlin-2026?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;NVIDIA GPUDirect Storage&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; and &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive?e=48754805"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TPUDirect Storage&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. At the same time, Z4M transfers data at full line rate while processing data locally, with a balanced-LSSD-to-networking-throughput ratio of 1.4:1. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Built for demanding workloads&lt;/strong&gt;&lt;/h3&gt;
+&lt;div align="left"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;
+&lt;div style="color: #5f6368; width: 100%;"&gt;&lt;table&gt;&lt;colgroup&gt;&lt;col /&gt;&lt;col /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p style="text-align: center;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Workload Category&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p style="text-align: center;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Typical Applications&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;th scope="col" style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p style="text-align: center;"&gt;&lt;strong style="vertical-align: baseline;"&gt;Z4M Benefits&lt;/strong&gt;&lt;/p&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;AIML training and inference&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Checkpointing, distributed Key-Value cache &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Large LSSD capacity paired with 400 Gbps low-latency RDMA network that supports GPUDirect Storage and TPUDirect Storage, keeping GPUs and TPUs fully utilized  even when processing large multimodal datasets.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/marketplace?utm_source=google&amp;amp;utm_medium=cpc&amp;amp;utm_campaign=Cloud-SS-DR-GCP-1713658-GCP-DR-NA-US-en-Google-BKWS-BRO-appmod&amp;amp;utm_content=c-Hybrid+%7C+BKWS+-+BRO+%7C+Txt-AppMod-Other-Google+Cloud+Marketplace-576266368948&amp;amp;utm_term=gcp+marketplace&amp;amp;gclsrc=aw.ds&amp;amp;gad_source=1&amp;amp;gad_campaignid=23754999107&amp;amp;gclid=CjwKCAiAqabXBhBUEiwAw_SQpSHFGaVTPbIKkxVeOdNM9k3i9zbAQZJ6JPQ7bf1AlnmUkq4wE7UMqxoCFDsQAvD_BwE&amp;amp;e=48754805"&gt;&lt;strong style="text-decoration: underline; vertical-align: baseline;"&gt;Parallel file systems&lt;/strong&gt;&lt;/a&gt;&lt;strong style="vertical-align: baseline;"&gt; and Enterprise-class storage&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Weka, Sycomp, Silk, VDURA&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Very high vCPU:LSSD ratio of 1:875 combined with a balanced LSSD:networking throughput of 1.4: to improve applications’ performance by processing data locally while transferring data to clients at full line rate.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Business-critical enterprise Databases&lt;/strong&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;SQL, NoSQL, Vector DBs, data search &lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;td style="vertical-align: middle; border: 1px solid #000000; padding: 16px;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Sustained LSSD high I/O performance and throughput to sustain a large number of transactions per second.&lt;/span&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;What customers and partners are saying&lt;/strong&gt;&lt;/h3&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="nutanix" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/nutanix_CyX4UCq.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;"Nutanix is committed to helping organizations run their applications and data anywhere. Bringing Nutanix Cloud Clusters (NC2) to Google Cloud's new Z4M metal instances reflects that mission and our continued partnership with Google Cloud. By combining Z4M’s exceptional I/O performance and high storage density along with Intel’s advanced compute and AMX-driven efficiency, NC2 on Z4M provides the scale, density, and performance required to power everything from dense VDI clusters to demanding, data-intensive AI workloads."&lt;/i&gt; &lt;b&gt;- Saveen Pakala, Vice President of Product Management, Nutanix&lt;/b&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="silk" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/silk_RM9R0Ve.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;"Google's Z4M VMs bring Cloud RDMA to a storage-optimized VM with much higher local SSD density than previous generations. In our testing, Cloud RDMA on Z4M demonstrated outstanding performance with up to 3.7x lower latency and up to 6x lower CPU usage than TCP. For our customers, that means faster, more predictable performance across a wide variety of use cases, from I/O-intensive databases to analytics and AI workloads, with the storage density to scale capacity efficiently."&lt;/i&gt; &lt;b&gt;&lt;i&gt;-&lt;/i&gt;&lt;/b&gt; &lt;b&gt;Adik Sokolovski, Chief R&amp;amp;D Officer, Silk&lt;/b&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="sycomp" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/sycomp_CNAxlCa.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;“We're excited to support Google Cloud's new Z4M platform as part of the Sycomp Intelligent Data Storage Platform. With greater capacity per node and the continued evolution of the Z-series architecture, Z4M helps customers achieve new levels of performance and efficiency. Supporting innovations like Z4M reinforces Sycomp's commitment to delivering high-performance storage solutions across the Google Cloud ecosystem.”&lt;/i&gt; &lt;b&gt;- Scott Fadden, Senior HPC Solutions Architect, Sycomp&lt;/b&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_with_image"&gt;&lt;div class="article-module h-c-page"&gt;
+  &lt;div class="h-c-grid uni-paragraph-wrap"&gt;
+    &lt;div class="uni-paragraph
+      h-c-grid__col h-c-grid__col--8 h-c-grid__col-m--6 h-c-grid__col-l--6
+      h-c-grid__col--offset-2 h-c-grid__col-m--offset-3 h-c-grid__col-l--offset-3"&gt;
+
+      
+
+
+
+
+
+
+  
+
+    &lt;figure class="article-image--wrap-small
+      
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="weka" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/weka.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+
+
+
+
+
+      &lt;p&gt;&lt;i&gt;"We've worked alongside Google Cloud for years on the most demanding AI and machine learning workloads. In our testing, we found the new Z4M machines deliver roughly twice the read throughput and up to 79% more IOPS, generation over generation (Z3 family). This means more data, more tokens, and more finished work. We’re excited to see what our joint customers build with these powerful machines."&lt;/i&gt; &lt;b&gt;- Ajay Singh, Chief Product Officer, WEKA&lt;/b&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Orchestration with Cluster Director&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;You can easily configure, deploy and manage large Z4M clusters using Google Cloud’s &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/ai-hypercomputer/docs/cluster-capabilities"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cluster Director&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;which offers advanced placement and maintenance capabilities alongside the&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/cluster-toolkit/docs/overview"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cluster Toolkit&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; f&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;or rapid cluster deployment&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;. &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;You can view and deploy your workloads in a compact topology to maximize performance, or spread topology for high availability by targeting availability domains. You can combine or stagger the maintenance across these availability domains.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Additionally, you can co-locate Z4M instances with your GPU and TPU clusters to process very large datasets in real time and at scale. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Enhanced maintenance experience&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Both Z4M VMs and bare-metal instances make it easier for you to plan ahead and schedule maintenance operations by providing notice from the system several days in advance of  required maintenance. For Z4M VMs with 42,000 GiB or less of LSSD storage, you can live-migrate an instance &lt;/span&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;during &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;maintenance events. Z4M VMs with 84,000 GiB or more of LSSD and Z4M bare metal instances must be terminated and restarted while preserving your data through planned maintenance events.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Support for Hyperdisk&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Z4M VMs and bare-metal instances support &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hyperdisks"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, Google Cloud’s workload-optimized block storage, which lets you optimize the performance for each workload by independently tuning the storage performance and capacity for each instance.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Specifically, they are compatible with &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hd-types/hyperdisk-balanced"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk Balanced&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hd-types/hyperdisk-throughput"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk Throughput&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hd-types/hyperdisk-extreme"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Extreme&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;a href="https://cloud.google.com/compute/docs/disks/hyperdisks"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Hyperdisk&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; storage for scalable, high-performance network-attached storage, supporting up to 512 TiB of capacity per instance. For general-purpose workloads, Hyperdisk Balanced, with up to 320K IOPS per instance, offers a mix of performance and cost-efficiency. Hyperdisk Extreme delivers ultra-low latency and supports up to 500K IOPS and 12,500 MiB/s throughput per Z4M VM and bare-metal instance, making it well-suited for demanding database workloads. &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Get started with Z4M today&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Z4M VMs and bare metal instances are available today in select regions worldwide. To start using Z4M instances, choose Z4M under the Storage-Optimized machine family when creating a new VM or GKE node pool in the Google Cloud console. Learn more at the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/compute/docs/storage-optimized-machines"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Z4M machine series&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; page. Contact your &lt;/span&gt;&lt;a href="https://cloud.google.com/contact?e=48754805&amp;amp;hl=en"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud sales&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; representative for more information on regional availability.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/compute/storage-optimized-z4m-machine-series-are-ga" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-06T17:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/nutanix_CyX4UCq.max-1000x1000.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/nutanix_CyX4UCq.max-1000x1000.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/nutanix_CyX4UCq.max-1000x1000.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/media-entertainment/how-mito-orchestrated-5000-plus-ai-assets-for-a-world-cup-tv-spot</id>
+    <title>The Blueprint: Orchestrating 5,000+ AI assets for a World Cup TV spot</title>
+    <updated>2026-11-06T17:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;Welcome back to The Blueprint, a regular feature where we highlight how Google Cloud customers are tackling unique and common challenges across industries using the latest AI and cloud technologies. We hope to inspire others looking to innovate in their work.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI is rapidly transforming video production at virtually every step of the process, from ideation and storyboarding to filming, editing, and release. At &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Mito&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;, we’re striving to democratize AI-powered video creation, enabling everyone from solo artists to large enterprises to get the most out of the best creative technologies available.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;The Challenge&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When we founded Mito, our goal was to eliminate the complex technical friction that stops creators from telling long-form, narrative stories with generative AI. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;However, transitioning from a single five-second clip to a cohesive campaign — such as a 120-second national TV spot for Movistar Plus+, a part of Telefónica, to broadcast across Spain during the World Cup this summer. This effort revealed massive infrastructure and workflow bottlenecks:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Asset &amp;amp; workflow overhead:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Managing local media libraries across individual workstations was unscalable. For Movistar alone, our production required generating a massive "iceberg" of over 5000 assets (1000 of those videos) generated in around 65 iteration rounds.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Zero real-time collaboration:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Traditional feedback loops required manual downloads, Google Drive uploads, and fragmented communication across chat apps and email.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Rendering latency:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Standard AI video rendering takes four to five minutes per short clip. Running these processes synchronously froze our user interface and stalled creative velocity.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Model disparity &amp;amp; consistency:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Every generative model requires distinct prompting logic. Maintaining character persistence, specific lighting, and camera angles across dozens of shots — while preserving the likeness of real public figures like chef Ferran Adrià or journalist Juanma Castaño — was nearly impossible without central orchestration.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Capacity constraints:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Operating on public pay-as-you-go model APIs left us vulnerable to rate limits and regional throughput throttling during peak traffic.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;The Solution&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To deliver an infinite, real-time creative canvas for filmmakers, we designed a serverless, asynchronous architecture built on Google Cloud.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We run our API, AI Director, and background workers as Java services on Cloud Run, which scales with request volume.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In order to address message routing challenges, we decoupled job execution using Google Cloud &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Pub/Sub&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; as our central event bus. Long-running video generations are offloaded to background Cloud Run workers, allowing creators to keep working uninterrupted on the UI canvas.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To minimize latency, media assets are stored in Google Cloud Storage and delivered via Cloud CDN. Expiring key signatures keep pre-release client assets strictly private. Keeping our storage alongside the models we call through Vertex AI reduces network transfer delays.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;An isolated database architecture helps with the heavy business intelligence and analytics workloads while mitigating potential negative impacts on production performance through Cloud SQL and PostgreSQL. We rely heavily on foundational models like Omni, Veo and Nano Banana, which we access through Vertex AI alongside our custom system prompts.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Finally, our structured canvas frontend enforces a "Rule of 6" (limiting prompt variables across World, Camera, Light, Texture, Actions, and Character) and prioritizes still-frame generation before video rendering to maximize cost efficiency.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;The Architecture&lt;/strong&gt;&lt;/h2&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="image2" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/image2_VoY9Mls.max-1000x1000.jpg" /&gt;
+        
+        &lt;/a&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;The Outcome&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By pairing our creative orchestration platform with Google Cloud’s infrastructure, we successfully delivered a landmark national broadcast campaign that the production team describes as 95% AI-generated:&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Prime-time scale:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The 120-second Movistar campaign for the Spanish National Team  aired across every major television channel in Spain, with 1,441 assets live on a single shared Canvas near launch.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;AI Director copilot:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Our conversational agent translates natural language instructions into precise model parameters while maintaining context, lighting, and visual style across every scene.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Seamless collaboration:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Distributed teams and brand clients can work on the same canvas in real time. Because new generations are saved as separate assets instead of overwriting earlier ones, stakeholders can duplicate projects to explore parallel creative ideas.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Continuous dogfooding:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Through our internal studio, Mito Films, we put our tools to the test on high-stakes client projects — whether that's global television spots or keynotes for top robotics startups — ensuring direct feedback flows back into engineering.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Future-proof foundation:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Our architecture is primed for rendering times to collapse from minutes to seconds, positioning Mito to handle upcoming world models, deeper memory states, and personalized content delivery.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong style="vertical-align: baseline;"&gt;The Details&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Building an enterprise-grade platform for AI storytelling required solving several backend and creative challenges. This includes our creation of a virtual queuing system that mitigates third-party API rate limiting during usage spikes for smooth request concurrency, with bounded retries and a clear outcome for every job.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because creative output cannot be fully validated with standard unit tests, we built an automated evaluation harness powered by Gemini. Acting as an independent judge, it evaluates AI Director outputs against original user intents across an automated test suite, which we run alongside standard tests for high-impact Director changes.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We knew early on that we would need multi-model intelligence routing. As such, we built the AI Director to dynamically coordinate tasks across multiple specialized models — including Sonnet, Gemini, and ElevenLabs for audio — treating the spatial canvas like a live code repository to infer adjacent contextual cues.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;We also needed to embrace an “imperfect aesthetic” to arrive at a more authentic outcome. In our Movistar spot, the story follows Tommy, a 17-year-old student making an AI video project. At the climax, the AI misunderstands a prompt, making coach Luis de la Fuente say "In the same milkshake" while holding a drink. Tommy edits the prompt live to "In the same heartbeat," and the video recalibrates instantly. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;By incorporating surreal visual elements — like stadium stands built into Galician cliffs or a neighborhood bar covered in pitch grass — we showcased how generative AI can elevate human storytelling rather than obscure it.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/media-entertainment/how-mito-orchestrated-5000-plus-ai-assets-for-a-world-cup-tv-spot" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-06T17:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Mito-hero.max-600x600.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Mito-hero.max-600x600.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Mito-hero.max-600x600.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://docs.cloud.google.com/release-notes#November_06_2026</id>
+    <title>Cloud Release Notes — November 06, 2026</title>
+    <updated>2026-11-06T08:00:00+00:00</updated>
+    <content type="html">&lt;h2 class="release-note-product-title"&gt;Bigtable&lt;/h2&gt;
+&lt;h3&gt;Feature&lt;/h3&gt;
+&lt;p&gt;You can &lt;a href="https://docs.cloud.google.com/bigtable/docs/managing-backups#configure-hot-automated-backups"&gt;configure a Bigtable automated backup policy&lt;/a&gt;
+on SSD instances to create daily &lt;a href="https://docs.cloud.google.com/bigtable/docs/backups#hot-backups"&gt;hot backups&lt;/a&gt;
+and specify how long the backups remain hot before automatically transitioning
+to standard backups. This feature is
+&lt;a href="https://cloud.google.com/products#product-launch-stages"&gt;generally available (GA)&lt;/a&gt;.&lt;/p&gt;</content>
+    <link href="https://docs.cloud.google.com/release-notes#November_06_2026" rel="alternate"/>
+    <category term="Cloud Release Notes"/>
+    <published>2026-11-06T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/data-analytics/bigquery-ai-functions-in-pandas</id>
+    <title>Zero-shot predictions in Pandas using the new BigQuery Accessor</title>
+    <updated>2026-11-06T08:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Imagine running advanced machine learning workflows—from forecasting and classification to high-dimensional embedding generation—without ever leaving your familiar pandas DataFrame. With the new &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.bigquery&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; accessor from &lt;/span&gt;&lt;a href="https://dataframes.bigquery.dev/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery DataFrames (BigFrames)&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, that vision is now a reality. You can seamlessly invoke BigQuery's enterprise-grade AI functions directly within pandas, scaling your data science and ML pipelines on cloud infrastructure .&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Take linear regression as an example. Traditionally, a pandas user who needs to run regression would have to extract data locally, manually select features, and train a custom scikit-learn model like this:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;import pandas as pd\r\nfrom sklearn.linear_model import LinearRegression\r\nfrom sklearn.preprocessing import StandardScaler\r\nfrom sklearn.pipeline import make_pipeline\r\n\r\n# Load historical training data from a CSV\r\ntrain_df = pd.read_csv(&amp;#x27;historical_data.csv&amp;#x27;)\r\n\r\n# Separate features (X) and target (y)\r\nX_train = train_df[[&amp;#x27;feature_1&amp;#x27;, &amp;#x27;feature_2&amp;#x27;]]\r\ny_train = train_df[&amp;#x27;target_metric&amp;#x27;]\r\n\r\n# Build and train a modeling pipeline\r\n# The StandardScaler ensures features with different scales don&amp;#x27;t bias the model\r\nmodel_pipeline = make_pipeline(StandardScaler(), LinearRegression())\r\nmodel_pipeline.fit(X_train, y_train)\r\n\r\n# Load new data for inference from another CSV\r\nnew_data_df = pd.read_csv(&amp;#x27;new_data.csv&amp;#x27;)\r\nX_new = new_data_df[[&amp;#x27;feature_1&amp;#x27;, &amp;#x27;feature_2&amp;#x27;]]\r\n\r\n# Make predictions \r\n# (The pipeline automatically scales the new data before predicting)\r\nnew_data_df[&amp;#x27;predictions&amp;#x27;] = model_pipeline.predict(X_new)\r\n\r\nprint(new_data_df.head())&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c93c190&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Now, with the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.bigquery&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; accessor, you can bypass the local training process entirely and leverage powerful &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.predict()&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; directly on your data in BigQuery:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;import pandas as pd\r\nimport bigframes.pandas as bpd  # Enables bigquery accessor\r\n\r\n# Set a GCP project to use AI functions.\r\nbpd.options.bigquery.project = &amp;#x27;my-project&amp;#x27; \r\n\r\ntrain_df = pd.read_csv(&amp;#x27;historical_data.csv&amp;#x27;)\r\nnew_data_df = pd.read_csv(&amp;#x27;new_data.csv&amp;#x27;)\r\n\r\n# Make predictions with TabFM\r\npredictions = train_df.bigquery.ai.predict(new_data_df, label_col=&amp;#x27;target_metric&amp;#x27;)\r\nprint(predictions)&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c329850&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As you can see, the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;ai.predict()&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; is able to perform regression tasks directly over two pandas dataframes with a single function call, which greatly simplifies the entire ML process.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;How the BigQuery accessor works&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Under the hood, the &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.bigquery&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; accessor uses &lt;/span&gt;&lt;a href="https://dataframes.bigquery.dev/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery DataFrames&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; library to transparently push your computations to Google Cloud. When you call an AI method like &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;.ai.predict()&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt;, it doesn't compute the regression locally. Instead, it translates the pandas operation into Google Standard SQL, executes the corresponding foundational model (like &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/tabfm-adds-predictive-ml-to-bigquery"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TabFM&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;) natively on BigQuery's infrastructure, and seamlessly returns the result as a standard pandas DataFrame. This allows you to easily process local datasets with powerful offerings unique to BigQuery.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The following sections detail additional executable code examples. You can also find them all in this &lt;/span&gt;&lt;a href="http://github.com/google/bigframes/blob/main/notebooks/generative_ai/pandas_bq_accessor_ai_functions.ipynb" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;notebook&lt;/span&gt;&lt;/a&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Environment setup&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Before executing the code samples in this post, ensure you have a Google Cloud project with the following roles granted (see more at &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/bigquery/docs/permissions-for-ai-functions"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;permissions for AI functions&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;):&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Run query jobs: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.jobUser"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery Job User&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (roles/bigquery.jobUser)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Access a foundation model in Gemini Enterprise Agent Platform: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/iam/docs/roles-permissions/aiplatform#aiplatform.user"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Agent Platform User&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (roles/aiplatform.user)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Next, install pandas and bigframes in your Jupyter environment. To enable the AI accessors, simply import the bigframes library and specify your Google Cloud project ID. This ensures all subsequent AI function calls are routed through your authorized project:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;import bigframes.pandas as bpd \r\n\r\n# Replace with your project ID \r\nbpd.options.bigquery.project = &amp;quot;my-project&amp;quot;&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c328a90&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Once configured, you can call BigQuery AI functions directly on standard pandas objects.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Functions on pandas series&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;AI functions attached to a pandas `Series` accept single-column input sequences.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Example: AI.EMBED&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Generating vector embeddings is a fundamental step in many modern NLP and semantic search pipelines. By using the `ai.embed()` function, you can compute embeddings for an entire column of text in a single, clean expression.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;import pandas as pd\r\n\r\nanimals = pd.Series([&amp;#x27;dog&amp;#x27;, &amp;#x27;fish&amp;#x27;])\r\nanimals.bigquery.ai.embed(endpoint=&amp;#x27;text-embedding-005&amp;#x27;)\r\n# 0    {&amp;#x27;result&amp;#x27;: array([ 1.78243860e-03, -1.10658340...\r\n# 1    {&amp;#x27;result&amp;#x27;: array([-7.29714287e-03,  1.04725976...\r\n# dtype: struct&amp;lt;result: list&amp;lt;item: double&amp;gt;, status: string&amp;gt;[pyarrow]&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c32a950&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Behind the scenes, BigFrames converts the pandas Series for processing in BigQuery and casts the output back into a native pandas Series. From the developer’s perspective, the workflow remains entirely within pandas.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;result = animals.bigquery.ai.embed(endpoint=&amp;#x27;text-embedding-005&amp;#x27;)\r\ntype(result)\r\n# pandas.Series&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fc2d0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Notice that the output of this operation is a native pandas `Series` containing the resulting embedding list. BigFrames handles the temporary BigQuery conversions, model execution, and final data formatting, ensuring that you never have to leave your familiar pandas interface.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Example: AI.SIMILARITY&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When you need to calculate semantic closeness, the `ai.similarity()` function computes cosine similarity scores between your series elements and a target. This target can be either a scalar literal string or another series. Here is how you can compare a pandas `Series` against a scalar string to find matching concepts:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;import pandas as pd\r\n\r\nanimals = pd.Series([&amp;#x27;dog&amp;#x27;, &amp;#x27;fish&amp;#x27;])\r\nanimals.bigquery.ai.similarity(&amp;#x27;shrimp&amp;#x27;, endpoint=&amp;#x27;text-embedding-005&amp;#x27;)\r\n# 0    0.629751\r\n# 1    0.768028\r\n# dtype: Float64&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fc950&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Similarly, you can perform pairwise comparisons between two distinct pandas `Series` objects to find semantic correlations across different datasets:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;quot;import pandas as pd\r\n\r\nanimals = pd.Series([&amp;#x27;dog&amp;#x27;, &amp;#x27;fish&amp;#x27;])\r\nrandom_stuff = pd.Series([&amp;#x27;smart phone&amp;#x27;, &amp;#x27;salmon&amp;#x27;])\r\n\r\nanimals.bigquery.ai.similarity(random_stuff, endpoint=&amp;#x27;text-embedding-005&amp;#x27;)\r\n# 0    0.651206\r\n# 1    0.835251\r\n# dtype: Float64&amp;quot;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fd150&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In both cases, the returned object is a standard pandas `Series` with floating-point similarity scores, making it immediately compatible with downstream pandas methods like filtering or sorting.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Functions on pandas DataFrames&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;DataFrame AI functions operate on multi-column structured tables or handle complex prompts involving multiple data inputs.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Example: AI.FORECAST&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Time-series forecasting typically requires a lot of boilerplate code to format timestamps, group entities, and train a model. The `ai.forecast()` function performs time-series forecasting across grouped structured data with simple, high-level parameters. To demonstrate this, you first prepare the input sample DataFrame representing historical sales data:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;import pandas as pd\r\n\r\ndates = pd.date_range(&amp;quot;2025-01-01&amp;quot;, periods=14, freq=&amp;quot;D&amp;quot;)\r\n\r\ndf = pd.DataFrame({\r\n    &amp;quot;date&amp;quot;: dates.tolist() * 2,\r\n    &amp;quot;item_id&amp;quot;: [&amp;quot;item_1&amp;quot;] * 14 + [&amp;quot;item_2&amp;quot;] * 14,\r\n    &amp;quot;sales&amp;quot;: [\r\n        100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165,\r\n        50, 52, 55, 58, 60, 62, 65, 68, 70, 72, 75, 78, 80, 85,\r\n    ],\r\n})\r\n\r\ndf.sample(5)\r\n#          date item_id  sales\r\n# 15 2025-01-02  item_2     52\r\n# 10 2025-01-11  item_1    150\r\n# 24 2025-01-11  item_2     75\r\n# 26 2025-01-13  item_2     80\r\n# 7  2025-01-08  item_1    135&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fcc10&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;With your data prepared, you can call `ai.forecast()` directly on the DataFrame. Here, you specify the target metric, timestamp column, grouping key, and a prediction horizon of three days:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;df.bigquery.ai.forecast(\r\n    data_col=&amp;quot;sales&amp;quot;, \r\n    timestamp_col=&amp;quot;date&amp;quot;, \r\n    id_cols=[&amp;quot;item_id&amp;quot;], \r\n    horizon=3\r\n)\r\n#   item_id         forecast_timestamp  forecast_value  confidence_level  \\\r\n# 0  item_1  2025-01-16 00:00:00+00:00      174.257492              0.95   \r\n# 1  item_1  2025-01-15 00:00:00+00:00      167.466003              0.95   \r\n# 2  item_1  2025-01-17 00:00:00+00:00      180.491333              0.95   \r\n# 3  item_2  2025-01-17 00:00:00+00:00        91.99752              0.95   \r\n# 4  item_2  2025-01-15 00:00:00+00:00       87.950104              0.95   \r\n# 5  item_2  2025-01-16 00:00:00+00:00       90.050346              0.95   \r\n# \r\n#    prediction_interval_lower_bound  prediction_interval_upper_bound  \\\r\n# 0                       175.728216                        177.85742   \r\n# 1                        169.34789                       169.553343   \r\n# 2                       178.587954                       185.040092   \r\n# 3                        79.145413                       100.786089   \r\n# 4                        82.876698                        92.470649   \r\n# 5                        81.460533                        96.463373   \r\n# \r\n#   ai_forecast_status  \r\n# 0                     \r\n# 1                     \r\n# 2                     \r\n# 3                     \r\n# 4                     \r\n# 5&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fc090&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The returned DataFrame provides complete forecast values alongside statistical parameters such as confidence levels and prediction intervals. Internally, this triggers a &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/bigquery/docs/timesfm-model"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;TimesFM&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; model that performs the trend analysis, returning neatly structured results back to your local environment as a pandas DataFrame. You can also choose the model version with the model argument. For example, pass model="TimesFM 3.0" to use the newest TimesFM model, now in Preview in BigQuery, which ranks #1 on the GIFT-Eval, FEV-Bench, and TIME forecasting benchmarks.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Example: AI.IF&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Filtering rows on a natural-language condition is one of the most common generative AI tasks. The `ai.if_()` function evaluates a prompt built from literal strings and DataFrame columns, and returns True or False for each row:&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-code"&gt;&lt;dl&gt;
+    &lt;dt&gt;code_block&lt;/dt&gt;
+    &lt;dd&gt;&amp;lt;ListValue: [StructValue([(&amp;#x27;code&amp;#x27;, &amp;#x27;import pandas as pd\r\n\r\ndf = pd.DataFrame({\r\n    &amp;quot;animal&amp;quot;: [&amp;quot;cougar&amp;quot;, &amp;quot;fish&amp;quot;],\r\n    &amp;quot;habitat&amp;quot;: [&amp;quot;mountain&amp;quot;, &amp;quot;grassland&amp;quot;]\r\n})\r\n\r\nprompt = (df[&amp;quot;animal&amp;quot;], &amp;quot; lives in the &amp;quot;, df[&amp;quot;habitat&amp;quot;])\r\n\r\ndf.bigquery.ai.if_(prompt)\r\n# 0     True\r\n# 1    False\r\n# dtype: boolean&amp;#x27;), (&amp;#x27;language&amp;#x27;, &amp;#x27;&amp;#x27;), (&amp;#x27;caption&amp;#x27;, &amp;lt;wagtail.rich_text.RichText object at 0x7f8f1c2fcbd0&amp;gt;)])]&amp;gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Because `ai.if_()` returns a boolean Series, you can use it directly as a pandas filter mask, for example `df[df.bigquery.ai.if_(prompt)]`. `ai.if_()` runs in optimized mode by default (optimization_mode="minimize_cost"): a local, distilled model processes the majority of rows, and only the rest are sent to Gemini, which reduces cost and latency on large datasets. To send every row to the LLM instead, set `optimization_mode` to `"maximize_quality"`.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span style="vertical-align: baseline;"&gt;Get started&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The AI functions provided by &lt;/span&gt;&lt;code style="vertical-align: baseline;"&gt;bigquery&lt;/code&gt;&lt;span style="vertical-align: baseline;"&gt; accessor unlock advanced machine learning tools directly inside your native data structures, enabling you to solve complex AI challenges without leaving the Python ecosystem you already know.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Currently supported AI functions include the following (see the &lt;/span&gt;&lt;a href="https://dataframes.bigquery.dev/reference/api/bigframes.bigquery.ai.html" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; for full details):&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Pandas Series&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;embed()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Generates vector embeddings to a single column.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_embedding()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Generates vector embeddings to a table.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_table()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Performs natural language tasks and generates structured outputs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_text()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Performs natural language tasks and generates free-form texts.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;similarity()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Computes semantic closeness (cosine similarity) between entries.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Pandas DataFrame&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;classify()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Performs zero-shot classification.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;forecast()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Runs time-series forecasting across grouped data using TimesFM, including the new TimesFM 3.0.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Evaluates dynamic prompts across multiple columns to generate text responses.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_bool()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Evaluates natural language conditions and returns booleans (True/False).&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_double()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Evaluates a prompt and returns floating-point numbers.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;generate_int()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Evaluates a prompt and returns integers.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;if_()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Filters rows on a natural-language condition, using optimized mode by default to reduce cost and latency.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;predict()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Runs predictive modeling, such as regression, using TabFM.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;score()&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Rates inputs based on a scoring system that you described.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Whether you want to generate embeddings or run full time-series forecasts, &lt;/span&gt;&lt;a href="https://dataframes.bigquery.dev/reference/api/bigframes.bigquery.ai.html" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery AI functions inside pandas&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; make scaling machine learning effortless. Give it a spin and let your data do the heavy lifting!&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/data-analytics/bigquery-ai-functions-in-pandas" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-06T08:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Data_Analytics_JooYPJr.max-2500x2500.jpg" type="image/jpeg" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/Data_Analytics_JooYPJr.max-2500x2500.jpg"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/Data_Analytics_JooYPJr.max-2500x2500.jpg" type="image/jpeg" length="0"/>
+  </entry>
+  <entry>
+    <id>https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors</id>
+    <title>Bringing conversational analytics to Gemini with Agentic Data Cloud connectors</title>
+    <updated>2026-11-05T23:00:00+00:00</updated>
+    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data Cloud connectors in Gemini for business, now in &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-data-cloud"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;preview&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, give business users and analysts a direct way to query live enterprise data in natural language. Across most organizations, data questions multiply faster than analysts can answer them: Projects stall in ticket queues, leaders fall back on guesswork, and unmanaged spreadsheets spread across teams. Early generative AI tools promised conversational access to data, but they often struggled to generate accurate SQL across complex schemas or to respect governance rules. Data Cloud connectors let you query governed data directly from your workspace while enforcing row- and column-level security and respecting end-user credentials.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;A new way to query enterprise data&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Gemini brings &lt;/span&gt;&lt;a href="https://cloud.google.com/use-cases/data-cloud-agents#conversational-analytics-agents"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;conversational analytics&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; directly into your day-to-day workflow through two paths: &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/data-agents/conversational-analytics"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Conversational Analytics agents&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, which let you create data agents that include context and instructions to effectively answer questions for specific use cases, and &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-data-cloud"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Data Cloud connectors&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, allowing you to query live data directly with Gemini. End users can pull data directly from &lt;/span&gt;&lt;a href="https://cloud.google.com/bigquery"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (preview), operational databases like &lt;/span&gt;&lt;a href="https://cloud.google.com/spanner"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Spanner&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://cloud.google.com/alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://cloud.google.com/sql"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud SQL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (preview), and governed data from &lt;/span&gt;&lt;a href="https://cloud.google.com/looker"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Looker&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; (preview). From there, you can move your findings directly into everyday tools, such as turning query results into a Google Doc, an email draft in Gmail, or a deck in Google Slides.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="1 - Ask natural-language questions with Data Cloud connectors" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1_-_Ask_natural-language_questions_with_Data_Cloud_connectors.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Ask natural-language questions across enterprise data using Data Cloud connectors.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;How Data Cloud connectors work&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data Cloud connectors work with &lt;/span&gt;&lt;a href="https://cloud.google.com/products/knowledge-catalog"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Knowledge Catalog&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to locate relevant data, interpret your question, and execute permission-scoped queries under your identity.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="2 - Knowledge Catalog prompt interpretation and source discovery" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/2_-_Knowledge_Catalog_prompt_interpretatio.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Knowledge Catalog interprets the user prompt and identifies the right data source for the query.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When you ask a question in Gemini, the system coordinates discovery, semantic interpretation, and query execution, using the following capabilities:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Natural-language question: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;You ask an exploratory question in plain language (for example, "How many sales did we have this month for all cold weather products?"). End users aren’t expected to know the table or project to use.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Semantic discovery:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Gemini searches Knowledge Catalog to locate candidate data across your estate, considering key attributes like usage patterns.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Context mapping:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The system uses technical metadata, business glossaries, and semantic models to map everyday terms into exact database structures, such as resolving "cold weather products" to specific categories like sweaters, coats, and jackets in an ecommerce catalog.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Permission-aware execution:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Gemini generates a SQL query and runs it through the connector under your user credentials, respecting your existing row- and column-level database permissions.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="3 - Step-by-step flow from Gemini prompt to query execution" src="https://storage.googleapis.com/gweb-cloudblog-publish/images/3_-_Step-by-step_flow_from_Gemini_prompt_t.max-1000x1000.png" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Step-by-step flow of a user prompt from Gemini to query execution.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;To accurately navigate an enterprise data estate, language models need business context alongside raw database access. Knowledge Catalog provides a &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/knowledge-catalog-self-learning-context-enrichment-for-ai-agents"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;curated context bundle&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, including technical metadata, business logic, table relationships, and verified queries, that improves query accuracy while reducing latency and token consumption.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="4 - Navigating the context graph in Knowledge Catalog" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/4_-_Navigating_the_context_graph_in_Knowledge_Catalog.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Navigating the context graph visually in Knowledge Catalog.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Enterprise analytics has long been fragmented by physical borders: data locked in proprietary silos, open lakehouse tables in cloud object storage, and datasets distributed across multicloud environments. Beyond native BigQuery storage, the BigQuery connector brings conversational analytics to a &lt;/span&gt;&lt;a href="https://cloud.google.com/blog/products/data-analytics/borderless-lakehouse-integrates-with-gemini"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;borderless lakehouse&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, unifying these environments into a single conversational interface to query open table formats (including Apache Iceberg, Delta Lake, and Parquet) and cross-cloud datasets in AWS or Azure using BigQuery. The connector inherits fine-grained access policies from BigQuery and Knowledge Catalog, so row- and column-level access controls apply whether you query native tables or open lakehouse files.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="5 - Cross-cloud querying across BigQuery and AWS S3 in Gemini" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/5_-_Cross-cloud_querying_across_BigQuery_and_AWS_S3_in_Gemini.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Gemini accesses data across BigQuery and AWS S3 (through the AWS Glue federated catalog) to answer questions in plain language.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Choosing between connectors and data agents&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;In addition to using direct &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-data-cloud"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Data Cloud connectors&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to query data in plain language, you can also use &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/data-agents/conversational-analytics"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Conversational Analytics agents&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to enable these experiences. While Data Cloud connectors allow you to provide exploratory and ad hoc analysis for users, conversational analytics agents are scoped agents that are built and certified directly by data teams within your organization. These can be built across Data Cloud products such as BigQuery, Looker, and operational databases including Spanner, AlloyDB, and Cloud SQL.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;These pre-configured agents allow users to run highly governed, multi-step strategic analyses that are scoped to particular subsets of data, supporting compliance requirements and predictable results for reporting. These data agents can also be published in Gemini for consumption or made available via API for building your own conversational apps in the enterprise.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;These approaches are complementary. Gemini direct connectivity also surfaces relevant published agents created by central data teams, so users can decide whether to proceed with ad hoc analysis using the connectors or use the scoped agent. You can choose the right approach for each workload.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Built-in access controls and governance&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data Cloud connector queries execute under the end user’s identity. An employee without access to executive salary data or protected healthcare records cannot query that data through natural-language prompts. The agent only discovers metadata in Knowledge Catalog to which you have access, and only executes queries that your account has permission to run.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;How to create Data Cloud connectors&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Administrators can configure Data Cloud connectors in the Gemini admin console. From there, admins set up default read-only connections to datasets in BigQuery, operational databases, or Looker, with Knowledge Catalog enabled automatically. Once configured, end users can enable the connector in Gemini to start querying data and building reports in plain language.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div class="block-image_full_width"&gt;
+
+
+
+
+
+
+  
+    &lt;div class="article-module h-c-page"&gt;
+      &lt;div class="h-c-grid"&gt;
+  
+
+    &lt;figure class="article-image--large
+      
+      
+        h-c-grid__col
+        h-c-grid__col--6 h-c-grid__col--offset-3
+        
+        
+      "&gt;
+
+      
+      
+        
+        &lt;img alt="6 - Creating a connected data store in Gemini Enterprise" src="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/6_connected_data_stores.gif" /&gt;
+        
+        &lt;/a&gt;
+      
+        &lt;figcaption class="article-image__caption "&gt;&lt;p&gt;Create a connected data store in Gemini and authorize it on first use.&lt;/p&gt;&lt;/figcaption&gt;
+      
+    &lt;/figure&gt;
+
+  
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+
+
+
+
+&lt;/div&gt;
+&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Setup documentation is available for the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-bigquery"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;BigQuery&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-spanner"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Spanner&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-cloud-sql"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Cloud SQL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;, and &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-alloydb"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;AlloyDB for PostgreSQL&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; connectors, with Looker also in preview.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Unlike data ingestion mode, which copies data into a Gemini data store, Data Cloud connectors use federated query mode to query your data in place without copying or indexing it — using Knowledge Catalog automatically to search accessible metadata and look up business context.&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Why use Data Cloud connectors over custom MCP&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Compared to connecting to public or self-managed Model Context Protocol (MCP) servers, first-party Data Cloud connectors provide two main advantages:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Built-in skills for higher response quality:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Data Cloud connectors include pre-configured agent skills tailored to each data engine, such as advanced SQL and AI function generation for BigQuery and operational databases, to improve query accuracy and response quality.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li style="vertical-align: baseline;"&gt;
+&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Guided setup and managed authentication:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; First-party connectors provide a guided setup experience with managed authentication for Google Cloud databases and BigQuery, removing the need to deploy MCP middleware or manage your own OAuth client configuration for Google Cloud services. In addition, connector-specific settings, such as specifying a default Google Cloud billing project for BigQuery query execution, help administrators enforce governance and manage query costs.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;strong style="vertical-align: baseline;"&gt;Get started today&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Data Cloud connectors help teams find answers from enterprise data sources without waiting on backlog queues. To get started, review the &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-data-cloud"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Data Cloud connectors documentation&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; or explore &lt;/span&gt;&lt;a href="https://docs.cloud.google.com/gemini/data-agents/conversational-analytics"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Conversational Analytics agents&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</content>
+    <link href="https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors" rel="alternate"/>
+    <category term="Google Cloud"/>
+    <published>2026-11-05T23:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1_-_Ask_natural-language_questions_with_Data_Cloud_connectors.gif" type="image/gif" medium="image"/>
+      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1_-_Ask_natural-language_questions_with_Data_Cloud_connectors.gif"/>
+    </media:group>
+    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/original_images/1_-_Ask_natural-language_questions_with_Data_Cloud_connectors.gif" type="image/gif" length="0"/>
+  </entry>
   <entry>
     <id>https://workspaceupdates.googleblog.com/2026/11/gemini-omni-12-flash-now-in-vids-with-15second-generations-and-improved-quality.html</id>
     <title>Gemini Omni 1.2 Flash now in Vids with 15-second generations and improved quality</title>
@@ -38686,158 +39510,5 @@ Google Cloud projects.&lt;/p&gt;
       <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Chrome_Learning_Moment.max-600x600.format-webp.webp"/>
     </media:group>
     <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Chrome_Learning_Moment.max-600x600.format-webp.webp" type="image/webp" length="0"/>
-  </entry>
-  <entry>
-    <id>https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar</id>
-    <title>Introducing Gemini 3.8 Live with Live Avatar</title>
-    <updated>2026-09-24T16:20:39+00:00</updated>
-    <link href="https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar" rel="alternate"/>
-    <category term="Google DeepMind"/>
-    <published>2026-09-24T16:20:39+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Slide_16_9_-_37.width-1300.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Slide_16_9_-_37.width-1300.png"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Slide_16_9_-_37.width-1300.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>https://status.search.google.com/incidents/XhUDXP7A67iHCD2kmbVu</id>
-    <title>UPDATE: September 2026 spam update</title>
-    <updated>2026-09-24T16:15:47+00:00</updated>
-    <content type="html">&lt;p&gt; Incident began at &lt;strong&gt;2026-09-24 09:15&lt;/strong&gt; &lt;span&gt;(all times are &lt;strong&gt;US/Pacific&lt;/strong&gt;).&lt;/span&gt;&lt;/p&gt;&lt;div class="cBIRi14aVDP__status-update-text"&gt;&lt;p&gt;Released the September 2026 &lt;a href="https://developers.google.com/search/docs/appearance/spam-updates"&gt;spam update&lt;/a&gt;, which applies globally and to all languages. The rollout may take up to two weeks to complete.&lt;/p&gt;
-&lt;/div&gt;&lt;hr /&gt;&lt;p&gt;Affected products: Ranking&lt;/p&gt;</content>
-    <link href="https://status.search.google.com/incidents/XhUDXP7A67iHCD2kmbVu" rel="alternate"/>
-    <category term="Search Status Dashboard"/>
-    <published>2026-09-24T16:15:47+00:00</published>
-  </entry>
-  <entry>
-    <id>https://googlecloudpresscorner.com/2026-09-24-BNP-Paribas-and-Google-Cloud-Announce-New-Partnership-on-Agentic-AI-and-Cloud-Innovation</id>
-    <title>BNP Paribas and Google Cloud Announce New Partnership on Agentic AI and Cloud Innovation</title>
-    <updated>2026-09-24T16:00:00+00:00</updated>
-    <link href="https://googlecloudpresscorner.com/2026-09-24-BNP-Paribas-and-Google-Cloud-Announce-New-Partnership-on-Agentic-AI-and-Cloud-Innovation" rel="alternate"/>
-    <category term="Google Cloud Press"/>
-    <published>2026-09-24T16:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/products/containers-kubernetes/gke-agentic-migration</id>
-    <title>Introducing GKE agentic migration for AI-assisted EKS-to-GKE migrations with built-in governance</title>
-    <updated>2026-09-24T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Enterprises are increasingly standardizing on Google Kubernetes Engine (GKE) to run their most critical and AI-driven workloads. From Cloud Storage FUSE for high-throughput data access to custom compute classes (CCC) and advanced GPU slicing, GKE provides the scale and efficiency required for modern applications.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;However, migrating complex Kubernetes environments from AWS EKS to GKE has traditionally been a daunting, high-friction engineering endeavor. Your platform teams must manually dissect sprawling infrastructure-as-code (IaC), navigate cloud-specific architectural differences, and build custom translation scripts.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;While your engineering teams often experiment with general-purpose LLMs to draft conversions, ad-hoc prompting quickly can become an operational trap. Raw models hallucinate non-existent resource properties, drop critical network or identity configurations, and lose context across interdependent files. The time platform engineers spend auditing, untangling, and debugging model errors ends up cannibalizing any upfront speed gains, creating manual toil and unpredictability. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Today, we are excited to announce the open-source release of GKE agentic migration, a purpose-built agent plugin that replaces brittle, ad-hoc prompting with an AI-assisted migration pipeline protected by deterministic guardrails. &lt;/span&gt;&lt;/p&gt;
-&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“For large enterprise clients, the biggest barrier to cloud modernization is execution risk and unpredictability. Unlike raw chat prompts that lose context and hallucinate configurations, Google’s GKE agentic migration pairs the speed of generative AI with the deterministic guardrails enterprises need: structured state persistence, multi-persona boundaries between platform and app teams, and non-negotiable human approval gates. It gives our global engineering practice a provable, compiler-grade migration factory that slashes delivery risk.- &lt;/span&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;Rahul Shrivastava&lt;/strong&gt;&lt;strong style="vertical-align: baseline;"&gt;, &lt;/strong&gt;&lt;strong style="font-style: italic; vertical-align: baseline;"&gt;EVP, Persistent&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;The challenges of infrastructure migrations&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;When talking to customers about their infrastructure migration journeys, we consistently hear about several governance challenges:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The automation trust gap: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Refactoring Kubernetes configurations manually can be agonizingly slow. Yet, using generic AI coding assistants introduces unacceptable risk. Standard LLMs can hallucinate infrastructure code, use deprecated API fields, or omit critical security rules. Generating code that is "almost right" simply shifts the bottleneck from writing code to debugging it.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The danger of live cluster mutability (ClickOps): &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Legacy migration tools often connect directly to live clusters and deploy via API calls. This bypasses the organization's Git repository (the true source of truth), breaks CI/CD pipelines, and makes rollbacks incredibly difficult.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The siloed handoff bottleneck:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Migrations are often long-running, multi-week operations. Platform engineers build the landing zone and your application developers migrate the workloads.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Standard AI tools lose context across the handoff.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;The fragmented toolchain: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;Backup tools like Velero are excellent for disaster recovery but capture exact AWS-specific configurations (like ALBs) without translating them for Google Cloud. Reverse-engineering tools, meanwhile, generate flat configurations that strip away the developer's original logical intent.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Introducing the GKE agentic migration&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The GKE agentic migration addresses these challenges by combining the reasoning capabilities of LLMs with strict, deterministic tooling. Designed as a compilation of agent skills and a local Model Context Protocol (MCP) server, it uses AI to translate complex AWS EKS IaC and Kubernetes manifests directly into GKE landing zones via automated Pull Requests.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Here are the key capabilities that set the GKE agentic migration apart:&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;1. Hybrid verification&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; —&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; LLM-generated, deterministically validated. &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;To combat dangerous IaC hallucinations, LLM workers handle the complex authoring of Terraform and Kubernetes YAML, while the server runs deterministic transforms for exact mappings such as Workload Identity annotations and image registries. Crucially, these AI-generated translations are then submitted to strict deterministic validations (e.g., terraform validate, Kubernetes manifest contracts) before they are presented to the user. This approach helps maintain safety against hallucinations while gating everything behind human-in-the-loop (HITL) approval.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;2. GitOps-native PR workflows: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;The plugin never applies changes directly to a live cluster. Instead, it reads your source of truth, generates the target state, and opens a Pull Request. This helps route all changes through your standard human-in-the-loop (HITL) CI/CD review process. No "ClickOps."&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;3. Protected separation of translation vs. transport:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The plugin automates the tedious logic of architectural translation, but it intentionally does not transport stateful data. To protect your most sensitive assets, the plugin generates contextual runbooks that guide your team in using purpose-built, SLA-backed tools (like Google Cloud's Database Migration Service or Storage Transfer Service).&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;4. Multi-persona state management:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Migrations are team efforts. The plugin persists the long-running migration state.  This enables protected, asynchronous handoffs: Platform engineers establish the baseline landing zone, while app developers independently join the workspace from their own machines to translate individual workloads within permission-isolated folders.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;How it works: The migration lifecycle&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Under the hood, the GKE agentic migration utilizes a migration state graph of executable functions, systematically passing context down the chain. Packaged as an open-source agent plugin, there are no custom CLI binaries to install and no central control planes to manage — your team collaborates through your existing development harness, delivering validated pull requests and actionable runbooks directly into your source repositories.&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;This provides:&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Deep EKS repository discovery:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The plugin clones the source Git repository or performs a live scan of your EKS cluster, programmatically indexes the source manifests, maps dependencies, and builds an inventory&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Assessment &amp;amp; blocker governance:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; It generates a readiness report identifying architectural incompatibilities. Before design can unlock, every blocker must have an assigned owner and target resolution date. The Platform Engineer signs off on the migration boundaries before translation begins.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Landing zone design:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The plugin scaffolds the foundational Google Cloud Terraform modules (VPC, subnets, GKE cluster, org policies) based on explicit platform decisions (such as GKE Autopilot vs. GKE Standard).&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;AI-assisted cloud translation:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The plugin handles proprietary shifts, including translating AWS IRSA to Workload Identity, mapping ALB ingress to the Gateway API, and converting Karpenter node claims to GKE Node Auto Provisioning (NAP) or Custom Compute Classes (CCC).&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Offline validation&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;: Generated modules and manifests are compiled and verified offline (terraform validate, manifest structure checks, and output contracts). &lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong style="vertical-align: baseline;"&gt;Deployment&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;via Pull Request:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; The finalized configuration is verified locally and opens a PR for review. &lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Getting&lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt; &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;started&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The GKE agentic migration transforms cloud migrations from disjointed refactoring exercises into predictable, AI-assisted, and reviewable GitOps workflows. &lt;/span&gt;&lt;strong style="vertical-align: baseline;"&gt;Ready to accelerate your journey to GKE?&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Star and clone the &lt;/span&gt;&lt;a href="https://github.com/gke-labs/gke-agentic-migration" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;GKE agentic migration repository on GitHub&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Read the &lt;/span&gt;&lt;a href="https://github.com/gke-labs/gke-agentic-migration/tree/main/docs/onboarding-guide.md" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;onboarding guide&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to run the plugin against a sample EKS repository.&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Join the &lt;/span&gt;&lt;a href="https://cloud.google.com/communities"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Google Cloud Community&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt; to share feedback, ask questions, and contribute. &lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/products/containers-kubernetes/gke-agentic-migration" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-24T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>https://cloud.google.com/blog/topics/customers/scribd-inc-classifies-millions-of-documents-on-gemini-enterprise</id>
-    <title>Scribd, Inc. classifies more than 400 million documents with Gemini batch inference on Gemini Enterprise</title>
-    <updated>2026-09-24T16:00:00+00:00</updated>
-    <content type="html">&lt;div class="block-paragraph_advanced"&gt;&lt;p&gt;&lt;a href="https://www.scribd.com/" rel="noopener" target="_blank"&gt;&lt;span style="text-decoration: underline; vertical-align: baseline;"&gt;Scribd, Inc&lt;/span&gt;&lt;/a&gt;&lt;span style="vertical-align: baseline;"&gt;. is home to one of the world's largest collections of human-created content. &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scribd’s  products leverage one of the world's largest collections of human-created content and intelligent tools to help people move from information access to real understanding and application.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;This past year, Scribd used Gemini's native PDF understanding and Gemini Enterprise batch prediction to run trust and safety classification across its entire user-generated content corpus of more than 400 million documents, spanning over 12 billion pages, in a matter of months.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong style="vertical-align: baseline;"&gt;Here were the results: &lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Classified 400M+ user-uploaded documents (12B+ pages of text and images) across Scribd and Slideshare&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Completed the corpus-wide backfill in a matter of months, with Google Cloud scaling batch throughput to meet the timeline&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Native PDF input meant more than 99% of the corpus was processed as-is, with no OCR, rendering, or screenshotting pipeline to build&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li style="vertical-align: baseline;"&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Gemini Enterprise’s batch prediction at a 50% discount to interactive pricing made LLM classification viable at corpus scale&lt;/span&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Trust and safety at the scale of an entire corpus&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Scribd, Inc. is the parent company to four distinct products: Scribd, Slideshare, Everand, and Fable. Across Scribd and Slideshare, hundreds of millions of user-uploaded PDFs, presentations, and documents help people find information, build understanding, and finish projects. With that scale comes responsibility. We aim to balance access with protecting our communities. We leverage a mix of human and automated methods to review and best ensure the content on our platforms complies with our community rules. As the corpus continues to grow and technology evolves, this challenge requires even more resources.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Understanding a document requires reading its text and its images together, in context. Classification has to work across all possible use cases, all possible languages, all possible contexts. There is no single solution that can translate cleanly across all of it. And each policy area traditionally demanded its own specialized detection model, which meant either years of in-house engineering effort or specialized vendor solutions that don't fit the economics of a 400-million-document backfill. The team evaluated several off-the-shelf moderation tools and open models, but none delivered the quality they needed at their scale.&lt;/span&gt;&lt;/p&gt;
-&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“This is a genuinely hard problem that we have been working on for a long time. Every category of content behaves differently, and historically each one required its own specialized solution. Gemini collapsed all of that into one model, one prompt, and one pipeline.”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; – &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Sachin Sebastian, Senior Engineering Manager, Scribd, Inc.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Why Gemini: PDFs are a first-class input&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The turning point was realizing that Gemini treats Scribd's corpus the way it actually exists: as PDFs. Gemini accepts PDF input natively and reads each page as both text and image, so a single multimodal model could evaluate everything from dense text documents to image-heavy presentations, with no OCR pipeline, page rendering, or screenshot infrastructure in between. Because Gemini processes each PDF page at a fixed, predictable token count, costs scale linearly and stay low even across 12 billion pages.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;After benchmarking model families and versions, the team selected Gemini 2.5 Flash Lite as the classification workhorse, with Gemini 2.5 Pro serving as an LLM judge in a full second consistency pass over the corpus to validate output quality. In the team's evaluations, Gemini's multimodal understanding caught visual policy signals that text-only moderation endpoints routinely missed.&lt;/span&gt;&lt;/p&gt;
-&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Gemini's peculiar advantage is that it meets our content in its native format. It reads the text, layout, and images of a PDF directly. More than 99% of our corpus went in exactly as it lives on our site without any pre-processing”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; – &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Sachin Sebastian, Senior Engineering Manager, Scribd, Inc.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;Batch prediction, simple enough to bet the corpus on&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The execution model was deliberately simple. Documents were staged in Cloud Storage, submitted to Gemini Enterprise batch prediction, and the results flowed back into the team's data platform for downstream analysis. There was no serving infrastructure to operate, no rate-limiting logic to write, and no GPU capacity to manage.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Batch pricing, at 50% below interactive rates, is what made the economics work at corpus scale. The team later layered on Gemini Enterprise’s implicit prefix caching, restructuring prompts so the static policy text hit the cache, which pushed efficiency further with no loss in classification quality.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;A partnership measured in throughput&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;Processing 400 million documents is ultimately a throughput problem, and this is where the partnership with Google Cloud mattered most. Scribd's team connected directly with Google Cloud engineering and product to plan the backfill, advise on region strategy, and make sure the right capacity was in place ahead of launch.&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;As the backfill ramped up, Google Cloud worked closely with the team to scale throughput to the demands of the project. The effect was dramatic: batch jobs began completing far faster than projected, and for much of the run Gemini Enterprise was not the bottleneck. Scribd's own upstream pipeline was.&lt;/span&gt;&lt;/p&gt;
-&lt;p style="padding-left: 40px;"&gt;&lt;span style="font-style: italic; vertical-align: baseline;"&gt;“Google Cloud didn't just answer support tickets. They partnered with us on the backfill, and there were stretches where Gemini Enterprise finished work faster than our own systems could produce it. That is a good problem to have.”&lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt; – &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Sachin Sebastian, Senior Engineering Manager, Scribd, Inc.&lt;/span&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;span style="vertical-align: baseline;"&gt;What's next&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span style="vertical-align: baseline;"&gt;The backfill is now the foundation of an ongoing program: newly uploaded content flows through the same Gemini classification pipeline, keeping the corpus continuously evaluated rather than periodically cleaned. And because the pattern of PDFs in Cloud Storage, Gemini batch prediction, and results in the lakehouse proved so operationally simple, the team is applying it to a growing set of content-understanding workloads across its platforms.&lt;/span&gt;&lt;/p&gt;
-&lt;p style="padding-left: 40px;"&gt;&lt;span style="vertical-align: baseline;"&gt;“This project changed how we think about our roadmap. Work we had classified as multi-year, multi-team efforts is now a prompt, a batch pipeline, and a few weeks of runtime.” – &lt;/span&gt;&lt;span style="vertical-align: baseline;"&gt;Sachin Sebastian, Senior Engineering Manager, Scribd, Inc.&lt;/span&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;em&gt;&lt;sup&gt;&lt;span style="vertical-align: baseline;"&gt;This work was a collaboration between Google Cloud and Scribd. We'd like to thank everyone involved for their support throughout this project:&lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;&lt;sup&gt;&lt;strong style="vertical-align: baseline;"&gt;Scribd Engineering:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Anish Kumar, Jeanie Lam, James Watkins, Hima Alladi&lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;&lt;sup&gt;&lt;strong style="vertical-align: baseline;"&gt;Scribd Applied Research:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Rafael Pedrosa Lacerda de Melo, Kara Killough, Eric Chang&lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;&lt;sup&gt;&lt;strong style="vertical-align: baseline;"&gt;Scribd Product:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Seyoon Kim, Nicole Pauls&lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;&lt;sup&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud AI Batch Inference team: &lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt;James Liu, Digvijay Singh, Wei-chung Wang, Yan Wang, Kun Shi &lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;&lt;sup&gt;&lt;strong style="vertical-align: baseline;"&gt;Google Cloud Customer Engineer:&lt;/strong&gt;&lt;span style="vertical-align: baseline;"&gt; Jennifer Liang&lt;/span&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-    <link href="https://cloud.google.com/blog/topics/customers/scribd-inc-classifies-millions-of-documents-on-gemini-enterprise" rel="alternate"/>
-    <category term="Google Cloud"/>
-    <published>2026-09-24T16:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://storage.googleapis.com/gweb-cloudblog-publish/images/49_-_Customers_YsP9mBg.max-2600x2600.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://storage.googleapis.com/gweb-cloudblog-publish/images/49_-_Customers_YsP9mBg.max-2600x2600.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://storage.googleapis.com/gweb-cloudblog-publish/images/49_-_Customers_YsP9mBg.max-2600x2600.jpg" type="image/jpeg" length="0"/>
   </entry>
 </feed>

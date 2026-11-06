@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://x.ai/xai</id>
   <title>xAI</title>
-  <updated>2026-11-06T12:27:01.029829+00:00</updated>
+  <updated>2026-11-06T19:43:15.865385+00:00</updated>
   <author>
     <name>xAI</name>
   </author>
@@ -14,6 +14,20 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=x.ai&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=x.ai&amp;sz=64</webfeeds:icon>
   <subtitle>xAI and Grok product updates, Console, Build and Bot changelogs, Tesla Blog, X Blog, X Engineering, and X API updates.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/xai/72e536d2fc507f98</id>
+    <title>Livestream API: new /2/sources and /2/broadcasts routes; /2/users/:user_id routes deprecated</title>
+    <updated>2026-11-05T00:00:00+00:00</updated>
+    <content>You can now take a stream source live in one call with POST /2/broadcasts . It creates and publishes the broadcast together and returns it already RUNNING ( 201 ), or returns the source’s live broadcast unchanged with 200 if there already is one, so it’s safe to retry. Broadcasts are ended with PUT /2/broadcasts/:id/state , deleted with DELETE /2/broadcasts/:id , and read with GET /2/broadcasts and GET /2/broadcasts/:id .</content>
+    <link href="https://docs.x.com/changelog#livestream-api-new-/2/sources-and-/2/broadcasts-routes-/2/users/user_id-routes-deprecated" rel="alternate"/>
+    <category term="X API changelog" label="X API changelog"/>
+    <published>2026-11-05T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://docs.x.com/images/og-default.png" type="image/png" medium="image" height="630" width="1200"/>
+      <media:thumbnail url="https://docs.x.com/images/og-default.png" height="630" width="1200"/>
+    </media:group>
+    <link rel="enclosure" href="https://docs.x.com/images/og-default.png" type="image/png" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/xai/95e7a57b90366731</id>
     <title>Giving every team a data scientist with Grok Bot</title>
@@ -2799,19 +2813,5 @@
       <media:thumbnail url="https://x.ai/_next/static/media/opengraph-image.0orfa17elfpiu.jpg?dpl=1c6147e33fd182a57a62d2442ba9ad60cc70fb3f" height="1260" width="2400"/>
     </media:group>
     <link rel="enclosure" href="https://x.ai/_next/static/media/opengraph-image.0orfa17elfpiu.jpg?dpl=1c6147e33fd182a57a62d2442ba9ad60cc70fb3f" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/xai/7fbadb269bff6de9</id>
-    <title>Grok Build 0.2.120</title>
-    <updated>2026-08-03T00:00:00+00:00</updated>
-    <content>Model picker updates the status bar and /model menu immediately, even before the first prompt creates a session Background task completions consume less memory over ACP</content>
-    <link href="https://x.ai/build/changelog#v0.2.120-2026-08-03" rel="alternate"/>
-    <category term="Grok Build changelog" label="Grok Build changelog"/>
-    <published>2026-08-03T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://media.x.ai/v1/website/changelog-6ccbbcad.jpg" type="image/jpeg" medium="image"/>
-      <media:thumbnail url="https://media.x.ai/v1/website/changelog-6ccbbcad.jpg"/>
-    </media:group>
-    <link rel="enclosure" href="https://media.x.ai/v1/website/changelog-6ccbbcad.jpg" type="image/jpeg" length="0"/>
   </entry>
 </feed>
