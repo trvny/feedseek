@@ -4,18 +4,18 @@
 
 <img src="assets/icons/favicon-96x96.png" alt="Feedseek" width="72">
 
-# Feedseek 📡
+# Feedseek :satellite_antenna:
 
 **Samoodświeżające się, ulepszane feedy RSS/Atom + JSON oraz dedykowane Model Feeds dla LLM-ów i agentów: zarówno tam, gdzie feedu brakuje, jak i tam, gdzie natywny da się zrobić lepiej.**
 
-[![feeds](https://img.shields.io/badge/feeds-117-d6541a?style=flat-square&logo=rss&logoColor=white)](feeds.yaml) [![CI](https://img.shields.io/github/actions/workflow/status/trvny/feedseek/update-feeds.yml?label=CI&logo=githubactions&logoColor=white&color=d6541a&style=flat-square)](https://github.com/trvny/feedseek/actions/workflows/update-feeds.yml) [![pages](https://img.shields.io/github/deployments/trvny/feedseek/github-pages?label=pages&logo=github&logoColor=white&color=d6541a&style=flat-square)](https://trvny.github.io/feedseek/) [![last commit](https://img.shields.io/github/last-commit/trvny/feedseek?color=d6541a&logo=git&logoColor=white&style=flat-square)](https://github.com/trvny/feedseek/commits/main) [![license](https://img.shields.io/github/license/trvny/feedseek?color=d6541a&style=flat-square)](LICENSE)
-<a href="https://deepwiki.com/trvny/feedseek"><img src="https://deepwiki.com/badge.svg" alt="DeepWiki"></a>  
-[![GitHubPages](https://img.shields.io/badge/-222222?style=for-the-badge&logo=githubpages&logoColor=white)](https://trvny.github.io/feedseek/)  
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) [![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat-square&logo=uv&logoColor=white)](https://astral.sh)
+[![feeds](https://img.shields.io/badge/feeds-117-d6541a?style=flat-square&logo=rss&logoColor=white)](feeds.yaml) [![CI](https://img.shields.io/github/actions/workflow/status/trvny/feedseek/update-feeds.yml?label=CI&logo=githubactions&logoColor=white&style=flat-square)](https://github.com/trvny/feedseek/actions/workflows/update-feeds.yml) [![pages](https://img.shields.io/github/deployments/trvny/feedseek/github-pages?label=pages&logo=github&logoColor=white&style=flat-square)](https://trvny.github.io/feedseek/) [![last commit](https://img.shields.io/github/last-commit/trvny/feedseek?color=d6541a&logo=git&logoColor=white&style=flat-square)](https://github.com/trvny/feedseek/commits/main) [![license](https://img.shields.io/github/license/trvny/feedseek?color=d6541a&logo=opensourceinitiative&logoColor=white&style=flat-square)](https://spdx.org/licenses/MIT)
+[![DeepWiki](https://img.shields.io/badge/DeepWiki-docs-1F6FEB?logo=readthedocs&logoColor=white&style=flat-square)](https://deepwiki.com/trvny/feedseek)  
+[![Web reader](https://img.shields.io/badge/Web%20reader-open-222222?style=flat-square&logo=githubpages&logoColor=white)](https://trvny.github.io/feedseek/reader/)  
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/) [![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat-square&logo=uv&logoColor=white)](https://docs.astral.sh/uv/)
 
 **Polski** · [English](README.md) · [简体中文](README_zh.md)  
 
-[**📡 Feedy**](https://trvny.github.io/feedseek/) · [**📖 Czytnik**](https://trvny.github.io/feedseek/reader/) · [**🗂 Rejestr**](feeds.yaml) · [**🧭 Technicznie**](docs/)  
+[**:satellite_antenna: Feedy**](https://trvny.github.io/feedseek/) · [**:book: Czytnik**](https://trvny.github.io/feedseek/reader/) · [**:card_file_box: Rejestr**](feeds.yaml) · [**:robot: LLMs**](docs/model-feeds.md) · [**:compass: Technicznie**](docs/)  
 
 </div>
 
@@ -25,7 +25,7 @@ Feedseek nie jest tylko generatorem dla stron, które nie mają feedu. Natywny R
 
 Celem jest wykorzystywanie możliwości RSS, Atom i JSON Feed tak dobrze, jak pozwalają dane źródłowe: trwałe identyfikatory, kanoniczne linki, prawdziwe daty publikacji i aktualizacji, użyteczne metadane, pochodzenie, kategorie oraz media. Scrapery i adaptery API uzupełniają braki natywnych źródeł. Nieudane albo puste pobranie nie zastępuje ostatniego poprawnego feedu.
 
-## Feedy
+## Feedy [![XML](https://img.shields.io/badge/XML-005FAD?logo=xml&logoColor=fff&style=plastic)](https://www.w3.org/XML/)
 
 <!-- registry-count: feeds.yaml (117 źródeł) -->
 Pełna tabela źródeł i bezpośrednich plików feedów znajduje się w [angielskim README](README.md#feeds-), a wygodniejszy interfejs do przeglądania i subskrypcji na [stronie Feedseek](https://trvny.github.io/feedseek/).
