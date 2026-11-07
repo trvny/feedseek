@@ -39,6 +39,7 @@ normalized URL/title.
 """
 
 import argparse
+from decimal import InvalidOperation
 import re
 import sys
 from urllib.parse import urljoin, urlparse
@@ -155,7 +156,7 @@ def parse_date(date_str):
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=UTC)
         return dt.astimezone(UTC)
-    except (ValueError, TypeError, OverflowError) as e:
+    except (ValueError, TypeError, OverflowError, InvalidOperation) as e:
         logger.warning("Could not parse date '%s': %s", date_str, e)
         return None
 
