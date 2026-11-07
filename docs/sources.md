@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-115 feedów · 934 źródła
+115 feedów · 935 źródeł
 
 ## Spis grup
 
@@ -292,6 +292,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=rubyinstaller.org&sz=16) RubyInstaller — <https://rubyinstaller.org/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.jetbrains.com&sz=16) JetBrains Blog — <https://blog.jetbrains.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=reactnative.dev&sz=16) React Native Blog — <https://reactnative.dev/blog/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=pub.dev&sz=16) pub.dev packages — <https://pub.dev/feed.atom>
 - ![](https://www.google.com/s2/favicons?domain=ionic.io&sz=16) Ionic Framework Blog — <https://ionic.io/blog/tag/framework/feed>
 - ![](https://www.google.com/s2/favicons?domain=web.dev&sz=16) web.dev Blog — <https://web.dev/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.jupyter.org&sz=16) Jupyter Blog — <https://blog.jupyter.org/feed>
