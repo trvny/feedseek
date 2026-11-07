@@ -382,6 +382,31 @@ class SiteFaviconTests(unittest.TestCase):
 
 
 
+class FullPublicationTests(unittest.TestCase):
+    def test_all_feeds_keep_curated_order_then_add_unselected_by_title(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            feed_dir = Path(tmp)
+            for name, title in (("alpha", "Alpha"), ("zed", "Zed"), ("beta", "Beta")):
+                (feed_dir / f"feed_{name}.xml").write_text(
+                    '<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom">'
+                    f"<title>{title}</title></feed>",
+                    encoding="utf-8",
+                )
+            original = build_site.FEEDS_DIR
+            build_site.FEEDS_DIR = feed_dir
+            try:
+                selected = [build_site.parse_feed(feed_dir / "feed_zed.xml")]
+                result = build_site.collect_all_feeds(selected)
+            finally:
+                build_site.FEEDS_DIR = original
+
+        self.assertEqual(
+            [f["filename"] for f in result],
+            ["feed_zed.xml", "feed_alpha.xml", "feed_beta.xml"],
+        )
+        self.assertIs(result[0], selected[0])
+
+
 class LiveFeedMetadataTests(unittest.TestCase):
     def test_pages_self_urls_are_live_and_git_files_remain_unchanged(self):
         with tempfile.TemporaryDirectory() as tmp:

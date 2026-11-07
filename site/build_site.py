@@ -309,6 +309,18 @@ def collect_feeds() -> list[dict]:
     return feeds
 
 
+def collect_all_feeds(selected: list[dict]) -> list[dict]:
+    """Curated selection first, then every other generated feed by title.
+
+    Selection only curates the landing-page cards and OPML; every generated
+    pair is still published and listed in machine-readable catalogs.
+    """
+    chosen = {str(f["filename"]) for f in selected}
+    rest = [parse_feed(p) for p in FEEDS_DIR.glob("feed_*.xml") if p.name not in chosen]
+    rest.sort(key=lambda f: f["title"].lower())
+    return selected + rest
+
+
 def require_model_sidecars(feeds: list[dict]) -> None:
     """Require a valid Model Feed at each public JSON URL."""
     missing = [
@@ -392,7 +404,7 @@ def render_autodiscovery(feeds: list[dict], base: str) -> str:
 
 
 def build_model_feed_catalog(feeds: list[dict], base: str) -> str:
-    """Small public link manifest derived from the same selected feeds as the page.
+    """Small public link manifest covering every published feed pair.
 
     Contains URLs and provenance only, never copied article bodies. The published
     Model Feeds remain the sole source of article content.
@@ -1048,16 +1060,18 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
 
 def main() -> None:
     base = site_base_url()
+    # feeds: curated cards + OPML. all_feeds: every published file and catalog.
     feeds = collect_feeds()
     if not feeds:
         raise SystemExit("No feeds found in feeds/ — nothing to publish.")
-    require_model_sidecars(feeds)
+    all_feeds = collect_all_feeds(feeds)
+    require_model_sidecars(all_feeds)
 
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True)
 
-    for f in feeds:
+    for f in all_feeds:
         copy_public_feed_pair(FEEDS_DIR / f["filename"], OUT_DIR, base)
 
     # Real favicon files (not just the inline data: URI in <link rel="icon">)
@@ -1080,18 +1094,18 @@ def main() -> None:
     (OUT_DIR / "site.webmanifest").write_text(WEBMANIFEST, encoding="utf-8")
     shutil.copy2(SITE_DIR / "webmcp.js", OUT_DIR / "webmcp.js")
     (OUT_DIR / "subscriptions.opml").write_text(build_opml(feeds, base), encoding="utf-8")
-    (OUT_DIR / "model-feeds.json").write_text(build_model_feed_catalog(feeds, base), encoding="utf-8")
+    (OUT_DIR / "model-feeds.json").write_text(build_model_feed_catalog(all_feeds, base), encoding="utf-8")
     copy_reader_bundle(base)
 
     (OUT_DIR / "index.html").write_text(build_index(feeds, base), encoding="utf-8")
-    (OUT_DIR / "index.md").write_text(build_index_markdown(feeds, base), encoding="utf-8")
-    (OUT_DIR / "sitemap.xml").write_text(build_sitemap(feeds, base), encoding="utf-8")
+    (OUT_DIR / "index.md").write_text(build_index_markdown(all_feeds, base), encoding="utf-8")
+    (OUT_DIR / "sitemap.xml").write_text(build_sitemap(all_feeds, base), encoding="utf-8")
     (OUT_DIR / "robots.txt").write_text(build_robots(base), encoding="utf-8")
-    (OUT_DIR / "llms.txt").write_text(build_llms_txt(feeds, base), encoding="utf-8")
-    (OUT_DIR / "llms-full.txt").write_text(build_llms_full(feeds, base), encoding="utf-8")
+    (OUT_DIR / "llms.txt").write_text(build_llms_txt(all_feeds, base), encoding="utf-8")
+    (OUT_DIR / "llms-full.txt").write_text(build_llms_full(all_feeds, base), encoding="utf-8")
     (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
 
-    print(f"Built {len(feeds)} feeds into {OUT_DIR}/ (base: {base})")
+    print(f"Built {len(all_feeds)} feeds ({len(feeds)} on landing page) into {OUT_DIR}/ (base: {base})")
 
 
 if __name__ == "__main__":
