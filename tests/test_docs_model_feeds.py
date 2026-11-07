@@ -38,7 +38,7 @@ class ModelFeedIndexTests(unittest.TestCase):
             self.assertLess(markdown.index("| `alpha`"), markdown.index("| `unlisted`"))
             self.assertIn("Alpha \\| \\[link\\] \\<script\\>", markdown)
             self.assertIn(
-                "https://raw.githubusercontent.com/owner/repo/main/feeds/feed_unlisted.json",
+                "https://owner.github.io/repo/feed_unlisted.json",
                 markdown,
             )
             self.assertNotIn("Article body stays in JSON", markdown)
