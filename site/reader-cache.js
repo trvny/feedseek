@@ -16,6 +16,27 @@
     ]);
   }
 
+  // Legacy same-origin Pages names feed_<key>.(xml|json) -> <key>.(xml|json).
+  function canonicalFeedUrl(url) {
+    if (typeof url !== "string") return url;
+    const origin = globalThis.location?.origin;
+    try {
+      const parsed = new URL(url);
+      if (!origin || parsed.origin !== origin) return url;
+      const match = parsed.pathname.match(/^(.*\/)feed_([^/]+\.(?:xml|json))$/);
+      if (!match) return url;
+      parsed.pathname = match[1] + match[2];
+      return parsed.href;
+    } catch { return url; }
+  }
+
+  function migrateItems(items) {
+    return items.map(item => {
+      const feedUrl = canonicalFeedUrl(item.feedUrl);
+      return feedUrl === item.feedUrl ? item : { ...item, feedUrl };
+    });
+  }
+
   function byDate(a, b) {
     return (Number(b.ts) || 0) - (Number(a.ts) || 0);
   }
@@ -108,7 +129,7 @@
     });
   }
 
-  async function load() {
+  async function loadRaw() {
     const legacy = readLegacy();
     const db = await database();
     if (!db) return legacy;
@@ -127,6 +148,10 @@
       console.warn("Reader cache load failed; using local snapshot", error);
       return legacy;
     }
+  }
+
+  async function load() {
+    return migrateItems(await loadRaw());
   }
 
   async function persist(items) {
@@ -167,5 +192,5 @@
     return [...fresh, ...history.slice(0, slots)].sort(byDate);
   }
 
-  window.FeedseekReaderCache = { load, save, mergeHistory };
+  window.FeedseekReaderCache = { load, save, mergeHistory, canonicalFeedUrl };
 })();

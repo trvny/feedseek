@@ -55,8 +55,9 @@ function saveCfg(){
 function loadOverlay(){
   try{
     const o = JSON.parse(ls.get('overlay')||'{}');
-    return { removed: Array.isArray(o.removed)?o.removed:[],
-             added:   Array.isArray(o.added)?o.added:[] };
+    const canon=window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u);
+    return { removed: Array.isArray(o.removed)?o.removed.map(canon):[],
+             added:   Array.isArray(o.added)?o.added.map(x=>x&&typeof x==='object'?{...x,xmlUrl:canon(x.xmlUrl)}:x):[] };
   }catch(e){ return {removed:[], added:[]}; }
 }
 function saveOverlay(){ ls.set('overlay', JSON.stringify({removed:overlay.removed, added:overlay.added})); }
@@ -112,7 +113,7 @@ let STATUS_ERROR = '', activeRun = null, runVersion = 0;
 let sourceFavorites = [];
 try{
   const saved=JSON.parse(ls.get('sourceFavorites')||'[]');
-  if(Array.isArray(saved)) sourceFavorites=saved.filter(value=>typeof value==='string');
+  if(Array.isArray(saved)) sourceFavorites=saved.filter(value=>typeof value==='string').map(window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u));
 }catch{ sourceFavorites=[]; }
 
 function safeHttpUrl(value, base=document.baseURI){

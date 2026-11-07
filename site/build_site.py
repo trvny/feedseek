@@ -282,6 +282,13 @@ def short_name(path: Path) -> str:
     return stem[len("feed_"):] if stem.startswith("feed_") else stem
 
 
+# Short feed names share the site root with these generated files.
+RESERVED_PUBLIC_STEMS = frozenset({
+    "index", "llms", "llms-full", "sitemap", "robots", "model-feeds",
+    "subscriptions", "favicon", "site", "webmcp",
+})
+
+
 def public_xml(feed: dict) -> str:
     """feed_reuters.xml -> reuters.xml: short Pages name."""
     return str(feed["filename"]).removeprefix("feed_")
@@ -1080,6 +1087,11 @@ def main() -> None:
     if not all_feeds:
         raise SystemExit("No feeds found in feeds/ — nothing to publish.")
     require_model_sidecars(all_feeds)
+    clashes = sorted(
+        public_xml(f) for f in all_feeds if Path(public_xml(f)).stem in RESERVED_PUBLIC_STEMS
+    )
+    if clashes:
+        raise SystemExit(f"Feed names clash with site files: {', '.join(clashes)}")
 
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
