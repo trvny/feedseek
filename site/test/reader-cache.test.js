@@ -111,7 +111,7 @@ test("history stays source-scoped and prefers fresh entry revisions", () => {
 test("legacy same-origin feed_ URLs migrate to short names", async () => {
   const context = vm.createContext({
     window: {}, console, URL,
-    location: { origin: "https://trvny.github.io" },
+    location: { href: "https://trvny.github.io/feedseek/reader/" },
     localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
   });
   vm.runInContext(source, context);
@@ -120,4 +120,5 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://trvny.github.io/feedseek/wykop.json");
   assert.equal(canon("https://other.example/feed_wykop.xml"), "https://other.example/feed_wykop.xml");
   assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
 });

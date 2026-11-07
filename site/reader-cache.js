@@ -16,15 +16,16 @@
     ]);
   }
 
-  // Legacy same-origin Pages names feed_<key>.(xml|json) -> <key>.(xml|json).
+  // Legacy Feedseek Pages names feed_<key>.(xml|json) -> <key>.(xml|json).
+  // Only inside the site root (parent of reader/), never other projects.
   function canonicalFeedUrl(url) {
     if (typeof url !== "string") return url;
-    const origin = globalThis.location?.origin;
     try {
+      const root = new URL("../", globalThis.location?.href);
       const parsed = new URL(url);
-      if (!origin || parsed.origin !== origin) return url;
+      if (parsed.origin !== root.origin) return url;
       const match = parsed.pathname.match(/^(.*\/)feed_([^/]+\.(?:xml|json))$/);
-      if (!match) return url;
+      if (!match || match[1] !== root.pathname) return url;
       parsed.pathname = match[1] + match[2];
       return parsed.href;
     } catch { return url; }
