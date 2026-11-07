@@ -85,6 +85,65 @@ class CursorSourcesTests(unittest.TestCase):
         self.assertEqual(entries[0]["date"].date().isoformat(), "2026-10-29")
         self.assertEqual(get.call_count, 3)
 
+
+    def test_invalid_detail_date_falls_back_to_listing_date(self):
+        entry = xai._cursor_blog_article(
+            '<head><meta property="article:published_time" content="not a date"></head>'
+            '<h1>Known entry</h1>',
+            "https://cursor.com/blog/known-entry",
+            xai.parse_date("Oct 29, 2026"),
+        )
+        self.assertEqual(entry["date"].date().isoformat(), "2026-10-29")
+
+    def test_sibling_card_date_is_not_stolen(self):
+        index = """
+        <main><div class="listing">
+          <article><a href="/blog/dated"><h2>Dated</h2></a><span>Oct 29, 2026</span></article>
+          <article><a href="/blog/undated"><h2>Undated</h2></a></article>
+        </div></main>
+        """
+        items = xai._cursor_blog_index(index, set())
+        self.assertEqual(len(items), 2)
+        self.assertEqual(items[0][1].date().isoformat(), "2026-10-29")
+        self.assertIsNone(items[1][1])
+
+    def test_discovery_budget_and_aggregate_invocation(self):
+        index = "<main>" + "".join(
+            f'<article><a href="/blog/post-{n}"><h2>Post {n}</h2>'
+            f'<span>Oct 29, 2026</span></a></article>'
+            for n in range(20)
+        ) + "</main>"
+        self.assertEqual(len(xai._cursor_blog_index(index, set())), xai.CURSOR_BLOG_MAX)
+        with patch.object(xai, "_get_html", side_effect=lambda url: index if url == xai.CURSOR_BLOG_URL else "<h1>Detail</h1>") as get:
+            self.assertEqual(len(xai.scrape_cursor_blog(set())), xai.CURSOR_BLOG_MAX)
+        self.assertEqual(get.call_count, 1 + xai.CURSOR_BLOG_MAX)
+        other_names = (
+            "scrape_news", "scrape_console_changelog", "scrape_grok_bot_changelog",
+            "scrape_tesla_blog", "scrape_build_changelog", "scrape_release_notes",
+            "scrape_grok_release_notes", "scrape_x_blog", "scrape_x_api_changelog",
+        )
+        from contextlib import ExitStack
+
+        with ExitStack() as stack:
+            for name in other_names:
+                stack.enter_context(patch.object(xai, name, return_value=[]))
+            changelog = stack.enter_context(
+                patch.object(xai, "scrape_cursor_changelog", return_value=[
+                    {"title": "Cursor release"}
+                ])
+            )
+            blog = stack.enter_context(
+                patch.object(xai, "scrape_cursor_blog", return_value=[
+                    {"title": "Cursor news"}
+                ])
+            )
+            self.assertEqual(
+                [entry["title"] for entry in xai.scrape_all(set())],
+                ["Cursor release", "Cursor news"],
+            )
+            changelog.assert_called_once_with(set())
+            blog.assert_called_once_with(set())
+
     def test_known_and_failed_index_skip_detail_fetches(self):
         index = '<a href="/blog/known"><h2>Known</h2><span>Oct 29, 2026</span></a>'
         with patch.object(xai, "_get_html", return_value=index) as get:

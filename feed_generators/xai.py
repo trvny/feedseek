@@ -748,15 +748,25 @@ def _cursor_blog_index(html, known_links):
                 continue
             seen.add(link)
 
-            # Prefer a date within the card. Avoid crawling into the whole page.
+            # Reject shared wrappers: their dates can belong to sibling posts.
             date_obj = None
             for card in [anchor, *list(anchor.parents)[:4]]:
                 if getattr(card, "name", None) in {"main", "body", "html"}:
                     break
-                text = card.get_text(" ", strip=True)
-                match = DATE_RE.search(text[:900])
+                post_paths = {
+                    urlparse(urljoin(CURSOR_BLOG_URL, child.get("href", ""))).path
+                    for child in card.find_all("a", href=True)
+                    if _CURSOR_BLOG_PATH.fullmatch(
+                        urlparse(urljoin(CURSOR_BLOG_URL, child.get("href", ""))).path
+                    )
+                }
+                if len(post_paths) > 1:
+                    break
+                match = DATE_RE.search(card.get_text(" ", strip=True)[:900])
                 if match:
                     date_obj = parse_date(match.group(1))
+                    break
+                if getattr(card, "name", None) == "article":
                     break
             heading = anchor.find(["h2", "h3"])
             title = heading.get_text(" ", strip=True) if heading else ""
@@ -775,14 +785,18 @@ def _cursor_blog_article(html, link, index_date, index_title=""):
     if not title:
         return None
 
-    meta = lambda key, value: soup.find("meta", attrs={key: value})
+    def meta(key, value):
+        return soup.find("meta", attrs={key: value})
+
     desc_el = meta("name", "description") or meta("property", "og:description")
     description = desc_el.get("content", "").strip() if desc_el else ""
     published = meta("property", "article:published_time")
     time_el = soup.find("time", datetime=True)
+    # Broken metadata must not erase a valid date from the listing.
     date_obj = (
-        parse_date(published.get("content")) if published and published.get("content")
-        else parse_date(time_el.get("datetime")) if time_el else index_date
+        (parse_date(published.get("content")) if published and published.get("content") else None)
+        or (parse_date(time_el.get("datetime")) if time_el else None)
+        or index_date
     )
     if date_obj is None:
         return None
@@ -805,6 +819,7 @@ def _cursor_blog_article(html, link, index_date, index_title=""):
 
 
 def scrape_cursor_blog(known_links):
+    """Get uncached blog posts; fall back to dated listing cards when detail fails."""
     index = _get_html(CURSOR_BLOG_URL)
     if not index:
         return []
@@ -832,6 +847,7 @@ def scrape_cursor_blog(known_links):
 
 
 def doc_sources():
+    """Public Cursor source URLs for the generated Feedseek documentation."""
     return [
         ("Cursor Changelog", CURSOR_CHANGELOG_URL),
         ("Cursor Blog", CURSOR_BLOG_URL),
