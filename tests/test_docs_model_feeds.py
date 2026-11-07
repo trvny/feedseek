@@ -34,7 +34,7 @@ class ModelFeedIndexTests(unittest.TestCase):
             self.write_feed(feeds, "unlisted", "Beta", 2)
             self.write_feed(feeds, "alpha", "Alpha | [link]\n<script>", 3)
             markdown = index.build_markdown(feeds, "owner/repo")
-            self.assertIn("2 Model Feeds · 5 entries.", markdown)
+            self.assertIn("2 Model Feeds.", markdown)
             self.assertLess(markdown.index("| `alpha`"), markdown.index("| `unlisted`"))
             self.assertIn("Alpha \\| \\[link\\] \\<script\\>", markdown)
             self.assertIn(
@@ -98,16 +98,16 @@ class ModelFeedIndexTests(unittest.TestCase):
             with patch.object(model_feed, "__file__", str(root / "feed_generators" / "model_feed.py")):
                 model_feed.main()
             self.assertTrue((feeds / "feed_demo.json").is_file())
-            self.assertIn("1 Model Feeds · 1 entries.", out.read_text(encoding="utf-8"))
+            self.assertIn("1 Model Feeds.", out.read_text(encoding="utf-8"))
             self.assertIn("demo.json", out.read_text(encoding="utf-8"))
 
-    def test_push_retry_regenerates_index_after_concurrent_feed_addition(self):
+    def test_push_retry_rebases_docs_commit_over_concurrent_push(self):
         root = Path(__file__).resolve().parents[1]
         workflow = yaml.safe_load((root / ".github/workflows/update-feeds.yml").read_text())
         script = next(
             step["run"]
             for step in workflow["jobs"]["update-feeds"]["steps"]
-            if step["name"] == "Commit and push successful updates"
+            if step["name"] == "Commit generated docs"
         ).replace("uv run --locked", shlex.quote(sys.executable))
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
@@ -140,16 +140,19 @@ class ModelFeedIndexTests(unittest.TestCase):
             run(base, "git", "clone", str(origin), str(job))
             os.utime(job / "feed_generators/utils.py", (1, 1))
 
+            # feeds/ is untracked: the job holds pairs restored from Pages.
+            (job / "feeds").mkdir()
             self.write_feed(job / "feeds", "alpha", "Alpha", 2)
+            self.write_feed(job / "feeds", "beta", "Beta", 7)
             run(job, sys.executable, "feed_generators/docs_model_feeds.py")
-            self.write_feed(seed / "feeds", "beta", "Beta", 7)
+            (seed / "README.md").write_text("concurrent\n")
             run(seed, "git", "add", ".")
-            run(seed, "git", "commit", "-m", "Concurrent feed addition")
+            run(seed, "git", "commit", "-m", "Concurrent commit")
             run(seed, "git", "push")
 
             run(job, "bash", "-euo", "pipefail", "-c", script)
             markdown = (job / "docs/model-feeds.md").read_text()
-            self.assertIn("2 Model Feeds · 9 entries.", markdown)
+            self.assertIn("2 Model Feeds.", markdown)
             self.assertIn("beta.json", markdown)
             self.assertEqual(run(job, "git", "status", "--porcelain").stdout, "")
             self.assertEqual(

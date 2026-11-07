@@ -38,9 +38,14 @@ lock: ## Refresh uv.lock after editing pyproject.toml
 cache-restore: ## Restore the durable generation cache from R2
 	$(RESTORE_CACHE)
 
+.PHONY: feeds-restore
+feeds-restore: ## Restore the last published feed pairs from GitHub Pages into feeds/
+	$(PY) tools/restore_published_feeds.py
+
 .PHONY: feeds
 feeds: ## Generate all feeds (incremental)
 	$(RESTORE_CACHE)
+	$(PY) tools/restore_published_feeds.py
 	$(PY) feed_generators/run_all_feeds.py
 
 .PHONY: feeds-full

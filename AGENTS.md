@@ -2,7 +2,7 @@
 
 - `feed_generators/`: Python generators and shared feed helpers.
 - `feeds.yaml`: source registry.
-- `feeds/`: tracked generated output; `cache/`: local generated state restored from R2, intentionally untracked.
+- `feeds/`: generated output, untracked; published on Pages only and restored from there before generation (`tools/restore_published_feeds.py`). `cache/`: local generated state restored from R2, untracked.
 - `site/`: static site and reader.
 - `feeds-proxy/`: supporting Cloudflare Worker; stays in this repo.
 

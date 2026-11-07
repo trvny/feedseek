@@ -11,7 +11,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
 
     def test_commit_requires_final_validation_and_non_cancelled_job(self):
         workflow = self.workflow()
-        block = workflow.split("- name: Commit and push successful updates", 1)[1]
+        block = workflow.split("- name: Commit generated docs", 1)[1]
         block = block.split("- name: Apply feed health gate", 1)[0]
         self.assertIn("steps.validate.outcome == 'success'", block)
         self.assertIn("!cancelled()", block)
@@ -48,8 +48,8 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
     def test_cache_snapshot_is_saved_only_after_a_healthy_run(self):
         workflow = self.workflow()
         backup = workflow.split("- name: Back up Feedseek cache to R2", 1)[1]
-        backup = backup.split("- name: Commit and push successful updates", 1)[0]
-        commit = workflow.split("- name: Commit and push successful updates", 1)[1]
+        backup = backup.split("- name: Commit generated docs", 1)[0]
+        commit = workflow.split("- name: Commit generated docs", 1)[1]
         commit = commit.split("- name: Apply feed health gate", 1)[0]
         self.assertIn("steps.validate.outcome == 'success'", backup)
         self.assertIn("tools/backup_r2_cache.py", backup)
@@ -57,7 +57,8 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertNotIn("bootstrap", backup.casefold())
         self.assertNotIn("continue-on-error: true", backup)
         self.assertNotIn("git add feeds cache", commit)
-        self.assertIn("git add feeds docs/sources.md", commit)
+        self.assertIn("git add docs/sources.md docs/model-feeds.md", commit)
+        self.assertNotIn("git add feeds", commit)
         self.assertIn("steps.backup.outcome == 'success'", commit)
 
 
@@ -75,33 +76,32 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
             workflow.index("- name: Build live Pages site"),
         )
         self.assertLess(
-            workflow.index("- name: Commit and push successful updates"),
+            workflow.index("- name: Commit generated docs"),
             workflow.index("- name: Build live Pages site"),
         )
         self.assertNotIn("FEEDSEEK_INDEX_PIN_COMMITTED", workflow)
         self.assertIn("pages: write", workflow)
         self.assertIn("id-token: write", workflow)
 
-    def test_git_snapshot_is_periodic_but_manual_and_push_runs_still_commit(self):
+    def test_feeds_are_restored_from_pages_and_never_committed(self):
         workflow = self.workflow()
-        snapshot = workflow.split("- name: Decide whether Git snapshot is due", 1)[1]
-        snapshot = snapshot.split("- name: Commit and push successful updates", 1)[0]
-        commit = workflow.split("- name: Commit and push successful updates", 1)[1]
-        commit = commit.split("- name: Apply feed health gate", 1)[0]
-        self.assertIn('FEEDSEEK_GIT_SNAPSHOT_HOURS: "6"', workflow)
-        self.assertIn('"$GITHUB_EVENT_NAME" != "schedule"', snapshot)
+        restore = workflow.split("- name: Restore published feeds from Pages", 1)[1]
+        restore = restore.split("- name: Run feed tests", 1)[0]
+        self.assertIn("tools/restore_published_feeds.py", restore)
+        self.assertNotIn("continue-on-error: true", restore)
+        self.assertLess(
+            workflow.index("- name: Restore published feeds from Pages"),
+            workflow.index("- name: Generate feeds"),
+        )
+        self.assertNotIn("FEEDSEEK_GIT_SNAPSHOT_HOURS", workflow)
+        self.assertNotIn("steps.snapshot", workflow)
         triggers = workflow.split("concurrency:", 1)[0]
         self.assertIn("  push:", triggers)
         self.assertIn("  workflow_dispatch:", triggers)
-        self.assertIn("commits?path=feeds&per_page=1", snapshot)
-        self.assertIn("last_sha", snapshot)
-        self.assertIn('"$GITHUB_SHA" != "$last_sha"', snapshot)
-        self.assertIn("echo \"due=true\"", snapshot)
-        self.assertIn("age_seconds < 0", snapshot)
-        self.assertIn("age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600", snapshot)
-        self.assertIn("echo \"due=false\"", snapshot)
-        self.assertIn("steps.snapshot.outputs.due == 'true'", commit)
-        self.assertIn("steps.backup.outcome == 'success'", commit)
+        deploy = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertEqual(deploy.count("tools/restore_published_feeds.py"), 2)
 
     def test_failed_main_refresh_can_rebuild_only_when_no_newer_run(self):
         """Reject stale fallback deployments after newer refreshes."""
