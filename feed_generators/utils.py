@@ -37,7 +37,7 @@ DEFAULT_HEADERS = {"User-Agent": DEFAULT_USER_AGENT}
 REPO_SLUG = os.getenv("RSS_REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or "trvny/feedseek"
 _OWNER, _, _REPO = REPO_SLUG.partition("/")
 # Canonical publication: GitHub Pages, short names (<key>.xml / <key>.json).
-PUBLIC_BASE = os.getenv("FEEDSEEK_PUBLIC_BASE") or f"https://{_OWNER.lower()}.github.io/{_REPO}/"
+PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or f"https://{_OWNER.lower()}.github.io/{_REPO}").rstrip("/") + "/"
 
 
 def public_feed_url(feed_name: str, ext: str = "xml") -> str:
