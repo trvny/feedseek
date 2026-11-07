@@ -107,6 +107,23 @@ class CursorSourcesTests(unittest.TestCase):
         self.assertEqual(items[0][1].date().isoformat(), "2026-10-29")
         self.assertIsNone(items[1][1])
 
+
+    def test_invalid_decimal_date_cannot_abort_collection(self):
+        from decimal import InvalidOperation
+
+        with patch.object(xai.date_parser, "parse", side_effect=InvalidOperation):
+            self.assertIsNone(xai.parse_date("bad numeric timestamp"))
+        index_date = xai.parse_date("Oct 29, 2026")
+        detail = (
+            '<head><meta property="article:published_time" content="bad numeric timestamp"></head>'
+            '<h1>Still publishable</h1>'
+        )
+        with patch.object(xai.date_parser, "parse", side_effect=InvalidOperation):
+            entry = xai._cursor_blog_article(
+                detail, "https://cursor.com/blog/still-publishable", index_date
+            )
+        self.assertEqual(entry["date"], index_date)
+
     def test_discovery_budget_and_aggregate_invocation(self):
         index = "<main>" + "".join(
             f'<article><a href="/blog/post-{n}"><h2>Post {n}</h2>'
