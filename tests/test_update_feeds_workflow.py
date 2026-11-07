@@ -78,7 +78,7 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
             workflow.index("- name: Commit and push successful updates"),
             workflow.index("- name: Build live Pages site"),
         )
-        self.assertIn("FEEDSEEK_INDEX_PIN_COMMITTED: \"1\"", workflow)
+        self.assertNotIn("FEEDSEEK_INDEX_PIN_COMMITTED", workflow)
         self.assertIn("pages: write", workflow)
         self.assertIn("id-token: write", workflow)
 

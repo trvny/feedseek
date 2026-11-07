@@ -9,6 +9,7 @@ const SERVER_INFO = {
   version: "1.0.0",
   icons: [{ src: FEEDSEEK_ICON_URL, mimeType: "image/png", sizes: ["192x192"] }],
 };
+const LIVE_FEEDS_BASE = "https://trvny.github.io/feedseek/";
 const RAW_FEEDS_BASE = "https://raw.githubusercontent.com/trvny/feedseek";
 const SUPPORTED_PROTOCOLS = new Set(["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26"]);
 const LATEST_PROTOCOL = "2026-07-28";
@@ -330,7 +331,21 @@ async function loadJson(url) {
   return /** @type {JsonObject} */ (JSON.parse(new TextDecoder().decode(body || new Uint8Array())));
 }
 
-/** New revisions publish Model Feeds at .json; older revisions have a separate
+/** Live Pages Model Feed; null when unavailable. Item ids are durable and feeds
+ * keep full published history, so live data resolves ids from any revision.
+ * @param {string} sourceKey
+ */
+async function loadLiveFeed(sourceKey) {
+  try {
+    const feed = await loadJson(`${LIVE_FEEDS_BASE}${sourceKey}.json`);
+    return feed?.format === "feedseek-model-feed" ? feed : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Legacy fallback: Git snapshot at the id revision (feeds/ was committed until
+ * Pages became the only publication). New revisions publish Model Feeds at .json; older revisions have a separate
  * .model.json sidecar or only a legacy JSON Feed.
  * @param {string} revision
  * @param {string} sourceKey
@@ -605,13 +620,62 @@ function canonicalUrl(item) {
   return "";
 }
 
+/** Index row as a summary-only fetch result; null when the id is not indexed.
+ * @param {string} id
+ */
+async function loadIndexedEntry(id) {
+  let data;
+  try {
+    data = await loadJson(INDEX_URL);
+  } catch {
+    return null;
+  }
+  const items = Array.isArray(data.items) ? /** @type {IndexItem[]} */ (data.items) : [];
+  const item = items.find((candidate) => candidate?.id === id);
+  if (!item || typeof item.url !== "string" || !item.url) return null;
+  return {
+    id,
+    title: String(item.title || "Untitled"),
+    text: typeof item.summary === "string" ? item.summary : "",
+    url: item.url,
+    metadata: {
+      source: String(item.source || item.source_key),
+      source_key: item.source_key,
+      revision: typeof data.revision === "string" ? data.revision : null,
+      text_kind: "summary",
+      published_at: item.published_at || null,
+      modified_at: item.modified_at || null,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      image: null,
+    },
+  };
+}
+
 /** @param {JsonObject} args */
 async function fetchEntry(args = {}) {
   const { revision, sourceKey, itemId } = decodeOpaqueId(args.id);
-  const { feed, modelFeed } = await loadRevisionFeed(revision, sourceKey);
-  const items = Array.isArray(feed.items) ? /** @type {JsonObject[]} */ (feed.items) : [];
-  const item = items.find((candidate) => candidate?.id === itemId);
-  if (!item) throw new Error("Feedseek entry was not found");
+  /** @param {JsonObject} candidateFeed */
+  const findItem = (candidateFeed) => (Array.isArray(candidateFeed.items)
+    ? /** @type {JsonObject[]} */ (candidateFeed.items) : []).find((candidate) => candidate?.id === itemId);
+  const live = await loadLiveFeed(sourceKey);
+  /** @type {JsonObject} */
+  let feed = live || {};
+  let modelFeed = true;
+  let item = live ? findItem(live) : undefined;
+  if (!item) {
+    try {
+      ({ feed, modelFeed } = await loadRevisionFeed(revision, sourceKey));
+      item = findItem(feed);
+    } catch {
+      // Revision snapshot absent (feeds/ no longer committed) or unreachable.
+    }
+  }
+  if (!item) {
+    // Rotating feeds can drop an entry the index still lists; the index row keeps search/fetch consistent.
+    const indexed = await loadIndexedEntry(String(args.id));
+    if (indexed) return indexed;
+    throw new Error(live ? "Feedseek entry was not found" : "Feedseek feed is temporarily unavailable");
+  }
   const url = canonicalUrl(item);
   if (!url) throw new Error("Feedseek entry has no citation URL");
 

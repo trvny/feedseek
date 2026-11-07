@@ -284,13 +284,10 @@ test("recent rejects non-RFC and impossible cutoffs before fetching", async () =
   }
 });
 
-test("fetch uses plaintext Model Feed at the current JSON URL", async () => {
+test("fetch uses the live Pages Model Feed first", async () => {
   await withFetch(
     async (url) => {
-      assert.equal(
-        String(url),
-        `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
-      );
+      assert.equal(String(url), "https://trvny.github.io/feedseek/openai.json");
       return new Response(JSON.stringify({
         format: "feedseek-model-feed",
         title: "OpenAI",
@@ -321,6 +318,7 @@ test("fetch falls back to JSON Feed for pre-Model-Feed revisions", async () => {
   await withFetch(
     async (url) => {
       seen.push(String(url));
+      if (String(url).startsWith("https://trvny.github.io/")) return new Response("gone", { status: 404 });
       if (String(url).endsWith(".model.json")) {
         return new Response("not found", { status: 404 });
       }
@@ -345,6 +343,7 @@ test("fetch falls back to JSON Feed for pre-Model-Feed revisions", async () => {
     },
   );
   assert.deepEqual(seen, [
+    "https://trvny.github.io/feedseek/openai.json",
     `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
     `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
   ]);
@@ -355,6 +354,7 @@ test("fetch supports older revisions with separate Model Feed sidecars", async (
   await withFetch(
     async (url) => {
       seen.push(String(url));
+      if (String(url).startsWith("https://trvny.github.io/")) return new Response("gone", { status: 404 });
       if (String(url).endsWith(".model.json")) {
         return new Response(JSON.stringify({
           format: "feedseek-model-feed",
@@ -390,9 +390,62 @@ test("fetch supports older revisions with separate Model Feed sidecars", async (
     },
   );
   assert.deepEqual(seen, [
+    "https://trvny.github.io/feedseek/openai.json",
     `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
     `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.model.json`,
   ]);
+});
+
+test("fetch falls back to the id revision when the live feed lacks the item", async () => {
+  const seen = [];
+  await withFetch(
+    async (url) => {
+      seen.push(String(url));
+      const live = String(url).startsWith("https://trvny.github.io/");
+      return new Response(JSON.stringify({
+        format: "feedseek-model-feed",
+        title: "OpenAI",
+        items: live ? [] : [{ id: "tag:example", title: "Old", url: "https://example.com/o", text: "Old text", text_kind: "summary" }],
+      }), { status: 200 });
+    },
+    async () => {
+      const body = await (
+        await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
+      ).json();
+      assert.equal(body.result.structuredContent.text, "Old text");
+    },
+  );
+  assert.deepEqual(seen, [
+    "https://trvny.github.io/feedseek/openai.json",
+    `https://raw.githubusercontent.com/trvny/feedseek/${revision}/feeds/feed_openai.json`,
+  ]);
+});
+
+test("fetch falls back to the search index row when feeds rotated the entry out", async () => {
+  await withFetch(
+    async (url) => {
+      const target = String(url);
+      if (target.endsWith("feedseek-search-index.json")) {
+        return new Response(JSON.stringify({
+          revision,
+          items: [{ id: opaqueId, source_key: "openai", source: "OpenAI", title: "Rotated", url: "https://example.com/r", summary: "Index summary" }],
+        }), { status: 200 });
+      }
+      if (target.startsWith("https://trvny.github.io/")) {
+        return new Response(JSON.stringify({ format: "feedseek-model-feed", items: [] }), { status: 200 });
+      }
+      return new Response("gone", { status: 404 });
+    },
+    async () => {
+      const body = await (
+        await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
+      ).json();
+      const result = body.result.structuredContent;
+      assert.equal(result.text, "Index summary");
+      assert.equal(result.url, "https://example.com/r");
+      assert.equal(result.metadata.text_kind, "summary");
+    },
+  );
 });
 
 test("legacy plaintext keeps spacing while hidden HTML is still rendered", () => {

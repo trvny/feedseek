@@ -55,7 +55,7 @@ feeds-proxy.travny.workers.dev/mcp
           |
           +--> search / recent
           |
-          +--> fetch -> immutable feed JSON at the commit encoded in the result id
+          +--> fetch -> live Pages Model Feed (legacy ids: Git revision fallback)
           |
           v
 ChatGPT Feedseek app
@@ -65,12 +65,13 @@ The index contains at most 5,000 items from the last 14 days plus a small allowa
 undated entries. Feeds explicitly disabled in `feeds.yaml` are not indexed. Search reads
 that aggregate with one upstream request.
 
-Each result id also carries the exact Git commit used to build the index. `fetch` reads the
-selected Model Feed JSON at that immutable revision, so a feed update cannot invalidate a result
-between `search` and `fetch`. This also avoids per-request fan-out over the registry.
+Each result id carries the build revision, source key and durable item id. `fetch` reads the
+live Pages Model Feed (`<key>.json`), which keeps full published history, and finds the item by
+id; ids whose item is gone fall back to the Git revision they encode (feeds were committed until
+Pages became the only publication). One upstream request per fetch, no registry fan-out.
 
 Publication and modification timestamps are both considered for recency; the newer valid
-timestamp wins. Current search/index generation consumes `feed_<name>.json`, the sole published Model Feed JSON beside each XML feed, with normalized plaintext and `text_kind` metadata. Historical revision-pinned JSON Feed 1.1 results remain fetchable through a compatibility fallback; HTML-only entries become decoded plain text, and literal angle-bracket text in `content_text` is preserved.
+timestamp wins. Current search/index generation consumes `feed_<name>.json`, the sole published Model Feed JSON beside each XML feed, with normalized plaintext and `text_kind` metadata. Historical JSON Feed 1.1 results remain fetchable through the revision fallback; HTML-only entries become decoded plain text, and literal angle-bracket text in `content_text` is preserved.
 
 ## Security and privacy
 
@@ -78,8 +79,8 @@ timestamp wins. Current search/index generation consumes `feed_<name>.json`, the
 - The app reads only Feedseek's already-public generated feeds; it needs no user account,
   OAuth token or secret.
 - Feed/article text is explicitly marked and instructed as untrusted external content.
-- Opaque result ids encode only the immutable Feedseek revision, source key and upstream
-  item id needed for deterministic lookup.
+- Opaque result ids encode only the Feedseek build revision, source key and upstream
+  item id needed for lookup.
 - Tool arguments are validated server-side instead of relying on client validation.
 - MCP request bodies are capped at 64 KiB before parsing; upstream index/feed JSON is capped at 16 MiB. Both limits also apply when Content-Length is absent.
 - The existing constrained fetch proxy remains unchanged; `/mcp` is routed separately.

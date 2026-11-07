@@ -201,7 +201,6 @@ jobs:
       - name: Build live Pages site
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
-          FEEDSEEK_INDEX_PIN_COMMITTED: "1"
         run: |
           uv run --locked site/build_site.py
           uv run --locked site/build_search_index.py
