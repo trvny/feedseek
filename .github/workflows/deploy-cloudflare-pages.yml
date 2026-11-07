@@ -61,6 +61,10 @@ jobs:
           python-version: "3.14"
           working-directory: .
 
+      # feeds/ is untracked; build from the last published Pages pairs.
+      - name: Restore published feeds from Pages
+        run: uv run --locked tools/restore_published_feeds.py
+
       - name: Build site
         working-directory: .
         run: |

@@ -5,7 +5,6 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main]
     paths-ignore:
-      - "feeds/**"
       - "cache/**"
   pull_request: null
 
@@ -81,7 +80,7 @@ jobs:
               artifacts=true
             fi
             if ! git diff --quiet "$BASE_SHA" HEAD -- \
-              feeds/ cache/; then
+              cache/; then
               artifacts=true
             fi
             if ! git diff --quiet "$BASE_SHA" HEAD -- \
@@ -108,12 +107,18 @@ jobs:
         if: steps.paths.outputs.tests == 'true' || steps.paths.outputs.artifacts == 'true'
         run: uv sync --locked
 
+      # feeds/ is untracked; tests and validation use the last published pairs.
+      - name: Restore published feeds from Pages
+        if: steps.paths.outputs.tests == 'true' || steps.paths.outputs.artifacts == 'true'
+        run: uv run --locked tools/restore_published_feeds.py
+
       - name: Test Feedseek
         if: steps.paths.outputs.tests == 'true'
         id: feedseek_tests
         continue-on-error: true
         run: uv run --locked python -m unittest discover -s tests
 
+      # Only feeds not yet published (new in this PR) are generated here.
       - name: Bootstrap missing feed artifacts for PR validation
         if: github.event_name == 'pull_request' && steps.paths.outputs.artifacts == 'true'
         run: |

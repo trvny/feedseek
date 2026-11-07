@@ -39,6 +39,10 @@ class CheckoutScopeTests(unittest.TestCase):
         self.assertIn("not xml.exists() or not sidecar.exists()", bootstrap)
         self.assertIn("run_feed(name, config, full=True)", bootstrap)
         self.assertNotIn("name in previous", bootstrap)
+        self.assertLess(
+            workflow.index("- name: Restore published feeds from Pages"),
+            workflow.index("- name: Test Feedseek"),
+        )
 
     def checkout_options(self, name: str) -> dict:
         workflow = yaml.safe_load(self.workflow(name))
