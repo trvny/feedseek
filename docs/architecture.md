@@ -32,7 +32,7 @@ The defaults are intentionally conservative:
 The scheduled generator still runs every two hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
-results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for feeds in `published_feeds` (including
+results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
 `https://trvny.github.io/feedseek/feed_<name>.xml` and its Model Feed JSON
 sibling) current without a fresh pack of generated blobs in `main`. The Pages
 build also points Atom self links and Model Feed URLs at the live Pages copy,
@@ -64,7 +64,7 @@ without rewriting past commits, disrupting PRs or moving the source registry.
 
 The publication gate has a small universal core. Every enabled feed must produce non-empty, parseable XML and one valid `feed_<name>.json` Model Feed with the same item count. Model Feed v1 requires unique non-empty IDs, non-empty plaintext and valid `text_kind` (`content`, `summary` or `title`); it preserves canonical links, dates, provenance-friendly authors/tags and optional imagery without reader-specific markup. JSON Feed 1.1 is used only as an internal projection, not an additional public artifact. Old `*.model.json` sidecars are no longer published. The public contract is [`schemas/model-feed.v1.schema.json`](schemas/model-feed.v1.schema.json); consumer-facing access is in [agents.md](agents.md).
 
-The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps derived from the same `feeds.yaml`-selected feed set. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
+The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps for every published feed pair. `feeds.yaml` → `published_feeds` only curates landing-page cards and `subscriptions.opml`; `llms.txt`, `llms-full.txt`, `index.md` and the sitemap list every feed too. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
 
 The repository's [Model Feed index](model-feeds.md) covers every existing `feeds/feed_*.json`, including feeds outside the curated website selection. `feed_generators/model_feed.py` refreshes it after generating JSON sidecars; Update Feeds commits it with those artifacts. Regenerate the index alone with `uv run --locked feed_generators/docs_model_feeds.py`; add `--check` to detect drift.
 
@@ -153,7 +153,7 @@ using a temporary registry and destination. Until such a test exists, leave
 3. Reuse shared HTTP, normalization, cache and feed helpers instead of creating local copies.
 4. Add the source/feed row to the registry table in `README.md`; tests keep that table aligned with `feeds.yaml`.
 5. Keep the source-count badges in all three language READMEs and the `registry-count` marker in `README_pl.md` aligned with `feeds.yaml`; tests enforce the current registry count.
-6. Add it to `feeds.yaml` → `published_feeds` when it should appear on the public site.
+6. Add it to `feeds.yaml` → `published_feeds` when it should get a landing-page card and an OPML entry (its files are published either way).
 7. Optionally add a per-feed Make target when a convenient dedicated or `*_full` command is useful.
 8. Run the relevant tests and `make validate`.
 
