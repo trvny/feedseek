@@ -51,8 +51,8 @@ import requests
 from bs4 import BeautifulSoup, Tag
 from feedgen.feed import FeedGenerator
 from utils import (
-    REPO_SLUG,
     favicon_url,
+    public_feed_url,
     require_fresh_cache_restore,
     save_atom_feed,
     write_atomically,
@@ -339,7 +339,7 @@ def build_feed(articles: list[dict]) -> FeedGenerator:
     fg.subtitle(FEED_DESC)
     fg.link(href=BLOG_URL, rel="alternate")
     fg.link(
-        href=f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{FEED_NAME}.xml",
+        href=public_feed_url(FEED_NAME),
         rel="self",
     )
     fg.icon(favicon_url(BLOG_URL))

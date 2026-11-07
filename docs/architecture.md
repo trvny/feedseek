@@ -34,9 +34,10 @@ up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
 results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
 `https://trvny.github.io/feedseek/<name>.xml` and its `<name>.json` Model Feed
-sibling; legacy `feed_<name>.*` copies stay for old subscribers) current without a fresh pack of generated blobs in `main`. The Pages
-build also points Atom self links and Model Feed URLs at the live Pages copy,
-while the files tracked in Git keep their existing raw-GitHub URLs.
+sibling; legacy `feed_<name>.*` copies stay for old subscribers) current without a fresh pack of generated blobs in `main`. Generators
+write Atom self links and Model Feed URLs as the canonical short Pages URLs
+(`utils.public_feed_url`); `normalize_feed_self_links.py` migrates retired raw
+URLs in cached files.
 The remote MCP search index is rebuilt from the freshly generated feeds on
 every publish; MCP `fetch` resolves result ids from the live Pages Model Feed.
 

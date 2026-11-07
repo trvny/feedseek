@@ -45,7 +45,7 @@ sys.path.insert(0, str(ROOT / "feed_generators"))
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
 from models import load_published_feeds  # noqa: E402
-from utils import REPO_SLUG, favicon_proxy  # noqa: E402
+from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
@@ -1058,7 +1058,8 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
     public_xml_url = base + short_xml
 
     xml = source.read_text(encoding="utf-8")
-    for old_url in (raw_xml, base + source.name):
+    # Raw (retired), legacy Pages name, and generator canonical URL all rebase onto this deployment.
+    for old_url in (raw_xml, base + source.name, f"{PUBLIC_BASE}{short_xml}"):
         for old, new in (
             (f'href="{old_url}" rel="self"', f'href="{public_xml_url}" rel="self"'),
             (f'rel="self" href="{old_url}"', f'rel="self" href="{public_xml_url}"'),

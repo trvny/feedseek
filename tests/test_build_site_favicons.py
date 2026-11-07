@@ -408,6 +408,20 @@ class FullPublicationTests(unittest.TestCase):
 
 
 class LiveFeedMetadataTests(unittest.TestCase):
+    def test_canonical_pages_self_link_rebases_onto_other_site_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "feed_demo.xml"
+            source.write_text(
+                f'<feed><link href="{build_site.PUBLIC_BASE}demo.xml" rel="self"/></feed>',
+                encoding="utf-8",
+            )
+            source.with_suffix(".json").write_text('{"format":"feedseek-model-feed"}', encoding="utf-8")
+            out = root / "public"
+            out.mkdir()
+            build_site.copy_public_feed_pair(source, out, "https://feeds.example/")
+            self.assertIn('href="https://feeds.example/demo.xml" rel="self"', (out / "demo.xml").read_text(encoding="utf-8"))
+
     def test_pages_self_urls_are_live_and_git_files_remain_unchanged(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

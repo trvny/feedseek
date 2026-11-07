@@ -35,7 +35,7 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
                 encoding="utf-8",
             )
             current.write_text(
-                f'<rss><link>{CURRENT_PREFIX}feed_trojka.xml</link></rss>',
+                f'<rss><link>{CURRENT_PREFIX}trojka.xml</link></rss>',
                 encoding="utf-8",
             )
 
@@ -43,13 +43,23 @@ class NormalizeFeedSelfLinksTests(unittest.TestCase):
 
             self.assertEqual(changed, [legacy])
             self.assertIn(
-                f"{CURRENT_PREFIX}feed_jbzd.xml",
+                f"{CURRENT_PREFIX}jbzd.xml",
                 legacy.read_text(encoding="utf-8"),
             )
             self.assertEqual(
                 current.read_text(encoding="utf-8"),
-                f"<rss><link>{CURRENT_PREFIX}feed_trojka.xml</link></rss>",
+                f"<rss><link>{CURRENT_PREFIX}trojka.xml</link></rss>",
             )
+
+    def test_rewrites_retired_raw_main_snapshot_to_short_pages_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "feed_demo.xml"
+            raw = "https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_demo.xml"
+            path.write_text(f'<feed><link href="{raw}" rel="self"/></feed>', encoding="utf-8")
+
+            normalize_feed_self_links(Path(tmp))
+
+            self.assertIn(f'href="{CURRENT_PREFIX}demo.xml"', path.read_text(encoding="utf-8"))
 
     def test_ignores_non_xml_files(self):
         with tempfile.TemporaryDirectory() as tmp:

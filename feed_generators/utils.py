@@ -35,6 +35,14 @@ DEFAULT_HEADERS = {"User-Agent": DEFAULT_USER_AGENT}
 # GITHUB_REPOSITORY ("owner/repo") is set automatically, so the self link is
 # correct out of the box. Override locally with RSS_REPO_SLUG if needed.
 REPO_SLUG = os.getenv("RSS_REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or "trvny/feedseek"
+_OWNER, _, _REPO = REPO_SLUG.partition("/")
+# Canonical publication: GitHub Pages, short names (<key>.xml / <key>.json).
+PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or f"https://{_OWNER.lower()}.github.io/{_REPO}").rstrip("/") + "/"
+
+
+def public_feed_url(feed_name: str, ext: str = "xml") -> str:
+    """Canonical Pages URL of a published feed file."""
+    return f"{PUBLIC_BASE}{feed_name}.{ext}"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -627,7 +635,7 @@ def setup_feed_links(
     external readers therefore share the same icon path.
     """
     fg.link(
-        href=f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{feed_name}.xml",
+        href=public_feed_url(feed_name),
         rel="self",
     )
     fg.link(href=blog_url, rel="alternate")

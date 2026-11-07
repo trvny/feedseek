@@ -8,15 +8,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from html_text import looks_like_html
-from utils import REPO_SLUG, large_icon
+from utils import large_icon, public_feed_url
 
 JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 
-# Same rel=self base the Atom writer uses (utils.setup_feed_links), pointing at
-# the JSON sibling instead of the .xml.
-_FEED_URL_TMPL = (
-    f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{{name}}.json"
-)
 
 def _rfc3339(struct_time) -> str | None:
     """Convert a feedparser UTC struct_time to an RFC 3339 / ISO 8601 string."""
@@ -71,7 +66,7 @@ def build_json_feed(xml_path: Path, feed_name: str, entry_image=None) -> dict:
     doc: dict = {
         "version": JSON_FEED_VERSION,
         "title": feed.get("title") or feed_name,
-        "feed_url": _FEED_URL_TMPL.format(name=feed_name),
+        "feed_url": public_feed_url(feed_name, "json"),
         "_feedseek": {
             "about": "https://trvny.github.io/feedseek/llms-full.txt"
         },
