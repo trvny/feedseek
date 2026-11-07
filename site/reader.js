@@ -493,8 +493,8 @@ function render(){
   for(const item of page){
     const url=safeHttpUrl(item.url); if(!url) continue;
     const link=document.createElement('a');
-    const personal=/\/feed_github_personal\.xml(?:$|\?)/.test(item.feedUrl||'');
-    const meme=/\/feed_memy\.xml(?:$|\?)/.test(item.feedUrl||'');
+    const personal=/\/(?:feed_)?github_personal\.xml(?:$|\?)/.test(item.feedUrl||'');
+    const meme=/\/(?:feed_)?memy\.xml(?:$|\?)/.test(item.feedUrl||'');
     link.className='item'+(personal?' item-github-personal':'')+(meme?' item-meme':'');
     link.href=url; link.target='_blank'; link.rel='noopener';
     const text=document.createElement('div'); text.className='itxt';

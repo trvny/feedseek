@@ -26,11 +26,11 @@ class RegistryDocsTests(unittest.TestCase):
         self.assertEqual(missing_scripts, [])
 
         readme = (FEEDSEEK / "README.md").read_text(encoding="utf-8")
-        documented = set(re.findall(r"feed_([A-Za-z0-9_-]+)\.xml", readme))
+        documented = set(re.findall(r"(?:github\.io/feedseek/|`)([A-Za-z0-9_-]+)\.xml", readme))
         self.assertEqual(documented, set(registry))
 
         for name, config in registry.items():
-            raw_url = f"https://trvny.github.io/feedseek/feed_{name}.xml"
+            raw_url = f"https://trvny.github.io/feedseek/{name}.xml"
             if config.get("enabled", True):
                 self.assertIn(raw_url, readme)
             else:

@@ -282,6 +282,15 @@ def short_name(path: Path) -> str:
     return stem[len("feed_"):] if stem.startswith("feed_") else stem
 
 
+def public_xml(feed: dict) -> str:
+    """feed_reuters.xml -> reuters.xml: short Pages name."""
+    return str(feed["filename"]).removeprefix("feed_")
+
+
+def public_json(feed: dict) -> str:
+    return Path(public_xml(feed)).with_suffix(".json").name
+
+
 def load_selection() -> list[tuple[str, str]] | None:
     """Read the ordered public feed selection from ``feeds.yaml``."""
     return load_published_feeds()
@@ -339,8 +348,8 @@ def require_model_sidecars(feeds: list[dict]) -> None:
 
 
 def render_card(feed: dict, base: str) -> str:
-    url = base + feed["filename"]
-    model_url = base + Path(str(feed["filename"])).with_suffix(".json").name
+    url = base + public_xml(feed)
+    model_url = base + public_json(feed)
     dom = domain_of(feed["source"])
     title = html.escape(feed["title"])
     subtitle = html.escape(feed["subtitle"]) or "&nbsp;"
@@ -386,15 +395,14 @@ def render_card(feed: dict, base: str) -> str:
 def render_autodiscovery(feeds: list[dict], base: str) -> str:
     lines = []
     for f in feeds:
-        href = html.escape(base + f["filename"], quote=True)
+        href = html.escape(base + public_xml(f), quote=True)
         title = html.escape(f["title"], quote=True)
         mime = "application/rss+xml" if f.get("format") == "rss" else "application/atom+xml"
         lines.append(
             f'  <link rel="alternate" type="{mime}" '
             f'title="{title}" href="{href}">'
         )
-        json_name = str(f["filename"]).rsplit(".", 1)[0] + ".json"
-        json_href = html.escape(base + json_name, quote=True)
+        json_href = html.escape(base + public_json(f), quote=True)
         lines.append(
             '  <link rel="alternate" type="application/json" '
             f'title="{title} (Model Feed)" href="{json_href}">'
@@ -423,8 +431,8 @@ def build_model_feed_catalog(feeds: list[dict], base: str) -> str:
             "title": str(feed["title"]),
             "description": str(feed.get("subtitle") or ""),
             "source_url": str(feed.get("source") or ""),
-            "feed_url": base + filename,
-            "model_feed_url": base + Path(filename).with_suffix(".json").name,
+            "feed_url": base + public_xml(feed),
+            "model_feed_url": base + public_json(feed),
             "entry_count": int(feed.get("entries") or 0),
             "updated_at": updated_at,
         })
@@ -753,7 +761,7 @@ def build_sitemap(feeds: list[dict], base: str) -> str:
     urls.append(f"  <url><loc>{html.escape(base + 'reader/')}</loc></url>")
     urls.append(f"  <url><loc>{html.escape(base + 'model-feeds.json')}</loc></url>")
     for f in feeds:
-        for filename in (str(f["filename"]), Path(str(f["filename"])).with_suffix(".json").name):
+        for filename in (public_xml(f), public_json(f)):
             urls.append(f"  <url><loc>{html.escape(base + filename)}</loc></url>")
     body = "\n".join(urls)
     return (
@@ -829,7 +837,7 @@ def build_opml(feeds: list[dict], base: str) -> str:
         title = html.escape(feed["title"], quote=True)
         attrs = (
             f'type="rss" text="{title}" title="{title}" '
-            f'xmlUrl="{html.escape(base + feed["filename"], quote=True)}"'
+            f'xmlUrl="{html.escape(base + public_xml(feed), quote=True)}"'
         )
         if feed["source"]:
             attrs += f' htmlUrl="{html.escape(feed["source"], quote=True)}"'
@@ -892,13 +900,13 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
     ]
     for f in feeds:
-        url = base + f["filename"]
+        url = base + public_xml(f)
         desc = f["subtitle"] or f["source"]
         entry = f"- [{markdown_inline(f['title'])}]({url})"
         if desc:
             entry += f": {markdown_inline(desc)}"
         lines.append(entry)
-        lines.append(f"  - [Model Feed (JSON)]({base}{Path(f['filename']).stem}.json)")
+        lines.append(f"  - [Model Feed (JSON)]({base}{public_json(f)})")
     lines.append("")
     return "\n".join(lines)
 
@@ -926,7 +934,7 @@ def build_index_markdown(feeds: list[dict], base: str) -> str:
         "",
     ]
     for feed in feeds:
-        url = base + feed["filename"]
+        url = base + public_xml(feed)
         desc = feed["subtitle"] or feed["source"]
         entry = f"- [{markdown_inline(feed['title'])}]({url})"
         if desc:
@@ -977,9 +985,8 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
         "",
     ]
     for feed in feeds:
-        url = base + feed["filename"]
-        stem = str(feed["filename"]).rsplit(".", 1)[0]
-        json_url = base + stem + ".json"
+        url = base + public_xml(feed)
+        json_url = base + public_json(feed)
         desc = feed["subtitle"] or feed["source"] or "Enhanced Feedseek feed"
         lines.extend([
             f"### {markdown_inline(feed['title'])}",
@@ -1033,29 +1040,36 @@ def copy_reader_bundle(base: str) -> None:
 
 
 def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
-    """Stage Pages URLs without changing the tracked XML/JSON pair."""
+    """Stage Pages copies without changing the tracked XML/JSON pair.
+
+    Canonical short names (reuters.xml/.json) plus legacy feed_* copies for
+    existing subscribers; both carry the short canonical URLs.
+    """
     raw_base = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
     raw_xml = raw_base + source.name
-    public_xml = base + source.name
+    short_xml = source.name.removeprefix("feed_")
+    public_xml_url = base + short_xml
 
     xml = source.read_text(encoding="utf-8")
-    for old, new in (
-        (f'href="{raw_xml}" rel="self"', f'href="{public_xml}" rel="self"'),
-        (f'rel="self" href="{raw_xml}"', f'rel="self" href="{public_xml}"'),
-    ):
-        xml = xml.replace(old, new)
-    (destination / source.name).write_text(xml, encoding="utf-8")
+    for old_url in (raw_xml, base + source.name):
+        for old, new in (
+            (f'href="{old_url}" rel="self"', f'href="{public_xml_url}" rel="self"'),
+            (f'rel="self" href="{old_url}"', f'rel="self" href="{public_xml_url}"'),
+        ):
+            xml = xml.replace(old, new)
 
     sibling = source.with_suffix(".json")
     model_feed = json.loads(sibling.read_text(encoding="utf-8"))
     if not isinstance(model_feed, dict):
         raise ValueError(f"{sibling.name}: expected object")
-    model_feed["feed_url"] = base + sibling.name
-    model_feed["source_feed"] = public_xml
-    (destination / sibling.name).write_text(
-        json.dumps(model_feed, ensure_ascii=False, separators=(",", ":")) + "\n",
-        encoding="utf-8",
-    )
+    short_json = Path(short_xml).with_suffix(".json").name
+    model_feed["feed_url"] = base + short_json
+    model_feed["source_feed"] = public_xml_url
+    model_text = json.dumps(model_feed, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+    for xml_name, json_name in {(short_xml, short_json), (source.name, sibling.name)}:
+        (destination / xml_name).write_text(xml, encoding="utf-8")
+        (destination / json_name).write_text(model_text, encoding="utf-8")
 
 
 def main() -> None:

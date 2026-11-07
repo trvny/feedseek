@@ -177,9 +177,9 @@ class SiteFaviconTests(unittest.TestCase):
         )
 
         self.assertIn('type="application/atom+xml"', links)
-        self.assertIn('href="https://feeds.example/feed_test.xml"', links)
+        self.assertIn('href="https://feeds.example/test.xml"', links)
         self.assertIn('type="application/json"', links)
-        self.assertIn('href="https://feeds.example/feed_test.json"', links)
+        self.assertIn('href="https://feeds.example/test.json"', links)
 
     def test_model_catalog_uses_only_existing_feed_urls_and_normalized_metadata(self):
         feeds = [
@@ -210,11 +210,11 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertEqual([entry["key"] for entry in result["feeds"]], ["alpha", "beta"])
         self.assertEqual(
             result["feeds"][0]["model_feed_url"],
-            "https://trvny.github.io/feedseek/feed_alpha.json",
+            "https://trvny.github.io/feedseek/alpha.json",
         )
         self.assertEqual(
             result["feeds"][0]["feed_url"],
-            "https://trvny.github.io/feedseek/feed_alpha.xml",
+            "https://trvny.github.io/feedseek/alpha.xml",
         )
         self.assertEqual(result["feeds"][0]["entry_count"], 2)
         self.assertEqual(result["feeds"][0]["updated_at"], "2026-10-25T20:30:00Z")
@@ -239,10 +239,10 @@ class SiteFaviconTests(unittest.TestCase):
                 base,
                 base + "reader/",
                 base + "model-feeds.json",
-                base + "feed_dated.xml",
-                base + "feed_dated.json",
-                base + "feed_unknown.xml",
-                base + "feed_unknown.json",
+                base + "dated.xml",
+                base + "dated.json",
+                base + "unknown.xml",
+                base + "unknown.json",
             ],
         )
         self.assertFalse(root.findall(".//{*}lastmod"), "Rebuild dates are not verified content changes")
@@ -262,11 +262,11 @@ class SiteFaviconTests(unittest.TestCase):
         base = "https://feeds.example/"
         index = build_site.build_index(feeds, base)
         self.assertIn('href="https://feeds.example/model-feeds.json"', index)
-        self.assertIn('data-model-feed href="https://feeds.example/feed_alpha.json"', index)
+        self.assertIn('data-model-feed href="https://feeds.example/alpha.json"', index)
         self.assertIn('href="model-feeds.json"', index)
         llms = build_site.build_llms_txt(feeds, base)
         self.assertIn("[Model Feed catalog (JSON)](https://feeds.example/model-feeds.json)", llms)
-        self.assertIn("https://feeds.example/feed_alpha.json", llms)
+        self.assertIn("https://feeds.example/alpha.json", llms)
         self.assertIn("model-feeds.json", build_site.build_index_markdown(feeds, base))
         self.assertIn("model-feeds.json", build_site.build_llms_full(feeds, base))
         doc = ET.fromstring(build_site.build_sitemap(feeds, base))
@@ -277,8 +277,8 @@ class SiteFaviconTests(unittest.TestCase):
                 base,
                 base + "reader/",
                 base + "model-feeds.json",
-                base + "feed_alpha.xml",
-                base + "feed_alpha.json",
+                base + "alpha.xml",
+                base + "alpha.json",
             ],
         )
         webmcp = (MODULE_PATH.parent / "webmcp.js").read_text(encoding="utf-8")
@@ -293,7 +293,7 @@ class SiteFaviconTests(unittest.TestCase):
         }
         rendered = build_site.build_llms_full([feed], "https://feeds.example/")
         self.assertIn(
-            "- LLM-friendly JSON Model Feed: https://feeds.example/feed_test.json",
+            "- LLM-friendly JSON Model Feed: https://feeds.example/test.json",
             rendered,
         )
 
@@ -443,11 +443,14 @@ class LiveFeedMetadataTests(unittest.TestCase):
             self.assertEqual(source.read_text(encoding="utf-8"), xml)
             self.assertEqual(sibling.read_text(encoding="utf-8"), raw_json)
             staged = (public / source.name).read_text(encoding="utf-8")
-            self.assertIn(f'href="{base}feed_test.xml" rel="self"', staged)
+            self.assertIn(f'href="{base}test.xml" rel="self"', staged)
             self.assertNotIn(raw, staged)
-            staged_json = json.loads((public / "feed_test.json").read_text(encoding="utf-8"))
-            self.assertEqual(staged_json["feed_url"], base + "feed_test.json")
-            self.assertEqual(staged_json["source_feed"], base + "feed_test.xml")
+            legacy = (public / "feed_test.xml").read_text(encoding="utf-8")
+            self.assertEqual(legacy, (public / "test.xml").read_text(encoding="utf-8"))
+            staged_json = json.loads((public / "test.json").read_text(encoding="utf-8"))
+            self.assertTrue((public / "feed_test.json").is_file())
+            self.assertEqual(staged_json["feed_url"], base + "test.json")
+            self.assertEqual(staged_json["source_feed"], base + "test.xml")
             self.assertEqual(staged_json["items"], model["items"])
 
     def test_self_link_attribute_order_can_be_reversed(self):
@@ -468,7 +471,7 @@ class LiveFeedMetadataTests(unittest.TestCase):
             build_site.copy_public_feed_pair(source, public, "https://example.test/live/")
 
             self.assertIn(
-                'rel="self" href="https://example.test/live/feed_test.xml"',
+                'rel="self" href="https://example.test/live/test.xml"',
                 (public / source.name).read_text(encoding="utf-8"),
             )
 
