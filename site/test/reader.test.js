@@ -453,8 +453,8 @@ test("unsubscribed sources are excluded from retained history", async () => {
 });
 
 test("Reader prefers published Model Feed JSON instead of refetching XML", async () => {
-  const xmlUrl = "https://reader.test/feed_demo.xml";
-  const jsonUrl = "https://reader.test/feed_demo.json";
+  const xmlUrl = "https://reader.test/demo.xml";
+  const jsonUrl = "https://reader.test/demo.json";
   const feed = { title: "Demo alias", xmlUrl, icon: "https://example.test/icon.png" };
   const r = await makeReader([feed], new Map([[xmlUrl, []]]));
   const calls = [];
@@ -476,8 +476,8 @@ test("Reader prefers published Model Feed JSON instead of refetching XML", async
 });
 
 test("Reader falls back to XML for malformed or mismatched Model Feed JSON", async () => {
-  const xmlUrl = "https://reader.test/feed_demo.xml";
-  const jsonUrl = "https://reader.test/feed_demo.json";
+  const xmlUrl = "https://reader.test/demo.xml";
+  const jsonUrl = "https://reader.test/demo.json";
   const feed = { title: "Demo", xmlUrl };
   const r = await makeReader([feed], new Map([[xmlUrl, []]]));
   const calls = [];
@@ -495,8 +495,8 @@ test("Reader falls back to XML for malformed or mismatched Model Feed JSON", asy
 });
 
 test("Reader selects JSON only for same-origin feeds in published catalog", async () => {
-  const xmlUrl = "https://reader.test/feed_demo.xml";
-  const jsonUrl = "https://reader.test/feed_demo.json";
+  const xmlUrl = "https://reader.test/demo.xml";
+  const jsonUrl = "https://reader.test/demo.json";
   const foreign = "https://other.test/rss.xml";
   const feeds = [{ title: "Demo", xmlUrl }, { title: "Foreign", xmlUrl: foreign }];
   const entries = new Map(feeds.map(f => [f.xmlUrl, [{
@@ -551,7 +551,7 @@ test("foreign-only subscriptions refresh without requesting the local Model Feed
 
 test("foreign feed loads while the first 12 local feeds wait for the catalog", async () => {
   const localFeeds = Array.from({ length: 12 }, (_, i) => ({
-    title: "Local " + i, xmlUrl: "https://reader.test/feed_local_" + i + ".xml",
+    title: "Local " + i, xmlUrl: "https://reader.test/local_" + i + ".xml",
   }));
   const foreign = { title: "Foreign", xmlUrl: "https://outside.test/rss.xml" };
   const feeds = [...localFeeds, foreign];
@@ -597,7 +597,7 @@ test("foreign feed loads while the first 12 local feeds wait for the catalog", a
     resolveCatalog(new Response(JSON.stringify({
       format: "feedseek-model-feed-catalog", version: 1,
       feeds: localFeeds.map((feed, i) => ({
-        feed_url: feed.xmlUrl, model_feed_url: "https://reader.test/feed_local_" + i + ".json",
+        feed_url: feed.xmlUrl, model_feed_url: "https://reader.test/local_" + i + ".json",
       })),
     })));
     await refresh;
@@ -606,6 +606,6 @@ test("foreign feed loads while the first 12 local feeds wait for the catalog", a
   assert.equal(loaded[0][0], foreign.xmlUrl);
   assert.deepEqual(new Map(loaded), new Map([
     [foreign.xmlUrl, undefined],
-    ...localFeeds.map((feed, i) => [feed.xmlUrl, "https://reader.test/feed_local_" + i + ".json"]),
+    ...localFeeds.map((feed, i) => [feed.xmlUrl, "https://reader.test/local_" + i + ".json"]),
   ]));
 });

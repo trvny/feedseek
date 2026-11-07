@@ -107,3 +107,18 @@ test("history stays source-scoped and prefers fresh entry revisions", () => {
   const merged = cache.mergeHistory(feeds, fresh, old);
   assert.deepEqual(JSON.parse(JSON.stringify(merged)), [entry("c", 5), entry("b", 4), entry("a", 1)]);
 });
+
+test("legacy same-origin feed_ URLs migrate to short names", async () => {
+  const context = vm.createContext({
+    window: {}, console, URL,
+    location: { href: "https://trvny.github.io/feedseek/reader/" },
+    localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+  });
+  vm.runInContext(source, context);
+  const canon = context.window.FeedseekReaderCache.canonicalFeedUrl;
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://trvny.github.io/feedseek/wykop.json");
+  assert.equal(canon("https://other.example/feed_wykop.xml"), "https://other.example/feed_wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
+});

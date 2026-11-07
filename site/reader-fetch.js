@@ -164,7 +164,10 @@
         if (xml.origin !== origin || json.origin !== origin ||
             !xml.pathname.endsWith(".xml") || !json.pathname.endsWith(".json") ||
             xml.username || xml.password || json.username || json.password) continue;
-        if (!urls.has(xml.href)) urls.set(xml.href, json.href);
+        // Key by canonical URL: OPML subscriptions are canonicalized on parse.
+        const canon = globalThis.window?.FeedseekReaderCache?.canonicalFeedUrl || (u => u);
+        const key = canon(xml.href);
+        if (!urls.has(key)) urls.set(key, json.href);
       } catch {
         // Ignore malformed catalog rows. Ordinary XML remains available.
       }

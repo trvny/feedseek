@@ -55,8 +55,9 @@ function saveCfg(){
 function loadOverlay(){
   try{
     const o = JSON.parse(ls.get('overlay')||'{}');
-    return { removed: Array.isArray(o.removed)?o.removed:[],
-             added:   Array.isArray(o.added)?o.added:[] };
+    const canon=window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u);
+    return { removed: Array.isArray(o.removed)?o.removed.map(canon):[],
+             added:   Array.isArray(o.added)?o.added.map(x=>x&&typeof x==='object'?{...x,xmlUrl:canon(x.xmlUrl)}:x):[] };
   }catch(e){ return {removed:[], added:[]}; }
 }
 function saveOverlay(){ ls.set('overlay', JSON.stringify({removed:overlay.removed, added:overlay.added})); }
@@ -112,7 +113,7 @@ let STATUS_ERROR = '', activeRun = null, runVersion = 0;
 let sourceFavorites = [];
 try{
   const saved=JSON.parse(ls.get('sourceFavorites')||'[]');
-  if(Array.isArray(saved)) sourceFavorites=saved.filter(value=>typeof value==='string');
+  if(Array.isArray(saved)) sourceFavorites=saved.filter(value=>typeof value==='string').map(window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u));
 }catch{ sourceFavorites=[]; }
 
 function safeHttpUrl(value, base=document.baseURI){
@@ -249,7 +250,8 @@ function parseOpml(text, base=document.baseURI){
     for(const attr of match[0].matchAll(/([:\w.-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)){
       attrs[attr[1].toLowerCase()]=decodeXmlAttr(attr[2]??attr[3]??'');
     }
-    const xmlUrl=safeHttpUrl(attrs.xmlurl,base);
+    const rawXmlUrl=safeHttpUrl(attrs.xmlurl,base);
+    const xmlUrl=rawXmlUrl&&(window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u))(rawXmlUrl);
     const htmlUrl=safeHttpUrl(attrs.htmlurl,base);
     const icon=safeHttpUrl(
       attrs.icon||attrs.favicon||attrs.image||attrs.imageurl,
@@ -493,8 +495,8 @@ function render(){
   for(const item of page){
     const url=safeHttpUrl(item.url); if(!url) continue;
     const link=document.createElement('a');
-    const personal=/\/feed_github_personal\.xml(?:$|\?)/.test(item.feedUrl||'');
-    const meme=/\/feed_memy\.xml(?:$|\?)/.test(item.feedUrl||'');
+    const personal=/\/(?:feed_)?github_personal\.xml(?:$|\?)/.test(item.feedUrl||'');
+    const meme=/\/(?:feed_)?memy\.xml(?:$|\?)/.test(item.feedUrl||'');
     link.className='item'+(personal?' item-github-personal':'')+(meme?' item-meme':'');
     link.href=url; link.target='_blank'; link.rel='noopener';
     const text=document.createElement('div'); text.className='itxt';

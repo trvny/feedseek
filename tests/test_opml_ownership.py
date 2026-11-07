@@ -31,7 +31,7 @@ class OpmlOwnershipTests(unittest.TestCase):
             ):
                 make_opml.main()
             xml = (out / "subscriptions.opml").read_text(encoding="utf-8")
-            self.assertIn('xmlUrl="https://example.org/feeds/feed_example.xml"', xml)
+            self.assertIn('xmlUrl="https://example.org/feeds/example.xml"', xml)
             self.assertFalse((Path(tmp) / "site" / "subscriptions.opml").exists())
 
 

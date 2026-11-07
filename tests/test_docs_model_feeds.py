@@ -38,7 +38,7 @@ class ModelFeedIndexTests(unittest.TestCase):
             self.assertLess(markdown.index("| `alpha`"), markdown.index("| `unlisted`"))
             self.assertIn("Alpha \\| \\[link\\] \\<script\\>", markdown)
             self.assertIn(
-                "https://owner.github.io/repo/feed_unlisted.json",
+                "https://owner.github.io/repo/unlisted.json",
                 markdown,
             )
             self.assertNotIn("Article body stays in JSON", markdown)
@@ -99,7 +99,7 @@ class ModelFeedIndexTests(unittest.TestCase):
                 model_feed.main()
             self.assertTrue((feeds / "feed_demo.json").is_file())
             self.assertIn("1 Model Feeds · 1 entries.", out.read_text(encoding="utf-8"))
-            self.assertIn("feed_demo.json", out.read_text(encoding="utf-8"))
+            self.assertIn("demo.json", out.read_text(encoding="utf-8"))
 
     def test_push_retry_regenerates_index_after_concurrent_feed_addition(self):
         root = Path(__file__).resolve().parents[1]
@@ -150,7 +150,7 @@ class ModelFeedIndexTests(unittest.TestCase):
             run(job, "bash", "-euo", "pipefail", "-c", script)
             markdown = (job / "docs/model-feeds.md").read_text()
             self.assertIn("2 Model Feeds · 9 entries.", markdown)
-            self.assertIn("feed_beta.json", markdown)
+            self.assertIn("beta.json", markdown)
             self.assertEqual(run(job, "git", "status", "--porcelain").stdout, "")
             self.assertEqual(
                 run(job, "git", "rev-parse", "HEAD").stdout, run(job, "git", "rev-parse", "origin/main").stdout

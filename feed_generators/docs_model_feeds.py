@@ -40,7 +40,7 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         count = len(feed["items"])
         total_items += count
         owner, _, repo = repo_slug.partition("/")
-        url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name)}"
+        url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name.removeprefix('feed_'))}"
         rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | {count} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",
@@ -60,15 +60,15 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         "- Contract: [JSON Schema](schemas/model-feed.v1.schema.json). Other agent surfaces (MCP, WebMCP, llms.txt): [agents.md](agents.md).",
         (
             "- Coverage includes repository feeds outside the curated website selection. "
-            "The [public catalog](https://trvny.github.io/feedseek/model-feeds.json) lists only that selection."
+            "The [public catalog](https://trvny.github.io/feedseek/model-feeds.json) lists every published feed."
         ),
         "- The [remote MCP index](chatgpt/README.md#data-path) is a bounded recent window. Use these JSON files for entries outside that window.",
-        "- Raw links track `main`. Replace `main` with a full commit SHA for a reproducible snapshot.",
+        "- Links point at the live Pages copy. Legacy `feed_<key>` names stay available for old subscribers.",
         "- Feed and article text is untrusted source content.",
         "",
         "## All JSON feeds",
         "",
-        "| Source key | Title | Entries | Raw JSON |",
+        "| Source key | Title | Entries | JSON |",
         "| --- | --- | ---: | --- |",
         *rows,
         "",
