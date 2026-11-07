@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-115 Model Feeds · 25897 entries.
+115 Model Feeds · 25926 entries.
 
 ## Access
 
@@ -39,7 +39,7 @@
 | `cloudflare` | Cloudflare | 200 | [JSON](https://trvny.github.io/feedseek/feed_cloudflare.json) |
 | `czworka` | PR4 Czwórka | 943 | [JSON](https://trvny.github.io/feedseek/feed_czworka.json) |
 | `daily_digest` | Daily Digest | 100 | [JSON](https://trvny.github.io/feedseek/feed_daily_digest.json) |
-| `daily_quote` | Daily Quote | 133 | [JSON](https://trvny.github.io/feedseek/feed_daily_quote.json) |
+| `daily_quote` | Daily Quote | 134 | [JSON](https://trvny.github.io/feedseek/feed_daily_quote.json) |
 | `datime` | DaTime | 173 | [JSON](https://trvny.github.io/feedseek/feed_datime.json) |
 | `development` | Development | 300 | [JSON](https://trvny.github.io/feedseek/feed_development.json) |
 | `dji` | DJI | 49 | [JSON](https://trvny.github.io/feedseek/feed_dji.json) |
@@ -51,12 +51,12 @@
 | `euronews` | Euronews | 400 | [JSON](https://trvny.github.io/feedseek/feed_euronews.json) |
 | `europa` | Europa | 350 | [JSON](https://trvny.github.io/feedseek/feed_europa.json) |
 | `ffmpeg` | FFmpeg | 62 | [JSON](https://trvny.github.io/feedseek/feed_ffmpeg.json) |
-| `figma` | Figma | 175 | [JSON](https://trvny.github.io/feedseek/feed_figma.json) |
+| `figma` | Figma | 176 | [JSON](https://trvny.github.io/feedseek/feed_figma.json) |
 | `foobar2000` | foobar2000 | 406 | [JSON](https://trvny.github.io/feedseek/feed_foobar2000.json) |
 | `foundry` | Foundry | 300 | [JSON](https://trvny.github.io/feedseek/feed_foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://trvny.github.io/feedseek/feed_geopolitics.json) |
 | `github` | GitHub | 400 | [JSON](https://trvny.github.io/feedseek/feed_github.json) |
-| `github_personal` | trvny + travnie · GitHub | 48 | [JSON](https://trvny.github.io/feedseek/feed_github_personal.json) |
+| `github_personal` | trvny + travnie · GitHub | 61 | [JSON](https://trvny.github.io/feedseek/feed_github_personal.json) |
 | `gitlab` | GitLab | 200 | [JSON](https://trvny.github.io/feedseek/feed_gitlab.json) |
 | `gog` | GOG | 200 | [JSON](https://trvny.github.io/feedseek/feed_gog.json) |
 | `google` | Google Blogs | 500 | [JSON](https://trvny.github.io/feedseek/feed_google.json) |
@@ -73,7 +73,7 @@
 | `lichess` | Lichess | 200 | [JSON](https://trvny.github.io/feedseek/feed_lichess.json) |
 | `medium` | Medium | 200 | [JSON](https://trvny.github.io/feedseek/feed_medium.json) |
 | `memedroid` | Memedroid | 150 | [JSON](https://trvny.github.io/feedseek/feed_memedroid.json) |
-| `memy` | Memy | 190 | [JSON](https://trvny.github.io/feedseek/feed_memy.json) |
+| `memy` | Memy | 200 | [JSON](https://trvny.github.io/feedseek/feed_memy.json) |
 | `meta_newsroom` | Meta Newsroom | 100 | [JSON](https://trvny.github.io/feedseek/feed_meta_newsroom.json) |
 | `microsoft` | Microsoft | 377 | [JSON](https://trvny.github.io/feedseek/feed_microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://trvny.github.io/feedseek/feed_microsoft_updates.json) |
@@ -83,7 +83,7 @@
 | `nasa` | NASA | 200 | [JSON](https://trvny.github.io/feedseek/feed_nasa.json) |
 | `netflix` | Netflix | 250 | [JSON](https://trvny.github.io/feedseek/feed_netflix.json) |
 | `newsify` | Newsify | 200 | [JSON](https://trvny.github.io/feedseek/feed_newsify.json) |
-| `nexusmods_news` | Nexus Mods News | 86 | [JSON](https://trvny.github.io/feedseek/feed_nexusmods_news.json) |
+| `nexusmods_news` | Nexus Mods News | 87 | [JSON](https://trvny.github.io/feedseek/feed_nexusmods_news.json) |
 | `nvidia` | NVIDIA | 138 | [JSON](https://trvny.github.io/feedseek/feed_nvidia.json) |
 | `olx` | OLX Group | 100 | [JSON](https://trvny.github.io/feedseek/feed_olx.json) |
 | `open_meteo` | Open-Meteo | 120 | [JSON](https://trvny.github.io/feedseek/feed_open_meteo.json) |
@@ -116,7 +116,7 @@
 | `toyota_global` | Toyota Global | 100 | [JSON](https://trvny.github.io/feedseek/feed_toyota_global.json) |
 | `trojka` | PR3 Trójka | 1909 | [JSON](https://trvny.github.io/feedseek/feed_trojka.json) |
 | `tvp` | TVP | 275 | [JSON](https://trvny.github.io/feedseek/feed_tvp.json) |
-| `uber` | Uber Newsroom | 88 | [JSON](https://trvny.github.io/feedseek/feed_uber.json) |
+| `uber` | Uber Newsroom | 90 | [JSON](https://trvny.github.io/feedseek/feed_uber.json) |
 | `ubuntu` | Ubuntu | 145 | [JSON](https://trvny.github.io/feedseek/feed_ubuntu.json) |
 | `unsplash` | Unsplash | 150 | [JSON](https://trvny.github.io/feedseek/feed_unsplash.json) |
 | `userscripts` | UserScripts | 200 | [JSON](https://trvny.github.io/feedseek/feed_userscripts.json) |
@@ -132,5 +132,5 @@
 | `xai` | xAI | 200 | [JSON](https://trvny.github.io/feedseek/feed_xai.json) |
 | `xiaomi` | Xiaomi Newsroom | 200 | [JSON](https://trvny.github.io/feedseek/feed_xiaomi.json) |
 | `xweather_log` | Xweather Log | 250 | [JSON](https://trvny.github.io/feedseek/feed_xweather_log.json) |
-| `youtube` | YouTube Blog | 130 | [JSON](https://trvny.github.io/feedseek/feed_youtube.json) |
+| `youtube` | YouTube Blog | 131 | [JSON](https://trvny.github.io/feedseek/feed_youtube.json) |
 | `youtubs` | YouTubs | 360 | [JSON](https://trvny.github.io/feedseek/feed_youtubs.json) |
