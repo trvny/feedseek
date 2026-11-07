@@ -13,6 +13,9 @@ class MakefileCacheTests(unittest.TestCase):
         self.assertIn(".NOTPARALLEL:", makefile)
         self.assertIn("define RESTORE_CACHE", makefile)
         self.assertIn("tools/restore_r2_cache.py", makefile)
+        restore_state = makefile.split("define RESTORE_STATE", 1)[1].split("endef", 1)[0]
+        self.assertIn("$(RESTORE_CACHE)", restore_state)
+        self.assertIn("tools/restore_published_feeds.py", restore_state)
         self.assertNotIn("feeds: cache-restore", makefile)
         self.assertNotIn("feed: cache-restore", makefile)
         self.assertNotIn("feeds_%: cache-restore", makefile)
@@ -31,7 +34,7 @@ class MakefileCacheTests(unittest.TestCase):
             )[0],
         )
         for section in sections:
-            self.assertIn("$(RESTORE_CACHE)", section)
+            self.assertIn("$(RESTORE_STATE)", section)
 
     def test_multiple_incremental_goals_each_get_a_restore(self):
         make = shutil.which("make")
