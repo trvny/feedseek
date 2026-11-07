@@ -145,6 +145,12 @@ class DevelopmentSourceTests(unittest.TestCase):
             sources["React Native Blog"], "https://reactnative.dev/blog/rss.xml"
         )
 
+    def test_pubdev_atom_is_a_native_development_source(self):
+        self.assertIn(
+            ("pub.dev packages", "https://pub.dev/feed.atom", 40),
+            development.SOURCES,
+        )
+
     def test_justjoin_discovery_excludes_navigation_duplicates_and_other_hosts(self):
         index = """
         <a href="/blog/">Index</a>
