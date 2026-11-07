@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-115 Model Feeds · 25942 entries.
+115 Model Feeds · 25958 entries.
 
 ## Access
 
@@ -56,7 +56,7 @@
 | `foundry` | Foundry | 300 | [JSON](https://trvny.github.io/feedseek/foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://trvny.github.io/feedseek/geopolitics.json) |
 | `github` | GitHub | 400 | [JSON](https://trvny.github.io/feedseek/github.json) |
-| `github_personal` | trvny + travnie · GitHub | 62 | [JSON](https://trvny.github.io/feedseek/github_personal.json) |
+| `github_personal` | trvny + travnie · GitHub | 67 | [JSON](https://trvny.github.io/feedseek/github_personal.json) |
 | `gitlab` | GitLab | 200 | [JSON](https://trvny.github.io/feedseek/gitlab.json) |
 | `gog` | GOG | 200 | [JSON](https://trvny.github.io/feedseek/gog.json) |
 | `google` | Google Blogs | 500 | [JSON](https://trvny.github.io/feedseek/google.json) |
@@ -73,7 +73,7 @@
 | `lichess` | Lichess | 200 | [JSON](https://trvny.github.io/feedseek/lichess.json) |
 | `medium` | Medium | 200 | [JSON](https://trvny.github.io/feedseek/medium.json) |
 | `memedroid` | Memedroid | 150 | [JSON](https://trvny.github.io/feedseek/memedroid.json) |
-| `memy` | Memy | 213 | [JSON](https://trvny.github.io/feedseek/memy.json) |
+| `memy` | Memy | 221 | [JSON](https://trvny.github.io/feedseek/memy.json) |
 | `meta_newsroom` | Meta Newsroom | 100 | [JSON](https://trvny.github.io/feedseek/meta_newsroom.json) |
 | `microsoft` | Microsoft | 377 | [JSON](https://trvny.github.io/feedseek/microsoft.json) |
 | `microsoft_updates` | Microsoft Updates | 300 | [JSON](https://trvny.github.io/feedseek/microsoft_updates.json) |
@@ -114,7 +114,7 @@
 | `theysaidso` | Quotes, Sayings and Jokes of the Day | 300 | [JSON](https://trvny.github.io/feedseek/theysaidso.json) |
 | `tiktok` | TikTok | 15 | [JSON](https://trvny.github.io/feedseek/tiktok.json) |
 | `toyota_global` | Toyota Global | 100 | [JSON](https://trvny.github.io/feedseek/toyota_global.json) |
-| `trojka` | PR3 Trójka | 1911 | [JSON](https://trvny.github.io/feedseek/trojka.json) |
+| `trojka` | PR3 Trójka | 1914 | [JSON](https://trvny.github.io/feedseek/trojka.json) |
 | `tvp` | TVP | 275 | [JSON](https://trvny.github.io/feedseek/tvp.json) |
 | `uber` | Uber Newsroom | 90 | [JSON](https://trvny.github.io/feedseek/uber.json) |
 | `ubuntu` | Ubuntu | 145 | [JSON](https://trvny.github.io/feedseek/ubuntu.json) |
