@@ -29,6 +29,7 @@ SOURCES = [
     ("RubyInstaller", "https://rubyinstaller.org/feed.xml", 40),
     ("JetBrains Blog", "https://blog.jetbrains.com/feed/", 40),
     ("React Native Blog", "https://reactnative.dev/blog/rss.xml", 40),
+    ("pub.dev packages", "https://pub.dev/feed.atom", 40),
     ("Ionic Framework Blog", "https://ionic.io/blog/tag/framework/feed", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
     ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
