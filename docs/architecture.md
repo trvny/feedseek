@@ -37,9 +37,8 @@ results still deploy if a separate generator fails its final health gate. This k
 sibling; legacy `feed_<name>.*` copies stay for old subscribers) current without a fresh pack of generated blobs in `main`. The Pages
 build also points Atom self links and Model Feed URLs at the live Pages copy,
 while the files tracked in Git keep their existing raw-GitHub URLs.
-The remote MCP search index is rebuilt from the precise Git snapshot commit,
-not from newer uncommitted feeds, so its immutable search result IDs remain
-fetchable. MCP search freshness therefore follows the Git snapshot cadence.
+The remote MCP search index is rebuilt from the freshly generated feeds on
+every publish; MCP `fetch` resolves result ids from the live Pages Model Feed.
 
 The same `feeds/` files remain committed as backward-compatible snapshots for
 existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.

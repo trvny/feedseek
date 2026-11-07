@@ -9,6 +9,7 @@ const SERVER_INFO = {
   version: "1.0.0",
   icons: [{ src: FEEDSEEK_ICON_URL, mimeType: "image/png", sizes: ["192x192"] }],
 };
+const LIVE_FEEDS_BASE = "https://trvny.github.io/feedseek/";
 const RAW_FEEDS_BASE = "https://raw.githubusercontent.com/trvny/feedseek";
 const SUPPORTED_PROTOCOLS = new Set(["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26"]);
 const LATEST_PROTOCOL = "2026-07-28";
@@ -330,7 +331,21 @@ async function loadJson(url) {
   return /** @type {JsonObject} */ (JSON.parse(new TextDecoder().decode(body || new Uint8Array())));
 }
 
-/** New revisions publish Model Feeds at .json; older revisions have a separate
+/** Live Pages Model Feed; null when unavailable. Item ids are durable and feeds
+ * keep full published history, so live data resolves ids from any revision.
+ * @param {string} sourceKey
+ */
+async function loadLiveFeed(sourceKey) {
+  try {
+    const feed = await loadJson(`${LIVE_FEEDS_BASE}${sourceKey}.json`);
+    return feed?.format === "feedseek-model-feed" ? feed : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Legacy fallback: Git snapshot at the id revision (feeds/ was committed until
+ * Pages became the only publication). New revisions publish Model Feeds at .json; older revisions have a separate
  * .model.json sidecar or only a legacy JSON Feed.
  * @param {string} revision
  * @param {string} sourceKey
@@ -608,9 +623,18 @@ function canonicalUrl(item) {
 /** @param {JsonObject} args */
 async function fetchEntry(args = {}) {
   const { revision, sourceKey, itemId } = decodeOpaqueId(args.id);
-  const { feed, modelFeed } = await loadRevisionFeed(revision, sourceKey);
-  const items = Array.isArray(feed.items) ? /** @type {JsonObject[]} */ (feed.items) : [];
-  const item = items.find((candidate) => candidate?.id === itemId);
+  /** @param {JsonObject} candidateFeed */
+  const findItem = (candidateFeed) => (Array.isArray(candidateFeed.items)
+    ? /** @type {JsonObject[]} */ (candidateFeed.items) : []).find((candidate) => candidate?.id === itemId);
+  const live = await loadLiveFeed(sourceKey);
+  /** @type {JsonObject} */
+  let feed = live || {};
+  let modelFeed = true;
+  let item = live ? findItem(live) : undefined;
+  if (!item) {
+    ({ feed, modelFeed } = await loadRevisionFeed(revision, sourceKey));
+    item = findItem(feed);
+  }
   if (!item) throw new Error("Feedseek entry was not found");
   const url = canonicalUrl(item);
   if (!url) throw new Error("Feedseek entry has no citation URL");
