@@ -340,10 +340,10 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
                     "source": "Upstash Workflow Changelog",
                     "link": "https://upstash.com/docs/workflow/changelog/old",
                 },
-                {"source": "Cursor Changelog", "link": "https://cursor.com/changelog/x"},
+                {"source": "Other", "link": "https://example.com/unchanged"},
             ]
         )
-        self.assertEqual([entry["source"] for entry in kept], ["Cursor Changelog"])
+        self.assertEqual([entry["source"] for entry in kept], ["Other"])
 
     def test_legacy_lobehub_locale_cache_rows_are_retired(self):
         entries = [
