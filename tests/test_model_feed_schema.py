@@ -59,9 +59,11 @@ class ModelFeedSchemaTests(unittest.TestCase):
     def test_builder_output_matches_schema(self):
         self.assertEqual(self.errors(self.built_doc()), [])
 
-    def test_committed_model_feeds_match_schema(self):
+    def test_published_model_feeds_match_schema(self):
+        # feeds/ is untracked; Update Feeds restores it from Pages before `make test`.
         paths = sorted((ROOT / "feeds").glob("feed_*.json"))
-        self.assertTrue(paths)
+        if not paths:
+            self.skipTest("feeds/ not restored (make feeds-restore)")
         for path in paths:
             with self.subTest(feed=path.name):
                 doc = json.loads(path.read_text(encoding="utf-8"))

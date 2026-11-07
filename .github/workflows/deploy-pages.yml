@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   # Automatic production deploys come from Update Feeds with live, validated files.
-  # Manual rebuild remains a fallback using the last Git snapshot.
+  # Manual rebuild remains a fallback using the last published feeds.
   pull_request:
     branches: [main]
     paths:
@@ -52,6 +52,10 @@ jobs:
 
       - name: Test publishing workflow contracts
         run: uv run --locked python -m unittest discover -s tests -p 'test_update_feeds_workflow.py'
+
+      # feeds/ is not tracked in Git; build from the last published pairs.
+      - name: Restore published feeds from Pages
+        run: uv run --locked tools/restore_published_feeds.py
 
       - name: Build site
         env:
@@ -120,7 +124,7 @@ jobs:
             echo "Live Pages already deployed; keep the fresher artifact"
             echo "allowed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "No successful live deploy; publish the trusted Git snapshot fallback"
+            echo "No successful live deploy; rebuild from the last published feeds"
             echo "allowed=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -137,7 +141,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    # Emergency rebuild from the last committed snapshot, not the live R2 state.
+    # Emergency rebuild from the last published Pages feeds (site code from main).
     runs-on: ubuntu-slim
     timeout-minutes: 20
     environment:
@@ -165,6 +169,10 @@ jobs:
 
       - name: Test site contracts
         run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
+
+      # feeds/ is not tracked in Git; build from the last published pairs.
+      - name: Restore published feeds from Pages
+        run: uv run --locked tools/restore_published_feeds.py
 
       - name: Build site
         working-directory: .

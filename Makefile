@@ -16,6 +16,12 @@ define RESTORE_CACHE
 $(PY) tools/restore_r2_cache.py
 endef
 
+# Incremental runs also need the last published feed pairs (feeds/ is untracked).
+define RESTORE_STATE
+$(RESTORE_CACHE)
+$(PY) tools/restore_published_feeds.py
+endef
+
 .DEFAULT_GOAL := help
 
 .PHONY: help
@@ -38,9 +44,13 @@ lock: ## Refresh uv.lock after editing pyproject.toml
 cache-restore: ## Restore the durable generation cache from R2
 	$(RESTORE_CACHE)
 
+.PHONY: feeds-restore
+feeds-restore: ## Restore the last published feed pairs from GitHub Pages into feeds/
+	$(PY) tools/restore_published_feeds.py
+
 .PHONY: feeds
 feeds: ## Generate all feeds (incremental)
-	$(RESTORE_CACHE)
+	$(RESTORE_STATE)
 	$(PY) feed_generators/run_all_feeds.py
 
 .PHONY: feeds-full
@@ -50,7 +60,7 @@ feeds-full: ## Regenerate all feeds from scratch (ignore cache)
 .PHONY: feed
 feed: ## Generate one feed: make feed NAME=<feeds.yaml name>
 	@test -n "$(NAME)" || (echo "NAME is required; use a feeds.yaml name" >&2; exit 2)
-	$(RESTORE_CACHE)
+	$(RESTORE_STATE)
 	$(RUN_FEED) "$(NAME)"
 
 .PHONY: feed-full
@@ -64,7 +74,7 @@ feed-full: ## Regenerate one feed from scratch: make feed-full NAME=<feeds.yaml 
 FORCE:
 
 feeds_%: FORCE
-	$(RESTORE_CACHE)
+	$(RESTORE_STATE)
 	$(RUN_FEED) "$*"
 
 FULL_FEEDS := trojka czworka nexusmods_news jbzd foobar2000
@@ -75,12 +85,12 @@ $(FULL_TARGETS): feeds_%_full:
 
 .PHONY: feeds_beatport
 feeds_beatport: ## Compatibility alias for the Beatport Top 100 feed
-	$(RESTORE_CACHE)
+	$(RESTORE_STATE)
 	$(RUN_FEED) beatport_top100
 
 .PHONY: feeds_windows11_release_notes
 feeds_windows11_release_notes: ## Compatibility alias for Microsoft/Windows updates
-	$(RESTORE_CACHE)
+	$(RESTORE_STATE)
 	$(RUN_FEED) microsoft_updates
 
 # Common Ninja is also consumed by the consolidated SaaS generator. This

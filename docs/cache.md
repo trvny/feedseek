@@ -14,10 +14,8 @@ untracked. The durable source of truth is the private Cloudflare R2 object
 4. Generate and validate feeds. Upload the new cache snapshot first.
 5. Publish the live Pages artifact from the validated workspace whenever its
    publication gate passes, even if an unrelated generator later fails.
-6. Commit a `feeds/` snapshot on manual runs and matching pushes (`feeds.yaml`,
-   generator, workflow or site code). Scheduled runs snapshot once their last
-   feed commit is at least six hours old, so actual intervals can be longer
-   than six hours; an unavailable GitHub API lookup fails open.
+6. `feeds/` is never committed. Before generation it is restored from the
+   live Pages pairs (`model-feeds.json`); a failed restore fails the run.
 
 `make feeds`, `make feed NAME=...` and compatibility Make targets perform the
 restore automatically. Direct incremental generators require the same one-shot
@@ -47,10 +45,8 @@ it aborts publication; it never silently truncates the durable cache.
 
 ## Ownership
 
-`feeds/` holds periodic, backward-compatible raw-GitHub snapshots; the live
-GitHub Pages artifact is built from each validated generator run, without
-requiring a Git commit. `raw.githubusercontent.com/.../main/feeds/` links remain
-valid but can lag the public Pages feed by several hours. R2 owns the mutable,
+GitHub Pages owns published feeds (built from each validated run; also the
+last-known-good input of the next run). R2 owns the mutable,
 incremental cache. Do not hand-edit generated feeds, commit cache seeds or reconstruct an
 accumulator from a partial live-source fetch. Historical migration statistics
 are not part of the operating contract.

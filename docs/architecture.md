@@ -27,7 +27,7 @@ The defaults are intentionally conservative:
 - deduplicate by normalized URL/title where sources overlap;
 - keep generated `feeds/` and `cache/` data separate from maintained generator code.
 
-## Publication cadence and Git history
+## Publication cadence
 
 The scheduled generator still runs every two hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
@@ -41,24 +41,20 @@ URLs in cached files.
 The remote MCP search index is rebuilt from the freshly generated feeds on
 every publish; MCP `fetch` resolves result ids from the live Pages Model Feed.
 
-The same `feeds/` files remain committed as backward-compatible snapshots for
-existing `raw.githubusercontent.com/trvny/feedseek/main/feeds/` consumers.
-Scheduled runs snapshot after the last feed commit reaches six hours old, at
-the next successful scheduled run (potentially later); if the source tree has
-advanced since the last feed commit, a scheduled run snapshots immediately too.
-This preserves push semantics when GitHub coalesces pending runs. An API lookup
-failure fails open and can snapshot sooner. Manual runs on `main` and matching
-configuration, generator, workflow or site pushes to `main` snapshot immediately. Consequently, raw-GitHub URLs
-remain valid but may lag GitHub Pages. Pages is the preferred live subscription
-endpoint. A snapshot is never pushed before successful validation and R2 backup.
+`feeds/` is not tracked in Git. GitHub Pages is the only publication and the
+last-known-good state: every run first restores all published pairs listed in
+`model-feeds.json` (`tools/restore_published_feeds.py`, all-or-nothing, fails
+closed), so generators keep preserving dates and last good output across runs.
+Git only receives low-churn generated docs (`docs/sources.md`,
+`docs/model-feeds.md`). Old `raw.githubusercontent.com/.../main/feeds/` URLs no
+longer update; subscribe on Pages.
 
-`Deploy Pages` remains a manual Git-snapshot fallback; normal live deployment
-happens in `Update Feeds`. When a trusted main-branch refresh fails before deploying,
-`Deploy Pages` can automatically rebuild from the committed snapshot, but only
-after checking that no successful live Pages deployment occurred in that run,
-no newer refresh exists and main has not advanced.
-This avoids overwriting healthy partial publications with older artifacts. This arrangement reduces future Git history growth
-without rewriting past commits, disrupting PRs or moving the source registry.
+`Deploy Pages` remains a manual fallback; normal live deployment happens in
+`Update Feeds`. When a trusted main-branch refresh fails before deploying,
+`Deploy Pages` can automatically rebuild site code from main with the last
+published feeds, but only after checking that no successful live Pages
+deployment occurred in that run, no newer refresh exists and main has not
+advanced. This avoids overwriting healthy partial publications.
 
 ## Feed quality contract
 
@@ -66,7 +62,7 @@ The publication gate has a small universal core. Every enabled feed must produce
 
 The Pages build also emits `model-feeds.json`, a small catalog of public URLs, source metadata and per-feed timestamps for every published feed pair. `feeds.yaml` → `published_feeds` only curates landing-page cards and `subscriptions.opml`; `llms.txt`, `llms-full.txt`, `index.md` and the sitemap list every feed too. It contains **no copied articles** and is advertised in `llms.txt`, the HTML directory and the sitemap. Apps (including a future Sites dashboard) can read this static catalog, then fetch the original `feed_<name>.json` file directly without duplicating feed generation or adding a Cloudflare proxy.
 
-The repository's [Model Feed index](model-feeds.md) covers every existing `feeds/feed_*.json`, including feeds outside the curated website selection. `feed_generators/model_feed.py` refreshes it after generating JSON sidecars; Update Feeds commits it with those artifacts. Regenerate the index alone with `uv run --locked feed_generators/docs_model_feeds.py`; add `--check` to detect drift.
+The repository's [Model Feed index](model-feeds.md) covers every published `feeds/feed_*.json`, including feeds outside the curated website selection. `feed_generators/model_feed.py` refreshes it after generating JSON sidecars; Update Feeds commits only this index and `docs/sources.md`. Regenerate the index alone with `uv run --locked feed_generators/docs_model_feeds.py`; add `--check` to detect drift.
 
 Everything that depends on upstream richness stays adaptive. Images, authors, categories, provenance, summaries and publication/update dates should be preserved or enriched whenever the source gives enough evidence, but their absence alone does not fail a feed. A weather endpoint, a changelog and a newsroom should not be forced through the same editorial cookie cutter. When metadata is present, shared helpers should normalize it without inventing facts.
 
@@ -166,7 +162,7 @@ using a temporary registry and destination. Until such a test exists, leave
 ├── .github/workflows/update-feeds.yml   # generate + validate + publish every 2 h
 ├── feeds.yaml                           # source registry
 ├── feed_generators/                     # maintained generators + shared helpers
-├── feeds/                               # generated RSS/Atom + one Model Feed JSON per source
+├── feeds/                               # untracked: generated RSS/Atom + Model Feed JSON, restored from Pages
 ├── cache/                               # incremental state / last-known data
 ├── site/                                # GitHub Pages site and reader
 ├── feeds-proxy/                         # supporting Cloudflare Worker

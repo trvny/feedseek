@@ -25,7 +25,6 @@ env:
   FEEDSEEK_CACHE_BUCKET: feedseek-cache
   FEEDSEEK_CACHE_KEY: snapshots/cache.tar.gz
   FEEDSEEK_CACHE_MAX_BYTES: 134217728
-  FEEDSEEK_GIT_SNAPSHOT_HOURS: "6"
 
 jobs:
   update-feeds:
@@ -38,7 +37,7 @@ jobs:
       pages_ready: ${{ steps.pages_upload.outcome == 'success' && steps.backup.outcome == 'success' && steps.model_feeds.outcome == 'success' && steps.validate.outcome == 'success' }}
     steps:
       - name: Checkout repository
-        # zizmor: ignore[artipacked] this job commits & pushes feeds back, so it needs persisted creds
+        # zizmor: ignore[artipacked] this job commits & pushes generated docs back, so it needs persisted creds
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install uv and Python
@@ -77,6 +76,10 @@ jobs:
         run: |
           set -euo pipefail
           uv run --locked tools/restore_r2_cache.py
+
+      # feeds/ is not tracked in Git: last published pairs are the last-known-good state.
+      - name: Restore published feeds from Pages
+        run: uv run --locked tools/restore_published_feeds.py
 
       - name: Run feed tests
         working-directory: .
@@ -123,65 +126,22 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: uv run --locked tools/backup_r2_cache.py
 
-      # Raw GitHub URLs keep working from main, but Git stores fewer snapshots.
-      - name: Decide whether Git snapshot is due
-        id: snapshot
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ "$GITHUB_EVENT_NAME" != "schedule" ]]; then
-            echo "due=true" >> "$GITHUB_OUTPUT"
-            echo "Non-scheduled refresh: snapshot immediately"
-            exit 0
-          fi
-
-          # One path-filtered API read; avoid fetching the large Git history.
-          if ! last="$(gh api "repos/$GITHUB_REPOSITORY/commits?path=feeds&per_page=1" --jq 'if length == 0 then "" else (.[0].sha + " " + .[0].commit.committer.date) end')"; then
-            echo "::warning::Could not read last feed commit; fail open to keep raw URLs fresh"
-            echo "due=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          read -r last_sha last_date <<< "$last"
-          if [[ -z "$last_sha" || -z "$last_date" ]]; then
-            echo "due=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          # A coalesced push can be replaced by a late schedule. Preserve its snapshot.
-          if [[ "$GITHUB_SHA" != "$last_sha" ]]; then
-            echo "due=true" >> "$GITHUB_OUTPUT"
-            echo "Main changed since the last feed snapshot; refreshing raw URLs"
-            exit 0
-          fi
-          now="$(date -u +%s)"
-          last_epoch="$(date -u -d "$last_date" +%s)"
-          age_seconds=$(( now - last_epoch ))
-          if (( age_seconds < 0 || age_seconds >= FEEDSEEK_GIT_SNAPSHOT_HOURS * 3600 )); then
-            echo "due=true" >> "$GITHUB_OUTPUT"
-            echo "Git snapshot due (last: $last_date)"
-          else
-            echo "due=false" >> "$GITHUB_OUTPUT"
-            echo "Live Pages updated; Git snapshot deferred (last: $last_date)"
-          fi
-
-      - name: Commit and push successful updates
+      - name: Commit generated docs
         if: >-
           always() &&
           !cancelled() &&
           github.ref == 'refs/heads/main' &&
           steps.model_feeds.outcome == 'success' &&
           steps.validate.outcome == 'success' &&
-          steps.backup.outcome == 'success' &&
-          steps.snapshot.outputs.due == 'true'
+          steps.backup.outcome == 'success'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add feeds docs/sources.md docs/model-feeds.md
+          git add docs/sources.md docs/model-feeds.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m 'Update feeds'
+            git commit -m 'Update feed docs'
             if ! git push; then
               git pull --rebase
               uv run --locked feed_generators/docs_model_feeds.py

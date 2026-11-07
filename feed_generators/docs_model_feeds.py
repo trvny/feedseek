@@ -23,7 +23,6 @@ def table_text(value: object) -> str:
 
 def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
     rows = []
-    total_items = 0
     paths = sorted(feeds_dir.glob("feed_*.json"))
     if not paths:
         raise ValueError(f"No Model Feeds in {feeds_dir}")
@@ -37,20 +36,18 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         ):
             raise ValueError(f"Invalid Model Feed: {path}")
         key = path.stem.removeprefix("feed_")
-        count = len(feed["items"])
-        total_items += count
         owner, _, repo = repo_slug.partition("/")
         url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name.removeprefix('feed_'))}"
-        rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | {count} | [JSON]({url}) |")
+        rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",
         "",
         (
-            "> Generated from every existing `feeds/feed_*.json` file. "
+            "> Generated from every published `feeds/feed_*.json` file (restored from Pages in CI). "
             "Refresh: `uv run --locked feed_generators/docs_model_feeds.py`."
         ),
         "",
-        f"{len(rows)} Model Feeds · {total_items} entries.",
+        f"{len(rows)} Model Feeds.",
         "",
         "## Access",
         "",
@@ -68,8 +65,8 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         "",
         "## All JSON feeds",
         "",
-        "| Source key | Title | Entries | JSON |",
-        "| --- | --- | ---: | --- |",
+        "| Source key | Title | JSON |",
+        "| --- | --- | --- |",
         *rows,
         "",
     ]

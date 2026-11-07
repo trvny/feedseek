@@ -8,14 +8,14 @@ Keywords: MCP server, remote MCP, WebMCP, llms.txt, llms-full.txt, JSON Schema, 
 
 | Need | Use | Coverage |
 | --- | --- | --- |
-| Full history of one source | `feeds/feed_<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
+| Full history of one source | `https://trvny.github.io/feedseek/<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
 | Which feeds exist | [`model-feeds.json`](https://trvny.github.io/feedseek/model-feeds.json) catalog | Curated website selection; URLs + metadata, no articles |
 | Site overview for a model | [`llms.txt`](https://trvny.github.io/feedseek/llms.txt), [`llms-full.txt`](https://trvny.github.io/feedseek/llms-full.txt) | Website selection |
 | Search / digest across sources | Remote MCP `https://feeds-proxy.travny.workers.dev/mcp` | Recent index: ≤5,000 entries, last 14 days |
 | Drive the browser Reader | WebMCP tools in [the Reader](https://trvny.github.io/feedseek/reader/) | What the open page currently shows |
-| Classic feed readers | `feeds/feed_<key>.xml` (RSS/Atom) | Same items as the JSON sibling |
+| Classic feed readers | `https://trvny.github.io/feedseek/<key>.xml` (RSS/Atom) | Same items as the JSON sibling |
 
-Raw GitHub URLs track `main`; swap `main` for a commit SHA for a reproducible snapshot.
+Feeds live on GitHub Pages only; Git keeps no feed history.
 
 ## Model Feed JSON
 
@@ -26,7 +26,7 @@ One `feed_<key>.json` per XML feed, format `feedseek-model-feed`, version `1`.
 - Item: stable `id` (usually RFC 4151 tag URI, unique per file), `title`, plaintext `text`, `text_kind` (`content`, `summary` or `title` = what `text` came from). Optional when upstream provides them: `url`, `external_url`, `date_published`, `date_modified` (RFC 3339), `authors[]`, `tags[]`, `image`.
 - `text_kind: title` means no body or summary existed upstream; do not treat it as article content.
 
-Enforcement: `feed_generators/validate_feeds.py` gates every publication (non-empty ids/text, unique ids, valid `text_kind`, item count equal to the XML). `tests/test_model_feed_schema.py` keeps the schema in step with the builder, the validator and every committed `feeds/feed_*.json`.
+Enforcement: `feed_generators/validate_feeds.py` gates every publication (non-empty ids/text, unique ids, valid `text_kind`, item count equal to the XML). `tests/test_model_feed_schema.py` keeps the schema in step with the builder, the validator and every published feed restored into `feeds/`.
 
 ## Remote MCP
 
