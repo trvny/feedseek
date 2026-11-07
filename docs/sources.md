@@ -177,9 +177,11 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=deploymentsafety.openai.com&sz=16) Deployment safety — <https://deploymentsafety.openai.com/>
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) Developer blog — <https://developers.openai.com/blog>
 
-### ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) xAI
+### ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) xAI
 `xai` · [feed_xai.xml](../feeds/feed_xai.xml)
 
+- ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Changelog — <https://cursor.com/changelog/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Blog — <https://cursor.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Blog — <https://x.ai/news>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Build changelog — <https://x.ai/build/changelog>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Console changelog — <https://x.ai/api/changelog>
@@ -563,7 +565,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=stripe.com&sz=16) Stripe Newsroom — <https://stripe.com/en-pl/newsroom>
 - ![](https://www.google.com/s2/favicons?domain=stripe.dev&sz=16) Stripe Developer Blog — <https://stripe.dev/>
 - ![](https://www.google.com/s2/favicons?domain=docs.stripe.com&sz=16) Stripe Changelog — <https://docs.stripe.com/changelog>
-- ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Blog — <https://cursor.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=neuraltrust.ai&sz=16) NeuralTrust — <https://neuraltrust.ai/resources>
 - ![](https://www.google.com/s2/favicons?domain=abnormal.ai&sz=16) Abnormal Blog — <https://abnormal.ai/blog>
 - ![](https://www.google.com/s2/favicons?domain=abnormal.ai&sz=16) Abnormal Newsroom — <https://abnormal.ai/newsroom/press-releases>
@@ -583,7 +584,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=exa.ai&sz=16) Exa Changelog — <https://exa.ai/docs/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.home-assistant.io&sz=16) Home Assistant — <https://www.home-assistant.io/atom.xml>
 - ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) Upstash Workflow Releases — <https://github.com/upstash/workflow-js/releases.atom>
-- ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Changelog — <https://cursor.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.coderabbit.ai&sz=16) CodeRabbit Blog — <https://www.coderabbit.ai/feed>
 - ![](https://www.google.com/s2/favicons?domain=docs.coderabbit.ai&sz=16) CodeRabbit Changelog — <https://docs.coderabbit.ai/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.character.ai&sz=16) Character.AI — <https://blog.character.ai/rss/>
