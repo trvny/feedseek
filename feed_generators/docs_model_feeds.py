@@ -39,7 +39,8 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         key = path.stem.removeprefix("feed_")
         count = len(feed["items"])
         total_items += count
-        url = f"https://raw.githubusercontent.com/{repo_slug}/main/feeds/{quote(path.name)}"
+        owner, _, repo = repo_slug.partition("/")
+        url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name)}"
         rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | {count} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",
@@ -53,7 +54,7 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         "",
         "## Access",
         "",
-        "- Choose a source key below, then GET its raw JSON URL. Each file contains the full current feed output.",
+        "- Choose a source key below, then GET its JSON URL (GitHub Pages, refreshed every 2 hours). Each file contains the full current feed output.",
         "- Format: `feedseek-model-feed`, version `1`. Feed metadata: `source_key`, `title`, `description`, `home_page_url`.",
         "- Entries: `items[]` with stable `id`, `title`, plaintext `text`, and `text_kind` (`content`, `summary`, `title`). URLs, dates, authors, tags and images depend on upstream availability.",
         "- Contract: [JSON Schema](schemas/model-feed.v1.schema.json). Other agent surfaces (MCP, WebMCP, llms.txt): [agents.md](agents.md).",

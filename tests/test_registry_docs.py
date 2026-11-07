@@ -30,7 +30,7 @@ class RegistryDocsTests(unittest.TestCase):
         self.assertEqual(documented, set(registry))
 
         for name, config in registry.items():
-            raw_url = f"https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_{name}.xml"
+            raw_url = f"https://trvny.github.io/feedseek/feed_{name}.xml"
             if config.get("enabled", True):
                 self.assertIn(raw_url, readme)
             else:
