@@ -15,6 +15,8 @@ Aggregates xAI's update sources into one **Atom** feed written to
     - X Blog                 https://blog.x.com/                         (HTML)
     - X Engineering          https://blog.x.com/engineering/en_us        (HTML)
     - X API changelog        https://docs.x.com/changelog                (HTML)
+    - Cursor Changelog       https://cursor.com/changelog/rss.xml        (RSS)
+    - Cursor Blog            https://cursor.com/blog                     (HTML)
 
 Source handling:
   * News — server-rendered listing cards: ``<a href="/news/...">`` with an
@@ -83,6 +85,8 @@ RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
 GROK_RELEASE_NOTES_URL = "https://grok.com/release-notes"
 X_BLOG_URL = "https://blog.x.com/"
 X_ENGINEERING_URL = "https://blog.x.com/engineering/en_us"
+CURSOR_CHANGELOG_URL = "https://cursor.com/changelog/rss.xml"
+CURSOR_BLOG_URL = "https://cursor.com/blog"
 
 DATE_RE = re.compile(
     r"((?:January|February|March|April|May|June|July|August|September|October|November|December"
@@ -113,6 +117,8 @@ _GROK_RELEASE_RE = re.compile(
 DESC_LIMIT = 500
 MAX_ENTRIES = 200
 X_API_MAX_ENTRIES = 50
+CURSOR_BLOG_MAX = 12
+_CURSOR_BLOG_PATH = re.compile(r"^/blog/[a-z0-9][a-z0-9-]*/?$", re.I)
 
 
 def _get_html(url):
@@ -710,6 +716,128 @@ def _seed_legacy_x_api_cache(cached):
     return _cap_x_api_history(merged)
 
 
+
+# --------------------------------------------------------------------------- #
+# Cursor: official changelog RSS and blog listing
+# --------------------------------------------------------------------------- #
+
+
+def scrape_cursor_changelog(known_links):
+    """Official RSS, not a re-scrape of the long changelog page."""
+    return scrape_feed(
+        "Cursor Changelog", CURSOR_CHANGELOG_URL, known_links, cap=50
+    )
+
+
+def _cursor_blog_index(html, known_links):
+    """Find canonical article permalinks; reject navigation and off-site links."""
+    soup = BeautifulSoup(html, "html.parser")
+    candidates, seen = [], set()
+    for anchor in soup.find_all("a", href=True):
+        try:
+            link = urljoin(CURSOR_BLOG_URL, anchor["href"])
+            parsed = urlparse(link)
+            if (
+                parsed.scheme != "https"
+                or parsed.hostname != "cursor.com"
+                or not _CURSOR_BLOG_PATH.fullmatch(parsed.path)
+            ):
+                continue
+            link = f"https://cursor.com{parsed.path.rstrip('/')}"
+            if link in known_links or link in seen:
+                continue
+            seen.add(link)
+
+            # Prefer a date within the card. Avoid crawling into the whole page.
+            date_obj = None
+            for card in [anchor, *list(anchor.parents)[:4]]:
+                if getattr(card, "name", None) in {"main", "body", "html"}:
+                    break
+                text = card.get_text(" ", strip=True)
+                match = DATE_RE.search(text[:900])
+                if match:
+                    date_obj = parse_date(match.group(1))
+                    break
+            heading = anchor.find(["h2", "h3"])
+            title = heading.get_text(" ", strip=True) if heading else ""
+            candidates.append((link, date_obj, title))
+            if len(candidates) >= CURSOR_BLOG_MAX:
+                break
+        except (ValueError, TypeError, AttributeError) as exc:
+            logger.warning("  [Cursor Blog] malformed listing link: %s", exc)
+    return candidates
+
+
+def _cursor_blog_article(html, link, index_date, index_title=""):
+    soup = BeautifulSoup(html, "html.parser")
+    heading = soup.find("h1")
+    title = heading.get_text(" ", strip=True) if heading else index_title
+    if not title:
+        return None
+
+    meta = lambda key, value: soup.find("meta", attrs={key: value})
+    desc_el = meta("name", "description") or meta("property", "og:description")
+    description = desc_el.get("content", "").strip() if desc_el else ""
+    published = meta("property", "article:published_time")
+    time_el = soup.find("time", datetime=True)
+    date_obj = (
+        parse_date(published.get("content")) if published and published.get("content")
+        else parse_date(time_el.get("datetime")) if time_el else index_date
+    )
+    if date_obj is None:
+        return None
+
+    image_el = meta("property", "og:image")
+    image = image_el.get("content") if image_el else None
+    if image:
+        image = urljoin(link, image)
+        if urlparse(image).scheme != "https":
+            image = None
+    title = sanitize_xml(title)
+    return {
+        "title": title,
+        "link": link,
+        "date": date_obj,
+        "description": sanitize_xml(description)[:DESC_LIMIT] or title,
+        "source": "Cursor Blog",
+        "image": image,
+    }
+
+
+def scrape_cursor_blog(known_links):
+    index = _get_html(CURSOR_BLOG_URL)
+    if not index:
+        return []
+    entries = []
+    for link, date_obj, title in _cursor_blog_index(index, known_links):
+        detail = _get_html(link)
+        if not detail:
+            # Listing metadata can be sufficient without an extra page.
+            if title and date_obj:
+                entries.append({
+                    "title": sanitize_xml(title),
+                    "link": link,
+                    "date": date_obj,
+                    "description": sanitize_xml(title),
+                    "source": "Cursor Blog",
+                })
+            continue
+        try:
+            entry = _cursor_blog_article(detail, link, date_obj, title)
+            if entry:
+                entries.append(entry)
+        except (ValueError, TypeError, AttributeError) as exc:
+            logger.warning("  [Cursor Blog] malformed article %s: %s", link, exc)
+    return entries
+
+
+def doc_sources():
+    return [
+        ("Cursor Changelog", CURSOR_CHANGELOG_URL),
+        ("Cursor Blog", CURSOR_BLOG_URL),
+    ]
+
+
 # --------------------------------------------------------------------------- #
 # Orchestration
 # --------------------------------------------------------------------------- #
@@ -739,6 +867,10 @@ def scrape_all(known_links):
     )
     logger.info("Scraping X API changelog ...")
     new_entries += scrape_x_api_changelog(known_links)
+    logger.info("Scraping Cursor Changelog ...")
+    new_entries += scrape_cursor_changelog(known_links)
+    logger.info("Scraping Cursor Blog ...")
+    new_entries += scrape_cursor_blog(known_links)
     return new_entries
 
 
@@ -748,7 +880,7 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.title("xAI")
     fg.subtitle(
         "xAI and Grok product updates, Console, Build and Bot changelogs, "
-        "Tesla Blog, X Blog, X Engineering, and X API updates."
+        "Tesla Blog, X Blog, X Engineering, X API and Cursor updates."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     setup_feed_extensions(fg)
