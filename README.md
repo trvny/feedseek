@@ -13,6 +13,8 @@
 [![Web reader](https://img.shields.io/badge/-Reader-222222?style=flat-square&logo=githubpages&logoColor=white)](https://trvny.github.io/feedseek/reader/)  
 [![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/) [![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat-square&logo=uv&logoColor=white)](https://docs.astral.sh/uv/)
 
+![CodeRabbit](https://img.shields.io/coderabbit/prs/github/trvny/feedseek?utm_source=oss&utm_medium=github&utm_campaign=trvny%2Ffeedseek&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews) <a href="https://app.deepsource.com/gh/trvny/feedseek/" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://app.deepsource.com/gh/trvny/feedseek.svg/?label=active+issues&show_trend=false&token=m5erK7VaWqc3WCLPHGbP4D4N"/></a>
+
 [Polski](README_pl.md) · **English** · [简体中文](README_zh.md)  
 
 [**:satellite: Feeds**](https://trvny.github.io/feedseek/) · [**:book: Reader**](https://trvny.github.io/feedseek/reader/) · [**:card_file_box: Registry**](feeds.yaml) · [**:robot: LLMs**](docs/model-feeds.md) · [**:compass: Internals**](docs/)
