@@ -19,7 +19,6 @@ single Atom stream written to ``feeds/feed_saas.xml``:
     - Upstash           Workflow SDK releases (native Atom; blog lives in SkillsLLM)
     - Xweather          blog (scraped index) + weather-api changelog (scraped)
                         + mcp-server changelog (scraped)
-    - Cursor            changelog (native RSS) + blog (scraped dated anchors)
     - NeuralTrust       resources / blog (scraped dated anchors)
     - Abnormal          blog + newsroom press releases (scraped dated anchors)
     - Character.AI      blog (native RSS)
@@ -91,7 +90,7 @@ FEED_SUBTITLE = (
     "Exa (blog + changelog), Home Assistant, "
     "Upstash Workflow releases, "
     "Xweather (blog + API + MCP changelogs), "
-    "Cursor (blog + changelog), NeuralTrust, "
+    "NeuralTrust, "
     "Abnormal (blog + newsroom), Character.AI, "
     "Astral Codex Ten, Behance (blog), CodeRabbit (blog + changelog + newsroom), "
     "Netlify (blog + changelog + knowledge base), and "
@@ -190,7 +189,6 @@ NATIVE_FEEDS = [
         "https://github.com/upstash/workflow-js/releases.atom",
         40,
     ),
-    ("Cursor Changelog", "https://cursor.com/changelog/rss.xml", 40),
     ("CodeRabbit Blog", "https://www.coderabbit.ai/feed", 50),
     ("CodeRabbit Changelog", "https://docs.coderabbit.ai/changelog/rss.xml", 40),
     ("Character.AI", "https://blog.character.ai/rss/", 40),
@@ -207,6 +205,8 @@ RETIRED_CACHE_SOURCES = {
     "Xweather Blog",
     "Xweather Weather API Changelog",
     "Xweather MCP Server Changelog",
+    "Cursor Changelog",
+    "Cursor Blog",
 }
 
 
@@ -526,8 +526,8 @@ def collect_exa_blog(known_links: set[str]) -> list[dict]:
 # --------------------------------------------------------------------------- #
 # Generic dated-anchor listing scraper.
 #
-# Cursor blog, NeuralTrust resources, and Abnormal blog + newsroom are all the
-# same shape: a server-rendered page that is a flat list of <a href="/post">
+# NeuralTrust resources and Abnormal blog + newsroom share a
+# dated-anchor listing shape: a server-rendered page that is a flat list of <a href="/post">
 # whose visible text carries a date ("Jul 8, 2026" / "July 16, 2026") plus the
 # post title. One parser handles them all -- match post anchors by an href
 # pattern, pull the date out of the anchor text, and take the remaining text as
@@ -616,10 +616,9 @@ def collect_dated_anchors(url: str, source: str, href_pat: str, base: str,
 
 
 # (url, source, href_pat, base, fetch_title): fetch_title pulls each post's
-# real title from its page when the listing anchor text is noisy (Cursor mixes
-# in category/author/read-time; Abnormal press cards trail into the body).
+# real title from its page when the listing anchor text is noisy
+# (Abnormal press cards trail into the body).
 DATED_ANCHOR_SOURCES = [
-    ("https://cursor.com/blog", "Cursor Blog", r"/blog/[a-z0-9-]+$", "https://cursor.com", True),
     ("https://neuraltrust.ai/resources", "NeuralTrust", r"/blog/[a-z0-9-]+$", "https://neuraltrust.ai", False),
     ("https://abnormal.ai/blog", "Abnormal Blog", r"/blog/[a-z0-9-]+$", "https://abnormal.ai", False),
     ("https://abnormal.ai/newsroom/press-releases", "Abnormal Newsroom",
