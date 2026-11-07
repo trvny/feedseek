@@ -250,7 +250,8 @@ function parseOpml(text, base=document.baseURI){
     for(const attr of match[0].matchAll(/([:\w.-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)){
       attrs[attr[1].toLowerCase()]=decodeXmlAttr(attr[2]??attr[3]??'');
     }
-    const xmlUrl=safeHttpUrl(attrs.xmlurl,base);
+    const rawXmlUrl=safeHttpUrl(attrs.xmlurl,base);
+    const xmlUrl=rawXmlUrl&&(window.FeedseekReaderCache?.canonicalFeedUrl||(u=>u))(rawXmlUrl);
     const htmlUrl=safeHttpUrl(attrs.htmlurl,base);
     const icon=safeHttpUrl(
       attrs.icon||attrs.favicon||attrs.image||attrs.imageurl,
