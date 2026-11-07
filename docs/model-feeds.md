@@ -2,7 +2,7 @@
 
 > Generated from every existing `feeds/feed_*.json` file. Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-115 Model Feeds · 25959 entries.
+115 Model Feeds · 25961 entries.
 
 ## Access
 
@@ -56,7 +56,7 @@
 | `foundry` | Foundry | 300 | [JSON](https://trvny.github.io/feedseek/foundry.json) |
 | `geopolitics` | Geopolitics | 300 | [JSON](https://trvny.github.io/feedseek/geopolitics.json) |
 | `github` | GitHub | 400 | [JSON](https://trvny.github.io/feedseek/github.json) |
-| `github_personal` | trvny + travnie · GitHub | 68 | [JSON](https://trvny.github.io/feedseek/github_personal.json) |
+| `github_personal` | trvny + travnie · GitHub | 70 | [JSON](https://trvny.github.io/feedseek/github_personal.json) |
 | `gitlab` | GitLab | 200 | [JSON](https://trvny.github.io/feedseek/gitlab.json) |
 | `gog` | GOG | 200 | [JSON](https://trvny.github.io/feedseek/gog.json) |
 | `google` | Google Blogs | 500 | [JSON](https://trvny.github.io/feedseek/google.json) |
