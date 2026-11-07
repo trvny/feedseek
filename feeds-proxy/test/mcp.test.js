@@ -421,6 +421,33 @@ test("fetch falls back to the id revision when the live feed lacks the item", as
   ]);
 });
 
+test("fetch falls back to the search index row when feeds rotated the entry out", async () => {
+  await withFetch(
+    async (url) => {
+      const target = String(url);
+      if (target.endsWith("feedseek-search-index.json")) {
+        return new Response(JSON.stringify({
+          revision,
+          items: [{ id: opaqueId, source_key: "openai", source: "OpenAI", title: "Rotated", url: "https://example.com/r", summary: "Index summary" }],
+        }), { status: 200 });
+      }
+      if (target.startsWith("https://trvny.github.io/")) {
+        return new Response(JSON.stringify({ format: "feedseek-model-feed", items: [] }), { status: 200 });
+      }
+      return new Response("gone", { status: 404 });
+    },
+    async () => {
+      const body = await (
+        await call("tools/call", { name: "fetch", arguments: { id: opaqueId } })
+      ).json();
+      const result = body.result.structuredContent;
+      assert.equal(result.text, "Index summary");
+      assert.equal(result.url, "https://example.com/r");
+      assert.equal(result.metadata.text_kind, "summary");
+    },
+  );
+});
+
 test("legacy plaintext keeps spacing while hidden HTML is still rendered", () => {
   assert.equal(
     legacyTextToText("Paragraph one\n\n- item\tvalue\n  code"),

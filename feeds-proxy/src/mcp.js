@@ -620,6 +620,37 @@ function canonicalUrl(item) {
   return "";
 }
 
+/** Index row as a summary-only fetch result; null when the id is not indexed.
+ * @param {string} id
+ */
+async function loadIndexedEntry(id) {
+  let data;
+  try {
+    data = await loadJson(INDEX_URL);
+  } catch {
+    return null;
+  }
+  const items = Array.isArray(data.items) ? /** @type {IndexItem[]} */ (data.items) : [];
+  const item = items.find((candidate) => candidate?.id === id);
+  if (!item || typeof item.url !== "string" || !item.url) return null;
+  return {
+    id,
+    title: String(item.title || "Untitled"),
+    text: typeof item.summary === "string" ? item.summary : "",
+    url: item.url,
+    metadata: {
+      source: String(item.source || item.source_key),
+      source_key: item.source_key,
+      revision: typeof data.revision === "string" ? data.revision : null,
+      text_kind: "summary",
+      published_at: item.published_at || null,
+      modified_at: item.modified_at || null,
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      image: null,
+    },
+  };
+}
+
 /** @param {JsonObject} args */
 async function fetchEntry(args = {}) {
   const { revision, sourceKey, itemId } = decodeOpaqueId(args.id);
@@ -632,10 +663,19 @@ async function fetchEntry(args = {}) {
   let modelFeed = true;
   let item = live ? findItem(live) : undefined;
   if (!item) {
-    ({ feed, modelFeed } = await loadRevisionFeed(revision, sourceKey));
-    item = findItem(feed);
+    try {
+      ({ feed, modelFeed } = await loadRevisionFeed(revision, sourceKey));
+      item = findItem(feed);
+    } catch {
+      // Revision snapshot absent (feeds/ no longer committed) or unreachable.
+    }
   }
-  if (!item) throw new Error("Feedseek entry was not found");
+  if (!item) {
+    // Rotating feeds can drop an entry the index still lists; the index row keeps search/fetch consistent.
+    const indexed = await loadIndexedEntry(String(args.id));
+    if (indexed) return indexed;
+    throw new Error(live ? "Feedseek entry was not found" : "Feedseek feed is temporarily unavailable");
+  }
   const url = canonicalUrl(item);
   if (!url) throw new Error("Feedseek entry has no citation URL");
 
