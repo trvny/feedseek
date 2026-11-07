@@ -15,13 +15,11 @@ from urllib3.util import Timeout
 
 import multi_rss
 from model_feed import write_model_feed
-from utils import feedparser_entry_image, get_feeds_dir, write_atomically
+from utils import feedparser_entry_image, get_feeds_dir, public_feed_url, write_atomically
 
 FEED_NAME = "weather"
 SOURCE_URL = "https://weather.travny.workers.dev/feed.atom"
-_PUBLISHED_URL = (
-    "https://raw.githubusercontent.com/trvny/feedseek/main/feeds/feed_weather.xml"
-)
+_PUBLISHED_URL = public_feed_url(FEED_NAME)
 ATOM = "{http://www.w3.org/2005/Atom}"
 MAX_SOURCE_BYTES = 2 * 1024 * 1024
 SOURCE_TOTAL_SECONDS = 30.0

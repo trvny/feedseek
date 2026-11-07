@@ -7,11 +7,10 @@ from pathlib import Path
 
 from html_text import plain_text
 from jsonfeed import build_json_feed
-from utils import REPO_SLUG, feedparser_entry_image, write_atomically
+from utils import feedparser_entry_image, public_feed_url, write_atomically
 
 MODEL_FEED_FORMAT = "feedseek-model-feed"
 MODEL_FEED_VERSION = 1
-_MODEL_FEED_URL_TMPL = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/" "feed_{name}.json"
 
 
 def _text_kind(item: dict) -> str:
@@ -56,8 +55,8 @@ def build_model_feed(json_feed: dict, feed_name: str) -> dict:
         "version": MODEL_FEED_VERSION,
         "source_key": feed_name,
         "title": str(json_feed.get("title") or feed_name),
-        "feed_url": _MODEL_FEED_URL_TMPL.format(name=feed_name),
-        "source_feed": f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/feed_{feed_name}.xml",
+        "feed_url": public_feed_url(feed_name, "json"),
+        "source_feed": public_feed_url(feed_name),
     }
     for key in ("home_page_url", "description"):
         value = json_feed.get(key)

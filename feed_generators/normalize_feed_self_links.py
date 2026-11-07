@@ -19,6 +19,7 @@ from urllib.parse import parse_qs, urlsplit
 from utils import (
     FAVICON_PROXY_ORIGIN,
     LEGACY_FAVICON_PROXY_ORIGINS,
+    PUBLIC_BASE,
     REPO_SLUG,
     favicon_proxy,
     large_icon,
@@ -29,12 +30,18 @@ logger = logging.getLogger(__name__)
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 FEEDS_DIR = ROOT_DIR / "feeds"
-CURRENT_PREFIX = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
+CURRENT_PREFIX = PUBLIC_BASE
 LEGACY_PREFIX = "https://raw.githubusercontent.com/trvny/feeds/main/feedseek/feeds/"
+# Retired raw snapshot locations; files are feed_<key>.<ext> there, <key>.<ext> on Pages.
 LEGACY_PREFIXES = (
     LEGACY_PREFIX,
     "https://raw.githubusercontent.com/trvny/feeds/main/feeds/",
     f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feedseek/feeds/",
+    f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/",
+)
+_LEGACY_URL_RE = re.compile(
+    "(?:" + "|".join(re.escape(prefix) for prefix in LEGACY_PREFIXES) + ")"
+    r"feed_(?P<name>[A-Za-z0-9_-]+)\.(?P<ext>xml|json)"
 )
 
 _TAG_RE = {
@@ -255,9 +262,9 @@ def normalize_feed_file(path: Path) -> bool:
     """Normalize self-link and favicon metadata in one generated feed pair."""
     content = path.read_text(encoding="utf-8")
     normalized = content
-    for prefix in LEGACY_PREFIXES:
-        if prefix != CURRENT_PREFIX:
-            normalized = normalized.replace(prefix, CURRENT_PREFIX)
+    normalized = _LEGACY_URL_RE.sub(
+        lambda match: f"{CURRENT_PREFIX}{match['name']}.{match['ext']}", normalized
+    )
     normalized = _normalize_atom_icons(normalized)
     if normalized == content:
         return False

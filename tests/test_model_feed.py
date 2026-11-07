@@ -219,8 +219,8 @@ class ModelFeedTests(unittest.TestCase):
             generated = json.loads((root / "feed_demo.json").read_text(encoding="utf-8"))
             self.assertEqual(generated["format"], MODEL_FEED_FORMAT)
             self.assertEqual(generated["items"][0]["text"], "Hello & world")
-            self.assertTrue(generated["feed_url"].endswith("/feed_demo.json"))
-            self.assertTrue(generated["source_feed"].endswith("/feed_demo.xml"))
+            self.assertTrue(generated["feed_url"].endswith("/demo.json"))
+            self.assertTrue(generated["source_feed"].endswith("/demo.xml"))
             self.assertFalse((root / "feed_demo.model.json").exists())
 
 
