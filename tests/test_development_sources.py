@@ -146,10 +146,15 @@ class DevelopmentSourceTests(unittest.TestCase):
         )
 
     def test_pubdev_atom_is_a_native_development_source(self):
-        self.assertIn(
-            ("pub.dev packages", "https://pub.dev/feed.atom", 40),
-            development.SOURCES,
-        )
+        """Register pub.dev as native Atom, not an extra HTML scraper."""
+        source = ("pub.dev packages", "https://pub.dev/feed.atom", 40)
+        self.assertIn(source, development.SOURCES)
+        with patch.object(development, "run", return_value=True) as native_run:
+            self.assertTrue(development.main())
+        arguments = native_run.call_args.kwargs
+        self.assertIn(source, arguments["sources"])
+        self.assertEqual(arguments["source_workers"], 6)
+        self.assertTrue(all(scraper.__name__ != "scrape_pubdev" for scraper in arguments["extra_scrapers"]))
 
     def test_justjoin_discovery_excludes_navigation_duplicates_and_other_hosts(self):
         index = """
