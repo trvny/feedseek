@@ -873,7 +873,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
         f"- [Model Feed catalog (JSON)]({base}model-feeds.json): Compact source registry and direct Model Feed URLs for agents and apps",
-        f"- [All feeds (OPML)]({base}subscriptions.opml): One-shot import of every published feed",
+        f"- [Curated feeds (OPML)]({base}subscriptions.opml): One-shot import of the curated landing-page feeds",
         f"- [Feed directory (sitemap)]({base}sitemap.xml): Machine-readable list of every feed URL",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
         f"- [Live reader]({base}reader/index.md): Markdown description of the browser Reader",
@@ -917,7 +917,7 @@ def build_index_markdown(feeds: list[dict], base: str) -> str:
         f"- [Browser directory]({base})",
         f"- [Reader]({base}reader/)",
         f"- [Model Feed catalog (JSON)]({base}model-feeds.json)",
-        f"- [All feeds as OPML]({base}subscriptions.opml)",
+        f"- [Curated feeds as OPML]({base}subscriptions.opml)",
         f"- [Concise LLM guide]({base}llms.txt)",
         f"- [Full LLM guide]({base}llms-full.txt)",
         "- [Source](https://github.com/trvny/feedseek)",
@@ -1062,9 +1062,9 @@ def main() -> None:
     base = site_base_url()
     # feeds: curated cards + OPML. all_feeds: every published file and catalog.
     feeds = collect_feeds()
-    if not feeds:
-        raise SystemExit("No feeds found in feeds/ — nothing to publish.")
     all_feeds = collect_all_feeds(feeds)
+    if not all_feeds:
+        raise SystemExit("No feeds found in feeds/ — nothing to publish.")
     require_model_sidecars(all_feeds)
 
     if OUT_DIR.exists():
