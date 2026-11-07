@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.cloudflare.com/</id>
   <title>Cloudflare</title>
-  <updated>2026-11-06T19:39:40.522233+00:00</updated>
+  <updated>2026-11-07T06:30:12.652395+00:00</updated>
   <author>
     <name>Cloudflare</name>
   </author>
@@ -14,6 +14,26 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=blog.cloudflare.com&amp;sz=64</webfeeds:icon>
   <subtitle>Combined Cloudflare feed: the Cloudflare Blog, the developer Changelog, Community top topics, Status incidents, and Cloudflare Research publications.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/6c1dd9ab6884efba</id>
+    <title>Network Performance Issues in Chicago</title>
+    <updated>2026-11-07T05:12:00+00:00</updated>
+    <content>Nov 7 , 05:12 UTC Resolved - Between 04:55-05:12 UTC  7th Dec Cloudflare experienced issues with network performance in Chicago.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/x9orajjmvvwa" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-07T05:12:00+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/4ab3a8e7fa371dd8</id>
+    <title>Spectrum Availability Issue in Phoenix</title>
+    <updated>2026-11-07T02:51:59+00:00</updated>
+    <content>Nov 7 , 02:51 UTC Monitoring - We are continuing to monitor for any further issues. Nov 7 , 00:59 UTC Investigating - Cloudflare is investigating issues with Spectrum in Phoenix. This may be impacting the availability of existing Spectrum applications. We are working to understand the full impact and mitigate this problem. More updates to follow shortly.</content>
+    <link href="https://www.cloudflarestatus.com/incidents/c60k3g4vsoc1" rel="alternate"/>
+    <category term="Cloudflare Status" label="Cloudflare Status"/>
+    <published>2026-11-07T02:51:59+00:00</published>
+    <dc:creator>Cloudflare Status</dc:creator>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/3389b689f7f2d068</id>
     <title>Fedramp Customers have Delayed Purges</title>
@@ -104,6 +124,21 @@ The issue has been resolved and we are monitoring the results.</content>
     </media:group>
     <dc:creator>Cloudflare Changelog</dc:creator>
     <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-06-fast-flux-detection-ueba/og.png?v=4fb303c0ad72f7e2" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/cloudflare/77930317c55c8fb4</id>
+    <title>AI Gateway - Review provider key activity in AI Gateway</title>
+    <updated>2026-11-06T00:00:00+00:00</updated>
+    <content>AI Gateway now shows usage activity for your stored provider keys. Use this information to review credentials for rotation or removal. In Provider Keys , keys are grouped by provider with masked previews, aliases, and last-used and last-updated dates. The Key security section highlights keys with recorded activity older than 90 days. You can review these keys and delete them after checking their dependencies. Usage tracking starts November 2026. For details on storing, rotating, and removing pro</content>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-11-06-provider-key-security/" rel="alternate"/>
+    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
+    <published>2026-11-06T00:00:00+00:00</published>
+    <media:group>
+      <media:content url="https://developers.cloudflare.com/changelog/post/2026-11-06-provider-key-security/og.png?v=b0538c551331c7af" type="image/png" medium="image"/>
+      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-11-06-provider-key-security/og.png?v=b0538c551331c7af"/>
+    </media:group>
+    <dc:creator>Cloudflare Changelog</dc:creator>
+    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-11-06-provider-key-security/og.png?v=b0538c551331c7af" type="image/png" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/5cbc7eb37feb1141</id>
@@ -1239,21 +1274,6 @@ We're investigating to confirm the root cause and possible fixes. Oct 2</content
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/e61a6b5d14d7b95d</id>
-    <title>Analytics - SQL API introspection: `include_attributes` parameter</title>
-    <updated>2026-10-27T00:00:00+00:00</updated>
-    <content>The SQL API introspection endpoint has a new include_attributes query parameter. Setting it to true discovers the keys of a dataset's attributes JSON column, and their types, from the preceding seven days of your account's data. Discovered keys are returned in the dataset's attributes response field. Some datasets store additional key-value data in an attributes JSON column, which you query with exact-key lookups such as attributes['http.method'] . The previous way to discover these keys, includ</content>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/" rel="alternate"/>
-    <category term="Cloudflare Changelog" label="Cloudflare Changelog"/>
-    <published>2026-10-27T00:00:00+00:00</published>
-    <media:group>
-      <media:content url="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121" type="image/png" medium="image"/>
-      <media:thumbnail url="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121"/>
-    </media:group>
-    <dc:creator>Cloudflare Changelog</dc:creator>
-    <link rel="enclosure" href="https://developers.cloudflare.com/changelog/post/2026-10-27-introspection-include-attributes/og.png?v=684fcd285f467121" type="image/png" length="0"/>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/b07ec47a44d0e203</id>
     <title>Workflows, Workers - Restrict Workflows to a jurisdiction</title>
     <updated>2026-10-27T00:00:00+00:00</updated>
@@ -1451,16 +1471,6 @@ We have identified the cause as a capacity problem in a shared internal data pip
     <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/b40415f46889c4f1</id>
-    <title>Increased Latency in India</title>
-    <updated>2026-10-21T19:57:04+00:00</updated>
-    <content>Oct 21 , 19:57 UTC Resolved - This incident has been resolved. Oct 21 , 18:51 UTC Monitoring - We have identified and implemented a fix for this issue and are currently monitoring the results. Oct 21 , 16:42 UTC Investigating - We are investigating reports of increased latency affecting some traffic in India. Affected users may experience slower loading times. Our engineering teams are investigating, and we will provide an update as more information becomes available.</content>
-    <link href="https://www.cloudflarestatus.com/incidents/t77gwnpr6oe5" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-21T19:57:04+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/ad57fe470f5c4141</id>
     <title>Introducing full transaction detection for Cloudflare WAF</title>
     <updated>2026-10-21T14:10:42+00:00</updated>
@@ -1504,17 +1514,6 @@ We have identified the cause as a capacity problem in a shared internal data pip
     </media:group>
     <dc:creator>Cloudflare Blog</dc:creator>
     <link rel="enclosure" href="https://blog.cloudflare.com/_emdash/api/media/file/01M5AYSA5Z4MMJ6XYBSMECP05T.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/cloudflare/797f7c8accc0f0a9</id>
-    <title>Cloudflare Secure Web Gateway and DLP enforcement issues for Google Gemini</title>
-    <updated>2026-10-20T22:46:39+00:00</updated>
-    <content>Oct 20 , 22:46 UTC Resolved - This incident has been resolved. Oct 19 , 23:46 UTC Identified - We are rolling out a fix to restore Secure Web Gateway application controls for Google Gemini. Work continues to restore DLP prompt logging and enforcement. Oct 19 , 20:30 UTC Identified - Cloudflare has identified an issue affecting Gateway application controls and Data Loss Prevention (DLP) inspection for certain Google Gemini traffic.
-We are working on a fix and will provide further updates as more </content>
-    <link href="https://www.cloudflarestatus.com/incidents/3z8y23zn7tr2" rel="alternate"/>
-    <category term="Cloudflare Status" label="Cloudflare Status"/>
-    <published>2026-10-20T22:46:39+00:00</published>
-    <dc:creator>Cloudflare Status</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/cloudflare/8d204ac3a7188cda</id>

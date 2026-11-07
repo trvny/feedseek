@@ -2,7 +2,7 @@
 <feed xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://aws.amazon.com/blogs/</id>
   <title>AWS</title>
-  <updated>2026-11-06T19:39:24.883751+00:00</updated>
+  <updated>2026-11-07T06:29:58.106734+00:00</updated>
   <author>
     <name>Amazon Web Services</name>
   </author>
@@ -14,6 +14,56 @@
   <webfeeds:logo>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=256</webfeeds:logo>
   <webfeeds:icon>https://feeds-proxy.travny.workers.dev/favicon?domain=aws.amazon.com&amp;sz=64</webfeeds:icon>
   <subtitle>AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.</subtitle>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/8c1c33e462504847</id>
+    <title>TrustCon 2026: 5 practical trust and safety patterns for operating on AWS</title>
+    <updated>2026-11-06T23:38:24.932000+00:00</updated>
+    <content>Learn how customers and peer organizations approach abuse prevention today based on learnings from TrustCon 2026.</content>
+    <link href="https://repost.aws/articles/ARYpLjScKYQo2Sql4Rho-2fw/trustcon-2026-5-practical-trust-and-safety-patterns-for-operating-on-aws" rel="alternate"/>
+    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
+    <published>2026-11-06T23:38:24.932000+00:00</published>
+    <media:group>
+      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
+      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
+    </media:group>
+    <dc:creator>AWS re:Post Articles</dc:creator>
+    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/317a771eb37310f5</id>
+    <title>Kimi K3.1 Pro (Highspeed) now available on Amazon Bedrock</title>
+    <updated>2026-11-06T22:47:00+00:00</updated>
+    <content>Today, Kimi K3.1 Pro from Moonshot AI is available on Amazon Bedrock, expanding our open weight model portfolio with the security and governance that customers rely on. Customers using Amazon Bedrock can now run agentic use cases such as coding and document processing on Kimi K3.1 Pro (Highspeed), which delivers high output tokens per second (OTPS) for faster, more responsive results. According to Moonshot AI, Kimi K3.1 Pro is an open-weight, natively multimodal agentic model with a 1-million-to</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/moonshot-ai-kimi-k3-1-pro-on-amazon-bedrock" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-06T22:47:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/b3c6e599ba57dbe7</id>
+    <title>Agent Registry is now generally available in AWS GovCloud (US-West) Region</title>
+    <updated>2026-11-06T19:48:00+00:00</updated>
+    <content>AWS Agent Registry, available through Amazon Bedrock AgentCore, is now available in the AWS GovCloud (US-West) Region. AWS Agent Registry is a fully managed discovery service that gives your organization a central catalog for organizing, curating, and discovering resources. You can publish MCP servers, tools, agents, agent skills, and custom resources to a searchable registry, and control what becomes discoverable through an approval workflow. People and AI agents can then find the right tools a</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/aws-agent-registry-govcloud-us-west/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-06T19:48:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/ecb7e118a1c863ef</id>
+    <title>AWS CLI 2.39.6</title>
+    <updated>2026-11-06T19:34:37+00:00</updated>
+    <content>api-change:datazone: Adds support for updating OAuth 2.0 connection settings with UpdateConnection. api-change:ssm: AWS Systems Manager now provides two new APIs - RegisterDefaultHostManagementConfiguration and DeregisterDefaultHostManagementConfiguration - along with a new DefaultHostManagementConfiguration CloudFormation resource type. api-change:mediaconvert: Smart subtitling uses AWS Elemental Inference to generate captions from your content's audio, in embedded, burn-in, DVB-Sub, IMSC, SMI, SRT, teletext, TTML, or WebVTT outputs. Also fixes HEVC passthrough writing an incomplete codecs string to DASH and HLS manifests. api-change:connectcases: Amazon Connect Cases adds two Bulk Case Actions operations. BatchCreateRelatedItem adds a Comment-type related item to up to 100 cases per request, BatchUpdateCase updates fields (title, status, customer ID, custom) on up to 100 cases. Same domain, per-case success and failure results returned. api-change:connect: Rules in Amazon Connect now support ending email contacts associated to a case based on case events. api-change:ram: Adds support for using managed permission template parameters, discovering shared customer-managed permissions, and managing customer-managed permission deprecation. api-change:autoscaling: Amazon EC2 Auto Scaling now lets you exclude managed resources from describe API responses using the new optional IncludeManagedResources parameter. Set this parameter to false to exclude managed resources from the response. By default, managed resources are included. enhancement:help: Add a --help parameter that renders the same help as the help parameter on every command. api-change:lightsail: Marking fields as sensitive in GetInstanceAccessDetails, CreateKeyPair, DownloadDefaultKeyPair, CreateBucketAccessKey, CreateContainerServiceRegistryLogin, and GetRelationalDatabase responses. api-change:glue: Adds support for user-defined functions governed by AWS Lake Formation. api-change:athena: Added support for Athena System Tables which writes Athena usage data to AWS S3 managed tables in Apache Iceberg format. Adds CreateSystemTableConfiguration, UpdateSystemTableConfiguration, DeleteSystemTableConfiguration, GetSystemTableConfiguration, and ListSystemTableStatuses. api-change:eks-auth: Added workloadIdentityProviderArn to the AssumeRoleForPodIdentity API response. api-change:bedrock-agent: Add support for configuring searchability for metadata fields via UpdateKnowledgeBase request for Managed Knowledge Base. Once a field is marked as searchable it can be queried via query text and is factored into Managed Knowledge Base's ranking algorithm. enhancement:awscrt: Update awscrt to version 0.38.1</content>
+    <link href="https://github.com/aws/aws-cli/releases/tag/2.39.6" rel="alternate"/>
+    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
+    <published>2026-11-06T19:34:37+00:00</published>
+    <media:group>
+      <media:content url="https://opengraph.githubassets.com/809527a446414988da81dde8f10077d287f0cf9353bc85b51bd8f385bbc825d4/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
+      <media:thumbnail url="https://opengraph.githubassets.com/809527a446414988da81dde8f10077d287f0cf9353bc85b51bd8f385bbc825d4/aws/aws-cli" height="600" width="1200"/>
+    </media:group>
+    <dc:creator>AWS CLI v2 Changelog</dc:creator>
+    <link rel="enclosure" href="https://opengraph.githubassets.com/809527a446414988da81dde8f10077d287f0cf9353bc85b51bd8f385bbc825d4/aws/aws-cli" type="image/jpeg" length="0"/>
+  </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/14db09a600b25c89</id>
     <title>Amazon S3 Lifecycle rules for originals, derivatives, temporary exports, and legal-hold records</title>
@@ -28,6 +78,26 @@
     </media:group>
     <dc:creator>AWS re:Post Articles</dc:creator>
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/bd92a117f29be8b6</id>
+    <title>Amazon Redshift expands SUPER data type to store strings up to 16 million bytes</title>
+    <updated>2026-11-06T16:00:00+00:00</updated>
+    <content>Amazon Redshift now supports individual strings up to 16 million bytes within SUPER data types . Once you opt in through a database parameter, this enhancement applies when ingesting structured or semi-structured data from JSON, PARQUET, TEXT, and CSV source files, and when transforming data through extract load and transform (ELT) processes. Previously, individual strings within SUPER data types were limited to 65,535 bytes. Storing large individual strings in the SUPER data type helps avoid co</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-redshift-expands-super-to-16-million-bytes/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-06T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/d52d67ed07046100</id>
+    <title>Amazon MSK Replicator is now available in AWS GovCloud (US-East, US-West) Regions</title>
+    <updated>2026-11-06T16:00:00+00:00</updated>
+    <content>You can now use Amazon MSK Replicator in the AWS GovCloud (US-East, US-West) Regions to replicate streaming data across Amazon MSK clusters and from external Apache Kafka clusters including on-premises, self-managed on AWS, or other cloud providers to Amazon MSK Provisioned clusters. MSK Replicator is a feature of Amazon MSK that automates data replication between Kafka clusters, eliminating the need to manage custom replication infrastructure or configure open-source tools. With MSK Replicator,</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-msk-replicator-additional-aws-regions" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-06T16:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/cfd6c5f8c4aa661c</id>
@@ -62,6 +132,16 @@
     <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/capacity-reservation-resource-groups-support-in-aws-govcloud-regions" rel="alternate"/>
     <category term="AWS What's New" label="AWS What's New"/>
     <published>2026-11-06T14:00:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/1360db3b3fb49f1e</id>
+    <title>AWS Elemental MediaConvert adds a native integration with AWS Elemental Inference Smart Subtitles</title>
+    <updated>2026-11-06T08:00:00+00:00</updated>
+    <content>​​AWS Elemental MediaConvert now integrates Smart Subtitles, an AI-powered subtitling solution built on AWS Elemental Inference and the latest speech recognition models. This feature brings automated subtitle generation directly into your video-on-demand (VOD) transcoding and packaging workflows, eliminating the need for separate external captioning pipelines. Customers can now manage both transcoding and subtitle creation within a single, unified workflow. ​Smart subtitles automatically transcr</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/11/mediaconvert-elemental-smart-subtitles/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-11-06T08:00:00+00:00</published>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
@@ -1452,6 +1532,16 @@ To address this, AWS provides three initialization options. Each suits different
     <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
   </entry>
   <entry>
+    <id>tag:trvny.github.io,2024:feedseek/aws/02cd5918928f9668</id>
+    <title>Amazon Connect Customer Outbound Campaigns now provides journey analytics</title>
+    <updated>2026-10-29T00:33:00+00:00</updated>
+    <content>Amazon Connect Customer Outbound Campaigns now provides flow designer analytics for journeys, so you can see directly on a journey flow how many customers reached each step and which branch they took. A journey is a multi-step outbound campaign that reaches your customers by voice, email, SMS, or WhatsApp, and branches based on customer behavior. Campaign managers can use these metrics to find the steps in a journey that need changes. A collections team running a payment reminder journey can see</content>
+    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-connect-journey-analytics/" rel="alternate"/>
+    <category term="AWS What's New" label="AWS What's New"/>
+    <published>2026-10-29T00:33:00+00:00</published>
+    <dc:creator>AWS What's New</dc:creator>
+  </entry>
+  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/07353a1b0d9b5914</id>
     <title>Best practices for running penetration testing workloads on AWS</title>
     <updated>2026-10-28T21:26:45.006000+00:00</updated>
@@ -1663,26 +1753,6 @@ post-quantum key establishment.</content>
     <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/afd83d4b74309b0a</id>
-    <title>SageMaker MLflow Apps now support MLflow 3.16</title>
-    <updated>2026-10-27T20:40:00+00:00</updated>
-    <content>Amazon SageMaker AI MLflow Apps now support MLflow 3.16, bringing a redesigned tracing experience and faster experiment tracking to your generative AI and machine learning workflows. MLflow 3.16 improves debugging and analysis of generative AI applications and agents. The redesigned trace explorer is now the default, with adjustable row height, reorderable columns, custom columns from any trace tag or metadata field. This release also accelerates metric charts for experiments with large metric h</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/mflow-version-3-16/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T20:40:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/950c4e454140c164</id>
-    <title>Amazon Connect Customer supports inline attachment previews</title>
-    <updated>2026-10-27T19:15:00+00:00</updated>
-    <content>Amazon Connect Customer lets agents preview attachments directly in the agent workspace, reducing contact handling time and limiting the need to download sensitive customer information. Agents can preview PDFs, images, and text files across email, chat, and cases, navigate between attachments, and view multi-page documents without leaving the conversation. Amazon Connect Customer attachment previews is available in the US East (N. Virginia), US West (Oregon), Africa (Cape Town), Asia Pacific (Se</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/connect-attachment-previews/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T19:15:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/004c7b28e4fbc91e</id>
     <title>Navigating the AWS Agentic AI Landscape - pick the right tool by persona, responsibility &amp; lifecycle stage</title>
     <updated>2026-10-27T18:29:31.702000+00:00</updated>
@@ -1711,46 +1781,6 @@ post-quantum key establishment.</content>
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/643eb6209ad18f3df9538befe087bc5e07a525145b9646e5b1fd660682f9a508/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/a8e996eea41d9d57</id>
-    <title>Amazon Aurora serverless now supports up to 384 ACUs</title>
-    <updated>2026-10-27T16:00:00+00:00</updated>
-    <content>Amazon Aurora serverless now supports database capacity of up to 384 Aurora Capacity Units (ACUs) for Aurora PostgreSQL-Compatible Edition, a 50% increase from the previous maximum of 256 ACUs. Each ACU provides approximately 2 gibibytes (GiB) of memory with corresponding CPU and networking, so a single Aurora serverless database can now scale up to 768 GiB of memory. When the workload completes, Aurora serverless automatically scales down to zero. This makes Aurora serverless especially well-su</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-serverless-supports-384-acu/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T16:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/2b5c6d93a15d11e3</id>
-    <title>Amazon ElastiCache expands data tiering to R8gd and R7gd nodes in Europe (Spain) and Asia Pacific (Hyderabad)</title>
-    <updated>2026-10-27T15:25:00+00:00</updated>
-    <content>Amazon ElastiCache for Valkey data tiering is now available on Graviton4-based R8gd nodes in the AWS Europe (Spain) Region, and on Graviton3-based R7gd nodes in the Europe (Spain) and Asia Pacific (Hyderabad) Regions. Data tiering is a lower-cost way to scale your Valkey clusters to hundreds of terabytes of capacity. It uses solid state drives (SSDs) on each node alongside memory. When memory fills up, ElastiCache automatically moves the least recently used items to SSD. When your application re</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/09/elasticache-data-tiering-spain/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T15:25:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/69f7343ee11a728e</id>
-    <title>Amazon ElastiCache for Valkey now supports changing durability on existing clusters</title>
-    <updated>2026-10-27T15:21:00+00:00</updated>
-    <content>Amazon ElastiCache for Valkey now lets you enable or disable durability on your existing node-based clusters. Previously, you couldn't change the durability configuration of an existing cluster in place. This made it harder to move from caching to persistent data store use cases, or to adapt as your application requirements change. Now you can change durability at any point in your application's lifecycle. You can choose between two durability options: synchronous and asynchronous writes. Synchr</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/elasticache-changing-durability/" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T15:21:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/186a04a22d062b27</id>
-    <title>Amazon Corretto October 2026 Patch Updates</title>
-    <updated>2026-10-27T14:00:00+00:00</updated>
-    <content>On October 26, 2026 Amazon announced a patch update for the following Amazon Corretto Long-Term Support (LTS) and Feature Release (FR) versions of OpenJDK. Corretto 27.0.1.0.11, 25.0.5.0.10, 21.0.13.0.11, 17.0.21.0.11, 11.0.33.0.10, and 8u512 are now available for download . Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK. Visit the Corretto home page to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also ge</content>
-    <link href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-corretto-oct-2026-patch-updates" rel="alternate"/>
-    <category term="AWS What's New" label="AWS What's New"/>
-    <published>2026-10-27T14:00:00+00:00</published>
-    <dc:creator>AWS What's New</dc:creator>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/f1d6d035509e74cc</id>
@@ -2511,22 +2541,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     <link href="https://repost.aws/articles/ARq_Jvs054T_601JmFl4MB1A/managing-exposed-aws-access-keys-part-1-prevention-stop-aws-access-keys-from-being-exposed" rel="alternate"/>
     <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
     <published>2026-10-14T22:50:14.486000+00:00</published>
-    <media:group>
-      <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
-      <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
-    </media:group>
-    <dc:creator>AWS re:Post Articles</dc:creator>
-    <link rel="enclosure" href="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/8309f556c3454150</id>
-    <title>A Mental Model for AWS DevOps Agent Architecture: Centralized, Siloed, or Hybrid?</title>
-    <updated>2026-10-14T21:51:45.439000+00:00</updated>
-    <content>Many teams are adopting AWS DevOps Agent — the always-available teammate that reviews code for release readiness, autonomously investigates incidents, and drives proactive site reliability across AWS, multicloud, and on-prem environments — reach the same question early on:
-"How do we actually set this up across our organization? One central agent for everyone? One per team? Something in between?"</content>
-    <link href="https://repost.aws/articles/ARfJMBlRd1TnOv4F8urI-CvQ/a-mental-model-for-aws-devops-agent-architecture-centralized-siloed-or-hybrid" rel="alternate"/>
-    <category term="AWS re:Post Articles" label="AWS re:Post Articles"/>
-    <published>2026-10-14T21:51:45.439000+00:00</published>
     <media:group>
       <media:content url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" type="image/png" medium="image"/>
       <media:thumbnail url="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"/>
@@ -3373,21 +3387,6 @@ restart. Includes configuration steps, a reproducible test, error log analysis, 
     </media:group>
     <dc:creator>AWS CLI v2 Changelog</dc:creator>
     <link rel="enclosure" href="https://opengraph.githubassets.com/8569ca66285e4251f58d2ff2ade98e840605302387481780c999ce685a800f3d/aws/aws-cli" type="image/jpeg" length="0"/>
-  </entry>
-  <entry>
-    <id>tag:trvny.github.io,2024:feedseek/aws/b3fcdd18e187b5c1</id>
-    <title>AWS CLI 2.36.38</title>
-    <updated>2026-09-02T18:07:02+00:00</updated>
-    <content>api-change:sagemaker-featurestore-runtime: Amazon SageMaker Feature Store now supports the UpdateRecord API, enabling partial updates to individual feature values in an existing Online Store record without rewriting the entire record. This reduces write payloads and latency for high-frequency feature-level writes . api-change:mgn: AWS Transform for migrations adds a second network migration option - apply your source security posture to existing VPCs. Upload a source network file with firewall rules, tag the in-scope VPCs, and AWS Transform matches source subnets to them by CIDR and generates the security groups. api-change:appintegrations: This release adds a force parameter to DeleteApplication and a ConflictException to UpdateApplication, letting customers delete applications with existing associations in one call and get a clear error when an update conflicts with the application's current state. api-change:ec2: This release adds support to retain interruptible Capacity Reservations in an active state when all capacity is reclaimed. api-change:medialive: AWS Elemental MediaLive now supports AB forensic video watermarking api-change:mwaa: Enabled customers to clear optional S3 paths (plugins, requirements, and startup script) for their Amazon MWAA environments by accepting empty strings for the associated fields in UpdateEnvironment requests. api-change:bedrock-agentcore: Batch evaluation now supports up to 10 CloudWatch log groups per CloudWatchLogsSource api-change:odb: Adds the ListFlexComponents API for listing the flex components available for a given DB system shape. api-change:sagemaker: Amazon SageMaker Feature Store now supports the Standard V2 online store type, which enables feature-level writes to feature groups. You can select Standard V2 when creating a feature group, and update the storage type of an existing feature group via UpdateFeatureGroup.</content>
-    <link href="https://github.com/aws/aws-cli/releases/tag/2.36.38" rel="alternate"/>
-    <category term="AWS CLI v2 Changelog" label="AWS CLI v2 Changelog"/>
-    <published>2026-09-02T18:07:02+00:00</published>
-    <media:group>
-      <media:content url="https://opengraph.githubassets.com/30fb88948eba923079ccdad57803b3586a5d4d5b4aecae204b8e93f937db82d6/aws/aws-cli" type="image/jpeg" medium="image" height="600" width="1200"/>
-      <media:thumbnail url="https://opengraph.githubassets.com/30fb88948eba923079ccdad57803b3586a5d4d5b4aecae204b8e93f937db82d6/aws/aws-cli" height="600" width="1200"/>
-    </media:group>
-    <dc:creator>AWS CLI v2 Changelog</dc:creator>
-    <link rel="enclosure" href="https://opengraph.githubassets.com/30fb88948eba923079ccdad57803b3586a5d4d5b4aecae204b8e93f937db82d6/aws/aws-cli" type="image/jpeg" length="0"/>
   </entry>
   <entry>
     <id>tag:trvny.github.io,2024:feedseek/aws/d53d31a468bb8abb</id>
