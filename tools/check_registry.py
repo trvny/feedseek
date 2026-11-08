@@ -1,7 +1,7 @@
 """Strict feeds.yaml check: fails on YAML errors, skipped entries or a bad published_feeds list.
 
 The runtime loader is lenient (skips broken entries); this gate is not, so a typo
-fails fast on push/PR instead of surfacing hours later in Update Feeds.
+fails fast in MegaLinter CI instead of surfacing hours later in Update Feeds.
 """
 
 import os
