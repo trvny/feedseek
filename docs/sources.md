@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-115 feedów · 938 źródeł
+115 feedów · 941 źródeł
 
 ## Spis grup
 
@@ -177,9 +177,11 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=deploymentsafety.openai.com&sz=16) Deployment safety — <https://deploymentsafety.openai.com/>
 - ![](https://www.google.com/s2/favicons?domain=developers.openai.com&sz=16) Developer blog — <https://developers.openai.com/blog>
 
-### ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) xAI
+### ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) xAI
 `xai` · [feed_xai.xml](../feeds/feed_xai.xml)
 
+- ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Grok Build changelog RSS — <https://x.ai/changelog/build/rss.xml>
+- ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Release Notes — <https://cursor.com/docs/release-notes/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Changelog — <https://cursor.com/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=cursor.com&sz=16) Cursor Blog — <https://cursor.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Blog — <https://x.ai/news>
@@ -243,6 +245,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.agentid.com&sz=16) AgentID Blog — <https://www.agentid.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=docs.litellm.ai&sz=16) LiteLLM Release Notes (documentation) — <https://docs.litellm.ai/release_notes>
 - ![](https://www.google.com/s2/favicons?domain=docs.digitalocean.com&sz=16) DigitalOcean Release Notes JSON — <https://docs.digitalocean.com/release-notes/recent/index.json>
 - ![](https://www.google.com/s2/favicons?domain=docs.digitalocean.com&sz=16) DigitalOcean Release Notes RSS fallback — <https://docs.digitalocean.com/release-notes/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=aihubmix.com&sz=16) AIHubMix Blog (PL) — <https://aihubmix.com/blog/pl>
