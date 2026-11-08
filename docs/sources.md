@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-115 feedów · 935 źródeł
+115 feedów · 938 źródeł
 
 ## Spis grup
 
@@ -243,6 +243,8 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=mcp.so&sz=16) MCP.so Blog — <https://mcp.so/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.orcarouter.ai&sz=16) OrcaRouter Blog — <https://www.orcarouter.ai/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.agentid.com&sz=16) AgentID Blog — <https://www.agentid.com/blog>
+- ![](https://www.google.com/s2/favicons?domain=docs.digitalocean.com&sz=16) DigitalOcean Release Notes JSON — <https://docs.digitalocean.com/release-notes/recent/index.json>
+- ![](https://www.google.com/s2/favicons?domain=docs.digitalocean.com&sz=16) DigitalOcean Release Notes RSS fallback — <https://docs.digitalocean.com/release-notes/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=aihubmix.com&sz=16) AIHubMix Blog (PL) — <https://aihubmix.com/blog/pl>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Docs Blog (EN) — <https://docs.aihubmix.com/en/blogs>
 - ![](https://www.google.com/s2/favicons?domain=docs.aihubmix.com&sz=16) AIHubMix Changelog — <https://docs.aihubmix.com/en/update/News>
@@ -297,6 +299,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=pub.dev&sz=16) pub.dev packages — <https://pub.dev/feed.atom>
 - ![](https://www.google.com/s2/favicons?domain=ionic.io&sz=16) Ionic Framework Blog — <https://ionic.io/blog/tag/framework/feed>
 - ![](https://www.google.com/s2/favicons?domain=web.dev&sz=16) web.dev Blog — <https://web.dev/blog/feed.xml>
+- ![](https://www.google.com/s2/favicons?domain=webassembly.org&sz=16) WebAssembly News — <https://webassembly.org/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.jupyter.org&sz=16) Jupyter Blog — <https://blog.jupyter.org/feed>
 - ![](https://www.google.com/s2/favicons?domain=isocpp.org&sz=16) Standard C++ — <https://isocpp.org/blog/rss>
 - ![](https://www.google.com/s2/favicons?domain=www.djangoproject.com&sz=16) Django Weblog — <https://www.djangoproject.com/rss/weblog/>
