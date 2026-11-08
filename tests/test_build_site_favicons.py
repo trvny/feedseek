@@ -1,9 +1,9 @@
 import html
 import importlib.util
 import json
+import re
 import tempfile
 import unittest
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -224,10 +224,9 @@ class SiteFaviconTests(unittest.TestCase):
 
     def test_sitemap_lists_html_pages_without_lastmod(self):
         base = "https://trvny.github.io/feedseek/"
-        root = ET.fromstring(build_site.build_sitemap(base))
-        urls = root.findall("{*}url")
-        self.assertEqual([url.findtext("{*}loc") for url in urls], [base, base + "reader/"])
-        self.assertFalse(root.findall(".//{*}lastmod"), "Rebuild dates are not verified content changes")
+        rendered = build_site.build_sitemap(base)
+        self.assertEqual(re.findall(r"<loc>([^<]+)</loc>", rendered), [base, base + "reader/"])
+        self.assertNotIn("<lastmod>", rendered, "Rebuild dates are not verified content changes")
 
     def test_machine_discovery_lists_catalog_and_model_json_urls(self):
         feeds = [{
