@@ -760,16 +760,14 @@ def build_index(feeds: list[dict], base: str) -> str:
 """
 
 
-def build_sitemap(feeds: list[dict], base: str) -> str:
-    # Build timestamps and feed Atom <updated> values can reflect routine rebuilds,
-    # not verified substantive changes. Omit lastmod until trustworthy dates exist.
-    urls = [f"  <url><loc>{html.escape(base)}</loc></url>"]
-    # Include the separately indexable Reader, not only the directory and feeds.
-    urls.append(f"  <url><loc>{html.escape(base + 'reader/')}</loc></url>")
-    urls.append(f"  <url><loc>{html.escape(base + 'model-feeds.json')}</loc></url>")
-    for f in feeds:
-        for filename in (public_xml(f), public_json(f)):
-            urls.append(f"  <url><loc>{html.escape(base + filename)}</loc></url>")
+def build_sitemap(base: str) -> str:
+    # HTML pages only. Feed XML/JSON never index as pages; agents find them via
+    # llms.txt / model-feeds.json / <link rel="alternate">.
+    # No lastmod: rebuild timestamps are not verified content changes.
+    urls = [
+        f"  <url><loc>{html.escape(base + path)}</loc></url>"
+        for path in ("", "reader/")
+    ]
     body = "\n".join(urls)
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -889,7 +887,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
         f"- [Model Feed catalog (JSON)]({base}model-feeds.json): Compact source registry and direct Model Feed URLs for agents and apps",
         f"- [Curated feeds (OPML)]({base}subscriptions.opml): One-shot import of the curated landing-page feeds",
-        f"- [Feed directory (sitemap)]({base}sitemap.xml): Machine-readable list of every feed URL",
+        f"- [Sitemap]({base}sitemap.xml): HTML pages for search engines",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
         f"- [Live reader]({base}reader/index.md): Markdown description of the browser Reader",
         f"- [Full LLM guide]({base}llms-full.txt): Complete site/feed documentation in one file",
@@ -1126,7 +1124,7 @@ def main() -> None:
 
     (OUT_DIR / "index.html").write_text(build_index(feeds, base), encoding="utf-8")
     (OUT_DIR / "index.md").write_text(build_index_markdown(all_feeds, base), encoding="utf-8")
-    (OUT_DIR / "sitemap.xml").write_text(build_sitemap(all_feeds, base), encoding="utf-8")
+    (OUT_DIR / "sitemap.xml").write_text(build_sitemap(base), encoding="utf-8")
     (OUT_DIR / "robots.txt").write_text(build_robots(base), encoding="utf-8")
     (OUT_DIR / "llms.txt").write_text(build_llms_txt(all_feeds, base), encoding="utf-8")
     (OUT_DIR / "llms-full.txt").write_text(build_llms_full(all_feeds, base), encoding="utf-8")

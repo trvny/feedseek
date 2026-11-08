@@ -1,9 +1,9 @@
 import html
 import importlib.util
 import json
+import re
 import tempfile
 import unittest
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -222,30 +222,11 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertEqual(result["feeds"][1]["title"], "Béta")
         self.assertNotIn("items", result["feeds"][0])  # No second content store.
 
-    def test_sitemap_omits_unverified_build_timestamps(self):
+    def test_sitemap_lists_html_pages_without_lastmod(self):
         base = "https://trvny.github.io/feedseek/"
-        feeds = [
-            {
-                "filename": "feed_dated.xml",
-                "updated": datetime(2026, 10, 25, 20, 30, tzinfo=timezone.utc),
-            },
-            {"filename": "feed_unknown.xml", "updated": None},
-        ]
-        root = ET.fromstring(build_site.build_sitemap(feeds, base))
-        urls = root.findall("{*}url")
-        self.assertEqual(
-            [url.findtext("{*}loc") for url in urls],
-            [
-                base,
-                base + "reader/",
-                base + "model-feeds.json",
-                base + "dated.xml",
-                base + "dated.json",
-                base + "unknown.xml",
-                base + "unknown.json",
-            ],
-        )
-        self.assertFalse(root.findall(".//{*}lastmod"), "Rebuild dates are not verified content changes")
+        rendered = build_site.build_sitemap(base)
+        self.assertEqual(re.findall(r"<loc>([^<]+)</loc>", rendered), [base, base + "reader/"])
+        self.assertNotIn("<lastmod>", rendered, "Rebuild dates are not verified content changes")
 
     def test_machine_discovery_lists_catalog_and_model_json_urls(self):
         feeds = [{
@@ -269,18 +250,6 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn("https://feeds.example/alpha.json", llms)
         self.assertIn("model-feeds.json", build_site.build_index_markdown(feeds, base))
         self.assertIn("model-feeds.json", build_site.build_llms_full(feeds, base))
-        doc = ET.fromstring(build_site.build_sitemap(feeds, base))
-        urls = [el.text for el in doc.findall(".//{*}loc")]
-        self.assertEqual(
-            urls,
-            [
-                base,
-                base + "reader/",
-                base + "model-feeds.json",
-                base + "alpha.xml",
-                base + "alpha.json",
-            ],
-        )
         webmcp = (MODULE_PATH.parent / "webmcp.js").read_text(encoding="utf-8")
         self.assertIn('modelFeedUrl: card.querySelector(".card__actions a[data-model-feed]")', webmcp)
 
@@ -321,7 +290,7 @@ class SiteFaviconTests(unittest.TestCase):
         )
 
     def test_sitemap_includes_reader_and_directory(self):
-        rendered = build_site.build_sitemap([], "https://trvny.github.io/feedseek/")
+        rendered = build_site.build_sitemap("https://trvny.github.io/feedseek/")
         self.assertIn("<loc>https://trvny.github.io/feedseek/</loc>", rendered)
         self.assertIn("<loc>https://trvny.github.io/feedseek/reader/</loc>", rendered)
         self.assertNotIn("https://trfny.com/", rendered)
