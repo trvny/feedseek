@@ -4,7 +4,9 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SPEC = importlib.util.spec_from_file_location("check_registry", ROOT / "tools" / "check_registry.py")
+SPEC = importlib.util.spec_from_file_location(
+    "check_registry", ROOT / "tools" / "check_registry.py"
+)
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
 
@@ -27,11 +29,19 @@ class CheckRegistryTests(unittest.TestCase):
         self.assertTrue(self.run_check(broken))
 
     def test_lenient_skip_is_an_error(self):
-        errors = self.run_check("feeds:\n  demo:\n    script: missing.py\n    blog_url: https://example.com/\n")
+        errors = self.run_check(
+            "feeds:\n  demo:\n    script: missing.py\n    blog_url: https://example.com/\n"
+        )
         self.assertIn("invalid feed entry: demo", errors)
 
+    def test_missing_file_is_reported(self):
+        self.assertTrue(MODULE.check(ROOT / "no-such-feeds.yaml"))
+
     def test_unknown_published_feed_fails(self):
-        text = "published_feeds: [nope]\nfeeds:\n  daily_quote:\n    script: daily_quote.py\n    blog_url: https://example.com/\n"
+        text = (
+            "published_feeds: [nope]\nfeeds:\n  daily_quote:\n"
+            "    script: daily_quote.py\n    blog_url: https://example.com/\n"
+        )
         self.assertTrue(self.run_check(text))
 
 
