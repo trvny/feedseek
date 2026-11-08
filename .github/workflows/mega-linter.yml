@@ -110,6 +110,8 @@ jobs:
       # Strict feeds.yaml gate (the runtime loader skips broken entries); fails fast.
       - name: Check feed registry
         if: steps.paths.outputs.tests == 'true'
+        id: registry
+        continue-on-error: true
         run: uv run --locked tools/check_registry.py
 
       # feeds/ is untracked; tests and validation use the last published pairs.
@@ -180,6 +182,13 @@ jobs:
           path: |
             megalinter-reports
             mega-linter.log
+
+      - name: Gate feed registry
+        if: >-
+          always() &&
+          steps.paths.outputs.tests == 'true' &&
+          steps.registry.outcome != 'success'
+        run: exit 1
 
       - name: Gate Feedseek tests
         if: >-
