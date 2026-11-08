@@ -1,0 +1,44 @@
+name: Registry Check
+
+# Fast strict gate for feeds.yaml; web-editor typos fail here in seconds.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "feeds.yaml"
+      - "tools/check_registry.py"
+      - ".github/workflows/registry-check.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "feeds.yaml"
+      - "tools/check_registry.py"
+      - ".github/workflows/registry-check.yml"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: registry-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check feeds.yaml
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: false
+          python-version: "3.15"
+
+      - name: Check registry
+        run: uv run --locked tools/check_registry.py
