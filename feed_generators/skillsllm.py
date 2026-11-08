@@ -1314,10 +1314,17 @@ def parse_manufact_blog(html, known_links=None):
         except ValueError:
             continue
         if parsed.scheme or parsed.netloc:
-            if parsed.scheme != "https" or parsed.netloc.lower() not in {
-                "manufact.com",
-                "www.manufact.com",
-            }:
+            if (
+                parsed.scheme != "https"
+                or parsed.hostname not in {"manufact.com", "www.manufact.com"}
+                or parsed.username is not None
+                or parsed.password is not None
+            ):
+                continue
+            try:
+                if parsed.port not in (None, 443):
+                    continue
+            except ValueError:
                 continue
         elif not href.startswith("/") or href.startswith("//"):
             continue
