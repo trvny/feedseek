@@ -234,7 +234,15 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
             </a>
             <time>October 2, 2026</time>
           </article>
+          <article>
+            <a href="https://manufact.com:443/blog/default-port">
+              <h2>Valid default HTTPS port</h2>
+            </a>
+            <time>October 3, 2026</time>
+          </article>
           <a href="https://manufact.com.evil.test/blog/offsite-post">Offsite</a>
+          <a href="https://manufact.com@manufact.com/blog/userinfo-trap">Userinfo trap</a>
+          <a href="https://manufact.com:bad/blog/bad-port">Malformed port</a>
           <a href="https://manufact.com@evil.test/blog/offsite-post">Credentials</a>
           <a href="//manufact.com/blog/ambiguous-post">Protocol-relative</a>
           <a href="http://manufact.com/blog/insecure-post">Insecure</a>
@@ -245,7 +253,7 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         entries = skillsllm.parse_manufact_blog(html)
         self.assertEqual(
             [entry["link"] for entry in entries],
-            ["https://manufact.com/blog/valid-post"],
+            ["https://manufact.com/blog/valid-post", "https://manufact.com/blog/default-port"],
         )
 
     def test_manufact_changelog_parser_splits_paragraph_based_months(self):
