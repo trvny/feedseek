@@ -224,6 +224,29 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         self.assertEqual(entries[0]["source"], "Manufact Blog")
         self.assertIn("practical guide", entries[0]["description"])
 
+    def test_manufact_blog_rejects_disguised_external_urls(self):
+        html = """
+        <main>
+          <article>
+            <a href="https://www.manufact.com/blog/valid-post?ref=news#intro">
+              <h2>Valid Manufact article</h2>
+            </a>
+            <time>October 2, 2026</time>
+          </article>
+          <a href="https://manufact.com.evil.test/blog/offsite-post">Offsite</a>
+          <a href="https://manufact.com@evil.test/blog/offsite-post">Credentials</a>
+          <a href="//manufact.com/blog/ambiguous-post">Protocol-relative</a>
+          <a href="http://manufact.com/blog/insecure-post">Insecure</a>
+          <a href="https://manufact.com:444/blog/foreign-port">Unexpected port</a>
+          <a href="https://manufact.com/blog/category/news">Category</a>
+        </main>
+        """
+        entries = skillsllm.parse_manufact_blog(html)
+        self.assertEqual(
+            [entry["link"] for entry in entries],
+            ["https://manufact.com/blog/valid-post"],
+        )
+
     def test_manufact_changelog_parser_splits_paragraph_based_months(self):
         html = """
         <main>

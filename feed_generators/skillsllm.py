@@ -1308,15 +1308,24 @@ def parse_manufact_blog(html, known_links=None):
         href = anchor.get("href", "")
         if not isinstance(href, str):
             continue
-        href = href.split("?", 1)[0].split("#", 1)[0]
-        if href.startswith("https://manufact.com"):
-            href = href.removeprefix("https://manufact.com")
-        elif href.startswith("https://www.manufact.com"):
-            href = href.removeprefix("https://www.manufact.com")
-        if not _MANUFACT_POST_RE.match(href):
+        # Match the parsed origin, never a lookalike prefix.
+        try:
+            parsed = urlsplit(href)
+        except ValueError:
+            continue
+        if parsed.scheme or parsed.netloc:
+            if parsed.scheme != "https" or parsed.netloc.lower() not in {
+                "manufact.com",
+                "www.manufact.com",
+            }:
+                continue
+        elif not href.startswith("/") or href.startswith("//"):
+            continue
+        path = parsed.path
+        if not _MANUFACT_POST_RE.fullmatch(path):
             continue
 
-        link = f"https://manufact.com{href.rstrip('/')}"
+        link = f"https://manufact.com{path.rstrip('/')}"
         if link in known_links or link in seen:
             continue
         card = _manufact_card(anchor)
