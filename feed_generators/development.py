@@ -32,6 +32,7 @@ SOURCES = [
     ("pub.dev packages", "https://pub.dev/feed.atom", 40),
     ("Ionic Framework Blog", "https://ionic.io/blog/tag/framework/feed", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
+    ("WebAssembly News", "https://webassembly.org/feed.xml", 40),
     ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
     ("Standard C++", "https://isocpp.org/blog/rss", 40),
     ("Django Weblog", "https://www.djangoproject.com/rss/weblog/", 30),
