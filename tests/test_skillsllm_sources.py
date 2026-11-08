@@ -225,6 +225,7 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         self.assertIn("practical guide", entries[0]["description"])
 
     def test_manufact_blog_rejects_disguised_external_urls(self):
+        """Reject offsite, insecure and ambiguous Manufact links."""
         html = """
         <main>
           <article>
