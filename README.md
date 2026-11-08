@@ -175,17 +175,17 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 <!--README_FEED:START-->
 - [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
 - [Promises Made, Promises Unmet: The NPP’s Struggle to Reform Sri Lanka](https://carnegieendowment.org/research/2026/11/promises-made-promises-unmet-the-npps-struggle-to-reform-sri-lanka)
-- [Castorama otwarta w Chrzanowie. Jak pierwsi klienci ocenili sklep? \(WIDEO\) - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMixAFBVV95cUxQdnRYUVBZMk5SenlTX25Gb1FfMW9YdnRJYnNKQ0Y5QUt6Q0Zuel9VUXBhamRHWFRIdkF3VUVFdWs0c1huZTVjV0hxeHRJc2NLY05BbmR0LTV3b0ZtZFJuLWtSNzhOQ0Y1azNQTUhYbjNLbGQ5d0ZBTDZJNUZzOHRBWUtwc2FvYWh5Q3FVOXZqUUdxdjZSam1rNWZabGNlZ0kxbHRZMU5tN2QtZUttbjE4U2VKeWowVmxUSlpEb2F2Rm9qMlUx?oc=5)
-- [Uczniowie sprawdzili, ile wiedzą o Gorcach. W Chrzanowie padł rekord frekwencji - Przelom.pl - portal ziemi chrzanowskiej](https://news.google.com/atom/articles/CBMivAFBVV95cUxNZ25QYVRFRUl2RU91WkY2b2tzNlpsSjlOT3VXZEEzX2dVeUtXckFTSlZINDBmcE9SOG5GcUkwM0RFbGN3QS1mdTJmaFlVX0d4T2p4ZXFlc05FQ0xXd3JzcXdJYUdOTTJ6d00tN0F0Z1lwT2lxZUI2aFN1TlZNMktRT0lOd0o1N1RTaXMwaVg4UHk2bzI5NHFJTVVlUzhta3lmWGRlRkQzZXhpVXFkWklPLVJMcW9KWFFkNzk0cA?oc=5)
-- [Google is ditching Firebase Studio soon, and it wants you to use its newer AI tools instead](https://www.engadget.com/2308541/google-is-ditching-firebase-studio-soon-and-it-wants-you-to-use-its-newer-ai-tools-instead/)
-- [November 2026](https://docs.perplexity.ai/docs/resources/changelog#november-2026)
+- [Jade Benning's Final Call | Post Mortem](https://www.cbsnews.com/video/110726-48-hours-post-mortem-episode-3/)
+- [The pros and cons of using an Amazfit smartwatch](https://www.engadget.com/2306820/using-amazfit-smartwatch-pros-and-cons/)
+- [This week on "Sunday Morning" \(Nov. 8\)](https://www.cbsnews.com/news/this-week-on-sunday-morning-nov-8-2026/)
+- [Detroit Lions Reveal Uniform Combo for Matchup vs. Miami](https://sports.yahoo.com/articles/detroit-lions-reveal-uniform-combo-231038067.html)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝“It is easier to change the specification to fit the program than vice versa.”— Alan Perlis❞</i>
+<i>❝Impossible is a word to be found only in the dictionary of fools. — Napoleon Bonaparte❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
