@@ -13,6 +13,14 @@ class CursorSourcesTests(unittest.TestCase):
     def test_native_changelog_rss_and_sources(self):
         self.assertEqual(xai.CURSOR_CHANGELOG_URL, "https://cursor.com/changelog/rss.xml")
         self.assertEqual(xai.CURSOR_BLOG_URL, "https://cursor.com/blog")
+        self.assertEqual(
+            xai.CURSOR_RELEASE_NOTES_RSS_URL,
+            "https://cursor.com/docs/release-notes/rss.xml",
+        )
+        self.assertIn(
+            ("Cursor Release Notes", xai.CURSOR_RELEASE_NOTES_RSS_URL),
+            xai.doc_sources(),
+        )
         self.assertIn(("Cursor Changelog", xai.CURSOR_CHANGELOG_URL), xai.doc_sources())
         self.assertIn(("Cursor Blog", xai.CURSOR_BLOG_URL), xai.doc_sources())
         with patch.object(xai, "scrape_feed", return_value=[]) as native:
@@ -20,6 +28,63 @@ class CursorSourcesTests(unittest.TestCase):
         native.assert_called_once_with(
             "Cursor Changelog", xai.CURSOR_CHANGELOG_URL,
             {"https://cursor.com/old"}, cap=50
+        )
+        with patch.object(xai, "scrape_feed", return_value=[]) as native:
+            self.assertEqual(xai.scrape_cursor_release_notes(set()), [])
+        native.assert_called_once_with(
+            "Cursor Release Notes", xai.CURSOR_RELEASE_NOTES_RSS_URL,
+            set(), cap=60
+        )
+
+    def test_grok_build_rss_preserves_html_history(self):
+        """Native Build feed is additional, not a replacement for cached history."""
+        self.assertEqual(xai.BUILD_RSS_URL, "https://x.ai/changelog/build/rss.xml")
+        self.assertIn(("Grok Build changelog RSS", xai.BUILD_RSS_URL), xai.doc_sources())
+        with patch.object(xai, "scrape_feed", return_value=[]) as native:
+            self.assertEqual(xai.scrape_build_rss({"https://x.ai/old"}), [])
+        native.assert_called_once_with(
+            "Grok Build changelog", xai.BUILD_RSS_URL,
+            {"https://x.ai/old"}, cap=60
+        )
+
+    def test_native_and_html_build_titles_deduplicate(self):
+        """Parse both sources, then collapse duplicates through xAI.main."""
+
+        rss = """
+        <rss version="2.0"><channel><item>
+          <title>Grok Build 1.0.32</title>
+          <link>https://x.ai/changelog/build#v1-0-32</link>
+          <pubDate>Mon, 14 Sep 2026 12:00:00 GMT</pubDate>
+        </item></channel></rss>
+        """
+        html = """
+        <h2 id="v1.0.32-2026-09-14">Grok Build 1.0.32</h2>
+        <p>Improvements for MCP tools.</p>
+        """
+        with patch("multi_rss.get_html", return_value=rss):
+            native = xai.scrape_build_rss(set())
+        with patch.object(xai, "_get_html", return_value=html):
+            legacy = xai.scrape_build_changelog(set())
+
+        self.assertEqual(len(native), 1)
+        self.assertEqual(len(legacy), 1)
+        self.assertNotEqual(native[0]["link"], legacy[0]["link"])
+
+        with (
+            patch.object(xai, "load_cache", return_value={"entries": []}),
+            patch.object(xai, "_seed_legacy_x_api_cache", return_value=[]),
+            patch.object(xai, "scrape_all", return_value=native + legacy),
+            patch.object(xai, "enrich_entries"),
+            patch.object(xai, "save_cache") as save_cache,
+            patch.object(xai, "save_atom_feed"),
+        ):
+            self.assertTrue(xai.main())
+
+        merged = save_cache.call_args.args[1]
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["title"], "Grok Build 1.0.32")
+        self.assertIn(
+            merged[0]["link"], {native[0]["link"], legacy[0]["link"]}
         )
 
     def test_blog_listing_filters_navigation_duplicates_and_known(self):
@@ -144,6 +209,12 @@ class CursorSourcesTests(unittest.TestCase):
         with ExitStack() as stack:
             for name in other_names:
                 stack.enter_context(patch.object(xai, name, return_value=[]))
+            build_rss = stack.enter_context(
+                patch.object(xai, "scrape_build_rss", return_value=[])
+            )
+            cursor_notes = stack.enter_context(
+                patch.object(xai, "scrape_cursor_release_notes", return_value=[])
+            )
             changelog = stack.enter_context(
                 patch.object(xai, "scrape_cursor_changelog", return_value=[
                     {"title": "Cursor release"}
@@ -158,6 +229,8 @@ class CursorSourcesTests(unittest.TestCase):
                 [entry["title"] for entry in xai.scrape_all(set())],
                 ["Cursor release", "Cursor news"],
             )
+            build_rss.assert_called_once_with(set())
+            cursor_notes.assert_called_once_with(set())
             changelog.assert_called_once_with(set())
             blog.assert_called_once_with(set())
 

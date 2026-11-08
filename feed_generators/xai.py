@@ -10,12 +10,14 @@ Aggregates xAI's update sources into one **Atom** feed written to
     - Grok Bot changelog     https://x.ai/changelog/bot/rss.xml        (RSS)
     - Tesla Blog             https://www.tesla.com/blog                (HTML)
     - Grok Build changelog   https://x.ai/build/changelog               (HTML)
+    - Grok Build RSS         https://x.ai/changelog/build/rss.xml       (RSS)
     - xAI API release notes  https://docs.x.ai/developers/release-notes (Mintlify .md)
     - Grok release notes     https://grok.com/release-notes             (HTML)
     - X Blog                 https://blog.x.com/                         (HTML)
     - X Engineering          https://blog.x.com/engineering/en_us        (HTML)
     - X API changelog        https://docs.x.com/changelog                (HTML)
     - Cursor Changelog       https://cursor.com/changelog/rss.xml        (RSS)
+    - Cursor Release Notes   https://cursor.com/docs/release-notes/rss.xml (RSS)
     - Cursor Blog            https://cursor.com/blog                     (HTML)
 
 Source handling:
@@ -81,12 +83,14 @@ CONSOLE_CHANGELOG_URL = "https://x.ai/api/changelog"
 GROK_BOT_RSS_URL = "https://x.ai/changelog/bot/rss.xml"
 TESLA_BLOG_URL = "https://www.tesla.com/blog"
 BUILD_CHANGELOG_URL = "https://x.ai/build/changelog"
+BUILD_RSS_URL = "https://x.ai/changelog/build/rss.xml"
 RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes"
 RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
 GROK_RELEASE_NOTES_URL = "https://grok.com/release-notes"
 X_BLOG_URL = "https://blog.x.com/"
 X_ENGINEERING_URL = "https://blog.x.com/engineering/en_us"
 CURSOR_CHANGELOG_URL = "https://cursor.com/changelog/rss.xml"
+CURSOR_RELEASE_NOTES_RSS_URL = "https://cursor.com/docs/release-notes/rss.xml"
 CURSOR_BLOG_URL = "https://cursor.com/blog"
 
 DATE_RE = re.compile(
@@ -313,8 +317,13 @@ def scrape_console_changelog(known_links):
 
 
 # --------------------------------------------------------------------------- #
-# Grok Build changelog (h2 id="v<version>-<date>")
+# Grok Build changelog (native RSS + historical HTML)
 # --------------------------------------------------------------------------- #
+
+
+def scrape_build_rss(known_links):
+    """Official Grok Build RSS; share provenance with legacy HTML entries."""
+    return scrape_feed("Grok Build changelog", BUILD_RSS_URL, known_links, cap=60)
 
 
 def scrape_build_changelog(known_links):
@@ -723,6 +732,13 @@ def _seed_legacy_x_api_cache(cached):
 # --------------------------------------------------------------------------- #
 
 
+def scrape_cursor_release_notes(known_links):
+    """Official release-notes RSS across Cursor products."""
+    return scrape_feed(
+        "Cursor Release Notes", CURSOR_RELEASE_NOTES_RSS_URL, known_links, cap=60
+    )
+
+
 def scrape_cursor_changelog(known_links):
     """Official RSS, not a re-scrape of the long changelog page."""
     return scrape_feed(
@@ -850,6 +866,8 @@ def scrape_cursor_blog(known_links):
 def doc_sources():
     """Public Cursor source URLs for the generated Feedseek documentation."""
     return [
+        ("Grok Build changelog RSS", BUILD_RSS_URL),
+        ("Cursor Release Notes", CURSOR_RELEASE_NOTES_RSS_URL),
         ("Cursor Changelog", CURSOR_CHANGELOG_URL),
         ("Cursor Blog", CURSOR_BLOG_URL),
     ]
@@ -870,6 +888,8 @@ def scrape_all(known_links):
     new_entries += scrape_grok_bot_changelog(known_links)
     logger.info("Scraping Tesla Blog ...")
     new_entries += scrape_tesla_blog(known_links)
+    logger.info("Scraping Grok Build RSS ...")
+    new_entries += scrape_build_rss(known_links)
     logger.info("Scraping Grok Build changelog ...")
     new_entries += scrape_build_changelog(known_links)
     logger.info("Scraping xAI API release notes ...")
@@ -884,6 +904,8 @@ def scrape_all(known_links):
     )
     logger.info("Scraping X API changelog ...")
     new_entries += scrape_x_api_changelog(known_links)
+    logger.info("Scraping Cursor Release Notes ...")
+    new_entries += scrape_cursor_release_notes(known_links)
     logger.info("Scraping Cursor Changelog ...")
     new_entries += scrape_cursor_changelog(known_links)
     logger.info("Scraping Cursor Blog ...")
