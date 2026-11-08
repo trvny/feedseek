@@ -89,11 +89,12 @@ URL/title, and are trimmed with a per-source quota.
 """
 
 import argparse
+import json
 import re
 import sys
 import time
 from datetime import UTC, datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 import feedparser
 from _skillsllm_aihubmix import AIHUBMIX_DOC_SOURCES, collect_aihubmix_blog
@@ -141,6 +142,11 @@ MANUFACT_BLOG_URL = "https://manufact.com/blog"
 AGENTID_BLOG_URL = "https://www.agentid.com/blog"
 AGENTID_MAX = 20
 MANUFACT_CHANGELOG_URL = "https://docs.manufact.com/dashboard/changelog"
+DIGITALOCEAN_RELEASE_JSON_URL = "https://docs.digitalocean.com/release-notes/recent/index.json"
+DIGITALOCEAN_RELEASE_RSS_URL = "https://docs.digitalocean.com/release-notes/index.xml"
+DIGITALOCEAN_RELEASE_LABEL = "DigitalOcean Release Notes"
+DIGITALOCEAN_RELEASE_CATEGORY = "digitalocean-release-notes"
+DIGITALOCEAN_RELEASE_CAP = 30
 MCP_USE_TYPESCRIPT_CHANGELOG_RSS_URL = (
     "https://docs.mcp-use.com/typescript/changelog/changelog/rss.xml"
 )
@@ -361,6 +367,8 @@ def doc_sources():
         ("MCP.so Blog", MCPSO_BLOG_URL),
         ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
         ("AgentID Blog", AGENTID_BLOG_URL),
+        (DIGITALOCEAN_RELEASE_LABEL + " JSON", DIGITALOCEAN_RELEASE_JSON_URL),
+        (DIGITALOCEAN_RELEASE_LABEL + " RSS fallback", DIGITALOCEAN_RELEASE_RSS_URL),
     ] + list(AIHUBMIX_DOC_SOURCES)
 
 
@@ -972,6 +980,123 @@ def collect_native_feeds():
     return entries
 
 
+def _digitalocean_json_entry(item):
+    """One upstream note: date, products, text, url. No fabricated metadata."""
+    raw_text = item.get("text") or item.get("description") or item.get("summary")
+    title = item.get("title") or item.get("headline")
+    raw_url = item.get("url") or item.get("link") or item.get("permalink") or item.get("href")
+    published = (
+        item.get("published_at") or item.get("published")
+        or item.get("date") or item.get("released_at")
+    )
+    if not isinstance(raw_url, str) or not raw_url.strip():
+        return None
+    if not isinstance(published, str) or not published.strip():
+        return None
+
+    link = urljoin("https://docs.digitalocean.com/", raw_url)
+    parsed = urlsplit(link)
+    if parsed.scheme != "https" or parsed.hostname not in {
+        "docs.digitalocean.com", "www.digitalocean.com"
+    }:
+        return None
+    date = parse_date(published)
+    if date is None or date > datetime.now(UTC):
+        return None
+
+    description = (
+        BeautifulSoup(raw_text, "html.parser").get_text(" ", strip=True)
+        if isinstance(raw_text, str) else ""
+    )
+    description = sanitize_xml(description)
+    if not isinstance(title, str) or not title.strip():
+        # Notes have text, not a title. Use their actual leading words.
+        title = description[:200].rsplit(" ", 1)[0] if len(description) > 200 else description
+    title = sanitize_xml(title.strip())
+    if not title:
+        return None
+    return {
+        "title": title,
+        "link": link,
+        "date": date,
+        "description": description or title,
+        "source": DIGITALOCEAN_RELEASE_LABEL,
+        "category": DIGITALOCEAN_RELEASE_CATEGORY,
+    }
+
+
+def parse_digitalocean_releases_json(raw):
+    """Read dated release rows from the JSON notes list, not page metadata."""
+    try:
+        document = json.loads(raw)
+    except (TypeError, ValueError) as exc:
+        logger.warning("[%s] invalid JSON: %s", DIGITALOCEAN_RELEASE_LABEL, exc)
+        return []
+
+    containers = ("items", "entries", "notes", "releases", "updates", "sections")
+    candidates = []
+
+    def visit(value):
+        if isinstance(value, list):
+            for item in value:
+                visit(item)
+        elif isinstance(value, dict):
+            if any(k in value for k in ("url", "link", "permalink", "href")):
+                candidates.append(value)
+            for key in containers:
+                child = value.get(key)
+                if isinstance(child, (list, dict)):
+                    visit(child)
+
+    visit(document)
+    entries, seen = [], set()
+    for item in candidates:
+        entry = _digitalocean_json_entry(item)
+        if entry is None or entry["link"] in seen:
+            continue
+        seen.add(entry["link"])
+        entries.append(entry)
+        if len(entries) >= DIGITALOCEAN_RELEASE_CAP:
+            break
+    return entries
+
+
+def collect_digitalocean_release_notes():
+    """Prefer recent JSON; use native RSS when JSON has no dated entries."""
+    raw = fetch_url(DIGITALOCEAN_RELEASE_JSON_URL, retries=1)
+    if raw:
+        entries = parse_digitalocean_releases_json(raw)
+        if entries:
+            logger.info(
+                "[%s] parsed %d recent JSON entries",
+                DIGITALOCEAN_RELEASE_LABEL,
+                len(entries),
+            )
+            return entries
+        logger.warning(
+            "[%s] JSON has no usable release items; trying RSS",
+            DIGITALOCEAN_RELEASE_LABEL,
+        )
+    else:
+        logger.warning(
+            "[%s] JSON unavailable; trying RSS", DIGITALOCEAN_RELEASE_LABEL
+        )
+
+    raw = fetch_url(DIGITALOCEAN_RELEASE_RSS_URL, retries=1)
+    if raw is None:
+        logger.warning(
+            "[%s] RSS fallback unavailable; continuing", DIGITALOCEAN_RELEASE_LABEL
+        )
+        return []
+    entries = _parse_native_feed(
+        raw, DIGITALOCEAN_RELEASE_LABEL, DIGITALOCEAN_RELEASE_CATEGORY,
+        DIGITALOCEAN_RELEASE_CAP,
+    )
+    for entry in entries:
+        entry["link"] = urljoin(DIGITALOCEAN_RELEASE_RSS_URL, entry["link"])
+    return entries
+
+
 _LMSTUDIO_VERSION_RE = re.compile(r"^LM Studio\s+\d+(?:\.\d+)+")
 _LMSTUDIO_ISO_DATE_RE = re.compile(
     r"\b(\d{4}[\-\u2010-\u2015]\d{2}[\-\u2010-\u2015]\d{2})\b"
@@ -1518,7 +1643,8 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "changelog), LiteLLM (blog + releases), Glama "
         "(blog, MCP servers, release notes), "
         "LobeHub (changelog + blog), AI Skill Market, Mem0 (blog + research + changelog), "
-        "Cognition (research + blog), and Devin (Desktop changelog + release notes)"
+        "Cognition (research + blog), Devin (Desktop changelog + release notes), "
+        "and DigitalOcean platform release notes"
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     fg.language("en")
@@ -1571,6 +1697,7 @@ def main(full=False):
     )
     glama_rn_entries = collect_glama_release_notes(known_links)
     mem0_changelog_entries = collect_mem0_changelog(known_links)
+    digitalocean_entries = collect_digitalocean_release_notes()
     cognition_entries = collect_cognition(known_links)
     devin_release_entries = collect_devin_release_notes(known_links)
 
@@ -1588,6 +1715,7 @@ def main(full=False):
         and not aihubmix_entries
         and not glama_rn_entries
         and not mem0_changelog_entries
+        and not digitalocean_entries
         and not cognition_entries
         and not devin_release_entries
     ):
@@ -1608,6 +1736,7 @@ def main(full=False):
         + aihubmix_entries
         + glama_rn_entries
         + mem0_changelog_entries
+        + digitalocean_entries
         + cognition_entries
         + devin_release_entries
     )
