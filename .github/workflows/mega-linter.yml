@@ -107,6 +107,11 @@ jobs:
         if: steps.paths.outputs.tests == 'true' || steps.paths.outputs.artifacts == 'true'
         run: uv sync --locked
 
+      # Strict feeds.yaml gate (the runtime loader skips broken entries); fails fast.
+      - name: Check feed registry
+        if: steps.paths.outputs.tests == 'true'
+        run: uv run --locked tools/check_registry.py
+
       # feeds/ is untracked; tests and validation use the last published pairs.
       - name: Restore published feeds from Pages
         if: steps.paths.outputs.tests == 'true' || steps.paths.outputs.artifacts == 'true'
