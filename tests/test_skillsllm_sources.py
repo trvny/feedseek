@@ -25,6 +25,22 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
         urls = {source[1] for source in skillsllm.NATIVE_FEEDS}
         self.assertIn("https://www.x-cmd.com/feed.xml", urls)
 
+    def test_litellm_requested_sources_avoid_duplicate_release_items(self):
+        """Two native feeds and one documented release index, no duplicate fetch."""
+        urls = [feed[1] for feed in skillsllm.NATIVE_FEEDS]
+        self.assertEqual(
+            urls.count("https://agentclientprotocol.com/updates/rss.xml"), 1
+        )
+        self.assertEqual(urls.count("https://docs.litellm.ai/blog/rss.xml"), 1)
+        self.assertEqual(
+            urls.count("https://github.com/BerriAI/litellm/releases.atom"), 1
+        )
+        self.assertEqual(
+            dict(skillsllm.doc_sources())["LiteLLM Release Notes (documentation)"],
+            "https://docs.litellm.ai/release_notes",
+        )
+        self.assertNotIn("https://docs.litellm.ai/release_notes", urls)
+
     def test_agent_zero_articles_use_sitemap_discovery(self):
         """Agent Zero articles should reuse the generic dated-sitemap path."""
         sources = {source["label"]: source for source in skillsllm.SOURCES}
