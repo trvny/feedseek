@@ -17,6 +17,7 @@ on:
 concurrency:
   group: update-feeds-${{ github.ref }}
   # Serialize main refreshes; branch dispatches must not delay production.
+  queue: max
   cancel-in-progress: false
 
 permissions: {}
@@ -210,6 +211,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     concurrency:
       group: feedseek-pages-deploy
+      queue: max
       cancel-in-progress: false
     steps:
       - name: Deploy live artifact
