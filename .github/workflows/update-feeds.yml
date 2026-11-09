@@ -136,7 +136,7 @@ jobs:
           steps.backup.outcome == 'success'
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add docs/sources.md docs/model-feeds.md
           if git diff --staged --quiet; then
             echo "No changes to commit"

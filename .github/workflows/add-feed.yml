@@ -14,6 +14,7 @@ permissions:
 # Serialize concurrent taps so they don't race on the same file.
 concurrency:
   group: add-feed
+  queue: max
   cancel-in-progress: false
 
 jobs:
@@ -111,8 +112,8 @@ jobs:
       - name: Commit
         run: |
           if git diff --quiet; then echo "no change"; exit 0; fi
-          git config user.name  "feed-catcher[bot]"
-          git config user.email "feed-catcher@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add site/feed-catcher.opml
           git commit -m "subscriptions: add feed"
           for _ in 1 2 3; do
