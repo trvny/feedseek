@@ -33,6 +33,10 @@ ENABLE_LINTERS:
   - YAML_V8R
   - YAML_YAMLLINT
 
+# GitHub supports concurrency.queue, but bundled actionlint 1.7.12 does not yet.
+ACTION_ACTIONLINT_ARGUMENTS: >-
+  -ignore 'unexpected key "queue" for "concurrency" section'
+
 ACTION_ZIZMOR_RULES_PATH: ".github"
 ACTION_ZIZMOR_CONFIG_FILE: "zizmor.yml"
 ACTION_ZIZMOR_ARGUMENTS:
