@@ -2,10 +2,13 @@
 
 <img src="assets/banner-feedseek.svg" alt="Feedseek" width="960">
 
-<img src="assets/icons/favicon-96x96.png" alt="Feedseek" width="72">
+<img src="assets/icons/favicon-96x96.png" alt="Feedseek" width="96">
+</div>
 
-> [!WARNING] ⚠️
-> Feeds migrated from repo to pages "https://trvny.github.io/feedseek/{feed}.xml"
+> [!WARNING]
+> ⚠️ Feeds migrated from repo to pages `https://trvny.github.io/feedseek/{feed}.xml`
+
+<div align="center">
 
 # Feedseek :satellite:
 
