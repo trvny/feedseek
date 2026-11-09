@@ -4,6 +4,9 @@
 
 <img src="assets/icons/favicon-96x96.png" alt="Feedseek" width="72">
 
+> [!WARNING] ⚠️
+> Feeds migrated from repo to pages "https://trvny.github.io/feedseek/{feed}.xml"
+
 # Feedseek :satellite:
 
 **Self-updating, enhanced RSS/Atom feeds with a single LLM-friendly JSON Model Feed for each source. Built both where feeds are missing and where native feeds can be made better.**
