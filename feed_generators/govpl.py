@@ -46,6 +46,7 @@ markup, no feed, and no API -- nothing to parse without a browser.)
 """
 
 import argparse
+from dataclasses import dataclass
 import re
 import sys
 import time
@@ -53,6 +54,7 @@ from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
+from requests.exceptions import Timeout as RequestsTimeout
 from enrich import enrich_entries
 from feedgen.feed import FeedGenerator
 from google_news import entry_url
@@ -94,7 +96,6 @@ SOURCES = [
 
 DATE_RE = re.compile(r"\b(\d{2}\.\d{2}\.\d{4})\b")
 SLEEP_BETWEEN = 0.4
-GOVPL_HOST_STALLED = False
 
 # Agencies that publish a real RSS feed -- parsed directly, no HTML scraping.
 # (label, feed URL)
@@ -118,39 +119,58 @@ PREZYDENT_SUFFIX_RE = re.compile(
 PREZYDENT_CRUMB_RE = re.compile(r"\s*\\+\s*(Aktualno\u015bci|Multimedia|Wydarzenia|Wideo|Galeria)\b.*$")
 
 
-def fetch_text(url, retries=3, backoff=2.0):
-    """Fetch via curl_cffi Chrome impersonation (plain for Google News); None on failure."""
-    global GOVPL_HOST_STALLED
-    is_govpl = urlsplit(url).hostname == "www.gov.pl"
-    if is_govpl and GOVPL_HOST_STALLED:
-        return None
-    timeout_attempts = 0
+@dataclass
+class GovplListingCircuit:
+    """Per-refresh breaker for consecutive Gov.pl listing timeouts."""
+
+    consecutive_timeouts: int = 0
+
+    @property
+    def stalled(self):
+        """Only skip listings after two independent listing URLs time out."""
+        return self.consecutive_timeouts >= 2
+
+    def note_timeout(self):
+        """Record a failed listing, not an article or date recheck."""
+        self.consecutive_timeouts += 1
+        if self.stalled:
+            logger.warning("Gov.pl listing requests repeatedly timed out; skipping remaining Gov.pl listings")
+
+    def note_success(self):
+        """A reachable listing clears the consecutive failure count."""
+        self.consecutive_timeouts = 0
+
+
+def fetch_text(url, retries=3, backoff=2.0, *, timeout=30, on_exhausted_timeouts=None):
+    """Fetch a page; report typed consecutive timeouts only when requested."""
     try:
         from curl_cffi import requests as creq
+        from curl_cffi.requests.exceptions import Timeout as CurlTimeout
     except ImportError:
         creq = None
-    # Google News answers Chrome-impersonated TLS with a 503 "Sorry" page;
-    # plain requests gets the RSS.
+        CurlTimeout = RequestsTimeout
+
+    # Google News answers Chrome-impersonated TLS with a 503 "Sorry" page.
     if url.startswith("https://news.google.com/"):
         creq = None
+    timed_out = 0
     for attempt in range(1, retries + 1):
         try:
             if creq is not None:
-                resp = creq.get(url, impersonate="chrome", timeout=30)
+                resp = creq.get(url, impersonate="chrome", timeout=timeout)
                 resp.raise_for_status()
                 return resp.text
             from utils import fetch_page
-            return fetch_page(url)
-        except Exception as e:
-            error = str(e).lower()
-            if is_govpl and ("curl: (28)" in error or "timed out" in error):
-                timeout_attempts += 1
-            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
-            if attempt < retries:
-                time.sleep(backoff * attempt)
-    if is_govpl and retries > 0 and timeout_attempts == retries:
-        GOVPL_HOST_STALLED = True
-        logger.warning("gov.pl timed out repeatedly; skipping further requests to this host in this run")
+            return fetch_page(url, timeout=timeout)
+        except (CurlTimeout, RequestsTimeout) as error:
+            timed_out += 1
+            logger.warning("Fetch timed out for %s (attempt %s/%s): %s", url, attempt, retries, error)
+        except Exception as error:
+            logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, error)
+        if attempt < retries:
+            time.sleep(backoff * attempt)
+    if timed_out == retries and retries > 0 and on_exhausted_timeouts is not None:
+        on_exhausted_timeouts()
     return None
 
 
@@ -189,11 +209,18 @@ def fetch_lead(url):
     return lead, image
 
 
-def collect_source(label, listing_url, cached_by_link):
-    html = fetch_text(listing_url)
+def collect_source(label, listing_url, cached_by_link, *, circuit=None):
+    """Collect listing entries, tracking listing-only host timeout failures."""
+    options = (
+        {"retries": 2, "timeout": 15, "on_exhausted_timeouts": circuit.note_timeout}
+        if circuit is not None else {}
+    )
+    html = fetch_text(listing_url, **options)
     if not html:
         logger.warning("[%s] fetch failed -- skipping this source", label)
         return []
+    if circuit is not None:
+        circuit.note_success()
     soup = BeautifulSoup(html, "html.parser")
     container = soup.select_one(".art-prev")
     if not container:
@@ -377,15 +404,16 @@ def collect_native_rss(label, url, known_links):
     return entries
 
 
-def collect_all(cached_by_link):
+def collect_all(cached_by_link, *, circuit=None):
+    """Collect all providers, skipping Gov.pl listings only after host failures."""
+    circuit = circuit if circuit is not None else GovplListingCircuit()
     entries = []
     for label, url in SOURCES:
-        if GOVPL_HOST_STALLED:
-            logger.warning("gov.pl listings skipped after repeated host timeouts")
+        if circuit.stalled:
             break
         logger.info("Scraping %s ...", label)
         try:
-            entries += collect_source(label, url, cached_by_link)
+            entries += collect_source(label, url, cached_by_link, circuit=circuit)
         except Exception as e:
             logger.warning("[%s] unexpected error: %s", label, e)
     for label, url in NATIVE_RSS:
@@ -430,8 +458,7 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
 
 
 def main(full=False):
-    global GOVPL_HOST_STALLED
-    GOVPL_HOST_STALLED = False
+    """Refresh Gov.pl and independent sources, retaining prior good entries."""
     if full:
         logger.info("Full reset requested -- ignoring existing cache")
         cached = []
@@ -440,8 +467,10 @@ def main(full=False):
         cached = deserialize_entries(cache.get("entries", []), date_field="date")
 
     cached_by_link = {e["link"]: e for e in cached}
-    new_articles = collect_all(cached_by_link)
-    refresh_future_dates(cached)
+    circuit = GovplListingCircuit()
+    new_articles = collect_all(cached_by_link, circuit=circuit)
+    if not circuit.stalled:
+        refresh_future_dates(cached)
 
     if not new_articles and not cached:
         logger.warning("No articles collected -- skipping write to avoid an empty feed")
@@ -453,7 +482,13 @@ def main(full=False):
     feed_items = merged[-MAX_ENTRIES:] if len(merged) > MAX_ENTRIES else merged
     # Before the cache write: feed_items shares its dicts with merged, so the
     # resolved links and images are saved and never looked up again.
-    enrich_entries(feed_items)
+    # Separate image enrichment would otherwise retry the same stalled host.
+    enrichable = (
+        [e for e in feed_items if not e.get("link", "").startswith(("https://www.gov.pl/", "http://www.gov.pl/"))]
+        if circuit.stalled else feed_items
+    )
+    if enrichable:
+        enrich_entries(enrichable)
     save_cache(FEED_NAME, merged)
     save_atom_feed(generate_atom_feed(feed_items), FEED_NAME)
     return True
