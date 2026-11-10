@@ -94,6 +94,7 @@ SOURCES = [
 
 DATE_RE = re.compile(r"\b(\d{2}\.\d{2}\.\d{4})\b")
 SLEEP_BETWEEN = 0.4
+GOVPL_HOST_STALLED = False
 
 # Agencies that publish a real RSS feed -- parsed directly, no HTML scraping.
 # (label, feed URL)
@@ -119,6 +120,11 @@ PREZYDENT_CRUMB_RE = re.compile(r"\s*\\+\s*(Aktualno\u015bci|Multimedia|Wydarzen
 
 def fetch_text(url, retries=3, backoff=2.0):
     """Fetch via curl_cffi Chrome impersonation (plain for Google News); None on failure."""
+    global GOVPL_HOST_STALLED
+    is_govpl = urlsplit(url).hostname == "www.gov.pl"
+    if is_govpl and GOVPL_HOST_STALLED:
+        return None
+    timeout_attempts = 0
     try:
         from curl_cffi import requests as creq
     except ImportError:
@@ -136,9 +142,15 @@ def fetch_text(url, retries=3, backoff=2.0):
             from utils import fetch_page
             return fetch_page(url)
         except Exception as e:
+            error = str(e).lower()
+            if is_govpl and ("curl: (28)" in error or "timed out" in error):
+                timeout_attempts += 1
             logger.warning("Fetch failed for %s (attempt %s/%s): %s", url, attempt, retries, e)
             if attempt < retries:
                 time.sleep(backoff * attempt)
+    if is_govpl and retries > 0 and timeout_attempts == retries:
+        GOVPL_HOST_STALLED = True
+        logger.warning("gov.pl timed out repeatedly; skipping further requests to this host in this run")
     return None
 
 
@@ -368,6 +380,9 @@ def collect_native_rss(label, url, known_links):
 def collect_all(cached_by_link):
     entries = []
     for label, url in SOURCES:
+        if GOVPL_HOST_STALLED:
+            logger.warning("gov.pl listings skipped after repeated host timeouts")
+            break
         logger.info("Scraping %s ...", label)
         try:
             entries += collect_source(label, url, cached_by_link)
@@ -415,6 +430,8 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
 
 
 def main(full=False):
+    global GOVPL_HOST_STALLED
+    GOVPL_HOST_STALLED = False
     if full:
         logger.info("Full reset requested -- ignoring existing cache")
         cached = []

@@ -4,7 +4,8 @@ import sys
 import unittest
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from unittest.mock import patch
+from types import ModuleType, SimpleNamespace
+from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -105,6 +106,43 @@ class GovplDateTests(unittest.TestCase):
             self.assertTrue(govpl.main())
         self.assertEqual(save.call_args.args, (govpl.FEED_NAME, [{**entry, "date": CORRECT_DATE}]))
         self.assertIn(f"<id>{LINK}</id>".encode(), publish.call_args.args[0].atom_str())
+
+
+
+class GovplTimeoutTests(unittest.TestCase):
+    def setUp(self):
+        previous = govpl.GOVPL_HOST_STALLED
+        govpl.GOVPL_HOST_STALLED = False
+        self.addCleanup(setattr, govpl, "GOVPL_HOST_STALLED", previous)
+
+    def test_host_timeout_skips_other_govpl_listings_but_keeps_native_rss(self):
+        fake_cffi = ModuleType("curl_cffi")
+        get = Mock(side_effect=RuntimeError("curl: (28) Operation timed out"))
+        fake_cffi.requests = SimpleNamespace(get=get)
+        native_article = {"link": "https://uokik.gov.pl/news", "title": "Native entry"}
+        with patch.dict(sys.modules, {"curl_cffi": fake_cffi}), \
+             patch.object(govpl.time, "sleep"), \
+             patch.object(govpl, "SOURCES", [("KPRM", "https://www.gov.pl/web/premier/wydarzenia"),
+                                            ("MON", "https://www.gov.pl/web/obrona-narodowa/aktualnosci5")]), \
+             patch.object(govpl, "NATIVE_RSS", [("UOKiK", "https://uokik.gov.pl/feed")]), \
+             patch.object(govpl, "collect_native_rss", return_value=[native_article]) as native, \
+             patch.object(govpl, "collect_prezydent", return_value=[]):
+            entries = govpl.collect_all({})
+        self.assertEqual(entries, [native_article])
+        self.assertEqual(get.call_count, 3)
+        self.assertTrue(govpl.GOVPL_HOST_STALLED)
+        native.assert_called_once()
+
+    def test_one_timeout_followed_by_success_keeps_host_available(self):
+        fake_cffi = ModuleType("curl_cffi")
+        response = SimpleNamespace(text="<html>OK</html>", raise_for_status=lambda: None)
+        get = Mock(side_effect=[RuntimeError("curl: (28) Operation timed out"), response])
+        fake_cffi.requests = SimpleNamespace(get=get)
+        with patch.dict(sys.modules, {"curl_cffi": fake_cffi}), patch.object(govpl.time, "sleep"):
+            html = govpl.fetch_text("https://www.gov.pl/web/premier/wydarzenia", retries=2)
+        self.assertEqual(html, response.text)
+        self.assertFalse(govpl.GOVPL_HOST_STALLED)
+        self.assertEqual(get.call_count, 2)
 
 
 if __name__ == "__main__":
