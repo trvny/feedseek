@@ -56,17 +56,17 @@ Feed 列表会持续变化，因此中文 README 不复制整张动态表。当�
 <!--README_FEED:START-->
 - [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
 - [Promises Made, Promises Unmet: The NPP’s Struggle to Reform Sri Lanka](https://carnegieendowment.org/research/2026/11/promises-made-promises-unmet-the-npps-struggle-to-reform-sri-lanka)
-- [Jade Benning's Final Call | Post Mortem](https://www.cbsnews.com/video/110726-48-hours-post-mortem-episode-3/)
-- [The pros and cons of using an Amazfit smartwatch](https://www.engadget.com/2306820/using-amazfit-smartwatch-pros-and-cons/)
-- [This week on "Sunday Morning" \(Nov. 8\)](https://www.cbsnews.com/news/this-week-on-sunday-morning-nov-8-2026/)
-- [Detroit Lions Reveal Uniform Combo for Matchup vs. Miami](https://sports.yahoo.com/articles/detroit-lions-reveal-uniform-combo-231038067.html)
+- [homeassistant-ai/ha-mcp](https://github.com/homeassistant-ai/ha-mcp)
+- [garrytan/gbrain](https://github.com/garrytan/gbrain)
+- [anthropics/claude-quickstarts](https://github.com/anthropics/claude-quickstarts)
+- [google-deepmind/mujoco](https://github.com/google-deepmind/mujoco)
 <!--README_FEED:END-->
 
 ## 💬 抽屉里的引语
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝Impossible is a word to be found only in the dictionary of fools. — Napoleon Bonaparte❞</i>
+<i>❝All the passions die with the years; self-love alone never dies. — Voltaire❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
