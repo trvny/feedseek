@@ -4,8 +4,10 @@ import sys
 import unittest
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from types import ModuleType, SimpleNamespace
+from types import SimpleNamespace
 from unittest.mock import Mock, patch
+
+from curl_cffi.requests.exceptions import Timeout as CurlTimeout
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -110,39 +112,104 @@ class GovplDateTests(unittest.TestCase):
 
 
 class GovplTimeoutTests(unittest.TestCase):
-    def setUp(self):
-        previous = govpl.GOVPL_HOST_STALLED
-        govpl.GOVPL_HOST_STALLED = False
-        self.addCleanup(setattr, govpl, "GOVPL_HOST_STALLED", previous)
+    def test_two_listing_timeouts_skip_later_listings_but_keep_all_other_sources(self):
+        """Host breaker affects only gov.pl listings, not native or proxy feeds."""
+        circuit = govpl.GovplListingCircuit()
+        rss = (
+            '<rss><channel><item><title>Native entry</title><link>'
+            'https://uokik.gov.pl/news</link><pubDate>Tue, 10 Nov 2026 09:00:00 GMT'
+            '</pubDate></item></channel></rss>'
+        )
+        president = (
+            '<rss><channel><item><title>President entry</title><link>'
+            'https://news.google.com/rss/articles/1</link><pubDate>'
+            'Tue, 10 Nov 2026 09:00:00 GMT</pubDate></item></channel></rss>'
+        )
+        gov_calls = []
+        def fetch(url, **kwargs):
+            if url.startswith("https://www.gov.pl/"):
+                gov_calls.append(url)
+                kwargs["on_exhausted_timeouts"]()
+                return None
+            return president if url.startswith("https://news.google.com/") else rss
 
-    def test_host_timeout_skips_other_govpl_listings_but_keeps_native_rss(self):
-        fake_cffi = ModuleType("curl_cffi")
-        get = Mock(side_effect=RuntimeError("curl: (28) Operation timed out"))
-        fake_cffi.requests = SimpleNamespace(get=get)
-        native_article = {"link": "https://uokik.gov.pl/news", "title": "Native entry"}
-        with patch.dict(sys.modules, {"curl_cffi": fake_cffi}), \
-             patch.object(govpl.time, "sleep"), \
-             patch.object(govpl, "SOURCES", [("KPRM", "https://www.gov.pl/web/premier/wydarzenia"),
-                                            ("MON", "https://www.gov.pl/web/obrona-narodowa/aktualnosci5")]), \
-             patch.object(govpl, "NATIVE_RSS", [("UOKiK", "https://uokik.gov.pl/feed")]), \
-             patch.object(govpl, "collect_native_rss", return_value=[native_article]) as native, \
-             patch.object(govpl, "collect_prezydent", return_value=[]):
-            entries = govpl.collect_all({})
-        self.assertEqual(entries, [native_article])
-        self.assertEqual(get.call_count, 3)
-        self.assertTrue(govpl.GOVPL_HOST_STALLED)
-        native.assert_called_once()
+        with patch.object(govpl, "fetch_text", side_effect=fetch), \
+             patch.object(govpl, "SOURCES", [
+                 ("KPRM", "https://www.gov.pl/web/premier/wydarzenia"),
+                 ("MON", "https://www.gov.pl/web/obrona-narodowa/aktualnosci5"),
+                 ("MSZ", "https://www.gov.pl/web/dyplomacja/aktualnosci"),
+             ]), \
+             patch.object(govpl, "NATIVE_RSS", [
+                 ("UOKiK", "https://uokik.gov.pl/feed"),
+                 ("PARP", "https://www.parp.gov.pl/?format=feed&type=rss"),
+             ]):
+            entries = govpl.collect_all({}, circuit=circuit)
+        self.assertTrue(circuit.stalled)
+        self.assertEqual(len(gov_calls), 2)
+        self.assertEqual(len(entries), 3)
+        self.assertEqual({e["source"] for e in entries}, {"UOKiK", "PARP", "Prezydent RP"})
 
-    def test_one_timeout_followed_by_success_keeps_host_available(self):
-        fake_cffi = ModuleType("curl_cffi")
+    def test_typed_timeout_retry_and_non_timeout_exception(self):
+        """Only timeout exceptions can notify the caller's breaker."""
+        from curl_cffi import requests as creq
         response = SimpleNamespace(text="<html>OK</html>", raise_for_status=lambda: None)
-        get = Mock(side_effect=[RuntimeError("curl: (28) Operation timed out"), response])
-        fake_cffi.requests = SimpleNamespace(get=get)
-        with patch.dict(sys.modules, {"curl_cffi": fake_cffi}), patch.object(govpl.time, "sleep"):
-            html = govpl.fetch_text("https://www.gov.pl/web/premier/wydarzenia", retries=2)
-        self.assertEqual(html, response.text)
-        self.assertFalse(govpl.GOVPL_HOST_STALLED)
+        with patch.object(creq, "get", side_effect=[CurlTimeout("timeout"), response]) as get, \
+             patch.object(govpl.time, "sleep"):
+            signal = Mock()
+            page = govpl.fetch_text("https://www.gov.pl/web/premier/wydarzenia",
+                                   retries=2, on_exhausted_timeouts=signal)
+        self.assertEqual(page, response.text)
         self.assertEqual(get.call_count, 2)
+        signal.assert_not_called()
+        with patch.object(creq, "get", side_effect=RuntimeError("timed out unrelated")) as get, \
+             patch.object(govpl.time, "sleep"):
+            signal = Mock()
+            self.assertIsNone(govpl.fetch_text("https://www.gov.pl/web/premier/wydarzenia",
+                                               retries=2, on_exhausted_timeouts=signal))
+        self.assertEqual(get.call_count, 2)
+        signal.assert_not_called()
+
+    def test_article_timeout_does_not_disable_healthy_ministry_listings(self):
+        """Failed article metadata requests never set the listing circuit."""
+        from curl_cffi import requests as creq
+        listing_1 = '<div class="art-prev"><li>10.11.2026 <a href="/web/a/item">One</a></li></div>'
+        listing_2 = '<div class="art-prev"><li>10.11.2026 <a href="/web/b/item">Two</a></li></div>'
+        def get(url, **_kwargs):
+            if url.endswith("/listing-a"):
+                return SimpleNamespace(text=listing_1, raise_for_status=lambda: None)
+            if url.endswith("/listing-b"):
+                return SimpleNamespace(text=listing_2, raise_for_status=lambda: None)
+            raise CurlTimeout("article timeout")
+        circuit = govpl.GovplListingCircuit()
+        with patch.object(creq, "get", side_effect=get), \
+             patch.object(govpl.time, "sleep"), \
+             patch.object(govpl, "SOURCES", [("A", "https://www.gov.pl/listing-a"),
+                                            ("B", "https://www.gov.pl/listing-b")]), \
+             patch.object(govpl, "NATIVE_RSS", []), \
+             patch.object(govpl, "collect_prezydent", return_value=[]):
+            entries = govpl.collect_all({}, circuit=circuit)
+        self.assertFalse(circuit.stalled)
+        self.assertEqual({e["title"] for e in entries}, {"One", "Two"})
+
+    def test_failed_refresh_keeps_cached_entry_and_avoids_host_image_backfill(self):
+        """A stalled Gov.pl source must keep its saved entry unmodified."""
+        entry = cached_entry()
+        stored = {**entry, "date": OLD_DATE.isoformat()}
+        def stalled_collect(_cache, *, circuit):
+            circuit.note_timeout()
+            circuit.note_timeout()
+            return []
+        with patch.object(govpl, "load_cache", return_value={"entries": [stored]}), \
+             patch.object(govpl, "collect_all", side_effect=stalled_collect), \
+             patch.object(govpl, "refresh_future_dates") as dates, \
+             patch.object(govpl, "enrich_entries") as enrich, \
+             patch.object(govpl, "save_cache") as save, \
+             patch.object(govpl, "save_atom_feed") as publish:
+            self.assertTrue(govpl.main())
+        dates.assert_not_called()
+        enrich.assert_not_called()
+        self.assertEqual(save.call_args.args, (govpl.FEED_NAME, [entry]))
+        self.assertIn(f"<id>{LINK}</id>".encode(), publish.call_args.args[0].atom_str())
 
 
 if __name__ == "__main__":
