@@ -54,17 +54,17 @@ Androidowy czytnik/player tych feedów to osobny projekt: **[travnie/kanarek](ht
 <!--README_FEED:START-->
 - [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
 - [Promises Made, Promises Unmet: The NPP’s Struggle to Reform Sri Lanka](https://carnegieendowment.org/research/2026/11/promises-made-promises-unmet-the-npps-struggle-to-reform-sri-lanka)
-- [Ma go wiele telefonów. Mało kto wie, do czego służy ten otwór](https://antyweb.pl/maly-otwor-obok-gniazda-ladowania-telefonu-do-czego-sluzy)
-- [Tchibo Esperto Mini: mały ekspres BEZ kapsułek, który skradł me serce](https://antyweb.pl/tchibo-esperto-mini-maly-ekspres-bez-kapsulek-ktory-skradl-me-serce)
-- [O północy w Porębie Wielkiej samochód wypadł z drogi, uderzył w drzewo i dachował - Gazeta Krakowska](https://news.google.com/atom/articles/CBMiwgFBVV95cUxPSGEwTVpFRU5NQ2diQUVWVUtQVjJUUW85LU9KZXBCTEtFQnlPWk1TOW1xSl9FQUgyd1pvVWxYRjRpbXhJY3d1NXl1UXQtcVp6aHAwS1VtaTg3SEVZZXpPUHVKZmJjRXgzV1ZhR3JELUs5UUFYWktPbmRMek9PSW9TUlFtaGx4TUh5SWk3MnZIYW5sdzFlZ2R6Ry1DbG1fbGZ5SDh2R0U0WGE4aXUwaVpvTTBqQzZLT1FNQWpteGNBU08yUQ?oc=5)
-- [Nocny wypadek w Rudzach k. Zatora. Pijana 17-latka Zatorzanka wypadła z jadącego samochodu - Gazeta Krakowska](https://news.google.com/atom/articles/CBMizgFBVV95cUxOQ3pZTlQ4dng5aUtJSENUMEFndnUzcGJCcUVwRVg5RXhsMjZha2o1WjZmZy0zQnB6QVNzaV9TZWFGOG05b0VDUTI3LWVveTVGdl9PNzRpbkktbHBrMGQ1ZXF5R01sbkhxblhoQkwzVnF4RUVTOTNEUFVjY2cybGY3NEhHbHQ0WkRHMUR6Z1djeEVzZDE1TVI5Y1FoNHpkTllLcndVc0pYUVVrNlFXQjJOQW1Idlg3SXJpRDdFMDdocVJEckwyR2NjMWJnR0Zvdw?oc=5)
+- [W Filipowicach zagrają cztery kapele - zakliczyninfo.pl](https://news.google.com/atom/articles/CBMijAFBVV95cUxPOXdxVjVMdHc0YUw2akRlZlJZREw0WUVmeHdvbDNqNUo5cnNRM1ZWUm9aSEJzSUlKNU1hSkF2anlwUm5sTGpzTHN1NG9wZXhhSGJYbHB6RWhUaUxlQ3FOTnlwNmloNnJLNnJnbjVmYzJ6RWFqMGdvZ3VzVjJNQUZ4SU9qUzFINjBIQ25BSQ?oc=5)
+- [Product of the Day — A Magical Bag Of Holding Except The Only Thing It Can Hold Is Infinite Fedoras](https://anycrap.shop/product/a-magical-bag-of-holding-except-the-only-thing-it-can-hold-is-infinite-fedoras)
+- [Cat Fact of the Day](https://catfact.ninja/)
+- [Joke of the Day](https://djtech.net/humor/things_to_think_about.htm)
 <!--README_FEED:END-->
 
 ## 💬 Cytat z szuflady
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝Lenovo stands for ‘new legend’. ‘Le’ for legend, and ‘novo’ stands for new.❞</i>
+<i>❝More than 80% of the emails sent daily are spams.❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
