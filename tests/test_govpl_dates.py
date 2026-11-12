@@ -150,7 +150,7 @@ class GovplDateTests(unittest.TestCase):
         self.assertIn(f"<id>{past['link']}</id>".encode(), xml)
         self.assertNotIn(f"<id>{future['link']}</id>".encode(), xml)
 
-    def test_future_only_cache_does_not_overwrite_last_good_feed(self):
+    def test_future_only_cache_fails_closed_without_overwriting_published_feed(self):
         entry = cached_entry()
         with patch.object(govpl, "load_cache", return_value={
                  "entries": [{**entry, "date": OLD_DATE.isoformat()}]}), \
@@ -160,7 +160,7 @@ class GovplDateTests(unittest.TestCase):
              patch.object(govpl, "save_cache") as save, \
              patch.object(govpl, "save_atom_feed") as publish:
             clock.now.return_value = NOW
-            self.assertTrue(govpl.main())
+            self.assertFalse(govpl.main())
         self.assertEqual(save.call_args.args, (govpl.FEED_NAME, [entry]))
         publish.assert_not_called()
 

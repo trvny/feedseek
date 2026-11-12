@@ -497,8 +497,8 @@ def main(full=False):
     feed_items = publishable[-MAX_ENTRIES:] if len(publishable) > MAX_ENTRIES else publishable
     if not feed_items:
         save_cache(FEED_NAME, merged)
-        logger.warning("No publishable articles; preserving last good feed")
-        return True
+        logger.error("No publishable articles; refusing an empty feed")
+        return False
     # Before the cache write: feed_items shares its dicts with merged, so the
     # resolved links and images are saved and never looked up again.
     # Separate image enrichment would otherwise retry the same stalled host.
