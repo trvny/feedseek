@@ -165,6 +165,13 @@ class GovplDateTests(unittest.TestCase):
         publish.assert_not_called()
 
 
+    def test_one_day_future_tolerance_does_not_hide_valid_local_dates(self):
+        near = {**cached_entry(), "date": NOW + timedelta(hours=12)}
+        beyond = {**cached_entry("https://www.gov.pl/web/zdrowie/too-late"),
+                  "date": NOW + timedelta(days=2)}
+        self.assertEqual(govpl.publishable_entries([near, beyond], now=NOW), [near])
+
+
 class GovplTimeoutTests(unittest.TestCase):
     def test_two_listing_timeouts_skip_later_listings_but_keep_all_other_sources(self):
         """Host breaker affects only gov.pl listings, not native or proxy feeds."""
