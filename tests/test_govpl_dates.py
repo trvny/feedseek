@@ -165,6 +165,19 @@ class GovplDateTests(unittest.TestCase):
         publish.assert_not_called()
 
 
+    def test_future_dated_independent_sources_remain_publishable(self):
+        future = NOW + timedelta(days=30)
+        gov = {**cached_entry(), "date": future}
+        independent = [
+            {**cached_entry(link), "date": future, "source": label}
+            for label, link in [
+                ("UOKiK", "https://uokik.gov.pl/news"),
+                ("PARP", "https://www.parp.gov.pl/news"),
+                ("Prezydent RP", "https://news.google.com/rss/articles/1"),
+            ]
+        ]
+        self.assertEqual(govpl.publishable_entries([gov, *independent], now=NOW), independent)
+
     def test_one_day_future_tolerance_does_not_hide_valid_local_dates(self):
         near = {**cached_entry(), "date": NOW + timedelta(hours=12)}
         beyond = {**cached_entry("https://www.gov.pl/web/zdrowie/too-late"),
@@ -262,11 +275,13 @@ class GovplTimeoutTests(unittest.TestCase):
             circuit.note_timeout()
             return []
         with patch.object(govpl, "load_cache", return_value={"entries": stored}), \
+             patch.object(govpl, "datetime") as clock, \
              patch.object(govpl, "collect_all", side_effect=stalled_collect), \
              patch.object(govpl, "refresh_future_dates") as dates, \
              patch.object(govpl, "enrich_entries") as enrich, \
              patch.object(govpl, "save_cache") as save, \
              patch.object(govpl, "save_atom_feed") as publish:
+            clock.now.return_value = NOW
             self.assertTrue(govpl.main())
         dates.assert_not_called()
         enrich.assert_not_called()
