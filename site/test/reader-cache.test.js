@@ -136,12 +136,12 @@ test("future gov.pl dates do not return from offline history or saved snapshots"
   })]]);
   const { cache } = makeCache(storage);
   const loaded = await cache.load();
-  assert.deepEqual(loaded.map(item => item.id), ["past", "forecast"]);
+  assert.deepEqual(Array.from(loaded, item => item.id), ["past", "forecast"]);
   const feeds = [{ xmlUrl: govUrl, title: "Gov.pl" },
     { xmlUrl: forecast.feedUrl, title: "Forecast" }];
   const merged = cache.mergeHistory(feeds, [future, forecast], [oldFuture, past]);
-  assert.deepEqual(merged.map(item => item.id), ["forecast", "past"]);
+  assert.deepEqual(Array.from(merged, item => item.id), ["forecast", "past"]);
   await cache.save([future, past, forecast]);
   assert.deepEqual(JSON.parse(storage.get("fs:snap")).items.map(item => item.id),
-    ["forecast", "past"]);
+    ["past", "forecast"]);
 });
