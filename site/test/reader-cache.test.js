@@ -122,3 +122,26 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
   assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
 });
+
+test("future gov.pl dates do not return from offline history or saved snapshots", async () => {
+  const now = Date.now();
+  const govUrl = "https://trvny.github.io/feedseek/govpl_news.xml";
+  const future = { ...entry("future", now + 3 * 86400000, "Gov.pl"), feedUrl: govUrl };
+  const oldFuture = { ...entry("old-future", now + 4 * 86400000, "Gov.pl"),
+    feedUrl: "https://trvny.github.io/feedseek/feed_govpl_news.xml" };
+  const past = { ...entry("past", now - 86400000, "Gov.pl"), feedUrl: govUrl };
+  const forecast = entry("forecast", now + 3 * 86400000, "Forecast");
+  const storage = new Map([["fs:snap", JSON.stringify({
+    _v: 1, t: now, items: [future, oldFuture, past, forecast],
+  })]]);
+  const { cache } = makeCache(storage);
+  const loaded = await cache.load();
+  assert.deepEqual(loaded.map(item => item.id), ["past", "forecast"]);
+  const feeds = [{ xmlUrl: govUrl, title: "Gov.pl" },
+    { xmlUrl: forecast.feedUrl, title: "Forecast" }];
+  const merged = cache.mergeHistory(feeds, [future, forecast], [oldFuture, past]);
+  assert.deepEqual(merged.map(item => item.id), ["forecast", "past"]);
+  await cache.save([future, past, forecast]);
+  assert.deepEqual(JSON.parse(storage.get("fs:snap")).items.map(item => item.id),
+    ["forecast", "past"]);
+});

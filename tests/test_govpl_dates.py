@@ -111,6 +111,60 @@ class GovplDateTests(unittest.TestCase):
 
 
 
+    def test_future_date_remains_in_cache_but_not_in_published_feed(self):
+        future = {**cached_entry("https://www.gov.pl/web/premier/future"),
+                  "date": datetime(2029, 6, 1, tzinfo=UTC), "source": "KPRM"}
+        past = {**cached_entry("https://www.gov.pl/web/premier/published"), "date": CORRECT_DATE}
+        stored = [{**e, "date": e["date"].isoformat()} for e in (future, past)]
+        with patch.object(govpl, "load_cache", return_value={"entries": stored}), \
+             patch.object(govpl, "datetime") as clock, \
+             patch.object(govpl, "collect_all", return_value=[]), \
+             patch.object(govpl, "fetch_text", return_value='<p class="event-date">01.06.2029</p>'), \
+             patch.object(govpl, "enrich_entries"), \
+             patch.object(govpl, "save_cache") as save, \
+             patch.object(govpl, "save_atom_feed") as publish:
+            clock.now.return_value = NOW
+            self.assertTrue(govpl.main())
+        cached = {article["link"]: article for article in save.call_args.args[1]}
+        self.assertEqual(cached[future["link"]], future)
+        self.assertEqual(cached[past["link"]], past)
+        xml = publish.call_args.args[0].atom_str()
+        self.assertIn(f"<id>{past['link']}</id>".encode(), xml)
+        self.assertNotIn(f"<id>{future['link']}</id>".encode(), xml)
+
+    def test_new_future_dated_article_is_quarantined_without_losing_other_news(self):
+        future = {**cached_entry("https://www.gov.pl/web/premier/new-future"),
+                  "date": datetime(2029, 6, 1, tzinfo=UTC)}
+        past = {**cached_entry("https://www.gov.pl/web/premier/new-past"), "date": CORRECT_DATE}
+        with patch.object(govpl, "load_cache", return_value={"entries": []}), \
+             patch.object(govpl, "datetime") as clock, \
+             patch.object(govpl, "collect_all", return_value=[future, past]), \
+             patch.object(govpl, "enrich_entries"), \
+             patch.object(govpl, "save_cache") as save, \
+             patch.object(govpl, "save_atom_feed") as publish:
+            clock.now.return_value = NOW
+            self.assertTrue(govpl.main())
+        self.assertEqual({article["link"] for article in save.call_args.args[1]},
+                         {future["link"], past["link"]})
+        xml = publish.call_args.args[0].atom_str()
+        self.assertIn(f"<id>{past['link']}</id>".encode(), xml)
+        self.assertNotIn(f"<id>{future['link']}</id>".encode(), xml)
+
+    def test_future_only_cache_does_not_overwrite_last_good_feed(self):
+        entry = cached_entry()
+        with patch.object(govpl, "load_cache", return_value={
+                 "entries": [{**entry, "date": OLD_DATE.isoformat()}]}), \
+             patch.object(govpl, "datetime") as clock, \
+             patch.object(govpl, "collect_all", return_value=[]), \
+             patch.object(govpl, "fetch_text", return_value=None), \
+             patch.object(govpl, "save_cache") as save, \
+             patch.object(govpl, "save_atom_feed") as publish:
+            clock.now.return_value = NOW
+            self.assertTrue(govpl.main())
+        self.assertEqual(save.call_args.args, (govpl.FEED_NAME, [entry]))
+        publish.assert_not_called()
+
+
 class GovplTimeoutTests(unittest.TestCase):
     def test_two_listing_timeouts_skip_later_listings_but_keep_all_other_sources(self):
         """Host breaker affects only gov.pl listings, not native or proxy feeds."""
@@ -194,12 +248,13 @@ class GovplTimeoutTests(unittest.TestCase):
     def test_failed_refresh_keeps_cached_entry_and_avoids_host_image_backfill(self):
         """A stalled Gov.pl source must keep its saved entry unmodified."""
         entry = cached_entry()
-        stored = {**entry, "date": OLD_DATE.isoformat()}
+        past = {**cached_entry("https://www.gov.pl/web/zdrowie/past"), "date": CORRECT_DATE}
+        stored = [{**e, "date": e["date"].isoformat()} for e in (entry, past)]
         def stalled_collect(_cache, *, circuit):
             circuit.note_timeout()
             circuit.note_timeout()
             return []
-        with patch.object(govpl, "load_cache", return_value={"entries": [stored]}), \
+        with patch.object(govpl, "load_cache", return_value={"entries": stored}), \
              patch.object(govpl, "collect_all", side_effect=stalled_collect), \
              patch.object(govpl, "refresh_future_dates") as dates, \
              patch.object(govpl, "enrich_entries") as enrich, \
@@ -208,8 +263,10 @@ class GovplTimeoutTests(unittest.TestCase):
             self.assertTrue(govpl.main())
         dates.assert_not_called()
         enrich.assert_not_called()
-        self.assertEqual(save.call_args.args, (govpl.FEED_NAME, [entry]))
-        self.assertIn(f"<id>{LINK}</id>".encode(), publish.call_args.args[0].atom_str())
+        self.assertEqual({e["link"] for e in save.call_args.args[1]}, {entry["link"], past["link"]})
+        xml = publish.call_args.args[0].atom_str()
+        self.assertIn(f"<id>{past['link']}</id>".encode(), xml)
+        self.assertNotIn(f"<id>{LINK}</id>".encode(), xml)
 
 
 if __name__ == "__main__":
