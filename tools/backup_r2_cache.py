@@ -5,10 +5,12 @@ from __future__ import annotations
 import argparse
 import gzip
 import os
+import re
 import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 from pathlib import Path
 
 from restore_r2_cache import (
@@ -22,6 +24,18 @@ from restore_r2_cache import (
 )
 
 DEFAULT_MAX_BYTES = 128 * 1024 * 1024
+MAX_UPLOAD_ATTEMPTS = 3
+_RETRYABLE_UPLOAD_RESPONSE = re.compile(
+    r"\b(?:HTTP|status(?:\s+code)?|error\s+code)\s*[:=]?\s*(?:429|500|502|503|504)\b"
+    r"|\b(?:429|500|502|503|504)\s*:\s*"
+    r"(?:Bad Gateway|Gateway Timeout|Internal Server Error|Service Unavailable|Too Many Requests)\b",
+    re.IGNORECASE,
+)
+
+
+def is_retryable_upload_error(detail: str) -> bool:
+    """Retry only explicit rate-limit or server gateway responses."""
+    return bool(_RETRYABLE_UPLOAD_RESPONSE.search(detail))
 
 
 def _normalized_info(path: Path, arcname: str) -> tarfile.TarInfo:
@@ -70,28 +84,37 @@ def upload_archive(bucket: str, key: str, archive: Path) -> None:
     if not os.environ.get("CLOUDFLARE_API_TOKEN") or not os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
         raise RuntimeError("Cloudflare credentials are required for R2 cache backup")
 
-    result = subprocess.run(
-        [
-            str(_wrangler_path()),
-            "r2",
-            "object",
-            "put",
-            f"{bucket}/{key}",
-            "--file",
-            str(archive),
-            "--content-type",
-            "application/gzip",
-            "--remote",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if result.returncode != 0:
+    command = [
+        str(_wrangler_path()),
+        "r2",
+        "object",
+        "put",
+        f"{bucket}/{key}",
+        "--file",
+        str(archive),
+        "--content-type",
+        "application/gzip",
+        "--remote",
+    ]
+    for attempt in range(1, MAX_UPLOAD_ATTEMPTS + 1):
+        result = subprocess.run(
+            command,
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode == 0:
+            return
         detail = "\n".join(part for part in (result.stdout, result.stderr) if part).strip()
-        raise RuntimeError(detail or f"Wrangler exited with status {result.returncode}")
-
+        if attempt == MAX_UPLOAD_ATTEMPTS or not is_retryable_upload_error(detail):
+            raise RuntimeError(detail or f"Wrangler exited with status {result.returncode}")
+        delay = 5 * attempt
+        print(
+            f"Transient R2 upload error; retrying ({attempt}/{MAX_UPLOAD_ATTEMPTS}) in {delay}s.",
+            file=sys.stderr,
+        )
+        time.sleep(delay)
 
 def backup_to_r2(bucket: str, key: str, cache_dir: Path, max_bytes: int) -> int:
     with tempfile.TemporaryDirectory() as tmp:
