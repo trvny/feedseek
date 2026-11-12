@@ -38,13 +38,22 @@
     });
   }
 
+  function isLocalGovplFeed(item) {
+    if (!item.feedUrl && item.source === "Gov.pl") {
+      return /^https:\/\/www\.gov\.pl\/web\//.test(String(item.url || item.id || ""));
+    }
+    try {
+      const root = new URL("../", globalThis.location?.href);
+      const url = new URL(item.feedUrl);
+      return url.origin === root.origin
+        && (url.pathname === root.pathname + "govpl_news.xml"
+          || url.pathname === root.pathname + "feed_govpl_news.xml");
+    } catch { return false; }
+  }
+
   function omitFutureGovplNews(items) {
     const cutoff = Date.now() + 86400000;
-    return items.filter(item => {
-      const url = String(item.feedUrl || "").split(/[?#]/, 1)[0];
-      return !/(?:^|\/)(?:feed_)?govpl_news\.xml$/.test(url)
-        || !(Number(item.ts) > cutoff);
-    });
+    return items.filter(item => !isLocalGovplFeed(item) || !(Number(item.ts) > cutoff));
   }
 
   function byDate(a, b) {
@@ -161,7 +170,10 @@
   }
 
   async function load() {
-    return omitFutureGovplNews(migrateItems(await loadRaw()));
+    const migrated = migrateItems(await loadRaw());
+    const items = omitFutureGovplNews(migrated);
+    if (items.length !== migrated.length) await save(items);
+    return items;
   }
 
   async function persist(items) {

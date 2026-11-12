@@ -268,6 +268,16 @@ def collect_source(label, listing_url, cached_by_link, *, circuit=None):
     return entries
 
 
+def is_govpl_article(link):
+    """Only first-party Gov.pl news pages use the suspicious-date quarantine."""
+    try:
+        target = urlsplit(link)
+    except (TypeError, ValueError):
+        return False
+    return (target.scheme == "https" and target.netloc == "www.gov.pl"
+            and target.path.startswith("/web/"))
+
+
 def refresh_future_dates(cached, *, now=None):
     """Recheck suspicious cached dates against the article's publication field."""
     now = now or datetime.now(UTC)
@@ -277,11 +287,7 @@ def refresh_future_dates(cached, *, now=None):
         if date is None or date <= now:
             continue
         link = entry.get("link", "")
-        try:
-            target = urlsplit(link)
-        except ValueError:
-            continue
-        if target.scheme != "https" or target.netloc != "www.gov.pl" or not target.path.startswith("/web/"):
+        if not is_govpl_article(link):
             continue
         candidates.append(entry)
     if not candidates:
@@ -464,7 +470,7 @@ def publishable_entries(articles, *, now=None):
     publishable = []
     for article in articles:
         date = article.get("date")
-        if date is not None and date > cutoff:
+        if date is not None and date > cutoff and is_govpl_article(article.get("link", "")):
             logger.warning("Deferring future-dated article %s (%s)", article.get("link"), date)
             continue
         publishable.append(article)

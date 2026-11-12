@@ -51,7 +51,7 @@ function memoryIndexedDB() {
 function makeCache(storage = new Map(), indexedDB = undefined) {
   const context = vm.createContext({
     window: { indexedDB },
-    console,
+    console, URL, location: { href: "https://trvny.github.io/feedseek/reader/" },
     localStorage: {
       getItem: key => storage.get(key) ?? null,
       setItem: (key, value) => storage.set(key, value),
@@ -123,25 +123,53 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
 });
 
-test("future gov.pl dates do not return from offline history or saved snapshots", async () => {
+test("future gov.pl news is scrubbed from storage, refreshed history, and legacy snapshots", async () => {
   const now = Date.now();
   const govUrl = "https://trvny.github.io/feedseek/govpl_news.xml";
   const future = { ...entry("future", now + 3 * 86400000, "Gov.pl"), feedUrl: govUrl };
   const oldFuture = { ...entry("old-future", now + 4 * 86400000, "Gov.pl"),
     feedUrl: "https://trvny.github.io/feedseek/feed_govpl_news.xml" };
+  const noFeedUrl = { id: "legacy", ts: now + 5 * 86400000, source: "Gov.pl",
+    url: "https://www.gov.pl/web/premier/future-story" };
+  const oldHistory = { ...entry("old-history", now + 4 * 86400000, "Gov.pl"),
+    feedUrl: govUrl };
   const past = { ...entry("past", now - 86400000, "Gov.pl"), feedUrl: govUrl };
+  const near = { ...entry("near", now + 2 * 3600000, "Gov.pl"), feedUrl: govUrl };
   const forecast = entry("forecast", now + 3 * 86400000, "Forecast");
+  const lookalike = { ...entry("lookalike", now + 3 * 86400000, "Elsewhere"),
+    feedUrl: "https://elsewhere.test/feeds/govpl_news.xml" };
   const storage = new Map([["fs:snap", JSON.stringify({
-    _v: 1, t: now, items: [future, oldFuture, past, forecast],
+    _v: 1, t: now, items: [future, oldFuture, noFeedUrl, past, near, forecast, lookalike],
   })]]);
   const { cache } = makeCache(storage);
   const loaded = await cache.load();
-  assert.deepEqual(Array.from(loaded, item => item.id), ["past", "forecast"]);
-  const feeds = [{ xmlUrl: govUrl, title: "Gov.pl" },
-    { xmlUrl: forecast.feedUrl, title: "Forecast" }];
-  const merged = cache.mergeHistory(feeds, [future, forecast], [oldFuture, past]);
-  assert.deepEqual(Array.from(merged, item => item.id), ["forecast", "past"]);
-  await cache.save([future, past, forecast]);
+  assert.deepEqual(Array.from(loaded, item => item.id), ["past", "near", "forecast", "lookalike"]);
   assert.deepEqual(JSON.parse(storage.get("fs:snap")).items.map(item => item.id),
-    ["past", "forecast"]);
+    ["past", "near", "forecast", "lookalike"]);
+  const feeds = [{ xmlUrl: govUrl, title: "Gov.pl" },
+    { xmlUrl: forecast.feedUrl, title: "Forecast" },
+    { xmlUrl: lookalike.feedUrl, title: "Elsewhere" }];
+  const merged = cache.mergeHistory(feeds, [future, forecast, lookalike], [oldHistory, past, near]);
+  assert.deepEqual(Array.from(merged, item => item.id),
+    ["forecast", "lookalike", "near", "past"]);
+  await cache.save([future, past, near, forecast, lookalike]);
+  assert.deepEqual(JSON.parse(storage.get("fs:snap")).items.map(item => item.id),
+    ["past", "near", "forecast", "lookalike"]);
+});
+
+test("IndexedDB also drops quarantined Gov.pl articles during load", async () => {
+  const db = memoryIndexedDB();
+  const now = Date.now();
+  const govUrl = "https://trvny.github.io/feedseek/govpl_news.xml";
+  const safe = { ...entry("safe", now - 86400000, "Gov.pl"), feedUrl: govUrl };
+  const future = { ...entry("bad-date", now + 8 * 86400000, "Gov.pl"), feedUrl: govUrl };
+  const { cache } = makeCache(new Map(), db);
+  await cache.save([safe, future]);
+  // Simulate an older persisted snapshot that predated the quarantine.
+  const [key, row] = [...db.records][0];
+  db.records.set(JSON.stringify([future.feedUrl, future.source, "id", future.id]),
+    { key: JSON.stringify([future.feedUrl, future.source, "id", future.id]), ts: future.ts, item: future });
+  assert.ok(db.records.size >= 2);
+  assert.deepEqual(Array.from(await cache.load(), item => item.id), ["safe"]);
+  assert.deepEqual([...db.records.values()].map(row => row.item.id), ["safe"]);
 });
