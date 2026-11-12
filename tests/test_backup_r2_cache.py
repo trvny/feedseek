@@ -43,12 +43,33 @@ class BackupR2CacheTests(unittest.TestCase):
             with tarfile.open(archive, "r:gz") as bundle:
                 self.assertIn("cache/saas_posts.json", bundle.getnames())
 
+    def test_retry_classifier_is_limited_to_explicit_transient_http_errors(self):
+        """Match all supported gateway statuses, not arbitrary error text."""
+        responses = {
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+        }
+        for status, description in responses.items():
+            with self.subTest(status=status):
+                self.assertTrue(backup_r2_cache.is_retryable_upload_error(
+                    f"Failed to fetch /accounts/redacted - {status}: {description};"
+                ))
+                self.assertTrue(backup_r2_cache.is_retryable_upload_error(
+                    f"Error code {status}"
+                ))
+        for message in ("401: Unauthorized", "403: Forbidden", "NoSuchKey", "Error code 5021"):
+            with self.subTest(message=message):
+                self.assertFalse(backup_r2_cache.is_retryable_upload_error(message))
+
     def test_gateway_failure_retries_same_archive(self):
         """Transient Cloudflare 502 must not lose a valid cache snapshot."""
         failed = CompletedProcess([], 1, "", "Failed to fetch /accounts/redacted/r2/... - 502: Bad Gateway;")
         success = CompletedProcess([], 0, "Uploaded", "")
         with mock.patch.dict(backup_r2_cache.os.environ, {
-            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_API_TOKEN": str(id(self)),
             "CLOUDFLARE_ACCOUNT_ID": "test",
         }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
              mock.patch.object(backup_r2_cache.subprocess, "run", side_effect=[failed, success]) as run, \
@@ -62,7 +83,7 @@ class BackupR2CacheTests(unittest.TestCase):
         """Authentication failures must not be hidden by retries."""
         failed = CompletedProcess([], 1, "", "Failed to fetch /accounts/redacted/r2/... - 403: Forbidden;")
         with mock.patch.dict(backup_r2_cache.os.environ, {
-            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_API_TOKEN": str(id(self)),
             "CLOUDFLARE_ACCOUNT_ID": "test",
         }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
              mock.patch.object(backup_r2_cache.subprocess, "run", return_value=failed) as run, \
@@ -76,7 +97,7 @@ class BackupR2CacheTests(unittest.TestCase):
         """Persistent R2 errors fail closed and block publication."""
         failed = CompletedProcess([], 1, "", "Error code 502")
         with mock.patch.dict(backup_r2_cache.os.environ, {
-            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_API_TOKEN": str(id(self)),
             "CLOUDFLARE_ACCOUNT_ID": "test",
         }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
              mock.patch.object(backup_r2_cache.subprocess, "run", return_value=failed) as run, \
