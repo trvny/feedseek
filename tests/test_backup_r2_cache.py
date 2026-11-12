@@ -51,6 +51,11 @@ class BackupR2CacheTests(unittest.TestCase):
             502: "Bad Gateway",
             503: "Service Unavailable",
             504: "Gateway Timeout",
+            520: "Web server is returning an unknown error",
+            521: "Web server is down",
+            522: "Connection timed out",
+            523: "Origin is unreachable",
+            524: "A timeout occurred",
         }
         for status, description in responses.items():
             with self.subTest(status=status):
@@ -59,6 +64,12 @@ class BackupR2CacheTests(unittest.TestCase):
                 ))
                 self.assertTrue(backup_r2_cache.is_retryable_upload_error(
                     f"Error code {status}"
+                ))
+                self.assertTrue(backup_r2_cache.is_retryable_upload_error(
+                    f"{status} {description}"
+                ))
+                self.assertTrue(backup_r2_cache.is_retryable_upload_error(
+                    f"HTTP {status}"
                 ))
         for message in ("401: Unauthorized", "403: Forbidden", "NoSuchKey", "Error code 5021"):
             with self.subTest(message=message):
@@ -77,6 +88,10 @@ class BackupR2CacheTests(unittest.TestCase):
             backup_r2_cache.upload_archive("feedseek-cache", "snapshots/cache.tar.gz", Path("cache.tar.gz"))
         self.assertEqual(run.call_count, 2)
         self.assertEqual(run.call_args_list[0].args[0], run.call_args_list[1].args[0])
+        for upload in run.call_args_list:
+            args = upload.args[0]
+            self.assertEqual(args[args.index("--file") + 1], "cache.tar.gz")
+            self.assertIn("feedseek-cache/snapshots/cache.tar.gz", args)
         sleep.assert_called_once_with(5)
 
     def test_non_transient_error_fails_without_retry(self):

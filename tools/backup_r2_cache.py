@@ -26,9 +26,12 @@ from restore_r2_cache import (
 DEFAULT_MAX_BYTES = 128 * 1024 * 1024
 MAX_UPLOAD_ATTEMPTS = 3
 _RETRYABLE_UPLOAD_RESPONSE = re.compile(
-    r"\b(?:HTTP|status(?:\s+code)?|error\s+code)\s*[:=]?\s*(?:429|500|502|503|504)\b"
-    r"|\b(?:429|500|502|503|504)\s*:\s*"
-    r"(?:Bad Gateway|Gateway Timeout|Internal Server Error|Service Unavailable|Too Many Requests)\b",
+    r"\b(?:HTTP(?:\s+(?:error|status))?|status(?:\s+code)?|error\s+code)\s*[:=]?\s*"
+    r"(?:429|500|502|503|504|52[0-4])\b"
+    r"|\b(?:429|500|502|503|504|52[0-4])\s*:?\s+"
+    r"(?:Bad Gateway|Gateway Timeout|Internal Server Error|Service Unavailable|"
+    r"Too Many Requests|Web server is returning an unknown error|Web server is down|"
+    r"Connection timed out|Origin is unreachable|A timeout occurred)\b",
     re.IGNORECASE,
 )
 
