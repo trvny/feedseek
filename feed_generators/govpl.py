@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 """Gov.pl news feed generator.
 
@@ -81,6 +81,7 @@ BLOG_URL = "https://www.gov.pl/"
 BASE = "https://www.gov.pl"
 MAX_ENTRIES = 150
 MAX_DATE_RECHECKS = 5
+MAX_FUTURE_DATE_SKEW = timedelta(days=1)
 
 # label, listing URL
 SOURCES = [
@@ -457,6 +458,19 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     return fg
 
 
+def publishable_entries(articles, *, now=None):
+    """Keep future-dated news in durable cache, not in published feeds."""
+    cutoff = (now or datetime.now(UTC)) + MAX_FUTURE_DATE_SKEW
+    publishable = []
+    for article in articles:
+        date = article.get("date")
+        if date is not None and date > cutoff:
+            logger.warning("Deferring future-dated article %s (%s)", article.get("link"), date)
+            continue
+        publishable.append(article)
+    return publishable
+
+
 def main(full=False):
     """Refresh Gov.pl and independent sources, retaining prior good entries."""
     if full:
@@ -479,7 +493,12 @@ def main(full=False):
     merged = merge_entries(new_articles, cached, id_field="link", date_field="date")
     merged = sort_posts_for_feed(merged, date_field="date")
 
-    feed_items = merged[-MAX_ENTRIES:] if len(merged) > MAX_ENTRIES else merged
+    publishable = publishable_entries(merged)
+    feed_items = publishable[-MAX_ENTRIES:] if len(publishable) > MAX_ENTRIES else publishable
+    if not feed_items:
+        save_cache(FEED_NAME, merged)
+        logger.warning("No publishable articles; preserving last good feed")
+        return True
     # Before the cache write: feed_items shares its dicts with merged, so the
     # resolved links and images are saved and never looked up again.
     # Separate image enrichment would otherwise retry the same stalled host.

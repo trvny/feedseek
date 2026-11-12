@@ -38,6 +38,15 @@
     });
   }
 
+  function omitFutureGovplNews(items) {
+    const cutoff = Date.now() + 86400000;
+    return items.filter(item => {
+      const url = String(item.feedUrl || "").split(/[?#]/, 1)[0];
+      return !/(?:^|\/)(?:feed_)?govpl_news\.xml$/.test(url)
+        || !(Number(item.ts) > cutoff);
+    });
+  }
+
   function byDate(a, b) {
     return (Number(b.ts) || 0) - (Number(a.ts) || 0);
   }
@@ -152,7 +161,7 @@
   }
 
   async function load() {
-    return migrateItems(await loadRaw());
+    return omitFutureGovplNews(migrateItems(await loadRaw()));
   }
 
   async function persist(items) {
@@ -171,13 +180,15 @@
   }
 
   function save(items) {
-    const snapshot = [...items];
+    const snapshot = omitFutureGovplNews([...items]);
     const next = writeTail.then(() => persist(snapshot), () => persist(snapshot));
     writeTail = next.then(() => {}, () => {});
     return next;
   }
 
   function mergeHistory(feeds, fresh, previous) {
+    fresh = omitFutureGovplNews(fresh);
+    previous = omitFutureGovplNews(previous);
     const active = new Set(feeds.map(feed => JSON.stringify([feed.xmlUrl, feed.title])));
     const seen = new Set(fresh.map(entryKey));
     const history = [];
