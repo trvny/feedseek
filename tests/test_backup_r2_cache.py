@@ -2,6 +2,8 @@ import sys
 import tarfile
 import tempfile
 import unittest
+from subprocess import CompletedProcess
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
@@ -40,6 +42,49 @@ class BackupR2CacheTests(unittest.TestCase):
             )
             with tarfile.open(archive, "r:gz") as bundle:
                 self.assertIn("cache/saas_posts.json", bundle.getnames())
+
+    def test_gateway_failure_retries_same_archive(self):
+        """Transient Cloudflare 502 must not lose a valid cache snapshot."""
+        failed = CompletedProcess([], 1, "", "Failed to fetch /accounts/redacted/r2/... - 502: Bad Gateway;")
+        success = CompletedProcess([], 0, "Uploaded", "")
+        with mock.patch.dict(backup_r2_cache.os.environ, {
+            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_ACCOUNT_ID": "test",
+        }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
+             mock.patch.object(backup_r2_cache.subprocess, "run", side_effect=[failed, success]) as run, \
+             mock.patch.object(backup_r2_cache.time, "sleep") as sleep:
+            backup_r2_cache.upload_archive("feedseek-cache", "snapshots/cache.tar.gz", Path("cache.tar.gz"))
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual(run.call_args_list[0].args[0], run.call_args_list[1].args[0])
+        sleep.assert_called_once_with(5)
+
+    def test_non_transient_error_fails_without_retry(self):
+        """Authentication failures must not be hidden by retries."""
+        failed = CompletedProcess([], 1, "", "Failed to fetch /accounts/redacted/r2/... - 403: Forbidden;")
+        with mock.patch.dict(backup_r2_cache.os.environ, {
+            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_ACCOUNT_ID": "test",
+        }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
+             mock.patch.object(backup_r2_cache.subprocess, "run", return_value=failed) as run, \
+             mock.patch.object(backup_r2_cache.time, "sleep") as sleep:
+            with self.assertRaisesRegex(RuntimeError, "403: Forbidden"):
+                backup_r2_cache.upload_archive("feedseek-cache", "snapshots/cache.tar.gz", Path("cache.tar.gz"))
+        run.assert_called_once()
+        sleep.assert_not_called()
+
+    def test_repeated_gateway_errors_exhaust_retry_budget(self):
+        """Persistent R2 errors fail closed and block publication."""
+        failed = CompletedProcess([], 1, "", "Error code 502")
+        with mock.patch.dict(backup_r2_cache.os.environ, {
+            "CLOUDFLARE_API_TOKEN": "test",
+            "CLOUDFLARE_ACCOUNT_ID": "test",
+        }), mock.patch.object(backup_r2_cache, "_wrangler_path", return_value=Path("wrangler")), \
+             mock.patch.object(backup_r2_cache.subprocess, "run", return_value=failed) as run, \
+             mock.patch.object(backup_r2_cache.time, "sleep") as sleep:
+            with self.assertRaisesRegex(RuntimeError, "502"):
+                backup_r2_cache.upload_archive("feedseek-cache", "snapshots/cache.tar.gz", Path("cache.tar.gz"))
+        self.assertEqual(run.call_count, backup_r2_cache.MAX_UPLOAD_ATTEMPTS)
+        self.assertEqual(sleep.call_count, backup_r2_cache.MAX_UPLOAD_ATTEMPTS - 1)
 
     def test_size_limit_fails_before_upload(self):
         with tempfile.TemporaryDirectory() as tmp:
