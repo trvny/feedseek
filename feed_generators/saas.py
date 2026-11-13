@@ -9,7 +9,6 @@ single Atom stream written to ``feeds/feed_saas.xml``:
     - Vercel            blog (native Atom) + changelog (native RSS)
                         + Chat SDK / Flags SDK / Workflow SDK docs feeds
     - Apify             blog (native RSS)
-    - Zapier            blog (native RSS)
     - Fastly            blog (native RSS)
     - Genymotion        blog (native RSS)
     - Postman           blog (native RSS) + app release notes (first-party JSON)
@@ -85,7 +84,7 @@ FEED_TITLE = "SaaS vendors"
 FEED_SUBTITLE = (
     "Combined updates from HashiCorp / HCP (blog + changelog), "
     "Bitly (blog + press + MCP changelog), Common Ninja, "
-    "Vercel (blog + changelog + SDK docs), Apify, Zapier, Fastly, Genymotion, "
+    "Vercel (blog + changelog + SDK docs), Apify, Fastly, Genymotion, "
     "Postman (blog + app release notes + press), "
     "Exa (blog + changelog), Home Assistant, "
     "Upstash Workflow releases, "
@@ -178,7 +177,6 @@ NATIVE_FEEDS = [
     ("Flags SDK", "https://flags-sdk.dev/rss.xml", 40),
     ("Workflow SDK", "https://workflow-sdk.dev/rss.xml", 40),
     ("Apify", "https://blog.apify.com/rss/", None),
-    ("Zapier", "https://zapier.com/blog/feeds/latest/", None),
     ("Fastly", "https://www.fastly.com/blog_rss.xml", 40),
     ("Genymotion Blog", "https://www.genymotion.com/blog/feed/", 30),
     ("Postman", "https://blog.postman.com/feed/", 40),
@@ -200,6 +198,8 @@ NATIVE_FEEDS = [
 # cache rows so the change takes effect on the first post-merge generation.
 RETIRED_CACHE_SOURCES = {
     "AI Elements",
+    # Zapier reposts old comparisons with publication dates in 2027.
+    "Zapier",
     "Upstash Blog",
     "Upstash Workflow Changelog",
     "Xweather Blog",
