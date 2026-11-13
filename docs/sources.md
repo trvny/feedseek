@@ -4,7 +4,7 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 
 > Plik generowany: `uv run --locked feed_generators/docs_sources.py`. Nie edytuj ręcznie — zmień źródła w generatorze.
 
-115 feedów · 941 źródeł
+115 feedów · 940 źródeł
 
 ## Spis grup
 
@@ -583,7 +583,6 @@ Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. Lis
 - ![](https://www.google.com/s2/favicons?domain=flags-sdk.dev&sz=16) Flags SDK — <https://flags-sdk.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=workflow-sdk.dev&sz=16) Workflow SDK — <https://workflow-sdk.dev/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.apify.com&sz=16) Apify — <https://blog.apify.com/rss/>
-- ![](https://www.google.com/s2/favicons?domain=zapier.com&sz=16) Zapier — <https://zapier.com/blog/feeds/latest/>
 - ![](https://www.google.com/s2/favicons?domain=www.fastly.com&sz=16) Fastly — <https://www.fastly.com/blog_rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.genymotion.com&sz=16) Genymotion Blog — <https://www.genymotion.com/blog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.postman.com&sz=16) Postman — <https://blog.postman.com/feed/>
