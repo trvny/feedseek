@@ -16,6 +16,7 @@
 
 ## Repository conventions
 
+- Commands, the add-a-feed checklist and the pipeline are documented in `docs/architecture.md`.
 - Prefer reliable native feed over scraping its HTML. Do not pass through unchanged when shared normalization or enrichment can improve published feed.
 - Use shared normalization/deduplication helpers rather than source-local copies.
 - Fix maintained sources; regenerate `feeds/` / `cache/`, no hand-editing generated output. For incremental local generation, restore durable R2 cache immediately before each run.
