@@ -1,9 +1,10 @@
 import importlib.util
 import json
+import re
 import unittest
 from pathlib import Path
 
-from lxml import etree as ET
+import feedparser
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "site" / "build_site.py"
 SPEC = importlib.util.spec_from_file_location("build_site", MODULE_PATH)
@@ -67,35 +68,43 @@ class SiteRobotsTests(unittest.TestCase):
         self.assertIn("Sitemap: https://example.com/sitemap.xml\n", robots)
 
     def test_sitemap_variants_share_canonical_urls(self):
+        """All published formats describe the same pages."""
         base = "https://example.com/feedseek/"
-        parser = ET.XMLParser(resolve_entities=False, no_network=True)
-        original = ET.fromstring(build_site.build_sitemap(base).encode(), parser)
+        original = build_site.build_sitemap(base)
         variants = build_site.build_sitemap_variants(build_site.sitemap_urls(base), base)
-        atom = "{http://www.w3.org/2005/Atom}"
         urls = [base, base + "reader/"]
-        self.assertEqual([loc.text for loc in original.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")], urls)
+        self.assertEqual(re.findall(r"<loc>(.*?)</loc>", original), urls)
         self.assertEqual(variants["sitemap.txt"].splitlines(), urls)
         self.assertEqual(json.loads(variants["sitemap.json"]), [{"url": url} for url in urls])
-        self.assertEqual(
-            [link.attrib["href"] for link in ET.fromstring(variants["sitemap-atom.xml"].encode(), parser).findall(f"{atom}entry/{atom}link")],
-            urls,
-        )
-        self.assertEqual(
-            [link.text for link in ET.fromstring(variants["sitemap-rss.xml"].encode(), parser).findall("channel/item/link")],
-            urls,
-        )
+        for name, version in (("sitemap-atom.xml", "atom10"), ("sitemap-rss.xml", "rss20")):
+            with self.subTest(name=name):
+                parsed = feedparser.parse(variants[name].encode("utf-8"))
+                self.assertFalse(parsed.bozo)
+                self.assertEqual(parsed.version, version)
+                self.assertEqual([entry.link for entry in parsed.entries], urls)
         robots = build_site.build_robots(base)
         for name in ("sitemap.txt", "sitemap-atom.xml", "sitemap-rss.xml"):
             self.assertIn(f"Sitemap: {base}{name}\n", robots)
         self.assertNotIn("sitemap.json", robots)
 
-
     def test_invalid_sitemap_urls(self):
+        """Reject empty and foreign URLs; reserve feed filenames."""
         base = "https://example.com/feedseek/"
         for urls in ([], ["https://other.example/"]):
             with self.assertRaises(ValueError):
                 build_site.build_sitemap_variants(urls, base)
         self.assertTrue({"sitemap-atom", "sitemap-rss"} <= build_site.RESERVED_PUBLIC_STEMS)
+
+    def test_sitemap_url_xml_escaping(self):
+        """Feed consumers recover escaped query parameters."""
+        base = "https://example.com/"
+        url = base + "reader/?a=1&b=2"
+        variants = build_site.build_sitemap_variants([url], base)
+        for name in ("sitemap-atom.xml", "sitemap-rss.xml"):
+            with self.subTest(name=name):
+                self.assertIn("a=1&amp;b=2", variants[name])
+                parsed = feedparser.parse(variants[name].encode("utf-8"))
+                self.assertEqual([entry.link for entry in parsed.entries], [url])
 
 
 if __name__ == "__main__":
