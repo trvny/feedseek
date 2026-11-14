@@ -26,7 +26,7 @@ class DevelopmentSourceTests(unittest.TestCase):
         self.assertEqual(urls["RubyInstaller"], "https://rubyinstaller.org/feed.xml")
         self.assertEqual(urls["JetBrains Blog"], "https://blog.jetbrains.com/feed/")
         self.assertEqual(urls["web.dev Blog"], "https://web.dev/blog/feed.xml")
-        self.assertEqual(urls["Jupyter Blog"], "https://blog.jupyter.org/feed")
+        self.assertEqual(urls["Jupyter Blog"], "https://blog.jupyter.org/feeds/all.atom.xml")
         self.assertEqual(urls["Standard C++"], "https://isocpp.org/blog/rss")
         self.assertEqual(development.DEV_TOP_MONTH_URL, "https://dev.to/top/month")
         self.assertEqual(
@@ -163,6 +163,7 @@ class DevelopmentSourceTests(unittest.TestCase):
         <a href="/blog/testowanie-api?utm_source=home">Duplicate</a>
         <a href="/blog/sztuczna-inteligencja">AI</a>
         <a href="/blog/category/ai">Category</a>
+        <a href="/blog/category">Category index</a>
         <a href="https://example.com/blog/external">External</a>
         """
         self.assertEqual(
