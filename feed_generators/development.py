@@ -33,7 +33,7 @@ SOURCES = [
     ("Ionic Framework Blog", "https://ionic.io/blog/tag/framework/feed", 40),
     ("web.dev Blog", "https://web.dev/blog/feed.xml", 40),
     ("WebAssembly News", "https://webassembly.org/feed.xml", 40),
-    ("Jupyter Blog", "https://blog.jupyter.org/feed", 40),
+    ("Jupyter Blog", "https://blog.jupyter.org/feeds/all.atom.xml", 40),
     ("Standard C++", "https://isocpp.org/blog/rss", 40),
     ("Django Weblog", "https://www.djangoproject.com/rss/weblog/", 30),
     ("Django News", "https://django-news.com/rss", 30),
@@ -207,7 +207,12 @@ def justjoin_article_links(html, known_links=None):
     for anchor in soup.find_all("a", href=True):
         link = urljoin(JUSTJOIN_BLOG_URL, anchor["href"])
         link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
-        if not _JUSTJOIN_POST_RE.fullmatch(link) or link in known_links or link in seen:
+        if (
+            not _JUSTJOIN_POST_RE.fullmatch(link)
+            or link == f"{JUSTJOIN_BLOG_URL}category"
+            or link in known_links
+            or link in seen
+        ):
             continue
         seen.add(link)
         links.append(link)
