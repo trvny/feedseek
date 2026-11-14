@@ -54,7 +54,6 @@ class AwsFeedTests(unittest.TestCase):
                 "https://aws.amazon.com/blogs/",
                 "https://repost.aws/articles",
                 "https://aws.amazon.com/blogs/aws/",
-                "https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst",
                 "https://aws.amazon.com/blogs/developer/",
                 "https://aws.amazon.com/blogs/opensource/",
             ],
@@ -885,32 +884,6 @@ class AwsFeedTests(unittest.TestCase):
             save_cache.call_args.kwargs["extra"],
             {aws.REPOST_CURSOR_KEY: {"page": 3, "token": _cursor("next")}},
         )
-
-    def test_cli_release_dates_and_changelog_are_joined(self):
-        atom = """<feed xmlns='http://www.w3.org/2005/Atom'>
-          <entry><title>2.36.34</title><updated>2026-08-28T18:18:17Z</updated><link href='https://github.com/aws/aws-cli/releases/tag/2.36.34'/></entry>
-          <entry><title>1.46.1</title><updated>2026-08-27T20:03:39Z</updated><link href='https://github.com/aws/aws-cli/releases/tag/1.46.1'/></entry>
-        </feed>"""
-        releases = aws.parse_cli_release_dates(atom)
-        self.assertEqual(list(releases), ["2.36.34"])
-        changelog = (
-            "2.36.34\n" + "=" * 7 + "\n"
-            "* api-change:``ec2``: New thing\n"
-            "* enhancement:CLI: Better output\n\n"
-            "2.36.33\n" + "=" * 7 + "\n"
-            "* api-change:``s3``: Older thing\n"
-        )
-        entries = aws.parse_cli_changelog(changelog, releases)
-        self.assertEqual(len(entries), 1)
-        self.assertEqual(entries[0]["title"], "AWS CLI 2.36.34")
-        self.assertIn("api-change:ec2: New thing", entries[0]["description"])
-        self.assertEqual(entries[0]["date"].isoformat(), "2026-08-28T18:18:17+00:00")
-
-    def test_cli_changelog_skips_known_release(self):
-        link = "https://github.com/aws/aws-cli/releases/tag/2.36.34"
-        releases = {"2.36.34": (aws.multi_rss.parse_date("2026-08-28T18:18:17Z"), link)}
-        changelog = "2.36.34\n" + "=" * 7 + "\n* fix: something\n"
-        self.assertEqual(aws.parse_cli_changelog(changelog, releases, {link}), [])
 
 
 if __name__ == "__main__":

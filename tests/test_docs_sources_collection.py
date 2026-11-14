@@ -203,6 +203,17 @@ class RealGeneratorTests(unittest.TestCase):
             open_meteo,
         )
 
+    def test_no_direct_github_repository_atom_subscriptions(self):
+        feeds = ds.load_yaml_feeds()
+        unwanted = []
+        for feed_name, config in feeds.items():
+            pairs, _ = ds.collect_sources(feed_name, config)
+            for _, url in pairs:
+                parsed = urlsplit(url)
+                if parsed.hostname == "github.com" and parsed.path.endswith(".atom"):
+                    unwanted.append((feed_name, url))
+        self.assertEqual([], unwanted)
+
     def test_registered_source_urls_have_single_owner(self):
         """One upstream URL should feed one public aggregate, not several."""
         feeds = ds.load_yaml_feeds()

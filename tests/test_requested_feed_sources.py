@@ -108,7 +108,7 @@ class RequestedFeedSourcesTests(unittest.TestCase):
             "?q=site:naukawpolsce.pl&hl=pl&gl=PL&ceid=PL:pl",
             pap_urls,
         )
-        self.assertIn(
+        self.assertNotIn(
             "https://github.com/upstash/workflow-js/releases.atom",
             saas_urls,
         )

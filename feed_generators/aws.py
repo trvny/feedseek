@@ -1,13 +1,11 @@
-"""Combined AWS announcements, blogs, re:Post articles, and AWS CLI releases."""
+"""Combined AWS announcements, blogs and re:Post articles."""
 
 from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from dataclasses import dataclass
-from datetime import datetime
 from urllib.parse import urlencode
 
 import multi_rss
@@ -31,8 +29,6 @@ DEVELOPER_BLOG_FEED = f"{DEVELOPER_BLOG_URL}feed/"
 OPEN_SOURCE_BLOG_URL = "https://aws.amazon.com/blogs/opensource/"
 OPEN_SOURCE_BLOG_FEED = f"{OPEN_SOURCE_BLOG_URL}feed/"
 REPOST_URL = "https://repost.aws/articles"
-CLI_CHANGELOG_URL = "https://raw.githubusercontent.com/aws/aws-cli/v2/CHANGELOG.rst"
-CLI_RELEASES_ATOM = "https://github.com/aws/aws-cli/releases.atom"
 
 SOURCES = (
     ("AWS What's New", WHATS_NEW_FEED, 100),
@@ -46,9 +42,7 @@ PER_SOURCE_CAP = {
     "AWS Developer Tools Blog": 80,
     "AWS Open Source Blog": 80,
     "AWS re:Post Articles": 80,
-    "AWS CLI v2 Changelog": 40,
 }
-_VERSION_HEADING_RE = re.compile(r"(?m)^(\d+\.\d+\.\d+)\r?\n=+\s*$")
 
 
 def doc_sources():
@@ -58,7 +52,6 @@ def doc_sources():
         ("AWS Blogs", BLOG_URL),
         ("AWS re:Post Articles", REPOST_URL),
         ("AWS News Blog", NEWS_BLOG_URL),
-        ("AWS CLI v2 Changelog", CLI_CHANGELOG_URL),
         ("AWS Developer Tools Blog", DEVELOPER_BLOG_URL),
         ("AWS Open Source Blog", OPEN_SOURCE_BLOG_URL),
     ]
@@ -700,84 +693,6 @@ def collect_repost(known_links: set[str], cache_state: dict) -> list[dict]:
     return _collect_repost_incremental(context)
 
 
-def parse_cli_release_dates(atom_xml: str) -> dict[str, tuple[datetime, str]]:
-    """Map AWS CLI release versions to their GitHub release date and URL."""
-    soup = BeautifulSoup(atom_xml, "xml")
-    releases = {}
-    for entry in soup.find_all("entry"):
-        title_el = entry.find("title")
-        updated_el = entry.find("updated")
-        link_el = entry.find("link", href=True)
-        version = title_el.get_text(strip=True) if title_el else ""
-        date = (
-            multi_rss.parse_date(updated_el.get_text(strip=True))
-            if updated_el
-            else None
-        )
-        link = str(link_el.get("href") or "").strip() if link_el else ""
-        if re.fullmatch(r"2\.\d+\.\d+", version) and date is not None and link:
-            releases[version] = (date, link)
-    return releases
-
-
-def _clean_rst_summary(body: str, version: str) -> str:
-    lines = []
-    for raw in body.splitlines():
-        line = raw.strip()
-        if not line:
-            continue
-        line = re.sub(r"^\*\s*", "", line)
-        line = line.replace("``", "")
-        lines.append(line)
-    summary = sanitize_xml(" ".join(lines)).strip()
-    return (summary or f"AWS CLI {version} release")[:3000]
-
-
-def parse_cli_changelog(
-    changelog: str,
-    release_dates: dict[str, tuple[datetime, str]],
-    known_links: set[str] | None = None,
-) -> list[dict]:
-    """Join v2 changelog sections with authoritative GitHub release dates."""
-    known_links = known_links or set()
-    matches = list(_VERSION_HEADING_RE.finditer(changelog))
-    entries = []
-    for index, match in enumerate(matches):
-        version = match.group(1)
-        release = release_dates.get(version)
-        if release is None:
-            continue
-        date, link = release
-        if link in known_links:
-            continue
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(changelog)
-        body = changelog[match.end() : end]
-        entries.append(
-            {
-                "title": f"AWS CLI {version}",
-                "link": link,
-                "date": date,
-                "description": _clean_rst_summary(body, version),
-                "source": "AWS CLI v2 Changelog",
-            }
-        )
-    return entries
-
-
-def collect_cli_changelog(known_links: set[str]) -> list[dict]:
-    """Collect dated AWS CLI v2 changelog entries."""
-    changelog = multi_rss.get_html(CLI_CHANGELOG_URL)
-    releases_xml = multi_rss.get_html(CLI_RELEASES_ATOM)
-    if not changelog or not releases_xml:
-        return []
-    releases = parse_cli_release_dates(releases_xml)
-    entries = parse_cli_changelog(changelog, releases, known_links)
-    multi_rss.logger.info(
-        "[AWS CLI v2 Changelog] collected %d fresh releases", len(entries)
-    )
-    return entries
-
-
 def main(full: bool = False) -> bool:
     """Generate the combined AWS feed with persisted scraper state."""
     cache_state: dict = {}
@@ -789,11 +704,12 @@ def main(full: bool = False) -> bool:
     return multi_rss.run(
         feed_name=FEED_NAME,
         title=FEED_TITLE,
-        subtitle="AWS announcements, selected blogs, re:Post articles, and AWS CLI v2 releases.",
+        subtitle="AWS announcements, selected blogs and re:Post articles.",
         blog_url=BLOG_URL,
         author="Amazon Web Services",
         sources=SOURCES,
-        extra_scrapers=(collect_repost_with_state, collect_cli_changelog),
+        extra_scrapers=(collect_repost_with_state,),
+        cache_filter=lambda entry: entry.get("source") != "AWS CLI v2 Changelog",
         max_entries=MAX_ENTRIES,
         per_source_cap=PER_SOURCE_CAP,
         cache_state=cache_state,

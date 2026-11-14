@@ -12,9 +12,6 @@ Native RSS/Atom feeds (feedparser):
   * ClaudePluginHub         https://claudepluginhub.com/feed.xml
   * OpenRouter (blog)       https://openrouter.ai/blog/feed.xml
   * LiteLLM (blog)          https://docs.litellm.ai/blog/rss.xml
-  * LiteLLM (release notes) https://github.com/BerriAI/litellm/releases.atom
-                            (docs.litellm.ai/release_notes indexes these
-                            releases; GitHub Atom avoids duplicate entries)
   * Glama (blog)            https://glama.ai/blog/rss.xml
   * Glama MCP Servers       https://glama.ai/mcp/servers/feeds/recent-servers.xml
                             (recently-registered MCP servers; high-churn, capped)
@@ -305,27 +302,12 @@ NATIVE_FEEDS = [
     # at the crawl time), so it floods the MAX_ENTRIES budget and evicts every
     # editorial source. Cap it hard, like Glama MCP Servers.
     ("ClaudePluginHub", "https://claudepluginhub.com/feed.xml", "plugins", 30),
-    # LLM gateways / routers. OpenRouter's blog feed is large, so cap it; the
-    # LiteLLM docs release_notes indexes these releases. Prefer GitHub Atom
-    # for their dated entries instead of duplicating the same versions. Optional
-    # 4th tuple element caps how many of the newest entries are taken.
+    # LLM gateways / routers. Optional fourth element caps fetched entries.
     ("OpenRouter", "https://openrouter.ai/blog/feed.xml", "openrouter", 30),
     ("Upstash Blog", "https://upstash.com/blog/feed.xml", "upstash", 30),
     ("x-cmd Blog", "https://www.x-cmd.com/feed.xml", "x-cmd", 40),
     ("Graphify Blog", "https://graphify.com/feed.xml", "graphify-blog", 40),
-    (
-        "Graphify Changelog",
-        "https://github.com/Graphify-Labs/graphify/releases.atom",
-        "graphify-changelog",
-        30,
-    ),
     ("LiteLLM Blog", "https://docs.litellm.ai/blog/rss.xml", "litellm", 20),
-    (
-        "LiteLLM Releases",
-        "https://github.com/BerriAI/litellm/releases.atom",
-        "litellm-releases",
-        15,
-    ),
     # Glama sources (moved here from the aibridge feed, where they flooded
     # the AI-labs stream). MCP Servers is a high-churn directory feed: capped
     # low per run, but it still accumulates across runs, so keep an eye on it
@@ -367,7 +349,6 @@ def doc_sources():
         ("MCP.so Blog", MCPSO_BLOG_URL),
         ("OrcaRouter Blog", ORCAROUTER_BLOG_URL),
         ("AgentID Blog", AGENTID_BLOG_URL),
-        ("LiteLLM Release Notes (documentation)", "https://docs.litellm.ai/release_notes"),
         (DIGITALOCEAN_RELEASE_LABEL + " JSON", DIGITALOCEAN_RELEASE_JSON_URL),
         (DIGITALOCEAN_RELEASE_LABEL + " RSS fallback", DIGITALOCEAN_RELEASE_RSS_URL),
     ] + list(AIHUBMIX_DOC_SOURCES)
@@ -465,7 +446,7 @@ _LOBEHUB_LEGACY_PREFIXES = (
 )
 
 # Hugging Face now has one dedicated combined feed; retire the old copy here.
-_RETIRED_CACHE_SOURCES = {"Hugging Face Blog"}
+_RETIRED_CACHE_SOURCES = {"Hugging Face Blog", "Graphify Changelog", "LiteLLM Releases"}
 
 
 def _active_cached_entries(entries):
@@ -1655,9 +1636,9 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "Manufact (blog + Cloud changelog), mcp-use TypeScript changelog, "
         "OtterlyAI, Flavio Longato, OpenRouter, "
         "OrcaRouter, Upstash, x-cmd, "
-        "Graphify (blog + changelog), MCP.so (feed + blog), "
+        "Graphify (blog), MCP.so (feed + blog), "
         "AIHubMix (blog + docs + "
-        "changelog), LiteLLM (blog + releases), Glama "
+        "changelog), LiteLLM (blog), Glama "
         "(blog, MCP servers, release notes), "
         "LobeHub (changelog + blog), AI Skill Market, Mem0 (blog + research + changelog), "
         "Cognition (research + blog), Devin (Desktop changelog + release notes), "
