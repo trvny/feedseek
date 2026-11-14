@@ -1,8 +1,9 @@
 import importlib.util
-import unittest
 import json
-import xml.etree.ElementTree as ET
+import unittest
 from pathlib import Path
+
+from lxml import etree as ET
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "site" / "build_site.py"
 SPEC = importlib.util.spec_from_file_location("build_site", MODULE_PATH)
@@ -67,24 +68,34 @@ class SiteRobotsTests(unittest.TestCase):
 
     def test_sitemap_variants_share_canonical_urls(self):
         base = "https://example.com/feedseek/"
-        original = build_site.build_sitemap(base)
-        variants = build_site.build_sitemap_variants(original, base)
+        parser = ET.XMLParser(resolve_entities=False, no_network=True)
+        original = ET.fromstring(build_site.build_sitemap(base).encode(), parser)
+        variants = build_site.build_sitemap_variants(build_site.sitemap_urls(base), base)
         atom = "{http://www.w3.org/2005/Atom}"
         urls = [base, base + "reader/"]
+        self.assertEqual([loc.text for loc in original.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")], urls)
         self.assertEqual(variants["sitemap.txt"].splitlines(), urls)
         self.assertEqual(json.loads(variants["sitemap.json"]), [{"url": url} for url in urls])
         self.assertEqual(
-            [link.attrib["href"] for link in ET.fromstring(variants["sitemap-atom.xml"]).findall(f"{atom}entry/{atom}link")],
+            [link.attrib["href"] for link in ET.fromstring(variants["sitemap-atom.xml"].encode(), parser).findall(f"{atom}entry/{atom}link")],
             urls,
         )
         self.assertEqual(
-            [link.text for link in ET.fromstring(variants["sitemap-rss.xml"]).findall("channel/item/link")],
+            [link.text for link in ET.fromstring(variants["sitemap-rss.xml"].encode(), parser).findall("channel/item/link")],
             urls,
         )
         robots = build_site.build_robots(base)
         for name in ("sitemap.txt", "sitemap-atom.xml", "sitemap-rss.xml"):
             self.assertIn(f"Sitemap: {base}{name}\n", robots)
         self.assertNotIn("sitemap.json", robots)
+
+
+    def test_invalid_sitemap_urls(self):
+        base = "https://example.com/feedseek/"
+        for urls in ([], ["https://other.example/"]):
+            with self.assertRaises(ValueError):
+                build_site.build_sitemap_variants(urls, base)
+        self.assertTrue({"sitemap-atom", "sitemap-rss"} <= build_site.RESERVED_PUBLIC_STEMS)
 
 
 if __name__ == "__main__":

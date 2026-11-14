@@ -1,12 +1,10 @@
-"""Alternate sitemap representations from the canonical XML map."""
+"""Alternate sitemap representations from the canonical URL list."""
 
 import json
 import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
 
-SITEMAP = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
 ATOM = "{http://www.w3.org/2005/Atom}"
-# Creation date of these directory entries; not a page modification date.
-LISTING_UPDATED = "2026-11-14T00:00:00Z"
 SEARCH_VARIANTS = ("sitemap.txt", "sitemap-atom.xml", "sitemap-rss.xml")
 
 
@@ -15,11 +13,9 @@ def _xml(root):
     return ET.tostring(root, encoding="unicode", xml_declaration=True) + "\n"
 
 
-def build_sitemap_variants(sitemap, base):
-    urls = [
-        loc.text
-        for loc in ET.fromstring(sitemap).findall(f"{SITEMAP}url/{SITEMAP}loc")
-    ]
+def build_sitemap_variants(urls, base, updated=None):
+    # Generated directory snapshot time, not a verified page modification date.
+    updated = updated or datetime.now(timezone.utc).isoformat(timespec="seconds")
     if not urls or any(not url or not url.startswith(base) for url in urls):
         raise ValueError("Empty or foreign sitemap URL")
 
@@ -29,7 +25,7 @@ def build_sitemap_variants(sitemap, base):
     ET.SubElement(ET.SubElement(atom, "author"), "name").text = "Feedseek"
     ET.SubElement(atom, "link", rel="self", href=base + "sitemap-atom.xml")
     ET.SubElement(atom, "link", href=base)
-    ET.SubElement(atom, "updated").text = LISTING_UPDATED
+    ET.SubElement(atom, "updated").text = updated
 
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
@@ -42,7 +38,8 @@ def build_sitemap_variants(sitemap, base):
         ET.SubElement(entry, "id").text = url
         ET.SubElement(entry, "title").text = url
         ET.SubElement(entry, "link", href=url)
-        ET.SubElement(entry, "updated").text = LISTING_UPDATED
+        ET.SubElement(entry, "updated").text = updated
+        ET.SubElement(entry, "summary").text = url
 
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = url
