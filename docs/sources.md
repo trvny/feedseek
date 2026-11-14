@@ -345,7 +345,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=ionic.io&sz=16) Ionic Framework Blog — <https://ionic.io/blog/tag/framework/feed>
 - ![](https://www.google.com/s2/favicons?domain=web.dev&sz=16) web.dev Blog — <https://web.dev/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=webassembly.org&sz=16) WebAssembly News — <https://webassembly.org/feed.xml>
-- ![](https://www.google.com/s2/favicons?domain=blog.jupyter.org&sz=16) Jupyter Blog — <https://blog.jupyter.org/feed>
+- ![](https://www.google.com/s2/favicons?domain=blog.jupyter.org&sz=16) Jupyter Blog — <https://blog.jupyter.org/feeds/all.atom.xml>
 - ![](https://www.google.com/s2/favicons?domain=isocpp.org&sz=16) Standard C++ — <https://isocpp.org/blog/rss>
 - ![](https://www.google.com/s2/favicons?domain=www.djangoproject.com&sz=16) Django Weblog — <https://www.djangoproject.com/rss/weblog/>
 - ![](https://www.google.com/s2/favicons?domain=django-news.com&sz=16) Django News — <https://django-news.com/rss>

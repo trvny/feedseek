@@ -29,7 +29,7 @@ The defaults are intentionally conservative:
 
 ## Publication cadence
 
-The scheduled generator still runs every two hours. Every publishable run backs
+The scheduled generator still runs every three hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
 results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
@@ -169,7 +169,7 @@ Inspect the `Generate feeds` step in recent [Update Feeds runs](https://github.c
 
 ```text
 .
-├── .github/workflows/update-feeds.yml   # generate + validate + publish every 2 h
+├── .github/workflows/update-feeds.yml   # generate + validate + publish every 3 h
 ├── feeds.yaml                           # source registry
 ├── feed_generators/                     # maintained generators + shared helpers
 ├── feeds/                               # untracked: generated RSS/Atom + Model Feed JSON, restored from Pages
