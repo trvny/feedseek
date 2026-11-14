@@ -42,6 +42,9 @@ ATOM = "{http://www.w3.org/2005/Atom}"
 ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "feed_generators"))
+sys.path.insert(0, str(SITE_DIR))
+
+from sitemap_variants import SEARCH_VARIANTS, build_sitemap_variants  # noqa: E402
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
 from models import load_published_feeds  # noqa: E402
@@ -824,6 +827,7 @@ def build_robots(base: str) -> str:
         "Content-Signal: ai-train=yes, search=yes, ai-input=yes\n"
         "Allow: /\n"
         f"Sitemap: {base}sitemap.xml\n"
+        + "".join(f"Sitemap: {base}{name}\n" for name in SEARCH_VARIANTS)
     )
 
 
@@ -1124,7 +1128,10 @@ def main() -> None:
 
     (OUT_DIR / "index.html").write_text(build_index(feeds, base), encoding="utf-8")
     (OUT_DIR / "index.md").write_text(build_index_markdown(all_feeds, base), encoding="utf-8")
-    (OUT_DIR / "sitemap.xml").write_text(build_sitemap(base), encoding="utf-8")
+    sitemap = build_sitemap(base)
+    (OUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    for name, content in build_sitemap_variants(sitemap, base).items():
+        (OUT_DIR / name).write_text(content, encoding="utf-8")
     (OUT_DIR / "robots.txt").write_text(build_robots(base), encoding="utf-8")
     (OUT_DIR / "llms.txt").write_text(build_llms_txt(all_feeds, base), encoding="utf-8")
     (OUT_DIR / "llms-full.txt").write_text(build_llms_full(all_feeds, base), encoding="utf-8")

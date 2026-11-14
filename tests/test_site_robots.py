@@ -1,5 +1,7 @@
 import importlib.util
 import unittest
+import json
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "site" / "build_site.py"
@@ -62,6 +64,27 @@ class SiteRobotsTests(unittest.TestCase):
         self.assertEqual(len(declared), len(set(declared)))
         self.assertIn("User-agent: *\n", robots)
         self.assertIn("Sitemap: https://example.com/sitemap.xml\n", robots)
+
+    def test_sitemap_variants_share_canonical_urls(self):
+        base = "https://example.com/feedseek/"
+        original = build_site.build_sitemap(base)
+        variants = build_site.build_sitemap_variants(original, base)
+        atom = "{http://www.w3.org/2005/Atom}"
+        urls = [base, base + "reader/"]
+        self.assertEqual(variants["sitemap.txt"].splitlines(), urls)
+        self.assertEqual(json.loads(variants["sitemap.json"]), [{"url": url} for url in urls])
+        self.assertEqual(
+            [link.attrib["href"] for link in ET.fromstring(variants["sitemap-atom.xml"]).findall(f"{atom}entry/{atom}link")],
+            urls,
+        )
+        self.assertEqual(
+            [link.text for link in ET.fromstring(variants["sitemap-rss.xml"]).findall("channel/item/link")],
+            urls,
+        )
+        robots = build_site.build_robots(base)
+        for name in ("sitemap.txt", "sitemap-atom.xml", "sitemap-rss.xml"):
+            self.assertIn(f"Sitemap: {base}{name}\n", robots)
+        self.assertNotIn("sitemap.json", robots)
 
 
 if __name__ == "__main__":
