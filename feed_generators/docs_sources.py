@@ -42,7 +42,7 @@ from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
 
 from models import load_feed_registry
-from utils import write_atomically
+from utils import public_feed_url, write_atomically
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent  # feedseek/
@@ -446,8 +446,10 @@ def build_markdown(yaml_feeds: dict, collected: dict) -> str:
             pairs, _ = collected[key]
             primary = pairs[0][1] if pairs else yaml_feeds[key].get("blog_url", "")
             out.append(f"### {fav(primary)}{feed_title(key)}")
-            base = "https://trvny.github.io/feedseek/"
-            out.append(f"`{key}` · [XML]({base}{key}.xml) · [JSON]({base}{key}.json)\n")
+            out.append(
+                f"`{key}` · [XML]({public_feed_url(key)}) · "
+                f"[JSON]({public_feed_url(key, 'json')})\n"
+            )
             for label, url in pairs:
                 out.append(f"- {fav(url)}{label} — <{url}>")
             out.append("")
