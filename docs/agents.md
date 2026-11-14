@@ -9,8 +9,8 @@ Keywords: MCP server, remote MCP, WebMCP, llms.txt, llms-full.txt, JSON Schema, 
 | Need | Use | Coverage |
 | --- | --- | --- |
 | Full history of one source | `https://trvny.github.io/feedseek/<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
-| Which feeds exist | [`model-feeds.json`](https://trvny.github.io/feedseek/model-feeds.json) catalog | Curated website selection; URLs + metadata, no articles |
-| Site overview for a model | [`llms.txt`](https://trvny.github.io/feedseek/llms.txt), [`llms-full.txt`](https://trvny.github.io/feedseek/llms-full.txt) | Website selection |
+| Which feeds exist | [`model-feeds.json`](https://trvny.github.io/feedseek/model-feeds.json) catalog | All published feed pairs; URLs + metadata, no articles |
+| Site overview for a model | [`llms.txt`](https://trvny.github.io/feedseek/llms.txt), [`llms-full.txt`](https://trvny.github.io/feedseek/llms-full.txt) | All published feeds |
 | Search / digest across sources | Remote MCP `https://feeds-proxy.travny.workers.dev/mcp` | Recent index: ≤5,000 entries, last 14 days |
 | Drive the browser Reader | WebMCP tools in [the Reader](https://trvny.github.io/feedseek/reader/) | What the open page currently shows |
 | Classic feed readers | `https://trvny.github.io/feedseek/<key>.xml` (RSS/Atom) | Same items as the JSON sibling |
@@ -19,7 +19,7 @@ Feeds live on GitHub Pages only; Git keeps no feed history.
 
 ## Model Feed JSON
 
-One `feed_<key>.json` per XML feed, format `feedseek-model-feed`, version `1`.
+One `<key>.json` per XML feed, format `feedseek-model-feed`, version `1`.
 
 - Contract: [`schemas/model-feed.v1.schema.json`](schemas/model-feed.v1.schema.json) (JSON Schema 2020-12). Raw: `https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json`.
 - Feed: `source_key`, `title`, `feed_url`, `source_feed` (XML sibling), `items[]`; optional `description`, `home_page_url`.
@@ -35,7 +35,7 @@ JSON-RPC over `POST` (single JSON responses), served by the `feeds-proxy` Worker
 | Tool | Purpose |
 | --- | --- |
 | `search` | Query the recent index; returns opaque result ids |
-| `fetch` | Full entry for a `search` id, read from the Model Feed at the commit pinned in the id |
+| `fetch` | Full entry from the live Model Feed, with a Git revision fallback for legacy ids |
 | `recent` | Bulk digest with time, topic and source filters |
 | `feedseek_reader_open` | MCP App reader panel (`ui://feedseek/reader/v1`) |
 
