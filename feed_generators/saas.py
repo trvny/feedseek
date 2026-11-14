@@ -15,7 +15,6 @@ single Atom stream written to ``feeds/feed_saas.xml``:
                         + press room (scraped)
     - Exa               changelog (native RSS) + blog (sitemap + per-post fetch)
     - Home Assistant    blog (native Atom)
-    - Upstash           Workflow SDK releases (native Atom; blog lives in SkillsLLM)
     - Xweather          blog (scraped index) + weather-api changelog (scraped)
                         + mcp-server changelog (scraped)
     - NeuralTrust       resources / blog (scraped dated anchors)
@@ -87,7 +86,6 @@ FEED_SUBTITLE = (
     "Vercel (blog + changelog + SDK docs), Apify, Fastly, Genymotion, "
     "Postman (blog + app release notes + press), "
     "Exa (blog + changelog), Home Assistant, "
-    "Upstash Workflow releases, "
     "Xweather (blog + API + MCP changelogs), "
     "NeuralTrust, "
     "Abnormal (blog + newsroom), Character.AI, "
@@ -182,11 +180,6 @@ NATIVE_FEEDS = [
     ("Postman", "https://blog.postman.com/feed/", 40),
     ("Exa Changelog", "https://exa.ai/docs/changelog/rss.xml", 40),
     ("Home Assistant", "https://www.home-assistant.io/atom.xml", 40),
-    (
-        "Upstash Workflow Releases",
-        "https://github.com/upstash/workflow-js/releases.atom",
-        40,
-    ),
     ("CodeRabbit Blog", "https://www.coderabbit.ai/feed", 50),
     ("CodeRabbit Changelog", "https://docs.coderabbit.ai/changelog/rss.xml", 40),
     ("Character.AI", "https://blog.character.ai/rss/", 40),
@@ -202,6 +195,7 @@ RETIRED_CACHE_SOURCES = {
     "Zapier",
     "Upstash Blog",
     "Upstash Workflow Changelog",
+    "Upstash Workflow Releases",
     "Xweather Blog",
     "Xweather Weather API Changelog",
     "Xweather MCP Server Changelog",

@@ -8,7 +8,6 @@ Aggregates Groq's update sources into one **Atom** feed written to
     - Groq Blog              https://groq.com/blog                              (HTML)
     - Groq Newsroom          https://groq.com/newsroom                          (HTML)
     - Groq Changelog         https://groq.com/changelog                         (HTML)
-    - Changelog repo commits https://github.com/groq/groq-changelog/commits/main.atom (native Atom)
 
 Source handling:
   * Blog / Newsroom — server-rendered listing cards: an ``<a href="/blog/...">``
@@ -18,10 +17,6 @@ Source handling:
   * Changelog — entries are ``<h2>`` blocks (no ids) with an abbreviated date
     nearby and the body following; links get a synthetic ``#<slug>`` fragment
     for stable dedupe (fragments are the only differentiator — preserve them).
-    The page lags behind the changelog repo, hence the commits feed below.
-  * Commits — the groq/groq-changelog GitHub Atom feed; coarse batch commits
-    ("Q1 2026 changelog entries"), but fresher than the website. Parsed as
-    native Atom entries.
 
 History accumulates across runs via the shared JSON cache
 (``cache/groq_posts.json``); entries dedupe by link, then cross-source by
@@ -63,8 +58,6 @@ CARD_SOURCES = [
 ]
 
 CHANGELOG_URL = "https://groq.com/changelog"
-COMMITS_ATOM_URL = "https://github.com/groq/groq-changelog/commits/main.atom"
-COMMITS_LABEL = "Groq Changelog commits"
 
 DATE_RE = re.compile(
     r"((?:January|February|March|April|May|June|July|August|September|October|November|December"
@@ -237,46 +230,6 @@ def scrape_changelog(known_links):
 
 
 # --------------------------------------------------------------------------- #
-# groq/groq-changelog commits (native GitHub Atom)
-# --------------------------------------------------------------------------- #
-
-
-def scrape_commits_atom(known_links):
-    label = COMMITS_LABEL
-    entries = []
-    xml = _get_html(COMMITS_ATOM_URL)
-    if xml is None:
-        return entries
-    try:
-        soup = BeautifulSoup(xml, "xml")
-    except Exception as e:
-        logger.warning("Could not parse %s: %s", COMMITS_ATOM_URL, e)
-        return entries
-
-    for item in soup.find_all("entry"):
-        try:
-            link_el = item.find("link")
-            link = link_el.get("href") if link_el else ""
-            if not link or link in known_links:
-                continue
-            title_el = item.find("title")
-            title = sanitize_xml(title_el.get_text(strip=True)) if title_el else label
-            upd_el = item.find("updated")
-            date_obj = parse_date(upd_el.get_text(strip=True)) if upd_el else None
-            entries.append({
-                "title": title,
-                "link": link,
-                "date": date_obj,
-                "description": title,
-                "source": label,
-            })
-            logger.info("  [%s] %s", label, title)
-        except Exception as e:
-            logger.warning("  [%s] skipping malformed entry: %s", label, e)
-    return entries
-
-
-# --------------------------------------------------------------------------- #
 # Orchestration
 # --------------------------------------------------------------------------- #
 
@@ -288,8 +241,6 @@ def scrape_all(known_links):
         new_entries += scrape_cards(label, url, base, prefix, known_links)
     logger.info("Scraping Groq Changelog ...")
     new_entries += scrape_changelog(known_links)
-    logger.info("Scraping %s ...", COMMITS_LABEL)
-    new_entries += scrape_commits_atom(known_links)
     return new_entries
 
 
@@ -298,8 +249,7 @@ def generate_atom_feed(articles, feed_name=FEED_NAME):
     fg.id(f"https://groq.com/{feed_name}")
     fg.title("Groq")
     fg.subtitle(
-        "Groq updates: Blog, Newsroom, the GroqCloud changelog, and commits to "
-        "the groq-changelog repo."
+        "Groq updates: Blog, Newsroom and the GroqCloud changelog."
     )
     setup_feed_links(fg, BLOG_URL, feed_name)
     fg.language("en")
@@ -330,6 +280,7 @@ def main(full=False):
         cache = load_cache(FEED_NAME)
         cached = deserialize_entries(cache.get("entries", []), date_field="date")
 
+    cached = [e for e in cached if e.get("source") != "Groq Changelog commits"]
     known_links = {e["link"] for e in cached}
     new_articles = scrape_all(known_links)
 

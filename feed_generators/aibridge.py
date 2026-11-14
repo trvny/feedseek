@@ -525,7 +525,10 @@ def main(full=False):
         # Glama (blog, MCP Servers, release notes) all moved to the skillsllm
         # feed; evict any leftover Glama-sourced cache entries so they don't
         # linger here until they age past the cap.
-        cache_filter=lambda e: not str(e.get("source", "")).startswith("Glama"),
+        cache_filter=lambda e: (
+            not str(e.get("source", "")).startswith("Glama")
+            and e.get("source") != "Groq Changelog commits"
+        ),
         cache_transform=repair_answer_ai_entry,
         full=full,
     )

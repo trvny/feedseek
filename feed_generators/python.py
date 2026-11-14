@@ -21,11 +21,6 @@ Planet Python already aggregates Python Insider (blog.python.org), the PSF Blog
 arrive via Planet and ``multi_rss``'s normalized URL/title dedupe keeps each
 story single.
 
-The pypa tools (pip, build, cibuildwheel) publish their changelogs as Sphinx /
-MkDocs doc pages, but each also ships a native, dated GitHub Releases Atom feed
-carrying the same version notes, which is far more robust than scraping three
-different doc-site layouts.
-
 pydantic.dev/articles has no native feed (Next.js, server-rendered cards with
 clean ``og:title`` / ``article:published_time`` meta), so it is folded in via a
 small custom scraper.
@@ -59,9 +54,6 @@ SOURCES = [
     ("PyPI Updates", "https://pypi.org/rss/updates.xml", 5),
     ("PyDevTools", "https://pydevtools.com/handbook/reference/index.xml", 30),
     ("Anaconda", "https://www.anaconda.com/feed", 30),
-    ("pip", "https://github.com/pypa/pip/releases.atom", 15),
-    ("build (pypa)", "https://github.com/pypa/build/releases.atom", 15),
-    ("cibuildwheel", "https://github.com/pypa/cibuildwheel/releases.atom", 15),
 ]
 
 
@@ -135,6 +127,8 @@ def _pypi_daily_cap(limit=5):
     seen = defaultdict(int)
 
     def keep(entry):
+        if entry.get("source") in {"pip", "build (pypa)", "cibuildwheel"}:
+            return False
         if entry.get("source") != "PyPI Updates":
             return True
         date = entry.get("date")
@@ -151,8 +145,7 @@ def main(full=False):
         title="Python",
         subtitle="Combined Python ecosystem feed: PyPI (blog + updates), "
                  "Python Status, Planet Python, python.org downloads, "
-                 "Python Central, PEPs, PyTorch, PyDevTools, Anaconda, "
-                 "pip/build/cibuildwheel releases, and Pydantic.",
+                 "Python Central, PEPs, PyTorch, PyDevTools, Anaconda, and Pydantic.",
         blog_url="https://www.python.org/",
         author="the Python community",
         sources=SOURCES,
