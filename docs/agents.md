@@ -58,7 +58,7 @@ Limits: 64 KiB request bodies, 16 MiB upstream JSON; arguments validated server-
 
 | File | Built by | Where |
 | --- | --- | --- |
-| `feeds/feed_*.json` | `feed_generators/model_feed.py` | Repo, every 2 h |
+| `<key>.json` (Model Feed) | `feed_generators/model_feed.py` | GitHub Pages, every 2 h |
 | `docs/model-feeds.md` | `feed_generators/docs_model_feeds.py` | Repo |
 | `model-feeds.json`, `llms.txt`, `llms-full.txt` | `site/build_site.py` | GitHub Pages |
 | `feedseek-search-index.json` | `site/build_search_index.py` | GitHub Pages, read by remote MCP |

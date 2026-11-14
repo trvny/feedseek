@@ -141,6 +141,23 @@ class ModuleCompositionTests(unittest.TestCase):
         )
 
 
+class RenderingTests(unittest.TestCase):
+    def test_group_toc_and_published_feed_links(self):
+        registry = {"govpl_news": {}, "extra": {}}
+        collected = {
+            key: ([("Example", "https://example.com/feed")], "generator")
+            for key in registry
+        }
+        markdown = ds.build_markdown(registry, collected)
+        for title, _ in ds.render_plan(registry):
+            anchor = title.lower().replace(" ", "-")
+            self.assertIn(f"- [{title}](#{anchor})", markdown)
+            self.assertIn(f"## {title}\n", markdown)
+        self.assertIn("[XML](https://trvny.github.io/feedseek/extra.xml)", markdown)
+        self.assertIn("[JSON](https://trvny.github.io/feedseek/extra.json)", markdown)
+        self.assertNotIn("../feeds/", markdown)
+
+
 class RealGeneratorTests(unittest.TestCase):
     """The three the document actually got wrong, checked against the real code."""
 
