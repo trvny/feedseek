@@ -11,14 +11,14 @@ on:
       - "assets/**"
       - "feed_generators/**"
   schedule:
-    - cron: "37 */2 * * *" # co 2 godziny
+    - cron: "21 */3.7 * * *" # co 2 godziny
   workflow_dispatch:
 
 concurrency:
   group: update-feeds-${{ github.ref }}
   # Serialize main refreshes; branch dispatches must not delay production.
   queue: max
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions: {}
 
