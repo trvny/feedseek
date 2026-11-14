@@ -287,7 +287,7 @@ def short_name(path: Path) -> str:
 
 # Short feed names share the site root with these generated files.
 RESERVED_PUBLIC_STEMS = frozenset({
-    "index", "llms", "llms-full", "sitemap", "robots", "model-feeds",
+    "index", "llms", "llms-full", "sitemap", "sitemap-atom", "sitemap-rss", "robots", "model-feeds",
     "subscriptions", "favicon", "site", "webmcp",
 })
 
@@ -763,13 +763,17 @@ def build_index(feeds: list[dict], base: str) -> str:
 """
 
 
+def sitemap_urls(base: str) -> list[str]:
+    return [base, base + "reader/"]
+
+
 def build_sitemap(base: str) -> str:
     # HTML pages only. Feed XML/JSON never index as pages; agents find them via
     # llms.txt / model-feeds.json / <link rel="alternate">.
     # No lastmod: rebuild timestamps are not verified content changes.
     urls = [
-        f"  <url><loc>{html.escape(base + path)}</loc></url>"
-        for path in ("", "reader/")
+        f"  <url><loc>{html.escape(url)}</loc></url>"
+        for url in sitemap_urls(base)
     ]
     body = "\n".join(urls)
     return (
@@ -1130,7 +1134,7 @@ def main() -> None:
     (OUT_DIR / "index.md").write_text(build_index_markdown(all_feeds, base), encoding="utf-8")
     sitemap = build_sitemap(base)
     (OUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-    for name, content in build_sitemap_variants(sitemap, base).items():
+    for name, content in build_sitemap_variants(sitemap_urls(base), base).items():
         (OUT_DIR / name).write_text(content, encoding="utf-8")
     (OUT_DIR / "robots.txt").write_text(build_robots(base), encoding="utf-8")
     (OUT_DIR / "llms.txt").write_text(build_llms_txt(all_feeds, base), encoding="utf-8")
