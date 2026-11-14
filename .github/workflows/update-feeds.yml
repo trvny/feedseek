@@ -18,7 +18,7 @@ concurrency:
   group: update-feeds-${{ github.ref }}
   # Serialize main refreshes; branch dispatches must not delay production.
   queue: max
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions: {}
 
