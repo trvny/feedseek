@@ -142,6 +142,16 @@ clean environment and invoke the supported CLI from another working directory,
 using a temporary registry and destination. Until such a test exists, leave
 `package = false` in place and treat publishing as a separate decision.
 
+## Source diagnostics
+
+A successful publication can contain stale entries from individual sources.
+Inspect the `Generate feeds` step in recent [Update Feeds runs](https://github.com/trvny/feedseek/actions/workflows/update-feeds.yml) for repeated fetch errors, empty parses and selector warnings. Compare the newest entry with upstream publication dates, not merely the feed's update timestamp.
+
+- `uv run --locked tools/check_sources.py --broken`: HTTP probe across the inventory. Use `--feed <key>` for targeted checks. HTTP 200 alone does not prove the parser still works; blocked or rate-limited responses are unverified, not necessarily dead.
+- `uv run --locked feed_generators/docs_sources.py --check`: source coverage report without writing.
+- `uv run --locked feed_generators/docs_sources.py`: regenerate the source inventory after changes. The source ownership test in `tests/test_docs_sources_collection.py` rejects identical upstream URLs across enabled feeds.
+- Verify parser changes with targeted fixtures and a local full/stateless run where practical; do not overwrite the durable R2 cache during diagnostics.
+
 ## Adding a feed
 
 1. Create `feed_generators/<name>.py` exposing `main(full: bool)` and publish through the shared writer, which maintains the XML + single Model Feed JSON publication pair.
@@ -171,6 +181,7 @@ using a temporary registry and destination. Until such a test exists, leave
     ├── architecture.md                  # this file
     ├── feeds.md                         # per-feed background and trade-offs
     ├── sources.md                       # generated source inventory
+    ├── model-feeds.md                   # generated Model Feed URL index
     ├── agents.md                        # LLM/agent surfaces: MCP, WebMCP, llms.txt
     ├── schemas/                         # Model Feed JSON Schema
     └── cache.md                         # cache behavior and maintenance
