@@ -764,6 +764,7 @@ def build_index(feeds: list[dict], base: str) -> str:
 
 
 def sitemap_urls(base: str) -> list[str]:
+    """Canonical indexable page URLs."""
     return [base, base + "reader/"]
 
 
