@@ -1,6 +1,5 @@
 import importlib.util
 import json
-import re
 import unittest
 from pathlib import Path
 
@@ -73,7 +72,14 @@ class SiteRobotsTests(unittest.TestCase):
         original = build_site.build_sitemap(base)
         variants = build_site.build_sitemap_variants(build_site.sitemap_urls(base), base)
         urls = [base, base + "reader/"]
-        self.assertEqual(re.findall(r"<loc>(.*?)</loc>", original), urls)
+        self.assertEqual(
+            original,
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"  <url><loc>{base}</loc></url>\n"
+            f"  <url><loc>{base}reader/</loc></url>\n"
+            "</urlset>\n",
+        )
         self.assertEqual(variants["sitemap.txt"].splitlines(), urls)
         self.assertEqual(json.loads(variants["sitemap.json"]), [{"url": url} for url in urls])
         for name, version in (("sitemap-atom.xml", "atom10"), ("sitemap-rss.xml", "rss20")):
@@ -104,6 +110,7 @@ class SiteRobotsTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertIn("a=1&amp;b=2", variants[name])
                 parsed = feedparser.parse(variants[name].encode("utf-8"))
+                self.assertFalse(parsed.bozo)
                 self.assertEqual([entry.link for entry in parsed.entries], [url])
 
 
