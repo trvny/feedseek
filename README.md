@@ -179,19 +179,19 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 ## 📰 Mini news
 
 <!--README_FEED:START-->
-- [Trust but Verify: Implementing Frontier AI Policy in California and Beyond](https://carnegieendowment.org/research/2026/11/trust-but-verify-implementing-frontier-ai-policy-in-california-and-beyond)
-- [Promises Made, Promises Unmet: The NPP’s Struggle to Reform Sri Lanka](https://carnegieendowment.org/research/2026/11/promises-made-promises-unmet-the-npps-struggle-to-reform-sri-lanka)
-- [W Filipowicach zagrają cztery kapele - zakliczyninfo.pl](https://news.google.com/atom/articles/CBMijAFBVV95cUxPOXdxVjVMdHc0YUw2akRlZlJZREw0WUVmeHdvbDNqNUo5cnNRM1ZWUm9aSEJzSUlKNU1hSkF2anlwUm5sTGpzTHN1NG9wZXhhSGJYbHB6RWhUaUxlQ3FOTnlwNmloNnJLNnJnbjVmYzJ6RWFqMGdvZ3VzVjJNQUZ4SU9qUzFINjBIQ25BSQ?oc=5)
-- [Product of the Day — A Magical Bag Of Holding Except The Only Thing It Can Hold Is Infinite Fedoras](https://anycrap.shop/product/a-magical-bag-of-holding-except-the-only-thing-it-can-hold-is-infinite-fedoras)
-- [Cat Fact of the Day](https://catfact.ninja/)
-- [Joke of the Day](https://djtech.net/humor/things_to_think_about.htm)
+- [How Climate Change Is Reshaping India’s Demographic Dividend](https://carnegieendowment.org/research/2026/11/how-climate-change-is-reshaping-indias-demographic-dividend)
+- [Naresh Bhatt Convicted: The Road to Justice for Mamta's Family | Case by Case | "48 Hours" Podcast](https://www.cbsnews.com/video/111326-48-hours-case-by-case-episode-30/)
+- [FAA issues nationwide ground stop, stranding thousands](https://www.cbsnews.com/news/faa-issues-nationwide-ground-stop/)
+- [Flights grounded across US after air traffic communications outage](https://www.reuters.com/world/us/faa-issues-national-ground-stop-due-extraordinary-circumstance-reasons-safety-2026-11-13/)
+- [Passengers rescued after tanker hit river cruise in New Orleans](https://www.cbsnews.com/news/tanker-cruise-collision-mississippi-river-new-orleans/)
+- [EXCLUSIVE: Investors flock to Anthropic IPO but question durability of AI lead](https://www.reuters.com/business/finance/investors-flock-anthropic-ipo-question-durability-ai-lead-2026-11-13/)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝More than 80% of the emails sent daily are spams.❞</i>
+<i>❝“If you think your users are idiots, only idiots will use it.”— Linus Torvalds❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
