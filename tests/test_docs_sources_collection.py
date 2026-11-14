@@ -143,6 +143,26 @@ class ModuleCompositionTests(unittest.TestCase):
 
 
 class RenderingTests(unittest.TestCase):
+    def test_front_source_order(self):
+        pairs = [
+            ("Other", "https://other.example/feed"),
+            ("Subdomain", "https://docs.example.com/feed"),
+            ("Same host", "https://example.com/news"),
+            ("Front", "https://www.example.com/"),
+            ("Unrelated", "https://example.com.evil.test/feed"),
+        ]
+        self.assertEqual(
+            [label for label, _ in ds.ordered_sources(pairs, "https://www.example.com/")],
+            ["Front", "Same host", "Subdomain", "Other", "Unrelated"],
+        )
+
+    def test_inventory_heading_uses_front_host(self):
+        registry = {"extra": {"blog_url": "https://www.example.com/"}}
+        collected = {"extra": ([("Other", "https://other.example/feed")], "generator")}
+        markdown = ds.build_markdown(registry, collected)
+        self.assertIn("### ![](https://www.google.com/s2/favicons?domain=www.example.com", markdown)
+
+
     def test_group_toc_and_published_feed_links(self):
         registry = {"govpl_news": {}, "extra": {}}
         collected = {
