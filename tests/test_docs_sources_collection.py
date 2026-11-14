@@ -11,6 +11,7 @@ import unittest
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlsplit
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -148,13 +149,14 @@ class RenderingTests(unittest.TestCase):
             key: ([("Example", "https://example.com/feed")], "generator")
             for key in registry
         }
-        markdown = ds.build_markdown(registry, collected)
+        with patch("utils.PUBLIC_BASE", "https://fork.github.io/feedseek/"):
+            markdown = ds.build_markdown(registry, collected)
         for title, _ in ds.render_plan(registry):
             anchor = title.lower().replace(" ", "-")
             self.assertIn(f"- [{title}](#{anchor})", markdown)
             self.assertIn(f"## {title}\n", markdown)
-        self.assertIn("[XML](https://trvny.github.io/feedseek/extra.xml)", markdown)
-        self.assertIn("[JSON](https://trvny.github.io/feedseek/extra.json)", markdown)
+        self.assertIn("[XML](https://fork.github.io/feedseek/extra.xml)", markdown)
+        self.assertIn("[JSON](https://fork.github.io/feedseek/extra.json)", markdown)
         self.assertNotIn("../feeds/", markdown)
 
 
