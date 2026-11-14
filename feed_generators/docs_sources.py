@@ -484,14 +484,19 @@ def build_markdown(yaml_feeds: dict, collected: dict) -> str:
 def coverage_report(yaml_feeds: dict, collected: dict) -> int:
     """Report feeds with nothing better than their blog_url. Not a failure:
     single-source scrapers are supposed to look like that."""
-    fallbacks = sorted(k for k, (_, origin) in collected.items() if origin != "generator")
+    fallbacks = sorted(k for k, (_, origin) in collected.items() if origin == "blog_url")
+    ast_sources = sorted(k for k, (_, origin) in collected.items() if origin == "ast")
+    generators = sum(origin == "generator" for _, origin in collected.values())
     empty = sorted(k for k, (pairs, _) in collected.items() if not pairs)
     print(f"{len(yaml_feeds)} feeds in feeds.yaml", file=sys.stderr)
     print(
-        f"{len(yaml_feeds) - len(fallbacks)} with generator sources, "
+        f"{generators} with generator sources, "
+        f"{len(ast_sources)} with AST sources, "
         f"{len(fallbacks)} using fallback URLs",
         file=sys.stderr,
     )
+    if ast_sources:
+        print(f"  ast: {', '.join(ast_sources)}", file=sys.stderr)
     if fallbacks:
         print(f"  blog_url: {', '.join(fallbacks)}", file=sys.stderr)
     if empty:
