@@ -9,24 +9,23 @@ import bitly
 
 
 class PressTests(unittest.TestCase):
-    def test_current_dated_press_cards(self):
+    def test_current_cards_and_legacy_coverage(self):
         page = """
-          <article><span>April 2, 2026</span><h3>
-          <a href="/pages/resources/press/new-features/">New features</a>
-          </h3></article>
-          <article><span>March 19, 2026</span><h3>
-          <a href="/pages/resources/press/new-cto/">New CTO</a>
-          </h3></article>
-          <article><h3><a href="/pages/resources/press/undated/">Undated</a></h3></article>
+          <div class="press-info"></div>
+          <a class="card-news--internal" href="/pages/press/new-features/">
+            <span>April 2, 2026</span><h3>New features</h3></a>
+          <a class="card-news--external" href="https://example.com/coverage">
+            <span>March 19, 2026</span><h3>External coverage</h3></a>
+          <a class="card-news--internal" href="/pages/press/undated/">
+            <h3>Undated</h3></a>
+          <a class="card-news--internal" href="/pages/press/new-features/">
+            <span>April 2, 2026</span><h3>Duplicate</h3></a>
         """
         with patch.object(bitly, "_get_html", return_value=page):
             entries = bitly.scrape_press(set())
         self.assertEqual(
             [entry["link"] for entry in entries],
-            [
-                "https://bitly.com/pages/resources/press/new-features/",
-                "https://bitly.com/pages/resources/press/new-cto/",
-            ],
+            ["https://bitly.com/pages/press/new-features/", "https://example.com/coverage"],
         )
         self.assertEqual(entries[0]["date"].date().isoformat(), "2026-04-02")
 

@@ -206,41 +206,37 @@ def scrape_press(known_links):
         return entries
     soup = BeautifulSoup(html, "html.parser")
 
-    infos = soup.find_all("div", class_="press-info")
-    if not infos:
-        # Current first-party press permalinks; smallest dated card.
-        for heading in soup.select("h2, h3, h4"):
-            anchor = heading.find("a", href=True)
-            if anchor is None:
-                continue
-            link = urljoin(PRESS_URL, anchor["href"])
-            if not re.fullmatch(r"https://bitly\.com/pages/resources/press/[^/?#]+/?", link):
-                continue
-            for parent in heading.parents:
-                if parent.name in ("body", "html", "[document]"):
-                    break
-                headings = parent.select("h2 a[href], h3 a[href], h4 a[href]")
-                if len(headings) != 1:
-                    break
-                if DATE_RE.search(parent.get_text(" ", strip=True)):
-                    infos.append(parent)
-                    break
-    if not infos:
-        logger.warning("  [%s] no press items matched — layout may have changed", label)
-        return entries
+    seen = set(known_links)
+    candidates = []
+    # Legacy cards can contain external coverage links.
+    for info in soup.select("div.press-info"):
+        anchor = info.select_one("h3 a[href], h2 a[href], h4 a[href]")
+        if anchor is not None:
+            candidates.append((info, anchor, anchor.get_text(" ", strip=True), True))
 
-    for info in infos:
+    # Current cards wrap the heading and date in the clickable card itself.
+    for anchor in soup.select("a.card-news--internal[href], a.card-news--external[href]"):
+        heading = anchor.find(["h2", "h3", "h4"])
+        if heading is not None:
+            candidates.append((anchor, anchor, heading.get_text(" ", strip=True), False))
+
+    matched = 0
+    for info, anchor, title, legacy in candidates:
         try:
-            heading = info.find(["h2", "h3", "h4"])
-            a = heading.find("a", href=True) if heading else None
-            if a is None:
+            link = urljoin(PRESS_URL, anchor["href"]).split("#")[0]
+            title = re.sub(r"\s+", " ", title).strip()
+            if not link.startswith(("https://", "http://")) or not title:
                 continue
-            link = urljoin(PRESS_URL, a["href"]).split("#")[0]
-            if not link or link in known_links:
-                continue
-            title = re.sub(r"\s+", " ", a.get_text(" ", strip=True))
             m = DATE_RE.search(info.get_text(" ", strip=True))
+            if not m and not legacy:
+                continue
+            matched += 1
+            if link in seen:
+                continue
             date_obj = parse_date(m.group(1)) if m else stable_fallback_date(link)
+            if date_obj is None:
+                continue
+            seen.add(link)
             entries.append({
                 "title": sanitize_xml(title),
                 "link": link,
@@ -251,6 +247,8 @@ def scrape_press(known_links):
             logger.info("  [%s] %s", label, title)
         except Exception as e:
             logger.warning("  [%s] skipping malformed item: %s", label, e)
+    if not matched:
+        logger.warning("  [%s] no press items matched — layout may have changed", label)
     return entries
 
 
