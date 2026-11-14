@@ -206,7 +206,7 @@ def scrape_press(known_links):
         return entries
     soup = BeautifulSoup(html, "html.parser")
 
-    seen = set(known_links)
+    seen = {urljoin(PRESS_URL, link).split("#")[0] for link in known_links}
     candidates = []
     # Legacy cards can contain external coverage links.
     for info in soup.select("div.press-info"):
