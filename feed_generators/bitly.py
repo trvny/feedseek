@@ -16,8 +16,7 @@ Source handling:
     cached, the article page is fetched once for its ``og:title`` /
     ``og:description`` / ``article:published_time`` meta, so steady-state runs
     do no per-article fetches.
-  * Press Room — each item is a ``div.press-info`` carrying a "April 2, 2026"
-    date and an ``h3.post-title`` link (sometimes to external coverage).
+  * Press Room — dated heading links, with a fallback for current press cards.
   * MCP changelog — a Next.js docs page; the page markdown ships in
     ``__NEXT_DATA__`` (``props.pageProps.markdownSource``) as a
     ``| Release Date | Summary |`` table with month-granular dates. Entries
@@ -35,6 +34,7 @@ import json
 import re
 import sys
 import time
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -208,16 +208,34 @@ def scrape_press(known_links):
 
     infos = soup.find_all("div", class_="press-info")
     if not infos:
+        # Current first-party press permalinks; smallest dated card.
+        for heading in soup.select("h2, h3, h4"):
+            anchor = heading.find("a", href=True)
+            if anchor is None:
+                continue
+            link = urljoin(PRESS_URL, anchor["href"])
+            if not re.fullmatch(r"https://bitly\.com/pages/resources/press/[^/?#]+/?", link):
+                continue
+            for parent in heading.parents:
+                if parent.name in ("body", "html", "[document]"):
+                    break
+                headings = parent.select("h2 a[href], h3 a[href], h4 a[href]")
+                if len(headings) != 1:
+                    break
+                if DATE_RE.search(parent.get_text(" ", strip=True)):
+                    infos.append(parent)
+                    break
+    if not infos:
         logger.warning("  [%s] no press items matched — layout may have changed", label)
         return entries
 
     for info in infos:
         try:
-            h3 = info.find("h3")
-            a = h3.find("a", href=True) if h3 else None
+            heading = info.find(["h2", "h3", "h4"])
+            a = heading.find("a", href=True) if heading else None
             if a is None:
                 continue
-            link = a["href"].split("#")[0]
+            link = urljoin(PRESS_URL, a["href"]).split("#")[0]
             if not link or link in known_links:
                 continue
             title = re.sub(r"\s+", " ", a.get_text(" ", strip=True))

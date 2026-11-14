@@ -87,6 +87,7 @@ BUILD_RSS_URL = "https://x.ai/changelog/build/rss.xml"
 RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes"
 RELEASE_NOTES_MD_URL = "https://docs.x.ai/developers/release-notes.md"
 GROK_RELEASE_NOTES_URL = "https://grok.com/release-notes"
+GROK_SITEMAP_URL = "https://grok.com/sitemap.xml"
 X_BLOG_URL = "https://blog.x.com/"
 X_ENGINEERING_URL = "https://blog.x.com/engineering/en_us"
 CURSOR_CHANGELOG_URL = "https://cursor.com/changelog/rss.xml"
@@ -608,8 +609,9 @@ def _parse_grok_release_notes_index(html):
 
     for anchor in soup.find_all("a", href=True):
         link = urljoin(GROK_RELEASE_NOTES_URL, anchor.get("href", ""))
-        match = _GROK_RELEASE_RE.search(urlparse(link).path + "/")
-        if not match:
+        parsed = urlparse(link)
+        match = _GROK_RELEASE_RE.search(parsed.path + "/")
+        if parsed.hostname != "grok.com" or not match:
             continue
         matches[link.rstrip("/")] = re.sub(
             r"\s+", " ", anchor.get_text(" ", strip=True)
@@ -660,9 +662,22 @@ def _parse_grok_release_notes_index(html):
 
 def scrape_grok_release_notes(known_links):
     html = _get_html(GROK_RELEASE_NOTES_URL)
-    if html is None:
-        return []
-    candidates = _parse_grok_release_notes_index(html)
+    candidates = _parse_grok_release_notes_index(html) if html else []
+    if not candidates:
+        sitemap = _get_html(GROK_SITEMAP_URL)
+        if sitemap:
+            # Only actual release-note URLs from sitemap locations.
+            locations = BeautifulSoup(sitemap, "xml").find_all("loc")
+            links = [
+                node.get_text(strip=True)
+                for node in locations
+                if urlparse(node.get_text(strip=True)).hostname == "grok.com"
+            ]
+            anchors = "".join(
+                f'<a href="{link}"></a>' for link in links
+                if _GROK_RELEASE_RE.fullmatch(urlparse(link).path + "/")
+            )
+            candidates = _parse_grok_release_notes_index(anchors)
     entries = [entry for entry in candidates if entry["link"] not in known_links]
     if not candidates:
         logger.warning("  [Grok release notes] no releases matched — layout may have changed")
