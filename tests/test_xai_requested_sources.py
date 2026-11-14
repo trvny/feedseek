@@ -1,5 +1,6 @@
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
@@ -88,6 +89,23 @@ class XAIRequestedSourcesTests(unittest.TestCase):
         self.assertEqual(
             by_link["https://grok.com/release-notes/sep-05-2026"]["source"],
             "Grok release notes",
+        )
+
+
+    def test_release_notes_fall_back_to_sitemap(self):
+        sitemap = """<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          <url><loc>https://grok.com/release-notes/sep-05-2026</loc></url>
+          <url><loc>https://grok.com/release-notes/sep-12-2026</loc></url>
+          <url><loc>https://example.com/release-notes/sep-19-2026</loc></url>
+          <url><loc>https://grok.com/other</loc></url>
+        </urlset>"""
+        with patch.object(xai, "_get_html", side_effect=["<main></main>", sitemap]):
+            entries = xai.scrape_grok_release_notes(
+                {"https://grok.com/release-notes/sep-05-2026"}
+            )
+        self.assertEqual(
+            [entry["link"] for entry in entries],
+            ["https://grok.com/release-notes/sep-12-2026"],
         )
 
 
