@@ -42,7 +42,7 @@ from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
 
 from models import load_feed_registry
-from utils import write_atomically
+from utils import public_feed_url, write_atomically
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent  # feedseek/
@@ -56,20 +56,20 @@ LIST_NAMES = ("SOURCES", "RSS_SOURCES", "NATIVE_FEEDS", "FEED_SOURCES")
 # fmt: off
 # grouping: feed_key order within each themed section
 GROUPS = [
-    ("🇵🇱 Polska — rząd i informacje", ["govpl_news", "pap", "tvp", "spidersweb"]),
-    ("🌍 Świat — newsy", ["reuters", "euronews", "europa", "geopolitics"]),
-    ("🤖 AI / LLM", ["anthropic", "claude", "openai", "xai", "aibridge", "skillsllm"]),
-    ("💻 Tech / vendorzy oprogramowania", ["development", "microsoft", "microsoft_updates", "redhat", "cloudflare", "docker", "gitlab", "github", "github_personal", "mozilla", "google", "apple", "sony", "lenovo", "nvidia", "canva", "figma", "youtube", "meta_newsroom", "saas", "foundry", "hackerone", "creativecommons"]),
-    ("🌦️ Pogoda", ["openweather", "visualcrossing", "open_meteo", "accuweather", "xweather_log", "imgw"]),
-    ("🎮 Gaming", ["steam", "ea", "bethesda", "nexusmods_news", "lichess"]),
-    ("🚗 Motoryzacja", ["lexus_newsroom", "toyota_global"]),
-    ("🏦 Bank", ["pekao"]),
-    ("🚀 Kosmos / nauka / rząd USA", ["nasa", "esa", "usgov", "wikipedia_pl"]),
-    ("🎵 Radio / muzyka", ["trojka", "czworka", "foobar2000_news", "ra", "beatport_top100", "audio", "audacity", "radios"]),
-    ("🎬 Rozrywka / streaming / memy", ["netflix", "cheezburger", "memedroid", "memy", "9gag", "jbzd", "4chan"]),
-    ("🛒 Ogłoszenia", ["olx"]),
-    ("🧩 Userscripts", ["userscripts"]),
-    ("📅 Codzienne", ["daily_digest", "daily_quote", "wotd", "datime"]),
+    ("Poland government and news", ["govpl_news", "pap", "tvp", "spidersweb"]),
+    ("World news", ["reuters", "euronews", "europa", "geopolitics"]),
+    ("AI and LLM", ["anthropic", "claude", "openai", "xai", "aibridge", "skillsllm"]),
+    ("Technology and software vendors", ["development", "microsoft", "microsoft_updates", "redhat", "cloudflare", "docker", "gitlab", "github", "github_personal", "mozilla", "google", "apple", "sony", "lenovo", "nvidia", "canva", "figma", "youtube", "meta_newsroom", "saas", "foundry", "hackerone", "creativecommons"]),
+    ("Weather", ["openweather", "visualcrossing", "open_meteo", "accuweather", "xweather_log", "imgw"]),
+    ("Gaming", ["steam", "ea", "bethesda", "nexusmods_news", "lichess"]),
+    ("Automotive", ["lexus_newsroom", "toyota_global"]),
+    ("Banking", ["pekao"]),
+    ("Space science and US government", ["nasa", "esa", "usgov", "wikipedia_pl"]),
+    ("Radio and music", ["trojka", "czworka", "foobar2000_news", "ra", "beatport_top100", "audio", "audacity", "radios"]),
+    ("Entertainment streaming and memes", ["netflix", "cheezburger", "memedroid", "memy", "9gag", "jbzd", "4chan"]),
+    ("Classifieds", ["olx"]),
+    ("Userscripts", ["userscripts"]),
+    ("Daily", ["daily_digest", "daily_quote", "wotd", "datime"]),
 ]
 # fmt: on
 
@@ -394,7 +394,7 @@ def collect_sources(feed_key: str, cfg: dict) -> tuple:
         return pairs, "ast"
     blog = cfg.get("blog_url", "")
     if blog:
-        return [("Strona źródłowa", blog)], "blog_url"
+        return [("Source website", blog)], "blog_url"
     return [], "none"
 
 
@@ -409,12 +409,12 @@ def fav(url: str) -> str:
 
 
 def render_plan(yaml_feeds: dict) -> list:
-    """[(group title, [feed_key, ...])] — grouped first, leftovers under Inne."""
+    """[(group title, [feed_key, ...])] — grouped first, leftovers under Other."""
     grouped = {k for _, keys in GROUPS for k in keys}
     plan = [(title, [k for k in keys if k in yaml_feeds]) for title, keys in GROUPS]
     extras = sorted(k for k in yaml_feeds if k not in grouped)
     if extras:
-        plan.append(("🗂️ Inne", extras))
+        plan.append(("Other", extras))
     return [(title, keys) for title, keys in plan if keys]
 
 
@@ -423,28 +423,21 @@ def build_markdown(yaml_feeds: dict, collected: dict) -> str:
     n_feeds = sum(len(keys) for _, keys in plan)
     n_sources = sum(len(collected[k][0]) for _, keys in plan for k in keys)
 
-    out = ["# Źródła feedów\n"]
+    out = ["# Feed sources\n"]
     out.append(
-        "Konkretne linki źródłowe wchodzące w skład każdego generowanego feeda. "
-        "Listy są czytane wprost z generatorów, a nazwy z `<title>` samych feedów, "
-        "więc nic tu nie trzeba dopisywać ręcznie przy nowym feedzie. Feedy zbiorcze "
-        "(`aibridge`, `saas`, `skillsllm`, `pap`, `esa`, `google` itd.) łączą wiele "
-        "źródeł w jeden strumień Atom.\n"
+        "Upstream source links for each generated feed. Source lists come from the "
+        "generators and names from feed titles. Aggregated feeds combine multiple "
+        "sources into one stream. A listed URL is not a health guarantee; see "
+        "[source diagnostics](architecture.md#source-diagnostics).\n"
     )
     out.append(
-        "> Plik generowany: `uv run --locked feed_generators/docs_sources.py`. "
-        "Nie edytuj ręcznie — zmień źródła w generatorze.\n"
+        "> Generated by `uv run --locked feed_generators/docs_sources.py`. "
+        "Edit the generators, not this file.\n"
     )
-    if n_sources == 1:
-        source_word = "źródło"
-    elif n_sources % 10 in (2, 3, 4) and n_sources % 100 not in (12, 13, 14):
-        source_word = "źródła"
-    else:
-        source_word = "źródeł"
-    out.append(f"{n_feeds} feedów · {n_sources} {source_word}\n")
+    out.append(f"{n_feeds} feeds · {n_sources} sources\n")
 
-    out.append("## Spis grup\n")
-    out.extend(f"- {title}" for title, _ in plan)
+    out.append("## Contents\n")
+    out.extend(f"- [{title}](#{title.lower().replace(' ', '-')})" for title, _ in plan)
     out.append("")
 
     for title, keys in plan:
@@ -453,7 +446,10 @@ def build_markdown(yaml_feeds: dict, collected: dict) -> str:
             pairs, _ = collected[key]
             primary = pairs[0][1] if pairs else yaml_feeds[key].get("blog_url", "")
             out.append(f"### {fav(primary)}{feed_title(key)}")
-            out.append(f"`{key}` · [feed_{key}.xml](../feeds/feed_{key}.xml)\n")
+            out.append(
+                f"`{key}` · [XML]({public_feed_url(key)}) · "
+                f"[JSON]({public_feed_url(key, 'json')})\n"
+            )
             for label, url in pairs:
                 out.append(f"- {fav(url)}{label} — <{url}>")
             out.append("")
