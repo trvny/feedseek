@@ -36,6 +36,9 @@ class SkillsLlmExtraSourcesTests(unittest.TestCase):
             urls.count("https://github.com/BerriAI/litellm/releases.atom"), 0
         )
         self.assertNotIn("https://docs.litellm.ai/release_notes", urls)
+        self.assertNotIn(
+            "LiteLLM Release Notes (documentation)", dict(skillsllm.doc_sources())
+        )
 
     def test_agent_zero_articles_use_sitemap_discovery(self):
         """Agent Zero articles should reuse the generic dated-sitemap path."""

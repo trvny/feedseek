@@ -119,7 +119,8 @@ def _pypi_daily_cap(limit=5):
 
     PyPI's ``updates`` feed is a firehose (every package release), so without a
     bound its entries accumulate across the 2-hourly runs and swamp the feed.
-    Non-PyPI sources are always kept; PyPI entries are counted per calendar day
+    Retired GitHub release sources are dropped; other non-PyPI sources are kept.
+    PyPI entries are counted per calendar day
     and dropped past the limit. Newly fetched entries this run bypass the filter
     (it only sees the cache), so a given day can briefly hold a few more than
     *limit* until the next load prunes it back.
