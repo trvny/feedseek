@@ -56,20 +56,21 @@ LIST_NAMES = ("SOURCES", "RSS_SOURCES", "NATIVE_FEEDS", "FEED_SOURCES")
 # fmt: off
 # grouping: feed_key order within each themed section
 GROUPS = [
-    ("Poland government and news", ["govpl_news", "pap", "tvp", "spidersweb"]),
-    ("World news", ["reuters", "euronews", "europa", "geopolitics"]),
-    ("AI and LLM", ["anthropic", "claude", "openai", "xai", "aibridge", "skillsllm"]),
-    ("Technology and software vendors", ["development", "microsoft", "microsoft_updates", "redhat", "cloudflare", "docker", "gitlab", "github", "github_personal", "mozilla", "google", "apple", "sony", "lenovo", "nvidia", "canva", "figma", "youtube", "meta_newsroom", "saas", "foundry", "hackerone", "creativecommons"]),
-    ("Weather", ["openweather", "visualcrossing", "open_meteo", "accuweather", "xweather_log", "imgw"]),
-    ("Gaming", ["steam", "ea", "bethesda", "nexusmods_news", "lichess"]),
-    ("Automotive", ["lexus_newsroom", "toyota_global"]),
+    ("Poland government and news", ["govpl_news", "pap", "tvp", "spidersweb", "wykop"]),
+    ("World news", ["reuters", "euronews", "europa", "geopolitics", "wsj", "newsify"]),
+    ("AI and LLM", ["openai", "anthropic", "claude", "xai", "aibridge", "skillsllm", "huggingface", "molt"]),
+    ("Development and open standards", ["development", "github", "github_personal", "gitlab", "opensource", "python", "js_node", "rssboard", "hackerone", "userscripts"]),
+    ("Technology and software vendors", ["microsoft", "microsoft_updates", "google", "apple", "cloudflare", "aws", "oracle", "alibaba", "tencent", "redhat", "ubuntu", "docker", "mozilla", "saas", "foundry", "palantir", "canva", "figma", "openoffice", "paintnet", "lenovo", "hp", "nvidia", "sony", "samsung", "xiaomi", "dji"]),
+    ("Weather", ["weather", "openweather", "visualcrossing", "visualcrossing_blog", "open_meteo", "accuweather", "xweather_log", "imgw"]),
+    ("Gaming", ["steam", "ea", "bethesda", "gog", "nexusmods_news", "lichess"]),
+    ("Automotive", ["lexus_newsroom", "toyota_global", "uber"]),
     ("Banking", ["pekao"]),
-    ("Space science and US government", ["nasa", "esa", "usgov", "wikipedia_pl"]),
-    ("Radio and music", ["trojka", "czworka", "foobar2000_news", "ra", "beatport_top100", "audio", "audacity", "radios"]),
-    ("Entertainment streaming and memes", ["netflix", "cheezburger", "memedroid", "memy", "9gag", "jbzd", "4chan"]),
+    ("Space science and US government", ["nasa", "esa", "usgov", "arxiv", "mit", "wikipedia_pl", "baidubaike"]),
+    ("Radio and music", ["trojka", "czworka", "radios", "spotify", "foobar2000", "audio", "audacity", "ffmpeg", "ra", "beatport_top100", "download-soundtracks"]),
+    ("Entertainment streaming and memes", ["netflix", "youtube", "youtubs", "tiktok", "meta_newsroom", "cheezburger", "memedroid", "memy", "9gag", "jbzd", "4chan", "dwutygodnik", "unsplash", "rutracker"]),
+    ("Social and community", ["lemmy", "medium", "v2ex"]),
     ("Classifieds", ["olx"]),
-    ("Userscripts", ["userscripts"]),
-    ("Daily", ["daily_digest", "daily_quote", "wotd", "datime"]),
+    ("Daily", ["daily_digest", "daily_quote", "theysaidso", "wotd", "datime"]),
 ]
 # fmt: on
 
@@ -418,6 +419,28 @@ def render_plan(yaml_feeds: dict) -> list:
     return [(title, keys) for title, keys in plan if keys]
 
 
+def _front_host(url: str) -> str:
+    return (urlparse(url).hostname or "").lower().removeprefix("www.")
+
+
+def ordered_sources(pairs: list, blog_url: str) -> list:
+    """Front website first; keep the remaining generator order stable."""
+    front = _front_host(blog_url)
+
+    def rank(pair):
+        url = pair[1]
+        host = _front_host(url)
+        if url.rstrip("/") == blog_url.rstrip("/"):
+            return 0
+        if front and host == front:
+            return 1
+        if front and host and (host.endswith("." + front) or front.endswith("." + host)):
+            return 2
+        return 3
+
+    return sorted(pairs, key=rank)
+
+
 def build_markdown(yaml_feeds: dict, collected: dict) -> str:
     plan = render_plan(yaml_feeds)
     n_feeds = sum(len(keys) for _, keys in plan)
@@ -444,7 +467,9 @@ def build_markdown(yaml_feeds: dict, collected: dict) -> str:
         out.append(f"## {title}\n")
         for key in keys:
             pairs, _ = collected[key]
-            primary = pairs[0][1] if pairs else yaml_feeds[key].get("blog_url", "")
+            blog = yaml_feeds[key].get("blog_url", "")
+            pairs = ordered_sources(pairs, blog)
+            primary = blog or (pairs[0][1] if pairs else "")
             out.append(f"### {fav(primary)}{feed_title(key)}")
             out.append(
                 f"`{key}` · [XML]({public_feed_url(key)}) · "
@@ -461,16 +486,16 @@ def coverage_report(yaml_feeds: dict, collected: dict) -> int:
     single-source scrapers are supposed to look like that."""
     fallbacks = sorted(k for k, (_, origin) in collected.items() if origin != "generator")
     empty = sorted(k for k, (pairs, _) in collected.items() if not pairs)
-    print(f"{len(yaml_feeds)} feedów w feeds.yaml", file=sys.stderr)
+    print(f"{len(yaml_feeds)} feeds in feeds.yaml", file=sys.stderr)
     print(
-        f"{len(yaml_feeds) - len(fallbacks)} z listą źródeł z generatora, "
-        f"{len(fallbacks)} tylko z blog_url",
+        f"{len(yaml_feeds) - len(fallbacks)} with generator sources, "
+        f"{len(fallbacks)} using fallback URLs",
         file=sys.stderr,
     )
     if fallbacks:
         print(f"  blog_url: {', '.join(fallbacks)}", file=sys.stderr)
     if empty:
-        print(f"[error] bez jakiegokolwiek źródła: {', '.join(empty)}", file=sys.stderr)
+        print(f"[error] without any source: {', '.join(empty)}", file=sys.stderr)
     return len(empty)
 
 
