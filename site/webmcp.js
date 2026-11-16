@@ -27,7 +27,7 @@
 
   window.addEventListener("pagehide", (event) => {
     if (!event.persisted) cleanup();
-  }, { once: true });
+  }, { signal: lifecycle.signal });
 
   const requireString = (value, field, maxLength = 500) => {
     if (typeof value !== "string") throw new TypeError(`${field} must be a string.`);
