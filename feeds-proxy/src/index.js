@@ -14,7 +14,56 @@ const MAX_FAVICON_BYTES = 512 * 1024;
 const FAVICON_ACCEPT = "image/avif, image/webp, image/png, image/svg+xml, image/*, */*;q=0.1";
 const BODYLESS_STATUSES = new Set([101, 204, 205, 304]);
 const PROXY_ORIGIN = "https://feeds-proxy.travny.workers.dev";
-const ROBOTS = "User-agent: *\nAllow: /index.md\nAllow: /llms.txt\nAllow: /llms-full.txt\nDisallow: /\n";
+const ROBOTS = `User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: OAI-AdsBot
+User-agent: ChatGPT-User
+User-agent: anthropic-ai
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: MistralAI-Index
+User-agent: MistralAI-Training
+User-agent: MistralAI-User
+User-agent: KimiBot
+User-agent: Kimi-SearchBot
+User-agent: Kimi-User
+User-agent: Meta-WebIndexer
+User-agent: Meta-ExternalFetcher
+User-agent: Meta-ExternalAgent
+User-agent: Googlebot
+User-agent: Googlebot-News
+User-agent: Googlebot-Image
+User-agent: Googlebot-Video
+User-agent: GoogleOther
+User-agent: GoogleOther-Image
+User-agent: GoogleOther-Video
+User-agent: Google-InspectionTool
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: BingBot
+User-agent: DuckDuckBot
+User-agent: DuckAssistBot
+User-agent: YandexBot
+User-agent: YandexFavicons
+User-agent: CCBot
+User-agent: SemanticScholarBot
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+Allow: /index.md
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /
+
+User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+Allow: /index.md
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /
+`;
 const INDEX_MD = `# Feedseek fetch proxy\n\n> Constrained HTTPS fetch helper used by the Feedseek Reader.\n\nThe proxy accepts a public HTTPS target through the \`url\` query parameter. It blocks private-looking hosts, non-HTTPS targets, unsafe redirects and oversized responses.\n\n- [Feedseek](https://trvny.github.io/feedseek/)\n- [Concise LLM guide](${PROXY_ORIGIN}/llms.txt)\n- [Full LLM guide](${PROXY_ORIGIN}/llms-full.txt)\n- [Source](https://github.com/trvny/feedseek/tree/main/feeds-proxy)\n`;
 const LLMS = `# Feedseek fetch proxy\n\n> Constrained public HTTPS fetch helper for Feedseek's browser Reader.\n\n## Resources\n\n- [Proxy overview](${PROXY_ORIGIN}/index.md): Markdown description and security boundaries.\n- [Feedseek site](https://trvny.github.io/feedseek/index.md): main feed directory.\n- [Full proxy guide](${PROXY_ORIGIN}/llms-full.txt): complete proxy documentation.\n- [Source](https://github.com/trvny/feedseek/tree/main/feeds-proxy): implementation and tests.\n`;
 const LLMS_FULL = `# Feedseek fetch proxy full documentation\n\nSource: ${PROXY_ORIGIN}/\n\nDescription: Complete LLM-oriented guide to the constrained Feedseek Reader fetch proxy.\n\n## Contract\n\nGET requests with a \`url=https://...\` query parameter fetch a public HTTPS resource for the Reader. Responses are size-bounded and redirects are followed only after each target is revalidated.\n\n## Security boundaries\n\nThe proxy rejects non-HTTPS schemes, credentials in URLs, non-standard ports, localhost/private-looking names and direct IP literals. Redirects are capped and revalidated. Responses are capped at 2 MiB. It is not intended as a general open proxy.\n\n## Search indexing\n\nProxied upstream payloads are returned with X-Robots-Tag noindex,nofollow so the proxy cannot become an indexed duplicate of the source feed.\n\n## Related\n\n- [Feedseek](https://trvny.github.io/feedseek/index.md)\n- [Source](https://github.com/trvny/feedseek/tree/main/feeds-proxy)\n`;
