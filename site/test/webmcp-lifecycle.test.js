@@ -1,13 +1,12 @@
-const { test } = require("node:test");
-const assert = require("node:assert/strict");
-const { readFileSync } = require("node:fs");
-const { join } = require("node:path");
-const { runInNewContext } = require("node:vm");
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
 test("WebMCP survives bfcache and aborts on real page exit", () => {
   const window = new EventTarget();
   const tools = [];
   const dummy = {};
-  runInNewContext(readFileSync(join(__dirname, "../webmcp.js"), "utf8"), {
+  runInNewContext(readFileSync(new URL("../webmcp.js", import.meta.url), "utf8"), {
     document: {
       modelContext: { registerTool(tool, options) { tools.push({ tool, options }); } },
       querySelector(s) { return s === "#search" ? dummy : null; },
