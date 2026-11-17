@@ -40,7 +40,7 @@ from concurrent.futures import TimeoutError as FuturesTimeout
 from urllib.parse import urljoin, urlsplit
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, UnicodeDammit
 from utils import setup_logging
 
 logger = setup_logging(__name__)
@@ -196,16 +196,24 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
 
 def _read_head(response) -> str:
     """Read only as far as </head>, decoded with the response's own encoding."""
-    chunks: list[bytes] = []
-    total = 0
+    body = bytearray()
     for chunk in response.iter_content(16_384):
-        chunks.append(chunk)
-        total += len(chunk)
-        if total >= HEAD_BYTES or b"</head>" in chunks[-1] or b"</HEAD>" in chunks[-1]:
+        start = max(0, len(body) - 6)
+        body.extend(chunk[:HEAD_BYTES - len(body)])
+        end = body.lower().find(b"</head>", start)
+        if end != -1:
+            del body[end + 7:]
             break
-    body = b"".join(chunks)
-    encoding = response.encoding or response.apparent_encoding or "utf-8"
-    return body.decode(encoding, errors="replace")
+        if len(body) >= HEAD_BYTES:
+            break
+    data = bytes(body)
+    if response.encoding:
+        try:
+            return data.decode(response.encoding, errors="replace")
+        except LookupError:
+            pass
+    # requests.apparent_encoding reads the full response; detect from the bounded prefix.
+    return UnicodeDammit(data, is_html=True).unicode_markup or ""
 
 
 def _impersonated_html(url: str) -> str | None:
@@ -217,13 +225,18 @@ def _impersonated_html(url: str) -> str | None:
     except ImportError:
         return None
     try:
-        response = curl_requests.get(url, impersonate="chrome", timeout=TIMEOUT)
+        response = curl_requests.get(
+            url, impersonate="chrome", timeout=TIMEOUT, stream=True
+        )
+        try:
+            if response.status_code != 200:
+                return None
+            return _read_head(response)
+        finally:
+            response.close()
     except Exception as exc:  # curl_cffi raises its own error hierarchy
         logger.debug("Impersonated image lookup failed for %s: %s", url, exc)
         return None
-    if response.status_code != 200:
-        return None
-    return response.text
 
 
 def article_image(url: str, session=None) -> tuple[str | None, int | None, int | None, bool]:
