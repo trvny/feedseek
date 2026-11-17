@@ -12,6 +12,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
+import requests
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 from article_image import (  # noqa: E402
@@ -149,6 +151,28 @@ class BoundedReadTests(unittest.TestCase):
         session.get.return_value = self.response([b"x" * HEAD_BYTES])
         self.assertEqual(article_image(BASE, session), (None, None, None, False))
 
+    def test_body_stall_preserves_received_image(self):
+        def chunks():
+            yield b'<head><meta property="og:image" content="/ready.jpg"></head>'
+            raise requests.exceptions.ConnectionError("body stalled")
+
+        session = Mock()
+        session.get.return_value = self.response(chunks())
+        self.assertEqual(
+            article_image(BASE, session),
+            ("https://example.com/ready.jpg", None, None, True),
+        )
+        session.get.return_value.close.assert_called_once()
+
+    def test_body_stall_without_metadata_is_retryable(self):
+        def chunks():
+            yield b"<head></head>"
+            raise requests.exceptions.ConnectionError("body stalled")
+
+        session = Mock()
+        session.get.return_value = self.response(chunks())
+        self.assertEqual(article_image(BASE, session), (None, None, None, False))
+
     def test_complete_miss_is_settled(self):
         session = Mock()
         session.get.return_value = self.response([b"<html></html>"])
@@ -156,7 +180,11 @@ class BoundedReadTests(unittest.TestCase):
 
     def test_detects_encoding_without_reading_full_response(self):
         response = self.response(['<head><meta charset="iso-8859-2">żółć</head>'.encode("iso-8859-2")])
-        response.apparent_encoding = object()
+        from unittest.mock import PropertyMock
+
+        type(response).apparent_encoding = PropertyMock(
+            side_effect=AssertionError("would read entire response")
+        )
         html, complete = _read_head(response)
         self.assertIn("żółć", html)
         self.assertTrue(complete)
@@ -185,7 +213,7 @@ class BoundedReadTests(unittest.TestCase):
 
         response = self.response(chunks())
         get.return_value = response
-        self.assertIsNone(_impersonated_html(BASE))
+        self.assertEqual(_impersonated_html(BASE), ("<head>", False))
         response.close.assert_called_once()
 
     @patch("curl_cffi.requests.get")

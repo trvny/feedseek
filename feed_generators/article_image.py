@@ -199,11 +199,17 @@ def _read_head(response) -> tuple[str, bool]:
     """Read a bounded HTML prefix and report whether EOF was reached."""
     body = bytearray()
     complete = True
-    for chunk in response.iter_content(16_384):
-        body.extend(chunk[:HEAD_BYTES - len(body)])
-        if len(body) >= HEAD_BYTES:
-            complete = False
-            break
+    try:
+        for chunk in response.iter_content(16_384):
+            body.extend(chunk[:HEAD_BYTES - len(body)])
+            if len(body) >= HEAD_BYTES:
+                complete = False
+                break
+    except (requests.RequestException, OSError):
+        # Keep metadata already received if the rest of the body stalls.
+        if not body:
+            raise
+        complete = False
     data = bytes(body)
     # Only an explicit HTTP charset overrides HTML declarations. Requests may
     # otherwise supply ISO-8859-1 for text/html without a charset.
