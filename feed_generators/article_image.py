@@ -37,6 +37,7 @@ import os
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeout
+from email.message import Message
 from urllib.parse import urljoin, urlsplit
 
 import requests
@@ -194,29 +195,31 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
     return image, dimension("og:image:width"), dimension("og:image:height")
 
 
-def _read_head(response) -> str:
-    """Read only as far as </head>, decoded with the response's own encoding."""
+def _read_head(response) -> tuple[str, bool]:
+    """Read a bounded HTML prefix and report whether EOF was reached."""
     body = bytearray()
+    complete = True
     for chunk in response.iter_content(16_384):
-        start = max(0, len(body) - 6)
         body.extend(chunk[:HEAD_BYTES - len(body)])
-        end = body.lower().find(b"</head>", start)
-        if end != -1:
-            del body[end + 7:]
-            break
         if len(body) >= HEAD_BYTES:
+            complete = False
             break
     data = bytes(body)
-    if response.encoding:
+    # Only an explicit HTTP charset overrides HTML declarations. Requests may
+    # otherwise supply ISO-8859-1 for text/html without a charset.
+    content_type = Message()
+    content_type["Content-Type"] = response.headers.get("content-type", "")
+    charset = content_type.get_content_charset()
+    if charset:
         try:
-            return data.decode(response.encoding, errors="replace")
+            return data.decode(charset, errors="replace"), complete
         except LookupError:
             pass
-    # requests.apparent_encoding reads the full response; detect from the bounded prefix.
-    return UnicodeDammit(data, is_html=True).unicode_markup or ""
+    # apparent_encoding may download the entire response.
+    return UnicodeDammit(data, is_html=True).unicode_markup or "", complete
 
 
-def _impersonated_html(url: str) -> str | None:
+def _impersonated_html(url: str) -> tuple[str, bool] | None:
     """Retry through curl_cffi for origins that reject a plain requests TLS
     fingerprint. Medium and other Cloudflare-fronted sites answer 403 to the
     stdlib client no matter the User-Agent, and serve the page fine to this."""
@@ -260,18 +263,19 @@ def article_image(url: str, session=None) -> tuple[str | None, int | None, int |
     try:
         status = response.status_code
         if status in (401, 403):
-            html = _impersonated_html(url)
-            if html:
-                image, width, height = page_image(html, url)
-                return image, width, height, True
-            return None, None, None, False
+            fallback = _impersonated_html(url)
+            if fallback is None:
+                return None, None, None, False
+            html, complete = fallback
+            image, width, height = page_image(html, url)
+            return image, width, height, bool(image) or complete
         if status != 200:
             # 404/410 will never become an image; 429/5xx might, next run.
             return None, None, None, status in (404, 410)
         content_type = (response.headers.get("content-type") or "").lower()
         if "html" not in content_type and content_type:
             return None, None, None, True  # a PDF or JSON endpoint has no og:image
-        html = _read_head(response)
+        html, complete = _read_head(response)
     except requests.RequestException as exc:
         logger.debug("Image lookup aborted for %s: %s", url, exc)
         return None, None, None, False
@@ -279,7 +283,7 @@ def article_image(url: str, session=None) -> tuple[str | None, int | None, int |
         response.close()
 
     image, width, height = page_image(html, url)
-    return image, width, height, True
+    return image, width, height, bool(image) or complete
 
 
 def backfill_images(

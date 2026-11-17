@@ -18,6 +18,7 @@ from article_image import (  # noqa: E402
     HEAD_BYTES,
     _impersonated_html,
     _read_head,
+    article_image,
     backfill_images,
     page_image,
 )
@@ -106,52 +107,100 @@ class PageImageTests(unittest.TestCase):
 
 
 class BoundedReadTests(unittest.TestCase):
-    def test_caps_oversized_chunk_without_reading_next(self):
-        response = Mock(encoding="utf-8")
-        def chunks():
-            yield b"x" * (HEAD_BYTES + 100)
-            self.fail("read past head limit")
-        response.iter_content.side_effect = lambda *_: chunks()
-        self.assertEqual(len(_read_head(response)), HEAD_BYTES)
+    def response(self, chunks, status=200, content_type="text/html"):
+        response = Mock(status_code=status, encoding="ISO-8859-1")
+        response.headers = {"content-type": content_type}
+        response.iter_content.return_value = iter(chunks)
+        return response
 
-    def test_head_end_across_chunks(self):
-        response = Mock(encoding="utf-8")
+    def test_caps_oversized_chunk_without_reading_next(self):
+        consumed = []
+
         def chunks():
-            yield b"<head>abc</He"
-            yield b"Ad>body"
-            self.fail("read past head")
-        response.iter_content.side_effect = lambda *_: chunks()
-        self.assertEqual(_read_head(response), "<head>abc</HeAd>")
+            consumed.append(1)
+            yield b"abc" + b"x" * HEAD_BYTES
+            self.fail("read past head limit")
+
+        response = self.response(chunks())
+        self.assertEqual(_read_head(response), ("abc" + "x" * (HEAD_BYTES - 3), False))
+        self.assertEqual(consumed, [1])
+
+    def test_metadata_after_head_and_literal_markers(self):
+        response = self.response([
+            b'<head><!-- </head> --><script>const s="</head>";</script>',
+            b'<meta property="og:image" content="/a.jpg"></head>',
+        ])
+        session = Mock()
+        session.get.return_value = response
+        self.assertEqual(article_image(BASE, session), ("https://example.com/a.jpg", None, None, True))
+        response.close.assert_called_once()
+
+    def test_json_ld_after_head_in_later_chunk(self):
+        response = self.response([
+            b"<head></head>",
+            b'<body><script type="application/ld+json">{"image":"/body.jpg"}</script></body>',
+        ])
+        session = Mock()
+        session.get.return_value = response
+        self.assertEqual(article_image(BASE, session), ("https://example.com/body.jpg", None, None, True))
+
+    def test_truncated_miss_is_not_settled(self):
+        session = Mock()
+        session.get.return_value = self.response([b"x" * HEAD_BYTES])
+        self.assertEqual(article_image(BASE, session), (None, None, None, False))
+
+    def test_complete_miss_is_settled(self):
+        session = Mock()
+        session.get.return_value = self.response([b"<html></html>"])
+        self.assertEqual(article_image(BASE, session), (None, None, None, True))
 
     def test_detects_encoding_without_reading_full_response(self):
-        class Response:
-            encoding = None
+        response = self.response(['<head><meta charset="iso-8859-2">żółć</head>'.encode("iso-8859-2")])
+        response.apparent_encoding = object()
+        html, complete = _read_head(response)
+        self.assertIn("żółć", html)
+        self.assertTrue(complete)
 
-            @property
-            def apparent_encoding(self):
-                raise AssertionError("would read entire response")
+    def test_implicit_requests_charset_does_not_corrupt_utf8(self):
+        response = self.response(['<head><meta charset="utf-8">żółć</head>'.encode("utf-8")])
+        self.assertIn("żółć", _read_head(response)[0])
 
-            def iter_content(self, _size):
-                yield '<head><meta charset="utf-8">żółć</head>'.encode()
-        self.assertIn("żółć", _read_head(Response()))
+    def test_explicit_http_charset_takes_precedence(self):
+        response = self.response([b"<head>caf\xe9</head>"], content_type="text/html; charset=iso-8859-1")
+        self.assertEqual(_read_head(response), ("<head>café</head>", True))
 
     @patch("curl_cffi.requests.get")
     def test_fallback_streams_and_closes(self, get):
-        response = get.return_value
-        response.status_code = 200
-        response.encoding = "utf-8"
-        response.iter_content.return_value = iter([b"<head>ok</head>body"])
-        self.assertEqual(_impersonated_html(BASE), "<head>ok</head>")
+        response = self.response([b"<head>ok</head>body"])
+        get.return_value = response
+        self.assertEqual(_impersonated_html(BASE), ("<head>ok</head>body", True))
         self.assertTrue(get.call_args.kwargs["stream"])
         response.close.assert_called_once()
 
     @patch("curl_cffi.requests.get")
     def test_fallback_closes_on_stream_error(self, get):
-        response = get.return_value
-        response.status_code = 200
-        response.iter_content.side_effect = OSError("interrupted")
+        def chunks():
+            yield b"<head>"
+            raise OSError("interrupted")
+
+        response = self.response(chunks())
+        get.return_value = response
         self.assertIsNone(_impersonated_html(BASE))
         response.close.assert_called_once()
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_closes_non_200(self, get):
+        response = self.response([], status=503)
+        get.return_value = response
+        self.assertIsNone(_impersonated_html(BASE))
+        response.close.assert_called_once()
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_truncated_miss_is_not_settled(self, get):
+        session = Mock()
+        session.get.return_value = self.response([], status=403)
+        get.return_value = self.response([b"x" * HEAD_BYTES])
+        self.assertEqual(article_image(BASE, session), (None, None, None, False))
 
 
 class BackfillTests(unittest.TestCase):
