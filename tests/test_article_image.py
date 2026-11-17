@@ -198,36 +198,79 @@ class BoundedReadTests(unittest.TestCase):
         self.assertEqual(_read_head(response), ("<head>café</head>", True))
 
     @patch("curl_cffi.requests.get")
-    def test_fallback_streams_and_closes(self, get):
-        response = self.response([b"<head>ok</head>body"])
-        get.return_value = response
+    def test_fallback_uses_native_callback(self, get):
+        def fetch(url, **kwargs):
+            chunk = b"<head>ok</head>body"
+            self.assertEqual(kwargs["content_callback"](chunk), len(chunk))
+            self.assertFalse(kwargs.get("stream", False))
+            return self.response([])
+
+        get.side_effect = fetch
         self.assertEqual(_impersonated_html(BASE), ("<head>ok</head>body", True))
-        self.assertTrue(get.call_args.kwargs["stream"])
-        response.close.assert_called_once()
 
     @patch("curl_cffi.requests.get")
-    def test_fallback_closes_on_stream_error(self, get):
-        def chunks():
-            yield b"<head>"
-            raise OSError("interrupted")
+    def test_fallback_aborts_at_limit_with_response_metadata(self, get):
+        from curl_cffi import CurlECode
+        from curl_cffi.curl import CURL_WRITEFUNC_ERROR
+        from curl_cffi.requests.exceptions import RequestException
 
-        response = self.response(chunks())
-        get.return_value = response
+        def fetch(url, **kwargs):
+            callback = kwargs["content_callback"]
+            self.assertEqual(callback(b"abc"), 3)
+            self.assertEqual(callback(b"x" * HEAD_BYTES), CURL_WRITEFUNC_ERROR)
+            raise RequestException("intentional cap", CurlECode.WRITE_ERROR, self.response([]))
+
+        get.side_effect = fetch
+        self.assertEqual(_impersonated_html(BASE), ("abc" + "x" * (HEAD_BYTES - 3), False))
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_partial_body_retained_on_timeout(self, get):
+        from curl_cffi import CurlECode
+        from curl_cffi.requests.exceptions import RequestException
+
+        def fetch(url, **kwargs):
+            kwargs["content_callback"](b"<head>")
+            raise RequestException("interrupted", CurlECode.OPERATION_TIMEDOUT, self.response([]))
+
+        get.side_effect = fetch
         self.assertEqual(_impersonated_html(BASE), ("<head>", False))
-        response.close.assert_called_once()
 
     @patch("curl_cffi.requests.get")
-    def test_fallback_closes_non_200(self, get):
-        response = self.response([], status=503)
-        get.return_value = response
+    def test_fallback_rejects_non_200_even_after_cap(self, get):
+        from curl_cffi import CurlECode
+        from curl_cffi.requests.exceptions import RequestException
+
+        def fetch(url, **kwargs):
+            kwargs["content_callback"](b"x" * HEAD_BYTES)
+            raise RequestException("cap", CurlECode.WRITE_ERROR, self.response([], status=503))
+
+        get.side_effect = fetch
         self.assertIsNone(_impersonated_html(BASE))
-        response.close.assert_called_once()
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_rejects_error_without_response(self, get):
+        from curl_cffi import CurlECode
+        from curl_cffi.requests.exceptions import RequestException
+
+        def fetch(url, **kwargs):
+            kwargs["content_callback"](b"x" * HEAD_BYTES)
+            raise RequestException("cap", CurlECode.WRITE_ERROR)
+
+        get.side_effect = fetch
+        self.assertIsNone(_impersonated_html(BASE))
 
     @patch("curl_cffi.requests.get")
     def test_fallback_truncated_miss_is_not_settled(self, get):
+        from curl_cffi import CurlECode
+        from curl_cffi.requests.exceptions import RequestException
+
+        def fetch(url, **kwargs):
+            kwargs["content_callback"](b"x" * HEAD_BYTES)
+            raise RequestException("cap", CurlECode.WRITE_ERROR, self.response([]))
+
         session = Mock()
         session.get.return_value = self.response([], status=403)
-        get.return_value = self.response([b"x" * HEAD_BYTES])
+        get.side_effect = fetch
         self.assertEqual(article_image(BASE, session), (None, None, None, False))
 
 

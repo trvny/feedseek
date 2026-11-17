@@ -210,19 +210,23 @@ def _read_head(response) -> tuple[str, bool]:
         if not body:
             raise
         complete = False
+    return _decode_html_prefix(body, response.headers), complete
+
+
+def _decode_html_prefix(body, headers) -> str:
     data = bytes(body)
     # Only an explicit HTTP charset overrides HTML declarations. Requests may
     # otherwise supply ISO-8859-1 for text/html without a charset.
     content_type = Message()
-    content_type["Content-Type"] = response.headers.get("content-type", "")
+    content_type["Content-Type"] = headers.get("content-type", "")
     charset = content_type.get_content_charset()
     if charset:
         try:
-            return data.decode(charset, errors="replace"), complete
+            return data.decode(charset, errors="replace")
         except LookupError:
             pass
     # apparent_encoding may download the entire response.
-    return UnicodeDammit(data, is_html=True).unicode_markup or "", complete
+    return UnicodeDammit(data, is_html=True).unicode_markup or ""
 
 
 def _impersonated_html(url: str) -> tuple[str, bool] | None:
@@ -230,22 +234,45 @@ def _impersonated_html(url: str) -> tuple[str, bool] | None:
     fingerprint. Medium and other Cloudflare-fronted sites answer 403 to the
     stdlib client no matter the User-Agent, and serve the page fine to this."""
     try:
-        from curl_cffi import requests as curl_requests
+        from curl_cffi import CurlECode, requests as curl_requests
+        from curl_cffi.curl import CURL_WRITEFUNC_ERROR
+        from curl_cffi.requests.exceptions import RequestException
     except ImportError:
         return None
+
+    body = bytearray()
+    capped = False
+
+    def receive(chunk: bytes) -> int:
+        nonlocal capped
+        body.extend(chunk[:HEAD_BYTES - len(body)])
+        if len(body) >= HEAD_BYTES:
+            capped = True
+            return CURL_WRITEFUNC_ERROR
+        return len(chunk)
+
+    complete = True
     try:
+        # Native callback avoids curl_cffi's unbounded streaming queue.
         response = curl_requests.get(
-            url, impersonate="chrome", timeout=TIMEOUT, stream=True
+            url, impersonate="chrome", timeout=TIMEOUT, content_callback=receive
         )
-        try:
-            if response.status_code != 200:
+    except RequestException as exc:
+        response = exc.response
+        if response is None or not body:
+            return None
+        if not (capped and exc.code == CurlECode.WRITE_ERROR):
+            # Other errors are accepted only for an interrupted HTTP body.
+            if exc.code not in (
+                CurlECode.OPERATION_TIMEDOUT,
+                CurlECode.PARTIAL_FILE,
+                CurlECode.RECV_ERROR,
+            ):
                 return None
-            return _read_head(response)
-        finally:
-            response.close()
-    except Exception as exc:  # curl_cffi raises its own error hierarchy
-        logger.debug("Impersonated image lookup failed for %s: %s", url, exc)
+        complete = False
+    if response.status_code != 200:
         return None
+    return _decode_html_prefix(body, response.headers), complete and not capped
 
 
 def article_image(url: str, session=None) -> tuple[str | None, int | None, int | None, bool]:
