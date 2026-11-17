@@ -10,10 +10,17 @@ import sys
 import time
 import unittest
 from pathlib import Path
+from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from article_image import backfill_images, page_image  # noqa: E402
+from article_image import (  # noqa: E402
+    HEAD_BYTES,
+    _impersonated_html,
+    _read_head,
+    backfill_images,
+    page_image,
+)
 
 BASE = "https://example.com/news/story"
 
@@ -96,6 +103,55 @@ class PageImageTests(unittest.TestCase):
 
     def test_no_metadata_yields_nothing(self):
         self.assertEqual(page_image(page("<title>x</title>"), BASE), (None, None, None))
+
+
+class BoundedReadTests(unittest.TestCase):
+    def test_caps_oversized_chunk_without_reading_next(self):
+        response = Mock(encoding="utf-8")
+        def chunks():
+            yield b"x" * (HEAD_BYTES + 100)
+            self.fail("read past head limit")
+        response.iter_content.side_effect = lambda *_: chunks()
+        self.assertEqual(len(_read_head(response)), HEAD_BYTES)
+
+    def test_head_end_across_chunks(self):
+        response = Mock(encoding="utf-8")
+        def chunks():
+            yield b"<head>abc</He"
+            yield b"Ad>body"
+            self.fail("read past head")
+        response.iter_content.side_effect = lambda *_: chunks()
+        self.assertEqual(_read_head(response), "<head>abc</HeAd>")
+
+    def test_detects_encoding_without_reading_full_response(self):
+        class Response:
+            encoding = None
+
+            @property
+            def apparent_encoding(self):
+                raise AssertionError("would read entire response")
+
+            def iter_content(self, _size):
+                yield '<head><meta charset="utf-8">żółć</head>'.encode()
+        self.assertIn("żółć", _read_head(Response()))
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_streams_and_closes(self, get):
+        response = get.return_value
+        response.status_code = 200
+        response.encoding = "utf-8"
+        response.iter_content.return_value = iter([b"<head>ok</head>body"])
+        self.assertEqual(_impersonated_html(BASE), "<head>ok</head>")
+        self.assertTrue(get.call_args.kwargs["stream"])
+        response.close.assert_called_once()
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_closes_on_stream_error(self, get):
+        response = get.return_value
+        response.status_code = 200
+        response.iter_content.side_effect = OSError("interrupted")
+        self.assertIsNone(_impersonated_html(BASE))
+        response.close.assert_called_once()
 
 
 class BackfillTests(unittest.TestCase):
