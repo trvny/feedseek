@@ -66,9 +66,14 @@ def catalog_entries(catalog: object, base: str) -> list[tuple[str, str, str]]:
 
 def _check_pair(key: str, xml: bytes, model: bytes) -> None:
     try:
-        etree.fromstring(xml, etree.XMLParser(resolve_entities=False, no_network=True))
+        root = etree.fromstring(
+            xml,
+            etree.XMLParser(resolve_entities=False, load_dtd=False, no_network=True),
+        )
     except etree.XMLSyntaxError as exc:
         raise RestoreError(f"{key}: invalid XML: {exc}") from exc
+    if root.getroottree().docinfo.doctype:
+        raise RestoreError(f"{key}: XML document type declarations are not allowed")
     try:
         payload = json.loads(model)
     except json.JSONDecodeError as exc:

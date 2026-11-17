@@ -79,6 +79,30 @@ class RestorePublishedFeedsTests(unittest.TestCase):
             with self.assertRaises(MODULE.RestoreError):
                 MODULE.restore(Path(tmp) / "feeds", BASE)
 
+    def test_dtd_rejected_without_replacing_existing_pair(self):
+        for xml in (
+            b'<!DOCTYPE feed SYSTEM "file:///not-a-real-file"><feed/>',
+            b'<!DOCTYPE feed [<!ENTITY sample "expanded">]><feed>&sample;</feed>',
+            '<!DOCTYPE feed><feed/>'.encode("utf-16"),
+        ):
+            with self.subTest(xml=xml):
+                files = {
+                    f"{BASE}model-feeds.json": json.dumps(catalog("alpha")).encode(),
+                    f"{BASE}alpha.xml": xml,
+                    f"{BASE}alpha.json": MODEL,
+                }
+                with tempfile.TemporaryDirectory() as tmp, patch.object(
+                    MODULE.requests.Session, "get", fake_get(files)
+                ):
+                    feeds = Path(tmp) / "feeds"
+                    feeds.mkdir()
+                    (feeds / "feed_alpha.xml").write_bytes(XML)
+                    (feeds / "feed_alpha.json").write_bytes(MODEL)
+                    with self.assertRaisesRegex(MODULE.RestoreError, "document type"):
+                        MODULE.restore(feeds, BASE)
+                    self.assertEqual((feeds / "feed_alpha.xml").read_bytes(), XML)
+                    self.assertEqual((feeds / "feed_alpha.json").read_bytes(), MODEL)
+
     def test_catalog_rejects_foreign_urls_and_unsafe_keys(self):
         foreign = catalog("alpha")
         foreign["feeds"][0]["feed_url"] = "https://evil.example/alpha.xml"
