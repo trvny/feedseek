@@ -6,9 +6,12 @@ bookkeeping - what gets asked, what gets remembered, what gets retried - not
 whether some site is up right now.
 """
 
+import os
 import sys
 import time
 import unittest
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from threading import Thread
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -258,6 +261,40 @@ class BoundedReadTests(unittest.TestCase):
 
         get.side_effect = fetch
         self.assertIsNone(_impersonated_html(BASE))
+
+    @patch("curl_cffi.requests.get")
+    def test_fallback_unexpected_error_is_retryable(self, get):
+        get.side_effect = RuntimeError("fallback unavailable")
+        self.assertIsNone(_impersonated_html(BASE))
+
+    def test_native_callback_aborts_real_http_response(self):
+        prefix = b"abc" + b"x" * (HEAD_BYTES - 3)
+        payload = prefix + b"y" * 16_384
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(payload)))
+                self.end_headers()
+                try:
+                    self.wfile.write(payload)
+                except (BrokenPipeError, ConnectionResetError):
+                    pass
+
+            def log_message(self, *_args):
+                pass
+
+        with ThreadingHTTPServer(("127.0.0.1", 0), Handler) as server:
+            thread = Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                url = f"http://127.0.0.1:{server.server_port}/"
+                with patch.dict(os.environ, {"NO_PROXY": "127.0.0.1", "no_proxy": "127.0.0.1"}):
+                    self.assertEqual(_impersonated_html(url), (prefix.decode(), False))
+            finally:
+                server.shutdown()
+                thread.join()
 
     @patch("curl_cffi.requests.get")
     def test_fallback_truncated_miss_is_not_settled(self, get):

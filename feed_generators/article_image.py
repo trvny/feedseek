@@ -270,6 +270,9 @@ def _impersonated_html(url: str) -> tuple[str, bool] | None:
             ):
                 return None
         complete = False
+    except Exception as exc:  # Optional fallback must not sink an image lookup.
+        logger.debug("Impersonated image lookup failed for %s: %s", url, exc)
+        return None
     if response.status_code != 200:
         return None
     return _decode_html_prefix(body, response.headers), complete and not capped
