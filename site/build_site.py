@@ -1108,9 +1108,8 @@ def main() -> None:
     for f in all_feeds:
         copy_public_feed_pair(FEEDS_DIR / f["filename"], OUT_DIR, base)
 
-    # Real favicon files (not just the inline data: URI in <link rel="icon">)
-    # so tools that fetch /favicon.svg or /favicon.ico directly (QR code
-    # generators, browser tab defaults, etc.) get an actual image back.
+    # Publish real favicons for direct consumers.
+    shutil.copy2(SITE_DIR / "81245951337e900395962c61557b6ac6.txt", OUT_DIR)
     svg_src = ASSETS_DIR / "favicon.svg"
     ico_src = ASSETS_DIR / "icons" / "favicon.ico"
     if svg_src.exists():
