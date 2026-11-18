@@ -10,11 +10,11 @@ import sys
 import time
 import unittest
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from threading import Thread
+from threading import BoundedSemaphore, Event, Thread
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from curl_cffi import CurlECode, CurlOpt
+from curl_cffi import CurlECode, CurlError, CurlOpt
 from curl_cffi.curl import CURL_WRITEFUNC_ERROR
 from curl_cffi.requests.exceptions import RequestException
 
@@ -25,6 +25,7 @@ from article_image import (  # noqa: E402
     _curl_prefix,
     _decode_html_prefix,
     _public_target,
+    _resolve_public_addresses,
     article_image,
     backfill_images,
     page_image,
@@ -144,6 +145,8 @@ class PublicTransportTests(unittest.TestCase):
             "http://127.1/", "http://0x7f000001/", "http://2130706433/",
             "http://169.254.169.254/", "http://[::1]/",
             "http://[::ffff:127.0.0.1]/", "http://224.0.0.1/",
+            "http://[64:ff9b::7f00:1]/", "http://[2002:7f00:1::]/",
+            "http://[2001::1]/", "http://[ff02::1]/", "http://100.64.0.1/",
             "https://user@example.com/", "https://example.com:444/",
             "https://example.com\\@127.0.0.1/", "https://%65xample.com/",
         ):
@@ -152,7 +155,41 @@ class PublicTransportTests(unittest.TestCase):
         dns.assert_not_called()
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    def test_public_ipv6_literal_does_not_need_dns(self, dns):
+        url, options = _public_target("https://[2606:4700::1111]/story")
+        self.assertEqual(url, "https://[2606:4700::1111]/story")
+        self.assertNotIn(CurlOpt.RESOLVE, options)
+        dns.assert_not_called()
+
+    def test_dns_deadline_and_global_slot_limit(self):
+        entered = Event()
+        released = Event()
+        finished = Event()
+
+        def blocked(*args, **kwargs):
+            entered.set()
+            try:
+                released.wait(2)
+                return self.dns("93.184.216.34")
+            finally:
+                finished.set()
+
+        with patch("article_image._DNS_SLOTS", BoundedSemaphore(1)), patch(
+            "article_image.socket.getaddrinfo", side_effect=blocked
+        ) as dns:
+            try:
+                with self.assertRaises(TimeoutError):
+                    _resolve_public_addresses("example.com", 443, time.monotonic() + 0.1)
+                self.assertTrue(entered.is_set())
+                with self.assertRaises(TimeoutError):
+                    _resolve_public_addresses("other.example", 443, time.monotonic() + 1)
+                dns.assert_called_once()
+            finally:
+                released.set()
+                self.assertTrue(finished.wait(2))
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_private_redirect_never_connected(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
         get.return_value = self.response(302, location="http://169.254.169.254/")
@@ -161,11 +198,11 @@ class PublicTransportTests(unittest.TestCase):
         self.assertFalse(get.call_args.kwargs["allow_redirects"])
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_public_redirect_re_resolves_and_uses_final_base(self, get, dns):
         dns.side_effect = [self.dns("93.184.216.34"), self.dns("1.1.1.1")]
 
-        def fetch(url, **kwargs):
+        def fetch(session, url, **kwargs):
             if url == BASE:
                 return self.response(302, location="https://other.example/new/story")
             kwargs["content_callback"](b'<meta property="og:image" content="pic.jpg">')
@@ -173,13 +210,16 @@ class PublicTransportTests(unittest.TestCase):
 
         get.side_effect = fetch
         self.assertEqual(article_image(BASE), ("https://other.example/new/pic.jpg", None, None, True))
-        self.assertEqual(get.call_args_list[0].kwargs["curl_options"][CurlOpt.RESOLVE],
+        self.assertEqual(get.call_args_list[0].args[0].curl_options[CurlOpt.RESOLVE],
                          ["example.com:443:93.184.216.34"])
-        self.assertEqual(get.call_args_list[1].kwargs["curl_options"][CurlOpt.RESOLVE],
+        self.assertEqual(get.call_args_list[1].args[0].curl_options[CurlOpt.RESOLVE],
                          ["other.example:443:1.1.1.1"])
+        self.assertIsNot(get.call_args_list[0].args[0], get.call_args_list[1].args[0])
+        self.assertIs(get.call_args_list[0].args[0].cookies.jar,
+                      get.call_args_list[1].args[0].cookies.jar)
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_impersonated_retry_revalidates_dns(self, get, dns):
         dns.side_effect = [self.dns("93.184.216.34"), self.dns("127.0.0.1")]
         get.return_value = self.response(403)
@@ -187,7 +227,7 @@ class PublicTransportTests(unittest.TestCase):
         get.assert_called_once()
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_fallback_redirect_validates_target(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
         get.side_effect = [self.response(403), self.response(302, location="http://127.0.0.1/")]
@@ -196,7 +236,7 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(get.call_args.kwargs["impersonate"], "chrome")
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_redirect_budget(self, get, dns):
         from article_image import MAX_REDIRECTS
 
@@ -205,11 +245,11 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(article_image(BASE), (None, None, None, False))
         self.assertEqual(get.call_count, MAX_REDIRECTS + 1)
 
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_callback_aborts_at_limit(self, get):
         response = self.response()
 
-        def fetch(url, **kwargs):
+        def fetch(session, url, **kwargs):
             callback = kwargs["content_callback"]
             self.assertEqual(callback(b"abc"), 3)
             self.assertEqual(callback(b"x" * HEAD_BYTES), CURL_WRITEFUNC_ERROR)
@@ -220,11 +260,11 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(_curl_prefix(BASE, {}, 10), (response, b"abc" + b"x" * (HEAD_BYTES - 3), False))
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_partial_timeout_preserves_metadata(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
 
-        def fetch(url, **kwargs):
+        def fetch(session, url, **kwargs):
             kwargs["content_callback"](b'<head><!-- </head> --><script>const s="</head>";</script>')
             kwargs["content_callback"](b'</head><body><script type="application/ld+json">{"image":"/body.jpg"}</script>')
             raise RequestException("timeout", CurlECode.OPERATION_TIMEDOUT, self.response())
@@ -233,11 +273,11 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(article_image(BASE), ("https://example.com/body.jpg", None, None, True))
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_capped_miss_is_retryable(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
 
-        def fetch(url, **kwargs):
+        def fetch(session, url, **kwargs):
             kwargs["content_callback"](b"x" * HEAD_BYTES)
             raise RequestException("cap", CurlECode.WRITE_ERROR, self.response())
 
@@ -245,7 +285,7 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(article_image(BASE), (None, None, None, False))
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_complete_miss_is_settled(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
         get.return_value = self.response()
@@ -258,18 +298,49 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(_decode_html_prefix(b"caf\xe9", {"content-type": "text/html; charset=iso-8859-1"}), "café")
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_error_without_response_is_retryable(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
         get.side_effect = RequestException("error", CurlECode.WRITE_ERROR)
         self.assertEqual(article_image(BASE), (None, None, None, False))
 
     @patch("article_image.socket.getaddrinfo")
-    @patch("curl_cffi.requests.get")
+    @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_unexpected_error_is_retryable(self, get, dns):
         dns.return_value = self.dns("93.184.216.34")
-        get.side_effect = RuntimeError("unavailable")
+        get.side_effect = CurlError("unavailable")
         self.assertEqual(article_image(BASE), (None, None, None, False))
+
+    def test_cookie_jar_survives_fresh_connections_without_leaking_to_other_host(self):
+        from http.cookiejar import CookieJar
+
+        seen = []
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                seen.append(self.headers.get("Cookie"))
+                self.send_response(200)
+                if self.path == "/set":
+                    self.send_header("Set-Cookie", "gate=yes; Path=/")
+                self.end_headers()
+                self.wfile.write(b"ok")
+
+            def log_message(self, *_args):
+                pass
+
+        with ThreadingHTTPServer(("127.0.0.1", 0), Handler) as server:
+            thread = Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                jar = CookieJar()
+                port = server.server_port
+                for host, path in (("first.example", "/set"), ("first.example", "/next"), ("other.example", "/next")):
+                    options = {CurlOpt.PROXY: "", CurlOpt.RESOLVE: [f"{host}:{port}:127.0.0.1"]}
+                    self.assertIsNotNone(_curl_prefix(f"http://{host}:{port}{path}", options, 5, cookies=jar))
+                self.assertEqual(seen, [None, "gate=yes", None])
+            finally:
+                server.shutdown()
+                thread.join()
 
     def test_native_callback_aborts_real_http_response(self):
         prefix = b"abc" + b"x" * (HEAD_BYTES - 3)

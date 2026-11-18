@@ -35,6 +35,7 @@ from __future__ import annotations
 import ipaddress
 import json
 import os
+import queue
 import re
 import socket
 import time
@@ -42,9 +43,13 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeout
 from email.message import Message
+from http.cookiejar import CookieJar
+from threading import BoundedSemaphore, Thread
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup, UnicodeDammit
+from curl_cffi import CurlError, CurlOpt
+from curl_cffi import requests as curl_requests
 from utils import setup_logging
 
 logger = setup_logging(__name__)
@@ -63,6 +68,7 @@ MAX_ATTEMPTS = int(os.environ.get("FEEDSEEK_IMAGE_ATTEMPTS", "3"))
 WORKERS = 8
 TIMEOUT = 10
 MAX_REDIRECTS = 5
+_DNS_SLOTS = BoundedSemaphore(WORKERS)
 # Open Graph tags live in <head>; reading further is paying for markup we ignore.
 HEAD_BYTES = 262_144
 
@@ -213,21 +219,49 @@ def _decode_html_prefix(body, headers) -> str:
 
 def _public_address(address):
     ip = ipaddress.ip_address(address)
-    if (
-        not ip.is_global
-        or ip.is_multicast
-        or ip.is_reserved
-        or (
-            isinstance(ip, ipaddress.IPv6Address)
-            and (ip.ipv4_mapped is not None or ip.sixtofour is not None or ip.teredo is not None)
-        )
-    ):
+    if not ip.is_global or ip.is_multicast or ip.is_reserved:
         raise ValueError("non-public address")
+    if isinstance(ip, ipaddress.IPv6Address) and (
+        ip not in ipaddress.IPv6Network("2000::/3")
+        or ip.sixtofour is not None
+        or ip.teredo is not None
+    ):
+        raise ValueError("IPv6 translation or transition address")
     return ip
 
 
-def _public_target(url: str):
-    from curl_cffi import CurlOpt
+def _resolve_public_addresses(host, port, deadline):
+    # getaddrinfo cannot be cancelled. Bound abandoned resolver threads globally;
+    # daemon threads must not prolong process shutdown after the caller times out.
+    if deadline <= time.monotonic() or not _DNS_SLOTS.acquire(blocking=False):
+        raise TimeoutError("DNS budget exhausted")
+    result = queue.Queue(maxsize=1)
+
+    def resolve():
+        try:
+            result.put(socket.getaddrinfo(host, port, type=socket.SOCK_STREAM))
+        except OSError as exc:
+            result.put(exc)
+        finally:
+            _DNS_SLOTS.release()
+
+    try:
+        Thread(target=resolve, daemon=True).start()
+    except RuntimeError:
+        _DNS_SLOTS.release()
+        raise
+    try:
+        records = result.get(timeout=max(0, deadline - time.monotonic()))
+    except queue.Empty as exc:
+        raise TimeoutError("DNS lookup timed out") from exc
+    if isinstance(records, OSError):
+        raise records
+    return dict.fromkeys(_public_address(record[4][0]) for record in records)
+
+
+def _public_target(url: str, deadline=None):
+    if deadline is None:
+        deadline = time.monotonic() + TIMEOUT
 
     if any(ch.isspace() or ord(ch) < 32 or ord(ch) == 127 for ch in url) or "\\" in url:
         raise ValueError("invalid URL characters")
@@ -239,15 +273,18 @@ def _public_target(url: str):
     port = 443 if parts.scheme == "https" else 80
     if parts.port is not None and parts.port != port:
         raise ValueError("non-default port")
-    host = parts.hostname.rstrip(".").encode("idna").decode("ascii").lower()
+    host = parts.hostname.rstrip(".")
     options = {
         CurlOpt.PROXY: "",
         CurlOpt.PRE_PROXY: "",
         CurlOpt.PROTOCOLS_STR: "http,https",
+        CurlOpt.FRESH_CONNECT: 1,
+        CurlOpt.FORBID_REUSE: 1,
     }
     try:
         literal = ipaddress.ip_address(host)
     except ValueError:
+        host = host.encode("idna").decode("ascii").lower()
         # Reject alternate numeric address syntax before libcurl parses the URL.
         labels = host.split(".")
         if (
@@ -257,10 +294,7 @@ def _public_target(url: str):
             or re.fullmatch(r"(?:[0-9]+|0x[0-9a-f]+)", labels[-1])
         ):
             raise ValueError("invalid DNS hostname")
-        addresses = dict.fromkeys(
-            _public_address(record[4][0])
-            for record in socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
-        )
+        addresses = _resolve_public_addresses(host, port, deadline)
         if not addresses:
             raise ValueError("no public DNS addresses")
         pinned = ",".join(f"[{ip}]" if ip.version == 6 else str(ip) for ip in addresses)
@@ -273,8 +307,8 @@ def _public_target(url: str):
     return canonical, options
 
 
-def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False):
-    from curl_cffi import CurlECode, requests as curl_requests
+def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False, cookies=None):
+    from curl_cffi import CurlECode
     from curl_cffi.curl import CURL_WRITEFUNC_ERROR
     from curl_cffi.requests.exceptions import RequestException
 
@@ -291,15 +325,18 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
 
     complete = True
     try:
-        response = curl_requests.get(
-            url,
-            headers=None if impersonate else HEADERS,
-            impersonate="chrome" if impersonate else None,
-            timeout=timeout,
-            allow_redirects=False,
-            curl_options=options,
-            content_callback=receive,
-        )
+        # Fresh handle per hop; share only the domain-scoped cookie jar.
+        with curl_requests.Session(
+            cookies=cookies, trust_env=False, curl_options=options
+        ) as session:
+            response = session.get(
+                url,
+                headers=None if impersonate else HEADERS,
+                impersonate="chrome" if impersonate else None,
+                timeout=timeout,
+                allow_redirects=False,
+                content_callback=receive,
+            )
     except RequestException as exc:
         response = exc.response
         if response is None or not body:
@@ -315,15 +352,16 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
     return response, bytes(body), complete and not capped
 
 
-def _fetch_public_html(url: str, *, impersonate: bool = False):
-    deadline = time.monotonic() + TIMEOUT
+def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False):
     try:
         for _ in range(MAX_REDIRECTS + 1):
-            url, options = _public_target(url)
+            url, options = _public_target(url, deadline)
             remaining = deadline - time.monotonic()
             if remaining <= 0:
                 return None
-            result = _curl_prefix(url, options, remaining, impersonate=impersonate)
+            result = _curl_prefix(
+                url, options, remaining, impersonate=impersonate, cookies=cookies
+            )
             if result is None:
                 return None
             response, body, complete = result
@@ -334,19 +372,21 @@ def _fetch_public_html(url: str, *, impersonate: bool = False):
                 url = urljoin(url, location)
                 continue
             return url, response.status_code, response.headers, body, complete
-    except Exception as exc:  # A failed lookup must not sink the feed.
+    except (ValueError, OSError, CurlError) as exc:
         logger.debug("Public image lookup failed for %s: %s", url, exc)
     return None
 
 
 def article_image(url: str, _session=None) -> tuple[str | None, int | None, int | None, bool]:
     """Fetch article metadata. A blocked or interrupted lookup stays retryable."""
-    result = _fetch_public_html(url)
+    deadline = time.monotonic() + TIMEOUT
+    cookies = CookieJar()
+    result = _fetch_public_html(url, deadline, cookies)
     if result is None:
         return None, None, None, False
     url, status, headers, body, complete = result
     if status in (401, 403):
-        result = _fetch_public_html(url, impersonate=True)
+        result = _fetch_public_html(url, deadline, cookies, impersonate=True)
         if result is None:
             return None, None, None, False
         url, status, headers, body, complete = result
