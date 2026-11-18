@@ -6,7 +6,6 @@ bookkeeping - what gets asked, what gets remembered, what gets retried - not
 whether some site is up right now.
 """
 
-import os
 import sys
 import time
 import unittest
@@ -15,14 +14,17 @@ from threading import Thread
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-import requests
+from curl_cffi import CurlECode, CurlOpt
+from curl_cffi.curl import CURL_WRITEFUNC_ERROR
+from curl_cffi.requests.exceptions import RequestException
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 from article_image import (  # noqa: E402
     HEAD_BYTES,
-    _impersonated_html,
-    _read_head,
+    _curl_prefix,
+    _decode_html_prefix,
+    _public_target,
     article_image,
     backfill_images,
     page_image,
@@ -111,161 +113,163 @@ class PageImageTests(unittest.TestCase):
         self.assertEqual(page_image(page("<title>x</title>"), BASE), (None, None, None))
 
 
-class BoundedReadTests(unittest.TestCase):
-    def response(self, chunks, status=200, content_type="text/html"):
-        response = Mock(status_code=status, encoding="ISO-8859-1")
-        response.headers = {"content-type": content_type}
-        response.iter_content.return_value = iter(chunks)
-        return response
+class PublicTransportTests(unittest.TestCase):
+    @staticmethod
+    def response(status=200, content_type="text/html", **headers):
+        return Mock(status_code=status, headers={"content-type": content_type, **headers})
 
-    def test_caps_oversized_chunk_without_reading_next(self):
-        consumed = []
+    @staticmethod
+    def dns(*addresses):
+        return [(2, 1, 6, "", (address, 443)) for address in addresses]
 
-        def chunks():
-            consumed.append(1)
-            yield b"abc" + b"x" * HEAD_BYTES
-            self.fail("read past head limit")
+    @patch("article_image.socket.getaddrinfo")
+    def test_resolve_pins_all_public_addresses(self, dns):
+        dns.return_value = self.dns("93.184.216.34", "1.1.1.1")
+        url, options = _public_target("https://example.com/news?q=1#fragment")
+        self.assertEqual(url, "https://example.com/news?q=1")
+        self.assertEqual(options[CurlOpt.RESOLVE], ["example.com:443:93.184.216.34,1.1.1.1"])
+        self.assertEqual(options[CurlOpt.PROXY], "")
+        self.assertEqual(options[CurlOpt.PROTOCOLS_STR], "http,https")
 
-        response = self.response(chunks())
-        self.assertEqual(_read_head(response), ("abc" + "x" * (HEAD_BYTES - 3), False))
-        self.assertEqual(consumed, [1])
+    @patch("article_image.socket.getaddrinfo")
+    def test_mixed_dns_answers_fail_closed(self, dns):
+        dns.return_value = self.dns("93.184.216.34", "127.0.0.1")
+        with self.assertRaises(ValueError):
+            _public_target(BASE)
 
-    def test_metadata_after_head_and_literal_markers(self):
-        response = self.response([
-            b'<head><!-- </head> --><script>const s="</head>";</script>',
-            b'<meta property="og:image" content="/a.jpg"></head>',
-        ])
-        session = Mock()
-        session.get.return_value = response
-        self.assertEqual(article_image(BASE, session), ("https://example.com/a.jpg", None, None, True))
-        response.close.assert_called_once()
+    @patch("article_image.socket.getaddrinfo")
+    def test_rejects_unsafe_authorities_before_dns(self, dns):
+        for url in (
+            "file:///etc/passwd", "https://localhost/", "http://127.0.0.1/",
+            "http://127.1/", "http://0x7f000001/", "http://2130706433/",
+            "http://169.254.169.254/", "http://[::1]/",
+            "http://[::ffff:127.0.0.1]/", "http://224.0.0.1/",
+            "https://user@example.com/", "https://example.com:444/",
+            "https://example.com\\@127.0.0.1/", "https://%65xample.com/",
+        ):
+            with self.subTest(url=url), self.assertRaises(ValueError):
+                _public_target(url)
+        dns.assert_not_called()
 
-    def test_json_ld_after_head_in_later_chunk(self):
-        response = self.response([
-            b"<head></head>",
-            b'<body><script type="application/ld+json">{"image":"/body.jpg"}</script></body>',
-        ])
-        session = Mock()
-        session.get.return_value = response
-        self.assertEqual(article_image(BASE, session), ("https://example.com/body.jpg", None, None, True))
-
-    def test_truncated_miss_is_not_settled(self):
-        session = Mock()
-        session.get.return_value = self.response([b"x" * HEAD_BYTES])
-        self.assertEqual(article_image(BASE, session), (None, None, None, False))
-
-    def test_body_stall_preserves_received_image(self):
-        def chunks():
-            yield b'<head><meta property="og:image" content="/ready.jpg"></head>'
-            raise requests.exceptions.ConnectionError("body stalled")
-
-        session = Mock()
-        session.get.return_value = self.response(chunks())
-        self.assertEqual(
-            article_image(BASE, session),
-            ("https://example.com/ready.jpg", None, None, True),
-        )
-        session.get.return_value.close.assert_called_once()
-
-    def test_body_stall_without_metadata_is_retryable(self):
-        def chunks():
-            yield b"<head></head>"
-            raise requests.exceptions.ConnectionError("body stalled")
-
-        session = Mock()
-        session.get.return_value = self.response(chunks())
-        self.assertEqual(article_image(BASE, session), (None, None, None, False))
-
-    def test_complete_miss_is_settled(self):
-        session = Mock()
-        session.get.return_value = self.response([b"<html></html>"])
-        self.assertEqual(article_image(BASE, session), (None, None, None, True))
-
-    def test_detects_encoding_without_reading_full_response(self):
-        response = self.response(['<head><meta charset="iso-8859-2">żółć</head>'.encode("iso-8859-2")])
-        from unittest.mock import PropertyMock
-
-        type(response).apparent_encoding = PropertyMock(
-            side_effect=AssertionError("would read entire response")
-        )
-        html, complete = _read_head(response)
-        self.assertIn("żółć", html)
-        self.assertTrue(complete)
-
-    def test_implicit_requests_charset_does_not_corrupt_utf8(self):
-        response = self.response(['<head><meta charset="utf-8">żółć</head>'.encode("utf-8")])
-        self.assertIn("żółć", _read_head(response)[0])
-
-    def test_explicit_http_charset_takes_precedence(self):
-        response = self.response([b"<head>caf\xe9</head>"], content_type="text/html; charset=iso-8859-1")
-        self.assertEqual(_read_head(response), ("<head>café</head>", True))
-
+    @patch("article_image.socket.getaddrinfo")
     @patch("curl_cffi.requests.get")
-    def test_fallback_uses_native_callback(self, get):
+    def test_private_redirect_never_connected(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
+        get.return_value = self.response(302, location="http://169.254.169.254/")
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+        get.assert_called_once()
+        self.assertFalse(get.call_args.kwargs["allow_redirects"])
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_public_redirect_re_resolves_and_uses_final_base(self, get, dns):
+        dns.side_effect = [self.dns("93.184.216.34"), self.dns("1.1.1.1")]
+
         def fetch(url, **kwargs):
-            chunk = b"<head>ok</head>body"
-            self.assertEqual(kwargs["content_callback"](chunk), len(chunk))
-            self.assertFalse(kwargs.get("stream", False))
-            return self.response([])
+            if url == BASE:
+                return self.response(302, location="https://other.example/new/story")
+            kwargs["content_callback"](b'<meta property="og:image" content="pic.jpg">')
+            return self.response()
 
         get.side_effect = fetch
-        self.assertEqual(_impersonated_html(BASE), ("<head>ok</head>body", True))
+        self.assertEqual(article_image(BASE), ("https://other.example/new/pic.jpg", None, None, True))
+        self.assertEqual(get.call_args_list[0].kwargs["curl_options"][CurlOpt.RESOLVE],
+                         ["example.com:443:93.184.216.34"])
+        self.assertEqual(get.call_args_list[1].kwargs["curl_options"][CurlOpt.RESOLVE],
+                         ["other.example:443:1.1.1.1"])
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_impersonated_retry_revalidates_dns(self, get, dns):
+        dns.side_effect = [self.dns("93.184.216.34"), self.dns("127.0.0.1")]
+        get.return_value = self.response(403)
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+        get.assert_called_once()
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_fallback_redirect_validates_target(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
+        get.side_effect = [self.response(403), self.response(302, location="http://127.0.0.1/")]
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(get.call_args.kwargs["impersonate"], "chrome")
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_redirect_budget(self, get, dns):
+        from article_image import MAX_REDIRECTS
+
+        dns.return_value = self.dns("93.184.216.34")
+        get.return_value = self.response(302, location=BASE)
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+        self.assertEqual(get.call_count, MAX_REDIRECTS + 1)
 
     @patch("curl_cffi.requests.get")
-    def test_fallback_aborts_at_limit_with_response_metadata(self, get):
-        from curl_cffi import CurlECode
-        from curl_cffi.curl import CURL_WRITEFUNC_ERROR
-        from curl_cffi.requests.exceptions import RequestException
+    def test_callback_aborts_at_limit(self, get):
+        response = self.response()
 
         def fetch(url, **kwargs):
             callback = kwargs["content_callback"]
             self.assertEqual(callback(b"abc"), 3)
             self.assertEqual(callback(b"x" * HEAD_BYTES), CURL_WRITEFUNC_ERROR)
-            raise RequestException("intentional cap", CurlECode.WRITE_ERROR, self.response([]))
+            self.assertFalse(kwargs.get("stream", False))
+            raise RequestException("cap", CurlECode.WRITE_ERROR, response)
 
         get.side_effect = fetch
-        self.assertEqual(_impersonated_html(BASE), ("abc" + "x" * (HEAD_BYTES - 3), False))
+        self.assertEqual(_curl_prefix(BASE, {}, 10), (response, b"abc" + b"x" * (HEAD_BYTES - 3), False))
 
+    @patch("article_image.socket.getaddrinfo")
     @patch("curl_cffi.requests.get")
-    def test_fallback_partial_body_retained_on_timeout(self, get):
-        from curl_cffi import CurlECode
-        from curl_cffi.requests.exceptions import RequestException
+    def test_partial_timeout_preserves_metadata(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
 
         def fetch(url, **kwargs):
-            kwargs["content_callback"](b"<head>")
-            raise RequestException("interrupted", CurlECode.OPERATION_TIMEDOUT, self.response([]))
+            kwargs["content_callback"](b'<head><!-- </head> --><script>const s="</head>";</script>')
+            kwargs["content_callback"](b'</head><body><script type="application/ld+json">{"image":"/body.jpg"}</script>')
+            raise RequestException("timeout", CurlECode.OPERATION_TIMEDOUT, self.response())
 
         get.side_effect = fetch
-        self.assertEqual(_impersonated_html(BASE), ("<head>", False))
+        self.assertEqual(article_image(BASE), ("https://example.com/body.jpg", None, None, True))
 
+    @patch("article_image.socket.getaddrinfo")
     @patch("curl_cffi.requests.get")
-    def test_fallback_rejects_non_200_even_after_cap(self, get):
-        from curl_cffi import CurlECode
-        from curl_cffi.requests.exceptions import RequestException
-
-        def fetch(url, **kwargs):
-            kwargs["content_callback"](b"x" * HEAD_BYTES)
-            raise RequestException("cap", CurlECode.WRITE_ERROR, self.response([], status=503))
-
-        get.side_effect = fetch
-        self.assertIsNone(_impersonated_html(BASE))
-
-    @patch("curl_cffi.requests.get")
-    def test_fallback_rejects_error_without_response(self, get):
-        from curl_cffi import CurlECode
-        from curl_cffi.requests.exceptions import RequestException
+    def test_capped_miss_is_retryable(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
 
         def fetch(url, **kwargs):
             kwargs["content_callback"](b"x" * HEAD_BYTES)
-            raise RequestException("cap", CurlECode.WRITE_ERROR)
+            raise RequestException("cap", CurlECode.WRITE_ERROR, self.response())
 
         get.side_effect = fetch
-        self.assertIsNone(_impersonated_html(BASE))
+        self.assertEqual(article_image(BASE), (None, None, None, False))
 
+    @patch("article_image.socket.getaddrinfo")
     @patch("curl_cffi.requests.get")
-    def test_fallback_unexpected_error_is_retryable(self, get):
-        get.side_effect = RuntimeError("fallback unavailable")
-        self.assertIsNone(_impersonated_html(BASE))
+    def test_complete_miss_is_settled(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
+        get.return_value = self.response()
+        self.assertEqual(article_image(BASE), (None, None, None, True))
+
+    def test_charset_detection_and_http_precedence(self):
+        self.assertIn("żółć", _decode_html_prefix(
+            '<meta charset="iso-8859-2">żółć'.encode("iso-8859-2"), {"content-type": "text/html"}
+        ))
+        self.assertEqual(_decode_html_prefix(b"caf\xe9", {"content-type": "text/html; charset=iso-8859-1"}), "café")
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_error_without_response_is_retryable(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
+        get.side_effect = RequestException("error", CurlECode.WRITE_ERROR)
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+
+    @patch("article_image.socket.getaddrinfo")
+    @patch("curl_cffi.requests.get")
+    def test_unexpected_error_is_retryable(self, get, dns):
+        dns.return_value = self.dns("93.184.216.34")
+        get.side_effect = RuntimeError("unavailable")
+        self.assertEqual(article_image(BASE), (None, None, None, False))
 
     def test_native_callback_aborts_real_http_response(self):
         prefix = b"abc" + b"x" * (HEAD_BYTES - 3)
@@ -290,25 +294,13 @@ class BoundedReadTests(unittest.TestCase):
             thread.start()
             try:
                 url = f"http://127.0.0.1:{server.server_port}/"
-                with patch.dict(os.environ, {"NO_PROXY": "127.0.0.1", "no_proxy": "127.0.0.1"}):
-                    self.assertEqual(_impersonated_html(url), (prefix.decode(), False))
+                # Exercise the low-level callback on loopback, not the public URL gate.
+                response, data, complete = _curl_prefix(url, {CurlOpt.PROXY: ""}, 10, impersonate=True)
+                self.assertEqual((response.status_code, data, complete), (200, prefix, False))
+                self.assertEqual(article_image(url), (None, None, None, False))
             finally:
                 server.shutdown()
                 thread.join()
-
-    @patch("curl_cffi.requests.get")
-    def test_fallback_truncated_miss_is_not_settled(self, get):
-        from curl_cffi import CurlECode
-        from curl_cffi.requests.exceptions import RequestException
-
-        def fetch(url, **kwargs):
-            kwargs["content_callback"](b"x" * HEAD_BYTES)
-            raise RequestException("cap", CurlECode.WRITE_ERROR, self.response([]))
-
-        session = Mock()
-        session.get.return_value = self.response([], status=403)
-        get.side_effect = fetch
-        self.assertEqual(article_image(BASE, session), (None, None, None, False))
 
 
 class BackfillTests(unittest.TestCase):
