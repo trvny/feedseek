@@ -1,13 +1,14 @@
 import unittest
 from pathlib import Path
 
+import yaml
+
 
 class UpdateFeedsWorkflowTests(unittest.TestCase):
     @staticmethod
     def workflow() -> str:
-        return (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "update-feeds.yml").read_text(
-            encoding="utf-8"
-        )
+        path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "update-feeds.yml"
+        return path.read_text(encoding="utf-8")
 
     def test_commit_requires_final_validation_and_non_cancelled_job(self):
         workflow = self.workflow()
@@ -61,7 +62,6 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertNotIn("git add feeds", commit)
         self.assertIn("steps.backup.outcome == 'success'", commit)
 
-
     def test_live_pages_are_built_from_generated_files(self):
         workflow = self.workflow()
         self.assertIn("uses: actions/upload-pages-artifact@", workflow)
@@ -84,23 +84,42 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("id-token: write", workflow)
 
     def test_indexnow_follows_site_publication_not_routine_refresh(self):
-        """Notify only after successful source or manual publication."""
+        """Require successful deployment and source/manual events in the same job."""
         root = Path(__file__).resolve().parents[1]
-        deploy = root / ".github" / "workflows" / "deploy-pages.yml"
+        fallback = root / ".github" / "workflows" / "deploy-pages.yml"
         workflows = (
-            (self.workflow(), "github.event_name == 'push'"),
-            (deploy.read_text(encoding="utf-8"), "github.event.workflow_run.event == 'push'"),
+            (
+                self.workflow(),
+                "deploy-generated-pages",
+                "success() && (github.event_name == 'push' || "
+                "github.event_name == 'workflow_dispatch')",
+            ),
+            (
+                fallback.read_text(encoding="utf-8"),
+                "build-deploy",
+                "success() && (github.event_name == 'workflow_dispatch' || "
+                "github.event.workflow_run.event == 'push' || "
+                "github.event.workflow_run.event == 'workflow_dispatch')",
+            ),
         )
-        for workflow, event in workflows:
-            hook = workflow.split("- name: Notify IndexNow of published site changes", 1)[1]
-            self.assertIn("success()", hook)
-            self.assertIn(event, hook)
-            self.assertNotIn("'schedule'", hook)
-            self.assertIn("site: feedseek", hook)
-            self.assertLess(
-                workflow.index("uses: actions/deploy-pages@"),
-                workflow.index("- name: Notify IndexNow"),
-            )
+        for workflow, job, condition in workflows:
+            with self.subTest(job=job):
+                steps = yaml.safe_load(workflow)["jobs"][job]["steps"]
+                deploy = [
+                    i for i, step in enumerate(steps)
+                    if step.get("uses", "").startswith("actions/deploy-pages@")
+                ]
+                hooks = [
+                    (i, step) for i, step in enumerate(steps)
+                    if step.get("uses", "").startswith("trvny/trvny/.github/actions/indexnow@")
+                ]
+                self.assertEqual(len(deploy), 1)
+                self.assertEqual(len(hooks), 1)
+                position, hook = hooks[0]
+                self.assertGreater(position, deploy[0])
+                self.assertEqual(" ".join(hook["if"].split()), "${{ " + condition + " }}")
+                self.assertEqual(hook["with"]["site"], "feedseek")
+                self.assertIs(hook["continue-on-error"], True)
 
     def test_feeds_are_restored_from_pages_and_never_committed(self):
         workflow = self.workflow()
