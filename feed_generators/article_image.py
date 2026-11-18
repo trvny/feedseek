@@ -32,15 +32,18 @@ that page is not coming back.
 
 from __future__ import annotations
 
+import ipaddress
 import json
 import os
+import re
+import socket
+import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeout
 from email.message import Message
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
-import requests
 from bs4 import BeautifulSoup, UnicodeDammit
 from utils import setup_logging
 
@@ -59,6 +62,7 @@ MAX_SECONDS = float(os.environ.get("FEEDSEEK_IMAGE_SECONDS", "25"))
 MAX_ATTEMPTS = int(os.environ.get("FEEDSEEK_IMAGE_ATTEMPTS", "3"))
 WORKERS = 8
 TIMEOUT = 10
+MAX_REDIRECTS = 5
 # Open Graph tags live in <head>; reading further is paying for markup we ignore.
 HEAD_BYTES = 262_144
 
@@ -195,50 +199,84 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
     return image, dimension("og:image:width"), dimension("og:image:height")
 
 
-def _read_head(response) -> tuple[str, bool]:
-    """Read a bounded HTML prefix and report whether EOF was reached."""
-    body = bytearray()
-    complete = True
-    try:
-        for chunk in response.iter_content(16_384):
-            body.extend(chunk[:HEAD_BYTES - len(body)])
-            if len(body) >= HEAD_BYTES:
-                complete = False
-                break
-    except (requests.RequestException, OSError):
-        # Keep metadata already received if the rest of the body stalls.
-        if not body:
-            raise
-        complete = False
-    return _decode_html_prefix(body, response.headers), complete
-
-
 def _decode_html_prefix(body, headers) -> str:
-    data = bytes(body)
-    # Only an explicit HTTP charset overrides HTML declarations. Requests may
-    # otherwise supply ISO-8859-1 for text/html without a charset.
     content_type = Message()
     content_type["Content-Type"] = headers.get("content-type", "")
     charset = content_type.get_content_charset()
     if charset:
         try:
-            return data.decode(charset, errors="replace")
+            return body.decode(charset, errors="replace")
         except LookupError:
             pass
-    # apparent_encoding may download the entire response.
-    return UnicodeDammit(data, is_html=True).unicode_markup or ""
+    return UnicodeDammit(body, is_html=True).unicode_markup or ""
 
 
-def _impersonated_html(url: str) -> tuple[str, bool] | None:
-    """Retry through curl_cffi for origins that reject a plain requests TLS
-    fingerprint. Medium and other Cloudflare-fronted sites answer 403 to the
-    stdlib client no matter the User-Agent, and serve the page fine to this."""
+def _public_address(address):
+    ip = ipaddress.ip_address(address)
+    if (
+        not ip.is_global
+        or ip.is_multicast
+        or ip.is_reserved
+        or (
+            isinstance(ip, ipaddress.IPv6Address)
+            and (ip.ipv4_mapped is not None or ip.sixtofour is not None or ip.teredo is not None)
+        )
+    ):
+        raise ValueError("non-public address")
+    return ip
+
+
+def _public_target(url: str):
+    from curl_cffi import CurlOpt
+
+    if any(ch.isspace() or ord(ch) < 32 or ord(ch) == 127 for ch in url) or "\\" in url:
+        raise ValueError("invalid URL characters")
+    parts = urlsplit(url)
+    if parts.scheme not in ("http", "https") or not parts.hostname:
+        raise ValueError("expected HTTP(S) URL")
+    if parts.username is not None or parts.password is not None or "%" in parts.netloc:
+        raise ValueError("invalid authority")
+    port = 443 if parts.scheme == "https" else 80
+    if parts.port is not None and parts.port != port:
+        raise ValueError("non-default port")
+    host = parts.hostname.rstrip(".").encode("idna").decode("ascii").lower()
+    options = {
+        CurlOpt.PROXY: "",
+        CurlOpt.PRE_PROXY: "",
+        CurlOpt.PROTOCOLS_STR: "http,https",
+    }
     try:
-        from curl_cffi import CurlECode, requests as curl_requests
-        from curl_cffi.curl import CURL_WRITEFUNC_ERROR
-        from curl_cffi.requests.exceptions import RequestException
-    except ImportError:
-        return None
+        literal = ipaddress.ip_address(host)
+    except ValueError:
+        # Reject alternate numeric address syntax before libcurl parses the URL.
+        labels = host.split(".")
+        if (
+            len(host) > 253
+            or len(labels) < 2
+            or any(not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label) for label in labels)
+            or re.fullmatch(r"(?:[0-9]+|0x[0-9a-f]+)", labels[-1])
+        ):
+            raise ValueError("invalid DNS hostname")
+        addresses = dict.fromkeys(
+            _public_address(record[4][0])
+            for record in socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
+        )
+        if not addresses:
+            raise ValueError("no public DNS addresses")
+        pinned = ",".join(f"[{ip}]" if ip.version == 6 else str(ip) for ip in addresses)
+        options[CurlOpt.RESOLVE] = [f"{host}:{port}:{pinned}"]
+        authority = host
+    else:
+        ip = _public_address(str(literal))
+        authority = f"[{ip}]" if ip.version == 6 else str(ip)
+    canonical = urlunsplit((parts.scheme, authority, parts.path or "/", parts.query, ""))
+    return canonical, options
+
+
+def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False):
+    from curl_cffi import CurlECode, requests as curl_requests
+    from curl_cffi.curl import CURL_WRITEFUNC_ERROR
+    from curl_cffi.requests.exceptions import RequestException
 
     body = bytearray()
     capped = False
@@ -253,16 +291,20 @@ def _impersonated_html(url: str) -> tuple[str, bool] | None:
 
     complete = True
     try:
-        # Native callback avoids curl_cffi's unbounded streaming queue.
         response = curl_requests.get(
-            url, impersonate="chrome", timeout=TIMEOUT, content_callback=receive
+            url,
+            headers=None if impersonate else HEADERS,
+            impersonate="chrome" if impersonate else None,
+            timeout=timeout,
+            allow_redirects=False,
+            curl_options=options,
+            content_callback=receive,
         )
     except RequestException as exc:
         response = exc.response
         if response is None or not body:
             return None
         if not (capped and exc.code == CurlECode.WRITE_ERROR):
-            # Other errors are accepted only for an interrupted HTTP body.
             if exc.code not in (
                 CurlECode.OPERATION_TIMEDOUT,
                 CurlECode.PARTIAL_FILE,
@@ -270,55 +312,50 @@ def _impersonated_html(url: str) -> tuple[str, bool] | None:
             ):
                 return None
         complete = False
-    except Exception as exc:  # Optional fallback must not sink an image lookup.
-        logger.debug("Impersonated image lookup failed for %s: %s", url, exc)
-        return None
-    if response.status_code != 200:
-        return None
-    return _decode_html_prefix(body, response.headers), complete and not capped
+    return response, bytes(body), complete and not capped
 
 
-def article_image(url: str, session=None) -> tuple[str | None, int | None, int | None, bool]:
-    """Fetch ``url`` and return ``(image, width, height, settled)``.
-
-    ``settled`` is the important half: True means the answer is final and the
-    caller should stop asking - either an image was found, or the page loaded
-    and genuinely has none, or the page is gone for good. False means something
-    transient went wrong (timeout, 5xx, rate limit) and the entry should be
-    left pending for the next run.
-    """
-    getter = session or requests
+def _fetch_public_html(url: str, *, impersonate: bool = False):
+    deadline = time.monotonic() + TIMEOUT
     try:
-        response = getter.get(
-            url, headers=HEADERS, timeout=TIMEOUT, stream=True, allow_redirects=True
-        )
-    except requests.RequestException as exc:
-        logger.debug("Image lookup failed for %s: %s", url, exc)
-        return None, None, None, False
+        for _ in range(MAX_REDIRECTS + 1):
+            url, options = _public_target(url)
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return None
+            result = _curl_prefix(url, options, remaining, impersonate=impersonate)
+            if result is None:
+                return None
+            response, body, complete = result
+            if response.status_code in (301, 302, 303, 307, 308):
+                location = response.headers.get("location")
+                if not location:
+                    return None
+                url = urljoin(url, location)
+                continue
+            return url, response.status_code, response.headers, body, complete
+    except Exception as exc:  # A failed lookup must not sink the feed.
+        logger.debug("Public image lookup failed for %s: %s", url, exc)
+    return None
 
-    try:
-        status = response.status_code
-        if status in (401, 403):
-            fallback = _impersonated_html(url)
-            if fallback is None:
-                return None, None, None, False
-            html, complete = fallback
-            image, width, height = page_image(html, url)
-            return image, width, height, bool(image) or complete
-        if status != 200:
-            # 404/410 will never become an image; 429/5xx might, next run.
-            return None, None, None, status in (404, 410)
-        content_type = (response.headers.get("content-type") or "").lower()
-        if "html" not in content_type and content_type:
-            return None, None, None, True  # a PDF or JSON endpoint has no og:image
-        html, complete = _read_head(response)
-    except requests.RequestException as exc:
-        logger.debug("Image lookup aborted for %s: %s", url, exc)
-        return None, None, None, False
-    finally:
-        response.close()
 
-    image, width, height = page_image(html, url)
+def article_image(url: str, _session=None) -> tuple[str | None, int | None, int | None, bool]:
+    """Fetch article metadata. A blocked or interrupted lookup stays retryable."""
+    result = _fetch_public_html(url)
+    if result is None:
+        return None, None, None, False
+    url, status, headers, body, complete = result
+    if status in (401, 403):
+        result = _fetch_public_html(url, impersonate=True)
+        if result is None:
+            return None, None, None, False
+        url, status, headers, body, complete = result
+    if status != 200:
+        return None, None, None, status in (404, 410)
+    content_type = (headers.get("content-type") or "").lower()
+    if "html" not in content_type and content_type:
+        return None, None, None, True
+    image, width, height = page_image(_decode_html_prefix(body, headers), url)
     return image, width, height, bool(image) or complete
 
 
@@ -380,9 +417,8 @@ def backfill_images(
         "Looking up images for %d of %d entries missing one", len(batch), len(pending)
     )
 
-    session = requests.Session()
     pool = ThreadPoolExecutor(max_workers=workers)
-    pending_futures = {pool.submit(lookup, target(entry), session): entry for entry in batch}
+    pending_futures = {pool.submit(lookup, target(entry), None): entry for entry in batch}
 
     def note_transient(entry) -> None:
         """Record one inconclusive attempt against the URL it was made on.
@@ -448,7 +484,6 @@ def backfill_images(
         # Not waiting: whatever is still in flight has already had its answer
         # abandoned, and its own socket timeout ends it shortly after.
         pool.shutdown(wait=False, cancel_futures=True)
-        session.close()
 
     logger.info("Resolved %d image(s); %d page(s) had none", found, answered - found)
     return found
