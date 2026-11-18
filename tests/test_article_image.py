@@ -176,6 +176,33 @@ class PublicTransportTests(unittest.TestCase):
             self.assertTrue(slots.acquire(blocking=False))
             slots.release()
 
+    def test_expired_deadline_is_a_failed_attempt_not_local_deferral(self):
+        with self.assertRaises(TimeoutError) as exc:
+            _resolve_public_addresses("example.com", 443, time.monotonic() - 1)
+        self.assertNotIsInstance(exc.exception, _LookupDeferred)
+
+    @patch("curl_cffi.requests.Session.get", autospec=True)
+    def test_expired_redirect_chain_spends_an_attempt(self, get):
+        from ipaddress import ip_address
+        from article_image import TIMEOUT
+
+        now = [100.0]
+        def fetch(session, url, **kwargs):
+            now[0] += TIMEOUT
+            return self.response(302, location="https://other.example/story")
+
+        get.side_effect = fetch
+        def resolve(host, port, deadline):
+            if deadline <= now[0]:
+                raise TimeoutError("lookup deadline exhausted")
+            return {ip_address("93.184.216.34"): None}
+
+        with patch("article_image._resolve_public_addresses", side_effect=resolve), patch(
+            "article_image.time.monotonic", side_effect=lambda: now[0]
+        ):
+            self.assertEqual(article_image(BASE), (None, None, None, False))
+        get.assert_called_once()
+
     def test_dns_deadline_and_global_slot_limit(self):
         entered = Event()
         released = Event()
