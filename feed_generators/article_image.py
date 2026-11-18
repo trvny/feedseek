@@ -238,8 +238,10 @@ def _resolve_public_addresses(host, port, deadline):
     # getaddrinfo cannot be cancelled. Bound abandoned resolver threads globally;
     # daemon threads must not prolong process shutdown after the caller times out.
     slots = _DNS_SLOTS
-    if deadline <= time.monotonic() or not slots.acquire(blocking=False):
-        raise _LookupDeferred("DNS budget exhausted")
+    if deadline <= time.monotonic():
+        raise TimeoutError("lookup deadline exhausted")
+    if not slots.acquire(blocking=False):
+        raise _LookupDeferred("DNS capacity exhausted")
     result = queue.Queue(maxsize=1)
 
     def resolve():
