@@ -928,15 +928,15 @@ def _preserve_unchanged_feed_date(fg: FeedGenerator, previous: bytes | None, fee
     if previous is None:
         return
     from lxml import etree
+    from safe_feed_xml import parse_feed_xml
 
     atom = feed_format == "atom"
     render = fg.atom_str if atom else fg.rss_str
     date_path = "{http://www.w3.org/2005/Atom}updated" if atom else "channel/lastBuildDate"
     root_tag = "{http://www.w3.org/2005/Atom}feed" if atom else "rss"
     try:
-        parser = etree.XMLParser(resolve_entities=False, no_network=True)
-        old = etree.fromstring(previous, parser)
-        current = etree.fromstring(render(pretty=True), parser)
+        old = parse_feed_xml(previous, strip_ignorable=False).getroot()
+        current = parse_feed_xml(render(pretty=True), strip_ignorable=False).getroot()
         if old.tag != root_tag or current.tag != root_tag:
             return
         old_date, current_date = old.find(date_path), current.find(date_path)

@@ -22,11 +22,12 @@ import argparse
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "feed_generators"))
+from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 ATOM = "{http://www.w3.org/2005/Atom}"
 HEADERS = {
     "User-Agent": (
@@ -41,8 +42,8 @@ MIN_IMAGE_BYTES = 40
 
 def declared_icon(xml_path: Path) -> str:
     try:
-        return (ET.parse(xml_path).getroot().findtext(f"{ATOM}icon") or "").strip()
-    except ET.ParseError:
+        return (parse_feed_xml(xml_path).getroot().findtext(f"{ATOM}icon") or "").strip()
+    except (FeedXmlError, OSError):
         return ""
 
 
