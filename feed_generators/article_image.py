@@ -347,7 +347,7 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
             )
     except RequestException as exc:
         response = exc.response
-        if response is None or not body:
+        if response is None or (response.status_code == 200 and not body):
             return None
         if not (capped and exc.code == CurlECode.WRITE_ERROR):
             if exc.code not in (
@@ -396,7 +396,11 @@ def article_image(url: str, _session=None) -> tuple[str | None, int | None, int 
         return None, None, None, False
     url, status, headers, body, complete = result
     if status in (401, 403):
-        result = _fetch_public_html(url, deadline, cookies, impersonate=True)
+        # A slow denial body must not spend the browser retry's own budget.
+        # At most two bounded chains; DNS and redirects share each chain's deadline.
+        result = _fetch_public_html(
+            url, time.monotonic() + TIMEOUT, cookies, impersonate=True
+        )
         if result is None:
             return None, None, None, False
         url, status, headers, body, complete = result

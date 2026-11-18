@@ -241,6 +241,30 @@ class PublicTransportTests(unittest.TestCase):
         self.assertEqual(article_image(BASE), (None, None, None, False))
         get.assert_called_once()
 
+    @patch("curl_cffi.requests.Session.get", autospec=True)
+    def test_stalled_denial_still_gets_bounded_browser_retry(self, get):
+        from ipaddress import ip_address
+        from article_image import TIMEOUT
+
+        now = [100.0]
+
+        def fetch(session, url, **kwargs):
+            if not kwargs["impersonate"]:
+                now[0] += TIMEOUT
+                raise RequestException("denial body stalled", CurlECode.OPERATION_TIMEDOUT, self.response(403))
+            self.assertGreater(kwargs["timeout"], 0)
+            self.assertLessEqual(kwargs["timeout"], TIMEOUT)
+            kwargs["content_callback"](b'<meta property="og:image" content="/ready.jpg">')
+            return self.response()
+
+        get.side_effect = fetch
+        with patch(
+            "article_image._resolve_public_addresses",
+            return_value={ip_address("93.184.216.34"): None},
+        ), patch("article_image.time.monotonic", side_effect=lambda: now[0]):
+            self.assertEqual(article_image(BASE), ("https://example.com/ready.jpg", None, None, True))
+        self.assertEqual(get.call_count, 2)
+
     @patch("article_image.socket.getaddrinfo")
     @patch("curl_cffi.requests.Session.get", autospec=True)
     def test_fallback_redirect_validates_target(self, get, dns):
