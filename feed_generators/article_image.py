@@ -230,12 +230,16 @@ def _public_address(address):
     return ip
 
 
+class _LookupDeferred(TimeoutError):
+    """Local DNS capacity exhausted before a lookup could start."""
+
+
 def _resolve_public_addresses(host, port, deadline):
     # getaddrinfo cannot be cancelled. Bound abandoned resolver threads globally;
     # daemon threads must not prolong process shutdown after the caller times out.
     slots = _DNS_SLOTS
     if deadline <= time.monotonic() or not slots.acquire(blocking=False):
-        raise TimeoutError("DNS budget exhausted")
+        raise _LookupDeferred("DNS budget exhausted")
     result = queue.Queue(maxsize=1)
 
     def resolve():
@@ -376,6 +380,8 @@ def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False
                 url = urljoin(url, location)
                 continue
             return url, response.status_code, response.headers, body, complete
+    except _LookupDeferred:
+        raise
     except (ValueError, OSError, CurlError) as exc:
         logger.debug("Public image lookup failed for %s: %s", url, exc)
     return None
@@ -489,6 +495,8 @@ def backfill_images(
             handled.add(id(entry))
             try:
                 image, width, height, settled = future.result()
+            except _LookupDeferred:
+                continue  # Local capacity, not a failed source attempt.
             except Exception as exc:  # a lookup must never sink the feed
                 logger.debug("Image lookup raised for %s: %s", target(entry), exc)
                 note_transient(entry)
@@ -517,6 +525,8 @@ def backfill_images(
         # between an origin that hung and one we simply never got to.
         for future, entry in pending_futures.items():
             if id(entry) not in handled and (future.running() or future.done()):
+                if future.done() and not future.cancelled() and isinstance(future.exception(), _LookupDeferred):
+                    continue
                 note_transient(entry)
         logger.info(
             "Image budget of %.0fs spent after %d of %d lookups; the rest waits for the next run",

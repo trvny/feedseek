@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 from article_image import (  # noqa: E402
     HEAD_BYTES,
+    _LookupDeferred,
     _curl_prefix,
     _decode_html_prefix,
     _public_target,
@@ -195,7 +196,7 @@ class PublicTransportTests(unittest.TestCase):
                 with self.assertRaises(TimeoutError):
                     _resolve_public_addresses("example.com", 443, time.monotonic() + 0.1)
                 self.assertTrue(entered.is_set())
-                with self.assertRaises(TimeoutError):
+                with self.assertRaises(_LookupDeferred):
                     _resolve_public_addresses("other.example", 443, time.monotonic() + 1)
                 dns.assert_called_once()
             finally:
@@ -422,6 +423,20 @@ class BackfillTests(unittest.TestCase):
             lookup=lambda url, session: (asked.append(url), (None, None, None, True))[1],
         )
         self.assertEqual(asked, [])
+
+    def test_local_dns_capacity_does_not_consume_attempts(self):
+        entries = self.entries(1)
+
+        def deferred(url, session):
+            raise _LookupDeferred("DNS slots busy")
+
+        for _ in range(4):
+            backfill_images(entries, lookup=deferred)
+        self.assertNotIn("image_attempts", entries[0])
+        self.assertNotIn("image_checked", entries[0])
+        self.assertEqual(backfill_images(
+            entries, lookup=lambda url, session: ("https://cdn.test/a.jpg", None, None, True)
+        ), 1)
 
     def test_transient_failure_stays_pending(self):
         # A timeout must not brand an article imageless forever.
