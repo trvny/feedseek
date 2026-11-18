@@ -161,6 +161,20 @@ class PublicTransportTests(unittest.TestCase):
         self.assertNotIn(CurlOpt.RESOLVE, options)
         dns.assert_not_called()
 
+    @patch("article_image.socket.getaddrinfo")
+    def test_dns_failure_and_worker_start_failure_are_retryable(self, dns):
+        import socket
+
+        dns.side_effect = socket.gaierror("DNS unavailable")
+        self.assertEqual(article_image(BASE), (None, None, None, False))
+        slots = BoundedSemaphore(1)
+        with patch("article_image._DNS_SLOTS", slots), patch(
+            "article_image.Thread.start", side_effect=RuntimeError("thread unavailable")
+        ):
+            self.assertEqual(article_image(BASE), (None, None, None, False))
+            self.assertTrue(slots.acquire(blocking=False))
+            slots.release()
+
     def test_dns_deadline_and_global_slot_limit(self):
         entered = Event()
         released = Event()
