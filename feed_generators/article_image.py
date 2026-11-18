@@ -69,7 +69,7 @@ WORKERS = 8
 TIMEOUT = 10
 MAX_REDIRECTS = 5
 _DNS_SLOTS = BoundedSemaphore(WORKERS)
-# Open Graph tags live in <head>; reading further is paying for markup we ignore.
+# Bound inspected HTML, including JSON-LD outside the head.
 HEAD_BYTES = 262_144
 
 HEADERS = {
@@ -233,23 +233,25 @@ def _public_address(address):
 def _resolve_public_addresses(host, port, deadline):
     # getaddrinfo cannot be cancelled. Bound abandoned resolver threads globally;
     # daemon threads must not prolong process shutdown after the caller times out.
-    if deadline <= time.monotonic() or not _DNS_SLOTS.acquire(blocking=False):
+    slots = _DNS_SLOTS
+    if deadline <= time.monotonic() or not slots.acquire(blocking=False):
         raise TimeoutError("DNS budget exhausted")
     result = queue.Queue(maxsize=1)
 
     def resolve():
         try:
-            result.put(socket.getaddrinfo(host, port, type=socket.SOCK_STREAM))
+            records = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
         except OSError as exc:
-            result.put(exc)
+            records = exc
         finally:
-            _DNS_SLOTS.release()
+            slots.release()
+        result.put(records)
 
     try:
         Thread(target=resolve, daemon=True).start()
-    except RuntimeError:
-        _DNS_SLOTS.release()
-        raise
+    except RuntimeError as exc:
+        slots.release()
+        raise OSError("DNS resolver could not start") from exc
     try:
         records = result.get(timeout=max(0, deadline - time.monotonic()))
     except queue.Empty as exc:
@@ -284,6 +286,8 @@ def _public_target(url: str, deadline=None):
     try:
         literal = ipaddress.ip_address(host)
     except ValueError:
+        literal = None
+    if literal is None:
         host = host.encode("idna").decode("ascii").lower()
         # Reject alternate numeric address syntax before libcurl parses the URL.
         labels = host.split(".")
