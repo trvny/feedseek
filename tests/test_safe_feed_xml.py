@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
+from jsonfeed import build_json_feed
 from safe_feed_xml import FeedXmlError, parse_feed_xml
 from validate_feeds import validate_feed
 import docs_sources
@@ -28,6 +29,10 @@ class SafeFeedXmlTests(unittest.TestCase):
                         with self.assertRaises(FeedXmlError):
                             parse_feed_xml(source)
                     self.assertEqual(validate_feed(path)["status"], "ERROR")
+                    with patch("feedparser.parse") as parse:
+                        with self.assertRaises(FeedXmlError):
+                            build_json_feed(path, "demo")
+                        parse.assert_not_called()
                     with patch.object(docs_sources, "FEEDS_DIR", path.parent):
                         self.assertEqual(docs_sources.feed_title("demo"), "demo")
 
