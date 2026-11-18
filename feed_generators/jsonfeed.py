@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from html_text import looks_like_html
+from safe_feed_xml import parse_feed_xml
 from utils import large_icon, public_feed_url
 
 JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
@@ -60,7 +61,9 @@ def build_json_feed(xml_path: Path, feed_name: str, entry_image=None) -> dict:
     """
     import feedparser  # local import: keeps utils import-time light
 
-    parsed = feedparser.parse(str(xml_path))
+    data = xml_path.read_bytes()
+    parse_feed_xml(data)
+    parsed = feedparser.parse(data)
     feed = parsed.feed
 
     doc: dict = {
