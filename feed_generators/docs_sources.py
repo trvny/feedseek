@@ -39,9 +39,9 @@ import sys
 from pathlib import Path
 from types import ModuleType
 from urllib.parse import urlparse
-from xml.etree import ElementTree as ET
 
 from models import load_feed_registry
+from safe_feed_xml import FeedXmlError, parse_feed_xml
 from utils import public_feed_url, write_atomically
 
 HERE = Path(__file__).resolve().parent
@@ -102,8 +102,8 @@ def feed_title(feed_key: str) -> str:
     if not path.exists():
         return feed_key
     try:
-        root = ET.parse(path).getroot()
-    except ET.ParseError:
+        root = parse_feed_xml(path).getroot()
+    except (FeedXmlError, OSError):
         return feed_key
     # Atom puts <title> on the root; RSS nests it under <channel>.
     title = root.findtext(f"{ATOM}title") or root.findtext("channel/title") or ""

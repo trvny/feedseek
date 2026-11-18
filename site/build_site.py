@@ -30,7 +30,7 @@ import json
 import os
 import shutil
 import sys
-import xml.etree.ElementTree as ET
+from lxml.etree import _Element
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -48,6 +48,7 @@ from sitemap_variants import SEARCH_VARIANTS, build_sitemap_variants  # noqa: E4
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
 from models import load_published_feeds  # noqa: E402
+from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
@@ -121,7 +122,7 @@ def site_base_url() -> str:
     return "https://trvny.github.io/feedseek/"
 
 
-def _text(elem: ET.Element | None) -> str:
+def _text(elem: _Element | None) -> str:
     return (elem.text or "").strip() if elem is not None else ""
 
 
@@ -140,8 +141,8 @@ def parse_feed(path: Path) -> dict:
         "format": "atom",
     }
     try:
-        root = ET.parse(path).getroot()
-    except ET.ParseError:
+        root = parse_feed_xml(path).getroot()
+    except (FeedXmlError, OSError):
         return info
 
     if root.tag == "rss":

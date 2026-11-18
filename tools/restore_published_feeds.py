@@ -20,9 +20,10 @@ from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
-from lxml import etree
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "feed_generators"))
+from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 DEFAULT_BASE = "https://trvny.github.io/feedseek/"
 KEY_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 MAX_FILE_BYTES = 32 * 1024 * 1024
@@ -66,14 +67,9 @@ def catalog_entries(catalog: object, base: str) -> list[tuple[str, str, str]]:
 
 def _check_pair(key: str, xml: bytes, model: bytes) -> None:
     try:
-        root = etree.fromstring(
-            xml,
-            etree.XMLParser(resolve_entities=False, load_dtd=False, no_network=True),
-        )
-    except etree.XMLSyntaxError as exc:
+        parse_feed_xml(xml)
+    except FeedXmlError as exc:
         raise RestoreError(f"{key}: invalid XML: {exc}") from exc
-    if root.getroottree().docinfo.doctype:
-        raise RestoreError(f"{key}: XML document type declarations are not allowed")
     try:
         payload = json.loads(model)
     except json.JSONDecodeError as exc:

@@ -5,13 +5,14 @@ from __future__ import annotations
 import json
 import os
 import sys
-import xml.etree.ElementTree as ET
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 from model_feed import MODEL_FEED_FORMAT, MODEL_FEED_VERSION
 from models import load_feed_registry
+from safe_feed_xml import FeedXmlError, parse_feed_xml
+from lxml.etree import _Element
 
 STALE_FLOOR_DAYS = 30
 STALE_GAP_MULTIPLIER = 3.0
@@ -26,7 +27,7 @@ def _local(tag: str) -> str:
     return tag.split("}")[-1] if "}" in tag else tag
 
 
-def _find_entries(root: ET.Element) -> list[ET.Element]:
+def _find_entries(root: _Element) -> list[_Element]:
     """Return feed entries for both RSS (item) and Atom (entry)."""
     return [el for el in root.iter() if _local(el.tag) in ("item", "entry")]
 
@@ -45,7 +46,7 @@ def _parse_atom_date(text: str) -> datetime | None:
         return None
 
 
-def _entry_date(entry: ET.Element) -> datetime | None:
+def _entry_date(entry: _Element) -> datetime | None:
     """Return an entry's publication date.
 
     Atom ``published`` is preferred over ``updated``. FeedGenerator may synthesize
@@ -110,8 +111,8 @@ def validate_feed(feed_path: Path) -> dict:
     """Validate one RSS/Atom XML file."""
     name = feed_path.name
     try:
-        root = ET.parse(feed_path).getroot()
-    except (ET.ParseError, OSError) as exc:
+        root = parse_feed_xml(feed_path).getroot()
+    except (FeedXmlError, OSError) as exc:
         return _result(name, "ERROR", f"XML parse/read error: {exc}")
 
     items = _find_entries(root)
