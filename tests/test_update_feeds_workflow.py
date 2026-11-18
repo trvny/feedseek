@@ -83,6 +83,19 @@ class UpdateFeedsWorkflowTests(unittest.TestCase):
         self.assertIn("pages: write", workflow)
         self.assertIn("id-token: write", workflow)
 
+    def test_indexnow_follows_site_publication_not_routine_refresh(self):
+        for workflow, event in ((self.workflow(), "github.event_name == 'push'"), (
+            (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "deploy-pages.yml").read_text(
+                encoding="utf-8"
+            ), "github.event.workflow_run.event == 'push'"
+        )):
+            hook = workflow.split("- name: Notify IndexNow of published site changes", 1)[1]
+            self.assertIn("success()", hook)
+            self.assertIn(event, hook)
+            self.assertNotIn("'schedule'", hook)
+            self.assertIn("site: feedseek", hook)
+            self.assertLess(workflow.index("uses: actions/deploy-pages@"), workflow.index("- name: Notify IndexNow"))
+
     def test_feeds_are_restored_from_pages_and_never_committed(self):
         workflow = self.workflow()
         restore = workflow.split("- name: Restore published feeds from Pages", 1)[1]
