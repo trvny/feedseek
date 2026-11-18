@@ -221,6 +221,6 @@ jobs:
       - name: Notify IndexNow of published site changes
         if: ${{ success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
         continue-on-error: true
-        uses: trvny/trvny/.github/actions/indexnow@716cf16a8cc79710ba6c07be736171ee152f2c1d
+        uses: trvny/trvny/.github/actions/indexnow@330bac07e79471834486315f967cca01f0d49140
         with:
           site: feedseek
