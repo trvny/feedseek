@@ -62,11 +62,11 @@ def extract_article_metadata(html: str, *, accept):
     """First usable metadata result; HTML input only, no fetch."""
     if not html.lstrip().startswith("<"):
         return None
-    for extractor in (_rust_metadata, _python_metadata):
+    for name, extractor in (("rtrafilatura", _rust_metadata), ("trafilatura", _python_metadata)):
         try:
             metadata = extractor(html)
         except (ImportError, ValueError, RuntimeError, LxmlError) as exc:
-            logger.debug("%s metadata fallback: %s", extractor.__name__, exc)
+            logger.debug("%s metadata fallback: %s", name, exc)
             continue
         if metadata is not None and (result := accept(metadata)):
             return result
