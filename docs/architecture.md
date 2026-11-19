@@ -29,7 +29,7 @@ The defaults are intentionally conservative:
 
 ## Publication cadence
 
-The scheduled generator still runs every three hours. Every publishable run backs
+The scheduled generator runs every three hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
 results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
