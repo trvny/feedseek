@@ -94,7 +94,7 @@ ICON_LINKS = f"""  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="{THEME_COLOR}">"""
 
 WEBMANIFEST = f"""{{
-  "name": "Feeds — self-updating Atom feeds",
+  "name": "Feedseek | RSS, Atom &amp; JSON Model Feed directory",
   "short_name": "Feeds",
   "icons": [
     {{ "src": "icons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" }},
@@ -464,7 +464,7 @@ def build_index(feeds: list[dict], base: str) -> str:
     desc = (
         f"{count} self-updating, enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds, "
         "built from native feeds, APIs and the web, "
-        "regenerated every 2 hours."
+        "regenerated every 3 hours."
     )
     schema = json.dumps(
         {
@@ -477,6 +477,24 @@ def build_index(feeds: list[dict], base: str) -> str:
             "isBasedOn": "https://github.com/trvny/feedseek",
             "description": desc,
             "inLanguage": "en",
+            "potentialAction": {
+                "@type": "ReadAction",
+                "target": base + "reader/",
+            },
+            "mainEntity": {
+                "@type": "ItemList",
+                "name": "Curated Feedseek feeds",
+                "numberOfItems": count,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": index,
+                        "name": str(feed["title"]),
+                        "url": base + public_xml(feed),
+                    }
+                    for index, feed in enumerate(feeds, 1)
+                ],
+            },
         },
         ensure_ascii=False,
         separators=(",", ":"),
@@ -487,7 +505,7 @@ def build_index(feeds: list[dict], base: str) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Feeds — self-updating Atom feeds</title>
+  <title>Feedseek | RSS, Atom &amp; JSON Model Feed directory</title>
   <meta name="description" content="{html.escape(desc, quote=True)}">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="google-site-verification" content="xbXKq1w3ClpoMlxws6qobmZjpSmGVhi2xbrf7kwJV0s" />
@@ -502,10 +520,15 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Feedseek">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Feeds — self-updating Atom feeds">
+  <meta property="og:title" content="Feedseek | RSS, Atom &amp; JSON Model Feed directory">
   <meta property="og:description" content="{html.escape(desc, quote=True)}">
   <meta property="og:url" content="{html.escape(base, quote=True)}">
+  <meta property="og:image" content="{html.escape(base + "icons/android-chrome-512x512.png", quote=True)}">
+  <meta property="og:image:alt" content="Feedseek icon">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feedseek | RSS, Atom &amp; JSON Model Feed directory">
+  <meta name="twitter:description" content="{html.escape(desc, quote=True)}">
+  <meta name="twitter:image" content="{html.escape(base + "icons/android-chrome-512x512.png", quote=True)}">
 {autodiscovery}
   <script type="application/ld+json">{schema}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -673,7 +696,9 @@ def build_index(feeds: list[dict], base: str) -> str:
       <h2>What does Feedseek publish?</h2>
       <p>Feedseek normalizes and enriches Atom/RSS feeds from existing feeds, public APIs and web sources. Each published XML feed also has one compact JSON Model Feed with normalized plaintext for LLMs and agents. <a href="model-feeds.json">Browse the JSON catalog</a>.</p>
       <h2>How often are the feeds updated?</h2>
-      <p>Published feeds are regenerated every two hours. Individual entries retain their source meaning and stable identities; an upstream feed may be normalized rather than copied unchanged.</p>
+      <p>Published feeds are regenerated every three hours. Individual entries retain their source meaning and stable identities; an upstream feed may be normalized rather than copied unchanged.</p>
+      <h2>How can AI agents access Feedseek?</h2>
+      <p>Use the <a href="model-feeds.json">complete JSON catalog</a> to find direct source URLs and full published Model Feed history; use the <a href="https://github.com/trvny/feedseek/blob/main/docs/agents.md">agent guide</a> for browser WebMCP and remote MCP search over recent entries. The <a href="llms.txt">LLM directory</a> lists all published feeds, not just the curated cards above.</p>
       <h2>How can I follow the feeds?</h2>
       <p>Use a feed URL with any compatible RSS/Atom reader, <a href="subscriptions.opml">import the OPML directory</a>, or open the <a href="reader/">browser Reader</a>. <a href="https://github.com/trvny/feedseek">See how Feedseek works</a>.</p>
     </details>
@@ -887,10 +912,10 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
     """
     count = len(feeds)
     lines = [
-        "# Feeds",
+        "# Feedseek",
         "",
         f"> Self-updating, enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds: "
-        f"{count} feeds built from native feeds, APIs and the web, regenerated every 2 hours.",
+        f"{count} feeds built from native feeds, APIs and the web, regenerated every 3 hours.",
         "",
         "## Resources",
         "",

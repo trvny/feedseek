@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -92,6 +93,18 @@ class SiteRobotsTests(unittest.TestCase):
         for name in ("sitemap.txt", "sitemap-atom.xml", "sitemap-rss.xml"):
             self.assertIn(f"Sitemap: {base}{name}\n", robots)
         self.assertNotIn("sitemap.json", robots)
+
+    def test_directory_metadata_describes_curated_feeds_and_agent_access(self):
+        base = "https://example.com/feedseek/"
+        page = build_site.build_index([], base)
+        schema_text = re.search(r'<script type="application/ld\+json">(.*?)</script>', page)
+        self.assertIsNotNone(schema_text)
+        schema = json.loads(schema_text.group(1))
+        self.assertEqual(schema["mainEntity"]["numberOfItems"], 0)
+        self.assertEqual(schema["potentialAction"]["target"], base + "reader/")
+        self.assertIn("Feedseek | RSS, Atom", page)
+        self.assertIn("How can AI agents access Feedseek?", page)
+        self.assertIn("every three hours", page)
 
     def test_invalid_sitemap_urls(self):
         """Reject empty and foreign URLs; reserve feed filenames."""
