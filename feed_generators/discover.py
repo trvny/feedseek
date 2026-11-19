@@ -16,10 +16,10 @@ native feeds. llms.txt failures never block ordinary discovery.
 
 import sys
 import time
-from urllib.parse import urlsplit
 
 import requests
 
+from article_image import fetch_public_text
 from llms_discovery import discover_llms_candidates
 
 MAX_LLMS_PROBES = 6
@@ -57,28 +57,14 @@ def discover_hosted(url: str):
     return resp.json()
 
 
-def _seeker_fetch(session, url, deadline):
-    """Bound individual requests, response bodies and the crawl deadline."""
-    remaining = deadline - time.monotonic()
-    if remaining <= 0:
+def _seeker_fetch(url, deadline):
+    """Reuse the public-only, elapsed-time-bounded curl transport."""
+    now = time.monotonic()
+    if deadline <= now:
         raise TimeoutError("Feed Seeker deadline reached")
-    try:
-        parts = urlsplit(url)
-        if parts.scheme not in {"http", "https"} or not parts.hostname or parts.username or parts.password:
-            return ""
-        with session.get(url, timeout=min(remaining, SEEKER_REQUEST_SECONDS), stream=True) as response:
-            if not response.ok:
-                return ""
-            body = bytearray()
-            for chunk in response.iter_content(16384):
-                if time.monotonic() >= deadline:
-                    raise TimeoutError("Feed Seeker deadline reached")
-                if len(body) + len(chunk) > SEEKER_MAX_BYTES:
-                    return ""
-                body.extend(chunk)
-            return body.decode(response.encoding or "utf-8", errors="replace")
-    except (requests.RequestException, ValueError, LookupError):
-        return ""
+    return fetch_public_text(
+        url, min(deadline, now + SEEKER_REQUEST_SECONDS), max_bytes=SEEKER_MAX_BYTES
+    )
 
 
 def discover_seeker(url: str):
@@ -91,17 +77,16 @@ def discover_seeker(url: str):
 
     found = {}
     deadline = time.monotonic() + SEEKER_SECONDS
-    with requests.Session() as session:
-        def fetch(candidate):
-            return _seeker_fetch(session, candidate, deadline)
+    def fetch(candidate):
+        return _seeker_fetch(candidate, deadline)
 
-        try:
-            for candidate in FeedSeeker(url, fetcher=fetch).generate_feed_urls(max_links=SEEKER_MAX_LINKS):
-                found.setdefault(candidate, {"url": candidate})
-                if len(found) >= SEEKER_MAX_RESULTS or time.monotonic() >= deadline:
-                    break
-        except (TimeoutError, requests.RequestException) as exc:
-            print(f"Feed Seeker crawl ended: {exc}", file=sys.stderr)
+    try:
+        for candidate in FeedSeeker(url, fetcher=fetch).generate_feed_urls(max_links=SEEKER_MAX_LINKS):
+            found.setdefault(candidate, {"url": candidate})
+            if len(found) >= SEEKER_MAX_RESULTS or time.monotonic() >= deadline:
+                break
+    except (TimeoutError, requests.RequestException) as exc:
+        print(f"Feed Seeker crawl ended: {exc}", file=sys.stderr)
     return list(found.values())
 
 
