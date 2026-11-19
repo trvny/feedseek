@@ -34,6 +34,7 @@ JSON-RPC over `POST` (single JSON responses), served by the `feeds-proxy` Worker
 
 | Tool | Purpose |
 | --- | --- |
+| `list_feeds` | Discover all published sources, source keys and full-history URLs; paginated |
 | `search` | Query the recent index; returns opaque result ids |
 | `fetch` | Full entry from the live Model Feed, with a Git revision fallback for legacy ids |
 | `recent` | Bulk digest with time, topic and source filters |
@@ -47,6 +48,7 @@ Limits: 64 KiB request bodies, 16 MiB upstream JSON; arguments validated server-
 
 | Tool | Page | Effect |
 | --- | --- | --- |
+| `list_feeds` | Directory / Reader | Search the complete published catalog |
 | `search_feeds` | Directory | Read matching registry feeds |
 | `set_feed_filter` | Directory | Change the visible feed filter |
 | `read_visible_articles` | Reader | Read currently displayed articles |

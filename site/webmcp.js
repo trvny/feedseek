@@ -223,5 +223,38 @@
     return true;
   }
 
-  if (!setupRegistry()) setupReader();
+  function setupCatalog(relativeUrl) {
+    register({
+      name: "list_feeds",
+      title: "Discover all published Feedseek sources",
+      description: "Search the full published catalog, including sources not displayed on this page. Returns source keys and direct feed URLs. Use next_offset to paginate.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          query: { type: "string", maxLength: 500 },
+          limit: { type: "integer", minimum: 1, maximum: 50, default: 20 },
+          offset: { type: "integer", minimum: 0, default: 0 },
+        },
+        additionalProperties: false,
+      },
+      annotations: { readOnlyHint: true, untrustedContentHint: true },
+      async execute({ query = "", limit = 20, offset = 0 } = {}) {
+        const needle = requireString(query, "query").trim().toLowerCase();
+        requireLimit(limit);
+        if (!Number.isSafeInteger(offset) || offset < 0) throw new RangeError("offset must be a non-negative integer.");
+        const response = await fetch(new URL(relativeUrl, document.baseURI), { signal: AbortSignal.timeout(8000) });
+        if (!response.ok) throw new Error("Feedseek catalog unavailable.");
+        const catalog = await response.json();
+        if (catalog.format !== "feedseek-model-feed-catalog" || catalog.version !== 1 || !Array.isArray(catalog.feeds)) {
+          throw new Error("Invalid Feedseek catalog.");
+        }
+        const matches = catalog.feeds.filter((feed) =>
+          [feed.key, feed.title, feed.description, feed.source_url].join(" ").toLowerCase().includes(needle));
+        return { count: matches.length, next_offset: offset + limit < matches.length ? offset + limit : null, feeds: matches.slice(offset, offset + limit) };
+      },
+    });
+  }
+
+  if (setupRegistry()) setupCatalog("model-feeds.json");
+  else if (setupReader()) setupCatalog("../model-feeds.json");
 })();

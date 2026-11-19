@@ -55,6 +55,18 @@
         "open_world_justification": "The Reader reads public entries and shares selected public data with the current host conversation only.",
         "destructive_justification": "The Reader cannot delete, overwrite, send, publish, purchase or mutate external data."
       }
+    },
+    "list_feeds": {
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false,
+        "destructiveHint": false
+      },
+      "justifications": {
+        "read_only_justification": "Reads the public feed catalog and filters in memory.",
+        "open_world_justification": "Returns public source metadata and URLs without modifying external state.",
+        "destructive_justification": "Cannot delete, overwrite or modify data."
+      }
     }
   },
   "test_cases": [
@@ -91,11 +103,11 @@
       "expected_output_url": null
     },
     {
-      "description": "Handle a topic with no matching recent entries.",
-      "user_prompt": "Search Feedseek for an extremely unlikely phrase: cobalt-lobster-xyzzy-9472.",
+      "description": "Discover a published source and its direct feed URLs.",
+      "user_prompt": "Which Feedseek feeds are available for AI news?",
       "file_attachment_urls": null,
-      "tools_triggered": "search",
-      "expected_output": "Returns an empty results list without inventing entries or failing the MCP session.",
+      "tools_triggered": "list_feeds",
+      "expected_output": "Returns matching source keys, direct XML and Model Feed URLs and pagination information.",
       "expected_output_url": null
     }
   ],

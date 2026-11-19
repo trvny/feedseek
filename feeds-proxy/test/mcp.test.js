@@ -180,7 +180,7 @@ test("modern tools/list includes cache metadata", async () => {
   assert.equal(body.result.resultType, "complete");
   assert.equal(body.result.cacheScope, "public");
   assert.ok(Number.isInteger(body.result.ttlMs));
-  assert.deepEqual(body.result.tools.map((tool) => tool.name), ["search", "fetch", "recent", "feedseek_reader_open"]);
+  assert.deepEqual(body.result.tools.map((tool) => tool.name), ["search", "fetch", "recent", "feedseek_reader_open", "list_feeds"]);
   for (const tool of body.result.tools) {
     assert.equal(tool.annotations.readOnlyHint, true);
     assert.equal(tool.annotations.destructiveHint, false);
@@ -192,7 +192,7 @@ test("legacy tools/list remains compatible", async () => {
   const body = await (await call("tools/list", {}, 1, "2025-11-25")).json();
   assert.equal(body.result.resultType, undefined);
   assert.equal(body.result.ttlMs, undefined);
-  assert.equal(body.result.tools.length, 4);
+  assert.equal(body.result.tools.length, 5);
 });
 
 test("strict RFC 3339 parser rejects loose and impossible dates", () => {
@@ -512,4 +512,33 @@ test("notifications are accepted without a JSON-RPC response body", async () => 
   }));
   assert.equal(response.status, 202);
   assert.equal(await response.text(), "");
+});
+
+test("list_feeds discovers published sources independently of the recent index", async () => {
+  const catalog = {
+    format: "feedseek-model-feed-catalog", version: 1,
+    feeds: ["openai", "other-ai", "weather"].map((key) => ({
+      key, title: key, description: key.includes("ai") ? "AI" : "",
+      source_url: "https://example.com/" + key,
+      feed_url: "https://trvny.github.io/feedseek/" + key + ".xml",
+      model_feed_url: "https://trvny.github.io/feedseek/" + key + ".json",
+      entry_count: 2, updated_at: null,
+    })),
+  };
+  await withFetch((url) => {
+    assert.equal(url, "https://trvny.github.io/feedseek/model-feeds.json");
+    return Promise.resolve(new Response(JSON.stringify(catalog)));
+  }, async () => {
+    const list = async (args) => (await (await call("tools/call", {
+      name: "list_feeds", arguments: args,
+    })).json()).result;
+    const first = (await list({ query: "AI", limit: 1 })).structuredContent;
+    assert.equal(first.count, 2);
+    assert.equal(first.next_offset, 1);
+    assert.equal(first.feeds[0].key, "openai");
+    const last = (await list({ query: "AI", limit: 1, offset: 1 })).structuredContent;
+    assert.equal(last.feeds[0].key, "other-ai");
+    assert.equal(last.next_offset, null);
+    assert.equal((await list({ offset: -1 })).isError, true);
+  });
 });
