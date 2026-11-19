@@ -5,10 +5,16 @@ import importlib
 import itertools
 import json
 import statistics
+import sys
+import tempfile
 import time
 from importlib.metadata import version
 from io import BytesIO
-from urllib.request import Request, urlopen
+from pathlib import Path
+from unittest.mock import patch
+from urllib.parse import urljoin, urlsplit
+
+import requests
 
 PAGES = "https://trvny.github.io/feedseek/"
 FEEDS = [PAGES + key + ".xml" for key in (
@@ -21,14 +27,35 @@ SITES = ["https://www.independent.co.uk/", "https://www.indy100.com/",
 FIELDS = ("id", "title", "link", "published", "updated", "summary",
           "content", "author", "tags", "media_content", "enclosures")
 MAX_BYTES = 8 * 1024 * 1024
+BENCHMARK_HOSTS = {
+    "trvny.github.io", "github.blog", "www.independent.co.uk", "www.indy100.com",
+    "www.python.org", "blog.python.org", "peps.python.org", "pyfound.blogspot.com",
+    "xkcd.com", "www.xkcd.com",
+}
 
 
 def download(url):
-    request = Request(url, headers={"User-Agent": "Feedseek benchmark/1.0"})
-    with urlopen(request, timeout=15) as response:
-        data = response.read(MAX_BYTES + 1)
-    if len(data) > MAX_BYTES:
-        raise ValueError("response too large")
+    # Known benchmark hosts only, including redirects and discovered candidates.
+    for _ in range(5):
+        parts = urlsplit(url)
+        if (parts.scheme != "https" or parts.hostname not in BENCHMARK_HOSTS
+                or parts.username or parts.password or parts.port not in (None, 443)):
+            raise ValueError("URL outside benchmark hosts")
+        with requests.get(url, headers={"User-Agent": "Feedseek benchmark/1.0"},
+                          stream=True, timeout=15, allow_redirects=False) as response:
+            if response.is_redirect:
+                url = urljoin(url, response.headers["Location"])
+                continue
+            response.raise_for_status()
+            body = bytearray()
+            for chunk in response.iter_content(65536):
+                body.extend(chunk)
+                if len(body) > MAX_BYTES:
+                    raise ValueError("response too large")
+            data = bytes(body)
+            break
+    else:
+        raise ValueError("too many redirects")
     if data.startswith(b"\x1f\x8b"):
         with gzip.GzipFile(fileobj=BytesIO(data)) as compressed:
             data = compressed.read(MAX_BYTES + 1)
@@ -66,6 +93,38 @@ def emit(**row):
     print(json.dumps(row, ensure_ascii=True, default=str), flush=True)
 
 
+def compare_projection(data, candidate, url):
+    """Compare actual Model Feed fields, without printing content."""
+    from model_feed import build_model_feed
+    from jsonfeed import build_json_feed
+    from utils import feedparser_entry_image
+
+    key = Path(urlsplit(url).path).stem
+    with tempfile.TemporaryDirectory() as directory:
+        xml = Path(directory) / "feed.xml"
+        xml.write_bytes(data)
+
+        def project():
+            return build_model_feed(build_json_feed(xml, key, feedparser_entry_image), key)
+
+        baseline = project()
+        with patch("feedparser.parse", candidate.parse):
+            result = project()
+    # Compare the whole document, including field values and list ordering.
+    a, b = baseline.get("items", []), result.get("items", [])
+    differences = {}
+    for old, new in zip(a, b):
+        for field in old.keys() | new.keys():
+            if old.get(field) != new.get(field):
+                differences[field] = differences.get(field, 0) + 1
+    emit(url=url, model_exact=baseline == result, model_baseline_count=len(a),
+         model_candidate_count=len(b), model_item_field_differences=differences,
+         model_top_level_differences=sorted(
+             field for field in baseline.keys() | result.keys()
+             if field != "items" and baseline.get(field) != result.get(field)
+         ))
+
+
 def check_parser(package, url):
     import feedparser
 
@@ -80,6 +139,8 @@ def check_parser(package, url):
          extra_links=len(identities(b) - identities(a)),
          baseline_coverage=coverage(a), candidate_coverage=coverage(b),
          baseline_bozo=value(base, "bozo"), candidate_bozo=value(other, "bozo"))
+    if package == "feedparser-rs" and url.startswith(PAGES):
+        compare_projection(data, candidate, url)
 
 
 def check_html(url):
@@ -162,6 +223,7 @@ def main():
         "fastfeedparser", "feedparser-rs", "selectolax", "trafilatura",
         "rtrafilatura", "feed-seeker", "feedsearch-crawler",
     ])
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
     package = parser.parse_args().package
     emit(candidate=package, version=version(package))
     urls = FEEDS if package in {"fastfeedparser", "feedparser-rs"} else SITES
