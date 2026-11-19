@@ -95,6 +95,7 @@ class SiteRobotsTests(unittest.TestCase):
         self.assertNotIn("sitemap.json", robots)
 
     def test_directory_metadata_describes_curated_feeds_and_agent_access(self):
+        """Check directory schema, feed links and agent discovery metadata."""
         base = "https://example.com/feedseek/"
         page = build_site.build_index([], base)
         schema_text = re.search(r'<script type="application/ld\+json">(.*?)</script>', page)

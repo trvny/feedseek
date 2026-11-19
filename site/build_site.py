@@ -94,7 +94,7 @@ ICON_LINKS = f"""  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="{THEME_COLOR}">"""
 
 WEBMANIFEST = f"""{{
-  "name": "Feedseek | RSS, Atom &amp; JSON Model Feed directory",
+  "name": "Feedseek | RSS, Atom & JSON Model Feed directory",
   "short_name": "Feeds",
   "icons": [
     {{ "src": "icons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" }},
@@ -676,7 +676,7 @@ def build_index(feeds: list[dict], base: str) -> str:
 </head>
 <body>
   <main class="wrap">
-    <p class="kicker">Auto-generated · rebuilt every 2 hours</p>
+    <p class="kicker">Auto-generated · rebuilt every 3 hours</p>
     <h1>Feeds<em>.</em></h1>
     <p class="lede">{html.escape(desc)}</p>
 
@@ -958,7 +958,7 @@ def build_index_markdown(feeds: list[dict], base: str) -> str:
         "",
         f"> Directory of {count} self-updating enhanced Atom/RSS feeds with LLM-friendly JSON Model Feeds.",
         "",
-        "Feedseek improves and normalizes feeds from native feeds, APIs and web sources, then regenerates the public set every two hours.",
+        "Feedseek improves and normalizes feeds from native feeds, APIs and web sources, then regenerates the public set every three hours.",
         "",
         "## Resources",
         "",
