@@ -57,7 +57,7 @@ LIST_NAMES = ("SOURCES", "RSS_SOURCES", "NATIVE_FEEDS", "FEED_SOURCES")
 # grouping: feed_key order within each themed section
 GROUPS = [
     ("Poland government and news", ["govpl_news", "pap", "tvp", "spidersweb", "wykop"]),
-    ("World news", ["reuters", "euronews", "europa", "geopolitics", "wsj", "newsify"]),
+    ("World news", ["reuters", "independent", "euronews", "europa", "geopolitics", "wsj", "newsify"]),
     ("AI and LLM", ["openai", "anthropic", "claude", "xai", "aibridge", "skillsllm", "huggingface", "molt"]),
     ("Development and open standards", ["development", "github", "github_personal", "gitlab", "opensource", "python", "js_node", "rssboard", "hackerone", "userscripts"]),
     ("Technology and software vendors", ["microsoft", "microsoft_updates", "google", "apple", "cloudflare", "aws", "oracle", "alibaba", "tencent", "redhat", "ubuntu", "docker", "mozilla", "saas", "foundry", "palantir", "canva", "figma", "openoffice", "paintnet", "lenovo", "hp", "nvidia", "sony", "samsung", "xiaomi", "dji"]),
