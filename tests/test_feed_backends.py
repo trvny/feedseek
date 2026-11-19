@@ -1,3 +1,4 @@
+import importlib.util
 import os
 import sys
 import unittest
@@ -8,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 import discover
 import feed_backends
-from article_image import page_image
+from article_image import _fast_page_image, page_image
 
 XML = b"""<rss version="2.0"><channel><title>Example</title><item>
 <title>A</title><link>https://example.com/a</link>
@@ -23,6 +24,14 @@ class FeedBackendTests(unittest.TestCase):
             native = feed_backends.parse_headlines(XML).entries[0]
         for key in ("title", "link", "published"):
             self.assertEqual(native.get(key), legacy.get(key))
+
+    @unittest.skipUnless(importlib.util.find_spec("feedparser_rs"), "native parser unavailable")
+    def test_installed_native_parser_does_not_use_fallback(self):
+        with patch.dict(os.environ, {"FEEDSEEK_FEED_PARSER": "auto"}), patch.object(
+            feed_backends.feedparser, "parse", side_effect=AssertionError("legacy parser used")
+        ):
+            native = feed_backends.parse_headlines(XML)
+            self.assertEqual(native.entries[0].get("link"), "https://example.com/a")
 
     def test_native_failure_and_empty_result_fall_back(self):
         for result in (Mock(bozo=True), Mock(bozo=False, entries=[])):
@@ -47,6 +56,7 @@ class FeedBackendTests(unittest.TestCase):
             legacy = page_image(html, "https://example.com/a")
         with patch.dict(os.environ, {"FEEDSEEK_HTML_PARSER": "auto"}):
             self.assertEqual(page_image(html, "https://example.com/a"), legacy)
+        self.assertEqual(_fast_page_image(html, "https://example.com/a"), legacy)
 
     def test_metadata_fallback(self):
         metadata = Mock(image="https://example.com/a.jpg", title="Article")
