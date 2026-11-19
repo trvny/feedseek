@@ -2,7 +2,7 @@
 
 > Generated from every published `feeds/feed_*.json` file (restored from Pages in CI). Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-115 Model Feeds.
+116 Model Feeds.
 
 ## Access
 
@@ -65,6 +65,7 @@
 | `hp` | HP Newsroom | [JSON](https://trvny.github.io/feedseek/hp.json) |
 | `huggingface` | Hugging Face | [JSON](https://trvny.github.io/feedseek/huggingface.json) |
 | `imgw` | IMGW | [JSON](https://trvny.github.io/feedseek/imgw.json) |
+| `independent` | The Independent + Indy100 | [JSON](https://trvny.github.io/feedseek/independent.json) |
 | `jbzd` | Jbzd.com.pl | [JSON](https://trvny.github.io/feedseek/jbzd.json) |
 | `js_node` | JS \| Node | [JSON](https://trvny.github.io/feedseek/js_node.json) |
 | `lemmy` | Lemmy | [JSON](https://trvny.github.io/feedseek/lemmy.json) |
