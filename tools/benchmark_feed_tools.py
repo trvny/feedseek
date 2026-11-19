@@ -1,5 +1,7 @@
 """Compare candidate libraries on bounded public Feedseek and upstream inputs."""
 import argparse
+import asyncio
+import hashlib
 import gzip
 import importlib
 import json
@@ -7,13 +9,14 @@ import statistics
 import sys
 import tempfile
 import time
+from collections import Counter
 from importlib.metadata import version
 from io import BytesIO
 from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import urljoin, urlsplit
 
-import requests
+import aiohttp
 
 PAGES = "https://trvny.github.io/feedseek/"
 FEEDS = [PAGES + key + ".xml" for key in (
@@ -33,39 +36,52 @@ BENCHMARK_HOSTS = {
 }
 
 
+def validate_url(url):
+    parts = urlsplit(url)
+    if (parts.scheme != "https" or parts.hostname not in BENCHMARK_HOSTS
+            or parts.username or parts.password or parts.port not in (None, 443)):
+        raise ValueError("URL outside benchmark hosts")
+
+
+async def download_async(url, deadline):
+    # Total timeout includes DNS, headers and body, including slow streams.
+    async with aiohttp.ClientSession(
+        headers={"User-Agent": "Feedseek benchmark/1.0"}
+    ) as session:
+        for _ in range(5):
+            validate_url(url)
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError("benchmark deadline reached")
+            async with session.get(
+                url, timeout=aiohttp.ClientTimeout(total=remaining), allow_redirects=False
+            ) as response:
+                if response.status in (301, 302, 303, 307, 308):
+                    url = urljoin(url, response.headers["Location"])
+                    continue
+                response.raise_for_status()
+                body = bytearray()
+                async for chunk in response.content.iter_chunked(65536):
+                    if len(body) + len(chunk) > MAX_BYTES:
+                        raise ValueError("response too large")
+                    body.extend(chunk)
+                return bytes(body)
+    raise ValueError("too many redirects")
+
+
 def download(url, *, deadline=None):
-    # Known benchmark hosts only, including redirects and discovered candidates.
-    for _ in range(5):
-        timeout = 15 if deadline is None else min(4, deadline - time.monotonic())
-        if timeout <= 0:
-            raise TimeoutError("benchmark deadline reached")
-        parts = urlsplit(url)
-        if (parts.scheme != "https" or parts.hostname not in BENCHMARK_HOSTS
-                or parts.username or parts.password or parts.port not in (None, 443)):
-            raise ValueError("URL outside benchmark hosts")
-        with requests.get(url, headers={"User-Agent": "Feedseek benchmark/1.0"},
-                          stream=True, timeout=timeout, allow_redirects=False) as response:
-            if response.is_redirect:
-                url = urljoin(url, response.headers["Location"])
-                continue
-            response.raise_for_status()
-            body = bytearray()
-            for chunk in response.iter_content(65536):
-                if deadline is not None and time.monotonic() >= deadline:
-                    raise TimeoutError("benchmark deadline reached")
-                body.extend(chunk)
-                if len(body) > MAX_BYTES:
-                    raise ValueError("response too large")
-            data = bytes(body)
-            break
-    else:
-        raise ValueError("too many redirects")
+    deadline = time.monotonic() + 15 if deadline is None else min(deadline, time.monotonic() + 4)
+    data = asyncio.run(download_async(url, deadline))
     if data.startswith(b"\x1f\x8b"):
         with gzip.GzipFile(fileobj=BytesIO(data)) as compressed:
             data = compressed.read(MAX_BYTES + 1)
         if len(data) > MAX_BYTES:
             raise ValueError("decompressed response too large")
     return data
+
+
+def fingerprint(value):
+    return hashlib.sha256(str(value or "").encode("utf-8")).hexdigest()
 
 
 def timed(fn):
@@ -90,7 +106,7 @@ def coverage(entries):
 
 
 def identities(entries):
-    return {str(value(entry, "link")) for entry in entries if value(entry, "link")}
+    return Counter(str(value(entry, "link")) for entry in entries if value(entry, "link"))
 
 
 def emit(**row):
@@ -139,8 +155,9 @@ def check_parser(package, url):
     a, b = list(base.entries), list(other.entries)
     emit(url=url, bytes=len(data), baseline_ms=base_ms, candidate_ms=other_ms,
          baseline_entries=len(a), candidate_entries=len(b),
-         missing_links=len(identities(a) - identities(b)),
-         extra_links=len(identities(b) - identities(a)),
+         missing_links=sum((identities(a) - identities(b)).values()),
+         extra_links=sum((identities(b) - identities(a)).values()),
+         item_ids_exact=[value(e, "id") for e in a] == [value(e, "id") for e in b],
          baseline_coverage=coverage(a), candidate_coverage=coverage(b),
          baseline_bozo=value(base, "bozo"), candidate_bozo=value(other, "bozo"))
     if package == "feedparser-rs" and url.startswith(PAGES):
@@ -166,17 +183,25 @@ def check_html(url):
         b, other_ms = timed(select_lexbor)
         emit(url=url, baseline=backend, baseline_ms=base_ms, candidate_ms=other_ms,
              baseline_links=len(a), candidate_links=len(b),
-             missing_links=len({x[0] for x in a} - {x[0] for x in b}),
-             extra_links=len({x[0] for x in b} - {x[0] for x in a}))
+             missing_links=sum((Counter(x[0] for x in a) - Counter(x[0] for x in b)).values()),
+             extra_links=sum((Counter(x[0] for x in b) - Counter(x[0] for x in a)).values()),
+             missing_link_text_pairs=sum((Counter(a) - Counter(b)).values()),
+             extra_link_text_pairs=sum((Counter(b) - Counter(a)).values()),
+             exact_order=a == b)
 
 
 def check_article(package, url):
     candidate = importlib.import_module(package)
-    html = download(url).decode("utf-8", errors="replace")
+    data = download(url)
+    html = data.decode("utf-8", errors="replace")
     doc, ms = timed(lambda: candidate.bare_extraction(html, url=url))
     meta, metadata_ms = timed(lambda: candidate.extract_metadata(html))
     emit(url=url, candidate_ms=ms, text_chars=len(getattr(doc, "text", "") or ""),
          metadata_ms=metadata_ms,
+         input_sha256=hashlib.sha256(data).hexdigest(),
+         text_sha256=fingerprint(getattr(doc, "text", None)),
+         metadata_sha256={field: fingerprint(getattr(meta, field, None))
+                          for field in ("title", "author", "date", "image")},
          has_title=bool(getattr(meta, "title", None)),
          has_author=bool(getattr(meta, "author", None)),
          has_date=bool(getattr(meta, "date", None)),
@@ -195,7 +220,7 @@ def check_discovery(package, url):
         def fetch(candidate):
             try:
                 return download(candidate, deadline=deadline).decode("utf-8", errors="replace")
-            except (requests.RequestException, ValueError):
+            except (aiohttp.ClientError, ValueError, gzip.BadGzipFile, EOFError):
                 return ""
 
         found = []
@@ -208,11 +233,36 @@ def check_discovery(package, url):
         except TimeoutError:
             pass  # Preserve validated results from the completed probes.
     else:
-        from feedsearch_crawler import search
+        from feedsearch_crawler import search_with_info
 
-        found = [str(feed.url) for feed in search(
-            url, total_timeout=12, request_timeout=4, favicon_data_uri=False
-        )][:15]
+        # Crawler owns its transport. Apply the allowlist to starts AND redirects.
+        trace = aiohttp.TraceConfig()
+
+        async def check_start(_session, _context, params):
+            validate_url(str(params.url))
+
+        async def check_redirect(_session, _context, params):
+            location = params.response.headers.get("Location") or params.response.headers.get("URI")
+            if location:
+                validate_url(urljoin(str(params.url), location))
+
+        trace.on_request_start.append(check_start)
+        trace.on_request_redirect.append(check_redirect)
+        original_session = aiohttp.ClientSession
+
+        def bounded_session(*args, **kwargs):
+            kwargs["trace_configs"] = [*(kwargs.get("trace_configs") or []), trace]
+            return original_session(*args, **kwargs)
+
+        with patch("aiohttp.ClientSession", side_effect=bounded_session):
+            result = search_with_info(
+                url, total_timeout=12, request_timeout=4, favicon_data_uri=False,
+                allowed_domains=sorted(BENCHMARK_HOSTS), allowed_schemes=["https"],
+                max_content_length=MAX_BYTES, ssl=True,
+            )
+        if result.root_error and not result.feeds:
+            raise ValueError(result.root_error.message)
+        found = [str(feed.url) for feed in result.feeds[:15]]
     elapsed = round(time.perf_counter() - start, 3)
     found = list(dict.fromkeys(map(str, found)))
     verified = []
@@ -221,8 +271,8 @@ def check_discovery(package, url):
             parsed = feedparser.parse(download(link))
             if parsed.version and parsed.entries:
                 verified.append(link)
-        except Exception:
-            continue
+        except (aiohttp.ClientError, OSError, ValueError, EOFError) as exc:
+            emit(url=link, verification_error=str(exc)[:300])
     emit(url=url, discovery_seconds=elapsed, candidates=found, verified_nonempty=verified)
 
 
@@ -245,10 +295,14 @@ def main():
     ])
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
     package = parser.parse_args().package
-    emit(candidate=package, version=version(package))
+    emit(candidate=package, version=version(package), baselines={
+        name: version(name) for name in ("feedparser", "beautifulsoup4", "lxml", "aiohttp", "feedgen2")
+    })
     urls = FEEDS if package in {"fastfeedparser", "feedparser-rs"} else SITES
     if package in {"trafilatura", "rtrafilatura"}:
         urls = list(article_urls())
+    successes = 0
+    required_failures = 0
     for url in urls:
         try:
             if package in {"fastfeedparser", "feedparser-rs"}:
@@ -259,8 +313,14 @@ def main():
                 check_article(package, url)
             else:
                 check_discovery(package, url)
+            successes += 1
         except Exception as exc:
             emit(url=url, error=str(exc)[:300])
+            if package == "feedparser-rs" and url.startswith(PAGES):
+                required_failures += 1
+    emit(successful_comparisons=successes, required_failures=required_failures, attempted=len(urls))
+    if not successes or required_failures:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
