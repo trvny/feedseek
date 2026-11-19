@@ -1,0 +1,45 @@
+---
+name: Resolve backend lock
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - ".github/workflows/resolve-backend-lock.yml"
+permissions: {}
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          python-version: "3.15"
+      - name: Resolve lock and emit delta
+        run: |
+          uv lock
+          python - <<'PY'
+          import difflib
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+          old = subprocess.check_output(["git", "show", "HEAD:uv.lock"]).decode()
+          new = Path("uv.lock").read_text()
+          a, b = old.splitlines(keepends=True), new.splitlines(keepends=True)
+          for tag, i, j, k, l in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+              if tag != "equal":
+                  print("LOCK_EDIT " + json.dumps([i, j, l-k]))
+                  for line in b[k:l]:
+                      print("LOCK_LINE " + json.dumps(line))
+          print("LOCK_SHA " + hashlib.sha256(new.encode()).hexdigest())
+          PY
+      - name: Test resolved dependencies
+        run: |
+          uv sync --locked
+          uv run --locked python -m unittest discover -s tests -p test_feed_backends.py
+          uv run --locked python -m unittest discover -s tests -p test_article_image.py
+          uv run --locked python -m unittest discover -s tests -p test_independent.py

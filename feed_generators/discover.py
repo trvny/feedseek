@@ -8,13 +8,14 @@ reaching for a scraper.
 Usage:
     uv run feed_generators/discover.py <url>
 
-Tries the local feedsearch-crawler library first and falls back to the hosted
+Tries the local feedsearch-crawler library first then portable Feed Seeker, then the hosted
 feedsearch.dev API. It also checks the site's llms.txt, when present, and probes
 a bounded set of feed-, changelog-, blog-, and news-oriented links for extra
 native feeds. llms.txt failures never block ordinary discovery.
 """
 
 import sys
+from itertools import islice
 
 import requests
 
@@ -50,13 +51,26 @@ def discover_hosted(url: str):
     return resp.json()
 
 
+def discover_seeker(url: str):
+    """Portable fallback; candidate URLs already inspected by Feed Seeker."""
+    try:
+        from feed_seeker import generate_feed_urls
+
+        urls = list(islice(generate_feed_urls(url, max_time=12), 15))
+        return [{"url": candidate} for candidate in dict.fromkeys(urls)]
+    except Exception as exc:
+        print(f"Feed Seeker unavailable: {exc}", file=sys.stderr)
+        return []
+
+
 def discover_target(url: str):
-    feeds = discover_local(url)
-    source = "local"
-    if not feeds:
-        feeds = discover_hosted(url)
-        source = "hosted"
-    return list(feeds or []), source
+    for source, finder in (("local", discover_local), ("seeker", discover_seeker)):
+        try:
+            if feeds := finder(url):
+                return list(feeds), source
+        except Exception as exc:
+            print(f"{source} discovery failed: {exc}", file=sys.stderr)
+    return list(discover_hosted(url) or []), "hosted"
 
 
 def feed_value(feed, name: str, default=""):

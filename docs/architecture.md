@@ -188,3 +188,10 @@ Inspect the `Generate feeds` step in recent [Update Feeds runs](https://github.c
 ```
 
 For source-specific implementation notes see [feeds.md](feeds.md). For the generated source inventory see [sources.md](sources.md), and for cache details see [cache.md](cache.md).
+
+### Parser backends
+
+- Headline-only RSS/Atom: feedparser-rs (Linux), Python feedparser on incomplete, unsupported input or unavailable native package. `FEEDSEEK_FEED_PARSER=python` forces legacy. Rich metadata / Model Feed projection unchanged.
+- Article image metadata: Selectolax first, BeautifulSoup fallback. `FEEDSEEK_HTML_PARSER=beautifulsoup` bypasses fast path. Article-marked pages only: rtrafilatura then Trafilatura on a missing declared image, using already-fetched HTML.
+- Manual discovery: feedsearch-crawler → Feed Seeker → hosted API. `uv sync --group discover-portable` installs Feed Seeker without uvloop.
+- No new fetching in parsing/extraction backends. Existing request budgets, cache and source policies remain in force.

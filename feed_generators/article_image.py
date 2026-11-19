@@ -50,6 +50,7 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 from bs4 import BeautifulSoup, UnicodeDammit
 from curl_cffi import CurlError, CurlOpt
 from curl_cffi import requests as curl_requests
+from feed_backends import extract_article_metadata
 from utils import setup_logging
 
 logger = setup_logging(__name__)
@@ -163,6 +164,31 @@ def _from_json_ld(soup: BeautifulSoup, base_url: str) -> str | None:
     return None
 
 
+def _fast_page_image(html: str, base_url: str):
+    """Fast path for declared image metadata; legacy handles other markup."""
+    from selectolax.lexbor import LexborHTMLParser
+
+    tree = LexborHTMLParser(html)
+
+    def find_attr(attribute, value, key):
+        node = tree.css_first(f'meta[{attribute}="{value}"]')
+        return node.attributes.get(key) if node else None
+
+    def dimension(prop):
+        value = find_attr("property", prop, "content")
+        try:
+            size = int(value or 0)
+        except (ValueError, TypeError):
+            return None
+        return size if 0 < size <= 10000 else None
+
+    for attribute, value in _META_TAGS:
+        image = _absolute(find_attr(attribute, value, "content"), base_url)
+        if image:
+            return image, dimension("og:image:width"), dimension("og:image:height")
+    return None
+
+
 def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | None]:
     """Best image URL declared by an HTML page, with dimensions when stated.
 
@@ -173,6 +199,12 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
     """
     if not html:
         return None, None, None
+    if os.environ.get("FEEDSEEK_HTML_PARSER") != "beautifulsoup":
+        try:
+            if result := _fast_page_image(html, base_url):
+                return result
+        except Exception as exc:
+            logger.debug("Selectolax image lookup fallback: %s", exc)
     soup = BeautifulSoup(html, "html.parser")
 
     image = None
@@ -191,6 +223,15 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
         image = _from_json_ld(soup, base_url)
 
     if not image:
+        # Same bounded HTML, no second network request. Only article markup.
+        if soup.find("article") or soup.find("meta", property="og:type", content="article"):
+            def candidate(metadata):
+                url = _absolute(getattr(metadata, "image", None), base_url)
+                return url if url and url != base_url and getattr(metadata, "title", None) else None
+
+            image = extract_article_metadata(html, accept=candidate)
+            if image:
+                return image, None, None
         return None, None, None
 
     def dimension(prop: str) -> int | None:

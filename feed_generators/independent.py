@@ -5,8 +5,8 @@ import sys
 from datetime import UTC, datetime, timedelta
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
-import feedparser
 from bs4 import BeautifulSoup
+from feed_backends import parse_headlines
 from multi_rss import get_html, parse_date, run
 from utils import sanitize_xml
 
@@ -56,7 +56,7 @@ def entry(title, link, label, date=None):
 
 
 def parse_rss(xml, base, label):
-    feed = feedparser.parse(xml or "")
+    feed = parse_headlines(xml or "")
     out = []
     seen = set()
     for item in feed.entries:
