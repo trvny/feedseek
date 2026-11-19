@@ -59,8 +59,11 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 | <img src="https://www.google.com/s2/favicons?domain=theysaidso.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Quotes, Sayings & Jokes of the Day](https://theysaidso.com/) | [theysaidso.xml](https://trvny.github.io/feedseek/theysaidso.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=dictionary.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Word of the Day (Dictionary.com,MW,AWAD,TFD)](https://www.dictionary.com/e/word-of-the-day/) | [wotd.xml](https://trvny.github.io/feedseek/wotd.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=unsplash.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Unsplash (log + wallpapers)](https://unsplash.com/blog/) | [unsplash.xml](https://trvny.github.io/feedseek/unsplash.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=gov.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Gov.pl](https://www.gov.pl/) | [govpl_news.xml](https://trvny.github.io/feedseek/govpl_news.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=usa.gov&sz=32" width="16" height="16" align="absmiddle" alt=""> [US.gov](https://www.usa.gov/) | [usgov.xml](https://trvny.github.io/feedseek/usgov.xml) |
+
+### Weather
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=open-meteo.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Open-Meteo](https://open-meteo.com/) | [open_meteo.xml](https://trvny.github.io/feedseek/open_meteo.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=openweathermap.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [OpenWeather](https://openweathermap.org/city/3093133) | [openweather.xml](https://trvny.github.io/feedseek/openweather.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=visualcrossing.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Visual Crossing](https://www.visualcrossing.com/) | [visualcrossing.xml](https://trvny.github.io/feedseek/visualcrossing.xml) |
@@ -69,23 +72,72 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 | <img src="https://www.google.com/s2/favicons?domain=accuweather.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [AccuWeather News](https://www.accuweather.com/en/weather-news) | [accuweather.xml](https://trvny.github.io/feedseek/accuweather.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=xweather.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Xweather Log](https://www.xweather.com/blog) | [xweather_log.xml](https://trvny.github.io/feedseek/xweather_log.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=visualcrossing.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Visual Crossing Blog](https://www.visualcrossing.com/resources/) | [visualcrossing_blog.xml](https://trvny.github.io/feedseek/visualcrossing_blog.xml) |
+
+### News and public affairs
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=reuters.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Reuters](https://www.reuters.com/) | [reuters.xml](https://trvny.github.io/feedseek/reuters.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=newsify.today&sz=32" width="16" height="16" align="absmiddle" alt=""> [Newsify](https://newsify.today/polish/PL) | [newsify.xml](https://trvny.github.io/feedseek/newsify.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=wsj.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [WSJ](https://www.wsj.com/news/latest-headlines?mod=wsjfooter) | [wsj.xml](https://trvny.github.io/feedseek/wsj.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=euronews.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Euronews](https://www.euronews.com/) | [euronews.xml](https://trvny.github.io/feedseek/euronews.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=europa.eu&sz=32" width="16" height="16" align="absmiddle" alt=""> [Europa (UE)](https://european-union.europa.eu/) | [europa.xml](https://trvny.github.io/feedseek/europa.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=understandingwar.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Geopolitics (ISW;RUSI;CSIS;Carnegie)](https://understandingwar.org/research/) | [geopolitics.xml](https://trvny.github.io/feedseek/geopolitics.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=pap.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [PAP](https://www.pap.pl/) | [pap.xml](https://trvny.github.io/feedseek/pap.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [MultiReddit[OFF]](https://old.reddit.com/) | `multireddit.xml` — disabled, not published |
-| <img src="https://www.google.com/s2/favicons?domain=spidersweb.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Spider's Web](https://spidersweb.pl/) | [spidersweb.xml](https://trvny.github.io/feedseek/spidersweb.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=wikipedia.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Wikipedia (PL)](https://pl.wikipedia.org/) | [wikipedia_pl.xml](https://trvny.github.io/feedseek/wikipedia_pl.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=baike.baidu.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Baidu Baike 热搜词条](https://baike.baidu.com/) | [baidubaike.xml](https://trvny.github.io/feedseek/baidubaike.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=tvp.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [TVP](https://www.tvp.pl/) | [tvp.xml](https://trvny.github.io/feedseek/tvp.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=understandingwar.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Geopolitics (ISW;RUSI;CSIS;Carnegie)](https://understandingwar.org/research/) | [geopolitics.xml](https://trvny.github.io/feedseek/geopolitics.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=gov.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Gov.pl](https://www.gov.pl/) | [govpl_news.xml](https://trvny.github.io/feedseek/govpl_news.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=usa.gov&sz=32" width="16" height="16" align="absmiddle" alt=""> [US.gov](https://www.usa.gov/) | [usgov.xml](https://trvny.github.io/feedseek/usgov.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=europa.eu&sz=32" width="16" height="16" align="absmiddle" alt=""> [Europa (UE)](https://european-union.europa.eu/) | [europa.xml](https://trvny.github.io/feedseek/europa.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=dwutygodnik.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Dwutygodnik](https://www.dwutygodnik.com/) | [dwutygodnik.xml](https://trvny.github.io/feedseek/dwutygodnik.xml) |
+
+### Radio and media
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://icons.duckduckgo.com/ip3/trojka.polskieradio.pl.ico" width="16" height="16" align="absmiddle" alt=""> [Polskie Radio – Trójka](https://trojka.polskieradio.pl/) | [trojka.xml](https://trvny.github.io/feedseek/trojka.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=polskieradio.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Polskie Radio – Czwórka](https://www.polskieradio.pl/10,czworka) | [czworka.xml](https://trvny.github.io/feedseek/czworka.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=tunein.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Radios (TuneIn;Maxi Italo;Electro Swing)](https://tunein.com/) | [radios.xml](https://trvny.github.io/feedseek/radios.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=download-soundtracks.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Download Soundtracks](https://download-soundtracks.com/) | [download-soundtracks.xml](https://trvny.github.io/feedseek/download-soundtracks.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [YouTubs (selected channels, no Shorts)](https://www.youtube.com/) | [youtubs.xml](https://trvny.github.io/feedseek/youtubs.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=ffmpeg.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [FFmpeg](https://ffmpeg.org/) | [ffmpeg.xml](https://trvny.github.io/feedseek/ffmpeg.xml) |
+
+### Communities and knowledge
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
+| <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [MultiReddit[OFF]](https://old.reddit.com/) | `multireddit.xml` — disabled, not published |
+| <img src="https://www.google.com/s2/favicons?domain=wikipedia.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Wikipedia (PL)](https://pl.wikipedia.org/) | [wikipedia_pl.xml](https://trvny.github.io/feedseek/wikipedia_pl.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=baike.baidu.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Baidu Baike 热搜词条](https://baike.baidu.com/) | [baidubaike.xml](https://trvny.github.io/feedseek/baidubaike.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=v2ex.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [V2EX + sspai](https://www.v2ex.com/) | [v2ex.xml](https://trvny.github.io/feedseek/v2ex.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=medium.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Medium](https://medium.com/) | [medium.xml](https://trvny.github.io/feedseek/medium.xml) |
+
+### Automotive
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=olx.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [OLX Group (OLX/OTOMOTO/Otodom)](https://www.olx.pl/) | [olx.xml](https://trvny.github.io/feedseek/olx.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=toyota.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Toyota Global](https://pressroom.toyota.com/) | [toyota_global.xml](https://trvny.github.io/feedseek/toyota_global.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=lexus.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Lexus Newsroom](https://pressroom.lexus.com/) | [lexus_newsroom.xml](https://trvny.github.io/feedseek/lexus_newsroom.xml) |
+
+### AI and research
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
+| <img src="https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [AI-bridge (combined AI sources)](https://thinkingmachines.ai/blog/) | [aibridge.xml](https://trvny.github.io/feedseek/aibridge.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Anthropic](https://www.anthropic.com/) | [anthropic.xml](https://trvny.github.io/feedseek/anthropic.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [Claude](https://claude.com/blog) | [claude.xml](https://trvny.github.io/feedseek/claude.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [OpenAI](https://openai.com/news/) | [openai.xml](https://trvny.github.io/feedseek/openai.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=x.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [xAI](https://x.ai/news) | [xai.xml](https://trvny.github.io/feedseek/xai.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=alibabacloud.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Alibaba](https://www.alibabacloud.com/en/press-room/press-release) | [alibaba.xml](https://trvny.github.io/feedseek/alibaba.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=32" width="16" height="16" align="absmiddle" alt=""> [Hugging Face](https://huggingface.co/) | [huggingface.xml](https://trvny.github.io/feedseek/huggingface.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=skillsllm.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [LLM & MCP / Skills ecosystem](https://skillsllm.com/) | [skillsllm.xml](https://trvny.github.io/feedseek/skillsllm.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=moltbook.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Molt](https://www.moltbook.com/) | [molt.xml](https://trvny.github.io/feedseek/molt.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [arXiv (+LessWrong;80,000Hours)](https://arxiv.org/) | [arxiv.xml](https://trvny.github.io/feedseek/arxiv.xml) |
+
+### Technology and companies
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
+| <img src="https://www.google.com/s2/favicons?domain=spidersweb.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Spider's Web](https://spidersweb.pl/) | [spidersweb.xml](https://trvny.github.io/feedseek/spidersweb.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=foundryco.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Foundry (CSO,PCWorld)](https://foundryco.com/sitemap/) | [foundry.xml](https://trvny.github.io/feedseek/foundry.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=lenovo.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Lenovo StoryHub](https://news.lenovo.com/) | [lenovo.xml](https://trvny.github.io/feedseek/lenovo.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=nvidia.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [NVIDIA (newsroom, blogs + GeForce drivers)](https://nvidianews.nvidia.com/) | [nvidia.xml](https://trvny.github.io/feedseek/nvidia.xml) |
@@ -96,64 +148,67 @@ Inspired by [Olshansk/rss-feeds](https://github.com/Olshansk/rss-feeds) & [rss-b
 | <img src="https://www.google.com/s2/favicons?domain=sony.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Sony Corp](https://www.sony.com/en/SonyInfo/News/Press/) | [sony.xml](https://trvny.github.io/feedseek/sony.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=apple.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Apple Newsroom](https://www.apple.com/pl/newsroom/) | [apple.xml](https://trvny.github.io/feedseek/apple.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Microsoft Blogs](https://blogs.microsoft.com/) | [microsoft.xml](https://trvny.github.io/feedseek/microsoft.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=redhat.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Red Hat Enterprise](https://www.redhat.com/en/) | [redhat.xml](https://trvny.github.io/feedseek/redhat.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=ubuntu.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Ubuntu](https://ubuntu.com/blog) | [ubuntu.xml](https://trvny.github.io/feedseek/ubuntu.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=oracle.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Oracle](https://blogs.oracle.com/) | [oracle.xml](https://trvny.github.io/feedseek/oracle.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Microsoft Updates (Windows/Office/Copilot)](https://support.microsoft.com/en-us/windows) | [microsoft_updates.xml](https://trvny.github.io/feedseek/microsoft_updates.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" width="16" height="16" align="absmiddle" alt=""> [Google (combined)](https://blog.google/) | [google.xml](https://trvny.github.io/feedseek/google.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=blog.youtube&sz=32" width="16" height="16" align="absmiddle" alt=""> [YouTube Blog](https://blog.youtube/) | [youtube.xml](https://trvny.github.io/feedseek/youtube.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [TikTok](https://newsroom.tiktok.com/) | [tiktok.xml](https://trvny.github.io/feedseek/tiktok.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=mozilla.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Mozilla](https://blog.mozilla.org/) | [mozilla.xml](https://trvny.github.io/feedseek/mozilla.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=meta.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Meta Newsroom](https://about.fb.com/news/) | [meta_newsroom.xml](https://trvny.github.io/feedseek/meta_newsroom.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [AI-bridge (combined AI sources)](https://thinkingmachines.ai/blog/) | [aibridge.xml](https://trvny.github.io/feedseek/aibridge.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Anthropic](https://www.anthropic.com/) | [anthropic.xml](https://trvny.github.io/feedseek/anthropic.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [Claude](https://claude.com/blog) | [claude.xml](https://trvny.github.io/feedseek/claude.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [OpenAI](https://openai.com/news/) | [openai.xml](https://trvny.github.io/feedseek/openai.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=x.ai&sz=32" width="16" height="16" align="absmiddle" alt=""> [xAI](https://x.ai/news) | [xai.xml](https://trvny.github.io/feedseek/xai.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=alibabacloud.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Alibaba](https://www.alibabacloud.com/en/press-room/press-release) | [alibaba.xml](https://trvny.github.io/feedseek/alibaba.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=32" width="16" height="16" align="absmiddle" alt=""> [Hugging Face](https://huggingface.co/) | [huggingface.xml](https://trvny.github.io/feedseek/huggingface.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=skillsllm.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [LLM & MCP / Skills ecosystem](https://skillsllm.com/) | [skillsllm.xml](https://trvny.github.io/feedseek/skillsllm.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=rust-lang.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Development (Rust, Django, React Native & more)](https://blog.rust-lang.org/) | [development.xml](https://trvny.github.io/feedseek/development.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=moltbook.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Molt](https://www.moltbook.com/) | [molt.xml](https://trvny.github.io/feedseek/molt.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=uber.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Uber Newsroom](https://www.uber.com/us/en/newsroom/) | [uber.xml](https://trvny.github.io/feedseek/uber.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=tencent.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Tencent](https://www.tencent.com/newsroom/) | [tencent.xml](https://trvny.github.io/feedseek/tencent.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [AWS](https://aws.amazon.com/blogs/) | [aws.xml](https://trvny.github.io/feedseek/aws.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=onlyoffice.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [OPENOFFICE](https://www.onlyoffice.com/blog) | [openoffice.xml](https://trvny.github.io/feedseek/openoffice.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [SaaS vendors](https://www.hashicorp.com/blog) | [saas.xml](https://trvny.github.io/feedseek/saas.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=palantir.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Palantir](https://www.palantir.com/newsroom/) | [palantir.xml](https://trvny.github.io/feedseek/palantir.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=pekao.com.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Bank Pekao SA](https://www.pekao.com.pl/) | [pekao.xml](https://trvny.github.io/feedseek/pekao.xml) |
+
+### Cloud, software and development
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
+| <img src="https://www.google.com/s2/favicons?domain=redhat.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Red Hat Enterprise](https://www.redhat.com/en/) | [redhat.xml](https://trvny.github.io/feedseek/redhat.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=ubuntu.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Ubuntu](https://ubuntu.com/blog) | [ubuntu.xml](https://trvny.github.io/feedseek/ubuntu.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=oracle.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Oracle](https://blogs.oracle.com/) | [oracle.xml](https://trvny.github.io/feedseek/oracle.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=mozilla.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Mozilla](https://blog.mozilla.org/) | [mozilla.xml](https://trvny.github.io/feedseek/mozilla.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [AWS](https://aws.amazon.com/blogs/) | [aws.xml](https://trvny.github.io/feedseek/aws.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=cloudflare.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Cloudflare (log/community/research)](https://blog.cloudflare.com/) | [cloudflare.xml](https://trvny.github.io/feedseek/cloudflare.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=docker.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Docker](https://www.docker.com/blog/) | [docker.xml](https://trvny.github.io/feedseek/docker.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=gitlab.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [GitLab](https://about.gitlab.com/) | [gitlab.xml](https://trvny.github.io/feedseek/gitlab.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [GitHub (tooling,trending)](https://github.blog/) | [github.xml](https://trvny.github.io/feedseek/github.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [trvny + travnie · GitHub milestones](https://github.com/trvny) | [github_personal.xml](https://trvny.github.io/feedseek/github_personal.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=rust-lang.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Development (Rust, Django, React Native & more)](https://blog.rust-lang.org/) | [development.xml](https://trvny.github.io/feedseek/development.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=creativecommons.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Open Sources (CC/OSI/SPDX/OGC/RFC/IETF)](https://creativecommons.org/blog/) | [opensource.xml](https://trvny.github.io/feedseek/opensource.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=hackerone.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [HackerOne](https://www.hackerone.com/blog) | [hackerone.xml](https://trvny.github.io/feedseek/hackerone.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=python.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Python (combined ecosystem)](https://www.python.org/) | [python.xml](https://trvny.github.io/feedseek/python.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=nodejs.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [JS \| Node (ecosystem)](https://nodejs.org/) | [js_node.xml](https://trvny.github.io/feedseek/js_node.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=rssboard.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [RSS Boards](https://www.rssboard.org/) | [rssboard.xml](https://trvny.github.io/feedseek/rssboard.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=hashicorp.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [SaaS vendors](https://www.hashicorp.com/blog) | [saas.xml](https://trvny.github.io/feedseek/saas.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=onlyoffice.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [OPENOFFICE](https://www.onlyoffice.com/blog) | [openoffice.xml](https://trvny.github.io/feedseek/openoffice.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=canva.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Canva](https://www.canva.com/newsroom/news/) | [canva.xml](https://trvny.github.io/feedseek/canva.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=figma.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Figma](https://www.figma.com/newsroom/?lang=pl-pl) | [figma.xml](https://trvny.github.io/feedseek/figma.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=paint.net&sz=32" width="16" height="16" align="absmiddle" alt=""> [Paint.NET](https://blog.paint.net/) | [paintnet.xml](https://trvny.github.io/feedseek/paintnet.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=greasespot.net&sz=32" width="16" height="16" align="absmiddle" alt=""> [UserScripts (Violentmonkey/Tampermonkey/Grease/Sleazy)](https://www.greasespot.net/) | [userscripts.xml](https://trvny.github.io/feedseek/userscripts.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=timeanddate.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [DaTime (timeanddate;Office Holidays)](https://www.timeanddate.com/news/) | [datime.xml](https://trvny.github.io/feedseek/datime.xml) |
+
+### Games
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=nexusmods.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Nexus Mods News](https://www.nexusmods.com/news) | [nexusmods_news.xml](https://trvny.github.io/feedseek/nexusmods_news.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=bethesda.net&sz=32" width="16" height="16" align="absmiddle" alt=""> [Bethesda](https://bethesda.net/pl-PL/news) | [bethesda.xml](https://trvny.github.io/feedseek/bethesda.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=ea.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Electronic Arts](https://www.ea.com/pl-pl/news) | [ea.xml](https://trvny.github.io/feedseek/ea.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=steampowered.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Steam](https://store.steampowered.com/news/) | [steam.xml](https://trvny.github.io/feedseek/steam.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=gog.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [GOG pressroom](https://www.gog.com/blog) | [gog.xml](https://trvny.github.io/feedseek/gog.xml) |
+| <img src="https://www.google.com/s2/favicons?domain=lichess.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Lichess](https://lichess.org/blog) | [lichess.xml](https://trvny.github.io/feedseek/lichess.xml) |
+
+### Science and space
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=32" width="16" height="16" align="absmiddle" alt=""> [NASA](https://www.nasa.gov/) | [nasa.xml](https://trvny.github.io/feedseek/nasa.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=esa.int&sz=32" width="16" height="16" align="absmiddle" alt=""> [ESA](https://www.esa.int/) | [esa.xml](https://trvny.github.io/feedseek/esa.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=pekao.com.pl&sz=32" width="16" height="16" align="absmiddle" alt=""> [Bank Pekao SA](https://www.pekao.com.pl/) | [pekao.xml](https://trvny.github.io/feedseek/pekao.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=creativecommons.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Open Sources (CC/OSI/SPDX/OGC/RFC/IETF)](https://creativecommons.org/blog/) | [opensource.xml](https://trvny.github.io/feedseek/opensource.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=hackerone.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [HackerOne](https://www.hackerone.com/blog) | [hackerone.xml](https://trvny.github.io/feedseek/hackerone.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=python.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Python (combined ecosystem)](https://www.python.org/) | [python.xml](https://trvny.github.io/feedseek/python.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=nodejs.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [JS \| Node (ecosystem)](https://nodejs.org/) | [js_node.xml](https://trvny.github.io/feedseek/js_node.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [arXiv (+LessWrong;80,000Hours)](https://arxiv.org/) | [arxiv.xml](https://trvny.github.io/feedseek/arxiv.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=rssboard.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [RSS Boards](https://www.rssboard.org/) | [rssboard.xml](https://trvny.github.io/feedseek/rssboard.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=v2ex.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [V2EX + sspai](https://www.v2ex.com/) | [v2ex.xml](https://trvny.github.io/feedseek/v2ex.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=medium.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Medium](https://medium.com/) | [medium.xml](https://trvny.github.io/feedseek/medium.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=lichess.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [Lichess](https://lichess.org/blog) | [lichess.xml](https://trvny.github.io/feedseek/lichess.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=tunein.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Radios (TuneIn;Maxi Italo;Electro Swing)](https://tunein.com/) | [radios.xml](https://trvny.github.io/feedseek/radios.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=timeanddate.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [DaTime (timeanddate;Office Holidays)](https://www.timeanddate.com/news/) | [datime.xml](https://trvny.github.io/feedseek/datime.xml) |
 | <img src="https://www.google.com/s2/favicons?domain=news.mit.edu&sz=32" width="16" height="16" align="absmiddle" alt=""> [MIT News](https://news.mit.edu/) | [mit.xml](https://trvny.github.io/feedseek/mit.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=dwutygodnik.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Dwutygodnik](https://www.dwutygodnik.com/) | [dwutygodnik.xml](https://trvny.github.io/feedseek/dwutygodnik.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=ffmpeg.org&sz=32" width="16" height="16" align="absmiddle" alt=""> [FFmpeg](https://ffmpeg.org/) | [ffmpeg.xml](https://trvny.github.io/feedseek/ffmpeg.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=download-soundtracks.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [Download Soundtracks](https://download-soundtracks.com/) | [download-soundtracks.xml](https://trvny.github.io/feedseek/download-soundtracks.xml) |
-| <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" width="16" height="16" align="absmiddle" alt=""> [YouTubs (selected channels, no Shorts)](https://www.youtube.com/) | [youtubs.xml](https://trvny.github.io/feedseek/youtubs.xml) |
+
+### Other
+
+| Source ![rss](https://www.mozilla.org/media/img/trademarks/feed-icon-28x28.e077f1f611f0.png) | Feed <img src="assets/icons/rss-file-color-green.png" width="24" align="top"> |
+| ------ | ---- |
 | <img src="https://www.google.com/s2/favicons?domain=1337x.to&sz=32" width="16" height="16" align="absmiddle" alt=""> [1337x Trending[OFF]](https://1337x.to/trending) | `1337x.xml` — disabled, not published |
 | <img src="https://icons.duckduckgo.com/ip3/rutracker.org.ico" width="16" height="16" align="absmiddle" alt=""> [RuTracker](https://rutracker.org/) | [rutracker.xml](https://trvny.github.io/feedseek/rutracker.xml) |
 
