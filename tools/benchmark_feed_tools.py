@@ -1,18 +1,20 @@
 """Compare candidate libraries on bounded public Feedseek and upstream inputs."""
 import argparse
+import gzip
 import importlib
 import itertools
 import json
 import statistics
 import time
 from importlib.metadata import version
+from io import BytesIO
 from urllib.request import Request, urlopen
 
 PAGES = "https://trvny.github.io/feedseek/"
 FEEDS = [PAGES + key + ".xml" for key in (
     "jbzd", "beatport_top100", "openai", "github", "weather",
     "reuters", "arxiv", "wikipedia_pl",
-)] + ["https://github.blog/feed/", "https://www.python.org/blogs/rss/",
+)] + ["https://github.blog/feed/", "https://blog.python.org/rss.xml",
       "https://www.independent.co.uk/rss", "https://www.indy100.com/feeds/feed.rss"]
 SITES = ["https://www.independent.co.uk/", "https://www.indy100.com/",
          "https://github.blog/", "https://www.python.org/", "https://xkcd.com/"]
@@ -27,6 +29,11 @@ def download(url):
         data = response.read(MAX_BYTES + 1)
     if len(data) > MAX_BYTES:
         raise ValueError("response too large")
+    if data.startswith(b"\x1f\x8b"):
+        with gzip.GzipFile(fileobj=BytesIO(data)) as compressed:
+            data = compressed.read(MAX_BYTES + 1)
+        if len(data) > MAX_BYTES:
+            raise ValueError("decompressed response too large")
     return data
 
 
@@ -102,11 +109,13 @@ def check_article(package, url):
     candidate = importlib.import_module(package)
     html = download(url).decode("utf-8", errors="replace")
     doc, ms = timed(lambda: candidate.bare_extraction(html, url=url))
+    meta, metadata_ms = timed(lambda: candidate.extract_metadata(html))
     emit(url=url, candidate_ms=ms, text_chars=len(getattr(doc, "text", "") or ""),
-         has_title=bool(getattr(doc, "title", None)),
-         has_author=bool(getattr(doc, "author", None)),
-         has_date=bool(getattr(doc, "date", None)),
-         has_image=bool(getattr(doc, "image", None)))
+         metadata_ms=metadata_ms,
+         has_title=bool(getattr(meta, "title", None)),
+         has_author=bool(getattr(meta, "author", None)),
+         has_date=bool(getattr(meta, "date", None)),
+         has_image=bool(getattr(meta, "image", None)))
 
 
 def check_discovery(package, url):
@@ -139,7 +148,7 @@ def check_discovery(package, url):
 def article_urls():
     import feedparser
 
-    for feed in ("https://github.blog/feed/", "https://www.python.org/blogs/rss/"):
+    for feed in ("https://github.blog/feed/", "https://blog.python.org/rss.xml"):
         try:
             for entry in feedparser.parse(download(feed)).entries[:2]:
                 yield entry.link
