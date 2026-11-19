@@ -414,12 +414,13 @@ class PublicTransportTests(unittest.TestCase):
 
         class Handler(BaseHTTPRequestHandler):
             def do_GET(self):
+                body = prefix if self.path == "/exact" else payload
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
-                self.send_header("Content-Length", str(len(payload)))
+                self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 try:
-                    self.wfile.write(payload)
+                    self.wfile.write(body)
                 except (BrokenPipeError, ConnectionResetError):
                     pass
 
@@ -434,6 +435,8 @@ class PublicTransportTests(unittest.TestCase):
                 # Exercise the low-level callback on loopback, not the public URL gate.
                 response, data, complete = _curl_prefix(url, {CurlOpt.PROXY: ""}, 10, impersonate=True)
                 self.assertEqual((response.status_code, data, complete), (200, prefix, False))
+                response, data, complete = _curl_prefix(url + "exact", {CurlOpt.PROXY: ""}, 10)
+                self.assertEqual((response.status_code, data, complete), (200, prefix, True))
                 self.assertEqual(article_image(url), (None, None, None, False))
             finally:
                 server.shutdown()

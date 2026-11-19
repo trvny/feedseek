@@ -369,8 +369,9 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
 
     def receive(chunk: bytes) -> int:
         nonlocal capped
-        body.extend(chunk[:max_bytes - len(body)])
-        if len(body) >= max_bytes:
+        remaining = max_bytes - len(body)
+        body.extend(chunk[:remaining])
+        if len(chunk) > remaining:
             capped = True
             return CURL_WRITEFUNC_ERROR
         return len(chunk)
