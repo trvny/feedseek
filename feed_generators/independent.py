@@ -2,7 +2,7 @@
 
 import argparse
 import sys
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import feedparser
@@ -15,12 +15,10 @@ BASE_URL = "https://www.independent.co.uk/"
 INDY_URL = "https://www.indy100.com/"
 INDEPENDENT_RSS = BASE_URL + "rss"
 INDY_RSS = INDY_URL + "feeds/feed.rss"
-INDY_INDEX_RSS = "https://freenewsapi.ai/v1/rss?host=www.indy100.com&size=50"
 SOURCES = [
     ("The Independent", INDEPENDENT_RSS),
-    ("Indy100 (native candidate)", INDY_RSS),
+    ("Indy100 RSS", INDY_RSS),
     ("Indy100 homepage", INDY_URL),
-    ("Indy100 (indexed fallback)", INDY_INDEX_RSS),
 ]
 INDY_SECTIONS = {
     "news", "politics", "viral", "gaming", "celebrities", "science-tech",
@@ -87,6 +85,13 @@ def parse_indy_listing(html):
         link = publisher_link(anchor["href"], INDY_URL)
         if not link or link in seen:
             continue
+        if heading.find_parent(["nav", "header", "footer", "aside"]):
+            continue
+        # Short section/topic slugs (e.g. /politics/trump) are navigation.
+        # Allow short article slugs only within explicit article markup.
+        slug = urlsplit(link).path.rsplit("/", 1)[-1]
+        if len(slug.split("-")) < 3 and not heading.find_parent("article"):
+            continue
         record = entry(heading.get_text(" ", strip=True), link, "Indy100")
         if record:
             out.append(record)
@@ -103,11 +108,16 @@ def scrape_independent(known_links):
 
 def scrape_indy100(known_links):
     rows = parse_rss(get_html(INDY_RSS), INDY_URL, "Indy100")
-    if not rows:
-        # Prefer dated, direct article URLs from the index to undated homepage links.
-        rows = parse_rss(get_html(INDY_INDEX_RSS), INDY_URL, "Indy100")
-    if not rows:
+    cutoff = datetime.now(UTC) - timedelta(days=7)
+    fresh = [
+        row for row in rows
+        if row["date_kind"] == "published" and row["date"] >= cutoff
+    ]
+    # The native endpoint can return a valid but abandoned feed.
+    if not fresh or not any(row["link"] not in known_links for row in fresh):
         rows = parse_indy_listing(get_html(INDY_URL))
+    else:
+        rows = fresh
     return [row for row in rows if row["link"] not in known_links]
 
 
