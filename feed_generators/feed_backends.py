@@ -2,9 +2,9 @@
 
 import logging
 import os
-from importlib import import_module
 
 import feedparser
+from lxml.etree import LxmlError
 from safe_feed_xml import FeedXmlError, parse_feed_xml
 
 logger = logging.getLogger(__name__)
@@ -46,15 +46,28 @@ def parse_headlines(payload: str | bytes):
     return feedparser.parse(data)
 
 
+def _rust_metadata(html):
+    from rtrafilatura import extract_metadata
+
+    return extract_metadata(html)
+
+
+def _python_metadata(html):
+    from trafilatura import extract_metadata
+
+    return extract_metadata(html)
+
+
 def extract_article_metadata(html: str, *, accept):
     """First usable metadata result; HTML input only, no fetch."""
     if not html.lstrip().startswith("<"):
         return None
-    for name in ("rtrafilatura", "trafilatura"):
+    for extractor in (_rust_metadata, _python_metadata):
         try:
-            metadata = import_module(name).extract_metadata(html)
-            if metadata is not None and (result := accept(metadata)):
-                return result
-        except Exception as exc:
-            logger.debug("%s metadata fallback: %s", name, exc)
+            metadata = extractor(html)
+        except (ImportError, ValueError, RuntimeError, LxmlError) as exc:
+            logger.debug("%s metadata fallback: %s", extractor.__name__, exc)
+            continue
+        if metadata is not None and (result := accept(metadata)):
+            return result
     return None
