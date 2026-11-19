@@ -51,4 +51,5 @@ jobs:
           uv run --no-project --python 3.15 \
             --with "$REQUIREMENT" --with "feedparser>=6.0.12" \
             --with "beautifulsoup4>=4.12" --with "lxml>=6.1.1" \
+            --with "requests>=2.34.2" --with "feedgen2>=2.0" \
             tools/benchmark_feed_tools.py "$PACKAGE" | tee -a "$GITHUB_STEP_SUMMARY"
