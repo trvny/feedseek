@@ -1,11 +1,16 @@
 import importlib.util
+from ipaddress import ip_address
 import os
 import sys
+import time
 import unittest
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from threading import Thread
 from unittest.mock import Mock, patch
 
 import requests
+from curl_cffi import CurlOpt
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
@@ -128,10 +133,57 @@ class FeedBackendTests(unittest.TestCase):
         )
 
     def test_seeker_fetch_checks_deadline_before_request(self):
-        session = Mock()
-        with patch("discover.time.monotonic", return_value=10), self.assertRaises(TimeoutError):
-            discover._seeker_fetch(session, "https://example.com", 10)
-        session.get.assert_not_called()
+        with patch("discover.time.monotonic", return_value=10), patch(
+            "discover.fetch_public_text"
+        ) as fetch, self.assertRaises(TimeoutError):
+            discover._seeker_fetch("https://example.com", 10)
+        fetch.assert_not_called()
+
+    def test_seeker_fetch_reuses_public_address_guard(self):
+        with patch("article_image._curl_prefix") as request:
+            for url in ("http://127.0.0.1/rss", "http://169.254.169.254/", "http://[::1]/rss"):
+                self.assertEqual(discover._seeker_fetch(url, time.monotonic() + 1), "")
+            request.assert_not_called()
+
+    def test_seeker_fetch_blocks_private_redirect(self):
+        response = Mock(status_code=302, headers={"location": "http://127.0.0.1/rss"})
+        with patch("article_image._resolve_public_addresses", return_value=[ip_address("93.184.216.34")]), patch(
+            "article_image._curl_prefix", return_value=(response, b"", True)
+        ) as request:
+            # Public first hop, private redirect rejected before a second request.
+            self.assertEqual(discover._seeker_fetch("http://example.com/rss", time.monotonic() + 1), "")
+            request.assert_called_once()
+
+    def test_seeker_fetch_total_timeout_on_slow_stream(self):
+        class SlowHandler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                self.send_response(200)
+                self.send_header("Content-Length", "10000")
+                self.end_headers()
+                try:
+                    for _ in range(100):
+                        self.wfile.write(b"x" * 100)
+                        self.wfile.flush()
+                        time.sleep(0.025)
+                except (BrokenPipeError, ConnectionResetError):
+                    pass
+
+            def log_message(self, *_args):
+                pass
+
+        with ThreadingHTTPServer(("127.0.0.1", 0), SlowHandler) as server:
+            thread = Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                local = f"http://127.0.0.1:{server.server_port}/"
+                # Bypass only the public URL gate for the loopback transport test.
+                with patch("article_image._public_target", return_value=(local, {CurlOpt.PROXY: ""})):
+                    start = time.monotonic()
+                    self.assertEqual(discover._seeker_fetch(local, start + 0.2), "")
+                    self.assertLess(time.monotonic() - start, 1.0)
+            finally:
+                server.shutdown()
+                thread.join()
 
     def test_unexpected_discovery_error_surfaces(self):
         with patch.object(discover, "discover_local", side_effect=TypeError("bug")), self.assertRaises(TypeError):

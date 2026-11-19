@@ -358,7 +358,8 @@ def _public_target(url: str, deadline=None):
     return canonical, options
 
 
-def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False, cookies=None):
+def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False, cookies=None,
+                 max_bytes=HEAD_BYTES, headers=HEADERS):
     from curl_cffi import CurlECode
     from curl_cffi.curl import CURL_WRITEFUNC_ERROR
     from curl_cffi.requests.exceptions import RequestException
@@ -368,8 +369,8 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
 
     def receive(chunk: bytes) -> int:
         nonlocal capped
-        body.extend(chunk[:HEAD_BYTES - len(body)])
-        if len(body) >= HEAD_BYTES:
+        body.extend(chunk[:max_bytes - len(body)])
+        if len(body) >= max_bytes:
             capped = True
             return CURL_WRITEFUNC_ERROR
         return len(chunk)
@@ -382,7 +383,7 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
         ) as session:
             response = session.get(
                 url,
-                headers=None if impersonate else HEADERS,
+                headers=None if impersonate else headers,
                 impersonate="chrome" if impersonate else None,
                 timeout=timeout,
                 allow_redirects=False,
@@ -403,7 +404,8 @@ def _curl_prefix(url: str, options, timeout: float, *, impersonate: bool = False
     return response, bytes(body), complete and not capped
 
 
-def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False):
+def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False,
+                       max_bytes=HEAD_BYTES, headers=HEADERS):
     try:
         for _ in range(MAX_REDIRECTS + 1):
             url, options = _public_target(url, deadline)
@@ -411,7 +413,8 @@ def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False
             if remaining <= 0:
                 return None
             result = _curl_prefix(
-                url, options, remaining, impersonate=impersonate, cookies=cookies
+                url, options, remaining, impersonate=impersonate, cookies=cookies,
+                max_bytes=max_bytes, headers=headers,
             )
             if result is None:
                 return None
@@ -428,6 +431,20 @@ def _fetch_public_html(url: str, deadline, cookies, *, impersonate: bool = False
     except (ValueError, OSError, CurlError) as exc:
         logger.debug("Public image lookup failed for %s: %s", url, exc)
     return None
+
+
+def fetch_public_text(url: str, deadline: float, *, max_bytes: int) -> str:
+    """Complete public HTTP(S) response only; pinned DNS, total timeout, bounded body."""
+    result = _fetch_public_html(
+        url, deadline, CookieJar(), max_bytes=max_bytes,
+        headers={**HEADERS, "Accept": "*/*"},
+    )
+    if result is None:
+        return ""
+    _, status, headers, body, complete = result
+    if status != 200 or not complete:
+        return ""
+    return _decode_html_prefix(body, headers)
 
 
 def article_image(url: str, _session=None) -> tuple[str | None, int | None, int | None, bool]:
