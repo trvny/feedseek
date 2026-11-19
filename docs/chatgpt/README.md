@@ -11,6 +11,7 @@ https://feeds-proxy.travny.workers.dev/mcp
 
 | Tool | Purpose |
 | --- | --- |
+| `list_feeds` | Discover all published source keys and direct feed URLs. |
 | `search` | Standard connector/deep-research search over the recent Feedseek index. |
 | `fetch` | Standard connector fetch for the full entry behind a search result id. |
 | `recent` | Bulk digest input with optional time, topic and source filters. |
@@ -36,7 +37,7 @@ status through that host API; the host may restore them when the panel reopens.
 **Send to chat** appears only when the host advertises that capability and sends
 the selection only after a click. Article text is rendered as plain text. No external
 runtime assets, browser storage, account or server-side user store are required. Conversational clients
-continue to use `search`, `fetch` and `recent` independently of the UI. Host support
+continue to use `list_feeds`, `search`, `fetch` and `recent` independently of the UI. Host support
 for extension entrypoints varies; refresh the app's tool scan after deployment.
 
 ## Data path
@@ -137,7 +138,7 @@ Before submission:
    add realistic starter prompts, choose the intended countries/regions, and describe this as
    the initial Feedseek submission in the release notes.
 
-The Reader resource declares an empty CSP (no connect or resource domains). All four tools explicitly declare
+The Reader resource declares an empty CSP (no connect or resource domains). All five tools explicitly declare
 `readOnlyHint: true`, `openWorldHint: false`, and `destructiveHint: false`, and each tool
 declares an `outputSchema`.
 
