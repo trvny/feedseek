@@ -9,11 +9,15 @@ dependencies = [
     "curl-cffi>=0.15",
     "feedgen2>=2.0",
     "feedparser>=6.0.12",
+    "feedparser-rs==0.7.1; sys_platform == 'linux'",
     "lxml>=6.1.1",
     "pydantic>=2",
     "python-dateutil>=2.9.0",
     "pyyaml>=6.0",
     "requests>=2.34.2",
+    "selectolax==1.0.2",
+    "rtrafilatura==0.2.0; sys_platform == 'linux'",
+    "trafilatura==2.3.1",
     "tzdata>=2026.4",
 ]
 
@@ -31,7 +35,11 @@ dev = [
 # discover.py falls back to the hosted feedsearch.dev API on its own.
 discover = [
     "feedsearch-crawler>=0.2",
+    "feed-seeker==2.0.0",
 ]
+
+# Portable local discovery without uvloop.
+discover-portable = ["feed-seeker==2.0.0"]
 
 [tool.uv]
 package = false
