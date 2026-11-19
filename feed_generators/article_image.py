@@ -203,7 +203,7 @@ def page_image(html: str, base_url: str) -> tuple[str | None, int | None, int | 
         try:
             if result := _fast_page_image(html, base_url):
                 return result
-        except Exception as exc:
+        except (ImportError, ValueError, RuntimeError) as exc:
             logger.debug("Selectolax image lookup fallback: %s", exc)
     soup = BeautifulSoup(html, "html.parser")
 

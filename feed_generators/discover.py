@@ -8,20 +8,26 @@ reaching for a scraper.
 Usage:
     uv run feed_generators/discover.py <url>
 
-Tries the local feedsearch-crawler library first then portable Feed Seeker, then the hosted
-feedsearch.dev API. It also checks the site's llms.txt, when present, and probes
+Tries the local feedsearch-crawler library first, then portable Feed Seeker,
+then the hosted feedsearch.dev API. It also checks the site's llms.txt, when present, and probes
 a bounded set of feed-, changelog-, blog-, and news-oriented links for extra
 native feeds. llms.txt failures never block ordinary discovery.
 """
 
 import sys
-from itertools import islice
+import time
+from urllib.parse import urlsplit
 
 import requests
 
 from llms_discovery import discover_llms_candidates
 
 MAX_LLMS_PROBES = 6
+SEEKER_SECONDS = 12
+SEEKER_REQUEST_SECONDS = 4
+SEEKER_MAX_BYTES = 512 * 1024
+SEEKER_MAX_LINKS = 40
+SEEKER_MAX_RESULTS = 15
 
 
 def discover_local(url: str):
@@ -51,16 +57,52 @@ def discover_hosted(url: str):
     return resp.json()
 
 
-def discover_seeker(url: str):
-    """Portable fallback; candidate URLs already inspected by Feed Seeker."""
+def _seeker_fetch(session, url, deadline):
+    """Bound individual requests, response bodies and the crawl deadline."""
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise TimeoutError("Feed Seeker deadline reached")
     try:
-        from feed_seeker import generate_feed_urls
+        parts = urlsplit(url)
+        if parts.scheme not in {"http", "https"} or not parts.hostname or parts.username or parts.password:
+            return ""
+        with session.get(url, timeout=min(remaining, SEEKER_REQUEST_SECONDS), stream=True) as response:
+            if not response.ok:
+                return ""
+            body = bytearray()
+            for chunk in response.iter_content(16384):
+                if time.monotonic() >= deadline:
+                    raise TimeoutError("Feed Seeker deadline reached")
+                if len(body) + len(chunk) > SEEKER_MAX_BYTES:
+                    return ""
+                body.extend(chunk)
+            return body.decode(response.encoding or "utf-8", errors="replace")
+    except (requests.RequestException, ValueError, LookupError):
+        return ""
 
-        urls = list(islice(generate_feed_urls(url, max_time=12), 15))
-        return [{"url": candidate} for candidate in dict.fromkeys(urls)]
-    except Exception as exc:
+
+def discover_seeker(url: str):
+    """Portable fallback. No process-wide signals; retain partial results."""
+    try:
+        from feed_seeker import FeedSeeker
+    except ImportError as exc:
         print(f"Feed Seeker unavailable: {exc}", file=sys.stderr)
         return []
+
+    found = {}
+    deadline = time.monotonic() + SEEKER_SECONDS
+    with requests.Session() as session:
+        def fetch(candidate):
+            return _seeker_fetch(session, candidate, deadline)
+
+        try:
+            for candidate in FeedSeeker(url, fetcher=fetch).generate_feed_urls(max_links=SEEKER_MAX_LINKS):
+                found.setdefault(candidate, {"url": candidate})
+                if len(found) >= SEEKER_MAX_RESULTS or time.monotonic() >= deadline:
+                    break
+        except (TimeoutError, requests.RequestException) as exc:
+            print(f"Feed Seeker crawl ended: {exc}", file=sys.stderr)
+    return list(found.values())
 
 
 def discover_target(url: str):
@@ -68,7 +110,7 @@ def discover_target(url: str):
         try:
             if feeds := finder(url):
                 return list(feeds), source
-        except Exception as exc:
+        except (ImportError, TimeoutError, requests.RequestException) as exc:
             print(f"{source} discovery failed: {exc}", file=sys.stderr)
     return list(discover_hosted(url) or []), "hosted"
 
