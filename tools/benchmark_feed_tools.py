@@ -2,7 +2,6 @@
 import argparse
 import gzip
 import importlib
-import itertools
 import json
 import statistics
 import sys
@@ -34,21 +33,26 @@ BENCHMARK_HOSTS = {
 }
 
 
-def download(url):
+def download(url, *, deadline=None):
     # Known benchmark hosts only, including redirects and discovered candidates.
     for _ in range(5):
+        timeout = 15 if deadline is None else min(4, deadline - time.monotonic())
+        if timeout <= 0:
+            raise TimeoutError("benchmark deadline reached")
         parts = urlsplit(url)
         if (parts.scheme != "https" or parts.hostname not in BENCHMARK_HOSTS
                 or parts.username or parts.password or parts.port not in (None, 443)):
             raise ValueError("URL outside benchmark hosts")
         with requests.get(url, headers={"User-Agent": "Feedseek benchmark/1.0"},
-                          stream=True, timeout=15, allow_redirects=False) as response:
+                          stream=True, timeout=timeout, allow_redirects=False) as response:
             if response.is_redirect:
                 url = urljoin(url, response.headers["Location"])
                 continue
             response.raise_for_status()
             body = bytearray()
             for chunk in response.iter_content(65536):
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise TimeoutError("benchmark deadline reached")
                 body.extend(chunk)
                 if len(body) > MAX_BYTES:
                     raise ValueError("response too large")
@@ -184,9 +188,25 @@ def check_discovery(package, url):
 
     start = time.perf_counter()
     if package == "feed-seeker":
-        from feed_seeker import generate_feed_urls
+        from feed_seeker import FeedSeeker
 
-        found = list(itertools.islice(generate_feed_urls(url, max_time=12), 15))
+        deadline = start + 12
+
+        def fetch(candidate):
+            try:
+                return download(candidate, deadline=deadline).decode("utf-8", errors="replace")
+            except (requests.RequestException, ValueError):
+                return ""
+
+        found = []
+        try:
+            for link in FeedSeeker(url, fetcher=fetch).generate_feed_urls(max_links=40):
+                if link not in found:
+                    found.append(link)
+                if len(found) >= 15 or time.monotonic() >= deadline:
+                    break
+        except TimeoutError:
+            pass  # Preserve validated results from the completed probes.
     else:
         from feedsearch_crawler import search
 
