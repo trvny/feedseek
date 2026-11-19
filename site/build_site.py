@@ -905,9 +905,9 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "## Agent access",
         "",
-        "On browser hosts that implement WebMCP, the feed directory exposes `search_feeds` and `set_feed_filter`; the Reader exposes `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.",
+        "On browser hosts that implement WebMCP, both pages expose `list_feeds` for the complete published catalog. The feed directory also exposes `search_feeds` and `set_feed_filter`; the Reader exposes `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.",
         "",
-        "- [Remote MCP server](https://feeds-proxy.travny.workers.dev/mcp): Read-only `search`, `fetch` and `recent` over the last 14 days",
+        "- [Remote MCP server](https://feeds-proxy.travny.workers.dev/mcp): Read-only `list_feeds` for all published sources; `search`, `fetch` and `recent` for indexed entries from the last 14 days",
         "- [Model Feed JSON Schema](https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json): Contract of every `feed_<name>.json`",
         "- [Agent guide](https://github.com/trvny/feedseek/blob/main/docs/agents.md): Which surface to use, limits and trust model",
         "",
@@ -968,7 +968,7 @@ The Reader is available at {base}reader/. It can refresh the published feed set,
 
 ## Agent access
 
-On browser hosts implementing WebMCP, the Reader exposes `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.
+On browser hosts implementing WebMCP, the Reader exposes `list_feeds` for the complete catalog, plus `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.
 
 ## Links
 
