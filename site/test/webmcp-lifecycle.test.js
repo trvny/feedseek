@@ -27,7 +27,7 @@ test("WebMCP catalog includes feeds outside the curated cards", async () => {
   const dummy = {};
   const catalog = {
     format: "feedseek-model-feed-catalog", version: 1,
-    feeds: [{ key: "hidden-ai", title: "Hidden AI", feed_url: "https://example.com/ai.xml" }],
+    feeds: [{ key: "hidden-ai", title: "Hidden Żółć", feed_url: "https://example.com/ai.xml" }],
   };
   runInNewContext(readFileSync(new URL("../webmcp.js", import.meta.url), "utf8"), {
     document: {
@@ -43,7 +43,7 @@ test("WebMCP catalog includes feeds outside the curated cards", async () => {
     },
   });
   const tool = tools.find((entry) => entry.name === "list_feeds");
-  const found = await tool.execute({ query: "AI", limit: 1 });
+  const found = await tool.execute({ query: "zolc", limit: 1 });
   assert.equal(found.count, 1);
   assert.equal(found.feeds[0].key, "hidden-ai");
   assert.equal(found.next_offset, null);

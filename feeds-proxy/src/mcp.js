@@ -247,7 +247,7 @@ async function listFeeds(args) {
   if (catalog.format !== "feedseek-model-feed-catalog" || catalog.version !== 1 || !Array.isArray(catalog.feeds)) {
     throw new Error("Invalid Feedseek catalog");
   }
-  const needle = normalize(args.query ?? "");
+  const needle = normalize(args.query ?? "").trim();
   const limit = args.limit ?? 20;
   const offset = args.offset ?? 0;
   const matches = catalog.feeds.filter((feed) =>

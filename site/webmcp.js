@@ -223,6 +223,19 @@
     return true;
   }
 
+  function normalize(value) {
+    return String(value ?? "")
+      .replace(/[łŁ]/g, "l")
+      .replace(/[øØ]/g, "o")
+      .replace(/[đĐðÐ]/g, "d")
+      .replace(/[þÞ]/g, "th")
+      .replace(/[æÆ]/g, "ae")
+      .replace(/[œŒ]/g, "oe")
+      .normalize("NFKD")
+      .replace(/\p{M}+/gu, "")
+      .toLowerCase();
+  }
+
   function setupCatalog(relativeUrl) {
     register({
       name: "list_feeds",
@@ -239,7 +252,7 @@
       },
       annotations: { readOnlyHint: true, untrustedContentHint: true },
       async execute({ query = "", limit = 20, offset = 0 } = {}) {
-        const needle = requireString(query, "query").trim().toLowerCase();
+        const needle = normalize(requireString(query, "query")).trim();
         requireLimit(limit);
         if (!Number.isSafeInteger(offset) || offset < 0) throw new RangeError("offset must be a non-negative integer.");
         const response = await fetch(new URL(relativeUrl, document.baseURI), { signal: AbortSignal.timeout(8000) });
@@ -249,7 +262,7 @@
           throw new Error("Invalid Feedseek catalog.");
         }
         const matches = catalog.feeds.filter((feed) =>
-          [feed.key, feed.title, feed.description, feed.source_url].join(" ").toLowerCase().includes(needle));
+          normalize([feed.key, feed.title, feed.description, feed.source_url].join(" ")).includes(needle));
         return { count: matches.length, next_offset: offset + limit < matches.length ? offset + limit : null, feeds: matches.slice(offset, offset + limit) };
       },
     });

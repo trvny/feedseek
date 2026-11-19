@@ -518,7 +518,7 @@ test("list_feeds discovers published sources independently of the recent index",
   const catalog = {
     format: "feedseek-model-feed-catalog", version: 1,
     feeds: ["openai", "other-ai", "weather"].map((key) => ({
-      key, title: key, description: key.includes("ai") ? "AI" : "",
+      key, title: key, description: key.includes("ai") ? "Żółć AI" : "",
       source_url: "https://example.com/" + key,
       feed_url: "https://trvny.github.io/feedseek/" + key + ".xml",
       model_feed_url: "https://trvny.github.io/feedseek/" + key + ".json",
@@ -532,7 +532,7 @@ test("list_feeds discovers published sources independently of the recent index",
     const list = async (args) => (await (await call("tools/call", {
       name: "list_feeds", arguments: args,
     })).json()).result;
-    const first = (await list({ query: "AI", limit: 1 })).structuredContent;
+    const first = (await list({ query: " zolc ", limit: 1 })).structuredContent;
     assert.equal(first.count, 2);
     assert.equal(first.next_offset, 1);
     assert.equal(first.feeds[0].key, "openai");
