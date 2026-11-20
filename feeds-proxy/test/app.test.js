@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+import { unstable_readConfig } from "wrangler";
 
 import app from "../src/app.js";
 
@@ -32,10 +34,18 @@ test("rejects write methods on the verification endpoint", async () => {
 });
 
 test("routes the same path on each hostname to separate cache entrypoints", async () => {
+  const configPath = fileURLToPath(new URL("../wrangler.jsonc", import.meta.url));
+  const config = unstable_readConfig({ config: configPath });
+  assert.equal(config.exports.default?.cache?.enabled ?? config.cache.enabled, false);
+
   const ctx = { exports: {
     FeedseekSite: { fetch: () => new Response("Allow: /") },
     FeedseekProxy: { fetch: () => new Response("Disallow: /") },
   } };
+  for (const name of Object.keys(ctx.exports)) {
+    assert.equal(config.exports[name]?.cache?.enabled, true, name);
+  }
+
   const inputs = [
     ["rss.bartek.lol", "Allow: /"],
     ["feeds-proxy.travny.workers.dev", "Disallow: /"],
