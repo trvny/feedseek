@@ -2,7 +2,7 @@
 
 > Generated from every published `feeds/feed_*.json` file (restored from Pages in CI). Refresh: `uv run --locked feed_generators/docs_model_feeds.py`.
 
-116 Model Feeds.
+117 Model Feeds.
 
 ## Access
 
@@ -25,6 +25,7 @@
 | `aibridge` | AI-bridge | [JSON](https://trvny.github.io/feedseek/aibridge.json) |
 | `alibaba` | Alibaba | [JSON](https://trvny.github.io/feedseek/alibaba.json) |
 | `anthropic` | Anthropic | [JSON](https://trvny.github.io/feedseek/anthropic.json) |
+| `apis` | APIs | [JSON](https://trvny.github.io/feedseek/apis.json) |
 | `apple` | Apple | [JSON](https://trvny.github.io/feedseek/apple.json) |
 | `arxiv` | arXiv | [JSON](https://trvny.github.io/feedseek/arxiv.json) |
 | `audacity` | Audacity® | [JSON](https://trvny.github.io/feedseek/audacity.json) |
