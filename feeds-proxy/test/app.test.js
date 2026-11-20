@@ -30,3 +30,18 @@ test("rejects write methods on the verification endpoint", async () => {
   assert.equal(response.status, 405);
   assert.equal(response.headers.get("allow"), "GET, HEAD");
 });
+
+test("routes the same path on each hostname to separate cache entrypoints", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch: () => new Response("Allow: /") },
+    FeedseekProxy: { fetch: () => new Response("Disallow: /") },
+  } };
+  const inputs = [
+    ["rss.bartek.lol", "Allow: /"],
+    ["feeds-proxy.travny.workers.dev", "Disallow: /"],
+  ];
+  for (const [host, policy] of inputs) {
+    const result = await app.fetch(new Request(`https://${host}/robots.txt`), {}, ctx);
+    assert.equal(await result.text(), policy);
+  }
+});
