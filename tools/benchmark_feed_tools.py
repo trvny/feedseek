@@ -215,7 +215,7 @@ def check_article(package, url):
 def check_discovery(package, url):
     import feedparser
 
-    start = time.perf_counter()
+    start = time.monotonic()
     if package == "feed-seeker":
         from feed_seeker import FeedSeeker
 
@@ -271,7 +271,7 @@ def check_discovery(package, url):
         if result.root_error and not result.feeds:
             raise ValueError(result.root_error.message)
         found = [str(feed.url) for feed in result.feeds[:15]]
-    elapsed = round(time.perf_counter() - start, 3)
+    elapsed = round(time.monotonic() - start, 3)
     found = list(dict.fromkeys(map(str, found)))
     verified = []
     for link in found[:5]:
