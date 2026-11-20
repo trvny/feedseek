@@ -70,11 +70,16 @@ class DedupeAliasTests(unittest.TestCase):
         self.assertEqual(result, [first])
 
     def test_opaque_ids_do_not_turn_into_http_urls(self):
-        cases = ["urn:uuid:abc", "id-123", "/relative", "mailto:a@example.com",
-                 "https://user@example.com/post"]
+        cases = ["urn:uuid:abc", "id-123", "/relative", "mailto:a@example.com"]
         for key in cases:
             with self.subTest(key=key):
                 self.assertEqual(normalize_link(key), key)
+
+    def test_http_credentials_are_removed_from_published_link(self):
+        self.assertEqual(
+            normalize_link("https://user:secret@example.com/post"),
+            "https://example.com/post",
+        )
 
     def test_ipv6_url_keeps_valid_authority(self):
         self.assertEqual(

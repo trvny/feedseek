@@ -1046,8 +1046,6 @@ def normalize_link(url: str) -> str:
         # Opaque IDs, relative paths and non-web URIs are not HTTP identities.
         if p.scheme not in ("http", "https", "") or not p.hostname:
             return raw
-        if p.username is not None or p.password is not None:
-            return raw
         host = re.sub(r"^www\.", "", p.hostname.lower())
         if ":" in host:
             host = f"[{host}]"
