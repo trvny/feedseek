@@ -402,15 +402,19 @@ def _scrape_run_native_sources(
         if entry.get("link") and entry.get("date") is not None
     }
 
+    cached_links_by_source = {}
+    for entry in cached:
+        label = entry.get("source")
+        if label in refresh_sources:
+            cached_links_by_source.setdefault(label, set()).add(entry["link"])
+
     def scrape_source(source):
         label, url, cap = source
         logger.info("Scraping %s ...", label)
         refreshing = label in refresh_sources
         source_known_links = known_links
         if refreshing:
-            source_known_links = known_links - {
-                entry["link"] for entry in cached if entry.get("source") == label
-            }
+            source_known_links = known_links - cached_links_by_source.get(label, set())
         scraped = scrape_feed(
             label,
             url,

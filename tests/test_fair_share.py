@@ -195,6 +195,18 @@ class FairShareTests(unittest.TestCase):
             [e["n"] for e in allocate_fair_share(data, limit=5)],
         )
 
+    def test_exhausted_buckets_leave_rotation_without_changing_membership(self):
+        data = ascending(
+            entries("a", 12, day=3), entries("b", 10, day=2),
+            *(entries(f"quiet-{i:02}", 1, day=1) for i in range(30)),
+        )
+        selected = allocate_fair_share(data, limit=37, per_source_cap=2)
+        tally = counts(selected)
+        self.assertEqual(tally["a"], 4)
+        self.assertEqual(tally["b"], 3)
+        self.assertEqual(len(tally), 32)
+        self.assertEqual(len(selected), 37)
+
     def test_noop_below_limit(self):
         data = ascending(entries("a", 3, day=1), entries("b", 2, day=2))
         self.assertEqual(len(allocate_fair_share(data, limit=50)), 5)

@@ -14,7 +14,9 @@ import os
 import re
 import sys
 import unicodedata
+from collections import deque
 from datetime import UTC, datetime, timedelta
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -251,20 +253,20 @@ def source_quota(per_source_cap, source: str) -> int | None:
 
 def _deal_fair_share(selected, by_source, order, cursor, limit, ceiling_for) -> None:
     """Deal one round-robin allocation pass into ``selected``."""
-    progressed = True
-    while len(selected) < limit and progressed:
-        progressed = False
-        for source in order:
-            if len(selected) >= limit:
-                break
-            bucket = by_source[source]
-            index = cursor[source]
-            ceiling = ceiling_for(source)
-            if index >= len(bucket) or (ceiling is not None and index >= ceiling):
-                continue
-            selected.append(bucket[index])
-            cursor[source] = index + 1
-            progressed = True
+    # Exhausted buckets leave the rotation; visit each remaining slot once.
+    ends = {}
+    for source in order:
+        ceiling = ceiling_for(source)
+        size = len(by_source[source])
+        ends[source] = size if ceiling is None else min(size, ceiling)
+    active = deque(source for source in order if cursor[source] < ends[source])
+    while active and len(selected) < limit:
+        source = active.popleft()
+        index = cursor[source]
+        selected.append(by_source[source][index])
+        cursor[source] = index + 1
+        if cursor[source] < ends[source]:
+            active.append(source)
 
 
 def allocate_fair_share(
@@ -1028,6 +1030,7 @@ _TRACKING_PARAMS = {
 }
 
 
+@lru_cache(maxsize=8192)
 def normalize_link(url: str) -> str:
     """Canonicalize a URL into a still-valid form usable as both a stored link
     and a dedup key: force https, lowercase the host, drop a leading ``www.``,
@@ -1038,9 +1041,17 @@ def normalize_link(url: str) -> str:
     if not url:
         return url
     try:
-        p = urlsplit(url.strip())
-        host = re.sub(r"^www\.", "", (p.hostname or "").lower())
-        if p.port:
+        raw = url.strip()
+        p = urlsplit(raw)
+        # Opaque IDs, relative paths and non-web URIs are not HTTP identities.
+        if p.scheme not in ("http", "https", "") or not p.hostname:
+            return raw
+        if p.username is not None or p.password is not None:
+            return raw
+        host = re.sub(r"^www\.", "", p.hostname.lower())
+        if ":" in host:
+            host = f"[{host}]"
+        if p.port is not None:
             host = f"{host}:{p.port}"
         path = re.sub(r"/index\.html?$", "/", p.path or "")
         if len(path) > 1:
@@ -1052,10 +1063,11 @@ def normalize_link(url: str) -> str:
         ]
         scheme = "https" if p.scheme in ("http", "https", "") else p.scheme
         return urlunsplit((scheme, host, path, urlencode(kept), p.fragment))
-    except Exception:
+    except (ValueError, UnicodeError):
         return url.strip()
 
 
+@lru_cache(maxsize=8192)
 def normalize_title(title: str) -> str:
     """Collapse a Unicode title to a canonical, case-folded comparison key."""
     folded = unicodedata.normalize(
