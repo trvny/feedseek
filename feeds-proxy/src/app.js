@@ -1,5 +1,6 @@
 import proxyWorker from "./index.js";
 import { mcpResponse } from "./mcp.js";
+import { SITE_ALIAS_HOST, siteAliasResponse } from "./site-alias.js";
 
 const OPENAI_CHALLENGE_PATH = "/.well-known/openai-apps-challenge";
 
@@ -30,7 +31,8 @@ export default {
    * @param {{ OPENAI_APPS_CHALLENGE?: string } | undefined} env
    */
   fetch(request, env) {
-    const pathname = new URL(request.url).pathname;
+    const { hostname, pathname } = new URL(request.url);
+    if (hostname === SITE_ALIAS_HOST) return siteAliasResponse(request);
     if (pathname === "/mcp") return mcpResponse(request);
     if (pathname === OPENAI_CHALLENGE_PATH) return openAiChallengeResponse(request, env);
     return proxyWorker.fetch(request);
