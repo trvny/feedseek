@@ -1,8 +1,8 @@
 """Compare candidate libraries on bounded public Feedseek and upstream inputs."""
 import argparse
 import asyncio
-import hashlib
 import gzip
+import hashlib
 import importlib
 import json
 import statistics
@@ -57,7 +57,10 @@ async def download_async(url, deadline):
                 url, timeout=aiohttp.ClientTimeout(total=remaining), allow_redirects=False
             ) as response:
                 if response.status in (301, 302, 303, 307, 308):
-                    url = urljoin(url, response.headers["Location"])
+                    location = response.headers.get("Location")
+                    if not location:
+                        raise ValueError(f"redirect without Location: {url}")
+                    url = urljoin(url, location)
                     continue
                 response.raise_for_status()
                 body = bytearray()
@@ -69,8 +72,9 @@ async def download_async(url, deadline):
     raise ValueError("too many redirects")
 
 
-def download(url, *, deadline=None):
-    deadline = time.monotonic() + 15 if deadline is None else min(deadline, time.monotonic() + 4)
+def download(url, *, deadline=None, timeout=15):
+    request_deadline = time.monotonic() + timeout
+    deadline = request_deadline if deadline is None else min(deadline, request_deadline)
     data = asyncio.run(download_async(url, deadline))
     if data.startswith(b"\x1f\x8b"):
         with gzip.GzipFile(fileobj=BytesIO(data)) as compressed:
@@ -219,7 +223,11 @@ def check_discovery(package, url):
 
         def fetch(candidate):
             try:
-                return download(candidate, deadline=deadline).decode("utf-8", errors="replace")
+                return download(candidate, deadline=deadline, timeout=4).decode("utf-8", errors="replace")
+            except TimeoutError:
+                if time.monotonic() >= deadline:
+                    raise
+                return ""
             except (aiohttp.ClientError, ValueError, gzip.BadGzipFile, EOFError):
                 return ""
 
@@ -296,7 +304,7 @@ def main():
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
     package = parser.parse_args().package
     emit(candidate=package, version=version(package), baselines={
-        name: version(name) for name in ("feedparser", "beautifulsoup4", "lxml", "aiohttp", "feedgen2")
+        name: version(name) for name in ("feedparser", "beautifulsoup4", "lxml", "aiohttp", "feedgen2", "requests")
     })
     urls = FEEDS if package in {"fastfeedparser", "feedparser-rs"} else SITES
     if package in {"trafilatura", "rtrafilatura"}:
