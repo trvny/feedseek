@@ -41,3 +41,9 @@ Live at `feeds-proxy.travny.workers.dev`; the Feedseek MCP endpoint uses the
 
 - `/?url=https://…` — constrained public HTTPS fetch for the browser Reader.
 - `/favicon?domain=example.com&sz=64` — stable favicon resolver used by generated feeds, the directory and Reader. An optional `url=` keeps a source-provided icon as the first candidate; `provider=duckduckgo` changes resolver preference.
+
+## Public site alias
+
+`rss.bartek.lol`: read-only alias of GitHub Pages. Pages owns publication and
+canonical URLs. Feed bodies and IDs pass through unchanged. Cloudflare Worker
+custom domain; independent of the MCP and source proxy hosts.
