@@ -18,6 +18,9 @@ class APIsTests(unittest.TestCase):
         self.assertEqual(options["feed_name"], "apis")
         self.assertEqual(options["title"], "APIs")
         self.assertEqual(options["blog_url"], "https://publicapis.dev/blog")
-        self.assertEqual(options["sources"], [("Public APIs", "https://publicapis.dev/feed.xml", 100)])
+        self.assertEqual(options["sources"], [
+            ("Public APIs Blog", "https://publicapis.dev/blog/feed.xml", 100),
+            ("Public APIs Directory", "https://publicapis.dev/feed.xml", 100),
+        ])
         self.assertIsNone(options["dedupe_title_field"])
         self.assertTrue(options["full"])

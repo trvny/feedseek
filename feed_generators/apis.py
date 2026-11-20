@@ -1,4 +1,4 @@
-"""Public APIs blog via native RSS."""
+"""Public APIs directory and blog native feeds."""
 
 import argparse
 import sys
@@ -7,18 +7,21 @@ from multi_rss import run
 
 FEED_NAME = "apis"
 BLOG_URL = "https://publicapis.dev/blog"
-SOURCES = [("Public APIs", "https://publicapis.dev/feed.xml", 100)]
+SOURCES = [
+    ("Public APIs Blog", "https://publicapis.dev/blog/feed.xml", 100),
+    ("Public APIs Directory", "https://publicapis.dev/feed.xml", 100),
+]
 
 
 def main(full=False):
     return run(
         feed_name=FEED_NAME,
         title="APIs",
-        subtitle="Public APIs blog: API design, development and discovery.",
+        subtitle="Public APIs articles and new API directory listings.",
         blog_url=BLOG_URL,
         author="Public APIs",
         sources=SOURCES,
-        max_entries=100,
+        max_entries=150,
         dedupe_title_field=None,
         full=full,
     )
