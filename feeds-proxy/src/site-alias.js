@@ -1,5 +1,6 @@
 export const SITE_ALIAS_HOST = "rss.bartek.lol";
 const PAGES = new URL("https://trvny.github.io/feedseek/");
+const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json"]);
 const REQUEST_HEADERS = ["accept", "if-none-match", "if-modified-since", "if-range", "range"];
 
 /** @param {Request} request @param {typeof fetch} fetchImpl */
@@ -13,8 +14,9 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
   const source = new URL(PAGES);
   source.pathname += alias.pathname.slice(1);
   source.search = alias.search;
+  const readerDiscovery = READER_DISCOVERY.has(alias.pathname);
   const headers = new Headers();
-  for (const name of REQUEST_HEADERS) {
+  for (const name of readerDiscovery ? ["accept"] : REQUEST_HEADERS) {
     const value = request.headers.get(name);
     if (value !== null) headers.set(name, value);
   }
@@ -36,8 +38,20 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
       alias.hash = target.hash;
       responseHeaders.set("location", alias.href);
     }
-    return new Response(method === "HEAD" ? null : upstream.body, { status: upstream.status, headers: responseHeaders });
-  } catch {
+    /** @type {BodyInit | null} */
+    let body = method === "HEAD" ? null : upstream.body;
+    if (readerDiscovery && upstream.status === 200) {
+      // Reader needs same-origin links for feed and Model Feed catalog matching.
+      for (const name of ["content-length", "content-encoding", "etag", "content-md5", "accept-ranges"]) {
+        responseHeaders.delete(name);
+      }
+      if (method === "GET") {
+        body = (await upstream.text()).replaceAll(PAGES.href, `https://${SITE_ALIAS_HOST}/`);
+      }
+    }
+    return new Response(body, { status: upstream.status, headers: responseHeaders });
+  } catch (error) {
+    console.warn("Feedseek Pages alias unavailable", error instanceof Error ? error.name : "UnknownError");
     return new Response(method === "HEAD" ? null : "Feedseek temporarily unavailable", {
       status: 502,
       headers: { "cache-control": "no-store", "content-type": "text/plain; charset=utf-8" },

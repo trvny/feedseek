@@ -34,3 +34,27 @@ test("keeps Pages redirects on the alias and rejects unrelated destinations", as
   });
   assert.equal(post.status, 405);
 });
+
+test("rebases Reader discovery without serving stale range or conditional responses", async () => {
+  const request = new Request("https://rss.bartek.lol/subscriptions.opml", {
+    headers: { "if-none-match": '"abc"', range: "bytes=0-42" },
+  });
+  const response = await siteAliasResponse(request, async (_target, init) => {
+    assert.deepEqual(Object.fromEntries(init.headers), {});
+    return new Response('<outline xmlUrl="https://trvny.github.io/feedseek/example.xml" />', {
+      headers: { etag: '"abc"', "content-type": "application/xml" },
+    });
+  });
+  assert.equal(response.headers.get("etag"), null);
+  assert.match(await response.text(), /xmlUrl="https:\/\/rss\.bartek\.lol\/example\.xml"/);
+
+  const catalog = await siteAliasResponse(new Request("https://rss.bartek.lol/model-feeds.json"), async () =>
+    Response.json({ xml: "https://trvny.github.io/feedseek/example.xml", model: "https://trvny.github.io/feedseek/example.json" }));
+  assert.deepEqual(await catalog.json(), {
+    xml: "https://rss.bartek.lol/example.xml",
+    model: "https://rss.bartek.lol/example.json",
+  });
+  const unavailable = await siteAliasResponse(request, async () => new Response("missing", { status: 404 }));
+  assert.equal(unavailable.status, 404);
+  assert.equal(await unavailable.text(), "missing");
+});
