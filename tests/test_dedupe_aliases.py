@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from utils import dedupe_entries  # noqa: E402
+from utils import dedupe_entries, normalize_link  # noqa: E402
 
 DATE = datetime(2026, 10, 28, tzinfo=timezone.utc)
 
@@ -68,6 +68,23 @@ class DedupeAliasTests(unittest.TestCase):
             ]
         )
         self.assertEqual(result, [first])
+
+    def test_opaque_ids_do_not_turn_into_http_urls(self):
+        cases = ["urn:uuid:abc", "id-123", "/relative", "mailto:a@example.com",
+                 "https://user@example.com/post"]
+        for key in cases:
+            with self.subTest(key=key):
+                self.assertEqual(normalize_link(key), key)
+
+    def test_ipv6_url_keeps_valid_authority(self):
+        self.assertEqual(
+            normalize_link("http://[2001:db8::1]:8080/story?utm_source=x&id=2#part"),
+            "https://[2001:db8::1]:8080/story?id=2#part",
+        )
+
+    def test_distinct_opaque_ids_remain_distinct(self):
+        items = [{"id": key} for key in ("urn:abc", "urn:def", "abc", "def")]
+        self.assertEqual(dedupe_entries(items, id_field="id", title_field=None), items)
 
     def test_title_deduplication_can_still_be_disabled(self):
         items = [
