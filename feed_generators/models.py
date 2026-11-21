@@ -1,10 +1,12 @@
 """Pydantic models for feed configuration and settings."""
 
+import json
 import logging
 from collections import Counter
 import re
 from functools import lru_cache
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import yaml
 from pydantic import BaseModel, TypeAdapter, ValidationError, field_validator
@@ -192,7 +194,7 @@ def validate_public_names(entries: dict) -> dict[str, str]:
     return result
 
 
-def runtime_public_names(entries: dict) -> dict[str, str]:
+def runtime_public_names(entries: dict, previous_names: dict[str, str] | None = None) -> dict[str, str]:
     """Fallback only malformed or conflicting overrides; keep unrelated sources live."""
     keys = set(entries)
     candidates = {}
@@ -211,11 +213,48 @@ def runtime_public_names(entries: dict) -> dict[str, str]:
             alias = key
         candidates[key] = alias
     counts = Counter(candidates.values())
-    for key, alias in candidates.items():
-        if counts[alias] > 1:
-            logger.warning("Ignoring conflicting public name for %s: %s", key, alias)
-            candidates[key] = key
+    previous_names = previous_names or {}
+    for alias, count in counts.items():
+        if count < 2:
+            continue
+        owners = [key for key, name in candidates.items() if name == alias]
+        incumbent = next(
+            (key for key in owners if previous_names.get(key) == alias),
+            owners[0],
+        )
+        for key in owners:
+            if key != incumbent:
+                logger.warning("Ignoring conflicting public name for %s: %s", key, alias)
+                candidates[key] = key
     return candidates
+
+
+def _previous_public_names(entries: dict) -> dict[str, str]:
+    """Reuse restored Model Feed URLs to prioritize an alias's current owner."""
+    claims = {}
+    for key, config in entries.items():
+        alias = config.get("public_name") if isinstance(config, dict) else None
+        if isinstance(alias, str):
+            claims.setdefault(alias, []).append(key)
+    conflicting = {
+        key for owners in claims.values() if len(owners) > 1 for key in owners
+    }
+    previous = {}
+    for key in conflicting:
+        path = REGISTRY_PATH.parent / "feeds" / f"feed_{key}.json"
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if not isinstance(data, dict) or data.get("format") != "feedseek-model-feed":
+            continue
+        url = data.get("feed_url")
+        if not isinstance(url, str):
+            continue
+        stem = Path(urlsplit(url).path).name
+        if stem.endswith(".json"):
+            previous[key] = stem[:-5]
+    return previous
 
 
 @lru_cache(maxsize=1)
@@ -226,7 +265,7 @@ def load_public_names() -> dict[str, str]:
     entries = data.get("feeds") if isinstance(data, dict) else None
     if not isinstance(entries, dict):
         raise ValueError("feeds must be a mapping")
-    return runtime_public_names(entries)
+    return runtime_public_names(entries, _previous_public_names(entries))
 
 
 def public_feed_name(feed_name: str) -> str:

@@ -1,10 +1,13 @@
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import mock_open, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
+import models
 from models import load_active_publication_keys, load_feed_registry, load_published_feeds, runtime_public_names, validate_public_names  # noqa: E402
 
 
@@ -54,8 +57,34 @@ class FeedRegistryTests(unittest.TestCase):
         }
         self.assertEqual(runtime_public_names(entries), {
             "reuters": "reuters", "disabled": "disabled", "news": "news",
-            "one": "one", "two": "two", "meta_newsroom": "meta",
+            "one": "shared", "two": "two", "meta_newsroom": "meta",
         })
+
+    def test_recovery_preserves_previously_published_alias_owner(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            registry = root / "feeds.yaml"
+            registry.write_text(
+                "feeds:\\n  reuters:\\n    public_name: trvny\\n"
+                "  github_personal:\\n    public_name: trvny\\n",
+                encoding="utf-8",
+            )
+            feeds = root / "feeds"
+            feeds.mkdir()
+            (feeds / "feed_github_personal.json").write_text(
+                json.dumps({
+                    "format": "feedseek-model-feed",
+                    "feed_url": "https://trvny.github.io/feedseek/trvny.json",
+                }),
+                encoding="utf-8",
+            )
+            with patch.object(models, "REGISTRY_PATH", registry):
+                models.load_public_names.cache_clear()
+                try:
+                    self.assertEqual(models.public_feed_name("github_personal"), "trvny")
+                    self.assertEqual(models.public_feed_name("reuters"), "reuters")
+                finally:
+                    models.load_public_names.cache_clear()
 
     def test_public_names_keep_generator_keys(self):
         self.assertEqual(
