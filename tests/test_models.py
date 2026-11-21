@@ -5,10 +5,24 @@ from unittest.mock import mock_open, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from models import load_feed_registry, load_published_feeds  # noqa: E402
+from models import load_active_publication_keys, load_feed_registry, load_published_feeds  # noqa: E402
 
 
 class FeedRegistryTests(unittest.TestCase):
+    def test_publication_retains_broken_enabled_cached_feeds(self):
+        registry = """feeds:
+  healthy:
+    script: example.py
+  broken:
+    script: missing.py
+  retired:
+    script: old.py
+    enabled: false
+"""
+        with patch("builtins.open", mock_open(read_data=registry)):
+            self.assertEqual(load_active_publication_keys(), {"healthy", "broken"})
+
+
     def test_published_feeds_keep_order_and_title_overrides(self):
         registry = """\
 published_feeds:

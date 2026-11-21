@@ -88,6 +88,25 @@ def load_feed_registry(return_skipped: bool = False):
     return feeds
 
 
+def load_active_publication_keys() -> set[str]:
+    """Publication membership, including invalid-but-enabled cached sources.
+
+    Generation validation owns config errors. Recovery may still serve the last
+    good pair. Only explicit disable/removal withdraws a feed from publication.
+    """
+    with open(REGISTRY_PATH, encoding="utf-8") as source:
+        data = yaml.safe_load(source) or {}
+    entries = data.get("feeds") if isinstance(data, dict) else None
+    if not isinstance(entries, dict):
+        raise ValueError("feeds must be a mapping")
+    return {
+        name for name, config in entries.items()
+        if isinstance(name, str)
+        and isinstance(config, dict)
+        and config.get("enabled", True) is not False
+    }
+
+
 def load_published_feeds() -> list[tuple[str, str]] | None:
     """Load the ordered public feed selection from the canonical registry.
 

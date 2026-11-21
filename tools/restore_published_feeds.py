@@ -24,7 +24,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "feed_generators"))
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
-from models import load_feed_registry  # noqa: E402
+from models import load_active_publication_keys  # noqa: E402
 DEFAULT_BASE = "https://trvny.github.io/feedseek/"
 KEY_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 MAX_FILE_BYTES = 32 * 1024 * 1024
@@ -119,9 +119,7 @@ def main() -> int:
     parser.add_argument("--base", default=os.getenv("FEEDSEEK_PUBLIC_BASE", DEFAULT_BASE))
     args = parser.parse_args()
     try:
-        enabled = {
-            key for key, config in load_feed_registry().items() if config.enabled
-        }
+        enabled = load_active_publication_keys()
         count = restore(args.feeds_dir, args.base, enabled_keys=enabled)
     except (RestoreError, requests.RequestException, ValueError) as exc:
         print(f"Published feed restore failed: {exc}", file=sys.stderr)
