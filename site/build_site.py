@@ -348,9 +348,7 @@ def collect_all_feeds(selected: list[dict]) -> list[dict]:
     Selection only curates the landing-page cards and OPML; every generated
     pair is still published and listed in machine-readable catalogs.
     """
-    enabled = {
-        key for key, config in load_feed_registry().items() if config.enabled
-    }
+    enabled = load_active_publication_keys()
     selected = [
         feed for feed in selected
         if short_name(Path(str(feed["filename"]))) in enabled
