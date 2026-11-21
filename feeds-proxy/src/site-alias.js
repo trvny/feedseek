@@ -16,8 +16,10 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
   source.pathname += alias.pathname.slice(1);
   source.search = alias.search;
   const readerDiscovery = READER_DISCOVERY.has(alias.pathname);
+  const xmlSitemap = XML_SITEMAPS.has(alias.pathname);
   const headers = new Headers();
-  for (const name of readerDiscovery ? ["accept"] : REQUEST_HEADERS) {
+  // Full sitemap response to replace cached crawl headers.
+  for (const name of readerDiscovery || xmlSitemap ? ["accept"] : REQUEST_HEADERS) {
     const value = request.headers.get(name);
     if (value !== null) headers.set(name, value);
   }
@@ -26,7 +28,7 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
     const upstream = await fetchImpl(source, { method, headers, redirect: "manual", signal: AbortSignal.timeout(12000) });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
-    if (/\.(?:xml|json)$/.test(alias.pathname) && !XML_SITEMAPS.has(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
+    if (/\.(?:xml|json)$/.test(alias.pathname) && !xmlSitemap && !responseHeaders.has("x-robots-tag")) {
       responseHeaders.set("x-robots-tag", "noindex, follow");
     }
     responseHeaders.set("x-content-type-options", "nosniff");
