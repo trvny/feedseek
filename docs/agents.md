@@ -8,14 +8,14 @@ Keywords: MCP server, remote MCP, WebMCP, llms.txt, llms-full.txt, JSON Schema, 
 
 | Need | Use | Coverage |
 | --- | --- | --- |
-| Full history of one source | `https://trvny.github.io/feedseek/<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
-| Which feeds exist | [`model-feeds.json`](https://trvny.github.io/feedseek/model-feeds.json) catalog | All published feed pairs; URLs + metadata, no articles |
-| Site overview for a model | [`llms.txt`](https://trvny.github.io/feedseek/llms.txt), [`llms-full.txt`](https://trvny.github.io/feedseek/llms-full.txt) | All published feeds |
-| Search / digest across sources | Remote MCP `https://feeds-proxy.travny.workers.dev/mcp` | Recent index: ≤5,000 entries, last 14 days |
-| Drive the browser Reader | WebMCP tools in [the Reader](https://trvny.github.io/feedseek/reader/) | What the open page currently shows |
-| Classic feed readers | `https://trvny.github.io/feedseek/<key>.xml` (RSS/Atom) | Same items as the JSON sibling |
+| Full history of one source | `https://rss.bartek.lol/<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
+| Which feeds exist | [`model-feeds.json`](https://rss.bartek.lol/model-feeds.json) catalog | All published feed pairs; URLs + metadata, no articles |
+| Site overview for a model | [`llms.txt`](https://rss.bartek.lol/llms.txt), [`llms-full.txt`](https://rss.bartek.lol/llms-full.txt) | All published feeds |
+| Search / digest across sources | Remote MCP `https://rss.bartek.lol/mcp` | Recent index: ≤5,000 entries, last 14 days; legacy Worker URL remains supported |
+| Drive the browser Reader | WebMCP tools in [the Reader](https://rss.bartek.lol/reader/) | The open page state and published Model Feed previews |
+| Classic feed readers | `https://rss.bartek.lol/<key>.xml` (RSS/Atom) | Same items as the JSON sibling |
 
-Feeds live on GitHub Pages only; Git keeps no feed history.
+Public addresses use rss.bartek.lol. GitHub Pages stores the actual files and its old URLs remain valid for subscribers. Git keeps no feed history.
 
 ## Model Feed JSON
 
