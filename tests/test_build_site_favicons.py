@@ -395,6 +395,12 @@ class SiteFaviconTests(unittest.TestCase):
 
 
 class FullPublicationTests(unittest.TestCase):
+    def test_invalid_registered_feed_fails_build_instead_of_disappearing(self):
+        with patch.object(build_site, "load_feed_registry", return_value=({}, ["broken"])):
+            with self.assertRaisesRegex(SystemExit, "Invalid feed registry entries: broken"):
+                build_site.main()
+
+
     def test_curated_and_fallback_omit_disabled_or_unregistered_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:
             feed_dir = Path(tmp)

@@ -1142,6 +1142,9 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
 
 
 def main() -> None:
+    _, skipped = load_feed_registry(return_skipped=True)
+    if skipped:
+        raise SystemExit(f"Invalid feed registry entries: {', '.join(skipped)}")
     base = site_base_url()
     # feeds: curated cards + OPML. all_feeds: every published file and catalog.
     feeds = collect_feeds()
