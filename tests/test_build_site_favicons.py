@@ -6,6 +6,8 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "site" / "build_site.py"
 SPEC = importlib.util.spec_from_file_location("build_site", MODULE_PATH)
@@ -402,11 +404,22 @@ class FullPublicationTests(unittest.TestCase):
                     f"<title>{title}</title></feed>",
                     encoding="utf-8",
                 )
+            for retired in ("multireddit", "removed"):
+                (feed_dir / f"feed_{retired}.xml").write_text(
+                    '<feed xmlns="http://www.w3.org/2005/Atom"><title>Old</title></feed>',
+                    encoding="utf-8",
+                )
             original = build_site.FEEDS_DIR
             build_site.FEEDS_DIR = feed_dir
             try:
                 selected = [build_site.parse_feed(feed_dir / "feed_zed.xml")]
-                result = build_site.collect_all_feeds(selected)
+                registry = {
+                    name: SimpleNamespace(enabled=True)
+                    for name in ("alpha", "zed", "beta")
+                }
+                registry["multireddit"] = SimpleNamespace(enabled=False)
+                with patch.object(build_site, "load_feed_registry", return_value=registry):
+                    result = build_site.collect_all_feeds(selected)
             finally:
                 build_site.FEEDS_DIR = original
 
