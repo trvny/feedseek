@@ -231,7 +231,7 @@ def runtime_public_names(entries: dict, previous_names: dict[str, str] | None = 
 
 def _previous_public_names(entries: dict) -> dict[str, str]:
     """Reuse restored Model Feed URLs to prioritize an alias's current owner."""
-    claims = {}
+    claims: dict[str, list[str]] = {}
     for key, config in entries.items():
         alias = config.get("public_name") if isinstance(config, dict) else None
         if isinstance(alias, str):

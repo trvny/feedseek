@@ -65,8 +65,12 @@ class FeedRegistryTests(unittest.TestCase):
             root = Path(tmp)
             registry = root / "feeds.yaml"
             registry.write_text(
-                "feeds:\\n  reuters:\\n    public_name: trvny\\n"
-                "  github_personal:\\n    public_name: trvny\\n",
+                """feeds:
+  reuters:
+    public_name: trvny
+  github_personal:
+    public_name: trvny
+""",
                 encoding="utf-8",
             )
             feeds = root / "feeds"
