@@ -117,9 +117,9 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   vm.runInContext(source, context);
   const canon = context.window.FeedseekReaderCache.canonicalFeedUrl;
   assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://rss.bartek.lol/wykop.xml");
-  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://trvny.github.io/feedseek/wykop.json");
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://rss.bartek.lol/wykop.json");
   assert.equal(canon("https://other.example/feed_wykop.xml"), "https://other.example/feed_wykop.xml");
-  assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://rss.bartek.lol/wykop.xml");
   assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
 });
 
