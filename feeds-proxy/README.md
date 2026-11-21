@@ -45,8 +45,8 @@ Live at `feeds-proxy.travny.workers.dev`; the Feedseek MCP endpoint uses the
 ## Public site alias
 
 `rss.bartek.lol`: read-only alias of GitHub Pages. Pages owns publication and
-canonical URLs. Feed bodies and IDs pass through unchanged. Cloudflare Worker
-custom domain; independent of the MCP and source proxy hosts.
+canonical URLs. The alias passes through Pages crawl directives, feed bodies
+and IDs. Separate Worker custom domain for the site.
 
 Hostname routing runs before Workers Cache. The site and proxy use separate
 cached entrypoints because Workers Cache keys omit the hostname.
