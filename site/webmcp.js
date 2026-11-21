@@ -237,8 +237,8 @@
   }
 
   function setupCatalog(relativeUrl) {
-    const catalogUrl = new URL(relativeUrl, document.baseURI);
     async function loadCatalog() {
+      const catalogUrl = new URL(relativeUrl, document.baseURI);
       const response = await fetch(catalogUrl, { signal: AbortSignal.timeout(8000) });
       if (!response.ok) throw new Error("Feedseek catalog unavailable.");
       const catalog = await response.json();
@@ -299,7 +299,7 @@
         const source = catalog.feeds.find((feed) => feed.key === key);
         if (!source) throw new RangeError("Unknown published Feedseek source.");
         // Restrict the fetch to a source verified in the local catalog; no caller-supplied URL.
-        const modelUrl = new URL(key + ".json", catalogUrl);
+        const modelUrl = new URL(key + ".json", new URL(relativeUrl, document.baseURI));
         const response = await fetch(modelUrl, { signal: AbortSignal.timeout(10000) });
         if (!response.ok) throw new Error("Feedseek Model Feed unavailable.");
         const model = await response.json();
