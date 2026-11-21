@@ -241,6 +241,8 @@ def _previous_public_names(entries: dict) -> dict[str, str]:
     }
     previous = {}
     for key in conflicting:
+        if not PUBLIC_STEM_RE.fullmatch(key):
+            continue
         path = REGISTRY_PATH.parent / "feeds" / f"feed_{key}.json"
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -251,7 +253,10 @@ def _previous_public_names(entries: dict) -> dict[str, str]:
         url = data.get("feed_url")
         if not isinstance(url, str):
             continue
-        stem = Path(urlsplit(url).path).name
+        try:
+            stem = Path(urlsplit(url).path).name
+        except ValueError:
+            continue
         if stem.endswith(".json"):
             previous[key] = stem[:-5]
     return previous
