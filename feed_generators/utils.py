@@ -38,12 +38,14 @@ DEFAULT_HEADERS = {"User-Agent": DEFAULT_USER_AGENT}
 # correct out of the box. Override locally with RSS_REPO_SLUG if needed.
 REPO_SLUG = os.getenv("RSS_REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or "trvny/feedseek"
 _OWNER, _, _REPO = REPO_SLUG.partition("/")
-# Canonical publication: GitHub Pages, short names (<key>.xml / <key>.json).
-PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or f"https://{_OWNER.lower()}.github.io/{_REPO}").rstrip("/") + "/"
+# Public domain first. Keep forks on their own Pages host unless overridden.
+_PAGES_BASE = f"https://{_OWNER.lower()}.github.io/{_REPO}"
+_DEFAULT_PUBLIC_BASE = "https://rss.bartek.lol" if REPO_SLUG == "trvny/feedseek" else _PAGES_BASE
+PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or _DEFAULT_PUBLIC_BASE).rstrip("/") + "/"
 
 
 def public_feed_url(feed_name: str, ext: str = "xml") -> str:
-    """Canonical Pages URL of a published feed file."""
+    """Canonical subscriber-facing URL for a published feed file."""
     from models import public_feed_name
 
     return f"{PUBLIC_BASE}{public_feed_name(feed_name)}.{ext}"

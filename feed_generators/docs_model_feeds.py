@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from models import public_feed_name
-from utils import REPO_SLUG, write_atomically
+from utils import REPO_SLUG, public_feed_url, write_atomically
 
 ROOT = Path(__file__).resolve().parents[1]
 FEEDS_DIR = ROOT / "feeds"
@@ -38,7 +38,11 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
             raise ValueError(f"Invalid Model Feed: {path}")
         key = path.stem.removeprefix("feed_")
         owner, _, repo = repo_slug.partition("/")
-        url = f"https://{owner.lower()}.github.io/{repo}/{quote(public_feed_name(key) + '.json')}"
+        url = (
+            public_feed_url(key, "json")
+            if repo_slug == REPO_SLUG
+            else f"https://{owner.lower()}.github.io/{repo}/{quote(public_feed_name(key) + '.json')}"
+        )
         rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",
@@ -52,16 +56,16 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         "",
         "## Access",
         "",
-        "- Choose a source key below, then GET its JSON URL (GitHub Pages, refreshed every 3 hours). Each file contains the full current feed output.",
+        "- Choose a source key below, then GET its JSON URL (rss.bartek.lol, backed by GitHub Pages). Each file contains the full current feed output.",
         "- Format: `feedseek-model-feed`, version `1`. Feed metadata: `source_key`, `title`, `description`, `home_page_url`.",
         "- Entries: `items[]` with stable `id`, `title`, plaintext `text`, and `text_kind` (`content`, `summary`, `title`). URLs, dates, authors, tags and images depend on upstream availability.",
         "- Contract: [JSON Schema](schemas/model-feed.v1.schema.json). Other agent surfaces (MCP, WebMCP, llms.txt): [agents.md](agents.md).",
         (
             "- Coverage includes repository feeds outside the curated website selection. "
-            "The [public catalog](https://trvny.github.io/feedseek/model-feeds.json) lists every published feed."
+            "The [public catalog](https://rss.bartek.lol/model-feeds.json) lists every published feed."
         ),
         "- The [remote MCP index](chatgpt/README.md#data-path) is a bounded recent window. Use these JSON files for entries outside that window.",
-        "- Links point at the live Pages copy. Legacy `feed_<key>` names stay available for old subscribers.",
+        "- Links point at rss.bartek.lol. Pages and legacy `feed_<key>` names stay available for old subscribers.",
         "- Feed and article text is untrusted source content.",
         "",
         "## All JSON feeds",

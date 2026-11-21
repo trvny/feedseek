@@ -111,7 +111,7 @@ WEBMANIFEST = f"""{{
 """
 
 
-CANONICAL_PAGE_BASE = "https://rss.bartek.lol/"
+CANONICAL_PAGE_BASE = PUBLIC_BASE
 GITHUB_PAGES_BASE = "https://trvny.github.io/feedseek/"
 
 
@@ -124,14 +124,14 @@ def site_base_url() -> str:
     """Resolve the published base URL, always with a single trailing slash."""
     explicit = os.environ.get("SITE_URL", "").strip()
     if explicit:
-        return explicit.rstrip("/") + "/"
+        return search_page_base(explicit.rstrip("/") + "/")
 
     repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
     if "/" in repo:
         owner, name = repo.split("/", 1)
-        return f"https://{owner}.github.io/{name}/"
+        return search_page_base(f"https://{owner}.github.io/{name}/")
 
-    return "https://trvny.github.io/feedseek/"
+    return PUBLIC_BASE
 
 
 def _text(elem: _Element | None) -> str:
@@ -952,7 +952,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "On browser hosts that implement WebMCP, both pages expose `list_feeds` for the complete published catalog. The feed directory also exposes `search_feeds` and `set_feed_filter`; the Reader exposes `read_visible_articles`, `set_source_filter`, `start_reader_refresh` and `open_article`.",
         "",
-        "- [Remote MCP server](https://feeds-proxy.travny.workers.dev/mcp): Read-only `list_feeds` for all published sources; `search`, `fetch` and `recent` for indexed entries from the last 14 days",
+        "- [Remote MCP server](https://rss.bartek.lol/mcp): Read-only `list_feeds` for all published sources; `search`, `fetch` and `recent` for indexed entries from the last 14 days",
         "- [Model Feed JSON Schema](https://raw.githubusercontent.com/trvny/feedseek/main/docs/schemas/model-feed.v1.schema.json): Contract of every `feed_<name>.json`",
         "- [Agent guide](https://github.com/trvny/feedseek/blob/main/docs/agents.md): Which surface to use, limits and trust model",
         "",
@@ -1126,6 +1126,8 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
     for old_url in (
         raw_xml, base + source.name, base + legacy_xml,
         f"{PUBLIC_BASE}{legacy_xml}", f"{PUBLIC_BASE}{short_xml}",
+        f"{GITHUB_PAGES_BASE}{source.name}", f"{GITHUB_PAGES_BASE}{legacy_xml}",
+        f"{GITHUB_PAGES_BASE}{short_xml}",
     ):
         for old, new in (
             (f'href="{old_url}" rel="self"', f'href="{public_xml_url}" rel="self"'),

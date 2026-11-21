@@ -279,8 +279,8 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn(r"Safe\]\(https://evil.example\) # injected", rendered)
         self.assertNotIn("\n## injected", rendered)
 
-    def test_github_pages_html_prefers_alias_without_moving_feed_urls(self):
-        base = "https://trvny.github.io/feedseek/"
+    def test_public_site_uses_single_canonical_url(self):
+        base = "https://rss.bartek.lol/"
         feeds = [{
             "filename": "feed_alpha.xml", "title": "Alpha", "subtitle": "Test",
             "source": "https://example.com/", "updated": None, "entries": 1,
@@ -288,11 +288,11 @@ class SiteFaviconTests(unittest.TestCase):
         }]
         index = build_site.build_index(feeds, base)
         self.assertIn('rel="canonical" href="https://rss.bartek.lol/"', index)
-        self.assertIn('href="https://trvny.github.io/feedseek/alpha.xml"', index)
-        self.assertIn('href="https://trvny.github.io/feedseek/alpha.json"', index)
+        self.assertIn('href="https://rss.bartek.lol/alpha.xml"', index)
+        self.assertIn('href="https://rss.bartek.lol/alpha.json"', index)
         self.assertIn('property="og:url" content="https://rss.bartek.lol/"', index)
         self.assertIn('"url":"https://rss.bartek.lol/"', index)
-        self.assertIn('href="https://trvny.github.io/feedseek/index.md"', index)
+        self.assertIn('href="https://rss.bartek.lol/index.md"', index)
         reader = build_site.build_reader_html(base)
         self.assertIn('rel="canonical" href="https://rss.bartek.lol/reader/"', reader)
         self.assertIn('property="og:url" content="https://rss.bartek.lol/reader/"', reader)
