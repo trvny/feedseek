@@ -73,7 +73,8 @@ def publish(topics: list[str]) -> None:
                 headers={"content-type": "application/x-www-form-urlencoded", "user-agent": "Feedseek-WebSub/1.0"},
                 method="POST",
             )
-            with urllib.request.urlopen(request, timeout=10) as response:
+            # Fixed HTTPS hub + allowlisted topic URLs; no arbitrary scheme or host.
+            with urllib.request.urlopen(request, timeout=10) as response:  # nosec B310
                 if response.status not in (200, 202, 204):
                     raise RuntimeError(f"WebSub hub responded {response.status}")
             print(f"WebSub publish accepted: {topic}")
