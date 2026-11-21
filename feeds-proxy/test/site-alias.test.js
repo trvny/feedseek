@@ -16,8 +16,19 @@ test("serves published feeds without forwarding credentials or rewriting entries
   });
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("set-cookie"), null);
-  assert.equal(response.headers.get("x-robots-tag"), "noindex, follow");
+  assert.equal(response.headers.get("x-robots-tag"), null);
   assert.equal(await response.text(), "<feed><id>stable</id></feed>");
+});
+
+test("preserves Pages canonicals and crawl directives", async () => {
+  const canonical = '<link rel="canonical" href="https://trvny.github.io/feedseek/">';
+  const page = await siteAliasResponse(new Request("https://rss.bartek.lol/"), async () => new Response(canonical));
+  assert.equal(page.headers.get("x-robots-tag"), null);
+  assert.equal(await page.text(), canonical);
+
+  const archivedPage = await siteAliasResponse(new Request("https://rss.bartek.lol/archive/"), async () =>
+    new Response("Archived", { headers: { "x-robots-tag": "noindex" } }));
+  assert.equal(archivedPage.headers.get("x-robots-tag"), "noindex");
 });
 
 test("keeps Pages redirects on the alias and rejects unrelated destinations", async () => {
