@@ -28,7 +28,11 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
     const upstream = await fetchImpl(source, { method, headers, redirect: "manual", signal: AbortSignal.timeout(12000) });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
-    if (/\.(?:xml|json)$/.test(alias.pathname) && !xmlSitemap && !responseHeaders.has("x-robots-tag")) {
+    if (xmlSitemap) {
+      responseHeaders.delete("etag");
+      responseHeaders.delete("last-modified");
+      responseHeaders.delete("accept-ranges");
+    } else if (/\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
       responseHeaders.set("x-robots-tag", "noindex, follow");
     }
     responseHeaders.set("x-content-type-options", "nosniff");
