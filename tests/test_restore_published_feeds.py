@@ -128,6 +128,20 @@ class RestorePublishedFeedsTests(unittest.TestCase):
                     self.assertEqual((feeds / "feed_alpha.xml").read_bytes(), XML)
                     self.assertEqual((feeds / "feed_alpha.json").read_bytes(), MODEL)
 
+    def test_canonical_catalog_restores_from_pages_backend(self):
+        canonical = catalog("alpha")
+        canonical["feeds"][0]["feed_url"] = "https://rss.bartek.lol/alpha.xml"
+        canonical["feeds"][0]["model_feed_url"] = "https://rss.bartek.lol/alpha.json"
+        files = {
+            f"{BASE}model-feeds.json": json.dumps(canonical).encode(),
+            f"{BASE}alpha.xml": XML,
+            f"{BASE}alpha.json": MODEL,
+        }
+        with tempfile.TemporaryDirectory() as tmp, patch.object(
+            MODULE.requests.Session, "get", fake_get(files)
+        ):
+            self.assertEqual(MODULE.restore(Path(tmp) / "feeds", BASE), 1)
+
     def test_catalog_rejects_foreign_urls_and_unsafe_keys(self):
         foreign = catalog("alpha")
         foreign["feeds"][0]["feed_url"] = "https://evil.example/alpha.xml"

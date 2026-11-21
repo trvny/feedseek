@@ -116,7 +116,7 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   });
   vm.runInContext(source, context);
   const canon = context.window.FeedseekReaderCache.canonicalFeedUrl;
-  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://rss.bartek.lol/wykop.xml");
   assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://trvny.github.io/feedseek/wykop.json");
   assert.equal(canon("https://other.example/feed_wykop.xml"), "https://other.example/feed_wykop.xml");
   assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
@@ -155,6 +155,16 @@ test("future gov.pl news is scrubbed from storage, refreshed history, and legacy
   await cache.save([future, past, near, forecast, lookalike]);
   assert.deepEqual(JSON.parse(storage.get("fs:snap")).items.map(item => item.id),
     ["past", "near", "forecast", "lookalike"]);
+});
+
+test("canonicalizes saved Pages URLs without touching third-party feeds", () => {
+  const { cache } = makeCache();
+  assert.equal(cache.canonicalFeedUrl("https://trvny.github.io/feedseek/feed_jbzd.xml"),
+    "https://rss.bartek.lol/jbzd.xml");
+  assert.equal(cache.canonicalFeedUrl("https://rss.bartek.lol/feed_memy.xml"),
+    "https://rss.bartek.lol/memy.xml");
+  assert.equal(cache.canonicalFeedUrl("https://elsewhere.test/feed_jbzd.xml"),
+    "https://elsewhere.test/feed_jbzd.xml");
 });
 
 test("IndexedDB also drops quarantined Gov.pl articles during load", async () => {
