@@ -36,6 +36,7 @@ jobs:
     timeout-minutes: 69
     outputs:
       pages_ready: ${{ steps.pages_upload.outcome == 'success' && steps.backup.outcome == 'success' && steps.model_feeds.outcome == 'success' && steps.validate.outcome == 'success' }}
+      websub_topics: ${{ steps.websub.outputs.topics }}
     steps:
       - name: Checkout repository
         # zizmor: ignore[artipacked] this job commits & pushes generated docs back, so it needs persisted creds
@@ -81,6 +82,9 @@ jobs:
       # feeds/ is not tracked in Git: last published pairs are the last-known-good state.
       - name: Restore published feeds from Pages
         run: uv run --locked tools/restore_published_feeds.py
+
+      - name: Snapshot WebSub pilot topics
+        run: uv run --locked python tools/websub_notify.py snapshot "$RUNNER_TEMP/websub-before.json"
 
       - name: Run feed tests
         working-directory: .
@@ -173,6 +177,10 @@ jobs:
           uv run --locked python -m json.tool public/model-feeds.json > /dev/null
           grep -Fq 'model-feeds.json' public/llms.txt
 
+      - name: Collect changed WebSub topics
+        id: websub
+        run: uv run --locked python tools/websub_notify.py diff "$RUNNER_TEMP/websub-before.json" "$GITHUB_OUTPUT"
+
       - name: Upload live Pages artifact
         id: pages_upload
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
@@ -224,3 +232,15 @@ jobs:
         uses: trvny/trvny/.github/actions/indexnow@330bac07e79471834486315f967cca01f0d49140
         with:
           site: feedseek
+
+      - name: Checkout notification helper
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Notify WebSub hub after successful Pages deployment
+        continue-on-error: true
+        env:
+          WEBSUB_TOPICS: ${{ needs.update-feeds.outputs.websub_topics }}
+        run: python tools/websub_notify.py publish
+
