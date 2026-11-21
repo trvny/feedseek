@@ -48,10 +48,19 @@ test("passes through advertised sitemaps without adding noindex", async () => {
     const response = await siteAliasResponse(request, async (target, init) => {
       assert.equal(target.href, `https://trvny.github.io/feedseek/${name}`);
       assert.deepEqual(Object.fromEntries(init.headers), { accept: "application/xml" });
-      return new Response("published sitemap");
+      return new Response("published sitemap", {
+        headers: {
+          etag: '"cached"',
+          "last-modified": "Fri, 20 Nov 2026 00:00:00 GMT",
+          "accept-ranges": "bytes",
+        },
+      });
     });
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("x-robots-tag"), null, name);
+    assert.equal(response.headers.get("etag"), null, name);
+    assert.equal(response.headers.get("last-modified"), null, name);
+    assert.equal(response.headers.get("accept-ranges"), null, name);
     assert.equal(await response.text(), "published sitemap");
   }
 });
