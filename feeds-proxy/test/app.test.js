@@ -18,6 +18,17 @@ test("serves the OpenAI domain verification token as plain text", async () => {
   assert.equal(await response.text(), "challenge-token-123");
 });
 
+test("serves verification on the canonical Feedseek MCP hostname", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch() { throw Error("Verification must not hit Pages"); } },
+    FeedseekProxy: { fetch() { throw Error("Verification must not hit proxy"); } },
+  } };
+  const response = await app.fetch(new Request("https://rss.bartek.lol/.well-known/openai-apps-challenge"),
+    { OPENAI_APPS_CHALLENGE: "canonical-token" }, ctx);
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), "canonical-token");
+});
+
 test("keeps the verification endpoint closed until a token is configured", async () => {
   const response = await app.fetch(new Request(challengeUrl), {});
   assert.equal(response.status, 404);
