@@ -28,7 +28,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Poland government and news
 
 ### ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) Gov.pl
-`govpl_news` · [XML](https://trvny.github.io/feedseek/govpl.xml) · [JSON](https://trvny.github.io/feedseek/govpl.json)
+`govpl_news` · [XML](https://rss.bartek.lol/govpl.xml) · [JSON](https://rss.bartek.lol/govpl.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) KPRM — <https://www.gov.pl/web/premier/wydarzenia>
 - ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) Profil Zaufany — <https://www.gov.pl/web/profilzaufany/aktualnosci>
@@ -44,7 +44,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) Prezydent gn — <https://news.google.com/rss/search?q=site:prezydent.pl&hl=pl&gl=PL&ceid=PL:pl>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.pap.pl&sz=16) PAP
-`pap` · [XML](https://trvny.github.io/feedseek/pap.xml) · [JSON](https://trvny.github.io/feedseek/pap.json)
+`pap` · [XML](https://rss.bartek.lol/pap.xml) · [JSON](https://rss.bartek.lol/pap.json)
 
 - ![](https://www.google.com/s2/favicons?domain=zdrowie.pap.pl&sz=16) PAP Zdrowie — <https://zdrowie.pap.pl/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=samorzad.pap.pl&sz=16) Serwis Samorzadowy — <https://samorzad.pap.pl/rss.xml>
@@ -55,7 +55,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=dzieje.pl&sz=16) Dzieje.pl — <https://dzieje.pl/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.tvp.pl&sz=16) TVP
-`tvp` · [XML](https://trvny.github.io/feedseek/tvp.xml) · [JSON](https://trvny.github.io/feedseek/tvp.json)
+`tvp` · [XML](https://rss.bartek.lol/tvp.xml) · [JSON](https://rss.bartek.lol/tvp.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.tvp.pl&sz=16) TVP Informacje — <https://www.tvp.pl/83939255/informacje>
 - ![](https://www.google.com/s2/favicons?domain=www.tvp.pl&sz=16) TVP Rozrywka — <https://www.tvp.pl/85859082/aktualnosci>
@@ -65,7 +65,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.tvp.info&sz=16) TVP Info — <http://www.tvp.info/tvp.info/rss+xml.php>
 
 ### ![](https://www.google.com/s2/favicons?domain=spidersweb.pl&sz=16) Spider's Web
-`spidersweb` · [XML](https://trvny.github.io/feedseek/spidersweb.xml) · [JSON](https://trvny.github.io/feedseek/spidersweb.json)
+`spidersweb` · [XML](https://rss.bartek.lol/spidersweb.xml) · [JSON](https://rss.bartek.lol/spidersweb.json)
 
 - ![](https://www.google.com/s2/favicons?domain=spidersweb.pl&sz=16) Spider's Web — <https://spidersweb.pl/api/post/feed/feed-gn>
 - ![](https://www.google.com/s2/favicons?domain=rozrywka.spidersweb.pl&sz=16) Rozrywka — <https://rozrywka.spidersweb.pl/api/feed/feed-gn>
@@ -74,7 +74,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=bezprawnik.pl&sz=16) Bezprawnik — <https://bezprawnik.pl/api/feed-gn/>
 
 ### ![](https://www.google.com/s2/favicons?domain=wykop.pl&sz=16) Wykop
-`wykop` · [XML](https://trvny.github.io/feedseek/wykop.xml) · [JSON](https://trvny.github.io/feedseek/wykop.json)
+`wykop` · [XML](https://rss.bartek.lol/wykop.xml) · [JSON](https://rss.bartek.lol/wykop.json)
 
 - ![](https://www.google.com/s2/favicons?domain=wykop.pl&sz=16) Wykopane — <https://wykop.pl/rss>
 - ![](https://www.google.com/s2/favicons?domain=wykop.pl&sz=16) Komentowane — <https://wykop.pl/rss/comments>
@@ -83,21 +83,21 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## World news
 
 ### ![](https://www.google.com/s2/favicons?domain=www.reuters.com&sz=16) Reuters
-`reuters` · [XML](https://trvny.github.io/feedseek/reuters.xml) · [JSON](https://trvny.github.io/feedseek/reuters.json)
+`reuters` · [XML](https://rss.bartek.lol/reuters.xml) · [JSON](https://rss.bartek.lol/reuters.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.reuters.com&sz=16) Blog — <https://www.reuters.com/>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (when:7d site:reuters.com) — <https://news.google.com/rss/search?q=when:7d+site:reuters.com&hl=en-US&gl=US&ceid=US:en>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (reuters.com) — <https://news.google.com/rss/search?q=reuters.com&hl=en-US&gl=US&ceid=US:en>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.independent.co.uk&sz=16) The Independent + Indy100
-`independent` · [XML](https://trvny.github.io/feedseek/independent.xml) · [JSON](https://trvny.github.io/feedseek/independent.json)
+`independent` · [XML](https://rss.bartek.lol/independent.xml) · [JSON](https://rss.bartek.lol/independent.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.independent.co.uk&sz=16) The Independent — <https://www.independent.co.uk/rss>
 - ![](https://www.google.com/s2/favicons?domain=www.indy100.com&sz=16) Indy100 RSS — <https://www.indy100.com/feeds/feed.rss>
 - ![](https://www.google.com/s2/favicons?domain=www.indy100.com&sz=16) Indy100 homepage — <https://www.indy100.com/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.euronews.com&sz=16) Euronews
-`euronews` · [XML](https://trvny.github.io/feedseek/euronews.xml) · [JSON](https://trvny.github.io/feedseek/euronews.json)
+`euronews` · [XML](https://rss.bartek.lol/euronews.xml) · [JSON](https://rss.bartek.lol/euronews.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.euronews.com&sz=16) News — <https://www.euronews.com/rss?format=mrss&level=theme&name=news>
 - ![](https://www.google.com/s2/favicons?domain=www.euronews.com&sz=16) My Europe — <https://www.euronews.com/rss?format=mrss&level=vertical&name=my-europe>
@@ -115,7 +115,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=pl.euronews.com&sz=16) Next (PL) — <https://pl.euronews.com/rss?format=mrss&level=vertical&name=next>
 
 ### ![](https://www.google.com/s2/favicons?domain=european-union.europa.eu&sz=16) Europa
-`europa` · [XML](https://trvny.github.io/feedseek/europa.xml) · [JSON](https://trvny.github.io/feedseek/europa.json)
+`europa` · [XML](https://rss.bartek.lol/europa.xml) · [JSON](https://rss.bartek.lol/europa.json)
 
 - ![](https://www.google.com/s2/favicons?domain=european-union.europa.eu&sz=16) European Union — news — <https://european-union.europa.eu/node/309/rss_en>
 - ![](https://www.google.com/s2/favicons?domain=european-union.europa.eu&sz=16) European Union — priorities — <https://european-union.europa.eu/node/279/rss_en>
@@ -135,7 +135,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.eubusiness.com&sz=16) EUbusiness — <https://www.eubusiness.com/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=understandingwar.org&sz=16) Geopolitics
-`geopolitics` · [XML](https://trvny.github.io/feedseek/geopolitics.xml) · [JSON](https://trvny.github.io/feedseek/geopolitics.json)
+`geopolitics` · [XML](https://rss.bartek.lol/geopolitics.xml) · [JSON](https://rss.bartek.lol/geopolitics.json)
 
 - ![](https://www.google.com/s2/favicons?domain=understandingwar.org&sz=16) ISW — <https://understandingwar.org/research/>
 - ![](https://www.google.com/s2/favicons?domain=www.rusi.org&sz=16) RUSI Commentary — <https://www.rusi.org/rss/latest-commentary.xml>
@@ -144,7 +144,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.csis.org&sz=16) CSIS — <https://www.csis.org/analysis>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.wsj.com&sz=16) WSJ
-`wsj` · [XML](https://trvny.github.io/feedseek/wsj.xml) · [JSON](https://trvny.github.io/feedseek/wsj.json)
+`wsj` · [XML](https://rss.bartek.lol/wsj.xml) · [JSON](https://rss.bartek.lol/wsj.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.wsj.com&sz=16) Latest — <https://www.wsj.com/news/latest-headlines?mod=wsjfooter>
 - ![](https://www.google.com/s2/favicons?domain=feeds.content.dowjones.io&sz=16) World — <https://feeds.content.dowjones.io/public/rss/RSSWorldNews>
@@ -158,7 +158,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=feeds.content.dowjones.io&sz=16) Sports — <https://feeds.content.dowjones.io/public/rss/rsssportsfeed>
 
 ### ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify
-`newsify` · [XML](https://trvny.github.io/feedseek/newsify.xml) · [JSON](https://trvny.github.io/feedseek/newsify.json)
+`newsify` · [XML](https://rss.bartek.lol/newsify.xml) · [JSON](https://rss.bartek.lol/newsify.json)
 
 - ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify Polski — <https://newsify.today/polish/PL>
 - ![](https://www.google.com/s2/favicons?domain=newsify.today&sz=16) Newsify English — <https://newsify.today/english/PL>
@@ -166,7 +166,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## AI and LLM
 
 ### ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI
-`openai` · [XML](https://trvny.github.io/feedseek/openai.xml) · [JSON](https://trvny.github.io/feedseek/openai.json)
+`openai` · [XML](https://rss.bartek.lol/openai.xml) · [JSON](https://rss.bartek.lol/openai.json)
 
 - ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI Research PL — <https://openai.com/pl-PL/research/index/>
 - ![](https://www.google.com/s2/favicons?domain=openai.com&sz=16) OpenAI News PL — <https://openai.com/pl-PL/news/>
@@ -188,7 +188,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=learn.chatgpt.com&sz=16) Chatgpt whats new — <https://learn.chatgpt.com/docs/whats-new>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic
-`anthropic` · [XML](https://trvny.github.io/feedseek/anthropic.xml) · [JSON](https://trvny.github.io/feedseek/anthropic.json)
+`anthropic` · [XML](https://rss.bartek.lol/anthropic.xml) · [JSON](https://rss.bartek.lol/anthropic.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Newsroom — <https://www.anthropic.com/news>
 - ![](https://www.google.com/s2/favicons?domain=www.anthropic.com&sz=16) Anthropic Research — <https://www.anthropic.com/research>
@@ -199,7 +199,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=transformer-circuits.pub&sz=16) Anthropic Interpretability — <https://transformer-circuits.pub/feed.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=claude.com&sz=16) Claude
-`claude` · [XML](https://trvny.github.io/feedseek/claude.xml) · [JSON](https://trvny.github.io/feedseek/claude.json)
+`claude` · [XML](https://rss.bartek.lol/claude.xml) · [JSON](https://rss.bartek.lol/claude.json)
 
 - ![](https://www.google.com/s2/favicons?domain=claude.com&sz=16) Blog — <https://claude.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=claude.com&sz=16) Claude Cowork — <https://claude.com/docs/cowork/changelog/rss.xml>
@@ -213,7 +213,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=claude.dev&sz=16) Claude Developer — <https://claude.dev/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) xAI
-`xai` · [XML](https://trvny.github.io/feedseek/xai.xml) · [JSON](https://trvny.github.io/feedseek/xai.json)
+`xai` · [XML](https://rss.bartek.lol/xai.xml) · [JSON](https://rss.bartek.lol/xai.json)
 
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Blog — <https://x.ai/news>
 - ![](https://www.google.com/s2/favicons?domain=x.ai&sz=16) Grok Build changelog RSS — <https://x.ai/changelog/build/rss.xml>
@@ -230,7 +230,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=blog.x.com&sz=16) X engineering — <https://blog.x.com/engineering/en_us>
 
 ### ![](https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=16) AI-bridge
-`aibridge` · [XML](https://trvny.github.io/feedseek/aibridge.xml) · [JSON](https://trvny.github.io/feedseek/aibridge.json)
+`aibridge` · [XML](https://rss.bartek.lol/aibridge.xml) · [JSON](https://rss.bartek.lol/aibridge.json)
 
 - ![](https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=16) Thinking Machines — <https://thinkingmachines.ai/blog/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=docs.perplexity.ai&sz=16) Perplexity API changelog — <https://docs.perplexity.ai/docs/resources/changelog/rss.xml>
@@ -263,7 +263,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=groq.com&sz=16) Changelog — <https://groq.com/changelog>
 
 ### ![](https://www.google.com/s2/favicons?domain=skillsllm.com&sz=16) SkillsLLM
-`skillsllm` · [XML](https://trvny.github.io/feedseek/skillsllm.xml) · [JSON](https://trvny.github.io/feedseek/skillsllm.json)
+`skillsllm` · [XML](https://rss.bartek.lol/skillsllm.xml) · [JSON](https://rss.bartek.lol/skillsllm.json)
 
 - ![](https://www.google.com/s2/favicons?domain=skillsllm.com&sz=16) Blog — <https://skillsllm.com/>
 - ![](https://www.google.com/s2/favicons?domain=otterly.ai&sz=16) OtterlyAI Blog — <https://otterly.ai/blog/>
@@ -314,14 +314,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=mem0.ai&sz=16) MEM0 sitemap — <https://mem0.ai/sitemap.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=huggingface.co&sz=16) Hugging Face
-`huggingface` · [XML](https://trvny.github.io/feedseek/huggingface.xml) · [JSON](https://trvny.github.io/feedseek/huggingface.json)
+`huggingface` · [XML](https://rss.bartek.lol/huggingface.xml) · [JSON](https://rss.bartek.lol/huggingface.json)
 
 - ![](https://www.google.com/s2/favicons?domain=huggingface.co&sz=16) Hugging Face Blog — <https://huggingface.co/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=huggingface.co&sz=16) Hugging Face Posts — <https://huggingface.co/posts>
 - ![](https://www.google.com/s2/favicons?domain=huggingface.co&sz=16) Hugging Face Trending Papers — <https://huggingface.co/papers/trending>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Molt
-`molt` · [XML](https://trvny.github.io/feedseek/molt.xml) · [JSON](https://trvny.github.io/feedseek/molt.json)
+`molt` · [XML](https://rss.bartek.lol/molt.xml) · [JSON](https://rss.bartek.lol/molt.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.moltbook.com&sz=16) Moltbook Posts API — <https://www.moltbook.com/api/v1/posts?sort=hot&limit=25>
 - ![](https://www.google.com/s2/favicons?domain=spacemolt.com&sz=16) SpaceMolt News — <https://spacemolt.com/news/feed.xml>
@@ -330,7 +330,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Development and open standards
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Development
-`development` · [XML](https://trvny.github.io/feedseek/development.xml) · [JSON](https://trvny.github.io/feedseek/development.json)
+`development` · [XML](https://rss.bartek.lol/development.xml) · [JSON](https://rss.bartek.lol/development.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Rust Blog — <https://blog.rust-lang.org/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=blog.rust-lang.org&sz=16) Inside Rust — <https://blog.rust-lang.org/inside-rust/feed.xml>
@@ -361,7 +361,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=justjoin.it&sz=16) Justjoin blog — <https://justjoin.it/blog/>
 
 ### ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub
-`github` · [XML](https://trvny.github.io/feedseek/github.xml) · [JSON](https://trvny.github.io/feedseek/github.json)
+`github` · [XML](https://rss.bartek.lol/github.xml) · [JSON](https://rss.bartek.lol/github.json)
 
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Changelog — <https://github.blog/changelog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub Engineering — <https://github.blog/engineering/feed/>
@@ -393,13 +393,13 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/week/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) trvny + travnie · GitHub
-`github_personal` · [XML](https://trvny.github.io/feedseek/trvny.xml) · [JSON](https://trvny.github.io/feedseek/trvny.json)
+`github_personal` · [XML](https://rss.bartek.lol/trvny.xml) · [JSON](https://rss.bartek.lol/trvny.json)
 
 - ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) trvny public activity — <https://api.github.com/users/trvny/events/public>
 - ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) travnie public activity — <https://api.github.com/orgs/travnie/events>
 
 ### ![](https://www.google.com/s2/favicons?domain=about.gitlab.com&sz=16) GitLab
-`gitlab` · [XML](https://trvny.github.io/feedseek/gitlab.xml) · [JSON](https://trvny.github.io/feedseek/gitlab.json)
+`gitlab` · [XML](https://rss.bartek.lol/gitlab.xml) · [JSON](https://rss.bartek.lol/gitlab.json)
 
 - ![](https://www.google.com/s2/favicons?domain=about.gitlab.com&sz=16) GitLab Blog — <https://about.gitlab.com/atom.xml>
 - ![](https://www.google.com/s2/favicons?domain=about.gitlab.com&sz=16) Press — <https://about.gitlab.com/press/>
@@ -410,7 +410,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=forgejo.org&sz=16) Forgejo — <https://forgejo.org/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=creativecommons.org&sz=16) Open Source
-`opensource` · [XML](https://trvny.github.io/feedseek/opensource.xml) · [JSON](https://trvny.github.io/feedseek/opensource.json)
+`opensource` · [XML](https://rss.bartek.lol/opensource.xml) · [JSON](https://rss.bartek.lol/opensource.json)
 
 - ![](https://www.google.com/s2/favicons?domain=creativecommons.org&sz=16) Creative Commons — <https://creativecommons.org/feed/>
 - ![](https://www.google.com/s2/favicons?domain=opensource.org&sz=16) Open Source Initiative — <https://opensource.org/feed>
@@ -423,7 +423,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=opensource.posit.co&sz=16) Posit Open Source — <https://opensource.posit.co/blog/index.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.python.org&sz=16) Python
-`python` · [XML](https://trvny.github.io/feedseek/python.xml) · [JSON](https://trvny.github.io/feedseek/python.json)
+`python` · [XML](https://rss.bartek.lol/python.xml) · [JSON](https://rss.bartek.lol/python.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.python.org&sz=16) Python.org Downloads — <https://www.python.org/downloads/feed.rss>
 - ![](https://www.google.com/s2/favicons?domain=status.python.org&sz=16) Python Status — <https://status.python.org/history.atom>
@@ -438,7 +438,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=pydantic.dev&sz=16) Pydantic index — <https://pydantic.dev/articles>
 
 ### ![](https://www.google.com/s2/favicons?domain=nodejs.org&sz=16) JS | Node
-`js_node` · [XML](https://trvny.github.io/feedseek/js_node.xml) · [JSON](https://trvny.github.io/feedseek/js_node.json)
+`js_node` · [XML](https://rss.bartek.lol/js_node.xml) · [JSON](https://rss.bartek.lol/js_node.json)
 
 - ![](https://www.google.com/s2/favicons?domain=nodejs.org&sz=16) Node.js Blog — <https://nodejs.org/en/feed/blog.xml>
 - ![](https://www.google.com/s2/favicons?domain=pnpm.io&sz=16) pnpm Blog — <https://pnpm.io/blog/atom.xml>
@@ -466,7 +466,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=openjsf.org&sz=16) Openjsf blog — <https://openjsf.org/blog>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.rssboard.org&sz=16) RSS Board
-`rssboard` · [XML](https://trvny.github.io/feedseek/rssboard.xml) · [JSON](https://trvny.github.io/feedseek/rssboard.json)
+`rssboard` · [XML](https://rss.bartek.lol/rssboard.xml) · [JSON](https://rss.bartek.lol/rssboard.json)
 
 - ![](https://www.google.com/s2/favicons?domain=feeds.rssboard.org&sz=16) RSS Advisory Board — <http://feeds.rssboard.org/rssboard>
 - ![](https://www.google.com/s2/favicons?domain=www.dublincore.org&sz=16) Dublin Core (DCMI) — <https://www.dublincore.org/index.xml>
@@ -475,13 +475,13 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.jsonfeed.org&sz=16) Jsonfeed — <https://www.jsonfeed.org/feed.json>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.hackerone.com&sz=16) HackerOne Blog & Newsroom
-`hackerone` · [XML](https://trvny.github.io/feedseek/hackerone.xml) · [JSON](https://trvny.github.io/feedseek/hackerone.json)
+`hackerone` · [XML](https://rss.bartek.lol/hackerone.xml) · [JSON](https://rss.bartek.lol/hackerone.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.hackerone.com&sz=16) Blog — <https://www.hackerone.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.hackerone.com&sz=16) Newsroom — <https://www.hackerone.com/company/newsroom>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.greasespot.net&sz=16) UserScripts
-`userscripts` · [XML](https://trvny.github.io/feedseek/userscripts.xml) · [JSON](https://trvny.github.io/feedseek/userscripts.json)
+`userscripts` · [XML](https://rss.bartek.lol/userscripts.xml) · [JSON](https://rss.bartek.lol/userscripts.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.greasespot.net&sz=16) Greasespot — <https://www.greasespot.net/feeds/posts/default>
 - ![](https://www.google.com/s2/favicons?domain=sleazyfork.org&sz=16) Sleazyfork — <https://sleazyfork.org/scripts.atom?sort=updated>
@@ -493,7 +493,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Technology and software vendors
 
 ### ![](https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=16) Microsoft
-`microsoft` · [XML](https://trvny.github.io/feedseek/microsoft.xml) · [JSON](https://trvny.github.io/feedseek/microsoft.json)
+`microsoft` · [XML](https://rss.bartek.lol/microsoft.xml) · [JSON](https://rss.bartek.lol/microsoft.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=16) Official Microsoft Blog — <https://blogs.microsoft.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blogs.microsoft.com&sz=16) Microsoft On the Issues — <https://blogs.microsoft.com/on-the-issues/feed/>
@@ -511,7 +511,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=techcommunity.microsoft.com&sz=16) Tech Community — <https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/Community?interaction.style=blog&feeds.replies=false>
 
 ### ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Microsoft Updates
-`microsoft_updates` · [XML](https://trvny.github.io/feedseek/ms-updates.xml) · [JSON](https://trvny.github.io/feedseek/ms-updates.json)
+`microsoft_updates` · [XML](https://rss.bartek.lol/ms-updates.xml) · [JSON](https://rss.bartek.lol/ms-updates.json)
 
 - ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Blog — <https://support.microsoft.com/en-us/windows>
 - ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Windows 11 updates — <https://support.microsoft.com/en-us/topic/windows-11-version-26h1-update-history-253c73cd-cab1-4bfd-94dc-76c452273fc9>
@@ -524,7 +524,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=rss-bridge.org&sz=16) Office cc — <https://rss-bridge.org/bridge01/?action=display&bridge=MicrosoftOfficeUpdatesBridge&channel=current-channel&format=Atom>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.google&sz=16) Google Blogs
-`google` · [XML](https://trvny.github.io/feedseek/google.xml) · [JSON](https://trvny.github.io/feedseek/google.json)
+`google` · [XML](https://rss.bartek.lol/google.xml) · [JSON](https://rss.bartek.lol/google.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.google&sz=16) The Keyword — <https://blog.google/rss/>
 - ![](https://www.google.com/s2/favicons?domain=blog.google&sz=16) Google Poland — <https://blog.google/intl/pl-pl/rss/>
@@ -561,7 +561,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=m3.material.io&sz=16) Material sitemap — <https://m3.material.io/sitemap.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.apple.com&sz=16) Apple
-`apple` · [XML](https://trvny.github.io/feedseek/apple.xml) · [JSON](https://trvny.github.io/feedseek/apple.json)
+`apple` · [XML](https://rss.bartek.lol/apple.xml) · [JSON](https://rss.bartek.lol/apple.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.apple.com&sz=16) Apple Newsroom PL — <https://www.apple.com/pl/newsroom/rss-feed.rss>
 - ![](https://www.google.com/s2/favicons?domain=developer.apple.com&sz=16) Technotes — <https://developer.apple.com/documentation/technotes>
@@ -573,7 +573,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=developer.apple.com&sz=16) Developer Releases — <https://developer.apple.com/news/releases/rss/releases.rss>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.cloudflare.com&sz=16) Cloudflare
-`cloudflare` · [XML](https://trvny.github.io/feedseek/cloudflare.xml) · [JSON](https://trvny.github.io/feedseek/cloudflare.json)
+`cloudflare` · [XML](https://rss.bartek.lol/cloudflare.xml) · [JSON](https://rss.bartek.lol/cloudflare.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.cloudflare.com&sz=16) Cloudflare Blog — <https://blog.cloudflare.com/rss>
 - ![](https://www.google.com/s2/favicons?domain=developers.cloudflare.com&sz=16) Cloudflare Changelog — <https://developers.cloudflare.com/changelog/rss/index.xml>
@@ -582,7 +582,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=research.cloudflare.com&sz=16) Research base — <https://research.cloudflare.com>
 
 ### ![](https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=16) AWS
-`aws` · [XML](https://trvny.github.io/feedseek/aws.xml) · [JSON](https://trvny.github.io/feedseek/aws.json)
+`aws` · [XML](https://rss.bartek.lol/aws.xml) · [JSON](https://rss.bartek.lol/aws.json)
 
 - ![](https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=16) AWS Blogs — <https://aws.amazon.com/blogs/>
 - ![](https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=16) AWS What's New — <https://aws.amazon.com/about-aws/whats-new/recent/feed/>
@@ -595,7 +595,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=repost.aws&sz=16) AWS re:Post Articles — <https://repost.aws/articles>
 
 ### ![](https://www.google.com/s2/favicons?domain=blogs.oracle.com&sz=16) Oracle
-`oracle` · [XML](https://trvny.github.io/feedseek/oracle.xml) · [JSON](https://trvny.github.io/feedseek/oracle.json)
+`oracle` · [XML](https://rss.bartek.lol/oracle.xml) · [JSON](https://rss.bartek.lol/oracle.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blogs.oracle.com&sz=16) Oracle Developers — <https://blogs.oracle.com/developers/feed>
 - ![](https://www.google.com/s2/favicons?domain=blogs.oracle.com&sz=16) Oracle Java — <https://blogs.oracle.com/java/feed>
@@ -611,7 +611,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=rss.libsyn.com&sz=16) Inside Java Podcast — <https://rss.libsyn.com/shows/294923/destinations/2318780.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba
-`alibaba` · [XML](https://trvny.github.io/feedseek/alibaba.xml) · [JSON](https://trvny.github.io/feedseek/alibaba.json)
+`alibaba` · [XML](https://rss.bartek.lol/alibaba.xml) · [JSON](https://rss.bartek.lol/alibaba.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba Cloud Press — <https://www.alibabacloud.com/en/press-room/press-release>
 - ![](https://www.google.com/s2/favicons?domain=www.alibabacloud.com&sz=16) Alibaba Cloud Product Updates — <https://www.alibabacloud.com/en/news/product>
@@ -620,14 +620,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.qwencloud.com&sz=16) QwenCloud News — <https://www.qwencloud.com/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.tencent.com&sz=16) Tencent
-`tencent` · [XML](https://trvny.github.io/feedseek/tencent.xml) · [JSON](https://trvny.github.io/feedseek/tencent.json)
+`tencent` · [XML](https://rss.bartek.lol/tencent.xml) · [JSON](https://rss.bartek.lol/tencent.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.tencent.com&sz=16) Tencent Newsroom — <https://www.tencent.com/newsroom/>
 - ![](https://www.google.com/s2/favicons?domain=www.tencentcloud.com&sz=16) Tencent Cloud Blogs — <https://www.tencentcloud.com/dynamic/blogs/800>
 - ![](https://www.google.com/s2/favicons?domain=ir.tencentmusic.com&sz=16) Tencent Music Press Releases — <https://ir.tencentmusic.com/Press-Releases?pagetemplate=rss>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.redhat.com&sz=16) Red Hat Enterprise
-`redhat` · [XML](https://trvny.github.io/feedseek/redhat.xml) · [JSON](https://trvny.github.io/feedseek/redhat.json)
+`redhat` · [XML](https://rss.bartek.lol/redhat.xml) · [JSON](https://rss.bartek.lol/redhat.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.redhat.com&sz=16) Red Hat Enterprise Linux — <https://www.redhat.com/en/rss/blog/channel/red-hat-enterprise-linux>
 - ![](https://www.google.com/s2/favicons?domain=www.redhat.com&sz=16) Red Hat Security — <https://www.redhat.com/en/rss/blog/channel/security>
@@ -645,7 +645,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=blog.centos.org&sz=16) CentOS Blog — <https://blog.centos.org/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=ubuntu.com&sz=16) Ubuntu
-`ubuntu` · [XML](https://trvny.github.io/feedseek/ubuntu.xml) · [JSON](https://trvny.github.io/feedseek/ubuntu.json)
+`ubuntu` · [XML](https://rss.bartek.lol/ubuntu.xml) · [JSON](https://rss.bartek.lol/ubuntu.json)
 
 - ![](https://www.google.com/s2/favicons?domain=ubuntu.com&sz=16) Ubuntu Blog — <https://ubuntu.com/blog/feed>
 - ![](https://www.google.com/s2/favicons?domain=planet.ubuntu.com&sz=16) Planet Ubuntu — <https://planet.ubuntu.com/feed>
@@ -655,7 +655,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=feeds.feedburner.com&sz=16) UbuntuHandbook — <https://feeds.feedburner.com/UbuntuhandbookNewsTutorialsHowtosForUbuntuLinux>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.docker.com&sz=16) Docker
-`docker` · [XML](https://trvny.github.io/feedseek/docker.xml) · [JSON](https://trvny.github.io/feedseek/docker.json)
+`docker` · [XML](https://rss.bartek.lol/docker.xml) · [JSON](https://rss.bartek.lol/docker.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.docker.com&sz=16) Docker Blog — <https://www.docker.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.docker.com&sz=16) Newsroom — <https://www.docker.com/company/newsroom/>
@@ -666,7 +666,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=docs.docker.com&sz=16) Docker Hardened Images — <https://docs.docker.com/dhi/release-notes/platform/>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.mozilla.org&sz=16) Mozilla
-`mozilla` · [XML](https://trvny.github.io/feedseek/mozilla.xml) · [JSON](https://trvny.github.io/feedseek/mozilla.json)
+`mozilla` · [XML](https://rss.bartek.lol/mozilla.xml) · [JSON](https://rss.bartek.lol/mozilla.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.mozilla.org&sz=16) Mozilla Blog — <https://blog.mozilla.org/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.nightly.mozilla.org&sz=16) Firefox Nightly — <https://blog.nightly.mozilla.org/feed/>
@@ -680,7 +680,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=product-details.mozilla.org&sz=16) PD — <https://product-details.mozilla.org/1.0/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.hashicorp.com&sz=16) SaaS vendors
-`saas` · [XML](https://trvny.github.io/feedseek/saas.xml) · [JSON](https://trvny.github.io/feedseek/saas.json)
+`saas` · [XML](https://rss.bartek.lol/saas.xml) · [JSON](https://rss.bartek.lol/saas.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.hashicorp.com&sz=16) Blog — <https://www.hashicorp.com/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=developer.hashicorp.com&sz=16) Changelog — <https://developer.hashicorp.com/hcp/docs/changelog>
@@ -720,7 +720,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.commoninja.com&sz=16) Blog — <https://www.commoninja.com/blog>
 
 ### ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Foundry
-`foundry` · [XML](https://trvny.github.io/feedseek/foundry.xml) · [JSON](https://trvny.github.io/feedseek/foundry.json)
+`foundry` · [XML](https://rss.bartek.lol/foundry.xml) · [JSON](https://rss.bartek.lol/foundry.json)
 
 - ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Sitemap — <https://foundryco.com/sitemap/>
 - ![](https://www.google.com/s2/favicons?domain=foundryco.com&sz=16) Foundry Blog — <https://foundryco.com/feed/>
@@ -731,7 +731,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.infoworld.com&sz=16) InfoWorld — <https://www.infoworld.com/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.palantir.com&sz=16) Palantir
-`palantir` · [XML](https://trvny.github.io/feedseek/palantir.xml) · [JSON](https://trvny.github.io/feedseek/palantir.json)
+`palantir` · [XML](https://rss.bartek.lol/palantir.xml) · [JSON](https://rss.bartek.lol/palantir.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.palantir.com&sz=16) Announcements — <https://www.palantir.com/docs/foundry/announcements>
 - ![](https://www.google.com/s2/favicons?domain=www.palantir.com&sz=16) Blog — <https://www.palantir.com/blog/>
@@ -740,7 +740,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.palantir.com&sz=16) Release notes — <https://www.palantir.com/docs/foundry/release-notes>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.canva.com&sz=16) Canva
-`canva` · [XML](https://trvny.github.io/feedseek/canva.xml) · [JSON](https://trvny.github.io/feedseek/canva.json)
+`canva` · [XML](https://rss.bartek.lol/canva.xml) · [JSON](https://rss.bartek.lol/canva.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.canva.com&sz=16) Blog — <https://www.canva.com/newsroom/news/>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (when:14d site:canva.com/learn) — <https://news.google.com/rss/search?q=when:14d+site:canva.com/learn&hl=en-US&gl=US&ceid=US:en>
@@ -751,21 +751,21 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) news.google.com (site:canva.com/newsroom) — <https://news.google.com/rss/search?q=site:canva.com/newsroom&hl=en-US&gl=US&ceid=US:en>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma
-`figma` · [XML](https://trvny.github.io/feedseek/figma.xml) · [JSON](https://trvny.github.io/feedseek/figma.json)
+`figma` · [XML](https://rss.bartek.lol/figma.xml) · [JSON](https://rss.bartek.lol/figma.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Newsroom — <https://www.figma.com/newsroom/?lang=pl-pl>
 - ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Blog — <https://www.figma.com/blog/feed/atom.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.figma.com&sz=16) Figma Release Notes — <https://www.figma.com/release-notes/feed/atom.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.onlyoffice.com&sz=16) OPENOFFICE
-`openoffice` · [XML](https://trvny.github.io/feedseek/openoffice.xml) · [JSON](https://trvny.github.io/feedseek/openoffice.json)
+`openoffice` · [XML](https://rss.bartek.lol/openoffice.xml) · [JSON](https://rss.bartek.lol/openoffice.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.onlyoffice.com&sz=16) ONLYOFFICE Blog — <https://www.onlyoffice.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=api.onlyoffice.com&sz=16) ONLYOFFICE API Changelog — <https://api.onlyoffice.com/changelog/>
 - ![](https://www.google.com/s2/favicons?domain=api.onlyoffice.com&sz=16) ONLYOFFICE API Changelog — <https://api.onlyoffice.com/changelog/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.paint.net&sz=16) Paint.NET
-`paintnet` · [XML](https://trvny.github.io/feedseek/paintnet.xml) · [JSON](https://trvny.github.io/feedseek/paintnet.json)
+`paintnet` · [XML](https://rss.bartek.lol/paintnet.xml) · [JSON](https://rss.bartek.lol/paintnet.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.paint.net&sz=16) Paint.NET Blog — <https://blog.paint.net/feed/>
 - ![](https://www.google.com/s2/favicons?domain=forums.paint.net&sz=16) Plugins (publishing only) — <https://forums.paint.net/forum/7-plugins-publishing-only.xml/>
@@ -775,7 +775,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=forums.paint.net&sz=16) Miscellaneous — <https://forums.paint.net/forum/24-miscellaneous.xml/>
 
 ### ![](https://www.google.com/s2/favicons?domain=news.lenovo.com&sz=16) Lenovo
-`lenovo` · [XML](https://trvny.github.io/feedseek/lenovo.xml) · [JSON](https://trvny.github.io/feedseek/lenovo.json)
+`lenovo` · [XML](https://rss.bartek.lol/lenovo.xml) · [JSON](https://rss.bartek.lol/lenovo.json)
 
 - ![](https://www.google.com/s2/favicons?domain=news.lenovo.com&sz=16) StoryHub — <https://news.lenovo.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=lenovo24.pl&sz=16) lenovo24.pl — <https://lenovo24.pl/rss.xml>
@@ -783,13 +783,13 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=blog.lenovocdrt.com&sz=16) CDRT Blog — <https://blog.lenovocdrt.com/feed.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.hp.com&sz=16) HP Newsroom
-`hp` · [XML](https://trvny.github.io/feedseek/hp.xml) · [JSON](https://trvny.github.io/feedseek/hp.json)
+`hp` · [XML](https://rss.bartek.lol/hp.xml) · [JSON](https://rss.bartek.lol/hp.json)
 
 - ![](https://www.google.com/s2/favicons?domain=support.hp.com&sz=16) HP Support — <https://support.hp.com/wcc-widget-services/us-en/rss-feed?category=all>
 - ![](https://www.google.com/s2/favicons?domain=www.hpe.com&sz=16) HPE Newsroom — <https://www.hpe.com/us/en/newsroom/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=nvidianews.nvidia.com&sz=16) NVIDIA
-`nvidia` · [XML](https://trvny.github.io/feedseek/nvidia.xml) · [JSON](https://trvny.github.io/feedseek/nvidia.json)
+`nvidia` · [XML](https://rss.bartek.lol/nvidia.xml) · [JSON](https://rss.bartek.lol/nvidia.json)
 
 - ![](https://www.google.com/s2/favicons?domain=nvidianews.nvidia.com&sz=16) NVIDIA Newsroom — <https://nvidianews.nvidia.com/releases.xml>
 - ![](https://www.google.com/s2/favicons?domain=www.nvidia.com&sz=16) Geforce driver results — <https://www.nvidia.com/Download/processFind.aspx?dtcid=1&lang=en-us&lid=1>
@@ -798,7 +798,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=developer.nvidia.com&sz=16) NVIDIA Developer Blog — <https://developer.nvidia.com/blog/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.sony.com&sz=16) Sony
-`sony` · [XML](https://trvny.github.io/feedseek/sony.xml) · [JSON](https://trvny.github.io/feedseek/sony.json)
+`sony` · [XML](https://rss.bartek.lol/sony.xml) · [JSON](https://rss.bartek.lol/sony.json)
 
 - ![](https://www.google.com/s2/favicons?domain=sony.mediaroom.com&sz=16) Sony Electronics — <https://sony.mediaroom.com/index.php?s=2429&pagetemplate=rss>
 - ![](https://www.google.com/s2/favicons?domain=feeds.feedburner.com&sz=16) PlayStation Blog — <https://feeds.feedburner.com/psblog>
@@ -809,7 +809,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=sonyinteractive.com&sz=16) SIE press — <https://sonyinteractive.com/en/news/press-releases/>
 
 ### ![](https://www.google.com/s2/favicons?domain=news.samsung.com&sz=16) Samsung Newsroom
-`samsung` · [XML](https://trvny.github.io/feedseek/samsung.xml) · [JSON](https://trvny.github.io/feedseek/samsung.json)
+`samsung` · [XML](https://rss.bartek.lol/samsung.xml) · [JSON](https://rss.bartek.lol/samsung.json)
 
 - ![](https://www.google.com/s2/favicons?domain=news.samsung.com&sz=16) Samsung Newsroom — <https://news.samsung.com/global/feed>
 - ![](https://www.google.com/s2/favicons?domain=news.samsung.com&sz=16) Samsung Newsroom PL — <https://news.samsung.com/pl/feed>
@@ -820,7 +820,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=eu.community.samsung.com&sz=16) Samsung Community PL — <https://eu.community.samsung.com/bgros26334/rss/Category?category.id=pl&interaction.style=blog>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.mi.com&sz=16) Xiaomi Newsroom
-`xiaomi` · [XML](https://trvny.github.io/feedseek/xiaomi.xml) · [JSON](https://trvny.github.io/feedseek/xiaomi.json)
+`xiaomi` · [XML](https://rss.bartek.lol/xiaomi.xml) · [JSON](https://rss.bartek.lol/xiaomi.json)
 
 - ![](https://www.google.com/s2/favicons?domain=xiaomi.eu&sz=16) xiaomi.eu community — <https://xiaomi.eu/community/forums/-/index.rss>
 - ![](https://www.google.com/s2/favicons?domain=xiaomiadvices.com&sz=16) Xiaomi Advices — <https://xiaomiadvices.com/feed/>
@@ -828,7 +828,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=xiaomi.gcs-web.com&sz=16) Xiaomi Corp Investor News — <https://xiaomi.gcs-web.com/rss/news-releases.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.dji.com&sz=16) DJI
-`dji` · [XML](https://trvny.github.io/feedseek/dji.xml) · [JSON](https://trvny.github.io/feedseek/dji.json)
+`dji` · [XML](https://rss.bartek.lol/dji.xml) · [JSON](https://rss.bartek.lol/dji.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.dji.com&sz=16) DJI Announcements — <https://www.dji.com/pl/mobile/media-center/announcements>
 - ![](https://www.google.com/s2/favicons?domain=viewpoints.dji.com&sz=16) DJI ViewPoints — <https://viewpoints.dji.com/blog?site=brandsite>
@@ -837,36 +837,36 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Weather
 
 ### ![](https://www.google.com/s2/favicons?domain=weather.travny.workers.dev&sz=16) Pogoda — Kościelec (Chrzanów)
-`weather` · [XML](https://trvny.github.io/feedseek/weather.xml) · [JSON](https://trvny.github.io/feedseek/weather.json)
+`weather` · [XML](https://rss.bartek.lol/weather.xml) · [JSON](https://rss.bartek.lol/weather.json)
 
 - ![](https://www.google.com/s2/favicons?domain=weather.travny.workers.dev&sz=16) Pogoda — Kościelec (Atom) — <https://weather.travny.workers.dev/feed.atom>
 
 ### ![](https://www.google.com/s2/favicons?domain=openweathermap.org&sz=16) OpenWeather
-`openweather` · [XML](https://trvny.github.io/feedseek/openweather.xml) · [JSON](https://trvny.github.io/feedseek/openweather.json)
+`openweather` · [XML](https://rss.bartek.lol/openweather.xml) · [JSON](https://rss.bartek.lol/openweather.json)
 
 - ![](https://www.google.com/s2/favicons?domain=api.openweathermap.org&sz=16) Forecast — <https://api.openweathermap.org/data/2.5/forecast>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.visualcrossing.com&sz=16) Visual Crossing
-`visualcrossing` · [XML](https://trvny.github.io/feedseek/visualcrossing.xml) · [JSON](https://trvny.github.io/feedseek/visualcrossing.json)
+`visualcrossing` · [XML](https://rss.bartek.lol/visualcrossing.xml) · [JSON](https://rss.bartek.lol/visualcrossing.json)
 
 - ![](https://www.google.com/s2/favicons?domain=weather.visualcrossing.com&sz=16) Base — <https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.visualcrossing.com&sz=16) Visual Crossing Resources
-`visualcrossing_blog` · [XML](https://trvny.github.io/feedseek/visualcrossing_blog.xml) · [JSON](https://trvny.github.io/feedseek/visualcrossing_blog.json)
+`visualcrossing_blog` · [XML](https://rss.bartek.lol/visualcrossing_blog.xml) · [JSON](https://rss.bartek.lol/visualcrossing_blog.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.visualcrossing.com&sz=16) Visual Crossing News — <https://www.visualcrossing.com/resources/category/news/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.visualcrossing.com&sz=16) Visual Crossing Blog — <https://www.visualcrossing.com/resources/category/blog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.visualcrossing.com&sz=16) Visual Crossing Documentation — <https://www.visualcrossing.com/resources/category/documentation/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=open-meteo.com&sz=16) Open-Meteo
-`open_meteo` · [XML](https://trvny.github.io/feedseek/open_meteo.xml) · [JSON](https://trvny.github.io/feedseek/open_meteo.json)
+`open_meteo` · [XML](https://rss.bartek.lol/open_meteo.xml) · [JSON](https://rss.bartek.lol/open_meteo.json)
 
 - ![](https://www.google.com/s2/favicons?domain=open-meteo.com&sz=16) Satellite docs — <https://open-meteo.com/en/docs/satellite-radiation-api>
 - ![](https://www.google.com/s2/favicons?domain=air-quality-api.open-meteo.com&sz=16) AIR quality — <https://air-quality-api.open-meteo.com/v1/air-quality?latitude=50.13133&longitude=19.41654&current=european_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,ammonia,uv_index,dust,aerosol_optical_depth,ragweed_pollen,olive_pollen,mugwort_pollen,grass_pollen,birch_pollen,alder_pollen&timezone=auto&forecast_days=1>
 - ![](https://www.google.com/s2/favicons?domain=api.open-meteo.com&sz=16) Forecast — <https://api.open-meteo.com/v1/forecast?latitude=50.13133&longitude=19.41654&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum,precipitation_sum,precipitation_probability_max,precipitation_hours,daylight_duration,sunshine_duration,apparent_temperature_max,apparent_temperature_min,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,temperature_2m_mean,cape_mean&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,wind_speed_10m,wind_direction_10m,wind_gusts_10m,snowfall,showers,rain,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure&models=best_match&timezone=auto&forecast_days=7>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.accuweather.com&sz=16) AccuWeather News
-`accuweather` · [XML](https://trvny.github.io/feedseek/accuweather.xml) · [JSON](https://trvny.github.io/feedseek/accuweather.json)
+`accuweather` · [XML](https://rss.bartek.lol/accuweather.xml) · [JSON](https://rss.bartek.lol/accuweather.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.accuweather.com&sz=16) Blog — <https://www.accuweather.com/en/weather-news>
 - ![](https://www.google.com/s2/favicons?domain=www.accuweather.com&sz=16) News sitemap — <https://www.accuweather.com/sitemaps_v2/articles/news/>
@@ -874,7 +874,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=name.accuweather.com&sz=16) Corporate — <https://name.accuweather.com/corporate/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Log
-`xweather_log` · [XML](https://trvny.github.io/feedseek/xweather.xml) · [JSON](https://trvny.github.io/feedseek/xweather.json)
+`xweather_log` · [XML](https://rss.bartek.lol/xweather.xml) · [JSON](https://rss.bartek.lol/xweather.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Blog — <https://www.xweather.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Weather API — <https://www.xweather.com/docs/weather-api/changelog>
@@ -886,14 +886,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Phrases API — <https://www.xweather.com/docs/phrases-api/changelog>
 
 ### ![](https://www.google.com/s2/favicons?domain=danepubliczne.imgw.pl&sz=16) IMGW
-`imgw` · [XML](https://trvny.github.io/feedseek/imgw.xml) · [JSON](https://trvny.github.io/feedseek/imgw.json)
+`imgw` · [XML](https://rss.bartek.lol/imgw.xml) · [JSON](https://rss.bartek.lol/imgw.json)
 
 - ![](https://www.google.com/s2/favicons?domain=danepubliczne.imgw.pl&sz=16) Site — <https://danepubliczne.imgw.pl/>
 
 ## Gaming
 
 ### ![](https://www.google.com/s2/favicons?domain=store.steampowered.com&sz=16) Steam
-`steam` · [XML](https://trvny.github.io/feedseek/steam.xml) · [JSON](https://trvny.github.io/feedseek/steam.json)
+`steam` · [XML](https://rss.bartek.lol/steam.xml) · [JSON](https://rss.bartek.lol/steam.json)
 
 - ![](https://www.google.com/s2/favicons?domain=store.steampowered.com&sz=16) Steam News — <https://store.steampowered.com/feeds/news/?cc=PL&l=polish>
 - ![](https://www.google.com/s2/favicons?domain=store.steampowered.com&sz=16) Aktualności Steam — <https://store.steampowered.com/feeds/news/app/593110/?cc=PL&l=polish>
@@ -917,7 +917,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=store.steampowered.com&sz=16) Square Enix — <https://store.steampowered.com/feeds/news/group/1012195/?cc=PL&l=polish>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.ea.com&sz=16) Electronic Arts
-`ea` · [XML](https://trvny.github.io/feedseek/ea.xml) · [JSON](https://trvny.github.io/feedseek/ea.json)
+`ea` · [XML](https://rss.bartek.lol/ea.xml) · [JSON](https://rss.bartek.lol/ea.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.ea.com&sz=16) EA News PL — <https://www.ea.com/pl-pl/news>
 - ![](https://www.google.com/s2/favicons?domain=www.ea.com&sz=16) EA Research & Technology — <https://www.ea.com/technology>
@@ -926,14 +926,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.ea.com&sz=16) FC26 — <https://www.ea.com/pl/games/ea-sports-fc/fc-26/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=bethesda.net&sz=16) Bethesda News
-`bethesda` · [XML](https://trvny.github.io/feedseek/bethesda.xml) · [JSON](https://trvny.github.io/feedseek/bethesda.json)
+`bethesda` · [XML](https://rss.bartek.lol/bethesda.xml) · [JSON](https://rss.bartek.lol/bethesda.json)
 
 - ![](https://www.google.com/s2/favicons?domain=bethesda.net&sz=16) Main — <https://bethesda.net/pl-PL/news>
 - ![](https://www.google.com/s2/favicons?domain=elderscrolls.bethesda.net&sz=16) ES — <https://elderscrolls.bethesda.net/pl-PL/news>
 - ![](https://www.google.com/s2/favicons?domain=fallout.bethesda.net&sz=16) FO news — <https://fallout.bethesda.net/_api/v1/components/news?locale=pl>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.gog.com&sz=16) GOG
-`gog` · [XML](https://trvny.github.io/feedseek/gog.xml) · [JSON](https://trvny.github.io/feedseek/gog.json)
+`gog` · [XML](https://rss.bartek.lol/gog.xml) · [JSON](https://rss.bartek.lol/gog.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.gog.com&sz=16) GOG Blog — <https://www.gog.com/blog/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.gog.com&sz=16) GOG Pressroom — <https://www.gog.com/pressroom/feed/>
@@ -941,12 +941,12 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.gog.com&sz=16) GOG News (EN) — <https://www.gog.com/en/news/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.nexusmods.com&sz=16) Nexus Mods News
-`nexusmods_news` · [XML](https://trvny.github.io/feedseek/nexusmods.xml) · [JSON](https://trvny.github.io/feedseek/nexusmods.json)
+`nexusmods_news` · [XML](https://rss.bartek.lol/nexusmods.xml) · [JSON](https://rss.bartek.lol/nexusmods.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.nexusmods.com&sz=16) Blog — <https://www.nexusmods.com/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=lichess.org&sz=16) Lichess
-`lichess` · [XML](https://trvny.github.io/feedseek/lichess.xml) · [JSON](https://trvny.github.io/feedseek/lichess.json)
+`lichess` · [XML](https://rss.bartek.lol/lichess.xml) · [JSON](https://rss.bartek.lol/lichess.json)
 
 - ![](https://www.google.com/s2/favicons?domain=lichess.org&sz=16) Lichess Updates — <https://lichess.org/feed.atom>
 - ![](https://www.google.com/s2/favicons?domain=lichess.org&sz=16) Official Lichess Blog — <https://lichess.org/@/Lichess/blog.atom>
@@ -956,7 +956,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Automotive
 
 ### ![](https://www.google.com/s2/favicons?domain=pressroom.lexus.com&sz=16) Lexus Newsroom
-`lexus_newsroom` · [XML](https://trvny.github.io/feedseek/lexus.xml) · [JSON](https://trvny.github.io/feedseek/lexus.json)
+`lexus_newsroom` · [XML](https://rss.bartek.lol/lexus.xml) · [JSON](https://rss.bartek.lol/lexus.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pressroom.lexus.com&sz=16) Lexus USA Newsroom — <https://pressroom.lexus.com/feed/atom/>
 - ![](https://www.google.com/s2/favicons?domain=newsroom.lexus.eu&sz=16) Newsroom Lexus Europe — <https://newsroom.lexus.eu/feed/>
@@ -964,7 +964,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.lexus-polska.pl&sz=16) Lexus pl listing — <https://www.lexus-polska.pl/discover-lexus/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=pressroom.toyota.com&sz=16) Toyota Global
-`toyota_global` · [XML](https://trvny.github.io/feedseek/toyota.xml) · [JSON](https://trvny.github.io/feedseek/toyota.json)
+`toyota_global` · [XML](https://rss.bartek.lol/toyota.xml) · [JSON](https://rss.bartek.lol/toyota.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pressroom.toyota.com&sz=16) Toyota USA Newsroom — <https://pressroom.toyota.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=newsroom.toyota.eu&sz=16) Newsroom Toyota Europe — <https://newsroom.toyota.eu/feed/>
@@ -975,7 +975,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.toyotaconnected.com&sz=16) TC listing — <https://www.toyotaconnected.com/insights>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.uber.com&sz=16) Uber Newsroom
-`uber` · [XML](https://trvny.github.io/feedseek/uber.xml) · [JSON](https://trvny.github.io/feedseek/uber.json)
+`uber` · [XML](https://rss.bartek.lol/uber.xml) · [JSON](https://rss.bartek.lol/uber.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.uber.com&sz=16) Uber Newsroom US — <https://www.uber.com/us/en/newsroom/>
 - ![](https://www.google.com/s2/favicons?domain=www.uber.com&sz=16) Uber Blog PL — <https://www.uber.com/pl/pl/blog/>
@@ -984,7 +984,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Banking
 
 ### ![](https://www.google.com/s2/favicons?domain=www.pekao.com.pl&sz=16) Bank Pekao SA
-`pekao` · [XML](https://trvny.github.io/feedseek/pekao.xml) · [JSON](https://trvny.github.io/feedseek/pekao.json)
+`pekao` · [XML](https://rss.bartek.lol/pekao.xml) · [JSON](https://rss.bartek.lol/pekao.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.pekao.com.pl&sz=16) Blog — <https://www.pekao.com.pl/>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) Pekao (Google News) — <https://news.google.com/rss/search?q=when:14d+site:pekao.com.pl&hl=pl-PL&gl=PL&ceid=PL:pl>
@@ -993,7 +993,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Space science and US government
 
 ### ![](https://www.google.com/s2/favicons?domain=www.nasa.gov&sz=16) NASA
-`nasa` · [XML](https://trvny.github.io/feedseek/nasa.xml) · [JSON](https://trvny.github.io/feedseek/nasa.json)
+`nasa` · [XML](https://rss.bartek.lol/nasa.xml) · [JSON](https://rss.bartek.lol/nasa.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.nasa.gov&sz=16) NASA — <https://www.nasa.gov/feed/>
 - ![](https://www.google.com/s2/favicons?domain=www.nasa.gov&sz=16) NASA Blogs — <https://www.nasa.gov/blogs/feed/>
@@ -1003,7 +1003,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=apod.com&sz=16) APOD — <https://apod.com/feed.rss>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.esa.int&sz=16) ESA
-`esa` · [XML](https://trvny.github.io/feedseek/esa.xml) · [JSON](https://trvny.github.io/feedseek/esa.json)
+`esa` · [XML](https://rss.bartek.lol/esa.xml) · [JSON](https://rss.bartek.lol/esa.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.esa.int&sz=16) Newsroom — <https://www.esa.int/rssfeed/Newsroom>
 - ![](https://www.google.com/s2/favicons?domain=www.esa.int&sz=16) Corporate News — <https://www.esa.int/rssfeed/About_Us/Corporate_news>
@@ -1031,7 +1031,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=esahubble.org&sz=16) Hubble Images — <https://esahubble.org/images/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.usa.gov&sz=16) US.gov
-`usgov` · [XML](https://trvny.github.io/feedseek/usgov.xml) · [JSON](https://trvny.github.io/feedseek/usgov.json)
+`usgov` · [XML](https://rss.bartek.lol/usgov.xml) · [JSON](https://rss.bartek.lol/usgov.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.usa.gov&sz=16) Usagov blog — <https://www.usa.gov/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.fbi.gov&sz=16) FBI: Press Releases — <https://www.fbi.gov/news/press-releases/rss.xml>
@@ -1048,7 +1048,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.gsa.gov&sz=16) GSA news — <https://www.gsa.gov/about-gsa/newsroom/news-releases>
 
 ### ![](https://www.google.com/s2/favicons?domain=arxiv.org&sz=16) arXiv
-`arxiv` · [XML](https://trvny.github.io/feedseek/arxiv.xml) · [JSON](https://trvny.github.io/feedseek/arxiv.json)
+`arxiv` · [XML](https://rss.bartek.lol/arxiv.xml) · [JSON](https://rss.bartek.lol/arxiv.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.arxiv.org&sz=16) arXiv Blog — <https://blog.arxiv.org/feed/>
 - ![](https://www.google.com/s2/favicons?domain=rss.arxiv.org&sz=16) arXiv New Submissions — <https://rss.arxiv.org/atom/math+cs+econ+eess+astro-ph+cond-mat+gr-qc+hep-ex+hep-th+math-ph+nlin+nucl-th+physics+quant-ph+q-fin+stat>
@@ -1058,14 +1058,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.alphaxiv.org&sz=16) alphaXiv Explore — <https://www.alphaxiv.org/>
 
 ### ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT News
-`mit` · [XML](https://trvny.github.io/feedseek/mit.xml) · [JSON](https://trvny.github.io/feedseek/mit.json)
+`mit` · [XML](https://rss.bartek.lol/mit.xml) · [JSON](https://rss.bartek.lol/mit.json)
 
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Research — <https://news.mit.edu/rss/research>
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Campus — <https://news.mit.edu/rss/campus>
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Latest — <https://news.mit.edu/rss/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Wikipedia (PL)
-`wikipedia_pl` · [XML](https://trvny.github.io/feedseek/wikipedia_pl.xml) · [JSON](https://trvny.github.io/feedseek/wikipedia_pl.json)
+`wikipedia_pl` · [XML](https://rss.bartek.lol/wikipedia_pl.xml) · [JSON](https://rss.bartek.lol/wikipedia_pl.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Artykuł na medal — <https://pl.wikipedia.org/w/api.php?action=featuredfeed&feedformat=atom&feed=featured>
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Czy wiesz...? — <https://pl.wikipedia.org/w/api.php?action=featuredfeed&feedformat=atom&feed=dyk>
@@ -1076,7 +1076,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=commons.wikimedia.org&sz=16) Commons — multimedia dnia — <https://commons.wikimedia.org/w/api.php?action=featuredfeed&feedformat=atom&language=pl&feed=motd>
 
 ### ![](https://www.google.com/s2/favicons?domain=baike.baidu.com&sz=16) Baidu Baike 热搜词条
-`baidubaike` · [XML](https://trvny.github.io/feedseek/baidubaike.xml) · [JSON](https://trvny.github.io/feedseek/baidubaike.json)
+`baidubaike` · [XML](https://rss.bartek.lol/baidubaike.xml) · [JSON](https://rss.bartek.lol/baidubaike.json)
 
 - ![](https://www.google.com/s2/favicons?domain=baike.baidu.com&sz=16) Blog — <https://baike.baidu.com/>
 - ![](https://www.google.com/s2/favicons?domain=wapbaike.baidu.com&sz=16) Source — <https://wapbaike.baidu.com/>
@@ -1084,12 +1084,12 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Radio and music
 
 ### ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) PR3 Trójka
-`trojka` · [XML](https://trvny.github.io/feedseek/trojka.xml) · [JSON](https://trvny.github.io/feedseek/trojka.json)
+`trojka` · [XML](https://rss.bartek.lol/trojka.xml) · [JSON](https://rss.bartek.lol/trojka.json)
 
 - ![](https://www.google.com/s2/favicons?domain=trojka.polskieradio.pl&sz=16) Blog — <https://trojka.polskieradio.pl>
 
 ### ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) PR4 Czwórka
-`czworka` · [XML](https://trvny.github.io/feedseek/czworka.xml) · [JSON](https://trvny.github.io/feedseek/czworka.json)
+`czworka` · [XML](https://rss.bartek.lol/czworka.xml) · [JSON](https://rss.bartek.lol/czworka.json)
 
 - ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) czworka.online — <https://czworka.online>
 - ![](https://www.google.com/s2/favicons?domain=czworka.online&sz=16) czworka.online — <https://czworka.online/>
@@ -1098,7 +1098,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.polskieradio.pl&sz=16) www.polskieradio.pl (10,Czworka) — <https://www.polskieradio.pl/10,Czworka>
 
 ### ![](https://www.google.com/s2/favicons?domain=tunein.com&sz=16) Radios
-`radios` · [XML](https://trvny.github.io/feedseek/radios.xml) · [JSON](https://trvny.github.io/feedseek/radios.json)
+`radios` · [XML](https://rss.bartek.lol/radios.xml) · [JSON](https://rss.bartek.lol/radios.json)
 
 - ![](https://www.google.com/s2/favicons?domain=cms.tunein.com&sz=16) TuneIn — <https://cms.tunein.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=radiomaxitalo.com&sz=16) Radio Maxi Italo — <https://radiomaxitalo.com/feed/>
@@ -1106,14 +1106,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=electroswingthing.com&sz=16) Electro Swing Thing — <https://electroswingthing.com/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=newsroom.spotify.com&sz=16) Spotify
-`spotify` · [XML](https://trvny.github.io/feedseek/spotify.xml) · [JSON](https://trvny.github.io/feedseek/spotify.json)
+`spotify` · [XML](https://rss.bartek.lol/spotify.xml) · [JSON](https://rss.bartek.lol/spotify.json)
 
 - ![](https://www.google.com/s2/favicons?domain=newsroom.spotify.com&sz=16) Spotify Newsroom — <https://newsroom.spotify.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=distrokid.com&sz=16) DistroKid Blog — <https://distrokid.com/resources/blog>
 - ![](https://www.google.com/s2/favicons?domain=developer.spotify.com&sz=16) Spotify for Developers — <https://developer.spotify.com/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.foobar2000.org&sz=16) foobar2000
-`foobar2000` · [XML](https://trvny.github.io/feedseek/foobar2000.xml) · [JSON](https://trvny.github.io/feedseek/foobar2000.json)
+`foobar2000` · [XML](https://rss.bartek.lol/foobar2000.xml) · [JSON](https://rss.bartek.lol/foobar2000.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.foobar2000.org&sz=16) News — <https://www.foobar2000.org/news>
 - ![](https://www.google.com/s2/favicons?domain=www.foobar2000.org&sz=16) Change Log (Windows) — <https://www.foobar2000.org/changelog>
@@ -1123,13 +1123,13 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.foobar2000.org&sz=16) Change Log (Encoder Pack) — <https://www.foobar2000.org/changelog-encoderpack>
 
 ### ![](https://www.google.com/s2/favicons?domain=audio.com.pl&sz=16) Audio.com.pl
-`audio` · [XML](https://trvny.github.io/feedseek/audio.xml) · [JSON](https://trvny.github.io/feedseek/audio.json)
+`audio` · [XML](https://rss.bartek.lol/audio.xml) · [JSON](https://rss.bartek.lol/audio.json)
 
 - ![](https://www.google.com/s2/favicons?domain=audio.com.pl&sz=16) RSS — <https://audio.com.pl/rss>
 - ![](https://www.google.com/s2/favicons?domain=audio.com.pl&sz=16) Testy — <https://audio.com.pl/testy>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.audacityteam.org&sz=16) Audacity®
-`audacity` · [XML](https://trvny.github.io/feedseek/audacity.xml) · [JSON](https://trvny.github.io/feedseek/audacity.json)
+`audacity` · [XML](https://rss.bartek.lol/audacity.xml) · [JSON](https://rss.bartek.lol/audacity.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.audacityteam.org&sz=16) Audacity blog — <https://www.audacityteam.org/blog/>
 - ![](https://www.google.com/s2/favicons?domain=forum.audacityteam.org&sz=16) Audacity Forum — <https://forum.audacityteam.org/latest.rss>
@@ -1137,25 +1137,25 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.musehub.com&sz=16) Musehub products — <https://www.musehub.com/pl-pl/new-products>
 
 ### ![](https://www.google.com/s2/favicons?domain=ffmpeg.org&sz=16) FFmpeg
-`ffmpeg` · [XML](https://trvny.github.io/feedseek/ffmpeg.xml) · [JSON](https://trvny.github.io/feedseek/ffmpeg.json)
+`ffmpeg` · [XML](https://rss.bartek.lol/ffmpeg.xml) · [JSON](https://rss.bartek.lol/ffmpeg.json)
 
 - ![](https://www.google.com/s2/favicons?domain=ffmpeg.org&sz=16) News — <https://ffmpeg.org/main.rss>
 - ![](https://www.google.com/s2/favicons?domain=code.ffmpeg.org&sz=16) FFmpeg Code — <https://code.ffmpeg.org/FFmpeg.rss>
 
 ### ![](https://www.google.com/s2/favicons?domain=ra.co&sz=16) RA: Resident Advisor Magazine
-`ra` · [XML](https://trvny.github.io/feedseek/ra.xml) · [JSON](https://trvny.github.io/feedseek/ra.json)
+`ra` · [XML](https://rss.bartek.lol/ra.xml) · [JSON](https://rss.bartek.lol/ra.json)
 
 - ![](https://www.google.com/s2/favicons?domain=ra.co&sz=16) ra.co (magazine) — <https://ra.co/magazine>
 - ![](https://www.google.com/s2/favicons?domain=ra.co&sz=16) ra.co (features) — <https://ra.co/features>
 - ![](https://www.google.com/s2/favicons?domain=ra.co&sz=16) ra.co (music) — <https://ra.co/music>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.beatport.com&sz=16) Beatport Top 100
-`beatport_top100` · [XML](https://trvny.github.io/feedseek/beatport_top100.xml) · [JSON](https://trvny.github.io/feedseek/beatport_top100.json)
+`beatport_top100` · [XML](https://rss.bartek.lol/beatport_top100.xml) · [JSON](https://rss.bartek.lol/beatport_top100.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.beatport.com&sz=16) Blog — <https://www.beatport.com/top-100>
 
 ### ![](https://www.google.com/s2/favicons?domain=download-soundtracks.com&sz=16) Download Soundtracks
-`download-soundtracks` · [XML](https://trvny.github.io/feedseek/download-soundtracks.xml) · [JSON](https://trvny.github.io/feedseek/download-soundtracks.json)
+`download-soundtracks` · [XML](https://rss.bartek.lol/download-soundtracks.xml) · [JSON](https://rss.bartek.lol/download-soundtracks.json)
 
 - ![](https://www.google.com/s2/favicons?domain=download-soundtracks.com&sz=16) Blog — <https://download-soundtracks.com/>
 - ![](https://www.google.com/s2/favicons?domain=feeds.trfny.com&sz=16) Proxy — <https://feeds.trfny.com/download-soundtracks>
@@ -1163,7 +1163,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Entertainment streaming and memes
 
 ### ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix
-`netflix` · [XML](https://trvny.github.io/feedseek/netflix.xml) · [JSON](https://trvny.github.io/feedseek/netflix.json)
+`netflix` · [XML](https://rss.bartek.lol/netflix.xml) · [JSON](https://rss.bartek.lol/netflix.json)
 
 - ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix Newsroom — <https://about.netflix.com/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=about.netflix.com&sz=16) Netflix Newsroom PL — <https://about.netflix.com/pl/feed.xml>
@@ -1174,14 +1174,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.whats-on-netflix.com&sz=16) What's on Netflix — <https://www.whats-on-netflix.com/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=blog.youtube&sz=16) YouTube Blog
-`youtube` · [XML](https://trvny.github.io/feedseek/youtube.xml) · [JSON](https://trvny.github.io/feedseek/youtube.json)
+`youtube` · [XML](https://rss.bartek.lol/youtube.xml) · [JSON](https://rss.bartek.lol/youtube.json)
 
 - ![](https://www.google.com/s2/favicons?domain=blog.youtube&sz=16) Latest — <https://blog.youtube/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.youtube&sz=16) RSS — <https://blog.youtube/rss/>
 - ![](https://www.google.com/s2/favicons?domain=www.youtube.com&sz=16) Trends — <https://www.youtube.com/trends/discover/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.youtube.com&sz=16) YouTubs
-`youtubs` · [XML](https://trvny.github.io/feedseek/youtubs.xml) · [JSON](https://trvny.github.io/feedseek/youtubs.json)
+`youtubs` · [XML](https://rss.bartek.lol/youtubs.xml) · [JSON](https://rss.bartek.lol/youtubs.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.youtube.com&sz=16) YouTube channel UCwAiG5lj7w24SbgPy6eiYvg — <https://www.youtube.com/channel/UCwAiG5lj7w24SbgPy6eiYvg>
 - ![](https://www.google.com/s2/favicons?domain=www.youtube.com&sz=16) YouTube channel UCpTO7UgWBeiuXtA5ksSkjYg — <https://www.youtube.com/channel/UCpTO7UgWBeiuXtA5ksSkjYg>
@@ -1203,14 +1203,14 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.youtube.com&sz=16) YouTube channel UCMmGbcxT0UbVC9VbxoOyP7A — <https://www.youtube.com/channel/UCMmGbcxT0UbVC9VbxoOyP7A>
 
 ### ![](https://www.google.com/s2/favicons?domain=newsroom.tiktok.com&sz=16) TikTok
-`tiktok` · [XML](https://trvny.github.io/feedseek/tiktok.xml) · [JSON](https://trvny.github.io/feedseek/tiktok.json)
+`tiktok` · [XML](https://rss.bartek.lol/tiktok.xml) · [JSON](https://rss.bartek.lol/tiktok.json)
 
 - ![](https://www.google.com/s2/favicons?domain=newsroom.tiktok.com&sz=16) TikTok Newsroom — <https://newsroom.tiktok.com/?lang=en>
 - ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok — <https://www.tiktok.com/@tiktok>
 - ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok embed — <https://www.tiktok.com/embed/@tiktok>
 
 ### ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Meta Newsroom
-`meta_newsroom` · [XML](https://trvny.github.io/feedseek/meta.xml) · [JSON](https://trvny.github.io/feedseek/meta.json)
+`meta_newsroom` · [XML](https://rss.bartek.lol/meta.xml) · [JSON](https://rss.bartek.lol/meta.json)
 
 - ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Blog — <https://about.fb.com/news/>
 - ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Meta Newsroom — <https://about.fb.com/feed/>
@@ -1224,7 +1224,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=developers.facebook.com&sz=16) WhatsApp Flows Changelog — <https://developers.facebook.com/documentation/business-messaging/whatsapp/flows/changelog/rss/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.cheezburger.com&sz=16) Cheezburger Network
-`cheezburger` · [XML](https://trvny.github.io/feedseek/cheezburger.xml) · [JSON](https://trvny.github.io/feedseek/cheezburger.json)
+`cheezburger` · [XML](https://rss.bartek.lol/cheezburger.xml) · [JSON](https://rss.bartek.lol/cheezburger.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.cheezburger.com&sz=16) Cheezburger — <https://www.cheezburger.com/rss>
 - ![](https://www.google.com/s2/favicons?domain=failblog.cheezburger.com&sz=16) FAIL Blog — <https://failblog.cheezburger.com/rss>
@@ -1234,29 +1234,29 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=geek.cheezburger.com&sz=16) Geek Universe — <https://geek.cheezburger.com/rss>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.memedroid.com&sz=16) Memedroid
-`memedroid` · [XML](https://trvny.github.io/feedseek/memedroid.xml) · [JSON](https://trvny.github.io/feedseek/memedroid.json)
+`memedroid` · [XML](https://rss.bartek.lol/memedroid.xml) · [JSON](https://rss.bartek.lol/memedroid.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.memedroid.com&sz=16) Home — <https://www.memedroid.com/>
 
 ### ![](https://www.google.com/s2/favicons?domain=memy.pl&sz=16) Memy
-`memy` · [XML](https://trvny.github.io/feedseek/memy.xml) · [JSON](https://trvny.github.io/feedseek/memy.json)
+`memy` · [XML](https://rss.bartek.lol/memy.xml) · [JSON](https://rss.bartek.lol/memy.json)
 
 - ![](https://www.google.com/s2/favicons?domain=memy.pl&sz=16) Memy.pl — <https://memy.pl/>
 - ![](https://www.google.com/s2/favicons?domain=memy.jeja.pl&sz=16) Jeja.pl — <https://memy.jeja.pl/>
 - ![](https://www.google.com/s2/favicons?domain=kwejk.pl&sz=16) Kwejk.pl — <https://kwejk.pl/>
 
 ### ![](https://www.google.com/s2/favicons?domain=9gag.com&sz=16) 9GAG
-`9gag` · [XML](https://trvny.github.io/feedseek/9gag.xml) · [JSON](https://trvny.github.io/feedseek/9gag.json)
+`9gag` · [XML](https://rss.bartek.lol/9gag.xml) · [JSON](https://rss.bartek.lol/9gag.json)
 
 - ![](https://www.google.com/s2/favicons?domain=9gag.com&sz=16) Hot — <https://9gag.com/>
 
 ### ![](https://www.google.com/s2/favicons?domain=jbzd.com.pl&sz=16) Jbzd.com.pl
-`jbzd` · [XML](https://trvny.github.io/feedseek/jbzd.xml) · [JSON](https://trvny.github.io/feedseek/jbzd.json)
+`jbzd` · [XML](https://rss.bartek.lol/jbzd.xml) · [JSON](https://rss.bartek.lol/jbzd.json)
 
 - ![](https://www.google.com/s2/favicons?domain=jbzd.com.pl&sz=16) Blog — <https://jbzd.com.pl/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.4chan.org&sz=16) 4chan
-`4chan` · [XML](https://trvny.github.io/feedseek/4chan.xml) · [JSON](https://trvny.github.io/feedseek/4chan.json)
+`4chan` · [XML](https://rss.bartek.lol/4chan.xml) · [JSON](https://rss.bartek.lol/4chan.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.4chan.org&sz=16) Site — <https://www.4chan.org/>
 - ![](https://www.google.com/s2/favicons?domain=boards.4chan.org&sz=16) /news/ News — <https://boards.4chan.org/news/>
@@ -1281,20 +1281,20 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=a.4cdn.org&sz=16) API base — <https://a.4cdn.org>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.dwutygodnik.com&sz=16) Dwutygodnik
-`dwutygodnik` · [XML](https://trvny.github.io/feedseek/dwutygodnik.xml) · [JSON](https://trvny.github.io/feedseek/dwutygodnik.json)
+`dwutygodnik` · [XML](https://rss.bartek.lol/dwutygodnik.xml) · [JSON](https://rss.bartek.lol/dwutygodnik.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.dwutygodnik.com&sz=16) Sitemap — <https://www.dwutygodnik.com/sitemap.xml>
 - ![](https://www.google.com/s2/favicons?domain=news.google.com&sz=16) Google news — <https://news.google.com/rss/search?q=when:30d+site:dwutygodnik.com+-site:stypendiawarszawy.dwutygodnik.com&hl=pl&gl=PL&ceid=PL:pl>
 
 ### ![](https://www.google.com/s2/favicons?domain=unsplash.com&sz=16) Unsplash
-`unsplash` · [XML](https://trvny.github.io/feedseek/unsplash.xml) · [JSON](https://trvny.github.io/feedseek/unsplash.json)
+`unsplash` · [XML](https://rss.bartek.lol/unsplash.xml) · [JSON](https://rss.bartek.lol/unsplash.json)
 
 - ![](https://www.google.com/s2/favicons?domain=unsplash.com&sz=16) Unsplash Blog — <https://unsplash.com/blog/rss/>
 - ![](https://www.google.com/s2/favicons?domain=unsplash.com&sz=16) Changelog — <https://unsplash.com/documentation/changelog>
 - ![](https://www.google.com/s2/favicons?domain=status.unsplash.com&sz=16) Unsplash Status — <https://status.unsplash.com/history.atom>
 
 ### ![](https://www.google.com/s2/favicons?domain=rutracker.org&sz=16) RuTracker
-`rutracker` · [XML](https://trvny.github.io/feedseek/rutracker.xml) · [JSON](https://trvny.github.io/feedseek/rutracker.json)
+`rutracker` · [XML](https://rss.bartek.lol/rutracker.xml) · [JSON](https://rss.bartek.lol/rutracker.json)
 
 - ![](https://www.google.com/s2/favicons?domain=rutracker.org&sz=16) Blog — <https://rutracker.org/>
 - ![](https://www.google.com/s2/favicons?domain=feed.rutracker.cc&sz=16) RuTracker f/1960 — <https://feed.rutracker.cc/atom/f/1960.atom>
@@ -1311,7 +1311,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Social and community
 
 ### ![](https://www.google.com/s2/favicons?domain=join-lemmy.org&sz=16) Lemmy
-`lemmy` · [XML](https://trvny.github.io/feedseek/lemmy.xml) · [JSON](https://trvny.github.io/feedseek/lemmy.json)
+`lemmy` · [XML](https://rss.bartek.lol/lemmy.xml) · [JSON](https://rss.bartek.lol/lemmy.json)
 
 - ![](https://www.google.com/s2/favicons?domain=lemmy.world&sz=16) Lemmy.world — <https://lemmy.world/feeds/all.xml?sort=TopWeek>
 - ![](https://www.google.com/s2/favicons?domain=szmer.info&sz=16) Szmer — <https://szmer.info/feeds/local.xml?sort=Scaled>
@@ -1320,7 +1320,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=sh.itjust.works&sz=16) sh.itjust.works — <https://sh.itjust.works/feeds/all.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Medium
-`medium` · [XML](https://trvny.github.io/feedseek/medium.xml) · [JSON](https://trvny.github.io/feedseek/medium.json)
+`medium` · [XML](https://rss.bartek.lol/medium.xml) · [JSON](https://rss.bartek.lol/medium.json)
 
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) The Medium Blog — <https://medium.com/feed/blog>
 - ![](https://www.google.com/s2/favicons?domain=medium.com&sz=16) Medium Staff — <https://medium.com/feed/@MediumStaff>
@@ -1372,7 +1372,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=blog.angular.dev&sz=16) Angular Blog — <https://blog.angular.dev/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.v2ex.com&sz=16) V2EX
-`v2ex` · [XML](https://trvny.github.io/feedseek/v2ex.xml) · [JSON](https://trvny.github.io/feedseek/v2ex.json)
+`v2ex` · [XML](https://rss.bartek.lol/v2ex.xml) · [JSON](https://rss.bartek.lol/v2ex.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.v2ex.com&sz=16) V2EX Claude — <https://www.v2ex.com/feed/claude.json>
 - ![](https://www.google.com/s2/favicons?domain=www.v2ex.com&sz=16) V2EX Android — <https://www.v2ex.com/feed/android.json>
@@ -1384,7 +1384,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Classifieds
 
 ### ![](https://www.google.com/s2/favicons?domain=www.olx.pl&sz=16) OLX Group
-`olx` · [XML](https://trvny.github.io/feedseek/olx.xml) · [JSON](https://trvny.github.io/feedseek/olx.json)
+`olx` · [XML](https://rss.bartek.lol/olx.xml) · [JSON](https://rss.bartek.lol/olx.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.olx.pl&sz=16) OLX Zawodowo — <https://www.olx.pl/zawodowo/feed/>
 - ![](https://www.google.com/s2/favicons?domain=blog.olx.pl&sz=16) OLX Blog — <https://blog.olx.pl/feed/>
@@ -1395,7 +1395,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Daily
 
 ### ![](https://www.google.com/s2/favicons?domain=api.viewbits.com&sz=16) Daily Digest
-`daily_digest` · [XML](https://trvny.github.io/feedseek/daily_digest.xml) · [JSON](https://trvny.github.io/feedseek/daily_digest.json)
+`daily_digest` · [XML](https://rss.bartek.lol/daily_digest.xml) · [JSON](https://rss.bartek.lol/daily_digest.json)
 
 - ![](https://www.google.com/s2/favicons?domain=api.viewbits.com&sz=16) Viewbits — <https://api.viewbits.com/v1>
 - ![](https://www.google.com/s2/favicons?domain=viewbits.com&sz=16) Viewbits docs — <https://viewbits.com/docs/>
@@ -1410,7 +1410,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Wiki opensearch — <https://pl.wikipedia.org>
 
 ### ![](https://www.google.com/s2/favicons?domain=gist.github.com&sz=16) Daily Quote
-`daily_quote` · [XML](https://trvny.github.io/feedseek/daily_quote.xml) · [JSON](https://trvny.github.io/feedseek/daily_quote.json)
+`daily_quote` · [XML](https://rss.bartek.lol/daily_quote.xml) · [JSON](https://rss.bartek.lol/daily_quote.json)
 
 - ![](https://www.google.com/s2/favicons?domain=gist.github.com&sz=16) GIST — <https://gist.github.com/trvny/167d2271e3cf7d21e118aa7d906a7d2c>
 - ![](https://www.google.com/s2/favicons?domain=gist.githubusercontent.com&sz=16) Quotes json — <https://gist.githubusercontent.com/trvny/167d2271e3cf7d21e118aa7d906a7d2c/raw/quotes.json>
@@ -1418,7 +1418,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=en.wikiquote.org&sz=16) Wikiquote wiki — <https://en.wikiquote.org/wiki/>
 
 ### ![](https://www.google.com/s2/favicons?domain=theysaidso.com&sz=16) Quotes, Sayings and Jokes of the Day
-`theysaidso` · [XML](https://trvny.github.io/feedseek/theysaidso.xml) · [JSON](https://trvny.github.io/feedseek/theysaidso.json)
+`theysaidso` · [XML](https://rss.bartek.lol/theysaidso.xml) · [JSON](https://rss.bartek.lol/theysaidso.json)
 
 - ![](https://www.google.com/s2/favicons?domain=theysaidso.com&sz=16) QOD — <https://theysaidso.com/qod/feed>
 - ![](https://www.google.com/s2/favicons?domain=feeds.feedburner.com&sz=16) The Quotations Page — <https://feeds.feedburner.com/quotationspage/qotd>
@@ -1430,7 +1430,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=quotes.rest&sz=16) VOD — <https://quotes.rest/bible/vod.json>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.dictionary.com&sz=16) Word of the Day
-`wotd` · [XML](https://trvny.github.io/feedseek/wotd.xml) · [JSON](https://trvny.github.io/feedseek/wotd.json)
+`wotd` · [XML](https://rss.bartek.lol/wotd.xml) · [JSON](https://rss.bartek.lol/wotd.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.dictionary.com&sz=16) Dictionary — <https://www.dictionary.com/e/word-of-the-day/>
 - ![](https://www.google.com/s2/favicons?domain=www.merriam-webster.com&sz=16) Merriam-Webster — <https://www.merriam-webster.com/wotd/feed/rss2>
@@ -1441,7 +1441,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=api.urbandictionary.com&sz=16) Urban wotd — <https://api.urbandictionary.com/v0/words_of_the_day>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.timeanddate.com&sz=16) DaTime
-`datime` · [XML](https://trvny.github.io/feedseek/datime.xml) · [JSON](https://trvny.github.io/feedseek/datime.json)
+`datime` · [XML](https://rss.bartek.lol/datime.xml) · [JSON](https://rss.bartek.lol/datime.json)
 
 - ![](https://www.google.com/s2/favicons?domain=rss.timeanddate.com&sz=16) timeanddate — Time Zones — <https://rss.timeanddate.com/news-time.rss>
 - ![](https://www.google.com/s2/favicons?domain=rss.timeanddate.com&sz=16) timeanddate — Astronomy — <https://rss.timeanddate.com/news-astronomy.rss>
@@ -1455,7 +1455,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Other
 
 ### ![](https://www.google.com/s2/favicons?domain=publicapis.dev&sz=16) APIs
-`apis` · [XML](https://trvny.github.io/feedseek/apis.xml) · [JSON](https://trvny.github.io/feedseek/apis.json)
+`apis` · [XML](https://rss.bartek.lol/apis.xml) · [JSON](https://rss.bartek.lol/apis.json)
 
 - ![](https://www.google.com/s2/favicons?domain=publicapis.dev&sz=16) Public APIs Blog — <https://publicapis.dev/blog/feed.xml>
 - ![](https://www.google.com/s2/favicons?domain=publicapis.dev&sz=16) Public APIs Directory — <https://publicapis.dev/feed.xml>

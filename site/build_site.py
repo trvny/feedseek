@@ -1073,6 +1073,7 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
 def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
     reader_html = reader_html.replace(GITHUB_PAGES_BASE, search_page_base(base))
+    reader_html = reader_html.replace(CANONICAL_PAGE_BASE, search_page_base(base))
     aliases = {key: name for key, name in load_public_names().items() if key != name}
     alias_script = (
         "<script>globalThis.FeedseekPublicNames = "
