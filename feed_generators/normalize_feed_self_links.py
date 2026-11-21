@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
+from models import public_feed_name
 from utils import (
     FAVICON_PROXY_ORIGIN,
     LEGACY_FAVICON_PROXY_ORIGINS,
@@ -263,7 +264,7 @@ def normalize_feed_file(path: Path) -> bool:
     content = path.read_text(encoding="utf-8")
     normalized = content
     normalized = _LEGACY_URL_RE.sub(
-        lambda match: f"{CURRENT_PREFIX}{match['name']}.{match['ext']}", normalized
+        lambda match: f"{CURRENT_PREFIX}{public_feed_name(match['name'])}.{match['ext']}", normalized
     )
     normalized = _normalize_atom_icons(normalized)
     if normalized == content:

@@ -48,10 +48,10 @@ function memoryIndexedDB() {
   };
 }
 
-function makeCache(storage = new Map(), indexedDB = undefined) {
+function makeCache(storage = new Map(), indexedDB = undefined, aliases = {}) {
   const context = vm.createContext({
     window: { indexedDB },
-    console, URL, location: { href: "https://trvny.github.io/feedseek/reader/" },
+    console, URL, FeedseekPublicNames: aliases, location: { href: "https://trvny.github.io/feedseek/reader/" },
     localStorage: {
       getItem: key => storage.get(key) ?? null,
       setItem: (key, value) => storage.set(key, value),
@@ -172,4 +172,17 @@ test("IndexedDB also drops quarantined Gov.pl articles during load", async () =>
   assert.ok(db.records.size >= 2);
   assert.deepEqual(Array.from(await cache.load(), item => item.id), ["safe"]);
   assert.deepEqual([...db.records.values()].map(row => row.item.id), ["safe"]);
+});
+
+test("canonical public names migrate stored URLs without changing external URLs", () => {
+  const { cache } = makeCache(new Map(), undefined, {
+    govpl_news: "govpl", meta_newsroom: "meta",
+  });
+  const root = "https://trvny.github.io/feedseek/";
+  assert.equal(cache.canonicalFeedUrl(root + "feed_govpl_news.xml"), root + "govpl.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "meta_newsroom.json"), root + "meta.json");
+  assert.equal(cache.canonicalFeedUrl(root + "feed_meta_newsroom.xml"), root + "meta.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "reuters.xml"), root + "reuters.xml");
+  assert.equal(cache.canonicalFeedUrl("https://elsewhere.test/meta_newsroom.xml"),
+               "https://elsewhere.test/meta_newsroom.xml");
 });

@@ -21,6 +21,16 @@ class CheckRegistryTests(unittest.TestCase):
             path.write_text(text, encoding="utf-8")
             return MODULE.check(path)
 
+    def test_duplicate_public_alias_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            registry = Path(tmp) / "feeds.yaml"
+            registry.write_text(
+                "feeds:\n  a:\n    script: reuters.py\n    blog_url: https://example.com\n    public_name: shared\n"
+                "  b:\n    script: reuters.py\n    blog_url: https://example.org\n    public_name: shared\n",
+                encoding="utf-8",
+            )
+            self.assertTrue(any("duplicate public name" in issue for issue in MODULE.check(registry)))
+
     def test_repository_registry_passes(self):
         self.assertEqual(MODULE.check(ROOT / "feeds.yaml"), [])
 

@@ -44,7 +44,9 @@ PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or f"https://{_OWNER.lower()}.g
 
 def public_feed_url(feed_name: str, ext: str = "xml") -> str:
     """Canonical Pages URL of a published feed file."""
-    return f"{PUBLIC_BASE}{feed_name}.{ext}"
+    from models import public_feed_name
+
+    return f"{PUBLIC_BASE}{public_feed_name(feed_name)}.{ext}"
 
 # ---------------------------------------------------------------------------
 # Logging

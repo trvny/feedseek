@@ -47,7 +47,10 @@ sys.path.insert(0, str(SITE_DIR))
 from sitemap_variants import SEARCH_VARIANTS, build_sitemap_variants  # noqa: E402
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
-from models import load_active_publication_keys, load_published_feeds  # noqa: E402
+from models import (  # noqa: E402
+    RESERVED_PUBLIC_STEMS, load_active_publication_keys, load_public_names,
+    load_published_feeds, public_feed_name,
+)
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
 
@@ -295,16 +298,9 @@ def short_name(path: Path) -> str:
     return stem[len("feed_"):] if stem.startswith("feed_") else stem
 
 
-# Short feed names share the site root with these generated files.
-RESERVED_PUBLIC_STEMS = frozenset({
-    "index", "llms", "llms-full", "sitemap", "sitemap-atom", "sitemap-rss", "robots", "model-feeds",
-    "subscriptions", "favicon", "site", "webmcp",
-})
-
-
 def public_xml(feed: dict) -> str:
     """feed_reuters.xml -> reuters.xml: short Pages name."""
-    return str(feed["filename"]).removeprefix("feed_")
+    return f"{public_feed_name(short_name(Path(str(feed['filename']))))}.xml"
 
 
 def public_json(feed: dict) -> str:
@@ -1077,6 +1073,16 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
 def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
     reader_html = reader_html.replace(GITHUB_PAGES_BASE, search_page_base(base))
+    aliases = {key: name for key, name in load_public_names().items() if key != name}
+    alias_script = (
+        "<script>globalThis.FeedseekPublicNames = "
+        + json.dumps(aliases, ensure_ascii=True, separators=(",", ":"))
+        + ";</script>\n"
+    )
+    reader_html = reader_html.replace(
+        '<script src="reader-cache.js"></script>',
+        alias_script + '<script src="reader-cache.js"></script>', 1,
+    )
     for url, asset in (
         ("reader-fetch.js", "reader-fetch.js"),
         ("reader-cache.js", "reader-cache.js"),
@@ -1111,12 +1117,16 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
     """
     raw_base = f"https://raw.githubusercontent.com/{REPO_SLUG}/main/feeds/"
     raw_xml = raw_base + source.name
-    short_xml = source.name.removeprefix("feed_")
+    legacy_xml = source.name.removeprefix("feed_")
+    short_xml = f"{public_feed_name(short_name(source))}.xml"
     public_xml_url = base + short_xml
 
     xml = source.read_text(encoding="utf-8")
     # Raw (retired), legacy Pages name, and generator canonical URL all rebase onto this deployment.
-    for old_url in (raw_xml, base + source.name, f"{PUBLIC_BASE}{short_xml}"):
+    for old_url in (
+        raw_xml, base + source.name, base + legacy_xml,
+        f"{PUBLIC_BASE}{legacy_xml}", f"{PUBLIC_BASE}{short_xml}",
+    ):
         for old, new in (
             (f'href="{old_url}" rel="self"', f'href="{public_xml_url}" rel="self"'),
             (f'rel="self" href="{old_url}"', f'rel="self" href="{public_xml_url}"'),
@@ -1132,7 +1142,11 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
     model_feed["source_feed"] = public_xml_url
     model_text = json.dumps(model_feed, ensure_ascii=False, separators=(",", ":")) + "\n"
 
-    for xml_name, json_name in {(short_xml, short_json), (source.name, sibling.name)}:
+    legacy_json = Path(legacy_xml).with_suffix(".json").name
+    for xml_name, json_name in {
+        (short_xml, short_json), (legacy_xml, legacy_json),
+        (source.name, sibling.name),
+    }:
         (destination / xml_name).write_text(xml, encoding="utf-8")
         (destination / json_name).write_text(model_text, encoding="utf-8")
 

@@ -24,9 +24,13 @@
       const root = new URL("../", globalThis.location?.href);
       const parsed = new URL(url);
       if (parsed.origin !== root.origin) return url;
-      const match = parsed.pathname.match(/^(.*\/)feed_([^/]+\.(?:xml|json))$/);
+      const match = parsed.pathname.match(/^(.*\/)(feed_)?([^/]+)\.(xml|json)$/);
       if (!match || match[1] !== root.pathname) return url;
-      parsed.pathname = match[1] + match[2];
+      const aliases = globalThis.FeedseekPublicNames || {};
+      const name = Object.prototype.hasOwnProperty.call(aliases, match[3])
+        ? aliases[match[3]] : match[3];
+      if (!match[2] && name === match[3]) return url;
+      parsed.pathname = match[1] + name + "." + match[4];
       return parsed.href;
     } catch { return url; }
   }
@@ -46,7 +50,8 @@
       const root = new URL("../", globalThis.location?.href);
       const url = new URL(item.feedUrl);
       return url.origin === root.origin
-        && (url.pathname === root.pathname + "govpl_news.xml"
+        && (url.pathname === root.pathname + "govpl.xml"
+          || url.pathname === root.pathname + "govpl_news.xml"
           || url.pathname === root.pathname + "feed_govpl_news.xml");
     } catch { return false; }
   }

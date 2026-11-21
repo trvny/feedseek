@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from urllib.parse import quote
 
+from models import public_feed_name
 from utils import REPO_SLUG, write_atomically
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,7 +38,7 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
             raise ValueError(f"Invalid Model Feed: {path}")
         key = path.stem.removeprefix("feed_")
         owner, _, repo = repo_slug.partition("/")
-        url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name.removeprefix('feed_'))}"
+        url = f"https://{owner.lower()}.github.io/{repo}/{quote(public_feed_name(key) + '.json')}"
         rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",

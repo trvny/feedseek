@@ -27,10 +27,12 @@ class RegistryDocsTests(unittest.TestCase):
 
         readme = (FEEDSEEK / "README.md").read_text(encoding="utf-8")
         documented = set(re.findall(r"(?:github\.io/feedseek/|`)([A-Za-z0-9_-]+)\.xml", readme))
-        self.assertEqual(documented, set(registry))
+        public = {config.get("public_name") or key for key, config in registry.items()}
+        self.assertEqual(documented, public)
 
         for name, config in registry.items():
-            raw_url = f"https://trvny.github.io/feedseek/{name}.xml"
+            public_name = config.get("public_name") or name
+            raw_url = f"https://trvny.github.io/feedseek/{public_name}.xml"
             if config.get("enabled", True):
                 self.assertIn(raw_url, readme)
             else:

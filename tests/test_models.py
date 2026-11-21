@@ -5,7 +5,7 @@ from unittest.mock import mock_open, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from models import load_active_publication_keys, load_feed_registry, load_published_feeds  # noqa: E402
+from models import load_active_publication_keys, load_feed_registry, load_published_feeds, validate_public_names  # noqa: E402
 
 
 class FeedRegistryTests(unittest.TestCase):
@@ -28,6 +28,25 @@ class FeedRegistryTests(unittest.TestCase):
 """
         with patch("builtins.open", mock_open(read_data=registry)):
             self.assertEqual(load_active_publication_keys(), {"healthy", "broken", "blank", "invalid_flag"})
+
+
+    def test_public_names_reject_conflicting_or_unsafe_aliases(self):
+        for feeds in (
+            {"a": {"public_name": "b"}, "b": {}},
+            {"a": {"public_name": "same"}, "b": {"public_name": "same"}},
+            {"a": {"public_name": "feed_a"}},
+            {"a": {"public_name": "index"}},
+            {"a": {"public_name": "../bad"}},
+            {"a": {"public_name": "Bad Capitalization"}},
+        ):
+            with self.subTest(feeds=feeds), self.assertRaises(ValueError):
+                validate_public_names(feeds)
+
+    def test_public_names_keep_generator_keys(self):
+        self.assertEqual(
+            validate_public_names({"meta_newsroom": {"public_name": "meta"}, "reuters": {}}),
+            {"meta_newsroom": "meta", "reuters": "reuters"},
+        )
 
 
     def test_published_feeds_keep_order_and_title_overrides(self):
