@@ -108,6 +108,15 @@ WEBMANIFEST = f"""{{
 """
 
 
+CANONICAL_PAGE_BASE = "https://rss.bartek.lol/"
+GITHUB_PAGES_BASE = "https://trvny.github.io/feedseek/"
+
+
+def search_page_base(base: str) -> str:
+    """Canonical HTML host; preserve feed publication URLs and IDs."""
+    return CANONICAL_PAGE_BASE if base == GITHUB_PAGES_BASE else base
+
+
 def site_base_url() -> str:
     """Resolve the published base URL, always with a single trailing slash."""
     explicit = os.environ.get("SITE_URL", "").strip()
@@ -457,6 +466,7 @@ def build_model_feed_catalog(feeds: list[dict], base: str) -> str:
 
 
 def build_index(feeds: list[dict], base: str) -> str:
+    page_base = search_page_base(base)
     count = len(feeds)
     cards = "\n".join(render_card(f, base) for f in feeds)
     autodiscovery = render_autodiscovery(feeds, base)
@@ -471,7 +481,7 @@ def build_index(feeds: list[dict], base: str) -> str:
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Feedseek",
-            "url": base,
+            "url": page_base,
             "creator": {"@id": "https://travny.pages.dev/#creator"},
             "isPartOf": {"@id": "https://travny.pages.dev/#website"},
             "isBasedOn": "https://github.com/trvny/feedseek",
@@ -479,7 +489,7 @@ def build_index(feeds: list[dict], base: str) -> str:
             "inLanguage": "en",
             "potentialAction": {
                 "@type": "ReadAction",
-                "target": base + "reader/",
+                "target": page_base + "reader/",
             },
             "mainEntity": {
                 "@type": "ItemList",
@@ -510,7 +520,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="google-site-verification" content="xbXKq1w3ClpoMlxws6qobmZjpSmGVhi2xbrf7kwJV0s" />
   <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />
-  <link rel="canonical" href="{html.escape(base, quote=True)}">
+  <link rel="canonical" href="{html.escape(page_base, quote=True)}">
   <link rel="author" href="https://github.com/trvny">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
@@ -522,7 +532,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Feedseek | RSS, Atom &amp; JSON Model Feed directory">
   <meta property="og:description" content="{html.escape(desc, quote=True)}">
-  <meta property="og:url" content="{html.escape(base, quote=True)}">
+  <meta property="og:url" content="{html.escape(page_base, quote=True)}">
   <meta property="og:image" content="{html.escape(base + "icons/android-chrome-512x512.png", quote=True)}">
   <meta property="og:image:alt" content="Feedseek icon">
   <meta name="twitter:card" content="summary">
@@ -791,7 +801,8 @@ def build_index(feeds: list[dict], base: str) -> str:
 
 def sitemap_urls(base: str) -> list[str]:
     """Canonical indexable page URLs."""
-    return [base, base + "reader/"]
+    page_base = search_page_base(base)
+    return [page_base, page_base + "reader/"]
 
 
 def build_sitemap(base: str) -> str:
@@ -812,6 +823,7 @@ def build_sitemap(base: str) -> str:
 
 
 def build_robots(base: str) -> str:
+    page_base = search_page_base(base)
     return (
         "# AI crawlers and user-triggered fetchers explicitly welcome.\n"
         "User-agent: GPTBot\n"
@@ -857,8 +869,8 @@ def build_robots(base: str) -> str:
         "User-agent: *\n"
         "Content-Signal: ai-train=yes, search=yes, ai-input=yes\n"
         "Allow: /\n"
-        f"Sitemap: {base}sitemap.xml\n"
-        + "".join(f"Sitemap: {base}{name}\n" for name in SEARCH_VARIANTS)
+        f"Sitemap: {page_base}sitemap.xml\n"
+        + "".join(f"Sitemap: {page_base}{name}\n" for name in SEARCH_VARIANTS)
     )
 
 
@@ -1052,7 +1064,7 @@ def build_llms_full(feeds: list[dict], base: str) -> str:
 
 def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
-    reader_html = reader_html.replace("https://trvny.github.io/feedseek/", base)
+    reader_html = reader_html.replace(GITHUB_PAGES_BASE, search_page_base(base))
     for url, asset in (
         ("reader-fetch.js", "reader-fetch.js"),
         ("reader-cache.js", "reader-cache.js"),
@@ -1160,7 +1172,7 @@ def main() -> None:
     (OUT_DIR / "index.md").write_text(build_index_markdown(all_feeds, base), encoding="utf-8")
     sitemap = build_sitemap(base)
     (OUT_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-    for name, content in build_sitemap_variants(sitemap_urls(base), base).items():
+    for name, content in build_sitemap_variants(sitemap_urls(base), search_page_base(base), id_base=base).items():
         (OUT_DIR / name).write_text(content, encoding="utf-8")
     (OUT_DIR / "robots.txt").write_text(build_robots(base), encoding="utf-8")
     (OUT_DIR / "llms.txt").write_text(build_llms_txt(all_feeds, base), encoding="utf-8")

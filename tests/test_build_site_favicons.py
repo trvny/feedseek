@@ -225,7 +225,7 @@ class SiteFaviconTests(unittest.TestCase):
     def test_sitemap_lists_html_pages_without_lastmod(self):
         base = "https://trvny.github.io/feedseek/"
         rendered = build_site.build_sitemap(base)
-        self.assertEqual(re.findall(r"<loc>([^<]+)</loc>", rendered), [base, base + "reader/"])
+        self.assertEqual(re.findall(r"<loc>([^<]+)</loc>", rendered), ["https://rss.bartek.lol/", "https://rss.bartek.lol/reader/"])
         self.assertNotIn("<lastmod>", rendered, "Rebuild dates are not verified content changes")
 
     def test_machine_discovery_lists_catalog_and_model_json_urls(self):
@@ -277,6 +277,47 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn(r"Safe\]\(https://evil.example\) # injected", rendered)
         self.assertNotIn("\n## injected", rendered)
 
+    def test_github_pages_html_prefers_alias_without_moving_feed_urls(self):
+        base = "https://trvny.github.io/feedseek/"
+        feeds = [{
+            "filename": "feed_alpha.xml", "title": "Alpha", "subtitle": "Test",
+            "source": "https://example.com/", "updated": None, "entries": 1,
+            "icon": "", "logo": "", "format": "atom",
+        }]
+        index = build_site.build_index(feeds, base)
+        self.assertIn('rel="canonical" href="https://rss.bartek.lol/"', index)
+        self.assertIn('href="https://trvny.github.io/feedseek/alpha.xml"', index)
+        self.assertIn('href="https://trvny.github.io/feedseek/alpha.json"', index)
+        self.assertIn('property="og:url" content="https://rss.bartek.lol/"', index)
+        self.assertIn('"url":"https://rss.bartek.lol/"', index)
+        self.assertIn('href="https://trvny.github.io/feedseek/index.md"', index)
+        reader = build_site.build_reader_html(base)
+        self.assertIn('rel="canonical" href="https://rss.bartek.lol/reader/"', reader)
+        self.assertIn('property="og:url" content="https://rss.bartek.lol/reader/"', reader)
+        self.assertIn('"url":"https://rss.bartek.lol/reader/"', reader)
+        robots = build_site.build_robots(base)
+        self.assertIn("Sitemap: https://rss.bartek.lol/sitemap.xml", robots)
+        self.assertNotIn("Sitemap: https://trvny.github.io/feedseek/", robots)
+        self.assertEqual(build_site.sitemap_urls(base), [
+            "https://rss.bartek.lol/", "https://rss.bartek.lol/reader/",
+        ])
+
+    def test_sitemap_feed_ids_stay_stable_after_canonical_switch(self):
+        origin = "https://trvny.github.io/feedseek/"
+        canonical = "https://rss.bartek.lol/"
+        variants = build_site.build_sitemap_variants(
+            build_site.sitemap_urls(origin), canonical, id_base=origin
+        )
+        atom = variants["sitemap-atom.xml"]
+        self.assertIn(f"<id>{origin}sitemap-atom.xml</id>", atom)
+        self.assertIn(f"<id>{origin}reader/</id>", atom)
+        self.assertIn(f'<link href="{canonical}reader/"/>', atom)
+        rss = variants["sitemap-rss.xml"]
+        self.assertIn(
+            f'<guid isPermaLink="false">{origin}reader/</guid>', rss
+        )
+        self.assertIn(f"<link>{canonical}reader/</link>", rss)
+
     def test_reader_metadata_uses_build_base(self):
         rendered = build_site.build_reader_html("https://feedseek.pages.dev/")
         self.assertIn("https://feedseek.pages.dev/reader/", rendered)
@@ -291,8 +332,8 @@ class SiteFaviconTests(unittest.TestCase):
 
     def test_sitemap_includes_reader_and_directory(self):
         rendered = build_site.build_sitemap("https://trvny.github.io/feedseek/")
-        self.assertIn("<loc>https://trvny.github.io/feedseek/</loc>", rendered)
-        self.assertIn("<loc>https://trvny.github.io/feedseek/reader/</loc>", rendered)
+        self.assertIn("<loc>https://rss.bartek.lol/</loc>", rendered)
+        self.assertIn("<loc>https://rss.bartek.lol/reader/</loc>", rendered)
         self.assertNotIn("https://trfny.com/", rendered)
 
     def test_website_schema_uses_durable_hub_identity(self):
