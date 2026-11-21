@@ -99,7 +99,7 @@ function fixture(counts) {
 
 test("personal GitHub milestone styling survives the public URL alias", async () => {
   for (const stem of ["trvny", "github_personal", "feed_github_personal"]) {
-    const xmlUrl = `https://reader.test/${stem}.xml`;
+    const xmlUrl = `https://feed.test/${stem}.xml`;
     const feed = { title: "trvny + travnie", xmlUrl };
     const entry = {
       id: "pr-1", source: feed.title, feedUrl: xmlUrl,
