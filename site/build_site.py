@@ -1190,6 +1190,7 @@ def main() -> None:
 
     (OUT_DIR / "site.webmanifest").write_text(WEBMANIFEST, encoding="utf-8")
     shutil.copy2(SITE_DIR / "webmcp.js", OUT_DIR / "webmcp.js")
+    shutil.copy2(SITE_DIR / "meme-widget.html", OUT_DIR / "meme-widget.html")
     (OUT_DIR / "subscriptions.opml").write_text(build_opml(feeds, base), encoding="utf-8")
     (OUT_DIR / "model-feeds.json").write_text(build_model_feed_catalog(all_feeds, base), encoding="utf-8")
     copy_reader_bundle(base)

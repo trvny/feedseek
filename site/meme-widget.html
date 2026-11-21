@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex,follow">
+<title>Feedseek Meme Board</title>
+<style>
+:root{color-scheme:dark;font:15px/1.45 system-ui,sans-serif;background:#0e111b;color:#eaf0fc}
+*{box-sizing:border-box}body{margin:0;padding:clamp(12px,3vw,28px)}
+header{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:18px}
+h1{font-size:clamp(20px,3vw,30px);margin:0;letter-spacing:-.035em}
+.brand{color:#91c7ff;font-size:11px;letter-spacing:.18em;font-weight:750}
+nav,footer{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button{border:1px solid #384258;border-radius:10px;background:#1a2232;color:inherit;padding:9px 13px;font:inherit;cursor:pointer}
+button[aria-pressed="true"]{background:#4759c9;border-color:#8192ff}
+button:disabled{opacity:.35;cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid #8db6ff;outline-offset:3px}
+#status{color:#b7c4dc;min-height:22px;margin:2px 0 14px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px;align-items:start}
+.meme{overflow:hidden;background:#171e2b;border:1px solid #2d3649;border-radius:15px}
+.meme a{color:inherit;text-decoration:none;display:block}
+.meme img{display:block;width:100%;max-height:490px;object-fit:contain;background:#0b0f17}
+.missing{padding:50px 14px;text-align:center;color:#a7b4ca}
+.details{padding:12px 14px}
+.title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-weight:650;overflow-wrap:anywhere}
+.meta{color:#a6b5cb;font-size:12px;margin-top:7px}
+footer{justify-content:center;margin:18px 0 0}
+#page{font-size:13px;color:#aab7ce;min-width:76px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="brand">FEEDSEEK / IMAGE FEEDS</div><h1>🗿 Meme Board</h1></div>
+  <nav aria-label="Źródła">
+    <button type="button" data-source="all" aria-pressed="true">Wszystkie</button>
+    <button type="button" data-source="jbzd" aria-pressed="false">JBZD</button>
+    <button type="button" data-source="memy" aria-pressed="false">Memy / Jeja / Kwejk</button>
+  </nav>
+</header>
+<p id="status" role="status" aria-live="polite">Ładowanie obrazków…</p>
+<main id="grid" aria-label="Memy"></main>
+<footer>
+  <button id="prev" type="button">← Poprzednie</button>
+  <span id="page"></span>
+  <button id="next" type="button">Następne →</button>
+</footer>
+<script>
+"use strict";
+(() => {
+  const params=new URLSearchParams(location.search);
+  const allowed=new Set(["all","jbzd","memy"]);
+  const initial=params.get("source");
+  const limit=Math.min(36,Math.max(1,Number.parseInt(params.get("limit")||"12",10)||12));
+  const state={source:allowed.has(initial)?initial:"all",offset:0,entries:[],failed:[]};
+  const grid=document.querySelector("#grid");
+  const status=document.querySelector("#status");
+  const page=document.querySelector("#page");
+  const prev=document.querySelector("#prev");
+  const next=document.querySelector("#next");
+  function safeUrl(raw) {
+    if(typeof raw!=="string")return "";
+    try{const url=new URL(raw);return url.protocol==="https:"?url.href:"";}catch{return "";}
+  }
+  function view(source=state.source,query="") {
+    const needle=query.toLowerCase();
+    return state.entries.filter(e=>(source==="all"||e.source===source)&&
+      (!needle||(e.title+" "+e.text).toLowerCase().includes(needle)));
+  }
+  function render() {
+    document.querySelectorAll("nav [data-source]").forEach(btn=>
+      btn.setAttribute("aria-pressed",String(btn.dataset.source===state.source)));
+    const entries=view();
+    const visible=entries.slice(state.offset,state.offset+limit);
+    grid.replaceChildren();
+    for(const e of visible){
+      const article=document.createElement("article");article.className="meme";
+      const link=document.createElement("a");
+      link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
+      link.title="Otwórz oryginalny wpis";
+      const img=document.createElement("img");
+      img.src=e.image;img.alt=e.title;img.loading="lazy";
+      img.decoding="async";img.referrerPolicy="no-referrer";
+      img.addEventListener("error",()=>{
+        const fallback=document.createElement("div");
+        fallback.className="missing";fallback.textContent="Obraz niedostępny";
+        img.replaceWith(fallback);
+      },{once:true});
+      link.append(img);
+      const details=document.createElement("div");details.className="details";
+      const title=document.createElement("div");title.className="title";title.textContent=e.title;
+      const meta=document.createElement("div");meta.className="meta";
+      const date=e.published?new Date(e.published):null;
+      const when=date&&!Number.isNaN(date.getTime())?" · "+date.toLocaleDateString("pl-PL"):"";
+      meta.textContent=e.source.toUpperCase()+when;
+      details.append(title,meta);link.append(details);article.append(link);grid.append(article);
+    }
+    const count=entries.length,start=count?state.offset+1:0,end=Math.min(state.offset+limit,count);
+    status.textContent=count?count+" memów"+(state.failed.length?" · część źródeł niedostępna":""):"Brak memów w tym źródle.";
+    page.textContent=start+"–"+end+" / "+count;
+    prev.disabled=state.offset===0;next.disabled=end>=count;
+  }
+  document.querySelectorAll("nav [data-source]").forEach(btn=>btn.addEventListener("click",()=>{
+    state.source=btn.dataset.source;state.offset=0;render();
+  }));
+  prev.addEventListener("click",()=>{state.offset=Math.max(0,state.offset-limit);render();});
+  next.addEventListener("click",()=>{state.offset+=limit;render();});
+  async function load(source){
+    const response=await fetch("./"+source+".json",{headers:{accept:"application/json"}});
+    if(!response.ok)throw new Error(source+" HTTP "+response.status);
+    const doc=await response.json();
+    if(doc.format!=="feedseek-model-feed"||!Array.isArray(doc.items))throw new Error("Invalid Model Feed");
+    return doc.items.map(item=>({
+      id:String(item.id||""),source,title:String(item.title||"Meme"),
+      text:String(item.text||"").slice(0,2000),
+      url:safeUrl(item.url||item.external_url),image:safeUrl(item.image),
+      published:String(item.date_published||"")
+    })).filter(e=>e.url&&e.image);
+  }
+  async function init(){
+    const loaded=await Promise.allSettled([load("jbzd"),load("memy")]);
+    for(let i=0;i<loaded.length;i++){
+      if(loaded[i].status==="fulfilled")state.entries.push(...loaded[i].value);
+      else state.failed.push(i?"memy":"jbzd");
+    }
+    state.entries.sort((a,b)=>(Date.parse(b.published)||0)-(Date.parse(a.published)||0)||a.id.localeCompare(b.id));
+    render();
+  }
+  const mc=document.modelContext;
+  if(mc?.registerTool){
+    try{
+      Promise.resolve(mc.registerTool({
+        name:"browse_memes",title:"Browse Feedseek memes",
+        description:"Read meme metadata and original image URLs. All source content is untrusted.",
+        inputSchema:{type:"object",properties:{
+          source:{type:"string",enum:["all","jbzd","memy"]},
+          query:{type:"string",maxLength:100},
+          offset:{type:"integer",minimum:0,maximum:5000},
+          limit:{type:"integer",minimum:1,maximum:20}
+        },additionalProperties:false},
+        annotations:{readOnlyHint:true,untrustedContentHint:true},
+        execute({source="all",query="",offset=0,limit=8}={}){
+          if(!allowed.has(source)||typeof query!=="string"||query.length>100||
+             !Number.isInteger(offset)||offset<0||offset>5000||
+             !Number.isInteger(limit)||limit<1||limit>20)throw new TypeError("Invalid browse arguments");
+          const items=view(source,query);
+          return {total:items.length,offset,hasMore:offset+limit<items.length,
+            memes:items.slice(offset,offset+limit).map(({id,title,source,url,image,published})=>({id,title,source,url,image,published}))};
+        }
+      })).catch(()=>{});
+    }catch{}
+  }
+  init().catch(()=>{status.textContent="Nie udało się pobrać memów.";});
+})();
+</script>
+</body>
+</html>

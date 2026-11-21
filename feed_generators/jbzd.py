@@ -229,6 +229,7 @@ def build_feed(articles: list[dict]) -> FeedGenerator:
     fg.id(BLOG_URL)
     fg.title(FEED_TITLE)
     fg.subtitle(FEED_DESC)
+    fg.author(name="Jbzd.com.pl", uri=BLOG_URL)
     setup_feed_links(fg, BLOG_URL, FEED_NAME)
     fg.language(FEED_LANG)
     fg.updated(datetime.now(timezone.utc))
