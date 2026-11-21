@@ -31,9 +31,9 @@ test("preserves Pages canonicals and crawl directives", async () => {
   assert.equal(robots.headers.get("x-robots-tag"), null);
   assert.equal(await robots.text(), "User-agent: *\nAllow: /\n");
 
-  const archivedPage = await siteAliasResponse(new Request("https://rss.bartek.lol/archive/"), async () =>
-    new Response("Archived", { headers: { "x-robots-tag": "noindex" } }));
-  assert.equal(archivedPage.headers.get("x-robots-tag"), "noindex");
+  const feed = await siteAliasResponse(new Request("https://rss.bartek.lol/example.json"), async () =>
+    Response.json({}, { headers: { "x-robots-tag": "index" } }));
+  assert.equal(feed.headers.get("x-robots-tag"), "index");
 });
 
 test("keeps Pages redirects on the alias and rejects unrelated destinations", async () => {
