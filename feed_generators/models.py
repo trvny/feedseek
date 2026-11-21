@@ -1,6 +1,7 @@
 """Pydantic models for feed configuration and settings."""
 
 import logging
+from collections import Counter
 import re
 from functools import lru_cache
 from pathlib import Path
@@ -16,7 +17,7 @@ PUBLIC_STEM_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 RESERVED_PUBLIC_STEMS = frozenset({
     "index", "llms", "llms-full", "sitemap", "sitemap-atom",
     "sitemap-rss", "robots", "model-feeds", "subscriptions",
-    "favicon", "site", "webmcp",
+    "favicon", "site", "webmcp", "feedseek-search-index",
 })
 
 
@@ -191,6 +192,32 @@ def validate_public_names(entries: dict) -> dict[str, str]:
     return result
 
 
+def runtime_public_names(entries: dict) -> dict[str, str]:
+    """Fallback only malformed or conflicting overrides; keep unrelated sources live."""
+    keys = set(entries)
+    candidates = {}
+    for key, config in entries.items():
+        override = config.get("public_name") if isinstance(config, dict) else None
+        alias = key if override is None else override
+        safe = (
+            isinstance(alias, str)
+            and PUBLIC_STEM_RE.fullmatch(alias) is not None
+            and not alias.startswith("feed_")
+            and alias not in RESERVED_PUBLIC_STEMS
+            and (alias not in keys or alias == key)
+        )
+        if not safe:
+            logger.warning("Ignoring unsafe public name for %s: %r", key, alias)
+            alias = key
+        candidates[key] = alias
+    counts = Counter(candidates.values())
+    for key, alias in candidates.items():
+        if counts[alias] > 1:
+            logger.warning("Ignoring conflicting public name for %s: %s", key, alias)
+            candidates[key] = key
+    return candidates
+
+
 @lru_cache(maxsize=1)
 def load_public_names() -> dict[str, str]:
     """One canonical mapping from stable keys to public file stems."""
@@ -199,7 +226,7 @@ def load_public_names() -> dict[str, str]:
     entries = data.get("feeds") if isinstance(data, dict) else None
     if not isinstance(entries, dict):
         raise ValueError("feeds must be a mapping")
-    return validate_public_names(entries)
+    return runtime_public_names(entries)
 
 
 def public_feed_name(feed_name: str) -> str:

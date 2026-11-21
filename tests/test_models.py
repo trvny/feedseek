@@ -5,7 +5,7 @@ from unittest.mock import mock_open, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
-from models import load_active_publication_keys, load_feed_registry, load_published_feeds, validate_public_names  # noqa: E402
+from models import load_active_publication_keys, load_feed_registry, load_published_feeds, runtime_public_names, validate_public_names  # noqa: E402
 
 
 class FeedRegistryTests(unittest.TestCase):
@@ -36,11 +36,26 @@ class FeedRegistryTests(unittest.TestCase):
             {"a": {"public_name": "same"}, "b": {"public_name": "same"}},
             {"a": {"public_name": "feed_a"}},
             {"a": {"public_name": "index"}},
+            {"a": {"public_name": "feedseek-search-index"}},
             {"a": {"public_name": "../bad"}},
             {"a": {"public_name": "Bad Capitalization"}},
         ):
             with self.subTest(feeds=feeds), self.assertRaises(ValueError):
                 validate_public_names(feeds)
+
+    def test_runtime_public_names_isolate_bad_overrides(self):
+        entries = {
+            "reuters": {},
+            "disabled": {"enabled": False, "public_name": 123},
+            "news": {"public_name": "feedseek-search-index"},
+            "one": {"public_name": "shared"},
+            "two": {"public_name": "shared"},
+            "meta_newsroom": {"public_name": "meta"},
+        }
+        self.assertEqual(runtime_public_names(entries), {
+            "reuters": "reuters", "disabled": "disabled", "news": "news",
+            "one": "one", "two": "two", "meta_newsroom": "meta",
+        })
 
     def test_public_names_keep_generator_keys(self):
         self.assertEqual(
