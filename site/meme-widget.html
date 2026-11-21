@@ -53,7 +53,10 @@ footer{justify-content:center;margin:18px 0 0}
   const allowed=new Set(["all","jbzd","memy"]);
   const initial=params.get("source");
   const limit=Math.min(36,Math.max(1,Number.parseInt(params.get("limit")||"12",10)||12));
-  const state={source:allowed.has(initial)?initial:"all",offset:0,entries:[],failed:[]};
+  const state={
+    source:allowed.has(initial)?initial:"all",offset:0,entries:[],
+    failed:[],pending:new Set(["jbzd","memy"])
+  };
   const grid=document.querySelector("#grid");
   const status=document.querySelector("#status");
   const page=document.querySelector("#page");
@@ -97,9 +100,22 @@ footer{justify-content:center;margin:18px 0 0}
       details.append(title,meta);link.append(details);article.append(link);grid.append(article);
     }
     const count=entries.length,start=count?state.offset+1:0,end=Math.min(state.offset+limit,count);
-    status.textContent=count?count+" memów"+(state.failed.length?" · część źródeł niedostępna":""):"Brak memów w tym źródle.";
+    const hasFailure=state.failed.length>0;
+    const currentFailed=state.source!=="all"&&state.failed.includes(state.source);
+    if(currentFailed){
+      status.textContent="Źródło "+state.source.toUpperCase()+" jest niedostępne.";
+    }else if(!count&&state.pending.size){
+      status.textContent="Ładowanie: "+Array.from(state.pending).join(", ")+"…";
+    }else if(!count&&hasFailure){
+      status.textContent="Nie udało się wczytać: "+state.failed.join(", ")+".";
+    }else{
+      status.textContent=(count?count+" memów":"Brak memów w tym źródle.")+
+        (state.pending.size?" · ładowanie: "+Array.from(state.pending).join(", "):"")+
+        (hasFailure?" · niedostępne: "+state.failed.join(", "):"");
+    }
     page.textContent=start+"–"+end+" / "+count;
-    prev.disabled=state.offset===0;next.disabled=end>=count;
+    prev.disabled=state.pending.size>0||state.offset===0;
+    next.disabled=state.pending.size>0||end>=count;
   }
   document.querySelectorAll("nav [data-source]").forEach(btn=>btn.addEventListener("click",()=>{
     state.source=btn.dataset.source;state.offset=0;render();
@@ -107,7 +123,9 @@ footer{justify-content:center;margin:18px 0 0}
   prev.addEventListener("click",()=>{state.offset=Math.max(0,state.offset-limit);render();});
   next.addEventListener("click",()=>{state.offset+=limit;render();});
   async function load(source){
-    const response=await fetch("./"+source+".json",{headers:{accept:"application/json"}});
+    const response=await fetch("./"+source+".json",{
+      headers:{accept:"application/json"},signal:AbortSignal.timeout(10000)
+    });
     if(!response.ok)throw new Error(source+" HTTP "+response.status);
     const doc=await response.json();
     if(doc.format!=="feedseek-model-feed"||!Array.isArray(doc.items))throw new Error("Invalid Model Feed");
@@ -115,20 +133,33 @@ footer{justify-content:center;margin:18px 0 0}
       id:String(item.id||""),source,title:String(item.title||"Meme"),
       text:String(item.text||"").slice(0,2000),
       url:safeUrl(item.url||item.external_url),image:safeUrl(item.image),
-      published:String(item.date_published||"")
+      published:String(item.date_published||""),
+      sortDate:String(item.date_published||item.date_modified||"")
     })).filter(e=>e.url&&e.image);
   }
   async function init(){
-    const loaded=await Promise.allSettled([load("jbzd"),load("memy")]);
-    for(let i=0;i<loaded.length;i++){
-      if(loaded[i].status==="fulfilled")state.entries.push(...loaded[i].value);
-      else state.failed.push(i?"memy":"jbzd");
-    }
-    state.entries.sort((a,b)=>(Date.parse(b.published)||0)-(Date.parse(a.published)||0)||a.id.localeCompare(b.id));
     render();
+    await Promise.all(["jbzd","memy"].map(async(source)=>{
+      try{
+        state.entries.push(...await load(source));
+      }catch{
+        state.failed.push(source);
+      }finally{
+        state.pending.delete(source);
+        state.entries.sort((a,b)=>
+          (Date.parse(b.sortDate)||0)-(Date.parse(a.sortDate)||0)||a.id.localeCompare(b.id));
+        state.offset=0;
+        render();
+      }
+    }));
   }
+  const initialized=init();
   const mc=document.modelContext;
   if(mc?.registerTool){
+    const lifecycle=new AbortController();
+    window.addEventListener("pagehide",(event)=>{
+      if(!event.persisted)lifecycle.abort();
+    },{signal:lifecycle.signal});
     try{
       Promise.resolve(mc.registerTool({
         name:"browse_memes",title:"Browse Feedseek memes",
@@ -140,18 +171,23 @@ footer{justify-content:center;margin:18px 0 0}
           limit:{type:"integer",minimum:1,maximum:20}
         },additionalProperties:false},
         annotations:{readOnlyHint:true,untrustedContentHint:true},
-        execute({source="all",query="",offset=0,limit=8}={}){
+        async execute({source="all",query="",offset=0,limit=8}={}){
           if(!allowed.has(source)||typeof query!=="string"||query.length>100||
              !Number.isInteger(offset)||offset<0||offset>5000||
              !Number.isInteger(limit)||limit<1||limit>20)throw new TypeError("Invalid browse arguments");
+          await initialized;
           const items=view(source,query);
-          return {total:items.length,offset,hasMore:offset+limit<items.length,
-            memes:items.slice(offset,offset+limit).map(({id,title,source,url,image,published})=>({id,title,source,url,image,published}))};
+          return {
+            total:items.length,offset,hasMore:offset+limit<items.length,
+            failedSources:[...state.failed],
+            complete:state.pending.size===0,
+            memes:items.slice(offset,offset+limit)
+              .map(({id,title,source,url,image,published})=>({id,title,source,url,image,published}))
+          };
         }
-      })).catch(()=>{});
+      },{signal:lifecycle.signal})).catch(()=>{});
     }catch{}
   }
-  init().catch(()=>{status.textContent="Nie udało się pobrać memów.";});
 })();
 </script>
 </body>

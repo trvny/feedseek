@@ -1,6 +1,6 @@
 export const SITE_ALIAS_HOST = "rss.bartek.lol";
 const PAGES = new URL("https://trvny.github.io/feedseek/");
-const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json", "/index.md", "/llms.txt", "/llms-full.txt"]);
+const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json", "/index.md", "/llms.txt", "/llms-full.txt", "/reader/index.md"]);
 const XML_SITEMAPS = new Set(["/sitemap.xml", "/sitemap-atom.xml", "/sitemap-rss.xml"]);
 const REQUEST_HEADERS = ["accept", "if-none-match", "if-modified-since", "if-range", "range"];
 

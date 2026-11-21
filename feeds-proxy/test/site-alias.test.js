@@ -108,6 +108,9 @@ test("rebases Reader discovery without serving stale range or conditional respon
   assert.equal(guide.headers.get("etag"), null);
   assert.equal(guide.headers.get("content-length"), null);
   assert.equal(await guide.text(), "See https://rss.bartek.lol/jbzd.json");
+  const readerGuide = await siteAliasResponse(new Request("https://rss.bartek.lol/reader/index.md"), async () =>
+    new Response("[Home](https://trvny.github.io/feedseek/)"));
+  assert.equal(await readerGuide.text(), "[Home](https://rss.bartek.lol/)");
   const unavailable = await siteAliasResponse(request, async () => new Response("missing", { status: 404 }));
   assert.equal(unavailable.status, 404);
   assert.equal(await unavailable.text(), "missing");
