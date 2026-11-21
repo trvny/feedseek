@@ -116,10 +116,10 @@ test("legacy same-origin feed_ URLs migrate to short names", async () => {
   });
   vm.runInContext(source, context);
   const canon = context.window.FeedseekReaderCache.canonicalFeedUrl;
-  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
-  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://trvny.github.io/feedseek/wykop.json");
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.xml"), "https://rss.bartek.lol/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/feed_wykop.json"), "https://rss.bartek.lol/wykop.json");
   assert.equal(canon("https://other.example/feed_wykop.xml"), "https://other.example/feed_wykop.xml");
-  assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://trvny.github.io/feedseek/wykop.xml");
+  assert.equal(canon("https://trvny.github.io/feedseek/wykop.xml"), "https://rss.bartek.lol/wykop.xml");
   assert.equal(canon("https://trvny.github.io/other/feed_news.xml"), "https://trvny.github.io/other/feed_news.xml");
 });
 
@@ -157,6 +157,16 @@ test("future gov.pl news is scrubbed from storage, refreshed history, and legacy
     ["past", "near", "forecast", "lookalike"]);
 });
 
+test("canonicalizes saved Pages URLs without touching third-party feeds", () => {
+  const { cache } = makeCache();
+  assert.equal(cache.canonicalFeedUrl("https://trvny.github.io/feedseek/feed_jbzd.xml"),
+    "https://rss.bartek.lol/jbzd.xml");
+  assert.equal(cache.canonicalFeedUrl("https://rss.bartek.lol/feed_memy.xml"),
+    "https://rss.bartek.lol/memy.xml");
+  assert.equal(cache.canonicalFeedUrl("https://elsewhere.test/feed_jbzd.xml"),
+    "https://elsewhere.test/feed_jbzd.xml");
+});
+
 test("IndexedDB also drops quarantined Gov.pl articles during load", async () => {
   const db = memoryIndexedDB();
   const now = Date.now();
@@ -179,10 +189,11 @@ test("canonical public names migrate stored URLs without changing external URLs"
     govpl_news: "govpl", meta_newsroom: "meta",
   });
   const root = "https://trvny.github.io/feedseek/";
-  assert.equal(cache.canonicalFeedUrl(root + "feed_govpl_news.xml"), root + "govpl.xml");
-  assert.equal(cache.canonicalFeedUrl(root + "meta_newsroom.json"), root + "meta.json");
-  assert.equal(cache.canonicalFeedUrl(root + "feed_meta_newsroom.xml"), root + "meta.xml");
-  assert.equal(cache.canonicalFeedUrl(root + "reuters.xml"), root + "reuters.xml");
+  const publicRoot = "https://rss.bartek.lol/";
+  assert.equal(cache.canonicalFeedUrl(root + "feed_govpl_news.xml"), publicRoot + "govpl.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "meta_newsroom.json"), publicRoot + "meta.json");
+  assert.equal(cache.canonicalFeedUrl(root + "feed_meta_newsroom.xml"), publicRoot + "meta.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "reuters.xml"), publicRoot + "reuters.xml");
   assert.equal(cache.canonicalFeedUrl("https://elsewhere.test/meta_newsroom.xml"),
                "https://elsewhere.test/meta_newsroom.xml");
 });

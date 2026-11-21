@@ -25,7 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "feed_generators"))
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from models import load_active_publication_keys  # noqa: E402
+# Fetch from Pages even when the public catalog advertises the vanity domain.
 DEFAULT_BASE = "https://trvny.github.io/feedseek/"
+PUBLIC_BASE = "https://rss.bartek.lol/"
 KEY_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 MAX_FILE_BYTES = 32 * 1024 * 1024
 TIMEOUT_S = 30
@@ -59,10 +61,20 @@ def catalog_entries(catalog: object, base: str) -> list[tuple[str, str, str]]:
         xml_url, json_url = (row.get("feed_url"), row.get("model_feed_url")) if isinstance(row, dict) else (None, None)
         if not isinstance(key, str) or not KEY_RE.match(key):
             raise RestoreError(f"invalid catalog key: {key!r}")
-        for url in (xml_url, json_url):
-            if not isinstance(url, str) or not url.startswith(base):
+        urls = []
+        for url, suffix in ((xml_url, ".xml"), (json_url, ".json")):
+            if not isinstance(url, str):
+                raise RestoreError(f"{key}: invalid catalog URL: {url!r}")
+            if url.startswith(PUBLIC_BASE):
+                # Canonical publisher host; restore from the old stable Pages backend.
+                url = base + url[len(PUBLIC_BASE):]
+            if not url.startswith(base):
                 raise RestoreError(f"{key}: catalog URL outside {base}: {url!r}")
-        entries.append((key, xml_url, json_url))
+            name = url[len(base):]
+            if not re.fullmatch(r"[A-Za-z0-9_-]+" + re.escape(suffix), name):
+                raise RestoreError(f"{key}: unsafe catalog path: {url!r}")
+            urls.append(url)
+        entries.append((key, *urls))
     return entries
 
 

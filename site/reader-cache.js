@@ -16,22 +16,27 @@
     ]);
   }
 
-  // Legacy Feedseek Pages names feed_<key>.(xml|json) -> <key>.(xml|json).
-  // Only inside the site root (parent of reader/), never other projects.
+  // Canonicalize old Pages subscriptions and feed_* aliases; never rewrite third-party URLs.
   function canonicalFeedUrl(url) {
     if (typeof url !== "string") return url;
     try {
-      const root = new URL("../", globalThis.location?.href);
+      const pageRoot = new URL("../", globalThis.location?.href);
+      const publicRoot = new URL("https://rss.bartek.lol/");
+      const legacyRoot = new URL("https://trvny.github.io/feedseek/");
       const parsed = new URL(url);
-      if (parsed.origin !== root.origin) return url;
-      const match = parsed.pathname.match(/^(.*\/)(feed_)?([^/]+)\.(xml|json)$/);
-      if (!match || match[1] !== root.pathname) return url;
+      const isOfficialReader = [publicRoot.href, legacyRoot.href].includes(pageRoot.href);
+      const validRoot = isOfficialReader
+        ? [publicRoot, legacyRoot].find(root => parsed.origin === root.origin && parsed.pathname.startsWith(root.pathname))
+        : (parsed.origin === pageRoot.origin && parsed.pathname.startsWith(pageRoot.pathname) ? pageRoot : null);
+      if (!validRoot) return url;
+      const path = parsed.pathname.slice(validRoot.pathname.length);
+      const match = path.match(/^(?:feed_)?([A-Za-z0-9_-]+)\.(xml|json)$/);
+      if (!match) return url;
       const aliases = globalThis.FeedseekPublicNames || {};
-      const name = Object.prototype.hasOwnProperty.call(aliases, match[3])
-        ? aliases[match[3]] : match[3];
-      if (!match[2] && name === match[3]) return url;
-      parsed.pathname = match[1] + name + "." + match[4];
-      return parsed.href;
+      const name = Object.prototype.hasOwnProperty.call(aliases, match[1])
+        ? aliases[match[1]] : match[1];
+      const targetRoot = isOfficialReader ? publicRoot : pageRoot;
+      return new URL(name + "." + match[2] + parsed.search + parsed.hash, targetRoot).href;
     } catch { return url; }
   }
 
@@ -47,8 +52,10 @@
       return /^https:\/\/www\.gov\.pl\/web\//.test(String(item.url || item.id || ""));
     }
     try {
-      const root = new URL("../", globalThis.location?.href);
-      const url = new URL(item.feedUrl);
+      const current = new URL("../", globalThis.location?.href);
+      const official = ["https://rss.bartek.lol/", "https://trvny.github.io/feedseek/"].includes(current.href);
+      const root = official ? new URL("https://rss.bartek.lol/") : current;
+      const url = new URL(canonicalFeedUrl(item.feedUrl));
       return url.origin === root.origin
         && (url.pathname === root.pathname + "govpl.xml"
           || url.pathname === root.pathname + "govpl_news.xml"

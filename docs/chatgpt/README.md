@@ -4,7 +4,7 @@ Feedseek exposes its public feed data as a small read-only remote MCP app for Ch
 The production endpoint is:
 
 ```text
-https://feeds-proxy.travny.workers.dev/mcp
+https://rss.bartek.lol/mcp
 ```
 
 ## Tools
@@ -114,9 +114,9 @@ Use these values when filling the current OpenAI submission form:
 | Display name | `Feedseek` |
 | Category | `NEWS` |
 | MCP type | Universal |
-| MCP server | `https://feeds-proxy.travny.workers.dev/mcp` |
+| MCP server | `https://rss.bartek.lol/mcp` |
 | Authentication | None; public read-only data |
-| Homepage | `https://trvny.github.io/feedseek/` |
+| Homepage | `https://rss.bartek.lol/` |
 | Source | `https://github.com/trvny/feedseek` |
 | Support | `https://github.com/trvny/feedseek/blob/main/docs/chatgpt/SUPPORT.md` |
 | Privacy policy | `https://github.com/trvny/feedseek/blob/main/docs/chatgpt/PRIVACY.md` |
@@ -128,7 +128,7 @@ Before submission:
 
 1. Confirm the submitting OpenAI Platform organization has **Apps Management: Write** and
    select a verified individual or business identity whose public details match the listing.
-2. Enter `https://feeds-proxy.travny.workers.dev/mcp`, choose no authentication, then select **Scan Tools**.
+2. Enter `https://rss.bartek.lol/mcp`, choose no authentication, then select **Scan Tools**.
 3. If the portal requests domain verification, copy its exact token into the production
    Cloudflare Worker variable `OPENAI_APPS_CHALLENGE`. The Worker serves that value verbatim at
    `https://feeds-proxy.travny.workers.dev/.well-known/openai-apps-challenge`; without a configured token the

@@ -18,6 +18,17 @@ test("serves the OpenAI domain verification token as plain text", async () => {
   assert.equal(await response.text(), "challenge-token-123");
 });
 
+test("serves verification on the canonical Feedseek MCP hostname", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch() { throw Error("Verification must not hit Pages"); } },
+    FeedseekProxy: { fetch() { throw Error("Verification must not hit proxy"); } },
+  } };
+  const response = await app.fetch(new Request("https://rss.bartek.lol/.well-known/openai-apps-challenge"),
+    { OPENAI_APPS_CHALLENGE: "canonical-token" }, ctx);
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), "canonical-token");
+});
+
 test("keeps the verification endpoint closed until a token is configured", async () => {
   const response = await app.fetch(new Request(challengeUrl), {});
   assert.equal(response.status, 404);
@@ -31,6 +42,22 @@ test("rejects write methods on the verification endpoint", async () => {
 
   assert.equal(response.status, 405);
   assert.equal(response.headers.get("allow"), "GET, HEAD");
+});
+
+test("serves remote MCP on both the public and legacy Worker domains", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch: () => { throw new Error("MCP must not hit Pages"); } },
+    FeedseekProxy: { fetch: () => { throw new Error("MCP must not hit proxy"); } },
+  } };
+  for (const hostname of ["rss.bartek.lol", "feeds-proxy.travny.workers.dev"]) {
+    const response = await app.fetch(new Request(`https://${hostname}/mcp`, {
+      method: "POST",
+      headers: {"content-type":"application/json"},
+      body: JSON.stringify({jsonrpc:"2.0",id:1,method:"ping"}),
+    }), {}, ctx);
+    assert.equal(response.status, 200);
+    assert.ok((await response.json()).result);
+  }
 });
 
 test("routes the same path on each hostname to separate cache entrypoints", async () => {
