@@ -99,6 +99,18 @@ test("rebases Reader discovery without serving stale range or conditional respon
     xml: "https://rss.bartek.lol/example.xml",
     model: "https://rss.bartek.lol/example.json",
   });
+  const guide = await siteAliasResponse(new Request("https://rss.bartek.lol/llms-full.txt"), async (_target, init) => {
+    assert.deepEqual(Object.fromEntries(init.headers), {});
+    return new Response("See https://trvny.github.io/feedseek/jbzd.json", {
+      headers: { etag: '"obsolete"', "content-length": "60" },
+    });
+  });
+  assert.equal(guide.headers.get("etag"), null);
+  assert.equal(guide.headers.get("content-length"), null);
+  assert.equal(await guide.text(), "See https://rss.bartek.lol/jbzd.json");
+  const readerGuide = await siteAliasResponse(new Request("https://rss.bartek.lol/reader/index.md"), async () =>
+    new Response("[Home](https://trvny.github.io/feedseek/)"));
+  assert.equal(await readerGuide.text(), "[Home](https://rss.bartek.lol/)");
   const unavailable = await siteAliasResponse(request, async () => new Response("missing", { status: 404 }));
   assert.equal(unavailable.status, 404);
   assert.equal(await unavailable.text(), "missing");

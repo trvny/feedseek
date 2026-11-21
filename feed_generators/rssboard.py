@@ -1,5 +1,5 @@
 """RSS Board feed: combined Atom from feed-format standards bodies — the RSS
-Advisory Board, the Dublin Core Metadata Initiative, and JSON Feed.
+Advisory Board, the Dublin Core Metadata Initiative, Feeder, and JSON Feed.
 
 The first two are plain RSS/Atom (multi_rss SOURCES). JSON Feed's own site
 publishes only a JSON Feed 1.1 document (no RSS/Atom sibling), so it needs a
@@ -22,6 +22,7 @@ SOURCES = [
     ("RSS Advisory Board", "http://feeds.rssboard.org/rssboard", 15),
     ("Dublin Core (DCMI)", "https://www.dublincore.org/index.xml", 20),
     ("Schema.org Blog", "https://blog.schema.org/feed/", 15),
+    ("Feeder Blog", "https://feeder.co/blog.rss", 20),
 ]
 
 JSONFEED_URL = "https://www.jsonfeed.org/feed.json"
@@ -69,7 +70,7 @@ def main(full=False):
         feed_name=FEED_NAME,
         title="RSS Board",
         subtitle="Feed-format standards bodies: the RSS Advisory Board, the "
-                 "Dublin Core Metadata Initiative, JSON Feed, and Schema.org.",
+                 "Dublin Core Metadata Initiative, JSON Feed, Schema.org, and Feeder.",
         blog_url="https://www.rssboard.org/",
         author="various",
         sources=SOURCES,
