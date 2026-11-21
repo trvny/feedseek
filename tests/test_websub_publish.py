@@ -2,6 +2,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +46,24 @@ class WebSubPublishingTests(unittest.TestCase):
         changed = after.replace(b"<title>One</title>", b"<title>Two</title>")
         self.assertEqual(websub_notify.entry_digest(before), websub_notify.entry_digest(after))
         self.assertNotEqual(websub_notify.entry_digest(before), websub_notify.entry_digest(changed))
+
+    def test_public_topic_verification_checks_exact_url_and_entry_digest(self):
+        feed = b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>sample</id></entry></feed>'
+        expected = websub_notify.entry_digest(feed)
+        class PublicResponse:
+            status = 200
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                return False
+            def read(self, size):
+                self.max_bytes = size
+                return feed
+        with patch.object(websub_notify.urllib.request, "urlopen", return_value=PublicResponse()) as fetch:
+            self.assertTrue(websub_notify.public_version_ready("https://rss.bartek.lol/jbzd.xml", expected))
+            self.assertEqual(fetch.call_args.args[0].full_url, "https://rss.bartek.lol/jbzd.xml")
+        with self.assertRaises(ValueError):
+            websub_notify.public_version_ready("https://evil.example/topic", expected)
 
     def test_sha_snapshot_excludes_nonpilot_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -37,6 +37,7 @@ jobs:
     outputs:
       pages_ready: ${{ steps.pages_upload.outcome == 'success' && steps.backup.outcome == 'success' && steps.model_feeds.outcome == 'success' && steps.validate.outcome == 'success' }}
       websub_topics: ${{ steps.websub.outputs.topics }}
+      websub_expected: ${{ steps.websub.outputs.expected }}
     steps:
       - name: Checkout repository
         # zizmor: ignore[artipacked] this job commits & pushes generated docs back, so it needs persisted creds
@@ -84,6 +85,7 @@ jobs:
         run: uv run --locked tools/restore_published_feeds.py
 
       - name: Snapshot WebSub pilot topics
+        continue-on-error: true
         run: uv run --locked python tools/websub_notify.py snapshot "$RUNNER_TEMP/websub-before.json"
 
       - name: Run feed tests
@@ -179,6 +181,7 @@ jobs:
 
       - name: Collect changed WebSub topics
         id: websub
+        continue-on-error: true
         run: uv run --locked python tools/websub_notify.py diff "$RUNNER_TEMP/websub-before.json" "$GITHUB_OUTPUT"
 
       - name: Upload live Pages artifact
@@ -242,5 +245,6 @@ jobs:
         continue-on-error: true
         env:
           WEBSUB_TOPICS: ${{ needs.update-feeds.outputs.websub_topics }}
+          WEBSUB_EXPECTED: ${{ needs.update-feeds.outputs.websub_expected }}
         run: python tools/websub_notify.py publish
 
