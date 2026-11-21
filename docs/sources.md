@@ -1064,7 +1064,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=news.mit.edu&sz=16) MIT Latest — <https://news.mit.edu/rss/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Wikipedia (PL)
-`wikipedia_pl` · [XML](https://trvny.github.io/feedseek/wikipedia.xml) · [JSON](https://trvny.github.io/feedseek/wikipedia.json)
+`wikipedia_pl` · [XML](https://trvny.github.io/feedseek/wikipedia_pl.xml) · [JSON](https://trvny.github.io/feedseek/wikipedia_pl.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Artykuł na medal — <https://pl.wikipedia.org/w/api.php?action=featuredfeed&feedformat=atom&feed=featured>
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Czy wiesz...? — <https://pl.wikipedia.org/w/api.php?action=featuredfeed&feedformat=atom&feed=dyk>
@@ -1149,7 +1149,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=ra.co&sz=16) ra.co (music) — <https://ra.co/music>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.beatport.com&sz=16) Beatport Top 100
-`beatport_top100` · [XML](https://trvny.github.io/feedseek/beatport.xml) · [JSON](https://trvny.github.io/feedseek/beatport.json)
+`beatport_top100` · [XML](https://trvny.github.io/feedseek/beatport_top100.xml) · [JSON](https://trvny.github.io/feedseek/beatport_top100.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.beatport.com&sz=16) Blog — <https://www.beatport.com/top-100>
 
@@ -1394,7 +1394,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Daily
 
 ### ![](https://www.google.com/s2/favicons?domain=api.viewbits.com&sz=16) Daily Digest
-`daily_digest` · [XML](https://trvny.github.io/feedseek/digest.xml) · [JSON](https://trvny.github.io/feedseek/digest.json)
+`daily_digest` · [XML](https://trvny.github.io/feedseek/daily_digest.xml) · [JSON](https://trvny.github.io/feedseek/daily_digest.json)
 
 - ![](https://www.google.com/s2/favicons?domain=api.viewbits.com&sz=16) Viewbits — <https://api.viewbits.com/v1>
 - ![](https://www.google.com/s2/favicons?domain=viewbits.com&sz=16) Viewbits docs — <https://viewbits.com/docs/>
@@ -1409,7 +1409,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=pl.wikipedia.org&sz=16) Wiki opensearch — <https://pl.wikipedia.org>
 
 ### ![](https://www.google.com/s2/favicons?domain=gist.github.com&sz=16) Daily Quote
-`daily_quote` · [XML](https://trvny.github.io/feedseek/quote.xml) · [JSON](https://trvny.github.io/feedseek/quote.json)
+`daily_quote` · [XML](https://trvny.github.io/feedseek/daily_quote.xml) · [JSON](https://trvny.github.io/feedseek/daily_quote.json)
 
 - ![](https://www.google.com/s2/favicons?domain=gist.github.com&sz=16) GIST — <https://gist.github.com/trvny/167d2271e3cf7d21e118aa7d906a7d2c>
 - ![](https://www.google.com/s2/favicons?domain=gist.githubusercontent.com&sz=16) Quotes json — <https://gist.githubusercontent.com/trvny/167d2271e3cf7d21e118aa7d906a7d2c/raw/quotes.json>

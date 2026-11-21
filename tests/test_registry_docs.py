@@ -38,6 +38,12 @@ class RegistryDocsTests(unittest.TestCase):
             else:
                 self.assertNotIn(raw_url, readme)
 
+    def test_protected_feed_public_names_stay_equal_to_registry_keys(self):
+        registry = load_registry()
+        for key in ("beatport_top100", "daily_digest", "daily_quote", "wikipedia_pl"):
+            with self.subTest(key=key):
+                self.assertEqual(registry[key].get("public_name", key), key)
+
     def test_readme_feed_counts_match_registry(self):
         expected = len(load_registry())
         english = (FEEDSEEK / "README.md").read_text(encoding="utf-8")

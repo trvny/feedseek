@@ -32,15 +32,15 @@
 | `audio` | Audio.com.pl | [JSON](https://trvny.github.io/feedseek/audio.json) |
 | `aws` | AWS | [JSON](https://trvny.github.io/feedseek/aws.json) |
 | `baidubaike` | Baidu Baike 热搜词条 | [JSON](https://trvny.github.io/feedseek/baidubaike.json) |
-| `beatport_top100` | Beatport Top 100 | [JSON](https://trvny.github.io/feedseek/beatport.json) |
+| `beatport_top100` | Beatport Top 100 | [JSON](https://trvny.github.io/feedseek/beatport_top100.json) |
 | `bethesda` | Bethesda News | [JSON](https://trvny.github.io/feedseek/bethesda.json) |
 | `canva` | Canva | [JSON](https://trvny.github.io/feedseek/canva.json) |
 | `cheezburger` | Cheezburger Network | [JSON](https://trvny.github.io/feedseek/cheezburger.json) |
 | `claude` | Claude | [JSON](https://trvny.github.io/feedseek/claude.json) |
 | `cloudflare` | Cloudflare | [JSON](https://trvny.github.io/feedseek/cloudflare.json) |
 | `czworka` | PR4 Czwórka | [JSON](https://trvny.github.io/feedseek/czworka.json) |
-| `daily_digest` | Daily Digest | [JSON](https://trvny.github.io/feedseek/digest.json) |
-| `daily_quote` | Daily Quote | [JSON](https://trvny.github.io/feedseek/quote.json) |
+| `daily_digest` | Daily Digest | [JSON](https://trvny.github.io/feedseek/daily_digest.json) |
+| `daily_quote` | Daily Quote | [JSON](https://trvny.github.io/feedseek/daily_quote.json) |
 | `datime` | DaTime | [JSON](https://trvny.github.io/feedseek/datime.json) |
 | `development` | Development | [JSON](https://trvny.github.io/feedseek/development.json) |
 | `dji` | DJI | [JSON](https://trvny.github.io/feedseek/dji.json) |
@@ -127,7 +127,7 @@
 | `visualcrossing` | Visual Crossing | [JSON](https://trvny.github.io/feedseek/visualcrossing.json) |
 | `visualcrossing_blog` | Visual Crossing Resources | [JSON](https://trvny.github.io/feedseek/visualcrossing_blog.json) |
 | `weather` | Pogoda — Kościelec (Chrzanów) | [JSON](https://trvny.github.io/feedseek/weather.json) |
-| `wikipedia_pl` | Wikipedia (PL) | [JSON](https://trvny.github.io/feedseek/wikipedia.json) |
+| `wikipedia_pl` | Wikipedia (PL) | [JSON](https://trvny.github.io/feedseek/wikipedia_pl.json) |
 | `wotd` | Word of the Day | [JSON](https://trvny.github.io/feedseek/wotd.json) |
 | `wsj` | WSJ | [JSON](https://trvny.github.io/feedseek/wsj.json) |
 | `wykop` | Wykop | [JSON](https://trvny.github.io/feedseek/wykop.json) |

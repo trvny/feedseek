@@ -128,8 +128,9 @@ class ModelFeedIndexTests(unittest.TestCase):
             (seed / "docs").mkdir()
             (seed / "docs/sources.md").write_text("Sources\n")
             (seed / "feed_generators").mkdir()
-            for name in ("docs_model_feeds.py", "utils.py"):
+            for name in ("docs_model_feeds.py", "utils.py", "models.py"):
                 shutil.copyfile(root / "feed_generators" / name, seed / "feed_generators" / name)
+            shutil.copyfile(root / "feeds.yaml", seed / "feeds.yaml")
             self.write_feed(seed / "feeds", "alpha", "Alpha", 1)
             run(seed, sys.executable, "feed_generators/docs_model_feeds.py")
             run(seed, "git", "add", ".")

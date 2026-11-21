@@ -493,7 +493,7 @@ class LiveFeedMetadataTests(unittest.TestCase):
             xml = (out / "meta.xml").read_text(encoding="utf-8")
             self.assertEqual(xml, (out / "meta_newsroom.xml").read_text(encoding="utf-8"))
             self.assertEqual(xml, (out / "feed_meta_newsroom.xml").read_text(encoding="utf-8"))
-            self.assertIn('href="https://feeds.example/meta.xml" rel="self"', xml)
+            self.assertIn('rel="self" href="https://feeds.example/meta.xml"', xml)
             doc = json.loads((out / "meta.json").read_text(encoding="utf-8"))
             self.assertEqual(doc["source_key"], "meta_newsroom")
             self.assertEqual(doc["items"][0]["id"], "stable-1")
