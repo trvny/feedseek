@@ -32,8 +32,9 @@ export default {
    */
   fetch(request, env, ctx) {
     const { hostname, pathname } = new URL(request.url);
-    if (hostname === SITE_ALIAS_HOST) return ctx.exports.FeedseekSite.fetch(request);
+    // MCP works on the canonical domain and remains reachable on the legacy Worker.
     if (pathname === "/mcp") return mcpResponse(request);
+    if (hostname === SITE_ALIAS_HOST) return ctx.exports.FeedseekSite.fetch(request);
     if (pathname === OPENAI_CHALLENGE_PATH) return openAiChallengeResponse(request, env);
     return ctx.exports.FeedseekProxy.fetch(request);
   },

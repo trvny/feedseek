@@ -33,6 +33,22 @@ test("rejects write methods on the verification endpoint", async () => {
   assert.equal(response.headers.get("allow"), "GET, HEAD");
 });
 
+test("serves remote MCP on both the public and legacy Worker domains", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch: () => { throw new Error("MCP must not hit Pages"); } },
+    FeedseekProxy: { fetch: () => { throw new Error("MCP must not hit proxy"); } },
+  } };
+  for (const hostname of ["rss.bartek.lol", "feeds-proxy.travny.workers.dev"]) {
+    const response = await app.fetch(new Request(`https://${hostname}/mcp`, {
+      method: "POST",
+      headers: {"content-type":"application/json"},
+      body: JSON.stringify({jsonrpc:"2.0",id:1,method:"ping"}),
+    }), {}, ctx);
+    assert.equal(response.status, 200);
+    assert.ok((await response.json()).result);
+  }
+});
+
 test("routes the same path on each hostname to separate cache entrypoints", async () => {
   const configPath = fileURLToPath(new URL("../wrangler.jsonc", import.meta.url));
   const config = unstable_readConfig({ config: configPath });

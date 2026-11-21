@@ -3,13 +3,14 @@ import { readLimited } from "./index.js";
 
 const CATALOG_URL = "https://trvny.github.io/feedseek/model-feeds.json";
 const INDEX_URL = "https://trvny.github.io/feedseek/feedseek-search-index.json";
-const FEEDSEEK_ICON_URL = "https://trvny.github.io/feedseek/icons/android-chrome-192x192.png";
+const FEEDSEEK_ICON_URL = "https://rss.bartek.lol/icons/android-chrome-192x192.png";
 const SERVER_INFO = {
   name: "feedseek",
   title: "Feedseek",
   version: "1.0.0",
   icons: [{ src: FEEDSEEK_ICON_URL, mimeType: "image/png", sizes: ["192x192"] }],
 };
+// Internal reads use Pages directly; public URLs come from the model catalog.
 const LIVE_FEEDS_BASE = "https://trvny.github.io/feedseek/";
 const RAW_FEEDS_BASE = "https://raw.githubusercontent.com/trvny/feedseek";
 const SUPPORTED_PROTOCOLS = new Set(["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26"]);
