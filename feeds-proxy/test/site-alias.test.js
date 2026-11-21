@@ -36,6 +36,18 @@ test("preserves Pages canonicals and crawl directives", async () => {
   assert.equal(feed.headers.get("x-robots-tag"), "index");
 });
 
+test("passes through advertised sitemaps without adding noindex", async () => {
+  for (const name of ["sitemap.xml", "sitemap-atom.xml", "sitemap-rss.xml", "sitemap.txt"]) {
+    const response = await siteAliasResponse(new Request(`https://rss.bartek.lol/${name}`), async target => {
+      assert.equal(target.href, `https://trvny.github.io/feedseek/${name}`);
+      return new Response("published sitemap");
+    });
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("x-robots-tag"), null, name);
+    assert.equal(await response.text(), "published sitemap");
+  }
+});
+
 test("keeps Pages redirects on the alias and rejects unrelated destinations", async () => {
   const request = new Request("https://rss.bartek.lol/reader?q=1", { method: "HEAD" });
   const response = await siteAliasResponse(request, async () => Response.redirect("https://trvny.github.io/feedseek/reader/?q=1", 301));

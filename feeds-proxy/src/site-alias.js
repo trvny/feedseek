@@ -1,6 +1,7 @@
 export const SITE_ALIAS_HOST = "rss.bartek.lol";
 const PAGES = new URL("https://trvny.github.io/feedseek/");
 const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json"]);
+const XML_SITEMAPS = new Set(["/sitemap.xml", "/sitemap-atom.xml", "/sitemap-rss.xml"]);
 const REQUEST_HEADERS = ["accept", "if-none-match", "if-modified-since", "if-range", "range"];
 
 /** @param {Request} request @param {typeof fetch} fetchImpl */
@@ -25,7 +26,7 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
     const upstream = await fetchImpl(source, { method, headers, redirect: "manual", signal: AbortSignal.timeout(12000) });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
-    if (/\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
+    if (/\.(?:xml|json)$/.test(alias.pathname) && !XML_SITEMAPS.has(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
       responseHeaders.set("x-robots-tag", "noindex, follow");
     }
     responseHeaders.set("x-content-type-options", "nosniff");
