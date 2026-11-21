@@ -645,6 +645,11 @@ def setup_feed_links(
         rel="self",
     )
     fg.link(href=blog_url, rel="alternate")
+    # Match the published XML before feed timestamp comparison.
+    from websub_config import HUB_URL, PILOT_KEYS
+
+    if feed_name in PILOT_KEYS and REPO_SLUG == "trvny/feedseek":
+        fg.link(href=HUB_URL, rel="hub")
     fg.generator("Feedseek", uri="https://github.com/trvny/feedseek")
     resolved = _managed_explicit_icon(blog_url, icon) if icon else favicon_url(blog_url)
     fg.icon(resolved)

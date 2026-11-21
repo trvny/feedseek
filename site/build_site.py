@@ -114,8 +114,7 @@ WEBMANIFEST = f"""{{
 
 CANONICAL_PAGE_BASE = PUBLIC_BASE
 GITHUB_PAGES_BASE = "https://trvny.github.io/feedseek/"
-WEBSUB_HUB = "https://pubsubhubbub.appspot.com/"
-WEBSUB_PILOT_KEYS = frozenset({"jbzd", "memy", "rssboard"})
+from websub_config import HUB_URL as WEBSUB_HUB, PILOT_KEYS as WEBSUB_PILOT_KEYS
 
 
 def search_page_base(base: str) -> str:

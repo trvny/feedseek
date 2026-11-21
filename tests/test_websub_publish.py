@@ -42,10 +42,17 @@ class WebSubPublishingTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             websub_notify.publish(["https://evil.example/feed.xml"])
 
+    def test_fingerprint_ignores_hub_and_channel_clock_but_detects_entry_edits(self):
+        before = b'<feed xmlns="http://www.w3.org/2005/Atom"><updated>2026-01-01T00:00:00Z</updated><entry><id>a</id><title>One</title></entry></feed>'
+        after = b'<feed xmlns="http://www.w3.org/2005/Atom"><updated>2026-11-21T00:00:00Z</updated><link rel="hub" href="https://pubsubhubbub.appspot.com/"/><entry><id>a</id><title>One</title></entry></feed>'
+        changed = after.replace(b"<title>One</title>", b"<title>Two</title>")
+        self.assertEqual(websub_notify.entry_digest(before), websub_notify.entry_digest(after))
+        self.assertNotEqual(websub_notify.entry_digest(before), websub_notify.entry_digest(changed))
+
     def test_sha_snapshot_excludes_nonpilot_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
-            (directory / "feed_jbzd.xml").write_text("<feed/>", encoding="utf-8")
+            (directory / "feed_jbzd.xml").write_text('<feed xmlns="http://www.w3.org/2005/Atom"/>', encoding="utf-8")
             (directory / "feed_other.xml").write_text("<feed/>", encoding="utf-8")
             self.assertEqual(set(websub_notify.fingerprints(directory)), {"jbzd"})
 

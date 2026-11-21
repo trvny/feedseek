@@ -11,18 +11,43 @@ import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "feed_generators"))
+from websub_config import HUB_URL as HUB, PUBLIC_BASE, PILOT_KEYS
+
 FEEDS = ROOT / "feeds"
-HUB = "https://pubsubhubbub.appspot.com/"
-PUBLIC_BASE = "https://rss.bartek.lol/"
-KEYS = ("jbzd", "memy", "rssboard")
+KEYS = tuple(sorted(PILOT_KEYS))
 TOPICS = {PUBLIC_BASE + key + ".xml" for key in KEYS}
+ATOM = "{http://www.w3.org/2005/Atom}"
+
+
+def entry_digest(payload: bytes) -> str:
+    """Hash the published entry content, ignoring volatile channel clocks/hub links."""
+    root = ET.fromstring(payload)
+    if root.tag == ATOM + "feed":
+        items = root.findall(ATOM + "entry")
+    elif root.tag == "rss":
+        channel = root.find("channel")
+        if channel is None:
+            raise ValueError("Missing RSS channel")
+        items = channel.findall("item")
+    else:
+        raise ValueError("Unexpected feed format")
+    digest = hashlib.sha256()
+    for entry in items:
+        canonical = ET.canonicalize(
+            ET.tostring(entry, encoding="unicode"), strip_text=True
+        ).encode("utf-8")
+        digest.update(len(canonical).to_bytes(4, "big"))
+        digest.update(canonical)
+    return digest.hexdigest()
 
 
 def fingerprints(feeds_dir: Path = FEEDS) -> dict[str, str]:
     return {
-        key: hashlib.sha256((feeds_dir / f"feed_{key}.xml").read_bytes()).hexdigest()
+        key: entry_digest((feeds_dir / f"feed_{key}.xml").read_bytes())
         for key in KEYS
         if (feeds_dir / f"feed_{key}.xml").is_file()
     }
@@ -39,17 +64,24 @@ def changed_topics(previous: dict[str, str], current: dict[str, str]) -> list[st
 def publish(topics: list[str]) -> None:
     if not isinstance(topics, list) or any(topic not in TOPICS for topic in topics):
         raise ValueError("Unknown WebSub topic")
+    failures = []
     for topic in sorted(set(topics)):
-        body = urllib.parse.urlencode({"hub.mode": "publish", "hub.url": topic}).encode()
-        request = urllib.request.Request(
-            HUB, data=body,
-            headers={"content-type": "application/x-www-form-urlencoded", "user-agent": "Feedseek-WebSub/1.0"},
-            method="POST",
-        )
-        with urllib.request.urlopen(request, timeout=10) as response:
-            if response.status not in (200, 202, 204):
-                raise RuntimeError(f"WebSub hub responded {response.status}")
-        print(f"WebSub publish accepted: {topic}")
+        try:
+            body = urllib.parse.urlencode({"hub.mode": "publish", "hub.url": topic}).encode()
+            request = urllib.request.Request(
+                HUB, data=body,
+                headers={"content-type": "application/x-www-form-urlencoded", "user-agent": "Feedseek-WebSub/1.0"},
+                method="POST",
+            )
+            with urllib.request.urlopen(request, timeout=10) as response:
+                if response.status not in (200, 202, 204):
+                    raise RuntimeError(f"WebSub hub responded {response.status}")
+            print(f"WebSub publish accepted: {topic}")
+        except (OSError, RuntimeError) as exc:
+            failures.append(topic)
+            print(f"WebSub publish failed for {topic}: {exc}", file=sys.stderr)
+    if failures:
+        raise RuntimeError(f"{len(failures)} of {len(topics)} WebSub topics failed")
 
 
 def main() -> int:
