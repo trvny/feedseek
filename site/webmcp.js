@@ -283,7 +283,7 @@
           source_key: { type: "string", description: "Key from list_feeds, e.g. jbzd or openai." },
           query: { type: "string", maxLength: 120 },
           limit: { type: "integer", minimum: 1, maximum: 20, default: 10 },
-          offset: { type: "integer", minimum: 0, maximum: 5000, default: 0 },
+          offset: { type: "integer", minimum: 0, maximum: 100000, default: 0 },
         },
         required: ["source_key"],
         additionalProperties: false,
@@ -294,7 +294,7 @@
         const needle = normalize(requireString(query, "query", 120)).trim();
         if (!/^[a-z0-9_-]{1,100}$/.test(key)) throw new TypeError("Invalid Feedseek source key.");
         if (!Number.isInteger(limit) || limit < 1 || limit > 20) throw new RangeError("limit must be between 1 and 20.");
-        if (!Number.isSafeInteger(offset) || offset < 0 || offset > 5000) throw new RangeError("offset is out of range.");
+        if (!Number.isSafeInteger(offset) || offset < 0 || offset > 100000) throw new RangeError("offset is out of range.");
         const catalog = await loadCatalog();
         const source = catalog.feeds.find((feed) => feed.key === key);
         if (!source) throw new RangeError("Unknown published Feedseek source.");
@@ -315,7 +315,7 @@
           model_feed_url: source.model_feed_url,
           total: results.length,
           offset,
-          next_offset: offset + limit < results.length ? offset + limit : null,
+          next_offset: offset + limit < results.length && offset + limit <= 100000 ? offset + limit : null,
           entries: results.slice(offset, offset + limit).map((item) => ({
             id: String(item.id ?? ""),
             title: String(item.title ?? ""),
