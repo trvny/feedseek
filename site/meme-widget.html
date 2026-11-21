@@ -123,19 +123,25 @@ footer{justify-content:center;margin:18px 0 0}
   prev.addEventListener("click",()=>{state.offset=Math.max(0,state.offset-limit);render();});
   next.addEventListener("click",()=>{state.offset+=limit;render();});
   async function load(source){
-    const response=await fetch("./"+source+".json",{
-      headers:{accept:"application/json"},signal:AbortSignal.timeout(10000)
-    });
-    if(!response.ok)throw new Error(source+" HTTP "+response.status);
-    const doc=await response.json();
-    if(doc.format!=="feedseek-model-feed"||!Array.isArray(doc.items))throw new Error("Invalid Model Feed");
-    return doc.items.map(item=>({
-      id:String(item.id||""),source,title:String(item.title||"Meme"),
-      text:String(item.text||"").slice(0,2000),
-      url:safeUrl(item.url||item.external_url),image:safeUrl(item.image),
-      published:String(item.date_published||""),
-      sortDate:String(item.date_published||item.date_modified||"")
-    })).filter(e=>e.url&&e.image);
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),10000);
+    try{
+      const response=await fetch("./"+source+".json",{
+        headers:{accept:"application/json"},signal:controller.signal
+      });
+      if(!response.ok)throw new Error(source+" HTTP "+response.status);
+      const doc=await response.json();
+      if(doc.format!=="feedseek-model-feed"||!Array.isArray(doc.items))throw new Error("Invalid Model Feed");
+      return doc.items.map(item=>({
+        id:String(item.id||""),source,title:String(item.title||"Meme"),
+        text:String(item.text||"").slice(0,2000),
+        url:safeUrl(item.url||item.external_url),image:safeUrl(item.image),
+        published:String(item.date_published||""),
+        sortDate:String(item.date_published||item.date_modified||"")
+      })).filter(e=>e.url&&e.image);
+    }finally{
+      clearTimeout(timeout);
+    }
   }
   async function init(){
     render();
@@ -180,7 +186,7 @@ footer{justify-content:center;margin:18px 0 0}
           return {
             total:items.length,offset,hasMore:offset+limit<items.length,
             failedSources:[...state.failed],
-            complete:state.pending.size===0,
+            complete:state.pending.size===0&&state.failed.length===0,
             memes:items.slice(offset,offset+limit)
               .map(({id,title,source,url,image,published})=>({id,title,source,url,image,published}))
           };
