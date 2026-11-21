@@ -1163,7 +1163,7 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
         ):
             xml = xml.replace(old, new)
 
-    if short_name(source) in WEBSUB_PILOT_KEYS:
+    if REPO_SLUG == "trvny/feedseek" and short_name(source) in WEBSUB_PILOT_KEYS:
         xml = add_websub_links(xml, public_xml_url)
 
     sibling = source.with_suffix(".json")

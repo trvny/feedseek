@@ -23,6 +23,8 @@ from typing import Any
 import requests
 from feedgen.feed import FeedGenerator
 
+from websub_config import PUBLIC_BASE as CANONICAL_FEEDSEEK_BASE
+
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
@@ -40,7 +42,7 @@ REPO_SLUG = os.getenv("RSS_REPO_SLUG") or os.getenv("GITHUB_REPOSITORY") or "trv
 _OWNER, _, _REPO = REPO_SLUG.partition("/")
 # Public domain first. Keep forks on their own Pages host unless overridden.
 _PAGES_BASE = f"https://{_OWNER.lower()}.github.io/{_REPO}"
-_DEFAULT_PUBLIC_BASE = "https://rss.bartek.lol" if REPO_SLUG == "trvny/feedseek" else _PAGES_BASE
+_DEFAULT_PUBLIC_BASE = CANONICAL_FEEDSEEK_BASE if REPO_SLUG == "trvny/feedseek" else _PAGES_BASE
 PUBLIC_BASE = (os.getenv("FEEDSEEK_PUBLIC_BASE") or _DEFAULT_PUBLIC_BASE).rstrip("/") + "/"
 
 
