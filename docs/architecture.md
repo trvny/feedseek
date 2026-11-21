@@ -33,8 +33,8 @@ The scheduled generator runs every three hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
 from the generated files**, even when no Git commit is made. Validated partial
 results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
-`https://trvny.github.io/feedseek/<name>.xml` and its `<name>.json` Model Feed
-sibling; legacy `feed_<name>.*` copies stay for old subscribers) current without a fresh pack of generated blobs in `main`. Generators
+`https://trvny.github.io/feedseek/<public-name>.xml` and its `<public-name>.json` Model Feed
+sibling; optional registry `public_name` shortens public URLs only, while generator keys, cache paths and item IDs stay stable; legacy `<key>.*` and `feed_<key>.*` copies remain for subscribers) current without a fresh pack of generated blobs in `main`. Generators
 write Atom self links and Model Feed URLs as the canonical short Pages URLs
 (`utils.public_feed_url`); `normalize_feed_self_links.py` migrates retired raw
 URLs in cached files.

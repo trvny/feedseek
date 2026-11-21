@@ -27,14 +27,22 @@ class RegistryDocsTests(unittest.TestCase):
 
         readme = (FEEDSEEK / "README.md").read_text(encoding="utf-8")
         documented = set(re.findall(r"(?:github\.io/feedseek/|`)([A-Za-z0-9_-]+)\.xml", readme))
-        self.assertEqual(documented, set(registry))
+        public = {config.get("public_name") or key for key, config in registry.items()}
+        self.assertEqual(documented, public)
 
         for name, config in registry.items():
-            raw_url = f"https://trvny.github.io/feedseek/{name}.xml"
+            public_name = config.get("public_name") or name
+            raw_url = f"https://trvny.github.io/feedseek/{public_name}.xml"
             if config.get("enabled", True):
                 self.assertIn(raw_url, readme)
             else:
                 self.assertNotIn(raw_url, readme)
+
+    def test_protected_feed_public_names_stay_equal_to_registry_keys(self):
+        registry = load_registry()
+        for key in ("beatport_top100", "daily_digest", "daily_quote", "wikipedia_pl"):
+            with self.subTest(key=key):
+                self.assertEqual(registry[key].get("public_name", key), key)
 
     def test_readme_feed_counts_match_registry(self):
         expected = len(load_registry())

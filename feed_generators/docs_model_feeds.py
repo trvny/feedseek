@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from urllib.parse import quote
 
+from models import public_feed_name
 from utils import REPO_SLUG, write_atomically
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,7 +38,7 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
             raise ValueError(f"Invalid Model Feed: {path}")
         key = path.stem.removeprefix("feed_")
         owner, _, repo = repo_slug.partition("/")
-        url = f"https://{owner.lower()}.github.io/{repo}/{quote(path.name.removeprefix('feed_'))}"
+        url = f"https://{owner.lower()}.github.io/{repo}/{quote(public_feed_name(key) + '.json')}"
         rows.append(f"| `{key}` | {table_text(feed.get('title') or key)} | [JSON]({url}) |")
     lines = [
         "# Model Feed index",
@@ -51,7 +52,7 @@ def build_markdown(feeds_dir: Path, repo_slug: str = REPO_SLUG) -> str:
         "",
         "## Access",
         "",
-        "- Choose a source key below, then GET its JSON URL (GitHub Pages, refreshed every 2 hours). Each file contains the full current feed output.",
+        "- Choose a source key below, then GET its JSON URL (GitHub Pages, refreshed every 3 hours). Each file contains the full current feed output.",
         "- Format: `feedseek-model-feed`, version `1`. Feed metadata: `source_key`, `title`, `description`, `home_page_url`.",
         "- Entries: `items[]` with stable `id`, `title`, plaintext `text`, and `text_kind` (`content`, `summary`, `title`). URLs, dates, authors, tags and images depend on upstream availability.",
         "- Contract: [JSON Schema](schemas/model-feed.v1.schema.json). Other agent surfaces (MCP, WebMCP, llms.txt): [agents.md](agents.md).",

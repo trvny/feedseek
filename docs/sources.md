@@ -28,7 +28,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Poland government and news
 
 ### ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) Gov.pl
-`govpl_news` · [XML](https://trvny.github.io/feedseek/govpl_news.xml) · [JSON](https://trvny.github.io/feedseek/govpl_news.json)
+`govpl_news` · [XML](https://trvny.github.io/feedseek/govpl.xml) · [JSON](https://trvny.github.io/feedseek/govpl.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) KPRM — <https://www.gov.pl/web/premier/wydarzenia>
 - ![](https://www.google.com/s2/favicons?domain=www.gov.pl&sz=16) Profil Zaufany — <https://www.gov.pl/web/profilzaufany/aktualnosci>
@@ -393,7 +393,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.trackawesomelist.com&sz=16) Track Awesome List — <https://www.trackawesomelist.com/week/rss.xml>
 
 ### ![](https://www.google.com/s2/favicons?domain=github.com&sz=16) trvny + travnie · GitHub
-`github_personal` · [XML](https://trvny.github.io/feedseek/github_personal.xml) · [JSON](https://trvny.github.io/feedseek/github_personal.json)
+`github_personal` · [XML](https://trvny.github.io/feedseek/trvny.xml) · [JSON](https://trvny.github.io/feedseek/trvny.json)
 
 - ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) trvny public activity — <https://api.github.com/users/trvny/events/public>
 - ![](https://www.google.com/s2/favicons?domain=api.github.com&sz=16) travnie public activity — <https://api.github.com/orgs/travnie/events>
@@ -510,7 +510,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=techcommunity.microsoft.com&sz=16) Tech Community — <https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/Community?interaction.style=blog&feeds.replies=false>
 
 ### ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Microsoft Updates
-`microsoft_updates` · [XML](https://trvny.github.io/feedseek/microsoft_updates.xml) · [JSON](https://trvny.github.io/feedseek/microsoft_updates.json)
+`microsoft_updates` · [XML](https://trvny.github.io/feedseek/ms-updates.xml) · [JSON](https://trvny.github.io/feedseek/ms-updates.json)
 
 - ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Blog — <https://support.microsoft.com/en-us/windows>
 - ![](https://www.google.com/s2/favicons?domain=support.microsoft.com&sz=16) Windows 11 updates — <https://support.microsoft.com/en-us/topic/windows-11-version-26h1-update-history-253c73cd-cab1-4bfd-94dc-76c452273fc9>
@@ -873,7 +873,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=name.accuweather.com&sz=16) Corporate — <https://name.accuweather.com/corporate/feed/>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Log
-`xweather_log` · [XML](https://trvny.github.io/feedseek/xweather_log.xml) · [JSON](https://trvny.github.io/feedseek/xweather_log.json)
+`xweather_log` · [XML](https://trvny.github.io/feedseek/xweather.xml) · [JSON](https://trvny.github.io/feedseek/xweather.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Xweather Blog — <https://www.xweather.com/blog>
 - ![](https://www.google.com/s2/favicons?domain=www.xweather.com&sz=16) Weather API — <https://www.xweather.com/docs/weather-api/changelog>
@@ -940,7 +940,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.gog.com&sz=16) GOG News (EN) — <https://www.gog.com/en/news/feed>
 
 ### ![](https://www.google.com/s2/favicons?domain=www.nexusmods.com&sz=16) Nexus Mods News
-`nexusmods_news` · [XML](https://trvny.github.io/feedseek/nexusmods_news.xml) · [JSON](https://trvny.github.io/feedseek/nexusmods_news.json)
+`nexusmods_news` · [XML](https://trvny.github.io/feedseek/nexusmods.xml) · [JSON](https://trvny.github.io/feedseek/nexusmods.json)
 
 - ![](https://www.google.com/s2/favicons?domain=www.nexusmods.com&sz=16) Blog — <https://www.nexusmods.com/news>
 
@@ -955,7 +955,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 ## Automotive
 
 ### ![](https://www.google.com/s2/favicons?domain=pressroom.lexus.com&sz=16) Lexus Newsroom
-`lexus_newsroom` · [XML](https://trvny.github.io/feedseek/lexus_newsroom.xml) · [JSON](https://trvny.github.io/feedseek/lexus_newsroom.json)
+`lexus_newsroom` · [XML](https://trvny.github.io/feedseek/lexus.xml) · [JSON](https://trvny.github.io/feedseek/lexus.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pressroom.lexus.com&sz=16) Lexus USA Newsroom — <https://pressroom.lexus.com/feed/atom/>
 - ![](https://www.google.com/s2/favicons?domain=newsroom.lexus.eu&sz=16) Newsroom Lexus Europe — <https://newsroom.lexus.eu/feed/>
@@ -963,7 +963,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.lexus-polska.pl&sz=16) Lexus pl listing — <https://www.lexus-polska.pl/discover-lexus/news>
 
 ### ![](https://www.google.com/s2/favicons?domain=pressroom.toyota.com&sz=16) Toyota Global
-`toyota_global` · [XML](https://trvny.github.io/feedseek/toyota_global.xml) · [JSON](https://trvny.github.io/feedseek/toyota_global.json)
+`toyota_global` · [XML](https://trvny.github.io/feedseek/toyota.xml) · [JSON](https://trvny.github.io/feedseek/toyota.json)
 
 - ![](https://www.google.com/s2/favicons?domain=pressroom.toyota.com&sz=16) Toyota USA Newsroom — <https://pressroom.toyota.com/feed/>
 - ![](https://www.google.com/s2/favicons?domain=newsroom.toyota.eu&sz=16) Newsroom Toyota Europe — <https://newsroom.toyota.eu/feed/>
@@ -1209,7 +1209,7 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=www.tiktok.com&sz=16) TikTok @tiktok embed — <https://www.tiktok.com/embed/@tiktok>
 
 ### ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Meta Newsroom
-`meta_newsroom` · [XML](https://trvny.github.io/feedseek/meta_newsroom.xml) · [JSON](https://trvny.github.io/feedseek/meta_newsroom.json)
+`meta_newsroom` · [XML](https://trvny.github.io/feedseek/meta.xml) · [JSON](https://trvny.github.io/feedseek/meta.json)
 
 - ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Blog — <https://about.fb.com/news/>
 - ![](https://www.google.com/s2/favicons?domain=about.fb.com&sz=16) Meta Newsroom — <https://about.fb.com/feed/>
