@@ -25,6 +25,9 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
     const upstream = await fetchImpl(source, { method, headers, redirect: "manual", signal: AbortSignal.timeout(12000) });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
+    if (/\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
+      responseHeaders.set("x-robots-tag", "noindex, follow");
+    }
     responseHeaders.set("x-content-type-options", "nosniff");
     const location = responseHeaders.get("location");
     if (location && upstream.status >= 300 && upstream.status < 400) {

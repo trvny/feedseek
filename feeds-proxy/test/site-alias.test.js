@@ -16,7 +16,7 @@ test("serves published feeds without forwarding credentials or rewriting entries
   });
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("set-cookie"), null);
-  assert.equal(response.headers.get("x-robots-tag"), null);
+  assert.equal(response.headers.get("x-robots-tag"), "noindex, follow");
   assert.equal(await response.text(), "<feed><id>stable</id></feed>");
 });
 
@@ -25,6 +25,11 @@ test("preserves Pages canonicals and crawl directives", async () => {
   const page = await siteAliasResponse(new Request("https://rss.bartek.lol/"), async () => new Response(canonical));
   assert.equal(page.headers.get("x-robots-tag"), null);
   assert.equal(await page.text(), canonical);
+
+  const robots = await siteAliasResponse(new Request("https://rss.bartek.lol/robots.txt"), async () =>
+    new Response("User-agent: *\nAllow: /\n"));
+  assert.equal(robots.headers.get("x-robots-tag"), null);
+  assert.equal(await robots.text(), "User-agent: *\nAllow: /\n");
 
   const archivedPage = await siteAliasResponse(new Request("https://rss.bartek.lol/archive/"), async () =>
     new Response("Archived", { headers: { "x-robots-tag": "noindex" } }));
