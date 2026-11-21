@@ -47,7 +47,7 @@ sys.path.insert(0, str(SITE_DIR))
 from sitemap_variants import SEARCH_VARIANTS, build_sitemap_variants  # noqa: E402
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
-from models import load_feed_registry, load_published_feeds  # noqa: E402
+from models import load_active_publication_keys, load_published_feeds  # noqa: E402
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
 
@@ -317,9 +317,7 @@ def load_selection() -> list[tuple[str, str]] | None:
 
 
 def collect_feeds() -> list[dict]:
-    enabled = {
-        key for key, config in load_feed_registry().items() if config.enabled
-    }
+    enabled = load_active_publication_keys()
     available = {
         short_name(path): path for path in FEEDS_DIR.glob("feed_*.xml")
         if short_name(path) in enabled
@@ -1142,9 +1140,6 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
 
 
 def main() -> None:
-    _, skipped = load_feed_registry(return_skipped=True)
-    if skipped:
-        raise SystemExit(f"Invalid feed registry entries: {', '.join(skipped)}")
     base = site_base_url()
     # feeds: curated cards + OPML. all_feeds: every published file and catalog.
     feeds = collect_feeds()

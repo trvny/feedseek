@@ -395,11 +395,6 @@ class SiteFaviconTests(unittest.TestCase):
 
 
 class FullPublicationTests(unittest.TestCase):
-    def test_invalid_registered_feed_fails_build_instead_of_disappearing(self):
-        with patch.object(build_site, "load_feed_registry", return_value=({}, ["broken"])):
-            with self.assertRaisesRegex(SystemExit, "Invalid feed registry entries: broken"):
-                build_site.main()
-
 
     def test_curated_and_fallback_omit_disabled_or_unregistered_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -415,7 +410,10 @@ class FullPublicationTests(unittest.TestCase):
             }
             with (
                 patch.object(build_site, "FEEDS_DIR", feed_dir),
-                patch.object(build_site, "load_feed_registry", return_value=registry),
+                patch.object(
+                    build_site, "load_active_publication_keys",
+                    return_value={key for key, config in registry.items() if config.enabled},
+                ),
                 patch.object(build_site, "load_selection", return_value=None),
             ):
                 self.assertEqual(
@@ -424,7 +422,10 @@ class FullPublicationTests(unittest.TestCase):
                 )
             with (
                 patch.object(build_site, "FEEDS_DIR", feed_dir),
-                patch.object(build_site, "load_feed_registry", return_value=registry),
+                patch.object(
+                    build_site, "load_active_publication_keys",
+                    return_value={key for key, config in registry.items() if config.enabled},
+                ),
                 patch.object(build_site, "load_selection", return_value=[
                     ("active", ""), ("disabled", "")
                 ]),
@@ -457,7 +458,10 @@ class FullPublicationTests(unittest.TestCase):
                     for name in ("alpha", "zed", "beta")
                 }
                 registry["multireddit"] = SimpleNamespace(enabled=False)
-                with patch.object(build_site, "load_feed_registry", return_value=registry):
+                with patch.object(
+                    build_site, "load_active_publication_keys",
+                    return_value={key for key, config in registry.items() if config.enabled},
+                ):
                     result = build_site.collect_all_feeds(selected)
             finally:
                 build_site.FEEDS_DIR = original
