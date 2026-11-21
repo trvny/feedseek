@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -33,18 +33,18 @@ footer{justify-content:center;margin:18px 0 0}
 <body>
 <header>
   <div><div class="brand">FEEDSEEK / IMAGE FEEDS</div><h1>🗿 Meme Board</h1></div>
-  <nav aria-label="Źródła">
-    <button type="button" data-source="all" aria-pressed="true">Wszystkie</button>
+  <nav aria-label="Sources">
+    <button type="button" data-source="all" aria-pressed="true">All</button>
     <button type="button" data-source="jbzd" aria-pressed="false">JBZD</button>
-    <button type="button" data-source="memy" aria-pressed="false">Memy / Jeja / Kwejk</button>
+    <button type="button" data-source="memy" aria-pressed="false">Memes / Jeja / Kwejk</button>
   </nav>
 </header>
-<p id="status" role="status" aria-live="polite">Ładowanie obrazków…</p>
+<p id="status" role="status" aria-live="polite">Loading images…</p>
 <main id="grid" aria-label="Memy"></main>
 <footer>
-  <button id="prev" type="button" disabled>← Poprzednie</button>
+  <button id="prev" type="button" disabled>← Previous</button>
   <span id="page"></span>
-  <button id="next" type="button" disabled>Następne →</button>
+  <button id="next" type="button" disabled>Next →</button>
 </footer>
 <script>
 "use strict";
@@ -81,13 +81,13 @@ footer{justify-content:center;margin:18px 0 0}
       const article=document.createElement("article");article.className="meme";
       const link=document.createElement("a");
       link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
-      link.title="Otwórz oryginalny wpis";
+      link.title="Open original post";
       const img=document.createElement("img");
       img.src=e.image;img.alt=e.title;img.loading="lazy";
       img.decoding="async";img.referrerPolicy="no-referrer";
       img.addEventListener("error",()=>{
         const fallback=document.createElement("div");
-        fallback.className="missing";fallback.textContent="Obraz niedostępny";
+        fallback.className="missing";fallback.textContent="Image unavailable";
         img.replaceWith(fallback);
       },{once:true});
       link.append(img);
@@ -95,7 +95,7 @@ footer{justify-content:center;margin:18px 0 0}
       const title=document.createElement("div");title.className="title";title.textContent=e.title;
       const meta=document.createElement("div");meta.className="meta";
       const date=e.published?new Date(e.published):null;
-      const when=date&&!Number.isNaN(date.getTime())?" · "+date.toLocaleDateString("pl-PL"):"";
+      const when=date&&!Number.isNaN(date.getTime())?" · "+date.toLocaleDateString("en-GB"):"";
       meta.textContent=e.source.toUpperCase()+when;
       details.append(title,meta);link.append(details);article.append(link);grid.append(article);
     }
@@ -103,15 +103,15 @@ footer{justify-content:center;margin:18px 0 0}
     const hasFailure=state.failed.length>0;
     const currentFailed=state.source!=="all"&&state.failed.includes(state.source);
     if(currentFailed){
-      status.textContent="Źródło "+state.source.toUpperCase()+" jest niedostępne.";
+      status.textContent="Source "+state.source.toUpperCase()+" is unavailable.";
     }else if(!count&&state.pending.size){
-      status.textContent="Ładowanie: "+Array.from(state.pending).join(", ")+"…";
+      status.textContent="Loading: "+Array.from(state.pending).join(", ")+"…";
     }else if(!count&&hasFailure){
-      status.textContent="Nie udało się wczytać: "+state.failed.join(", ")+".";
+      status.textContent="Could not load: "+state.failed.join(", ")+".";
     }else{
-      status.textContent=(count?count+" memów":"Brak memów w tym źródle.")+
-        (state.pending.size?" · ładowanie: "+Array.from(state.pending).join(", "):"")+
-        (hasFailure?" · niedostępne: "+state.failed.join(", "):"");
+      status.textContent=(count?count+" memes":"No memes in this source.")+
+        (state.pending.size?" · loading: "+Array.from(state.pending).join(", "):"")+
+        (hasFailure?" · unavailable: "+state.failed.join(", "):"");
     }
     page.textContent=start+"–"+end+" / "+count;
     prev.disabled=state.pending.size>0||state.offset===0;
@@ -135,7 +135,7 @@ footer{justify-content:center;margin:18px 0 0}
       return doc.items.map(item=>({
         id:String(item.id||""),source,title:String(item.title||"Meme"),
         text:String(item.text||"").slice(0,2000),
-        url:safeUrl(item.url||item.external_url),image:safeUrl(item.image),
+        url:safeUrl(item.url)||safeUrl(item.external_url),image:safeUrl(item.image),
         published:String(item.date_published||""),
         sortDate:String(item.date_published||item.date_modified||"")
       })).filter(e=>e.url&&e.image);
@@ -186,7 +186,7 @@ footer{justify-content:center;margin:18px 0 0}
           return {
             total:items.length,offset,hasMore:offset+limit<items.length,
             failedSources:[...state.failed],
-            complete:state.pending.size===0&&state.failed.length===0,
+            complete:state.pending.size===0&&(source==="all"?state.failed.length===0:!state.failed.includes(source)),
             memes:items.slice(offset,offset+limit)
               .map(({id,title,source,url,image,published})=>({id,title,source,url,image,published}))
           };
