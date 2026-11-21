@@ -40,6 +40,31 @@ def fake_get(files):
 
 
 class RestorePublishedFeedsTests(unittest.TestCase):
+    def test_skips_retired_catalog_entries_before_download(self):
+        files = {
+            f"{BASE}model-feeds.json": json.dumps(catalog("alpha", "multireddit")).encode(),
+            f"{BASE}alpha.xml": XML,
+            f"{BASE}alpha.json": MODEL,
+        }
+        with tempfile.TemporaryDirectory() as tmp, patch.object(
+            MODULE.requests.Session, "get", fake_get(files)
+        ):
+            feeds = Path(tmp) / "feeds"
+            self.assertEqual(MODULE.restore(feeds, BASE, enabled_keys={"alpha"}), 1)
+            self.assertEqual(
+                sorted(p.name for p in feeds.iterdir()),
+                ["feed_alpha.json", "feed_alpha.xml"],
+            )
+
+    def test_retired_only_catalog_fails_closed(self):
+        files = {f"{BASE}model-feeds.json": json.dumps(catalog("multireddit")).encode()}
+        with tempfile.TemporaryDirectory() as tmp, patch.object(
+            MODULE.requests.Session, "get", fake_get(files)
+        ):
+            with self.assertRaisesRegex(MODULE.RestoreError, "no enabled feeds"):
+                MODULE.restore(Path(tmp) / "feeds", BASE, enabled_keys={"alpha"})
+
+
     def test_restores_every_catalog_pair_under_legacy_names(self):
         files = {
             f"{BASE}model-feeds.json": json.dumps(catalog("alpha", "beta")).encode(),

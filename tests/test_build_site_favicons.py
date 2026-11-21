@@ -395,6 +395,39 @@ class SiteFaviconTests(unittest.TestCase):
 
 
 class FullPublicationTests(unittest.TestCase):
+    def test_curated_and_fallback_omit_disabled_or_unregistered_feeds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            feed_dir = Path(tmp)
+            for key in ("active", "disabled", "removed"):
+                (feed_dir / f"feed_{key}.xml").write_text(
+                    f'<feed xmlns="http://www.w3.org/2005/Atom"><title>{key}</title></feed>',
+                    encoding="utf-8",
+                )
+            registry = {
+                "active": SimpleNamespace(enabled=True),
+                "disabled": SimpleNamespace(enabled=False),
+            }
+            with (
+                patch.object(build_site, "FEEDS_DIR", feed_dir),
+                patch.object(build_site, "load_feed_registry", return_value=registry),
+                patch.object(build_site, "load_selection", return_value=None),
+            ):
+                self.assertEqual(
+                    [feed["filename"] for feed in build_site.collect_feeds()],
+                    ["feed_active.xml"],
+                )
+            with (
+                patch.object(build_site, "FEEDS_DIR", feed_dir),
+                patch.object(build_site, "load_feed_registry", return_value=registry),
+                patch.object(build_site, "load_selection", return_value=[
+                    ("active", ""), ("disabled", "")
+                ]),
+            ):
+                self.assertEqual(
+                    [feed["filename"] for feed in build_site.collect_feeds()],
+                    ["feed_active.xml"],
+                )
+
     def test_all_feeds_keep_curated_order_then_add_unselected_by_title(self):
         with tempfile.TemporaryDirectory() as tmp:
             feed_dir = Path(tmp)
