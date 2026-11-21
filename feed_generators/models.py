@@ -4,9 +4,10 @@ import logging
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel, ValidationError, field_validator
+from pydantic import BaseModel, TypeAdapter, ValidationError, field_validator
 
 logger = logging.getLogger(__name__)
+BOOL = TypeAdapter(bool)
 
 REGISTRY_PATH = Path(__file__).parent.parent / "feeds.yaml"
 
@@ -99,11 +100,17 @@ def load_active_publication_keys() -> set[str]:
     entries = data.get("feeds") if isinstance(data, dict) else None
     if not isinstance(entries, dict):
         raise ValueError("feeds must be a mapping")
+    def disabled(config: object) -> bool:
+        if not isinstance(config, dict):
+            return False  # Blank/broken config does not revoke old publication.
+        try:
+            return not BOOL.validate_python(config.get("enabled", True))
+        except ValidationError:
+            return False  # Bad config is not an explicit disable.
+
     return {
         name for name, config in entries.items()
-        if isinstance(name, str)
-        and isinstance(config, dict)
-        and config.get("enabled", True) is not False
+        if isinstance(name, str) and not disabled(config)
     }
 
 

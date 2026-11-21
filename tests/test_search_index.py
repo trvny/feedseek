@@ -42,7 +42,10 @@ class SearchIndexTests(unittest.TestCase):
             }
             with (
                 patch.object(MODULE, "FEEDS_DIR", feed_dir),
-                patch.object(MODULE, "load_feed_registry", return_value=registry),
+                patch.object(
+                    MODULE, "load_active_publication_keys",
+                    return_value={key for key, config in registry.items() if config.enabled},
+                ),
             ):
                 paths, missing = MODULE.enabled_feed_paths()
 

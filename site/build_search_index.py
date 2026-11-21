@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "feed_generators"))
 
 from html_text import plain_text  # noqa: E402
-from models import load_feed_registry  # noqa: E402
+from models import load_active_publication_keys  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 OUT_PATH = ROOT / "public" / "feedseek-search-index.json"
@@ -218,12 +218,9 @@ def load_feed(path: Path) -> dict:
 
 
 def enabled_feed_paths() -> tuple[list[Path], list[str]]:
-    registry = load_feed_registry()
     paths: list[Path] = []
     missing: list[str] = []
-    for key, config in registry.items():
-        if not config.enabled:
-            continue
+    for key in sorted(load_active_publication_keys()):
         json_path = FEEDS_DIR / f"feed_{key}.json"
         if json_path.is_file():
             paths.append(json_path)

@@ -18,9 +18,16 @@ class FeedRegistryTests(unittest.TestCase):
   retired:
     script: old.py
     enabled: false
+  retired_quoted:
+    enabled: "false"
+  retired_zero:
+    enabled: 0
+  blank:
+  invalid_flag:
+    enabled: on_fire
 """
         with patch("builtins.open", mock_open(read_data=registry)):
-            self.assertEqual(load_active_publication_keys(), {"healthy", "broken"})
+            self.assertEqual(load_active_publication_keys(), {"healthy", "broken", "blank", "invalid_flag"})
 
 
     def test_published_feeds_keep_order_and_title_overrides(self):
