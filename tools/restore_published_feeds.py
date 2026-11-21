@@ -24,6 +24,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "feed_generators"))
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
+from models import load_feed_registry  # noqa: E402
 DEFAULT_BASE = "https://trvny.github.io/feedseek/"
 KEY_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 MAX_FILE_BYTES = 32 * 1024 * 1024
@@ -78,12 +79,19 @@ def _check_pair(key: str, xml: bytes, model: bytes) -> None:
         raise RestoreError(f"{key}: not a Model Feed")
 
 
-def restore(feeds_dir: Path, base: str = DEFAULT_BASE, workers: int = 8) -> int:
-    """Download every published pair, then write all of them; returns pair count."""
+def restore(
+    feeds_dir: Path, base: str = DEFAULT_BASE, workers: int = 8,
+    *, enabled_keys: set[str] | None = None,
+) -> int:
+    """Restore active published pairs atomically; ignore retired catalog rows."""
     base = base.rstrip("/") + "/"
     with requests.Session() as session:
         catalog = json.loads(_get(session, urljoin(base, "model-feeds.json")))
         entries = catalog_entries(catalog, base)
+        if enabled_keys is not None:
+            entries = [entry for entry in entries if entry[0] in enabled_keys]
+            if not entries:
+                raise RestoreError("catalog contains no enabled feeds")
 
         def fetch(entry: tuple[str, str, str]) -> tuple[str, bytes, bytes]:
             key, xml_url, json_url = entry
@@ -111,7 +119,10 @@ def main() -> int:
     parser.add_argument("--base", default=os.getenv("FEEDSEEK_PUBLIC_BASE", DEFAULT_BASE))
     args = parser.parse_args()
     try:
-        count = restore(args.feeds_dir, args.base)
+        enabled = {
+            key for key, config in load_feed_registry().items() if config.enabled
+        }
+        count = restore(args.feeds_dir, args.base, enabled_keys=enabled)
     except (RestoreError, requests.RequestException, ValueError) as exc:
         print(f"Published feed restore failed: {exc}", file=sys.stderr)
         return 1

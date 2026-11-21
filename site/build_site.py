@@ -317,7 +317,13 @@ def load_selection() -> list[tuple[str, str]] | None:
 
 
 def collect_feeds() -> list[dict]:
-    available = {short_name(p): p for p in FEEDS_DIR.glob("feed_*.xml")}
+    enabled = {
+        key for key, config in load_feed_registry().items() if config.enabled
+    }
+    available = {
+        short_name(path): path for path in FEEDS_DIR.glob("feed_*.xml")
+        if short_name(path) in enabled
+    }
     selection = load_selection()
 
     if selection is None:
