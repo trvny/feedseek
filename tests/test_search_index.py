@@ -60,7 +60,7 @@ class SearchIndexTests(unittest.TestCase):
             registry = {"present": SimpleNamespace(enabled=True)}
             with (
                 patch.object(MODULE, "FEEDS_DIR", Path(tmp)),
-                patch.object(MODULE, "load_feed_registry", return_value=registry),
+                patch.object(MODULE, "load_active_publication_keys", return_value=set(registry)),
             ):
                 paths, missing = MODULE.enabled_feed_paths()
             self.assertEqual(paths, [current])
