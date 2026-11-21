@@ -189,10 +189,11 @@ test("canonical public names migrate stored URLs without changing external URLs"
     govpl_news: "govpl", meta_newsroom: "meta",
   });
   const root = "https://trvny.github.io/feedseek/";
-  assert.equal(cache.canonicalFeedUrl(root + "feed_govpl_news.xml"), root + "govpl.xml");
-  assert.equal(cache.canonicalFeedUrl(root + "meta_newsroom.json"), root + "meta.json");
-  assert.equal(cache.canonicalFeedUrl(root + "feed_meta_newsroom.xml"), root + "meta.xml");
-  assert.equal(cache.canonicalFeedUrl(root + "reuters.xml"), root + "reuters.xml");
+  const publicRoot = "https://rss.bartek.lol/";
+  assert.equal(cache.canonicalFeedUrl(root + "feed_govpl_news.xml"), publicRoot + "govpl.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "meta_newsroom.json"), publicRoot + "meta.json");
+  assert.equal(cache.canonicalFeedUrl(root + "feed_meta_newsroom.xml"), publicRoot + "meta.xml");
+  assert.equal(cache.canonicalFeedUrl(root + "reuters.xml"), publicRoot + "reuters.xml");
   assert.equal(cache.canonicalFeedUrl("https://elsewhere.test/meta_newsroom.xml"),
                "https://elsewhere.test/meta_newsroom.xml");
 });
