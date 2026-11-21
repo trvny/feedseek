@@ -13,7 +13,8 @@ test("WebMCP survives bfcache and aborts on real page exit", () => {
       querySelectorAll(s) { return s === ".card" ? [dummy] : []; },
     }, window, AbortController, console,
   });
-  assert.equal(tools.length, 3);
+  assert.equal(tools.length, 4);
+  assert.ok(tools.some(({tool}) => tool.name === "preview_feed_entries"));
   const cached = new Event("pagehide");
   cached.persisted = true;
   window.dispatchEvent(cached);
