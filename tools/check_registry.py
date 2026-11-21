@@ -21,6 +21,8 @@ def check(path: Path | None = None) -> list[str]:
     try:
         feeds, skipped = models.load_feed_registry(return_skipped=True)
         models.load_published_feeds()
+        data = yaml.safe_load(models.REGISTRY_PATH.read_text(encoding="utf-8")) or {}
+        models.validate_public_names(data.get("feeds") or {})
     except (OSError, yaml.YAMLError, ValueError) as exc:
         return [f"{models.REGISTRY_PATH.name}: {exc}"]
     errors = [f"invalid feed entry: {name}" for name in skipped]

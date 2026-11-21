@@ -1,7 +1,12 @@
 """Pydantic models for feed configuration and settings."""
 
+import json
 import logging
+from collections import Counter
+import re
+from functools import lru_cache
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import yaml
 from pydantic import BaseModel, TypeAdapter, ValidationError, field_validator
@@ -10,6 +15,12 @@ logger = logging.getLogger(__name__)
 BOOL = TypeAdapter(bool)
 
 REGISTRY_PATH = Path(__file__).parent.parent / "feeds.yaml"
+PUBLIC_STEM_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+RESERVED_PUBLIC_STEMS = frozenset({
+    "index", "llms", "llms-full", "sitemap", "sitemap-atom",
+    "sitemap-rss", "robots", "model-feeds", "subscriptions",
+    "favicon", "site", "webmcp", "feedseek-search-index",
+})
 
 
 class FeedConfig(BaseModel):
@@ -20,6 +31,7 @@ class FeedConfig(BaseModel):
     enabled: bool = True
     cache_required: bool = True
     cache_migrate_from: str | None = None
+    public_name: str | None = None
 
     @field_validator("script")
     @classmethod
@@ -160,3 +172,106 @@ def load_published_feeds() -> list[tuple[str, str]] | None:
         seen.add(name)
         selection.append((name, title))
     return selection
+
+def validate_public_names(entries: dict) -> dict[str, str]:
+    """Validate public names against all registry keys and reserved site files."""
+    keys = set(entries)
+    result: dict[str, str] = {}
+    taken: set[str] = set()
+    for key, config in entries.items():
+        alias = config.get("public_name") if isinstance(config, dict) else None
+        alias = key if alias is None else alias
+        if not isinstance(alias, str) or not PUBLIC_STEM_RE.fullmatch(alias):
+            raise ValueError(f"invalid public name for {key}: {alias!r}")
+        if alias.startswith("feed_") or alias in RESERVED_PUBLIC_STEMS:
+            raise ValueError(f"reserved public feed name: {alias}")
+        if alias in keys and alias != key:
+            raise ValueError(f"public name {alias} conflicts with a feed key")
+        if alias in taken:
+            raise ValueError(f"duplicate public name: {alias}")
+        taken.add(alias)
+        result[key] = alias
+    return result
+
+
+def runtime_public_names(entries: dict, previous_names: dict[str, str] | None = None) -> dict[str, str]:
+    """Fallback only malformed or conflicting overrides; keep unrelated sources live."""
+    keys = set(entries)
+    candidates = {}
+    for key, config in entries.items():
+        override = config.get("public_name") if isinstance(config, dict) else None
+        alias = key if override is None else override
+        safe = (
+            isinstance(alias, str)
+            and PUBLIC_STEM_RE.fullmatch(alias) is not None
+            and not alias.startswith("feed_")
+            and alias not in RESERVED_PUBLIC_STEMS
+            and (alias not in keys or alias == key)
+        )
+        if not safe:
+            logger.warning("Ignoring unsafe public name for %s: %r", key, alias)
+            alias = key
+        candidates[key] = alias
+    counts = Counter(candidates.values())
+    previous_names = previous_names or {}
+    for alias, count in counts.items():
+        if count < 2:
+            continue
+        owners = [key for key, name in candidates.items() if name == alias]
+        incumbent = next(
+            (key for key in owners if previous_names.get(key) == alias),
+            owners[0],
+        )
+        for key in owners:
+            if key != incumbent:
+                logger.warning("Ignoring conflicting public name for %s: %s", key, alias)
+                candidates[key] = key
+    return candidates
+
+
+def _previous_public_names(entries: dict) -> dict[str, str]:
+    """Reuse restored Model Feed URLs to prioritize an alias's current owner."""
+    claims: dict[str, list[str]] = {}
+    for key, config in entries.items():
+        alias = config.get("public_name") if isinstance(config, dict) else None
+        if isinstance(alias, str):
+            claims.setdefault(alias, []).append(key)
+    conflicting = {
+        key for owners in claims.values() if len(owners) > 1 for key in owners
+    }
+    previous = {}
+    for key in conflicting:
+        if not PUBLIC_STEM_RE.fullmatch(key):
+            continue
+        path = REGISTRY_PATH.parent / "feeds" / f"feed_{key}.json"
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if not isinstance(data, dict) or data.get("format") != "feedseek-model-feed":
+            continue
+        url = data.get("feed_url")
+        if not isinstance(url, str):
+            continue
+        try:
+            stem = Path(urlsplit(url).path).name
+        except ValueError:
+            continue
+        if stem.endswith(".json"):
+            previous[key] = stem[:-5]
+    return previous
+
+
+@lru_cache(maxsize=1)
+def load_public_names() -> dict[str, str]:
+    """One canonical mapping from stable keys to public file stems."""
+    with open(REGISTRY_PATH, encoding="utf-8") as source:
+        data = yaml.safe_load(source) or {}
+    entries = data.get("feeds") if isinstance(data, dict) else None
+    if not isinstance(entries, dict):
+        raise ValueError("feeds must be a mapping")
+    return runtime_public_names(entries, _previous_public_names(entries))
+
+
+def public_feed_name(feed_name: str) -> str:
+    return load_public_names().get(feed_name, feed_name)

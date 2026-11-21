@@ -474,6 +474,32 @@ class FullPublicationTests(unittest.TestCase):
 
 
 class LiveFeedMetadataTests(unittest.TestCase):
+    def test_short_public_aliases_keep_legacy_urls_and_entry_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "feed_meta_newsroom.xml"
+            source.write_text(
+                '<feed><link rel="self" href="https://trvny.github.io/feedseek/meta_newsroom.xml"/></feed>',
+                encoding="utf-8",
+            )
+            source.with_suffix(".json").write_text(json.dumps({
+                "format": "feedseek-model-feed", "source_key": "meta_newsroom",
+                "items": [{"id": "stable-1", "text": "Article"}],
+            }), encoding="utf-8")
+            out = root / "public"
+            out.mkdir()
+            base = "https://feeds.example/"
+            build_site.copy_public_feed_pair(source, out, base)
+            xml = (out / "meta.xml").read_text(encoding="utf-8")
+            self.assertEqual(xml, (out / "meta_newsroom.xml").read_text(encoding="utf-8"))
+            self.assertEqual(xml, (out / "feed_meta_newsroom.xml").read_text(encoding="utf-8"))
+            self.assertIn('rel="self" href="https://feeds.example/meta.xml"', xml)
+            doc = json.loads((out / "meta.json").read_text(encoding="utf-8"))
+            self.assertEqual(doc["source_key"], "meta_newsroom")
+            self.assertEqual(doc["items"][0]["id"], "stable-1")
+            self.assertEqual(doc["feed_url"], base + "meta.json")
+            self.assertEqual(doc, json.loads((out / "meta_newsroom.json").read_text(encoding="utf-8")))
+
     def test_canonical_pages_self_link_rebases_onto_other_site_url(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

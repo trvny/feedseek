@@ -97,6 +97,24 @@ function fixture(counts) {
   return { feeds, entries };
 }
 
+test("personal GitHub milestone styling survives the public URL alias", async () => {
+  for (const stem of ["trvny", "github_personal", "feed_github_personal"]) {
+    const xmlUrl = `https://feed.test/${stem}.xml`;
+    const feed = { title: "trvny + travnie", xmlUrl };
+    const entry = {
+      id: "pr-1", source: feed.title, feedUrl: xmlUrl,
+      title: "Merged PR", url: "https://github.com/trvny/feedseek/pull/654",
+      ts: Date.now(), categories: ["Pull request"], author: "GPTomek",
+    };
+    const r = await makeReader([feed], new Map([[xmlUrl, [entry]]]));
+    const card = r.nodes.get("#list").children.find(node => node.className?.split(/\s+/).includes("item-github-personal"));
+    assert.match(card.className, /item-github-personal/);
+    const text = card.children[0];
+    assert.equal(text.children[0].children.find(child => child.className === "kind")?.textContent, "Pull request");
+    assert.match(text.children.at(-1).textContent, /GPTomek/);
+  }
+});
+
 test("refresh retains and snapshots all sources before filtering and pagination", async () => {
   const { feeds, entries } = fixture(Array(110).fill(10));
   const r = await makeReader(feeds, entries);
