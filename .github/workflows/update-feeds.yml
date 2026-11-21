@@ -84,13 +84,13 @@ jobs:
       - name: Restore published feeds from Pages
         run: uv run --locked tools/restore_published_feeds.py
 
-      - name: Snapshot WebSub pilot topics
-        continue-on-error: true
-        run: uv run --locked python tools/websub_notify.py snapshot "$RUNNER_TEMP/websub-before.json"
-
       - name: Run feed tests
         working-directory: .
         run: make test
+
+      - name: Snapshot WebSub pilot topics
+        continue-on-error: true
+        run: uv run --locked python tools/websub_notify.py snapshot "$RUNNER_TEMP/websub-before.json"
 
       - name: Generate feeds
         id: generate
