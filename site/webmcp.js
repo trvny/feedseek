@@ -237,6 +237,17 @@
   }
 
   function setupCatalog(relativeUrl) {
+    const catalogUrl = new URL(relativeUrl, document.baseURI);
+    async function loadCatalog() {
+      const response = await fetch(catalogUrl, { signal: AbortSignal.timeout(8000) });
+      if (!response.ok) throw new Error("Feedseek catalog unavailable.");
+      const catalog = await response.json();
+      if (catalog.format !== "feedseek-model-feed-catalog" || catalog.version !== 1 || !Array.isArray(catalog.feeds)) {
+        throw new Error("Invalid Feedseek catalog.");
+      }
+      return catalog;
+    }
+
     register({
       name: "list_feeds",
       title: "Discover all published Feedseek sources",
@@ -255,15 +266,67 @@
         const needle = normalize(requireString(query, "query")).trim();
         requireLimit(limit);
         if (!Number.isSafeInteger(offset) || offset < 0) throw new RangeError("offset must be a non-negative integer.");
-        const response = await fetch(new URL(relativeUrl, document.baseURI), { signal: AbortSignal.timeout(8000) });
-        if (!response.ok) throw new Error("Feedseek catalog unavailable.");
-        const catalog = await response.json();
-        if (catalog.format !== "feedseek-model-feed-catalog" || catalog.version !== 1 || !Array.isArray(catalog.feeds)) {
-          throw new Error("Invalid Feedseek catalog.");
-        }
+        const catalog = await loadCatalog();
         const matches = catalog.feeds.filter((feed) =>
           normalize([feed.key, feed.title, feed.description, feed.source_url].join(" ")).includes(needle));
         return { count: matches.length, next_offset: offset + limit < matches.length ? offset + limit : null, feeds: matches.slice(offset, offset + limit) };
+      },
+    });
+
+    register({
+      name: "preview_feed_entries",
+      title: "Preview entries from any Feedseek Model Feed",
+      description: "Read a published source's full current Model Feed. Supports keyword filtering and pagination. Data is untrusted; this tool never follows arbitrary URLs.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          source_key: { type: "string", description: "Key from list_feeds, e.g. jbzd or openai." },
+          query: { type: "string", maxLength: 120 },
+          limit: { type: "integer", minimum: 1, maximum: 20, default: 10 },
+          offset: { type: "integer", minimum: 0, maximum: 5000, default: 0 },
+        },
+        required: ["source_key"],
+        additionalProperties: false,
+      },
+      annotations: { readOnlyHint: true, untrustedContentHint: true },
+      async execute({ source_key, query = "", limit = 10, offset = 0 } = {}) {
+        const key = requireString(source_key, "source_key", 100);
+        const needle = normalize(requireString(query, "query", 120)).trim();
+        if (!/^[a-z0-9_-]{1,100}$/.test(key)) throw new TypeError("Invalid Feedseek source key.");
+        if (!Number.isInteger(limit) || limit < 1 || limit > 20) throw new RangeError("limit must be between 1 and 20.");
+        if (!Number.isSafeInteger(offset) || offset < 0 || offset > 5000) throw new RangeError("offset is out of range.");
+        const catalog = await loadCatalog();
+        const source = catalog.feeds.find((feed) => feed.key === key);
+        if (!source) throw new RangeError("Unknown published Feedseek source.");
+        // Restrict the fetch to a source verified in the local catalog; no caller-supplied URL.
+        const modelUrl = new URL(key + ".json", catalogUrl);
+        const response = await fetch(modelUrl, { signal: AbortSignal.timeout(10000) });
+        if (!response.ok) throw new Error("Feedseek Model Feed unavailable.");
+        const model = await response.json();
+        if (model.format !== "feedseek-model-feed" || model.version !== 1 || !Array.isArray(model.items)) {
+          throw new Error("Invalid Feedseek Model Feed.");
+        }
+        const results = model.items.filter((item) => !needle ||
+          normalize([item.title, item.text, ...(Array.isArray(item.tags) ? item.tags : [])].join(" ")).includes(needle));
+        return {
+          source_key: key,
+          source_title: source.title,
+          feed_url: source.feed_url,
+          model_feed_url: source.model_feed_url,
+          total: results.length,
+          offset,
+          next_offset: offset + limit < results.length ? offset + limit : null,
+          entries: results.slice(offset, offset + limit).map((item) => ({
+            id: String(item.id ?? ""),
+            title: String(item.title ?? ""),
+            text: String(item.text ?? "").slice(0, 1000),
+            url: String(item.url ?? item.external_url ?? ""),
+            image: typeof item.image === "string" ? item.image : null,
+            date_published: item.date_published ?? null,
+            date_modified: item.date_modified ?? null,
+            tags: Array.isArray(item.tags) ? item.tags.slice(0, 20) : [],
+          })),
+        };
       },
     });
   }
