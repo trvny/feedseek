@@ -44,9 +44,10 @@ Live at `feeds-proxy.travny.workers.dev`; the Feedseek MCP endpoint uses the
 
 ## Public site alias
 
-`rss.bartek.lol`: read-only alias of GitHub Pages. Pages owns publication and
-canonical URLs. The alias passes through Pages crawl directives, feed bodies
-and IDs. XML and JSON files default to `noindex` on the alias.
+`rss.bartek.lol`: read-only alias of GitHub Pages. Pages owns publication;
+its generated HTML declares the alias as the canonical page host while keeping
+existing feed URLs and IDs. The alias passes through published crawl directives.
+XML and JSON files default to `noindex` on the alias.
 
 Hostname routing runs before Workers Cache. The site and proxy use separate
 cached entrypoints because Workers Cache keys omit the hostname.
