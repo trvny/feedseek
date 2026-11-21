@@ -49,10 +49,15 @@ test("routes WebSub topic requests around the cached subworker", async () => {
     FeedseekSite: { fetch() { throw Error("Cached site entrypoint must not receive WebSub topics"); } },
     FeedseekProxy: { fetch() { throw Error("Wrong proxy"); } },
   } };
-  const result = await app.fetch(new Request("https://rss.bartek.lol/jbzd.xml"), {}, ctx);
-  // The real upstream may be unavailable in isolated Node tests, but it must
-  // not reach either of the cached WorkerEntrypoints.
-  assert.ok([200, 502].includes(result.status));
+  const originalFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => new Response("<feed/>");
+    const result = await app.fetch(new Request("https://rss.bartek.lol/jbzd.xml"), {}, ctx);
+    assert.equal(result.status, 200);
+    assert.equal(await result.text(), "<feed/>");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("serves remote MCP on both the public and legacy Worker domains", async () => {
