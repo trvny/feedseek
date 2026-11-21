@@ -15,7 +15,7 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "feed_generators"))
-from websub_config import HUB_URL as HUB, PUBLIC_BASE, PILOT_KEYS
+from websub_config import HUB_URL as HUB, PUBLIC_BASE, PILOT_KEYS  # noqa: E402
 
 FEEDS = ROOT / "feeds"
 KEYS = tuple(sorted(PILOT_KEYS))

@@ -1,13 +1,10 @@
-import importlib.util
-import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-import sys
 sys.path.insert(0, str(ROOT / "site"))
 sys.path.insert(0, str(ROOT / "tools"))
 

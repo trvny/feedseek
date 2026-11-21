@@ -54,6 +54,7 @@ from models import (  # noqa: E402
 )
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
+from websub_config import HUB_URL as WEBSUB_HUB, PILOT_KEYS as WEBSUB_PILOT_KEYS  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
@@ -114,9 +115,6 @@ WEBMANIFEST = f"""{{
 
 CANONICAL_PAGE_BASE = PUBLIC_BASE
 GITHUB_PAGES_BASE = "https://trvny.github.io/feedseek/"
-from websub_config import HUB_URL as WEBSUB_HUB, PILOT_KEYS as WEBSUB_PILOT_KEYS
-
-
 def search_page_base(base: str) -> str:
     """Canonical HTML host; preserve feed publication URLs and IDs."""
     return CANONICAL_PAGE_BASE if base == GITHUB_PAGES_BASE else base
