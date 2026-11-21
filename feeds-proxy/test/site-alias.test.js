@@ -2,6 +2,24 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { siteAliasResponse } from "../src/site-alias.js";
 
+test("WebSub pilot bypasses response caches and conditional upstream fetches", async () => {
+  const request = new Request("https://rss.bartek.lol/jbzd.xml", {
+    headers: { "if-none-match": '"stale"', accept: "application/atom+xml" },
+  });
+  const response = await siteAliasResponse(request, async (target, init) => {
+    assert.equal(target.href, "https://trvny.github.io/feedseek/jbzd.xml");
+    assert.deepEqual(Object.fromEntries(init.headers), { accept: "application/atom+xml" });
+    assert.equal(init.cf?.cacheTtl, 0);
+    return new Response("<feed/>", { headers: {
+      "cache-control": "max-age=600", etag: '"stale"', "last-modified": "Fri, 20 Nov 2026 00:00:00 GMT"
+    } });
+  });
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("etag"), null);
+  assert.equal(response.headers.get("last-modified"), null);
+  assert.equal(await response.text(), "<feed/>");
+});
+
 test("serves published feeds without forwarding credentials or rewriting entries", async () => {
   const request = new Request("https://rss.bartek.lol/example.xml?source=old", {
     headers: { authorization: "private", cookie: "private", "if-none-match": '"abc"' },

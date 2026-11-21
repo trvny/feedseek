@@ -44,6 +44,17 @@ test("rejects write methods on the verification endpoint", async () => {
   assert.equal(response.headers.get("allow"), "GET, HEAD");
 });
 
+test("routes WebSub topic requests around the cached subworker", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch() { throw Error("Cached site entrypoint must not receive WebSub topics"); } },
+    FeedseekProxy: { fetch() { throw Error("Wrong proxy"); } },
+  } };
+  const result = await app.fetch(new Request("https://rss.bartek.lol/jbzd.xml"), {}, ctx);
+  // The real upstream may be unavailable in isolated Node tests, but it must
+  // not reach either of the cached WorkerEntrypoints.
+  assert.ok([200, 502].includes(result.status));
+});
+
 test("serves remote MCP on both the public and legacy Worker domains", async () => {
   const ctx = { exports: {
     FeedseekSite: { fetch: () => { throw new Error("MCP must not hit Pages"); } },
