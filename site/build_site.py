@@ -47,7 +47,7 @@ sys.path.insert(0, str(SITE_DIR))
 from sitemap_variants import SEARCH_VARIANTS, build_sitemap_variants  # noqa: E402
 
 from validate_feeds import validate_model_sidecar  # noqa: E402
-from models import load_published_feeds  # noqa: E402
+from models import load_feed_registry, load_published_feeds  # noqa: E402
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
 
@@ -344,8 +344,18 @@ def collect_all_feeds(selected: list[dict]) -> list[dict]:
     Selection only curates the landing-page cards and OPML; every generated
     pair is still published and listed in machine-readable catalogs.
     """
+    enabled = {
+        key for key, config in load_feed_registry().items() if config.enabled
+    }
+    selected = [
+        feed for feed in selected
+        if short_name(Path(str(feed["filename"]))) in enabled
+    ]
     chosen = {str(f["filename"]) for f in selected}
-    rest = [parse_feed(p) for p in FEEDS_DIR.glob("feed_*.xml") if p.name not in chosen]
+    rest = [
+        parse_feed(path) for path in FEEDS_DIR.glob("feed_*.xml")
+        if path.name not in chosen and short_name(path) in enabled
+    ]
     rest.sort(key=lambda f: f["title"].lower())
     return selected + rest
 
