@@ -107,7 +107,7 @@ test("personal GitHub milestone styling survives the public URL alias", async ()
       ts: Date.now(), categories: ["Pull request"], author: "GPTomek",
     };
     const r = await makeReader([feed], new Map([[xmlUrl, [entry]]]));
-    const card = r.articles()[0];
+    const card = r.nodes.get("#list").children.find(node => node.className?.includes("item-github-personal"));
     assert.match(card.className, /item-github-personal/);
     const text = card.children[0];
     assert.equal(text.children[0].children.find(child => child.className === "kind")?.textContent, "Pull request");
