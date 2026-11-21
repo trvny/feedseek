@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import os
 import sys
@@ -77,7 +78,7 @@ def public_version_ready(topic: str, expected: str) -> bool:
                 body = response.read(16 * 1024 * 1024 + 1)
                 if response.status == 200 and len(body) <= 16 * 1024 * 1024 and entry_digest(body) == expected:
                     return True
-        except (OSError, ValueError, ET.ParseError) as exc:
+        except (OSError, ValueError, ET.ParseError, http.client.HTTPException) as exc:
             print(f"WebSub public topic not ready: {topic}: {exc}", file=sys.stderr)
         if attempt < 3:
             time.sleep(3)

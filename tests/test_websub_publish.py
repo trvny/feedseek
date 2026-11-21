@@ -1,3 +1,4 @@
+import http.client
 import sys
 import tempfile
 import unittest
@@ -64,6 +65,25 @@ class WebSubPublishingTests(unittest.TestCase):
             self.assertEqual(fetch.call_args.args[0].full_url, "https://rss.bartek.lol/jbzd.xml")
         with self.assertRaises(ValueError):
             websub_notify.public_version_ready("https://evil.example/topic", expected)
+
+    def test_truncated_public_response_does_not_block_following_topics(self):
+        expected = websub_notify.entry_digest(
+            b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>a</id></entry></feed>'
+        )
+        class TruncatedResponse:
+            status = 200
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                return False
+            def read(self, size):
+                raise http.client.IncompleteRead(b"partial")
+
+        with (
+            patch.object(websub_notify.urllib.request, "urlopen", return_value=TruncatedResponse()),
+            patch.object(websub_notify.time, "sleep"),
+        ):
+            self.assertFalse(websub_notify.public_version_ready("https://rss.bartek.lol/jbzd.xml", expected))
 
     def test_sha_snapshot_excludes_nonpilot_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:

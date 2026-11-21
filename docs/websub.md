@@ -12,3 +12,5 @@ Pilot topics: `jbzd.xml`, `memy.xml`, `rssboard.xml` on `https://rss.bartek.lol/
 - WebSub isn't universal instant delivery: hub availability, subscriber verification and reader support determine end-to-end behavior.
 
 Tests: `uv run --locked python -m unittest tests/test_websub_publish.py`.
+
+Notification delivery is best-effort: if publication is not visible at the canonical URL within the bounded verification window, that cycle skips the push. A future entry change may trigger another attempt; normal feed polling remains authoritative. The pilot does not persist a per-topic delivery ledger.
