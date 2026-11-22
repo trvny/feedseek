@@ -49,7 +49,7 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertIn("/{key}.json", spec["paths"])
         skill = MODULE_PATH.parent / "agent-skills" / "feedseek-discovery" / "SKILL.md"
         payload = skill.read_bytes()
-        self.assertTrue(payload.startswith(b"---\\nname: feedseek-discovery\\n"))
+        self.assertTrue(payload.startswith(b"---\nname: feedseek-discovery\n"))
         index = build_site.build_skill_index(payload)
         self.assertEqual(index["$schema"], "https://schemas.agentskills.io/discovery/0.2.0/schema.json")
         item = index["skills"][0]
