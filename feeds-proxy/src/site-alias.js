@@ -3,6 +3,11 @@ export const WEBSUB_PILOT_PATHS = new Set(["/jbzd.xml", "/memy.xml", "/rssboard.
 const PAGES = new URL("https://trvny.github.io/feedseek/");
 const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json", "/index.md", "/llms.txt", "/llms-full.txt", "/reader/index.md"]);
 const XML_SITEMAPS = new Set(["/sitemap.xml", "/sitemap-atom.xml", "/sitemap-rss.xml"]);
+const AGENT_DISCOVERY = new Map([
+  ["/.well-known/ard.json", "application/ard+json"],
+  ["/.well-known/ai-catalog.json", "application/ai-catalog+json"],
+  ["/.well-known/mcp/server-card.json", "application/mcp-server-card+json"],
+]);
 const REQUEST_HEADERS = ["accept", "if-none-match", "if-modified-since", "if-range", "range"];
 
 /** @param {Request} request @param {typeof fetch} fetchImpl */
@@ -18,10 +23,11 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
   source.search = alias.search;
   const readerDiscovery = READER_DISCOVERY.has(alias.pathname);
   const xmlSitemap = XML_SITEMAPS.has(alias.pathname);
+  const agentMediaType = AGENT_DISCOVERY.get(alias.pathname);
   const websubPilot = WEBSUB_PILOT_PATHS.has(alias.pathname);
   const headers = new Headers();
   // Full sitemap response to replace cached crawl headers.
-  for (const name of readerDiscovery || xmlSitemap || websubPilot ? ["accept"] : REQUEST_HEADERS) {
+  for (const name of readerDiscovery || xmlSitemap || websubPilot || agentMediaType ? ["accept"] : REQUEST_HEADERS) {
     const value = request.headers.get(name);
     if (value !== null) headers.set(name, value);
   }
@@ -33,11 +39,16 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
     });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
+    if (agentMediaType && upstream.ok) {
+      responseHeaders.set("content-type", `${agentMediaType}; charset=utf-8`);
+      responseHeaders.set("access-control-allow-origin", "*");
+      responseHeaders.delete("x-robots-tag");
+    }
     if (xmlSitemap) {
       responseHeaders.delete("etag");
       responseHeaders.delete("last-modified");
       responseHeaders.delete("accept-ranges");
-    } else if (/\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
+    } else if (!agentMediaType && /\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
       responseHeaders.set("x-robots-tag", "noindex, follow");
     }
     if (websubPilot) {
