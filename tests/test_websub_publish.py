@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
-from xml.etree import ElementTree as ET
+from lxml import etree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "site"))
@@ -17,6 +17,17 @@ ATOM = "{http://www.w3.org/2005/Atom}"
 
 
 class WebSubPublishingTests(unittest.TestCase):
+    """Atom/RSS discovery and notification safety contracts."""
+
+    def test_rejects_dtd_and_external_entities_in_digest(self):
+        malicious = (
+            b'<!DOCTYPE feed [<!ENTITY secret SYSTEM "file:///etc/passwd">]>'
+            b'<feed xmlns="http://www.w3.org/2005/Atom">'
+            b'<entry><title>&secret;</title></entry></feed>'
+        )
+        with self.assertRaises(ValueError):
+            websub_notify.entry_digest(malicious)
+
     def test_atom_metadata_is_idempotent_and_targets_public_topic(self):
         raw = '<feed xmlns="http://www.w3.org/2005/Atom"><title>Test</title><link rel="self" href="https://old.example/feed.xml"/></feed>'
         topic = "https://rss.bartek.lol/jbzd.xml"
@@ -52,7 +63,13 @@ class WebSubPublishingTests(unittest.TestCase):
         feed = b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>sample</id></entry></feed>'
         expected = websub_notify.entry_digest(feed)
         class PublicResponse:
+            """Bounded successful public topic response."""
+
             status = 200
+
+            def __init__(self):
+                self.max_bytes = None
+
             def __enter__(self):
                 return self
             def __exit__(self, *args):
@@ -60,9 +77,18 @@ class WebSubPublishingTests(unittest.TestCase):
             def read(self, size):
                 self.max_bytes = size
                 return feed
-        with patch.object(websub_notify.urllib.request, "urlopen", return_value=PublicResponse()) as fetch:
-            self.assertTrue(websub_notify.public_version_ready("https://rss.bartek.lol/jbzd.xml", expected))
-            self.assertEqual(fetch.call_args.args[0].full_url, "https://rss.bartek.lol/jbzd.xml")
+        public_response = PublicResponse()
+        with patch.object(
+            websub_notify.urllib.request, "urlopen", return_value=public_response
+        ) as fetch:
+            self.assertTrue(websub_notify.public_version_ready(
+                "https://rss.bartek.lol/jbzd.xml", expected
+            ))
+            self.assertEqual(
+                fetch.call_args.args[0].full_url,
+                "https://rss.bartek.lol/jbzd.xml",
+            )
+            self.assertEqual(public_response.max_bytes, 16 * 1024 * 1024 + 1)
         with self.assertRaises(ValueError):
             websub_notify.public_version_ready("https://evil.example/topic", expected)
 
@@ -71,6 +97,8 @@ class WebSubPublishingTests(unittest.TestCase):
             b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>a</id></entry></feed>'
         )
         class TruncatedResponse:
+            """Simulate a truncated upstream response."""
+
             status = 200
             def __enter__(self):
                 return self

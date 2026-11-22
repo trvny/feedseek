@@ -79,4 +79,7 @@ WebMCP-capable browsers expose a read-only `browse_memes` tool (source, query, o
 
 ## WebSub pilot
 
-JBZD, Memy and RSS Boards publish `rel="hub"` plus canonical `rel="self"` in their Atom XML. Changed entries trigger best-effort post-deployment notifications to a public WebSub hub. Regular polling still works without WebSub support. See [WebSub publishing](websub.md) for scope, operational limits and tests.
+JBZD, Memy, and RSS Boards advertise `rel="hub"` and canonical `rel="self"`
+links in their Atom feeds. Changed entries trigger best-effort notifications
+after deployment. Regular polling still works. See [WebSub publishing](websub.md)
+for limits and tests.
