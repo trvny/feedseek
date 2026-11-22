@@ -19,7 +19,7 @@ PUBLIC_STEM_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 RESERVED_PUBLIC_STEMS = frozenset({
     "index", "llms", "llms-full", "sitemap", "sitemap-atom",
     "sitemap-rss", "robots", "model-feeds", "subscriptions",
-    "favicon", "site", "webmcp", "feedseek-search-index",
+    "favicon", "site", "webmcp", "feedseek-search-index", "openapi",
 })
 
 

@@ -47,6 +47,9 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
       responseHeaders.set("access-control-allow-origin", "*");
       responseHeaders.delete("x-robots-tag");
     }
+    if (agentMediaType && alias.pathname === "/.well-known/api-catalog" && upstream.ok) {
+      responseHeaders.append("link", '<https://rss.bartek.lol/.well-known/api-catalog>; rel="api-catalog"');
+    }
     if (xmlSitemap) {
       responseHeaders.delete("etag");
       responseHeaders.delete("last-modified");

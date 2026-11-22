@@ -562,8 +562,9 @@ def build_public_openapi() -> dict:
                 "get": {
                     "operationId": "getModelFeed",
                     "summary": "Read a published source's normalized JSON Model Feed",
-                    "description": "Only source keys found in model-feeds.json exist. "
-                                   "An unrecognized key returns 404.",
+                    "description": "Source keys from model-feeds.json are canonical; "
+                                   "published legacy aliases may also resolve. "
+                                   "Unknown keys return 404.",
                     "parameters": [{
                         "name": "key", "in": "path", "required": True,
                         "schema": {"type": "string"},
