@@ -7,7 +7,7 @@ const AGENT_DISCOVERY = new Map([
   ["/.well-known/ard.json", "application/ard+json"],
   ["/.well-known/ai-catalog.json", "application/ai-catalog+json"],
   ["/.well-known/mcp/server-card.json", "application/mcp-server-card+json"],
-  ["/.well-known/api-catalog", "application/linkset+json; profile=\\"https://www.rfc-editor.org/info/rfc9727\\""],
+  ["/.well-known/api-catalog", 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"'],
   ["/.well-known/agent-skills/index.json", "application/json"],
   ["/.well-known/agent-skills/feedseek-discovery/SKILL.md", "text/markdown"],
 ]);
