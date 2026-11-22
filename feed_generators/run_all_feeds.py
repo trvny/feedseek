@@ -4,7 +4,8 @@ Generators run in isolated subprocesses with bounded concurrency. In incremental
 batch runs, a failed upstream with a validated, restored XML + Model Feed pair is
 reported as stale without blocking healthy sources. Missing/invalid publication
 pairs, invalid registry entries, failed normalization, and full-run failures
-remain fatal. A fully stale batch cannot report success.
+remain fatal. A batch with more restored fallbacks than successful generators
+cannot report success.
 """
 
 from __future__ import annotations
@@ -294,7 +295,10 @@ def _report_stale_feeds(restored_scripts: list[str]) -> None:
         try:
             with open(summary, "a", encoding="utf-8") as report:
                 report.write("\n### Feedseek stale sources\n\n")
-                report.write("Upstream refresh failed; published XML + Model Feed pairs passed validation.\n\n")
+                report.write(
+                    "Upstream refresh failed; published XML + Model Feed pairs "
+                    "passed validation.\n\n"
+                )
                 for name in restored_scripts:
                     report.write(f"- `{name}`: last-known-good retained; no new items this run\n")
         except OSError as exc:
@@ -372,10 +376,10 @@ def _run_registry(
         normalization_ok=normalization_ok,
     )
     _report_stale_feeds(restored_scripts)
-    all_stale = bool(restored_scripts and not successful_scripts)
-    if all_stale:
-        logger.error("All enabled generators failed; refusing an entirely stale run")
-    return 1 if failed_scripts or skipped_configs or not normalization_ok or all_stale else 0
+    widespread_outage = len(restored_scripts) > len(successful_scripts)
+    if widespread_outage:
+        logger.error("More stale fallbacks than successful generators; refusing a widespread outage")
+    return 1 if failed_scripts or skipped_configs or not normalization_ok or widespread_outage else 0
 
 
 def _consume_cache_restore_marker() -> bool:

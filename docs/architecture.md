@@ -35,7 +35,8 @@ from the generated files**, even when no Git commit is made. In incremental
 batches, a failed upstream with a validated, restored XML + Model Feed pair
 is reported as stale through a GitHub warning and job summary, not as a failed
 run. Missing/invalid backups, invalid registry entries, failed normalization,
-full-run generator failures, and entirely stale batches still fail the gate.
+full-run generator failures, and batches with more restored stale sources
+than successful generators still fail the gate.
 This keeps public URLs for every generated feed (including
 `https://rss.bartek.lol/<public-name>.xml` and its `<public-name>.json` Model Feed
 sibling; optional registry `public_name` shortens public URLs only, while generator keys, cache paths and item IDs stay stable; legacy `<key>.*` and `feed_<key>.*` copies remain for subscribers) current without a fresh pack of generated blobs in `main`. Generators
