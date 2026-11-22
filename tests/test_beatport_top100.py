@@ -56,6 +56,14 @@ class BeatportMirrorTests(unittest.TestCase):
         self.assertTrue(entries[0]["link"].startswith(beatport.MIRROR_SONG_BASE))
         self.assertEqual(entries[0]["title"], "Artist 1 - Track 1")
 
+    def test_legitimate_question_marks_do_not_mask_chart_positions(self):
+        html = mirror_html().replace(
+            ">Track 1</span>", ">Do You Remember?</span>"
+        )
+        tracks = beatport.extract_mirror_tracks(html, NOW)
+        self.assertEqual(len(tracks), 95)
+        self.assertEqual(tracks[0]["name"], "Do You Remember?")
+
     def test_rejects_stale_incomplete_and_gapped_ranking(self):
         self.assertFalse(beatport.extract_mirror_tracks(
             mirror_html(week="October 10, 2026"), NOW

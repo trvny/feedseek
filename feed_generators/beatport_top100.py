@@ -161,7 +161,7 @@ def extract_mirror_tracks(html: str, now: datetime) -> list[dict]:
             continue
         title = title_element.get_text(" ", strip=True)
         artist = artist_element.get_text(" ", strip=True)
-        if not title or not artist or "?" in title or set(artist) == {"?"}:
+        if not title.strip("? ") or not artist.strip("? "):
             continue
         try:
             rank = int(rank_element.get_text(strip=True))
