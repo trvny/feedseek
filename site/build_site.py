@@ -30,6 +30,7 @@ import json
 import os
 import shutil
 import sys
+from lxml import etree
 from lxml.etree import _Element
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -53,6 +54,7 @@ from models import (  # noqa: E402
 )
 from safe_feed_xml import FeedXmlError, parse_feed_xml  # noqa: E402
 from utils import PUBLIC_BASE, REPO_SLUG, favicon_proxy  # noqa: E402
+from websub_config import HUB_URL as WEBSUB_HUB, PILOT_KEYS as WEBSUB_PILOT_KEYS  # noqa: E402
 
 FEEDS_DIR = ROOT / "feeds"
 ASSETS_DIR = ROOT / "assets"
@@ -113,8 +115,6 @@ WEBMANIFEST = f"""{{
 
 CANONICAL_PAGE_BASE = PUBLIC_BASE
 GITHUB_PAGES_BASE = "https://trvny.github.io/feedseek/"
-
-
 def search_page_base(base: str) -> str:
     """Canonical HTML host; preserve feed publication URLs and IDs."""
     return CANONICAL_PAGE_BASE if base == GITHUB_PAGES_BASE else base
@@ -1110,6 +1110,31 @@ def copy_reader_bundle(base: str) -> None:
     shutil.copytree(OUT_DIR / "icons", reader_out / "icons", dirs_exist_ok=True)
 
 
+def add_websub_links(xml: str, topic_url: str) -> str:
+    """Advertise the public hub and canonical topic in a validated Atom/RSS document."""
+    tree = parse_feed_xml(xml.encode("utf-8"), strip_ignorable=False)
+    root = tree.getroot()
+    if root.tag == ATOM + "feed":
+        container = root
+    elif root.tag == "rss":
+        container = root.find("channel")
+    else:
+        raise ValueError("WebSub requires an Atom or RSS 2.0 document")
+    if container is None:
+        raise ValueError("RSS channel is missing")
+
+    for rel, href in (("self", topic_url), ("hub", WEBSUB_HUB)):
+        link = next(
+            (node for node in container if node.tag == ATOM + "link" and node.get("rel") == rel),
+            None,
+        )
+        if link is None:
+            etree.SubElement(container, ATOM + "link", rel=rel, href=href)
+        else:
+            link.set("href", href)
+    return etree.tostring(tree, encoding="unicode").rstrip() + "\n"
+
+
 def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
     """Stage Pages copies without changing the tracked XML/JSON pair.
 
@@ -1135,6 +1160,9 @@ def copy_public_feed_pair(source: Path, destination: Path, base: str) -> None:
             (f'rel="self" href="{old_url}"', f'rel="self" href="{public_xml_url}"'),
         ):
             xml = xml.replace(old, new)
+
+    if REPO_SLUG == "trvny/feedseek" and short_name(source) in WEBSUB_PILOT_KEYS:
+        xml = add_websub_links(xml, public_xml_url)
 
     sibling = source.with_suffix(".json")
     model_feed = json.loads(sibling.read_text(encoding="utf-8"))

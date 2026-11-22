@@ -44,6 +44,22 @@ test("rejects write methods on the verification endpoint", async () => {
   assert.equal(response.headers.get("allow"), "GET, HEAD");
 });
 
+test("routes WebSub topic requests around the cached subworker", async () => {
+  const ctx = { exports: {
+    FeedseekSite: { fetch() { throw Error("Cached site entrypoint must not receive WebSub topics"); } },
+    FeedseekProxy: { fetch() { throw Error("Wrong proxy"); } },
+  } };
+  const originalFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => new Response("<feed/>");
+    const result = await app.fetch(new Request("https://rss.bartek.lol/jbzd.xml"), {}, ctx);
+    assert.equal(result.status, 200);
+    assert.equal(await result.text(), "<feed/>");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("serves remote MCP on both the public and legacy Worker domains", async () => {
   const ctx = { exports: {
     FeedseekSite: { fetch: () => { throw new Error("MCP must not hit Pages"); } },

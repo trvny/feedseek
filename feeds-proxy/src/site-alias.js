@@ -1,4 +1,5 @@
 export const SITE_ALIAS_HOST = "rss.bartek.lol";
+export const WEBSUB_PILOT_PATHS = new Set(["/jbzd.xml", "/memy.xml", "/rssboard.xml"]);
 const PAGES = new URL("https://trvny.github.io/feedseek/");
 const READER_DISCOVERY = new Set(["/subscriptions.opml", "/model-feeds.json", "/index.md", "/llms.txt", "/llms-full.txt", "/reader/index.md"]);
 const XML_SITEMAPS = new Set(["/sitemap.xml", "/sitemap-atom.xml", "/sitemap-rss.xml"]);
@@ -17,15 +18,19 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
   source.search = alias.search;
   const readerDiscovery = READER_DISCOVERY.has(alias.pathname);
   const xmlSitemap = XML_SITEMAPS.has(alias.pathname);
+  const websubPilot = WEBSUB_PILOT_PATHS.has(alias.pathname);
   const headers = new Headers();
   // Full sitemap response to replace cached crawl headers.
-  for (const name of readerDiscovery || xmlSitemap ? ["accept"] : REQUEST_HEADERS) {
+  for (const name of readerDiscovery || xmlSitemap || websubPilot ? ["accept"] : REQUEST_HEADERS) {
     const value = request.headers.get(name);
     if (value !== null) headers.set(name, value);
   }
 
   try {
-    const upstream = await fetchImpl(source, { method, headers, redirect: "manual", signal: AbortSignal.timeout(12000) });
+    const upstream = await fetchImpl(source, {
+      method, headers, redirect: "manual", signal: AbortSignal.timeout(12000),
+      ...(websubPilot ? { cf: { cacheTtl: 0 } } : {}),
+    });
     const responseHeaders = new Headers(upstream.headers);
     responseHeaders.delete("set-cookie");
     if (xmlSitemap) {
@@ -34,6 +39,13 @@ export async function siteAliasResponse(request, fetchImpl = fetch) {
       responseHeaders.delete("accept-ranges");
     } else if (/\.(?:xml|json)$/.test(alias.pathname) && !responseHeaders.has("x-robots-tag")) {
       responseHeaders.set("x-robots-tag", "noindex, follow");
+    }
+    if (websubPilot) {
+      // Subscribers and hubs must receive the current deployed topic, not an edge copy.
+      responseHeaders.set("cache-control", "no-store");
+      responseHeaders.delete("etag");
+      responseHeaders.delete("last-modified");
+      responseHeaders.delete("accept-ranges");
     }
     responseHeaders.set("x-content-type-options", "nosniff");
     const location = responseHeaders.get("location");

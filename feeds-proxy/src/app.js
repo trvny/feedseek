@@ -1,5 +1,5 @@
 import { mcpResponse } from "./mcp.js";
-import { SITE_ALIAS_HOST } from "./site-alias.js";
+import { SITE_ALIAS_HOST, WEBSUB_PILOT_PATHS, siteAliasResponse } from "./site-alias.js";
 
 const OPENAI_CHALLENGE_PATH = "/.well-known/openai-apps-challenge";
 
@@ -35,6 +35,10 @@ export default {
     // MCP works on the canonical domain and remains reachable on the legacy Worker.
     if (pathname === "/mcp") return mcpResponse(request);
     if (pathname === OPENAI_CHALLENGE_PATH) return openAiChallengeResponse(request, env);
+    // WebSub topics must never be served through the cached WorkerEntrypoint.
+    if (hostname === SITE_ALIAS_HOST && WEBSUB_PILOT_PATHS.has(pathname)) {
+      return siteAliasResponse(request);
+    }
     if (hostname === SITE_ALIAS_HOST) return ctx.exports.FeedseekSite.fetch(request);
     return ctx.exports.FeedseekProxy.fetch(request);
   },
