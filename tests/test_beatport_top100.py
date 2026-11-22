@@ -137,6 +137,23 @@ class BeatportMirrorTests(unittest.TestCase):
             len(beatport.merge_entries([new], [old], id_field="link", date_field="date")), 2
         )
 
+    def test_beatport_slug_changes_keep_exact_catalog_identity(self):
+        original = {
+            "title": "Artist A - Anthem (Extended Mix)",
+            "link": "https://www.beatport.com/track/anthem/123",
+            "date": NOW,
+        }
+        renamed = {
+            "title": "Artist A - Anthem (Extended Mix)",
+            "link": "https://www.beatport.com/track/anthem-remastered/123",
+            "date": NOW,
+        }
+        beatport._preserve_known_links([renamed], [original])
+        self.assertEqual(renamed["link"], original["link"])
+        self.assertEqual(
+            len(beatport.merge_entries([renamed], [original], id_field="link", date_field="date")), 1
+        )
+
     def test_cross_source_id_remains_first_seen_link_when_direct_recovers(self):
         old = {
             "title": "Artist A - Anthem [Extended Mix]",
@@ -148,6 +165,19 @@ class BeatportMirrorTests(unittest.TestCase):
         }
         beatport._preserve_known_links([new], [old])
         self.assertEqual(new["link"], old["link"])
+
+    def test_ambiguous_cross_provider_duplicates_do_not_hide_catalog_ids(self):
+        old = [
+            {"title": "Artist A - Anthem (Extended Mix)",
+             "link": f"https://www.beatport.com/track/anthem/{num}"}
+            for num in (123, 456)
+        ]
+        mirrored = {
+            "title": "Artist A - Anthem [Extended Mix]",
+            "link": "https://soundcharts.com/en/song/12345678-1234-4234-9234-000000000001",
+        }
+        beatport._preserve_known_links([mirrored], old)
+        self.assertTrue(mirrored["link"].startswith("https://soundcharts.com/en/song/"))
 
     def test_unusable_primary_rows_trigger_mirror(self):
         with (

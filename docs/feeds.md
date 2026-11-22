@@ -79,9 +79,12 @@ masked rows, missing positions and stale data. Entries from the mirror link
 to their Soundcharts track page and include the mirror/week attribution.
 Beatport-origin entries keep Beatport URLs. Exact, unambiguous artist+title+mix
 matches across the two providers keep their **first-observed permalink and Atom
-ID**, even when Beatport later recovers. Different catalog IDs within one
-provider are never collapsed. Ambiguous tracks keep distinct IDs. The
-existing cache preserves first-seen dates.
+ID**, even when Beatport later recovers. Beatport slug changes with an unchanged
+numeric track ID retain the existing identity. Distinct catalog IDs within one
+provider are never collapsed. Without shared recording IDs (ISRC is not public
+in the weekly chart), matches across providers remain best-effort; ambiguous
+tracks keep distinct IDs, not fabricated equivalence. The existing cache
+preserves first-seen dates.
 
 No Beatport login, third-party API key, paid proxy or browser challenge bypass.
 If neither public source is valid, the generator refuses to write, and the

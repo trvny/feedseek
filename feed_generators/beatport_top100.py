@@ -328,15 +328,32 @@ def _source_provider(url: str) -> str | None:
     return None
 
 
+def _beatport_catalog_id(url: str) -> str | None:
+    """Stable numeric Beatport track ID despite changing URL slugs."""
+    if _source_provider(url) != "beatport":
+        return None
+    match = re.fullmatch(r"/track/[^/]+/([0-9]+)", urlparse(url).path)
+    return match.group(1) if match else None
+
+
 def _preserve_known_links(new_entries: list[dict], cached: list[dict]) -> None:
-    """Reuse identity only for unique matches across different providers."""
+    """Reuse exact Beatport IDs, or unambiguous cross-provider recording keys."""
+    cached_by_id: dict[str, list[dict]] = {}
     cached_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
     new_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
     for entry in cached:
+        beatport_id = _beatport_catalog_id(entry.get("link", ""))
+        if beatport_id:
+            cached_by_id.setdefault(beatport_id, []).append(entry)
         sig = _recording_signature(entry.get("title") or "")
         if sig:
             cached_by_signature.setdefault(sig, []).append(entry)
     for entry in new_entries:
+        beatport_id = _beatport_catalog_id(entry.get("link", ""))
+        previous_id = cached_by_id.get(beatport_id, []) if beatport_id else []
+        if len(previous_id) == 1:
+            entry["link"] = previous_id[0]["link"]
+            continue
         sig = _recording_signature(entry.get("title") or "")
         if sig:
             new_by_signature.setdefault(sig, []).append(entry)
