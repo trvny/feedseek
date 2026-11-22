@@ -144,7 +144,7 @@ test("publishes agent discovery metadata with precise content types and no noind
     const response = await siteAliasResponse(new Request("https://rss.bartek.lol" + path), async (target, init) => {
       assert.equal(target.href, "https://trvny.github.io/feedseek" + path);
       assert.deepEqual(Object.fromEntries(init.headers), {});
-      return Response.json({ name: "Feedseek" });
+      return Response.json({ name: "Feedseek" }, { headers: { "x-robots-tag": "noindex, follow" } });
     });
     assert.equal(response.status, 200, path);
     assert.equal(response.headers.get("content-type"), expected + "; charset=utf-8", path);
