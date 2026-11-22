@@ -124,7 +124,7 @@ def publish(topics: list[str], expected: dict[str, str] | None = None) -> None:
                 if response.status not in (200, 202, 204):
                     raise RuntimeError(f"WebSub hub responded {response.status}")
             print(f"WebSub publish accepted: {topic}")
-        except (OSError, RuntimeError, ValueError) as exc:
+        except (OSError, RuntimeError, ValueError, http.client.HTTPException) as exc:
             failures.append(topic)
             print(f"WebSub publish skipped for {topic}: {exc}", file=sys.stderr)
     if failures:

@@ -133,6 +133,42 @@ class WebSubPublishingTests(unittest.TestCase):
                 "https://rss.bartek.lol/jbzd.xml", expected
             ))
 
+    def test_hub_protocol_error_does_not_skip_other_pilot_topics(self):
+        """Malformed hub replies remain isolated to the failing topic."""
+        topics = [
+            "https://rss.bartek.lol/jbzd.xml",
+            "https://rss.bartek.lol/memy.xml",
+        ]
+        expected = {topic: "a" * 64 for topic in topics}
+
+        class Accepted:
+            """Minimal successful hub response."""
+
+            status = 202
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+        calls = []
+
+        def send(request, timeout):
+            calls.append(request.full_url)
+            if len(calls) == 1:
+                raise http.client.BadStatusLine("invalid hub response")
+            return Accepted()
+
+        with (
+            patch.object(websub_notify, "public_version_ready", return_value=True),
+            patch.object(websub_notify.urllib.request, "urlopen", side_effect=send),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "1 of 2"):
+                websub_notify.publish(topics, expected)
+
+        self.assertEqual(calls, [websub_notify.HUB, websub_notify.HUB])
+
     def test_sha_snapshot_excludes_nonpilot_feeds(self):
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
