@@ -31,8 +31,13 @@ The defaults are intentionally conservative:
 
 The scheduled generator runs every three hours. Every publishable run backs
 up incremental state to R2, then builds and deploys GitHub Pages **directly
-from the generated files**, even when no Git commit is made. Validated partial
-results still deploy if a separate generator fails its final health gate. This keeps the Pages URLs for every generated feed (including
+from the generated files**, even when no Git commit is made. In incremental
+batches, a failed upstream with a validated, restored XML + Model Feed pair
+is reported as stale through a GitHub warning and job summary, not as a failed
+run. Missing/invalid backups, invalid registry entries, failed normalization,
+full-run generator failures, and batches with more restored stale sources
+than successful generators still fail the gate.
+This keeps public URLs for every generated feed (including
 `https://rss.bartek.lol/<public-name>.xml` and its `<public-name>.json` Model Feed
 sibling; optional registry `public_name` shortens public URLs only, while generator keys, cache paths and item IDs stay stable; legacy `<key>.*` and `feed_<key>.*` copies remain for subscribers) current without a fresh pack of generated blobs in `main`. Generators
 write Atom self links and Model Feed URLs as the canonical short Pages URLs
@@ -145,7 +150,13 @@ using a temporary registry and destination. Until such a test exists, leave
 ## Source diagnostics
 
 A successful publication can contain stale entries from individual sources.
-Inspect the `Generate feeds` step in recent [Update Feeds runs](https://github.com/trvny/feedseek/actions/workflows/update-feeds.yml) for repeated fetch errors, empty parses and selector warnings. Compare the newest entry with upstream publication dates, not merely the feed's update timestamp.
+The `Generate feeds` job summary lists verified last-known-good fallbacks and
+GitHub Actions emits a warning for each. Inspect recent
+[Update Feeds runs](https://github.com/trvny/feedseek/actions/workflows/update-feeds.yml)
+for repeated fetch errors, empty parses and selector warnings. Compare upstream
+publication dates rather than trusting the feed's update timestamp alone.
+Run `make feed NAME=<key>` when diagnosing a specific source: named runs
+remain strict and surface its real generator exit status.
 
 - `uv run --locked tools/check_sources.py --broken`: HTTP probe across the inventory. Use `--feed <key>` for targeted checks. HTTP 200 alone does not prove the parser still works; blocked or rate-limited responses are unverified, not necessarily dead.
 - `uv run --locked feed_generators/docs_sources.py --check`: source coverage report without writing.

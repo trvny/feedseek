@@ -1,11 +1,11 @@
 """Run feed generators listed in ``feeds.yaml``.
 
-Generators run in isolated subprocesses so one failure never prevents the
-remaining feeds from being attempted. Batch runs use bounded concurrency because
-most generator time is spent waiting on independent network sources. The command
-exits non-zero when any enabled generator fails or a registry entry is invalid;
-the workflow publishes successful partial results before applying that final
-failure gate.
+Generators run in isolated subprocesses with bounded concurrency. In incremental
+batch runs, a failed upstream with a validated, restored XML + Model Feed pair is
+reported as stale without blocking healthy sources. Missing/invalid publication
+pairs, invalid registry entries, failed normalization, and full-run failures
+remain fatal. A batch with more restored fallbacks than successful generators
+cannot report success.
 """
 
 from __future__ import annotations
@@ -240,6 +240,7 @@ def _run_named_feed(
 def _log_generation_summary(
     successful_scripts: list[str],
     failed_scripts: list[str],
+    restored_scripts: list[str],
     skipped_scripts: list[str],
     skipped_configs: list[str],
     generation_times: list[tuple[str, float]],
@@ -250,7 +251,8 @@ def _log_generation_summary(
     logger.info("\n%s", "=" * 60)
     logger.info("Feed Generation Summary:")
     logger.info("  Successful: %d", len(successful_scripts))
-    logger.info("  Failed: %d", len(failed_scripts))
+    logger.info("  Retained last-known-good: %d", len(restored_scripts))
+    logger.info("  Failed (no valid fallback): %d", len(failed_scripts))
     logger.info("  Skipped (disabled/filtered): %d", len(skipped_scripts))
     logger.info("  Invalid configs (skipped): %d", len(skipped_configs))
     logger.info("  Metadata normalization: %s", "ok" if normalization_ok else "failed")
@@ -265,6 +267,7 @@ def _log_generation_summary(
 
     for heading, names, level, marker in (
         ("Failed feeds", failed_scripts, logger.error, "✗"),
+        ("Stale feeds (validated last-known-good)", restored_scripts, logger.warning, "↺"),
         ("Invalid feed configs in feeds.yaml", skipped_configs, logger.error, "⚠"),
         ("Skipped feeds", skipped_scripts, logger.info, "○"),
     ):
@@ -274,6 +277,32 @@ def _log_generation_summary(
         for name in names:
             level("  %s %s", marker, name)
     logger.info("%s\n", "=" * 60)
+
+
+def _report_stale_feeds(restored_scripts: list[str]) -> None:
+    """Expose degraded sources without making a valid partial publication red."""
+    if not restored_scripts:
+        return
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        for name in restored_scripts:
+            print(
+                f"::warning title=Feedseek source stale::{name}: "
+                "generator failed; retained validated last-known-good XML and JSON",
+                flush=True,
+            )
+    summary = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary:
+        try:
+            with open(summary, "a", encoding="utf-8") as report:
+                report.write("\n### Feedseek stale sources\n\n")
+                report.write(
+                    "Upstream refresh failed; published XML + Model Feed pairs "
+                    "passed validation.\n\n"
+                )
+                for name in restored_scripts:
+                    report.write(f"- `{name}`: last-known-good retained; no new items this run\n")
+        except OSError as exc:
+            logger.warning("Could not write GitHub feed-status summary: %s", exc)
 
 
 def _run_enabled_feed(
@@ -296,6 +325,7 @@ def _run_registry(
 ) -> int:
     """Run every enabled registry entry and report the aggregate status."""
     failed_scripts: list[str] = []
+    restored_scripts: list[str] = []
     successful_scripts: list[str] = []
     skipped_scripts: list[str] = []
     generation_times: list[tuple[str, float]] = []
@@ -326,20 +356,30 @@ def _run_registry(
                 outcomes = list(pool.map(runner, enabled_feeds))
 
         for name, ok, elapsed in outcomes:
-            target = successful_scripts if ok else failed_scripts
-            target.append(name)
+            if ok:
+                successful_scripts.append(name)
+            elif not full and _feed_pair_is_valid(name):
+                # run_feed() already rolled back both feed files and cache.
+                restored_scripts.append(name)
+            else:
+                failed_scripts.append(name)
             generation_times.append((name, elapsed))
 
     normalization_ok = normalize_generated_feeds()
     _log_generation_summary(
         successful_scripts,
         failed_scripts,
+        restored_scripts,
         skipped_scripts,
         skipped_configs,
         generation_times,
         normalization_ok=normalization_ok,
     )
-    return 1 if failed_scripts or skipped_configs or not normalization_ok else 0
+    _report_stale_feeds(restored_scripts)
+    widespread_outage = len(restored_scripts) > len(successful_scripts)
+    if widespread_outage:
+        logger.error("More stale fallbacks than successful generators; refusing a widespread outage")
+    return 1 if failed_scripts or skipped_configs or not normalization_ok or widespread_outage else 0
 
 
 def _consume_cache_restore_marker() -> bool:

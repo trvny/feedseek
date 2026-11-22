@@ -211,6 +211,142 @@ class GeneratorBatchTests(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertEqual(order, ["alpha", "beta"])
 
+    def test_failed_upstream_with_valid_restored_pair_is_warning(self):
+        registry = {"alpha": self.config(), "beta": self.config()}
+        with TemporaryDirectory() as temp:
+            summary_file = Path(temp) / "summary.md"
+            with (
+                mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 1),
+                mock.patch.object(
+                    run_all_feeds, "run_feed",
+                    side_effect=lambda name, _config, full=False: name != "beta",
+                ),
+                mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True) as valid,
+                mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+                mock.patch.dict(os.environ, {
+                    "GITHUB_ACTIONS": "true", "GITHUB_STEP_SUMMARY": str(summary_file),
+                }),
+                self.assertLogs(run_all_feeds.logger, level="INFO") as logs,
+            ):
+                status = run_all_feeds._run_registry(registry, [], full=False)
+
+            self.assertEqual(status, 0)
+            valid.assert_called_once_with("beta")
+            self.assertIn("Stale feeds", "\n".join(logs.output))
+            self.assertIn("`beta`", summary_file.read_text(encoding="utf-8"))
+
+    def test_restored_pair_and_cache_survive_failed_child_before_green_gate(self):
+        """Batch recovery must use actual rollback, not a mocked validator."""
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            feeds = root / "feeds"
+            cache = root / "cache"
+            feeds.mkdir()
+            cache.mkdir()
+            xml = feeds / "feed_beta.xml"
+            model = feeds / "feed_beta.json"
+            state = cache / "beta_posts.json"
+            xml.write_text(
+                '<feed xmlns="http://www.w3.org/2005/Atom">'
+                '<title>Beta</title><entry><id>old</id><title>Old</title></entry></feed>',
+                encoding="utf-8",
+            )
+            model.write_text(
+                '{"format":"feedseek-model-feed","version":1,"items":'
+                '[{"id":"old","title":"Old","text":"Old","text_kind":"title"}]}',
+                encoding="utf-8",
+            )
+            state.write_text('{"entries":["old"]}', encoding="utf-8")
+            before = (xml.read_bytes(), model.read_bytes(), state.read_bytes())
+
+            def partial_child(_cmd, **_kwargs):
+                xml.write_text("<broken>", encoding="utf-8")
+                model.write_text("broken", encoding="utf-8")
+                state.write_text('{"entries":["new"]}', encoding="utf-8")
+                return subprocess.CompletedProcess([], 1, "", "upstream unavailable")
+
+            real_run_feed = run_all_feeds.run_feed
+
+            def run_one(name, config, full=False):
+                if name == "alpha":
+                    return True
+                return real_run_feed(name, config, full=full)
+
+            registry = {"alpha": self.config(), "beta": self.config()}
+            with (
+                mock.patch.object(run_all_feeds, "FEEDS_DIR", feeds),
+                mock.patch.object(run_all_feeds, "CACHE_DIR", cache),
+                mock.patch.object(run_all_feeds, "GENERATOR_WORKERS", 1),
+                mock.patch.object(run_all_feeds, "run_feed", side_effect=run_one),
+                mock.patch.object(run_all_feeds.subprocess, "run", side_effect=partial_child),
+                mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+                mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "false", "GITHUB_STEP_SUMMARY": ""}),
+            ):
+                status = run_all_feeds._run_registry(registry, [], full=False)
+
+            self.assertEqual(status, 0)
+            self.assertEqual(
+                (xml.read_bytes(), model.read_bytes(), state.read_bytes()), before,
+            )
+
+    def test_failed_upstream_without_valid_backup_is_fatal(self):
+        with (
+            mock.patch.object(run_all_feeds, "run_feed", return_value=False),
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=False),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+        ):
+            self.assertEqual(
+                run_all_feeds._run_registry({"alpha": self.config()}, [], full=False), 1,
+            )
+
+    def test_full_run_is_strict_even_with_valid_backup(self):
+        with (
+            mock.patch.object(run_all_feeds, "run_feed", return_value=False),
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid") as valid,
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+        ):
+            self.assertEqual(
+                run_all_feeds._run_registry({"alpha": self.config()}, [], full=True), 1,
+            )
+            valid.assert_not_called()
+
+    def test_all_stale_batch_is_fatal(self):
+        with (
+            mock.patch.object(run_all_feeds, "run_feed", return_value=False),
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+            mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "false", "GITHUB_STEP_SUMMARY": ""}),
+        ):
+            self.assertEqual(
+                run_all_feeds._run_registry({"alpha": self.config()}, [], full=False), 1,
+            )
+
+    def test_majority_stale_batch_fails_even_with_cache_only_success(self):
+        registry = {name: self.config() for name in ("alpha", "beta", "gamma")}
+        with (
+            mock.patch.object(
+                run_all_feeds, "run_feed",
+                side_effect=lambda name, _config, full=False: name == "alpha",
+            ),
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+            mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "false", "GITHUB_STEP_SUMMARY": ""}),
+        ):
+            self.assertEqual(run_all_feeds._run_registry(registry, [], full=False), 1)
+
+    def test_invalid_configs_remain_fatal_with_stale_recovery(self):
+        registry = {"alpha": self.config(), "beta": self.config()}
+        with (
+            mock.patch.object(
+                run_all_feeds, "run_feed",
+                side_effect=lambda name, _config, full=False: name != "beta",
+            ),
+            mock.patch.object(run_all_feeds, "_feed_pair_is_valid", return_value=True),
+            mock.patch.object(run_all_feeds, "normalize_generated_feeds", return_value=True),
+            mock.patch.dict(os.environ, {"GITHUB_ACTIONS": "false", "GITHUB_STEP_SUMMARY": ""}),
+        ):
+            self.assertEqual(run_all_feeds._run_registry(registry, ["broken"], full=False), 1)
+
     def test_enabled_feed_reports_wall_clock_duration(self):
         with (
             mock.patch.object(run_all_feeds, "run_feed", return_value=True),
@@ -228,6 +364,7 @@ class GeneratorBatchTests(unittest.TestCase):
         with self.assertLogs(run_all_feeds.logger, level="INFO") as caught:
             run_all_feeds._log_generation_summary(
                 ["fast", "medium", "slow"],
+                [],
                 [],
                 [],
                 [],
