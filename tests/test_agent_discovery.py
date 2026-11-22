@@ -47,6 +47,8 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertEqual(spec["openapi"], "3.1.0")
         self.assertIn("/model-feeds.json", spec["paths"])
         self.assertIn("/{key}.json", spec["paths"])
+        self.assertIn("legacy aliases", spec["paths"]["/{key}.json"]["get"]["description"])
+        self.assertIn("openapi", build_site.RESERVED_PUBLIC_STEMS)
         skill = MODULE_PATH.parent / "agent-skills" / "feedseek-discovery" / "SKILL.md"
         payload = skill.read_bytes()
         self.assertTrue(payload.startswith(b"---\nname: feedseek-discovery\n"))

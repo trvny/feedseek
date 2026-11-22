@@ -175,3 +175,15 @@ test("well-known API and Agent Skills discovery keep correct headers", async () 
     assert.equal(await res.text(), "discovery");
   }
 });
+
+test("RFC 9727 HEAD discovery includes the api-catalog Link relation", async () => {
+  const request = new Request("https://rss.bartek.lol/.well-known/api-catalog", { method: "HEAD" });
+  const response = await siteAliasResponse(request, async (_upstream, init) => {
+    assert.equal(init.method, "HEAD");
+    return new Response(null, { status: 200, headers: { "content-type": "application/octet-stream" } });
+  });
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("link") || "", /<https:\/\/rss\.bartek\.lol\/\.well-known\/api-catalog>; rel="api-catalog"/);
+  assert.match(response.headers.get("content-type") || "", /^application\/linkset\+json/);
+  assert.equal(await response.text(), "");
+});
