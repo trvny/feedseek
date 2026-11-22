@@ -14,7 +14,7 @@ class AgentDiscoveryTests(unittest.TestCase):
     def test_ard_manifest_and_card_reference_real_mcp(self):
         base = "https://rss.bartek.lol/"
         catalog = build_site.build_agent_catalog(base)
-        self.assertEqual(catalog["specVersion"], "1.0")
+        self.assertEqual(catalog["specVersion"], "0.9")
         self.assertEqual(catalog["host"]["identifier"], "rss.bartek.lol")
         self.assertEqual(len(catalog["entries"]), 2)
         self.assertEqual(len({e["identifier"] for e in catalog["entries"]}), 2)
@@ -28,11 +28,18 @@ class AgentDiscoveryTests(unittest.TestCase):
         card = build_site.build_mcp_server_card()
         self.assertEqual(catalog["entries"][0]["type"], "application/mcp-server-card+json")
         self.assertEqual(catalog["entries"][0]["url"], base + ".well-known/mcp/server-card.json")
-        self.assertEqual(card["name"], "trvny/feedseek")
+        self.assertEqual(card["name"], "feedseek")
         self.assertEqual(card["remotes"][0]["url"], base + "mcp")
+        self.assertEqual(card["$schema"], "https://raw.githubusercontent.com/modelcontextprotocol/ext-server-card/main/schema.json")
         self.assertEqual(card["remotes"][0]["type"], "streamable-http")
         self.assertIn("2026-07-28", card["remotes"][0]["supportedProtocolVersions"])
         self.assertEqual(catalog["entries"][1]["url"], base + "model-feeds.json")
+
+    def test_hidden_files_survive_artifact_upload(self):
+        import re
+        for name in ("update-feeds.yml", "deploy-pages.yml"):
+            workflow = (MODULE_PATH.parent.parent / ".github" / "workflows" / name).read_text(encoding="utf-8")
+            self.assertRegex(workflow, r"(?m)^\\s*include-hidden-files: true$")
 
     def test_page_links_and_guides_reference_ard(self):
         html = build_site.build_index([], "https://rss.bartek.lol/")
