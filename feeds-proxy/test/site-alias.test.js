@@ -133,3 +133,25 @@ test("rebases Reader discovery without serving stale range or conditional respon
   assert.equal(unavailable.status, 404);
   assert.equal(await unavailable.text(), "missing");
 });
+
+test("publishes agent discovery metadata with precise content types and no noindex", async () => {
+  const types = {
+    "/.well-known/ard.json": "application/ard+json",
+    "/.well-known/ai-catalog.json": "application/ai-catalog+json",
+    "/.well-known/mcp/server-card.json": "application/mcp-server-card+json",
+  };
+  for (const [path, expected] of Object.entries(types)) {
+    const response = await siteAliasResponse(new Request("https://rss.bartek.lol" + path), async (target, init) => {
+      assert.equal(target.href, "https://trvny.github.io/feedseek" + path);
+      assert.deepEqual(Object.fromEntries(init.headers), {});
+      return Response.json({ name: "Feedseek" });
+    });
+    assert.equal(response.status, 200, path);
+    assert.equal(response.headers.get("content-type"), expected + "; charset=utf-8", path);
+    assert.equal(response.headers.get("access-control-allow-origin"), "*", path);
+    assert.equal(response.headers.get("x-robots-tag"), null, path);
+    assert.deepEqual(await response.json(), { name: "Feedseek" });
+  }
+  const response = await siteAliasResponse(new Request("https://rss.bartek.lol/.well-known/unknown.json"), async () => Response.json({}));
+  assert.equal(response.headers.get("x-robots-tag"), "noindex, follow");
+});
