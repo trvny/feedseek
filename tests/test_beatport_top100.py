@@ -43,7 +43,7 @@ class BeatportMirrorTests(unittest.TestCase):
     def test_public_weekly_ranking_excludes_masked_tracks(self):
         tracks = beatport.extract_mirror_tracks(mirror_html(), NOW)
         self.assertEqual(len(tracks), 95)
-        self.assertEqual(tracks[0]["url"], beatport.MIRROR_SONG_BASE + UUID_TEMPLATE.format(index=1))
+        self.assertEqual(tracks[0]["url"], "https://soundcharts.com/en/song/" + UUID_TEMPLATE.format(index=1))
         self.assertEqual(tracks[0]["_mirror_week"], "2026-11-21")
         self.assertEqual(tracks[-1]["_rank"], 95)
 
@@ -53,7 +53,7 @@ class BeatportMirrorTests(unittest.TestCase):
         self.assertEqual(len(entries), 95)
         self.assertIn("Soundcharts", entries[0]["description"])
         self.assertIn("Chart week: 2026-11-21", entries[0]["description"])
-        self.assertTrue(entries[0]["link"].startswith(beatport.MIRROR_SONG_BASE))
+        self.assertTrue(entries[0]["link"].startswith("https://soundcharts.com/en/song/"))
         self.assertEqual(entries[0]["title"], "Artist 1 - Track 1")
 
     def test_legitimate_question_marks_do_not_mask_chart_positions(self):
@@ -85,6 +85,55 @@ class BeatportMirrorTests(unittest.TestCase):
         ):
             self.assertTrue(beatport.main())
             save.assert_called_once()
+
+    def test_cross_source_match_preserves_first_seen_and_identity(self):
+        current = datetime(2026, 10, 25, 11, 0, tzinfo=UTC)
+        old_link = "https://www.beatport.com/track/jamaican-bam-bam/22357262"
+        old = {
+            "title": "HUGEL, SOLTO (FR) - Jamaican (Bam Bam) (Extended Mix)",
+            "link": old_link,
+            "date": current,
+            "description": "Entered Beatport Top 100 at #2",
+        }
+        new = {
+            "title": "HUGEL & SOLTO (FR) - Jamaican (Bam Bam) [Extended Mix]",
+            "link": "https://soundcharts.com/en/song/12345678-1234-4234-9234-000000000002",
+            "date": NOW,
+            "description": "Soundcharts mirror week",
+        }
+        beatport._preserve_known_links([new], [old])
+        self.assertEqual(new["link"], old_link)
+        merged = beatport.merge_entries([new], [old], id_field="link", date_field="date")
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["date"], current)
+        self.assertEqual(merged[0]["description"], old["description"])
+
+    def test_different_mixes_do_not_collapse(self):
+        old = {
+            "title": "Artist A - Anthem (Original Mix)",
+            "link": "https://www.beatport.com/track/anthem/123",
+        }
+        new = {
+            "title": "Artist A - Anthem [Extended Mix]",
+            "link": "https://soundcharts.com/en/song/12345678-1234-4234-9234-000000000001",
+        }
+        beatport._preserve_known_links([new], [old])
+        self.assertNotEqual(new["link"], old["link"])
+
+    def test_unusable_primary_rows_trigger_mirror(self):
+        with (
+            patch.object(beatport, "fetch_chart", return_value="HTML"),
+            patch.object(
+                beatport, "extract_tracks", return_value=[{"id": None, "name": ""}],
+            ),
+            patch.object(beatport, "fetch_mirror_tracks",
+                         return_value=beatport.extract_mirror_tracks(mirror_html(), NOW)) as mirror,
+            patch.object(beatport, "load_cache", return_value={"entries": []}),
+            patch.object(beatport, "save_cache"),
+            patch.object(beatport, "save_atom_feed"),
+        ):
+            self.assertTrue(beatport.main())
+            mirror.assert_called_once()
 
     def test_no_mirror_means_no_writes(self):
         with (

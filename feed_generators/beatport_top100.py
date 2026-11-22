@@ -23,7 +23,7 @@ import re
 import sys
 import time
 from datetime import UTC, datetime, timedelta
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -49,8 +49,8 @@ FEED_NAME = "beatport_top100"
 BLOG_URL = "https://www.beatport.com/top-100"
 TRACK_URL_TMPL = "https://www.beatport.com/track/{slug}/{id}"
 MIRROR_URL = "https://soundcharts.com/en/charts/beatport/worldwide"
-MIRROR_SONG_BASE = "https://soundcharts.com/en/song/"
 MIRROR_MIN_TRACKS = 90
+DIRECT_MIN_TRACKS = 90
 MIRROR_MAX_AGE_DAYS = 14
 MIRROR_ID = re.compile(r"^/en/song/([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$")
 
@@ -177,7 +177,7 @@ def extract_mirror_tracks(html: str, now: datetime) -> list[dict]:
             image = ""
         tracks.append({
             "id": uid,
-            "url": MIRROR_SONG_BASE + uid,
+            "url": urljoin(MIRROR_URL, match.group(0)),
             "name": title,
             "artists": [{"name": artist}],
             "release": {"image": {"uri": image}} if image else {},
@@ -303,6 +303,39 @@ def build_entries(tracks, now):
     return entries
 
 
+
+def _recording_signature(title: str) -> tuple[tuple[str, ...], str] | None:
+    """Strict artist+mix key for matching Beatport and Soundcharts records."""
+    artist_text, separator, song = title.partition(" - ")
+    if not separator or not artist_text or not song:
+        return None
+    artists = re.split(r",\s*|\s+&\s+", artist_text)
+    artist_key = tuple(sorted(re.sub(r"\s+", " ", a.casefold()).strip() for a in artists))
+    if not artist_key or any(not artist for artist in artist_key):
+        return None
+    song_key = re.sub(r"\s+", " ", song.casefold().replace("[", "(").replace("]", ")")).strip()
+    song_key = re.sub(r"\s*\(original mix\)$", "", song_key).strip()
+    return artist_key, song_key
+
+
+def _preserve_known_links(new_entries: list[dict], cached: list[dict]) -> None:
+    """Keep first-seen Atom identity only on unique, exact recording matches."""
+    cached_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
+    new_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
+    for entry in cached:
+        sig = _recording_signature(entry.get("title") or "")
+        if sig:
+            cached_by_signature.setdefault(sig, []).append(entry)
+    for entry in new_entries:
+        sig = _recording_signature(entry.get("title") or "")
+        if sig:
+            new_by_signature.setdefault(sig, []).append(entry)
+    for sig, candidates in new_by_signature.items():
+        previous = cached_by_signature.get(sig, [])
+        if len(candidates) == 1 and len(previous) == 1:
+            candidates[0]["link"] = previous[0]["link"]
+
+
 def generate_atom_feed(entries, feed_name=FEED_NAME, *, mirror=False):
     """Build an Atom FeedGenerator from the entry list."""
     fg = FeedGenerator()
@@ -315,13 +348,18 @@ def generate_atom_feed(entries, feed_name=FEED_NAME, *, mirror=False):
     setup_feed_links(fg, BLOG_URL, feed_name, icon=favicon_proxy("beatport.com"))
     setup_feed_extensions(fg)
     fg.language("en")
-    fg.author({"name": "Soundcharts (Beatport chart)" if mirror else "Beatport"})
+    fg.author({"name": "Feedseek (Beatport chart)"})
 
     for entry in entries:
         fe = fg.add_entry()
         fe.id(entry["link"])
         fe.title(entry["title"])
         fe.link(href=entry["link"])
+        publisher = (
+            "Soundcharts (Beatport chart)" if urlparse(entry["link"]).netloc == "soundcharts.com"
+            else "Beatport"
+        )
+        fe.author({"name": publisher})
         add_entry_media(fe, entry.get("image"))
         fe.description(entry["description"])
         if entry.get("date"):
@@ -337,16 +375,14 @@ def main(full=False):
     now = datetime.now(UTC)
     html = fetch_chart()
     tracks = extract_tracks(html) if html else []
-    mirror = not bool(tracks)
+    new_entries = build_entries(tracks, now) if tracks else []
+    mirror = len(new_entries) < DIRECT_MIN_TRACKS
     if mirror:
-        logger.warning("Beatport direct chart unavailable; checking the public weekly mirror")
+        logger.warning("Beatport direct chart unusable; checking the public weekly mirror")
         tracks = fetch_mirror_tracks(now)
-    if not tracks:
+        new_entries = build_entries(tracks, now) if tracks else []
+    if len(new_entries) < MIRROR_MIN_TRACKS:
         logger.error("Neither the Beatport chart nor a fresh complete mirror is available")
-        return False
-    new_entries = build_entries(tracks, now)
-    if not new_entries:
-        logger.warning("No usable entries built — skipping write to avoid an empty feed")
         return False
 
     if full:
@@ -356,8 +392,9 @@ def main(full=False):
         cache = load_cache(FEED_NAME)
         cached = deserialize_entries(cache.get("entries", []), date_field="date")
 
-    # Dedupe by track URL; cached tracks keep their original first-seen date and
-    # debut-rank description, so only genuinely new chart entrants are appended.
+    # Reuse old links only when artists, title and mix identify one prior track.
+    # merge_entries then keeps its original first-seen date and Atom identity.
+    _preserve_known_links(new_entries, cached)
     merged = merge_entries(new_entries, cached, id_field="link", date_field="date")
     merged = sort_posts_for_feed(merged, date_field="date")
 
