@@ -98,3 +98,21 @@ test("routes the same path on each hostname to separate cache entrypoints", asyn
     assert.equal(await result.text(), policy);
   }
 });
+
+test("health checks the published catalog without claiming source health", async () => {
+  const { healthResponse } = await import("../src/app.js");
+  const good = await healthResponse(new Request("https://rss.bartek.lol/health"), async (_target, init) => {
+    assert.equal(init.method, "HEAD");
+    return new Response(null, { status: 200 });
+  });
+  assert.equal(good.status, 200);
+  assert.equal(good.headers.get("cache-control"), "no-store");
+  assert.deepEqual(await good.json(), { status: "ok", service: "feedseek", checks: { publishedCatalog: "ok" } });
+
+  const bad = await healthResponse(new Request("https://rss.bartek.lol/health", { method: "HEAD" }),
+    async () => new Response(null, { status: 404 }));
+  assert.equal(bad.status, 503);
+  assert.equal(await bad.text(), "");
+  const write = await healthResponse(new Request("https://rss.bartek.lol/health", { method: "POST" }));
+  assert.equal(write.status, 405);
+});

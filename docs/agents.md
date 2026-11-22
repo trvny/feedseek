@@ -25,6 +25,15 @@ Public addresses use rss.bartek.lol. GitHub Pages stores the actual files and it
 
 These documents advertise existing read-only capabilities only. They do not imply an A2A agent, OAuth sign-in or Personal Agent Protocol support.
 
+## RFC 9727 and Agent Skills
+
+- [`/.well-known/api-catalog`](https://rss.bartek.lol/.well-known/api-catalog): RFC 9727 `application/linkset+json`, describing the published Model Feed catalog and its OpenAPI description.
+- [`/openapi.json`](https://rss.bartek.lol/openapi.json): Read-only HTTP catalog and per-source Model Feed access. Source keys from `model-feeds.json`.
+- [`/health`](https://rss.bartek.lol/health): Worker liveness plus HEAD check of the published catalog. Does not claim individual upstream source availability.
+- [`/.well-known/agent-skills/index.json`](https://rss.bartek.lol/.well-known/agent-skills/index.json): v0.2.0 Agent Skills discovery. Skill artifact and SHA-256 digest generated from `site/agent-skills/feedseek-discovery/SKILL.md`.
+
+OAuth discovery, OAuth Protected Resource and auth.md intentionally absent: public read-only endpoints do not authenticate callers.
+
 ## Model Feed JSON
 
 One `<key>.json` per XML feed, format `feedseek-model-feed`, version `1`.
