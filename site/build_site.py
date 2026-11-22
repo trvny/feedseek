@@ -536,6 +536,83 @@ def build_mcp_server_card() -> dict:
     }
 
 
+def build_public_openapi() -> dict:
+    """Describe only the existing public read-only catalog and Model Feed URLs."""
+    return {
+        "openapi": "3.1.0",
+        "info": {
+            "title": "Feedseek public Model Feed API",
+            "version": "1.0.0",
+            "description": "Read-only source discovery and published JSON Model Feed histories. "
+                           "No authentication. Source keys come from model-feeds.json.",
+        },
+        "servers": [{"url": "https://rss.bartek.lol"}],
+        "paths": {
+            "/model-feeds.json": {
+                "get": {
+                    "operationId": "listPublishedFeeds",
+                    "summary": "List published Feedseek XML and JSON Model Feeds",
+                    "responses": {"200": {
+                        "description": "Feedseek source registry",
+                        "content": {"application/json": {"schema": {"type": "object"}}},
+                    }},
+                },
+            },
+            "/{key}.json": {
+                "get": {
+                    "operationId": "getModelFeed",
+                    "summary": "Read a published source's normalized JSON Model Feed",
+                    "description": "Only source keys found in model-feeds.json exist. "
+                                   "An unrecognized key returns 404.",
+                    "parameters": [{
+                        "name": "key", "in": "path", "required": True,
+                        "schema": {"type": "string"},
+                        "description": "Published key from the source registry",
+                    }],
+                    "responses": {
+                        "200": {"description": "Feedseek Model Feed",
+                                "content": {"application/json": {"schema": {"type": "object"}}}},
+                        "404": {"description": "No published Model Feed for this key"},
+                    },
+                },
+            },
+        },
+    }
+
+
+def build_api_catalog() -> dict:
+    """RFC 9727 Linkset; status checks Worker and published catalog only."""
+    return {"linkset": [{
+        "anchor": "https://rss.bartek.lol/model-feeds.json",
+        "service-desc": [{
+            "href": "https://rss.bartek.lol/openapi.json",
+            "type": "application/json",
+        }],
+        "service-doc": [{
+            "href": "https://github.com/trvny/feedseek/blob/main/docs/agents.md",
+            "type": "text/html",
+        }],
+        "status": [{
+            "href": "https://rss.bartek.lol/health",
+            "type": "application/json",
+        }],
+    }]}
+
+
+def build_skill_index(skill_data: bytes) -> dict:
+    """Single real Agent Skill. Hash exactly the bytes published as SKILL.md."""
+    return {
+        "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+        "skills": [{
+            "name": "feedseek-discovery",
+            "type": "skill-md",
+            "description": "Discover Feedseek RSS and JSON Model Feeds, search recent entries with public MCP tools, and fetch full articles.",
+            "url": "/.well-known/agent-skills/feedseek-discovery/SKILL.md",
+            "digest": "sha256:" + hashlib.sha256(skill_data).hexdigest(),
+        }],
+    }
+
+
 def build_index(feeds: list[dict], base: str) -> str:
     page_base = search_page_base(base)
     count = len(feeds)
@@ -1006,6 +1083,8 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
         f"- [Model Feed catalog (JSON)]({base}model-feeds.json): Compact source registry and direct Model Feed URLs for agents and apps",
         f"- [ARD discovery]({search_page_base(base)}.well-known/ard.json): Remote MCP Server Card and Model Feed capability index",
+        "- [API catalog](https://rss.bartek.lol/.well-known/api-catalog): RFC 9727 Linkset of read-only HTTP APIs",
+        "- [Agent Skills index](https://rss.bartek.lol/.well-known/agent-skills/index.json): Verified Feedseek discovery skill",
         f"- [Curated feeds (OPML)]({base}subscriptions.opml): One-shot import of the curated landing-page feeds",
         f"- [Sitemap]({base}sitemap.xml): HTML pages for search engines",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
@@ -1294,6 +1373,23 @@ def main() -> None:
     catalog = json.dumps(build_agent_catalog(base), indent=2, ensure_ascii=False) + "\n"
     for name in ("ard.json", "ai-catalog.json"):
         (discovery / name).write_text(catalog, encoding="utf-8")
+    (discovery / "api-catalog").write_text(
+        json.dumps(build_api_catalog(), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    (OUT_DIR / "openapi.json").write_text(
+        json.dumps(build_public_openapi(), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    skill_file = SITE_DIR / "agent-skills" / "feedseek-discovery" / "SKILL.md"
+    skill_data = skill_file.read_bytes()
+    published_skill_dir = discovery / "agent-skills" / "feedseek-discovery"
+    published_skill_dir.mkdir(parents=True)
+    (published_skill_dir / "SKILL.md").write_bytes(skill_data)
+    (published_skill_dir.parent / "index.json").write_text(
+        json.dumps(build_skill_index(skill_data), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
     mcp_discovery = discovery / "mcp"
     mcp_discovery.mkdir()
     (mcp_discovery / "server-card.json").write_text(

@@ -155,3 +155,23 @@ test("publishes agent discovery metadata with precise content types and no noind
   const response = await siteAliasResponse(new Request("https://rss.bartek.lol/.well-known/unknown.json"), async () => Response.json({}));
   assert.equal(response.headers.get("x-robots-tag"), "noindex, follow");
 });
+
+test("well-known API and Agent Skills discovery keep correct headers", async () => {
+  for (const [path, mime] of [
+    ["/.well-known/api-catalog", "application/linkset+json"],
+    ["/.well-known/agent-skills/index.json", "application/json"],
+    ["/.well-known/agent-skills/feedseek-discovery/SKILL.md", "text/markdown"],
+  ]) {
+    const res = await siteAliasResponse(new Request("https://rss.bartek.lol" + path),
+      async (upstream, init) => {
+        assert.equal(upstream.href, "https://trvny.github.io/feedseek" + path);
+        assert.deepEqual(Object.fromEntries(init.headers), {});
+        return new Response("discovery", { headers: { "x-robots-tag": "noindex, follow" } });
+      });
+    assert.equal(res.status, 200);
+    assert.ok(res.headers.get("content-type")?.startsWith(mime), path);
+    assert.equal(res.headers.get("access-control-allow-origin"), "*");
+    assert.equal(res.headers.get("x-robots-tag"), null);
+    assert.equal(await res.text(), "discovery");
+  }
+});

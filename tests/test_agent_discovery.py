@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import unittest
 from pathlib import Path
@@ -34,6 +35,27 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertEqual(card["remotes"][0]["type"], "streamable-http")
         self.assertIn("2026-07-28", card["remotes"][0]["supportedProtocolVersions"])
         self.assertEqual(catalog["entries"][1]["url"], base + "model-feeds.json")
+
+    def test_rfc9727_openapi_and_skills(self):
+        api = build_site.build_api_catalog()
+        self.assertEqual(len(api["linkset"]), 1)
+        item = api["linkset"][0]
+        self.assertEqual(item["anchor"], "https://rss.bartek.lol/model-feeds.json")
+        self.assertEqual(item["service-desc"][0]["href"], "https://rss.bartek.lol/openapi.json")
+        self.assertEqual(item["status"][0]["href"], "https://rss.bartek.lol/health")
+        spec = build_site.build_public_openapi()
+        self.assertEqual(spec["openapi"], "3.1.0")
+        self.assertIn("/model-feeds.json", spec["paths"])
+        self.assertIn("/{key}.json", spec["paths"])
+        skill = MODULE_PATH.parent / "agent-skills" / "feedseek-discovery" / "SKILL.md"
+        payload = skill.read_bytes()
+        self.assertTrue(payload.startswith(b"---\\nname: feedseek-discovery\\n"))
+        index = build_site.build_skill_index(payload)
+        self.assertEqual(index["$schema"], "https://schemas.agentskills.io/discovery/0.2.0/schema.json")
+        item = index["skills"][0]
+        self.assertEqual(item["type"], "skill-md")
+        self.assertEqual(item["digest"], "sha256:" + hashlib.sha256(payload).hexdigest())
+        self.assertEqual(item["url"], "/.well-known/agent-skills/feedseek-discovery/SKILL.md")
 
     def test_hidden_files_survive_artifact_upload(self):
         import re
