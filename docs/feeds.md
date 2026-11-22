@@ -63,19 +63,32 @@ rolling cache and normal feed deduplication.
 
 ## About the Beatport feed
 
-Beatport's [Top 100](https://www.beatport.com/top-100) page is a Next.js app
-with no native feed, but the full chart is embedded in the page's
-`__NEXT_DATA__` JSON, so it can be read with a plain request (no browser
-automation). Because the chart is a *ranking* rather than a stream, this feed
-is framed as **tracks as they enter the Top 100**: each track is an entry keyed
-by its Beatport URL and dated when first seen, with its debut rank kept in the
-summary. A JSON cache (`cache/beatport_top100_posts.json`) accumulates history
-across scheduled runs and dedupes by track URL.
+The [Beatport Top 100](https://www.beatport.com/top-100) is a ranking,
+not a release-date stream. Entries represent **tracks as first observed on the
+chart**, with their entry rank and first-seen time preserved by
+`cache/beatport_top100_posts.json`.
 
-Beatport is behind Cloudflare, which fingerprints the TLS handshake and returns
-HTTP 403 to plain `requests`. The generator uses `curl_cffi` (Chrome
-impersonation) to fetch the page; if a run is blocked it skips writing so the
-last good feed is preserved.
+Beatport now returns Cloudflare managed challenges (HTTP 403) to unattended
+fetches. The generator attempts the previous `__NEXT_DATA__` HTML contract
+first. If blocked or changed, it reads the public
+[Soundcharts Beatport Global ranking](https://soundcharts.com/en/charts/beatport/worldwide).
+That mirror is **weekly**, not Beatport's live daily ranking, and exposes
+**95 of 100 track identities** without an account. The generator requires a
+fresh (up to 14 days), ordered, sufficiently complete chart; it rejects
+masked rows, missing positions and stale data. Entries from the mirror link
+to their Soundcharts track page and include the mirror/week attribution.
+Beatport-origin entries keep Beatport URLs. Exact, unambiguous artist+title+mix
+matches across the two providers keep their **first-observed permalink and Atom
+ID**, even when Beatport later recovers. Beatport slug changes with an unchanged
+numeric track ID retain the existing identity. Distinct catalog IDs within one
+provider are never collapsed. Without shared recording IDs (ISRC is not public
+in the weekly chart), matches across providers remain best-effort; ambiguous
+tracks keep distinct IDs, not fabricated equivalence. The existing cache
+preserves first-seen dates.
+
+No Beatport login, third-party API key, paid proxy or browser challenge bypass.
+If neither public source is valid, the generator refuses to write, and the
+runner retains the last validated XML + Model Feed pair.
 
 ## About the Daily Digest feed
 
