@@ -473,6 +473,69 @@ def build_model_feed_catalog(feeds: list[dict], base: str) -> str:
     }, ensure_ascii=False, indent=2) + "\n"
 
 
+def build_agent_catalog(base: str) -> dict:
+    """ARD v0.91 and AI Catalog v1.0 share one generated manifest."""
+    page_base = search_page_base(base)
+    return {
+        "specVersion": "1.0",
+        "host": {
+            "displayName": "Feedseek",
+            "identifier": "rss.bartek.lol",
+            "documentationUrl": "https://github.com/trvny/feedseek/blob/main/docs/agents.md",
+        },
+        "entries": [
+            {
+                "@context": "https://agenticresourcediscovery.org/context/v1",
+                "identifier": "urn:air:rss.bartek.lol:mcp:feedseek",
+                "displayName": "Feedseek remote MCP",
+                "type": "application/mcp-server-card+json",
+                "url": page_base + ".well-known/mcp/server-card.json",
+                "description": "Read-only remote MCP tools for feed discovery, recent-item search, digests and article fetch.",
+                "capabilities": ["list_feeds", "search", "fetch", "recent"],
+                "representativeQueries": [
+                    "Find recent articles about AI in Feedseek",
+                    "Search JBZD memes and fetch the matching entries",
+                    "List all available sources and their published feed URLs",
+                ],
+            },
+            {
+                "@context": "https://agenticresourcediscovery.org/context/v1",
+                "identifier": "urn:air:rss.bartek.lol:catalog:model-feeds",
+                "displayName": "Feedseek Model Feed registry",
+                "type": "application/json",
+                "url": page_base + "model-feeds.json",
+                "description": "Complete public source registry with links to stable JSON Model Feed histories.",
+                "capabilities": ["feed-discovery", "model-feeds"],
+                "representativeQueries": [
+                    "Which feeds can I subscribe to through Feedseek?",
+                    "Where is the full JSON history of a Feedseek source?",
+                ],
+            },
+        ],
+    }
+
+
+def build_mcp_server_card() -> dict:
+    """Static connectivity only. Runtime tools remain discoverable over MCP."""
+    return {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+        "name": "trvny/feedseek",
+        "title": "Feedseek",
+        "version": "1.0.0",
+        "description": "Public read-only MCP search over Feedseek feeds, recent entries and Model Feeds.",
+        "websiteUrl": "https://rss.bartek.lol/",
+        "remotes": [
+            {
+                "type": "streamable-http",
+                "url": "https://rss.bartek.lol/mcp",
+                "supportedProtocolVersions": [
+                    "2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26"
+                ],
+            }
+        ],
+    }
+
+
 def build_index(feeds: list[dict], base: str) -> str:
     page_base = search_page_base(base)
     count = len(feeds)
@@ -533,6 +596,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
   <link rel="alternate" type="application/json" href="{html.escape(base + "model-feeds.json", quote=True)}" title="Feedseek Model Feed catalog">
+  <link rel="ard" type="application/ard+json" href="{html.escape(page_base + ".well-known/ard.json", quote=True)}">
   <link rel="describedby" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
 {ICON_LINKS}
   <meta property="og:type" content="website">
@@ -941,6 +1005,7 @@ def build_llms_txt(feeds: list[dict], base: str) -> str:
         "",
         "- [TRAVNY project hub](https://travny.pages.dev/): Canonical creator identity and related applications",
         f"- [Model Feed catalog (JSON)]({base}model-feeds.json): Compact source registry and direct Model Feed URLs for agents and apps",
+        f"- [ARD discovery]({search_page_base(base)}.well-known/ard.json): Remote MCP Server Card and Model Feed capability index",
         f"- [Curated feeds (OPML)]({base}subscriptions.opml): One-shot import of the curated landing-page feeds",
         f"- [Sitemap]({base}sitemap.xml): HTML pages for search engines",
         f"- [Markdown directory]({base}index.md): LLM-friendly version of the directory page",
@@ -1224,6 +1289,16 @@ def main() -> None:
     shutil.copy2(SITE_DIR / "meme-widget.html", OUT_DIR / "meme-widget.html")
     (OUT_DIR / "subscriptions.opml").write_text(build_opml(feeds, base), encoding="utf-8")
     (OUT_DIR / "model-feeds.json").write_text(build_model_feed_catalog(all_feeds, base), encoding="utf-8")
+    discovery = OUT_DIR / ".well-known"
+    discovery.mkdir()
+    catalog = json.dumps(build_agent_catalog(base), indent=2, ensure_ascii=False) + "\n"
+    for name in ("ard.json", "ai-catalog.json"):
+        (discovery / name).write_text(catalog, encoding="utf-8")
+    mcp_discovery = discovery / "mcp"
+    mcp_discovery.mkdir()
+    (mcp_discovery / "server-card.json").write_text(
+        json.dumps(build_mcp_server_card(), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     copy_reader_bundle(base)
 
     (OUT_DIR / "index.html").write_text(build_index(feeds, base), encoding="utf-8")
