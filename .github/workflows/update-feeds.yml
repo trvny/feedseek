@@ -237,11 +237,13 @@ jobs:
           site: feedseek
 
       - name: Checkout notification helper
+        if: ${{ needs.update-feeds.outputs.websub_topics != '[]' && needs.update-feeds.outputs.websub_topics != '' }}
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Install uv and Python for WebSub
+        if: ${{ needs.update-feeds.outputs.websub_topics != '[]' && needs.update-feeds.outputs.websub_topics != '' }}
         continue-on-error: true
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
@@ -249,6 +251,7 @@ jobs:
           python-version: "3.15"
 
       - name: Notify WebSub hub after successful Pages deployment
+        if: ${{ needs.update-feeds.outputs.websub_topics != '[]' && needs.update-feeds.outputs.websub_topics != '' }}
         continue-on-error: true
         env:
           WEBSUB_TOPICS: ${{ needs.update-feeds.outputs.websub_topics }}
