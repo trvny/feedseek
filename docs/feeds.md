@@ -77,8 +77,11 @@ That mirror is **weekly**, not Beatport's live daily ranking, and exposes
 fresh (up to 14 days), ordered, sufficiently complete chart; it rejects
 masked rows, missing positions and stale data. Entries from the mirror link
 to their Soundcharts track page and include the mirror/week attribution.
-Beatport-origin entries keep Beatport URLs. Both retain deterministic identity
-within the same source and the existing cache's first-seen dates.
+Beatport-origin entries keep Beatport URLs. Exact, unambiguous artist+title+mix
+matches across the two providers keep their **first-observed permalink and Atom
+ID**, even when Beatport later recovers. Different catalog IDs within one
+provider are never collapsed. Ambiguous tracks keep distinct IDs. The
+existing cache preserves first-seen dates.
 
 No Beatport login, third-party API key, paid proxy or browser challenge bypass.
 If neither public source is valid, the generator refuses to write, and the

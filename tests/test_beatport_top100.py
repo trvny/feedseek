@@ -120,6 +120,35 @@ class BeatportMirrorTests(unittest.TestCase):
         beatport._preserve_known_links([new], [old])
         self.assertNotEqual(new["link"], old["link"])
 
+    def test_same_provider_distinct_catalog_ids_are_not_deduplicated(self):
+        old = {
+            "title": "Artist A - Anthem (Extended Mix)",
+            "link": "https://www.beatport.com/track/anthem/123",
+            "date": NOW,
+        }
+        new = {
+            "title": "Artist A - Anthem (Extended Mix)",
+            "link": "https://www.beatport.com/track/anthem/456",
+            "date": NOW,
+        }
+        beatport._preserve_known_links([new], [old])
+        self.assertEqual(new["link"], "https://www.beatport.com/track/anthem/456")
+        self.assertEqual(
+            len(beatport.merge_entries([new], [old], id_field="link", date_field="date")), 2
+        )
+
+    def test_cross_source_id_remains_first_seen_link_when_direct_recovers(self):
+        old = {
+            "title": "Artist A - Anthem [Extended Mix]",
+            "link": "https://soundcharts.com/en/song/12345678-1234-4234-9234-000000000001",
+        }
+        new = {
+            "title": "Artist A - Anthem (Extended Mix)",
+            "link": "https://www.beatport.com/track/anthem/456",
+        }
+        beatport._preserve_known_links([new], [old])
+        self.assertEqual(new["link"], old["link"])
+
     def test_unusable_primary_rows_trigger_mirror(self):
         with (
             patch.object(beatport, "fetch_chart", return_value="HTML"),

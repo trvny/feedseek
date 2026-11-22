@@ -318,8 +318,18 @@ def _recording_signature(title: str) -> tuple[tuple[str, ...], str] | None:
     return artist_key, song_key
 
 
+def _source_provider(url: str) -> str | None:
+    """Recognize only the two expected chart recording hosts."""
+    host = urlparse(url).hostname
+    if host in {"beatport.com", "www.beatport.com"}:
+        return "beatport"
+    if host == "soundcharts.com":
+        return "soundcharts"
+    return None
+
+
 def _preserve_known_links(new_entries: list[dict], cached: list[dict]) -> None:
-    """Keep first-seen Atom identity only on unique, exact recording matches."""
+    """Reuse identity only for unique matches across different providers."""
     cached_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
     new_by_signature: dict[tuple[tuple[str, ...], str], list[dict]] = {}
     for entry in cached:
@@ -332,8 +342,13 @@ def _preserve_known_links(new_entries: list[dict], cached: list[dict]) -> None:
             new_by_signature.setdefault(sig, []).append(entry)
     for sig, candidates in new_by_signature.items():
         previous = cached_by_signature.get(sig, [])
-        if len(candidates) == 1 and len(previous) == 1:
-            candidates[0]["link"] = previous[0]["link"]
+        if len(candidates) != 1 or len(previous) != 1:
+            continue
+        incoming, old = candidates[0], previous[0]
+        old_provider = _source_provider(old.get("link", ""))
+        new_provider = _source_provider(incoming.get("link", ""))
+        if old_provider and new_provider and old_provider != new_provider:
+            incoming["link"] = old["link"]
 
 
 def generate_atom_feed(entries, feed_name=FEED_NAME, *, mirror=False):
