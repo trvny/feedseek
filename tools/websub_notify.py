@@ -12,6 +12,7 @@ import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
 from lxml import etree
 
 ROOT = Path(__file__).resolve().parents[1]
