@@ -50,6 +50,9 @@ jobs:
       - name: Test site contracts
         run: uv run --locked python -m unittest discover -s tests -p 'test_build_site_favicons.py'
 
+      - name: Test agent discovery contracts
+        run: uv run --locked python -m unittest discover -s tests -p 'test_agent_discovery.py'
+
       - name: Test publishing workflow contracts
         run: uv run --locked python -m unittest discover -s tests -p 'test_update_feeds_workflow.py'
 
