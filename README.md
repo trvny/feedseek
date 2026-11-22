@@ -177,18 +177,18 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 
 <!--README_FEED:START-->
 - [Like A Complete \(Known\) Unknown? A Brief History of Nuclear Weaponization](https://carnegieendowment.org/research/2026/11/a-brief-history-of-nuclear-weaponization)
-- [Ranking graczy GTA 6: top 50 według procentu ukończenia - PSN, Xbox i checklista](https://promptowy.com/gta-6-ranking-graczy/)
-- [Quiz GTA 6: wyzwanie dnia i 7 quizów - mapa, auta, 100%, Miami, postacie](https://promptowy.com/gta-6-quiz/)
-- [Quiz: prawdziwe Miami czy Leonida z GTA 6? Zgadnij po zdjęciu](https://promptowy.com/gta-6-quiz-miami-czy-leonida/)
-- [Quiz GTA 6: czy zrobisz 100%? 12 pytań o progi, kolekcje i trofea](https://promptowy.com/gta-6-quiz-100-procent/)
-- [Quiz GTA: ile wiesz o serii Grand Theft Auto? 15 pytań od 1997 roku](https://promptowy.com/quiz-gta/)
+- [Cyber Statecraft and the Middle Ground](https://carnegieendowment.org/research/2026/11/cyber-statecraft-and-the-middle-ground)
+- [Murder at Mount Hood | Post Mortem](https://www.cbsnews.com/video/112126-48-hours-post-mortem-episode-5/)
+- [Zostań policjantem! Promocja zawodu podczas Powiatowego Dnia Przedsiębiorczości - Przegląd Olkuski](https://news.google.com/atom/articles/CBMirgFBVV95cUxQU2hUWGVXeWQtTDdoN2hERXlkYmZrUnBLZ1UxcTRqdTJVSW1fV0FfTDcyN1V1dEs5VGlPN0R1QjZFV2g5QUgxTnVMaHFLQThkS2ZNbkI2ODFnYk04LVdCVXhGazJBUUxRLVR6aEpJek1yMERIR2tyZmdkeVItU3djZG1YTWRFNjFwUThiQ0VyNHhQaWRReVd6WnBGU1NQT0xRZDdHMlFyOUhxYzBjUFE?oc=5)
+- [Jest decyzja dla drugiego etapu drogi do Jaworzna - Przegląd Olkuski](https://news.google.com/atom/articles/CBMihAFBVV95cUxON1FrUnhmRU95cGl1ZDk2SFp4SFlzSVA3UzRrQ09vSEFldEdUVTFLUDRzN19TbmhVYk4yR1ZFRkFOYlY1b0lKbkV3aDBGZmRBVGxoR0JoWUhBZmI3TUVudk0tQzdpdGxlM2o5TEtJS0lxMEpkdTRDc05rMm1TSDk1bWdrVFQ?oc=5)
+- [Jets urged to get 1st-round pick involved on offense to help end TD drought](https://www.sportingnews.com/us/nfl/new-york-jets/news/jets-urged-get-1st-round-pick-involved-help-end-td-drought/a00fb6698aa10c5b3e3f2767)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝Study me as much as you like, you will not know me, for I differ in a hundred ways from what you see me to be. Put yourself behind my eyes and see me as I see myself, for I have chosen to dwell in a place you cannot see. — Rumi❞</i>
+<i>❝In 2012, the founder of McAfee Antivirus, John McAfee was asked if he personally uses McAfee anti-virus, he replied by saying “I take it off,” and that “It’s too annoying.”❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
