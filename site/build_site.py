@@ -477,7 +477,7 @@ def build_agent_catalog(base: str) -> dict:
     """ARD v0.91 and AI Catalog v1.0 share one generated manifest."""
     page_base = search_page_base(base)
     return {
-        "specVersion": "1.0",
+        "specVersion": "0.9",
         "host": {
             "displayName": "Feedseek",
             "identifier": "rss.bartek.lol",
@@ -518,8 +518,8 @@ def build_agent_catalog(base: str) -> dict:
 def build_mcp_server_card() -> dict:
     """Static connectivity only. Runtime tools remain discoverable over MCP."""
     return {
-        "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
-        "name": "trvny/feedseek",
+        "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/ext-server-card/main/schema.json",
+        "name": "feedseek",
         "title": "Feedseek",
         "version": "1.0.0",
         "description": "Public read-only MCP search over Feedseek feeds, recent entries and Model Feeds.",
