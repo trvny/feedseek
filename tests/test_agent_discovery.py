@@ -39,7 +39,7 @@ class AgentDiscoveryTests(unittest.TestCase):
         import re
         for name in ("update-feeds.yml", "deploy-pages.yml"):
             workflow = (MODULE_PATH.parent.parent / ".github" / "workflows" / name).read_text(encoding="utf-8")
-            self.assertRegex(workflow, r"(?m)^\\s*include-hidden-files: true$")
+            self.assertRegex(workflow, r"(?m)^\s*include-hidden-files: true$")
 
     def test_page_links_and_guides_reference_ard(self):
         html = build_site.build_index([], "https://rss.bartek.lol/")
