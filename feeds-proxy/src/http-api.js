@@ -96,7 +96,8 @@ export async function httpApiResponse(request) {
     }
     if (pathname === "/api/v1/recent") {
       validateParams(searchParams, ["query", "limit", "since", "sources"]);
-      const since = searchParams.get("since");
+      // RFC 3339 permits lowercase t/z; normalize before shared strict parsing.
+      const since = searchParams.get("since")?.replace("t", "T").replace(/z$/, "Z") ?? null;
       if (since !== null && parseWhen(since) === null) {
         throw new BadRequest("since must be a valid RFC 3339 date-time");
       }
@@ -110,11 +111,16 @@ export async function httpApiResponse(request) {
     }
     const itemMatch = /^\/api\/v1\/feeds\/([a-z0-9_-]{1,64})\/items$/.exec(pathname);
     if (itemMatch) {
-      validateParams(searchParams, ["limit", "offset"]);
+      validateParams(searchParams, ["limit", "offset", "snapshot"]);
+      const offset = integerParam(searchParams, "offset", 0, 1000000);
+      const snapshot = searchParams.get("snapshot");
+      if (offset > 0 && !snapshot) throw new BadRequest("snapshot required when offset > 0");
+      if (snapshot && !/^[0-9a-f]{64}$/.test(snapshot)) throw new BadRequest("Invalid snapshot");
       const result = await listFeedItems({
         key: itemMatch[1],
         limit: integerParam(searchParams, "limit", 20, 50),
-        offset: integerParam(searchParams, "offset", 0, 1000000),
+        offset,
+        snapshot,
       });
       return result === null
         ? response(request, { error: "Unknown Feedseek source key" }, 404)
@@ -123,6 +129,7 @@ export async function httpApiResponse(request) {
     return response(request, { error: "Unknown API route" }, 404);
   } catch (error) {
     if (error instanceof BadRequest) return response(request, { error: error.message }, 400);
+    if (error?.code === "STALE_SNAPSHOT") return response(request, { error: error.message }, 409);
     console.warn("Feedseek HTTP API unavailable", error instanceof Error ? error.message : "unknown error");
     return response(request, { error: "Feedseek upstream temporarily unavailable" }, 503);
   }

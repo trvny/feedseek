@@ -274,15 +274,29 @@ async function listFeeds(args) {
 /** Compact full-history pages over the canonical Model Feed.
  * @param {{key:string,limit:number,offset:number}} args
  */
-async function listFeedItems({ key, limit, offset }) {
+class StaleFeedSnapshot extends Error {
+  constructor() {
+    super("Feedseek feed changed; restart pagination from offset 0");
+    this.code = "STALE_SNAPSHOT";
+  }
+}
+
+/** @param {{key:string,limit:number,offset:number,snapshot?:string|null}} args */
+async function listFeedItems({ key, limit, offset, snapshot = null }) {
   const catalog = await publishedFeeds();
   const registered = catalog.find((feed) => feed.key === key);
   if (!registered) return null;
   const feed = await loadLiveFeed(key);
   if (!feed || !Array.isArray(feed.items)) throw new Error("Feedseek Model Feed unavailable");
   const items = feed.items;
+  // Detect publication changes between pages rather than silently skipping entries.
+  const bytes = new TextEncoder().encode(JSON.stringify(items));
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const currentSnapshot = Array.from(new Uint8Array(digest), (value) => value.toString(16).padStart(2, "0")).join("");
+  if (snapshot && snapshot !== currentSnapshot) throw new StaleFeedSnapshot();
   return {
     source_key: key,
+    snapshot: currentSnapshot,
     title: feed.title || registered.title,
     total: items.length,
     next_offset: offset + limit < items.length ? offset + limit : null,
@@ -342,7 +356,7 @@ function normalize(value) {
 function tokens(query) {
   return normalize(query)
     .split(/[^\p{L}\p{N}+#.-]+/u)
-    .filter((token) => token.length > 1)
+    .filter(Boolean)
     .slice(0, 16);
 }
 

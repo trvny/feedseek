@@ -50,6 +50,13 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertIn("/api/v1/feeds", spec["paths"])
         self.assertIn("/api/v1/recent", spec["paths"])
         self.assertIn("/api/v1/feeds/{key}/items", spec["paths"])
+        catalog_schema = spec["paths"]["/api/v1/feeds"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]
+        self.assertIn("next_offset", catalog_schema["properties"])
+        recent_schema = spec["paths"]["/api/v1/recent"]["get"]["responses"]["200"]["content"]["application/json"]["schema"]
+        self.assertIn("entries", recent_schema["properties"])
+        history = spec["paths"]["/api/v1/feeds/{key}/items"]["get"]
+        self.assertIn("snapshot", history["responses"]["200"]["content"]["application/json"]["schema"]["properties"])
+        self.assertIn("409", history["responses"])
         self.assertIn("/{key}.json", spec["paths"])
         self.assertIn("legacy aliases", spec["paths"]["/{key}.json"]["get"]["description"])
         self.assertIn("openapi", build_site.RESERVED_PUBLIC_STEMS)

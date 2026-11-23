@@ -43,9 +43,9 @@ The existing Worker exposes compact JSON pages on the canonical domain and legac
 - `GET /api/v1`: endpoint directory and OpenAPI link.
 - `GET /api/v1/feeds?query=python&limit=20&offset=0`: filtered source catalog (limit 1–50).
 - `GET /api/v1/recent?query=ai&since=2026-11-20T00:00:00Z&sources=openai,anthropic&limit=20`: recent digest candidates (limit 1–100; 14-day index).
-- `GET /api/v1/feeds/jbzd/items?limit=20&offset=0`: one full-history Model Feed, paginated with 500-character plaintext excerpts (limit 1–50).
+- `GET /api/v1/feeds/jbzd/items?limit=20&offset=0`: one full-history Model Feed, paginated with 500-character plaintext excerpts (limit 1–50). Save the returned `snapshot` and pass `&snapshot=<hash>` when requesting `offset>0`. If publication changes between pages, HTTP 409 asks clients to restart at offset 0.
 
-Responses include `next_offset` where applicable; `null` means the end. JSON 400 for invalid input, 404 for unknown feed, 503 for upstream data failures. `GET`, `HEAD`, `OPTIONS` supported with public CORS. For complete article text use the source's full `/<key>.json` Model Feed or MCP `fetch`. API reads canonical upstream data, not a second index.
+Responses include `next_offset` where applicable; `null` means the end. JSON 400 for invalid input, 404 for unknown feed, 409 for stale pagination snapshots, 503 for upstream data failures. Topic search supports single-letter terms; RFC 3339 cutoffs accept lowercase `t` and `z`. `GET`, `HEAD`, `OPTIONS` supported with public CORS. For complete article text use the source's full `/<key>.json` Model Feed or MCP `fetch`. API reads canonical upstream data, not a second index.
 
 ## Model Feed JSON
 

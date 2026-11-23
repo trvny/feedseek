@@ -538,6 +538,76 @@ def build_mcp_server_card() -> dict:
 
 def build_public_openapi() -> dict:
     """Describe only the existing public read-only catalog and Model Feed URLs."""
+    feed_entry = {
+        "type": "object",
+        "required": ["key", "title", "description", "source_url", "feed_url",
+                     "model_feed_url", "entry_count", "updated_at"],
+        "properties": {
+            "key": {"type": "string"}, "title": {"type": "string"},
+            "description": {"type": "string"}, "source_url": {"type": "string", "format": "uri"},
+            "feed_url": {"type": "string", "format": "uri"},
+            "model_feed_url": {"type": "string", "format": "uri"},
+            "entry_count": {"type": "integer"},
+            "updated_at": {"type": ["string", "null"]},
+        },
+    }
+    indexed_entry = {
+        "type": "object",
+        "required": ["id", "title", "url", "summary", "source", "source_key",
+                     "text_kind", "published_at", "modified_at", "tags"],
+        "properties": {
+            "id": {"type": "string"}, "title": {"type": "string"},
+            "url": {"type": "string", "format": "uri"},
+            "summary": {"type": "string"}, "source": {"type": "string"},
+            "source_key": {"type": "string"}, "text_kind": {"type": ["string", "null"]},
+            "published_at": {"type": ["string", "null"]},
+            "modified_at": {"type": ["string", "null"]},
+            "tags": {"type": "array", "items": {"type": "string"}},
+        },
+    }
+    model_item = {
+        "type": "object",
+        "required": ["id", "title", "url", "summary", "text_kind",
+                     "date_published", "date_modified", "image"],
+        "properties": {
+            "id": {"type": "string"}, "title": {"type": "string"},
+            "url": {"type": ["string", "null"]},
+            "summary": {"type": "string", "maxLength": 500},
+            "text_kind": {"type": "string"},
+            "date_published": {"type": ["string", "null"]},
+            "date_modified": {"type": ["string", "null"]},
+            "image": {"type": ["string", "null"]},
+        },
+    }
+    feed_page = {
+        "type": "object", "required": ["count", "next_offset", "feeds"],
+        "properties": {
+            "count": {"type": "integer"}, "next_offset": {"type": ["integer", "null"]},
+            "feeds": {"type": "array", "items": feed_entry},
+        },
+    }
+    recent_page = {
+        "type": "object",
+        "required": ["indexed_from", "truncated", "skipped_sources", "count", "entries"],
+        "properties": {
+            "indexed_from": {"type": ["string", "null"]},
+            "truncated": {"type": "boolean"},
+            "skipped_sources": {"type": "array", "items": {"type": "string"}},
+            "count": {"type": "integer"},
+            "entries": {"type": "array", "items": indexed_entry},
+        },
+    }
+    history_page = {
+        "type": "object",
+        "required": ["source_key", "title", "snapshot", "total", "next_offset", "items"],
+        "properties": {
+            "source_key": {"type": "string"}, "title": {"type": "string"},
+            "snapshot": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "total": {"type": "integer"},
+            "next_offset": {"type": ["integer", "null"]},
+            "items": {"type": "array", "items": model_item},
+        },
+    }
     return {
         "openapi": "3.1.0",
         "info": {
@@ -569,7 +639,7 @@ def build_public_openapi() -> dict:
                     ],
                     "responses": {"200": {
                         "description": "Published feeds, current page and total",
-                        "content": {"application/json": {"schema": {"type": "object"}}},
+                        "content": {"application/json": {"schema": feed_page}},
                     }},
                 },
             },
@@ -586,7 +656,7 @@ def build_public_openapi() -> dict:
                     ],
                     "responses": {"200": {
                         "description": "Recent normalized entries and coverage",
-                        "content": {"application/json": {"schema": {"type": "object"}}},
+                        "content": {"application/json": {"schema": recent_page}},
                     }},
                 },
             },
@@ -598,11 +668,16 @@ def build_public_openapi() -> dict:
                         {"name": "key", "in": "path", "required": True, "schema": {"type": "string"}},
                         {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 50}},
                         {"name": "offset", "in": "query", "schema": {"type": "integer", "minimum": 0, "maximum": 1000000}},
+                        {"name": "snapshot", "in": "query",
+                         "description": "SHA-256 snapshot returned by first page; required for offset > 0",
+                         "schema": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
                     ],
                     "responses": {
                         "200": {"description": "Feed entries page with short text excerpts",
-                                "content": {"application/json": {"schema": {"type": "object"}}}},
+                                "content": {"application/json": {"schema": history_page}}},
+                        "400": {"description": "Invalid pagination request"},
                         "404": {"description": "Unknown source key"},
+                        "409": {"description": "Source changed; restart at offset 0"},
                     },
                 },
             },
