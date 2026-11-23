@@ -129,7 +129,9 @@ export async function httpApiResponse(request) {
     return response(request, { error: "Unknown API route" }, 404);
   } catch (error) {
     if (error instanceof BadRequest) return response(request, { error: error.message }, 400);
-    if (error?.code === "STALE_SNAPSHOT") return response(request, { error: error.message }, 409);
+    if (error instanceof Error && "code" in error && error.code === "STALE_SNAPSHOT") {
+      return response(request, { error: error.message }, 409);
+    }
     console.warn("Feedseek HTTP API unavailable", error instanceof Error ? error.message : "unknown error");
     return response(request, { error: "Feedseek upstream temporarily unavailable" }, 503);
   }
