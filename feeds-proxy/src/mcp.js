@@ -356,7 +356,7 @@ function normalize(value) {
 function tokens(query) {
   return normalize(query)
     .split(/[^\p{L}\p{N}+#.-]+/u)
-    .filter(Boolean)
+    .filter((token) => /[\p{L}\p{N}]/u.test(token))
     .slice(0, 16);
 }
 
