@@ -159,6 +159,61 @@ class DevelopmentSourceTests(unittest.TestCase):
         self.assertEqual(arguments["source_workers"], 6)
         self.assertTrue(all(scraper.__name__ != "scrape_pubdev" for scraper in arguments["extra_scrapers"]))
 
+    def test_jacky_zhao_uses_post_listing_not_root_rss(self):
+        urls = {label: url for label, url, _ in development.SOURCES}
+        self.assertEqual(urls["Dev TLDRLSS"], "https://dev.tldrlss.com/index.xml")
+        self.assertNotIn("Jacky Zhao", urls)
+        self.assertEqual(development.JACKY_POSTS_URL, "https://jzhao.xyz/posts/")
+        with patch.object(development, "run", return_value=True) as run:
+            self.assertTrue(development.main())
+        self.assertIn(
+            development.scrape_jacky_zhao_posts,
+            run.call_args.kwargs["extra_scrapers"],
+        )
+
+    def test_jacky_zhao_emits_dated_posts_not_navigation(self):
+        html = """
+        <a href="/posts/">All Posts</a>
+        <ul class="section-ul">
+          <li class="section-li"><div class="section">
+            <p class="meta"><time datetime="2026-03-23">Mar 23, 2026</time></p>
+            <div class="desc"><h3><a href="./eg-strider">Race telemetry for Honda</a></h3></div>
+            <ul class="tags"><li><a class="tag-link" href="../tags/technical">technical</a></li></ul>
+          </div></li>
+          <li class="section-li"><div class="section">
+            <p class="meta">Jul 21, 2026</p>
+            <div class="desc"><h3><a href="./beating-myers">Already cached</a></h3></div>
+          </div></li>
+          <li class="section-li"><div class="section">
+            <p class="meta">Mar 23, 2026</p>
+            <div class="desc"><h3><a href="./eg-strider?utm_source=blog">Duplicate</a></h3></div>
+          </div></li>
+          <li class="section-li"><div class="section">
+            <p class="meta">Mar 23, 2026</p>
+            <div class="desc"><h3><a href="/tags/technical">Tag index</a></h3></div>
+          </div></li>
+          <li class="section-li"><div class="section">
+            <p class="meta">Mar 23, 2026</p>
+            <div class="desc"><h3><a href="/posts/">All Posts index</a></h3></div>
+          </div></li>
+        </ul>
+        """
+        with patch.object(development, "get_html", return_value=html) as fetch:
+            entries = development.scrape_jacky_zhao_posts(
+                {"https://jzhao.xyz/posts/beating-myers"}
+            )
+        fetch.assert_called_once_with("https://jzhao.xyz/posts/")
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["link"], "https://jzhao.xyz/posts/eg-strider")
+        self.assertEqual(entries[0]["title"], "Race telemetry for Honda")
+        self.assertEqual(entries[0]["date"].isoformat(), "2026-03-23T00:00:00+00:00")
+        self.assertEqual(entries[0]["source"], "Jacky Zhao")
+        self.assertEqual(entries[0]["categories"], ["technical"])
+
+    def test_jacky_zhao_failed_index_does_not_emit_navigation(self):
+        with patch.object(development, "get_html", return_value=None):
+            self.assertEqual(development.scrape_jacky_zhao_posts(set()), [])
+
     def test_justjoin_discovery_excludes_navigation_duplicates_and_other_hosts(self):
         index = """
         <a href="/blog/">Index</a>

@@ -356,11 +356,11 @@ Upstream source links for each generated feed. Source lists come from the genera
 - ![](https://www.google.com/s2/favicons?domain=djangopackages.org&sz=16) Django Packages latest — <https://djangopackages.org/feeds/packages/latest/atom/>
 - ![](https://www.google.com/s2/favicons?domain=www.djangoproject.com&sz=16) Django Community — <https://www.djangoproject.com/rss/community/blogs/>
 - ![](https://www.google.com/s2/favicons?domain=dev.tldrlss.com&sz=16) Dev TLDRLSS — <https://dev.tldrlss.com/index.xml>
-- ![](https://www.google.com/s2/favicons?domain=jzhao.xyz&sz=16) Jacky Zhao — <https://jzhao.xyz/index.xml>
 - ![](https://www.google.com/s2/favicons?domain=dev.to&sz=16) DEV top month — <https://dev.to/api/articles?top=30&per_page=30>
 - ![](https://www.google.com/s2/favicons?domain=dev.to&sz=16) DEV top month — <https://dev.to/top/month>
 - ![](https://www.google.com/s2/favicons?domain=djangopackages.org&sz=16) Django packages changelog — <https://djangopackages.org/changelog/>
 - ![](https://www.google.com/s2/favicons?domain=justjoin.it&sz=16) Justjoin blog — <https://justjoin.it/blog/>
+- ![](https://www.google.com/s2/favicons?domain=jzhao.xyz&sz=16) Jacky posts — <https://jzhao.xyz/posts/>
 
 ### ![](https://www.google.com/s2/favicons?domain=github.blog&sz=16) GitHub
 `github` · [XML](https://rss.bartek.lol/github.xml) · [JSON](https://rss.bartek.lol/github.json)

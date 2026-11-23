@@ -40,8 +40,11 @@ SOURCES = [
     ("Django Packages latest", "https://djangopackages.org/feeds/packages/latest/atom/", 3),
     ("Django Community", "https://www.djangoproject.com/rss/community/blogs/", 40),
     ("Dev TLDRLSS", "https://dev.tldrlss.com/index.xml", 30),
-    ("Jacky Zhao", "https://jzhao.xyz/index.xml", 30),
 ]
+
+JACKY_POSTS_URL = "https://jzhao.xyz/posts/"
+JACKY_POSTS_MAX = 40
+_JACKY_POST_RE = re.compile(r"^https://jzhao\\.xyz/posts/[^/?#]+/?$", re.I)
 
 RUST_RELEASES_URL = "https://blog.rust-lang.org/releases/"
 RUST_RELEASES_MAX = 30
@@ -274,6 +277,57 @@ def scrape_justjoin_blog(known_links):
     return entries
 
 
+def scrape_jacky_zhao_posts(known_links):
+    """Quartz's root RSS lists tag/index pages; read dated posts instead."""
+    html = get_html(JACKY_POSTS_URL)
+    if not html:
+        logger.warning("  [Jacky Zhao] posts index unavailable")
+        return []
+
+    soup = BeautifulSoup(html, "html.parser")
+    entries, seen = [], set()
+    for row in soup.select("ul.section-ul > li.section-li"):
+        anchor = row.select_one(".desc h3 a[href]")
+        if anchor is None:
+            continue
+        link = urljoin(JACKY_POSTS_URL, anchor["href"])
+        link = link.split("#", 1)[0].split("?", 1)[0].rstrip("/")
+        if not _JACKY_POST_RE.fullmatch(link) or link in known_links or link in seen:
+            continue
+
+        title = sanitize_xml(anchor.get_text(" ", strip=True))
+        date_node = row.select_one("p.meta time") or row.select_one("p.meta")
+        date_text = (
+            date_node.get("datetime") or date_node.get_text(" ", strip=True)
+            if date_node else ""
+        )
+        date = parse_date(date_text) if date_text else None
+        if not title or not date:
+            continue
+
+        seen.add(link)
+        categories = [
+            tag.get_text(" ", strip=True)
+            for tag in row.select(".tags a.tag-link")
+            if tag.get_text(" ", strip=True)
+        ]
+        entries.append(
+            {
+                "title": title,
+                "link": link,
+                "date": date,
+                "description": title,
+                "source": "Jacky Zhao",
+                "categories": categories,
+            }
+        )
+        if len(entries) >= JACKY_POSTS_MAX:
+            break
+    if not entries:
+        logger.warning("  [Jacky Zhao] no dated posts matched the listing")
+    return entries
+
+
 def main(full=False):
     return run(
         feed_name=FEED_NAME,
@@ -287,6 +341,7 @@ def main(full=False):
             scrape_django_packages_changelog,
             scrape_dev_top_month,
             scrape_justjoin_blog,
+            scrape_jacky_zhao_posts,
         ],
         max_entries=300,
         source_workers=6,
