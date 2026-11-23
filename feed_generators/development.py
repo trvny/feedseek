@@ -39,6 +39,8 @@ SOURCES = [
     ("Django News", "https://django-news.com/rss", 30),
     ("Django Packages latest", "https://djangopackages.org/feeds/packages/latest/atom/", 3),
     ("Django Community", "https://www.djangoproject.com/rss/community/blogs/", 40),
+    ("Dev TLDRLSS", "https://dev.tldrlss.com/index.xml", 30),
+    ("Jacky Zhao", "https://jzhao.xyz/index.xml", 30),
 ]
 
 RUST_RELEASES_URL = "https://blog.rust-lang.org/releases/"
