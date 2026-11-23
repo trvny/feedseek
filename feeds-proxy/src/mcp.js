@@ -488,6 +488,8 @@ function filterIndex(data, { query = "", since = null, sources = [], limit = 20 
   const words = tokens(query);
   const sinceTime = parseWhen(since);
   if (since && sinceTime === null) throw new Error("since must be a valid RFC 3339 date-time");
+  // A nonempty query with no searchable words must not become an unfiltered digest.
+  if (query.trim() && !words.length) return [];
   const wantedSources = new Set(sources.map(normalize));
   const items = Array.isArray(data.items) ? /** @type {IndexItem[]} */ (data.items) : [];
   return items

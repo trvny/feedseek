@@ -145,6 +145,17 @@ test("punctuation-only query separators do not qualify unrelated entries", async
   }, { catalog, index: relatedIndex, model });
 });
 
+test("punctuation-only query yields nothing while blank query keeps the digest", async () => {
+  await withFetch(async () => {
+    const empty = await request("/api/v1/recent?query=...&limit=10");
+    assert.equal(empty.status, 200);
+    assert.deepEqual((await empty.json()).entries, []);
+    const all = await request("/api/v1/recent?query=&limit=10");
+    assert.equal(all.status, 200);
+    assert.equal((await all.json()).count, index.items.length);
+  });
+});
+
 test("single-character topic and lowercase RFC 3339 cutoff work", async () => {
   await withFetch(async () => {
     const recent = await request("/api/v1/recent?query=C&since=2026-11-19t00%3A00%3A00z&limit=10");
