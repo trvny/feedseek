@@ -17,11 +17,15 @@ class BadRequest extends Error {}
 
 /** @param {Request} request @param {unknown} value @param {number} status */
 function response(request, value, status = 200) {
+  // A stale first page must not recycle an invalid snapshot after 409.
+  const history = /^\/api\/v1\/feeds\/[^/]+\/items$/.test(new URL(request.url).pathname);
   return new Response(request.method === "HEAD" ? null : JSON.stringify(value), {
     status,
     headers: {
       ...JSON_HEADERS,
-      "cache-control": status === 200 ? "public, max-age=60, stale-while-revalidate=300" : "no-store",
+      "cache-control": status === 200 && !history
+        ? "public, max-age=60, stale-while-revalidate=300"
+        : "no-store",
       ...(status === 405 ? { allow: "GET, HEAD, OPTIONS" } : {}),
     },
   });

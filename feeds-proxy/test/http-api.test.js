@@ -95,6 +95,7 @@ test("history pagination includes snapshot and bounded excerpts", async () => {
     const initial = await request("/api/v1/feeds/jbzd/items?limit=1");
     const first = await initial.json();
     assert.equal(first.total, 3);
+    assert.equal(initial.headers.get("cache-control"), "no-store");
     assert.match(first.snapshot, /^[0-9a-f]{64}$/);
     assert.equal(first.next_offset, 1);
     const response = await request("/api/v1/feeds/jbzd/items?limit=1&offset=1&snapshot=" + first.snapshot);
@@ -122,6 +123,26 @@ test("changed feed rejects stale snapshot with 409 and a restart hint", async ()
     assert.equal(next.status, 409);
     assert.match((await next.json()).error, /restart pagination/);
   }, { catalog, index, model: mutable });
+});
+
+test("punctuation-only query separators do not qualify unrelated entries", async () => {
+  const relatedIndex = {
+    ...index,
+    items: [
+      ...index.items,
+      { id: "dj", title: "Django engineering", summary: "Framework updates",
+        url: "https://example.com/django", source_key: "openai", source: "OpenAI",
+        published_at: "2026-11-21T10:00:00Z", modified_at: null, tags: [] },
+      { id: "track", title: "Example Artist - New Track", summary: "Music",
+        url: "https://example.com/track", source_key: "jbzd", source: "JBZD",
+        published_at: "2026-11-22T10:00:00Z", modified_at: null, tags: [] },
+    ],
+  };
+  await withFetch(async () => {
+    const response = await request("/api/v1/recent?query=Python%20-%20Django&limit=5");
+    assert.equal(response.status, 200);
+    assert.deepEqual((await response.json()).entries.map((entry) => entry.id), ["dj"]);
+  }, { catalog, index: relatedIndex, model });
 });
 
 test("single-character topic and lowercase RFC 3339 cutoff work", async () => {
