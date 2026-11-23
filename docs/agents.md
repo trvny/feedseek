@@ -9,7 +9,9 @@ Keywords: MCP server, remote MCP, WebMCP, llms.txt, llms-full.txt, JSON Schema, 
 | Need | Use | Coverage |
 | --- | --- | --- |
 | Full history of one source | `https://rss.bartek.lol/<key>.json` ([index](model-feeds.md)) | Everything currently published for that feed |
-| Which feeds exist | [`model-feeds.json`](https://rss.bartek.lol/model-feeds.json) catalog | All published feed pairs; URLs + metadata, no articles |
+| Which feeds exist | [`model-feeds.json`](https://rss.bartek.lol/model-feeds.json) or [paginated API](https://rss.bartek.lol/api/v1/feeds?limit=20) | All published feed pairs; API returns small pages |
+| Small entry batches | [Recent API](https://rss.bartek.lol/api/v1/recent?limit=20) | Recent 14-day index, compact JSON |
+| Paginate one feed | [Items API](https://rss.bartek.lol/api/v1/feeds/jbzd/items?limit=20) | Short excerpts from published history |
 | Site overview for a model | [`llms.txt`](https://rss.bartek.lol/llms.txt), [`llms-full.txt`](https://rss.bartek.lol/llms-full.txt) | All published feeds |
 | Search / digest across sources | Remote MCP `https://rss.bartek.lol/mcp` | Recent index: ≤5,000 entries, last 14 days; legacy Worker URL remains supported |
 | Drive the browser Reader | WebMCP tools in [the Reader](https://rss.bartek.lol/reader/) | The open page state and published Model Feed previews |
@@ -33,6 +35,17 @@ These documents advertise existing read-only capabilities only. They do not impl
 - [`/.well-known/agent-skills/index.json`](https://rss.bartek.lol/.well-known/agent-skills/index.json): v0.2.0 Agent Skills discovery. Skill artifact and SHA-256 digest generated from `site/agent-skills/feedseek-discovery/SKILL.md`.
 
 OAuth discovery, OAuth Protected Resource and auth.md intentionally absent: public read-only endpoints do not authenticate callers.
+
+## Read-only HTTP API
+
+The existing Worker exposes compact JSON pages on the canonical domain and legacy Worker host. No key, authentication, database or new generator.
+
+- `GET /api/v1`: endpoint directory and OpenAPI link.
+- `GET /api/v1/feeds?query=python&limit=20&offset=0`: filtered source catalog (limit 1–50).
+- `GET /api/v1/recent?query=ai&since=2026-11-20T00:00:00Z&sources=openai,anthropic&limit=20`: recent digest candidates (limit 1–100; 14-day index).
+- `GET /api/v1/feeds/jbzd/items?limit=20&offset=0`: one full-history Model Feed, paginated with 500-character plaintext excerpts (limit 1–50).
+
+Responses include `next_offset` where applicable; `null` means the end. JSON 400 for invalid input, 404 for unknown feed, 503 for upstream data failures. `GET`, `HEAD`, `OPTIONS` supported with public CORS. For complete article text use the source's full `/<key>.json` Model Feed or MCP `fetch`. API reads canonical upstream data, not a second index.
 
 ## Model Feed JSON
 

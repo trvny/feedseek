@@ -548,6 +548,64 @@ def build_public_openapi() -> dict:
         },
         "servers": [{"url": "https://rss.bartek.lol"}],
         "paths": {
+            "/api/v1": {
+                "get": {
+                    "operationId": "describeFeedseekRestApi",
+                    "summary": "Discover paginated public HTTP endpoints",
+                    "responses": {"200": {
+                        "description": "API endpoints",
+                        "content": {"application/json": {"schema": {"type": "object"}}},
+                    }},
+                },
+            },
+            "/api/v1/feeds": {
+                "get": {
+                    "operationId": "listFeedsPage",
+                    "summary": "Filter and paginate the published source catalog",
+                    "parameters": [
+                        {"name": "query", "in": "query", "schema": {"type": "string", "maxLength": 500}},
+                        {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 50}},
+                        {"name": "offset", "in": "query", "schema": {"type": "integer", "minimum": 0, "maximum": 1000000}},
+                    ],
+                    "responses": {"200": {
+                        "description": "Published feeds, current page and total",
+                        "content": {"application/json": {"schema": {"type": "object"}}},
+                    }},
+                },
+            },
+            "/api/v1/recent": {
+                "get": {
+                    "operationId": "recentFeedseekEntries",
+                    "summary": "Query recent entries without downloading the search index",
+                    "parameters": [
+                        {"name": "query", "in": "query", "schema": {"type": "string", "maxLength": 500}},
+                        {"name": "since", "in": "query", "schema": {"type": "string", "format": "date-time"}},
+                        {"name": "sources", "in": "query", "schema": {"type": "string"},
+                         "description": "Comma-separated feed keys, max 20"},
+                        {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 100}},
+                    ],
+                    "responses": {"200": {
+                        "description": "Recent normalized entries and coverage",
+                        "content": {"application/json": {"schema": {"type": "object"}}},
+                    }},
+                },
+            },
+            "/api/v1/feeds/{key}/items": {
+                "get": {
+                    "operationId": "getFeedseekItemsPage",
+                    "summary": "Paginate compact entries from a full-history Model Feed",
+                    "parameters": [
+                        {"name": "key", "in": "path", "required": True, "schema": {"type": "string"}},
+                        {"name": "limit", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 50}},
+                        {"name": "offset", "in": "query", "schema": {"type": "integer", "minimum": 0, "maximum": 1000000}},
+                    ],
+                    "responses": {
+                        "200": {"description": "Feed entries page with short text excerpts",
+                                "content": {"application/json": {"schema": {"type": "object"}}}},
+                        "404": {"description": "Unknown source key"},
+                    },
+                },
+            },
             "/model-feeds.json": {
                 "get": {
                     "operationId": "listPublishedFeeds",
