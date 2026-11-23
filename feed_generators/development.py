@@ -38,13 +38,13 @@ SOURCES = [
     ("Django Weblog", "https://www.djangoproject.com/rss/weblog/", 30),
     ("Django News", "https://django-news.com/rss", 30),
     ("Django Packages latest", "https://djangopackages.org/feeds/packages/latest/atom/", 3),
-    ("Django Community", "https://www.djangoproject.com/rss/community/blogs/", 40),
     ("Dev TLDRLSS", "https://dev.tldrlss.com/index.xml", 30),
+    ("Django Community", "https://www.djangoproject.com/rss/community/blogs/", 40),
 ]
 
 JACKY_POSTS_URL = "https://jzhao.xyz/posts/"
 JACKY_POSTS_MAX = 40
-_JACKY_POST_RE = re.compile(r"^https://jzhao\\.xyz/posts/[^/?#]+/?$", re.I)
+_JACKY_POST_RE = re.compile(r"^https://jzhao\.xyz/posts/[^/?#]+/?$", re.I)
 
 RUST_RELEASES_URL = "https://blog.rust-lang.org/releases/"
 RUST_RELEASES_MAX = 30
