@@ -1,4 +1,5 @@
 import { mcpResponse } from "./mcp.js";
+import { httpApiResponse } from "./http-api.js";
 import { SITE_ALIAS_HOST, WEBSUB_PILOT_PATHS, siteAliasResponse } from "./site-alias.js";
 
 const OPENAI_CHALLENGE_PATH = "/.well-known/openai-apps-challenge";
@@ -63,6 +64,7 @@ export default {
     const { hostname, pathname } = new URL(request.url);
     // MCP works on the canonical domain and remains reachable on the legacy Worker.
     if (pathname === "/mcp") return mcpResponse(request);
+    if (pathname === "/api/v1" || pathname.startsWith("/api/v1/")) return httpApiResponse(request);
     if (hostname === SITE_ALIAS_HOST && pathname === "/health") return healthResponse(request);
     if (pathname === OPENAI_CHALLENGE_PATH) return openAiChallengeResponse(request, env);
     // WebSub topics must never be served through the cached WorkerEntrypoint.

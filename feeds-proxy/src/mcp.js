@@ -242,16 +242,21 @@ TOOLS.push({
   annotations: READ_ONLY_ANNOTATIONS,
 });
 
-/** @param {JsonObject} args */
-async function listFeeds(args) {
+async function publishedFeeds() {
   const catalog = await loadJson(CATALOG_URL);
   if (catalog.format !== "feedseek-model-feed-catalog" || catalog.version !== 1 || !Array.isArray(catalog.feeds)) {
     throw new Error("Invalid Feedseek catalog");
   }
+  return catalog.feeds;
+}
+
+/** @param {JsonObject} args */
+async function listFeeds(args) {
+  const catalog = await publishedFeeds();
   const needle = normalize(args.query ?? "").trim();
   const limit = args.limit ?? 20;
   const offset = args.offset ?? 0;
-  const matches = catalog.feeds.filter((feed) =>
+  const matches = catalog.filter((feed) =>
     normalize([feed.key, feed.title, feed.description, feed.source_url].join(" ")).includes(needle));
   const feeds = matches.slice(offset, offset + limit).map((feed) => ({
     key: feed.key,
@@ -264,6 +269,34 @@ async function listFeeds(args) {
     updated_at: feed.updated_at,
   }));
   return { count: matches.length, next_offset: offset + limit < matches.length ? offset + limit : null, feeds };
+}
+
+/** Compact full-history pages over the canonical Model Feed.
+ * @param {{key:string,limit:number,offset:number}} args
+ */
+async function listFeedItems({ key, limit, offset }) {
+  const catalog = await publishedFeeds();
+  const registered = catalog.find((feed) => feed.key === key);
+  if (!registered) return null;
+  const feed = await loadLiveFeed(key);
+  if (!feed || !Array.isArray(feed.items)) throw new Error("Feedseek Model Feed unavailable");
+  const items = feed.items;
+  return {
+    source_key: key,
+    title: feed.title || registered.title,
+    total: items.length,
+    next_offset: offset + limit < items.length ? offset + limit : null,
+    items: items.slice(offset, offset + limit).map((entry) => ({
+      id: entry.id,
+      title: entry.title,
+      url: entry.url || entry.external_url || null,
+      summary: typeof entry.text === "string" ? entry.text.trim().slice(0, 500) : String(entry.title || ""),
+      text_kind: entry.text_kind || "title",
+      date_published: entry.date_published || null,
+      date_modified: entry.date_modified || null,
+      image: entry.image || null,
+    })),
+  };
 }
 
 /** @param {unknown} value @param {number} [status] @param {string} [protocol] */
@@ -968,6 +1001,8 @@ export {
   fetchEntry,
   htmlToText,
   legacyTextToText,
+  listFeedItems,
+  listFeeds,
   parseWhen,
   recentEntries,
   searchEntries,
