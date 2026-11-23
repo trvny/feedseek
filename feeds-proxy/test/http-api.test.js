@@ -22,6 +22,9 @@ const index = {
     { id: "2", title: "A meme", summary: "Laugh", url: "https://jbzd.com.pl/a",
       source_key: "jbzd", source: "JBZD", text_kind: "title",
       published_at: "2026-11-18T10:00:00Z", modified_at: null, tags: [] },
+    { id: "3", title: "C language essentials", summary: "Low-level code", url: "https://example.com/c",
+      source_key: "openai", source: "OpenAI", text_kind: "summary",
+      published_at: "2026-11-19T10:00:00Z", modified_at: null, tags: ["C"] },
   ],
 };
 const model = {
@@ -87,11 +90,17 @@ test("recent REST filters and caps compact data using the existing MCP index", a
   });
 });
 
-test("full history is paginated and excerpts are bounded", async () => {
+test("history pagination includes snapshot and bounded excerpts", async () => {
   await withFetch(async (requests) => {
-    const response = await request("/api/v1/feeds/jbzd/items?limit=1&offset=1");
+    const initial = await request("/api/v1/feeds/jbzd/items?limit=1");
+    const first = await initial.json();
+    assert.equal(first.total, 3);
+    assert.match(first.snapshot, /^[0-9a-f]{64}$/);
+    assert.equal(first.next_offset, 1);
+    const response = await request("/api/v1/feeds/jbzd/items?limit=1&offset=1&snapshot=" + first.snapshot);
     assert.equal(response.status, 200);
     const json = await response.json();
+    assert.equal(json.snapshot, first.snapshot);
     assert.equal(json.total, 3);
     assert.equal(json.next_offset, 2);
     assert.equal(json.items[0].id, "12");
@@ -99,7 +108,28 @@ test("full history is paginated and excerpts are bounded", async () => {
     assert.equal(json.items[0].date_modified, "2026-11-21T10:00:00Z");
     assert.deepEqual(requests.map((x) => new URL(x).pathname), [
       "/feedseek/model-feeds.json", "/feedseek/jbzd.json",
+      "/feedseek/model-feeds.json", "/feedseek/jbzd.json",
     ]);
+  });
+});
+
+test("changed feed rejects stale snapshot with 409 and a restart hint", async () => {
+  const mutable = { ...model, items: [...model.items] };
+  await withFetch(async () => {
+    const first = await (await request("/api/v1/feeds/jbzd/items?limit=1")).json();
+    mutable.items.unshift({ id: "14", title: "New post", text: "Fresh", text_kind: "content" });
+    const next = await request("/api/v1/feeds/jbzd/items?limit=1&offset=1&snapshot=" + first.snapshot);
+    assert.equal(next.status, 409);
+    assert.match((await next.json()).error, /restart pagination/);
+  }, { catalog, index, model: mutable });
+});
+
+test("single-character topic and lowercase RFC 3339 cutoff work", async () => {
+  await withFetch(async () => {
+    const recent = await request("/api/v1/recent?query=C&since=2026-11-19t00%3A00%3A00z&limit=10");
+    assert.equal(recent.status, 200);
+    const rows = (await recent.json()).entries;
+    assert.deepEqual(rows.map((row) => row.id), ["3"]);
   });
 });
 
@@ -131,6 +161,8 @@ test("invalid and repeated query parameters fail closed", async () => {
     "/api/v1/feeds?limit=2&limit=3", "/api/v1/feeds?ignored=1",
     "/api/v1/recent?since=yesterday", "/api/v1/recent?sources=a,,b",
     "/api/v1/recent?limit=101", "/api/v1/feeds/jbzd/items?limit=51",
+    "/api/v1/feeds/jbzd/items?offset=1",
+    "/api/v1/feeds/jbzd/items?offset=1&snapshot=abc",
   ]) {
     const response = await request(path);
     assert.equal(response.status, 400, path);
