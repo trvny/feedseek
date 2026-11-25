@@ -203,6 +203,14 @@ class RequestedFeedSourcesTests(unittest.TestCase):
             {"Mem0 Blog", "Mem0 Research"}.issubset(skillsllm._RETIRED_CACHE_SOURCES)
         )
         self.assertTrue(callable(skillsllm.collect_mem0_changelog))
+        self.assertEqual(
+            skillsllm._active_retry_counts({
+                "Mem0 Blog": {"https://mem0.ai/blog/post": 3},
+                "Mem0 Research": {"https://mem0.ai/research": 1},
+                "Desktop Commander": {"https://desktopcommander.app/blog/test": 2},
+            }),
+            {"Desktop Commander": {"https://desktopcommander.app/blog/test": 2}},
+        )
 
     def test_aibridge_mistral_release_notes(self):
         index = """
@@ -217,6 +225,7 @@ class RequestedFeedSourcesTests(unittest.TestCase):
             entries = aibridge.scrape_mistral_release_notes(set())
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0]["source"], "Mistral Release Notes")
+        self.assertEqual(entries[0]["categories"], ["mistral-release-notes"])
         self.assertEqual(entries[0]["date"].strftime("%Y-%m-%d"), "2026-10-30")
         self.assertEqual(
             entries[0]["link"],
