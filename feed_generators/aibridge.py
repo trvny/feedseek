@@ -131,7 +131,7 @@ def scrape_mistral_release_notes(known_links):
             "date": date,
             "description": sanitize_xml(description[:500]),
             "source": "Mistral Release Notes",
-            "category": "mistral-release-notes",
+            "categories": ["mistral-release-notes"],
         })
         if len(entries) >= 40:
             break

@@ -420,7 +420,7 @@ _LOBEHUB_LEGACY_PREFIXES = (
     "https://lobehub.com/pl/changelog/",
 )
 
-# Hugging Face now has one dedicated combined feed; retire the old copy here.
+# Retire legacy sources from published entries and durable retry counters.
 _RETIRED_CACHE_SOURCES = {
     "Hugging Face Blog",
     "Graphify Changelog",
@@ -428,6 +428,15 @@ _RETIRED_CACHE_SOURCES = {
     "Mem0 Blog",
     "Mem0 Research",
 }
+
+
+def _active_retry_counts(raw):
+    if not isinstance(raw, dict):
+        return {}
+    return {
+        source: counts for source, counts in raw.items()
+        if source not in _RETIRED_CACHE_SOURCES
+    }
 
 
 def _active_cached_entries(entries):
@@ -1660,7 +1669,7 @@ def main(full=False):
         cached = _active_cached_entries(
             deserialize_entries(cache.get("entries", []), date_field="date")
         )
-        ledger = AttemptLedger(cache.get("unresolvable"))
+        ledger = AttemptLedger(_active_retry_counts(cache.get("unresolvable")))
 
     known_links = {e["link"] for e in cached}
     sitemap_entries = collect_entries(known_links, ledger)
