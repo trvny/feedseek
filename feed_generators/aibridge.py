@@ -48,6 +48,7 @@ PER_SOURCE_QUOTA = {
     "Promptowy": 30,
 }
 
+MISTRAL_RELEASE_NOTES_URL = "https://docs.mistral.ai/resources/release-notes"
 ANSWER_AI_FEED = "https://www.answer.ai/index.xml"
 ANSWER_AI_TOOLCALLING = "https://www.answer.ai/posts/2026-01-20-toolcalling.html"
 ANSWER_AI_TOOLCALLING_DESCRIPTION = (
@@ -87,6 +88,55 @@ def repair_answer_ai_entry(entry):
 def scrape_answer_ai(known_links):
     entries = scrape_feed("Answer.AI", ANSWER_AI_FEED, known_links, cap=40)
     return [repair_answer_ai_entry(entry) for entry in entries]
+
+
+
+def doc_sources():
+    return [("Mistral Release Notes", MISTRAL_RELEASE_NOTES_URL)]
+
+
+def scrape_mistral_release_notes(known_links):
+    """Collect dated Mistral Docs releases from their public HTML index."""
+    html = get_html(MISTRAL_RELEASE_NOTES_URL)
+    if not html:
+        return []
+    soup = BeautifulSoup(html, "html.parser")
+    known = {str(link).rstrip("/") for link in known_links}
+    entries, seen = [], set()
+    for anchor in soup.select('a[href^="/resources/release-note/"]'):
+        href = anchor.get("href", "").split("?", 1)[0].split("#", 1)[0].rstrip("/")
+        if not re.fullmatch(r"/resources/release-note/[a-z0-9][a-z0-9-]*", href):
+            continue
+        link = "https://docs.mistral.ai" + href
+        if link in known or link in seen:
+            continue
+        heading = anchor.find("h3")
+        time_tag = anchor.find("time", attrs={"datetime": True})
+        if heading is None or time_tag is None:
+            continue
+        title = heading.get_text(" ", strip=True)
+        date = parse_date(time_tag["datetime"])
+        if not title or date is None:
+            continue
+        labels = [
+            span.get_text(" ", strip=True)
+            for span in anchor.find_all("span")
+            if span.get_text(" ", strip=True).lower() != "read release note"
+        ]
+        description = title + (f" ({', '.join(labels[:3])})" if labels else "")
+        seen.add(link)
+        entries.append({
+            "title": sanitize_xml(title[:200]),
+            "link": link,
+            "date": date,
+            "description": sanitize_xml(description[:500]),
+            "source": "Mistral Release Notes",
+            "category": "mistral-release-notes",
+        })
+        if len(entries) >= 40:
+            break
+    entries.sort(key=lambda entry: entry["date"], reverse=True)
+    return entries
 
 
 MINIMAX_BLOG_URL = "https://www.minimax.io/blog"
@@ -494,7 +544,7 @@ def main(full=False):
     return run(
         feed_name=FEED_NAME,
         title="AI-bridge",
-        subtitle="Combined AI feed: Thinking Machines, Ollama, Mistral, "
+        subtitle="Combined AI feed: Thinking Machines, Ollama, Mistral (blog + release notes), "
         "Interconnected, AI Clock, Stability AI, Bielik, SpeakLeash, Promptowy, Maistry, "
         "Karpathy (bearblog + old blog), Transformer, Innowacje.ai, Goodfire Research, MiniMax News/Blog, PLLuM, "
         "Perplexity (blog/changelog/research/API changelog), "
@@ -504,6 +554,7 @@ def main(full=False):
         author="various",
         sources=SOURCES,
         extra_scrapers=[
+            scrape_mistral_release_notes,
             scrape_answer_ai,
             scrape_minimax_news,
             scrape_minimax_blog,

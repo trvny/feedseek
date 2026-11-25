@@ -31,9 +31,6 @@ Sitemap discovery + per-page detail fetch (no native feed; pages server-render
 real ``<title>`` / ``<meta description>`` and sometimes ``article:published_time``):
   * SkillsLLM           https://skillsllm.com        (/news daily summaries + /blog guides)
   * Desktop Commander   https://desktopcommander.app (/blog posts)
-  * Mem0 Blog           https://mem0.ai/blog         (/blog posts; Framer sitemap,
-                        no <lastmod>, per-page article:published_time)
-  * Mem0 Research       https://mem0.ai/research     (benchmark/research landing page)
   * Claude Skills Hub   https://claudeskills.info    (/blog posts via sitemap_blog.xml)
   * OtterlyAI Blog      https://otterly.ai/blog      (/blog posts via Yoast post sitemap)
   * Flavio Longato      https://www.longato.ch/blog  (GEO/LLM posts via Yoast post sitemap)
@@ -130,7 +127,6 @@ logger = setup_logging()
 
 FEED_NAME = "skillsllm"
 BLOG_URL = "https://skillsllm.com/"
-MEM0_SITEMAP_URL = "https://mem0.ai/sitemap.xml"
 LMSTUDIO_RSS_URL = "https://lmstudio.ai/rss.xml"
 LMSTUDIO_BLOG_URL = "https://lmstudio.ai/blog"
 LMSTUDIO_API_CHANGELOG_URL = "https://lmstudio.ai/docs/developer/api-changelog"
@@ -193,27 +189,6 @@ SOURCES = [
         "title_suffixes": (" | Desktop Commander Blog", " | Desktop Commander"),
         "category": lambda loc: "desktop-commander",
         "max_candidates": 40,
-    },
-    {
-        "label": "Mem0 Blog",
-        "sitemap": MEM0_SITEMAP_URL,
-        "include": lambda loc: "/blog/" in loc
-        and not loc.rstrip("/").endswith("/blog"),
-        "slug_date_re": None,
-        "use_lastmod": False,  # Framer sitemap carries no <lastmod>; page has article:published_time
-        "title_suffixes": (" | Mem0", " - Mem0"),
-        "category": lambda loc: "mem0-blog",
-        "max_candidates": 40,
-    },
-    {
-        "label": "Mem0 Research",
-        "sitemap": MEM0_SITEMAP_URL,
-        "include": lambda loc: loc.rstrip("/") == "https://mem0.ai/research",
-        "slug_date_re": None,
-        "use_lastmod": False,
-        "title_suffixes": (" | Mem0", " - Mem0"),
-        "category": lambda loc: "mem0-research",
-        "max_candidates": 1,
     },
     {
         "label": "Claude Skills Hub",
@@ -446,7 +421,13 @@ _LOBEHUB_LEGACY_PREFIXES = (
 )
 
 # Hugging Face now has one dedicated combined feed; retire the old copy here.
-_RETIRED_CACHE_SOURCES = {"Hugging Face Blog", "Graphify Changelog", "LiteLLM Releases"}
+_RETIRED_CACHE_SOURCES = {
+    "Hugging Face Blog",
+    "Graphify Changelog",
+    "LiteLLM Releases",
+    "Mem0 Blog",
+    "Mem0 Research",
+}
 
 
 def _active_cached_entries(entries):
@@ -1640,7 +1621,7 @@ def generate_atom_feed(entries, feed_name=FEED_NAME):
         "AIHubMix (blog + docs + "
         "changelog), LiteLLM (blog), Glama "
         "(blog, MCP servers, release notes), "
-        "LobeHub (changelog + blog), AI Skill Market, Mem0 (blog + research + changelog), "
+        "LobeHub (changelog + blog), AI Skill Market, Mem0 changelog, "
         "Cognition (research + blog), Devin (Desktop changelog + release notes), "
         "and DigitalOcean platform release notes"
     )

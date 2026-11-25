@@ -1,11 +1,13 @@
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "feed_generators"))
 
 import _google_ai_studio as google_ai_studio  # noqa: E402
 import anthropic  # noqa: E402
+import aibridge  # noqa: E402
 import claude  # noqa: E402
 import development  # noqa: E402
 import europa  # noqa: E402
@@ -192,14 +194,38 @@ class RequestedFeedSourcesTests(unittest.TestCase):
         self.assertIn("https://opensource.microsoft.com/blog/feed/", urls)
         self.assertIn("https://microsoft.github.io/mcscatblog/feed.xml", urls)
 
-    def test_skillsllm_includes_mem0_blog_and_research(self):
-        sources = {source["label"]: source for source in skillsllm.SOURCES}
-        self.assertIn("Mem0 Blog", sources)
-        self.assertIn("Mem0 Research", sources)
-        research = sources["Mem0 Research"]
-        self.assertEqual(research["sitemap"], "https://mem0.ai/sitemap.xml")
-        self.assertTrue(research["include"]("https://mem0.ai/research"))
-        self.assertFalse(research["include"]("https://mem0.ai/blog/example"))
+    def test_skillsllm_retires_mem0_sitemap_sources(self):
+        self.assertNotIn(
+            "https://mem0.ai/sitemap.xml",
+            {source["sitemap"] for source in skillsllm.SOURCES},
+        )
+        self.assertTrue(
+            {"Mem0 Blog", "Mem0 Research"}.issubset(skillsllm._RETIRED_CACHE_SOURCES)
+        )
+        self.assertTrue(callable(skillsllm.collect_mem0_changelog))
+
+    def test_aibridge_mistral_release_notes(self):
+        index = """
+        <a href="/resources/release-note/2026-10-30-example">
+          <time datetime="2026-10-30T00:00:00.000Z">October 30, 2026</time>
+          <span>What's new</span><span>Models</span>
+          <h3>Example Mistral release</h3>
+        </a>
+        <a href="/resources/changelogs"><h3>Not a release</h3></a>
+        """
+        with patch.object(aibridge, "get_html", return_value=index):
+            entries = aibridge.scrape_mistral_release_notes(set())
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["source"], "Mistral Release Notes")
+        self.assertEqual(entries[0]["date"].strftime("%Y-%m-%d"), "2026-10-30")
+        self.assertEqual(
+            entries[0]["link"],
+            "https://docs.mistral.ai/resources/release-note/2026-10-30-example",
+        )
+        with patch.object(aibridge, "get_html", return_value=index):
+            self.assertEqual(
+                aibridge.scrape_mistral_release_notes({entries[0]["link"]}), []
+            )
 
     def test_skillsllm_includes_desktop_commander_blog(self):
         sources = {source["label"]: source for source in skillsllm.SOURCES}
