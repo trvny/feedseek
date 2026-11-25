@@ -232,8 +232,8 @@ Upstream source links for each generated feed. Source lists come from the genera
 ### ![](https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=16) AI-bridge
 `aibridge` · [XML](https://rss.bartek.lol/aibridge.xml) · [JSON](https://rss.bartek.lol/aibridge.json)
 
-- ![](https://www.google.com/s2/favicons?domain=docs.mistral.ai&sz=16) Mistral Release Notes — <https://docs.mistral.ai/resources/release-notes>
 - ![](https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=16) Thinking Machines — <https://thinkingmachines.ai/blog/index.xml>
+- ![](https://www.google.com/s2/favicons?domain=docs.mistral.ai&sz=16) Mistral Release Notes — <https://docs.mistral.ai/resources/release-notes>
 - ![](https://www.google.com/s2/favicons?domain=docs.perplexity.ai&sz=16) Perplexity API changelog — <https://docs.perplexity.ai/docs/resources/changelog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=ollama.com&sz=16) Ollama — <https://ollama.com/blog/rss.xml>
 - ![](https://www.google.com/s2/favicons?domain=mistral.ai&sz=16) Mistral — <https://mistral.ai/rss.xml>
