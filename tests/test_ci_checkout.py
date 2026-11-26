@@ -30,6 +30,20 @@ class CheckoutScopeTests(unittest.TestCase):
         self.assertNotIn("git merge-base", workflow)
         self.assertIn("github.event.pull_request.head.sha || github.sha", workflow)
 
+    def test_linter_scopes_pushes_and_ignores_generated_only_pushes(self):
+        workflow = self.workflow("mega-linter.yml")
+        triggers = workflow.split("concurrency:", 1)[0]
+        self.assertIn('- "docs/sources.md"', triggers)
+        self.assertIn('- "docs/model-feeds.md"', triggers)
+        scope = workflow.split("- name: Detect Feedseek changes", 1)[1].split(
+            "- name: Install uv and Python", 1
+        )[0]
+        self.assertIn("github.event.pull_request.base.sha || github.event.before", scope)
+        self.assertIn("git cat-file -e", scope)
+        self.assertIn(".github/workflows/update-feeds.yml", scope)
+        self.assertIn(".github/workflows/mega-linter.yml", scope)
+        self.assertNotIn('[ "$EVENT_NAME" = "push" ]', scope)
+
     def test_pr_bootstrap_includes_missing_main_branch_feeds(self):
         """PR validation must not race a newly merged feed's first snapshot."""
         workflow = self.workflow("mega-linter.yml")
