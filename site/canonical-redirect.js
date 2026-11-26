@@ -1,4 +1,4 @@
-(() => {
+globalThis.FeedseekCanonicalRedirect = (async () => {
   const { location } = globalThis;
   if (location.origin !== "https://trvny.github.io") return;
   const routes = {
@@ -21,13 +21,31 @@
     } catch {
       // Storage unavailable; explicit recovery URL still works.
     }
+    if (!retain) {
+      try {
+        // Match reader-cache.js; enumerate before Reader startup creates its DB.
+        const databases = await globalThis.indexedDB?.databases();
+        retain = !databases || databases.some(db => db.name === "feedseek-reader");
+      } catch {
+        // Unknown storage state: preserve access rather than strand history.
+        retain = true;
+      }
+    }
     if (retain) {
-      globalThis.document?.addEventListener("DOMContentLoaded", () => {
-        const notice = document.getElementById("legacyReaderNotice");
+      const showNotice = () => {
+        const notice = globalThis.document?.getElementById("legacyReaderNotice");
+        const recovery = globalThis.document?.getElementById("legacyReaderRecovery");
         if (notice) notice.hidden = false;
-      });
-      return;
+        if (recovery) recovery.hidden = true;
+      };
+      if (globalThis.document?.readyState === "loading") {
+        globalThis.document.addEventListener("DOMContentLoaded", showNotice, { once: true });
+      } else {
+        showNotice();
+      }
+      return false;
     }
   }
   location.replace(target);
+  return true;
 })();

@@ -674,6 +674,7 @@ $('#save').onclick=()=>{
 
 // ── init ──────────────────────────
 const startupPromise=(async()=>{
+  if(await globalThis.FeedseekCanonicalRedirect) return;
   const items=await window.FeedseekReaderCache.load();
   if(items.length){ ITEMS=items; render(); }
   await run();

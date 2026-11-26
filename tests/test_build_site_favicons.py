@@ -295,6 +295,8 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn('href="https://rss.bartek.lol/index.md"', index)
         reader = build_site.build_reader_html(base)
         self.assertIn('rel="canonical" href="https://rss.bartek.lol/reader/"', reader)
+        self.assertLess(reader.index('id="legacyReaderNotice"'), reader.index('id="list"'))
+        self.assertIn('id="legacyReaderRecovery"', reader)
         for rendered in (index, reader):
             self.assertIn('location.origin !== "https://trvny.github.io"', rendered)
             self.assertIn("location.replace(", rendered)
