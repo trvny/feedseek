@@ -8,6 +8,7 @@ on:
       - "site/reader-fetch.js"
       - "site/reader-cache.js"
       - "site/reader.html"
+      - "site/canonical-redirect.js"
       - "site/webmcp.js"
       - "site/test/**"
       - ".github/workflows/reader-ci.yml"
@@ -18,6 +19,7 @@ on:
       - "site/reader-fetch.js"
       - "site/reader-cache.js"
       - "site/reader.html"
+      - "site/canonical-redirect.js"
       - "site/webmcp.js"
       - "site/test/**"
       - ".github/workflows/reader-ci.yml"
@@ -47,6 +49,7 @@ jobs:
 
       - name: Check reader
         run: |
+          node --check site/canonical-redirect.js
           node --check site/reader.js
           node --check site/reader-fetch.js
           node --check site/reader-cache.js
