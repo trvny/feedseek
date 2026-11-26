@@ -23,6 +23,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
+      actions: read
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -64,11 +65,20 @@ jobs:
       - name: Detect Feedseek changes
         id: paths
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           tests=false
           artifacts=false
-          # Compare both pushes and PR merge commits to the exact base.
+          if [ "$GITHUB_EVENT_NAME" = push ]; then
+            endpoint="repos/$GITHUB_REPOSITORY/actions/workflows/mega-linter.yml/runs"
+            BASE_SHA="$(gh api "$endpoint?branch=main&event=push&status=success&per_page=1" \
+              --jq '.workflow_runs[0].head_sha // empty')" || BASE_SHA=""
+            if [[ -n "$BASE_SHA" ]] && ! git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$BASE_SHA" || BASE_SHA=""
+            fi
+          fi
+          # Compare main with the last validated tree; PR with its exact base.
           # Missing baseline: retain full validation.
           if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]] || ! git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
             tests=true
@@ -79,7 +89,8 @@ jobs:
               feed_generators/ tests/ tools/ site/ docs/ schemas/ assets/ feeds-proxy/ \
               .github/workflows/update-feeds.yml .github/workflows/deploy-pages.yml \
               .github/workflows/reader-ci.yml .github/workflows/worker-ci.yml \
-              .github/workflows/mega-linter.yml README.md README_pl.md; then
+              .github/workflows/mega-linter.yml .github/workflows/add-feed.yml \
+              .gitignore README.md README_pl.md README_zh.md; then
               tests=true
               artifacts=true
             fi
