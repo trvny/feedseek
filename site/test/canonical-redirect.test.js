@@ -5,11 +5,11 @@ const { test } = require("node:test");
 const { runInNewContext } = require("node:vm");
 
 const script = readFileSync(join(__dirname, "../canonical-redirect.js"), "utf8");
-function redirect(url) {
+function redirect(url, keys = []) {
   let result;
   const location = new URL(url);
   location.replace = value => { result = value; };
-  runInNewContext(script, { location });
+  runInNewContext(script, { location, URLSearchParams, localStorage: { length: keys.length, key: i => keys[i] } });
   return result;
 }
 
@@ -29,4 +29,14 @@ test("canonical HTML, feeds, embed and unrelated hosts never redirect", () => {
     "https://trvny.github.io/feedseek/meme-widget.html", "https://trvny.github.io/elsewhere/",
     "https://example.com/feedseek/", "https://trvny.github.io/feedseek/sitemap.xml",
   ]) assert.equal(redirect(url), undefined, url);
+});
+
+test("legacy Reader remains accessible for existing state or explicit recovery", () => {
+  const url = "https://trvny.github.io/feedseek/reader/";
+  assert.equal(redirect(url + "?legacy=1"), undefined);
+  assert.equal(redirect(url, ["fs:customOpml"]), undefined);
+  assert.equal(redirect(url, ["fs:sourceFavorites"]), undefined);
+  assert.equal(redirect(url, ["snap"]), undefined);
+  assert.equal(redirect(url, ["unrelated"]), "https://rss.bartek.lol/reader/");
+  assert.equal(redirect("https://trvny.github.io/feedseek/", ["fs:customOpml"]), "https://rss.bartek.lol/");
 });

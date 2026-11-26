@@ -326,7 +326,8 @@ class SiteFaviconTests(unittest.TestCase):
     def test_reader_metadata_uses_build_base(self):
         rendered = build_site.build_reader_html("https://feedseek.pages.dev/")
         self.assertIn("https://feedseek.pages.dev/reader/", rendered)
-        self.assertNotIn("https://trvny.github.io/feedseek/reader/", rendered)
+        self.assertIn('rel="canonical" href="https://feedseek.pages.dev/reader/"', rendered)
+        self.assertIn('href="https://trvny.github.io/feedseek/reader/?legacy=1"', rendered)
 
     def test_index_advertises_llms_alternate(self):
         rendered = build_site.build_index([], "https://feeds.example/")
