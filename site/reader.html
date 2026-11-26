@@ -148,8 +148,14 @@
 </header>
 <main id="list"><div class="msg">Loading…</div></main>
 
+<aside id="legacyReaderNotice" hidden style="padding:12px;color:var(--fg);background:var(--card)">
+  Legacy Reader: existing local data stays here. Export OPML from Settings before moving to
+  <a href="https://rss.bartek.lol/reader/" style="text-decoration:underline">the new Reader</a>.
+  Read history and preferences remain on this origin.
+</aside>
 <dialog id="settings">
   <h2>Settings</h2>
+  <p><a href="__FEEDSEEK_LEGACY_READER__" rel="nofollow">Recover old Reader subscriptions</a> (export OPML on the old site, import here).</p>
   <label>CORS proxy prefix (ends with <code>?url=</code>)</label>
   <input type="text" id="proxy" placeholder="https://feeds-proxy.you.workers.dev/?url=">
   <label>OPML URL</label>
