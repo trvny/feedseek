@@ -295,6 +295,9 @@ class SiteFaviconTests(unittest.TestCase):
         self.assertIn('href="https://rss.bartek.lol/index.md"', index)
         reader = build_site.build_reader_html(base)
         self.assertIn('rel="canonical" href="https://rss.bartek.lol/reader/"', reader)
+        for rendered in (index, reader):
+            self.assertIn('location.origin !== "https://trvny.github.io"', rendered)
+            self.assertIn("location.replace(", rendered)
         self.assertIn('property="og:url" content="https://rss.bartek.lol/reader/"', reader)
         self.assertIn('"url":"https://rss.bartek.lol/reader/"', reader)
         robots = build_site.build_robots(base)

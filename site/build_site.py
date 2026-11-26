@@ -120,6 +120,14 @@ def search_page_base(base: str) -> str:
     return CANONICAL_PAGE_BASE if base == GITHUB_PAGES_BASE else base
 
 
+def canonical_redirect(base: str) -> str:
+    """Redirect only browser HTML on the GitHub Pages origin."""
+    if search_page_base(base) != CANONICAL_PAGE_BASE:
+        return ""
+    script = (SITE_DIR / "canonical-redirect.js").read_text(encoding="utf-8")
+    return "<script>\n" + script + "</script>"
+
+
 def site_base_url() -> str:
     """Resolve the published base URL, always with a single trailing slash."""
     explicit = os.environ.get("SITE_URL", "").strip()
@@ -803,6 +811,7 @@ def build_index(feeds: list[dict], base: str) -> str:
   <meta name="google-site-verification" content="xbXKq1w3ClpoMlxws6qobmZjpSmGVhi2xbrf7kwJV0s" />
   <meta name="msvalidate.01" content="23A368B2C5F4DF3471A67EA6CB057149" />
   <link rel="canonical" href="{html.escape(page_base, quote=True)}">
+{canonical_redirect(base)}
   <link rel="author" href="https://github.com/trvny">
   <link rel="alternate" type="text/markdown" href="{html.escape(base + "index.md", quote=True)}" title="Feedseek Markdown">
   <link rel="alternate" type="text/plain" href="{html.escape(base + "llms.txt", quote=True)}" title="Feedseek llms.txt">
@@ -1352,6 +1361,7 @@ def build_reader_html(base: str) -> str:
     reader_html = (SITE_DIR / "reader.html").read_text(encoding="utf-8")
     reader_html = reader_html.replace(GITHUB_PAGES_BASE, search_page_base(base))
     reader_html = reader_html.replace(CANONICAL_PAGE_BASE, search_page_base(base))
+    reader_html = reader_html.replace("</head>", canonical_redirect(base) + "\n</head>", 1)
     aliases = {key: name for key, name in load_public_names().items() if key != name}
     alias_script = (
         "<script>globalThis.FeedseekPublicNames = "
