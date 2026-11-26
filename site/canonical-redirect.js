@@ -35,6 +35,8 @@ globalThis.FeedseekCanonicalRedirect = (async () => {
       const showNotice = () => {
         const notice = globalThis.document?.getElementById("legacyReaderNotice");
         const recovery = globalThis.document?.getElementById("legacyReaderRecovery");
+        const newReader = globalThis.document?.getElementById("legacyReaderTarget");
+        if (newReader) newReader.href = target;
         if (notice) notice.hidden = false;
         if (recovery) recovery.hidden = true;
       };

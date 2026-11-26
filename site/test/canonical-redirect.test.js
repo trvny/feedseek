@@ -45,12 +45,12 @@ test("retain IndexedDB-only history and show migration notice without recovery l
   const url = "https://trvny.github.io/feedseek/reader/";
   assert.equal(await redirect(url, [], [{ name: "feedseek-reader" }]), undefined);
   assert.equal(await redirect(url, [], [{ name: "another-app" }]), "https://rss.bartek.lol/reader/");
-  const notice = { hidden: true }, recovery = { hidden: false };
-  const location = new URL(url);
+  const notice = { hidden: true }, recovery = { hidden: false }, target = {};
+  const location = new URL(url + "?q=1#entry");
   location.replace = () => assert.fail("existing history must stay accessible");
   const document = {
     readyState: "complete",
-    getElementById: id => ({ legacyReaderNotice: notice, legacyReaderRecovery: recovery })[id],
+    getElementById: id => ({ legacyReaderNotice: notice, legacyReaderRecovery: recovery, legacyReaderTarget: target })[id],
   };
   const result = await runInNewContext(script, {
     location, document, URLSearchParams,
@@ -59,5 +59,6 @@ test("retain IndexedDB-only history and show migration notice without recovery l
   assert.equal(result, false);
   assert.equal(notice.hidden, false);
   assert.equal(recovery.hidden, true);
+  assert.equal(target.href, "https://rss.bartek.lol/reader/?q=1#entry");
   assert.equal(await runInNewContext(script, { location, document, URLSearchParams }), false);
 });
