@@ -6,6 +6,8 @@ on: # yamllint disable-line rule:truthy
     branches: [main]
     paths-ignore:
       - "cache/**"
+      - "docs/sources.md"
+      - "docs/model-feeds.md"
   pull_request: null
 
 permissions: {}
@@ -62,20 +64,22 @@ jobs:
       - name: Detect Feedseek changes
         id: paths
         env:
-          EVENT_NAME: ${{ github.event_name }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
           tests=false
           artifacts=false
-          if [ "$EVENT_NAME" = "push" ]; then
+          # Compare both pushes and PR merge commits to the exact base.
+          # Missing baseline: retain full validation.
+          if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]] || ! git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
             tests=true
             artifacts=true
           else
-            # Compare the exact PR base to GitHub's test merge commit.
             if ! git diff --quiet "$BASE_SHA" HEAD -- \
               Makefile pyproject.toml uv.lock feeds.yaml \
-              feed_generators/ tests/ tools/ site/ docs/ \
-              README.md README_pl.md; then
+              feed_generators/ tests/ tools/ site/ docs/ schemas/ assets/ feeds-proxy/ \
+              .github/workflows/update-feeds.yml .github/workflows/deploy-pages.yml \
+              .github/workflows/reader-ci.yml .github/workflows/worker-ci.yml \
+              .github/workflows/mega-linter.yml README.md README_pl.md; then
               tests=true
               artifacts=true
             fi
