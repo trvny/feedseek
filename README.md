@@ -176,19 +176,19 @@ The Android reader/player for these feeds lives in **[travnie/kanarek](https://g
 ## 📰 Mini news
 
 <!--README_FEED:START-->
-- [Remont zamknie 1,7 km ul. Jurajskiej. Objazd w Rudnie poprowadzi Zamkową - Fakty Krakowa](https://news.google.com/atom/articles/CBMirAFBVV95cUxNWFkxc1pEMy14QWRmSWQzRFkxdnRyVGhiWkhjRzNzeXRISE4taU82R0I0QU1Kc0xibVRwLUxzSlRfMEl3WmgtSU9PU2dNOEI3bExHWWdrMEkxLTlieDZLamRHMkNXaVA0bS1OTUxpUXAyQ2h1Nm8wUFE4Y2M1a3lCaHc1X2x6QUpnMGhMUXVZOTN6T0QtV01EQWNfXzBBcTVlRXYtcTNOYjBGckZo?oc=5)
-- [FCC wydało zgodę na kosmiczny superkomputer. SpaceX ma czas do 2040 roku](https://antyweb.pl/fcc-wydalo-zgode-na-kosmiczny-superkomputer-spacex-ma-czas-do-2040-roku)
-- [Grasz w GTA VI na PS5? Twoja konsola może… spłonąć](https://antyweb.pl/grasz-w-gta-vi-na-ps5-twoja-konsola-moze-splonac)
-- [Problem z baterią w One UI 9.0. Samsung obiecuje poprawkę](https://antyweb.pl/problem-z-bateria-w-one-ui-9-0-samsung-obiecuje-poprawke)
-- [W OpenAI i Anthropic czają się potwory. Te firmy boją się je wypuścić na świat](https://antyweb.pl/anthropic-openai-koniec-swiata-ai)
-- [Koniec muzycznego spamu. 29 milionów utworów AI znika ze streamingu](https://antyweb.pl/koniec-muzycznego-spamu-29-milionow-utworow-ai-znika-ze-streamingu)
+- [AKTUALNOŚCI - KPP w Olkuszu](https://news.google.com/atom/articles/CBMibEFVX3lxTE9TVHp0aDVFNnUtZHZLQVAzTXc1VEp3LThra2pOaGNscldoaGM4VjZFTWdDdFE0d3hBRGhTSkhLNUF5OVMtZy16dEZBZHVYYl9RUTF5bUhwaTdfenNqeHpjS1VlT1dCdUlHNzBpQw?oc=5)
+- [Restless Ghosts: One Case, A Century of Doubt | Case by Case | "48 Hours" Podcast](https://www.cbsnews.com/video/112726-48-hours-case-by-case-episode-32/)
+- [Jackson Koivun Doubles Career Earnings After Dramatic Win Over Brooks Koepka](https://sports.yahoo.com/golf/articles/jackson-koivun-doubles-career-earnings-233158037.html)
+- [Live score updates, highlights for Alabama basketball vs Miami in Players Era](https://sports.yahoo.com/mens-college-basketball/articles/live-score-updates-highlights-alabama-233052368.html)
+- [Will the Buccaneers sweep Carolina? Five storylines to watch](https://sports.yahoo.com/nfl/articles/buccaneers-sweep-carolina-five-storylines-233033089.html)
+- [UNC vs. West Virginia Live Discussion](https://sports.yahoo.com/mens-college-basketball/articles/unc-vs-west-virginia-live-233000680.html)
 <!--README_FEED:END-->
 
 ## 💬 Quote from the drawer
 
 <!-- markdownlint-disable MD033 -->
 <!--STARTS_HERE_QUOTE_README-->
-<i>❝The most original authors are not so because they advance what is new, but because they put what they have to say as if it had never been said before. — Johann Wolfgang von Goethe❞</i>
+<i>❝“BASIC is to computer programming as QWERTY is to typing.”— Seymour Papert❞</i>
 <!--ENDS_HERE_QUOTE_README-->
 <!-- markdownlint-enable MD033 -->
 
